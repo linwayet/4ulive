@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年當月雜誌整理 - 林威老師</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #67b26f;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: var(--text-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .author-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .resource-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .resource-card .title {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* 針對不同雜誌類型給予不同顏色提示（可選） */
+        .card-live { border-left: 5px solid #4a90e2; }
+        .card-4u { border-left: 5px solid #67b26f; }
+
+        footer {
+            margin-top: auto;
+            padding-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* 手機版微調 */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.6rem; }
+            .container {
+                grid-template-columns: repeat(2, 1fr); /* 手機版維持兩欄比較好點選 */
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>2026年當月雜誌整理</h1>
+        <div class="author-tag">林威老師 編寫</div>
+    </header>
+
+    <main class="container">
+        <a href="live4u001.html" class="resource-card card-live">
+            <div class="icon">📖</div>
+            <div class="title">Live-1</div>
+        </a>
+        <a href="live4u002.html" class="resource-card card-live">
+            <div class="icon">📖</div>
+            <div class="title">Live-2</div>
+        </a>
+        <a href="live4u003.html" class="resource-card card-live">
+            <div class="icon">📖</div>
+            <div class="title">Live-3</div>
+        </a>
+        <a href="live4u004.html" class="resource-card card-live">
+            <div class="icon">📖</div>
+            <div class="title">Live-4</div>
+        </a>
+        <a href="live4u005.html" class="resource-card card-live">
+            <div class="icon">📖</div>
+            <div class="title">Live-5</div>
+        </a>
+
+        <a href="live4u006.html" class="resource-card card-4u">
+            <div class="icon">✨</div>
+            <div class="title">4U-1</div>
+        </a>
+        <a href="live4u007.html" class="resource-card card-4u">
+            <div class="icon">✨</div>
+            <div class="title">4U-2</div>
+        </a>
+        <a href="live4u008.html" class="resource-card card-4u">
+            <div class="icon">✨</div>
+            <div class="title">4U-3</div>
+        </a>
+        <a href="live4u009.html" class="resource-card card-4u">
+            <div class="icon">✨</div>
+            <div class="title">4U-4</div>
+        </a>
+        <a href="live4u010.html" class="resource-card card-4u">
+            <div class="icon">✨</div>
+            <div class="title">4U-5</div>
+        </a>
+    </main>
+
+    <footer>
+        &copy; 2026 English Learning Resources Center
+    </footer>
+
+</body>
+</html>
