@@ -1,82 +1,904 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英文閱讀解析</title>
-    <style>
-        :root { --green-color: #2e7d32; --red-color: #d32f2f; --blue-color: #1565c0; --purple-color: #7b1fa2; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.8; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .article-content { font-size: 1.15em; color: #000; margin-top: 20px; line-height: 1.9; }
-        .highlight { cursor: pointer; font-weight: bold; position: relative; padding: 2px 4px; border-radius: 4px; transition: background 0.2s; display: inline-block; }
-        .highlight:hover { background: #f0f0f0; }
-        .word-green { color: var(--green-color); }
-        .word-red { color: var(--red-color); }
-        .word-blue { color: var(--blue-color); }
-        .word-purple { color: var(--purple-color); }
-        .cancel-btn { color: #aaa; font-size: 0.7em; vertical-align: super; margin-left: 4px; cursor: pointer; font-weight: normal; }
-        .cancel-btn:hover { color: #000; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>116學測英文｜週測 · 115年風格</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#f0f4f8;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','Segoe UI',sans-serif;font-size:16px;color:#1e293b;min-height:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,textarea{font-family:inherit;font-size:inherit}
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 10px; width: 100%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; box-sizing: border-box; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8em; cursor: pointer; color: #666; line-height: 1; }
-        .modal-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 1.05em; line-height: 1.8; color: #333; }
-        .modal-body b { color: inherit; background-color: rgba(255,235,59,0.3); padding: 0 2px; border-radius: 3px; }
-    </style>
+/* LAYOUT - single long page */
+#app{max-width:500px;margin:0 auto;background:#fff;min-height:100vh;padding-bottom:40px}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:90}
+.hdr-top{display:flex;align-items:center;justify-content:space-between}
+.hdr-title{font-size:15px;font-weight:800}
+.hdr-sub{font-size:11px;opacity:.75;margin-top:2px}
+.ans-count{font-size:11px;background:rgba(255,255,255,.2);padding:4px 11px;border-radius:20px;font-weight:700}
+
+/* SECTION */
+.sec{padding:14px}
+.sec-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
+.sec-num{width:28px;height:28px;border-radius:50%;background:#1e40af;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.sec-title{font-size:15px;font-weight:800;color:#0f172a}
+.sec-meta{font-size:11px;color:#64748b;margin-top:2px}
+
+/* WORD MARK HINT */
+.word-hint{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:12px;color:#92400e;line-height:1.5}
+.word-hint b{font-weight:800}
+
+/* INTRO */
+.welcome-hero{text-align:center;padding:16px 0 8px}
+.wh-icon{font-size:44px;margin-bottom:10px}
+.wh-title{font-size:20px;font-weight:900;margin-bottom:4px}
+.wh-sub{font-size:13px;color:#64748b;line-height:1.6}
+.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin:14px 0}
+.ig-box{background:#f8fafc;border-radius:10px;padding:10px 4px;text-align:center;border:1px solid #e2e8f0}
+.ig-num{font-size:18px;font-weight:900;color:#1e40af}
+.ig-lbl{font-size:10px;color:#64748b;margin-top:2px;font-weight:600}
+.name-inp{width:100%;background:#f8fafc;border-radius:10px;padding:11px;font-size:16px;border:1.5px solid #e2e8f0;margin-bottom:8px;text-align:center;color:#1e293b}
+.name-inp:focus{border-color:#3b82f6;outline:none;background:#fff}
+.feature-list{background:#f0fdf4;border-radius:11px;padding:12px;font-size:12.5px;color:#166534;line-height:1.8;border:1px solid #86efac}
+
+/* PASSAGE */
+.passage{background:#f8fafc;border-radius:12px;padding:13px;margin-bottom:10px;font-size:13.5px;line-height:1.95;color:#1e293b;border:1px solid #e2e8f0}
+.blank-s{display:inline-block;border-bottom:2.5px solid #3b82f6;min-width:46px;text-align:center;color:#1e40af;font-weight:700;padding:0 3px;margin:0 1px;font-size:12.5px}
+
+/* WORD BANK (middle of passage, not sticky) */
+.word-bank-box{background:#fffbeb;border-radius:11px;padding:12px 13px;margin-bottom:10px;font-size:12.5px;border:2px solid #fcd34d;line-height:1.9;box-shadow:0 2px 6px rgba(251,191,36,.15)}
+.wb-title{font-size:13px;font-weight:800;color:#92400e;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px}
+.wb-item{font-size:12.5px;color:#451a03}
+.wb-item .lt{display:inline-block;width:22px;color:#d97706;font-weight:800}
+
+/* QUESTION BLOCK */
+.qb{background:#f8fafc;border-radius:12px;padding:12px;margin-bottom:9px;border:1.5px solid #e2e8f0;transition:border-color .2s}
+.qb.done{border-color:#3b82f6;background:#eff6ff}
+.qn{font-size:11px;font-weight:800;color:#3b82f6;margin-bottom:5px}
+.qt{font-size:13.5px;font-weight:600;line-height:1.65;margin-bottom:9px;color:#1e293b}
+
+/* VERTICAL OPTIONS (reading) */
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:9px;background:#fff;border:1.5px solid #e2e8f0;font-size:13px;line-height:1.45;cursor:pointer;transition:all .15s}
+.opt .lt{width:23px;height:23px;min-width:23px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#64748b;flex-shrink:0;margin-top:1px}
+.opt.sel{background:#eff6ff;border-color:#3b82f6;color:#1e40af;font-weight:600}
+.opt.sel .lt{background:#1e40af;color:#fff}
+
+/* HORIZONTAL OPTIONS - 2 col grid */
+.opts-h{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.opt-h{display:flex;align-items:center;gap:7px;padding:8px 9px;border-radius:8px;background:#fff;border:1.5px solid #e2e8f0;font-size:12.5px;line-height:1.3;cursor:pointer;transition:all .15s;min-height:36px}
+.opt-h .lt{width:20px;height:20px;min-width:20px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#64748b;flex-shrink:0}
+.opt-h.sel{background:#eff6ff;border-color:#3b82f6;color:#1e40af;font-weight:700}
+.opt-h.sel .lt{background:#1e40af;color:#fff}
+
+/* FILL-IN ANSWER GRID (student types A-J) */
+.fill-wrap{background:#ecfdf5;border-radius:12px;padding:12px;margin-top:12px;border:2px solid #86efac}
+.fill-title{font-size:13px;font-weight:800;color:#065f46;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.fill-grid{display:grid;grid-template-columns:repeat(5, 1fr);gap:6px}
+.fill-cell{background:#fff;border:1.5px solid #bbf7d0;border-radius:9px;padding:7px 2px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.fill-cell.done{border-color:#10b981;background:#d1fae5}
+.fill-q{font-size:12px;font-weight:800;color:#065f46}
+.fill-input{width:100%;max-width:42px;height:36px;border:1.5px solid #cbd5e1;border-radius:7px;background:#fff;text-align:center;font-size:17px;font-weight:900;color:#059669;font-family:'Courier New',monospace;text-transform:uppercase;padding:0}
+.fill-input:focus{outline:none;border-color:#10b981;background:#f0fdf4}
+
+/* TRANSLATION */
+.trans-zh{background:#fef3c7;padding:11px 12px;border-radius:9px;border:1.5px solid #fde68a;margin-bottom:9px;font-size:14px;line-height:1.8;color:#78350f}
+.trans-zh .tag{font-size:11px;color:#b45309;font-weight:800;margin-right:6px}
+.trans-ta{width:100%;min-height:90px;padding:10px 11px;border-radius:9px;border:1.5px solid #e2e8f0;background:#fff;font-size:13.5px;line-height:1.6;resize:vertical;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','Segoe UI',sans-serif}
+.trans-ta:focus{outline:none;border-color:#3b82f6}
+.trans-hint{font-size:11px;color:#64748b;margin-top:6px;line-height:1.5}
+
+/* WORD CLICK */
+.w{cursor:pointer;border-radius:3px;transition:background .12s;padding:0 1px;display:inline}
+.w.mk{background:#fef08a;color:#92400e;font-weight:700;border-bottom:2px solid #f59e0b}
+
+/* FLOATING WORD BADGE */
+#word-badge{position:fixed;top:60px;right:14px;background:#f59e0b;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;z-index:150;display:none;box-shadow:0 2px 10px rgba(245,158,11,.4)}
+
+/* SUBMIT BUTTON */
+.submit-wrap{padding:16px 14px;text-align:center}
+.submit-btn{width:100%;padding:16px;border-radius:12px;background:linear-gradient(135deg,#1e40af,#3b82f6);color:#fff;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(59,130,246,.35)}
+
+/* DETAILS/SUMMARY - native, no JS */
+details{background:#fff;border-radius:12px;margin:10px 14px;border:2px solid #bfdbfe;overflow:hidden}
+details summary{padding:14px 16px;font-size:14px;font-weight:800;color:#1e40af;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;background:#eff6ff;transition:background .15s}
+details summary::-webkit-details-marker{display:none}
+details summary::marker{content:''}
+details[open] summary{background:#dbeafe;border-bottom:1px solid #bfdbfe}
+.arrow{display:inline-block;transition:transform .25s ease;font-size:12px;opacity:.7}
+details[open] .arrow{transform:rotate(180deg)}
+.details-body{padding:14px}
+
+/* nested details */
+details details{margin:10px 0;border-color:#e2e8f0;border-radius:10px}
+details details summary{background:#f8fafc;color:#475569;font-size:13px;padding:10px 12px}
+details[open] details summary{background:#f1f5f9}
+details details .details-body{padding:10px 12px}
+
+/* RESULT */
+.result-hero{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;border-radius:14px;padding:16px;margin-bottom:10px;text-align:center}
+.rh-score{font-size:36px;font-weight:900;margin-bottom:4px}
+.rh-label{font-size:13px;opacity:.85;line-height:1.5}
+.cat-scores{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.cs-box{background:#f8fafc;border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #e2e8f0}
+.cs-lbl{font-size:10px;font-weight:700;color:#64748b;margin-bottom:4px}
+.cs-bar-w{height:4px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:3px}
+.cs-bar{height:4px;border-radius:3px;transition:width .7s ease}
+.cs-frac{font-size:12px;font-weight:800}
+
+/* ANSWER CODE */
+.code-section{background:#0f172a;border-radius:12px;padding:14px;margin-bottom:10px}
+.cs-title{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.5px;margin-bottom:10px}
+.ans-groups{display:flex;flex-direction:column;gap:6px}
+.ans-group{display:flex;align-items:center;gap:10px}
+.ag-label{font-size:11px;color:#94a3b8;width:68px;flex-shrink:0;font-family:'Courier New',monospace}
+.ag-letters{display:flex;gap:4px;flex-wrap:wrap}
+.ag-letter{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-family:'Courier New',monospace}
+.al-A{background:#1d4ed820;color:#60a5fa}.al-B{background:#7c3aed20;color:#a78bfa}
+.al-C{background:#06573520;color:#34d399}.al-D{background:#92400e20;color:#fbbf24}
+.al-E{background:#be185d20;color:#f472b6}.al-F{background:#b4530920;color:#fb923c}
+.al-G{background:#15803d20;color:#4ade80}.al-H{background:#7e22ce20;color:#c084fc}
+.al-I{background:#0e749020;color:#22d3ee}.al-J{background:#9f122520;color:#f87171}
+.al-_{background:#33415520;color:#94a3b8}
+
+/* WORD RESULT */
+.word-result{background:#fffbeb;border-radius:12px;padding:13px;margin-bottom:10px;border:1px solid #fde68a}
+.wr-title{font-size:12px;font-weight:800;color:#92400e;margin-bottom:9px}
+.word-tags{display:flex;flex-wrap:wrap;gap:5px}
+.word-tag{background:#fef3c7;color:#92400e;padding:4px 11px;border-radius:20px;font-size:12.5px;font-weight:600;border:1px solid #fcd34d}
+.word-tag.none{color:#94a3b8;background:#f1f5f9;border-color:#e2e8f0;font-weight:400}
+
+/* TRANSLATION RESULT */
+.trans-result{background:#eff6ff;border-radius:12px;padding:13px;margin-bottom:10px;border:1px solid #bfdbfe}
+.tr-h{font-size:12px;font-weight:800;color:#1e40af;margin-bottom:9px}
+.tr-item{background:#fff;border-radius:9px;padding:10px;margin-bottom:7px;border:1px solid #dbeafe}
+.tr-item:last-child{margin-bottom:0}
+.tr-q{font-size:11px;color:#64748b;margin-bottom:4px;font-weight:700}
+.tr-zh{font-size:12.5px;color:#1e293b;margin-bottom:5px;line-height:1.6}
+.tr-en{font-size:12.5px;color:#1e40af;line-height:1.6;background:#f8fafc;padding:7px 9px;border-radius:6px;border-left:3px solid #3b82f6}
+.tr-en.empty{color:#94a3b8}
+
+/* LINE MESSAGE */
+.line-btn{width:100%;padding:13px;border-radius:11px;font-size:13.5px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;justify-content:center;gap:6px}
+.line-btn-1{background:#1e40af;color:#fff}
+.line-btn-2{background:#f59e0b;color:#fff}
+.line-btn-3{background:#059669;color:#fff}
+.msg-box{background:#0f172a;color:#e2e8f0;border-radius:11px;padding:12px;font-size:11.5px;font-family:'Courier New',monospace;white-space:pre-wrap;line-height:1.7;margin-bottom:7px;word-break:break-all;max-height:300px;overflow-y:auto}
+.msg-box:empty{display:none}
+
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:#1e293b;color:#fff;padding:10px 20px;border-radius:22px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;z-index:300;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* REVIEW ITEMS */
+.rev-item{padding:8px 11px;border-radius:8px;margin-bottom:5px;font-size:12.5px;line-height:1.55}
+.rev-ok{background:#f0fdf4;border:1px solid #86efac;color:#166534}
+.rev-ng{background:#fff5f5;border:1px solid #fca5a5;color:#dc2626}
+.rev-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>精選英文閱讀與解析</h1>
-        <div class="article-content">Pride and <span class="highlight word-green" onclick="showInfo('prejudice', event)">Prejudice<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> Elizabeth Bennet lived at Longbourn, a <span class="highlight word-green" onclick="showInfo('modest', event)">modest<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> country <span class="highlight word-green" onclick="showInfo('estate', event)">estate<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> with her parents and four sisters. She was intelligent, <span class="highlight word-green" onclick="showInfo('spirited', event)">spirited<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>, and had a quick sense of humor that <span class="highlight word-blue" onclick="showInfo('set%20her%20apart%20from', event)">set her apart from<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> other young women of her time. At a local dance, Elizabeth met Mr. Fitzwilliam Darcy, a <span class="highlight word-green" onclick="showInfo('wealthy', event)">wealthy<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> and handsome gentleman. However, his cold and proud <span class="highlight word-green" onclick="showInfo('manner', event)">manner<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> immediately <span class="highlight word-green" onclick="showInfo('put%20her%20off', event)">put her off<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. Elizabeth heard him tell his friend Bingley that she was <span class="highlight word-red" onclick="showInfo('tolerable', event)">tolerable<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> but not handsome enough to <span class="highlight word-green" onclick="showInfo('tempt', event)">tempt<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> me, which <span class="highlight word-green" onclick="showInfo('offended', event)">offended<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> her and made her dislike of him grow stronger. Her opinion of Darcy further <span class="highlight word-red" onclick="showInfo('soured', event)">soured<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> when the charming officer Mr. Wickham told her that Darcy had cheated him out of his <span class="highlight word-green" onclick="showInfo('inheritance', event)">inheritance<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. <span class="highlight word-blue" onclick="showInfo('due%20to', event)">Due to<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> her <span class="highlight word-green" onclick="showInfo('prejudice', event)">prejudice<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>, Elizabeth believed Wickham's story <span class="highlight word-blue" onclick="showInfo('without%20question', event)">without question<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. Therefore, when Darcy <span class="highlight word-green" onclick="showInfo('unexpectedly', event)">unexpectedly<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> <span class="highlight word-green" onclick="showInfo('proposed', event)">proposed<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> marriage, Elizabeth <span class="highlight word-green" onclick="showInfo('refused', event)">refused<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> him immediately. She <span class="highlight word-red" onclick="showInfo('accused', event)">accused<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> him of <span class="highlight word-green" onclick="showInfo('separating', event)">separating<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> her sister Jane from Bingley and of treating Wickham <span class="highlight word-red" onclick="showInfo('cruelly', event)">cruelly<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. The next day, Darcy gave her a letter that challenged everything she believed. He <span class="highlight word-green" onclick="showInfo('revealed', event)">revealed<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> that Wickham was actually a dishonest man who had tried to <span class="highlight word-red" onclick="showInfo('elope%20with', event)">elope with<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> Darcy's 15-year-old sister for her money. As for Jane and Bingley, Darcy explained he had only <span class="highlight word-red" onclick="showInfo('interfered', event)">interfered<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> because he believed Jane didn't truly love Bingley.<br><br><br>These <span class="highlight word-red" onclick="showInfo('revelations', event)">revelations<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> forced Elizabeth to face an uncomfortable truth. She had judged Darcy too quickly and too <span class="highlight word-green" onclick="showInfo('harshly', event)">harshly<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. Months later, she visited Darcy's <span class="highlight word-green" onclick="showInfo('grand', event)">grand<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> <span class="highlight word-green" onclick="showInfo('estate', event)">estate<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> at Pemberley and saw more <span class="highlight word-green" onclick="showInfo('evidence', event)">evidence<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> of her mistake. The house was beautiful, but more importantly, his servants spoke warmly of him as a kind and <span class="highlight word-green" onclick="showInfo('generous', event)">generous<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> master. The Darcy she met there was completely different, polite, thoughtful, and <span class="highlight word-red" onclick="showInfo('respectful', event)">respectful<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> toward her middle-class relatives. Elizabeth began to see who he really was. Then, <span class="highlight word-blue" onclick="showInfo('disaster%20struck', event)">disaster struck<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. Her youngest sister Lydia ran away with Wickham, which brought shame on the family. Elizabeth was <span class="highlight word-green" onclick="showInfo('certain', event)">certain<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> this scandal had <span class="highlight word-green" onclick="showInfo('destroyed', event)">destroyed<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> any chance of Darcy caring for her. But Darcy quietly took action. He found the couple, <span class="highlight word-blue" onclick="showInfo('paid%20off', event)">paid off<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> Wickham's <span class="highlight word-red" onclick="showInfo('debts', event)">debts<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>, and <span class="highlight word-green" onclick="showInfo('convinced', event)">convinced<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> him to marry Lydia. This saved the Bennett family from <span class="highlight word-red" onclick="showInfo('disgrace', event)">disgrace<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. After Elizabeth learned what Darcy had done, she was deeply moved by his kindness and care. When Darcy <span class="highlight word-green" onclick="showInfo('proposed', event)">proposed<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> to Elizabeth a second time, both had changed. He had learned to be less proud and more <span class="highlight word-red" onclick="showInfo('considerate', event)">considerate<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. She had learned not to <span class="highlight word-green" onclick="showInfo('judge', event)">judge<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> people based on <span class="highlight word-blue" onclick="showInfo('first%20impressions', event)">first impressions<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>. Their marriage was built on true respect and understanding, <span class="highlight word-green" onclick="showInfo('proof', event)">proof<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> that real <span class="highlight word-green" onclick="showInfo('character', event)">character<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span> shows itself through actions, not <span class="highlight word-green" onclick="showInfo('appearances', event)">appearances<span class="cancel-btn" onclick="cancelHighlight(this, event)">x</span></span>.</div>
+<div id="app">
+
+  <!-- HEADER (sticky) -->
+  <header class="hdr">
+    <div class="hdr-top">
+      <div>
+        <div class="hdr-title">📝 116學測英文 週測</div>
+        <div class="hdr-sub">115年學測風格 · 28選擇 + 2翻譯</div>
+      </div>
+      <div id="ans-count-badge" class="ans-count">已答 0/30</div>
+    </div>
+  </header>
+
+  <div id="word-badge">📌 <span id="wb-num">0</span> 個單字</div>
+
+  <!-- INTRO -->
+  <section class="sec">
+    <div class="welcome-hero">
+      <div class="wh-icon">📋</div>
+      <div class="wh-title">英文週測</div>
+      <div class="wh-sub">仿115年學測風格<br>詞彙 · 綜合 · 文意選填 · 閱讀 · 翻譯</div>
+    </div>
+    <div class="info-grid">
+      <div class="ig-box"><div class="ig-num">28</div><div class="ig-lbl">選擇題</div></div>
+      <div class="ig-box"><div class="ig-num">2</div><div class="ig-lbl">中翻英</div></div>
+      <div class="ig-box"><div class="ig-num">25'</div><div class="ig-lbl">建議時間</div></div>
+      <div class="ig-box"><div class="ig-num">2</div><div class="ig-lbl">LINE訊息</div></div>
+    </div>
+    <div class="feature-list">
+      ✨ <b>作答時</b>：點擊任何不確定的單字即可標記<br>
+      📊 <b>完成後</b>：下拉「作答結果」區，產生兩則 LINE 訊息<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;① 答案碼（供老師分析選擇題成績）<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;② 不確定單字 + 翻譯句子（供林威老師軟體分析）
+    </div>
+    <div style="margin-top:12px">
+      <label style="font-size:13px;font-weight:700;color:#64748b;display:block;margin-bottom:7px">你的姓名</label>
+      <input class="name-inp" id="nm" type="text" placeholder="請輸入姓名" maxlength="12">
+    </div>
+  </section>
+
+  <!-- SECTION 1: VOCAB Q1-10 -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div>
+        <div class="sec-title">詞彙 Q1–Q10</div>
+        <div class="sec-meta">10 題 · 每題 1 分</div>
+      </div>
+    </div>
+    <div class="word-hint">💡 點擊不確定的單字即可標記（黃底），完成後列入 LINE 訊息</div>
+
+    <div class="qb" id="b1"><div class="qn">Q1</div>
+      <div class="qt wt">The government's new initiative aims to ___ affordable housing to low-income families living in densely populated urban areas.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(1,'A',this)"><div class="lt">A</div><span class="wt">deny</span></div>
+        <div class="opt-h" onclick="pick(1,'B',this)"><div class="lt">B</div><span class="wt">provide</span></div>
+        <div class="opt-h" onclick="pick(1,'C',this)"><div class="lt">C</div><span class="wt">restrict</span></div>
+        <div class="opt-h" onclick="pick(1,'D',this)"><div class="lt">D</div><span class="wt">eliminate</span></div>
+      </div></div>
+
+    <div class="qb" id="b2"><div class="qn">Q2</div>
+      <div class="qt wt">The scientist's research on ocean temperature patterns was considered ___ because it offered an entirely new framework for understanding global climate change.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(2,'A',this)"><div class="lt">A</div><span class="wt">trivial</span></div>
+        <div class="opt-h" onclick="pick(2,'B',this)"><div class="lt">B</div><span class="wt">outdated</span></div>
+        <div class="opt-h" onclick="pick(2,'C',this)"><div class="lt">C</div><span class="wt">groundbreaking</span></div>
+        <div class="opt-h" onclick="pick(2,'D',this)"><div class="lt">D</div><span class="wt">repetitive</span></div>
+      </div></div>
+
+    <div class="qb" id="b3"><div class="qn">Q3</div>
+      <div class="qt wt">Wildlife organizations around the world are working tirelessly to ___ endangered species from extinction by protecting and restoring their natural habitats.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(3,'A',this)"><div class="lt">A</div><span class="wt">prevent</span></div>
+        <div class="opt-h" onclick="pick(3,'B',this)"><div class="lt">B</div><span class="wt">accelerate</span></div>
+        <div class="opt-h" onclick="pick(3,'C',this)"><div class="lt">C</div><span class="wt">ignore</span></div>
+        <div class="opt-h" onclick="pick(3,'D',this)"><div class="lt">D</div><span class="wt">threaten</span></div>
+      </div></div>
+
+    <div class="qb" id="b4"><div class="qn">Q4</div>
+      <div class="qt wt">The financial crisis had a ___ effect on small businesses across the region, forcing many long-established shops to close permanently within months.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(4,'A',this)"><div class="lt">A</div><span class="wt">beneficial</span></div>
+        <div class="opt-h" onclick="pick(4,'B',this)"><div class="lt">B</div><span class="wt">devastating</span></div>
+        <div class="opt-h" onclick="pick(4,'C',this)"><div class="lt">C</div><span class="wt">minor</span></div>
+        <div class="opt-h" onclick="pick(4,'D',this)"><div class="lt">D</div><span class="wt">temporary</span></div>
+      </div></div>
+
+    <div class="qb" id="b5"><div class="qn">Q5</div>
+      <div class="qt wt">Despite repeated setbacks and funding cuts, the research team remained ___ in their determination to find a viable treatment for the rare neurological disease.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(5,'A',this)"><div class="lt">A</div><span class="wt">discouraged</span></div>
+        <div class="opt-h" onclick="pick(5,'B',this)"><div class="lt">B</div><span class="wt">persistent</span></div>
+        <div class="opt-h" onclick="pick(5,'C',this)"><div class="lt">C</div><span class="wt">indifferent</span></div>
+        <div class="opt-h" onclick="pick(5,'D',this)"><div class="lt">D</div><span class="wt">passive</span></div>
+      </div></div>
+
+    <div class="qb" id="b6"><div class="qn">Q6</div>
+      <div class="qt wt">The documentary explored in depth how the rise of social media has fundamentally ___ the way people form identities, communicate, and maintain relationships.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(6,'A',this)"><div class="lt">A</div><span class="wt">preserved</span></div>
+        <div class="opt-h" onclick="pick(6,'B',this)"><div class="lt">B</div><span class="wt">transformed</span></div>
+        <div class="opt-h" onclick="pick(6,'C',this)"><div class="lt">C</div><span class="wt">limited</span></div>
+        <div class="opt-h" onclick="pick(6,'D',this)"><div class="lt">D</div><span class="wt">defined</span></div>
+      </div></div>
+
+    <div class="qb" id="b7"><div class="qn">Q7</div>
+      <div class="qt wt">New imaging technology now allows doctors to ___ certain types of cancer at a much earlier stage, when treatment options are significantly more effective.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(7,'A',this)"><div class="lt">A</div><span class="wt">diagnose</span></div>
+        <div class="opt-h" onclick="pick(7,'B',this)"><div class="lt">B</div><span class="wt">cause</span></div>
+        <div class="opt-h" onclick="pick(7,'C',this)"><div class="lt">C</div><span class="wt">delay</span></div>
+        <div class="opt-h" onclick="pick(7,'D',this)"><div class="lt">D</div><span class="wt">overlook</span></div>
+      </div></div>
+
+    <div class="qb" id="b8"><div class="qn">Q8</div>
+      <div class="qt wt">The young chef's ___ performance throughout the competition earned her widespread recognition and a coveted position at one of the country's top restaurants.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(8,'A',this)"><div class="lt">A</div><span class="wt">inconsistent</span></div>
+        <div class="opt-h" onclick="pick(8,'B',this)"><div class="lt">B</div><span class="wt">mediocre</span></div>
+        <div class="opt-h" onclick="pick(8,'C',this)"><div class="lt">C</div><span class="wt">outstanding</span></div>
+        <div class="opt-h" onclick="pick(8,'D',this)"><div class="lt">D</div><span class="wt">ordinary</span></div>
+      </div></div>
+
+    <div class="qb" id="b9"><div class="qn">Q9</div>
+      <div class="qt wt">The city council's decision to ___ its metro network to suburban areas has significantly reduced traffic congestion and improved air quality downtown.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(9,'A',this)"><div class="lt">A</div><span class="wt">diminish</span></div>
+        <div class="opt-h" onclick="pick(9,'B',this)"><div class="lt">B</div><span class="wt">relocate</span></div>
+        <div class="opt-h" onclick="pick(9,'C',this)"><div class="lt">C</div><span class="wt">expand</span></div>
+        <div class="opt-h" onclick="pick(9,'D',this)"><div class="lt">D</div><span class="wt">abandon</span></div>
+      </div></div>
+
+    <div class="qb" id="b10"><div class="qn">Q10</div>
+      <div class="qt wt">Researchers have found that certain plants can ___ to environmental stressors such as drought and insect attack by producing specialized protective chemical compounds.</div>
+      <div class="opts-h">
+        <div class="opt-h" onclick="pick(10,'A',this)"><div class="lt">A</div><span class="wt">respond</span></div>
+        <div class="opt-h" onclick="pick(10,'B',this)"><div class="lt">B</div><span class="wt">surrender</span></div>
+        <div class="opt-h" onclick="pick(10,'C',this)"><div class="lt">C</div><span class="wt">contribute</span></div>
+        <div class="opt-h" onclick="pick(10,'D',this)"><div class="lt">D</div><span class="wt">struggle</span></div>
+      </div></div>
+  </section>
+
+  <!-- SECTION 2: CLOZE Q11-15 -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">2</div>
+      <div>
+        <div class="sec-title">綜合測驗 Q11–Q15</div>
+        <div class="sec-meta">克漏字 · 5 題</div>
+      </div>
+    </div>
+    <div class="passage wt">
+      In today's hyperconnected world, the concept of "digital well-being" has gained considerable attention. As smartphones and social media become increasingly <span class="blank-s">__11__</span> in daily life, researchers are exploring both their benefits and their costs. While technology enables people to stay in touch across distances, overuse can lead to <span class="blank-s">__12__</span> consequences. Studies show that heavy screen time, especially before bedtime, <span class="blank-s">__13__</span> with sleep quality and can contribute to anxiety and low mood. In response, many technology companies have introduced tools allowing users to <span class="blank-s">__14__</span> their screen time and set personalized limits on app usage. Health experts emphasize that finding a <span class="blank-s">__15__</span> between connected and offline life is the key to lasting well-being.
+    </div>
+    <div class="qb" id="b11"><div class="qn">Q11</div><div class="opts-h">
+      <div class="opt-h" onclick="pick(11,'A',this)"><div class="lt">A</div>irrelevant</div>
+      <div class="opt-h" onclick="pick(11,'B',this)"><div class="lt">B</div>integrated</div>
+      <div class="opt-h" onclick="pick(11,'C',this)"><div class="lt">C</div>optional</div>
+      <div class="opt-h" onclick="pick(11,'D',this)"><div class="lt">D</div>eliminated</div>
+    </div></div>
+    <div class="qb" id="b12"><div class="qn">Q12</div><div class="opts-h">
+      <div class="opt-h" onclick="pick(12,'A',this)"><div class="lt">A</div>positive</div>
+      <div class="opt-h" onclick="pick(12,'B',this)"><div class="lt">B</div>unrelated</div>
+      <div class="opt-h" onclick="pick(12,'C',this)"><div class="lt">C</div>negative</div>
+      <div class="opt-h" onclick="pick(12,'D',this)"><div class="lt">D</div>unexpected</div>
+    </div></div>
+    <div class="qb" id="b13"><div class="qn">Q13</div><div class="opts-h">
+      <div class="opt-h" onclick="pick(13,'A',this)"><div class="lt">A</div>encourages</div>
+      <div class="opt-h" onclick="pick(13,'B',this)"><div class="lt">B</div>interferes</div>
+      <div class="opt-h" onclick="pick(13,'C',this)"><div class="lt">C</div>connects</div>
+      <div class="opt-h" onclick="pick(13,'D',this)"><div class="lt">D</div>competes</div>
+    </div></div>
+    <div class="qb" id="b14"><div class="qn">Q14</div><div class="opts-h">
+      <div class="opt-h" onclick="pick(14,'A',this)"><div class="lt">A</div>increase</div>
+      <div class="opt-h" onclick="pick(14,'B',this)"><div class="lt">B</div>track</div>
+      <div class="opt-h" onclick="pick(14,'C',this)"><div class="lt">C</div>ignore</div>
+      <div class="opt-h" onclick="pick(14,'D',this)"><div class="lt">D</div>share</div>
+    </div></div>
+    <div class="qb" id="b15"><div class="qn">Q15</div><div class="opts-h">
+      <div class="opt-h" onclick="pick(15,'A',this)"><div class="lt">A</div>competition</div>
+      <div class="opt-h" onclick="pick(15,'B',this)"><div class="lt">B</div>difference</div>
+      <div class="opt-h" onclick="pick(15,'C',this)"><div class="lt">C</div>balance</div>
+      <div class="opt-h" onclick="pick(15,'D',this)"><div class="lt">D</div>conflict</div>
+    </div></div>
+  </section>
+
+  <!-- SECTION 3: FILL-IN Q16-Q25 (10選10, student types A-J) -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">3</div>
+      <div>
+        <div class="sec-title">文意選填 Q16–Q25</div>
+        <div class="sec-meta">10 選 10 · 每字只用一次</div>
+      </div>
+    </div>
+    <div class="word-hint">💡 <b>作答方式</b>：下方 10 個空格，請自行在框內輸入字母 <b>A–J</b>（可大小寫，每字僅限用一次）</div>
+
+    <!-- Part 1 passage -->
+    <div class="passage wt">
+      Have you ever heard of the phrase "life flashing before your eyes"? It describes a sudden, brief <span class="blank-s">__16__</span> of intense feeling, often experienced by people in life-threatening situations, in which they recall vivid memories from their past. Although this quite common <span class="blank-s">__17__</span> has been widely reported, scientists and psychologists continue to explore its causes and significance. One of the most common situations where people experience these flashes is during extreme danger. <span class="blank-s">__18__</span> of accidents, soldiers in battle, and even climbers who have fallen from great heights have shared similar accounts. They describe seeing rapid sequences of past events, often in chronological order, but sometimes as a collection of <span class="blank-s">__19__</span>, yet emotionally significant instants. From a scientific perspective, researchers believe that life flashes may be linked to the brain's response to stress and trauma. When <span class="blank-s">__20__</span> danger, the brain releases certain chemicals, including adrenaline and dopamine, which affect memory recall.
     </div>
 
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
+    <!-- Word Bank (中間) -->
+    <div class="word-bank-box wt">
+      <div class="wb-title">📖 字庫（10 選 10，每個只用一次）</div>
+      <div class="wb-grid">
+        <div class="wb-item"><span class="lt">(A)</span>survivors</div>
+        <div class="wb-item"><span class="lt">(B)</span>propose</div>
+        <div class="wb-item"><span class="lt">(C)</span>natural</div>
+        <div class="wb-item"><span class="lt">(D)</span>random</div>
+        <div class="wb-item"><span class="lt">(E)</span>emotional</div>
+        <div class="wb-item"><span class="lt">(F)</span>facing</div>
+        <div class="wb-item"><span class="lt">(G)</span>interpret</div>
+        <div class="wb-item"><span class="lt">(H)</span>moment</div>
+        <div class="wb-item"><span class="lt">(I)</span>remaining</div>
+        <div class="wb-item"><span class="lt">(J)</span>phenomenon</div>
+      </div>
     </div>
 
-    <script>
-        const dictionaryMap = {"modest":{"type":"green","text":"adj. 不大的；適度的；謙虛的<div style='color: #1565c0; margin-top: 10px;'>Elizabeth Bennet lived at Longbourn, a <b>modest</b> country estate.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊麗莎白·班奈特住在朗伯恩，一個不大的鄉村莊園。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] modestly (adv.)</div>"},"spirited":{"type":"green","text":"adj. 活潑的；精力充沛的<div style='color: #1565c0; margin-top: 10px;'>She was intelligent, <b>spirited</b>, and had a quick sense of humor.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她聰明、活潑，並有著敏銳的幽默感。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] spirit (n.)</div>"},"set apart from":{"type":"blue","text":"片語 使...與眾不同；使...區別於<div style='color: #1565c0; margin-top: 10px;'>Her quick sense of humor <b>set her apart from</b> other young women of her time.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她敏銳的幽默感使她與同時代的其他年輕女性截然不同。</div>"},"wealthy":{"type":"green","text":"adj. 富有的；富裕的<div style='color: #1565c0; margin-top: 10px;'>At a local dance, Elizabeth met Mr. Fitzwilliam Darcy, a <b>wealthy</b> and handsome gentleman.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在當地的一場舞會上，伊麗莎白遇到了一位富有又英俊的紳士達西先生。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] wealth (n.)</div>"},"manner":{"type":"green","text":"n. 態度；舉止；方式<div style='color: #1565c0; margin-top: 10px;'>However, his cold and proud <b>manner</b> immediately put her off.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>然而，他冷漠高傲的態度立刻讓她感到反感。</div>"},"put off":{"type":"blue","text":"片語 使...卻步；使...厭惡<div style='color: #1565c0; margin-top: 10px;'>His cold and proud manner immediately <b>put her off</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他冷漠高傲的態度立刻讓她感到反感。</div>"},"tolerable":{"type":"red","text":"adj. 尚可的；可容忍的<div style='color: #1565c0; margin-top: 10px;'>Elizabeth heard him tell his friend Bingley that she was <b>tolerable</b> but not handsome enough to tempt me.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊麗莎白聽到他告訴他的朋友賓利，她長得尚可，但不足以誘惑他。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] tolerate (v.)</div>"},"tempt":{"type":"green","text":"v. 引誘；吸引<div style='color: #1565c0; margin-top: 10px;'>She was tolerable but not handsome enough to <b>tempt</b> me.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她長得尚可，但不足以誘惑我。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] temptation (n.)</div>"},"offend":{"type":"green","text":"v. 冒犯；觸怒<div style='color: #1565c0; margin-top: 10px;'>This comment <b>offended</b> her and made her dislike of him grow stronger.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這番話冒犯了她，使她對他的厭惡感更強烈。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] offense (n.)</div>"},"sour":{"type":"red","text":"v. 惡化；變壞 (指關係、心情等)<div style='color: #1565c0; margin-top: 10px;'>Her opinion of Darcy further <b>soured</b> when Mr. Wickham told her a story.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>當韋翰先生告訴她一個故事時，她對達西的看法進一步惡化了。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] worsen (v.)</div>"},"cheat out of":{"type":"blue","text":"片語 欺騙...使失去...<div style='color: #1565c0; margin-top: 10px;'>Mr. Wickham told her that Darcy had <b>cheated</b> him <b>out of</b> his inheritance.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>韋翰先生告訴她，達西欺騙了他，使他失去了遺產。</div>"},"inheritance":{"type":"green","text":"n. 遺產；繼承<div style='color: #1565c0; margin-top: 10px;'>Darcy had cheated him out of his <b>inheritance</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>達西欺騙了他，使他失去了遺產。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] inherit (v.)</div>"},"due to":{"type":"blue","text":"片語 因為；由於<div style='color: #1565c0; margin-top: 10px;'><b>Due to</b> her prejudice, Elizabeth believed Wickham's story without question.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>由於她的偏見，伊麗莎白毫不猶豫地相信了韋翰的故事。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] because of</div>"},"prejudice":{"type":"green","text":"n. 偏見；成見<div style='color: #1565c0; margin-top: 10px;'>Due to her <b>prejudice</b>, Elizabeth believed Wickham's story without question.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>由於她的偏見，伊麗莎白毫不猶豫地相信了韋翰的故事。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] prejudiced (adj.)</div>"},"without question":{"type":"blue","text":"片語 毫無疑問地；不加思索地<div style='color: #1565c0; margin-top: 10px;'>Elizabeth believed Wickham's story <b>without question</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊麗莎白毫不猶豫地相信了韋翰的故事。</div>"},"accuse of":{"type":"blue","text":"片語 指控...犯有某罪/某事<div style='color: #1565c0; margin-top: 10px;'>She <b>accused</b> him <b>of</b> separating her sister Jane from Bingley and of treating Wickham cruelly.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她指控他拆散了她的妹妹珍和賓利，並殘酷對待韋翰。</div>"},"elope with":{"type":"red","text":"片語 (與情人) 私奔<div style='color: #1565c0; margin-top: 10px;'>Wickham was actually a dishonest man who had tried to <b>elope with</b> Darcy's 15-year-old sister for her money.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>韋翰實際上是一個不誠實的人，他曾試圖為了錢與達西15歲的妹妹私奔。</div>"},"interfere":{"type":"green","text":"v. 干涉；干預<div style='color: #1565c0; margin-top: 10px;'>Darcy explained he had only <b>interfered</b> because he believed Jane didn't truly love Bingley.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>達西解釋說他之所以干預，只是因為他認為珍並不真正愛賓利。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] interference (n.)</div>"},"revelation":{"type":"red","text":"n. 揭露；啟示<div style='color: #1565c0; margin-top: 10px;'>These <b>revelations</b> forced Elizabeth to face an uncomfortable truth.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些揭露迫使伊麗莎白面對一個令人不安的事實。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] reveal (v.)</div>"},"harshly":{"type":"green","text":"adv. 嚴厲地；苛刻地<div style='color: #1565c0; margin-top: 10px;'>She had judged Darcy too quickly and too <b>harshly</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她對達西判斷得太快也太嚴厲了。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] harsh (adj.)</div>"},"evidence":{"type":"green","text":"n. 證據 (不可數名詞)<div style='color: #1565c0; margin-top: 10px;'>Months later, she visited Darcy's grand estate at Pemberley and saw more <b>evidence</b> of her mistake.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>幾個月後，她參觀了達西在彭伯利的大莊園，看到了更多她犯錯的證據。</div>"},"disaster struck":{"type":"blue","text":"片語 災難降臨<div style='color: #1565c0; margin-top: 10px;'>Then, <b>disaster struck</b>. Her youngest sister Lydia ran away with Wickham.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>然後，災難降臨了。她最小的妹妹莉迪亞和韋翰私奔了。</div>"},"bring shame on":{"type":"blue","text":"片語 給...帶來恥辱<div style='color: #1565c0; margin-top: 10px;'>Her youngest sister Lydia ran away with Wickham, which <b>brought shame on</b> the family.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她最小的妹妹莉迪亞和韋翰私奔，這給家庭帶來了恥辱。</div>"},"disgrace":{"type":"red","text":"n. 恥辱；丟臉<div style='color: #1565c0; margin-top: 10px;'>This saved the Bennett family from <b>disgrace</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這使班奈特家族免於恥辱。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] shame (n.)</div>"},"first impressions":{"type":"blue","text":"片語 第一印象<div style='color: #1565c0; margin-top: 10px;'>She had learned not to judge people based on <b>first impressions</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她學會了不要根據第一印象判斷他人。</div>"},"estate":{"type":"green","text":"n. 莊園；地產<div style='color: #1565c0; margin-top: 10px;'>Longbourn, a modest country <b>estate</b> with her parents and four sisters.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>朗伯恩莊園是一個樸實的鄉村莊園，伊莉莎白班奈特和她的父母及四個姐妹住在那裡。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] real estate (房地產)</div>"},"set her apart from":{"type":"blue","text":"片語. 使…與眾不同；使…區別開來<div style='color: #1565c0; margin-top: 10px;'>She was intelligent, spirited, and had a quick sense of humor that <b>set her apart from</b> other young women of her time.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她聰明、活潑，且有著敏捷的幽默感，這使她在當時的其他年輕女性中獨樹一幟。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] distinguish her from, make her unique from</div>"},"offended":{"type":"green","text":"v. 冒犯；得罪 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Elizabeth heard him tell his friend Bingley that she was tolerable but not handsome enough to tempt me, which <b>offended</b> her and made her dislike of him grow stronger.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊莉莎白聽到他告訴朋友賓利說她還算可以，但不足以引誘他，這冒犯了她，使她對他的厭惡感更強烈。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] offend (v.) [名詞] offense (n.) [形容詞] offensive (adj.)</div>"},"soured":{"type":"red","text":"v. 惡化；變酸 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Her opinion of Darcy further <b>soured</b> when the charming officer Mr. Wickham told her that Darcy had cheated him out of his inheritance.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>當迷人的軍官威克漢姆先生告訴她達西欺騙了他，奪走了他的繼承權時，她對達西的看法進一步惡化了。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] sour (v.) [形容詞] sour (酸的；不愉快的)</div>"},"unexpectedly":{"type":"green","text":"adv. 出乎意料地；不料<div style='color: #1565c0; margin-top: 10px;'>Therefore, when Darcy <b>unexpectedly</b> proposed marriage, Elizabeth refused him immediately.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>因此，當達西出乎意料地求婚時，伊莉莎白立刻拒絕了他。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[形容詞] unexpected (adj.) [名詞] expectation (n.)</div>"},"proposed":{"type":"green","text":"v. 求婚；提議 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Therefore, when Darcy unexpectedly <b>proposed</b> marriage, Elizabeth refused him immediately.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>因此，當達西出乎意料地求婚時，伊莉莎白立刻拒絕了他。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] propose (v.) [名詞] proposal (n.)</div>"},"refused":{"type":"green","text":"v. 拒絕 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Therefore, when Darcy unexpectedly proposed marriage, Elizabeth <b>refused</b> him immediately.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>因此，當達西出乎意料地求婚時，伊莉莎白立刻拒絕了他。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] refuse (v.) [名詞] refusal (n.)</div>"},"accused":{"type":"red","text":"v. 指控；控告 (過去式)<div style='color: #1565c0; margin-top: 10px;'>She <b>accused</b> him of separating her sister Jane from Bingley and of treating Wickham cruelly.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她指控他拆散了她的姐姐珍與賓利，並殘忍地對待威克漢姆。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] accuse (v.) [名詞] accusation (n.) [搭配] accuse sb of sth (指控某人某事)</div>"},"separating":{"type":"green","text":"v. 使分開；分離 (動名詞)<div style='color: #1565c0; margin-top: 10px;'>She accused him of <b>separating</b> her sister Jane from Bingley and of treating Wickham cruelly.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她指控他拆散了她的姐姐珍與賓利，並殘忍地對待威克漢姆。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] separate (v.) [名詞] separation (n.) [形容詞] separate (adj.)</div>"},"cruelly":{"type":"red","text":"adv. 殘忍地；苛刻地<div style='color: #1565c0; margin-top: 10px;'>She accused him of separating her sister Jane from Bingley and of treating Wickham <b>cruelly</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她指控他拆散了她的姐姐珍與賓利，並殘忍地對待威克漢姆。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[形容詞] cruel (adj.) [名詞] cruelty (n.)</div>"},"revealed":{"type":"green","text":"v. 揭露；顯示 (過去式)<div style='color: #1565c0; margin-top: 10px;'>He <b>revealed</b> that Wickham was actually a dishonest man who had tried to elope with Darcy's 15-year-old sister for her money.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他揭露威克漢姆其實是個不誠實的人，他曾試圖與達西15歲的妹妹私奔，圖謀她的錢財。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] reveal (v.) [名詞] revelation (n.)</div>"},"interfered":{"type":"red","text":"v. 干涉；妨礙 (過去式)<div style='color: #1565c0; margin-top: 10px;'>As for Jane and Bingley, Darcy explained he had only <b>interfered</b> because he believed Jane didn't truly love Bingley.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>至於珍和賓利，達西解釋說他之所以干涉，是因為他認為珍並不真正愛賓利。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] interfere (v.) [名詞] interference (n.) [搭配] interfere with/in (干涉/妨礙)</div>"},"revelations":{"type":"red","text":"n. 揭露；揭示 (複數)<div style='color: #1565c0; margin-top: 10px;'>These <b>revelations</b> forced Elizabeth to face an uncomfortable truth.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些揭露迫使伊莉莎白面對一個令人不安的真相。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[單數] revelation (n.) [動詞] reveal (v.)</div>"},"judge":{"type":"green","text":"v. 判斷；評斷<div style='color: #1565c0; margin-top: 10px;'>She had <b>judged</b> Darcy too quickly and too harshly.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她對達西的判斷太過倉促和嚴苛。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[名詞] judge (法官；裁判) [名詞] judgment (判斷；判決)</div>"},"grand":{"type":"green","text":"adj. 宏偉的；壯麗的<div style='color: #1565c0; margin-top: 10px;'>Months later, she visited Darcy's <b>grand</b> estate at Pemberley and saw more evidence of her mistake.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>幾個月後，她拜訪了達西在彭伯利宏偉的莊園，看到了更多她錯誤的證據。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[名詞] grandeur (宏偉；壯麗)</div>"},"generous":{"type":"green","text":"adj. 慷慨的；大方的<div style='color: #1565c0; margin-top: 10px;'>The house was beautiful, but more importantly, his servants spoke warmly of him as a kind and <b>generous</b> master.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這座房子很美，但更重要的是，他的僕人熱情地稱讚他是一位善良又慷慨的主人。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[名詞] generosity (慷慨)</div>"},"respectful":{"type":"red","text":"adj. 恭敬的；表示敬意的<div style='color: #1565c0; margin-top: 10px;'>The Darcy she met there was completely different, polite, thoughtful, and <b>respectful</b> toward her middle-class relatives.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她在彭伯利遇到的達西完全不同，他對她中產階級的親戚彬彬有禮、體貼周到，並且充滿敬意。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[名詞] respect (尊敬) [動詞] respect (尊敬) [反義] disrespectful (不敬的)</div>"},"certain":{"type":"green","text":"adj. 確信的；肯定的<div style='color: #1565c0; margin-top: 10px;'>Elizabeth was <b>certain</b> this scandal had destroyed any chance of Darcy caring for her.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊莉莎白確信這個醜聞已經摧毀了達西可能喜歡她的任何機會。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[副詞] certainly (肯定地) [名詞] certainty (確定性)</div>"},"destroyed":{"type":"green","text":"v. 毀壞；破壞 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Elizabeth was certain this scandal had <b>destroyed</b> any chance of Darcy caring for her.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>伊莉莎白確信這個醜聞已經摧毀了達西可能喜歡她的任何機會。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] destroy (v.) [名詞] destruction (n.)</div>"},"paid off":{"type":"blue","text":"片語. 還清（債務）；（努力）得到回報<div style='color: #1565c0; margin-top: 10px;'>He found the couple, <b>paid off</b> Wickham's debts, and convinced him to marry Lydia.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他找到了那對情侶，替威克漢姆還清了債務，並說服他娶莉迪亞。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] pay off (phr. v.) [例句] All her hard work eventually paid off. (她所有的努力最終都得到了回報。)</div>"},"debts":{"type":"red","text":"n. 債務；欠款 (複數)<div style='color: #1565c0; margin-top: 10px;'>He found the couple, paid off Wickham's <b>debts</b>, and convinced him to marry Lydia.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他找到了那對情侶，替威克漢姆還清了債務，並說服他娶莉迪亞。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[單數] debt (n.) [搭配] in debt (負債)</div>"},"convinced":{"type":"green","text":"v. 說服；使相信 (過去式)<div style='color: #1565c0; margin-top: 10px;'>He found the couple, paid off Wickham's debts, and <b>convinced</b> him to marry Lydia.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他找到了那對情侶，替威克漢姆還清了債務，並說服他娶莉迪亞。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] convince (v.) [形容詞] convincing (有說服力的)</div>"},"considerate":{"type":"red","text":"adj. 體貼的；考慮周到的<div style='color: #1565c0; margin-top: 10px;'>He had learned to be less proud and more <b>considerate</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他學會了不再那麼驕傲，變得更加體貼。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[動詞] consider (考慮) [名詞] consideration (考慮；體諒) [反義] inconsiderate (不體貼的)</div>"},"character":{"type":"green","text":"n. 品格；性格；特色<div style='color: #1565c0; margin-top: 10px;'>Their marriage was built on true respect and understanding, proof that real <b>character</b> shows itself through actions, not appearances.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們的婚姻建立在真正的尊重和理解之上，證明了真實的品格是通過行動而非外表展現出來的。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[形容詞] characteristic (特有的；典型的) [補充] character (角色；漢字)</div>"},"appearances":{"type":"green","text":"n. 外表；外貌 (複數)<div style='color: #1565c0; margin-top: 10px;'>Their marriage was built on true respect and understanding, proof that real character shows itself through actions, not <b>appearances</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們的婚姻建立在真正的尊重和理解之上，證明了真實的品格是通過行動而非外表展現出來的。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[動詞] appear (出現；看起來) [名詞] appearance (外觀；露面)</div>"},"put her off":{"type":"green","text":"put off\nNever put off until tomorrow what you can do today.\n\n今日事今日畢（不要把今天能做的事拖延到明天）。\n\nWe had to put off the garden party because of the heavy rain.\n因為大雨，我們不得不延期花園聚會。\n\nput someone off\nThe restaurant's high prices and poor service really put me off.\n\n那間餐廳的高昂價格和糟糕服務真的讓我反感（打消了我的念頭）。\n\nDon't let the difficulty of the first chapter put you off reading the whole book.\n不要讓第一章的難度讓你打退堂鼓，而不去讀整本書。"},"proof":{"type":"green","text":"n. 證據；證明<div style='color: #1565c0; margin-top: 10px;'>Their marriage was built on true respect and understanding, <b>proof</b> that real character shows itself through actions, not appearances.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們的婚姻建立在真正的尊重和理解之上，這證明了真正的品格是透過行動而非外表展現的。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] prove (v.) 證明</div>"}};
+    <!-- Part 2 passage -->
+    <div class="passage wt">
+      Additionally, studies show that as oxygen levels drop, the brain enters a state of intense activity, causing strong recollections of the past. Some scientists <span class="blank-s">__21__</span> that this reaction helps the brain process information quickly so that the person can respond to danger more effectively. Interestingly, life flashes are not limited to life-threatening situations. Some individuals have reported similar experiences in deeply <span class="blank-s">__22__</span> moments, such as the birth of a child or an important change in life. This suggests that life flashes might not only be linked to survival but also to the way the brain processes meaningful experiences. Beyond science, life flashes have fascinated philosophers and spiritual thinkers for centuries. Many cultures and religions <span class="blank-s">__23__</span> this phenomenon as a journey of the soul or a reflection of one's purpose in life. Some believe it is evidence of the mind's connection to something greater than itself, while others see it as a normal and expected <span class="blank-s">__24__</span> function of human memory. Despite <span class="blank-s">__25__</span> a mystery, life flashes provide insight into how the human mind works in critical moments.
+    </div>
 
-        function showInfo(encodedKeyword, event) {
-            const keyword = decodeURIComponent(encodedKeyword);
-            const data = dictionaryMap[keyword];
-            if (!data) return;
-            
-            const modal = document.getElementById("info-modal");
-            document.getElementById("modal-title").className = 'modal-title word-' + data.type;
-            document.getElementById("modal-title").innerHTML = keyword;
-            
-            let content = data.text;
-            if (!content.includes("<div") && !content.includes("<span")) {
-                content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-                const escapedKeyword = keyword.replace(/[.*+?^${()|[\]\\]/g, '\\$&');
-                const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
-                content = content.replace(regex, '<b>$1</b>');
-            }
-            document.getElementById("modal-body").innerHTML = content;
-            modal.style.display = "flex";
-        }
+    <!-- Fill-in Answer Grid (student types A-J) -->
+    <div class="fill-wrap">
+      <div class="fill-title">✏️ 請將答案字母填入下方空格（A–J）</div>
+      <div class="fill-grid">
+        <div class="fill-cell" id="fc16"><div class="fill-q">16.</div><input type="text" maxlength="1" class="fill-input" id="fi16" oninput="inputAJ(16,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc17"><div class="fill-q">17.</div><input type="text" maxlength="1" class="fill-input" id="fi17" oninput="inputAJ(17,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc18"><div class="fill-q">18.</div><input type="text" maxlength="1" class="fill-input" id="fi18" oninput="inputAJ(18,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc19"><div class="fill-q">19.</div><input type="text" maxlength="1" class="fill-input" id="fi19" oninput="inputAJ(19,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc20"><div class="fill-q">20.</div><input type="text" maxlength="1" class="fill-input" id="fi20" oninput="inputAJ(20,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc21"><div class="fill-q">21.</div><input type="text" maxlength="1" class="fill-input" id="fi21" oninput="inputAJ(21,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc22"><div class="fill-q">22.</div><input type="text" maxlength="1" class="fill-input" id="fi22" oninput="inputAJ(22,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc23"><div class="fill-q">23.</div><input type="text" maxlength="1" class="fill-input" id="fi23" oninput="inputAJ(23,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc24"><div class="fill-q">24.</div><input type="text" maxlength="1" class="fill-input" id="fi24" oninput="inputAJ(24,this)" autocomplete="off"></div>
+        <div class="fill-cell" id="fc25"><div class="fill-q">25.</div><input type="text" maxlength="1" class="fill-input" id="fi25" oninput="inputAJ(25,this)" autocomplete="off"></div>
+      </div>
+    </div>
+  </section>
 
-        function cancelHighlight(btnElement, event) {
-            event.stopPropagation();
-            const parentSpan = btnElement.parentElement;
-            const textNode = document.createTextNode(parentSpan.childNodes[0].nodeValue);
-            parentSpan.parentNode.replaceChild(textNode, parentSpan);
-        }
+  <!-- SECTION 4: READING Q26-28 -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">4</div>
+      <div>
+        <div class="sec-title">閱讀測驗 Q26–Q28</div>
+        <div class="sec-meta">社會文化 · Slow Travel · 3 題</div>
+      </div>
+    </div>
+    <div class="passage wt">
+      In contrast to the packed itineraries of traditional tourism, a growing movement known as "slow travel" encourages visitors to spend more time in fewer destinations. Rather than rushing from one famous landmark to the next, slow travelers prioritize deep immersion in local culture — eating where residents eat, learning a few phrases of the local language, and exploring off-the-beaten-path neighborhoods.<br><br>
+      Proponents argue that slow travel creates more meaningful experiences for visitors while also reducing the environmental impact of excessive transportation. Critics, however, point out that the luxury of spending weeks in a single location is not available to everyone, making slow travel an option accessible largely to the privileged. Despite this ongoing debate, the movement continues to grow, particularly among younger generations who prioritize authentic experience over efficient sightseeing.
+    </div>
+    <div class="qb" id="b26"><div class="qn">Q26　本文的主旨是？</div><div class="opts">
+      <div class="opt" onclick="pick(26,'A',this)"><div class="lt">A</div>Traditional tourism is harmful and should be immediately restricted</div>
+      <div class="opt" onclick="pick(26,'B',this)"><div class="lt">B</div>Slow travel is a growing movement with both supporters and critics</div>
+      <div class="opt" onclick="pick(26,'C',this)"><div class="lt">C</div>Young people prefer luxury travel experiences over cultural immersion</div>
+      <div class="opt" onclick="pick(26,'D',this)"><div class="lt">D</div>Local communities benefit greatly from all forms of modern tourism</div>
+    </div></div>
+    <div class="qb" id="b27"><div class="qn">Q27　根據文章，「慢旅行者」的特徵是？</div><div class="opts">
+      <div class="opt" onclick="pick(27,'A',this)"><div class="lt">A</div>They follow a tight schedule to see as many landmarks as possible</div>
+      <div class="opt" onclick="pick(27,'B',this)"><div class="lt">B</div>They prefer well-known tourist restaurants and popular attractions</div>
+      <div class="opt" onclick="pick(27,'C',this)"><div class="lt">C</div>They spend more time in fewer places and engage deeply with local life</div>
+      <div class="opt" onclick="pick(27,'D',this)"><div class="lt">D</div>They prioritize the cheapest transportation options available</div>
+    </div></div>
+    <div class="qb" id="b28"><div class="qn">Q28　文中提到對慢旅行的批評是什麼？</div><div class="opts">
+      <div class="opt" onclick="pick(28,'A',this)"><div class="lt">A</div>It is not as exciting or adventurous as traditional tourism</div>
+      <div class="opt" onclick="pick(28,'B',this)"><div class="lt">B</div>Not everyone has the time or resources to afford slow travel</div>
+      <div class="opt" onclick="pick(28,'C',this)"><div class="lt">C</div>Local communities often resist and dislike slow travelers</div>
+      <div class="opt" onclick="pick(28,'D',this)"><div class="lt">D</div>Slow travelers spend too much money concentrated in one place</div>
+    </div></div>
+  </section>
 
-        function closeModal() { document.getElementById("info-modal").style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById("info-modal");
-            if (event.target == modal) modal.style.display = "none";
-        }
-    </script>
+  <!-- SECTION 5: TRANSLATION Q29-30 -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-num">5</div>
+      <div>
+        <div class="sec-title">中譯英 Q29–Q30</div>
+        <div class="sec-meta">仿 113–115 學測 · 每題 4 分</div>
+      </div>
+    </div>
+
+    <div class="qb" id="b29"><div class="qn">Q29　中譯英（4 分）</div>
+      <div class="trans-zh"><span class="tag">中文</span>近年來，越來越多的旅行者選擇「慢旅行」，他們寧可花更長的時間待在較少的地點，也不願意在短時間內造訪許多熱門景點。</div>
+      <textarea class="trans-ta" id="ta29" placeholder="請在此輸入你的英文翻譯..." oninput="saveTrans(29,this.value)"></textarea>
+      <div class="trans-hint">💡 提示：「寧可…也不願…」would rather…than…；「慢旅行」slow travel；「熱門景點」popular attractions</div>
+    </div>
+
+    <div class="qb" id="b30"><div class="qn">Q30　中譯英（4 分）</div>
+      <div class="trans-zh"><span class="tag">中文</span>專家指出，這種旅行方式不僅能為遊客帶來更有意義的體驗，同時也有助於減少過度交通對環境所造成的衝擊。</div>
+      <textarea class="trans-ta" id="ta30" placeholder="請在此輸入你的英文翻譯..." oninput="saveTrans(30,this.value)"></textarea>
+      <div class="trans-hint">💡 提示：「不僅…同時也…」not only…but also…；「有助於減少」help reduce；「衝擊/影響」impact</div>
+    </div>
+  </section>
+
+  <!-- SUBMIT BUTTON -->
+  <div class="submit-wrap">
+    <button class="submit-btn" onclick="submitTest()">📊 完成作答 · 展開下方結果</button>
+  </div>
+
+  <!-- RESULTS (using native <details>) -->
+  <details id="results-details">
+    <summary>
+      <span>📊 作答結果 · 答案碼 · LINE 訊息</span>
+      <span class="arrow">▼</span>
+    </summary>
+    <div class="details-body" id="results-body">
+      <!-- populated by JS -->
+      <div style="text-align:center;padding:20px;color:#64748b;font-size:13px">
+        請先完成上方題目，再點此區塊或按「完成作答」按鈕<br>查看結果。
+      </div>
+    </div>
+  </details>
+
+  <!-- ANSWER REVIEW (nested details) -->
+  <details id="review-details">
+    <summary>
+      <span>🔍 查看答案解析（各題詳解 + 翻譯參考）</span>
+      <span class="arrow">▼</span>
+    </summary>
+    <div class="details-body" id="review-body">
+      <div style="text-align:center;padding:16px;color:#64748b;font-size:13px">
+        請先完成作答後再展開，<br>以便對照你的答案看解析。
+      </div>
+    </div>
+  </details>
+
+</div>
+<div id="toast"></div>
+
+<script>
+// ──────── CONFIG ────────
+// 28 題選擇題答案 + Q29/Q30 翻譯（人工批改）
+// Q1-10: BCABB BACCA | Q11-15: BCBBC | Q16-25: H J A D F B E G C I | Q26-28: B C B
+const KEY = 'BCABBBACCABCBBCHJADFBEGCIBCB';
+const CATS = [
+  {name:'詞彙',qs:[1,10],color:'#3b82f6'},
+  {name:'綜合',qs:[11,15],color:'#8b5cf6'},
+  {name:'文意選填',qs:[16,25],color:'#10b981'},
+  {name:'閱讀',qs:[26,28],color:'#ec4899'},
+];
+const EXPLAIN = [
+  'Q1(B) provide — provide sth to sb 提供',
+  'Q2(C) groundbreaking — 突破性的（形容研究/發現）',
+  'Q3(A) prevent — prevent…from extinction 防止…滅絕',
+  'Q4(B) devastating — 毀滅性的影響',
+  'Q5(B) persistent — 堅持不懈的',
+  'Q6(B) transformed — 從根本改變',
+  'Q7(A) diagnose — 診斷疾病',
+  'Q8(C) outstanding — 傑出的（對比 mediocre 普通）',
+  'Q9(C) expand — expand the network 擴展',
+  'Q10(A) respond — respond to stressors 對壓力做出反應',
+  'Q11(B) integrated — increasingly integrated 日益融入',
+  'Q12(C) negative — overuse → negative consequences 轉折',
+  'Q13(B) interferes — interfere with sleep 干擾睡眠',
+  'Q14(B) track — track screen time 追蹤使用時間',
+  'Q15(C) balance — balance between A and B 平衡',
+  'Q16(H) moment — brief moment of intense feeling 短暫瞬間',
+  'Q17(J) phenomenon — a common phenomenon 一種常見現象',
+  'Q18(A) survivors — survivors of accidents 倖存者',
+  'Q19(D) random — a collection of random instants 隨機的瞬間',
+  'Q20(F) facing — when facing danger 面對危險時（分詞構句）',
+  'Q21(B) propose — scientists propose that 科學家提出',
+  'Q22(E) emotional — deeply emotional moments 情感深厚',
+  'Q23(G) interpret — interpret … as … 將…詮釋為…',
+  'Q24(C) natural — a natural function 自然的功能',
+  'Q25(I) remaining — despite remaining a mystery 儘管仍是個謎',
+  'Q26(B) — 兩段：支持者+批評者，主旨為慢旅行概況',
+  'Q27(C) — spend more time in fewer places, deep immersion in local life',
+  'Q28(B) — critics: luxury…not available to everyone 非人人可及',
+];
+const TRANS_REF = {
+  29: {
+    zh:'近年來，越來越多的旅行者選擇「慢旅行」，他們寧可花更長的時間待在較少的地點，也不願意在短時間內造訪許多熱門景點。',
+    en:'In recent years, more and more travelers have chosen "slow travel"; they would rather spend more time in fewer places than visit many popular attractions in a short period of time.'
+  },
+  30: {
+    zh:'專家指出，這種旅行方式不僅能為遊客帶來更有意義的體驗，同時也有助於減少過度交通對環境所造成的衝擊。',
+    en:'Experts point out that this way of traveling not only brings more meaningful experiences to visitors but also helps (to) reduce the environmental impact caused by excessive transportation.'
+  }
+};
+
+// ──────── STATE ────────
+const picked = {};
+const translations = {29:'',30:''};
+const markedWords = new Set();
+
+// ──────── WORD TRACKING ────────
+function initWordTracking() {
+  document.querySelectorAll('.wt').forEach(container => {
+    container.innerHTML = container.innerHTML.replace(
+      /(<[^>]+>)|(\b([A-Za-z][A-Za-z'\-]{1,}|[A-Za-z])\b)/g,
+      (match, tag, word) => {
+        if (tag) return tag;
+        return '<span class="w" onclick="tw(this)">' + word + '</span>';
+      }
+    );
+  });
+}
+
+function tw(el) {
+  const word = el.textContent.toLowerCase().replace(/[^a-z\-']/g,'');
+  if(word.length < 2) return;
+  if(el.classList.toggle('mk')) {
+    markedWords.add(word);
+  } else {
+    markedWords.delete(word);
+  }
+  updateWordBadge();
+}
+
+function updateWordBadge() {
+  const n = markedWords.size;
+  document.getElementById('wb-num').textContent = n;
+  document.getElementById('word-badge').style.display = n > 0 ? 'block' : 'none';
+}
+
+// ──────── PICK (A-D) ────────
+function pick(n, val, el) {
+  const block = document.getElementById('b'+n);
+  block.querySelectorAll('.opt, .opt-h').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  picked[n] = val;
+  block.classList.add('done');
+  updateAnswerCount();
+}
+
+// ──────── FILL-IN (A-J typed by student) ────────
+function inputAJ(n, input) {
+  let v = (input.value || '').trim().toUpperCase();
+  // keep only A-J
+  if (v && !/^[A-J]$/.test(v)) {
+    input.value = '';
+    delete picked[n];
+    document.getElementById('fc'+n).classList.remove('done');
+    updateAnswerCount();
+    return;
+  }
+  input.value = v;
+  if (v) {
+    picked[n] = v;
+    document.getElementById('fc'+n).classList.add('done');
+    // auto-advance to next input
+    const nextId = 'fi' + (n+1);
+    const nextEl = document.getElementById(nextId);
+    if (nextEl) setTimeout(()=>nextEl.focus(), 60);
+  } else {
+    delete picked[n];
+    document.getElementById('fc'+n).classList.remove('done');
+  }
+  updateAnswerCount();
+}
+
+// ──────── TRANSLATION ────────
+function saveTrans(n, v) {
+  translations[n] = v;
+  const block = document.getElementById('b'+n);
+  if(v.trim().length > 0) block.classList.add('done');
+  else block.classList.remove('done');
+  updateAnswerCount();
+}
+
+function updateAnswerCount() {
+  const mcCount = Object.keys(picked).length;
+  const tCount = (translations[29].trim()?1:0) + (translations[30].trim()?1:0);
+  document.getElementById('ans-count-badge').textContent = `已答 ${mcCount + tCount}/30`;
+}
+
+// ──────── SUBMIT / RESULTS ────────
+function submitTest() {
+  buildResults();
+  const details = document.getElementById('results-details');
+  details.open = true;
+  setTimeout(()=>{
+    details.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 80);
+}
+
+function buildResults() {
+  let mcCorrect = 0;
+  for(let i=1;i<=28;i++) if(picked[i]===KEY[i-1]) mcCorrect++;
+  const pct = Math.round(mcCorrect/28*100);
+  const col = pct>=80?'#16a34a':pct>=60?'#f59e0b':'#dc2626';
+  const grade = pct>=80?'優秀 🎉':pct>=60?'良好 💪':pct>=45?'加油 📚':'需補強 🌱';
+  const tStatus = (translations[29].trim()?'✓':'✗') + ' Q29 · ' + (translations[30].trim()?'✓':'✗') + ' Q30';
+
+  // category scores
+  const catHtml = CATS.map(c=>{
+    let s=0,mx=c.qs[1]-c.qs[0]+1;
+    for(let i=c.qs[0];i<=c.qs[1];i++){if(picked[i]===KEY[i-1])s++;}
+    const p=Math.round(s/mx*100);
+    return `<div class="cs-box">
+      <div class="cs-lbl">${c.name}</div>
+      <div class="cs-bar-w"><div class="cs-bar" style="width:${p}%;background:${c.color}"></div></div>
+      <div class="cs-frac" style="color:${c.color}">${s}/${mx}</div>
+    </div>`;
+  }).join('');
+
+  // answer code display
+  const groups = [
+    {lbl:'Q1-5',start:1,len:5},
+    {lbl:'Q6-10',start:6,len:5},
+    {lbl:'Q11-15',start:11,len:5},
+    {lbl:'Q16-20',start:16,len:5},
+    {lbl:'Q21-25',start:21,len:5},
+    {lbl:'Q26-28',start:26,len:3},
+  ];
+  let codeHtml = '<div class="cs-title">答案碼（6組 · 28題選擇）</div><div class="ans-groups">';
+  groups.forEach(g=>{
+    const letters = Array.from({length:g.len},(_,i)=>{
+      const qn=g.start+i;
+      const a=picked[qn]||'_';
+      return `<div class="ag-letter al-${a}">${a==='_'?'·':a}</div>`;
+    }).join('');
+    codeHtml += `<div class="ans-group">
+      <div class="ag-label">${g.lbl}</div>
+      <div class="ag-letters">${letters}</div>
+    </div>`;
+  });
+  codeHtml += '</div>';
+
+  // translation display
+  const tHtml = `<div class="trans-result">
+    <div class="tr-h">✍️ 翻譯作答（Q29–Q30 · 人工批改）</div>
+    <div class="tr-item">
+      <div class="tr-q">Q29</div>
+      <div class="tr-zh">${TRANS_REF[29].zh}</div>
+      <div class="tr-en ${translations[29].trim()?'':'empty'}">${translations[29].trim() || '（未作答）'}</div>
+    </div>
+    <div class="tr-item">
+      <div class="tr-q">Q30</div>
+      <div class="tr-zh">${TRANS_REF[30].zh}</div>
+      <div class="tr-en ${translations[30].trim()?'':'empty'}">${translations[30].trim() || '（未作答）'}</div>
+    </div>
+  </div>`;
+
+  // marked words
+  const words = [...markedWords].sort();
+  const wHtml = `<div class="word-result">
+    <div class="wr-title">📌 你標記的不確定單字（${words.length}個）</div>
+    <div class="word-tags">${
+      words.length === 0
+        ? '<span class="word-tag none">沒有標記任何單字</span>'
+        : words.map(w=>`<span class="word-tag">${w}</span>`).join('')
+    }</div>
+  </div>`;
+
+  // assemble full results
+  document.getElementById('results-body').innerHTML = `
+    <div class="result-hero">
+      <div class="rh-score" style="color:${col}">${mcCorrect}/28</div>
+      <div class="rh-label">${grade}（${pct}%）· ${document.getElementById('nm').value||'同學'}<br>翻譯 ${tStatus}</div>
+    </div>
+    <div class="cat-scores">${catHtml}</div>
+    <div class="code-section">${codeHtml}</div>
+    ${tHtml}
+    ${wHtml}
+    <button class="line-btn line-btn-1" onclick="genMsg1()">📋 產生訊息①：答案碼</button>
+    <div class="msg-box" id="msg1"></div>
+    <button class="line-btn line-btn-2" onclick="genMsg2()">📌 產生訊息②：單字 + 翻譯</button>
+    <div class="msg-box" id="msg2"></div>
+    <button class="line-btn line-btn-3" onclick="copyAll()">📋 一次複製兩組訊息 → 貼到LINE</button>
+  `;
+
+  // build review (for the separate review details)
+  let reviewHtml = EXPLAIN.map((e,i)=>{
+    const q=i+1;
+    const ok = picked[q]===KEY[q-1];
+    return `<div class="rev-item ${ok?'rev-ok':'rev-ng'}">${ok?'✅':'❌'} ${e}　<span style="opacity:.7">（你答：${picked[q]||'—'}）</span></div>`;
+  }).join('');
+  reviewHtml += `<div class="rev-item rev-info">📝 <b>Q29 參考譯文</b>：${TRANS_REF[29].en}</div>`;
+  reviewHtml += `<div class="rev-item rev-info">📝 <b>Q30 參考譯文</b>：${TRANS_REF[30].en}</div>`;
+  document.getElementById('review-body').innerHTML = reviewHtml;
+}
+
+// ──────── LINE MESSAGES ────────
+function getAnswerGroups() {
+  return [
+    'Q1-5  : ' + Array.from({length:5},(_,i)=>picked[i+1]||'_').join(''),
+    'Q6-10 : ' + Array.from({length:5},(_,i)=>picked[i+6]||'_').join(''),
+    'Q11-15: ' + Array.from({length:5},(_,i)=>picked[i+11]||'_').join(''),
+    'Q16-20: ' + Array.from({length:5},(_,i)=>picked[i+16]||'_').join(''),
+    'Q21-25: ' + Array.from({length:5},(_,i)=>picked[i+21]||'_').join(''),
+    'Q26-28: ' + Array.from({length:3},(_,i)=>picked[i+26]||'_').join(''),
+  ].join('\n');
+}
+
+function getMC_Score() {
+  let s=0;
+  for(let i=1;i<=28;i++) if(picked[i]===KEY[i-1]) s++;
+  return s;
+}
+
+function genMsg1() {
+  const nm = document.getElementById('nm').value||'（未填）';
+  const now = new Date();
+  const date = `${now.getMonth()+1}/${now.getDate()}`;
+  const ansStr = getAnswerGroups();
+  const total = getMC_Score();
+  const txt =
+`━━━━━━━━━━━━━━━━━━━━
+📝 116學測英文週測 ①答案碼
+👤 ${nm}　📅 ${date}
+━━━━━━━━━━━━━━━━━━━━
+【選擇題答案碼（6組·28題）】
+${ansStr}
+
+（自評：${total}/28 = ${Math.round(total/28*100)}%）
+翻譯題 Q29/Q30 見訊息②
+━━━━━━━━━━━━━━━━━━━━`;
+  show_msg('msg1', txt);
+}
+
+function genMsg2() {
+  const nm = document.getElementById('nm').value||'（未填）';
+  const now = new Date();
+  const date = `${now.getMonth()+1}/${now.getDate()}`;
+  const words = [...markedWords].sort();
+  const t29 = translations[29].trim() || '（未作答）';
+  const t30 = translations[30].trim() || '（未作答）';
+  const txt =
+`━━━━━━━━━━━━━━━━━━━━
+📌 116學測英文週測 ②單字+翻譯
+👤 ${nm}　📅 ${date}
+━━━━━━━━━━━━━━━━━━━━
+【不確定的單字/用法】（${words.length}個）
+${words.length > 0 ? words.join('　') : '（無）'}
+
+──────────────────
+【Q29 中翻英】
+中文：${TRANS_REF[29].zh}
+我的翻譯：
+${t29}
+
+──────────────────
+【Q30 中翻英】
+中文：${TRANS_REF[30].zh}
+我的翻譯：
+${t30}
+━━━━━━━━━━━━━━━━━━━━`;
+  show_msg('msg2', txt);
+}
+
+function show_msg(id, txt) {
+  const el = document.getElementById(id);
+  el.textContent = txt;
+  el.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function copyAll() {
+  const nm = document.getElementById('nm').value||'（未填）';
+  const now = new Date();
+  const date = `${now.getMonth()+1}/${now.getDate()}`;
+  const ansStr = getAnswerGroups();
+  const total = getMC_Score();
+  const words = [...markedWords].sort();
+  const t29 = translations[29].trim() || '（未作答）';
+  const t30 = translations[30].trim() || '（未作答）';
+  const txt =
+`━━━━━━━━━━━━━━━━━━━━
+📝 116學測英文週測 ①答案碼
+👤 ${nm}　📅 ${date}
+━━━━━━━━━━━━━━━━━━━━
+【選擇題答案碼（6組·28題）】
+${ansStr}
+（自評：${total}/28）
+━━━━━━━━━━━━━━━━━━━━
+
+━━━━━━━━━━━━━━━━━━━━
+📌 116學測英文週測 ②單字+翻譯
+👤 ${nm}　📅 ${date}
+━━━━━━━━━━━━━━━━━━━━
+【不確定的單字/用法】（${words.length}個）
+${words.length > 0 ? words.join('　') : '（無）'}
+
+──────────────────
+【Q29 中翻英】
+中文：${TRANS_REF[29].zh}
+我的翻譯：
+${t29}
+
+──────────────────
+【Q30 中翻英】
+中文：${TRANS_REF[30].zh}
+我的翻譯：
+${t30}
+━━━━━━━━━━━━━━━━━━━━`;
+
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(txt).then(()=>toast('✅ 已複製！請貼到LINE群組'));
+  } else {
+    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    toast('✅ 已複製！');
+  }
+}
+
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2400);
+}
+
+// ──────── INIT ────────
+window.addEventListener('DOMContentLoaded', function() {
+  initWordTracking();
+  // also rebuild results when the details is toggled open (keeps live)
+  const rd = document.getElementById('results-details');
+  rd.addEventListener('toggle', function(){
+    if(this.open) buildResults();
+  });
+  const rv = document.getElementById('review-details');
+  rv.addEventListener('toggle', function(){
+    if(this.open) buildResults();
+  });
+});
+</script>
 </body>
 </html>
