@@ -1,73 +1,683 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英文閱讀解析</title>
-    <style>
-        :root { --green-color: #2e7d32; --red-color: #d32f2f; --blue-color: #1565c0; --purple-color: #7b1fa2; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.8; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .article-content { font-size: 1.15em; color: #000; margin-top: 20px; line-height: 1.9; }
-        .highlight { cursor: pointer; font-weight: bold; position: relative; padding: 2px 4px; border-radius: 4px; transition: background 0.2s; display: inline-block; }
-        .highlight:hover { background: #f0f0f0; }
-        .word-green { color: var(--green-color); }
-        .word-red { color: var(--red-color); }
-        .word-blue { color: var(--blue-color); }
-        .word-purple { color: var(--purple-color); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>114 年學測英文 - 第一部分（第 1-20 題）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 880px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 10px; width: 100%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; box-sizing: border-box; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8em; cursor: pointer; color: #666; line-height: 1; }
-        .modal-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 1.05em; line-height: 1.8; color: #333; }
-        .modal-body b { color: inherit; background-color: rgba(255,235,59,0.3); padding: 0 2px; border-radius: 3px; }
-    </style>
+  /* 詞彙題樣式 */
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; width: 26px; height: 26px;
+    text-align: center; line-height: 26px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em;
+  }
+
+  /* 綜合測驗：題號與選項同一行 */
+  .q-inline {
+    display: flex; align-items: center; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  .options {
+    display: flex; flex-wrap: wrap; gap: 6px; flex: 1;
+  }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 130px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.93em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* 可點選單字 */
+  .word {
+    cursor: pointer; padding: 0 1px; border-radius: 3px;
+    transition: background 0.12s;
+  }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    font-weight: 600; color: #b9770e;
+  }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  /* 選項單字可點選列（僅用於點選不熟悉單字） */
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 5px; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 300px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>精選英文閱讀與解析</h1>
-        <div class="article-content">Women Who Shaped Science <span class="highlight word-purple" onclick="showInfo('Throughout', event)">Throughout</span> history, women have played a <span class="highlight word-green" onclick="showInfo('significant', event)">significant</span> role in <span class="highlight word-green" onclick="showInfo('shaping', event)">shaping</span> scientific <span class="highlight word-green" onclick="showInfo('advancement', event)">advancement</span>. International Women's Day offers the perfect opportunity to <span class="highlight word-green" onclick="showInfo('celebrate', event)">celebrate</span> and <span class="highlight word-green" onclick="showInfo('honor', event)">honor</span> the <span class="highlight word-green" onclick="showInfo('brilliant', event)">brilliant</span> women <span class="highlight word-purple" onclick="showInfo('whose', event)">whose</span> research and ideas <span class="highlight word-green" onclick="showInfo('transformed', event)">transformed</span> the world of science. Here are some of their stories. Mary Anning, 1799-1847 As a girl, Mary Anning learned how to collect <span class="highlight word-green" onclick="showInfo('fossils', event)">fossils</span> from her father, an activity that was not <span class="highlight word-green" onclick="showInfo('generally', event)">generally</span> encouraged in girls in the early 19th century. She went on to find <span class="highlight word-green" onclick="showInfo('countless', event)">countless</span> <span class="highlight word-green" onclick="showInfo('fossils', event)">fossils</span>, but her most famous discoveries are the first ichthyosaur and first complete <span class="highlight word-green" onclick="showInfo('skeleton', event)">skeleton</span> of a plesiosaurus. Her findings <span class="highlight word-green" onclick="showInfo('expanded', event)">expanded</span> scientific understanding of <span class="highlight word-red" onclick="showInfo('prehistoric', event)">prehistoric</span> life and helped shape early ideas about <span class="highlight word-red" onclick="showInfo('extinction', event)">extinction</span> and <span class="highlight word-red" onclick="showInfo('evolution', event)">evolution</span>. Although her work <span class="highlight word-green" onclick="showInfo('influenced', event)">influenced</span> artists and scientists <span class="highlight word-purple" onclick="showInfo('alike', event)">alike</span>, Anning's <span class="highlight word-green" onclick="showInfo('contributions', event)">contributions</span> were only fully <span class="highlight word-green" onclick="showInfo('recognized', event)">recognized</span> after her death. <br><br>Rachel Carson, 1907-1964 The <span class="highlight word-green" onclick="showInfo('biologist', event)">biologist</span> Rachel Carson <span class="highlight word-green" onclick="showInfo('combined', event)">combined</span> her love of writing with her love for the ocean and the natural world. Her most <span class="highlight word-green" onclick="showInfo('influential', event)">influential</span> work was her book Silent Spring, 1962, which discussed the dangers of <span class="highlight word-red" onclick="showInfo('pesticides', event)">pesticides</span>. The book <span class="highlight word-blue" onclick="showInfo('resulted%20in', event)">resulted in</span> an environmental movement and major <span class="highlight word-green" onclick="showInfo('policy', event)">policy</span> changes, including the <span class="highlight word-green" onclick="showInfo('creation', event)">creation</span> of the U.S. Environmental Protection <span class="highlight word-green" onclick="showInfo('agency', event)">Agency</span>. Carson spent her life fighting for stronger environmental protections for the land and seas that she loved so deeply.<br><br>Wu Jianxiong, 1912-1997 Chinese-American scientist Wu Jianxiong is known for her work in <span class="highlight word-red" onclick="showInfo('nuclear%20physics', event)">nuclear <span class="highlight word-green" onclick="showInfo('physics', event)">physics</span></span>. After studying in China, she moved to the U.S. To continue her research. In 1944, she joined the Manhattan Project, a collection of scientists who developed the first <span class="highlight word-green" onclick="showInfo('atomic', event)">atomic</span> weapons. She also led a famous experiment that completely changed scientists' understanding of <span class="highlight word-green" onclick="showInfo('physics', event)">physics</span>. She strongly <span class="highlight word-green" onclick="showInfo('advocated', event)">advocated</span> for women and girls to follow their dreams of studying science until her death in 1997. <br><br>Jennifer Doudna, 1964 to <span class="highlight word-green" onclick="showInfo('present', event)">present</span> Jennifer Doudna's work on <span class="highlight word-red" onclick="showInfo('CRISPR', event)">CRISPR</span> changed the field of <span class="highlight word-red" onclick="showInfo('genetics', event)">genetics</span> forever. With her <span class="highlight word-green" onclick="showInfo('colleague', event)">colleague</span>, Emmanuelle Charpentier, she developed a method to edit the DNA of humans, plants, and animals. Her method has the <span class="highlight word-green" onclick="showInfo('potential', event)">potential</span> to <span class="highlight word-green" onclick="showInfo('cure', event)">cure</span> <span class="highlight word-green" onclick="showInfo('genetic', event)">genetic</span> diseases before birth, and to fight many illnesses and cancers later in life. It even allows farmers to grow healthier crops. Since this technology <span class="highlight word-green" onclick="showInfo('raised', event)">raised</span> some <span class="highlight word-blue" onclick="showInfo('ethical%20concerns', event)">ethical concerns</span>, Doudna has also worked to <span class="highlight word-blue" onclick="showInfo('make%20sure', event)">make sure</span> that this powerful tool is used responsibly. She was <span class="highlight word-green" onclick="showInfo('awarded', event)">awarded</span> the Nobel Prize in Chemistry in 2020. <br><br>These <span class="highlight word-green" onclick="showInfo('incredible', event)">incredible</span> women are among many who continue to encourage young people to become scientists. As we <span class="highlight word-green" onclick="showInfo('celebrate', event)">celebrate</span> their achievements, we also <span class="highlight word-blue" onclick="showInfo('look%20forward%20to', event)">look forward to</span> the discoveries <span class="highlight word-purple" onclick="showInfo('yet%20to', event)">yet to</span> come from the women <span class="highlight word-green" onclick="showInfo('shaping', event)">shaping</span> the science of tomorrow.</div>
+
+<div class="container">
+  <header>
+    <h1>114 學年度學科能力測驗 英文考科</h1>
+    <div class="subtitle">第壹部分 選擇題 ‧ 第 1-20 題（詞彙題 + 綜合測驗）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label>
+    <input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label>
+    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>
+    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。
+  </div>
+
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
+  </div>
+
+  <form id="quizForm">
+
+    <div class="section-title">一、詞彙題（第 1-10 題）</div>
+
+    <div class="question" data-q="1">
+      <div class="q-text autowrap"><span class="q-num">1</span>If you put a <span class="blank">______</span> under a leaking faucet, you will be surprised at the amount of water collected in 24 hours.</div>
+      <div class="options" data-qid="1">
+        <label><input type="radio" name="q1" value="A"><span>(A) border</span></label>
+        <label><input type="radio" name="q1" value="B"><span>(B) timer</span></label>
+        <label><input type="radio" name="q1" value="C"><span>(C) container</span></label>
+        <label><input type="radio" name="q1" value="D"><span>(D) marker</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">border</span><span class="word">timer</span><span class="word">container</span><span class="word">marker</span></div>
     </div>
 
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
+    <div class="question" data-q="2">
+      <div class="q-text autowrap"><span class="q-num">2</span>The local farmers' market is popular as it offers a variety of fresh seasonal <span class="blank">______</span> to people in the community.</div>
+      <div class="options" data-qid="2">
+        <label><input type="radio" name="q2" value="A"><span>(A) produce</span></label>
+        <label><input type="radio" name="q2" value="B"><span>(B) fashion</span></label>
+        <label><input type="radio" name="q2" value="C"><span>(C) brand</span></label>
+        <label><input type="radio" name="q2" value="D"><span>(D) trend</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">produce</span><span class="word">fashion</span><span class="word">brand</span><span class="word">trend</span></div>
     </div>
 
-    <script>
-        const dictionaryMap = {"significant":{"type":"green","text":"adj. 重要的，顯著的<div style='color: #1565c0; margin-top: 10px;'>Women have played a <b>significant</b> role in shaping scientific advancement.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>女性在推動科學發展方面扮演了重要的角色。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] significantly (adv.)</div>"},"advancement":{"type":"green","text":"n. 進步，發展<div style='color: #1565c0; margin-top: 10px;'>The new technology represents a major <b>advancement</b> in medicine.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這項新技術代表了醫學上的重大進步。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] advance (v./n.)</div>"},"celebrate":{"type":"green","text":"v. 慶祝，頌揚<div style='color: #1565c0; margin-top: 10px;'>We <b>celebrate</b> the brilliant women whose research transformed the world.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>我們頌揚那些研究改變了世界的傑出女性。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] celebration (n.)</div>"},"honor":{"type":"green","text":"v. 尊敬，給予榮譽<div style='color: #1565c0; margin-top: 10px;'>International Women's Day offers the perfect opportunity to <b>honor</b> these women.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>國際婦女節提供了表彰這些女性的絕佳機會。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] honor (n.)</div>"},"transformed":{"type":"green","text":"v. 徹底改變 (transform 的過去式/過去分詞)<div style='color: #1565c0; margin-top: 10px;'>Her ideas <b>transformed</b> the world of science.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她的想法徹底改變了科學界。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] transformation (n.)</div>"},"generally":{"type":"green","text":"adv. 通常，普遍地<div style='color: #1565c0; margin-top: 10px;'>Collecting fossils was not <b>generally</b> encouraged in girls.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>收集化石在女孩中通常不被鼓勵。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] general (adj.)</div>"},"countless":{"type":"green","text":"adj. 無數的，數不清的<div style='color: #1565c0; margin-top: 10px;'>She went on to find <b>countless</b> fossils.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她接著發現了無數的化石。</div>"},"influential":{"type":"green","text":"adj. 有影響力的<div style='color: #1565c0; margin-top: 10px;'>Her most <b>influential</b> work was her book Silent Spring.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她最有影響力的作品是她的書《寂靜的春天》。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] influence (n./v.)</div>"},"creation":{"type":"green","text":"n. 創立，創建；創作<div style='color: #1565c0; margin-top: 10px;'>The book resulted in the <b>creation</b> of the U.S. Environmental Protection Agency.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這本書促成了美國環保署的創立。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] create (v.)</div>"},"colleague":{"type":"green","text":"n. 同事<div style='color: #1565c0; margin-top: 10px;'>With her <b>colleague</b>, Emmanuelle Charpentier, she developed a method.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她與她的同事埃馬紐埃爾·沙爾龐捷共同開發了一種方法。</div>"},"potential":{"type":"green","text":"n. 潛力，可能性 adj. 潛在的，可能的<div style='color: #1565c0; margin-top: 10px;'>Her method has the <b>potential</b> to cure genetic diseases.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她的方法具有治癒遺傳疾病的潛力。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] potentially (adv.)</div>"},"prehistoric":{"type":"red","text":"adj. 史前的<div style='color: #1565c0; margin-top: 10px;'>Her findings expanded scientific understanding of <b>prehistoric</b> life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她的發現拓展了科學界對史前生命的理解。</div>"},"extinction":{"type":"red","text":"n. 滅絕<div style='color: #1565c0; margin-top: 10px;'>Her work helped shape early ideas about <b>extinction</b> and evolution.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她的研究有助於形成早期關於滅絕和進化的觀點。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] extinct (adj.)</div>"},"evolution":{"type":"red","text":"n. 進化，演變<div style='color: #1565c0; margin-top: 10px;'>Charles Darwin is famous for his theory of <b>evolution</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>查爾斯·達爾文以其進化論而聞名。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] evolve (v.)</div>"},"pesticides":{"type":"red","text":"n. 殺蟲劑，農藥<div style='color: #1565c0; margin-top: 10px;'>Rachel Carson's book discussed the dangers of <b>pesticides</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>瑞秋·卡森的書討論了殺蟲劑的危險。</div>"},"nuclear physics":{"type":"red","text":"n. 核物理學<div style='color: #1565c0; margin-top: 10px;'>Wu Jianxiong is known for her work in <b>nuclear physics</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>吳健雄以其在核物理學方面的工作而聞名。</div>"},"genetics":{"type":"red","text":"n. 遺傳學<div style='color: #1565c0; margin-top: 10px;'>Jennifer Doudna's work on CRISPR changed the field of <b>genetics</b> forever.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>珍妮佛·杜德納在CRISPR上的工作永遠改變了遺傳學領域。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] genetic (adj.)</div>"},"CRISPR":{"type":"red","text":"n. 基因編輯技術 CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats 的縮寫)<div style='color: #1565c0; margin-top: 10px;'>Her work on <b>CRISPR</b> changed the field of genetics.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她在CRISPR方面的工作改變了遺傳學領域。</div>"},"shape scientific advancement":{"type":"blue","text":"phr. 促進科學發展<div style='color: #1565c0; margin-top: 10px;'>Women have played a significant role in <b>shaping scientific advancement</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>女性在促進科學發展方面扮演了重要的角色。</div>"},"go on to do sth":{"type":"blue","text":"phr. 接著做某事<div style='color: #1565c0; margin-top: 10px;'>She <b>went on to find</b> countless fossils after learning from her father.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她從父親那裡學習後，接著發現了無數的化石。</div>"},"result in":{"type":"blue","text":"phr. 導致，造成<div style='color: #1565c0; margin-top: 10px;'>The book <b>resulted in</b> an environmental movement and major policy changes.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這本書導致了一場環保運動和重大的政策變革。</div>"},"advocate for":{"type":"blue","text":"phr. 倡導，擁護<div style='color: #1565c0; margin-top: 10px;'>She strongly <b>advocated for</b> women and girls to follow their dreams.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她強力倡導女性和女孩追逐她們的夢想。</div>"},"ethical concerns":{"type":"blue","text":"phr. 倫理道德顧慮<div style='color: #1565c0; margin-top: 10px;'>This technology raised some <b>ethical concerns</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這項技術引發了一些倫理道德顧慮。</div>"},"look forward to":{"type":"blue","text":"phr. 期待，盼望<div style='color: #1565c0; margin-top: 10px;'>We also <b>look forward to</b> the discoveries yet to come.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>我們也期待著未來尚未到來的發現。</div>"},"whose":{"type":"purple","text":"pron. 其...的 (用作關係代名詞，表示所有格)<div style='color: #1565c0; margin-top: 10px;'>We celebrate the brilliant women <b>whose</b> research and ideas transformed the world.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>我們頌揚那些其研究和想法改變了世界的傑出女性。</div>"},"shaping":{"type":"green","text":"v. (現在分詞) 塑造，形成<div style='color: #1565c0; margin-top: 10px;'>Her early experiences were crucial in <b>shaping</b> her future career.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她早期的經歷對塑造她未來的職業生涯至關重要。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] shape (v.) 塑造；(n.) 形狀</div>"},"brilliant":{"type":"green","text":"adj. 傑出的，聰明的；光輝的<div style='color: #1565c0; margin-top: 10px;'>The scientist presented a <b>brilliant</b> solution to the complex problem.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這位科學家為複雜的問題提出了一個傑出的解決方案。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] brilliantly (adv.)</div>"},"fossils":{"type":"green","text":"n. (pl.) 化石<div style='color: #1565c0; margin-top: 10px;'>Paleontologists study ancient life by examining <b>fossils</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>古生物學家透過研究化石來探索古代生命。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] fossil (n.)</div>"},"skeleton":{"type":"green","text":"n. 骨骼，骨架<div style='color: #1565c0; margin-top: 10px;'>The museum displayed a massive dinosaur <b>skeleton</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>博物館展示了一個巨大的恐龍骨架。</div>"},"expanded":{"type":"green","text":"v. (過去式) 擴展，擴大<div style='color: #1565c0; margin-top: 10px;'>The company <b>expanded</b> its operations into new markets.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>該公司將其業務擴展到新市場。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] expand (v.)；[衍生] expansion (n.)</div>"},"influenced":{"type":"green","text":"v. (過去式) 影響<div style='color: #1565c0; margin-top: 10px;'>His parents' strong work ethic deeply <b>influenced</b> him.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他父母強烈的工作倫理深深地影響了他。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] influence (n./v.)；[衍生] influential (adj.)</div>"},"contributions":{"type":"green","text":"n. (pl.) 貢獻<div style='color: #1565c0; margin-top: 10px;'>Her <b>contributions</b> to medical research saved countless lives.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她對醫學研究的貢獻挽救了無數生命。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] contribution (n.)；[動詞] contribute (v.)</div>"},"recognized":{"type":"green","text":"v. (過去分詞) 認可，承認；認出<div style='color: #1565c0; margin-top: 10px;'>She was finally <b>recognized</b> for her pioneering work in the field.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她最終因其在該領域的開創性工作而獲得認可。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] recognize (v.)；[衍生] recognition (n.)</div>"},"biologist":{"type":"green","text":"n. 生物學家<div style='color: #1565c0; margin-top: 10px;'>As a marine <b>biologist</b>, she spent years studying ocean life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>作為一名海洋生物學家，她花費數年時間研究海洋生物。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] biology (n.) 生物學；biological (adj.) 生物的</div>"},"combined":{"type":"green","text":"v. (過去式) 結合，合併<div style='color: #1565c0; margin-top: 10px;'>The chef <b>combined</b> fresh herbs and spices to create a unique flavor.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>廚師將新鮮香草和香料結合，創造出獨特的風味。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] combine (v.)；[衍生] combination (n.)</div>"},"resulted in":{"type":"blue","text":"phr. 導致，造成<div style='color: #1565c0; margin-top: 10px;'>His hard work <b>resulted in</b> him getting a promotion.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他的努力工作使他獲得了晉升。</div>"},"policy":{"type":"green","text":"n. 政策<div style='color: #1565c0; margin-top: 10px;'>The government introduced a new economic <b>policy</b> to boost growth.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>政府推出了一項新的經濟政策以促進增長。</div>"},"atomic":{"type":"green","text":"adj. 原子的<div style='color: #1565c0; margin-top: 10px;'>Nuclear power plants generate electricity using <b>atomic</b> energy.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>核電廠利用原子能發電。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] atom (n.) 原子</div>"},"advocated":{"type":"green","text":"v. (過去式) 倡導，主張<div style='color: #1565c0; margin-top: 10px;'>The organization has long <b>advocated</b> for human rights.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>該組織長期以來一直倡導人權。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] advocate (n./v.)；[衍生] advocacy (n.)</div>"},"present":{"type":"green","text":"adj. 現在的；出席的<div style='color: #1565c0; margin-top: 10px;'>The CEO was <b>present</b> at the board meeting.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>執行長出席了董事會會議。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[動詞] present (v.) 呈現，提交；贈送；[衍生] presently (adv.)</div>"},"genetic":{"type":"green","text":"adj. 基因的，遺傳的<div style='color: #1565c0; margin-top: 10px;'>Scientists are studying the <b>genetic</b> factors linked to the disease.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>科學家正在研究與該疾病相關的基因因子。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] gene (n.) 基因；genetically (adv.)</div>"},"cure":{"type":"green","text":"v. 治癒；n. 療法，藥物<div style='color: #1565c0; margin-top: 10px;'>Researchers are working hard to find a <b>cure</b> for cancer.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>研究人員正努力尋找癌症的治療方法。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] curable (adj.)</div>"},"raised":{"type":"green","text":"v. (過去式) 提出（問題、疑慮）；撫養；舉起<div style='color: #1565c0; margin-top: 10px;'>The student <b>raised</b> an important question during the lecture.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>學生在講座中提出了一個重要的問題。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] raise (v.)</div>"},"make sure":{"type":"blue","text":"phr. 確保，確認<div style='color: #1565c0; margin-top: 10px;'>Please <b>make sure</b> all the windows are closed before you leave.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>離開前請確保所有窗戶都已關閉。</div>"},"awarded":{"type":"green","text":"v. (過去分詞) 頒發，授予<div style='color: #1565c0; margin-top: 10px;'>He was <b>awarded</b> a scholarship for his outstanding academic performance.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他因其傑出的學術表現而被授予獎學金。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] award (n./v.)</div>"},"incredible":{"type":"green","text":"adj. 難以置信的，極好的<div style='color: #1565c0; margin-top: 10px;'>The team achieved an <b>incredible</b> victory against all odds.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>該團隊在逆境中取得了令人難以置信的勝利。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] incredibly (adv.)</div>"},"Throughout":{"type":"purple","text":"Throughout + 時間 + has/have+Ved\nThroughout the last decade, technology has changed the way we communicate with each other.\n\n在過去的十年中，科技改變了我們彼此溝通的方式。\n\nThroughout this morning, the manager has received dozens of urgent phone calls.\n\n今天整個上午，經理收到了數十通緊急電話。\n\nThroughout his long career, the professor has inspired thousands of students to pursue science.\n\n在他漫長的職業生涯中，這位教授啟發了數千名學生追求科學。"},"yet to":{"type":"purple","text":"yet to + verb / has/have yet to\nThe committee has yet to make a final decision on the new school budget.\n\n委員會尚未對新的學校預算做出最終決定。\n\nScientists believe the most important discoveries in this field are yet to come.\n\n科學家們相信，這個領域最重要的發現尚未到來。\n\nWe have yet to receive an official response from the company regarding our complaint.\n\n關於我們的投訴，我們尚未收到該公司的正式回覆。"},"alike":{"type":"purple","text":"noun and noun alike\nThis new policy will benefit employers and employees alike.\n這項新政策將使雇主和員工同樣獲益。\n\nThe movie was a huge success, appealing to critics and audiences alike.\n這部電影非常成功，深受評論家和觀眾的一致好評。\n\nBeginners and experts alike will find this software easy and intuitive to use.\n初學者和專家同樣會發現這款軟體使用起來既簡單又直覺。"},"agency":{"type":"green","text":"n. 1. 局，處，署；代理機構 2. 行動力，作用力<div style='color: #1565c0; margin-top: 10px;'>The U.S. Environmental Protection <b>Agency</b> was created to protect the environment.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>美國環境保護署的成立是為了保護環境。</div><div style='color: #1565c0; margin-top: 10px;'>Students should be given more <b>agency</b> in their learning process.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>學生在學習過程中應被賦予更多的自主性（行動力）。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] agent (n.) 代理人，特務</div>"},"physics":{"type":"green","text":"n. 物理學<div style='color: #1565c0; margin-top: 10px;'>Wu Jianxiong is known for her pioneering work in nuclear <b>physics</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>吳健雄以其在核物理學方面的開創性工作而聞名。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] physical (adj.) 物理的，身體的；physicist (n.) 物理學家</div>"}};
+    <div class="question" data-q="3">
+      <div class="q-text autowrap"><span class="q-num">3</span>As the years have passed by, many of my childhood memories are already <span class="blank">______</span>; I can no longer recall clearly what happened back then.</div>
+      <div class="options" data-qid="3">
+        <label><input type="radio" name="q3" value="A"><span>(A) blurring</span></label>
+        <label><input type="radio" name="q3" value="B"><span>(B) trimming</span></label>
+        <label><input type="radio" name="q3" value="C"><span>(C) draining</span></label>
+        <label><input type="radio" name="q3" value="D"><span>(D) glaring</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">blurring</span><span class="word">trimming</span><span class="word">draining</span><span class="word">glaring</span></div>
+    </div>
 
-        function showInfo(encodedKeyword, event) {
-            const keyword = decodeURIComponent(encodedKeyword);
-            const data = dictionaryMap[keyword];
-            if (!data) return;
-            
-            const modal = document.getElementById("info-modal");
-            document.getElementById("modal-title").className = 'modal-title word-' + data.type;
-            document.getElementById("modal-title").innerHTML = keyword;
-            
-            let content = data.text;
-            if (!content.includes("<div") && !content.includes("<span")) {
-                content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-                const escapedKeyword = keyword.replace(/[.*+?^${()|[\]\\]/g, '\\$&');
-                const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
-                content = content.replace(regex, '<b>$1</b>');
-            }
-            document.getElementById("modal-body").innerHTML = content;
-            modal.style.display = "flex";
-        }
+    <div class="question" data-q="4">
+      <div class="q-text autowrap"><span class="q-num">4</span>Racist remarks are by nature <span class="blank">______</span> and hurtful, and should be avoided on all occasions.</div>
+      <div class="options" data-qid="4">
+        <label><input type="radio" name="q4" value="A"><span>(A) excessive</span></label>
+        <label><input type="radio" name="q4" value="B"><span>(B) furious</span></label>
+        <label><input type="radio" name="q4" value="C"><span>(C) offensive</span></label>
+        <label><input type="radio" name="q4" value="D"><span>(D) stubborn</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">excessive</span><span class="word">furious</span><span class="word">offensive</span><span class="word">stubborn</span></div>
+    </div>
 
-        function closeModal() { document.getElementById("info-modal").style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById("info-modal");
-            if (event.target == modal) modal.style.display = "none";
+    <div class="question" data-q="5">
+      <div class="q-text autowrap"><span class="q-num">5</span>Not satisfied with the first <span class="blank">______</span> of her essay, Mary revised it several times before turning it in to the teacher.</div>
+      <div class="options" data-qid="5">
+        <label><input type="radio" name="q5" value="A"><span>(A) text</span></label>
+        <label><input type="radio" name="q5" value="B"><span>(B) brush</span></label>
+        <label><input type="radio" name="q5" value="C"><span>(C) draft</span></label>
+        <label><input type="radio" name="q5" value="D"><span>(D) plot</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">text</span><span class="word">brush</span><span class="word">draft</span><span class="word">plot</span></div>
+    </div>
+
+    <div class="question" data-q="6">
+      <div class="q-text autowrap"><span class="q-num">6</span>Left <span class="blank">______</span> for years, the deserted house was filled with a thick coating of dust and a smell of old damp wood.</div>
+      <div class="options" data-qid="6">
+        <label><input type="radio" name="q6" value="A"><span>(A) casual</span></label>
+        <label><input type="radio" name="q6" value="B"><span>(B) fragile</span></label>
+        <label><input type="radio" name="q6" value="C"><span>(C) remote</span></label>
+        <label><input type="radio" name="q6" value="D"><span>(D) vacant</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">casual</span><span class="word">fragile</span><span class="word">remote</span><span class="word">vacant</span></div>
+    </div>
+
+    <div class="question" data-q="7">
+      <div class="q-text autowrap"><span class="q-num">7</span>The high school student showed <span class="blank">______</span> courage when she helped the old man escape from the fire.</div>
+      <div class="options" data-qid="7">
+        <label><input type="radio" name="q7" value="A"><span>(A) gigantic</span></label>
+        <label><input type="radio" name="q7" value="B"><span>(B) exclusive</span></label>
+        <label><input type="radio" name="q7" value="C"><span>(C) multiple</span></label>
+        <label><input type="radio" name="q7" value="D"><span>(D) enormous</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">gigantic</span><span class="word">exclusive</span><span class="word">multiple</span><span class="word">enormous</span></div>
+    </div>
+
+    <div class="question" data-q="8">
+      <div class="q-text autowrap"><span class="q-num">8</span>Publicly financed projects are often <span class="blank">______</span> or delayed during tough economic times due to a lack of resources.</div>
+      <div class="options" data-qid="8">
+        <label><input type="radio" name="q8" value="A"><span>(A) halted</span></label>
+        <label><input type="radio" name="q8" value="B"><span>(B) hatched</span></label>
+        <label><input type="radio" name="q8" value="C"><span>(C) possessed</span></label>
+        <label><input type="radio" name="q8" value="D"><span>(D) reinforced</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">halted</span><span class="word">hatched</span><span class="word">possessed</span><span class="word">reinforced</span></div>
+    </div>
+
+    <div class="question" data-q="9">
+      <div class="q-text autowrap"><span class="q-num">9</span>Despite his busy schedule, the President <span class="blank">______</span> the school's graduation ceremony with his presence and a heartwarming speech.</div>
+      <div class="options" data-qid="9">
+        <label><input type="radio" name="q9" value="A"><span>(A) praised</span></label>
+        <label><input type="radio" name="q9" value="B"><span>(B) graced</span></label>
+        <label><input type="radio" name="q9" value="C"><span>(C) addressed</span></label>
+        <label><input type="radio" name="q9" value="D"><span>(D) credited</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">praised</span><span class="word">graced</span><span class="word">addressed</span><span class="word">credited</span></div>
+    </div>
+
+    <div class="question" data-q="10">
+      <div class="q-text autowrap"><span class="q-num">10</span>The manager of the company was sued for <span class="blank">______</span> abusing his colleagues, calling them "hopeless losers."</div>
+      <div class="options" data-qid="10">
+        <label><input type="radio" name="q10" value="A"><span>(A) verbally</span></label>
+        <label><input type="radio" name="q10" value="B"><span>(B) dominantly</span></label>
+        <label><input type="radio" name="q10" value="C"><span>(C) legitimately</span></label>
+        <label><input type="radio" name="q10" value="D"><span>(D) relevantly</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">verbally</span><span class="word">dominantly</span><span class="word">legitimately</span><span class="word">relevantly</span></div>
+    </div>
+
+    <div class="section-title">二、綜合測驗（第 11-20 題）</div>
+
+    <div class="group-label">【第 11-15 題為題組】</div>
+
+    <div class="passage autowrap">
+      In 1995, a group of business and academic leaders met at the home of Juanita Brown and David Isaacs in Mill Valley, California. None of them had any idea they were about to create a social innovation that <span class="blank">[11]</span> rapidly around the world.<br><br>
+      The group was supposed to have a large-circle discussion in their beautiful garden. Unfortunately, it started pouring. With their plan <span class="blank">[12]</span> by the rain, the two dozen participants squeezed into the living room.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">11.</span>
+      <div class="options" data-qid="11">
+        <label><input type="radio" name="q11" value="A"><span>(A) had spread</span></label>
+        <label><input type="radio" name="q11" value="B"><span>(B) would spread</span></label>
+        <label><input type="radio" name="q11" value="C"><span>(C) had been spreading</span></label>
+        <label><input type="radio" name="q11" value="D"><span>(D) would have spread</span></label>
+      </div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">12.</span>
+      <div class="options" data-qid="12">
+        <label><input type="radio" name="q12" value="A"><span>(A) facilitated</span></label>
+        <label><input type="radio" name="q12" value="B"><span>(B) disrupted</span></label>
+        <label><input type="radio" name="q12" value="C"><span>(C) disclosed</span></label>
+        <label><input type="radio" name="q12" value="D"><span>(D) fulfilled</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      They broke into small, intimate table conversations, recording their insights on paper tablecloths. They periodically stopped their conversations to switch tables so the insights and ideas might <span class="blank">[13]</span> and deepen. As they moved from one table to another, they noticed new ideas emerging from the discussions. This in turn enriched subsequent rounds of conversation. Over the course of the morning, the innovative discussion process <span class="blank">[14]</span> a new form of collective effort that transformed the depth, scope, and quality of their discussion.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">13.</span>
+      <div class="options" data-qid="13">
+        <label><input type="radio" name="q13" value="A"><span>(A) circulate</span></label>
+        <label><input type="radio" name="q13" value="B"><span>(B) emphasize</span></label>
+        <label><input type="radio" name="q13" value="C"><span>(C) recover</span></label>
+        <label><input type="radio" name="q13" value="D"><span>(D) preserve</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">circulate</span><span class="word">emphasize</span><span class="word">recover</span><span class="word">preserve</span></div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">14.</span>
+      <div class="options" data-qid="14">
+        <label><input type="radio" name="q14" value="A"><span>(A) made up for</span></label>
+        <label><input type="radio" name="q14" value="B"><span>(B) kept track of</span></label>
+        <label><input type="radio" name="q14" value="C"><span>(C) gave rise to</span></label>
+        <label><input type="radio" name="q14" value="D"><span>(D) looked out for</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      The World Café was <span class="blank">[15]</span> created. Since that rainy morning in Mill Valley, the World Café approach has been applied to multi-group discussions and cooperative actions by businesses, industries, and educational institutions around the world.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">15.</span>
+      <div class="options" data-qid="15">
+        <label><input type="radio" name="q15" value="A"><span>(A) still</span></label>
+        <label><input type="radio" name="q15" value="B"><span>(B) also</span></label>
+        <label><input type="radio" name="q15" value="C"><span>(C) further</span></label>
+        <label><input type="radio" name="q15" value="D"><span>(D) thus</span></label>
+      </div>
+    </div>
+
+    <div class="group-label">【第 16-20 題為題組】</div>
+
+    <div class="passage autowrap">
+      If you have ever been sick to your stomach on a rocking boat or a bumpy car ride, you know the discomfort of motion sickness. It can <span class="blank">[16]</span> suddenly, progressing from a feeling of uneasiness to a cold sweat. Soon, it can lead to dizziness, nausea, and vomiting.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">16.</span>
+      <div class="options" data-qid="16">
+        <label><input type="radio" name="q16" value="A"><span>(A) crash</span></label>
+        <label><input type="radio" name="q16" value="B"><span>(B) flush</span></label>
+        <label><input type="radio" name="q16" value="C"><span>(C) burst</span></label>
+        <label><input type="radio" name="q16" value="D"><span>(D) strike</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">crash</span><span class="word">flush</span><span class="word">burst</span><span class="word">strike</span></div>
+    </div>
+
+    <div class="passage autowrap">
+      Motion sickness occurs when the signals your brain receives from your eyes, ears, and body <span class="blank">[17]</span>. Your brain doesn't know whether you are stationary or moving when these parts send conflicting information: One part of your balance-sensing system detects that your body is moving, but the other parts <span class="blank">[18]</span>. Your brain's confused reaction makes you feel sick. You may experience the discomfort from the motion of cars, boats, or amusement park rides. You may also get sick from playing video games, or looking through a microscope.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">17.</span>
+      <div class="options" data-qid="17">
+        <label><input type="radio" name="q17" value="A"><span>(A) are not regular</span></label>
+        <label><input type="radio" name="q17" value="B"><span>(B) can hardly move</span></label>
+        <label><input type="radio" name="q17" value="C"><span>(C) do not match</span></label>
+        <label><input type="radio" name="q17" value="D"><span>(D) are rarely cued</span></label>
+      </div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">18.</span>
+      <div class="options" data-qid="18">
+        <label><input type="radio" name="q18" value="A"><span>(A) aren't</span></label>
+        <label><input type="radio" name="q18" value="B"><span>(B) won't</span></label>
+        <label><input type="radio" name="q18" value="C"><span>(C) don't</span></label>
+        <label><input type="radio" name="q18" value="D"><span>(D) haven't</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      You can take some <span class="blank">[19]</span> to help avoid the discomfort. If you are traveling, reserve seats where motion is felt the least, such as the front row of a car or forward cars of a train. Looking out into the distance from the vehicle can help <span class="blank">[20]</span>. You can also take medicine before your ride to avoid or reduce nausea and vomiting.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">19.</span>
+      <div class="options" data-qid="19">
+        <label><input type="radio" name="q19" value="A"><span>(A) special opportunities</span></label>
+        <label><input type="radio" name="q19" value="B"><span>(B) preventive measures</span></label>
+        <label><input type="radio" name="q19" value="C"><span>(C) potential risks</span></label>
+        <label><input type="radio" name="q19" value="D"><span>(D) significant advantages</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">special</span><span class="word">opportunities</span><span class="word">preventive</span><span class="word">measures</span><span class="word">potential</span><span class="word">risks</span><span class="word">significant</span><span class="word">advantages</span></div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">20.</span>
+      <div class="options" data-qid="20">
+        <label><input type="radio" name="q20" value="A"><span>(A) as well</span></label>
+        <label><input type="radio" name="q20" value="B"><span>(B) by far</span></label>
+        <label><input type="radio" name="q20" value="C"><span>(C) at least</span></label>
+        <label><input type="radio" name="q20" value="D"><span>(D) after all</span></label>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" onclick="submitQuiz()">送出作答</button>
+    </div>
+
+  </form>
+
+  <div id="results">
+
+    <div class="result-card score">
+      <h3>📊 你的成績</h3>
+      <div class="score-big" id="scoreBig"></div>
+      <div class="score-detail" id="scoreDetail"></div>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="teacherReport"></div>
+      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="wordsReport"></div>
+      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
+    </div>
+
+    <div class="result-card feedback">
+      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
+      <div id="feedbackReport"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ===== 正確答案 =====
+  const ANSWERS = {
+    1:'C', 2:'A', 3:'A', 4:'C', 5:'C', 6:'D', 7:'D', 8:'A', 9:'B', 10:'A',
+    11:'B', 12:'B', 13:'A', 14:'C', 15:'D', 16:'D', 17:'C', 18:'C', 19:'B', 20:'A'
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1:  { answer:'container (容器)', detail:'題意：把「容器」放在漏水的水龍頭下。(A) border 邊界 (B) timer 計時器 (D) marker 標記/麥克筆。只有 container 能裝水。' },
+    2:  { answer:'produce (農產品)', detail:'農夫市集販賣的是「新鮮當季農產品」。produce 作名詞指蔬果農產品。(B) fashion 時尚 (C) brand 品牌 (D) trend 趨勢 皆不合。' },
+    3:  { answer:'blurring (變模糊)', detail:'童年回憶「變模糊」，無法清楚回想。blur 指（記憶、影像）變模糊。(B) trim 修剪 (C) drain 排乾 (D) glare 刺眼，皆不符。' },
+    4:  { answer:'offensive (冒犯的)', detail:'種族歧視言論本質上「冒犯」且傷人，與 hurtful 並列同義。(A) excessive 過度 (B) furious 憤怒 (D) stubborn 頑固，語意不合。' },
+    5:  { answer:'draft (草稿)', detail:'Mary 對作文第一「版草稿」不滿意，修改多次才交。draft 草稿/初稿。(A) text 文本 (B) brush 筆刷 (D) plot 情節。' },
+    6:  { answer:'vacant (空置的)', detail:'房子「空置」多年，積滿灰塵、有霉味。Left vacant = 被空置。(A) casual 隨意 (B) fragile 脆弱 (C) remote 偏遠，皆不符。' },
+    7:  { answer:'enormous (極大的)', detail:'enormous courage（極大勇氣）為常見搭配。(A) gigantic 多用於具體龐大之物；(B) exclusive 獨家 (C) multiple 多重，皆不搭配 courage。' },
+    8:  { answer:'halted (中止)', detail:'公共資助專案在經濟困難時常「被中止」或延遲，halt 與 delayed 並列。(B) hatched 孵化 (C) possessed 擁有 (D) reinforced 加強，皆不合。' },
+    9:  { answer:'graced (蒞臨增光)', detail:"grace sth with one's presence = 親臨使其增光。總統蒞臨畢業典禮並致詞。(A) praised 讚美 (C) addressed 致詞（搭配不合）(D) credited 歸功。" },
+    10: { answer:'verbally (言語上)', detail:'經理因「言語上」辱罵同事（稱他們「沒救的失敗者」）而被告。(B) dominantly (C) legitimately (D) relevantly 皆不合。' },
+    11: { answer:'would spread (將擴散)', detail:'主句 had no idea 為過去式，從句描述「後來會發生」的事，用過去未來式 would + V。(D) would have spread 表與事實相反，但此事確實發生，不合。' },
+    12: { answer:'disrupted (被打亂)', detail:'計畫因大雨「被打亂」才擠進客廳。With their plan disrupted 為分詞構句。(A) facilitated 促進 (C) disclosed 揭露 (D) fulfilled 實現，皆與上下文矛盾。' },
+    13: { answer:'circulate (流通)', detail:'換桌使想法能「流通」並深化，與 deepen 並列。(B) emphasize 強調 (C) recover 恢復 (D) preserve 保存，皆不合。' },
+    14: { answer:'gave rise to (產生)', detail:'創新討論方式「產生」一種新的集體合作形式。give rise to = 引起/導致。(A) made up for 補償 (B) kept track of 追蹤 (D) looked out for 留意。' },
+    15: { answer:'thus (因此)', detail:'前文描述 World Café 誕生過程，此處用 thus 做因果總結。(A) still (B) also (C) further 皆無法表達因果。' },
+    16: { answer:'strike (突然發作)', detail:'strike 可作動詞，表（疾病、災難）突然襲擊/發作，suddenly 是線索。(A) crash 撞擊 (B) flush 沖洗 (C) burst 爆裂，搭配不合。' },
+    17: { answer:'do not match (不相符)', detail:'眼、耳、身體訊號「不相符」才引發暈動症，下文亦出現 conflicting information。(A) (B) (D) 皆不切題。' },
+    18: { answer:"don't (不這樣做)", detail:"代動詞呼應前文 detects（一般現在式肯定），用 don't 代替 don't detect。其他時態/動詞皆不符。" },
+    19: { answer:'preventive measures (預防措施)', detail:'take preventive measures = 採取預防措施，下文列出多種預防方法。(A) 機會 (C) 風險 (D) 優勢 皆不合。' },
+    20: { answer:'as well (也)', detail:'遠望「也」能幫助，與下一句 also take medicine 呼應。(B) by far 最…(C) at least 至少 (D) after all 畢竟 皆不切。' }
+  };
+
+  // ===== 自動將 .autowrap 區塊中的所有英文單字包成可點選 span =====
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL']);
+    // 收集所有 text node
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        // 略過已在 .word / .blank / .q-num 等特殊標記內
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('word') || p.classList.contains('blank') || p.classList.contains('q-num') || p.classList.contains('q-num-sq'))) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
         }
-    </script>
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    // 英文單字正則（含撇號，如 don't, brain's）
+    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) {
+          frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        }
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) {
+        frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      }
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
+
+  // 單字點擊切換
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      e.target.classList.toggle('unfamiliar');
+    }
+  });
+
+  // 選項選取樣式
+  document.querySelectorAll('.options label').forEach(lbl => {
+    lbl.addEventListener('click', () => {
+      const name = lbl.querySelector('input').name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(r => r.closest('label').classList.remove('selected'));
+      lbl.classList.add('selected');
+    });
+  });
+
+  // ===== 送出作答 =====
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    let answers = {}, unanswered = [];
+    for (let i=1; i<=20; i++) {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    }
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
+    }
+
+    let correct = 0, wrongList = [];
+    for (let i=1; i<=20; i++) {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    }
+    const percent = Math.round(correct/20*100);
+
+    // 不熟悉單字
+    const unfamiliar = [];
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
+    });
+    unfamiliar.sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / 20`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${20-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    // 結果 1
+    let r1 = `【114學測英文 第1-20題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/20（${percent}%）\n---\n題號\t學生答案\t正確答案\t對錯\n`;
+    for (let i=1; i<=20; i++) {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    }
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    // 結果 2
+    let r2 = `【114學測英文 第1-20題 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
+    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
+    else {
+      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
+      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
+    }
+    document.getElementById('wordsReport').textContent = r2;
+
+    // 結果 3
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+    } else {
+      wrongList.forEach(i => {
+        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        div.innerHTML = `
+          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${ANSWERS[i]}（${EXPLANATIONS[i].answer}）</span></div>
+          <div class="explain">${EXPLANATIONS[i].detail}</div>`;
+        fb.appendChild(div);
+      });
+    }
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
 </body>
 </html>
