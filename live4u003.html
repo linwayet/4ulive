@@ -1,73 +1,670 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英文閱讀解析</title>
-    <style>
-        :root { --green-color: #2e7d32; --red-color: #d32f2f; --blue-color: #1565c0; --purple-color: #7b1fa2; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.8; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .article-content { font-size: 1.15em; color: #000; margin-top: 20px; line-height: 1.9; }
-        .highlight { cursor: pointer; font-weight: bold; position: relative; padding: 2px 4px; border-radius: 4px; transition: background 0.2s; display: inline-block; }
-        .highlight:hover { background: #f0f0f0; }
-        .word-green { color: var(--green-color); }
-        .word-red { color: var(--red-color); }
-        .word-blue { color: var(--blue-color); }
-        .word-purple { color: var(--purple-color); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>115 年學測英文 - 第一部分（第 1-20 題）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 880px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 10px; width: 100%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; box-sizing: border-box; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8em; cursor: pointer; color: #666; line-height: 1; }
-        .modal-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 1.05em; line-height: 1.8; color: #333; }
-        .modal-body b { color: inherit; background-color: rgba(255,235,59,0.3); padding: 0 2px; border-radius: 3px; }
-    </style>
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; width: 26px; height: 26px;
+    text-align: center; line-height: 26px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em;
+  }
+
+  .q-inline {
+    display: flex; align-items: center; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  .options {
+    display: flex; flex-wrap: wrap; gap: 6px; flex: 1;
+  }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 130px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.93em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  .word {
+    cursor: pointer; padding: 0 1px; border-radius: 3px;
+    transition: background 0.12s;
+  }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    font-weight: 600; color: #b9770e;
+  }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 5px; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 300px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>精選英文閱讀與解析</h1>
-        <div class="article-content">Play for <span class="highlight word-green" onclick="showInfo('glory', event)">glory</span>. The 2026 World Baseball Classic <span class="highlight word-blue" onclick="showInfo('heats%20up', event)">heats up</span>. The wait is finally over, and the 2026 World Baseball Classic, WBC, is happening this month with excitement building for baseball fans around the world. The WBC is <span class="highlight word-green" onclick="showInfo('organized', event)">organized</span> by Major <span class="highlight word-green" onclick="showInfo('league', event)">League</span> Baseball, MLB, and the World Baseball Softball <span class="highlight word-red" onclick="showInfo('confederation', event)">Confederation</span>, WBSC, and brings together 20 countries in a global celebration of the sport. Fans <span class="highlight word-green" onclick="showInfo('eagerly', event)">eagerly</span> <span class="highlight word-blue" onclick="showInfo('look%20forward%20to', event)">look forward to</span> the competition because it shows the world's best players <span class="highlight word-green" onclick="showInfo('representing', event)">representing</span> their home nations with <span class="highlight word-green" onclick="showInfo('pride', event)">pride</span> and <span class="highlight word-green" onclick="showInfo('passion', event)">passion</span>. The game started on March 5th at the Tokyo <span class="highlight word-green" onclick="showInfo('dome', event)">Dome</span>, with 20 teams <span class="highlight word-blue" onclick="showInfo('divided%20into', event)">divided into</span> four groups known as pools. With only two teams <span class="highlight word-green" onclick="showInfo('advancing', event)">advancing</span> from each pool, every pitch, every hit, and every play <span class="highlight word-green" onclick="showInfo('matters', event)">matters</span>. Anything can happen in these games, and that's what keeps everyone <span class="highlight word-blue" onclick="showInfo('on%20the%20edge%20of', event)">on the edge of</span> their seats. This year, Taiwan has been placed into Pool C. Which means it faces <span class="highlight word-red" onclick="showInfo('powerhouse', event)">powerhouse</span> teams Japan and South Korea, along with the national teams of Australia and the Czech Republic. After the pool stage, the top teams move on to single <span class="highlight word-red" onclick="showInfo('elimination', event)">elimination</span> rounds, meaning a single loss can end a team's <span class="highlight word-green" onclick="showInfo('championship', event)">championship</span> hopes. The Taiwanese team enters this year's <span class="highlight word-green" onclick="showInfo('tournament', event)">tournament</span> with <span class="highlight word-green" onclick="showInfo('renewed', event)">renewed</span> confidence and support from fans after winning the gold <span class="highlight word-green" onclick="showInfo('medal', event)">medal</span> at the <span class="highlight word-red" onclick="showInfo('premier', event)">Premier</span> 12 <span class="highlight word-green" onclick="showInfo('championship', event)">Championship</span> in 2024.<br><br>One of the WBC's greatest <span class="highlight word-green" onclick="showInfo('draws', event)">draws</span> is watching MLB stars compete on the same <span class="highlight word-green" onclick="showInfo('field', event)">field</span>, and this can <span class="highlight word-green" onclick="showInfo('deliver', event)">deliver</span> many <span class="highlight word-green" onclick="showInfo('unforgettable', event)">unforgettable</span> moments. For example, in the 2023 <span class="highlight word-green" onclick="showInfo('championship', event)">championship</span> final, Japan's Shohei Otani <span class="highlight word-blue" onclick="showInfo('faced%20off', event)">faced off</span> against the U.S.' 's Mike Trout, his Los Angeles Angels teammate. With the title <span class="highlight word-blue" onclick="showInfo('on%20the%20line', event)">on the line</span>, Otani's strikeout to <span class="highlight word-red" onclick="showInfo('secure', event)">secure</span> Japan's victory perfectly <span class="highlight word-green" onclick="showInfo('captured', event)">captured</span> the competition at its best. It also showed that the WBC can <span class="highlight word-green" onclick="showInfo('deliver', event)">deliver</span> a <span class="highlight word-green" onclick="showInfo('unique', event)">unique</span> sense of <span class="highlight word-green" onclick="showInfo('drama', event)">drama</span> and put friendship and <span class="highlight word-green" onclick="showInfo('rivalry', event)">rivalry</span> on baseball's biggest stage. For Taiwanese fans, some of the most exciting games were in 2013, when Taiwan <span class="highlight word-green" onclick="showInfo('beat', event)">beat</span> Australia and the <span class="highlight word-red" onclick="showInfo('Netherlands', event)">Netherlands</span> and fought hard against Japan. Though Taiwan didn't advance, the team's fighting <span class="highlight word-green" onclick="showInfo('spirit', event)">spirit</span> won many new fans and <span class="highlight word-green" onclick="showInfo('demonstrated', event)">demonstrated</span> the island's love for the sport. Now, for 2026, Taiwanese supporters have even more reason to be excited. With Pool C Games hosted in nearby Japan, fans will have the <span class="highlight word-green" onclick="showInfo('opportunity', event)">opportunity</span> to travel and cheer for their heroes <span class="highlight word-blue" onclick="showInfo('in%20the%20flesh', event)">in the flesh</span>. Taiwan may not <span class="highlight word-red" onclick="showInfo('boast', event)">boast</span> the most MLB stars, but the team brings something <span class="highlight word-green" onclick="showInfo('equally', event)">equally</span> powerful. Heart, <span class="highlight word-red" onclick="showInfo('unbreakable', event)">unbreakable</span> <span class="highlight word-red" onclick="showInfo('determination', event)">determination</span>, and a shared dream that <span class="highlight word-green" onclick="showInfo('unites', event)">unites</span> players and fans alike. For Taiwan, baseball is more than a sport. It is a source of joy and <span class="highlight word-green" onclick="showInfo('identity', event)">identity</span>.</div>
+
+<div class="container">
+  <header>
+    <h1>115 學年度學科能力測驗 英文考科</h1>
+    <div class="subtitle">第壹部分 選擇題 ‧ 第 1-20 題（詞彙題 + 綜合測驗）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label>
+    <input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label>
+    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>
+    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。
+  </div>
+
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
+  </div>
+
+  <form id="quizForm">
+
+    <div class="section-title">一、詞彙題（第 1-10 題）</div>
+
+    <div class="question" data-q="1">
+      <div class="q-text autowrap"><span class="q-num">1</span>The mayor has such a <span class="blank">______</span> schedule that it takes weeks to arrange an interview with her.</div>
+      <div class="options">
+        <label><input type="radio" name="q1" value="A"><span>(A) hasty</span></label>
+        <label><input type="radio" name="q1" value="B"><span>(B) tight</span></label>
+        <label><input type="radio" name="q1" value="C"><span>(C) diligent</span></label>
+        <label><input type="radio" name="q1" value="D"><span>(D) routine</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">hasty</span><span class="word">tight</span><span class="word">diligent</span><span class="word">routine</span></div>
     </div>
 
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
+    <div class="question" data-q="2">
+      <div class="q-text autowrap"><span class="q-num">2</span>Jane started as an <span class="blank">______</span> art designer, but now she has a professional studio of her own.</div>
+      <div class="options">
+        <label><input type="radio" name="q2" value="A"><span>(A) official</span></label>
+        <label><input type="radio" name="q2" value="B"><span>(B) instant</span></label>
+        <label><input type="radio" name="q2" value="C"><span>(C) amateur</span></label>
+        <label><input type="radio" name="q2" value="D"><span>(D) elementary</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">official</span><span class="word">instant</span><span class="word">amateur</span><span class="word">elementary</span></div>
     </div>
 
-    <script>
-        const dictionaryMap = {"glory":{"type":"green","text":"n. 光榮；榮耀<div style='color: #1565c0; margin-top: 10px;'>Play for <b>glory</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>為榮耀而戰。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] glorious (adj.)</div>"},"championship":{"type":"green","text":"n. 冠軍；錦標賽<div style='color: #1565c0; margin-top: 10px;'>A single loss can end a team's <b>championship</b> hopes.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>一場失利就可能終結一支球隊的奪冠希望。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] champion (n.)</div>"},"renewed":{"type":"green","text":"adj. 重新開始的；更新的<div style='color: #1565c0; margin-top: 10px;'>The Taiwanese team enters this year's tournament with <b>renewed</b> confidence.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台灣隊帶著重新恢復的信心參加今年的錦標賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] renew (v.), renewal (n.)</div>"},"draw":{"type":"green","text":"n. 吸引力；誘惑<div style='color: #1565c0; margin-top: 10px;'>One of the WBC's greatest <b>draws</b> is watching MLB stars compete.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒球經典賽最大的吸引力之一是觀看美國職棒大聯盟的明星球員同場競技。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 這裡的draw意指「吸引人的事物」。</div>"},"unforgettable":{"type":"green","text":"adj. 難忘的<div style='color: #1565c0; margin-top: 10px;'>This can deliver many <b>unforgettable</b> moments.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這可以帶來許多難忘的時刻。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] forgettable (adj.), forget (v.)</div>"},"capture":{"type":"green","text":"v. 捕捉；傳達；呈現<div style='color: #1565c0; margin-top: 10px;'>Otani's strikeout to secure Japan's victory perfectly <b>captured</b> the competition at its best.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>大谷的關鍵三振確保了日本的勝利，完美地呈現了這場比賽最精彩之處。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] capture (n.), captivating (adj.)</div>"},"unique":{"type":"green","text":"adj. 獨特的；獨一無二的<div style='color: #1565c0; margin-top: 10px;'>It also showed that the WBC can deliver a <b>unique</b> sense of drama.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這也表明世界棒球經典賽能帶來一種獨特的戲劇感。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] uniquely (adv.), uniqueness (n.)</div>"},"spirit":{"type":"green","text":"n. 精神；鬥志<div style='color: #1565c0; margin-top: 10px;'>The team's fighting <b>spirit</b> won many new fans.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>球隊的鬥志贏得了許多新球迷。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] spiritual (adj.)</div>"},"powerhouse":{"type":"red","text":"n. 強隊；強國；實力雄厚的組織<div style='color: #1565c0; margin-top: 10px;'>Taiwan faces <b>powerhouse</b> teams Japan and South Korea.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台灣隊將面對強隊日本和韓國。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 指在某領域有強大實力的人、國家或組織。</div>"},"elimination":{"type":"red","text":"n. 淘汰；排除<div style='color: #1565c0; margin-top: 10px;'>After the pool stage, the top teams move on to single <b>elimination</b> rounds.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>小組賽結束後，頂尖隊伍將進入單淘汰賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] eliminate (v.), eliminator (n.)</div>"},"secure":{"type":"red","text":"v. 獲得；確保；使安全<div style='color: #1565c0; margin-top: 10px;'>Otani's strikeout to <b>secure</b> Japan's victory perfectly captured the competition.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>大谷的關鍵三振確保了日本的勝利。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] secure (adj.), security (n.)</div>"},"boast":{"type":"red","text":"v. 擁有（值得驕傲的事物）；吹噓<div style='color: #1565c0; margin-top: 10px;'>Taiwan may not <b>boast</b> the most MLB stars.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台灣隊可能不擁有最多的美國職棒大聯盟明星球員。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] boastful (adj.)</div>"},"determination":{"type":"red","text":"n. 決心；堅定<div style='color: #1565c0; margin-top: 10px;'>The team brings unbreakable <b>determination</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這支隊伍帶來了堅不可摧的決心。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] determine (v.), determined (adj.)</div>"},"heat up":{"type":"blue","text":"v. 升溫；加劇；變得激烈<div style='color: #1565c0; margin-top: 10px;'>The 2026 World Baseball Classic <b>heats up</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>2026年世界棒球經典賽戰況漸趨白熱化。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 可指溫度升高，也可指情勢或競爭變得激烈。</div>"},"be organized by":{"type":"blue","text":"被...組織/舉辦<div style='color: #1565c0; margin-top: 10px;'>The WBC is <b>organized by</b> Major League Baseball.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒球經典賽由美國職棒大聯盟舉辦。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 常用於描述活動或事件的主辦方。</div>"},"bring together":{"type":"blue","text":"使團結；聚集<div style='color: #1565c0; margin-top: 10px;'>The WBC <b>brings together</b> 20 countries in a global celebration of the sport.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒球經典賽將20個國家聚集在一起，進行一場全球性的體育慶典。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 強調將不同個體或群體匯集到一起。</div>"},"look forward to":{"type":"blue","text":"期待；盼望<div style='color: #1565c0; margin-top: 10px;'>Fans eagerly <b>look forward to</b> the competition.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>球迷們熱切期待這場比賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 後面通常接名詞或動名詞 (V-ing)。</div>"},"be divided into":{"type":"blue","text":"被分成...<div style='color: #1565c0; margin-top: 10px;'>20 teams were <b>divided into</b> four groups.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>20支隊伍被分成四個小組。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 常用於描述群體或整體如何被細分。</div>"},"on the edge of one's seats":{"type":"blue","text":"緊張興奮；坐立不安<div style='color: #1565c0; margin-top: 10px;'>That's what keeps everyone <b>on the edge of their seats</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這就是讓每個人都緊張興奮的原因。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 形容觀眾因情節發展而極度投入和興奮。</div>"},"face off against":{"type":"blue","text":"與...對抗/較量<div style='color: #1565c0; margin-top: 10px;'>Japan's Shohei Otani <b>faced off against</b> the U.S.' Mike Trout.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>日本的大谷翔平與美國的麥克·楚特正面對決。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 指雙方進行直接對抗或競爭。</div>"},"on the line":{"type":"blue","text":"處於危險/有待決定的狀態；關係到...的成敗<div style='color: #1565c0; margin-top: 10px;'>With the title <b>on the line</b>, Otani's strikeout secured Japan's victory.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>冠軍頭銜懸而未決，大谷的關鍵三振確保了日本的勝利。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 表示有重要的東西（如聲譽、結果、性命）可能失去或受到影響。</div>"},"in the flesh":{"type":"blue","text":"本人；親身；活生生地<div style='color: #1565c0; margin-top: 10px;'>Fans will have the opportunity to cheer for their heroes <b>in the flesh</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>球迷們將有機會親身為他們的英雄歡呼。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 強調親眼看到或親身經歷，而非透過媒體或間接方式。</div>"},"Participial phrase":{"type":"purple","text":"分詞片語 (修飾或補充說明)<div style='color: #1565c0; margin-top: 10px;'>...is happening this month with <b>excitement building</b> for baseball fans around the world.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...本月正在舉行，全球棒球迷的興奮情緒持續升高。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[說明] 現在分詞片語 (V-ing) 可用來補充說明動作、狀態或結果。此處 \"excitement building\" 為獨立分詞片語，修飾整個句子，表示伴隨的情況。</div>"},"Every X, every Y, and every Z + singular verb":{"type":"purple","text":"主詞動詞一致性：每個...和每個... + 單數動詞<div style='color: #1565c0; margin-top: 10px;'>With only two teams advancing from each pool, <b>every pitch, every hit, and every play matters</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>每個小組只有兩支隊伍晉級，因此每個投球、每個打擊、每個防守都很重要。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[說明] 當主詞由 \"every\" 或 \"each\" 開頭並由 \"and\" 連接多個名詞時，動詞仍需使用單數形式。</div>"},", meaning...":{"type":"purple","text":"分詞構句 (表示結果或解釋)<div style='color: #1565c0; margin-top: 10px;'>...move on to single elimination rounds, <b>meaning</b> a single loss can end a team's championship hopes.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...晉級到單淘汰賽，這表示一場失利就可能終結一支球隊的奪冠希望。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[說明] \", meaning...\" 常用於句末，引導一個現在分詞片語，用來解釋或補充說明前面句子的內容或結果。</div>"},"organized":{"type":"green","text":"adj. 有組織的；有條理的<div style='color: #1565c0; margin-top: 10px;'>The WBC is <b>organized</b> by Major League Baseball.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒球經典賽由美國職棒大聯盟主辦。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] organize (v.) 組織；organizer (n.) 組織者</div>"},"confederation":{"type":"red","text":"n. 聯盟；同盟<div style='color: #1565c0; margin-top: 10px;'>The World Baseball Softball <b>Confederation</b> (WBSC) promotes baseball and softball globally.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒壘球聯盟(WBSC)在全球推廣棒球和壘球運動。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 指由幾個獨立的國家或組織為了特定目的而組成的聯合體。</div>"},"league":{"type":"green","text":"n. 聯盟<div style='color: #1565c0; margin-top: 10px;'>Major <b>League</b> Baseball (MLB) is the highest level of professional baseball in the United States and Canada.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>美國職棒大聯盟(MLB)是美國和加拿大最高級別的職業棒球賽事。</div>"},"eagerly":{"type":"green","text":"adv. 渴望地；熱切地<div style='color: #1565c0; margin-top: 10px;'>Fans <b>eagerly</b> look forward to the competition.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>球迷們熱切期待這場比賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] eager (adj.) 熱切的</div>"},"representing":{"type":"green","text":"v. 代表 (represent 的現在分詞)<div style='color: #1565c0; margin-top: 10px;'>It shows the world's best players <b>representing</b> their home nations.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>它展示了世界上最好的球員代表他們的國家出賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] representative (n.) 代表；representation (n.) 代表、表現</div>"},"pride":{"type":"green","text":"n. 自豪；驕傲<div style='color: #1565c0; margin-top: 10px;'>They play with great <b>pride</b> for their country.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們為國家而戰，充滿自豪。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] take pride in... (以...為榮)</div>"},"passion":{"type":"green","text":"n. 熱情<div style='color: #1565c0; margin-top: 10px;'>Their performance showed their deep <b>passion</b> for the sport.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們的表現展現了對這項運動的深厚熱情。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] passionate (adj.) 熱情的</div>"},"divided into":{"type":"blue","text":"phr. 分成<div style='color: #1565c0; margin-top: 10px;'>The 20 teams are <b>divided into</b> four groups.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這20支隊伍被分成四個組。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 常用於描述將一個整體分成若干部分。</div>"},"advancing":{"type":"green","text":"v. 前進；晉級 (advance 的現在分詞)<div style='color: #1565c0; margin-top: 10px;'>Only two teams will be <b>advancing</b> from each pool.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>每個分組只有兩支隊伍能夠晉級。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] advance (n.) 進步、進展</div>"},"matters":{"type":"green","text":"v. 重要 (matter 的第三人稱單數)<div style='color: #1565c0; margin-top: 10px;'>Every pitch, every hit, and every play <b>matters</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>每一次投球、每一次打擊和每一次防守都很重要。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 作為名詞時意為「事情」、「問題」。</div>"},"on the edge of":{"type":"blue","text":"phr. 在...的邊緣<div style='color: #1565c0; margin-top: 10px;'>The thrilling game kept everyone <b>on the edge of</b> their seats.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這場驚心動魄的比賽讓每個人都坐立難安（坐在座位邊緣，形容緊張）。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] on the edge of one's seat 是一個慣用語，意指「坐立不安；緊張期待」。</div>"},"tournament":{"type":"green","text":"n. 錦標賽；聯賽<div style='color: #1565c0; margin-top: 10px;'>The Taiwanese team enters this year's <b>tournament</b> with renewed confidence.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台灣隊帶著重新建立的信心參加今年的錦標賽。</div>"},"medal":{"type":"green","text":"n. 獎牌<div style='color: #1565c0; margin-top: 10px;'>They won the gold <b>medal</b> at the championship.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他們在那次錦標賽中贏得了金牌。</div>"},"premier":{"type":"red","text":"adj. 首要的；頂級的<div style='color: #1565c0; margin-top: 10px;'>The Premier League is England's <b>premier</b> football competition.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>英格蘭超級足球聯賽是英格蘭頂級的足球賽事。</div>"},"draws":{"type":"green","text":"n. 吸引力；賣點 (draw 的複數)<div style='color: #1565c0; margin-top: 10px;'>One of the WBC's greatest <b>draws</b> is watching MLB stars compete.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界棒球經典賽最大的吸引力之一是觀看大聯盟明星球員同場競技。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 作為動詞時意為「吸引」、「畫圖」。</div>"},"deliver":{"type":"green","text":"v. 實現；產生；遞送<div style='color: #1565c0; margin-top: 10px;'>This can <b>deliver</b> many unforgettable moments.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這可以帶來許多難忘的時刻。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 還有「遞送包裹」的意思。</div>"},"faced off":{"type":"blue","text":"phr. 對決；對抗 (face off 的過去式)<div style='color: #1565c0; margin-top: 10px;'>Japan's Shohei Otani <b>faced off</b> against the U.S.'s Mike Trout.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>日本的大谷翔平與美國的麥克·楚奧特對決。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 常用於體育賽事中描述兩位選手或兩支隊伍的直接對抗。</div>"},"captured":{"type":"green","text":"v. 捕捉；呈現；贏得 (capture 的過去式)<div style='color: #1565c0; margin-top: 10px;'>Otani's strikeout perfectly <b>captured</b> the competition at its best.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>大谷的再見三振完美呈現了這場比賽最精彩的部分。</div>"},"rivalry":{"type":"green","text":"n. 競爭；對抗<div style='color: #1565c0; margin-top: 10px;'>The game highlighted the intense <b>rivalry</b> between the two teams.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這場比賽突顯了兩隊之間激烈的競爭。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] rival (n.) 競爭者；(v.) 競爭</div>"},"beat":{"type":"green","text":"v. 擊敗<div style='color: #1565c0; margin-top: 10px;'>Taiwan <b>beat</b> Australia and the Netherlands in 2013.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台灣在2013年擊敗了澳洲和荷蘭。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] beat-beat-beaten (三態)</div>"},"demonstrated":{"type":"green","text":"v. 展示；證明 (demonstrate 的過去式)<div style='color: #1565c0; margin-top: 10px;'>The team's fighting spirit <b>demonstrated</b> the island's love for the sport.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這支隊伍的奮戰精神展現了這個島嶼對這項運動的熱愛。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] demonstration (n.) 展示、證明</div>"},"equally":{"type":"green","text":"adv. 同樣地；平等地<div style='color: #1565c0; margin-top: 10px;'>The team brings something <b>equally</b> powerful.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這支隊伍帶來了同樣強大的東西。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] equal (adj.) 相等的；equality (n.) 平等</div>"},"unites":{"type":"green","text":"v. 團結；結合 (unite 的第三人稱單數)<div style='color: #1565c0; margin-top: 10px;'>A shared dream that <b>unites</b> players and fans alike.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>一個團結球員和球迷的共同夢想。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] unity (n.) 團結</div>"},"identity":{"type":"green","text":"n. 身份；認同<div style='color: #1565c0; margin-top: 10px;'>For Taiwan, baseball is a source of joy and <b>identity</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>對台灣來說，棒球是快樂和身份認同的來源。</div>"},"heats up":{"type":"blue","text":"phr. (比賽、討論等) 變得更激烈/緊張；升溫<div style='color: #1565c0; margin-top: 10px;'>The competition <b>heats up</b> as the final rounds approach.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>隨著決賽輪的臨近，競爭變得越來越激烈。</div>"},"dome":{"type":"green","text":"n. 圓頂；圓屋頂<div style='color: #1565c0; margin-top: 10px;'>The event was held under the magnificent <b>dome</b> of the stadium.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這場活動在體育場宏偉的圓頂下舉行。</div>"},"field":{"type":"green","text":"n. (運動) 場地；領域<div style='color: #1565c0; margin-top: 10px;'>The players ran onto the <b>field</b> to begin the game.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>球員們跑上球場開始比賽。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 也可指「領域」，如：academic field (學術領域)。</div>"},"drama":{"type":"green","text":"n. 戲劇性；戲劇<div style='color: #1565c0; margin-top: 10px;'>The unexpected ending added a lot of <b>drama</b> to the story.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這個出乎意料的結局為故事增添了許多戲劇性。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] dramatic (adj.) 戲劇性的</div>"},"Netherlands":{"type":"red","text":"n. 荷蘭 (國家名)<div style='color: #1565c0; margin-top: 10px;'>Amsterdam is the capital city of the <b>Netherlands</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>阿姆斯特丹是荷蘭的首都。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 也常被稱作 Holland (荷蘭)。</div>"},"opportunity":{"type":"green","text":"n. 機會<div style='color: #1565c0; margin-top: 10px;'>This is a great <b>opportunity</b> to learn new skills.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這是一個學習新技能的好機會。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[搭配] seize the opportunity (抓住機會)</div>"},"unbreakable":{"type":"red","text":"adj. 不可破壞的；堅不可摧的<div style='color: #1565c0; margin-top: 10px;'>She has an <b>unbreakable</b> spirit and never gives up.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她有著堅不可摧的精神，永不放棄。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[反義] breakable (adj.) 易碎的</div>"}};
+    <div class="question" data-q="3">
+      <div class="q-text autowrap"><span class="q-num">3</span>The teaching <span class="blank">______</span> at the famous high school soon attracted more than a dozen well-qualified applicants.</div>
+      <div class="options">
+        <label><input type="radio" name="q3" value="A"><span>(A) career</span></label>
+        <label><input type="radio" name="q3" value="B"><span>(B) vacancy</span></label>
+        <label><input type="radio" name="q3" value="C"><span>(C) expectation</span></label>
+        <label><input type="radio" name="q3" value="D"><span>(D) inspiration</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">career</span><span class="word">vacancy</span><span class="word">expectation</span><span class="word">inspiration</span></div>
+    </div>
 
-        function showInfo(encodedKeyword, event) {
-            const keyword = decodeURIComponent(encodedKeyword);
-            const data = dictionaryMap[keyword];
-            if (!data) return;
-            
-            const modal = document.getElementById("info-modal");
-            document.getElementById("modal-title").className = 'modal-title word-' + data.type;
-            document.getElementById("modal-title").innerHTML = keyword;
-            
-            let content = data.text;
-            if (!content.includes("<div") && !content.includes("<span")) {
-                content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-                const escapedKeyword = keyword.replace(/[.*+?^${()|[\]\\]/g, '\\$&');
-                const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
-                content = content.replace(regex, '<b>$1</b>');
-            }
-            document.getElementById("modal-body").innerHTML = content;
-            modal.style.display = "flex";
-        }
+    <div class="question" data-q="4">
+      <div class="q-text autowrap"><span class="q-num">4</span>Designed by a young engineer, the new product has created far more profit than <span class="blank">______</span> expected.</div>
+      <div class="options">
+        <label><input type="radio" name="q4" value="A"><span>(A) initially</span></label>
+        <label><input type="radio" name="q4" value="B"><span>(B) genuinely</span></label>
+        <label><input type="radio" name="q4" value="C"><span>(C) alternatively</span></label>
+        <label><input type="radio" name="q4" value="D"><span>(D) fundamentally</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">initially</span><span class="word">genuinely</span><span class="word">alternatively</span><span class="word">fundamentally</span></div>
+    </div>
 
-        function closeModal() { document.getElementById("info-modal").style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById("info-modal");
-            if (event.target == modal) modal.style.display = "none";
+    <div class="question" data-q="5">
+      <div class="q-text autowrap"><span class="q-num">5</span>It has been confirmed that a balanced <span class="blank">______</span> of fruit and vegetables is a key element to good health.</div>
+      <div class="options">
+        <label><input type="radio" name="q5" value="A"><span>(A) dimension</span></label>
+        <label><input type="radio" name="q5" value="B"><span>(B) integration</span></label>
+        <label><input type="radio" name="q5" value="C"><span>(C) provision</span></label>
+        <label><input type="radio" name="q5" value="D"><span>(D) consumption</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">dimension</span><span class="word">integration</span><span class="word">provision</span><span class="word">consumption</span></div>
+    </div>
+
+    <div class="question" data-q="6">
+      <div class="q-text autowrap"><span class="q-num">6</span>As a shy boy afraid of making public appearances, Timmy <span class="blank">______</span> the thought of speaking before large audiences.</div>
+      <div class="options">
+        <label><input type="radio" name="q6" value="A"><span>(A) dreads</span></label>
+        <label><input type="radio" name="q6" value="B"><span>(B) stresses</span></label>
+        <label><input type="radio" name="q6" value="C"><span>(C) wanders</span></label>
+        <label><input type="radio" name="q6" value="D"><span>(D) escapes</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">dreads</span><span class="word">stresses</span><span class="word">wanders</span><span class="word">escapes</span></div>
+    </div>
+
+    <div class="question" data-q="7">
+      <div class="q-text autowrap"><span class="q-num">7</span>To the newly-crowned winner of the piano competition, music is his life's <span class="blank">______</span>, which he has devoted himself to whole-heartedly.</div>
+      <div class="options">
+        <label><input type="radio" name="q7" value="A"><span>(A) resource</span></label>
+        <label><input type="radio" name="q7" value="B"><span>(B) impact</span></label>
+        <label><input type="radio" name="q7" value="C"><span>(C) passion</span></label>
+        <label><input type="radio" name="q7" value="D"><span>(D) emphasis</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">resource</span><span class="word">impact</span><span class="word">passion</span><span class="word">emphasis</span></div>
+    </div>
+
+    <div class="question" data-q="8">
+      <div class="q-text autowrap"><span class="q-num">8</span>The drunk driver who shouted at passers-by and <span class="blank">______</span> them with glass bottles was quickly arrested by the police.</div>
+      <div class="options">
+        <label><input type="radio" name="q8" value="A"><span>(A) shattered</span></label>
+        <label><input type="radio" name="q8" value="B"><span>(B) assaulted</span></label>
+        <label><input type="radio" name="q8" value="C"><span>(C) overturned</span></label>
+        <label><input type="radio" name="q8" value="D"><span>(D) condemned</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">shattered</span><span class="word">assaulted</span><span class="word">overturned</span><span class="word">condemned</span></div>
+    </div>
+
+    <div class="question" data-q="9">
+      <div class="q-text autowrap"><span class="q-num">9</span>There were so many people at the bus station that I had to <span class="blank">______</span> my way through the crowd to board the bus in time.</div>
+      <div class="options">
+        <label><input type="radio" name="q9" value="A"><span>(A) crash</span></label>
+        <label><input type="radio" name="q9" value="B"><span>(B) tumble</span></label>
+        <label><input type="radio" name="q9" value="C"><span>(C) elbow</span></label>
+        <label><input type="radio" name="q9" value="D"><span>(D) struggle</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">crash</span><span class="word">tumble</span><span class="word">elbow</span><span class="word">struggle</span></div>
+    </div>
+
+    <div class="question" data-q="10">
+      <div class="q-text autowrap"><span class="q-num">10</span>Deadly shootings on US campuses have raised <span class="blank">______</span> concerns about how to prevent such tragic incidents from happening again.</div>
+      <div class="options">
+        <label><input type="radio" name="q10" value="A"><span>(A) swift</span></label>
+        <label><input type="radio" name="q10" value="B"><span>(B) brutal</span></label>
+        <label><input type="radio" name="q10" value="C"><span>(C) harsh</span></label>
+        <label><input type="radio" name="q10" value="D"><span>(D) grave</span></label>
+      </div>
+      <div class="vocab-row"><span class="word">swift</span><span class="word">brutal</span><span class="word">harsh</span><span class="word">grave</span></div>
+    </div>
+
+    <div class="section-title">二、綜合測驗（第 11-20 題）</div>
+
+    <div class="group-label">【第 11-15 題為題組】</div>
+
+    <div class="passage autowrap">
+      From the campfire to the café, people have always gathered together to share the latest news. White rhinoceroses, <span class="blank">[11]</span>, do the same thing—only their choice of meeting place is a giant pile of poop.<br><br>
+      A new study indicates that rhinos have a smelly way to <span class="blank">[12]</span>.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">11.</span>
+      <div class="options">
+        <label><input type="radio" name="q11" value="A"><span>(A) what is more</span></label>
+        <label><input type="radio" name="q11" value="B"><span>(B) it turns out</span></label>
+        <label><input type="radio" name="q11" value="C"><span>(C) in other words</span></label>
+        <label><input type="radio" name="q11" value="D"><span>(D) all in all</span></label>
+      </div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">12.</span>
+      <div class="options">
+        <label><input type="radio" name="q12" value="A"><span>(A) demonstrate</span></label>
+        <label><input type="radio" name="q12" value="B"><span>(B) immigrate</span></label>
+        <label><input type="radio" name="q12" value="C"><span>(C) communicate</span></label>
+        <label><input type="radio" name="q12" value="D"><span>(D) manipulate</span></label>
+      </div>
+    </div>
+    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">demonstrate</span><span class="word">immigrate</span><span class="word">communicate</span><span class="word">manipulate</span></div>
+
+    <div class="passage autowrap">
+      Scientists studying white rhinos in South Africa have found that these animals leave messages in their poop. In particular, they leave their poop in the same place for all the other members in the group to smell—just like humans leaving messages on social media. Furthermore, different rhinos leave different chemicals in their poop, which provide important <span class="blank">[13]</span> about the age, sex, general health, and reproductive conditions of each specific rhino. This is of great significance for the peace and harmony in the group. When all members in a group know what's going on with each other, it is <span class="blank">[14]</span> that they will fight.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">13.</span>
+      <div class="options">
+        <label><input type="radio" name="q13" value="A"><span>(A) doubts</span></label>
+        <label><input type="radio" name="q13" value="B"><span>(B) icons</span></label>
+        <label><input type="radio" name="q13" value="C"><span>(C) matches</span></label>
+        <label><input type="radio" name="q13" value="D"><span>(D) clues</span></label>
+      </div>
+    </div>
+    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">doubts</span><span class="word">icons</span><span class="word">matches</span><span class="word">clues</span></div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">14.</span>
+      <div class="options">
+        <label><input type="radio" name="q14" value="A"><span>(A) hardly surprising</span></label>
+        <label><input type="radio" name="q14" value="B"><span>(B) more acceptable</span></label>
+        <label><input type="radio" name="q14" value="C"><span>(C) truly important</span></label>
+        <label><input type="radio" name="q14" value="D"><span>(D) less likely</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      The researchers have even made "fake poop" to see how different rhinos would react. They find that dominant males are particularly <span class="blank">[15]</span> the "fake poop" that carries chemicals from females ready to mate. The males sniff it for longer duration and come back to the same spot more frequently, a clear sign that they are gathering information about mating opportunities from the poop.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">15.</span>
+      <div class="options">
+        <label><input type="radio" name="q15" value="A"><span>(A) responsive to</span></label>
+        <label><input type="radio" name="q15" value="B"><span>(B) annoyed at</span></label>
+        <label><input type="radio" name="q15" value="C"><span>(C) considerate of</span></label>
+        <label><input type="radio" name="q15" value="D"><span>(D) tolerant with</span></label>
+      </div>
+    </div>
+
+    <div class="group-label">【第 16-20 題為題組】</div>
+
+    <div class="passage autowrap">
+      The history of dim sum stretches back to the early days of the Silk Road, an ancient network of trade routes connecting the East and the West. Those who traveled along the routes through China needed places to rest. Teahouses thus sprang up to <span class="blank">[16]</span> the weary travelers, offering them a cup of tea to help them regain energy. But the culinary art of dim sum <span class="blank">[17]</span>, for it was considered inappropriate to pair tea with food.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">16.</span>
+      <div class="options">
+        <label><input type="radio" name="q16" value="A"><span>(A) accommodate</span></label>
+        <label><input type="radio" name="q16" value="B"><span>(B) compensate</span></label>
+        <label><input type="radio" name="q16" value="C"><span>(C) anticipate</span></label>
+        <label><input type="radio" name="q16" value="D"><span>(D) reinforce</span></label>
+      </div>
+    </div>
+    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">accommodate</span><span class="word">compensate</span><span class="word">anticipate</span><span class="word">reinforce</span></div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">17.</span>
+      <div class="options">
+        <label><input type="radio" name="q17" value="A"><span>(A) would hardly develop</span></label>
+        <label><input type="radio" name="q17" value="B"><span>(B) had yet to develop</span></label>
+        <label><input type="radio" name="q17" value="C"><span>(C) was fast developing</span></label>
+        <label><input type="radio" name="q17" value="D"><span>(D) had almost developed</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      Centuries later, the ability of tea to aid in digestion finally became known. Teahouse owners therefore began providing bite-sized snacks as an accompaniment, and the tradition of these Cantonese delicacies was born.<br><br>
+      Dim sum is more than just an example of Chinese cuisine. It is <span class="blank">[18]</span> an enjoyable dining experience that can span hours.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">18.</span>
+      <div class="options">
+        <label><input type="radio" name="q18" value="A"><span>(A) passed on to</span></label>
+        <label><input type="radio" name="q18" value="B"><span>(B) brought up as</span></label>
+        <label><input type="radio" name="q18" value="C"><span>(C) thought to have</span></label>
+        <label><input type="radio" name="q18" value="D"><span>(D) meant to be</span></label>
+      </div>
+    </div>
+
+    <div class="passage autowrap">
+      The small portions were designed to merely "touch the heart," as the name literally means, and <span class="blank">[19]</span> were first enjoyed as snacks. The small size allows the customer to order a great variety of dishes, creating a banquet of different tastes and flavors. It is customary for big groups to enjoy simple dishes together as <span class="blank">[20]</span>. Ultimately, dim sum—the food—is only a small part of the dim sum experience.
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">19.</span>
+      <div class="options">
+        <label><input type="radio" name="q19" value="A"><span>(A) if so</span></label>
+        <label><input type="radio" name="q19" value="B"><span>(B) as such</span></label>
+        <label><input type="radio" name="q19" value="C"><span>(C) by then</span></label>
+        <label><input type="radio" name="q19" value="D"><span>(D) in that</span></label>
+      </div>
+    </div>
+
+    <div class="q-inline">
+      <span class="q-num-sq">20.</span>
+      <div class="options">
+        <label><input type="radio" name="q20" value="A"><span>(A) a widely known delicacy</span></label>
+        <label><input type="radio" name="q20" value="B"><span>(B) an intimate romantic dinner</span></label>
+        <label><input type="radio" name="q20" value="C"><span>(C) a joyful social activity</span></label>
+        <label><input type="radio" name="q20" value="D"><span>(D) an amazing local cuisine</span></label>
+      </div>
+    </div>
+    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">delicacy</span><span class="word">cuisine</span></div>
+
+    <div class="button-row">
+      <button type="button" onclick="submitQuiz()">送出作答</button>
+    </div>
+
+  </form>
+
+  <div id="results">
+
+    <div class="result-card score">
+      <h3>📊 你的成績</h3>
+      <div class="score-big" id="scoreBig"></div>
+      <div class="score-detail" id="scoreDetail"></div>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="teacherReport"></div>
+      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="wordsReport"></div>
+      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
+    </div>
+
+    <div class="result-card feedback">
+      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
+      <div id="feedbackReport"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ===== 正確答案 =====
+  const ANSWERS = {
+    1:'B', 2:'C', 3:'B', 4:'A', 5:'D', 6:'A', 7:'C', 8:'B', 9:'C', 10:'D',
+    11:'B', 12:'C', 13:'D', 14:'D', 15:'A', 16:'A', 17:'B', 18:'D', 19:'B', 20:'C'
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1:  { answer:'tight (緊湊的)', detail:'tight schedule 是固定搭配（緊湊的行程），因市長行程緊湊，安排採訪需等好幾週。(A) hasty 倉促的 (C) diligent 勤奮的 (D) routine 例行的，語意不合。' },
+    2:  { answer:'amateur (業餘的)', detail:'句型 started as ... but now ... professional 表對比，一開始是「業餘」設計師，現在有專業工作室。(A) official 官方的 (B) instant 即時的 (D) elementary 初級的，皆不符。' },
+    3:  { answer:'vacancy (職缺)', detail:'teaching vacancy = 教職缺，才能吸引應徵者 applicants。(A) career 職涯 (C) expectation 期望 (D) inspiration 靈感，皆與 applicants 語意不合。' },
+    4:  { answer:'initially (起初)', detail:'far more profit than initially expected = 比「起初預期」多得多。(B) genuinely 真誠地 (C) alternatively 另外 (D) fundamentally 根本地，皆不合上下文。' },
+    5:  { answer:'consumption (食用量)', detail:'balanced consumption of fruit and vegetables = 均衡的蔬果「攝取量」是健康要素。(A) dimension 維度 (B) integration 整合 (C) provision 供應，皆非「食用」義。' },
+    6:  { answer:'dreads (害怕)', detail:'內向的 Timmy「害怕」在大眾前講話，dread + Ving/N 表害怕、恐懼。(B) stresses 強調 (C) wanders 漫遊 (D) escapes 逃離（文法需 escapes from），皆不合。' },
+    7:  { answer:'passion (熱情/摯愛)', detail:'音樂是他「畢生熱愛」，全心投入。life\'s passion 固定搭配。(A) resource 資源 (B) impact 影響 (D) emphasis 強調，皆不符。' },
+    8:  { answer:'assaulted (攻擊)', detail:'酒駕者大吼並用玻璃瓶「攻擊」路人。assault sb with sth 為固定搭配。(A) shattered 粉碎（無「攻擊人」義）(C) overturned 推翻 (D) condemned 譴責，皆不合。' },
+    9:  { answer:'elbow (用手肘擠)', detail:'elbow one\'s way through the crowd = 用手肘在人群中擠出一條路，為固定搭配。(A) crash 撞 (B) tumble 跌倒 (D) struggle 需要接 to V，此處文法與語意皆不合。' },
+    10: { answer:'grave (嚴重的)', detail:'grave concerns = 嚴重的憂慮（常見搭配）。校園槍擊引發「嚴重」關切。(A) swift 迅速 (B) brutal 殘暴（多形容行為人/行動）(C) harsh 嚴厲（多形容批評/懲罰），皆不及 grave 自然。' },
+    11: { answer:'it turns out (結果發現)', detail:'承接前句人類聚會分享新聞，接著轉折：「原來」犀牛也做一樣的事。it turns out 表「結果/沒想到」。(A) what is more 而且 (C) in other words 換句話說 (D) all in all 總之，皆不合轉折語氣。' },
+    12: { answer:'communicate (溝通)', detail:'犀牛有一種「氣味」的方式來「溝通」（呼應下文留言給同伴）。(A) demonstrate 示範 (B) immigrate 移民 (D) manipulate 操縱，皆不切題。' },
+    13: { answer:'clues (線索)', detail:'不同糞便留下不同化學物質，提供重要「線索」來判斷年齡、性別等。(A) doubts 疑慮 (B) icons 圖示 (C) matches 配對，皆不合語意。' },
+    14: { answer:'less likely (較不可能)', detail:'當群體成員互相了解狀況時，打架的可能性「較低」。承前文「和平和諧」，合邏輯。(A) hardly surprising 不令人意外 (B) more acceptable 更可接受 (C) truly important 真的重要，皆不符「和平與打架」的邏輯。' },
+    15: { answer:'responsive to (對…有反應)', detail:'be responsive to 為固定搭配，表對…有反應。優勢公犀牛對母犀牛氣味的糞便「有反應」（嗅更久、回來更多次）。(B) annoyed at 生氣 (C) considerate of 體貼 (D) tolerant with 搭配錯（應為 tolerant of），皆不合。' },
+    16: { answer:'accommodate (招待/容納)', detail:'茶館興起來「招待」疲憊旅人。accommodate 可指提供住宿/招待。(B) compensate 補償 (C) anticipate 預期 (D) reinforce 加強，皆不合語意。' },
+    17: { answer:'had yet to develop (尚未發展)', detail:'have yet to + V = 尚未（做某事）。後文 for it was considered inappropriate 解釋原因，說明點心當時「尚未發展」。(A) would hardly develop 幾乎不會發展 (C) was fast developing 快速發展中（與「尚未」矛盾）(D) had almost developed 幾乎已發展完，皆不合邏輯。' },
+    18: { answer:'meant to be (本該是)', detail:'It is meant to be ... = 它本來就是…。點心本該是一種享受數小時的用餐體驗。(A) passed on to 傳遞給 (B) brought up as 被培養成 (C) thought to have 被認為擁有，文法或語意皆不合。' },
+    19: { answer:'as such (作為這樣的東西)', detail:'as such 呼應前文「點心設計是觸動人心的小點心」，承續「因此/作為這樣的點心」最初被當點心享用。(A) if so 如果如此 (C) by then 到那時 (D) in that 因為，皆不合。' },
+    20: { answer:'a joyful social activity (愉快的社交活動)', detail:'大群人一起享用簡單菜色，是「愉快的社交活動」，呼應全文強調「點心體驗>食物本身」。(A) 知名美食 (B) 親密浪漫晚餐 (D) 當地美食，皆與「big groups...together」社交情境不合。' }
+  };
+
+  // ===== 自動將 .autowrap 區塊的英文單字包成可點選 span =====
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('word') || p.classList.contains('blank') || p.classList.contains('q-num') || p.classList.contains('q-num-sq'))) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
         }
-    </script>
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
+
+  // 單字點擊切換
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      e.target.classList.toggle('unfamiliar');
+    }
+  });
+
+  // 選項選取樣式
+  document.querySelectorAll('.options label').forEach(lbl => {
+    lbl.addEventListener('click', () => {
+      const name = lbl.querySelector('input').name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(r => r.closest('label').classList.remove('selected'));
+      lbl.classList.add('selected');
+    });
+  });
+
+  // ===== 送出作答 =====
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    let answers = {}, unanswered = [];
+    for (let i=1; i<=20; i++) {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    }
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
+    }
+
+    let correct = 0, wrongList = [];
+    for (let i=1; i<=20; i++) {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    }
+    const percent = Math.round(correct/20*100);
+
+    const unfamiliar = [];
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
+    });
+    unfamiliar.sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / 20`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${20-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    let r1 = `【115學測英文 第1-20題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/20（${percent}%）\n---\n題號\t學生答案\t正確答案\t對錯\n`;
+    for (let i=1; i<=20; i++) {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    }
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    let r2 = `【115學測英文 第1-20題 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
+    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
+    else {
+      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
+      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
+    }
+    document.getElementById('wordsReport').textContent = r2;
+
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+    } else {
+      wrongList.forEach(i => {
+        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        div.innerHTML = `
+          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${ANSWERS[i]}（${EXPLANATIONS[i].answer}）</span></div>
+          <div class="explain">${EXPLANATIONS[i].detail}</div>`;
+        fb.appendChild(div);
+      });
+    }
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
 </body>
 </html>
