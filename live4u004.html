@@ -1,73 +1,679 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英文閱讀解析</title>
-    <style>
-        :root { --green-color: #2e7d32; --red-color: #d32f2f; --blue-color: #1565c0; --purple-color: #7b1fa2; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.8; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .article-content { font-size: 1.15em; color: #000; margin-top: 20px; line-height: 1.9; }
-        .highlight { cursor: pointer; font-weight: bold; position: relative; padding: 2px 4px; border-radius: 4px; transition: background 0.2s; display: inline-block; }
-        .highlight:hover { background: #f0f0f0; }
-        .word-green { color: var(--green-color); }
-        .word-red { color: var(--red-color); }
-        .word-blue { color: var(--blue-color); }
-        .word-purple { color: var(--purple-color); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>115 年學測英文 - 第二部分（第 21-34 題）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); padding: 32px 40px; }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info { background: #ecf5fd; border-radius: 10px; padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input { border: 1px solid #bdc3c7; border-radius: 6px; padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px; }
+  .instruction { background: #fff9e6; border-left: 4px solid #f39c12; padding: 12px 16px; margin-bottom: 18px; border-radius: 6px; font-size: 0.95em; color: #8e6c16; }
+  .legend { font-size: 0.88em; color: #7f8c8d; background: #f8f9fa; border-radius: 6px; padding: 8px 12px; margin-bottom: 12px; }
+  .legend .word-sample { background: #ffebcd; border-bottom: 2px solid #e67e22; padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e; }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 10px; width: 100%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; box-sizing: border-box; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8em; cursor: pointer; color: #666; line-height: 1; }
-        .modal-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 1.05em; line-height: 1.8; color: #333; }
-        .modal-body b { color: inherit; background-color: rgba(255,235,59,0.3); padding: 0 2px; border-radius: 3px; }
-    </style>
+  .section-title { background: linear-gradient(90deg, #3498db, #5dade2); color: #fff; padding: 10px 16px; border-radius: 8px; margin: 26px 0 14px; font-weight: 600; font-size: 1.05em; }
+  .group-label { background: #eaf4fb; color: #1f618d; padding: 7px 14px; border-radius: 6px; margin: 18px 0 10px; font-weight: 600; font-size: 0.98em; display: inline-block; }
+
+  .passage { background: #fafbfc; border: 1px solid #e1e8ed; border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px; font-size: 1em; text-align: justify; }
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  /* ---- q-inline: 題號方塊 + 選項同一行 ---- */
+  .q-inline { display: flex; align-items: flex-start; gap: 10px; background: #fff; border: 1px solid #e1e8ed; border-radius: 10px; padding: 10px 14px; margin: 8px 0; flex-wrap: wrap; }
+  .q-num-sq { background: #3498db; color: #fff; font-weight: 700; border-radius: 6px; padding: 4px 10px; font-size: 0.95em; flex-shrink: 0; white-space: nowrap; }
+
+  /* 選項容器 */
+  .options { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .options label { flex: 1 1 calc(25% - 6px); min-width: 130px; display: flex; align-items: center; gap: 5px; padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 0.93em; }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* 文意選填：10選項兩排（每排5個） */
+  .options-ci label { flex: 1 1 calc(20% - 6px); min-width: 100px; font-size: 0.88em; }
+
+  /* 篇章結構：5選項，每個選項佔完整一行（句子長） */
+  .options-ps label { flex: 1 1 100%; min-width: 100%; font-size: 0.93em; align-items: flex-start; }
+  .options-ps label input { margin-top: 3px; }
+
+  /* 可點選單字 */
+  .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.12s; }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar { background: #ffebcd; border-bottom: 2px solid #e67e22; font-weight: 600; color: #b9770e; }
+
+  /* 選項單字可點選列（重複出現，僅供標記） */
+  .vocab-row { background: #fef5e7; border: 1px dashed #f5b041; border-radius: 6px; padding: 8px 12px; margin: 10px 0; font-size: 0.95em; color: #7d6608; }
+  .vocab-row::before { content: "🔖 選項單字點一下可標記："; font-size: 0.85em; color: #b9770e; font-weight: 600; display: block; margin-bottom: 4px; }
+  .vocab-row .word { padding: 2px 5px; margin: 2px; display: inline-block; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit { background: linear-gradient(135deg, #3498db, #2980b9); color: #fff; border: none; border-radius: 10px; padding: 14px 36px; font-size: 1.05em; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3); transition: transform 0.15s; }
+  button.submit:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); padding: 20px 22px; margin-bottom: 20px; border-top: 4px solid #3498db; }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable { background: #f4f6f8; border: 1px dashed #bdc3c7; border-radius: 8px; padding: 14px; white-space: pre-wrap; font-family: "Menlo","Consolas",monospace; font-size: 0.9em; max-height: 300px; overflow-y: auto; color: #2c3e50; }
+  .copy-btn { background: #95a5a6; color: #fff; border: none; border-radius: 6px; padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px; }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+  .wrong-item { background: #fdf2f2; border-left: 4px solid #e74c3c; padding: 12px 16px; border-radius: 6px; margin-bottom: 10px; }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  @media (max-width: 600px) {
+    .container { padding: 18px 16px; }
+    .options-ci label { flex: 1 1 calc(33% - 6px); }
+    .options label { flex: 1 1 calc(50% - 6px); }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>精選英文閱讀與解析</h1>
-        <div class="article-content">St. Patrick's Day, the <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> holiday that <span class="highlight word-blue" onclick="showInfo('paints%20the%20world%20green', event)">paints the world green</span>. On March 17th each year, millions of people celebrate St. Patrick's Day. But how did a holiday <span class="highlight word-green" onclick="showInfo('marking', event)">marking</span> the death of Ireland's most famous <span class="highlight word-green" onclick="showInfo('saint', event)">saint</span> <span class="highlight word-blue" onclick="showInfo('transform%20into', event)">transform into</span> the celebration of <span class="highlight word-blue" onclick="showInfo('all%20things%20Irish', event)">all things <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span></span> <span class="highlight word-purple" onclick="showInfo('that%20we%20know%20today', event)">that we know today</span>? <br><br>St. Patrick, the <span class="highlight word-red" onclick="showInfo('patron%20saint', event)">patron <span class="highlight word-green" onclick="showInfo('saint', event)">saint</span></span> of Ireland, was a real person, but he wasn't <span class="highlight word-green" onclick="showInfo('actually', event)">actually</span> <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span>. He was born in 5th century Britain and <span class="highlight word-purple" onclick="showInfo('was%20taken%20to', event)">was taken to</span> Ireland <span class="highlight word-purple" onclick="showInfo('after%20being%20captured', event)">after being captured</span> and <span class="highlight word-purple" onclick="showInfo('made%20a%20slave', event)">made a slave</span> by <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> <span class="highlight word-green" onclick="showInfo('pirates', event)">pirates</span>. After he <span class="highlight word-green" onclick="showInfo('escaped', event)">escaped</span>, he <span class="highlight word-red" onclick="showInfo('journeyed', event)">journeyed</span> back to Britain and became a <span class="highlight word-green" onclick="showInfo('priest', event)">priest</span> <span class="highlight word-blue" onclick="showInfo('before%20returning%20to', event)">before returning to</span> Ireland to teach <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> <span class="highlight word-red" onclick="showInfo('pagans', event)">pagans</span> about <span class="highlight word-green" onclick="showInfo('Christianity', event)">Christianity</span>. <br><br>There are <span class="highlight word-green" onclick="showInfo('numerous', event)">numerous</span> <span class="highlight word-green" onclick="showInfo('legends', event)">legends</span> about this <span class="highlight word-green" onclick="showInfo('period', event)">period</span> of his life. The most famous story is that he drove all the snakes out of Ireland. <span class="highlight word-green" onclick="showInfo('However', event)">However</span>, modern scientists believe the island was <span class="highlight word-green" onclick="showInfo('likely', event)">likely</span> never <span class="highlight word-blue" onclick="showInfo('home%20to', event)">home to</span> snakes <span class="highlight word-blue" onclick="showInfo('in%20the%20first%20place', event)">in the first place</span>. <br><br>Today, St. Patrick's Day is a <span class="highlight word-green" onclick="showInfo('national%20holiday', event)">national holiday</span> in Ireland. Offices and schools shut and people <span class="highlight word-blue" onclick="showInfo('&lt;span class=" highlight="" word-green"="">gather</span>%20to', event)"&gt;<span class="highlight word-green" onclick="showInfo('gather', event)">gather</span> to join the fun. In Dublin, which <span class="highlight word-green" onclick="showInfo('hosts', event)">hosts</span> the country's largest St. Patrick's Day celebration, over 500,000 people <span class="highlight word-green" onclick="showInfo('attend', event)">attend</span> a street <span class="highlight word-green" onclick="showInfo('parade', event)">parade</span> <span class="highlight word-green" onclick="showInfo('featuring', event)">featuring</span> <span class="highlight word-green" onclick="showInfo('marching%20bands', event)">marching bands</span>, dancers, and community groups. Other <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> towns and cities also <span class="highlight word-blue" onclick="showInfo('hold%20big%20celebrations', event)">hold big celebrations</span>, with live music and <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> dancing <span class="highlight word-blue" onclick="showInfo('among%20the%20most%20popular', event)">among the most popular</span> events.<br><br><span class="highlight word-red" onclick="showInfo('Shamrocks', event)">Shamrocks</span> and the color green are <span class="highlight word-blue" onclick="showInfo('a%20big%20part%20of', event)">a big part of</span> St. Patrick's Day. Ireland's national flower <span class="highlight word-purple" onclick="showInfo('can%20be%20seen%20decorating', event)">can be seen decorating</span> everything from cookies to <span class="highlight word-green" onclick="showInfo('costumes', event)">costumes</span>. It has become <span class="highlight word-blue" onclick="showInfo('associated%20with', event)">associated with</span> St. Patrick because stories say he used its three leaves to explain <span class="highlight word-green" onclick="showInfo('Christianity', event)">Christianity</span>'s <span class="highlight word-red" onclick="showInfo('Holy%20Trinity', event)">Holy Trinity</span>. You'll also see people <span class="highlight word-blue" onclick="showInfo('dressed%20from%20head%20to%20toe%20in%20green', event)">dressed from head to toe in green</span>. <br><br>A color long linked with <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> <span class="highlight word-green" onclick="showInfo('identity', event)">identity</span> and culture, including <span class="highlight word-red" onclick="showInfo('leprechauns', event)">leprechauns</span>, the <span class="highlight word-green" onclick="showInfo('playful', event)">playful</span> <span class="highlight word-green" onclick="showInfo('fairies', event)">fairies</span> of <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> <span class="highlight word-green" onclick="showInfo('legends', event)">legends</span>. <br><br>Today, St. Patrick's Day is a <span class="highlight word-green" onclick="showInfo('much-loved', event)">much-loved</span> international event, and some of the biggest celebrations <span class="highlight word-blue" onclick="showInfo('take%20place', event)">take place</span> outside Ireland. Parades are held in New York, Montreal, Tokyo, and even <span class="highlight word-red" onclick="showInfo('Buenos%20Aires', event)">Buenos Aires</span>. Popular buildings around the world, <span class="highlight word-blue" onclick="showInfo('such%20as', event)">such as</span> the Sydney Opera House and the <span class="highlight word-green" onclick="showInfo('leaning', event)">Leaning</span> Tower of Pisa, are <span class="highlight word-blue" onclick="showInfo('lit%20up', event)">lit up</span> in green for the day. <br><br>In the U.S., <span class="highlight word-purple" onclick="showInfo('which%20is%20home%20to', event)">which is <span class="highlight word-blue" onclick="showInfo('home%20to', event)">home to</span></span> one of the largest <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> populations, a special <span class="highlight word-red" onclick="showInfo('dye', event)">dye</span> is used to turn the Chicago River bright green every year. <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> Americans celebrate by gathering with family and enjoying traditional dishes like <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> soda bread and <span class="highlight word-red" onclick="showInfo('lamb%20stew', event)">lamb stew</span>. <br><br>Now it's time to start <span class="highlight word-blue" onclick="showInfo('digging%20out', event)">digging out</span> your greenest clothes. <span class="highlight word-purple" onclick="showInfo('Whether', event)">Whether</span> you're <span class="highlight word-green" onclick="showInfo('Irish', event)">Irish</span> or not, St. Patrick's Day offers everyone a chance to celebrate and have fun.</div>
+<div class="container">
+  <header>
+    <h1>115 學年度學科能力測驗 英文考科</h1>
+    <div class="subtitle">第貳部分 ‧ 三、文意選填（21–30 題）‧ 四、篇章結構（31–34 題）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label><input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label><input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>單選一個答案。閱讀時遇到不會的單字，<u>直接點一下標記</u>（再點取消），系統將於送出後統一匯出給老師。
+  </div>
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>（文章與選項中所有英文單字都可點選標記）
+  </div>
+
+  <form id="quizForm">
+
+  <!-- ===== 三、文意選填 ===== -->
+  <div class="section-title">三、文意選填（占 10 分）‧ 第 21–30 題</div>
+  <div class="group-label">【第 21–30 題為題組】</div>
+
+  <!-- Paragraph 1 -->
+  <div class="passage autowrap">
+    Are you feeling a little guilty about your daily mid-afternoon snooze? Well, you don't need to.
+    Taking a nap in the middle of the day is by no means <span class="blank">[21]</span>. In fact, you are giving your brain and your
+    body some time to recharge and turn up refreshed.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">21.</span>
+    <div class="options options-ci" data-qid="21">
+      <label><input type="radio" name="q21" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q21" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q21" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q21" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q21" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q21" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q21" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q21" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q21" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q21" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 2a：含 [22][23] 的句子 -->
+  <div class="passage autowrap">
+    Research has shown that napping is linked with brain size and <span class="blank">[22]</span>; specifically, it can boost our
+    cognition and memory. In our early 20s, our brain starts shrinking, which gradually slows cognition and
+    increases dementia <span class="blank">[23]</span> in later life.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">22.</span>
+    <div class="options options-ci" data-qid="22">
+      <label><input type="radio" name="q22" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q22" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q22" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q22" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q22" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q22" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q22" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q22" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q22" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q22" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">23.</span>
+    <div class="options options-ci" data-qid="23">
+      <label><input type="radio" name="q23" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q23" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q23" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q23" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q23" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q23" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q23" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q23" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q23" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q23" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 2b：含 [24][25] 的句子 -->
+  <div class="passage autowrap">
+    The brain size of habitual nappers, however, is found to be better preserved. This suggests that napping
+    may significantly <span class="blank">[24]</span> age-related brain shrinkage, and thus lower the possibility of developing dementia.
+    Neurologists also confirm that naps can enhance memory and learning. For students cramming for college
+    exams, napping will help <span class="blank">[25]</span> acquired knowledge and learned skills.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">24.</span>
+    <div class="options options-ci" data-qid="24">
+      <label><input type="radio" name="q24" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q24" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q24" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q24" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q24" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q24" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q24" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q24" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q24" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q24" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">25.</span>
+    <div class="options options-ci" data-qid="25">
+      <label><input type="radio" name="q25" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q25" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q25" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q25" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q25" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q25" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q25" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q25" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q25" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q25" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 3a：含 [26] 的句子 -->
+  <div class="passage autowrap">
+    Understanding how to perfect your nap is vital for reaping its benefits. To begin with, you need
+    to find out the ideal length of a nap. Some studies recommend napping for 20 to 40 minutes, while others
+    <span class="blank">[26]</span> shorter naps, such as 15 to 20 minutes.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">26.</span>
+    <div class="options options-ci" data-qid="26">
+      <label><input type="radio" name="q26" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q26" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q26" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q26" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q26" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q26" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q26" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q26" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q26" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q26" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 3b：含 [27] 的句子 -->
+  <div class="passage autowrap">
+    The best nap length, however, may <span class="blank">[27]</span> a person's physical condition and fatigue level.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">27.</span>
+    <div class="options options-ci" data-qid="27">
+      <label><input type="radio" name="q27" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q27" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q27" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q27" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q27" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q27" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q27" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q27" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q27" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q27" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 3c：含 [28] 的句子 -->
+  <div class="passage autowrap">
+    For some people, even a five-minute nap can bring about surprisingly <span class="blank">[28]</span> benefits.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">28.</span>
+    <div class="options options-ci" data-qid="28">
+      <label><input type="radio" name="q28" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q28" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q28" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q28" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q28" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q28" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q28" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q28" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q28" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q28" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 4a：含 [29] 的句子 -->
+  <div class="passage autowrap">
+    Furthermore, the environment where naps are taken also plays an important role. A dark space with
+    little distraction is ideal for napping. So, find yourself a quiet place with <span class="blank">[29]</span> light or with blackout curtains.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">29.</span>
+    <div class="options options-ci" data-qid="29">
+      <label><input type="radio" name="q29" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q29" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q29" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q29" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q29" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q29" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q29" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q29" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q29" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q29" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- Paragraph 4b：含 [30] 的句子 -->
+  <div class="passage autowrap">
+    If you can't find a dark room, consider wearing a sleep mask. You can also add some soothing
+    nature sounds to create a relaxing <span class="blank">[30]</span>, which can make your naps more effective.
+  </div>
+
+  <div class="q-inline">
+    <span class="q-num-sq">30.</span>
+    <div class="options options-ci" data-qid="30">
+      <label><input type="radio" name="q30" value="A"><span>(A) retain</span></label>
+      <label><input type="radio" name="q30" value="B"><span>(B) depend on</span></label>
+      <label><input type="radio" name="q30" value="C"><span>(C) atmosphere</span></label>
+      <label><input type="radio" name="q30" value="D"><span>(D) delay</span></label>
+      <label><input type="radio" name="q30" value="E"><span>(E) unproductive</span></label>
+      <label><input type="radio" name="q30" value="F"><span>(F) risk</span></label>
+      <label><input type="radio" name="q30" value="G"><span>(G) function</span></label>
+      <label><input type="radio" name="q30" value="H"><span>(H) minimal</span></label>
+      <label><input type="radio" name="q30" value="I"><span>(I) dramatic</span></label>
+      <label><input type="radio" name="q30" value="J"><span>(J) point to</span></label>
+    </div>
+  </div>
+
+  <!-- 文意選填 選項單字重複區（供點選） -->
+  <div class="vocab-row">
+    <span class="word">retain</span>
+    <span class="word">depend</span>
+    <span class="word">on</span>
+    <span class="word">atmosphere</span>
+    <span class="word">delay</span>
+    <span class="word">unproductive</span>
+    <span class="word">risk</span>
+    <span class="word">function</span>
+    <span class="word">minimal</span>
+    <span class="word">dramatic</span>
+    <span class="word">point</span>
+    <span class="word">to</span>
+  </div>
+
+  <!-- ===== 四、篇章結構 ===== -->
+  <div class="section-title">四、篇章結構（占 8 分）‧ 第 31–34 題</div>
+  <div class="group-label">【第 31–34 題為題組，每題 2 分，選項有一項為多餘】</div>
+
+  <!-- Passage Paragraph 1 -->
+  <div class="passage autowrap">
+    Smiling is a gesture that many people engage in dozens of times a day without thought. Most people
+    believe that smiling is an expression of good feelings, a simple way to show happiness and friendliness.
+    But does this hold true across time and cultures?
+  </div>
+
+  <!-- Q31 -->
+  <div class="q-inline">
+    <span class="q-num-sq">31.</span>
+    <div class="options options-ps" data-qid="31">
+      <label><input type="radio" name="q31" value="A"><span>(A) Another crucial factor is a society's immigration diversity.</span></label>
+      <label><input type="radio" name="q31" value="B"><span>(B) Various factors have thus contributed to the phenomenon of smiling.</span></label>
+      <label><input type="radio" name="q31" value="C"><span>(C) For most of recorded human history, the open smile has been deeply unfashionable.</span></label>
+      <label><input type="radio" name="q31" value="D"><span>(D) A genuine smile indicates contentment, while a forced smile suggests underlying distress.</span></label>
+      <label><input type="radio" name="q31" value="E"><span>(E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</span></label>
+    </div>
+  </div>
+
+  <!-- Passage Paragraph 2 -->
+  <div class="passage autowrap">
+    In the West, for example, portraits of men and women before the 1700s typically depicted
+    them with a serious, unsmiling expression. The absence of smiles stemmed partly from the attempt to
+    hide their decayed teeth caused by poor dental hygiene. More importantly, smiling and laughter had long
+    been perceived in the society as manifestations of a lack of self-control and good manners. Paintings with
+    white-toothed smiles emerged after the 1700s, with the gradual rise of a culture that valued perception
+    and responsiveness.
+  </div>
+
+  <!-- Passage Paragraph 3 -->
+  <div class="passage autowrap">
+    Recent studies also show that interpretations of smiling may vary from culture to culture. While in
+    most cultures smiling is associated with positive emotions, in certain cultures the same person can be
+    judged as less intelligent when smiling.
+  </div>
+
+  <!-- Q32 -->
+  <div class="q-inline">
+    <span class="q-num-sq">32.</span>
+    <div class="options options-ps" data-qid="32">
+      <label><input type="radio" name="q32" value="A"><span>(A) Another crucial factor is a society's immigration diversity.</span></label>
+      <label><input type="radio" name="q32" value="B"><span>(B) Various factors have thus contributed to the phenomenon of smiling.</span></label>
+      <label><input type="radio" name="q32" value="C"><span>(C) For most of recorded human history, the open smile has been deeply unfashionable.</span></label>
+      <label><input type="radio" name="q32" value="D"><span>(D) A genuine smile indicates contentment, while a forced smile suggests underlying distress.</span></label>
+      <label><input type="radio" name="q32" value="E"><span>(E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</span></label>
+    </div>
+  </div>
+
+  <!-- Passage Paragraph 4 -->
+  <div class="passage autowrap">
+    The amount people smile is culturally influenced as well. People smile more when they are from
+    countries that are high in individualism and low in population. These are often places where the needs and
+    rights of the individual take precedence over those of the group.
+  </div>
+
+  <!-- Q33 -->
+  <div class="q-inline">
+    <span class="q-num-sq">33.</span>
+    <div class="options options-ps" data-qid="33">
+      <label><input type="radio" name="q33" value="A"><span>(A) Another crucial factor is a society's immigration diversity.</span></label>
+      <label><input type="radio" name="q33" value="B"><span>(B) Various factors have thus contributed to the phenomenon of smiling.</span></label>
+      <label><input type="radio" name="q33" value="C"><span>(C) For most of recorded human history, the open smile has been deeply unfashionable.</span></label>
+      <label><input type="radio" name="q33" value="D"><span>(D) A genuine smile indicates contentment, while a forced smile suggests underlying distress.</span></label>
+      <label><input type="radio" name="q33" value="E"><span>(E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</span></label>
+    </div>
+  </div>
+
+  <!-- Passage Paragraph 5 -->
+  <div class="passage autowrap">
+    Newcomers from different parts of the world are found to smile more. Without a shared language,
+    they often resort to smiling to get along with others. For them, smiling is a straightforward way to
+    indicate that one is reliable and trustworthy.
+  </div>
+
+  <!-- Q34 -->
+  <div class="q-inline">
+    <span class="q-num-sq">34.</span>
+    <div class="options options-ps" data-qid="34">
+      <label><input type="radio" name="q34" value="A"><span>(A) Another crucial factor is a society's immigration diversity.</span></label>
+      <label><input type="radio" name="q34" value="B"><span>(B) Various factors have thus contributed to the phenomenon of smiling.</span></label>
+      <label><input type="radio" name="q34" value="C"><span>(C) For most of recorded human history, the open smile has been deeply unfashionable.</span></label>
+      <label><input type="radio" name="q34" value="D"><span>(D) A genuine smile indicates contentment, while a forced smile suggests underlying distress.</span></label>
+      <label><input type="radio" name="q34" value="E"><span>(E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</span></label>
+    </div>
+  </div>
+
+  <!-- Passage final sentence -->
+  <div class="passage autowrap">
+    As many psychologists now point out, this simple gesture is in fact far more complicated than it may appear.
+  </div>
+
+  <!-- 篇章結構 選項文字重複區（供點選） -->
+  <div class="vocab-row">
+    <span class="word">Another</span> <span class="word">crucial</span> <span class="word">factor</span> <span class="word">society's</span> <span class="word">immigration</span> <span class="word">diversity</span>
+    ｜
+    <span class="word">Various</span> <span class="word">factors</span> <span class="word">contributed</span> <span class="word">phenomenon</span> <span class="word">smiling</span>
+    ｜
+    <span class="word">recorded</span> <span class="word">human</span> <span class="word">history</span> <span class="word">open</span> <span class="word">smile</span> <span class="word">deeply</span> <span class="word">unfashionable</span>
+    ｜
+    <span class="word">genuine</span> <span class="word">indicates</span> <span class="word">contentment</span> <span class="word">forced</span> <span class="word">suggests</span> <span class="word">underlying</span> <span class="word">distress</span>
+    ｜
+    <span class="word">well-known</span> <span class="word">Russian</span> <span class="word">proverb</span> <span class="word">Smiling</span> <span class="word">reason</span> <span class="word">sign</span> <span class="word">stupidity</span>
+  </div>
+
+  <div class="button-row">
+    <button type="button" class="submit" onclick="submitQuiz()">送出作答</button>
+  </div>
+
+  </form>
+
+  <!-- ===== 結果區 ===== -->
+  <div id="results">
+
+    <div class="result-card score">
+      <h3>📊 你的成績</h3>
+      <div class="score-big" id="scoreBig"></div>
+      <div class="score-detail" id="scoreDetail"></div>
     </div>
 
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
+    <div class="result-card teacher">
+      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="teacherReport"></div>
+      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
     </div>
 
-    <script>
-        const dictionaryMap = {"paints the world green":{"type":"blue","text":"phr. 使世界染上綠色 (比喻慶祝活動的影響力)<div style='color: #1565c0; margin-top: 10px;'>St. Patrick's Day, the Irish holiday that <b>paints the world green</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>聖派翠克節，這個愛爾蘭節日讓世界染上綠色。</div>"},"marking":{"type":"green","text":"v. 紀念；標誌 (mark 的現在分詞)<div style='color: #1565c0; margin-top: 10px;'>But how did a holiday <b>marking</b> the death of Ireland's most famous saint transform into the celebration...?</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>但一個紀念愛爾蘭最著名聖人逝世的節日是如何轉變成慶典的呢？</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] mark (v./n.), marked (adj.)</div>"},"transform into":{"type":"blue","text":"phr. 轉變成<div style='color: #1565c0; margin-top: 10px;'>But how did a holiday marking the death of Ireland's most famous saint <b>transform into</b> the celebration...?</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>但一個紀念愛爾蘭最著名聖人逝世的節日是如何轉變成慶典的呢？</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] transformation (n.)</div>"},"all things Irish":{"type":"blue","text":"phr. 所有與愛爾蘭相關的事物<div style='color: #1565c0; margin-top: 10px;'>...transform into the celebration of <b>all things Irish</b> that we know today?</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...轉變成我們今天所知的所有與愛爾蘭相關的事物的慶典？</div>"},"that we know today":{"type":"purple","text":"句型. 我們今天所知的 (受詞子句，關係代名詞 'that' 可省略)<div style='color: #1565c0; margin-top: 10px;'>...transform into the celebration of all things Irish <b>that we know today</b>?</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...轉變成我們今天所知的所有與愛爾蘭相關的事物的慶典？</div>"},"patron saint":{"type":"red","text":"n. 主保聖人；守護聖徒<div style='color: #1565c0; margin-top: 10px;'>St. Patrick, the <b>patron saint</b> of Ireland, was a real person...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>聖派翠克，愛爾蘭的主保聖人，是一位真實人物。</div>"},"actually":{"type":"green","text":"adv. 實際上；事實上<div style='color: #1565c0; margin-top: 10px;'>...but he wasn't <b>actually</b> Irish.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...但他實際上並不是愛爾蘭人。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] actual (adj.)</div>"},"was taken to":{"type":"purple","text":"句型. 被帶到 (被動語態)<div style='color: #1565c0; margin-top: 10px;'>He was born in 5th century Britain and <b>was taken to</b> Ireland after being captured...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他出生於五世紀的英國，在被捕獲後被帶到愛爾蘭。</div>"},"after being captured":{"type":"purple","text":"句型. 在被捕獲之後 (介系詞後接動名詞的被動形式)<div style='color: #1565c0; margin-top: 10px;'>He was taken to Ireland <b>after being captured</b> and made a slave by Irish pirates.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他被帶到愛爾蘭，在被愛爾蘭海盜捕獲並淪為奴隸之後。</div>"},"made a slave":{"type":"purple","text":"句型. 被變成奴隸 (動詞 'make' 的被動用法，意為「使成為」)<div style='color: #1565c0; margin-top: 10px;'>He was taken to Ireland after being captured and <b>made a slave</b> by Irish pirates.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>他被帶到愛爾蘭，在被捕獲並被愛爾蘭海盜變成奴隸之後。</div>"},"pirates":{"type":"green","text":"n. 海盜<div style='color: #1565c0; margin-top: 10px;'>...made a slave by Irish <b>pirates</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...被愛爾蘭海盜變成奴隸。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] piracy (n.)</div>"},"escaped":{"type":"green","text":"v. 逃脫<div style='color: #1565c0; margin-top: 10px;'>After he <b>escaped</b>, he journeyed back to Britain...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在他逃脫後，他啟程返回英國。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] escape (n.)</div>"},"journeyed":{"type":"red","text":"v. 旅行；行進 (journey 的過去式)<div style='color: #1565c0; margin-top: 10px;'>After he escaped, he <b>journeyed</b> back to Britain...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在他逃脫後，他啟程返回英國。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] journey (n.)</div>"},"priest":{"type":"green","text":"n. 牧師；神父<div style='color: #1565c0; margin-top: 10px;'>...and became a <b>priest</b> before returning to Ireland.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...並成為一名牧師，然後返回愛爾蘭。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] priesthood (n.)</div>"},"before returning to":{"type":"blue","text":"phr. 在返回...之前<div style='color: #1565c0; margin-top: 10px;'>...became a priest <b>before returning to</b> Ireland to teach Irish pagans about Christianity.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...成為一名牧師，然後返回愛爾蘭向愛爾蘭異教徒傳授基督教。</div>"},"pagans":{"type":"red","text":"n. 異教徒<div style='color: #1565c0; margin-top: 10px;'>...to teach Irish <b>pagans</b> about Christianity.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...向愛爾蘭異教徒傳授基督教。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] pagan (adj.)</div>"},"Christianity":{"type":"green","text":"n. 基督教<div style='color: #1565c0; margin-top: 10px;'>...to teach Irish pagans about <b>Christianity</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...向愛爾蘭異教徒傳授基督教。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] Christian (n./adj.)</div>"},"numerous":{"type":"green","text":"adj. 許多的；大量的<div style='color: #1565c0; margin-top: 10px;'>There are <b>numerous</b> legends about this period of his life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>關於他這一時期生活的傳說不計其數。</div>"},"legends":{"type":"green","text":"n. 傳說；傳奇<div style='color: #1565c0; margin-top: 10px;'>There are numerous <b>legends</b> about this period of his life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>關於他這一時期生活的傳說不計其數。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] legendary (adj.)</div>"},"drove ... out of":{"type":"blue","text":"phr. 把...趕出<div style='color: #1565c0; margin-top: 10px;'>The most famous story is that he <b>drove</b> all the snakes <b>out of</b> Ireland.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>最著名的故事是他把所有的蛇都趕出了愛爾蘭。</div>"},"However":{"type":"green","text":"adv. 然而；不過<div style='color: #1565c0; margin-top: 10px;'><b>However</b>, modern scientists believe the island was likely never home to snakes...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>然而，現代科學家認為這座島嶼很可能從來就不是蛇的棲息地。</div>"},"likely":{"type":"green","text":"adv. 很可能<div style='color: #1565c0; margin-top: 10px;'>...the island was <b>likely</b> never home to snakes in the first place.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...這座島嶼很可能從來就不是蛇的棲息地。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] likelihood (n.)</div>"},"home to":{"type":"blue","text":"phr. ...的棲息地；...的家園<div style='color: #1565c0; margin-top: 10px;'>...the island was likely never <b>home to</b> snakes in the first place.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...這座島嶼很可能從來就不是蛇的棲息地。</div>"},"in the first place":{"type":"blue","text":"phr. 起初；一開始<div style='color: #1565c0; margin-top: 10px;'>...the island was likely never home to snakes <b>in the first place</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...這座島嶼很可能從來就不是蛇的棲息地。</div>"},"national holiday":{"type":"green","text":"n. 國定假日<div style='color: #1565c0; margin-top: 10px;'>Today, St. Patrick's Day is a <b>national holiday</b> in Ireland.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>今天，聖派翠克節是愛爾蘭的一個國定假日。</div>"},"gather to":{"type":"blue","text":"phr. 聚集起來做...<div style='color: #1565c0; margin-top: 10px;'>Offices and schools shut and people <b>gather to</b> join the fun.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>辦公室和學校關閉，人們聚集起來享受樂趣。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] gathering (n.)</div>"},"hosts":{"type":"green","text":"v. 主辦；擔任主人<div style='color: #1565c0; margin-top: 10px;'>In Dublin, which <b>hosts</b> the country's largest St. Patrick's Day celebration...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在都柏林，這個國家最大的聖派翠克節慶典的主辦地...</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] host (n.)</div>"},"which hosts...":{"type":"purple","text":"句型. 非限定關係子句 (用逗號隔開，補充說明先行詞)<div style='color: #1565c0; margin-top: 10px;'>In Dublin, <b>which hosts</b> the country's largest St. Patrick's Day celebration, over 500,000 people attend...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在都柏林，該國最大的聖派翠克節慶典在此舉行，超過50萬人參加...</div>"},"featuring":{"type":"green","text":"v. 以...為特色；包含 (feature 的現在分詞)<div style='color: #1565c0; margin-top: 10px;'>...a street parade <b>featuring</b> marching bands, dancers, and community groups.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...一場街頭遊行，特色是軍樂隊、舞者和社區團體。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] feature (n./v.)</div>"},"marching bands":{"type":"green","text":"n. 軍樂隊；行進樂隊<div style='color: #1565c0; margin-top: 10px;'>...a street parade featuring <b>marching bands</b>, dancers, and community groups.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...一場街頭遊行，特色是軍樂隊、舞者和社區團體。</div>"},"hold big celebrations":{"type":"blue","text":"phr. 舉辦盛大慶典<div style='color: #1565c0; margin-top: 10px;'>Other Irish towns and cities also <b>hold big celebrations</b>...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>其他愛爾蘭城鎮也舉辦盛大慶典。</div>"},"among the most popular":{"type":"blue","text":"phr. 最受歡迎的其中之一<div style='color: #1565c0; margin-top: 10px;'>...with live music and Irish dancing <b>among the most popular</b> events.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...現場音樂和愛爾蘭舞蹈是最受歡迎的活動之一。</div>"},"Shamrocks":{"type":"red","text":"n. 酢漿草 (愛爾蘭國花)<div style='color: #1565c0; margin-top: 10px;'><b>Shamrocks</b> and the color green are a big part of St. Patrick's Day.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>酢漿草和綠色是聖派翠克節的重要組成部分。</div>"},"a big part of":{"type":"blue","text":"phr. ...的重要組成部分<div style='color: #1565c0; margin-top: 10px;'>Shamrocks and the color green are <b>a big part of</b> St. Patrick's Day.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>酢漿草和綠色是聖派翠克節的重要組成部分。</div>"},"can be seen decorating":{"type":"purple","text":"句型. 可以看到...裝飾著 (被動語態，後接現在分詞表示動作)<div style='color: #1565c0; margin-top: 10px;'>Ireland's national flower <b>can be seen decorating</b> everything from cookies to costumes.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>愛爾蘭國花可以看到它裝飾著從餅乾到服裝的一切。</div>"},"associated with":{"type":"blue","text":"phr. 與...相關聯<div style='color: #1565c0; margin-top: 10px;'>It has become <b>associated with</b> St. Patrick because stories say he used its three leaves...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>它已與聖派翠克相關聯，因為傳說他用它的三片葉子...</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] association (n.)</div>"},"Holy Trinity":{"type":"red","text":"n. 聖三一 (基督教教義，指聖父、聖子、聖靈)<div style='color: #1565c0; margin-top: 10px;'>...he used its three leaves to explain Christianity's <b>Holy Trinity</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...他用它的三片葉子解釋基督教的聖三一。</div>"},"dressed from head to toe in green":{"type":"blue","text":"phr. 從頭到腳穿著綠色<div style='color: #1565c0; margin-top: 10px;'>You'll also see people <b>dressed from head to toe in green</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>你也會看到人們從頭到腳穿著綠色。</div>"},"identity":{"type":"green","text":"n. 身份；特性<div style='color: #1565c0; margin-top: 10px;'>A color long linked with Irish <b>identity</b> and culture...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>一種長期與愛爾蘭身份和文化相關聯的顏色...</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] identify (v.)</div>"},"leprechauns":{"type":"red","text":"n. 小矮妖 (愛爾蘭傳說中的精靈)<div style='color: #1565c0; margin-top: 10px;'>...including <b>leprechauns</b>, the playful fairies of Irish legends.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...包括小矮妖，愛爾蘭傳說中淘氣的精靈。</div>"},"playful":{"type":"green","text":"adj. 淘氣的；愛玩鬧的<div style='color: #1565c0; margin-top: 10px;'>...the <b>playful</b> fairies of Irish legends.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...愛爾蘭傳說中淘氣的精靈。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] play (v./n.)</div>"},"much-loved":{"type":"green","text":"adj. 深受喜愛的<div style='color: #1565c0; margin-top: 10px;'>Today, St. Patrick's Day is a <b>much-loved</b> international event...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>今天，聖派翠克節是一個深受喜愛的國際盛事。</div>"},"take place":{"type":"blue","text":"phr. 發生；舉行<div style='color: #1565c0; margin-top: 10px;'>...some of the biggest celebrations <b>take place</b> outside Ireland.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...一些最大的慶祝活動在愛爾蘭以外舉行。</div>"},"such as":{"type":"blue","text":"phr. 例如<div style='color: #1565c0; margin-top: 10px;'>Popular buildings around the world, <b>such as</b> the Sydney Opera House and the Leaning Tower of Pisa...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界上受歡迎的建築，例如雪梨歌劇院和比薩斜塔。</div>"},"which is home to":{"type":"purple","text":"句型. 是...的家鄉/棲息地 (非限定關係子句，後接 'home to' 片語)<div style='color: #1565c0; margin-top: 10px;'>In the U.S., <b>which is home to</b> one of the largest Irish populations...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在美國，這裡是愛爾蘭人口最多的地方之一。</div>"},"dye":{"type":"red","text":"n. 染料<div style='color: #1565c0; margin-top: 10px;'>...a special <b>dye</b> is used to turn the Chicago River bright green every year.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...每年都會使用一種特殊的染料將芝加哥河染成亮綠色。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] dye (v.)</div>"},"turn ... bright green":{"type":"blue","text":"phr. 把...變成亮綠色<div style='color: #1565c0; margin-top: 10px;'>...a special dye is used to <b>turn the Chicago River bright green</b> every year.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...每年都會使用一種特殊的染料將芝加哥河染成亮綠色。</div>"},"celebrate by V-ing":{"type":"blue","text":"句型. 藉由做...來慶祝<div style='color: #1565c0; margin-top: 10px;'>Irish Americans <b>celebrate by gathering</b> with family and enjoying traditional dishes...</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>愛爾蘭裔美國人透過與家人團聚和享用傳統菜餚來慶祝。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] celebration (n.)</div>"},"lamb stew":{"type":"red","text":"n. 燉羊肉<div style='color: #1565c0; margin-top: 10px;'>...enjoying traditional dishes like Irish soda bread and <b>lamb stew</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>...享用傳統菜餚，例如愛爾蘭蘇打麵包和燉羊肉。</div>"},"Whether...or not":{"type":"purple","text":"句型. 無論是否<div style='color: #1565c0; margin-top: 10px;'><b>Whether you're Irish or not</b>, St. Patrick's Day offers everyone a chance to celebrate and have fun.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>無論你是否是愛爾蘭人，聖派翠克節都為每個人提供了慶祝和玩樂的機會。</div>"},"saint":{"type":"green","text":"n. 聖人<div style='color: #1565c0; margin-top: 10px;'>St. Patrick, the patron <b>saint</b> of Ireland, was a real person.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>愛爾蘭的守護<b>聖人</b>聖派翠克是一個真實存在的人。</div>"},"Irish":{"type":"green","text":"adj. 愛爾蘭的；n. 愛爾蘭人<div style='color: #1565c0; margin-top: 10px;'>St. Patrick's Day, the <b>Irish</b> holiday that paints the world green.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>聖派翠克節是將世界染成綠色的<b>愛爾蘭</b>節日。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] Ireland (n.) 愛爾蘭 (國家)</div>"},"period":{"type":"green","text":"n. 一段時間；時期<div style='color: #1565c0; margin-top: 10px;'>There are numerous legends about this <b>period</b> of his life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>關於他生命中這段<b>時期</b>有許多傳說。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] periodic (adj.) 週期的</div>"},"gather":{"type":"green","text":"v. 聚集；收集<div style='color: #1565c0; margin-top: 10px;'>Offices and schools shut and people <b>gather</b> to join the fun.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>辦公室和學校關閉，人們<b>聚集</b>在一起享受樂趣。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] gathering (n.) 聚會</div>"},"attend":{"type":"green","text":"v. 參加；出席<div style='color: #1565c0; margin-top: 10px;'>Over 500,000 people <b>attend</b> a street parade featuring marching bands, dancers, and community groups.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>超過五十萬人<b>參加</b>一場有樂隊、舞者和社區團體的街頭遊行。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] attendance (n.) 出席人數；到場</div>"},"parade":{"type":"green","text":"n. 遊行；閱兵<div style='color: #1565c0; margin-top: 10px;'>In Dublin, over 500,000 people attend a street <b>parade</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在都柏林，超過五十萬人參加街頭<b>遊行</b>。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] parader (n.) 遊行者</div>"},"costumes":{"type":"green","text":"n. 服裝；戲服 (複數)<div style='color: #1565c0; margin-top: 10px;'>Ireland's national flower can be seen decorating everything from cookies to <b>costumes</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>愛爾蘭的國花可以被看到裝飾著從餅乾到<b>服裝</b>的一切。</div>"},"fairies":{"type":"green","text":"n. 仙女；精靈 (複數)<div style='color: #1565c0; margin-top: 10px;'>Leprechauns are the playful <b>fairies</b> of Irish legends.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>小矮妖是愛爾蘭傳說中頑皮的<b>精靈</b>。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] fairy tale (n.) 童話故事</div>"},"Buenos Aires":{"type":"red","text":"n. 布宜諾斯艾利斯 (阿根廷首都)<div style='color: #1565c0; margin-top: 10px;'>Parades are held in New York, Montreal, Tokyo, and even <b>Buenos Aires</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>紐約、蒙特婁、東京甚至<b>布宜諾斯艾利斯</b>都舉行遊行。</div>"},"lit up":{"type":"blue","text":"phr. 被照亮；點亮 (light up 的過去式或過去分詞)<div style='color: #1565c0; margin-top: 10px;'>Popular buildings around the world, such as the Sydney Opera House and the Leaning Tower of Pisa, are <b>lit up</b> in green for the day.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>世界各地受歡迎的建築物，如雪梨歌劇院和比薩斜塔，當天都被綠色<b>照亮</b>。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 原型為 light up (v.phr.) 點亮，照亮</div>"},"Whether":{"type":"purple","text":"conj. 無論 (是否)；是否<div style='color: #1565c0; margin-top: 10px;'><b>Whether</b> you're Irish or not, St. Patrick's Day offers everyone a chance to celebrate and have fun.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'><b>無論</b>你是不是愛爾蘭人，聖派翠克節都為每個人提供了慶祝和玩樂的機會。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 後面通常接 or not，表示兩種或多種可能性。也可引導名詞子句。</div>"},"digging out":{"type":"blue","text":"片語. 找出 (久未使用的東西)<div style='color: #1565c0; margin-top: 10px;'>Now it's time to start <b>digging out</b> your greenest clothes.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>現在是時候把你們最綠的衣服找出來了。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] 此片語通常指從儲藏處、箱子或抽屜深處找出久未使用的東西。也可以指從土裡挖掘出某物。</div>"},"leaning":{"type":"green","text":"adj. 傾斜的；v. 傾斜，倚靠<div style='color: #1565c0; margin-top: 10px;'>The <b>Leaning</b> Tower of Pisa is one of Italy's most famous landmarks.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>比薩斜塔是義大利最著名的地標之一。</div><div style='color: #1565c0; margin-top: 10px;'>She <b>leaned</b> against the wall, waiting for her friends.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她靠在牆上，等著她的朋友。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[動詞三態] lean, leaned (leant), leaned (leant)。[片語] lean on/against (倚靠), lean towards (傾向於)。</div>"}};
+    <div class="result-card teacher">
+      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="wordsReport"></div>
+      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
+    </div>
 
-        function showInfo(encodedKeyword, event) {
-            const keyword = decodeURIComponent(encodedKeyword);
-            const data = dictionaryMap[keyword];
-            if (!data) return;
-            
-            const modal = document.getElementById("info-modal");
-            document.getElementById("modal-title").className = 'modal-title word-' + data.type;
-            document.getElementById("modal-title").innerHTML = keyword;
-            
-            let content = data.text;
-            if (!content.includes("<div") && !content.includes("<span")) {
-                content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-                const escapedKeyword = keyword.replace(/[.*+?^${()|[\]\\]/g, '\\$&');
-                const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
-                content = content.replace(regex, '<b>$1</b>');
-            }
-            document.getElementById("modal-body").innerHTML = content;
-            modal.style.display = "flex";
-        }
+    <div class="result-card feedback">
+      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
+      <div id="feedbackReport"></div>
+    </div>
 
-        function closeModal() { document.getElementById("info-modal").style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById("info-modal");
-            if (event.target == modal) modal.style.display = "none";
-        }
-    </script>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ===== 正確答案 =====
+const ANSWERS = {
+  21:'E', 22:'G', 23:'F', 24:'D', 25:'A',
+  26:'J', 27:'B', 28:'I', 29:'H', 30:'C',
+  31:'C', 32:'E', 33:'A', 34:'B'
+};
+
+// ===== 選項文字 =====
+const CI_OPTS = { A:'retain', B:'depend on', C:'atmosphere', D:'delay', E:'unproductive', F:'risk', G:'function', H:'minimal', I:'dramatic', J:'point to' };
+const PS_OPTS = {
+  A:"Another crucial factor is a society's immigration diversity.",
+  B:"Various factors have thus contributed to the phenomenon of smiling.",
+  C:"For most of recorded human history, the open smile has been deeply unfashionable.",
+  D:"A genuine smile indicates contentment, while a forced smile suggests underlying distress.",
+  E:'In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."'
+};
+
+// ===== 錯題詳解 =====
+const EXPLANATIONS = {
+  21: { answer:'(E) unproductive（無效率的）', detail:'「by no means」= 絕非；句意為午睡「絕非無效率的」，下文也列出諸多益處佐證。unproductive = 無生產力的、無效率的。其餘選項 retain（保留）、delay（延遲）、atmosphere（氛圍）均與句意不符。' },
+  22: { answer:'(G) function（功能）', detail:'句子說午睡與「大腦尺寸和功能」相關（brain size and function）。function 表示大腦的運作/功能，為常見學術詞彙搭配。risk（風險）、atmosphere（氛圍）均不符。' },
+  23: { answer:'(F) risk（風險）', detail:'increases dementia risk = 增加失智症風險。dementia risk 是固定搭配；dramatic（戲劇性的）、minimal（極少的）均為形容詞，不可填名詞位置。' },
+  24: { answer:'(D) delay（延緩）', detail:'「napping may significantly delay age-related brain shrinkage」= 午睡可顯著延緩年齡相關的腦萎縮。delay 後可接名詞，表「延遲/延緩」。retain（保留）與句意不符；point to 後需接受詞而非名詞短語。' },
+  25: { answer:'(A) retain（保留）', detail:'「napping will help retain acquired knowledge and learned skills」= 午睡有助於保留所學知識與技能。retain 為及物動詞接名詞，符合文法與語意。depend on（取決於）句構不合。' },
+  26: { answer:'(J) point to（指向/建議）', detail:'「while others point to shorter naps」= 而其他研究指向/建議較短的睡眠時間。point to 作動詞片語表「指出、建議」。retain（保留）、delay（延遲）均不搭配。' },
+  27: { answer:'(B) depend on（取決於）', detail:'「the best nap length may depend on a person\'s physical condition」= 最佳睡眠長度可能取決於個人狀況。depend on 為固定片語。retain、delay 後不接 on + 名詞。' },
+  28: { answer:'(I) dramatic（戲劇性的/顯著的）', detail:'「surprisingly dramatic benefits」= 出人意料地顯著效果。dramatic 形容詞修飾 benefits，表「驚人的」效果，與 surprisingly 搭配強調程度。minimal（極少）語意相反；unproductive 不修飾 benefits。' },
+  29: { answer:'(H) minimal（極少的）', detail:'「a quiet place with minimal light」= 光線極少的安靜地方，與後文 blackout curtains（遮光窗簾）呼應，強調越暗越好。dramatic（顯著的）語意矛盾；unproductive 不修飾 light。' },
+  30: { answer:'(C) atmosphere（氛圍）', detail:'「create a relaxing atmosphere」= 創造放鬆的氛圍，為固定搭配。function（功能）、risk（風險）均不與 relaxing 搭配，且句意不符。' },
+  31: { answer:'(C) For most of recorded human history, the open smile has been deeply unfashionable.', detail:'前段以問句收尾（does this hold true across time and cultures?），本句作為答案引言，指出歷史上微笑並不流行。後段「In the West…」提供具體例子支撐，為典型「總-分」結構。(B) 總結語氣過早；(A)(D)(E) 主題不吻合。' },
+  32: { answer:'(E) In fact, there is a well-known Russian proverb…', detail:'前句說某些文化認為微笑的人「較不聰明」，(E) 用俄羅斯諺語作為具體例證，in fact 表示進一步確認前述觀點，邏輯緊密。(A) 引入新主題不合；(B) 為全文結論，放在此處太早。' },
+  33: { answer:"(A) Another crucial factor is a society's immigration diversity.", detail:'前文說個人主義社會的人笑較多（一個因素），(A) 用 another（另一個）引出第二個因素——移民多樣性，後文接著說明移民笑得更多的原因，結構一致。(B) 為全文總結不宜放此；(D)(E) 主題偏離。' },
+  34: { answer:'(B) Various factors have thus contributed to the phenomenon of smiling.', detail:'(B) 用 thus（因此）總結前文提到的多種因素（歷史文化、個人主義、移民多樣性），作為結尾段的開頭承上啟下，後接「this simple gesture is in fact far more complicated」形成完整收尾。' }
+};
+
+// ===== 自動包裝英文單字為可點選 span =====
+function wrapWordsIn(root) {
+  const SKIP = new Set(['SCRIPT','STYLE','INPUT','LABEL','BUTTON']);
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => {
+      let p = n.parentNode;
+      while (p && p !== root) {
+        if (SKIP.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+        if (p.classList && (p.classList.contains('word') || p.classList.contains('blank') || p.classList.contains('q-num-sq'))) return NodeFilter.FILTER_REJECT;
+        p = p.parentNode;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  let n;
+  while ((n = walker.nextNode())) nodes.push(n);
+  const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
+  nodes.forEach(tn => {
+    const text = tn.nodeValue;
+    if (!re.test(text)) { re.lastIndex = 0; return; }
+    re.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let lastIdx = 0, m;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = m[0];
+      frag.appendChild(span);
+      lastIdx = m.index + m[0].length;
+    }
+    if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+    tn.parentNode.replaceChild(frag, tn);
+  });
+}
+
+document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
+
+// 單字點擊切換
+document.body.addEventListener('click', e => {
+  if (e.target.classList && e.target.classList.contains('word')) {
+    e.target.classList.toggle('unfamiliar');
+  }
+});
+
+// 選項選取樣式
+document.querySelectorAll('.options label').forEach(lbl => {
+  lbl.addEventListener('click', () => {
+    const name = lbl.querySelector('input').name;
+    document.querySelectorAll(`.options input[name="${name}"]`).forEach(r => r.closest('label').classList.remove('selected'));
+    lbl.classList.add('selected');
+  });
+});
+
+// ===== 送出作答 =====
+function submitQuiz() {
+  const name = document.getElementById('studentName').value.trim() || '（未填）';
+  const sid  = document.getElementById('studentId').value.trim()  || '（未填）';
+
+  const answers = {};
+  const unanswered = [];
+  for (let i = 21; i <= 34; i++) {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if (sel) answers[i] = sel.value;
+    else { answers[i] = '-'; unanswered.push(i); }
+  }
+
+  if (unanswered.length > 0) {
+    if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
+  }
+
+  // 計分：三 1分×10，四 2分×4
+  let ciCorrect = 0, psCorrect = 0;
+  for (let i = 21; i <= 30; i++) if (answers[i] === ANSWERS[i]) ciCorrect++;
+  for (let i = 31; i <= 34; i++) if (answers[i] === ANSWERS[i]) psCorrect++;
+  const total = ciCorrect + psCorrect * 2;
+
+  const wrongList = [];
+  for (let i = 21; i <= 34; i++) if (answers[i] !== ANSWERS[i]) wrongList.push(i);
+
+  // 不熟悉單字
+  const unfamiliar = [];
+  document.querySelectorAll('.word.unfamiliar').forEach(w => {
+    const t = w.textContent.trim().toLowerCase();
+    if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
+  });
+  unfamiliar.sort();
+
+  document.getElementById('scoreBig').textContent = `${total} / 18`;
+  document.getElementById('scoreDetail').textContent =
+    `三、文意選填 ${ciCorrect}/10 分 ‧ 四、篇章結構 ${psCorrect * 2}/8 分 ‧ 未答 ${unanswered.length} 題`;
+
+  const now = new Date();
+  const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+  // 結果 1
+  let r1 = `【115學測英文 第21-34題 作答結果】\n姓名：${name}　座號：${sid}\n作答時間：${ts}\n總分：${total}/18（三：${ciCorrect}/10　四：${psCorrect*2}/8）\n`;
+  r1 += `${'─'.repeat(40)}\n題號\t學生答案\t正確答案\t對錯\n`;
+  for (let i = 21; i <= 34; i++) {
+    const ok = answers[i] === ANSWERS[i] ? '✓' : (answers[i] === '-' ? '✗(未答)' : '✗');
+    const stuLabel = i <= 30
+      ? (answers[i] !== '-' ? `${answers[i]}(${CI_OPTS[answers[i]] || '?'})` : '-')
+      : answers[i];
+    const corrLabel = i <= 30 ? `${ANSWERS[i]}(${CI_OPTS[ANSWERS[i]]})` : ANSWERS[i];
+    r1 += `${i}\t${stuLabel}\t${corrLabel}\t${ok}\n`;
+  }
+  r1 += `${'─'.repeat(40)}\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+  r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+  document.getElementById('teacherReport').textContent = r1;
+
+  // 結果 2
+  let r2 = `【115學測英文 第21-34題 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n${'─'.repeat(40)}\n`;
+  if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
+  else {
+    r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
+    unfamiliar.forEach((w, i) => { r2 += `${i + 1}. ${w}\n`; });
+  }
+  document.getElementById('wordsReport').textContent = r2;
+
+  // 結果 3
+  const fb = document.getElementById('feedbackReport');
+  fb.innerHTML = '';
+  if (wrongList.length === 0) {
+    fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！非常棒！</p>';
+  } else {
+    wrongList.forEach(i => {
+      const stuAns = answers[i] === '-' ? '未作答' : answers[i];
+      const div = document.createElement('div');
+      div.className = 'wrong-item';
+      div.innerHTML = `
+        <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${EXPLANATIONS[i].answer}</span></div>
+        <div class="explain">${EXPLANATIONS[i].detail}</div>`;
+      fb.appendChild(div);
+    });
+  }
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyText(elId, btn) {
+  const txt = document.getElementById(elId).textContent;
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+  };
+  const ok = () => {
+    const orig = btn.textContent; btn.textContent = '✓ 已複製！'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+  } else { fallback(); ok(); }
+}
+</script>
 </body>
 </html>
