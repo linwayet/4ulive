@@ -1,73 +1,779 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高中英文閱讀解析</title>
-    <style>
-        :root { --green-color: #2e7d32; --red-color: #d32f2f; --blue-color: #1565c0; --purple-color: #7b1fa2; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5; color: #333; line-height: 1.8; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .article-content { font-size: 1.15em; color: #000; margin-top: 20px; line-height: 1.9; }
-        .highlight { cursor: pointer; font-weight: bold; position: relative; padding: 2px 4px; border-radius: 4px; transition: background 0.2s; display: inline-block; }
-        .highlight:hover { background: #f0f0f0; }
-        .word-green { color: var(--green-color); }
-        .word-red { color: var(--red-color); }
-        .word-blue { color: var(--blue-color); }
-        .word-purple { color: var(--purple-color); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>115 年學測英文 - 第三部分（閱讀+混合題）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 880px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
+  .passage p { margin: 0 0 10px; }
+  .passage p:last-child { margin-bottom: 0; }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 10px; width: 100%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; box-sizing: border-box; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8em; cursor: pointer; color: #666; line-height: 1; }
-        .modal-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 1.05em; line-height: 1.8; color: #333; }
-        .modal-body b { color: inherit; background-color: rgba(255,235,59,0.3); padding: 0 2px; border-radius: 3px; }
-    </style>
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; min-width: 28px; height: 28px;
+    text-align: center; line-height: 28px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .options label {
+    display: flex; align-items: flex-start; gap: 6px;
+    padding: 8px 10px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.93em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"], .options input[type="checkbox"] {
+    accent-color: #3498db; margin: 4px 0 0; flex-shrink: 0;
+  }
+  .options label.selected {
+    background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9;
+  }
+
+  .word {
+    cursor: pointer; padding: 0 1px; border-radius: 3px;
+    transition: background 0.12s;
+  }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    font-weight: 600; color: #b9770e;
+  }
+
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 10px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
+  .vocab-row .word.unfamiliar { background: #ffebcd; }
+
+  .fill-blank {
+    border: 1.5px solid #bdc3c7; border-bottom: 2px solid #3498db;
+    background: #f8fbfd;
+    padding: 5px 10px; min-width: 140px;
+    font-size: 1em; font-family: inherit;
+    border-radius: 6px;
+    margin: 0 4px;
+  }
+  .fill-blank:focus { outline: none; border-color: #3498db; background: #fff; }
+
+  .essay-box {
+    background: #fff; border: 1.5px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .essay-box textarea {
+    width: 100%; min-height: 90px;
+    padding: 10px; border: 1.5px solid #bdc3c7; border-radius: 6px;
+    font-family: inherit; font-size: 0.95em; resize: vertical;
+    margin-top: 8px;
+  }
+  .essay-box textarea:focus { outline: none; border-color: #3498db; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button.submit-btn:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 320px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+
+  .unknown-counter {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffebcd; color: #b9770e;
+    padding: 9px 16px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; display: none;
+    border: 2px solid #e67e22;
+  }
+  @media (max-width: 480px) {
+    body { padding: 8px; }
+    .container { padding: 16px; }
+    .options { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>精選英文閱讀與解析</h1>
-        <div class="article-content">Threads of Tradition, the story of Taiwan's gaji bags. Gaji bags are colorful net bags with a long and interesting history that <span class="highlight word-green" onclick="showInfo('reflects', event)">reflects</span> Taiwan's <span class="highlight word-blue" onclick="showInfo('cultural%20roots', event)">cultural roots</span>. They <span class="highlight word-purple" onclick="showInfo('were%20said%20to%20be%20created', event)">were said to be created</span> during Japanese rule, 1895 to 1945. Farmers in Tainan's Houbi area <span class="highlight word-green" onclick="showInfo('originally', event)">originally</span> <span class="highlight word-green" onclick="showInfo('wove', event)">wove</span> them <span class="highlight word-blue" onclick="showInfo('by%20hand', event)">by hand</span> with a plant called Cyperus malaxensis. It is a kind of grass often found in wetlands. These early gaji bags were strong, light, and easy to carry, perfect for holding <span class="highlight word-green" onclick="showInfo('produce', event)">produce</span> to markets or homes. Because families in the <span class="highlight word-green" onclick="showInfo('countryside', event)">countryside</span> <span class="highlight word-blue" onclick="showInfo('relied%20on', event)">relied on</span> them daily, the bags became a <span class="highlight word-green" onclick="showInfo('common', event)">common</span> <span class="highlight word-green" onclick="showInfo('sight', event)">sight</span> in Taiwanese villages. From the 1960s to the 1970s, new nylon <span class="highlight word-green" onclick="showInfo('materials', event)">materials</span> <span class="highlight word-blue" onclick="showInfo('took%20the%20place%20of', event)">took the place of</span> the plant <span class="highlight word-green" onclick="showInfo('fibers', event)">fibers</span>. This change made the bags cheaper and easier to <span class="highlight word-green" onclick="showInfo('produce', event)">produce</span>. <br><br>And factories began <span class="highlight word-red" onclick="showInfo('mass-producing', event)">mass-producing</span> nylon gauji bags. Soon the bags spread across the island, moving from village farms to <span class="highlight word-green" onclick="showInfo('urban', event)">urban</span> shopping places. The classic red, green, and blue <span class="highlight word-green" onclick="showInfo('stripes', event)">stripes</span> became their special look, <span class="highlight word-purple" onclick="showInfo('making%20them%20easy%20to%20spot', event)">making them easy to spot</span> at markets everywhere. For many years, nearly every <span class="highlight word-green" onclick="showInfo('household', event)">household</span> owned <span class="highlight word-blue" onclick="showInfo('at%20least%20one', event)">at least one</span> of these lasting', event)"&gt;long-lasting, low-cost bags. <span class="highlight word-purple" onclick="showInfo('Though%20considered', event)">Though <span class="highlight word-green" onclick="showInfo('considered', event)">considered</span></span> <span class="highlight word-blue" onclick="showInfo('plain%20and%20simple', event)">plain and simple</span>, gauji bags <span class="highlight word-blue" onclick="showInfo('serve%20as', event)">serve as</span> <span class="highlight word-green" onclick="showInfo('reflections', event)">reflections</span> of the hard-working and <span class="highlight word-green" onclick="showInfo('practical', event)">practical</span> spirit of early Taiwanese society.<br><br>Threads of Tradition The Story of Taiwan's Gaji Bags In the 1980s, though, the <span class="highlight word-green" onclick="showInfo('popularity', event)">popularity</span> of gaji bags fell, as plastic shopping bags became cheap and <span class="highlight word-green" onclick="showInfo('common', event)">common</span> in many homes. Some people began to think gaji bags looked <span class="highlight word-green" onclick="showInfo('old-fashioned', event)">old-fashioned</span>, believing they were only for older shoppers at traditional markets. However, <span class="highlight word-green" onclick="showInfo('growing', event)">growing</span> interest in <span class="highlight word-red" onclick="showInfo('eco-friendly', event)">eco-friendly</span> living and local traditions later brought these <span class="highlight word-green" onclick="showInfo('striped', event)">striped</span> classics back into the <span class="highlight word-green" onclick="showInfo('spotlight', event)">spotlight</span>. Designers <span class="highlight word-green" onclick="showInfo('introduced', event)">introduced</span> <span class="highlight word-green" onclick="showInfo('improved', event)">improved</span> <span class="highlight word-green" onclick="showInfo('materials', event)">materials</span>, new colors, and stronger handles to <span class="highlight word-green" onclick="showInfo('fit', event)">fit</span> the needs of modern city life. Several new styles included zippers or small pockets, making the bags both <span class="highlight word-green" onclick="showInfo('practical', event)">practical</span> and pretty for daily use. Today, these <span class="highlight word-red" onclick="showInfo('reinvented', event)">reinvented</span> bags <span class="highlight word-green" onclick="showInfo('attract', event)">attract</span> buyers for picnics, beach trips, or school use. They are also <span class="highlight word-green" onclick="showInfo('considered', event)">considered</span> <span class="highlight word-green" onclick="showInfo('souvenirs', event)">souvenirs</span> for those who like their traditional beauty. The bag's tri-color <span class="highlight word-green" onclick="showInfo('stripes', event)">stripes</span> each have special meanings, red for human kindness, green for farmland, and blue for <span class="highlight word-green" onclick="showInfo('countryside', event)">countryside</span> skies. They reflect Taiwan's farming past and community spirit. Through <span class="highlight word-red" onclick="showInfo('vivid', event)">vivid</span> threads and <span class="highlight word-green" onclick="showInfo('lasting', event)">lasting</span> traditions, gaji bags link each generation and share their long history with the world.</div>
+
+<div class="container">
+  <header>
+    <h1>115 學年度學科能力測驗 英文考科</h1>
+    <div class="subtitle">第三部分 ‧ 閱讀測驗（39-46）+ 中譯英 + 作文 + 混合題（47-50）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label>
+    <input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label>
+    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>
+    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。<br>
+    每題選項下方都有一行「🔖 不懂的單字點一下」可直接點選項中的單字。
+  </div>
+
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
+  </div>
+
+  <form id="quizForm">
+
+    <!-- ============ 第 39-42 題為題組 ============ -->
+    <div class="section-title">三、閱讀測驗（第 39-46 題）</div>
+    <div class="group-label">【第 39-42 題為題組 — 螺旋梯的歷史】</div>
+
+    <div class="passage autowrap">
+      <p>In many old castles in Europe, visitors often find a fantastic spiral staircase, which provides a captivating focal point as it winds up the building. This prominent structure actually has a long and rich heritage.</p>
+      <p>In the Old Testament, reference is made to spiral staircases in the Temple of Solomon, suggesting that they were already in use by around 1,000 BC. The oldest spiral staircase still standing today is at Trajan's Column in Rome. The staircase was built in 113 AD, with a total of 185 steps carved in stone and marble. Around this time, spiral staircases began to find much wider use in Roman architecture and across Europe.</p>
+      <p>Throughout the Middle Ages, winding staircases became a well-established feature of European castles, mainly for their advantages in helping to defend against attackers. To begin with, these staircases were quite narrow, so attackers would have to ascend one at a time, making it impossible to launch a mass attack. Also, the stairs were designed to turn clockwise upwards. This means that ascenders would have their right hand tight against the narrowest part of the staircases, close to the central pole, and as a result were unable to use their sword effectively. The attackers' challenge was further complicated by the uneven steps of the staircase, often strategically designed by the castle owners. The defenders, living in the castles, were familiar with the stair pattern and could retreat up "<u>them</u>" very swiftly; while the attackers were much more likely to stumble and fall, particularly in the dimly lit confines of the staircase.</p>
+      <p>Being associated with medieval castles and kings, spiral staircases gradually won popularity in European architecture, with new materials emerging to cope with customers' needs. In Victorian times, cast iron spiral staircases were popular for public buildings and homes for the rich. In the latter half of the 20th century, steel frames became cost-effective, and thus affordable for a much wider staircase market. Then, steel spiral staircases as fire escape stairs appeared in many buildings. Today, spiral staircases come in a wide variety of materials: steel, wood, concrete, and recently even glass. The timeless appeal of their classical design makes spiral staircases a much-desired feature in luxury homes, offices, and public buildings nowadays.</p>
     </div>
 
-    <div class="modal" id="info-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">×</span>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-body" id="modal-body"></div>
+    <div class="question" data-q="39">
+      <div class="q-text autowrap"><span class="q-num">39</span>Which question can the passage answer?</div>
+      <div class="options">
+        <label><input type="radio" name="q39" value="A"><span>(A) Where was the first spiral staircase constructed?</span></label>
+        <label><input type="radio" name="q39" value="B"><span>(B) Who was the first designer of the spiral staircase?</span></label>
+        <label><input type="radio" name="q39" value="C"><span>(C) What is the world's most famous spiral staircase?</span></label>
+        <label><input type="radio" name="q39" value="D"><span>(D) Why is the spiral staircase popular in modern times?</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">constructed</span><span class="word">designer</span><span class="word">famous</span><span class="word">popular</span><span class="word">modern</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="40">
+      <div class="q-text autowrap"><span class="q-num">40</span>What does "them" in the third paragraph refer to?</div>
+      <div class="options">
+        <label><input type="radio" name="q40" value="A"><span>(A) Stairs.</span></label>
+        <label><input type="radio" name="q40" value="B"><span>(B) Confines.</span></label>
+        <label><input type="radio" name="q40" value="C"><span>(C) Attackers.</span></label>
+        <label><input type="radio" name="q40" value="D"><span>(D) Defenders.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">stairs</span><span class="word">confines</span><span class="word">attackers</span><span class="word">defenders</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="41">
+      <div class="q-text autowrap"><span class="q-num">41</span>According to the passage, which is a correct time sequence of the materials used in making spiral staircases?</div>
+      <div class="options">
+        <label><input type="radio" name="q41" value="A"><span>(A) stone → iron → steel → glass</span></label>
+        <label><input type="radio" name="q41" value="B"><span>(B) stone → wood → iron → steel</span></label>
+        <label><input type="radio" name="q41" value="C"><span>(C) iron → marble → wood → glass</span></label>
+        <label><input type="radio" name="q41" value="D"><span>(D) marble → wood → stone → concrete</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">stone</span><span class="word">iron</span><span class="word">steel</span><span class="word">glass</span><span class="word">wood</span><span class="word">marble</span><span class="word">concrete</span><span class="word">sequence</span><span class="word">materials</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="42">
+      <div class="q-text autowrap"><span class="q-num">42</span>Which of the following statements can be inferred about spiral staircases in the Medieval Ages?</div>
+      <div class="options">
+        <label><input type="radio" name="q42" value="A"><span>(A) The staircase was too narrow to allow any quick retreat.</span></label>
+        <label><input type="radio" name="q42" value="B"><span>(B) The clockwise design favored right-handed castle defenders.</span></label>
+        <label><input type="radio" name="q42" value="C"><span>(C) The uneven steps made it easier to ascend than descend the stairs.</span></label>
+        <label><input type="radio" name="q42" value="D"><span>(D) The staircase was dark enough for defenders to hide from attackers.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">narrow</span><span class="word">retreat</span><span class="word">clockwise</span><span class="word">favored</span><span class="word">defenders</span><span class="word">uneven</span><span class="word">ascend</span><span class="word">descend</span><span class="word">attackers</span><span class="word">hide</span><span class="word">inferred</span><span class="word">medieval</span>
+      </div>
+    </div>
+
+    <!-- ============ 第 43-46 題為題組 ============ -->
+    <div class="group-label">【第 43-46 題為題組 — 地圖方位的演變】</div>
+
+    <div class="passage autowrap">
+      <p>Have you ever wondered why north comes at the top of a map? Well, north may seem a natural choice for the top spot today, but that wasn't always the case.</p>
+      <p>Documents from ancient times indicate that many maps in early ages were pointing to the east, where the sun rose. In ancient India, for example, maps were most likely oriented to the east. Though there is no physical evidence to support "<u>this</u>", the word dakshina "south" in Indian languages also means "right," suggesting that ancient Indians were oriented toward the east, and therefore south was on their right-hand side. Ample evidences from the Old Testament also suggest that east was at the top of maps in pre-Biblical and Biblical eras, a reason why east is still referred to as the "Orient" today.</p>
+      <p>In the oldest surviving maps, south is at the top, and north points down. Early Egyptian maps showed south on top, most likely because the Nile, vital to Egyptian livelihood, originated in the south. As rivers were believed to flow downward, "up" was therefore south. Map makers in Arabia also drew maps with south on top since the earliest Muslims lived north of Mecca, and a south-oriented map would show the followers looking up toward their holy city.</p>
+      <p>The preference for north arose during the European age of exploration. At the time, sailors relied on the North Star to find their way across the Mediterranean and later the Atlantic. By the 16th century, when Europe's search for trading routes was at its peak, maps became Eurocentric, with north on top. The expansion of European imperialism in the following centuries further established the "north up" practice as the standard.</p>
+      <p>Today, map orientation is taking on a new perspective. In perhaps our most common interaction with maps—the use of GPS systems on our phones and in our cars, directions have ceased to be as important. The layouts are dynamic, oriented toward our travel path.</p>
+      <p>So, perhaps the north-on-top practice is less a rule and more "<u>a blip</u>". After centuries of technological advancements, it seems we've ended up right where we began in ancient times: with ourselves in the middle, and our destinations at the top.</p>
+    </div>
+
+    <div class="question" data-q="43">
+      <div class="q-text autowrap"><span class="q-num">43</span>What is the passage mainly about?</div>
+      <div class="options">
+        <label><input type="radio" name="q43" value="A"><span>(A) Why east is referred to as the "Orient."</span></label>
+        <label><input type="radio" name="q43" value="B"><span>(B) How maps differ from GPS in function.</span></label>
+        <label><input type="radio" name="q43" value="C"><span>(C) How map orientation evolved over time.</span></label>
+        <label><input type="radio" name="q43" value="D"><span>(D) Why maps were important during the age of exploration.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">orient</span><span class="word">orientation</span><span class="word">evolved</span><span class="word">exploration</span><span class="word">function</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="44">
+      <div class="q-text autowrap"><span class="q-num">44</span>What does "this" refer to in the second paragraph?</div>
+      <div class="options">
+        <label><input type="radio" name="q44" value="A"><span>(A) The word dakshina.</span></label>
+        <label><input type="radio" name="q44" value="B"><span>(B) Physical evidence.</span></label>
+        <label><input type="radio" name="q44" value="C"><span>(C) Ancient India.</span></label>
+        <label><input type="radio" name="q44" value="D"><span>(D) East-orientation of maps.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">dakshina</span><span class="word">physical</span><span class="word">evidence</span><span class="word">ancient</span><span class="word">orientation</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="45">
+      <div class="q-text autowrap"><span class="q-num">45</span>Which of the following is closest in meaning to "a blip" in the last paragraph?</div>
+      <div class="options">
+        <label><input type="radio" name="q45" value="A"><span>(A) A temporary state.</span></label>
+        <label><input type="radio" name="q45" value="B"><span>(B) An urgent need.</span></label>
+        <label><input type="radio" name="q45" value="C"><span>(C) A critical decision.</span></label>
+        <label><input type="radio" name="q45" value="D"><span>(D) An advanced system.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">blip</span><span class="word">temporary</span><span class="word">state</span><span class="word">urgent</span><span class="word">critical</span><span class="word">decision</span><span class="word">advanced</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="46">
+      <div class="q-text autowrap"><span class="q-num">46</span>Which of the following statements is true?</div>
+      <div class="options">
+        <label><input type="radio" name="q46" value="A"><span>(A) Sailors took the North Star as their final destination.</span></label>
+        <label><input type="radio" name="q46" value="B"><span>(B) The GPS system has a fixed direction for orientation.</span></label>
+        <label><input type="radio" name="q46" value="C"><span>(C) South was placed at the top of maps in the pre-Biblical era.</span></label>
+        <label><input type="radio" name="q46" value="D"><span>(D) Old Islamic maps put south at the top for religious purposes.</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">sailors</span><span class="word">destination</span><span class="word">fixed</span><span class="word">orientation</span><span class="word">placed</span><span class="word">pre-Biblical</span><span class="word">Islamic</span><span class="word">religious</span><span class="word">purposes</span>
+      </div>
+    </div>
+
+    <!-- ============ 中譯英 ============ -->
+    <div class="section-title">四、中譯英（占 8 分）</div>
+    <div class="essay-box">
+      <div><strong>1.</strong> 現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。</div>
+      <textarea id="trans1" placeholder="請寫下你的英文翻譯..."></textarea>
+    </div>
+    <div class="essay-box">
+      <div><strong>2.</strong> 他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。</div>
+      <textarea id="trans2" placeholder="請寫下你的英文翻譯..."></textarea>
+    </div>
+
+    <!-- ============ 英文作文 ============ -->
+    <div class="section-title">五、英文作文（占 20 分）</div>
+    <div class="essay-box">
+      <div><strong>說明：</strong>依提示寫一篇英文作文，文長至少 120 個單詞（words）。</div>
+      <div style="margin-top:6px;"><strong>提示：</strong>近年來養寵物的風氣在臺灣日漸普遍，而寵物在人們生活中的角色也與過去不同。請以此為主題，並參照下列圖片，寫一篇英文作文，文分兩段。第一段描述這些圖片中所呈現的現象；第二段則根據你自身的經驗或觀察，說明此現象的原因以及可能的影響。</div>
+      <textarea id="essay" placeholder="請寫下你的英文作文..." style="min-height:220px;"></textarea>
+    </div>
+
+    <!-- ============ 第貳部分 混合題 47-50 ============ -->
+    <div class="section-title">第貳部分 ‧ 混合題（占 10 分）— 第 47-50 題</div>
+    <div class="group-label">【第 47-50 題為題組 — Wonder Village 商店介紹】</div>
+
+    <div class="passage autowrap">
+      <p>Located along the sparkling coastline of the Pacific Ocean, Wonder Village is a famous indigenous district in eastern Taiwan. The historic village exhibits the traditional way of life of the tribe there. However, it does not live in the past. As numerous new restaurants and shops have sprung up in recent years, it has become not only a cultural center but also a unique commercial zone. The following six shops are examples of some of the specialty stores there.</p>
+
+      <p><strong>A. Oh Eco</strong><br>
+      Greatly concerned about the presence of fake "green" products on the market, Alice Bao decided to open this shop. She sells environmentally friendly items such as reusable bottles, bamboo toothbrushes, and soy candles. "Here everyone looks out for each other and the neighborhood," she says. "There's a sense of community in the area."</p>
+
+      <p><strong>B. After Work</strong><br>
+      Neighborhood beer lovers rejoiced when After Work moved in last summer. "We knew we were coming into a really cool neighborhood," says co-owner Joey Ma. Aside from handcrafted beer, the menu boasts hand-made gourmet pizzas such as the Yummy Duck n' Cheese, loaded with roast duck and, yes, creamy delicious cheese. A truly unique blend!</p>
+
+      <p><strong>C. Aroma Paradise</strong><br>
+      The fragrances at this scent shop are largely customized to meet the individual shopper's taste. Owner Joseph Tang says he knew the idea would work well in this unique district: "Each store is one of a kind in Wonder Village," he states. "Aroma Paradise wants to create a paradise for those who are looking for fragrance made for their special preferences."</p>
+
+      <p><strong>D. Something Different</strong><br>
+      Looking for something unique? Yes, at this tiny antique store you can always find, as promised, something different. Open since 1996, the store features traditional-style home accessories, ranging from cabinets and chairs to picture frames and decorative mirrors.</p>
+
+      <p><strong>E. Beyond World</strong><br>
+      Owner Foting Mayaw opened this boutique in what he calls "the most fascinating area in Taiwan." The shop focuses on selling various "good goods" that showcase the skill and spirit of neighborhood artisans. From fashion items to rice snacks, it carries products only from local makers and small businesses owned by indigenous people.</p>
+
+      <p><strong>F. The Pinery</strong><br>
+      This restaurant got its name from the pineapple farms that once populated the area. Indeed, the fruit appears in some innovative menu items (e.g., pineapple jam on the burger). "Wonder Village is much more than just a tourist destination," says owner Carol Hon. "It is a place where the old meets the new: diverse, unique, and always full of surprises."</p>
+    </div>
+
+    <div class="question" data-q="47">
+      <div class="q-text autowrap">
+        <span class="q-num">47-48</span>下列簡短敘述摘記上方文章重點。請從文章中找出兩個單詞，分別填入下列句子空格中，並視句型結構需要做適當的字形變化（每格 2 分，共 4 分）。
+      </div>
+      <div class="autowrap" style="margin-top:10px; padding:12px; background:#f8fbfd; border-radius:8px; line-height:2;">
+        Wonder Village, a famous tourist site, is characterized by its diversity and uniqueness. It is a place where the old meets the new—where tradition coexists harmoniously with
+        <input type="text" class="fill-blank" id="ans47" placeholder="第 47 題">,
+        and local features are perfectly
+        <input type="text" class="fill-blank" id="ans48" placeholder="第 48 題">
+        with foreign elements.
+      </div>
+      <div class="vocab-row">
+        <span class="word">tradition</span><span class="word">coexists</span><span class="word">harmoniously</span><span class="word">innovation</span><span class="word">blended</span><span class="word">diversity</span><span class="word">uniqueness</span>
+      </div>
+    </div>
+
+    <div class="question" data-q="49">
+      <div class="q-text autowrap">
+        <span class="q-num">49</span>While visiting Wonder Village, the Chen family decide to buy the following items as souvenirs:
+        <div style="margin:8px 0 4px 28px;">
+          (1) a 19th century oil lamp<br>
+          (2) recycled plastic sunglasses<br>
+          (3) an aboriginal wooden beads necklace
         </div>
+        Which stores should they go to for these items?<strong>（多選題，請選 3 個，4 分）</strong>
+      </div>
+      <div class="options">
+        <label><input type="checkbox" name="q49" value="A"><span>A. Oh Eco</span></label>
+        <label><input type="checkbox" name="q49" value="B"><span>B. After Work</span></label>
+        <label><input type="checkbox" name="q49" value="C"><span>C. Aroma Paradise</span></label>
+        <label><input type="checkbox" name="q49" value="D"><span>D. Something Different</span></label>
+        <label><input type="checkbox" name="q49" value="E"><span>E. Beyond World</span></label>
+        <label><input type="checkbox" name="q49" value="F"><span>F. The Pinery</span></label>
+      </div>
+      <div class="vocab-row">
+        <span class="word">souvenirs</span><span class="word">recycled</span><span class="word">aboriginal</span><span class="word">wooden</span><span class="word">beads</span><span class="word">necklace</span><span class="word">antique</span><span class="word">indigenous</span>
+      </div>
     </div>
 
-    <script>
-        const dictionaryMap = {"reflects":{"type":"green","text":"v. 反映，顯示<div style='color: #1565c0; margin-top: 10px;'>The story of gaji bags <b>reflects</b> Taiwan's cultural roots.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋的故事反映了台灣的文化根源。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] indicates, shows</div>"},"cultural roots":{"type":"blue","text":"n. 文化根源<div style='color: #1565c0; margin-top: 10px;'>The festival highlights the deep <b>cultural roots</b> of the community.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這個節慶突顯了社區深厚的文化根源。</div>"},"were said to be created":{"type":"purple","text":"句型 (被動語態與報導式語法): 據說被創造<div style='color: #1565c0; margin-top: 10px;'>The pyramids <b>were said to be created</b> by ancient Egyptians.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>據說金字塔是由古埃及人創造的。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[文法] It was said that... / S. + be said to be + Ving/Vp.p.</div>"},"wove":{"type":"green","text":"v. 編織 (weave 的過去式)<div style='color: #1565c0; margin-top: 10px;'>Farmers in Tainan's Houbi area originally <b>wove</b> them by hand.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台南後壁地區的農民最初用手工編織它們。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] weave (v.)</div>"},"by hand":{"type":"blue","text":"phr. 手工，用手<div style='color: #1565c0; margin-top: 10px;'>The exquisite embroidery was made <b>by hand</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這精美的刺繡是手工製作的。</div>"},"produce":{"type":"green","text":"n. 農產品<div style='color: #1565c0; margin-top: 10px;'>The bags were perfect for holding <b>produce</b> to markets.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些袋子非常適合將農產品運到市場。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[注意] 作動詞時意為「生產」</div>"},"relied on":{"type":"blue","text":"phr. 依賴，依靠<div style='color: #1565c0; margin-top: 10px;'>Families in the countryside <b>relied on</b> them daily.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>鄉村家庭每天都依賴它們。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] depended on</div>"},"countryside":{"type":"green","text":"n. 鄉下，農村<div style='color: #1565c0; margin-top: 10px;'>Life in the <b>countryside</b> is often peaceful and quiet.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>鄉村生活通常是寧靜的。</div>"},"took the place of":{"type":"blue","text":"phr. 取代<div style='color: #1565c0; margin-top: 10px;'>New nylon materials <b>took the place of</b> the plant fibers.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>新的尼龍材料取代了植物纖維。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] replaced</div>"},"made... cheaper and easier":{"type":"purple","text":"句型 (使役動詞 make): 使...變得更便宜、更容易<div style='color: #1565c0; margin-top: 10px;'>This change <b>made</b> the bags <b>cheaper and easier</b> to produce.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這一改變使這些袋子生產起來更便宜、更容易。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[文法] make + O + Adj.</div>"},"mass-producing":{"type":"red","text":"v. 大量生產 (mass-produce 的現在分詞)<div style='color: #1565c0; margin-top: 10px;'>Factories began <b>mass-producing</b> nylon gauji bags.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>工廠開始大量生產尼龍茄芷袋。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] mass-produce (v.)</div>"},"urban":{"type":"green","text":"adj. 都市的，城市的<div style='color: #1565c0; margin-top: 10px;'>The bags moved from village farms to <b>urban</b> shopping places.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些袋子從鄉村農場走向都市購物場所。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[反義] rural (adj.)</div>"},"making them easy to spot":{"type":"purple","text":"句型 (分詞構句): 使它們很容易被發現<div style='color: #1565c0; margin-top: 10px;'>The classic stripes became their special look, <b>making them easy to spot</b> at markets.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>經典的條紋成為它們的特色外觀，使它們在市場上很容易被發現。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[文法] V-ing, 表結果</div>"},"household":{"type":"green","text":"n. 家庭，一戶人家<div style='color: #1565c0; margin-top: 10px;'>Nearly every <b>household</b> owned at least one of these bags.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>幾乎每戶家庭都至少擁有一只這樣的袋子。</div>"},"long-lasting":{"type":"green","text":"adj. 持久的，耐用的<div style='color: #1565c0; margin-top: 10px;'>These <b>long-lasting</b> bags were very popular for many years.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些耐用的袋子多年來一直很受歡迎。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] durable</div>"},"at least one":{"type":"blue","text":"phr. 至少一個<div style='color: #1565c0; margin-top: 10px;'>You should bring <b>at least one</b> umbrella if it might rain.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>如果可能下雨，你至少應該帶一把傘。</div>"},"Though considered":{"type":"purple","text":"句型 (省略句): 儘管被認為<div style='color: #1565c0; margin-top: 10px;'><b>Though considered</b> plain, gauji bags reflect the practical spirit.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋儘管被認為樸素，卻反映了實用的精神。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[文法] Though + Vp.p. (省略主詞和be動詞)</div>"},"plain and simple":{"type":"blue","text":"phr. 樸素簡單的<div style='color: #1565c0; margin-top: 10px;'>She preferred a <b>plain and simple</b> design for her wedding dress.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>她為她的婚紗選擇了一個樸素簡單的設計。</div>"},"practical":{"type":"green","text":"adj. 實用的<div style='color: #1565c0; margin-top: 10px;'>Gauji bags serve as reflections of the hard-working and <b>practical</b> spirit.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋反映了勤勞和實用的精神。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[反義] impractical (adj.)</div>"},"old-fashioned":{"type":"green","text":"adj. 老式的，過時的<div style='color: #1565c0; margin-top: 10px;'>Some people began to think gaji bags looked <b>old-fashioned</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>有些人開始認為茄芷袋看起來很老式。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] outmoded</div>"},"eco-friendly":{"type":"red","text":"adj. 環保的，對環境友好的<div style='color: #1565c0; margin-top: 10px;'>Growing interest in <b>eco-friendly</b> living brought these classics back.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>對環保生活的興趣增長使這些經典款重回焦點。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[構詞] eco- (生態的) + friendly (友善的)</div>"},"brought... back into the spotlight":{"type":"blue","text":"phr. 使...重回焦點，讓...再次受到關注<div style='color: #1565c0; margin-top: 10px;'>New designs <b>brought</b> the traditional craft <b>back into the spotlight</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>新設計使這項傳統工藝再次受到關注。</div>"},"reinvented":{"type":"red","text":"v. 重新塑造，徹底改造 (reinvent 的過去式/過去分詞)<div style='color: #1565c0; margin-top: 10px;'>Today, these <b>reinvented</b> bags attract buyers for various uses.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>今天，這些被改造過的袋子吸引了不同用途的買家。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[原型] reinvent (v.)</div>"},"souvenirs":{"type":"green","text":"n. 紀念品<div style='color: #1565c0; margin-top: 10px;'>They are also considered <b>souvenirs</b> for those who like their traditional beauty.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>它們也被視為喜歡其傳統美感的遊客的紀念品。</div>"},"vivid":{"type":"red","text":"adj. 生動的，鮮明的<div style='color: #1565c0; margin-top: 10px;'>Through <b>vivid</b> threads and lasting traditions, gaji bags link generations.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>透過鮮明的絲線和持久的傳統，茄芷袋連結了世代。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[同義] lively, clear</div>"},"originally":{"type":"green","text":"adv. 起初，原來<div style='color: #1565c0; margin-top: 10px;'>Farmers in Tainan's Houbi area <b>originally</b> wove them by hand.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>台南後壁區的農民起初是手工編織它們的。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] original (adj.) 原來的</div>"},"common":{"type":"green","text":"adj. 常見的，普遍的<div style='color: #1565c0; margin-top: 10px;'>Because families in the countryside relied on them daily, the bags became a <b>common</b> sight in Taiwanese villages.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>因為鄉下家庭每天都依賴它們，這些袋子在台灣鄉村成為常見的景象。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] commonly (adv.) 普通地</div>"},"sight":{"type":"green","text":"n. 景象，景色；視力<div style='color: #1565c0; margin-top: 10px;'>The bags became a <b>common</b> sight in Taiwanese villages.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些袋子在台灣鄉村變得隨處可見。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[片語] at first sight 初見；catch sight of 瞥見</div>"},"materials":{"type":"green","text":"n. 材料，原料 (複數)<div style='color: #1565c0; margin-top: 10px;'>From the 1960s to the 1970s, new nylon <b>materials</b> took the place of the plant fibers.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>從1960年代到1970年代，新的尼龍材料取代了植物纖維。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] material (n.) 材料 (單數)</div>"},"fibers":{"type":"green","text":"n. 纖維 (複數)<div style='color: #1565c0; margin-top: 10px;'>New nylon materials took the place of the plant <b>fibers</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>新的尼龍材料取代了植物纖維。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] fiber (n.) 纖維 (單數)</div>"},"stripes":{"type":"green","text":"n. 條紋 (複數)<div style='color: #1565c0; margin-top: 10px;'>The classic red, green, and blue <b>stripes</b> became their special look.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>經典的紅、綠、藍條紋成為了它們的特色外觀。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] stripe (n.) 條紋 (單數)</div>"},"reflections":{"type":"green","text":"n. 反映，反思 (複數)<div style='color: #1565c0; margin-top: 10px;'>Gauji bags serve as <b>reflections</b> of the hard-working and practical spirit of early Taiwanese society.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋反映了早期台灣社會勤勞務實的精神。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] reflect (v.) 反映；reflection (n.) 反射，反思 (單數)</div>"},"serve as":{"type":"blue","text":"phr. 充當，用作<div style='color: #1565c0; margin-top: 10px;'>Gauji bags <b>serve as</b> reflections of the hard-working and practical spirit of early Taiwanese society.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋充當了早期台灣社會勤勞務實精神的寫照。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[補充] serve (v.) 提供，服務</div>"},"popularity":{"type":"green","text":"n. 普及，流行<div style='color: #1565c0; margin-top: 10px;'>In the 1980s, the <b>popularity</b> of gaji bags fell.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>在1980年代，茄芷袋的普及度下降了。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] popular (adj.) 流行的</div>"},"growing":{"type":"green","text":"adj. 日益增加的，不斷增長的<div style='color: #1565c0; margin-top: 10px;'>However, <b>growing</b> interest in eco-friendly living brought these striped classics back into the spotlight.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>然而，對環保生活的日益增長興趣使這些條紋經典重回焦點。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] grow (v.) 成長；growth (n.) 成長</div>"},"striped":{"type":"green","text":"adj. 有條紋的<div style='color: #1565c0; margin-top: 10px;'><b>Striped</b> shirts are often seen in summer.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>條紋襯衫在夏天很常見。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] stripe (n.) 條紋</div>"},"spotlight":{"type":"green","text":"n. 聚光燈；公眾的注意<div style='color: #1565c0; margin-top: 10px;'>Growing interest brought these striped classics back into the <b>spotlight</b>.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>日益增長的興趣使這些條紋經典重回公眾的關注。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[片語] in the spotlight 成為焦點</div>"},"introduced":{"type":"green","text":"v. 引入，推出 (過去式)<div style='color: #1565c0; margin-top: 10px;'>Designers <b>introduced</b> improved materials, new colors, and stronger handles.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>設計師們引入了改良的材料、新的顏色和更堅固的把手。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] introduce (v.) 介紹，引入；introduction (n.) 介紹</div>"},"improved":{"type":"green","text":"adj. 改良的，改進的 (過去分詞作形容詞)<div style='color: #1565c0; margin-top: 10px;'>Designers introduced <b>improved</b> materials to fit the needs of modern city life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>設計師們引入了改良的材料以符合現代都市生活的需求。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] improve (v.) 改善；improvement (n.) 改善</div>"},"fit":{"type":"green","text":"v. 適合，符合<div style='color: #1565c0; margin-top: 10px;'>The new designs <b>fit</b> the needs of modern city life.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>這些新設計符合現代都市生活的需求。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] fitting (adj.) 適合的</div>"},"attract":{"type":"green","text":"v. 吸引<div style='color: #1565c0; margin-top: 10px;'>Today, these reinvented bags <b>attract</b> buyers for picnics, beach trips, or school use.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>如今，這些重新設計的包包吸引了買家用於野餐、海灘旅行或學校使用。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] attractive (adj.) 有吸引力的；attraction (n.) 吸引力</div>"},"considered":{"type":"green","text":"v. 被認為是 (過去分詞)<div style='color: #1565c0; margin-top: 10px;'>Gauji bags are <b>considered</b> souvenirs for those who like their traditional beauty.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>茄芷袋也被認為是喜歡其傳統美感的人們的紀念品。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] consider (v.) 考慮，認為</div>"},"lasting":{"type":"green","text":"adj. 持久的，永恆的<div style='color: #1565c0; margin-top: 10px;'>Through vivid threads and <b>lasting</b> traditions, gaji bags link each generation.</div><div style='color: #2e7d32; font-size: 0.95em; margin-bottom: 10px;'>透過鮮明的絲線和持久的傳統，茄芷袋連結著每一代人。</div><div style='color: #d35400; font-weight: bold; margin-top: 10px;'>[衍生] last (v.) 持續</div>"}};
+    <div class="question" data-q="50">
+      <div class="q-text autowrap">
+        <span class="q-num">50</span>Which phrase is used by Joseph Tang to describe the "uniqueness" of the stores in Wonder Village?<strong>（簡答題，2 分）</strong>
+      </div>
+      <input type="text" class="fill-blank" id="ans50" placeholder="請輸入答案" style="width:100%; min-width:0; margin-top:8px;">
+      <div class="vocab-row">
+        <span class="word">phrase</span><span class="word">describe</span><span class="word">uniqueness</span>
+      </div>
+    </div>
 
-        function showInfo(encodedKeyword, event) {
-            const keyword = decodeURIComponent(encodedKeyword);
-            const data = dictionaryMap[keyword];
-            if (!data) return;
-            
-            const modal = document.getElementById("info-modal");
-            document.getElementById("modal-title").className = 'modal-title word-' + data.type;
-            document.getElementById("modal-title").innerHTML = keyword;
-            
-            let content = data.text;
-            if (!content.includes("<div") && !content.includes("<span")) {
-                content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
-                const escapedKeyword = keyword.replace(/[.*+?^${()|[\]\\]/g, '\\$&');
-                const regex = new RegExp('(' + escapedKeyword + ')', 'gi');
-                content = content.replace(regex, '<b>$1</b>');
-            }
-            document.getElementById("modal-body").innerHTML = content;
-            modal.style.display = "flex";
-        }
+    <div class="button-row">
+      <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
+    </div>
 
-        function closeModal() { document.getElementById("info-modal").style.display = "none"; }
-        window.onclick = function(event) {
-            const modal = document.getElementById("info-modal");
-            if (event.target == modal) modal.style.display = "none";
+  </form>
+
+  <div id="results">
+
+    <div class="result-card score">
+      <h3>📊 你的成績</h3>
+      <div class="score-big" id="scoreBig"></div>
+      <div class="score-detail" id="scoreDetail"></div>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="teacherReport"></div>
+      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+    </div>
+
+    <div class="result-card teacher">
+      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
+      <div class="copyable" id="wordsReport"></div>
+      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
+    </div>
+
+    <div class="result-card feedback">
+      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
+      <div id="feedbackReport"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="unknown-counter" id="counter">📚 不熟單字：<span id="cnum">0</span> 個</div>
+
+<script>
+  // ===== 正確答案 =====
+  const ANSWERS = {
+    39:'D', 40:'A', 41:'A', 42:'B',
+    43:'C', 44:'D', 45:'A', 46:'D',
+    47:'innovation', 48:'blended',
+    49:'ADE',
+    50:'one of a kind'
+  };
+  // 題目順序（顯示用）
+  const QIDS = [39,40,41,42,43,44,45,46,47,48,49,50];
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    39: { answer:'(D) Why is the spiral staircase popular in modern times?',
+          detail:'文章最後一段詳細說明螺旋梯為何在現代仍受歡迎（豪宅、辦公室、公共建築都愛用），故 (D) 為文章可回答的問題。(A)(B) 文中未提及最早建造地點或設計師；(C) 文中只說 Trajan\'s Column 是「現存最古老」並非「最知名」。' },
+    40: { answer:'(A) Stairs.',
+          detail:'"could retreat up them" 中的 them 回指前文 the stair pattern / the stairs（樓梯）。防衛者熟悉樓梯型態，能沿著樓梯快速撤退。(C)(D) 攻擊者與防衛者本身不可能是「往上撤退」的對象。' },
+    41: { answer:'(A) stone → iron → steel → glass',
+          detail:'按文中時間順序：113 AD 用 stone & marble → Victorian times 用 cast iron → 20 世紀後半用 steel → 近期甚至用 glass，故順序為 stone → iron → steel → glass。' },
+    42: { answer:'(B) The clockwise design favored right-handed castle defenders.',
+          detail:'順時針設計讓進攻者的右手（持劍手）貼近最窄處無法揮劍，反觀下行的右撇子防衛者卻能順利揮劍，故對右撇子防衛者有利。(A) 防衛者反而能快速撤退；(C) 文中說階梯不平導致進攻者跌倒，並非上樓較容易；(D) 文中沒提到防衛者「躲藏」。' },
+    43: { answer:'(C) How map orientation evolved over time.',
+          detail:'全文以時間軸介紹地圖方位的演變：古印度東朝上 → 古埃及／伊斯蘭南朝上 → 歐洲探險時代北朝上 → 現代 GPS 動態方位，故主旨為地圖方位「隨時代演變」。(A)(D) 都只是過程中的小細節；(B) 文中只略提。' },
+    44: { answer:'(D) East-orientation of maps.',
+          detail:'"there is no physical evidence to support this" 中的 this 指的是前一句所述「古印度地圖朝東」這個現象。(A)(B)(C) 都不是 this 所指代的內容。' },
+    45: { answer:'(A) A temporary state.',
+          detail:'"a blip" 本意為雷達上短暫的閃點，引申為短暫的、暫時的現象。文章認為「北朝上」可能只是地圖史上短暫的慣例，並非永恆的法則，故最接近 (A) A temporary state。' },
+    46: { answer:'(D) Old Islamic maps put south at the top for religious purposes.',
+          detail:'文中說伊斯蘭早期信徒住在 Mecca 北方，南朝上的地圖可讓信徒「往上看」朝向聖城，是宗教用途。(A) 北極星是導航工具，非目的地；(B) GPS 是動態方位非固定；(C) 前聖經時代是「東朝上」非「南朝上」。' },
+    47: { answer:'innovation',
+          detail:'tradition coexists harmoniously with innovation（傳統與創新和諧並存）。innovation 來自原文 F. The Pinery 段中的 "innovative menu items"，需把形容詞改為名詞 innovation。' },
+    48: { answer:'blended',
+          detail:'local features are perfectly blended with foreign elements（本地特色與外來元素完美融合）。blended 來自原文 B. After Work 段的 "A truly unique blend!"，需配合 are perfectly ___ with（被動式）改為過去分詞 blended。' },
+    49: { answer:'A、D、E',
+          detail:'(1) 19世紀油燈（古董）→ D Something Different；(2) recycled plastic sunglasses（環保再生商品）→ A Oh Eco；(3) aboriginal wooden beads necklace（原住民工藝）→ E Beyond World。B 是手工啤酒餐廳；C 是香氛店；F 是鳳梨主題餐廳，皆不符合。' },
+    50: { answer:'one of a kind',
+          detail:'原文 C. Aroma Paradise 段中 Joseph Tang 說 "Each store is one of a kind in Wonder Village"。"one of a kind" 是慣用語，意為「獨一無二、無與倫比」，描述商店的 uniqueness。' }
+  };
+
+  // ===== 自動將 .autowrap 區塊的英文單字包成可點選 span =====
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','LABEL']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('word') || p.classList.contains('q-num'))) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          p = p.parentNode;
         }
-    </script>
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
+
+  // 單字點擊切換不熟悉
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      e.target.classList.toggle('unfamiliar');
+      updateCounter();
+    }
+  });
+
+  function updateCounter() {
+    const set = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
+    const c = document.getElementById('counter');
+    document.getElementById('cnum').textContent = set.size;
+    c.style.display = set.size > 0 ? 'block' : 'none';
+  }
+
+  // 選項選取樣式（單選/多選）
+  document.querySelectorAll('.options label').forEach(lbl => {
+    lbl.addEventListener('click', () => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      const name = inp.name;
+      if (inp.type === 'radio') {
+        document.querySelectorAll(`.options input[name="${name}"]`)
+          .forEach(r => r.closest('label').classList.remove('selected'));
+        lbl.classList.add('selected');
+      } else if (inp.type === 'checkbox') {
+        // 給 checkbox 一點延遲，讓 input 狀態先更新
+        setTimeout(() => {
+          if (inp.checked) lbl.classList.add('selected');
+          else lbl.classList.remove('selected');
+        }, 0);
+      }
+    });
+  });
+
+  // ===== 送出作答 =====
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    const answers = {}, unanswered = [];
+
+    // 39-46 單選
+    [39,40,41,42,43,44,45,46].forEach(i => {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    });
+    // 47, 48 填空
+    answers[47] = (document.getElementById('ans47').value || '').trim();
+    answers[48] = (document.getElementById('ans48').value || '').trim();
+    if (!answers[47]) { answers[47] = '-'; unanswered.push(47); }
+    if (!answers[48]) { answers[48] = '-'; unanswered.push(48); }
+    // 49 多選
+    const ck = Array.from(document.querySelectorAll('input[name="q49"]:checked')).map(x=>x.value).sort();
+    answers[49] = ck.length ? ck.join('') : '-';
+    if (!ck.length) unanswered.push(49);
+    // 50 簡答
+    answers[50] = (document.getElementById('ans50').value || '').trim();
+    if (!answers[50]) { answers[50] = '-'; unanswered.push(50); }
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
+    }
+
+    // 計分
+    let correct = 0, wrongList = [];
+    QIDS.forEach(i => {
+      const my = String(answers[i]||'').toLowerCase().replace(/\s+/g,' ').trim();
+      const cor = String(ANSWERS[i]||'').toLowerCase();
+      const ok = (i === 50 || i === 47 || i === 48) ? (my === cor) : (answers[i] === ANSWERS[i]);
+      if (ok) correct++;
+      else wrongList.push(i);
+    });
+    const total = QIDS.length;
+    const percent = Math.round(correct/total*100);
+
+    // 不熟悉單字
+    const unfamiliar = [];
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
+    });
+    unfamiliar.sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${total-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    // 翻譯 / 作文 文字內容
+    const trans1Text = (document.getElementById('trans1').value || '').trim();
+    const trans2Text = (document.getElementById('trans2').value || '').trim();
+    const essayText  = (document.getElementById('essay').value || '').trim();
+
+    // 結果 1：作答結果（給 LINE）
+    let r1 = `【115學測英文 第三部分（39-50）作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分（單選+多選）：${correct}/${total}（${percent}%）\n`;
+    r1 += `\n──── 一、選擇／填空題作答 ────\n題號\t學生答案\t\t正確答案\t對錯\n`;
+    [39,40,41,42,43,44,45,46].forEach(i => {
+      const my = answers[i];
+      const ok = my === ANSWERS[i];
+      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
+      r1 += `${i}\t${my}\t\t${ANSWERS[i]}\t\t${mark}\n`;
+    });
+    // 47/48/50 顯示完整英文答案
+    [47,48].forEach(i => {
+      const my = answers[i];
+      const cor = ANSWERS[i];
+      const ok = String(my).toLowerCase() === String(cor).toLowerCase();
+      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
+      r1 += `${i}\t${my}\t\t${cor}\t\t${mark}\n`;
+    });
+    {
+      const my = answers[49], cor = ANSWERS[49];
+      const ok = my === cor;
+      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
+      r1 += `49\t${my}\t\t${cor}\t\t${mark}\n`;
+    }
+    {
+      const my = answers[50], cor = ANSWERS[50];
+      const ok = String(my).toLowerCase() === String(cor).toLowerCase();
+      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
+      r1 += `50\t${my}\n\t\t正解：${cor}\t${mark}\n`;
+    }
+
+    r1 += `\n──── 二、中譯英作答 ────\n`;
+    r1 += `1. 現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。\n`;
+    r1 += `   學生答案：${trans1Text || '（未作答）'}\n\n`;
+    r1 += `2. 他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。\n`;
+    r1 += `   學生答案：${trans2Text || '（未作答）'}\n`;
+
+    r1 += `\n──── 三、英文作文 ────\n`;
+    r1 += `主題：寵物在臺灣生活中的角色（至少 120 字）\n`;
+    if (essayText) {
+      const wc = (essayText.match(/[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g) || []).length;
+      r1 += `字數（約）：${wc} 字\n\n`;
+      r1 += essayText + '\n';
+    } else {
+      r1 += `（未作答）\n`;
+    }
+
+    r1 += `\n──── 不熟悉單字（共 ${unfamiliar.length} 個） ────\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    // 結果 2：單字清單
+    let r2 = `【115學測英文 第三部分 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
+    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
+    else {
+      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
+      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
+    }
+    document.getElementById('wordsReport').textContent = r2;
+
+    // 結果 3：錯題詳解
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+    } else {
+      wrongList.forEach(i => {
+        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        div.innerHTML = `
+          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${escapeHTML(stuAns)}</span> ‧ 正確答案：<span class="correct-mark">${escapeHTML(EXPLANATIONS[i].answer)}</span></div>
+          <div class="explain">${escapeHTML(EXPLANATIONS[i].detail)}</div>`;
+        fb.appendChild(div);
+      });
+    }
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
 </body>
 </html>
