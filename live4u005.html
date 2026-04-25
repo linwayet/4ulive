@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>200天高三英文學習規劃 — 診斷與流程</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --bg: #fdfaf5;
+    --paper: #ffffff;
+    --ink: #2c2a26;
+    --muted: #6b6660;
+    --line: #e7e1d6;
+    --accent1: #c8553d;   /* 診斷紅 */
+    --accent2: #588157;   /* 處方綠 */
+    --accent3: #3a5a8c;   /* 流程藍 */
+    --accent4: #d4a017;   /* 重點黃 */
+    --accent5: #8b5e83;   /* 反思紫 */
+    --soft1: #fbe9e4;
+    --soft2: #e3edd9;
+    --soft3: #dbe5f3;
+    --soft4: #f7ecc6;
+    --soft5: #ece0ea;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    font-size: 16px;
+  }
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+  header.cover {
+    text-align: center;
+    padding: 40px 20px 50px;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 50px;
+  }
+  header.cover .eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  header.cover h1 {
+    font-size: 36px;
+    margin: 12px 0 8px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  header.cover .sub {
+    font-size: 16px;
+    color: var(--muted);
+  }
+  h2.section {
+    font-size: 24px;
+    margin: 60px 0 24px;
+    padding-left: 14px;
+    border-left: 6px solid var(--accent1);
+    letter-spacing: 1px;
+  }
+  h2.section.green { border-left-color: var(--accent2); }
+  h2.section.blue  { border-left-color: var(--accent3); }
+  h2.section.yellow{ border-left-color: var(--accent4); }
+  h2.section.purple{ border-left-color: var(--accent5); }
+
+  h3 {
+    font-size: 18px;
+    margin: 28px 0 12px;
+    color: var(--ink);
+  }
+  p { margin: 12px 0; }
+
+  /* ===== 核心問答卡片 ===== */
+  .qa-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 30px;
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
+  }
+  .qa-card .q {
+    font-size: 16px;
+    color: var(--accent1);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .qa-card .q::before { content: "Q  "; letter-spacing: 2px; }
+  .qa-card .a { color: var(--ink); }
+  .qa-card .a::before {
+    content: "A  ";
+    color: var(--accent2);
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .verdict {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: var(--soft2);
+    border-left: 5px solid var(--accent2);
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .verdict.alt {
+    background: var(--soft4);
+    border-left-color: var(--accent4);
+  }
+
+  /* ===== 兩欄對照 ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 22px 0;
+  }
+  .col {
+    padding: 22px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .col.minimal { background: #fff8f5; border-color: #f4d6cc; }
+  .col.full    { background: #f4faf3; border-color: #cde1c8; }
+  .col h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+  .col.minimal h4 { color: var(--accent1); }
+  .col.full h4    { color: var(--accent2); }
+  .col ul { padding-left: 20px; margin: 8px 0; }
+  .col li { margin: 6px 0; }
+
+  /* ===== 樹狀圖 ===== */
+  .tree-wrap {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 18px 36px;
+    overflow-x: auto;
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
+  }
+  .tree {
+    --node-pad: 10px 14px;
+    text-align: center;
+    min-width: 980px;
+  }
+  .tree ul {
+    padding-top: 24px;
+    position: relative;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .tree li {
+    flex: 1;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 24px 6px 0 6px;
+  }
+  /* connectors */
+  .tree li::before, .tree li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 24px;
+    width: 50%;
+    border-top: 2px solid var(--line);
+  }
+  .tree li::before { right: 50%; border-right: 2px solid var(--line); }
+  .tree li::after  { left: 50%; }
+  .tree li:only-child::before, .tree li:only-child::after { display: none; }
+  .tree li:only-child { padding-top: 24px; }
+  .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+  .tree li:last-child::before { border-right: 2px solid var(--line); border-radius: 0 8px 0 0; }
+  .tree li:first-child::after { border-radius: 8px 0 0 0; }
+  .tree ul ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid var(--line);
+    height: 24px;
+  }
+  .tree .node {
+    display: inline-block;
+    border-radius: 10px;
+    padding: var(--node-pad);
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 110px;
+    transition: transform 0.15s ease;
+  }
+  .tree .node:hover { transform: translateY(-2px); }
+  .tree .node.root {
+    background: var(--accent1);
+    color: #fff;
+    border-color: var(--accent1);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 14px 22px;
+  }
+  .tree .node.l1 {
+    background: var(--soft1);
+    border-color: #f0c2b6;
+    font-weight: 600;
+    color: var(--accent1);
+  }
+  .tree .node.l2 {
+    background: var(--paper);
+    border-color: var(--line);
+    color: var(--ink);
+    font-size: 13px;
+  }
+  .tree .node small {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ===== 流程圖 ===== */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .flow .step {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 14px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(60, 50, 40, 0.04);
+  }
+  .flow .step .num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--accent3);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .flow .step h5 {
+    margin: 4px 0 6px;
+    font-size: 14px;
+    color: var(--accent3);
+  }
+  .flow .step p {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .flow .step:not(:last-child)::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    color: var(--accent3);
+    font-size: 12px;
+    z-index: 2;
+  }
+
+  /* ===== 標籤系統表 ===== */
+  table.tag-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+  table.tag-table th, table.tag-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.tag-table th {
+    background: var(--soft1);
+    color: var(--accent1);
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 130px;
+  }
+  table.tag-table tr:last-child td { border-bottom: 0; }
+  table.tag-table code {
+    background: #f5efe5;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: var(--accent1);
+    font-family: "SF Mono", Consolas, monospace;
+    margin-right: 4px;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
+
+  /* ===== 對話範例 ===== */
+  .demo {
+    background: #faf5ec;
+    border: 1px dashed var(--accent4);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .demo .demo-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--accent4);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .demo .bubble {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 14.5px;
+  }
+  .demo .bubble.user {
+    background: var(--soft3);
+    border-color: #c8d6e8;
+  }
+  .demo .bubble.ai {
+    background: var(--soft2);
+    border-color: #c2d6b9;
+  }
+  .demo .who {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 4階段甘特 ===== */
+  .gantt {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .gantt .row {
+    display: grid;
+    grid-template-columns: 130px 1fr 80px;
+    align-items: center;
+    margin: 10px 0;
+    gap: 12px;
+  }
+  .gantt .label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .gantt .bar-track {
+    position: relative;
+    height: 28px;
+    background: #f3eee2;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .gantt .bar {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 28px;
+    padding-left: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .gantt .days {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ===== 卡片網格 ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .mini-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .mini-card .icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .mini-card h5 {
+    margin: 4px 0 8px;
+    font-size: 15px;
+    color: var(--accent3);
+  }
+  .mini-card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ===== Footer 行動建議 ===== */
+  .next-step {
+    margin-top: 50px;
+    padding: 30px 32px;
+    background: linear-gradient(135deg, #fff8f5 0%, #f4faf3 100%);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+  }
+  .next-step h3 {
+    margin-top: 0;
+    color: var(--accent1);
+    letter-spacing: 1px;
+  }
+  .next-step ol {
+    padding-left: 22px;
+  }
+  .next-step ol li {
+    margin: 10px 0;
+    line-height: 1.7;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    background: var(--soft1);
+    color: var(--accent1);
+    margin-right: 6px;
+  }
+  .badge.green { background: var(--soft2); color: var(--accent2); }
+  .badge.blue  { background: var(--soft3); color: var(--accent3); }
+  .badge.yellow{ background: var(--soft4); color: var(--accent4); }
+
+  hr.dotted {
+    border: 0;
+    border-top: 2px dotted var(--line);
+    margin: 40px 0;
+  }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr 1fr; }
+    .flow .step:nth-child(2)::after,
+    .flow .step:nth-child(4)::after { display: none; }
+    .two-col { grid-template-columns: 1fr; }
+    .gantt .row { grid-template-columns: 100px 1fr; }
+    .gantt .days { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <div class="eyebrow">200 DAYS · ENGLISH ROADMAP</div>
+    <h1>高三英文學測 · 個人化診斷與規劃流程</h1>
+    <div class="sub">如何用 AI 分析錯題 → 建立能力地圖 → 產出客製教材</div>
+  </header>
+
+  <!-- ====== 一、核心問題：是否需要先準備歷屆試題資料夾？ ====== -->
+  <h2 class="section">一、先回答最關鍵的疑問</h2>
+
+  <div class="qa-card">
+    <div class="q">是不是要先有「歷屆試題資料夾」存在，AI 才能分析學生錯誤、設計題目？</div>
+    <p class="a" style="margin-top:14px;">
+      答案是 <strong>「不一定，但有的話會更強。」</strong>
+      因為 AI 分析學生錯誤，本質上不依賴「題庫存在哪裡」，而是依賴「您把學生的考試結果交給我看」。
+      只要您把錯題（題目 + 學生答案 + 正確答案）貼進對話，我立刻就能診斷錯因、找出弱點、設計補強教材——這是 <strong>診斷端</strong>。
+      但若您預先建立一個歷屆試題的資料夾（PDF 或文字檔），就能讓 AI 在「處方端」更聰明：依弱點直接從題庫中挑出對應的題目給學生練習，不用每次都從零生成。
+    </p>
+
+    <div class="verdict">
+      <strong>實務建議：</strong>分兩階段啟動。第一階段（前 1–2 週）先「診斷不囤題」——學生考完後，您把錯題貼進來分析即可。
+      第二階段（第 3 週起）再慢慢累積一個分類好的歷屆題庫資料夾，AI 就能在補強時自動派題、設計仿擬題。
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="col minimal">
+      <h4>方案 A · 最小起步法</h4>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">不囤題庫，學生有錯就貼上來</p>
+      <ul>
+        <li>學生交卷後，您拍照/打字貼上錯題</li>
+        <li>AI 立即標籤化錯因、產出弱點分析</li>
+        <li>AI 依弱點 <strong>即時生成</strong>仿擬題與教材</li>
+        <li>優點：零準備、可立刻啟動</li>
+        <li>限制：題目來源依賴 AI 即時生成，量體有限</li>
+      </ul>
+    </div>
+    <div class="col full">
+      <h4>方案 B · 題庫加持法</h4>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">先建立歷屆試題資料夾，再啟動</p>
+      <ul>
+        <li>把 105–114 學測 + 模擬考依題型分類存檔</li>
+        <li>AI 分析錯因後，<strong>自動從題庫挑題</strong>，不用生成</li>
+        <li>可做「相似題追蹤」：發現他長句拆解弱，立即派 20 題真題</li>
+        <li>優點：題目品質高（真題）、可橫向比較</li>
+        <li>需要時間建檔（建議週末一次性整理 2–3 小時）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 二、用樹狀圖看學生的能力結構 ====== -->
+  <h2 class="section green">二、用樹狀圖看學生的能力結構</h2>
+  <p>
+    高三學測的英文能力，不是一個單一指標，而是一棵<strong>分層的樹</strong>。
+    AI 分析學生時，會把每一道錯題「掛」到這棵樹的某個葉子上，
+    一份考卷分析完，學生哪些枝幹弱、哪些葉子掉光，就一目瞭然。
+  </p>
+
+  <div class="tree-wrap">
+    <div class="tree">
+      <ul>
+        <li>
+          <div class="node root">學測英文能力樹</div>
+          <ul>
+            <li>
+              <div class="node l1">語言基底層</div>
+              <ul>
+                <li><div class="node l2">單字認識率<small>核心 4500 字</small></div></li>
+                <li><div class="node l2">一字多義<small>義項辨識</small></div></li>
+                <li><div class="node l2">搭配詞<small>collocation</small></div></li>
+                <li><div class="node l2">詞性判斷<small>n. v. adj.</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">句構語法層</div>
+              <ul>
+                <li><div class="node l2">時態語態<small>12 時態</small></div></li>
+                <li><div class="node l2">子句連接<small>關代/連接詞</small></div></li>
+                <li><div class="node l2">分詞構句<small>-ing / -ed</small></div></li>
+                <li><div class="node l2">假設倒裝<small>進階句型</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">篇章邏輯層</div>
+              <ul>
+                <li><div class="node l2">轉折詞敏感<small>however 等</small></div></li>
+                <li><div class="node l2">指代詞回指<small>it/this/they</small></div></li>
+                <li><div class="node l2">段落功能<small>主旨/支持/反駁</small></div></li>
+                <li><div class="node l2">推論能力<small>言外之意</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">輸出表達層</div>
+              <ul>
+                <li><div class="node l2">中譯英句構<small>主動詞對齊</small></div></li>
+                <li><div class="node l2">道地用字<small>避中式英文</small></div></li>
+                <li><div class="node l2">作文結構<small>起承轉合</small></div></li>
+                <li><div class="node l2">混合題重組<small>摘要改寫</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">應試策略層</div>
+              <ul>
+                <li><div class="node l2">時間配速<small>各題型秒數</small></div></li>
+                <li><div class="node l2">選項陷阱<small>部分對辨識</small></div></li>
+                <li><div class="node l2">假對題<small>蒙對標★</small></div></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="font-size:14.5px; color:var(--muted);">
+    <strong>怎麼讀這棵樹？</strong>每位學生考完一份卷後，AI 會在這 19 個葉節點上各打一個分（例：紅 = 弱、黃 = 普通、綠 = 強）。
+    跑完 3 份考卷後，學生個人的「弱枝」就會穩定浮現——也許他語言基底層全綠，但篇章邏輯層全紅，那就知道補強方向是<strong>連接詞 + 指代 + 推論</strong>，
+    而不是無差別地多背單字。
+  </p>
+
+  <!-- ====== 三、AI 的五步分析流程 ====== -->
+  <h2 class="section blue">三、AI 分析學生的五步流程</h2>
+  <p>從學生交考卷到產出個人化教材，整個流程是這樣走的：</p>
+
+  <div class="flow">
+    <div class="step">
+      <div class="num">1</div>
+      <h5>原始輸入</h5>
+      <p>您貼上學生的<br>題目 / 答案 / 正解 / 翻譯</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h5>錯因標籤化</h5>
+      <p>每題掛到能力樹的<br>某個葉節點</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h5>能力熱力圖</h5>
+      <p>累積後產生個人<br>強弱分布視覺化</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h5>處方設計</h5>
+      <p>依弱點選一週主題<br>自動產生教材</p>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <h5>驗收回饋</h5>
+      <p>下週測驗 → 比對<br>熱力圖變化</p>
+    </div>
+  </div>
+
+  <h3>每一步具體在做什麼？</h3>
+
+  <table class="tag-table">
+    <tr>
+      <th>步驟 1<br>原始輸入</th>
+      <td>
+        您只需要把以下三樣丟進對話即可：<br>
+        <code>題目原文</code><code>學生選的答案</code><code>正確答案</code><br>
+        如果有翻譯（中翻英 / 英翻中題），把學生寫的版本也貼上來。題型不限——單字、綜測、文選、篇結、閱測、混合題、翻譯、作文都可以。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 2<br>錯因標籤化</th>
+      <td>
+        AI 會逐題分析「他為什麼錯」，並貼上 1–2 個標籤。例如：<br>
+        <code>單字｜一字多義</code><code>句構｜分詞構句</code><code>篇章｜轉折詞忽略</code><br>
+        每一題不只記「錯了」，而是記「錯在哪一根筋」。這是診斷的核心。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 3<br>能力熱力圖</th>
+      <td>
+        累積 3 份考卷後，AI 會在能力樹的 19 個葉節點上各打一個顏色分。
+        產出一張個人化的「弱點地圖」，並寫下文字診斷：<br>
+        <em>「該生語言基底層整體穩定，但篇章邏輯層的『轉折詞敏感』與『指代詞回指』為主要失分來源，建議優先補強。」</em>
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 4<br>處方設計</th>
+      <td>
+        AI 會依弱點，用「7 天密集型」或「4 週循環型」結構，自動產生：<br>
+        <code>每日學習主題</code><code>對應例句</code><code>練習題</code><code>檢核點</code><br>
+        如果您有歷屆試題資料夾，AI 會優先從中派發真題；如果沒有，AI 會即時生成仿擬題。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 5<br>驗收回饋</th>
+      <td>
+        7 天 / 30 天後，學生再做一份考卷，您把錯題再貼進來。
+        AI 會比對「上次的弱點 vs 這次的錯誤」，告訴您：哪些葉節點從紅變綠（補強成功）、哪些仍紅（需換策略）、有沒有出現新弱點。
+      </td>
+    </tr>
+  </table>
+
+  <!-- ====== 四、實際對話會長什麼樣 ====== -->
+  <h2 class="section yellow">四、實際對話範例：學生貼上一題後會怎樣？</h2>
+  <p>用一個真實情境讓您先看看流程的「肉感」。</p>
+
+  <div class="demo">
+    <div class="demo-title">情境一 · 單一錯題快速診斷</div>
+
+    <div class="bubble user">
+      <div class="who">老師（您）</div>
+      這題學生錯了，幫我看：<br><br>
+      <strong>原題：</strong>Despite ______ very tired, she insisted on finishing the report.<br>
+      (A) be　(B) being　(C) was　(D) been<br>
+      <strong>學生答：</strong>(A)　<strong>正解：</strong>(B)
+    </div>
+
+    <div class="bubble ai">
+      <div class="who">AI 回覆</div>
+      <strong>錯因標籤：</strong><span class="badge">句構｜介系詞後接動名詞</span><span class="badge green">分詞構句基礎</span><br>
+      <strong>診斷：</strong>學生對「despite 是介系詞而非連接詞」的概念不清。
+      他把 despite 當成 although 處理，所以填了原形動詞 be。
+      實際上 despite 後面只能接<strong>名詞 / 動名詞 / 名詞片語</strong>，因此正解是 being。<br>
+      <strong>建議補強：</strong>下週安排 1 天「despite / in spite of vs although / though」對比練習，搭配 10 題即時生成的綜測題鞏固。
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">情境二 · 整份考卷批次分析</div>
+
+    <div class="bubble user">
+      <div class="who">老師（您）</div>
+      我把這份學測模擬考的所有錯題拍照上傳給您（共 12 題），請幫我做完整診斷。
+    </div>
+
+    <div class="bubble ai">
+      <div class="who">AI 回覆（節錄）</div>
+      已分析 12 題錯題。<br>
+      <strong>錯因分布（Top 3）：</strong><br>
+      1. <span class="badge">篇章｜轉折詞忽略</span> 4 題（佔 33%）— 這是主要失分點<br>
+      2. <span class="badge">單字｜一字多義</span> 3 題（佔 25%）<br>
+      3. <span class="badge">句構｜分詞構句</span> 2 題（佔 17%）<br><br>
+      <strong>診斷：</strong>該生語言基底尚可，但「閱測中的轉折邏輯」與「字彙的義項彈性」是兩大瓶頸。
+      建議下週走「篇章邏輯週」課程，內容包含 however / nevertheless / on the contrary 等 12 個轉折詞家族整理 + 5 篇學測閱測實戰。<br><br>
+      要不要我直接幫您產出這一週的教材？
+    </div>
+  </div>
+
+  <hr class="dotted">
+
+  <!-- ====== 五、200 天總體規劃節奏 ====== -->
+  <h2 class="section purple">五、200 天的整體節奏</h2>
+  <p>把 200 天切成四個階段，每階段任務不同，AI 在不同階段扮演不同角色：</p>
+
+  <div class="gantt">
+    <div class="row">
+      <div class="label">第 1–60 天<br><small style="color:var(--muted);font-weight:400;">基礎重建期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:0%; width:30%; background:var(--accent1);">診斷 + 補洞，質重於量</div>
+      </div>
+      <div class="days">60 天</div>
+    </div>
+    <div class="row">
+      <div class="label">第 61–120 天<br><small style="color:var(--muted);font-weight:400;">主題密集期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:30%; width:30%; background:var(--accent2);">每週一主題，建立架構</div>
+      </div>
+      <div class="days">60 天</div>
+    </div>
+    <div class="row">
+      <div class="label">第 121–180 天<br><small style="color:var(--muted);font-weight:400;">題型實戰期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:60%; width:30%; background:var(--accent3);">每週兩份完整模考 + 計時</div>
+      </div>
+      <div class="days">60 天</div>
+    </div>
+    <div class="row">
+      <div class="label">第 181–200 天<br><small style="color:var(--muted);font-weight:400;">手感維持期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:90%; width:10%; background:var(--accent4);">每日小份量</div>
+      </div>
+      <div class="days">20 天</div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="mini-card">
+      <div class="icon">🔍</div>
+      <h5>第一階段</h5>
+      <p>AI 主要在做「診斷」。每週分析 1 份考卷，跑出能力樹熱力圖。重點是建立學生個人錯題資料庫。</p>
+    </div>
+    <div class="mini-card">
+      <div class="icon">📚</div>
+      <h5>第二階段</h5>
+      <p>AI 主要在「設計教材」。依上一階段累積的弱點，產出每週主題教材包，從題庫派題或即時生成。</p>
+    </div>
+    <div class="mini-card">
+      <div class="icon">⏱️</div>
+      <h5>第三階段</h5>
+      <p>AI 主要在「模考批改 + 計時建議」。每週兩份完整學測題模考，AI 分析配速、陷阱辨識。</p>
+    </div>
+    <div class="mini-card">
+      <div class="icon">💡</div>
+      <h5>第四階段</h5>
+      <p>AI 主要在「心態維持 + 錯題本回顧」。每天一份小題，避免疲勞。重點不在新學，而在不忘。</p>
+    </div>
+  </div>
+
+  <!-- ====== 六、下一步建議 ====== -->
+  <div class="next-step">
+    <h3>下一步可以這樣啟動</h3>
+    <ol>
+      <li>
+        <strong>本週馬上能做的：</strong>挑一位學生最近的一份學測模擬考錯題，貼進對話，我幫您跑一次「五步流程」的完整 demo——讓您看到診斷出來會長什麼樣。
+      </li>
+      <li>
+        <strong>建議週末做的：</strong>把 110–114 學測題（5 屆）依題型分類存進一個資料夾——這就是您的「題庫資產」，未來 200 天會反覆用到。
+      </li>
+      <li>
+        <strong>第二週可以做的：</strong>請我幫您產出一份「錯題追蹤工作表」（xlsx），含分類下拉選單 + 自動統計圖，讓您日常記錄錯題時不用手動分類。
+      </li>
+      <li>
+        <strong>持續做的：</strong>每兩週讓我跑一次「能力樹熱力圖更新」，比對學生補強成效，動態調整下兩週方向。
+      </li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
