@@ -3,156 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年當月雜誌整理 - 林威老師</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <title>ECHO 錯中學 2026 計劃 - 林威老師</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #4a90e2;
-            --primary-green: #67b26f;
-            --primary-purple: #9b59b6;
-            --primary-orange: #f39c12;
-            --primary-red: #e74c3c;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --card-bg: #ffffff;
+            --cream:   #F8F4ED;
+            --ink:     #2D2A26;
+            --brown:   #8B5E3C;
+            --gold:    #D4A574;
+            --gold-lt: #EDD9B8;
+            --echo-r:  #C0392B;
+            --echo-g:  #27AE60;
+            --echo-b:  #2471A3;
+            --echo-o:  #D35400;
+            --echo-p:  #7D3C98;
+            --shadow:  0 4px 24px rgba(45,42,38,0.10);
+            --radius:  16px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.7;
+            background: var(--cream);
+            color: var(--ink);
             min-height: 100vh;
-            padding: 40px 15px;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        header {
+        /* ── HERO ── */
+        .hero {
+            background: var(--ink);
+            padding: 64px 24px 56px;
             text-align: center;
-            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 20% 50%, rgba(212,165,116,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 80% 40%, rgba(192,57,43,0.12) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        h1 {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .echo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212,165,116,0.15);
+            border: 1.5px solid var(--gold);
+            border-radius: 40px;
+            padding: 6px 22px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+        .echo-badge span { font-size: 18px; }
+
+        .hero h1 {
+            font-family: 'Playfair Display', 'Noto Sans TC', serif;
+            font-size: clamp(28px, 6vw, 52px);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 1.25;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--gold);
         }
 
-        .author-tag {
-            display: inline-block;
-            background: #2c3e50;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
+        .hero-sub {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: rgba(248,244,237,0.70);
+            margin-bottom: 28px;
+            font-weight: 400;
         }
 
-        .section-title {
-            width: 100%;
-            max-width: 900px;
-            margin: 25px 0 15px 0;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #555;
-            border-left: 4px solid #2c3e50;
-            padding-left: 10px;
+        .hero-team {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(248,244,237,0.08);
+            border: 1px solid rgba(248,244,237,0.18);
+            border-radius: 50px;
+            padding: 10px 28px;
+            font-size: 17px;
+            color: var(--cream);
+            font-weight: 500;
+        }
+        .hero-team strong { color: var(--gold); font-weight: 700; }
+        .hero-team .dot { color: var(--gold); font-size: 22px; line-height: 1; }
+
+        /* ── LAYOUT ── */
+        .page-body {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 900px;
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 52px 0 24px;
+        }
+        .section-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+        .section-header p {
+            font-size: 16px;
+            color: var(--brown);
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        /* ── GRID ── */
+        .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
         }
 
         .resource-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 10px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            gap: 6px;
+            min-height: 88px;
+            padding: 20px 14px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--ink);
+            background: #fff;
+            box-shadow: var(--shadow);
+            border: 1.5px solid transparent;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
-
-        .resource-card:active { transform: scale(0.95); }
         .resource-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 32px rgba(45,42,38,0.14);
+        }
+        .resource-card:active { transform: scale(0.97); }
+
+        .card-num {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.45;
+            margin-bottom: 2px;
+        }
+        .card-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .card-arrow {
+            font-size: 13px;
+            opacity: 0.35;
+            margin-top: 4px;
         }
 
-        .title { font-weight: 700; font-size: 1.1rem; }
-        
-        /* 分類顏色 */
-        .live { border-top: 5px solid var(--primary-blue); }
-        .u4 { border-top: 5px solid var(--primary-green); }
-        .studioclassroom { border-top: 5px solid var(--primary-red); }
-        .allplus { border-top: 5px solid var(--primary-purple); }
-        .ivy { border-top: 5px solid var(--primary-orange); }
-        .exam { border-top: 5px solid #34495e; background-color: #ecf0f1; }
+        /* Color variants */
+        .c-blue  { border-top: 5px solid var(--echo-b); }
+        .c-blue  .card-num { color: var(--echo-b); }
+        .c-blue:hover { border-color: var(--echo-b); }
 
+        .c-green { border-top: 5px solid var(--echo-g); }
+        .c-green .card-num { color: var(--echo-g); }
+        .c-green:hover { border-color: var(--echo-g); }
+
+        .c-red   { border-top: 5px solid var(--echo-r); }
+        .c-red   .card-num { color: var(--echo-r); }
+        .c-red:hover { border-color: var(--echo-r); }
+
+        .c-orange { border-top: 5px solid var(--echo-o); }
+        .c-orange .card-num { color: var(--echo-o); }
+        .c-orange:hover { border-color: var(--echo-o); }
+
+        .c-purple { border-top: 5px solid var(--echo-p); }
+        .c-purple .card-num { color: var(--echo-p); }
+        .c-purple:hover { border-color: var(--echo-p); }
+
+        .c-dark {
+            border-top: 5px solid #34495e;
+            background: #f0f2f5;
+        }
+        .c-dark .card-num { color: #34495e; }
+        .c-dark:hover { border-color: #34495e; }
+
+        /* ── DIVIDER ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+            margin: 0;
+        }
+
+        /* ── FEATURE STRIP ── */
+        .feature-strip {
+            display: flex;
+            gap: 14px;
+            margin: 36px 0 0;
+            flex-wrap: wrap;
+        }
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1.5px solid var(--gold-lt);
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--brown);
+            min-height: 44px;
+        }
+        .feature-pill .pico { font-size: 18px; }
+
+        /* ── FOOTER ── */
         footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #7f8c8d;
+            background: var(--ink);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        .footer-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        footer .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        footer p {
+            font-size: 14px;
+            color: rgba(248,244,237,0.45);
         }
 
-        @media (max-width: 480px) {
-            .container { grid-template-columns: repeat(2, 1fr); }
-            h1 { font-size: 1.5rem; }
+        /* ── CONTACT SECTION ── */
+        .contact-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 20px 56px;
         }
+        .contact-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 36px 32px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            border: 1.5px solid var(--gold-lt);
+        }
+        .line-icon {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+            background: #06C755;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .line-icon svg {
+            width: 44px;
+            height: 44px;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+        .contact-info p {
+            font-size: 16px;
+            color: var(--brown);
+            margin-bottom: 14px;
+            font-weight: 400;
+        }
+        .line-id-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #E8FAF0;
+            border: 1.5px solid #06C755;
+            border-radius: 50px;
+            padding: 10px 22px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #059142;
+            letter-spacing: 0.04em;
+            min-height: 44px;
+            cursor: default;
+            user-select: all;
+        }
+        .line-id-tag .at { opacity: 0.55; font-weight: 400; }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 10px;
+            background: var(--ink);
+            color: var(--cream);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 44px;
+            transition: background 0.18s;
+            font-family: inherit;
+        }
+        .copy-btn:hover { background: var(--brown); }
+        .copy-btn.copied { background: #06C755; }
+
+        @media (max-width: 520px) {
+            .contact-card { flex-direction: column; gap: 18px; padding: 28px 20px; text-align: center; }
+            .contact-info { width: 100%; }
+            .line-id-tag { font-size: 16px; }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 520px) {
+            .card-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .resource-card { min-height: 80px; padding: 16px 10px; }
+            .card-title { font-size: 15px; }
+            .feature-strip { gap: 8px; }
+            .feature-pill { font-size: 14px; padding: 8px 14px; }
+        }
+
+        /* ── STAGGER ENTRANCE ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .resource-card {
+            animation: fadeUp 0.35s ease both;
+        }
+        .card-grid .resource-card:nth-child(1)  { animation-delay: 0.05s; }
+        .card-grid .resource-card:nth-child(2)  { animation-delay: 0.10s; }
+        .card-grid .resource-card:nth-child(3)  { animation-delay: 0.14s; }
+        .card-grid .resource-card:nth-child(4)  { animation-delay: 0.18s; }
+        .card-grid .resource-card:nth-child(5)  { animation-delay: 0.22s; }
+        .card-grid .resource-card:nth-child(6)  { animation-delay: 0.26s; }
+        .card-grid .resource-card:nth-child(7)  { animation-delay: 0.30s; }
+        .card-grid .resource-card:nth-child(8)  { animation-delay: 0.34s; }
+        .card-grid .resource-card:nth-child(9)  { animation-delay: 0.38s; }
+        .card-grid .resource-card:nth-child(10) { animation-delay: 0.42s; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>2026年當月雜誌整理</h1>
-        <div class="author-tag">林威老師 編寫</div>
-    </header>
+<!-- ── HERO ── -->
+<header class="hero">
+    <div class="echo-badge">
+        <span>🔁</span> ECHO 計劃 2026
+    </div>
+    <h1>錯中學<br><em>ECHO 計劃</em></h1>
+    <p class="hero-sub">每一道錯題，都是下一次正確的起點</p>
+    <div class="hero-team">
+        <strong>林威老師</strong>
+        <span class="dot">×</span>
+        <span>AI Agent 團隊合作</span>
+    </div>
+</header>
 
-    <div class="section-title">Live & 4U 系列</div>
-    <main class="container">
-        <a href="live4u001.html" class="resource-card live"><span class="title">Live-1</span></a>
-        <a href="live4u002.html" class="resource-card live"><span class="title">Live-2</span></a>
-        <a href="live4u003.html" class="resource-card live"><span class="title">Live-3</span></a>
-        <a href="live4u004.html" class="resource-card live"><span class="title">Live-4</span></a>
-        <a href="live4u005.html" class="resource-card live"><span class="title">Live-5</span></a>
-        <a href="live4u006.html" class="resource-card u4"><span class="title">4U-1</span></a>
-        <a href="live4u007.html" class="resource-card u4"><span class="title">4U-2</span></a>
-        <a href="live4u008.html" class="resource-card u4"><span class="title">4U-3</span></a>
-        <a href="live4u009.html" class="resource-card u4"><span class="title">4U-4</span></a>
-        <a href="live4u010.html" class="resource-card u4"><span class="title">4U-5</span></a>
-    </main>
+<div class="page-body">
 
-    <div class="section-title">進階雜誌與考試進度</div>
-    <main class="container">
-        <a href="live4u011.html" class="resource-card studioclassroom"><span class="title">空英-1</span></a>
-        <a href="live4u012.html" class="resource-card studioclassroom"><span class="title">空英-2</span></a>
-        <a href="live4u013.html" class="resource-card studioclassroom"><span class="title">空英-3</span></a>
-        <a href="live4u014.html" class="resource-card allplus"><span class="title">All+1</span></a>
-        <a href="live4u015.html" class="resource-card allplus"><span class="title">All+2</span></a>
-        <a href="live4u016.html" class="resource-card ivy"><span class="title">IVY-1</span></a>
-        <a href="live4u017.html" class="resource-card ivy"><span class="title">IVY-2</span></a>
-        <a href="live4u018.html" class="resource-card ivy"><span class="title">IVY-3</span></a>
-        <a href="live4u019.html" class="resource-card exam"><span class="title">模考-4</span></a>
-        <a href="live4u020.html" class="resource-card exam"><span class="title">歷屆-5</span></a>
-    </main>
+    <!-- Feature pills -->
+    <div class="feature-strip">
+        <div class="feature-pill"><span class="pico">🎯</span> 個人化錯題分析</div>
+        <div class="feature-pill"><span class="pico">🤖</span> AI 演算驅動</div>
+        <div class="feature-pill"><span class="pico">📊</span> 學測歷屆解析</div>
+        <div class="feature-pill"><span class="pico">🏆</span> 高三衝刺專班</div>
+    </div>
 
-    <footer>
-        &copy; 2026 林威老師英語教室 - 數位資源中心
-    </footer>
+    <!-- Section 1 -->
+    <div class="section-header">
+        <div class="section-icon" style="background:#EAF2FB;">🎓</div>
+        <div>
+            <h2>高三生 &amp; AI 大師</h2>
+            <p>ECHO 核心模組 · 個人化學習路徑</p>
+        </div>
+    </div>
+
+    <div class="card-grid">
+        <a href="live4u001.html" class="resource-card c-blue">
+            <span class="card-num">01</span>
+            <span class="card-title">個人化學習</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u002.html" class="resource-card c-blue">
+            <span class="card-num">02</span>
+            <span class="card-title">AI 演算法</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u003.html" class="resource-card c-blue">
+            <span class="card-num">03</span>
+            <span class="card-title">ECHO 計劃</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u004.html" class="resource-card c-green">
+            <span class="card-num">04</span>
+            <span class="card-title">91–115 學測</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u005.html" class="resource-card c-green">
+            <span class="card-num">05</span>
+            <span class="card-title">108–115 學測</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u006.html" class="resource-card c-orange">
+            <span class="card-num">06</span>
+            <span class="card-title">116 年猜題分析</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u007.html" class="resource-card c-orange">
+            <span class="card-num">07</span>
+            <span class="card-title">試題分析 1</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u008.html" class="resource-card c-orange">
+            <span class="card-num">08</span>
+            <span class="card-title">試題分析 2</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u009.html" class="resource-card c-red">
+            <span class="card-num">09</span>
+            <span class="card-title">模考分析 3</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u010.html" class="resource-card c-red">
+            <span class="card-num">10</span>
+            <span class="card-title">模考分析 4</span>
+            <span class="card-arrow">→</span>
+        </a>
+    </div>
+
+    <div class="divider" style="margin: 44px 0;"></div>
+
+    <!-- Section 2 -->
+    <div class="section-header">
+        <div class="section-icon" style="background:#F5EEF8;">📂</div>
+        <div>
+            <h2>個人英文分析資料庫</h2>
+            <p>歷屆學測年度精析 · 完整模考記錄</p>
+        </div>
+    </div>
+
+    <div class="card-grid">
+        <a href="live4u011.html" class="resource-card c-red">
+            <span class="card-num">11</span>
+            <span class="card-title">115 年（上）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u012.html" class="resource-card c-red">
+            <span class="card-num">12</span>
+            <span class="card-title">115 年（中）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u013.html" class="resource-card c-red">
+            <span class="card-num">13</span>
+            <span class="card-title">115 年（下）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u014.html" class="resource-card c-purple">
+            <span class="card-num">14</span>
+            <span class="card-title">114 年（上）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u015.html" class="resource-card c-purple">
+            <span class="card-num">15</span>
+            <span class="card-title">模考（全）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u016.html" class="resource-card c-orange">
+            <span class="card-num">16</span>
+            <span class="card-title">113 年（上）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u017.html" class="resource-card c-orange">
+            <span class="card-num">17</span>
+            <span class="card-title">113 年（下）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u018.html" class="resource-card c-green">
+            <span class="card-num">18</span>
+            <span class="card-title">112 年（上）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u019.html" class="resource-card c-dark">
+            <span class="card-num">19</span>
+            <span class="card-title">112 年（下）</span>
+            <span class="card-arrow">→</span>
+        </a>
+        <a href="live4u020.html" class="resource-card c-dark">
+            <span class="card-num">20</span>
+            <span class="card-title">模考（全）</span>
+            <span class="card-arrow">→</span>
+        </a>
+    </div>
+
+</div><!-- /page-body -->
+
+<!-- ── CONTACT ── -->
+<section class="contact-section">
+    <div class="contact-card">
+        <div class="line-icon">
+            <!-- LINE logo SVG -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#06C755"/>
+                <path d="M40 22.3C40 15.5 33.2 10 24.9 10C16.6 10 10 15.5 10 22.3C10 28.4 15.4 33.5 22.7 34.4C23.2 34.5 23.9 34.8 24.1 35.2C24.3 35.6 24.2 36.2 24.1 36.6L23.8 38.2C23.7 38.6 23.5 39.7 24.9 39.1C26.3 38.5 32.9 34.4 36 31C38.2 28.6 40 25.6 40 22.3Z" fill="white"/>
+                <path d="M20.5 25.5H17.5C17.2 25.5 17 25.3 17 25V19.5C17 19.2 17.2 19 17.5 19C17.8 19 18 19.2 18 19.5V24.5H20.5C20.8 24.5 21 24.7 21 25C21 25.3 20.8 25.5 20.5 25.5Z" fill="#06C755"/>
+                <path d="M22.5 25C22.5 25.3 22.3 25.5 22 25.5C21.7 25.5 21.5 25.3 21.5 25V19.5C21.5 19.2 21.7 19 22 19C22.3 19 22.5 19.2 22.5 19.5V25Z" fill="#06C755"/>
+                <path d="M28.5 25C28.5 25.3 28.3 25.5 28 25.5C27.8 25.5 27.6 25.4 27.5 25.2L24.5 20.7V25C24.5 25.3 24.3 25.5 24 25.5C23.7 25.5 23.5 25.3 23.5 25V19.5C23.5 19.2 23.7 19 24 19C24.2 19 24.4 19.1 24.5 19.3L27.5 23.8V19.5C27.5 19.2 27.7 19 28 19C28.3 19 28.5 19.2 28.5 19.5V25Z" fill="#06C755"/>
+                <path d="M31.5 21H29C28.7 21 28.5 20.8 28.5 20.5C28.5 20.2 28.7 20 29 20H31.5V19.5C31.5 19.2 31.7 19 32 19C32.3 19 32.5 19.2 32.5 19.5V20V25V25.5C32.5 25.8 32.3 26 32 26C31.7 26 31.5 25.8 31.5 25.5V25H29C28.7 25 28.5 24.8 28.5 24.5C28.5 24.2 28.7 24 29 24H31.5V22.5H29C28.7 22.5 28.5 22.3 28.5 22C28.5 21.7 28.7 21.5 29 21.5H31.5V21Z" fill="#06C755"/>
+            </svg>
+        </div>
+        <div class="contact-info">
+            <h3>加入 LINE 聯繫林威老師</h3>
+            <p>有任何課程問題、報名諮詢，歡迎直接加好友！</p>
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div class="line-id-tag">
+                    <span class="at">LINE ID &nbsp;</span>linwayet
+                </div>
+                <button class="copy-btn" onclick="copyLineId(this)" aria-label="複製 LINE ID">
+                    📋 複製 ID
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="logo-text">ECHO 錯中學計劃</div>
+        <p>&copy; 2026 林威老師英語教室 · 數位資源中心</p>
+    </div>
+</footer>
+
+<script>
+function copyLineId(btn) {
+    navigator.clipboard.writeText('linwayet').then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✅ 已複製！';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+</script>
 
 </body>
 </html>

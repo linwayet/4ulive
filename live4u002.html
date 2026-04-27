@@ -3,681 +3,689 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>114 年學測英文 - 第一部分（第 1-20 題）</title>
+<title>學測200天衝刺計劃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
-    margin: 0; padding: 20px;
-    color: #2c3e50; line-height: 1.75;
-  }
-  .container {
-    max-width: 880px; margin: 0 auto;
-    background: #fff; border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    padding: 32px 40px;
-  }
-  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
-  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
-  .subtitle { color: #7f8c8d; font-size: 0.95em; }
-  .student-info {
-    background: #ecf5fd; border-radius: 10px;
-    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  }
-  .student-info label { font-weight: 600; color: #2980b9; }
-  .student-info input {
-    border: 1px solid #bdc3c7; border-radius: 6px;
-    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
-  }
-  .instruction {
-    background: #fff9e6; border-left: 4px solid #f39c12;
-    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
-    font-size: 0.95em; color: #8e6c16;
-  }
-  .section-title {
-    background: linear-gradient(90deg, #3498db, #5dade2);
-    color: #fff; padding: 10px 16px; border-radius: 8px;
-    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
-  }
-  .group-label {
-    background: #eaf4fb; color: #1f618d;
-    padding: 7px 14px; border-radius: 6px;
-    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
-    display: inline-block;
-  }
-  .passage {
-    background: #fafbfc; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
-    font-size: 1em; text-align: justify;
-  }
+:root {
+  --bg: #F8F4ED;
+  --text: #2D2A26;
+  --accent1: #8B5E3C;
+  --accent2: #D4A574;
+  --accent3: #C8503A;
+  --accent4: #4A7C6F;
+  --accent5: #6B4E8A;
+  --accent6: #2C5F8A;
+  --ok: #3A7D55;
+  --warn: #C8503A;
+  --card-bg: #FFFDF8;
+  --border: #E8DDD0;
+  --shadow: rgba(45,42,38,0.12);
+  --line-h: 1.75;
+  --font-size: 22px;
+  --max-w: 720px;
+}
 
-  /* 詞彙題樣式 */
-  .question {
-    background: #fff; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
-  }
-  .q-text { font-size: 1em; margin-bottom: 8px; }
-  .q-num {
-    display: inline-block; background: #3498db; color: #fff;
-    border-radius: 50%; width: 26px; height: 26px;
-    text-align: center; line-height: 26px; font-weight: 700;
-    margin-right: 6px; font-size: 0.88em;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* 綜合測驗：題號與選項同一行 */
-  .q-inline {
-    display: flex; align-items: center; gap: 10px;
-    background: #fff; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
-    flex-wrap: wrap;
-  }
-  .q-inline .q-num-sq {
-    background: #3498db; color: #fff; font-weight: 700;
-    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
-    flex-shrink: 0;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: var(--line-h);
+  min-height: 100vh;
+}
 
-  .options {
-    display: flex; flex-wrap: wrap; gap: 6px; flex: 1;
-  }
-  .options label {
-    flex: 1 1 calc(25% - 6px); min-width: 130px;
-    display: flex; align-items: center; gap: 5px;
-    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
-    border-radius: 6px; cursor: pointer; transition: all 0.15s;
-    font-size: 0.93em;
-  }
-  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
-  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
-  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+.wrapper {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
 
-  /* 可點選單字 */
-  .word {
-    cursor: pointer; padding: 0 1px; border-radius: 3px;
-    transition: background 0.12s;
-  }
-  .word:hover { background: #fdecea; }
-  .word.unfamiliar {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    font-weight: 600; color: #b9770e;
-  }
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 56px 0 48px;
+  position: relative;
+}
 
-  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+.hero-badge {
+  display: inline-block;
+  background: var(--accent3);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 6px 20px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
 
-  /* 選項單字可點選列（僅用於點選不熟悉單字） */
-  .vocab-row {
-    background: #fef5e7; border: 1px dashed #f5b041;
-    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
-    font-size: 0.95em; color: #7d6608;
-    display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center;
-  }
-  .vocab-row::before {
-    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
-    color: #b9770e; font-weight: 600; margin-right: 4px;
-  }
-  .vocab-row .word { padding: 2px 5px; }
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--accent1);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
 
-  .button-row { text-align: center; margin: 26px 0 6px; }
-  button {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: #fff; border: none; border-radius: 10px;
-    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
-    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
-    transition: transform 0.15s;
-  }
-  button:hover { transform: translateY(-2px); }
+.hero h1 span {
+  color: var(--accent3);
+  display: block;
+  font-size: 52px;
+}
 
-  #results { display: none; margin-top: 26px; }
-  .result-card {
-    background: #fff; border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    padding: 20px 22px; margin-bottom: 20px;
-    border-top: 4px solid #3498db;
-  }
-  .result-card.score { border-top-color: #9b59b6; }
-  .result-card.teacher { border-top-color: #27ae60; }
-  .result-card.feedback { border-top-color: #e67e22; }
-  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
-  .copyable {
-    background: #f4f6f8; border: 1px dashed #bdc3c7;
-    border-radius: 8px; padding: 14px; white-space: pre-wrap;
-    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
-    max-height: 300px; overflow-y: auto; color: #2c3e50;
-  }
-  .copy-btn {
-    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
-    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
-  }
-  .copy-btn:hover { background: #7f8c8d; }
-  .copy-btn.copied { background: #27ae60; }
+.hero-sub {
+  font-size: 18px;
+  color: #7A6F65;
+  margin-top: 12px;
+}
 
-  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
-  .score-detail { text-align: center; color: #7f8c8d; }
+.hero-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent3), var(--accent2));
+  border-radius: 2px;
+  margin: 28px auto 0;
+}
 
-  .wrong-item {
-    background: #fdf2f2; border-left: 4px solid #e74c3c;
-    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
-  }
-  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
-  .wrong-item .explain { color: #34495e; font-size: 0.95em; }
-  .correct-mark { color: #27ae60; font-weight: 600; }
-  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+/* ─── SECTION TITLE ─── */
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent1);
+  margin: 52px 0 24px;
+  padding-left: 16px;
+  border-left: 5px solid var(--accent2);
+  line-height: 1.4;
+}
 
-  .legend {
-    font-size: 0.88em; color: #7f8c8d;
-    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
-    margin-bottom: 12px;
-  }
-  .legend .word-sample {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
-  }
+/* ─── CALLOUT BOX ─── */
+.callout {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-left: 6px solid var(--accent2);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.callout p {
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.callout strong { color: var(--accent1); font-weight: 700; }
+
+/* ─── VERDICT BANNER ─── */
+.verdict {
+  background: linear-gradient(135deg, var(--accent1) 0%, #5C3A20 100%);
+  color: #F8F4ED;
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin: 32px 0;
+  box-shadow: 0 4px 20px rgba(139,94,60,0.35);
+}
+.verdict .v-label {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+.verdict .v-text {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.verdict .v-sub {
+  margin-top: 10px;
+  font-size: 17px;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ─── GOAL CARDS ─── */
+.goals-grid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.goal-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 2px 10px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.goal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+}
+.goal-card.ok::before  { background: var(--ok); }
+.goal-card.warn::before { background: var(--warn); }
+.goal-card.caution::before { background: #E09020; }
+
+.goal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.goal-num {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+  flex-shrink: 0;
+}
+.ok .goal-num    { background: #E8F5EE; color: var(--ok); }
+.warn .goal-num  { background: #FDECEA; color: var(--warn); }
+.caution .goal-num { background: #FEF3E2; color: #C07010; }
+
+.goal-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+  flex: 1;
+}
+
+.goal-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.ok .goal-badge    { background: #E8F5EE; color: var(--ok); }
+.warn .goal-badge  { background: #FDECEA; color: var(--warn); }
+.caution .goal-badge { background: #FEF3E2; color: #C07010; }
+
+.goal-body {
+  font-size: 19px;
+  line-height: 1.75;
+  color: #3D3730;
+}
+
+.goal-body ul {
+  padding-left: 4px;
+  list-style: none;
+  margin-top: 10px;
+}
+.goal-body ul li {
+  padding: 5px 0 5px 28px;
+  position: relative;
+  font-size: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.goal-body ul li:last-child { border-bottom: none; }
+.goal-body ul li::before {
+  content: '▸';
+  position: absolute; left: 4px;
+  color: var(--accent2);
+  font-size: 16px;
+}
+
+.key-tip {
+  background: #FFF8EE;
+  border: 1.5px solid var(--accent2);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 14px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+.key-tip strong { color: var(--accent3); }
+
+.cannot-do {
+  background: #FDECEA;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 17px;
+  color: #8B2A20;
+}
+.can-do {
+  background: #E8F5EE;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 17px;
+  color: #1E5C38;
+}
+
+/* ─── DATA SOURCES ─── */
+.data-grid {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.data-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 6px var(--shadow);
+}
+
+.data-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.data-content .label {
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--accent1);
+  margin-bottom: 4px;
+}
+
+.data-content .desc {
+  font-size: 17px;
+  color: #5A5048;
+  line-height: 1.6;
+}
+
+/* ─── BOTTLENECK ─── */
+.bottleneck-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin: 16px 0;
+}
+.bottleneck-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 19px;
+  line-height: 1.65;
+}
+.bottleneck-list li .bi {
+  font-size: 26px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── HIDDEN DATA ─── */
+.hidden-grid {
+  display: grid;
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.hidden-item {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.h-label {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent5);
+  margin-bottom: 6px;
+}
+.h-desc {
+  font-size: 17px;
+  color: #4A4038;
+  line-height: 1.65;
+}
+.h-tag {
+  display: inline-block;
+  background: #EDE8F5;
+  color: var(--accent5);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+/* ─── KNOWLEDGE GOLD ─── */
+.gold-box {
+  background: linear-gradient(135deg, #FFF8EE 0%, #FFF3DD 100%);
+  border: 2px solid var(--accent2);
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  margin: 24px 0;
+}
+.gold-box .g-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent1);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gold-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.gold-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 19px;
+  line-height: 1.7;
+}
+.gold-list li::before {
+  content: '✦';
+  color: var(--accent2);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* ─── FUTURE VALUE ─── */
+.future-banner {
+  background: linear-gradient(135deg, var(--accent4) 0%, #2E5C50 100%);
+  color: #F0FAF6;
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  margin: 24px 0;
+}
+.future-banner .f-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.future-banner p {
+  font-size: 19px;
+  line-height: 1.75;
+  opacity: 0.92;
+}
+.future-banner strong { color: #A8E6CE; }
+
+/* ─── CONCLUSION ─── */
+.conclusion {
+  background: linear-gradient(135deg, #2D2A26 0%, #1A1714 100%);
+  color: #F8F4ED;
+  border-radius: 20px;
+  padding: 40px 32px;
+  margin-top: 48px;
+  box-shadow: 0 8px 32px rgba(45,42,38,0.3);
+  text-align: center;
+}
+.conclusion .c-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent2);
+  margin-bottom: 20px;
+}
+.conclusion p {
+  font-size: 20px;
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 560px;
+  margin: 0 auto 16px;
+}
+.conclusion .c-not {
+  color: #FF8A75;
+  font-weight: 700;
+}
+.conclusion .c-yes {
+  color: #7DD5AA;
+  font-weight: 700;
+}
+.conclusion .c-cta {
+  display: inline-block;
+  margin-top: 24px;
+  background: var(--accent2);
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(212,165,116,0.4);
+}
+
+/* ─── PROGRESS BAR ─── */
+.feasibility-bar {
+  margin: 20px 0 6px;
+}
+.fb-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #7A6F65;
+  margin-bottom: 6px;
+}
+.fb-track {
+  height: 12px;
+  background: var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.fb-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease;
+}
+
+@media (max-width: 540px) {
+  body { font-size: 18px; }
+  .hero h1 { font-size: 32px; }
+  .hero h1 span { font-size: 38px; }
+  .section-title { font-size: 22px; }
+  .goal-title { font-size: 19px; }
+}
 </style>
 </head>
 <body>
+<div class="wrapper">
 
-<div class="container">
-  <header>
-    <h1>114 學年度學科能力測驗 英文考科</h1>
-    <div class="subtitle">第壹部分 選擇題 ‧ 第 1-20 題（詞彙題 + 綜合測驗）</div>
-  </header>
-
-  <div class="student-info">
-    <label>姓名：</label>
-    <input type="text" id="studentName" placeholder="請輸入姓名">
-    <label>座號：</label>
-    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">📚 高三英文教學系統設計</div>
+    <h1>學測<span>200天</span>衝刺計劃</h1>
+    <p class="hero-sub">數位學習者模型 × AI 演算法 × 34年教學經驗</p>
+    <div class="hero-divider"></div>
   </div>
 
-  <div class="instruction">
-    <strong>作答說明：</strong>
-    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="v-label">⚖️ 整體可行性評估</div>
+    <div class="v-text">核心概念「學生數位英文分身」：高度可行</div>
+    <div class="v-sub">這在學界稱為 Learner Model（學習者模型）或 Knowledge Tracing（知識追蹤），Duolingo、Khan Academy、ETS 內部都在使用。方向完全正確——問題只在個人教師條件下能做到多深。</div>
   </div>
 
-  <div class="legend">
-    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
+  <!-- SECTION 1: 四大目標 -->
+  <div class="section-title">🎯 四大目標逐一分析</div>
+
+  <div class="goals-grid">
+
+    <!-- Goal 1 -->
+    <div class="goal-card ok">
+      <div class="goal-header">
+        <div class="goal-num">1</div>
+        <div class="goal-title">數位備份學生英文狀況</div>
+        <div class="goal-badge">✅ 完全可行</div>
+      </div>
+      <div class="goal-body">
+        <p>這是整個計劃最紮實的基礎。你已有訂正數據和不熟單字，再加以下維度即接近完整：</p>
+        <ul>
+          <li>錯題本（題目、選項、答案、<strong>錯誤類型標籤</strong>）</li>
+          <li>不熟單字庫（首次情境、複習次數、最後測試結果）</li>
+          <li>文法弱點清單（從錯題反推，如「假設語氣過去式」連錯三次）</li>
+          <li>閱讀速度與理解率（每篇用時、正確率）</li>
+          <li>寫作樣本（含錯誤類型分析）</li>
+          <li>模考分數時序（歷次各題型得分）</li>
+        </ul>
+        <div class="key-tip">
+          <strong>🔑 關鍵建議：</strong>不只存「錯了什麼」，要存「為什麼錯」。同樣選錯B，可能是單字不認得、文法判斷錯誤、或粗心。這個分類欄位是整個系統的命脈。
+        </div>
+      </div>
+    </div>
+
+    <!-- Goal 2 -->
+    <div class="goal-card ok">
+      <div class="goal-header">
+        <div class="goal-num">2</div>
+        <div class="goal-title">規劃週 / 月學習計畫表</div>
+        <div class="goal-badge">✅ AI 最強項</div>
+      </div>
+      <div class="goal-body">
+        <p>把錯題本 + 單字庫 + 剩餘天數 + 學測題型權重交給 Claude，產出每日學習計畫是最成熟的 AI 應用。</p>
+        <div class="feasibility-bar">
+          <div class="fb-label"><span>可行性</span><span>95%</span></div>
+          <div class="fb-track"><div class="fb-fill" style="width:95%;background:linear-gradient(90deg,var(--ok),#5AB87A)"></div></div>
+        </div>
+        <div class="key-tip" style="margin-top:12px">
+          類似 <code>/kid-processor</code>、<code>/article-processor</code> 的架構，製作一個 <strong>/student-planner skill</strong> 完全可行：<br>
+          輸入 JSON 格式學生資料 + 目標天數 → 輸出含間隔重複排程的每日計畫表。
+        </div>
+      </div>
+    </div>
+
+    <!-- Goal 3 -->
+    <div class="goal-card caution">
+      <div class="goal-header">
+        <div class="goal-num">3</div>
+        <div class="goal-title">設計考卷</div>
+        <div class="goal-badge">⚠️ 有條件可行</div>
+      </div>
+      <div class="goal-body">
+        <p>Claude 出英文題目沒問題，但有兩個限制：</p>
+        <ul>
+          <li>學測「鑑別度」是命題老師的工藝，AI 易偏簡單或鑽牛角尖</li>
+          <li>AI 從零生成閱讀文章易有「塑膠感」，不像真實英文媒體</li>
+        </ul>
+        <div class="key-tip">
+          <strong>💡 務實做法：</strong>用 AI 從學生錯題<em>反向設計同類型變化題</em>，而非憑空出整份卷。例如學生在關係代名詞錯了，就讓 AI 出 5 題同文法點不同情境的題目——品質和學習價值最高。
+        </div>
+      </div>
+    </div>
+
+    <!-- Goal 4 -->
+    <div class="goal-card warn">
+      <div class="goal-header">
+        <div class="goal-num">4</div>
+        <div class="goal-title">預測考試分數</div>
+        <div class="goal-badge">⚠️⚠️ 須管理期待</div>
+      </div>
+      <div class="goal-body">
+        <p>這是整個計畫最容易翻車的部分——統計上的問題：</p>
+        <div class="cannot-do">
+          ✗ <strong>做不到：</strong>「學測會考13級分」這種點預測。<br>
+          即使有10次模考，也只有10個資料點，學測當天狀態、題目難度、心理因素都可能造成 ±10 級分。
+        </div>
+        <div class="can-do">
+          ✓ <strong>可以做到：</strong>「閱讀測驗正確率在 70–80% 區間，文法在 60–70%」的弱點權重與區間估計。
+        </div>
+        <div class="key-tip" style="margin-top:14px">
+          <strong>🔄 建議重新定義：</strong>「分數預測」→「<strong>弱點排名 + 進步軌跡視覺化</strong>」。對學生和家長更有說服力，也更負責任。
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <form id="quizForm">
+  <!-- SECTION 2: 隱性知識 -->
+  <div class="section-title">💎 你沒問但最重要的事</div>
 
-    <div class="section-title">一、詞彙題（第 1-10 題）</div>
+  <div class="gold-box">
+    <div class="g-title">🏆 34年教學直覺：真正的金礦</div>
+    <ul class="gold-list">
+      <li><strong>放大</strong>你會做的事——一次處理30個學生的數據，不只一個</li>
+      <li><strong>外顯化</strong>你的判斷——讓學生自己看得到自己的弱點地圖</li>
+      <li><strong>累積</strong>資料——明年帶新一屆時，可以對照「類似程度的學生最後200天進步了多少」</li>
+    </ul>
+  </div>
 
-    <div class="question" data-q="1">
-      <div class="q-text autowrap"><span class="q-num">1</span>If you put a <span class="blank">______</span> under a leaking faucet, you will be surprised at the amount of water collected in 24 hours.</div>
-      <div class="options" data-qid="1">
-        <label><input type="radio" name="q1" value="A"><span>(A) border</span></label>
-        <label><input type="radio" name="q1" value="B"><span>(B) timer</span></label>
-        <label><input type="radio" name="q1" value="C"><span>(C) container</span></label>
-        <label><input type="radio" name="q1" value="D"><span>(D) marker</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">border</span><span class="word">timer</span><span class="word">container</span><span class="word">marker</span></div>
+  <div class="future-banner">
+    <div class="f-title">📈 長期最有價值的一點</div>
+    <p>今年累積的學生資料，<strong>會變成明年預測的基準</strong>。一年後你的「分數預測」會比現在準十倍，因為你有同質母體當對照。</p>
+  </div>
+
+  <!-- SECTION 3: 資料輸入瓶頸 -->
+  <div class="section-title">⚠️ 資料輸入的瓶頸</div>
+
+  <div class="callout">
+    <p>200天 × 每週2–3次小考 + 每月模考，每個學生資料量龐大。<br>
+    你現在最該想的不是 AI 怎麼分析，而是<strong>錯題怎麼快速進系統</strong>。手動打字會讓你做不下去。</p>
+  </div>
+
+  <ul class="bottleneck-list">
+    <li><span class="bi">📱</span><div><strong>手機拍照 + OCR</strong>：學生拍訂正照片，自動進系統</div></li>
+    <li><span class="bi">📋</span><div><strong>Google Form 自填</strong>：學生考完自己填錯題，最低成本</div></li>
+    <li><span class="bi">🎙️</span><div><strong>Whisper 口頭錄音</strong>：讓學生口頭講解錯誤原因——這個資料超有價值，且你已有環境</div></li>
+  </ul>
+
+  <!-- SECTION 4: 還有哪些資料 -->
+  <div class="section-title">➕ 建議額外收集的資料</div>
+
+  <div class="hidden-grid">
+    <div class="hidden-item">
+      <div class="h-tag">🎯 高信號</div>
+      <div class="h-label">學生自選「最沒把握」題目</div>
+      <div class="h-desc">即使答對也標記——這個訊號比錯題更敏銳，反映深層不安全感</div>
     </div>
-
-    <div class="question" data-q="2">
-      <div class="q-text autowrap"><span class="q-num">2</span>The local farmers' market is popular as it offers a variety of fresh seasonal <span class="blank">______</span> to people in the community.</div>
-      <div class="options" data-qid="2">
-        <label><input type="radio" name="q2" value="A"><span>(A) produce</span></label>
-        <label><input type="radio" name="q2" value="B"><span>(B) fashion</span></label>
-        <label><input type="radio" name="q2" value="C"><span>(C) brand</span></label>
-        <label><input type="radio" name="q2" value="D"><span>(D) trend</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">produce</span><span class="word">fashion</span><span class="word">brand</span><span class="word">trend</span></div>
+    <div class="hidden-item">
+      <div class="h-tag">🔴 真弱點</div>
+      <div class="h-label">重複錯誤追蹤</div>
+      <div class="h-desc">同類型錯了第二次以上——這才是真正的弱點，不是偶然失誤</div>
     </div>
-
-    <div class="question" data-q="3">
-      <div class="q-text autowrap"><span class="q-num">3</span>As the years have passed by, many of my childhood memories are already <span class="blank">______</span>; I can no longer recall clearly what happened back then.</div>
-      <div class="options" data-qid="3">
-        <label><input type="radio" name="q3" value="A"><span>(A) blurring</span></label>
-        <label><input type="radio" name="q3" value="B"><span>(B) trimming</span></label>
-        <label><input type="radio" name="q3" value="C"><span>(C) draining</span></label>
-        <label><input type="radio" name="q3" value="D"><span>(D) glaring</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">blurring</span><span class="word">trimming</span><span class="word">draining</span><span class="word">glaring</span></div>
+    <div class="hidden-item">
+      <div class="h-tag">⏱️ 熟練度</div>
+      <div class="h-label">時間壓力下的表現</div>
+      <div class="h-desc">限時 vs 無限時的正確率差距——直接反映學測當天的實際表現</div>
     </div>
-
-    <div class="question" data-q="4">
-      <div class="q-text autowrap"><span class="q-num">4</span>Racist remarks are by nature <span class="blank">______</span> and hurtful, and should be avoided on all occasions.</div>
-      <div class="options" data-qid="4">
-        <label><input type="radio" name="q4" value="A"><span>(A) excessive</span></label>
-        <label><input type="radio" name="q4" value="B"><span>(B) furious</span></label>
-        <label><input type="radio" name="q4" value="C"><span>(C) offensive</span></label>
-        <label><input type="radio" name="q4" value="D"><span>(D) stubborn</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">excessive</span><span class="word">furious</span><span class="word">offensive</span><span class="word">stubborn</span></div>
+    <div class="hidden-item">
+      <div class="h-tag">🧠 狀態管理</div>
+      <div class="h-label">每日學習情緒自評（1–10分）</div>
+      <div class="h-desc">200天衝刺，情緒狀態和知識量同等重要。這筆資料能預測「考前焦慮週期」</div>
     </div>
+  </div>
 
-    <div class="question" data-q="5">
-      <div class="q-text autowrap"><span class="q-num">5</span>Not satisfied with the first <span class="blank">______</span> of her essay, Mary revised it several times before turning it in to the teacher.</div>
-      <div class="options" data-qid="5">
-        <label><input type="radio" name="q5" value="A"><span>(A) text</span></label>
-        <label><input type="radio" name="q5" value="B"><span>(B) brush</span></label>
-        <label><input type="radio" name="q5" value="C"><span>(C) draft</span></label>
-        <label><input type="radio" name="q5" value="D"><span>(D) plot</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">text</span><span class="word">brush</span><span class="word">draft</span><span class="word">plot</span></div>
-    </div>
-
-    <div class="question" data-q="6">
-      <div class="q-text autowrap"><span class="q-num">6</span>Left <span class="blank">______</span> for years, the deserted house was filled with a thick coating of dust and a smell of old damp wood.</div>
-      <div class="options" data-qid="6">
-        <label><input type="radio" name="q6" value="A"><span>(A) casual</span></label>
-        <label><input type="radio" name="q6" value="B"><span>(B) fragile</span></label>
-        <label><input type="radio" name="q6" value="C"><span>(C) remote</span></label>
-        <label><input type="radio" name="q6" value="D"><span>(D) vacant</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">casual</span><span class="word">fragile</span><span class="word">remote</span><span class="word">vacant</span></div>
-    </div>
-
-    <div class="question" data-q="7">
-      <div class="q-text autowrap"><span class="q-num">7</span>The high school student showed <span class="blank">______</span> courage when she helped the old man escape from the fire.</div>
-      <div class="options" data-qid="7">
-        <label><input type="radio" name="q7" value="A"><span>(A) gigantic</span></label>
-        <label><input type="radio" name="q7" value="B"><span>(B) exclusive</span></label>
-        <label><input type="radio" name="q7" value="C"><span>(C) multiple</span></label>
-        <label><input type="radio" name="q7" value="D"><span>(D) enormous</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">gigantic</span><span class="word">exclusive</span><span class="word">multiple</span><span class="word">enormous</span></div>
-    </div>
-
-    <div class="question" data-q="8">
-      <div class="q-text autowrap"><span class="q-num">8</span>Publicly financed projects are often <span class="blank">______</span> or delayed during tough economic times due to a lack of resources.</div>
-      <div class="options" data-qid="8">
-        <label><input type="radio" name="q8" value="A"><span>(A) halted</span></label>
-        <label><input type="radio" name="q8" value="B"><span>(B) hatched</span></label>
-        <label><input type="radio" name="q8" value="C"><span>(C) possessed</span></label>
-        <label><input type="radio" name="q8" value="D"><span>(D) reinforced</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">halted</span><span class="word">hatched</span><span class="word">possessed</span><span class="word">reinforced</span></div>
-    </div>
-
-    <div class="question" data-q="9">
-      <div class="q-text autowrap"><span class="q-num">9</span>Despite his busy schedule, the President <span class="blank">______</span> the school's graduation ceremony with his presence and a heartwarming speech.</div>
-      <div class="options" data-qid="9">
-        <label><input type="radio" name="q9" value="A"><span>(A) praised</span></label>
-        <label><input type="radio" name="q9" value="B"><span>(B) graced</span></label>
-        <label><input type="radio" name="q9" value="C"><span>(C) addressed</span></label>
-        <label><input type="radio" name="q9" value="D"><span>(D) credited</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">praised</span><span class="word">graced</span><span class="word">addressed</span><span class="word">credited</span></div>
-    </div>
-
-    <div class="question" data-q="10">
-      <div class="q-text autowrap"><span class="q-num">10</span>The manager of the company was sued for <span class="blank">______</span> abusing his colleagues, calling them "hopeless losers."</div>
-      <div class="options" data-qid="10">
-        <label><input type="radio" name="q10" value="A"><span>(A) verbally</span></label>
-        <label><input type="radio" name="q10" value="B"><span>(B) dominantly</span></label>
-        <label><input type="radio" name="q10" value="C"><span>(C) legitimately</span></label>
-        <label><input type="radio" name="q10" value="D"><span>(D) relevantly</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">verbally</span><span class="word">dominantly</span><span class="word">legitimately</span><span class="word">relevantly</span></div>
-    </div>
-
-    <div class="section-title">二、綜合測驗（第 11-20 題）</div>
-
-    <div class="group-label">【第 11-15 題為題組】</div>
-
-    <div class="passage autowrap">
-      In 1995, a group of business and academic leaders met at the home of Juanita Brown and David Isaacs in Mill Valley, California. None of them had any idea they were about to create a social innovation that <span class="blank">[11]</span> rapidly around the world.<br><br>
-      The group was supposed to have a large-circle discussion in their beautiful garden. Unfortunately, it started pouring. With their plan <span class="blank">[12]</span> by the rain, the two dozen participants squeezed into the living room.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">11.</span>
-      <div class="options" data-qid="11">
-        <label><input type="radio" name="q11" value="A"><span>(A) had spread</span></label>
-        <label><input type="radio" name="q11" value="B"><span>(B) would spread</span></label>
-        <label><input type="radio" name="q11" value="C"><span>(C) had been spreading</span></label>
-        <label><input type="radio" name="q11" value="D"><span>(D) would have spread</span></label>
-      </div>
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">12.</span>
-      <div class="options" data-qid="12">
-        <label><input type="radio" name="q12" value="A"><span>(A) facilitated</span></label>
-        <label><input type="radio" name="q12" value="B"><span>(B) disrupted</span></label>
-        <label><input type="radio" name="q12" value="C"><span>(C) disclosed</span></label>
-        <label><input type="radio" name="q12" value="D"><span>(D) fulfilled</span></label>
-      </div>
-    </div>
-
-    <div class="passage autowrap">
-      They broke into small, intimate table conversations, recording their insights on paper tablecloths. They periodically stopped their conversations to switch tables so the insights and ideas might <span class="blank">[13]</span> and deepen. As they moved from one table to another, they noticed new ideas emerging from the discussions. This in turn enriched subsequent rounds of conversation. Over the course of the morning, the innovative discussion process <span class="blank">[14]</span> a new form of collective effort that transformed the depth, scope, and quality of their discussion.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">13.</span>
-      <div class="options" data-qid="13">
-        <label><input type="radio" name="q13" value="A"><span>(A) circulate</span></label>
-        <label><input type="radio" name="q13" value="B"><span>(B) emphasize</span></label>
-        <label><input type="radio" name="q13" value="C"><span>(C) recover</span></label>
-        <label><input type="radio" name="q13" value="D"><span>(D) preserve</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">circulate</span><span class="word">emphasize</span><span class="word">recover</span><span class="word">preserve</span></div>
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">14.</span>
-      <div class="options" data-qid="14">
-        <label><input type="radio" name="q14" value="A"><span>(A) made up for</span></label>
-        <label><input type="radio" name="q14" value="B"><span>(B) kept track of</span></label>
-        <label><input type="radio" name="q14" value="C"><span>(C) gave rise to</span></label>
-        <label><input type="radio" name="q14" value="D"><span>(D) looked out for</span></label>
-      </div>
-    </div>
-
-    <div class="passage autowrap">
-      The World Café was <span class="blank">[15]</span> created. Since that rainy morning in Mill Valley, the World Café approach has been applied to multi-group discussions and cooperative actions by businesses, industries, and educational institutions around the world.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">15.</span>
-      <div class="options" data-qid="15">
-        <label><input type="radio" name="q15" value="A"><span>(A) still</span></label>
-        <label><input type="radio" name="q15" value="B"><span>(B) also</span></label>
-        <label><input type="radio" name="q15" value="C"><span>(C) further</span></label>
-        <label><input type="radio" name="q15" value="D"><span>(D) thus</span></label>
-      </div>
-    </div>
-
-    <div class="group-label">【第 16-20 題為題組】</div>
-
-    <div class="passage autowrap">
-      If you have ever been sick to your stomach on a rocking boat or a bumpy car ride, you know the discomfort of motion sickness. It can <span class="blank">[16]</span> suddenly, progressing from a feeling of uneasiness to a cold sweat. Soon, it can lead to dizziness, nausea, and vomiting.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">16.</span>
-      <div class="options" data-qid="16">
-        <label><input type="radio" name="q16" value="A"><span>(A) crash</span></label>
-        <label><input type="radio" name="q16" value="B"><span>(B) flush</span></label>
-        <label><input type="radio" name="q16" value="C"><span>(C) burst</span></label>
-        <label><input type="radio" name="q16" value="D"><span>(D) strike</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">crash</span><span class="word">flush</span><span class="word">burst</span><span class="word">strike</span></div>
-    </div>
-
-    <div class="passage autowrap">
-      Motion sickness occurs when the signals your brain receives from your eyes, ears, and body <span class="blank">[17]</span>. Your brain doesn't know whether you are stationary or moving when these parts send conflicting information: One part of your balance-sensing system detects that your body is moving, but the other parts <span class="blank">[18]</span>. Your brain's confused reaction makes you feel sick. You may experience the discomfort from the motion of cars, boats, or amusement park rides. You may also get sick from playing video games, or looking through a microscope.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">17.</span>
-      <div class="options" data-qid="17">
-        <label><input type="radio" name="q17" value="A"><span>(A) are not regular</span></label>
-        <label><input type="radio" name="q17" value="B"><span>(B) can hardly move</span></label>
-        <label><input type="radio" name="q17" value="C"><span>(C) do not match</span></label>
-        <label><input type="radio" name="q17" value="D"><span>(D) are rarely cued</span></label>
-      </div>
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">18.</span>
-      <div class="options" data-qid="18">
-        <label><input type="radio" name="q18" value="A"><span>(A) aren't</span></label>
-        <label><input type="radio" name="q18" value="B"><span>(B) won't</span></label>
-        <label><input type="radio" name="q18" value="C"><span>(C) don't</span></label>
-        <label><input type="radio" name="q18" value="D"><span>(D) haven't</span></label>
-      </div>
-    </div>
-
-    <div class="passage autowrap">
-      You can take some <span class="blank">[19]</span> to help avoid the discomfort. If you are traveling, reserve seats where motion is felt the least, such as the front row of a car or forward cars of a train. Looking out into the distance from the vehicle can help <span class="blank">[20]</span>. You can also take medicine before your ride to avoid or reduce nausea and vomiting.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">19.</span>
-      <div class="options" data-qid="19">
-        <label><input type="radio" name="q19" value="A"><span>(A) special opportunities</span></label>
-        <label><input type="radio" name="q19" value="B"><span>(B) preventive measures</span></label>
-        <label><input type="radio" name="q19" value="C"><span>(C) potential risks</span></label>
-        <label><input type="radio" name="q19" value="D"><span>(D) significant advantages</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">special</span><span class="word">opportunities</span><span class="word">preventive</span><span class="word">measures</span><span class="word">potential</span><span class="word">risks</span><span class="word">significant</span><span class="word">advantages</span></div>
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">20.</span>
-      <div class="options" data-qid="20">
-        <label><input type="radio" name="q20" value="A"><span>(A) as well</span></label>
-        <label><input type="radio" name="q20" value="B"><span>(B) by far</span></label>
-        <label><input type="radio" name="q20" value="C"><span>(C) at least</span></label>
-        <label><input type="radio" name="q20" value="D"><span>(D) after all</span></label>
-      </div>
-    </div>
-
-    <div class="button-row">
-      <button type="button" onclick="submitQuiz()">送出作答</button>
-    </div>
-
-  </form>
-
-  <div id="results">
-
-    <div class="result-card score">
-      <h3>📊 你的成績</h3>
-      <div class="score-big" id="scoreBig"></div>
-      <div class="score-detail" id="scoreDetail"></div>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="teacherReport"></div>
-      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="wordsReport"></div>
-      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
-    </div>
-
-    <div class="result-card feedback">
-      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
-      <div id="feedbackReport"></div>
-    </div>
-
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <div class="c-title">📌 最終結論</div>
+    <p>這個計畫 <strong>該做、可做、200天時程合理</strong>。</p>
+    <p>但建議調整框架：</p>
+    <p>
+      <span class="c-not">✗ 不是</span>「做一個會預測分數的 AI 分身」<br>
+      <span class="c-yes">✓ 而是</span>「做一個放大老師判斷力、<br>讓學生看見自己的學習儀表板」
+    </p>
+    <p style="opacity:0.7; font-size:18px; margin-top:16px">
+      前者是科幻片。後者是 34 年教學經驗 + Claude Code 工具鏈<br>可以在兩個月內做出 MVP 的東西。
+    </p>
+    <span class="c-cta">下一步：設計 /student-planner skill →</span>
   </div>
 
 </div>
-
-<script>
-  // ===== 正確答案 =====
-  const ANSWERS = {
-    1:'C', 2:'A', 3:'A', 4:'C', 5:'C', 6:'D', 7:'D', 8:'A', 9:'B', 10:'A',
-    11:'B', 12:'B', 13:'A', 14:'C', 15:'D', 16:'D', 17:'C', 18:'C', 19:'B', 20:'A'
-  };
-
-  // ===== 錯題詳解 =====
-  const EXPLANATIONS = {
-    1:  { answer:'container (容器)', detail:'題意：把「容器」放在漏水的水龍頭下。(A) border 邊界 (B) timer 計時器 (D) marker 標記/麥克筆。只有 container 能裝水。' },
-    2:  { answer:'produce (農產品)', detail:'農夫市集販賣的是「新鮮當季農產品」。produce 作名詞指蔬果農產品。(B) fashion 時尚 (C) brand 品牌 (D) trend 趨勢 皆不合。' },
-    3:  { answer:'blurring (變模糊)', detail:'童年回憶「變模糊」，無法清楚回想。blur 指（記憶、影像）變模糊。(B) trim 修剪 (C) drain 排乾 (D) glare 刺眼，皆不符。' },
-    4:  { answer:'offensive (冒犯的)', detail:'種族歧視言論本質上「冒犯」且傷人，與 hurtful 並列同義。(A) excessive 過度 (B) furious 憤怒 (D) stubborn 頑固，語意不合。' },
-    5:  { answer:'draft (草稿)', detail:'Mary 對作文第一「版草稿」不滿意，修改多次才交。draft 草稿/初稿。(A) text 文本 (B) brush 筆刷 (D) plot 情節。' },
-    6:  { answer:'vacant (空置的)', detail:'房子「空置」多年，積滿灰塵、有霉味。Left vacant = 被空置。(A) casual 隨意 (B) fragile 脆弱 (C) remote 偏遠，皆不符。' },
-    7:  { answer:'enormous (極大的)', detail:'enormous courage（極大勇氣）為常見搭配。(A) gigantic 多用於具體龐大之物；(B) exclusive 獨家 (C) multiple 多重，皆不搭配 courage。' },
-    8:  { answer:'halted (中止)', detail:'公共資助專案在經濟困難時常「被中止」或延遲，halt 與 delayed 並列。(B) hatched 孵化 (C) possessed 擁有 (D) reinforced 加強，皆不合。' },
-    9:  { answer:'graced (蒞臨增光)', detail:"grace sth with one's presence = 親臨使其增光。總統蒞臨畢業典禮並致詞。(A) praised 讚美 (C) addressed 致詞（搭配不合）(D) credited 歸功。" },
-    10: { answer:'verbally (言語上)', detail:'經理因「言語上」辱罵同事（稱他們「沒救的失敗者」）而被告。(B) dominantly (C) legitimately (D) relevantly 皆不合。' },
-    11: { answer:'would spread (將擴散)', detail:'主句 had no idea 為過去式，從句描述「後來會發生」的事，用過去未來式 would + V。(D) would have spread 表與事實相反，但此事確實發生，不合。' },
-    12: { answer:'disrupted (被打亂)', detail:'計畫因大雨「被打亂」才擠進客廳。With their plan disrupted 為分詞構句。(A) facilitated 促進 (C) disclosed 揭露 (D) fulfilled 實現，皆與上下文矛盾。' },
-    13: { answer:'circulate (流通)', detail:'換桌使想法能「流通」並深化，與 deepen 並列。(B) emphasize 強調 (C) recover 恢復 (D) preserve 保存，皆不合。' },
-    14: { answer:'gave rise to (產生)', detail:'創新討論方式「產生」一種新的集體合作形式。give rise to = 引起/導致。(A) made up for 補償 (B) kept track of 追蹤 (D) looked out for 留意。' },
-    15: { answer:'thus (因此)', detail:'前文描述 World Café 誕生過程，此處用 thus 做因果總結。(A) still (B) also (C) further 皆無法表達因果。' },
-    16: { answer:'strike (突然發作)', detail:'strike 可作動詞，表（疾病、災難）突然襲擊/發作，suddenly 是線索。(A) crash 撞擊 (B) flush 沖洗 (C) burst 爆裂，搭配不合。' },
-    17: { answer:'do not match (不相符)', detail:'眼、耳、身體訊號「不相符」才引發暈動症，下文亦出現 conflicting information。(A) (B) (D) 皆不切題。' },
-    18: { answer:"don't (不這樣做)", detail:"代動詞呼應前文 detects（一般現在式肯定），用 don't 代替 don't detect。其他時態/動詞皆不符。" },
-    19: { answer:'preventive measures (預防措施)', detail:'take preventive measures = 採取預防措施，下文列出多種預防方法。(A) 機會 (C) 風險 (D) 優勢 皆不合。' },
-    20: { answer:'as well (也)', detail:'遠望「也」能幫助，與下一句 also take medicine 呼應。(B) by far 最…(C) at least 至少 (D) after all 畢竟 皆不切。' }
-  };
-
-  // ===== 自動將 .autowrap 區塊中的所有英文單字包成可點選 span =====
-  function wrapWordsIn(root) {
-    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL']);
-    // 收集所有 text node
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: (n) => {
-        // 略過已在 .word / .blank / .q-num 等特殊標記內
-        let p = n.parentNode;
-        while (p && p !== root) {
-          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-          if (p.classList && (p.classList.contains('word') || p.classList.contains('blank') || p.classList.contains('q-num') || p.classList.contains('q-num-sq'))) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          p = p.parentNode;
-        }
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    const nodes = [];
-    let n;
-    while ((n = walker.nextNode())) nodes.push(n);
-
-    // 英文單字正則（含撇號，如 don't, brain's）
-    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
-    nodes.forEach(tn => {
-      const text = tn.nodeValue;
-      if (!re.test(text)) return;
-      re.lastIndex = 0;
-      const frag = document.createDocumentFragment();
-      let lastIdx = 0, m;
-      while ((m = re.exec(text)) !== null) {
-        if (m.index > lastIdx) {
-          frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
-        }
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = m[0];
-        frag.appendChild(span);
-        lastIdx = m.index + m[0].length;
-      }
-      if (lastIdx < text.length) {
-        frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-      }
-      tn.parentNode.replaceChild(frag, tn);
-    });
-  }
-
-  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
-
-  // 單字點擊切換
-  document.body.addEventListener('click', (e) => {
-    if (e.target.classList && e.target.classList.contains('word')) {
-      e.target.classList.toggle('unfamiliar');
-    }
-  });
-
-  // 選項選取樣式
-  document.querySelectorAll('.options label').forEach(lbl => {
-    lbl.addEventListener('click', () => {
-      const name = lbl.querySelector('input').name;
-      document.querySelectorAll(`.options input[name="${name}"]`).forEach(r => r.closest('label').classList.remove('selected'));
-      lbl.classList.add('selected');
-    });
-  });
-
-  // ===== 送出作答 =====
-  function submitQuiz() {
-    const name = document.getElementById('studentName').value.trim() || '（未填）';
-    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
-
-    let answers = {}, unanswered = [];
-    for (let i=1; i<=20; i++) {
-      const sel = document.querySelector(`input[name="q${i}"]:checked`);
-      if (sel) answers[i] = sel.value;
-      else { answers[i] = '-'; unanswered.push(i); }
-    }
-
-    if (unanswered.length > 0) {
-      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
-    }
-
-    let correct = 0, wrongList = [];
-    for (let i=1; i<=20; i++) {
-      if (answers[i] === ANSWERS[i]) correct++;
-      else wrongList.push(i);
-    }
-    const percent = Math.round(correct/20*100);
-
-    // 不熟悉單字
-    const unfamiliar = [];
-    document.querySelectorAll('.word.unfamiliar').forEach(w => {
-      const t = w.textContent.trim().toLowerCase();
-      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
-    });
-    unfamiliar.sort();
-
-    document.getElementById('scoreBig').textContent = `${correct} / 20`;
-    document.getElementById('scoreDetail').textContent =
-      `答對 ${correct} 題 ‧ 答錯 ${20-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
-
-    const now = new Date();
-    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-
-    // 結果 1
-    let r1 = `【114學測英文 第1-20題 作答結果】\n`;
-    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/20（${percent}%）\n---\n題號\t學生答案\t正確答案\t對錯\n`;
-    for (let i=1; i<=20; i++) {
-      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
-      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
-    }
-    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
-    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
-    document.getElementById('teacherReport').textContent = r1;
-
-    // 結果 2
-    let r2 = `【114學測英文 第1-20題 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
-    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
-    else {
-      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
-      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
-    }
-    document.getElementById('wordsReport').textContent = r2;
-
-    // 結果 3
-    const fb = document.getElementById('feedbackReport');
-    fb.innerHTML = '';
-    if (wrongList.length === 0) {
-      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
-    } else {
-      wrongList.forEach(i => {
-        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
-        const div = document.createElement('div');
-        div.className = 'wrong-item';
-        div.innerHTML = `
-          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${ANSWERS[i]}（${EXPLANATIONS[i].answer}）</span></div>
-          <div class="explain">${EXPLANATIONS[i].detail}</div>`;
-        fb.appendChild(div);
-      });
-    }
-
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
-  }
-
-  function copyText(elId, btn) {
-    const txt = document.getElementById(elId).textContent;
-    const fallback = () => {
-      const ta = document.createElement('textarea');
-      ta.value = txt;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    };
-    const ok = () => {
-      const orig = btn.textContent;
-      btn.textContent = '✓ 已複製！';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
-    } else { fallback(); ok(); }
-  }
-</script>
-
 </body>
 </html>

@@ -3,667 +3,851 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>115 年學測英文 - 第一部分（第 1-20 題）</title>
+<title>ECHO 錯中練計劃 — 林威老師學測英文衝刺</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
-    margin: 0; padding: 20px;
-    color: #2c3e50; line-height: 1.75;
-  }
-  .container {
-    max-width: 880px; margin: 0 auto;
-    background: #fff; border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    padding: 32px 40px;
-  }
-  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
-  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
-  .subtitle { color: #7f8c8d; font-size: 0.95em; }
-  .student-info {
-    background: #ecf5fd; border-radius: 10px;
-    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  }
-  .student-info label { font-weight: 600; color: #2980b9; }
-  .student-info input {
-    border: 1px solid #bdc3c7; border-radius: 6px;
-    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
-  }
-  .instruction {
-    background: #fff9e6; border-left: 4px solid #f39c12;
-    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
-    font-size: 0.95em; color: #8e6c16;
-  }
-  .section-title {
-    background: linear-gradient(90deg, #3498db, #5dade2);
-    color: #fff; padding: 10px 16px; border-radius: 8px;
-    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
-  }
-  .group-label {
-    background: #eaf4fb; color: #1f618d;
-    padding: 7px 14px; border-radius: 6px;
-    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
-    display: inline-block;
-  }
-  .passage {
-    background: #fafbfc; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
-    font-size: 1em; text-align: justify;
-  }
+:root {
+  --ink:     #1C1914;
+  --paper:   #F7F3EC;
+  --cream:   #EDE8DF;
+  --rust:    #C4472A;
+  --gold:    #D4950A;
+  --sage:    #3D6B54;
+  --navy:    #1E3A5F;
+  --coral:   #E8694A;
+  --muted:   #7A7268;
+  --border:  #D8D0C4;
+  --card:    #FFFCF7;
+  --R: #3D6B54;
+  --I: #C4472A;
+  --S: #D4950A;
+  --E: #1E3A5F;
+}
 
-  .question {
-    background: #fff; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
-  }
-  .q-text { font-size: 1em; margin-bottom: 8px; }
-  .q-num {
-    display: inline-block; background: #3498db; color: #fff;
-    border-radius: 50%; width: 26px; height: 26px;
-    text-align: center; line-height: 26px; font-weight: 700;
-    margin-right: 6px; font-size: 0.88em;
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  .q-inline {
-    display: flex; align-items: center; gap: 10px;
-    background: #fff; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
-    flex-wrap: wrap;
-  }
-  .q-inline .q-num-sq {
-    background: #3498db; color: #fff; font-weight: 700;
-    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
-    flex-shrink: 0;
-  }
+html { scroll-behavior: smooth; }
 
-  .options {
-    display: flex; flex-wrap: wrap; gap: 6px; flex: 1;
-  }
-  .options label {
-    flex: 1 1 calc(25% - 6px); min-width: 130px;
-    display: flex; align-items: center; gap: 5px;
-    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
-    border-radius: 6px; cursor: pointer; transition: all 0.15s;
-    font-size: 0.93em;
-  }
-  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
-  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
-  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
 
-  .word {
-    cursor: pointer; padding: 0 1px; border-radius: 3px;
-    transition: background 0.12s;
-  }
-  .word:hover { background: #fdecea; }
-  .word.unfamiliar {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    font-weight: 600; color: #b9770e;
-  }
+/* ── NOISE TEXTURE overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-  .vocab-row {
-    background: #fef5e7; border: 1px dashed #f5b041;
-    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
-    font-size: 0.95em; color: #7d6608;
-    display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center;
-  }
-  .vocab-row::before {
-    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
-    color: #b9770e; font-weight: 600; margin-right: 4px;
-  }
-  .vocab-row .word { padding: 2px 5px; }
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
+.hero {
+  padding: 64px 0 0;
+  position: relative;
+  overflow: hidden;
+}
 
-  .button-row { text-align: center; margin: 26px 0 6px; }
-  button {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: #fff; border: none; border-radius: 10px;
-    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
-    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
-    transition: transform 0.15s;
-  }
-  button:hover { transform: translateY(-2px); }
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
 
-  #results { display: none; margin-top: 26px; }
-  .result-card {
-    background: #fff; border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    padding: 20px 22px; margin-bottom: 20px;
-    border-top: 4px solid #3498db;
-  }
-  .result-card.score { border-top-color: #9b59b6; }
-  .result-card.teacher { border-top-color: #27ae60; }
-  .result-card.feedback { border-top-color: #e67e22; }
-  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
-  .copyable {
-    background: #f4f6f8; border: 1px dashed #bdc3c7;
-    border-radius: 8px; padding: 14px; white-space: pre-wrap;
-    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
-    max-height: 300px; overflow-y: auto; color: #2c3e50;
-  }
-  .copy-btn {
-    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
-    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
-  }
-  .copy-btn:hover { background: #7f8c8d; }
-  .copy-btn.copied { background: #27ae60; }
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rust);
+  background: rgba(196,71,42,0.08);
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(196,71,42,0.2);
+}
 
-  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
-  .score-detail { text-align: center; color: #7f8c8d; }
+.hero-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
 
-  .wrong-item {
-    background: #fdf2f2; border-left: 4px solid #e74c3c;
-    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
-  }
-  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
-  .wrong-item .explain { color: #34495e; font-size: 0.95em; }
-  .correct-mark { color: #27ae60; font-weight: 600; }
-  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+.hero-title-block {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.2s;
+}
 
-  .legend {
-    font-size: 0.88em; color: #7f8c8d;
-    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
-    margin-bottom: 12px;
-  }
-  .legend .word-sample {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
-  }
+.hero-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--rust);
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+.hero-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--ink);
+  display: block;
+  margin-top: 8px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--muted);
+  margin-top: 20px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.35s;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.45s;
+}
+
+.hero-divider span { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; white-space: nowrap; }
+.hero-divider::before, .hero-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ══════════════════════════
+   RISE STEPS — BIG EDITORIAL
+══════════════════════════ */
+.rise-section { padding: 8px 0 64px; }
+
+.rise-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.rise-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.rise-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 32px 28px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.rise-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(28,25,20,0.1);
+}
+
+.rise-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 5px;
+  border-radius: 16px 0 0 16px;
+}
+
+.rise-card.R::before { background: var(--R); }
+.rise-card.I::before { background: var(--I); }
+.rise-card.S::before { background: var(--S); }
+.rise-card.E::before { background: var(--E); }
+
+.rise-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  width: 72px;
+  text-align: center;
+}
+.R .rise-letter { color: var(--R); }
+.I .rise-letter { color: var(--I); }
+.S .rise-letter { color: var(--S); }
+.E .rise-letter { color: var(--E); }
+
+.rise-content {}
+
+.rise-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.R .rise-en { color: var(--R); }
+.I .rise-en { color: var(--I); }
+.S .rise-en { color: var(--S); }
+.E .rise-en { color: var(--E); }
+
+.rise-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+.rise-desc {
+  font-size: 18px;
+  color: #4A4540;
+  line-height: 1.75;
+  margin-top: 12px;
+}
+
+.rise-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 14px;
+  font-family: 'DM Mono', monospace;
+  color: var(--muted);
+  background: var(--cream);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.rise-trigger strong { color: var(--rust); font-weight: 500; }
+
+/* ══════════════════════════
+   SECTION TITLE
+══════════════════════════ */
+.sec-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.sec-sub {
+  font-size: 17px;
+  color: var(--muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════
+   DATA INPUT SECTION
+══════════════════════════ */
+.input-section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 560px) { .input-grid { grid-template-columns: 1fr; } }
+
+.input-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 22px;
+  transition: border-color 0.2s;
+}
+.input-card:hover { border-color: var(--gold); }
+
+.input-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.input-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.input-desc { font-size: 16px; color: var(--muted); line-height: 1.65; }
+
+/* ══════════════════════════
+   RESOURCE LIBRARY
+══════════════════════════ */
+.resource-section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+.resource-grid { display: grid; gap: 14px; }
+
+.resource-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.resource-row:hover { transform: translateX(4px); box-shadow: -4px 0 0 var(--rust); border-color: rgba(196,71,42,0.3); }
+
+.res-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.res-body {}
+.res-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.res-detail { font-size: 16px; color: var(--muted); line-height: 1.65; }
+
+.res-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ══════════════════════════
+   TRIGGER RULE
+══════════════════════════ */
+.trigger-section { padding: 48px 0 64px; }
+
+.trigger-box {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 20px;
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.trigger-box::after {
+  content: '×2';
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 160px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.trigger-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+
+.trigger-rule {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.trigger-rule em { color: var(--gold); font-style: normal; }
+
+.trigger-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.tf-step {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.tf-arrow {
+  color: var(--coral);
+  font-size: 18px;
+}
+
+/* ══════════════════════════
+   TIMELINE / SCHEDULE
+══════════════════════════ */
+.schedule-section { padding: 64px 0; border-top: 1px solid var(--border); }
+
+.timeline { position: relative; padding-left: 32px; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--rust), var(--gold), var(--sage));
+  border-radius: 1px;
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 8px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+}
+.tl-item:nth-child(1)::before { background: var(--rust); }
+.tl-item:nth-child(2)::before { background: var(--gold); }
+.tl-item:nth-child(3)::before { background: var(--sage); }
+.tl-item:nth-child(4)::before { background: var(--navy); }
+
+.tl-week {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.tl-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tl-desc { font-size: 18px; color: #4A4540; line-height: 1.7; }
+
+/* ══════════════════════════
+   CONTACT / CTA
+══════════════════════════ */
+.contact-section {
+  padding: 64px 0 80px;
+  border-top: 1px solid var(--border);
+}
+
+.contact-card {
+  background: linear-gradient(135deg, #F0EBE2 0%, #E8E0D5 100%);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 44px 40px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.contact-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--rust);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.contact-info { flex: 1; }
+
+.contact-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.contact-sub {
+  font-size: 17px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #06C755;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-line:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(6,199,85,0.35);
+}
+
+.line-icon { font-size: 20px; }
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════
+   ANIMATIONS
+══════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media (max-width: 540px) {
+  body { font-size: 18px; }
+  .hero-en { font-size: 52px; }
+  .hero-zh { font-size: 28px; }
+  .rise-card { grid-template-columns: 1fr; gap: 12px; padding: 24px; }
+  .rise-letter { font-size: 48px; width: auto; text-align: left; }
+  .contact-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .trigger-box { padding: 28px 24px; }
+  .trigger-rule { font-size: 20px; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <h1>115 學年度學科能力測驗 英文考科</h1>
-    <div class="subtitle">第壹部分 選擇題 ‧ 第 1-20 題（詞彙題 + 綜合測驗）</div>
-  </header>
+<!-- ════════════ HERO ════════════ -->
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <span class="hero-tag">高三英文 · 200天衝刺</span>
+      <div class="hero-line"></div>
+    </div>
 
-  <div class="student-info">
-    <label>姓名：</label>
-    <input type="text" id="studentName" placeholder="請輸入姓名">
-    <label>座號：</label>
-    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+    <div class="hero-title-block">
+      <span class="hero-en">ECHO</span>
+      <span class="hero-zh">錯中練計劃</span>
+    </div>
+
+    <p class="hero-sub">
+      Review · Internalize · Speak · Echo<br>
+      從段考錯題出發，以 AI 演算法設計個人化學習路徑，<br>
+      配合林威老師 34 年教學經驗，讓每一個錯誤都變成進步的養料。
+    </p>
+
+    <div class="hero-divider">
+      <span>RISE 四步驟教學法</span>
+    </div>
   </div>
 
-  <div class="instruction">
-    <strong>作答說明：</strong>
-    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。
-  </div>
+  <!-- ════════════ RISE ════════════ -->
+  <section class="rise-section">
+    <div class="rise-label">/ 核心教學架構 /</div>
 
-  <div class="legend">
-    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
-  </div>
+    <div class="rise-grid">
 
-  <form id="quizForm">
-
-    <div class="section-title">一、詞彙題（第 1-10 題）</div>
-
-    <div class="question" data-q="1">
-      <div class="q-text autowrap"><span class="q-num">1</span>The mayor has such a <span class="blank">______</span> schedule that it takes weeks to arrange an interview with her.</div>
-      <div class="options">
-        <label><input type="radio" name="q1" value="A"><span>(A) hasty</span></label>
-        <label><input type="radio" name="q1" value="B"><span>(B) tight</span></label>
-        <label><input type="radio" name="q1" value="C"><span>(C) diligent</span></label>
-        <label><input type="radio" name="q1" value="D"><span>(D) routine</span></label>
+      <div class="rise-card R fade-in" style="animation-delay:0.1s">
+        <div class="rise-letter">R</div>
+        <div class="rise-content">
+          <div class="rise-en">Review</div>
+          <div class="rise-zh">引導式翻譯 — 理解錯誤根源</div>
+          <div class="rise-desc">
+            不直接給答案，而是透過中英對照的引導式翻譯，讓學生自己發現錯在哪裡。理解層面的問題，才能被真正解決。
+          </div>
+          <div class="rise-trigger"><strong>觸發：</strong> 第一次錯題 → 立即啟動</div>
+        </div>
       </div>
-      <div class="vocab-row"><span class="word">hasty</span><span class="word">tight</span><span class="word">diligent</span><span class="word">routine</span></div>
-    </div>
 
-    <div class="question" data-q="2">
-      <div class="q-text autowrap"><span class="q-num">2</span>Jane started as an <span class="blank">______</span> art designer, but now she has a professional studio of her own.</div>
-      <div class="options">
-        <label><input type="radio" name="q2" value="A"><span>(A) official</span></label>
-        <label><input type="radio" name="q2" value="B"><span>(B) instant</span></label>
-        <label><input type="radio" name="q2" value="C"><span>(C) amateur</span></label>
-        <label><input type="radio" name="q2" value="D"><span>(D) elementary</span></label>
+      <div class="rise-card I fade-in" style="animation-delay:0.2s">
+        <div class="rise-letter">I</div>
+        <div class="rise-content">
+          <div class="rise-en">Internalize</div>
+          <div class="rise-zh">手寫抄寫 2–3 遍 — 肌肉記憶</div>
+          <div class="rise-desc">
+            正確例句親手抄寫兩到三遍，讓身體記住正確的語感。視覺 + 動覺雙重記憶通道同時強化，效果遠超單純看答案。
+          </div>
+          <div class="rise-trigger"><strong>升級觸發：</strong> 同類型錯誤 ×2 → 全面啟動</div>
+        </div>
       </div>
-      <div class="vocab-row"><span class="word">official</span><span class="word">instant</span><span class="word">amateur</span><span class="word">elementary</span></div>
-    </div>
 
-    <div class="question" data-q="3">
-      <div class="q-text autowrap"><span class="q-num">3</span>The teaching <span class="blank">______</span> at the famous high school soon attracted more than a dozen well-qualified applicants.</div>
-      <div class="options">
-        <label><input type="radio" name="q3" value="A"><span>(A) career</span></label>
-        <label><input type="radio" name="q3" value="B"><span>(B) vacancy</span></label>
-        <label><input type="radio" name="q3" value="C"><span>(C) expectation</span></label>
-        <label><input type="radio" name="q3" value="D"><span>(D) inspiration</span></label>
+      <div class="rise-card S fade-in" style="animation-delay:0.3s">
+        <div class="rise-letter">S</div>
+        <div class="rise-content">
+          <div class="rise-en">Speak</div>
+          <div class="rise-zh">LINE 群朗讀 — 出聲加深印象</div>
+          <div class="rise-desc">
+            在 LINE 群組裡大聲朗讀錯誤的例句，聽覺記憶介入。公開朗讀也製造了輕微的社會壓力，讓學生更認真對待這個錯誤。
+          </div>
+          <div class="rise-trigger"><strong>頻道：</strong> 林威老師 LINE 群組</div>
+        </div>
       </div>
-      <div class="vocab-row"><span class="word">career</span><span class="word">vacancy</span><span class="word">expectation</span><span class="word">inspiration</span></div>
-    </div>
 
-    <div class="question" data-q="4">
-      <div class="q-text autowrap"><span class="q-num">4</span>Designed by a young engineer, the new product has created far more profit than <span class="blank">______</span> expected.</div>
-      <div class="options">
-        <label><input type="radio" name="q4" value="A"><span>(A) initially</span></label>
-        <label><input type="radio" name="q4" value="B"><span>(B) genuinely</span></label>
-        <label><input type="radio" name="q4" value="C"><span>(C) alternatively</span></label>
-        <label><input type="radio" name="q4" value="D"><span>(D) fundamentally</span></label>
+      <div class="rise-card E fade-in" style="animation-delay:0.4s">
+        <div class="rise-letter">E</div>
+        <div class="rise-content">
+          <div class="rise-en">Echo</div>
+          <div class="rise-zh">第 2、3 週回音 — 循環再確認</div>
+          <div class="rise-desc">
+            第二週、第三週，相同類型的題目或提醒再度出現。間隔式重複（Spaced Repetition）是目前科學上記憶鞏固效果最好的方法。
+          </div>
+          <div class="rise-trigger"><strong>週期：</strong> Week 2 提醒 → Week 3 測試</div>
+        </div>
       </div>
-      <div class="vocab-row"><span class="word">initially</span><span class="word">genuinely</span><span class="word">alternatively</span><span class="word">fundamentally</span></div>
-    </div>
 
-    <div class="question" data-q="5">
-      <div class="q-text autowrap"><span class="q-num">5</span>It has been confirmed that a balanced <span class="blank">______</span> of fruit and vegetables is a key element to good health.</div>
-      <div class="options">
-        <label><input type="radio" name="q5" value="A"><span>(A) dimension</span></label>
-        <label><input type="radio" name="q5" value="B"><span>(B) integration</span></label>
-        <label><input type="radio" name="q5" value="C"><span>(C) provision</span></label>
-        <label><input type="radio" name="q5" value="D"><span>(D) consumption</span></label>
+    </div>
+  </section>
+
+  <!-- ════════════ TRIGGER RULE ════════════ -->
+  <section class="trigger-section">
+    <div class="trigger-box">
+      <div class="trigger-label">⚡ 升級觸發規則</div>
+      <div class="trigger-rule">
+        同一類型的題目<em>錯了第二次</em>，<br>
+        自動啟動完整 RISE 四步驟
       </div>
-      <div class="vocab-row"><span class="word">dimension</span><span class="word">integration</span><span class="word">provision</span><span class="word">consumption</span></div>
-    </div>
-
-    <div class="question" data-q="6">
-      <div class="q-text autowrap"><span class="q-num">6</span>As a shy boy afraid of making public appearances, Timmy <span class="blank">______</span> the thought of speaking before large audiences.</div>
-      <div class="options">
-        <label><input type="radio" name="q6" value="A"><span>(A) dreads</span></label>
-        <label><input type="radio" name="q6" value="B"><span>(B) stresses</span></label>
-        <label><input type="radio" name="q6" value="C"><span>(C) wanders</span></label>
-        <label><input type="radio" name="q6" value="D"><span>(D) escapes</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">dreads</span><span class="word">stresses</span><span class="word">wanders</span><span class="word">escapes</span></div>
-    </div>
-
-    <div class="question" data-q="7">
-      <div class="q-text autowrap"><span class="q-num">7</span>To the newly-crowned winner of the piano competition, music is his life's <span class="blank">______</span>, which he has devoted himself to whole-heartedly.</div>
-      <div class="options">
-        <label><input type="radio" name="q7" value="A"><span>(A) resource</span></label>
-        <label><input type="radio" name="q7" value="B"><span>(B) impact</span></label>
-        <label><input type="radio" name="q7" value="C"><span>(C) passion</span></label>
-        <label><input type="radio" name="q7" value="D"><span>(D) emphasis</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">resource</span><span class="word">impact</span><span class="word">passion</span><span class="word">emphasis</span></div>
-    </div>
-
-    <div class="question" data-q="8">
-      <div class="q-text autowrap"><span class="q-num">8</span>The drunk driver who shouted at passers-by and <span class="blank">______</span> them with glass bottles was quickly arrested by the police.</div>
-      <div class="options">
-        <label><input type="radio" name="q8" value="A"><span>(A) shattered</span></label>
-        <label><input type="radio" name="q8" value="B"><span>(B) assaulted</span></label>
-        <label><input type="radio" name="q8" value="C"><span>(C) overturned</span></label>
-        <label><input type="radio" name="q8" value="D"><span>(D) condemned</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">shattered</span><span class="word">assaulted</span><span class="word">overturned</span><span class="word">condemned</span></div>
-    </div>
-
-    <div class="question" data-q="9">
-      <div class="q-text autowrap"><span class="q-num">9</span>There were so many people at the bus station that I had to <span class="blank">______</span> my way through the crowd to board the bus in time.</div>
-      <div class="options">
-        <label><input type="radio" name="q9" value="A"><span>(A) crash</span></label>
-        <label><input type="radio" name="q9" value="B"><span>(B) tumble</span></label>
-        <label><input type="radio" name="q9" value="C"><span>(C) elbow</span></label>
-        <label><input type="radio" name="q9" value="D"><span>(D) struggle</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">crash</span><span class="word">tumble</span><span class="word">elbow</span><span class="word">struggle</span></div>
-    </div>
-
-    <div class="question" data-q="10">
-      <div class="q-text autowrap"><span class="q-num">10</span>Deadly shootings on US campuses have raised <span class="blank">______</span> concerns about how to prevent such tragic incidents from happening again.</div>
-      <div class="options">
-        <label><input type="radio" name="q10" value="A"><span>(A) swift</span></label>
-        <label><input type="radio" name="q10" value="B"><span>(B) brutal</span></label>
-        <label><input type="radio" name="q10" value="C"><span>(C) harsh</span></label>
-        <label><input type="radio" name="q10" value="D"><span>(D) grave</span></label>
-      </div>
-      <div class="vocab-row"><span class="word">swift</span><span class="word">brutal</span><span class="word">harsh</span><span class="word">grave</span></div>
-    </div>
-
-    <div class="section-title">二、綜合測驗（第 11-20 題）</div>
-
-    <div class="group-label">【第 11-15 題為題組】</div>
-
-    <div class="passage autowrap">
-      From the campfire to the café, people have always gathered together to share the latest news. White rhinoceroses, <span class="blank">[11]</span>, do the same thing—only their choice of meeting place is a giant pile of poop.<br><br>
-      A new study indicates that rhinos have a smelly way to <span class="blank">[12]</span>.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">11.</span>
-      <div class="options">
-        <label><input type="radio" name="q11" value="A"><span>(A) what is more</span></label>
-        <label><input type="radio" name="q11" value="B"><span>(B) it turns out</span></label>
-        <label><input type="radio" name="q11" value="C"><span>(C) in other words</span></label>
-        <label><input type="radio" name="q11" value="D"><span>(D) all in all</span></label>
+      <div class="trigger-flow">
+        <div class="tf-step">AI 比對錯誤類型</div>
+        <div class="tf-arrow">→</div>
+        <div class="tf-step">調出文法庫對應章節</div>
+        <div class="tf-arrow">→</div>
+        <div class="tf-step">生成引導翻譯題組</div>
+        <div class="tf-arrow">→</div>
+        <div class="tf-step">產出 LINE 朗讀腳本</div>
+        <div class="tf-arrow">→</div>
+        <div class="tf-step">排入第 2、3 週 Echo</div>
       </div>
     </div>
+  </section>
 
-    <div class="q-inline">
-      <span class="q-num-sq">12.</span>
-      <div class="options">
-        <label><input type="radio" name="q12" value="A"><span>(A) demonstrate</span></label>
-        <label><input type="radio" name="q12" value="B"><span>(B) immigrate</span></label>
-        <label><input type="radio" name="q12" value="C"><span>(C) communicate</span></label>
-        <label><input type="radio" name="q12" value="D"><span>(D) manipulate</span></label>
+  <!-- ════════════ DATA INPUT ════════════ -->
+  <section class="input-section">
+    <div class="sec-title">四大資料輸入</div>
+    <div class="sec-sub">每次段考後收集，是整個系統的養料來源</div>
+
+    <div class="input-grid">
+      <div class="input-card">
+        <div class="input-num">01 / 試卷</div>
+        <div class="input-name">段考試題 + 正確答案</div>
+        <div class="input-desc">完整考卷掃描或拍照，搭配標準答案，建立題目資料庫</div>
+      </div>
+      <div class="input-card">
+        <div class="input-num">02 / 錯誤</div>
+        <div class="input-name">學生的錯誤答案</div>
+        <div class="input-desc">記錄每題作答，AI 自動分類錯誤類型：單字 / 文法 / 粗心</div>
+      </div>
+      <div class="input-card">
+        <div class="input-num">03 / 自析</div>
+        <div class="input-name">學生自己分析錯誤原因</div>
+        <div class="input-desc">學生填寫「我為什麼錯」，這個訊號比錯題本身更有診斷價值</div>
+      </div>
+      <div class="input-card">
+        <div class="input-num">04 / 單字</div>
+        <div class="input-name">學生圈選不熟悉單字</div>
+        <div class="input-desc">即使答對也可圈選，對應資源庫中的衍生詞與一字多義分析</div>
       </div>
     </div>
-    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">demonstrate</span><span class="word">immigrate</span><span class="word">communicate</span><span class="word">manipulate</span></div>
+  </section>
 
-    <div class="passage autowrap">
-      Scientists studying white rhinos in South Africa have found that these animals leave messages in their poop. In particular, they leave their poop in the same place for all the other members in the group to smell—just like humans leaving messages on social media. Furthermore, different rhinos leave different chemicals in their poop, which provide important <span class="blank">[13]</span> about the age, sex, general health, and reproductive conditions of each specific rhino. This is of great significance for the peace and harmony in the group. When all members in a group know what's going on with each other, it is <span class="blank">[14]</span> that they will fight.
+  <!-- ════════════ RESOURCE LIBRARY ════════════ -->
+  <section class="resource-section">
+    <div class="sec-title">林威老師資源庫</div>
+    <div class="sec-sub">34 年教學精華，是 AI 分析的知識底座</div>
+
+    <div class="resource-grid">
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#FEF3E2">📚</div>
+        <div class="res-body">
+          <div class="res-title">5000 核心單字衍生詞庫
+            <span class="res-tag" style="background:#FEF3E2;color:#854F0B">旗艦資源</span>
+          </div>
+          <div class="res-detail">同義字 · 反義字 · 衍生詞意思完全不同的陷阱 · 同樣拼法不同詞性意義</div>
+        </div>
+      </div>
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#E1F5EE">📝</div>
+        <div class="res-body">
+          <div class="res-title">60 回合文法整理
+            <span class="res-tag" style="background:#E1F5EE;color:#0F6E56">系統化</span>
+          </div>
+          <div class="res-detail">高中英文所有重要文法點，以學生最常犯錯的方式重新整理，直接對應錯題類型</div>
+        </div>
+      </div>
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#FAECE7">⚡</div>
+        <div class="res-body">
+          <div class="res-title">易混淆單字精華集</div>
+          <div class="res-detail">affect vs effect · principle vs principal · complement vs compliment 等高頻混淆詞完整收錄</div>
+        </div>
+      </div>
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#E6F1FB">🔤</div>
+        <div class="res-body">
+          <div class="res-title">60 英文字根單字整理
+            <span class="res-tag" style="background:#E6F1FB;color:#185FA5">解碼器</span>
+          </div>
+          <div class="res-detail">認識字根就能猜出陌生單字意思，一個字根帶出一組單字，倍增記憶效率</div>
+        </div>
+      </div>
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#EEEDFE">🔀</div>
+        <div class="res-body">
+          <div class="res-title">同詞異義 · 一字多義 · 完全不同衍生詞</div>
+          <div class="res-detail">同樣的單字，詞性不同意思差很大；衍生詞意思反轉的陷阱，是學測最愛考的灰色地帶</div>
+        </div>
+      </div>
+
+      <div class="resource-row">
+        <div class="res-icon" style="background:#EAF3DE">📊</div>
+        <div class="res-body">
+          <div class="res-title">學測歷屆試題分析
+            <span class="res-tag" style="background:#EAF3DE;color:#3B6D11">100–115 年</span>
+          </div>
+          <div class="res-detail">15 年共 15 屆完整試題資料庫，每年出題方向、高頻考點、難度趨勢全面分析</div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="q-inline">
-      <span class="q-num-sq">13.</span>
-      <div class="options">
-        <label><input type="radio" name="q13" value="A"><span>(A) doubts</span></label>
-        <label><input type="radio" name="q13" value="B"><span>(B) icons</span></label>
-        <label><input type="radio" name="q13" value="C"><span>(C) matches</span></label>
-        <label><input type="radio" name="q13" value="D"><span>(D) clues</span></label>
+  <!-- ════════════ SCHEDULE ════════════ -->
+  <section class="schedule-section">
+    <div class="sec-title">四週循環節奏</div>
+    <div class="sec-sub">以段考為起點，建立每月滾動學習週期</div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-week">WEEK 01 / 段考後</div>
+        <div class="tl-title">錯題收集 × AI 診斷</div>
+        <div class="tl-desc">輸入四大資料 → AI 生成個人弱點地圖 → 啟動 Review + Internalize → 抄寫兩到三遍</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">WEEK 02 / 第一次 Echo</div>
+        <div class="tl-title">LINE 群朗讀 × 類題練習</div>
+        <div class="tl-desc">在 LINE 群大聲朗讀錯誤例句 → AI 出同類型變化題 → 確認理解是否到位</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">WEEK 03 / 第二次 Echo</div>
+        <div class="tl-title">強化提醒 × 新關聯連結</div>
+        <div class="tl-desc">連結字根、衍生詞、同義反義 → 從單點記憶升級為知識網絡</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">WEEK 04 / 月底</div>
+        <div class="tl-title">模擬小考 × 進步追蹤</div>
+        <div class="tl-desc">AI 根據弱點加權出題 → 對照第一週的弱點地圖 → 視覺化呈現進步軌跡</div>
       </div>
     </div>
-    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">doubts</span><span class="word">icons</span><span class="word">matches</span><span class="word">clues</span></div>
+  </section>
 
-    <div class="q-inline">
-      <span class="q-num-sq">14.</span>
-      <div class="options">
-        <label><input type="radio" name="q14" value="A"><span>(A) hardly surprising</span></label>
-        <label><input type="radio" name="q14" value="B"><span>(B) more acceptable</span></label>
-        <label><input type="radio" name="q14" value="C"><span>(C) truly important</span></label>
-        <label><input type="radio" name="q14" value="D"><span>(D) less likely</span></label>
+  <!-- ════════════ CONTACT ════════════ -->
+  <section class="contact-section">
+    <div class="contact-card">
+      <div class="contact-avatar">林</div>
+      <div class="contact-info">
+        <div class="contact-name">林威老師</div>
+        <div class="contact-sub">
+          高中英文教學 34 年 · ECHO 錯中練計劃設計者<br>
+          歡迎在 LINE 加入學習群組，取得最新練習資源
+        </div>
+        <a class="contact-line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <span class="line-icon">💬</span>
+          LINE ID：linwayet
+        </a>
       </div>
     </div>
+  </section>
 
-    <div class="passage autowrap">
-      The researchers have even made "fake poop" to see how different rhinos would react. They find that dominant males are particularly <span class="blank">[15]</span> the "fake poop" that carries chemicals from females ready to mate. The males sniff it for longer duration and come back to the same spot more frequently, a clear sign that they are gathering information about mating opportunities from the poop.
-    </div>
+</div><!-- /wrap -->
 
-    <div class="q-inline">
-      <span class="q-num-sq">15.</span>
-      <div class="options">
-        <label><input type="radio" name="q15" value="A"><span>(A) responsive to</span></label>
-        <label><input type="radio" name="q15" value="B"><span>(B) annoyed at</span></label>
-        <label><input type="radio" name="q15" value="C"><span>(C) considerate of</span></label>
-        <label><input type="radio" name="q15" value="D"><span>(D) tolerant with</span></label>
-      </div>
-    </div>
-
-    <div class="group-label">【第 16-20 題為題組】</div>
-
-    <div class="passage autowrap">
-      The history of dim sum stretches back to the early days of the Silk Road, an ancient network of trade routes connecting the East and the West. Those who traveled along the routes through China needed places to rest. Teahouses thus sprang up to <span class="blank">[16]</span> the weary travelers, offering them a cup of tea to help them regain energy. But the culinary art of dim sum <span class="blank">[17]</span>, for it was considered inappropriate to pair tea with food.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">16.</span>
-      <div class="options">
-        <label><input type="radio" name="q16" value="A"><span>(A) accommodate</span></label>
-        <label><input type="radio" name="q16" value="B"><span>(B) compensate</span></label>
-        <label><input type="radio" name="q16" value="C"><span>(C) anticipate</span></label>
-        <label><input type="radio" name="q16" value="D"><span>(D) reinforce</span></label>
-      </div>
-    </div>
-    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">accommodate</span><span class="word">compensate</span><span class="word">anticipate</span><span class="word">reinforce</span></div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">17.</span>
-      <div class="options">
-        <label><input type="radio" name="q17" value="A"><span>(A) would hardly develop</span></label>
-        <label><input type="radio" name="q17" value="B"><span>(B) had yet to develop</span></label>
-        <label><input type="radio" name="q17" value="C"><span>(C) was fast developing</span></label>
-        <label><input type="radio" name="q17" value="D"><span>(D) had almost developed</span></label>
-      </div>
-    </div>
-
-    <div class="passage autowrap">
-      Centuries later, the ability of tea to aid in digestion finally became known. Teahouse owners therefore began providing bite-sized snacks as an accompaniment, and the tradition of these Cantonese delicacies was born.<br><br>
-      Dim sum is more than just an example of Chinese cuisine. It is <span class="blank">[18]</span> an enjoyable dining experience that can span hours.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">18.</span>
-      <div class="options">
-        <label><input type="radio" name="q18" value="A"><span>(A) passed on to</span></label>
-        <label><input type="radio" name="q18" value="B"><span>(B) brought up as</span></label>
-        <label><input type="radio" name="q18" value="C"><span>(C) thought to have</span></label>
-        <label><input type="radio" name="q18" value="D"><span>(D) meant to be</span></label>
-      </div>
-    </div>
-
-    <div class="passage autowrap">
-      The small portions were designed to merely "touch the heart," as the name literally means, and <span class="blank">[19]</span> were first enjoyed as snacks. The small size allows the customer to order a great variety of dishes, creating a banquet of different tastes and flavors. It is customary for big groups to enjoy simple dishes together as <span class="blank">[20]</span>. Ultimately, dim sum—the food—is only a small part of the dim sum experience.
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">19.</span>
-      <div class="options">
-        <label><input type="radio" name="q19" value="A"><span>(A) if so</span></label>
-        <label><input type="radio" name="q19" value="B"><span>(B) as such</span></label>
-        <label><input type="radio" name="q19" value="C"><span>(C) by then</span></label>
-        <label><input type="radio" name="q19" value="D"><span>(D) in that</span></label>
-      </div>
-    </div>
-
-    <div class="q-inline">
-      <span class="q-num-sq">20.</span>
-      <div class="options">
-        <label><input type="radio" name="q20" value="A"><span>(A) a widely known delicacy</span></label>
-        <label><input type="radio" name="q20" value="B"><span>(B) an intimate romantic dinner</span></label>
-        <label><input type="radio" name="q20" value="C"><span>(C) a joyful social activity</span></label>
-        <label><input type="radio" name="q20" value="D"><span>(D) an amazing local cuisine</span></label>
-      </div>
-    </div>
-    <div class="vocab-row" style="margin: 0 0 12px;"><span class="word">delicacy</span><span class="word">cuisine</span></div>
-
-    <div class="button-row">
-      <button type="button" onclick="submitQuiz()">送出作答</button>
-    </div>
-
-  </form>
-
-  <div id="results">
-
-    <div class="result-card score">
-      <h3>📊 你的成績</h3>
-      <div class="score-big" id="scoreBig"></div>
-      <div class="score-detail" id="scoreDetail"></div>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="teacherReport"></div>
-      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="wordsReport"></div>
-      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
-    </div>
-
-    <div class="result-card feedback">
-      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
-      <div id="feedbackReport"></div>
-    </div>
-
-  </div>
-
-</div>
+<footer>
+  ECHO 錯中練計劃 · 林威老師 · 高三英文學測衝刺 · Review · Internalize · Speak · Echo
+</footer>
 
 <script>
-  // ===== 正確答案 =====
-  const ANSWERS = {
-    1:'B', 2:'C', 3:'B', 4:'A', 5:'D', 6:'A', 7:'C', 8:'B', 9:'C', 10:'D',
-    11:'B', 12:'C', 13:'D', 14:'D', 15:'A', 16:'A', 17:'B', 18:'D', 19:'B', 20:'C'
-  };
-
-  // ===== 錯題詳解 =====
-  const EXPLANATIONS = {
-    1:  { answer:'tight (緊湊的)', detail:'tight schedule 是固定搭配（緊湊的行程），因市長行程緊湊，安排採訪需等好幾週。(A) hasty 倉促的 (C) diligent 勤奮的 (D) routine 例行的，語意不合。' },
-    2:  { answer:'amateur (業餘的)', detail:'句型 started as ... but now ... professional 表對比，一開始是「業餘」設計師，現在有專業工作室。(A) official 官方的 (B) instant 即時的 (D) elementary 初級的，皆不符。' },
-    3:  { answer:'vacancy (職缺)', detail:'teaching vacancy = 教職缺，才能吸引應徵者 applicants。(A) career 職涯 (C) expectation 期望 (D) inspiration 靈感，皆與 applicants 語意不合。' },
-    4:  { answer:'initially (起初)', detail:'far more profit than initially expected = 比「起初預期」多得多。(B) genuinely 真誠地 (C) alternatively 另外 (D) fundamentally 根本地，皆不合上下文。' },
-    5:  { answer:'consumption (食用量)', detail:'balanced consumption of fruit and vegetables = 均衡的蔬果「攝取量」是健康要素。(A) dimension 維度 (B) integration 整合 (C) provision 供應，皆非「食用」義。' },
-    6:  { answer:'dreads (害怕)', detail:'內向的 Timmy「害怕」在大眾前講話，dread + Ving/N 表害怕、恐懼。(B) stresses 強調 (C) wanders 漫遊 (D) escapes 逃離（文法需 escapes from），皆不合。' },
-    7:  { answer:'passion (熱情/摯愛)', detail:'音樂是他「畢生熱愛」，全心投入。life\'s passion 固定搭配。(A) resource 資源 (B) impact 影響 (D) emphasis 強調，皆不符。' },
-    8:  { answer:'assaulted (攻擊)', detail:'酒駕者大吼並用玻璃瓶「攻擊」路人。assault sb with sth 為固定搭配。(A) shattered 粉碎（無「攻擊人」義）(C) overturned 推翻 (D) condemned 譴責，皆不合。' },
-    9:  { answer:'elbow (用手肘擠)', detail:'elbow one\'s way through the crowd = 用手肘在人群中擠出一條路，為固定搭配。(A) crash 撞 (B) tumble 跌倒 (D) struggle 需要接 to V，此處文法與語意皆不合。' },
-    10: { answer:'grave (嚴重的)', detail:'grave concerns = 嚴重的憂慮（常見搭配）。校園槍擊引發「嚴重」關切。(A) swift 迅速 (B) brutal 殘暴（多形容行為人/行動）(C) harsh 嚴厲（多形容批評/懲罰），皆不及 grave 自然。' },
-    11: { answer:'it turns out (結果發現)', detail:'承接前句人類聚會分享新聞，接著轉折：「原來」犀牛也做一樣的事。it turns out 表「結果/沒想到」。(A) what is more 而且 (C) in other words 換句話說 (D) all in all 總之，皆不合轉折語氣。' },
-    12: { answer:'communicate (溝通)', detail:'犀牛有一種「氣味」的方式來「溝通」（呼應下文留言給同伴）。(A) demonstrate 示範 (B) immigrate 移民 (D) manipulate 操縱，皆不切題。' },
-    13: { answer:'clues (線索)', detail:'不同糞便留下不同化學物質，提供重要「線索」來判斷年齡、性別等。(A) doubts 疑慮 (B) icons 圖示 (C) matches 配對，皆不合語意。' },
-    14: { answer:'less likely (較不可能)', detail:'當群體成員互相了解狀況時，打架的可能性「較低」。承前文「和平和諧」，合邏輯。(A) hardly surprising 不令人意外 (B) more acceptable 更可接受 (C) truly important 真的重要，皆不符「和平與打架」的邏輯。' },
-    15: { answer:'responsive to (對…有反應)', detail:'be responsive to 為固定搭配，表對…有反應。優勢公犀牛對母犀牛氣味的糞便「有反應」（嗅更久、回來更多次）。(B) annoyed at 生氣 (C) considerate of 體貼 (D) tolerant with 搭配錯（應為 tolerant of），皆不合。' },
-    16: { answer:'accommodate (招待/容納)', detail:'茶館興起來「招待」疲憊旅人。accommodate 可指提供住宿/招待。(B) compensate 補償 (C) anticipate 預期 (D) reinforce 加強，皆不合語意。' },
-    17: { answer:'had yet to develop (尚未發展)', detail:'have yet to + V = 尚未（做某事）。後文 for it was considered inappropriate 解釋原因，說明點心當時「尚未發展」。(A) would hardly develop 幾乎不會發展 (C) was fast developing 快速發展中（與「尚未」矛盾）(D) had almost developed 幾乎已發展完，皆不合邏輯。' },
-    18: { answer:'meant to be (本該是)', detail:'It is meant to be ... = 它本來就是…。點心本該是一種享受數小時的用餐體驗。(A) passed on to 傳遞給 (B) brought up as 被培養成 (C) thought to have 被認為擁有，文法或語意皆不合。' },
-    19: { answer:'as such (作為這樣的東西)', detail:'as such 呼應前文「點心設計是觸動人心的小點心」，承續「因此/作為這樣的點心」最初被當點心享用。(A) if so 如果如此 (C) by then 到那時 (D) in that 因為，皆不合。' },
-    20: { answer:'a joyful social activity (愉快的社交活動)', detail:'大群人一起享用簡單菜色，是「愉快的社交活動」，呼應全文強調「點心體驗>食物本身」。(A) 知名美食 (B) 親密浪漫晚餐 (D) 當地美食，皆與「big groups...together」社交情境不合。' }
-  };
-
-  // ===== 自動將 .autowrap 區塊的英文單字包成可點選 span =====
-  function wrapWordsIn(root) {
-    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL']);
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: (n) => {
-        let p = n.parentNode;
-        while (p && p !== root) {
-          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-          if (p.classList && (p.classList.contains('word') || p.classList.contains('blank') || p.classList.contains('q-num') || p.classList.contains('q-num-sq'))) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          p = p.parentNode;
-        }
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    const nodes = [];
-    let n;
-    while ((n = walker.nextNode())) nodes.push(n);
-
-    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
-    nodes.forEach(tn => {
-      const text = tn.nodeValue;
-      if (!re.test(text)) return;
-      re.lastIndex = 0;
-      const frag = document.createDocumentFragment();
-      let lastIdx = 0, m;
-      while ((m = re.exec(text)) !== null) {
-        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = m[0];
-        frag.appendChild(span);
-        lastIdx = m.index + m[0].length;
-      }
-      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-      tn.parentNode.replaceChild(frag, tn);
-    });
-  }
-
-  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
-
-  // 單字點擊切換
-  document.body.addEventListener('click', (e) => {
-    if (e.target.classList && e.target.classList.contains('word')) {
-      e.target.classList.toggle('unfamiliar');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
     }
   });
+}, { threshold: 0.1 });
 
-  // 選項選取樣式
-  document.querySelectorAll('.options label').forEach(lbl => {
-    lbl.addEventListener('click', () => {
-      const name = lbl.querySelector('input').name;
-      document.querySelectorAll(`.options input[name="${name}"]`).forEach(r => r.closest('label').classList.remove('selected'));
-      lbl.classList.add('selected');
-    });
-  });
-
-  // ===== 送出作答 =====
-  function submitQuiz() {
-    const name = document.getElementById('studentName').value.trim() || '（未填）';
-    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
-
-    let answers = {}, unanswered = [];
-    for (let i=1; i<=20; i++) {
-      const sel = document.querySelector(`input[name="q${i}"]:checked`);
-      if (sel) answers[i] = sel.value;
-      else { answers[i] = '-'; unanswered.push(i); }
-    }
-
-    if (unanswered.length > 0) {
-      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
-    }
-
-    let correct = 0, wrongList = [];
-    for (let i=1; i<=20; i++) {
-      if (answers[i] === ANSWERS[i]) correct++;
-      else wrongList.push(i);
-    }
-    const percent = Math.round(correct/20*100);
-
-    const unfamiliar = [];
-    document.querySelectorAll('.word.unfamiliar').forEach(w => {
-      const t = w.textContent.trim().toLowerCase();
-      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
-    });
-    unfamiliar.sort();
-
-    document.getElementById('scoreBig').textContent = `${correct} / 20`;
-    document.getElementById('scoreDetail').textContent =
-      `答對 ${correct} 題 ‧ 答錯 ${20-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
-
-    const now = new Date();
-    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-
-    let r1 = `【115學測英文 第1-20題 作答結果】\n`;
-    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/20（${percent}%）\n---\n題號\t學生答案\t正確答案\t對錯\n`;
-    for (let i=1; i<=20; i++) {
-      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
-      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
-    }
-    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
-    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
-    document.getElementById('teacherReport').textContent = r1;
-
-    let r2 = `【115學測英文 第1-20題 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
-    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
-    else {
-      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
-      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
-    }
-    document.getElementById('wordsReport').textContent = r2;
-
-    const fb = document.getElementById('feedbackReport');
-    fb.innerHTML = '';
-    if (wrongList.length === 0) {
-      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
-    } else {
-      wrongList.forEach(i => {
-        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
-        const div = document.createElement('div');
-        div.className = 'wrong-item';
-        div.innerHTML = `
-          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${ANSWERS[i]}（${EXPLANATIONS[i].answer}）</span></div>
-          <div class="explain">${EXPLANATIONS[i].detail}</div>`;
-        fb.appendChild(div);
-      });
-    }
-
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
-  }
-
-  function copyText(elId, btn) {
-    const txt = document.getElementById(elId).textContent;
-    const fallback = () => {
-      const ta = document.createElement('textarea');
-      ta.value = txt;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    };
-    const ok = () => {
-      const orig = btn.textContent;
-      btn.textContent = '✓ 已複製！';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
-    } else { fallback(); ok(); }
-  }
+document.querySelectorAll('.input-card, .resource-row, .tl-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
 </script>
 
 </body>

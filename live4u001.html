@@ -2,903 +2,818 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>116學測英文｜週測 · 115年風格</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>林威老師 × AI｜高三英文 200天衝刺班</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{background:#f0f4f8;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','Segoe UI',sans-serif;font-size:16px;color:#1e293b;min-height:100%}
-button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
-input,textarea{font-family:inherit;font-size:inherit}
+/* ══════════════════════════════════════
+   DESIGN SYSTEM
+   Background : #F8F4ED  (L*96，暖奶油)
+   Text        : #2D2A26  (對比 12.5:1)
+   Accent-1    : #8B5E3C  (暖赤褐)
+   Accent-2    : #D4A574  (暖金)
+   Accent-3    : #5C3A1E  (深棕，強調)
+   Body font   : 22px / line-height 1.75
+   Min font    : 16px  (所有 small text ≥ 0.72rem ≈ 15.8px)
+   H tag       : ≥ 24px
+   Touch target: 72px (19mm)
+   Content W   : 720px max
+   Animation   : ≤ 300ms
+══════════════════════════════════════ */
 
-/* LAYOUT - single long page */
-#app{max-width:500px;margin:0 auto;background:#fff;min-height:100vh;padding-bottom:40px}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* HEADER */
-.hdr{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:90}
-.hdr-top{display:flex;align-items:center;justify-content:space-between}
-.hdr-title{font-size:15px;font-weight:800}
-.hdr-sub{font-size:11px;opacity:.75;margin-top:2px}
-.ans-count{font-size:11px;background:rgba(255,255,255,.2);padding:4px 11px;border-radius:20px;font-weight:700}
+html { font-size: 22px; scroll-behavior: smooth; }
 
-/* SECTION */
-.sec{padding:14px}
-.sec-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #e2e8f0}
-.sec-num{width:28px;height:28px;border-radius:50%;background:#1e40af;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
-.sec-title{font-size:15px;font-weight:800;color:#0f172a}
-.sec-meta{font-size:11px;color:#64748b;margin-top:2px}
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+               'Noto Sans TC', 'PingFang TC',
+               'Microsoft JhengHei', sans-serif;
+  background: #F8F4ED;
+  color: #2D2A26;
+  font-weight: 400;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-/* WORD MARK HINT */
-.word-hint{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:9px 12px;margin-bottom:10px;font-size:12px;color:#92400e;line-height:1.5}
-.word-hint b{font-weight:800}
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-/* INTRO */
-.welcome-hero{text-align:center;padding:16px 0 8px}
-.wh-icon{font-size:44px;margin-bottom:10px}
-.wh-title{font-size:20px;font-weight:900;margin-bottom:4px}
-.wh-sub{font-size:13px;color:#64748b;line-height:1.6}
-.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin:14px 0}
-.ig-box{background:#f8fafc;border-radius:10px;padding:10px 4px;text-align:center;border:1px solid #e2e8f0}
-.ig-num{font-size:18px;font-weight:900;color:#1e40af}
-.ig-lbl{font-size:10px;color:#64748b;margin-top:2px;font-weight:600}
-.name-inp{width:100%;background:#f8fafc;border-radius:10px;padding:11px;font-size:16px;border:1.5px solid #e2e8f0;margin-bottom:8px;text-align:center;color:#1e293b}
-.name-inp:focus{border-color:#3b82f6;outline:none;background:#fff}
-.feature-list{background:#f0fdf4;border-radius:11px;padding:12px;font-size:12.5px;color:#166534;line-height:1.8;border:1px solid #86efac}
+/* ── HEADER ── */
+.site-header {
+  background: #8B5E3C;
+  color: #F8F4ED;
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 720px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.site-logo { font-size: 1rem; font-weight: 700; line-height: 1.3; letter-spacing: 0.02em; }
+.site-logo small { display: block; font-size: 0.72rem; font-weight: 400; opacity: 0.85; margin-top: 2px; }
+.header-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #D4A574; color: #2D2A26;
+  font-size: 0.72rem; font-weight: 700;
+  padding: 8px 16px; border-radius: 999px;
+  white-space: nowrap; min-height: 44px;
+}
+.badge-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #5C3A1E;
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* PASSAGE */
-.passage{background:#f8fafc;border-radius:12px;padding:13px;margin-bottom:10px;font-size:13.5px;line-height:1.95;color:#1e293b;border:1px solid #e2e8f0}
-.blank-s{display:inline-block;border-bottom:2.5px solid #3b82f6;min-width:46px;text-align:center;color:#1e40af;font-weight:700;padding:0 3px;margin:0 1px;font-size:12.5px}
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #5C3A1E 0%, #8B5E3C 60%, #A0714F 100%);
+  color: #F8F4ED;
+  padding: 72px 24px 80px;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #D4A574; margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 1.82rem; font-weight: 900; line-height: 1.3;
+  margin: 0 auto 20px; max-width: 480px;
+}
+.hero h1 em { font-style: normal; color: #D4A574; }
+.hero-desc {
+  font-size: 0.95rem; line-height: 1.85;
+  color: rgba(248,244,237,.88);
+  max-width: 520px; margin: 0 auto 40px;
+}
+.ai-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 44px; }
+.ai-tag {
+  background: rgba(248,244,237,.15);
+  border: 1.5px solid rgba(248,244,237,.35);
+  color: #F8F4ED; font-size: 0.75rem; font-weight: 700;
+  padding: 8px 18px; border-radius: 10px;
+  min-height: 44px; display: flex; align-items: center; gap: 7px;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: #D4A574; color: #2D2A26;
+  font-size: 1rem; font-weight: 800;
+  padding: 0 36px; height: 72px;
+  border-radius: 14px; border: none; cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.25s;
+  box-shadow: 0 6px 24px rgba(45,42,38,.25);
+  letter-spacing: 0.02em;
+}
+.cta-btn:hover  { background: #c8956a; transform: translateY(-2px); }
+.cta-btn:active { transform: translateY(0); }
 
-/* WORD BANK (middle of passage, not sticky) */
-.word-bank-box{background:#fffbeb;border-radius:11px;padding:12px 13px;margin-bottom:10px;font-size:12.5px;border:2px solid #fcd34d;line-height:1.9;box-shadow:0 2px 6px rgba(251,191,36,.15)}
-.wb-title{font-size:13px;font-weight:800;color:#92400e;margin-bottom:6px;display:flex;align-items:center;gap:6px}
-.wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px}
-.wb-item{font-size:12.5px;color:#451a03}
-.wb-item .lt{display:inline-block;width:22px;color:#d97706;font-weight:800}
+/* ── SECTION BASE ── */
+section { padding: 72px 24px; }
+section.alt { background: #EDE8DF; }
 
-/* QUESTION BLOCK */
-.qb{background:#f8fafc;border-radius:12px;padding:12px;margin-bottom:9px;border:1.5px solid #e2e8f0;transition:border-color .2s}
-.qb.done{border-color:#3b82f6;background:#eff6ff}
-.qn{font-size:11px;font-weight:800;color:#3b82f6;margin-bottom:5px}
-.qt{font-size:13.5px;font-weight:600;line-height:1.65;margin-bottom:9px;color:#1e293b}
+/* ── WHO IS IT FOR ── */
+.who-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }
+.who-card { border-radius: 18px; padding: 32px 28px; }
+.who-card.no-cram { background: #D4F1E0; border: 2px solid #8BCCA9; }
+.who-card.has-cram { background: #FFF3DC; border: 2px solid #D4A574; }
+.who-card .w-icon { font-size: 2.4rem; margin-bottom: 14px; }
+.who-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 12px; color: #2D2A26; }
+.who-card p { font-size: 0.82rem; line-height: 1.85; color: #3D3530; }
 
-/* VERTICAL OPTIONS (reading) */
-.opts{display:flex;flex-direction:column;gap:6px}
-.opt{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:9px;background:#fff;border:1.5px solid #e2e8f0;font-size:13px;line-height:1.45;cursor:pointer;transition:all .15s}
-.opt .lt{width:23px;height:23px;min-width:23px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#64748b;flex-shrink:0;margin-top:1px}
-.opt.sel{background:#eff6ff;border-color:#3b82f6;color:#1e40af;font-weight:600}
-.opt.sel .lt{background:#1e40af;color:#fff}
+/* ── WORD DERIVATION (details/summary) ── */
+.word-demo { display: flex; flex-direction: column; gap: 14px; }
+details.word-card {
+  background: #F8F4ED; border: 2px solid #D4A574;
+  border-radius: 16px; overflow: hidden;
+}
+details.word-card summary {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 24px; cursor: pointer;
+  font-size: 0.95rem; font-weight: 800; color: #2D2A26;
+  list-style: none; user-select: none; min-height: 72px;
+  gap: 12px;
+}
+details.word-card summary::-webkit-details-marker { display: none; }
+details.word-card summary .w-head { display: flex; flex-direction: column; gap: 3px; }
+details.word-card summary .w-word { font-size: 1.1rem; color: #5C3A1E; }
+details.word-card summary .w-hint { font-size: 0.72rem; font-weight: 600; color: #8B5E3C; }
+details.word-card summary .arrow {
+  font-size: 1.2rem; color: #D4A574; flex-shrink: 0;
+  transition: transform 0.25s;
+  display: inline-block;
+}
+details.word-card[open] summary .arrow { transform: rotate(180deg); }
+.word-content {
+  padding: 0 24px 24px;
+  border-top: 1.5px solid rgba(212,165,116,.3);
+}
+.word-content .ai-note {
+  background: #FFF3DC; border: 1.5px solid #D4A574;
+  border-radius: 10px; padding: 12px 16px;
+  font-size: 0.75rem; color: #5C3A1E; font-weight: 600;
+  margin: 16px 0; line-height: 1.7;
+}
+.deriv-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.deriv-list li { display: flex; gap: 10px; font-size: 0.82rem; line-height: 1.7; color: #2D2A26; }
+.deriv-list li::before { content: '▸'; color: #D4A574; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+.deriv-list li strong { color: #5C3A1E; font-weight: 800; }
+.deriv-list li em { font-style: normal; color: #8B5E3C; }
+.autotext-note {
+  background: #EDE8DF; border-left: 4px solid #8B5E3C;
+  border-radius: 0 12px 12px 0; padding: 18px 20px;
+  font-size: 0.8rem; color: #3D3530; line-height: 1.85;
+  margin-top: 24px;
+}
 
-/* HORIZONTAL OPTIONS - 2 col grid */
-.opts-h{display:grid;grid-template-columns:1fr 1fr;gap:5px}
-.opt-h{display:flex;align-items:center;gap:7px;padding:8px 9px;border-radius:8px;background:#fff;border:1.5px solid #e2e8f0;font-size:12.5px;line-height:1.3;cursor:pointer;transition:all .15s;min-height:36px}
-.opt-h .lt{width:20px;height:20px;min-width:20px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#64748b;flex-shrink:0}
-.opt-h.sel{background:#eff6ff;border-color:#3b82f6;color:#1e40af;font-weight:700}
-.opt-h.sel .lt{background:#1e40af;color:#fff}
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 14px; }
+.price-card { border-radius: 18px; padding: 28px 22px; text-align: center; }
+.price-card.pilot { background: #EDE8DF; border: 2px solid rgba(139,94,60,.3); }
+.price-card.trial { background: #D4F1E0; border: 2px solid #8BCCA9; }
+.price-card.full  { background: linear-gradient(135deg,#5C3A1E,#8B5E3C); border: none; color: #F8F4ED; }
+.price-card .p-month { font-size: 0.72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; color: inherit; opacity: .7; }
+.price-card .p-price { font-size: 2rem; font-weight: 900; line-height: 1; margin-bottom: 6px; color: #5C3A1E; }
+.price-card.full .p-price { color: #D4A574; }
+.price-card .p-unit { font-size: 0.72rem; font-weight: 600; color: #8B5E3C; margin-bottom: 14px; }
+.price-card.full .p-unit { color: rgba(248,244,237,.7); }
+.price-card p { font-size: 0.75rem; line-height: 1.75; color: #5C3A1E; }
+.price-card.full p { color: rgba(248,244,237,.85); }
 
-/* FILL-IN ANSWER GRID (student types A-J) */
-.fill-wrap{background:#ecfdf5;border-radius:12px;padding:12px;margin-top:12px;border:2px solid #86efac}
-.fill-title{font-size:13px;font-weight:800;color:#065f46;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.fill-grid{display:grid;grid-template-columns:repeat(5, 1fr);gap:6px}
-.fill-cell{background:#fff;border:1.5px solid #bbf7d0;border-radius:9px;padding:7px 2px;display:flex;flex-direction:column;align-items:center;gap:4px}
-.fill-cell.done{border-color:#10b981;background:#d1fae5}
-.fill-q{font-size:12px;font-weight:800;color:#065f46}
-.fill-input{width:100%;max-width:42px;height:36px;border:1.5px solid #cbd5e1;border-radius:7px;background:#fff;text-align:center;font-size:17px;font-weight:900;color:#059669;font-family:'Courier New',monospace;text-transform:uppercase;padding:0}
-.fill-input:focus{outline:none;border-color:#10b981;background:#f0fdf4}
+.sec-label {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #8B5E3C; border-bottom: 2.5px solid #D4A574;
+  padding-bottom: 4px; margin-bottom: 16px;
+}
+.sec-title { font-size: 1.36rem; font-weight: 800; line-height: 1.4; margin-bottom: 12px; }
+.sec-desc { font-size: 0.86rem; color: #6B5A4E; line-height: 1.8; margin-bottom: 40px; max-width: 560px; }
 
-/* TRANSLATION */
-.trans-zh{background:#fef3c7;padding:11px 12px;border-radius:9px;border:1.5px solid #fde68a;margin-bottom:9px;font-size:14px;line-height:1.8;color:#78350f}
-.trans-zh .tag{font-size:11px;color:#b45309;font-weight:800;margin-right:6px}
-.trans-ta{width:100%;min-height:90px;padding:10px 11px;border-radius:9px;border:1.5px solid #e2e8f0;background:#fff;font-size:13.5px;line-height:1.6;resize:vertical;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC','Segoe UI',sans-serif}
-.trans-ta:focus{outline:none;border-color:#3b82f6}
-.trans-hint{font-size:11px;color:#64748b;margin-top:6px;line-height:1.5}
+/* ── TEACHER ── */
+.teacher-card {
+  background: #F8F4ED; border: 2px solid #D4A574;
+  border-radius: 20px; padding: 36px 32px;
+  display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
+}
+.teacher-avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, #8B5E3C, #D4A574);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(212,165,116,.4);
+}
+.teacher-body h2 { font-size: 1.18rem; font-weight: 800; margin-bottom: 8px; }
+.teacher-body p { font-size: 0.82rem; line-height: 1.8; color: #5C3A1E; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tag {
+  background: rgba(139,94,60,.1); border: 1.5px solid rgba(139,94,60,.3);
+  color: #5C3A1E; font-size: 0.72rem; font-weight: 700;
+  padding: 6px 14px; border-radius: 8px; min-height: 44px;
+  display: flex; align-items: center;
+}
 
-/* WORD CLICK */
-.w{cursor:pointer;border-radius:3px;transition:background .12s;padding:0 1px;display:inline}
-.w.mk{background:#fef08a;color:#92400e;font-weight:700;border-bottom:2px solid #f59e0b}
+/* ── 4 PILLARS ── */
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 16px; }
+.pillar-card {
+  background: #F8F4ED; border: 2px solid transparent;
+  border-radius: 18px; padding: 32px 28px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.pillar-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 5px; height: 100%; background: #D4A574;
+  border-radius: 4px 0 0 4px;
+}
+.pillar-card:hover { border-color: #D4A574; transform: translateY(-3px); }
+.pillar-icon { font-size: 2rem; margin-bottom: 14px; }
+.pillar-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+.pillar-card p { font-size: 0.8rem; color: #5C3A1E; line-height: 1.8; }
+.pillar-subtags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.pillar-subtag {
+  background: rgba(212,165,116,.2); color: #5C3A1E;
+  font-size: 0.68rem; font-weight: 700; padding: 5px 10px; border-radius: 6px;
+}
 
-/* FLOATING WORD BADGE */
-#word-badge{position:fixed;top:60px;right:14px;background:#f59e0b;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;z-index:150;display:none;box-shadow:0 2px 10px rgba(245,158,11,.4)}
+/* ── ARTICLES ── */
+.articles-thirds { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; margin-bottom: 24px; }
+.third-card { border-radius: 18px; padding: 28px 22px; text-align: center; }
+.third-card.c1 { background: #D4F1E0; border: 2px solid #8BCCA9; }
+.third-card.c2 { background: #D4E8F8; border: 2px solid #8BBDD4; }
+.third-card.c3 { background: #EFE0F4; border: 2px solid #C09DC7; }
+.third-card .frac { font-size: 2.2rem; font-weight: 900; color: #2D2A26; opacity: .15; display: block; margin-bottom: -10px; }
+.third-card .t-icon { font-size: 2rem; margin-bottom: 10px; }
+.third-card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 8px; color: #2D2A26; }
+.third-card p { font-size: 0.75rem; line-height: 1.75; color: #3D3530; }
+.articles-note {
+  background: #F8F4ED; border: 2px solid #D4A574; border-radius: 14px;
+  padding: 20px 24px; font-size: 0.82rem; color: #5C3A1E;
+  text-align: center; font-weight: 600; line-height: 1.8;
+}
 
-/* SUBMIT BUTTON */
-.submit-wrap{padding:16px 14px;text-align:center}
-.submit-btn{width:100%;padding:16px;border-radius:12px;background:linear-gradient(135deg,#1e40af,#3b82f6);color:#fff;font-size:15px;font-weight:800;box-shadow:0 4px 12px rgba(59,130,246,.35)}
+/* ── VOCAB ── */
+.vocab-list { display: flex; flex-direction: column; gap: 14px; }
+.vocab-item {
+  background: #F8F4ED; border-radius: 16px; padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 20px;
+  border: 2px solid transparent; transition: border-color 0.25s;
+}
+.vocab-item:hover { border-color: #D4A574; }
+.vocab-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #8B5E3C, #D4A574);
+  color: #F8F4ED; font-size: 1.1rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.vocab-text h3 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+.vocab-text p { font-size: 0.8rem; color: #5C3A1E; line-height: 1.75; }
 
-/* DETAILS/SUMMARY - native, no JS */
-details{background:#fff;border-radius:12px;margin:10px 14px;border:2px solid #bfdbfe;overflow:hidden}
-details summary{padding:14px 16px;font-size:14px;font-weight:800;color:#1e40af;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;background:#eff6ff;transition:background .15s}
-details summary::-webkit-details-marker{display:none}
-details summary::marker{content:''}
-details[open] summary{background:#dbeafe;border-bottom:1px solid #bfdbfe}
-.arrow{display:inline-block;transition:transform .25s ease;font-size:12px;opacity:.7}
-details[open] .arrow{transform:rotate(180deg)}
-.details-body{padding:14px}
+/* ── FLOW ── */
+.flow-list { display: flex; flex-direction: column; gap: 0; }
+.flow-item { display: flex; gap: 24px; position: relative; }
+.flow-item:not(:last-child)::after {
+  content: ''; position: absolute; left: 23px; top: 56px;
+  width: 2px; height: calc(100% - 16px);
+  background: rgba(139,94,60,.25);
+}
+.flow-step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #8B5E3C; color: #F8F4ED;
+  font-size: 1.1rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(139,94,60,.2);
+}
+.flow-body { padding-bottom: 40px; flex: 1; }
+.flow-body h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+.flow-body p { font-size: 0.8rem; color: #5C3A1E; line-height: 1.8; }
+.flow-tag {
+  display: inline-block; margin-top: 10px;
+  background: rgba(212,165,116,.25); border: 1.5px solid rgba(139,94,60,.3);
+  color: #5C3A1E; font-size: 0.72rem; font-weight: 700;
+  padding: 5px 12px; border-radius: 8px;
+}
 
-/* nested details */
-details details{margin:10px 0;border-color:#e2e8f0;border-radius:10px}
-details details summary{background:#f8fafc;color:#475569;font-size:13px;padding:10px 12px}
-details[open] details summary{background:#f1f5f9}
-details details .details-body{padding:10px 12px}
+/* ── DELIVERY ── */
+.delivery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }
+.del-card { border-radius: 18px; padding: 32px 28px; }
+.del-card.line-g { background: #D4F1E0; border: 2px solid #8BCCA9; }
+.del-card.line-d { background: #FFF3DC; border: 2px solid #D4A574; }
+.del-icon { font-size: 2.4rem; margin-bottom: 14px; }
+.del-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 16px; color: #2D2A26; }
+.del-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.del-card li { font-size: 0.8rem; color: #3D3530; display: flex; gap: 8px; line-height: 1.7; }
+.del-card li::before { content: '→'; color: #8B5E3C; font-weight: 700; flex-shrink: 0; }
 
-/* RESULT */
-.result-hero{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;border-radius:14px;padding:16px;margin-bottom:10px;text-align:center}
-.rh-score{font-size:36px;font-weight:900;margin-bottom:4px}
-.rh-label{font-size:13px;opacity:.85;line-height:1.5}
-.cat-scores{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:10px}
-.cs-box{background:#f8fafc;border-radius:10px;padding:9px 6px;text-align:center;border:1px solid #e2e8f0}
-.cs-lbl{font-size:10px;font-weight:700;color:#64748b;margin-bottom:4px}
-.cs-bar-w{height:4px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:3px}
-.cs-bar{height:4px;border-radius:3px;transition:width .7s ease}
-.cs-frac{font-size:12px;font-weight:800}
+/* ── LOOP ── */
+.loop-box {
+  background: linear-gradient(135deg, #5C3A1E, #8B5E3C);
+  border-radius: 24px; padding: 48px 36px;
+  text-align: center; color: #F8F4ED;
+}
+.loop-box h2 { font-size: 1.27rem; font-weight: 900; margin-bottom: 16px; line-height: 1.4; }
+.loop-box p { font-size: 0.82rem; line-height: 1.85; color: rgba(248,244,237,.85); max-width: 520px; margin: 0 auto 36px; }
+.loop-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+.loop-node {
+  background: rgba(248,244,237,.15); border: 2px solid rgba(248,244,237,.35);
+  color: #F8F4ED; font-size: 0.75rem; font-weight: 700;
+  padding: 12px 18px; border-radius: 12px;
+  min-height: 44px; display: flex; align-items: center;
+}
+.loop-arrow { color: #D4A574; font-size: 1.3rem; font-weight: 900; }
 
-/* ANSWER CODE */
-.code-section{background:#0f172a;border-radius:12px;padding:14px;margin-bottom:10px}
-.cs-title{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.5px;margin-bottom:10px}
-.ans-groups{display:flex;flex-direction:column;gap:6px}
-.ans-group{display:flex;align-items:center;gap:10px}
-.ag-label{font-size:11px;color:#94a3b8;width:68px;flex-shrink:0;font-family:'Courier New',monospace}
-.ag-letters{display:flex;gap:4px;flex-wrap:wrap}
-.ag-letter{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-family:'Courier New',monospace}
-.al-A{background:#1d4ed820;color:#60a5fa}.al-B{background:#7c3aed20;color:#a78bfa}
-.al-C{background:#06573520;color:#34d399}.al-D{background:#92400e20;color:#fbbf24}
-.al-E{background:#be185d20;color:#f472b6}.al-F{background:#b4530920;color:#fb923c}
-.al-G{background:#15803d20;color:#4ade80}.al-H{background:#7e22ce20;color:#c084fc}
-.al-I{background:#0e749020;color:#22d3ee}.al-J{background:#9f122520;color:#f87171}
-.al-_{background:#33415520;color:#94a3b8}
+/* ── STATS ── */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: 14px; }
+.stat-box {
+  background: #F8F4ED; border: 2px solid #D4A574;
+  border-radius: 16px; padding: 28px 16px; text-align: center;
+}
+.stat-num { font-size: 1.8rem; font-weight: 900; color: #8B5E3C; line-height: 1.1; margin-bottom: 8px; }
+.stat-box p { font-size: 0.72rem; color: #5C3A1E; line-height: 1.6; font-weight: 600; }
 
-/* WORD RESULT */
-.word-result{background:#fffbeb;border-radius:12px;padding:13px;margin-bottom:10px;border:1px solid #fde68a}
-.wr-title{font-size:12px;font-weight:800;color:#92400e;margin-bottom:9px}
-.word-tags{display:flex;flex-wrap:wrap;gap:5px}
-.word-tag{background:#fef3c7;color:#92400e;padding:4px 11px;border-radius:20px;font-size:12.5px;font-weight:600;border:1px solid #fcd34d}
-.word-tag.none{color:#94a3b8;background:#f1f5f9;border-color:#e2e8f0;font-weight:400}
+/* ── FINAL CTA ── */
+.final-cta {
+  background: linear-gradient(160deg, #2D1A10, #5C3A1E);
+  color: #F8F4ED; padding: 80px 24px; text-align: center;
+}
+.final-cta h2 { font-size: 1.55rem; font-weight: 900; margin-bottom: 16px; line-height: 1.35; }
+.final-cta h2 em { font-style: normal; color: #D4A574; }
+.final-cta p { font-size: 0.86rem; line-height: 1.85; color: rgba(248,244,237,.82); max-width: 520px; margin: 0 auto 44px; }
+.cta-note { margin-top: 18px; font-size: 0.72rem; color: rgba(248,244,237,.5); }
 
-/* TRANSLATION RESULT */
-.trans-result{background:#eff6ff;border-radius:12px;padding:13px;margin-bottom:10px;border:1px solid #bfdbfe}
-.tr-h{font-size:12px;font-weight:800;color:#1e40af;margin-bottom:9px}
-.tr-item{background:#fff;border-radius:9px;padding:10px;margin-bottom:7px;border:1px solid #dbeafe}
-.tr-item:last-child{margin-bottom:0}
-.tr-q{font-size:11px;color:#64748b;margin-bottom:4px;font-weight:700}
-.tr-zh{font-size:12.5px;color:#1e293b;margin-bottom:5px;line-height:1.6}
-.tr-en{font-size:12.5px;color:#1e40af;line-height:1.6;background:#f8fafc;padding:7px 9px;border-radius:6px;border-left:3px solid #3b82f6}
-.tr-en.empty{color:#94a3b8}
+footer {
+  background: #2D1A10; color: rgba(248,244,237,.5);
+  padding: 28px 24px; text-align: center;
+  font-size: 0.68rem; line-height: 1.8;
+}
 
-/* LINE MESSAGE */
-.line-btn{width:100%;padding:13px;border-radius:11px;font-size:13.5px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;justify-content:center;gap:6px}
-.line-btn-1{background:#1e40af;color:#fff}
-.line-btn-2{background:#f59e0b;color:#fff}
-.line-btn-3{background:#059669;color:#fff}
-.msg-box{background:#0f172a;color:#e2e8f0;border-radius:11px;padding:12px;font-size:11.5px;font-family:'Courier New',monospace;white-space:pre-wrap;line-height:1.7;margin-bottom:7px;word-break:break-all;max-height:300px;overflow-y:auto}
-.msg-box:empty{display:none}
-
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(8px);background:#1e293b;color:#fff;padding:10px 20px;border-radius:22px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;z-index:300;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.3)}
-#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* REVIEW ITEMS */
-.rev-item{padding:8px 11px;border-radius:8px;margin-bottom:5px;font-size:12.5px;line-height:1.55}
-.rev-ok{background:#f0fdf4;border:1px solid #86efac;color:#166534}
-.rev-ng{background:#fff5f5;border:1px solid #fca5a5;color:#dc2626}
-.rev-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+@media (max-width: 520px) {
+  html { font-size: 19px; }
+  .hero h1 { font-size: 1.55rem; }
+  .teacher-card { flex-direction: column; }
+  .loop-row { flex-direction: column; align-items: stretch; }
+  .loop-arrow { transform: rotate(90deg); display: block; text-align: center; }
+}
 </style>
 </head>
 <body>
-<div id="app">
 
-  <!-- HEADER (sticky) -->
-  <header class="hdr">
-    <div class="hdr-top">
-      <div>
-        <div class="hdr-title">📝 116學測英文 週測</div>
-        <div class="hdr-sub">115年學測風格 · 28選擇 + 2翻譯</div>
-      </div>
-      <div id="ans-count-badge" class="ans-count">已答 0/30</div>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-logo">
+      林威老師 200天英文衝刺班
+      <small>34 年教學 × AI 個人化</small>
     </div>
-  </header>
-
-  <div id="word-badge">📌 <span id="wb-num">0</span> 個單字</div>
-
-  <!-- INTRO -->
-  <section class="sec">
-    <div class="welcome-hero">
-      <div class="wh-icon">📋</div>
-      <div class="wh-title">英文週測</div>
-      <div class="wh-sub">仿115年學測風格<br>詞彙 · 綜合 · 文意選填 · 閱讀 · 翻譯</div>
+    <div class="header-badge">
+      <span class="badge-dot"></span>
+      現正招生
     </div>
-    <div class="info-grid">
-      <div class="ig-box"><div class="ig-num">28</div><div class="ig-lbl">選擇題</div></div>
-      <div class="ig-box"><div class="ig-num">2</div><div class="ig-lbl">中翻英</div></div>
-      <div class="ig-box"><div class="ig-num">25'</div><div class="ig-lbl">建議時間</div></div>
-      <div class="ig-box"><div class="ig-num">2</div><div class="ig-lbl">LINE訊息</div></div>
-    </div>
-    <div class="feature-list">
-      ✨ <b>作答時</b>：點擊任何不確定的單字即可標記<br>
-      📊 <b>完成後</b>：下拉「作答結果」區，產生兩則 LINE 訊息<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;① 答案碼（供老師分析選擇題成績）<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;② 不確定單字 + 翻譯句子（供林威老師軟體分析）
-    </div>
-    <div style="margin-top:12px">
-      <label style="font-size:13px;font-weight:700;color:#64748b;display:block;margin-bottom:7px">你的姓名</label>
-      <input class="name-inp" id="nm" type="text" placeholder="請輸入姓名" maxlength="12">
-    </div>
-  </section>
-
-  <!-- SECTION 1: VOCAB Q1-10 -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-num">1</div>
-      <div>
-        <div class="sec-title">詞彙 Q1–Q10</div>
-        <div class="sec-meta">10 題 · 每題 1 分</div>
-      </div>
-    </div>
-    <div class="word-hint">💡 點擊不確定的單字即可標記（黃底），完成後列入 LINE 訊息</div>
-
-    <div class="qb" id="b1"><div class="qn">Q1</div>
-      <div class="qt wt">The government's new initiative aims to ___ affordable housing to low-income families living in densely populated urban areas.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(1,'A',this)"><div class="lt">A</div><span class="wt">deny</span></div>
-        <div class="opt-h" onclick="pick(1,'B',this)"><div class="lt">B</div><span class="wt">provide</span></div>
-        <div class="opt-h" onclick="pick(1,'C',this)"><div class="lt">C</div><span class="wt">restrict</span></div>
-        <div class="opt-h" onclick="pick(1,'D',this)"><div class="lt">D</div><span class="wt">eliminate</span></div>
-      </div></div>
-
-    <div class="qb" id="b2"><div class="qn">Q2</div>
-      <div class="qt wt">The scientist's research on ocean temperature patterns was considered ___ because it offered an entirely new framework for understanding global climate change.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(2,'A',this)"><div class="lt">A</div><span class="wt">trivial</span></div>
-        <div class="opt-h" onclick="pick(2,'B',this)"><div class="lt">B</div><span class="wt">outdated</span></div>
-        <div class="opt-h" onclick="pick(2,'C',this)"><div class="lt">C</div><span class="wt">groundbreaking</span></div>
-        <div class="opt-h" onclick="pick(2,'D',this)"><div class="lt">D</div><span class="wt">repetitive</span></div>
-      </div></div>
-
-    <div class="qb" id="b3"><div class="qn">Q3</div>
-      <div class="qt wt">Wildlife organizations around the world are working tirelessly to ___ endangered species from extinction by protecting and restoring their natural habitats.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(3,'A',this)"><div class="lt">A</div><span class="wt">prevent</span></div>
-        <div class="opt-h" onclick="pick(3,'B',this)"><div class="lt">B</div><span class="wt">accelerate</span></div>
-        <div class="opt-h" onclick="pick(3,'C',this)"><div class="lt">C</div><span class="wt">ignore</span></div>
-        <div class="opt-h" onclick="pick(3,'D',this)"><div class="lt">D</div><span class="wt">threaten</span></div>
-      </div></div>
-
-    <div class="qb" id="b4"><div class="qn">Q4</div>
-      <div class="qt wt">The financial crisis had a ___ effect on small businesses across the region, forcing many long-established shops to close permanently within months.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(4,'A',this)"><div class="lt">A</div><span class="wt">beneficial</span></div>
-        <div class="opt-h" onclick="pick(4,'B',this)"><div class="lt">B</div><span class="wt">devastating</span></div>
-        <div class="opt-h" onclick="pick(4,'C',this)"><div class="lt">C</div><span class="wt">minor</span></div>
-        <div class="opt-h" onclick="pick(4,'D',this)"><div class="lt">D</div><span class="wt">temporary</span></div>
-      </div></div>
-
-    <div class="qb" id="b5"><div class="qn">Q5</div>
-      <div class="qt wt">Despite repeated setbacks and funding cuts, the research team remained ___ in their determination to find a viable treatment for the rare neurological disease.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(5,'A',this)"><div class="lt">A</div><span class="wt">discouraged</span></div>
-        <div class="opt-h" onclick="pick(5,'B',this)"><div class="lt">B</div><span class="wt">persistent</span></div>
-        <div class="opt-h" onclick="pick(5,'C',this)"><div class="lt">C</div><span class="wt">indifferent</span></div>
-        <div class="opt-h" onclick="pick(5,'D',this)"><div class="lt">D</div><span class="wt">passive</span></div>
-      </div></div>
-
-    <div class="qb" id="b6"><div class="qn">Q6</div>
-      <div class="qt wt">The documentary explored in depth how the rise of social media has fundamentally ___ the way people form identities, communicate, and maintain relationships.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(6,'A',this)"><div class="lt">A</div><span class="wt">preserved</span></div>
-        <div class="opt-h" onclick="pick(6,'B',this)"><div class="lt">B</div><span class="wt">transformed</span></div>
-        <div class="opt-h" onclick="pick(6,'C',this)"><div class="lt">C</div><span class="wt">limited</span></div>
-        <div class="opt-h" onclick="pick(6,'D',this)"><div class="lt">D</div><span class="wt">defined</span></div>
-      </div></div>
-
-    <div class="qb" id="b7"><div class="qn">Q7</div>
-      <div class="qt wt">New imaging technology now allows doctors to ___ certain types of cancer at a much earlier stage, when treatment options are significantly more effective.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(7,'A',this)"><div class="lt">A</div><span class="wt">diagnose</span></div>
-        <div class="opt-h" onclick="pick(7,'B',this)"><div class="lt">B</div><span class="wt">cause</span></div>
-        <div class="opt-h" onclick="pick(7,'C',this)"><div class="lt">C</div><span class="wt">delay</span></div>
-        <div class="opt-h" onclick="pick(7,'D',this)"><div class="lt">D</div><span class="wt">overlook</span></div>
-      </div></div>
-
-    <div class="qb" id="b8"><div class="qn">Q8</div>
-      <div class="qt wt">The young chef's ___ performance throughout the competition earned her widespread recognition and a coveted position at one of the country's top restaurants.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(8,'A',this)"><div class="lt">A</div><span class="wt">inconsistent</span></div>
-        <div class="opt-h" onclick="pick(8,'B',this)"><div class="lt">B</div><span class="wt">mediocre</span></div>
-        <div class="opt-h" onclick="pick(8,'C',this)"><div class="lt">C</div><span class="wt">outstanding</span></div>
-        <div class="opt-h" onclick="pick(8,'D',this)"><div class="lt">D</div><span class="wt">ordinary</span></div>
-      </div></div>
-
-    <div class="qb" id="b9"><div class="qn">Q9</div>
-      <div class="qt wt">The city council's decision to ___ its metro network to suburban areas has significantly reduced traffic congestion and improved air quality downtown.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(9,'A',this)"><div class="lt">A</div><span class="wt">diminish</span></div>
-        <div class="opt-h" onclick="pick(9,'B',this)"><div class="lt">B</div><span class="wt">relocate</span></div>
-        <div class="opt-h" onclick="pick(9,'C',this)"><div class="lt">C</div><span class="wt">expand</span></div>
-        <div class="opt-h" onclick="pick(9,'D',this)"><div class="lt">D</div><span class="wt">abandon</span></div>
-      </div></div>
-
-    <div class="qb" id="b10"><div class="qn">Q10</div>
-      <div class="qt wt">Researchers have found that certain plants can ___ to environmental stressors such as drought and insect attack by producing specialized protective chemical compounds.</div>
-      <div class="opts-h">
-        <div class="opt-h" onclick="pick(10,'A',this)"><div class="lt">A</div><span class="wt">respond</span></div>
-        <div class="opt-h" onclick="pick(10,'B',this)"><div class="lt">B</div><span class="wt">surrender</span></div>
-        <div class="opt-h" onclick="pick(10,'C',this)"><div class="lt">C</div><span class="wt">contribute</span></div>
-        <div class="opt-h" onclick="pick(10,'D',this)"><div class="lt">D</div><span class="wt">struggle</span></div>
-      </div></div>
-  </section>
-
-  <!-- SECTION 2: CLOZE Q11-15 -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-num">2</div>
-      <div>
-        <div class="sec-title">綜合測驗 Q11–Q15</div>
-        <div class="sec-meta">克漏字 · 5 題</div>
-      </div>
-    </div>
-    <div class="passage wt">
-      In today's hyperconnected world, the concept of "digital well-being" has gained considerable attention. As smartphones and social media become increasingly <span class="blank-s">__11__</span> in daily life, researchers are exploring both their benefits and their costs. While technology enables people to stay in touch across distances, overuse can lead to <span class="blank-s">__12__</span> consequences. Studies show that heavy screen time, especially before bedtime, <span class="blank-s">__13__</span> with sleep quality and can contribute to anxiety and low mood. In response, many technology companies have introduced tools allowing users to <span class="blank-s">__14__</span> their screen time and set personalized limits on app usage. Health experts emphasize that finding a <span class="blank-s">__15__</span> between connected and offline life is the key to lasting well-being.
-    </div>
-    <div class="qb" id="b11"><div class="qn">Q11</div><div class="opts-h">
-      <div class="opt-h" onclick="pick(11,'A',this)"><div class="lt">A</div>irrelevant</div>
-      <div class="opt-h" onclick="pick(11,'B',this)"><div class="lt">B</div>integrated</div>
-      <div class="opt-h" onclick="pick(11,'C',this)"><div class="lt">C</div>optional</div>
-      <div class="opt-h" onclick="pick(11,'D',this)"><div class="lt">D</div>eliminated</div>
-    </div></div>
-    <div class="qb" id="b12"><div class="qn">Q12</div><div class="opts-h">
-      <div class="opt-h" onclick="pick(12,'A',this)"><div class="lt">A</div>positive</div>
-      <div class="opt-h" onclick="pick(12,'B',this)"><div class="lt">B</div>unrelated</div>
-      <div class="opt-h" onclick="pick(12,'C',this)"><div class="lt">C</div>negative</div>
-      <div class="opt-h" onclick="pick(12,'D',this)"><div class="lt">D</div>unexpected</div>
-    </div></div>
-    <div class="qb" id="b13"><div class="qn">Q13</div><div class="opts-h">
-      <div class="opt-h" onclick="pick(13,'A',this)"><div class="lt">A</div>encourages</div>
-      <div class="opt-h" onclick="pick(13,'B',this)"><div class="lt">B</div>interferes</div>
-      <div class="opt-h" onclick="pick(13,'C',this)"><div class="lt">C</div>connects</div>
-      <div class="opt-h" onclick="pick(13,'D',this)"><div class="lt">D</div>competes</div>
-    </div></div>
-    <div class="qb" id="b14"><div class="qn">Q14</div><div class="opts-h">
-      <div class="opt-h" onclick="pick(14,'A',this)"><div class="lt">A</div>increase</div>
-      <div class="opt-h" onclick="pick(14,'B',this)"><div class="lt">B</div>track</div>
-      <div class="opt-h" onclick="pick(14,'C',this)"><div class="lt">C</div>ignore</div>
-      <div class="opt-h" onclick="pick(14,'D',this)"><div class="lt">D</div>share</div>
-    </div></div>
-    <div class="qb" id="b15"><div class="qn">Q15</div><div class="opts-h">
-      <div class="opt-h" onclick="pick(15,'A',this)"><div class="lt">A</div>competition</div>
-      <div class="opt-h" onclick="pick(15,'B',this)"><div class="lt">B</div>difference</div>
-      <div class="opt-h" onclick="pick(15,'C',this)"><div class="lt">C</div>balance</div>
-      <div class="opt-h" onclick="pick(15,'D',this)"><div class="lt">D</div>conflict</div>
-    </div></div>
-  </section>
-
-  <!-- SECTION 3: FILL-IN Q16-Q25 (10選10, student types A-J) -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-num">3</div>
-      <div>
-        <div class="sec-title">文意選填 Q16–Q25</div>
-        <div class="sec-meta">10 選 10 · 每字只用一次</div>
-      </div>
-    </div>
-    <div class="word-hint">💡 <b>作答方式</b>：下方 10 個空格，請自行在框內輸入字母 <b>A–J</b>（可大小寫，每字僅限用一次）</div>
-
-    <!-- Part 1 passage -->
-    <div class="passage wt">
-      Have you ever heard of the phrase "life flashing before your eyes"? It describes a sudden, brief <span class="blank-s">__16__</span> of intense feeling, often experienced by people in life-threatening situations, in which they recall vivid memories from their past. Although this quite common <span class="blank-s">__17__</span> has been widely reported, scientists and psychologists continue to explore its causes and significance. One of the most common situations where people experience these flashes is during extreme danger. <span class="blank-s">__18__</span> of accidents, soldiers in battle, and even climbers who have fallen from great heights have shared similar accounts. They describe seeing rapid sequences of past events, often in chronological order, but sometimes as a collection of <span class="blank-s">__19__</span>, yet emotionally significant instants. From a scientific perspective, researchers believe that life flashes may be linked to the brain's response to stress and trauma. When <span class="blank-s">__20__</span> danger, the brain releases certain chemicals, including adrenaline and dopamine, which affect memory recall.
-    </div>
-
-    <!-- Word Bank (中間) -->
-    <div class="word-bank-box wt">
-      <div class="wb-title">📖 字庫（10 選 10，每個只用一次）</div>
-      <div class="wb-grid">
-        <div class="wb-item"><span class="lt">(A)</span>survivors</div>
-        <div class="wb-item"><span class="lt">(B)</span>propose</div>
-        <div class="wb-item"><span class="lt">(C)</span>natural</div>
-        <div class="wb-item"><span class="lt">(D)</span>random</div>
-        <div class="wb-item"><span class="lt">(E)</span>emotional</div>
-        <div class="wb-item"><span class="lt">(F)</span>facing</div>
-        <div class="wb-item"><span class="lt">(G)</span>interpret</div>
-        <div class="wb-item"><span class="lt">(H)</span>moment</div>
-        <div class="wb-item"><span class="lt">(I)</span>remaining</div>
-        <div class="wb-item"><span class="lt">(J)</span>phenomenon</div>
-      </div>
-    </div>
-
-    <!-- Part 2 passage -->
-    <div class="passage wt">
-      Additionally, studies show that as oxygen levels drop, the brain enters a state of intense activity, causing strong recollections of the past. Some scientists <span class="blank-s">__21__</span> that this reaction helps the brain process information quickly so that the person can respond to danger more effectively. Interestingly, life flashes are not limited to life-threatening situations. Some individuals have reported similar experiences in deeply <span class="blank-s">__22__</span> moments, such as the birth of a child or an important change in life. This suggests that life flashes might not only be linked to survival but also to the way the brain processes meaningful experiences. Beyond science, life flashes have fascinated philosophers and spiritual thinkers for centuries. Many cultures and religions <span class="blank-s">__23__</span> this phenomenon as a journey of the soul or a reflection of one's purpose in life. Some believe it is evidence of the mind's connection to something greater than itself, while others see it as a normal and expected <span class="blank-s">__24__</span> function of human memory. Despite <span class="blank-s">__25__</span> a mystery, life flashes provide insight into how the human mind works in critical moments.
-    </div>
-
-    <!-- Fill-in Answer Grid (student types A-J) -->
-    <div class="fill-wrap">
-      <div class="fill-title">✏️ 請將答案字母填入下方空格（A–J）</div>
-      <div class="fill-grid">
-        <div class="fill-cell" id="fc16"><div class="fill-q">16.</div><input type="text" maxlength="1" class="fill-input" id="fi16" oninput="inputAJ(16,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc17"><div class="fill-q">17.</div><input type="text" maxlength="1" class="fill-input" id="fi17" oninput="inputAJ(17,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc18"><div class="fill-q">18.</div><input type="text" maxlength="1" class="fill-input" id="fi18" oninput="inputAJ(18,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc19"><div class="fill-q">19.</div><input type="text" maxlength="1" class="fill-input" id="fi19" oninput="inputAJ(19,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc20"><div class="fill-q">20.</div><input type="text" maxlength="1" class="fill-input" id="fi20" oninput="inputAJ(20,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc21"><div class="fill-q">21.</div><input type="text" maxlength="1" class="fill-input" id="fi21" oninput="inputAJ(21,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc22"><div class="fill-q">22.</div><input type="text" maxlength="1" class="fill-input" id="fi22" oninput="inputAJ(22,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc23"><div class="fill-q">23.</div><input type="text" maxlength="1" class="fill-input" id="fi23" oninput="inputAJ(23,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc24"><div class="fill-q">24.</div><input type="text" maxlength="1" class="fill-input" id="fi24" oninput="inputAJ(24,this)" autocomplete="off"></div>
-        <div class="fill-cell" id="fc25"><div class="fill-q">25.</div><input type="text" maxlength="1" class="fill-input" id="fi25" oninput="inputAJ(25,this)" autocomplete="off"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: READING Q26-28 -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-num">4</div>
-      <div>
-        <div class="sec-title">閱讀測驗 Q26–Q28</div>
-        <div class="sec-meta">社會文化 · Slow Travel · 3 題</div>
-      </div>
-    </div>
-    <div class="passage wt">
-      In contrast to the packed itineraries of traditional tourism, a growing movement known as "slow travel" encourages visitors to spend more time in fewer destinations. Rather than rushing from one famous landmark to the next, slow travelers prioritize deep immersion in local culture — eating where residents eat, learning a few phrases of the local language, and exploring off-the-beaten-path neighborhoods.<br><br>
-      Proponents argue that slow travel creates more meaningful experiences for visitors while also reducing the environmental impact of excessive transportation. Critics, however, point out that the luxury of spending weeks in a single location is not available to everyone, making slow travel an option accessible largely to the privileged. Despite this ongoing debate, the movement continues to grow, particularly among younger generations who prioritize authentic experience over efficient sightseeing.
-    </div>
-    <div class="qb" id="b26"><div class="qn">Q26　本文的主旨是？</div><div class="opts">
-      <div class="opt" onclick="pick(26,'A',this)"><div class="lt">A</div>Traditional tourism is harmful and should be immediately restricted</div>
-      <div class="opt" onclick="pick(26,'B',this)"><div class="lt">B</div>Slow travel is a growing movement with both supporters and critics</div>
-      <div class="opt" onclick="pick(26,'C',this)"><div class="lt">C</div>Young people prefer luxury travel experiences over cultural immersion</div>
-      <div class="opt" onclick="pick(26,'D',this)"><div class="lt">D</div>Local communities benefit greatly from all forms of modern tourism</div>
-    </div></div>
-    <div class="qb" id="b27"><div class="qn">Q27　根據文章，「慢旅行者」的特徵是？</div><div class="opts">
-      <div class="opt" onclick="pick(27,'A',this)"><div class="lt">A</div>They follow a tight schedule to see as many landmarks as possible</div>
-      <div class="opt" onclick="pick(27,'B',this)"><div class="lt">B</div>They prefer well-known tourist restaurants and popular attractions</div>
-      <div class="opt" onclick="pick(27,'C',this)"><div class="lt">C</div>They spend more time in fewer places and engage deeply with local life</div>
-      <div class="opt" onclick="pick(27,'D',this)"><div class="lt">D</div>They prioritize the cheapest transportation options available</div>
-    </div></div>
-    <div class="qb" id="b28"><div class="qn">Q28　文中提到對慢旅行的批評是什麼？</div><div class="opts">
-      <div class="opt" onclick="pick(28,'A',this)"><div class="lt">A</div>It is not as exciting or adventurous as traditional tourism</div>
-      <div class="opt" onclick="pick(28,'B',this)"><div class="lt">B</div>Not everyone has the time or resources to afford slow travel</div>
-      <div class="opt" onclick="pick(28,'C',this)"><div class="lt">C</div>Local communities often resist and dislike slow travelers</div>
-      <div class="opt" onclick="pick(28,'D',this)"><div class="lt">D</div>Slow travelers spend too much money concentrated in one place</div>
-    </div></div>
-  </section>
-
-  <!-- SECTION 5: TRANSLATION Q29-30 -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-num">5</div>
-      <div>
-        <div class="sec-title">中譯英 Q29–Q30</div>
-        <div class="sec-meta">仿 113–115 學測 · 每題 4 分</div>
-      </div>
-    </div>
-
-    <div class="qb" id="b29"><div class="qn">Q29　中譯英（4 分）</div>
-      <div class="trans-zh"><span class="tag">中文</span>近年來，越來越多的旅行者選擇「慢旅行」，他們寧可花更長的時間待在較少的地點，也不願意在短時間內造訪許多熱門景點。</div>
-      <textarea class="trans-ta" id="ta29" placeholder="請在此輸入你的英文翻譯..." oninput="saveTrans(29,this.value)"></textarea>
-      <div class="trans-hint">💡 提示：「寧可…也不願…」would rather…than…；「慢旅行」slow travel；「熱門景點」popular attractions</div>
-    </div>
-
-    <div class="qb" id="b30"><div class="qn">Q30　中譯英（4 分）</div>
-      <div class="trans-zh"><span class="tag">中文</span>專家指出，這種旅行方式不僅能為遊客帶來更有意義的體驗，同時也有助於減少過度交通對環境所造成的衝擊。</div>
-      <textarea class="trans-ta" id="ta30" placeholder="請在此輸入你的英文翻譯..." oninput="saveTrans(30,this.value)"></textarea>
-      <div class="trans-hint">💡 提示：「不僅…同時也…」not only…but also…；「有助於減少」help reduce；「衝擊/影響」impact</div>
-    </div>
-  </section>
-
-  <!-- SUBMIT BUTTON -->
-  <div class="submit-wrap">
-    <button class="submit-btn" onclick="submitTest()">📊 完成作答 · 展開下方結果</button>
   </div>
+</header>
 
-  <!-- RESULTS (using native <details>) -->
-  <details id="results-details">
-    <summary>
-      <span>📊 作答結果 · 答案碼 · LINE 訊息</span>
-      <span class="arrow">▼</span>
-    </summary>
-    <div class="details-body" id="results-body">
-      <!-- populated by JS -->
-      <div style="text-align:center;padding:20px;color:#64748b;font-size:13px">
-        請先完成上方題目，再點此區塊或按「完成作答」按鈕<br>查看結果。
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow">2026–2027　高三學測衝刺</p>
+    <h1>老師經驗 × AI 分析<br><em>每個人都有自己的課程</em></h1>
+    <p class="hero-desc">
+      林威老師執教 34 年，搭配四個 AI 夥伴，<br>
+      根據每位同學的弱點設計題目，<br>
+      透過 LINE 每天陪你準備學測英文。
+    </p>
+    <div class="ai-row">
+      <span class="ai-tag">🤖 Claude</span>
+      <span class="ai-tag">✨ Gemini</span>
+      <span class="ai-tag">🔍 Perplexity</span>
+      <span class="ai-tag">⚡ Codex</span>
+    </div>
+    <a href="#pillars" class="cta-btn">了解課程內容 →</a>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="sec-label">師資介紹</span>
+    <h2 class="sec-title">林威老師</h2>
+    <p class="sec-desc">業界首創「老師 × AI」雙核心個人化教學系統</p>
+    <div class="teacher-card">
+      <div class="teacher-avatar">👨‍🏫</div>
+      <div class="teacher-body">
+        <h2>林威老師</h2>
+        <p>英文教學資歷 34 年，深研學測命題趨勢。<br>
+           近年全面導入 AI 協作，分析每位學生的弱點，<br>
+           為每個人產生專屬學習路線與練習題目。</p>
+        <div class="tag-row">
+          <span class="tag">🎓 34 年教學</span>
+          <span class="tag">📊 學測命題研究</span>
+          <span class="tag">🤖 AI 協作教學</span>
+          <span class="tag">📱 LINE 即時回饋</span>
+        </div>
       </div>
     </div>
-  </details>
 
-  <!-- ANSWER REVIEW (nested details) -->
-  <details id="review-details">
-    <summary>
-      <span>🔍 查看答案解析（各題詳解 + 翻譯參考）</span>
-      <span class="arrow">▼</span>
-    </summary>
-    <div class="details-body" id="review-body">
-      <div style="text-align:center;padding:16px;color:#64748b;font-size:13px">
-        請先完成作答後再展開，<br>以便對照你的答案看解析。
+    <!-- STUDENT BACKGROUND -->
+    <div style="margin-top:32px;background:#FFF3DC;border:2px solid #D4A574;border-radius:18px;padding:32px 28px;">
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5E3C;border-bottom:2.5px solid #D4A574;padding-bottom:4px;margin-bottom:18px;display:inline-block">學員背景</div>
+      <p style="font-size:0.86rem;line-height:1.85;color:#3D3530;margin-bottom:18px">
+        線上班的學員背景出乎你的想像：有剛踏入英文世界的 10 歲孩子，也有資管、電機、物理、化學材料、會計、行銷等理工商管背景的大學生與上班族，甚至有音樂系學生、放射科技師、醫療人員，年齡跨度幾乎與老師相當。共同點只有一個——都想把英文學好。
+      </p>
+      <p style="font-size:0.86rem;line-height:1.85;color:#5C3A1E;font-weight:600">
+        其中人數最多的，是高中生。<br>
+        這個階段是打好人生英文基礎最重要的時間——<br>
+        建立正確的學習方法與態度，累積大學原文書、<br>
+        以及未來職場上不可或缺的英文實力。
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">🎒 10歲小學生</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">🏫 高中生（最多）</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">💻 資管／電機</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">🔬 物理／化材</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">📊 會計／行銷</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">🎵 音樂系</span>
+        <span style="background:rgba(139,94,60,.1);border:1.5px solid rgba(139,94,60,.3);color:#5C3A1E;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:8px;min-height:44px;display:flex;align-items:center">🏥 醫療／放射科</span>
       </div>
     </div>
-  </details>
+  </div>
+</section>
 
-</div>
-<div id="toast"></div>
-
-<script>
-// ──────── CONFIG ────────
-// 28 題選擇題答案 + Q29/Q30 翻譯（人工批改）
-// Q1-10: BCABB BACCA | Q11-15: BCBBC | Q16-25: H J A D F B E G C I | Q26-28: B C B
-const KEY = 'BCABBBACCABCBBCHJADFBEGCIBCB';
-const CATS = [
-  {name:'詞彙',qs:[1,10],color:'#3b82f6'},
-  {name:'綜合',qs:[11,15],color:'#8b5cf6'},
-  {name:'文意選填',qs:[16,25],color:'#10b981'},
-  {name:'閱讀',qs:[26,28],color:'#ec4899'},
-];
-const EXPLAIN = [
-  'Q1(B) provide — provide sth to sb 提供',
-  'Q2(C) groundbreaking — 突破性的（形容研究/發現）',
-  'Q3(A) prevent — prevent…from extinction 防止…滅絕',
-  'Q4(B) devastating — 毀滅性的影響',
-  'Q5(B) persistent — 堅持不懈的',
-  'Q6(B) transformed — 從根本改變',
-  'Q7(A) diagnose — 診斷疾病',
-  'Q8(C) outstanding — 傑出的（對比 mediocre 普通）',
-  'Q9(C) expand — expand the network 擴展',
-  'Q10(A) respond — respond to stressors 對壓力做出反應',
-  'Q11(B) integrated — increasingly integrated 日益融入',
-  'Q12(C) negative — overuse → negative consequences 轉折',
-  'Q13(B) interferes — interfere with sleep 干擾睡眠',
-  'Q14(B) track — track screen time 追蹤使用時間',
-  'Q15(C) balance — balance between A and B 平衡',
-  'Q16(H) moment — brief moment of intense feeling 短暫瞬間',
-  'Q17(J) phenomenon — a common phenomenon 一種常見現象',
-  'Q18(A) survivors — survivors of accidents 倖存者',
-  'Q19(D) random — a collection of random instants 隨機的瞬間',
-  'Q20(F) facing — when facing danger 面對危險時（分詞構句）',
-  'Q21(B) propose — scientists propose that 科學家提出',
-  'Q22(E) emotional — deeply emotional moments 情感深厚',
-  'Q23(G) interpret — interpret … as … 將…詮釋為…',
-  'Q24(C) natural — a natural function 自然的功能',
-  'Q25(I) remaining — despite remaining a mystery 儘管仍是個謎',
-  'Q26(B) — 兩段：支持者+批評者，主旨為慢旅行概況',
-  'Q27(C) — spend more time in fewer places, deep immersion in local life',
-  'Q28(B) — critics: luxury…not available to everyone 非人人可及',
-];
-const TRANS_REF = {
-  29: {
-    zh:'近年來，越來越多的旅行者選擇「慢旅行」，他們寧可花更長的時間待在較少的地點，也不願意在短時間內造訪許多熱門景點。',
-    en:'In recent years, more and more travelers have chosen "slow travel"; they would rather spend more time in fewer places than visit many popular attractions in a short period of time.'
-  },
-  30: {
-    zh:'專家指出，這種旅行方式不僅能為遊客帶來更有意義的體驗，同時也有助於減少過度交通對環境所造成的衝擊。',
-    en:'Experts point out that this way of traveling not only brings more meaningful experiences to visitors but also helps (to) reduce the environmental impact caused by excessive transportation.'
-  }
-};
-
-// ──────── STATE ────────
-const picked = {};
-const translations = {29:'',30:''};
-const markedWords = new Set();
-
-// ──────── WORD TRACKING ────────
-function initWordTracking() {
-  document.querySelectorAll('.wt').forEach(container => {
-    container.innerHTML = container.innerHTML.replace(
-      /(<[^>]+>)|(\b([A-Za-z][A-Za-z'\-]{1,}|[A-Za-z])\b)/g,
-      (match, tag, word) => {
-        if (tag) return tag;
-        return '<span class="w" onclick="tw(this)">' + word + '</span>';
-      }
-    );
-  });
-}
-
-function tw(el) {
-  const word = el.textContent.toLowerCase().replace(/[^a-z\-']/g,'');
-  if(word.length < 2) return;
-  if(el.classList.toggle('mk')) {
-    markedWords.add(word);
-  } else {
-    markedWords.delete(word);
-  }
-  updateWordBadge();
-}
-
-function updateWordBadge() {
-  const n = markedWords.size;
-  document.getElementById('wb-num').textContent = n;
-  document.getElementById('word-badge').style.display = n > 0 ? 'block' : 'none';
-}
-
-// ──────── PICK (A-D) ────────
-function pick(n, val, el) {
-  const block = document.getElementById('b'+n);
-  block.querySelectorAll('.opt, .opt-h').forEach(o => o.classList.remove('sel'));
-  el.classList.add('sel');
-  picked[n] = val;
-  block.classList.add('done');
-  updateAnswerCount();
-}
-
-// ──────── FILL-IN (A-J typed by student) ────────
-function inputAJ(n, input) {
-  let v = (input.value || '').trim().toUpperCase();
-  // keep only A-J
-  if (v && !/^[A-J]$/.test(v)) {
-    input.value = '';
-    delete picked[n];
-    document.getElementById('fc'+n).classList.remove('done');
-    updateAnswerCount();
-    return;
-  }
-  input.value = v;
-  if (v) {
-    picked[n] = v;
-    document.getElementById('fc'+n).classList.add('done');
-    // auto-advance to next input
-    const nextId = 'fi' + (n+1);
-    const nextEl = document.getElementById(nextId);
-    if (nextEl) setTimeout(()=>nextEl.focus(), 60);
-  } else {
-    delete picked[n];
-    document.getElementById('fc'+n).classList.remove('done');
-  }
-  updateAnswerCount();
-}
-
-// ──────── TRANSLATION ────────
-function saveTrans(n, v) {
-  translations[n] = v;
-  const block = document.getElementById('b'+n);
-  if(v.trim().length > 0) block.classList.add('done');
-  else block.classList.remove('done');
-  updateAnswerCount();
-}
-
-function updateAnswerCount() {
-  const mcCount = Object.keys(picked).length;
-  const tCount = (translations[29].trim()?1:0) + (translations[30].trim()?1:0);
-  document.getElementById('ans-count-badge').textContent = `已答 ${mcCount + tCount}/30`;
-}
-
-// ──────── SUBMIT / RESULTS ────────
-function submitTest() {
-  buildResults();
-  const details = document.getElementById('results-details');
-  details.open = true;
-  setTimeout(()=>{
-    details.scrollIntoView({behavior:'smooth', block:'start'});
-  }, 80);
-}
-
-function buildResults() {
-  let mcCorrect = 0;
-  for(let i=1;i<=28;i++) if(picked[i]===KEY[i-1]) mcCorrect++;
-  const pct = Math.round(mcCorrect/28*100);
-  const col = pct>=80?'#16a34a':pct>=60?'#f59e0b':'#dc2626';
-  const grade = pct>=80?'優秀 🎉':pct>=60?'良好 💪':pct>=45?'加油 📚':'需補強 🌱';
-  const tStatus = (translations[29].trim()?'✓':'✗') + ' Q29 · ' + (translations[30].trim()?'✓':'✗') + ' Q30';
-
-  // category scores
-  const catHtml = CATS.map(c=>{
-    let s=0,mx=c.qs[1]-c.qs[0]+1;
-    for(let i=c.qs[0];i<=c.qs[1];i++){if(picked[i]===KEY[i-1])s++;}
-    const p=Math.round(s/mx*100);
-    return `<div class="cs-box">
-      <div class="cs-lbl">${c.name}</div>
-      <div class="cs-bar-w"><div class="cs-bar" style="width:${p}%;background:${c.color}"></div></div>
-      <div class="cs-frac" style="color:${c.color}">${s}/${mx}</div>
-    </div>`;
-  }).join('');
-
-  // answer code display
-  const groups = [
-    {lbl:'Q1-5',start:1,len:5},
-    {lbl:'Q6-10',start:6,len:5},
-    {lbl:'Q11-15',start:11,len:5},
-    {lbl:'Q16-20',start:16,len:5},
-    {lbl:'Q21-25',start:21,len:5},
-    {lbl:'Q26-28',start:26,len:3},
-  ];
-  let codeHtml = '<div class="cs-title">答案碼（6組 · 28題選擇）</div><div class="ans-groups">';
-  groups.forEach(g=>{
-    const letters = Array.from({length:g.len},(_,i)=>{
-      const qn=g.start+i;
-      const a=picked[qn]||'_';
-      return `<div class="ag-letter al-${a}">${a==='_'?'·':a}</div>`;
-    }).join('');
-    codeHtml += `<div class="ans-group">
-      <div class="ag-label">${g.lbl}</div>
-      <div class="ag-letters">${letters}</div>
-    </div>`;
-  });
-  codeHtml += '</div>';
-
-  // translation display
-  const tHtml = `<div class="trans-result">
-    <div class="tr-h">✍️ 翻譯作答（Q29–Q30 · 人工批改）</div>
-    <div class="tr-item">
-      <div class="tr-q">Q29</div>
-      <div class="tr-zh">${TRANS_REF[29].zh}</div>
-      <div class="tr-en ${translations[29].trim()?'':'empty'}">${translations[29].trim() || '（未作答）'}</div>
+<section id="pillars">
+  <div class="wrap">
+    <span class="sec-label">四大學習支柱</span>
+    <h2 class="sec-title">全方位英文能力建構</h2>
+    <p class="sec-desc">每個面向都有共同版本與個人版本，由 AI 動態調整難度與題型</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">📚</div>
+        <h3>單字整理</h3>
+        <p>個人弱點詞彙 × 學測高頻詞彙，精準補強記憶缺口</p>
+        <div class="pillar-subtags">
+          <span class="pillar-subtag">選擇題型</span>
+          <span class="pillar-subtag">衍生詞變化</span>
+          <span class="pillar-subtag">填充式文法</span>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">📐</div>
+        <h3>文法複習</h3>
+        <p>以學測題型為核心，聚焦高頻文法點與混合題型應用</p>
+        <div class="pillar-subtags">
+          <span class="pillar-subtag">克漏字</span>
+          <span class="pillar-subtag">句型分析</span>
+          <span class="pillar-subtag">錯誤修正</span>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">📰</div>
+        <h3>文章整理</h3>
+        <p>每月 20 篇以上，全學年 140 回，兼顧常春藤、共同素材與個人興趣</p>
+        <div class="pillar-subtags">
+          <span class="pillar-subtag">常春藤 1/3</span>
+          <span class="pillar-subtag">共同 1/3</span>
+          <span class="pillar-subtag">個人化 1/3</span>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🔄</div>
+        <h3>翻譯練習</h3>
+        <p>中英互譯訓練語感，強化學測混合題型表達能力</p>
+        <div class="pillar-subtags">
+          <span class="pillar-subtag">中譯英</span>
+          <span class="pillar-subtag">英譯中</span>
+          <span class="pillar-subtag">語境應用</span>
+        </div>
+      </div>
     </div>
-    <div class="tr-item">
-      <div class="tr-q">Q30</div>
-      <div class="tr-zh">${TRANS_REF[30].zh}</div>
-      <div class="tr-en ${translations[30].trim()?'':'empty'}">${translations[30].trim() || '（未作答）'}</div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="sec-label">文章規劃</span>
+    <h2 class="sec-title">每月 20 篇以上，三軌並行</h2>
+    <p class="sec-desc">7月開始至2027年1月，全學年確保足夠閱讀量，每篇都搭配詞彙練習與題目</p>
+    <div class="articles-thirds">
+      <div class="third-card c1">
+        <span class="frac">1/3</span>
+        <div class="t-icon">🌿</div>
+        <h3>常春藤文章</h3>
+        <p>常春藤雜誌高品質英文素材，語感與詞彙雙重提升</p>
+      </div>
+      <div class="third-card c2">
+        <span class="frac">1/3</span>
+        <div class="t-icon">👥</div>
+        <h3>共同課程素材</h3>
+        <p>全班共同學習的核心文章，由 LINE 群組統一分享</p>
+      </div>
+      <div class="third-card c3">
+        <span class="frac">1/3</span>
+        <div class="t-icon">✨</div>
+        <h3>個人化文章</h3>
+        <p>根據你的弱點與興趣，AI 為你專屬挑選的閱讀素材</p>
+      </div>
     </div>
-  </div>`;
-
-  // marked words
-  const words = [...markedWords].sort();
-  const wHtml = `<div class="word-result">
-    <div class="wr-title">📌 你標記的不確定單字（${words.length}個）</div>
-    <div class="word-tags">${
-      words.length === 0
-        ? '<span class="word-tag none">沒有標記任何單字</span>'
-        : words.map(w=>`<span class="word-tag">${w}</span>`).join('')
-    }</div>
-  </div>`;
-
-  // assemble full results
-  document.getElementById('results-body').innerHTML = `
-    <div class="result-hero">
-      <div class="rh-score" style="color:${col}">${mcCorrect}/28</div>
-      <div class="rh-label">${grade}（${pct}%）· ${document.getElementById('nm').value||'同學'}<br>翻譯 ${tStatus}</div>
+    <div class="articles-note">
+      📅 每月 20–30 篇進度練習　｜　全學年（7月至2027年1月）至少 140 回文章整理
     </div>
-    <div class="cat-scores">${catHtml}</div>
-    <div class="code-section">${codeHtml}</div>
-    ${tHtml}
-    ${wHtml}
-    <button class="line-btn line-btn-1" onclick="genMsg1()">📋 產生訊息①：答案碼</button>
-    <div class="msg-box" id="msg1"></div>
-    <button class="line-btn line-btn-2" onclick="genMsg2()">📌 產生訊息②：單字 + 翻譯</button>
-    <div class="msg-box" id="msg2"></div>
-    <button class="line-btn line-btn-3" onclick="copyAll()">📋 一次複製兩組訊息 → 貼到LINE</button>
-  `;
+  </div>
+</section>
 
-  // build review (for the separate review details)
-  let reviewHtml = EXPLAIN.map((e,i)=>{
-    const q=i+1;
-    const ok = picked[q]===KEY[q-1];
-    return `<div class="rev-item ${ok?'rev-ok':'rev-ng'}">${ok?'✅':'❌'} ${e}　<span style="opacity:.7">（你答：${picked[q]||'—'}）</span></div>`;
-  }).join('');
-  reviewHtml += `<div class="rev-item rev-info">📝 <b>Q29 參考譯文</b>：${TRANS_REF[29].en}</div>`;
-  reviewHtml += `<div class="rev-item rev-info">📝 <b>Q30 參考譯文</b>：${TRANS_REF[30].en}</div>`;
-  document.getElementById('review-body').innerHTML = reviewHtml;
-}
+<section>
+  <div class="wrap">
+    <span class="sec-label">單字練習</span>
+    <h2 class="sec-title">三種題型，全面強化詞彙</h2>
+    <p class="sec-desc">不只背單字，還要學會在考場上正確運用</p>
+    <div class="vocab-list">
+      <div class="vocab-item">
+        <div class="vocab-num">①</div>
+        <div class="vocab-text">
+          <h3>單字選擇</h3>
+          <p>在語境中選出最適切的詞彙，訓練閱讀理解與詞義辨析能力，直接對應學測詞彙題型</p>
+        </div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-num">②</div>
+        <div class="vocab-text">
+          <h3>衍生詞變化練習　⚠️ AI 無法取代</h3>
+          <p>名詞→動詞→形容詞→副詞，掌握同根詞族，一個字學會四個。<strong style="color:#5C3A1E">目前市面上所有 AI 工具均無法提供正確的衍生詞題目與練習</strong>，這正是林威老師 34 年教學經驗親自設計、無可取代的核心優勢。</p>
+        </div>
+      </div>
+      <div class="vocab-item">
+        <div class="vocab-num">③</div>
+        <div class="vocab-text">
+          <h3>填充式文法</h3>
+          <p>克漏字情境中練習詞形變化與文法應用，直接對應學測綜合測驗與文意選填格式</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-// ──────── LINE MESSAGES ────────
-function getAnswerGroups() {
-  return [
-    'Q1-5  : ' + Array.from({length:5},(_,i)=>picked[i+1]||'_').join(''),
-    'Q6-10 : ' + Array.from({length:5},(_,i)=>picked[i+6]||'_').join(''),
-    'Q11-15: ' + Array.from({length:5},(_,i)=>picked[i+11]||'_').join(''),
-    'Q16-20: ' + Array.from({length:5},(_,i)=>picked[i+16]||'_').join(''),
-    'Q21-25: ' + Array.from({length:5},(_,i)=>picked[i+21]||'_').join(''),
-    'Q26-28: ' + Array.from({length:3},(_,i)=>picked[i+26]||'_').join(''),
-  ].join('\n');
-}
+<section class="alt">
+  <div class="wrap">
+    <span class="sec-label">學習流程</span>
+    <h2 class="sec-title">個人化是怎麼運作的？</h2>
+    <p class="sec-desc">五個環節環環相扣，每次練習都比上次更精準</p>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-step-num">1</div>
+        <div class="flow-body">
+          <h3>入學程度鑑定</h3>
+          <p>加入課程後完成基礎能力測驗，讓 AI 建立你的個人學習檔案，找出真正的弱點所在。</p>
+          <span class="flow-tag">📊 客製化學習起點</span>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step-num">2</div>
+        <div class="flow-body">
+          <h3>每週 2–3 次回報不熟單字</h3>
+          <p>學習中遇到不確定的單字或用法，直接透過 LINE 告訴老師。這些資料會成為你下次個人化題目的原料。</p>
+          <span class="flow-tag">📱 LINE 即時提交</span>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step-num">3</div>
+        <div class="flow-body">
+          <h3>老師 × AI 設計個人化題目</h3>
+          <p>林威老師結合 AI 分析你的學習資料，為你設計下一週的專屬詞彙、文法與文章練習。</p>
+          <span class="flow-tag">🤖 AI 生成，老師把關</span>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step-num">4</div>
+        <div class="flow-body">
+          <h3>雙軌內容分發</h3>
+          <p>共同內容由 LINE 群組統一發送；你的個人化練習，則直接私訊給你，不影響其他人。</p>
+          <span class="flow-tag">👥 群組共享　＋　🔒 私訊個人</span>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step-num">5</div>
+        <div class="flow-body">
+          <h3>每 1–2 週程度檢定</h3>
+          <p>定期小測驗追蹤進步幅度，數據即時回饋，確保每個月的學習路線都在正確軌道上。</p>
+          <span class="flow-tag">📈 持續追蹤，動態調整</span>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-step-num">6</div>
+        <div class="flow-body">
+          <h3>個人化課程表，每月或每兩週更新</h3>
+          <p>每位學生都會收到專屬的讀書課程表，包含題型安排、不熟單字的複習計畫。進步穩定的學生每月調整一次；程度需加強的學生，每兩週即重新設計，確保每個人都在最適合自己的節奏上穩定前進。</p>
+          <span class="flow-tag">📋 穩定生：每月更新　｜　📋 需加強：每兩週重設</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-function getMC_Score() {
-  let s=0;
-  for(let i=1;i<=28;i++) if(picked[i]===KEY[i-1]) s++;
-  return s;
-}
+<section>
+  <div class="wrap">
+    <span class="sec-label">內容分發方式</span>
+    <h2 class="sec-title">LINE 雙軌，精準到位</h2>
+    <p class="sec-desc">共同內容大家一起學，個人弱點各自擊破</p>
+    <div class="delivery-grid">
+      <div class="del-card line-g">
+        <div class="del-icon">💬</div>
+        <h3>LINE 群組　共同內容</h3>
+        <ul>
+          <li>每月 20–30 篇進度練習</li>
+          <li>共同閱讀文章（常春藤＋共同素材）</li>
+          <li>全班適用的文法重點整理</li>
+          <li>測驗日程與截止提醒</li>
+        </ul>
+      </div>
+      <div class="del-card line-d">
+        <div class="del-icon">📩</div>
+        <h3>LINE 私訊　個人化內容</h3>
+        <ul>
+          <li>你的專屬單字練習題</li>
+          <li>針對個人弱點設計的文章</li>
+          <li>個人程度檢定測驗連結</li>
+          <li>本週學習進度與建議</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-function genMsg1() {
-  const nm = document.getElementById('nm').value||'（未填）';
-  const now = new Date();
-  const date = `${now.getMonth()+1}/${now.getDate()}`;
-  const ansStr = getAnswerGroups();
-  const total = getMC_Score();
-  const txt =
-`━━━━━━━━━━━━━━━━━━━━
-📝 116學測英文週測 ①答案碼
-👤 ${nm}　📅 ${date}
-━━━━━━━━━━━━━━━━━━━━
-【選擇題答案碼（6組·28題）】
-${ansStr}
+<section class="alt">
+  <div class="wrap">
+    <div class="loop-box">
+      <div style="font-size:2.5rem;margin-bottom:18px">🔄</div>
+      <h2>你的弱點，變成你的題目</h2>
+      <p>每週 2–3 次，把不熟悉的單字或用法回報給老師。<br>
+         林威老師搭配 AI 把它們變成專屬於你的練習題。<br>
+         每次的回饋都讓下一週的課程更精準。</p>
+      <div class="loop-row">
+        <div class="loop-node">📱 你回報不熟單字</div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-node">🤖 AI 分析弱點</div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-node">👨‍🏫 老師設計題目</div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-node">✅ 個人化練習</div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-node">📈 程度提升</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-（自評：${total}/28 = ${Math.round(total/28*100)}%）
-翻譯題 Q29/Q30 見訊息②
-━━━━━━━━━━━━━━━━━━━━`;
-  show_msg('msg1', txt);
-}
+<!-- ══ WHO IS IT FOR ══ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="sec-label">誰適合這個課程？</span>
+    <h2 class="sec-title">答案很簡單</h2>
+    <p class="sec-desc">7月1日起，距離學測只剩 200 天。不管你有沒有補習，個人化都是你缺少的那一塊。</p>
+    <div class="who-grid">
+      <div class="who-card no-cram">
+        <div class="w-icon">📖</div>
+        <h3>沒有補習班的你</h3>
+        <p>第一次進入高三，如何安排學習進度是最大的挑戰。<br>
+           林威老師和 AI 共同合作，為你完成嚴謹的學習與複習計畫，讓你不再茫然地面對學測。</p>
+      </div>
+      <div class="who-card has-cram">
+        <div class="w-icon">🏫</div>
+        <h3>已經在補習的你</h3>
+        <p>補習班大部分是團體上課，提供的考卷和教材都是共同素材。<br>
+           林威老師本身就是補習班老師——深知補習班不可能針對個別學生的弱點提供教材和補強。<br>
+           這正是 AI 個人化教學可以給你的最大優勢。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-function genMsg2() {
-  const nm = document.getElementById('nm').value||'（未填）';
-  const now = new Date();
-  const date = `${now.getMonth()+1}/${now.getDate()}`;
-  const words = [...markedWords].sort();
-  const t29 = translations[29].trim() || '（未作答）';
-  const t30 = translations[30].trim() || '（未作答）';
-  const txt =
-`━━━━━━━━━━━━━━━━━━━━
-📌 116學測英文週測 ②單字+翻譯
-👤 ${nm}　📅 ${date}
-━━━━━━━━━━━━━━━━━━━━
-【不確定的單字/用法】（${words.length}個）
-${words.length > 0 ? words.join('　') : '（無）'}
+<!-- ══ WORD DERIVATION ══ -->
+<section>
+  <div class="wrap">
+    <span class="sec-label">衍生詞 ── AI 完全無法掌握的領域</span>
+    <h2 class="sec-title">試試看，問問 AI</h2>
+    <p class="sec-desc">把下面兩個單字的常用衍生詞去問任何 AI，你會發現答案和林威老師 34 年累積的教學資料完全不同。</p>
 
-──────────────────
-【Q29 中翻英】
-中文：${TRANS_REF[29].zh}
-我的翻譯：
-${t29}
+    <div class="autotext-note" style="margin-bottom:28px">
+      🗂️ <strong>林威老師的 AutoText 資料庫</strong><br>
+      微軟 Word 的「自動圖文集（AutoText）」功能，林威老師從 34 年前就開始累積——每個單字該有什麼樣的重點，隨著教學時間一點一滴積累下來。這是真正的原子習慣，也是 AI 無法複製的老師核心。<br>
+      每一篇文章整理，AI 都會根據林威老師提供的衍生詞與字根，做相對應的產出，節省學生摸索的時間。
+    </div>
 
-──────────────────
-【Q30 中翻英】
-中文：${TRANS_REF[30].zh}
-我的翻譯：
-${t30}
-━━━━━━━━━━━━━━━━━━━━`;
-  show_msg('msg2', txt);
-}
+    <div class="word-demo">
 
-function show_msg(id, txt) {
-  const el = document.getElementById(id);
-  el.textContent = txt;
-  el.scrollIntoView({behavior:'smooth', block:'nearest'});
-}
+      <!-- WORD 1: respect -->
+      <details class="word-card">
+        <summary>
+          <div class="w-head">
+            <span class="w-word">① respect</span>
+            <span class="w-hint">先思考它有哪些衍生詞，再展開查看 ↓</span>
+          </div>
+          <span class="arrow">▼</span>
+        </summary>
+        <div class="word-content">
+          <div class="ai-note">⚠️ 這裡的內容是林威老師 34 年實際教學中整理的版本，去問 AI 你只會得到部分且不準確的結果。</div>
+          <ul class="deriv-list">
+            <li><strong>respect</strong> <em>n. / v.</em>　尊敬；尊重</li>
+            <li><strong>respectful</strong> <em>adj.</em>　有禮貌的；表示尊重的</li>
+            <li><strong>respectable</strong> <em>adj.</em>　值得尊重的；體面的</li>
+            <li><strong>respective</strong> <em>adj.</em>　分別的；各自的</li>
+            <li><strong>respectively</strong> <em>adv.</em>　分別地；各自地</li>
+            <li><strong>pay respects to</strong>　對⋯⋯致上敬意</li>
+            <li><strong>respects</strong> <em>n. pl.</em>　（某人的）敬意；問候</li>
+          </ul>
+        </div>
+      </details>
 
-function copyAll() {
-  const nm = document.getElementById('nm').value||'（未填）';
-  const now = new Date();
-  const date = `${now.getMonth()+1}/${now.getDate()}`;
-  const ansStr = getAnswerGroups();
-  const total = getMC_Score();
-  const words = [...markedWords].sort();
-  const t29 = translations[29].trim() || '（未作答）';
-  const t30 = translations[30].trim() || '（未作答）';
-  const txt =
-`━━━━━━━━━━━━━━━━━━━━
-📝 116學測英文週測 ①答案碼
-👤 ${nm}　📅 ${date}
-━━━━━━━━━━━━━━━━━━━━
-【選擇題答案碼（6組·28題）】
-${ansStr}
-（自評：${total}/28）
-━━━━━━━━━━━━━━━━━━━━
+      <!-- WORD 2: succeed -->
+      <details class="word-card">
+        <summary>
+          <div class="w-head">
+            <span class="w-word">② succeed</span>
+            <span class="w-hint">先思考它有哪些衍生詞，再展開查看 ↓</span>
+          </div>
+          <span class="arrow">▼</span>
+        </summary>
+        <div class="word-content">
+          <div class="ai-note">⚠️ 這裡的內容是林威老師 34 年實際教學中整理的版本，去問 AI 你只會得到部分且不準確的結果。</div>
+          <ul class="deriv-list">
+            <li><strong>succeed in</strong> = <em>be successful in</em> = <em>have success in</em>　成功於⋯⋯</li>
+            <li><strong>succeed to the throne</strong>　繼承王位</li>
+            <li><strong>successor</strong> <em>n.</em>　繼承者；接班人</li>
+            <li><strong>successive</strong> <em>adj.</em>　連續的；接連不斷的</li>
+            <li><strong>succession</strong> <em>n.</em>　連續；繼承；繼位</li>
+            <li><strong>successful</strong> <em>adj.</em>　成功的</li>
+            <li><strong>successfully</strong> <em>adv.</em>　成功地</li>
+          </ul>
+        </div>
+      </details>
 
-━━━━━━━━━━━━━━━━━━━━
-📌 116學測英文週測 ②單字+翻譯
-👤 ${nm}　📅 ${date}
-━━━━━━━━━━━━━━━━━━━━
-【不確定的單字/用法】（${words.length}個）
-${words.length > 0 ? words.join('　') : '（無）'}
+    </div>
 
-──────────────────
-【Q29 中翻英】
-中文：${TRANS_REF[29].zh}
-我的翻譯：
-${t29}
+    <div class="autotext-note" style="margin-top:28px">
+      💡 這只是兩個例子。林威老師 34 年的 AutoText 資料庫裡，有數百個這樣的單字整理，每一個都是教學現場真實有用的版本。AI 在這方面的答案，和老師的累積完全無法相比。
+    </div>
+  </div>
+</section>
 
-──────────────────
-【Q30 中翻英】
-中文：${TRANS_REF[30].zh}
-我的翻譯：
-${t30}
-━━━━━━━━━━━━━━━━━━━━`;
+<!-- ══ PRICING ══ -->
+<section class="alt">
+  <div class="wrap">
+    <span class="sec-label">收費方案</span>
+    <h2 class="sec-title">三個階段，循序進入</h2>
+    <p class="sec-desc">五月先小規模試點，六月實驗月份讓你低成本體驗，七月正式開始全程衝刺。</p>
+    <div class="pricing-grid">
+      <div class="price-card pilot">
+        <div class="p-month">五月　Pilot</div>
+        <div class="p-price" style="color:#8B5E3C">少數</div>
+        <div class="p-unit" style="color:#8B5E3C">試點學生</div>
+        <p>林威老師邀請少數學生進行試點測試，驗證 AI 個人化教學流程，優先確保品質</p>
+      </div>
+      <div class="price-card trial">
+        <div class="p-month">六月　實驗月</div>
+        <div class="p-price" style="color:#2D6A4F">$600</div>
+        <div class="p-unit" style="color:#2D6A4F">每人 / 月</div>
+        <p>低成本體驗完整課程流程：入學鑑定、個人化題目、LINE 雙軌分發，確認適合再繼續</p>
+      </div>
+      <div class="price-card full">
+        <div class="p-month">七月起　正式班</div>
+        <div class="p-price">$1,000</div>
+        <div class="p-unit">每人 / 月</div>
+        <p>全程 200 天衝刺，每月個人化課程表，140 回文章整理，一路陪你到 2027 年 1 月學測</p>
+      </div>
+    </div>
+    <div style="margin-top:20px;background:#F8F4ED;border:2px solid #D4A574;border-radius:14px;padding:18px 24px;font-size:0.8rem;color:#5C3A1E;line-height:1.85;text-align:center;">
+      每班名額上限 20 人　｜　名額有限，先加 LINE 詢問確認位置<br>
+      LINE ID：<strong style="font-size:1rem;color:#8B5E3C;letter-spacing:.05em">linwayet</strong>
+    </div>
+  </div>
+</section>
 
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(txt).then(()=>toast('✅ 已複製！請貼到LINE群組'));
-  } else {
-    const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    toast('✅ 已複製！');
-  }
-}
+<section>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num">200</div><p>天全程<br>衝刺陪伴</p></div>
+      <div class="stat-box"><div class="stat-num">140+</div><p>回文章整理<br>（全學年）</p></div>
+      <div class="stat-box"><div class="stat-num">20–30</div><p>每月<br>進度練習篇</p></div>
+      <div class="stat-box"><div class="stat-num">1–2週</div><p>程度<br>定期檢定</p></div>
+      <div class="stat-box"><div class="stat-num">34</div><p>年教學<br>經驗</p></div>
+      <div class="stat-box"><div class="stat-num">≤20</div><p>每班<br>人數上限</p></div>
+    </div>
+  </div>
+</section>
 
-function toast(msg){
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2400);
-}
+<section class="final-cta">
+  <div class="wrap">
+    <h2>準備好讓<br><em>200天個人化英文衝刺</em><br>陪你拿下學測高分嗎？</h2>
+    <p>每班最多 20 人，確保每位同學<br>都能獲得充分的個人化關注與回饋。</p>
+    <a href="https://line.me/ti/p/linwayet" class="cta-btn">📱 加 LINE 詢問招生</a>
+    <p class="cta-note" style="margin-top:16px;font-size:0.78rem;color:rgba(248,244,237,.6)">
+      LINE ID：<strong style="color:#D4A574;letter-spacing:.05em">linwayet</strong>　｜　直接聯絡林威老師
+    </p>
+  </div>
+</section>
 
-// ──────── INIT ────────
-window.addEventListener('DOMContentLoaded', function() {
-  initWordTracking();
-  // also rebuild results when the details is toggled open (keeps live)
-  const rd = document.getElementById('results-details');
-  rd.addEventListener('toggle', function(){
-    if(this.open) buildResults();
-  });
-  const rv = document.getElementById('review-details');
-  rv.addEventListener('toggle', function(){
-    if(this.open) buildResults();
-  });
-});
-</script>
+<footer>
+  © 2026 林威老師 × AI 英文個人化學習系統<br>
+  搭載 Claude · Google Gemini · Perplexity · Codex
+</footer>
 </body>
 </html>

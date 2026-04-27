@@ -1,798 +1,812 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
+<title>200天高三英文學習規劃 — 診斷與流程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>115 年學測英文 - 第三部分（閱讀+混合題）</title>
 <style>
+  :root {
+    --bg: #fdfaf5;
+    --paper: #ffffff;
+    --ink: #2c2a26;
+    --muted: #6b6660;
+    --line: #e7e1d6;
+    --accent1: #c8553d;   /* 診斷紅 */
+    --accent2: #588157;   /* 處方綠 */
+    --accent3: #3a5a8c;   /* 流程藍 */
+    --accent4: #d4a017;   /* 重點黃 */
+    --accent5: #8b5e83;   /* 反思紫 */
+    --soft1: #fbe9e4;
+    --soft2: #e3edd9;
+    --soft3: #dbe5f3;
+    --soft4: #f7ecc6;
+    --soft5: #ece0ea;
+  }
   * { box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
-    margin: 0; padding: 20px;
-    color: #2c3e50; line-height: 1.75;
+    margin: 0;
+    font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.85;
+    font-size: 16px;
   }
-  .container {
-    max-width: 880px; margin: 0 auto;
-    background: #fff; border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-    padding: 32px 40px;
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
   }
-  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
-  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
-  .subtitle { color: #7f8c8d; font-size: 0.95em; }
-  .student-info {
-    background: #ecf5fd; border-radius: 10px;
-    padding: 12px 16px; margin: 16px 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  header.cover {
+    text-align: center;
+    padding: 40px 20px 50px;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 50px;
   }
-  .student-info label { font-weight: 600; color: #2980b9; }
-  .student-info input {
-    border: 1px solid #bdc3c7; border-radius: 6px;
-    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  header.cover .eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
   }
-  .instruction {
-    background: #fff9e6; border-left: 4px solid #f39c12;
-    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
-    font-size: 0.95em; color: #8e6c16;
+  header.cover h1 {
+    font-size: 36px;
+    margin: 12px 0 8px;
+    letter-spacing: 2px;
+    font-weight: 700;
   }
-  .section-title {
-    background: linear-gradient(90deg, #3498db, #5dade2);
-    color: #fff; padding: 10px 16px; border-radius: 8px;
-    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  header.cover .sub {
+    font-size: 16px;
+    color: var(--muted);
   }
-  .group-label {
-    background: #eaf4fb; color: #1f618d;
-    padding: 7px 14px; border-radius: 6px;
-    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
-    display: inline-block;
+  h2.section {
+    font-size: 24px;
+    margin: 60px 0 24px;
+    padding-left: 14px;
+    border-left: 6px solid var(--accent1);
+    letter-spacing: 1px;
   }
-  .passage {
-    background: #fafbfc; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
-    font-size: 1em; text-align: justify;
-  }
-  .passage p { margin: 0 0 10px; }
-  .passage p:last-child { margin-bottom: 0; }
+  h2.section.green { border-left-color: var(--accent2); }
+  h2.section.blue  { border-left-color: var(--accent3); }
+  h2.section.yellow{ border-left-color: var(--accent4); }
+  h2.section.purple{ border-left-color: var(--accent5); }
 
-  .question {
-    background: #fff; border: 1px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  h3 {
+    font-size: 18px;
+    margin: 28px 0 12px;
+    color: var(--ink);
   }
-  .q-text { font-size: 1em; margin-bottom: 8px; }
-  .q-num {
-    display: inline-block; background: #3498db; color: #fff;
-    border-radius: 50%; min-width: 28px; height: 28px;
-    text-align: center; line-height: 28px; font-weight: 700;
-    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  p { margin: 12px 0; }
+
+  /* ===== 核心問答卡片 ===== */
+  .qa-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 30px;
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
+  }
+  .qa-card .q {
+    font-size: 16px;
+    color: var(--accent1);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .qa-card .q::before { content: "Q  "; letter-spacing: 2px; }
+  .qa-card .a { color: var(--ink); }
+  .qa-card .a::before {
+    content: "A  ";
+    color: var(--accent2);
+    font-weight: 700;
+    letter-spacing: 2px;
   }
 
-  .options {
+  .verdict {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: var(--soft2);
+    border-left: 5px solid var(--accent2);
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .verdict.alt {
+    background: var(--soft4);
+    border-left-color: var(--accent4);
+  }
+
+  /* ===== 兩欄對照 ===== */
+  .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 18px;
+    margin: 22px 0;
   }
-  .options label {
-    display: flex; align-items: flex-start; gap: 6px;
-    padding: 8px 10px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
-    border-radius: 6px; cursor: pointer; transition: all 0.15s;
-    font-size: 0.93em;
+  .col {
+    padding: 22px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--paper);
   }
-  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
-  .options input[type="radio"], .options input[type="checkbox"] {
-    accent-color: #3498db; margin: 4px 0 0; flex-shrink: 0;
+  .col.minimal { background: #fff8f5; border-color: #f4d6cc; }
+  .col.full    { background: #f4faf3; border-color: #cde1c8; }
+  .col h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
   }
-  .options label.selected {
-    background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9;
+  .col.minimal h4 { color: var(--accent1); }
+  .col.full h4    { color: var(--accent2); }
+  .col ul { padding-left: 20px; margin: 8px 0; }
+  .col li { margin: 6px 0; }
+
+  /* ===== 樹狀圖 ===== */
+  .tree-wrap {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 18px 36px;
+    overflow-x: auto;
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
+  }
+  .tree {
+    --node-pad: 10px 14px;
+    text-align: center;
+    min-width: 980px;
+  }
+  .tree ul {
+    padding-top: 24px;
+    position: relative;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .tree li {
+    flex: 1;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 24px 6px 0 6px;
+  }
+  /* connectors */
+  .tree li::before, .tree li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 24px;
+    width: 50%;
+    border-top: 2px solid var(--line);
+  }
+  .tree li::before { right: 50%; border-right: 2px solid var(--line); }
+  .tree li::after  { left: 50%; }
+  .tree li:only-child::before, .tree li:only-child::after { display: none; }
+  .tree li:only-child { padding-top: 24px; }
+  .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+  .tree li:last-child::before { border-right: 2px solid var(--line); border-radius: 0 8px 0 0; }
+  .tree li:first-child::after { border-radius: 8px 0 0 0; }
+  .tree ul ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid var(--line);
+    height: 24px;
+  }
+  .tree .node {
+    display: inline-block;
+    border-radius: 10px;
+    padding: var(--node-pad);
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 110px;
+    transition: transform 0.15s ease;
+  }
+  .tree .node:hover { transform: translateY(-2px); }
+  .tree .node.root {
+    background: var(--accent1);
+    color: #fff;
+    border-color: var(--accent1);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 14px 22px;
+  }
+  .tree .node.l1 {
+    background: var(--soft1);
+    border-color: #f0c2b6;
+    font-weight: 600;
+    color: var(--accent1);
+  }
+  .tree .node.l2 {
+    background: var(--paper);
+    border-color: var(--line);
+    color: var(--ink);
+    font-size: 13px;
+  }
+  .tree .node small {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 400;
   }
 
-  .word {
-    cursor: pointer; padding: 0 1px; border-radius: 3px;
-    transition: background 0.12s;
+  /* ===== 流程圖 ===== */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin: 24px 0;
   }
-  .word:hover { background: #fdecea; }
-  .word.unfamiliar {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    font-weight: 600; color: #b9770e;
+  .flow .step {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 14px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(60, 50, 40, 0.04);
+  }
+  .flow .step .num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--accent3);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .flow .step h5 {
+    margin: 4px 0 6px;
+    font-size: 14px;
+    color: var(--accent3);
+  }
+  .flow .step p {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .flow .step:not(:last-child)::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    color: var(--accent3);
+    font-size: 12px;
+    z-index: 2;
   }
 
-  .vocab-row {
-    background: #fef5e7; border: 1px dashed #f5b041;
-    border-radius: 6px; padding: 6px 12px; margin-top: 10px;
-    font-size: 0.95em; color: #7d6608;
-    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  /* ===== 標籤系統表 ===== */
+  table.tag-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 18px 0;
+    font-size: 14px;
   }
-  .vocab-row::before {
-    content: "🔖 不懂的單字點一下："; font-size: 0.85em;
-    color: #b9770e; font-weight: 600; margin-right: 4px;
+  table.tag-table th, table.tag-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
   }
-  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
-  .vocab-row .word.unfamiliar { background: #ffebcd; }
+  table.tag-table th {
+    background: var(--soft1);
+    color: var(--accent1);
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: 130px;
+  }
+  table.tag-table tr:last-child td { border-bottom: 0; }
+  table.tag-table code {
+    background: #f5efe5;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: var(--accent1);
+    font-family: "SF Mono", Consolas, monospace;
+    margin-right: 4px;
+    display: inline-block;
+    margin-bottom: 3px;
+  }
 
-  .fill-blank {
-    border: 1.5px solid #bdc3c7; border-bottom: 2px solid #3498db;
-    background: #f8fbfd;
-    padding: 5px 10px; min-width: 140px;
-    font-size: 1em; font-family: inherit;
+  /* ===== 對話範例 ===== */
+  .demo {
+    background: #faf5ec;
+    border: 1px dashed var(--accent4);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .demo .demo-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--accent4);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .demo .bubble {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 14.5px;
+  }
+  .demo .bubble.user {
+    background: var(--soft3);
+    border-color: #c8d6e8;
+  }
+  .demo .bubble.ai {
+    background: var(--soft2);
+    border-color: #c2d6b9;
+  }
+  .demo .who {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 4階段甘特 ===== */
+  .gantt {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .gantt .row {
+    display: grid;
+    grid-template-columns: 130px 1fr 80px;
+    align-items: center;
+    margin: 10px 0;
+    gap: 12px;
+  }
+  .gantt .label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .gantt .bar-track {
+    position: relative;
+    height: 28px;
+    background: #f3eee2;
     border-radius: 6px;
-    margin: 0 4px;
+    overflow: hidden;
   }
-  .fill-blank:focus { outline: none; border-color: #3498db; background: #fff; }
-
-  .essay-box {
-    background: #fff; border: 1.5px solid #e1e8ed;
-    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  .gantt .bar {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 28px;
+    padding-left: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
-  .essay-box textarea {
-    width: 100%; min-height: 90px;
-    padding: 10px; border: 1.5px solid #bdc3c7; border-radius: 6px;
-    font-family: inherit; font-size: 0.95em; resize: vertical;
-    margin-top: 8px;
-  }
-  .essay-box textarea:focus { outline: none; border-color: #3498db; }
-
-  .button-row { text-align: center; margin: 26px 0 6px; }
-  button.submit-btn {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: #fff; border: none; border-radius: 10px;
-    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
-    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
-    transition: transform 0.15s;
-  }
-  button.submit-btn:hover { transform: translateY(-2px); }
-
-  #results { display: none; margin-top: 26px; }
-  .result-card {
-    background: #fff; border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    padding: 20px 22px; margin-bottom: 20px;
-    border-top: 4px solid #3498db;
-  }
-  .result-card.score { border-top-color: #9b59b6; }
-  .result-card.teacher { border-top-color: #27ae60; }
-  .result-card.feedback { border-top-color: #e67e22; }
-  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
-  .copyable {
-    background: #f4f6f8; border: 1px dashed #bdc3c7;
-    border-radius: 8px; padding: 14px; white-space: pre-wrap;
-    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
-    max-height: 320px; overflow-y: auto; color: #2c3e50;
-  }
-  .copy-btn {
-    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
-    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
-  }
-  .copy-btn:hover { background: #7f8c8d; }
-  .copy-btn.copied { background: #27ae60; }
-
-  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
-  .score-detail { text-align: center; color: #7f8c8d; }
-
-  .wrong-item {
-    background: #fdf2f2; border-left: 4px solid #e74c3c;
-    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
-  }
-  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
-  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
-  .correct-mark { color: #27ae60; font-weight: 600; }
-  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
-
-  .legend {
-    font-size: 0.88em; color: #7f8c8d;
-    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
-    margin-bottom: 12px;
-  }
-  .legend .word-sample {
-    background: #ffebcd; border-bottom: 2px solid #e67e22;
-    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  .gantt .days {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
   }
 
-  .unknown-counter {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #ffebcd; color: #b9770e;
-    padding: 9px 16px; border-radius: 30px;
-    font-weight: 600; font-size: 0.9em;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 100; display: none;
-    border: 2px solid #e67e22;
+  /* ===== 卡片網格 ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
   }
-  @media (max-width: 480px) {
-    body { padding: 8px; }
-    .container { padding: 16px; }
-    .options { grid-template-columns: 1fr; }
+  .mini-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .mini-card .icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .mini-card h5 {
+    margin: 4px 0 8px;
+    font-size: 15px;
+    color: var(--accent3);
+  }
+  .mini-card p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ===== Footer 行動建議 ===== */
+  .next-step {
+    margin-top: 50px;
+    padding: 30px 32px;
+    background: linear-gradient(135deg, #fff8f5 0%, #f4faf3 100%);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+  }
+  .next-step h3 {
+    margin-top: 0;
+    color: var(--accent1);
+    letter-spacing: 1px;
+  }
+  .next-step ol {
+    padding-left: 22px;
+  }
+  .next-step ol li {
+    margin: 10px 0;
+    line-height: 1.7;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    background: var(--soft1);
+    color: var(--accent1);
+    margin-right: 6px;
+  }
+  .badge.green { background: var(--soft2); color: var(--accent2); }
+  .badge.blue  { background: var(--soft3); color: var(--accent3); }
+  .badge.yellow{ background: var(--soft4); color: var(--accent4); }
+
+  hr.dotted {
+    border: 0;
+    border-top: 2px dotted var(--line);
+    margin: 40px 0;
+  }
+
+  @media (max-width: 760px) {
+    .flow { grid-template-columns: 1fr 1fr; }
+    .flow .step:nth-child(2)::after,
+    .flow .step:nth-child(4)::after { display: none; }
+    .two-col { grid-template-columns: 1fr; }
+    .gantt .row { grid-template-columns: 100px 1fr; }
+    .gantt .days { display: none; }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="container">
-  <header>
-    <h1>115 學年度學科能力測驗 英文考科</h1>
-    <div class="subtitle">第三部分 ‧ 閱讀測驗（39-46）+ 中譯英 + 作文 + 混合題（47-50）</div>
+  <header class="cover">
+    <div class="eyebrow">200 DAYS · ENGLISH ROADMAP</div>
+    <h1>高三英文學測 · 個人化診斷與規劃流程</h1>
+    <div class="sub">如何用 AI 分析錯題 → 建立能力地圖 → 產出客製教材</div>
   </header>
 
-  <div class="student-info">
-    <label>姓名：</label>
-    <input type="text" id="studentName" placeholder="請輸入姓名">
-    <label>座號：</label>
-    <input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  <!-- ====== 一、核心問題：是否需要先準備歷屆試題資料夾？ ====== -->
+  <h2 class="section">一、先回答最關鍵的疑問</h2>
+
+  <div class="qa-card">
+    <div class="q">是不是要先有「歷屆試題資料夾」存在，AI 才能分析學生錯誤、設計題目？</div>
+    <p class="a" style="margin-top:14px;">
+      答案是 <strong>「不一定，但有的話會更強。」</strong>
+      因為 AI 分析學生錯誤，本質上不依賴「題庫存在哪裡」，而是依賴「您把學生的考試結果交給我看」。
+      只要您把錯題（題目 + 學生答案 + 正確答案）貼進對話，我立刻就能診斷錯因、找出弱點、設計補強教材——這是 <strong>診斷端</strong>。
+      但若您預先建立一個歷屆試題的資料夾（PDF 或文字檔），就能讓 AI 在「處方端」更聰明：依弱點直接從題庫中挑出對應的題目給學生練習，不用每次都從零生成。
+    </p>
+
+    <div class="verdict">
+      <strong>實務建議：</strong>分兩階段啟動。第一階段（前 1–2 週）先「診斷不囤題」——學生考完後，您把錯題貼進來分析即可。
+      第二階段（第 3 週起）再慢慢累積一個分類好的歷屆題庫資料夾，AI 就能在補強時自動派題、設計仿擬題。
+    </div>
   </div>
 
-  <div class="instruction">
-    <strong>作答說明：</strong>
-    每題單選一個答案。閱讀時遇到<u>任何不會的單字</u>，直接點一下即可標記（再點一次取消），系統會統一記錄並於送出後匯出給老師。<br>
-    每題選項下方都有一行「🔖 不懂的單字點一下」可直接點選項中的單字。
+  <div class="two-col">
+    <div class="col minimal">
+      <h4>方案 A · 最小起步法</h4>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">不囤題庫，學生有錯就貼上來</p>
+      <ul>
+        <li>學生交卷後，您拍照/打字貼上錯題</li>
+        <li>AI 立即標籤化錯因、產出弱點分析</li>
+        <li>AI 依弱點 <strong>即時生成</strong>仿擬題與教材</li>
+        <li>優點：零準備、可立刻啟動</li>
+        <li>限制：題目來源依賴 AI 即時生成，量體有限</li>
+      </ul>
+    </div>
+    <div class="col full">
+      <h4>方案 B · 題庫加持法</h4>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">先建立歷屆試題資料夾，再啟動</p>
+      <ul>
+        <li>把 105–114 學測 + 模擬考依題型分類存檔</li>
+        <li>AI 分析錯因後，<strong>自動從題庫挑題</strong>，不用生成</li>
+        <li>可做「相似題追蹤」：發現他長句拆解弱，立即派 20 題真題</li>
+        <li>優點：題目品質高（真題）、可橫向比較</li>
+        <li>需要時間建檔（建議週末一次性整理 2–3 小時）</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="legend">
-    不熟悉單字標記範例：<span class="word-sample">example</span>（任何英文單字都可以點）
+  <!-- ====== 二、用樹狀圖看學生的能力結構 ====== -->
+  <h2 class="section green">二、用樹狀圖看學生的能力結構</h2>
+  <p>
+    高三學測的英文能力，不是一個單一指標，而是一棵<strong>分層的樹</strong>。
+    AI 分析學生時，會把每一道錯題「掛」到這棵樹的某個葉子上，
+    一份考卷分析完，學生哪些枝幹弱、哪些葉子掉光，就一目瞭然。
+  </p>
+
+  <div class="tree-wrap">
+    <div class="tree">
+      <ul>
+        <li>
+          <div class="node root">學測英文能力樹</div>
+          <ul>
+            <li>
+              <div class="node l1">語言基底層</div>
+              <ul>
+                <li><div class="node l2">單字認識率<small>核心 4500 字</small></div></li>
+                <li><div class="node l2">一字多義<small>義項辨識</small></div></li>
+                <li><div class="node l2">搭配詞<small>collocation</small></div></li>
+                <li><div class="node l2">詞性判斷<small>n. v. adj.</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">句構語法層</div>
+              <ul>
+                <li><div class="node l2">時態語態<small>12 時態</small></div></li>
+                <li><div class="node l2">子句連接<small>關代/連接詞</small></div></li>
+                <li><div class="node l2">分詞構句<small>-ing / -ed</small></div></li>
+                <li><div class="node l2">假設倒裝<small>進階句型</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">篇章邏輯層</div>
+              <ul>
+                <li><div class="node l2">轉折詞敏感<small>however 等</small></div></li>
+                <li><div class="node l2">指代詞回指<small>it/this/they</small></div></li>
+                <li><div class="node l2">段落功能<small>主旨/支持/反駁</small></div></li>
+                <li><div class="node l2">推論能力<small>言外之意</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">輸出表達層</div>
+              <ul>
+                <li><div class="node l2">中譯英句構<small>主動詞對齊</small></div></li>
+                <li><div class="node l2">道地用字<small>避中式英文</small></div></li>
+                <li><div class="node l2">作文結構<small>起承轉合</small></div></li>
+                <li><div class="node l2">混合題重組<small>摘要改寫</small></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node l1">應試策略層</div>
+              <ul>
+                <li><div class="node l2">時間配速<small>各題型秒數</small></div></li>
+                <li><div class="node l2">選項陷阱<small>部分對辨識</small></div></li>
+                <li><div class="node l2">假對題<small>蒙對標★</small></div></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <form id="quizForm">
+  <p style="font-size:14.5px; color:var(--muted);">
+    <strong>怎麼讀這棵樹？</strong>每位學生考完一份卷後，AI 會在這 19 個葉節點上各打一個分（例：紅 = 弱、黃 = 普通、綠 = 強）。
+    跑完 3 份考卷後，學生個人的「弱枝」就會穩定浮現——也許他語言基底層全綠，但篇章邏輯層全紅，那就知道補強方向是<strong>連接詞 + 指代 + 推論</strong>，
+    而不是無差別地多背單字。
+  </p>
 
-    <!-- ============ 第 39-42 題為題組 ============ -->
-    <div class="section-title">三、閱讀測驗（第 39-46 題）</div>
-    <div class="group-label">【第 39-42 題為題組 — 螺旋梯的歷史】</div>
+  <!-- ====== 三、AI 的五步分析流程 ====== -->
+  <h2 class="section blue">三、AI 分析學生的五步流程</h2>
+  <p>從學生交考卷到產出個人化教材，整個流程是這樣走的：</p>
 
-    <!-- 段落 1-3 -->
-    <div class="passage autowrap">
-      <p>In many old castles in Europe, visitors often find a fantastic spiral staircase, which provides a captivating focal point as it winds up the building. This prominent structure actually has a long and rich heritage.</p>
-      <p>In the Old Testament, reference is made to spiral staircases in the Temple of Solomon, suggesting that they were already in use by around 1,000 BC. The oldest spiral staircase still standing today is at Trajan's Column in Rome. The staircase was built in 113 AD, with a total of 185 steps carved in stone and marble. Around this time, spiral staircases began to find much wider use in Roman architecture and across Europe.</p>
-      <p>Throughout the Middle Ages, winding staircases became a well-established feature of European castles, mainly for their advantages in helping to defend against attackers. To begin with, these staircases were quite narrow, so attackers would have to ascend one at a time, making it impossible to launch a mass attack. Also, the stairs were designed to turn clockwise upwards. This means that ascenders would have their right hand tight against the narrowest part of the staircases, close to the central pole, and as a result were unable to use their sword effectively. The attackers' challenge was further complicated by the uneven steps of the staircase, often strategically designed by the castle owners. The defenders, living in the castles, were familiar with the stair pattern and could retreat up "<u>them</u>" very swiftly; while the attackers were much more likely to stumble and fall, particularly in the dimly lit confines of the staircase.</p>
+  <div class="flow">
+    <div class="step">
+      <div class="num">1</div>
+      <h5>原始輸入</h5>
+      <p>您貼上學生的<br>題目 / 答案 / 正解 / 翻譯</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h5>錯因標籤化</h5>
+      <p>每題掛到能力樹的<br>某個葉節點</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h5>能力熱力圖</h5>
+      <p>累積後產生個人<br>強弱分布視覺化</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h5>處方設計</h5>
+      <p>依弱點選一週主題<br>自動產生教材</p>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <h5>驗收回饋</h5>
+      <p>下週測驗 → 比對<br>熱力圖變化</p>
+    </div>
+  </div>
+
+  <h3>每一步具體在做什麼？</h3>
+
+  <table class="tag-table">
+    <tr>
+      <th>步驟 1<br>原始輸入</th>
+      <td>
+        您只需要把以下三樣丟進對話即可：<br>
+        <code>題目原文</code><code>學生選的答案</code><code>正確答案</code><br>
+        如果有翻譯（中翻英 / 英翻中題），把學生寫的版本也貼上來。題型不限——單字、綜測、文選、篇結、閱測、混合題、翻譯、作文都可以。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 2<br>錯因標籤化</th>
+      <td>
+        AI 會逐題分析「他為什麼錯」，並貼上 1–2 個標籤。例如：<br>
+        <code>單字｜一字多義</code><code>句構｜分詞構句</code><code>篇章｜轉折詞忽略</code><br>
+        每一題不只記「錯了」，而是記「錯在哪一根筋」。這是診斷的核心。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 3<br>能力熱力圖</th>
+      <td>
+        累積 3 份考卷後，AI 會在能力樹的 19 個葉節點上各打一個顏色分。
+        產出一張個人化的「弱點地圖」，並寫下文字診斷：<br>
+        <em>「該生語言基底層整體穩定，但篇章邏輯層的『轉折詞敏感』與『指代詞回指』為主要失分來源，建議優先補強。」</em>
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 4<br>處方設計</th>
+      <td>
+        AI 會依弱點，用「7 天密集型」或「4 週循環型」結構，自動產生：<br>
+        <code>每日學習主題</code><code>對應例句</code><code>練習題</code><code>檢核點</code><br>
+        如果您有歷屆試題資料夾，AI 會優先從中派發真題；如果沒有，AI 會即時生成仿擬題。
+      </td>
+    </tr>
+    <tr>
+      <th>步驟 5<br>驗收回饋</th>
+      <td>
+        7 天 / 30 天後，學生再做一份考卷，您把錯題再貼進來。
+        AI 會比對「上次的弱點 vs 這次的錯誤」，告訴您：哪些葉節點從紅變綠（補強成功）、哪些仍紅（需換策略）、有沒有出現新弱點。
+      </td>
+    </tr>
+  </table>
+
+  <!-- ====== 四、實際對話會長什麼樣 ====== -->
+  <h2 class="section yellow">四、實際對話範例：學生貼上一題後會怎樣？</h2>
+  <p>用一個真實情境讓您先看看流程的「肉感」。</p>
+
+  <div class="demo">
+    <div class="demo-title">情境一 · 單一錯題快速診斷</div>
+
+    <div class="bubble user">
+      <div class="who">老師（您）</div>
+      這題學生錯了，幫我看：<br><br>
+      <strong>原題：</strong>Despite ______ very tired, she insisted on finishing the report.<br>
+      (A) be　(B) being　(C) was　(D) been<br>
+      <strong>學生答：</strong>(A)　<strong>正解：</strong>(B)
     </div>
 
-    <!-- Q40 -->
-    <div class="question" data-q="40">
-      <div class="q-text autowrap"><span class="q-num">40</span>What does "them" in the third paragraph refer to?</div>
-      <div class="options">
-        <label><input type="radio" name="q40" value="A"><span>(A) Stairs.</span></label>
-        <label><input type="radio" name="q40" value="B"><span>(B) Confines.</span></label>
-        <label><input type="radio" name="q40" value="C"><span>(C) Attackers.</span></label>
-        <label><input type="radio" name="q40" value="D"><span>(D) Defenders.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">stairs</span><span class="word">confines</span><span class="word">attackers</span><span class="word">defenders</span>
-      </div>
+    <div class="bubble ai">
+      <div class="who">AI 回覆</div>
+      <strong>錯因標籤：</strong><span class="badge">句構｜介系詞後接動名詞</span><span class="badge green">分詞構句基礎</span><br>
+      <strong>診斷：</strong>學生對「despite 是介系詞而非連接詞」的概念不清。
+      他把 despite 當成 although 處理，所以填了原形動詞 be。
+      實際上 despite 後面只能接<strong>名詞 / 動名詞 / 名詞片語</strong>，因此正解是 being。<br>
+      <strong>建議補強：</strong>下週安排 1 天「despite / in spite of vs although / though」對比練習，搭配 10 題即時生成的綜測題鞏固。
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="demo-title">情境二 · 整份考卷批次分析</div>
+
+    <div class="bubble user">
+      <div class="who">老師（您）</div>
+      我把這份學測模擬考的所有錯題拍照上傳給您（共 12 題），請幫我做完整診斷。
     </div>
 
-    <!-- Q42 -->
-    <div class="question" data-q="42">
-      <div class="q-text autowrap"><span class="q-num">42</span>Which of the following statements can be inferred about spiral staircases in the Medieval Ages?</div>
-      <div class="options">
-        <label><input type="radio" name="q42" value="A"><span>(A) The staircase was too narrow to allow any quick retreat.</span></label>
-        <label><input type="radio" name="q42" value="B"><span>(B) The clockwise design favored right-handed castle defenders.</span></label>
-        <label><input type="radio" name="q42" value="C"><span>(C) The uneven steps made it easier to ascend than descend the stairs.</span></label>
-        <label><input type="radio" name="q42" value="D"><span>(D) The staircase was dark enough for defenders to hide from attackers.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">narrow</span><span class="word">retreat</span><span class="word">clockwise</span><span class="word">favored</span><span class="word">defenders</span><span class="word">uneven</span><span class="word">ascend</span><span class="word">descend</span><span class="word">attackers</span><span class="word">hide</span><span class="word">inferred</span><span class="word">medieval</span>
-      </div>
+    <div class="bubble ai">
+      <div class="who">AI 回覆（節錄）</div>
+      已分析 12 題錯題。<br>
+      <strong>錯因分布（Top 3）：</strong><br>
+      1. <span class="badge">篇章｜轉折詞忽略</span> 4 題（佔 33%）— 這是主要失分點<br>
+      2. <span class="badge">單字｜一字多義</span> 3 題（佔 25%）<br>
+      3. <span class="badge">句構｜分詞構句</span> 2 題（佔 17%）<br><br>
+      <strong>診斷：</strong>該生語言基底尚可，但「閱測中的轉折邏輯」與「字彙的義項彈性」是兩大瓶頸。
+      建議下週走「篇章邏輯週」課程，內容包含 however / nevertheless / on the contrary 等 12 個轉折詞家族整理 + 5 篇學測閱測實戰。<br><br>
+      要不要我直接幫您產出這一週的教材？
     </div>
+  </div>
 
-    <!-- 段落 4 -->
-    <div class="passage autowrap">
-      <p>Being associated with medieval castles and kings, spiral staircases gradually won popularity in European architecture, with new materials emerging to cope with customers' needs. In Victorian times, cast iron spiral staircases were popular for public buildings and homes for the rich. In the latter half of the 20th century, steel frames became cost-effective, and thus affordable for a much wider staircase market.</p>
-      <p>Then, steel spiral staircases as fire escape stairs appeared in many buildings. Today, spiral staircases come in a wide variety of materials: steel, wood, concrete, and recently even glass. The timeless appeal of their classical design makes spiral staircases a much-desired feature in luxury homes, offices, and public buildings nowadays.</p>
-    </div>
+  <hr class="dotted">
 
-    <!-- Q39 -->
-    <div class="question" data-q="39">
-      <div class="q-text autowrap"><span class="q-num">39</span>Which question can the passage answer?</div>
-      <div class="options">
-        <label><input type="radio" name="q39" value="A"><span>(A) Where was the first spiral staircase constructed?</span></label>
-        <label><input type="radio" name="q39" value="B"><span>(B) Who was the first designer of the spiral staircase?</span></label>
-        <label><input type="radio" name="q39" value="C"><span>(C) What is the world's most famous spiral staircase?</span></label>
-        <label><input type="radio" name="q39" value="D"><span>(D) Why is the spiral staircase popular in modern times?</span></label>
+  <!-- ====== 五、200 天總體規劃節奏 ====== -->
+  <h2 class="section purple">五、200 天的整體節奏</h2>
+  <p>把 200 天切成四個階段，每階段任務不同，AI 在不同階段扮演不同角色：</p>
+
+  <div class="gantt">
+    <div class="row">
+      <div class="label">第 1–60 天<br><small style="color:var(--muted);font-weight:400;">基礎重建期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:0%; width:30%; background:var(--accent1);">診斷 + 補洞，質重於量</div>
       </div>
-      <div class="vocab-row">
-        <span class="word">constructed</span><span class="word">designer</span><span class="word">famous</span><span class="word">popular</span><span class="word">modern</span>
+      <div class="days">60 天</div>
+    </div>
+    <div class="row">
+      <div class="label">第 61–120 天<br><small style="color:var(--muted);font-weight:400;">主題密集期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:30%; width:30%; background:var(--accent2);">每週一主題，建立架構</div>
       </div>
+      <div class="days">60 天</div>
     </div>
-
-    <!-- Q41 -->
-    <div class="question" data-q="41">
-      <div class="q-text autowrap"><span class="q-num">41</span>According to the passage, which is a correct time sequence of the materials used in making spiral staircases?</div>
-      <div class="options">
-        <label><input type="radio" name="q41" value="A"><span>(A) stone → iron → steel → glass</span></label>
-        <label><input type="radio" name="q41" value="B"><span>(B) stone → wood → iron → steel</span></label>
-        <label><input type="radio" name="q41" value="C"><span>(C) iron → marble → wood → glass</span></label>
-        <label><input type="radio" name="q41" value="D"><span>(D) marble → wood → stone → concrete</span></label>
+    <div class="row">
+      <div class="label">第 121–180 天<br><small style="color:var(--muted);font-weight:400;">題型實戰期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:60%; width:30%; background:var(--accent3);">每週兩份完整模考 + 計時</div>
       </div>
-      <div class="vocab-row">
-        <span class="word">stone</span><span class="word">iron</span><span class="word">steel</span><span class="word">glass</span><span class="word">wood</span><span class="word">marble</span><span class="word">concrete</span><span class="word">sequence</span><span class="word">materials</span>
+      <div class="days">60 天</div>
+    </div>
+    <div class="row">
+      <div class="label">第 181–200 天<br><small style="color:var(--muted);font-weight:400;">手感維持期</small></div>
+      <div class="bar-track">
+        <div class="bar" style="left:90%; width:10%; background:var(--accent4);">每日小份量</div>
       </div>
+      <div class="days">20 天</div>
     </div>
+  </div>
 
-    <!-- ============ 第 43-46 題為題組 ============ -->
-    <div class="group-label">【第 43-46 題為題組 — 地圖方位的演變】</div>
-
-    <!-- 段落 1-2 -->
-    <div class="passage autowrap">
-      <p>Have you ever wondered why north comes at the top of a map? Well, north may seem a natural choice for the top spot today, but that wasn't always the case.</p>
-      <p>Documents from ancient times indicate that many maps in early ages were pointing to the east, where the sun rose. In ancient India, for example, maps were most likely oriented to the east. Though there is no physical evidence to support "<u>this</u>", the word dakshina "south" in Indian languages also means "right," suggesting that ancient Indians were oriented toward the east, and therefore south was on their right-hand side. Ample evidences from the Old Testament also suggest that east was at the top of maps in pre-Biblical and Biblical eras, a reason why east is still referred to as the "Orient" today.</p>
+  <div class="card-grid">
+    <div class="mini-card">
+      <div class="icon">🔍</div>
+      <h5>第一階段</h5>
+      <p>AI 主要在做「診斷」。每週分析 1 份考卷，跑出能力樹熱力圖。重點是建立學生個人錯題資料庫。</p>
     </div>
-
-    <!-- Q44 -->
-    <div class="question" data-q="44">
-      <div class="q-text autowrap"><span class="q-num">44</span>What does "this" refer to in the second paragraph?</div>
-      <div class="options">
-        <label><input type="radio" name="q44" value="A"><span>(A) The word dakshina.</span></label>
-        <label><input type="radio" name="q44" value="B"><span>(B) Physical evidence.</span></label>
-        <label><input type="radio" name="q44" value="C"><span>(C) Ancient India.</span></label>
-        <label><input type="radio" name="q44" value="D"><span>(D) East-orientation of maps.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">dakshina</span><span class="word">physical</span><span class="word">evidence</span><span class="word">ancient</span><span class="word">orientation</span>
-      </div>
+    <div class="mini-card">
+      <div class="icon">📚</div>
+      <h5>第二階段</h5>
+      <p>AI 主要在「設計教材」。依上一階段累積的弱點，產出每週主題教材包，從題庫派題或即時生成。</p>
     </div>
-
-    <!-- 段落 3-6 -->
-    <div class="passage autowrap">
-      <p>In the oldest surviving maps, south is at the top, and north points down. Early Egyptian maps showed south on top, most likely because the Nile, vital to Egyptian livelihood, originated in the south. As rivers were believed to flow downward, "up" was therefore south. Map makers in Arabia also drew maps with south on top since the earliest Muslims lived north of Mecca, and a south-oriented map would show the followers looking up toward their holy city.</p>
-      <p>The preference for north arose during the European age of exploration. At the time, sailors relied on the North Star to find their way across the Mediterranean and later the Atlantic. By the 16th century, when Europe's search for trading routes was at its peak, maps became Eurocentric, with north on top. The expansion of European imperialism in the following centuries further established the "north up" practice as the standard.</p>
-      <p>Today, map orientation is taking on a new perspective. In perhaps our most common interaction with maps—the use of GPS systems on our phones and in our cars, directions have ceased to be as important. The layouts are dynamic, oriented toward our travel path.</p>
-      <p>So, perhaps the north-on-top practice is less a rule and more "<u>a blip</u>". After centuries of technological advancements, it seems we've ended up right where we began in ancient times: with ourselves in the middle, and our destinations at the top.</p>
+    <div class="mini-card">
+      <div class="icon">⏱️</div>
+      <h5>第三階段</h5>
+      <p>AI 主要在「模考批改 + 計時建議」。每週兩份完整學測題模考，AI 分析配速、陷阱辨識。</p>
     </div>
-
-    <!-- Q45 -->
-    <div class="question" data-q="45">
-      <div class="q-text autowrap"><span class="q-num">45</span>Which of the following is closest in meaning to "a blip" in the last paragraph?</div>
-      <div class="options">
-        <label><input type="radio" name="q45" value="A"><span>(A) A temporary state.</span></label>
-        <label><input type="radio" name="q45" value="B"><span>(B) An urgent need.</span></label>
-        <label><input type="radio" name="q45" value="C"><span>(C) A critical decision.</span></label>
-        <label><input type="radio" name="q45" value="D"><span>(D) An advanced system.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">blip</span><span class="word">temporary</span><span class="word">state</span><span class="word">urgent</span><span class="word">critical</span><span class="word">decision</span><span class="word">advanced</span>
-      </div>
+    <div class="mini-card">
+      <div class="icon">💡</div>
+      <h5>第四階段</h5>
+      <p>AI 主要在「心態維持 + 錯題本回顧」。每天一份小題，避免疲勞。重點不在新學，而在不忘。</p>
     </div>
+  </div>
 
-    <!-- Q43 -->
-    <div class="question" data-q="43">
-      <div class="q-text autowrap"><span class="q-num">43</span>What is the passage mainly about?</div>
-      <div class="options">
-        <label><input type="radio" name="q43" value="A"><span>(A) Why east is referred to as the "Orient."</span></label>
-        <label><input type="radio" name="q43" value="B"><span>(B) How maps differ from GPS in function.</span></label>
-        <label><input type="radio" name="q43" value="C"><span>(C) How map orientation evolved over time.</span></label>
-        <label><input type="radio" name="q43" value="D"><span>(D) Why maps were important during the age of exploration.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">orient</span><span class="word">orientation</span><span class="word">evolved</span><span class="word">exploration</span><span class="word">function</span>
-      </div>
-    </div>
-
-    <!-- Q46 -->
-    <div class="question" data-q="46">
-      <div class="q-text autowrap"><span class="q-num">46</span>Which of the following statements is true?</div>
-      <div class="options">
-        <label><input type="radio" name="q46" value="A"><span>(A) Sailors took the North Star as their final destination.</span></label>
-        <label><input type="radio" name="q46" value="B"><span>(B) The GPS system has a fixed direction for orientation.</span></label>
-        <label><input type="radio" name="q46" value="C"><span>(C) South was placed at the top of maps in the pre-Biblical era.</span></label>
-        <label><input type="radio" name="q46" value="D"><span>(D) Old Islamic maps put south at the top for religious purposes.</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">sailors</span><span class="word">destination</span><span class="word">fixed</span><span class="word">orientation</span><span class="word">placed</span><span class="word">pre-Biblical</span><span class="word">Islamic</span><span class="word">religious</span><span class="word">purposes</span>
-      </div>
-    </div>
-
-    <!-- ============ 中譯英 ============ -->
-    <div class="section-title">四、中譯英（占 8 分）</div>
-    <div class="essay-box">
-      <div><strong>1.</strong> 現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。</div>
-      <textarea id="trans1" placeholder="請寫下你的英文翻譯..."></textarea>
-    </div>
-    <div class="essay-box">
-      <div><strong>2.</strong> 他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。</div>
-      <textarea id="trans2" placeholder="請寫下你的英文翻譯..."></textarea>
-    </div>
-
-    <!-- ============ 英文作文 ============ -->
-    <div class="section-title">五、英文作文（占 20 分）</div>
-    <div class="essay-box">
-      <div><strong>說明：</strong>依提示寫一篇英文作文，文長至少 120 個單詞（words）。</div>
-      <div style="margin-top:6px;"><strong>提示：</strong>近年來養寵物的風氣在臺灣日漸普遍，而寵物在人們生活中的角色也與過去不同。請以此為主題，並參照下列圖片，寫一篇英文作文，文分兩段。第一段描述這些圖片中所呈現的現象；第二段則根據你自身的經驗或觀察，說明此現象的原因以及可能的影響。</div>
-      <textarea id="essay" placeholder="請寫下你的英文作文..." style="min-height:220px;"></textarea>
-    </div>
-
-    <!-- ============ 第貳部分 混合題 47-50 ============ -->
-    <div class="section-title">第貳部分 ‧ 混合題（占 10 分）— 第 47-50 題</div>
-    <div class="group-label">【第 47-50 題為題組 — Wonder Village 商店介紹】</div>
-
-    <div class="passage autowrap">
-      <p>Located along the sparkling coastline of the Pacific Ocean, Wonder Village is a famous indigenous district in eastern Taiwan. The historic village exhibits the traditional way of life of the tribe there. However, it does not live in the past. As numerous new restaurants and shops have sprung up in recent years, it has become not only a cultural center but also a unique commercial zone. The following six shops are examples of some of the specialty stores there.</p>
-
-      <p><strong>A. Oh Eco</strong><br>
-      Greatly concerned about the presence of fake "green" products on the market, Alice Bao decided to open this shop. She sells environmentally friendly items such as reusable bottles, bamboo toothbrushes, and soy candles. "Here everyone looks out for each other and the neighborhood," she says. "There's a sense of community in the area."</p>
-
-      <p><strong>B. After Work</strong><br>
-      Neighborhood beer lovers rejoiced when After Work moved in last summer. "We knew we were coming into a really cool neighborhood," says co-owner Joey Ma. Aside from handcrafted beer, the menu boasts hand-made gourmet pizzas such as the Yummy Duck n' Cheese, loaded with roast duck and, yes, creamy delicious cheese. A truly unique blend!</p>
-
-      <p><strong>C. Aroma Paradise</strong><br>
-      The fragrances at this scent shop are largely customized to meet the individual shopper's taste. Owner Joseph Tang says he knew the idea would work well in this unique district: "Each store is one of a kind in Wonder Village," he states. "Aroma Paradise wants to create a paradise for those who are looking for fragrance made for their special preferences."</p>
-
-      <p><strong>D. Something Different</strong><br>
-      Looking for something unique? Yes, at this tiny antique store you can always find, as promised, something different. Open since 1996, the store features traditional-style home accessories, ranging from cabinets and chairs to picture frames and decorative mirrors.</p>
-
-      <p><strong>E. Beyond World</strong><br>
-      Owner Foting Mayaw opened this boutique in what he calls "the most fascinating area in Taiwan." The shop focuses on selling various "good goods" that showcase the skill and spirit of neighborhood artisans. From fashion items to rice snacks, it carries products only from local makers and small businesses owned by indigenous people.</p>
-
-      <p><strong>F. The Pinery</strong><br>
-      This restaurant got its name from the pineapple farms that once populated the area. Indeed, the fruit appears in some innovative menu items (e.g., pineapple jam on the burger). "Wonder Village is much more than just a tourist destination," says owner Carol Hon. "It is a place where the old meets the new: diverse, unique, and always full of surprises."</p>
-    </div>
-
-    <div class="question" data-q="47">
-      <div class="q-text autowrap">
-        <span class="q-num">47-48</span>下列簡短敘述摘記上方文章重點。請從文章中找出兩個單詞，分別填入下列句子空格中，並視句型結構需要做適當的字形變化（每格 2 分，共 4 分）。
-      </div>
-      <div class="autowrap" style="margin-top:10px; padding:12px; background:#f8fbfd; border-radius:8px; line-height:2;">
-        Wonder Village, a famous tourist site, is characterized by its diversity and uniqueness. It is a place where the old meets the new—where tradition coexists harmoniously with
-        <input type="text" class="fill-blank" id="ans47" placeholder="第 47 題">,
-        and local features are perfectly
-        <input type="text" class="fill-blank" id="ans48" placeholder="第 48 題">
-        with foreign elements.
-      </div>
-      <div class="vocab-row">
-        <span class="word">tradition</span><span class="word">coexists</span><span class="word">harmoniously</span><span class="word">innovation</span><span class="word">blended</span><span class="word">diversity</span><span class="word">uniqueness</span>
-      </div>
-    </div>
-
-    <div class="question" data-q="49">
-      <div class="q-text autowrap">
-        <span class="q-num">49</span>While visiting Wonder Village, the Chen family decide to buy the following items as souvenirs:
-        <div style="margin:8px 0 4px 28px;">
-          (1) a 19th century oil lamp<br>
-          (2) recycled plastic sunglasses<br>
-          (3) an aboriginal wooden beads necklace
-        </div>
-        Which stores should they go to for these items?<strong>（多選題，請選 3 個，4 分）</strong>
-      </div>
-      <div class="options">
-        <label><input type="checkbox" name="q49" value="A"><span>A. Oh Eco</span></label>
-        <label><input type="checkbox" name="q49" value="B"><span>B. After Work</span></label>
-        <label><input type="checkbox" name="q49" value="C"><span>C. Aroma Paradise</span></label>
-        <label><input type="checkbox" name="q49" value="D"><span>D. Something Different</span></label>
-        <label><input type="checkbox" name="q49" value="E"><span>E. Beyond World</span></label>
-        <label><input type="checkbox" name="q49" value="F"><span>F. The Pinery</span></label>
-      </div>
-      <div class="vocab-row">
-        <span class="word">souvenirs</span><span class="word">recycled</span><span class="word">aboriginal</span><span class="word">wooden</span><span class="word">beads</span><span class="word">necklace</span><span class="word">antique</span><span class="word">indigenous</span>
-      </div>
-    </div>
-
-    <div class="question" data-q="50">
-      <div class="q-text autowrap">
-        <span class="q-num">50</span>Which phrase is used by Joseph Tang to describe the "uniqueness" of the stores in Wonder Village?<strong>（簡答題，2 分）</strong>
-      </div>
-      <input type="text" class="fill-blank" id="ans50" placeholder="請輸入答案" style="width:100%; min-width:0; margin-top:8px;">
-      <div class="vocab-row">
-        <span class="word">phrase</span><span class="word">describe</span><span class="word">uniqueness</span>
-      </div>
-    </div>
-
-    <div class="button-row">
-      <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
-    </div>
-
-  </form>
-
-  <div id="results">
-
-    <div class="result-card score">
-      <h3>📊 你的成績</h3>
-      <div class="score-big" id="scoreBig"></div>
-      <div class="score-detail" id="scoreDetail"></div>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="teacherReport"></div>
-      <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
-    </div>
-
-    <div class="result-card teacher">
-      <h3>📚 結果 2：不熟悉單字清單（複製貼到 LINE 群給老師）</h3>
-      <div class="copyable" id="wordsReport"></div>
-      <button class="copy-btn" onclick="copyText('wordsReport', this)">📋 複製結果 2</button>
-    </div>
-
-    <div class="result-card feedback">
-      <h3>💡 結果 3：錯題詳解（自己看，檢討訂正）</h3>
-      <div id="feedbackReport"></div>
-    </div>
-
+  <!-- ====== 六、下一步建議 ====== -->
+  <div class="next-step">
+    <h3>下一步可以這樣啟動</h3>
+    <ol>
+      <li>
+        <strong>本週馬上能做的：</strong>挑一位學生最近的一份學測模擬考錯題，貼進對話，我幫您跑一次「五步流程」的完整 demo——讓您看到診斷出來會長什麼樣。
+      </li>
+      <li>
+        <strong>建議週末做的：</strong>把 110–114 學測題（5 屆）依題型分類存進一個資料夾——這就是您的「題庫資產」，未來 200 天會反覆用到。
+      </li>
+      <li>
+        <strong>第二週可以做的：</strong>請我幫您產出一份「錯題追蹤工作表」（xlsx），含分類下拉選單 + 自動統計圖，讓您日常記錄錯題時不用手動分類。
+      </li>
+      <li>
+        <strong>持續做的：</strong>每兩週讓我跑一次「能力樹熱力圖更新」，比對學生補強成效，動態調整下兩週方向。
+      </li>
+    </ol>
   </div>
 
 </div>
-
-<div class="unknown-counter" id="counter">📚 不熟單字：<span id="cnum">0</span> 個</div>
-
-<script>
-  // ===== 正確答案 =====
-  const ANSWERS = {
-    39:'D', 40:'A', 41:'A', 42:'B',
-    43:'C', 44:'D', 45:'A', 46:'D',
-    47:'innovation', 48:'blended',
-    49:'ADE',
-    50:'one of a kind'
-  };
-  // 題目順序（顯示用）
-  const QIDS = [39,40,41,42,43,44,45,46,47,48,49,50];
-
-  // ===== 錯題詳解 =====
-  const EXPLANATIONS = {
-    39: { answer:'(D) Why is the spiral staircase popular in modern times?',
-          detail:'文章最後一段詳細說明螺旋梯為何在現代仍受歡迎（豪宅、辦公室、公共建築都愛用），故 (D) 為文章可回答的問題。(A)(B) 文中未提及最早建造地點或設計師；(C) 文中只說 Trajan\'s Column 是「現存最古老」並非「最知名」。' },
-    40: { answer:'(A) Stairs.',
-          detail:'"could retreat up them" 中的 them 回指前文 the stair pattern / the stairs（樓梯）。防衛者熟悉樓梯型態，能沿著樓梯快速撤退。(C)(D) 攻擊者與防衛者本身不可能是「往上撤退」的對象。' },
-    41: { answer:'(A) stone → iron → steel → glass',
-          detail:'按文中時間順序：113 AD 用 stone & marble → Victorian times 用 cast iron → 20 世紀後半用 steel → 近期甚至用 glass，故順序為 stone → iron → steel → glass。' },
-    42: { answer:'(B) The clockwise design favored right-handed castle defenders.',
-          detail:'順時針設計讓進攻者的右手（持劍手）貼近最窄處無法揮劍，反觀下行的右撇子防衛者卻能順利揮劍，故對右撇子防衛者有利。(A) 防衛者反而能快速撤退；(C) 文中說階梯不平導致進攻者跌倒，並非上樓較容易；(D) 文中沒提到防衛者「躲藏」。' },
-    43: { answer:'(C) How map orientation evolved over time.',
-          detail:'全文以時間軸介紹地圖方位的演變：古印度東朝上 → 古埃及／伊斯蘭南朝上 → 歐洲探險時代北朝上 → 現代 GPS 動態方位，故主旨為地圖方位「隨時代演變」。(A)(D) 都只是過程中的小細節；(B) 文中只略提。' },
-    44: { answer:'(D) East-orientation of maps.',
-          detail:'"there is no physical evidence to support this" 中的 this 指的是前一句所述「古印度地圖朝東」這個現象。(A)(B)(C) 都不是 this 所指代的內容。' },
-    45: { answer:'(A) A temporary state.',
-          detail:'"a blip" 本意為雷達上短暫的閃點，引申為短暫的、暫時的現象。文章認為「北朝上」可能只是地圖史上短暫的慣例，並非永恆的法則，故最接近 (A) A temporary state。' },
-    46: { answer:'(D) Old Islamic maps put south at the top for religious purposes.',
-          detail:'文中說伊斯蘭早期信徒住在 Mecca 北方，南朝上的地圖可讓信徒「往上看」朝向聖城，是宗教用途。(A) 北極星是導航工具，非目的地；(B) GPS 是動態方位非固定；(C) 前聖經時代是「東朝上」非「南朝上」。' },
-    47: { answer:'innovation',
-          detail:'tradition coexists harmoniously with innovation（傳統與創新和諧並存）。innovation 來自原文 F. The Pinery 段中的 "innovative menu items"，需把形容詞改為名詞 innovation。' },
-    48: { answer:'blended',
-          detail:'local features are perfectly blended with foreign elements（本地特色與外來元素完美融合）。blended 來自原文 B. After Work 段的 "A truly unique blend!"，需配合 are perfectly ___ with（被動式）改為過去分詞 blended。' },
-    49: { answer:'A、D、E',
-          detail:'(1) 19世紀油燈（古董）→ D Something Different；(2) recycled plastic sunglasses（環保再生商品）→ A Oh Eco；(3) aboriginal wooden beads necklace（原住民工藝）→ E Beyond World。B 是手工啤酒餐廳；C 是香氛店；F 是鳳梨主題餐廳，皆不符合。' },
-    50: { answer:'one of a kind',
-          detail:'原文 C. Aroma Paradise 段中 Joseph Tang 說 "Each store is one of a kind in Wonder Village"。"one of a kind" 是慣用語，意為「獨一無二、無與倫比」，描述商店的 uniqueness。' }
-  };
-
-  // ===== 自動將 .autowrap 區塊的英文單字包成可點選 span =====
-  function wrapWordsIn(root) {
-    const skipTags = new Set(['SCRIPT','STYLE','INPUT','TEXTAREA','LABEL']);
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: (n) => {
-        let p = n.parentNode;
-        while (p && p !== root) {
-          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
-          if (p.classList && (p.classList.contains('word') || p.classList.contains('q-num'))) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          p = p.parentNode;
-        }
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    const nodes = [];
-    let n;
-    while ((n = walker.nextNode())) nodes.push(n);
-
-    const re = /[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g;
-    nodes.forEach(tn => {
-      const text = tn.nodeValue;
-      if (!re.test(text)) return;
-      re.lastIndex = 0;
-      const frag = document.createDocumentFragment();
-      let lastIdx = 0, m;
-      while ((m = re.exec(text)) !== null) {
-        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = m[0];
-        frag.appendChild(span);
-        lastIdx = m.index + m[0].length;
-      }
-      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-      tn.parentNode.replaceChild(frag, tn);
-    });
-  }
-
-  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
-
-  // 單字點擊切換不熟悉
-  document.body.addEventListener('click', (e) => {
-    if (e.target.classList && e.target.classList.contains('word')) {
-      e.target.classList.toggle('unfamiliar');
-      updateCounter();
-    }
-  });
-
-  function updateCounter() {
-    const set = new Set();
-    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
-    const c = document.getElementById('counter');
-    document.getElementById('cnum').textContent = set.size;
-    c.style.display = set.size > 0 ? 'block' : 'none';
-  }
-
-  // 選項選取樣式（單選/多選）
-  document.querySelectorAll('.options label').forEach(lbl => {
-    lbl.addEventListener('click', () => {
-      const inp = lbl.querySelector('input');
-      if (!inp) return;
-      const name = inp.name;
-      if (inp.type === 'radio') {
-        document.querySelectorAll(`.options input[name="${name}"]`)
-          .forEach(r => r.closest('label').classList.remove('selected'));
-        lbl.classList.add('selected');
-      } else if (inp.type === 'checkbox') {
-        // 給 checkbox 一點延遲，讓 input 狀態先更新
-        setTimeout(() => {
-          if (inp.checked) lbl.classList.add('selected');
-          else lbl.classList.remove('selected');
-        }, 0);
-      }
-    });
-  });
-
-  // ===== 送出作答 =====
-  function submitQuiz() {
-    const name = document.getElementById('studentName').value.trim() || '（未填）';
-    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
-
-    const answers = {}, unanswered = [];
-
-    // 39-46 單選
-    [39,40,41,42,43,44,45,46].forEach(i => {
-      const sel = document.querySelector(`input[name="q${i}"]:checked`);
-      if (sel) answers[i] = sel.value;
-      else { answers[i] = '-'; unanswered.push(i); }
-    });
-    // 47, 48 填空
-    answers[47] = (document.getElementById('ans47').value || '').trim();
-    answers[48] = (document.getElementById('ans48').value || '').trim();
-    if (!answers[47]) { answers[47] = '-'; unanswered.push(47); }
-    if (!answers[48]) { answers[48] = '-'; unanswered.push(48); }
-    // 49 多選
-    const ck = Array.from(document.querySelectorAll('input[name="q49"]:checked')).map(x=>x.value).sort();
-    answers[49] = ck.length ? ck.join('') : '-';
-    if (!ck.length) unanswered.push(49);
-    // 50 簡答
-    answers[50] = (document.getElementById('ans50').value || '').trim();
-    if (!answers[50]) { answers[50] = '-'; unanswered.push(50); }
-
-    if (unanswered.length > 0) {
-      if (!confirm(`尚有 ${unanswered.length} 題未作答（第 ${unanswered.join(', ')} 題），確定要送出嗎？`)) return;
-    }
-
-    // 計分
-    let correct = 0, wrongList = [];
-    QIDS.forEach(i => {
-      const my = String(answers[i]||'').toLowerCase().replace(/\s+/g,' ').trim();
-      const cor = String(ANSWERS[i]||'').toLowerCase();
-      const ok = (i === 50 || i === 47 || i === 48) ? (my === cor) : (answers[i] === ANSWERS[i]);
-      if (ok) correct++;
-      else wrongList.push(i);
-    });
-    const total = QIDS.length;
-    const percent = Math.round(correct/total*100);
-
-    // 不熟悉單字
-    const unfamiliar = [];
-    document.querySelectorAll('.word.unfamiliar').forEach(w => {
-      const t = w.textContent.trim().toLowerCase();
-      if (t && !unfamiliar.includes(t)) unfamiliar.push(t);
-    });
-    unfamiliar.sort();
-
-    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
-    document.getElementById('scoreDetail').textContent =
-      `答對 ${correct} 題 ‧ 答錯 ${total-correct-unanswered.length} 題 ‧ 未答 ${unanswered.length} 題 ‧ 正確率 ${percent}%`;
-
-    const now = new Date();
-    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-
-    // 翻譯 / 作文 文字內容
-    const trans1Text = (document.getElementById('trans1').value || '').trim();
-    const trans2Text = (document.getElementById('trans2').value || '').trim();
-    const essayText  = (document.getElementById('essay').value || '').trim();
-
-    // 結果 1：作答結果（給 LINE）
-    let r1 = `【115學測英文 第三部分（39-50）作答結果】\n`;
-    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分（單選+多選）：${correct}/${total}（${percent}%）\n`;
-    r1 += `\n──── 一、選擇／填空題作答 ────\n題號\t學生答案\t\t正確答案\t對錯\n`;
-    [39,40,41,42,43,44,45,46].forEach(i => {
-      const my = answers[i];
-      const ok = my === ANSWERS[i];
-      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
-      r1 += `${i}\t${my}\t\t${ANSWERS[i]}\t\t${mark}\n`;
-    });
-    // 47/48/50 顯示完整英文答案
-    [47,48].forEach(i => {
-      const my = answers[i];
-      const cor = ANSWERS[i];
-      const ok = String(my).toLowerCase() === String(cor).toLowerCase();
-      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
-      r1 += `${i}\t${my}\t\t${cor}\t\t${mark}\n`;
-    });
-    {
-      const my = answers[49], cor = ANSWERS[49];
-      const ok = my === cor;
-      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
-      r1 += `49\t${my}\t\t${cor}\t\t${mark}\n`;
-    }
-    {
-      const my = answers[50], cor = ANSWERS[50];
-      const ok = String(my).toLowerCase() === String(cor).toLowerCase();
-      const mark = my === '-' ? '✗(未答)' : (ok ? '✓' : '✗');
-      r1 += `50\t${my}\n\t\t正解：${cor}\t${mark}\n`;
-    }
-
-    r1 += `\n──── 二、中譯英作答 ────\n`;
-    r1 += `1. 現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。\n`;
-    r1 += `   學生答案：${trans1Text || '（未作答）'}\n\n`;
-    r1 += `2. 他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。\n`;
-    r1 += `   學生答案：${trans2Text || '（未作答）'}\n`;
-
-    r1 += `\n──── 三、英文作文 ────\n`;
-    r1 += `主題：寵物在臺灣生活中的角色（至少 120 字）\n`;
-    if (essayText) {
-      const wc = (essayText.match(/[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g) || []).length;
-      r1 += `字數（約）：${wc} 字\n\n`;
-      r1 += essayText + '\n';
-    } else {
-      r1 += `（未作答）\n`;
-    }
-
-    r1 += `\n──── 不熟悉單字（共 ${unfamiliar.length} 個） ────\n`;
-    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
-    document.getElementById('teacherReport').textContent = r1;
-
-    // 結果 2：單字清單
-    let r2 = `【115學測英文 第三部分 不熟悉單字】\n姓名：${name}　座號：${sid}　時間：${ts}\n---\n`;
-    if (unfamiliar.length === 0) r2 += '（本次作答未標記任何不熟悉的單字）';
-    else {
-      r2 += `共 ${unfamiliar.length} 個單字：\n\n`;
-      unfamiliar.forEach((w,i) => { r2 += `${i+1}. ${w}\n`; });
-    }
-    document.getElementById('wordsReport').textContent = r2;
-
-    // 結果 3：錯題詳解
-    const fb = document.getElementById('feedbackReport');
-    fb.innerHTML = '';
-    if (wrongList.length === 0) {
-      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
-    } else {
-      wrongList.forEach(i => {
-        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
-        const div = document.createElement('div');
-        div.className = 'wrong-item';
-        div.innerHTML = `
-          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${escapeHTML(stuAns)}</span> ‧ 正確答案：<span class="correct-mark">${escapeHTML(EXPLANATIONS[i].answer)}</span></div>
-          <div class="explain">${escapeHTML(EXPLANATIONS[i].detail)}</div>`;
-        fb.appendChild(div);
-      });
-    }
-
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
-  }
-
-  function escapeHTML(s) {
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  function copyText(elId, btn) {
-    const txt = document.getElementById(elId).textContent;
-    const fallback = () => {
-      const ta = document.createElement('textarea');
-      ta.value = txt;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    };
-    const ok = () => {
-      const orig = btn.textContent;
-      btn.textContent = '✓ 已複製！';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
-    } else { fallback(); ok(); }
-  }
-</script>
-
 </body>
 </html>

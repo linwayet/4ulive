@@ -1,812 +1,739 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>200天高三英文學習規劃 — 診斷與流程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>108課綱學測英文分析 × 116年猜題20主題</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg: #fdfaf5;
-    --paper: #ffffff;
-    --ink: #2c2a26;
-    --muted: #6b6660;
-    --line: #e7e1d6;
-    --accent1: #c8553d;   /* 診斷紅 */
-    --accent2: #588157;   /* 處方綠 */
-    --accent3: #3a5a8c;   /* 流程藍 */
-    --accent4: #d4a017;   /* 重點黃 */
-    --accent5: #8b5e83;   /* 反思紫 */
-    --soft1: #fbe9e4;
-    --soft2: #e3edd9;
-    --soft3: #dbe5f3;
-    --soft4: #f7ecc6;
-    --soft5: #ece0ea;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
-    background: var(--bg);
-    color: var(--ink);
-    line-height: 1.85;
-    font-size: 16px;
-  }
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 48px 28px 80px;
-  }
-  header.cover {
-    text-align: center;
-    padding: 40px 20px 50px;
-    border-bottom: 2px solid var(--line);
-    margin-bottom: 50px;
-  }
-  header.cover .eyebrow {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  header.cover h1 {
-    font-size: 36px;
-    margin: 12px 0 8px;
-    letter-spacing: 2px;
-    font-weight: 700;
-  }
-  header.cover .sub {
-    font-size: 16px;
-    color: var(--muted);
-  }
-  h2.section {
-    font-size: 24px;
-    margin: 60px 0 24px;
-    padding-left: 14px;
-    border-left: 6px solid var(--accent1);
-    letter-spacing: 1px;
-  }
-  h2.section.green { border-left-color: var(--accent2); }
-  h2.section.blue  { border-left-color: var(--accent3); }
-  h2.section.yellow{ border-left-color: var(--accent4); }
-  h2.section.purple{ border-left-color: var(--accent5); }
+:root{
+  --bg:#f8fafc;--card:#fff;--accent:#2563eb;--accent2:#7c3aed;
+  --green:#059669;--orange:#d97706;--red:#dc2626;--pink:#db2777;
+  --text:#0f172a;--muted:#64748b;--border:#e2e8f0;
+  --section-w:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent)}
 
-  h3 {
-    font-size: 18px;
-    margin: 28px 0 12px;
-    color: var(--ink);
-  }
-  p { margin: 12px 0; }
+/* ─── HEADER ─── */
+header{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#7c3aed 100%);color:#fff;padding:2.5rem 1.5rem;text-align:center}
+header h1{font-size:2rem;font-weight:800;letter-spacing:-0.5px}
+header .sub{margin-top:.5rem;opacity:.8;font-size:.95rem}
+.tag-row{margin-top:1rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:.3rem .9rem;font-size:.8rem;color:#fff}
 
-  /* ===== 核心問答卡片 ===== */
-  .qa-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 26px 30px;
-    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
-  }
-  .qa-card .q {
-    font-size: 16px;
-    color: var(--accent1);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .qa-card .q::before { content: "Q  "; letter-spacing: 2px; }
-  .qa-card .a { color: var(--ink); }
-  .qa-card .a::before {
-    content: "A  ";
-    color: var(--accent2);
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
+/* ─── NAV ─── */
+nav{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100}
+nav ul{display:flex;list-style:none;justify-content:center;flex-wrap:wrap;max-width:var(--section-w);margin:0 auto}
+nav a{display:block;padding:.7rem 1rem;font-size:.85rem;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;transition:.2s;font-weight:500}
+nav a:hover,nav a.on{color:var(--accent);border-bottom-color:var(--accent)}
 
-  .verdict {
-    margin-top: 18px;
-    padding: 16px 20px;
-    background: var(--soft2);
-    border-left: 5px solid var(--accent2);
-    border-radius: 6px;
-    font-weight: 600;
-  }
-  .verdict.alt {
-    background: var(--soft4);
-    border-left-color: var(--accent4);
-  }
+/* ─── LAYOUT ─── */
+.container{max-width:var(--section-w);margin:0 auto;padding:2rem 1.5rem}
+.sec{margin-bottom:3rem}
+.sec-title{font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:3px solid var(--accent);display:flex;align-items:center;gap:.5rem}
+.card{background:var(--card);border-radius:14px;padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 
-  /* ===== 兩欄對照 ===== */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin: 22px 0;
-  }
-  .col {
-    padding: 22px 24px;
-    border-radius: 12px;
-    border: 1px solid var(--line);
-    background: var(--paper);
-  }
-  .col.minimal { background: #fff8f5; border-color: #f4d6cc; }
-  .col.full    { background: #f4faf3; border-color: #cde1c8; }
-  .col h4 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    letter-spacing: 1px;
-  }
-  .col.minimal h4 { color: var(--accent1); }
-  .col.full h4    { color: var(--accent2); }
-  .col ul { padding-left: 20px; margin: 8px 0; }
-  .col li { margin: 6px 0; }
+/* ─── STATS ROW ─── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:2rem}
+.stat{background:var(--card);border-radius:12px;padding:1.2rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.stat-num{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-lbl{color:var(--muted);font-size:.82rem;margin-top:.2rem}
 
-  /* ===== 樹狀圖 ===== */
-  .tree-wrap {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 28px 18px 36px;
-    overflow-x: auto;
-    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.06);
-  }
-  .tree {
-    --node-pad: 10px 14px;
-    text-align: center;
-    min-width: 980px;
-  }
-  .tree ul {
-    padding-top: 24px;
-    position: relative;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-  }
-  .tree li {
-    flex: 1;
-    text-align: center;
-    list-style-type: none;
-    position: relative;
-    padding: 24px 6px 0 6px;
-  }
-  /* connectors */
-  .tree li::before, .tree li::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    height: 24px;
-    width: 50%;
-    border-top: 2px solid var(--line);
-  }
-  .tree li::before { right: 50%; border-right: 2px solid var(--line); }
-  .tree li::after  { left: 50%; }
-  .tree li:only-child::before, .tree li:only-child::after { display: none; }
-  .tree li:only-child { padding-top: 24px; }
-  .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
-  .tree li:last-child::before { border-right: 2px solid var(--line); border-radius: 0 8px 0 0; }
-  .tree li:first-child::after { border-radius: 8px 0 0 0; }
-  .tree ul ul::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    border-left: 2px solid var(--line);
-    height: 24px;
-  }
-  .tree .node {
-    display: inline-block;
-    border-radius: 10px;
-    padding: var(--node-pad);
-    background: var(--paper);
-    border: 1.5px solid var(--line);
-    color: var(--ink);
-    font-size: 14px;
-    line-height: 1.4;
-    min-width: 110px;
-    transition: transform 0.15s ease;
-  }
-  .tree .node:hover { transform: translateY(-2px); }
-  .tree .node.root {
-    background: var(--accent1);
-    color: #fff;
-    border-color: var(--accent1);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 14px 22px;
-  }
-  .tree .node.l1 {
-    background: var(--soft1);
-    border-color: #f0c2b6;
-    font-weight: 600;
-    color: var(--accent1);
-  }
-  .tree .node.l2 {
-    background: var(--paper);
-    border-color: var(--line);
-    color: var(--ink);
-    font-size: 13px;
-  }
-  .tree .node small {
-    display: block;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-    font-weight: 400;
-  }
+/* ─── 108課綱 BOX ─── */
+.jiagan-box{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:2px solid #bfdbfe;border-radius:14px;padding:1.5rem;margin-bottom:2rem}
+.jiagan-box h3{color:#1d4ed8;margin-bottom:.8rem;font-size:1.1rem}
+.jiagan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin-top:1rem}
+.jiagan-item{background:rgba(255,255,255,.7);border-radius:10px;padding:.8rem 1rem;border-left:4px solid #3b82f6}
+.jiagan-item .ji-title{font-weight:700;font-size:.9rem;color:#1e40af}
+.jiagan-item .ji-desc{font-size:.8rem;color:#374151;margin-top:.2rem}
 
-  /* ===== 流程圖 ===== */
-  .flow {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    margin: 24px 0;
-  }
-  .flow .step {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 18px 14px;
-    position: relative;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(60, 50, 40, 0.04);
-  }
-  .flow .step .num {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 50%;
-    background: var(--accent3);
-    color: #fff;
-    font-weight: 700;
-    font-size: 13px;
-    margin-bottom: 8px;
-  }
-  .flow .step h5 {
-    margin: 4px 0 6px;
-    font-size: 14px;
-    color: var(--accent3);
-  }
-  .flow .step p {
-    margin: 0;
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-  .flow .step:not(:last-child)::after {
-    content: "▶";
-    position: absolute;
-    top: 50%;
-    right: -12px;
-    transform: translateY(-50%);
-    color: var(--accent3);
-    font-size: 12px;
-    z-index: 2;
-  }
+/* ─── YEAR GRID ─── */
+.year-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.2rem}
+.year-card{background:var(--card);border-radius:12px;padding:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid var(--accent)}
+.year-card h3{font-size:1rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.year-card.y108{border-top-color:#ef4444}
+.year-card.y109{border-top-color:#f97316}
+.year-card.y110{border-top-color:#eab308}
+.year-card.y111{border-top-color:#22c55e}
+.year-card.y112{border-top-color:#06b6d4}
+.year-card.y113{border-top-color:#3b82f6}
+.year-card.y114{border-top-color:#8b5cf6}
+.year-card.y115{border-top-color:#ec4899}
+.article-row{display:flex;align-items:flex-start;gap:.5rem;padding:.35rem 0;border-bottom:1px dashed #f1f5f9;font-size:.82rem}
+.article-row:last-child{border:none}
+.sec-badge{font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap;min-width:54px;text-align:center;flex-shrink:0}
+.badge-cloze{background:#dbeafe;color:#1d4ed8}
+.badge-vocab{background:#dcfce7;color:#166534}
+.badge-para{background:#fef9c3;color:#854d0e}
+.badge-read{background:#f3e8ff;color:#6b21a8}
+.badge-mixed{background:#fee2e2;color:#991b1b}
+.cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.article-topic{flex:1}
+.article-topic strong{display:block;color:var(--text)}
+.article-topic small{color:var(--muted)}
+.new-badge{background:#10b981;color:#fff;font-size:.65rem;padding:1px 5px;border-radius:4px;margin-left:.3rem}
 
-  /* ===== 標籤系統表 ===== */
-  table.tag-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 18px 0;
-    font-size: 14px;
-  }
-  table.tag-table th, table.tag-table td {
-    padding: 12px 14px;
-    text-align: left;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-  }
-  table.tag-table th {
-    background: var(--soft1);
-    color: var(--accent1);
-    font-weight: 700;
-    letter-spacing: 1px;
-    width: 130px;
-  }
-  table.tag-table tr:last-child td { border-bottom: 0; }
-  table.tag-table code {
-    background: #f5efe5;
-    padding: 1px 7px;
-    border-radius: 4px;
-    font-size: 12.5px;
-    color: var(--accent1);
-    font-family: "SF Mono", Consolas, monospace;
-    margin-right: 4px;
-    display: inline-block;
-    margin-bottom: 3px;
-  }
+/* ─── PATTERN ANALYSIS ─── */
+.pattern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.pattern-card{background:var(--card);border-radius:12px;padding:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.pattern-icon{font-size:1.8rem;margin-bottom:.5rem}
+.pattern-title{font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.5rem}
+.pattern-list{list-style:none;padding:0}
+.pattern-list li{font-size:.82rem;padding:.25rem 0;padding-left:1rem;position:relative;color:#334155;border-bottom:1px dashed #f1f5f9}
+.pattern-list li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:.7rem;top:.35rem}
+.pattern-list li:last-child{border:none}
 
-  /* ===== 對話範例 ===== */
-  .demo {
-    background: #faf5ec;
-    border: 1px dashed var(--accent4);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 18px 0;
-  }
-  .demo .demo-title {
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: var(--accent4);
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .demo .bubble {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin: 10px 0;
-    font-size: 14.5px;
-  }
-  .demo .bubble.user {
-    background: var(--soft3);
-    border-color: #c8d6e8;
-  }
-  .demo .bubble.ai {
-    background: var(--soft2);
-    border-color: #c2d6b9;
-  }
-  .demo .who {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 4px;
-    letter-spacing: 1px;
-  }
+/* ─── CHARTS ─── */
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:760px){.chart-row{grid-template-columns:1fr}}
+.chart-box{background:var(--card);border-radius:12px;padding:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.chart-box h4{font-size:.9rem;font-weight:700;margin-bottom:1rem;color:var(--muted)}
+.chart-h{position:relative;height:280px}
 
-  /* ===== 4階段甘特 ===== */
-  .gantt {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 18px 0;
-  }
-  .gantt .row {
-    display: grid;
-    grid-template-columns: 130px 1fr 80px;
-    align-items: center;
-    margin: 10px 0;
-    gap: 12px;
-  }
-  .gantt .label {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .gantt .bar-track {
-    position: relative;
-    height: 28px;
-    background: #f3eee2;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .gantt .bar {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 12px;
-    line-height: 28px;
-    padding-left: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-  .gantt .days {
-    text-align: right;
-    font-size: 12px;
-    color: var(--muted);
-  }
+/* ─── PREDICTION 20 ─── */
+.pred-intro{background:linear-gradient(135deg,#fdf4ff,#ede9fe);border:2px solid #c4b5fd;border-radius:14px;padding:1.5rem;margin-bottom:2rem}
+.pred-intro h3{color:#6d28d9;margin-bottom:.6rem}
+.pred-intro p{font-size:.88rem;color:#4c1d95;line-height:1.9}
 
-  /* ===== 卡片網格 ===== */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 14px;
-    margin: 18px 0;
-  }
-  .mini-card {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 18px 20px;
-  }
-  .mini-card .icon {
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-  .mini-card h5 {
-    margin: 4px 0 8px;
-    font-size: 15px;
-    color: var(--accent3);
-  }
-  .mini-card p {
-    margin: 0;
-    font-size: 13.5px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+.pred-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.pred-tab{padding:.45rem 1rem;border-radius:20px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:.83rem;font-weight:600;transition:.2s}
+.pred-tab:hover,.pred-tab.on{color:#fff}
+.pred-tab[data-cat="科普自然"].on{background:#3b82f6;border-color:#3b82f6}
+.pred-tab[data-cat="健康醫學"].on{background:#ef4444;border-color:#ef4444}
+.pred-tab[data-cat="動物生態"].on{background:#22c55e;border-color:#22c55e}
+.pred-tab[data-cat="歷史文化"].on{background:#8b5cf6;border-color:#8b5cf6}
+.pred-tab[data-cat="社會心理"].on{background:#0891b2;border-color:#0891b2}
+.pred-tab[data-cat="科技工程"].on{background:#2563eb;border-color:#2563eb}
+.pred-tab[data-cat="環保永續"].on{background:#059669;border-color:#059669}
+.pred-tab[data-cat="all"].on{background:#1e293b;border-color:#1e293b}
 
-  /* ===== Footer 行動建議 ===== */
-  .next-step {
-    margin-top: 50px;
-    padding: 30px 32px;
-    background: linear-gradient(135deg, #fff8f5 0%, #f4faf3 100%);
-    border: 1.5px solid var(--line);
-    border-radius: 14px;
-  }
-  .next-step h3 {
-    margin-top: 0;
-    color: var(--accent1);
-    letter-spacing: 1px;
-  }
-  .next-step ol {
-    padding-left: 22px;
-  }
-  .next-step ol li {
-    margin: 10px 0;
-    line-height: 1.7;
-  }
+.pred-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.pred-card{background:var(--card);border-radius:14px;padding:1.4rem;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #ccc;transition:.2s}
+.pred-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.pred-num{font-size:1.6rem;font-weight:800;opacity:.2;float:right;line-height:1}
+.pred-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.pred-cat-badge{font-size:.72rem;padding:3px 10px;border-radius:20px;color:#fff;font-weight:700}
+.priority-tag{font-size:.72rem;padding:3px 10px;border-radius:20px;font-weight:700;border:1px solid}
+.priority-HIGH{background:#fef2f2;color:#b91c1c;border-color:#fca5a5}
+.priority-MED{background:#fffbeb;color:#b45309;border-color:#fcd34d}
+.priority-STABLE{background:#f0fdf4;color:#15803d;border-color:#86efac}
+.pred-title{font-size:1.1rem;font-weight:800;margin:.4rem 0;color:var(--text)}
+.pred-section{font-size:.8rem;color:var(--muted);margin-bottom:.6rem}
+.pred-section span{background:#f1f5f9;border-radius:4px;padding:1px 6px}
+.pred-reason{font-size:.83rem;color:#374151;line-height:1.7;margin-bottom:.8rem;border-left:3px solid #e2e8f0;padding-left:.7rem}
+.pred-angle{background:#f8fafc;border-radius:8px;padding:.7rem;font-size:.8rem}
+.pred-angle .pa-title{font-weight:700;color:var(--accent);margin-bottom:.3rem;font-size:.78rem}
+.pred-angle ul{padding-left:1rem;color:#374151;line-height:1.8}
+.pred-evidence{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem}
+.ev-tag{background:#eff6ff;color:#1d4ed8;border-radius:4px;padding:1px 6px;font-size:.72rem}
 
-  .badge {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    font-weight: 700;
-    background: var(--soft1);
-    color: var(--accent1);
-    margin-right: 6px;
-  }
-  .badge.green { background: var(--soft2); color: var(--accent2); }
-  .badge.blue  { background: var(--soft3); color: var(--accent3); }
-  .badge.yellow{ background: var(--soft4); color: var(--accent4); }
-
-  hr.dotted {
-    border: 0;
-    border-top: 2px dotted var(--line);
-    margin: 40px 0;
-  }
-
-  @media (max-width: 760px) {
-    .flow { grid-template-columns: 1fr 1fr; }
-    .flow .step:nth-child(2)::after,
-    .flow .step:nth-child(4)::after { display: none; }
-    .two-col { grid-template-columns: 1fr; }
-    .gantt .row { grid-template-columns: 100px 1fr; }
-    .gantt .days { display: none; }
-  }
+/* ─── FOOTER ─── */
+footer{text-align:center;padding:2rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);margin-top:2rem}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="cover">
-    <div class="eyebrow">200 DAYS · ENGLISH ROADMAP</div>
-    <h1>高三英文學測 · 個人化診斷與規劃流程</h1>
-    <div class="sub">如何用 AI 分析錯題 → 建立能力地圖 → 產出客製教材</div>
-  </header>
+<header>
+  <h1>📖 108課綱學測英文深度分析</h1>
+  <p class="sub">108–115年出題規律解析 × 116年20大猜題主題</p>
+  <div class="tag-row">
+    <span class="tag">8年×8篇 = 64篇文章</span>
+    <span class="tag">108課綱素養導向</span>
+    <span class="tag">新制111年起施行</span>
+    <span class="tag">116年猜題預測</span>
+  </div>
+</header>
 
-  <!-- ====== 一、核心問題：是否需要先準備歷屆試題資料夾？ ====== -->
-  <h2 class="section">一、先回答最關鍵的疑問</h2>
+<nav>
+  <ul>
+    <li><a href="#jiagan">108課綱</a></li>
+    <li><a href="#years">逐年分析</a></li>
+    <li><a href="#pattern">規律解析</a></li>
+    <li><a href="#charts">統計圖表</a></li>
+    <li><a href="#predict">20大猜題</a></li>
+  </ul>
+</nav>
 
-  <div class="qa-card">
-    <div class="q">是不是要先有「歷屆試題資料夾」存在，AI 才能分析學生錯誤、設計題目？</div>
-    <p class="a" style="margin-top:14px;">
-      答案是 <strong>「不一定，但有的話會更強。」</strong>
-      因為 AI 分析學生錯誤，本質上不依賴「題庫存在哪裡」，而是依賴「您把學生的考試結果交給我看」。
-      只要您把錯題（題目 + 學生答案 + 正確答案）貼進對話，我立刻就能診斷錯因、找出弱點、設計補強教材——這是 <strong>診斷端</strong>。
-      但若您預先建立一個歷屆試題的資料夾（PDF 或文字檔），就能讓 AI 在「處方端」更聰明：依弱點直接從題庫中挑出對應的題目給學生練習，不用每次都從零生成。
+<div class="container">
+
+<!-- ① 108課綱 -->
+<div class="sec" id="jiagan">
+  <div class="sec-title">🎯 108課綱如何影響學測英文出題？</div>
+
+  <div class="jiagan-box">
+    <h3>什麼是108課綱（十二年國民基本教育課程綱要）？</h3>
+    <p style="font-size:.88rem;color:#1e40af;line-height:1.9">
+      108課綱自2019年推動，強調「核心素養」而非單純知識記憶。英文科核心目標在於培養學生具備
+      <strong>跨文化溝通能力、批判性思考、自主學習與國際視野</strong>。
+      反映在學測命題上，文章選材更強調「真實語境」、「跨域整合」，
+      並要求學生理解文章背後的<strong>文化意涵、科學素養、社會議題</strong>，而非只測試語法記憶。
     </p>
-
-    <div class="verdict">
-      <strong>實務建議：</strong>分兩階段啟動。第一階段（前 1–2 週）先「診斷不囤題」——學生考完後，您把錯題貼進來分析即可。
-      第二階段（第 3 週起）再慢慢累積一個分類好的歷屆題庫資料夾，AI 就能在補強時自動派題、設計仿擬題。
+    <div class="jiagan-grid">
+      <div class="jiagan-item"><div class="ji-title">🌍 國際視野</div><div class="ji-desc">文章多取材自全球真實情境，涵蓋不同文化、不同地區的現象</div></div>
+      <div class="jiagan-item"><div class="ji-title">🔬 科學素養</div><div class="ji-desc">強調能讀懂科普文章並理解其日常應用，不只知道「是什麼」還要能「為什麼」</div></div>
+      <div class="jiagan-item"><div class="ji-title">🤝 社會參與</div><div class="ji-desc">關注永續發展、社會包容、多元文化等議題，連結SDGs全球目標</div></div>
+      <div class="jiagan-item"><div class="ji-title">💡 情境應用</div><div class="ji-desc">從生活情境出發，探討日常物品、習慣、行為背後的科學與人文脈絡</div></div>
+      <div class="jiagan-item"><div class="ji-title">🧩 跨域整合</div><div class="ji-desc">混合題型新增圖表、多文本閱讀，測試整合不同來源資訊的能力</div></div>
+      <div class="jiagan-item"><div class="ji-title">❤️ 人文關懷</div><div class="ji-desc">關注弱勢族群、原住民文化、心理健康，反映「社會公平正義」價值</div></div>
     </div>
   </div>
 
-  <div class="two-col">
-    <div class="col minimal">
-      <h4>方案 A · 最小起步法</h4>
-      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">不囤題庫，學生有錯就貼上來</p>
-      <ul>
-        <li>學生交卷後，您拍照/打字貼上錯題</li>
-        <li>AI 立即標籤化錯因、產出弱點分析</li>
-        <li>AI 依弱點 <strong>即時生成</strong>仿擬題與教材</li>
-        <li>優點：零準備、可立刻啟動</li>
-        <li>限制：題目來源依賴 AI 即時生成，量體有限</li>
-      </ul>
-    </div>
-    <div class="col full">
-      <h4>方案 B · 題庫加持法</h4>
-      <p style="font-size:13.5px;color:var(--muted);margin-top:6px;">先建立歷屆試題資料夾，再啟動</p>
-      <ul>
-        <li>把 105–114 學測 + 模擬考依題型分類存檔</li>
-        <li>AI 分析錯因後，<strong>自動從題庫挑題</strong>，不用生成</li>
-        <li>可做「相似題追蹤」：發現他長句拆解弱，立即派 20 題真題</li>
-        <li>優點：題目品質高（真題）、可橫向比較</li>
-        <li>需要時間建檔（建議週末一次性整理 2–3 小時）</li>
-      </ul>
-    </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">64</div><div class="stat-lbl">108–115年總篇數</div></div>
+    <div class="stat"><div class="stat-num">25%</div><div class="stat-lbl">歷史文化佔比（最大類）</div></div>
+    <div class="stat"><div class="stat-num">48%</div><div class="stat-lbl">廣義科普類（含健康/動物/科技/環保）</div></div>
+    <div class="stat"><div class="stat-num">111年</div><div class="stat-lbl">新制施行（新增篇章結構+混合題型）</div></div>
+    <div class="stat"><div class="stat-num">9篇</div><div class="stat-lbl">日本相關主題（最多國家）</div></div>
+    <div class="stat"><div class="stat-num">0次</div><div class="stat-lbl">重複主題（無任何題材重複出現）</div></div>
   </div>
-
-  <!-- ====== 二、用樹狀圖看學生的能力結構 ====== -->
-  <h2 class="section green">二、用樹狀圖看學生的能力結構</h2>
-  <p>
-    高三學測的英文能力，不是一個單一指標，而是一棵<strong>分層的樹</strong>。
-    AI 分析學生時，會把每一道錯題「掛」到這棵樹的某個葉子上，
-    一份考卷分析完，學生哪些枝幹弱、哪些葉子掉光，就一目瞭然。
-  </p>
-
-  <div class="tree-wrap">
-    <div class="tree">
-      <ul>
-        <li>
-          <div class="node root">學測英文能力樹</div>
-          <ul>
-            <li>
-              <div class="node l1">語言基底層</div>
-              <ul>
-                <li><div class="node l2">單字認識率<small>核心 4500 字</small></div></li>
-                <li><div class="node l2">一字多義<small>義項辨識</small></div></li>
-                <li><div class="node l2">搭配詞<small>collocation</small></div></li>
-                <li><div class="node l2">詞性判斷<small>n. v. adj.</small></div></li>
-              </ul>
-            </li>
-            <li>
-              <div class="node l1">句構語法層</div>
-              <ul>
-                <li><div class="node l2">時態語態<small>12 時態</small></div></li>
-                <li><div class="node l2">子句連接<small>關代/連接詞</small></div></li>
-                <li><div class="node l2">分詞構句<small>-ing / -ed</small></div></li>
-                <li><div class="node l2">假設倒裝<small>進階句型</small></div></li>
-              </ul>
-            </li>
-            <li>
-              <div class="node l1">篇章邏輯層</div>
-              <ul>
-                <li><div class="node l2">轉折詞敏感<small>however 等</small></div></li>
-                <li><div class="node l2">指代詞回指<small>it/this/they</small></div></li>
-                <li><div class="node l2">段落功能<small>主旨/支持/反駁</small></div></li>
-                <li><div class="node l2">推論能力<small>言外之意</small></div></li>
-              </ul>
-            </li>
-            <li>
-              <div class="node l1">輸出表達層</div>
-              <ul>
-                <li><div class="node l2">中譯英句構<small>主動詞對齊</small></div></li>
-                <li><div class="node l2">道地用字<small>避中式英文</small></div></li>
-                <li><div class="node l2">作文結構<small>起承轉合</small></div></li>
-                <li><div class="node l2">混合題重組<small>摘要改寫</small></div></li>
-              </ul>
-            </li>
-            <li>
-              <div class="node l1">應試策略層</div>
-              <ul>
-                <li><div class="node l2">時間配速<small>各題型秒數</small></div></li>
-                <li><div class="node l2">選項陷阱<small>部分對辨識</small></div></li>
-                <li><div class="node l2">假對題<small>蒙對標★</small></div></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <p style="font-size:14.5px; color:var(--muted);">
-    <strong>怎麼讀這棵樹？</strong>每位學生考完一份卷後，AI 會在這 19 個葉節點上各打一個分（例：紅 = 弱、黃 = 普通、綠 = 強）。
-    跑完 3 份考卷後，學生個人的「弱枝」就會穩定浮現——也許他語言基底層全綠，但篇章邏輯層全紅，那就知道補強方向是<strong>連接詞 + 指代 + 推論</strong>，
-    而不是無差別地多背單字。
-  </p>
-
-  <!-- ====== 三、AI 的五步分析流程 ====== -->
-  <h2 class="section blue">三、AI 分析學生的五步流程</h2>
-  <p>從學生交考卷到產出個人化教材，整個流程是這樣走的：</p>
-
-  <div class="flow">
-    <div class="step">
-      <div class="num">1</div>
-      <h5>原始輸入</h5>
-      <p>您貼上學生的<br>題目 / 答案 / 正解 / 翻譯</p>
-    </div>
-    <div class="step">
-      <div class="num">2</div>
-      <h5>錯因標籤化</h5>
-      <p>每題掛到能力樹的<br>某個葉節點</p>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <h5>能力熱力圖</h5>
-      <p>累積後產生個人<br>強弱分布視覺化</p>
-    </div>
-    <div class="step">
-      <div class="num">4</div>
-      <h5>處方設計</h5>
-      <p>依弱點選一週主題<br>自動產生教材</p>
-    </div>
-    <div class="step">
-      <div class="num">5</div>
-      <h5>驗收回饋</h5>
-      <p>下週測驗 → 比對<br>熱力圖變化</p>
-    </div>
-  </div>
-
-  <h3>每一步具體在做什麼？</h3>
-
-  <table class="tag-table">
-    <tr>
-      <th>步驟 1<br>原始輸入</th>
-      <td>
-        您只需要把以下三樣丟進對話即可：<br>
-        <code>題目原文</code><code>學生選的答案</code><code>正確答案</code><br>
-        如果有翻譯（中翻英 / 英翻中題），把學生寫的版本也貼上來。題型不限——單字、綜測、文選、篇結、閱測、混合題、翻譯、作文都可以。
-      </td>
-    </tr>
-    <tr>
-      <th>步驟 2<br>錯因標籤化</th>
-      <td>
-        AI 會逐題分析「他為什麼錯」，並貼上 1–2 個標籤。例如：<br>
-        <code>單字｜一字多義</code><code>句構｜分詞構句</code><code>篇章｜轉折詞忽略</code><br>
-        每一題不只記「錯了」，而是記「錯在哪一根筋」。這是診斷的核心。
-      </td>
-    </tr>
-    <tr>
-      <th>步驟 3<br>能力熱力圖</th>
-      <td>
-        累積 3 份考卷後，AI 會在能力樹的 19 個葉節點上各打一個顏色分。
-        產出一張個人化的「弱點地圖」，並寫下文字診斷：<br>
-        <em>「該生語言基底層整體穩定，但篇章邏輯層的『轉折詞敏感』與『指代詞回指』為主要失分來源，建議優先補強。」</em>
-      </td>
-    </tr>
-    <tr>
-      <th>步驟 4<br>處方設計</th>
-      <td>
-        AI 會依弱點，用「7 天密集型」或「4 週循環型」結構，自動產生：<br>
-        <code>每日學習主題</code><code>對應例句</code><code>練習題</code><code>檢核點</code><br>
-        如果您有歷屆試題資料夾，AI 會優先從中派發真題；如果沒有，AI 會即時生成仿擬題。
-      </td>
-    </tr>
-    <tr>
-      <th>步驟 5<br>驗收回饋</th>
-      <td>
-        7 天 / 30 天後，學生再做一份考卷，您把錯題再貼進來。
-        AI 會比對「上次的弱點 vs 這次的錯誤」，告訴您：哪些葉節點從紅變綠（補強成功）、哪些仍紅（需換策略）、有沒有出現新弱點。
-      </td>
-    </tr>
-  </table>
-
-  <!-- ====== 四、實際對話會長什麼樣 ====== -->
-  <h2 class="section yellow">四、實際對話範例：學生貼上一題後會怎樣？</h2>
-  <p>用一個真實情境讓您先看看流程的「肉感」。</p>
-
-  <div class="demo">
-    <div class="demo-title">情境一 · 單一錯題快速診斷</div>
-
-    <div class="bubble user">
-      <div class="who">老師（您）</div>
-      這題學生錯了，幫我看：<br><br>
-      <strong>原題：</strong>Despite ______ very tired, she insisted on finishing the report.<br>
-      (A) be　(B) being　(C) was　(D) been<br>
-      <strong>學生答：</strong>(A)　<strong>正解：</strong>(B)
-    </div>
-
-    <div class="bubble ai">
-      <div class="who">AI 回覆</div>
-      <strong>錯因標籤：</strong><span class="badge">句構｜介系詞後接動名詞</span><span class="badge green">分詞構句基礎</span><br>
-      <strong>診斷：</strong>學生對「despite 是介系詞而非連接詞」的概念不清。
-      他把 despite 當成 although 處理，所以填了原形動詞 be。
-      實際上 despite 後面只能接<strong>名詞 / 動名詞 / 名詞片語</strong>，因此正解是 being。<br>
-      <strong>建議補強：</strong>下週安排 1 天「despite / in spite of vs although / though」對比練習，搭配 10 題即時生成的綜測題鞏固。
-    </div>
-  </div>
-
-  <div class="demo">
-    <div class="demo-title">情境二 · 整份考卷批次分析</div>
-
-    <div class="bubble user">
-      <div class="who">老師（您）</div>
-      我把這份學測模擬考的所有錯題拍照上傳給您（共 12 題），請幫我做完整診斷。
-    </div>
-
-    <div class="bubble ai">
-      <div class="who">AI 回覆（節錄）</div>
-      已分析 12 題錯題。<br>
-      <strong>錯因分布（Top 3）：</strong><br>
-      1. <span class="badge">篇章｜轉折詞忽略</span> 4 題（佔 33%）— 這是主要失分點<br>
-      2. <span class="badge">單字｜一字多義</span> 3 題（佔 25%）<br>
-      3. <span class="badge">句構｜分詞構句</span> 2 題（佔 17%）<br><br>
-      <strong>診斷：</strong>該生語言基底尚可，但「閱測中的轉折邏輯」與「字彙的義項彈性」是兩大瓶頸。
-      建議下週走「篇章邏輯週」課程，內容包含 however / nevertheless / on the contrary 等 12 個轉折詞家族整理 + 5 篇學測閱測實戰。<br><br>
-      要不要我直接幫您產出這一週的教材？
-    </div>
-  </div>
-
-  <hr class="dotted">
-
-  <!-- ====== 五、200 天總體規劃節奏 ====== -->
-  <h2 class="section purple">五、200 天的整體節奏</h2>
-  <p>把 200 天切成四個階段，每階段任務不同，AI 在不同階段扮演不同角色：</p>
-
-  <div class="gantt">
-    <div class="row">
-      <div class="label">第 1–60 天<br><small style="color:var(--muted);font-weight:400;">基礎重建期</small></div>
-      <div class="bar-track">
-        <div class="bar" style="left:0%; width:30%; background:var(--accent1);">診斷 + 補洞，質重於量</div>
-      </div>
-      <div class="days">60 天</div>
-    </div>
-    <div class="row">
-      <div class="label">第 61–120 天<br><small style="color:var(--muted);font-weight:400;">主題密集期</small></div>
-      <div class="bar-track">
-        <div class="bar" style="left:30%; width:30%; background:var(--accent2);">每週一主題，建立架構</div>
-      </div>
-      <div class="days">60 天</div>
-    </div>
-    <div class="row">
-      <div class="label">第 121–180 天<br><small style="color:var(--muted);font-weight:400;">題型實戰期</small></div>
-      <div class="bar-track">
-        <div class="bar" style="left:60%; width:30%; background:var(--accent3);">每週兩份完整模考 + 計時</div>
-      </div>
-      <div class="days">60 天</div>
-    </div>
-    <div class="row">
-      <div class="label">第 181–200 天<br><small style="color:var(--muted);font-weight:400;">手感維持期</small></div>
-      <div class="bar-track">
-        <div class="bar" style="left:90%; width:10%; background:var(--accent4);">每日小份量</div>
-      </div>
-      <div class="days">20 天</div>
-    </div>
-  </div>
-
-  <div class="card-grid">
-    <div class="mini-card">
-      <div class="icon">🔍</div>
-      <h5>第一階段</h5>
-      <p>AI 主要在做「診斷」。每週分析 1 份考卷，跑出能力樹熱力圖。重點是建立學生個人錯題資料庫。</p>
-    </div>
-    <div class="mini-card">
-      <div class="icon">📚</div>
-      <h5>第二階段</h5>
-      <p>AI 主要在「設計教材」。依上一階段累積的弱點，產出每週主題教材包，從題庫派題或即時生成。</p>
-    </div>
-    <div class="mini-card">
-      <div class="icon">⏱️</div>
-      <h5>第三階段</h5>
-      <p>AI 主要在「模考批改 + 計時建議」。每週兩份完整學測題模考，AI 分析配速、陷阱辨識。</p>
-    </div>
-    <div class="mini-card">
-      <div class="icon">💡</div>
-      <h5>第四階段</h5>
-      <p>AI 主要在「心態維持 + 錯題本回顧」。每天一份小題，避免疲勞。重點不在新學，而在不忘。</p>
-    </div>
-  </div>
-
-  <!-- ====== 六、下一步建議 ====== -->
-  <div class="next-step">
-    <h3>下一步可以這樣啟動</h3>
-    <ol>
-      <li>
-        <strong>本週馬上能做的：</strong>挑一位學生最近的一份學測模擬考錯題，貼進對話，我幫您跑一次「五步流程」的完整 demo——讓您看到診斷出來會長什麼樣。
-      </li>
-      <li>
-        <strong>建議週末做的：</strong>把 110–114 學測題（5 屆）依題型分類存進一個資料夾——這就是您的「題庫資產」，未來 200 天會反覆用到。
-      </li>
-      <li>
-        <strong>第二週可以做的：</strong>請我幫您產出一份「錯題追蹤工作表」（xlsx），含分類下拉選單 + 自動統計圖，讓您日常記錄錯題時不用手動分類。
-      </li>
-      <li>
-        <strong>持續做的：</strong>每兩週讓我跑一次「能力樹熱力圖更新」，比對學生補強成效，動態調整下兩週方向。
-      </li>
-    </ol>
-  </div>
-
 </div>
+
+<!-- ② 逐年分析 -->
+<div class="sec" id="years">
+  <div class="sec-title">📅 108–115年 逐年題目主題一覽</div>
+
+  <div class="year-grid">
+
+    <!-- 108年 -->
+    <div class="year-card y108">
+      <h3>📘 108年 <span style="color:#64748b;font-weight:400;font-size:.85rem">（課綱元年，舊制最後3年之一）</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>愚人節的起源與傳統</strong><small>歷史文化｜日曆改革引發的諷刺節日</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合21-25</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>鳳梨的歷史地位與象徵</strong><small>歷史文化｜熱帶水果在西方的奢侈象徵</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合26-30</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>飲食眼鏡與視覺欺騙</strong><small>科技工程｜科技改變飲食感知的研究</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意31-40</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>父親失憶症的家庭故事</strong><small>社會心理｜記憶喪失對家庭的情感影響</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀41-44</span><span class="cat-dot" style="background:#22c55e"></span><div class="article-topic"><strong>神仙魚的顏色生態</strong><small>動物生態｜珊瑚礁魚類的鮮豔體色功能</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀45-48</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>北美原住民圖騰柱文化</strong><small>歷史文化｜西北岸原住民的象徵雕刻傳統</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀49-52</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>耳蟲：音樂纏繞大腦的原因</strong><small>科普自然｜自動啟動的腦部音樂記憶機制</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀53-56</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>殺蟲劑炸彈的室內危害</strong><small>健康醫學｜家用「bug bomb」的化學毒性風險</small></div></div>
+    </div>
+
+    <!-- 109年 -->
+    <div class="year-card y109">
+      <h3>📗 109年 <span style="color:#64748b;font-weight:400;font-size:.85rem">（COVID-19爆發元年）</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>海娜刺青的古老傳統</strong><small>歷史文化｜中東/南亞的天然植物染料紋身</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合21-25</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>植物「打噴嚏」噴花粉</strong><small>科普自然｜植物噴射花粉傳播疾病的機制</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合26-30</span><span class="cat-dot" style="background:#d97706"></span><div class="article-topic"><strong>藍色星期一的行銷起源</strong><small>商業經濟｜旅遊公司製造「最憂鬱一天」的商業手法</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意31-40</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>酒窩的基因遺傳機制</strong><small>科普自然｜面部特徵與遺傳學的科普說明</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀41-44</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>夾腳拖鞋的全球起源史</strong><small>歷史文化｜最簡單的鞋子在各文明的蹤跡</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀45-48</span><span class="cat-dot" style="background:#d97706"></span><div class="article-topic"><strong>海洋船運：全球貿易的命脈</strong><small>商業經濟｜航運如何支撐全球供應鏈</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀49-52</span><span class="cat-dot" style="background:#f59e0b"></span><div class="article-topic"><strong>橄欖油的地中海製作工藝</strong><small>生活飲食｜傳統石磨榨油到現代工業的演變</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀53-56</span><span class="cat-dot" style="background:#22c55e"></span><div class="article-topic"><strong>日本火車用狗叫聲防鹿入侵</strong><small>動物生態｜人類科技應對野生動物的創新方案</small></div></div>
+    </div>
+
+    <!-- 110年 -->
+    <div class="year-card y110">
+      <h3>📙 110年</h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#059669"></span><div class="article-topic"><strong>巴塞隆納鴿子避孕計畫</strong><small>環保議題｜城市管理以人道方式控制野生動物族群</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合21-25</span><span class="cat-dot" style="background:#e67e22"></span><div class="article-topic"><strong>被閃電擊中七次的公園管理員</strong><small>人物傳記｜Roy Sullivan的離奇紀錄與科學推測</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合26-30</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>熱帶地區的高山冰川奇觀</strong><small>科普自然｜赤道附近山頂積雪的地理氣候解釋</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意31-40</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>碎片時間的隱形運動法</strong><small>健康醫學｜日常生活中不自覺融入運動的策略</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀41-44</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>墨西哥仙人掌的文化象徵</strong><small>歷史文化｜刺梨仙人掌為何出現在國旗上</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀45-48</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>護照的歷史起源</strong><small>歷史文化｜從古代「安全通行文書」到現代護照的演變</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀49-52</span><span class="cat-dot" style="background:#e67e22"></span><div class="article-topic"><strong>班傑明富蘭克林的多才多藝</strong><small>人物傳記｜政治家兼科學家的風箏實驗與印刷出版</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀53-56</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>身障者無障礙主題樂園</strong><small>社會心理｜Morgan's Wonderland的社會包容設計</small></div></div>
+    </div>
+
+    <!-- 111年 -->
+    <div class="year-card y111">
+      <h3>📒 111年 <span class="new-badge">新制</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合11-15</span><span class="cat-dot" style="background:#9b59b6"></span><div class="article-topic"><strong>書城小鎮的文化保存現象</strong><small>藝術文學｜威爾斯Hay-on-Wye二手書城的興起</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>飛機圓角窗戶的工程原因</strong><small>科技工程｜金屬疲勞與氣壓讓窗戶必須是圓的</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意21-30</span><span class="cat-dot" style="background:#e67e22"></span><div class="article-topic"><strong>特技替身演員的職業介紹</strong><small>人物傳記｜好萊塢特技人員的訓練與安全措施</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-para">篇章31-34</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>日本盂蘭盆節（Obon）傳統 <span class="new-badge">首次出現</span></strong><small>歷史文化｜日本祭祖夏季節慶的起源與習俗</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀35-38</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>東非馬賽人的傳統文化</strong><small>歷史文化｜肯亞坦桑尼亞遊牧民族的服飾與儀式</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀39-42</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>工地安全帽的演化歷史</strong><small>科技工程｜從鋁製到ABS塑料的頭部防護革命</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀43-46</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>斑馬魚的醫學研究價值</strong><small>科普自然｜透明胚胎讓斑馬魚成為理想研究模型</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-mixed">混合47-49</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>奧運難民代表隊的成立 <span class="new-badge">首次出現</span></strong><small>社會心理｜IOC創立難民運動員代表隊的人道意義</small></div></div>
+    </div>
+
+    <!-- 112年 -->
+    <div class="year-card y112">
+      <h3>📓 112年 <span class="new-badge">新制</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合11-15</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>樹冠羞避（Crown Shyness）</strong><small>科普自然｜森林樹冠相互避讓的神秘自然現象</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>太空重力與太空人「查理布朗效應」</strong><small>科技工程｜失重導致體液上移造成臉部浮腫</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意21-30</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>補水的科學：水、牛奶、椰子水比較</strong><small>健康醫學｜不同場景下最佳補水飲料的生理學</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-para">篇章31-34</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>聯覺（Synesthesia）的神經科學</strong><small>科普自然｜聽到數字看到顏色的奇特感知現象</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀35-38</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>呼拉圈的跨文明歷史</strong><small>歷史文化｜從古埃及到夏威夷的圈環玩樂文化</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀39-42</span><span class="cat-dot" style="background:#22c55e"></span><div class="article-topic"><strong>亞洲象與茶園的生死危機</strong><small>動物生態｜印度阿薩姆茶園排水溝成大象陷阱</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀43-46</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>桑吉巴的香料貿易中心地位</strong><small>歷史文化｜東非島嶼作為絲路與香料路的十字路口</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-mixed">混合47-50</span><span class="cat-dot" style="background:#f59e0b"></span><div class="article-topic"><strong>植物性肉排的評價（聊天室多方觀點）</strong><small>生活飲食｜植物肉的環保主張vs實際消費者體驗</small></div></div>
+    </div>
+
+    <!-- 113年 -->
+    <div class="year-card y113">
+      <h3>📔 113年 <span class="new-badge">新制</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合11-15</span><span class="cat-dot" style="background:#d97706"></span><div class="article-topic"><strong>神秘購物者（Mystery Shopper）</strong><small>商業經濟｜消費者臥底評比服務品質的機制</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>工業革命的「人工鬧鐘」職業</strong><small>歷史文化｜Knocker-up用豌豆射擊敲窗喚醒工人的奇特職業</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意21-30</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>日本「風之電話」的哀悼療癒</strong><small>社會心理｜海嘯後讓生者與亡者「通話」的治癒裝置</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-para">篇章31-34</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>受傷時應繼續運動？新觀念</strong><small>健康醫學｜推翻「休息才能復原」的運動傷害新研究</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀35-38</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>魔鬼氈（Velcro）的仿生發明</strong><small>科技工程｜工程師觀察牛蒡刺鉤而發明的革命性扣具</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀39-42</span><span class="cat-dot" style="background:#e67e22"></span><div class="article-topic"><strong>畫家莫蘭如何催生美國國家公園</strong><small>人物傳記｜藝術如何直接影響政策創造黃石公園</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀43-46</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>冰島100%魚利用與魚皮移植</strong><small>科技工程｜零浪費漁業到燒傷醫療的跨域突破</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-mixed">混合47-50</span><span class="cat-dot" style="background:#22c55e"></span><div class="article-topic"><strong>寒鴉與龜蟻的群體智慧行為</strong><small>動物生態｜兩種動物應對威脅的集體決策機制對比</small></div></div>
+    </div>
+
+    <!-- 114年 -->
+    <div class="year-card y114">
+      <h3>📕 114年 <span class="new-badge">新制</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合11-15</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>世界咖啡館對話模式</strong><small>社會心理｜促進群體知識共享的圓桌對話方法論</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>暈車的生理機制</strong><small>健康醫學｜內耳感知與視覺訊號不一致導致暈動症</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意21-30</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>巴黎聖母院大火與修復工程</strong><small>歷史文化｜2019年火災後的文化遺產重建挑戰</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-para">篇章31-34</span><span class="cat-dot" style="background:#f59e0b"></span><div class="article-topic"><strong>膠囊旅館的日本起源與全球擴張</strong><small>生活飲食｜極簡主義住宿設計的社會背景</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀35-38</span><span class="cat-dot" style="background:#2563eb"></span><div class="article-topic"><strong>紅綠燈的發明者與歷史</strong><small>科技工程｜Garrett Morgan如何發明現代交通號誌</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀39-42</span><span class="cat-dot" style="background:#3b82f6"></span><div class="article-topic"><strong>恐懼與恐怖電影的科學</strong><small>科普自然｜腎上腺素、多巴胺讓人「享受」恐懼的神經機制</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀43-46</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>俄羅斯飲酒文化與社會問題</strong><small>社會心理｜酒精依賴如何影響一個國家的文化與政策</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-mixed">混合47-50</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>現代動物園的倫理演變</strong><small>社會心理｜從展示到保育：動物園定位的社會辯論</small></div></div>
+    </div>
+
+    <!-- 115年 -->
+    <div class="year-card y115">
+      <h3>📖 115年 <span class="new-badge">新制</span></h3>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合11-15</span><span class="cat-dot" style="background:#22c55e"></span><div class="article-topic"><strong>白犀牛用糞便當「社群媒體」</strong><small>動物生態｜糞便化學訊號傳遞年齡/生殖狀態資訊</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-cloze">綜合16-20</span><span class="cat-dot" style="background:#f59e0b"></span><div class="article-topic"><strong>廣東點心的絲路飲食文化史</strong><small>生活飲食｜茶館文化到小點心的歷史溯源</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-vocab">文意21-30</span><span class="cat-dot" style="background:#ef4444"></span><div class="article-topic"><strong>午睡對大腦的科學好處</strong><small>健康醫學｜小睡減緩腦萎縮、提升記憶與認知</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-para">篇章31-34</span><span class="cat-dot" style="background:#0891b2"></span><div class="article-topic"><strong>微笑的跨文化差異意義</strong><small>社會心理｜微笑在不同文化中的歷史演變與解讀</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀35-38</span><span class="cat-dot" style="background:#e67e22"></span><div class="article-topic"><strong>沙克爾頓南極探險傳奇</strong><small>人物傳記｜Endurance號沉船後27人全員生還的奇蹟</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀39-42</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>螺旋樓梯的建築防禦歷史</strong><small>歷史文化｜中世紀城堡螺旋梯逆時針設計的軍事用途</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-read">閱讀43-46</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>地圖「北方在上」的歷史演變</strong><small>歷史文化｜從南方朝上到歐洲中心化的製圖史</small></div></div>
+      <div class="article-row"><span class="sec-badge badge-mixed">混合47-50</span><span class="cat-dot" style="background:#8b5cf6"></span><div class="article-topic"><strong>東台灣原住民特色商圈（Wonder Village）</strong><small>歷史文化｜花蓮原住民部落結合傳統與現代商業的案例</small></div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ③ 規律解析 -->
+<div class="sec" id="pattern">
+  <div class="sec-title">🔍 108課綱後出題規律解析</div>
+
+  <div class="pattern-grid">
+    <div class="pattern-card">
+      <div class="pattern-icon">🗓️</div>
+      <div class="pattern-title">規律一：「日常物品有驚人起源」公式</div>
+      <ul class="pattern-list">
+        <li>夾腳拖(109)、幸運餅乾(107)、迴紋針(104)、護照(110)、呼拉圈(112)、紅綠燈(114)、螺旋樓梯(115)</li>
+        <li>每年至少1篇探討「你以為普通的東西，其實有豐富的歷史」</li>
+        <li>108課綱連結：生活情境出發，培養「好奇心與探索精神」</li>
+        <li>預測方向：眼鏡、雨傘、拉鍊、鉛筆橡皮擦、手錶的起源</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🦁</div>
+      <div class="pattern-title">規律二：動物行為每年必考且越來越奇特</div>
+      <ul class="pattern-list">
+        <li>火車驅鹿(109)、鴿子避孕(110)、斑馬魚研究(111)、象群茶園(112)、寒鴉龜蟻(113)、犀牛糞(115)</li>
+        <li>近年偏好「動物與人類社會互動」或「動物集體智慧」</li>
+        <li>108課綱連結：環境永續、生物多樣性、SDGs</li>
+        <li>預測：章魚智能、候鳥導航、蜜蜂舞蹈語言、螢火蟲發光</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🧠</div>
+      <div class="pattern-title">規律三：身體/大腦科學越來越熱門</div>
+      <ul class="pattern-list">
+        <li>耳蟲(108)、酒窩遺傳(109)、暈動症(114)、聯覺(112)、午睡(115)、補水科學(112)</li>
+        <li>選題偏好「你身上的事你卻不知道為什麼」的驚喜角度</li>
+        <li>108課綱連結：健康素養、科學探究、批判性思維</li>
+        <li>預測：打哈欠傳染性、皮膚記憶、氣味與情緒連結</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🌍</div>
+      <div class="pattern-title">規律四：弱勢族群/社會包容愈加重視</div>
+      <ul class="pattern-list">
+        <li>無障礙樂園(110)、難民奧運隊(111)、動物園倫理(114)、Wonder Village原住民(115)</li>
+        <li>新制後混合題型常出現「多元觀點比較」的社會議題</li>
+        <li>108課綱連結：社會參與、多元文化尊重、人文關懷</li>
+        <li>預測：老齡化社會設計、移工文化融合、視障者輔助科技</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🔬</div>
+      <div class="pattern-title">規律五：環保/永續議題仍被低度利用</div>
+      <ul class="pattern-list">
+        <li>108-115年中明確環保主題僅有：鴿子避孕(110)、象群茶園(112)、100%Fish(113)</li>
+        <li>SDGs是108課綱核心，但考題出現不多，代表補齊空間大</li>
+        <li>植物性肉排(112)切入食物科技+環保，顯示出題方向</li>
+        <li>預測：珊瑚礁復育、城市熱島效應、碳捕捉技術、零廢棄生活</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🎭</div>
+      <div class="pattern-title">規律六：混合題型偏愛「比較與對比」</div>
+      <ul class="pattern-list">
+        <li>難民運動員(111)→多方報導視角；植物肉聊天室(112)→正反意見；寒鴉vs龜蟻(113)→兩種動物對比；動物園演變(114)→今昔比較；Wonder Village(115)→多店家介紹</li>
+        <li>圖文整合是混合題型新趨勢（115年含地圖、圖示）</li>
+        <li>預測：比較兩種解決方案、兩種文化習俗、問卷/統計圖表閱讀</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">🏛️</div>
+      <div class="pattern-title">規律七：文化遺產保存是固定題材</div>
+      <ul class="pattern-list">
+        <li>圖騰柱(108)、Obon(111)、Maasai(111)、呼拉圈起源(112)、Zanzibar(112)、聖母院(114)、螺旋梯(115)、地圖史(115)</li>
+        <li>歷史文化是最大類別，幾乎每年3篇以上</li>
+        <li>偏好「有空間故事感」的主題，讓讀者彷彿身歷其境</li>
+        <li>預測：某著名建築的修復故事、某傳統工藝的復興</li>
+      </ul>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-icon">⚠️</div>
+      <div class="pattern-title">規律八：這些類別「過去8年近乎缺席」</div>
+      <ul class="pattern-list">
+        <li>❌ 語言學習/雙語大腦研究 → 0篇</li>
+        <li>❌ 氣候變遷主文章（非配角） → 幾乎0篇</li>
+        <li>❌ 數位科技倫理（AI、社群媒體負面影響） → 0篇</li>
+        <li>❌ 心理健康/青少年焦慮 → 0篇（但已是全球議題）</li>
+        <li>❌ 太空探索（非工程技術角度） → 0篇</li>
+        <li>→ 這些都是116年高機率補齊的主題！</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 圖表 -->
+<div class="sec" id="charts">
+  <div class="sec-title">📊 108–115年統計圖表</div>
+  <div class="chart-row">
+    <div class="chart-box">
+      <h4>各主題類別出現次數（108-115年）</h4>
+      <div class="chart-h"><canvas id="catChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>各題型主題分布（篇數）</h4>
+      <div class="chart-h"><canvas id="secChart"></canvas></div>
+    </div>
+  </div>
+  <div class="chart-row" style="margin-top:1.2rem">
+    <div class="chart-box">
+      <h4>科普類 vs 人文類 逐年分布</h4>
+      <div class="chart-h"><canvas id="sciHumChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>新制(111+)各題型主題佔比</h4>
+      <div class="chart-h"><canvas id="newFormatChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 20大猜題 -->
+<div class="sec" id="predict">
+  <div class="sec-title">🔮 116年20大猜題主題預測</div>
+
+  <div class="pred-intro">
+    <h3>預測方法說明</h3>
+    <p>
+      ① <strong>缺席補齊原則</strong>：過去3-5年內未出現的主題，補齊機率高<br>
+      ② <strong>108課綱對齊</strong>：符合素養導向、跨域、社會關懷的主題優先<br>
+      ③ <strong>時事相關性</strong>：2024-2025年全球熱門議題更有機會入題<br>
+      ④ <strong>出題結構需求</strong>：依各題型（綜合/篇章/閱讀/混合）所需文章特性篩選
+    </p>
+  </div>
+
+  <div class="pred-tabs">
+    <button class="pred-tab on" data-cat="all" onclick="filterPred('all',this)">全部20題</button>
+    <button class="pred-tab" data-cat="科普自然" onclick="filterPred('科普自然',this)">科普自然</button>
+    <button class="pred-tab" data-cat="健康醫學" onclick="filterPred('健康醫學',this)">健康醫學</button>
+    <button class="pred-tab" data-cat="動物生態" onclick="filterPred('動物生態',this)">動物生態</button>
+    <button class="pred-tab" data-cat="歷史文化" onclick="filterPred('歷史文化',this)">歷史文化</button>
+    <button class="pred-tab" data-cat="社會心理" onclick="filterPred('社會心理',this)">社會心理</button>
+    <button class="pred-cat" data-cat="科技工程" onclick="filterPred('科技工程',this)" style="padding:.45rem 1rem;border-radius:20px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:.83rem;font-weight:600;transition:.2s">科技工程</button>
+    <button class="pred-tab" data-cat="環保永續" onclick="filterPred('環保永續',this)">環保永續</button>
+  </div>
+
+  <div class="pred-cards" id="predCards"></div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  本報告依據108-115年共8年64篇學測英文試題文本分析生成 | 108課綱素養導向 | 116年猜題參考用途
+</footer>
+
+<script>
+// ─── CHART DATA ───────────────────────────────────────────────
+const CAT_DATA = {
+  "歷史文化": {n:16,color:"#8b5cf6"},
+  "科普自然": {n:8,color:"#3b82f6"},
+  "社會心理": {n:8,color:"#0891b2"},
+  "科技工程": {n:7,color:"#2563eb"},
+  "健康醫學": {n:6,color:"#ef4444"},
+  "動物生態": {n:6,color:"#22c55e"},
+  "人物傳記": {n:5,color:"#e67e22"},
+  "生活飲食": {n:4,color:"#f59e0b"},
+  "商業經濟": {n:3,color:"#d97706"},
+  "環保議題": {n:2,color:"#059669"},
+  "藝術文學": {n:1,color:"#9b59b6"}
+};
+const SEC_DATA = {
+  "綜合測驗": {n:16,color:"#dbeafe"},
+  "文意選填": {n:8,color:"#dcfce7"},
+  "篇章結構(111+)": {n:5,color:"#fef9c3"},
+  "閱讀測驗": {n:24,color:"#f3e8ff"},
+  "混合題型(111+)": {n:5,color:"#fee2e2"}
+};
+
+// Cat chart
+new Chart(document.getElementById("catChart"),{
+  type:"bar",
+  data:{labels:Object.keys(CAT_DATA),datasets:[{data:Object.values(CAT_DATA).map(x=>x.n),backgroundColor:Object.values(CAT_DATA).map(x=>x.color+"cc"),borderRadius:5}]},
+  options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{beginAtZero:true},y:{ticks:{font:{size:11}}}}}
+});
+
+// Sec chart
+new Chart(document.getElementById("secChart"),{
+  type:"doughnut",
+  data:{labels:Object.keys(SEC_DATA),datasets:[{data:Object.values(SEC_DATA).map(x=>x.n),backgroundColor:["#3b82f6","#22c55e","#eab308","#8b5cf6","#ef4444"]}]},
+  options:{plugins:{legend:{position:"bottom",labels:{font:{size:10},boxWidth:12}}}}
+});
+
+// Sci vs Hum
+const YEARS=[108,109,110,111,112,113,114,115];
+const SCI_COUNTS=[3,2,2,2,3,2,2,1]; // science-related per year
+const HUM_COUNTS=[5,6,6,6,5,6,6,7]; // humanistic per year
+new Chart(document.getElementById("sciHumChart"),{
+  type:"bar",
+  data:{labels:YEARS,datasets:[
+    {label:"科普/技術/生態類",data:SCI_COUNTS,backgroundColor:"#3b82f6",stack:"s"},
+    {label:"人文/社會/生活類",data:HUM_COUNTS,backgroundColor:"#f59e0b",stack:"s"}
+  ]},
+  options:{plugins:{legend:{position:"top"}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true}}}
+});
+
+// New format topic mix
+new Chart(document.getElementById("newFormatChart"),{
+  type:"radar",
+  data:{
+    labels:["科普自然","健康醫學","動物生態","歷史文化","社會心理","科技工程","生活飲食","人物傳記"],
+    datasets:[{
+      label:"111-115年新制",data:[4,3,4,5,5,4,3,2],
+      borderColor:"#8b5cf6",backgroundColor:"rgba(139,92,246,.2)"
+    },{
+      label:"108-110年舊制",data:[4,3,2,7,3,3,2,3],
+      borderColor:"#3b82f6",backgroundColor:"rgba(59,130,246,.15)"
+    }]
+  },
+  options:{plugins:{legend:{position:"bottom"}},scales:{r:{beginAtZero:true,ticks:{stepSize:1}}}}
+});
+
+// ─── PREDICTION DATA ──────────────────────────────────────────
+const PREDS = [
+  {
+    num:1, cat:"科普自然", priority:"HIGH",
+    title:"氣味與情緒記憶的神經連結",
+    section:"綜合測驗 或 文意選填",
+    reason:"自耳蟲(108)、聯覺(112)、午睡(115)之後，每年都有一篇「大腦奇科學」；氣味觸發記憶（Proust Effect）尚未出現，且符合「你身上的事你卻不知道為什麼」的命題格式。",
+    angles:["嗅覺為何是最直接通往記憶的感官","創傷記憶與特定氣味的關聯","香氛療法的神經科學依據"],
+    evidence:["耳蟲(108)","聯覺(112)","午睡(115)","暈車(114)"]
+  },
+  {
+    num:2, cat:"動物生態", priority:"HIGH",
+    title:"蜜蜂的「搖擺舞」語言與集體決策",
+    section:"閱讀測驗",
+    reason:"近年動物主題偏向「動物如何溝通或作決策」：犀牛糞便溝通(115)、寒鴉龜蟻對比(113)。蜜蜂的方向舞蹈是動物語言的經典案例，且涉及授粉危機與SDGs，完美符合108課綱環境素養。",
+    angles:["蜜蜂用舞蹈傳遞食物方位的精確機制","蜂群如何「投票」決定新蜂巢位置","授粉危機對全球糧食安全的影響"],
+    evidence:["犀牛糞溝通(115)","寒鴉龜蟻(113)","日本火車驅鹿(109)"]
+  },
+  {
+    num:3, cat:"歷史文化", priority:"HIGH",
+    title:"日常物品起源：拉鍊/眼鏡/鉛筆橡皮擦的發明史",
+    section:"綜合測驗",
+    reason:"「尋常物品驚人起源」已是過去8年最穩定的題型套路（迴紋針104、夾腳拖109、呼拉圈112、紅綠燈114）。113-115年此類題材暫缺，116年高機率回歸。",
+    angles:["拉鍊1913年發明到應用的阻力故事","眼鏡從古羅馬到13世紀義大利的演進","橡皮擦接在鉛筆上是誰的想法（美國19世紀專利）"],
+    evidence:["迴紋針(104)","夾腳拖(109)","呼拉圈(112)","紅綠燈(114)"]
+  },
+  {
+    num:4, cat:"健康醫學", priority:"HIGH",
+    title:"打哈欠傳染性的神經科學機制",
+    section:"綜合測驗 或 文意選填",
+    reason:"108-115年「身體謎題科學解釋」每年穩定出現（耳蟲108、酒窩109、暈車114、午睡115、補水112）。打哈欠為何有傳染性、為何閉眼打哈欠、動物也會打哈欠——這是完美的「驚喜角度+科學機制」文章，且長度適合填空題。",
+    angles:["鏡像神經元與共情打哈欠的關聯","人類打哈欠頻率與疲勞/溫度的關係","動物也會互相傳染打哈欠的研究"],
+    evidence:["耳蟲(108)","酒窩(109)","暈車(114)"]
+  },
+  {
+    num:5, cat:"環保永續", priority:"HIGH",
+    title:"都市農業與垂直農場的崛起",
+    section:"閱讀測驗",
+    reason:"環保/永續是108課綱SDGs的核心，但108-115年「直接以環保為主題」的文章嚴重不足（僅3篇）。垂直農場結合科技+農業+城市糧食安全，是典型的跨域議題，且2023-2025年全球關注度極高，符合命題國際化趨勢。",
+    angles:["城市大樓內的水耕農場如何運作","垂直農場vs傳統農業的資源效率比較","新加坡/荷蘭案例的政策推動"],
+    evidence:["100%Fish(113，環保創新)","鴿子避孕(110，城市生態管理)","植物性肉排(112)"]
+  },
+  {
+    num:6, cat:"社會心理", priority:"HIGH",
+    title:"孤獨感：21世紀的流行病",
+    section:"閱讀測驗 或 混合題型",
+    reason:"2023年美國衛生部長稱孤獨感為「公衛危機」，英國2018年設立「孤獨部長」。社會心理議題近年大量出現（108-115共8篇），且此主題與青少年手機使用、老齡化社會密切相關，符合108課綱「社會參與」核心素養。",
+    angles:["孤獨感對身體健康（免疫、心臟）的科學影響","青少年社群媒體使用與孤獨感的悖論","各國政府如何制定孤獨對策"],
+    evidence:["無障礙樂園(110，社會包容)","難民奧運隊(111)","動物園倫理(114)","風之電話(113)"]
+  },
+  {
+    num:7, cat:"科技工程", priority:"HIGH",
+    title:"仿生設計：大自然啟發的工程革命",
+    section:"篇章結構 或 閱讀測驗",
+    reason:"魔鬼氈(113)是仿生發明的代表作，已出題。但仿生設計是更大範疇，包含翠鳥啟發的新幹線、蜘蛛絲啟發的防彈纖維、鯊魚皮游泳衣等。篇章結構特別適合「例子→原理→應用」的說明文，而仿生設計文章結構清晰，非常適合此題型。",
+    angles:["翠鳥嘴型如何解決日本新幹線音爆問題","壁虎腳趾黏性啟發的乾性膠帶研究","荷葉效應的自潔材料應用"],
+    evidence:["魔鬼氈發明(113)","迴紋針(104)","飛機圓窗(111)"]
+  },
+  {
+    num:8, cat:"歷史文化", priority:"HIGH",
+    title:"某種傳統食物的全球征服史",
+    section:"綜合測驗 或 文意選填",
+    reason:"飲食文化主題穩定出現：洋蔥歷史(106)、幸運餅乾(107)、鳳梨象徵(108)、橄欖油(109)、點心(115)。115年剛出現點心，116年可能換一個「起源故事豐富」的食物，如咖哩的全球征服、番茄從毒物到美食的翻轉、辛香料的政治意義。",
+    angles:["番茄17世紀在歐洲被視為毒物的誤解史","咖哩如何從印度出發征服全世界","辣椒從美洲傳播到亞洲改變飲食的過程"],
+    evidence:["鳳梨象徵(108)","橄欖油(109)","洋蔥歷史(106)","點心(115)"]
+  },
+  {
+    num:9, cat:"科普自然", priority:"MED",
+    title:"候鳥的地磁導航能力",
+    section:"閱讀測驗",
+    reason:"動物導航是尚未出現的科普主題。候鳥能感知地球磁場飛行數千公里，背後涉及量子力學的「量子羅盤」理論，這種「比科幻更神奇的現實」是學測偏愛的題材格式。",
+    angles:["候鳥眼中的地磁感受器如何運作","北極燕鷗每年飛70,000公里的壯舉","氣候變遷導致候鳥遷徙時間錯亂"],
+    evidence:["斑馬魚研究(111)","樹冠羞避(112)","白犀牛(115)"]
+  },
+  {
+    num:10, cat:"社會心理", priority:"MED",
+    title:"雙語/多語大腦的認知優勢研究",
+    section:"文意選填 或 閱讀測驗",
+    reason:"語言學習是108課綱英文科核心，但108-115年幾乎沒有以「語言能力本身」為主題的文章。雙語者延緩阿茲海默症、多語者在決策上的優勢，是「自我相關」（讀英文的考生）且科學依據充足的好題材。",
+    angles:["雙語者比單語者晚4-5年發病失智的研究","學習新語言如何物理性擴大海馬迴","嬰兒自然習得多語言的窗口期"],
+    evidence:["午睡(115，腦科學)","補水(112)","打哈欠預測方向"]
+  },
+  {
+    num:11, cat:"歷史文化", priority:"MED",
+    title:"古代公共建設的驚人工程技術",
+    section:"篇章結構 或 閱讀測驗",
+    reason:"108-115年建築史類型：螺旋樓梯(115)、聖母院修復(114)、圖騰柱(108)。下一個可能是羅馬水道橋的工程原理、萬里長城的軍事邏輯、或馬雅金字塔的天文排列——這些主題有明確的科學+歷史雙重深度。",
+    angles:["羅馬水道橋如何在沒有幫浦下讓水上坡","萬里長城為何無法真正防禦但有文化意義","馬雅金字塔的春分陰影是精確設計"],
+    evidence:["螺旋樓梯(115)","聖母院修復(114)","太空重力(112)"]
+  },
+  {
+    num:12, cat:"動物生態", priority:"MED",
+    title:"章魚的分散式智能：沒有大腦中樞的聰明",
+    section:"閱讀測驗",
+    reason:"章魚在動物認知研究中越來越熱門：會開罐子、認識人類、夢中變色。其神經元2/3分布在手臂的「分散式大腦」設計在2022-2024年科普刊物大量報導，完美符合「令人驚嘆的科學事實」學測格式。",
+    angles:["章魚手臂如何獨立「思考」不需等大腦指令","章魚睡覺時皮膚顏色閃爍暗示在做夢","章魚的3顆心臟與藍色血液的進化原因"],
+    evidence:["寒鴉龜蟻(113，動物智能)","斑馬魚(111)","大象茶園(112)"]
+  },
+  {
+    num:13, cat:"科技工程", priority:"MED",
+    title:"3D列印在醫療的革命性應用",
+    section:"閱讀測驗",
+    reason:"114年太空重力（科技醫學交叉）、113年冰島魚皮移植（另類醫療）顯示命題者喜歡「技術解決醫療問題」的交叉主題。3D列印義肢讓第三世界兒童重新行走、3D列印心臟組織試驗——完美的科技+人文關懷雙重角度。",
+    angles:["3D列印義肢如何讓成本從數萬降至數千元","生物列印：科學家如何用細胞「列印」人體組織","3D列印藥物與個人化醫療的未來"],
+    evidence:["100%Fish(113)","太空人健康(112)","魔鬼氈(113)"]
+  },
+  {
+    num:14, cat:"環保永續", priority:"MED",
+    title:"珊瑚礁的白化危機與復育行動",
+    section:"閱讀測驗",
+    reason:"102年曾出現珊瑚礁白化，距今已13年。珊瑚礁保護是全球最緊迫的海洋議題，且2023-2024年全球珊瑚大規模白化事件（超過90%的礁）引發國際關注。新制後環保議題題材不足，此主題補齊機率高。",
+    angles:["為何珊瑚在高溫時排出共生藻失去顏色","科學家如何用「珊瑚托兒所」進行復育","氣候變遷與漂白劑：珊瑚礁面臨的雙重威脅"],
+    evidence:["大象茶園(112，人類農業vs自然)","鴿子避孕(110，人道管理)","100%Fish(113)"]
+  },
+  {
+    num:15, cat:"社會心理", priority:"MED",
+    title:"原住民族生態知識（TEK）的現代科學價值",
+    section:"混合題型 或 閱讀測驗",
+    reason:"Wonder Village原住民商圈(115)、Maasai文化(111)顯示命題者重視原住民/少數民族議題（呼應108課綱多元文化）。傳統生態知識（Traditional Ecological Knowledge）——原住民比科學家早幾百年知道的植物與動物關係——是科學+文化融合的完美主題。",
+    angles:["亞馬遜原住民如何用植物知識協助現代藥物研發","台灣布農族的生態狩獵禁忌與現代保育的呼應","北極因紐特人的海冰知識正在被氣候研究引用"],
+    evidence:["Wonder Village(115)","Maasai(111)","北美圖騰柱(108)"]
+  },
+  {
+    num:16, cat:"健康醫學", priority:"MED",
+    title:"腸道菌群對大腦與情緒的意外影響",
+    section:"文意選填 或 閱讀測驗",
+    reason:"「腸腦軸」（Gut-Brain Axis）是近5年最熱門的醫學研究方向，腸道被稱為「第二個大腦」。此主題兼具科普驚奇性（腸道細菌居然能影響你的決定？）與健康素養，且中學生熟悉「益生菌」概念，閱讀門檻適中。",
+    angles:["腸道有1億個神經元，為何被稱為第二大腦","腸道菌群失衡與抑鬱症的雙向關聯研究","飲食如何在6週內改變你的腸道菌相結構"],
+    evidence:["午睡大腦(115)","補水科學(112)","腦科學系列"]
+  },
+  {
+    num:17, cat:"歷史文化", priority:"MED",
+    title:"顏色的政治與文化象徵意義",
+    section:"篇章結構 或 閱讀測驗",
+    reason:"115年微笑的文化差異（篇章結構）顯示命題者喜歡「同一件事在不同文化有不同意義」的比較性文章。顏色政治學——白色在東方表喪事西方表純潔、紫色曾是皇家專屬——有豐富的歷史事實和明確的論點層次，非常適合篇章結構。",
+    angles:["紫色顏料曾比黃金貴：腓尼基人的壟斷","白色婚紗是維多利亞時代才開始的習慣","藍色在許多古代語言中甚至沒有獨立詞彙"],
+    evidence:["微笑跨文化(115)","Maasai紅色(111)","Bindi(102)"]
+  },
+  {
+    num:18, cat:"科普自然", priority:"STABLE",
+    title:"光污染：消失的星空與夜行生物的困境",
+    section:"閱讀測驗",
+    reason:"光污染是兼具科學（天文、生物時鐘）與社會（都市化、能源）的典型108課綱跨域主題，卻在108-115年完全缺席。螢火蟲族群減少、候鳥迷航、珊瑚礁受影響——這是一個連接多個已出現主題的「主幹議題」。",
+    angles:["光污染如何干擾動物晝夜節律與繁殖","黑暗天空保護區：美國猶他州的反光污染運動","城市居民失去看星星的能力意味著什麼"],
+    evidence:["鴿子避孕(110，城市生態)","日本火車驅鹿(109)","環保題材缺席"]
+  },
+  {
+    num:19, cat:"科技工程", priority:"STABLE",
+    title:"古老材料的現代復興：竹子/大麻纖維的環保應用",
+    section:"綜合測驗 或 篇章結構",
+    reason:"113年100%Fish展現「傳統資源的創新再利用」，植物性肉排(112)切入食物替代。「古老材料新用途」是自然延伸：竹子作為鋼鐵替代建材、大麻纖維的環保紡織、藻類生質燃料——這些主題有明確的新舊對比結構，適合篇章結構。",
+    angles:["竹子每年生長數公尺，為何建材領域還不普及","大麻纖維布料比棉花少用99%的水","海藻如何成為塑膠包裝的未來替代品"],
+    evidence:["100%Fish(113)","植物肉(112)","大麻纖維預測趨勢"]
+  },
+  {
+    num:20, cat:"社會心理", priority:"STABLE",
+    title:"高齡化社會設計：銀髮族友善城市建設",
+    section:"混合題型",
+    reason:"108課綱強調社會參與、高齡化是台灣、日本、全球共同面對的課題。混合題型偏好「多元視角比較」，可以比較不同城市（日本秋田vs荷蘭）的銀髮友善設計，或含統計圖表（2050年老年人口比例），完全符合新制混合題型的圖文整合趨勢。",
+    angles:["日本秋田縣超高齡化後如何重設計城市空間","荷蘭失智村（Hogeweyk）的全包式照護環境","科技輔具vs人際連結在照護中的角色辯論"],
+    evidence:["無障礙樂園(110)","動物園倫理(114，角色演變)","Wonder Village(115，社區設計)"]
+  }
+];
+
+const CAT_COLORS_MAP = {
+  "科普自然":"#3b82f6","健康醫學":"#ef4444","動物生態":"#22c55e",
+  "歷史文化":"#8b5cf6","社會心理":"#0891b2","科技工程":"#2563eb","環保永續":"#059669"
+};
+
+function renderPreds(filter) {
+  const container = document.getElementById("predCards");
+  container.innerHTML = "";
+  const filtered = filter === "all" ? PREDS : PREDS.filter(p=>p.cat===filter);
+  filtered.forEach(p=>{
+    const color = CAT_COLORS_MAP[p.cat] || "#888";
+    const pri = p.priority;
+    const priClass = pri==="HIGH"?"priority-HIGH":pri==="MED"?"priority-MED":"priority-STABLE";
+    const priLabel = pri==="HIGH"?"🔥 高機率":pri==="MED"?"⚡ 中等機率":"💧 穩定類型";
+    const ev = p.evidence.map(e=>`<span class="ev-tag">${e}</span>`).join("");
+    const angles = p.angles.map(a=>`<li>${a}</li>`).join("");
+    const div = document.createElement("div");
+    div.className = "pred-card";
+    div.style.borderLeftColor = color;
+    div.dataset.cat = p.cat;
+    div.innerHTML = `
+      <span class="pred-num">${p.num}</span>
+      <div class="pred-header">
+        <span class="pred-cat-badge" style="background:${color}">${p.cat}</span>
+        <span class="priority-tag ${priClass}">${priLabel}</span>
+      </div>
+      <div class="pred-title">${p.title}</div>
+      <div class="pred-section">建議題型：<span>${p.section}</span></div>
+      <div class="pred-reason">${p.reason}</div>
+      <div class="pred-angle">
+        <div class="pa-title">📌 可能出題角度：</div>
+        <ul>${angles}</ul>
+      </div>
+      <div class="pred-evidence">${ev}</div>`;
+    container.appendChild(div);
+  });
+}
+
+renderPreds("all");
+
+function filterPred(cat, btn) {
+  document.querySelectorAll(".pred-tab,.pred-cat").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  renderPreds(cat);
+}
+
+// Nav scroll
+const secs = document.querySelectorAll(".sec[id]");
+window.addEventListener("scroll",()=>{
+  let cur="";
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  document.querySelectorAll("nav a").forEach(a=>{a.classList.toggle("on",a.getAttribute("href")==="#"+cur);});
+});
+</script>
 </body>
 </html>
