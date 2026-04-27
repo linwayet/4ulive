@@ -1,691 +1,671 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>學測200天衝刺計劃</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #F8F4ED;
-  --text: #2D2A26;
-  --accent1: #8B5E3C;
-  --accent2: #D4A574;
-  --accent3: #C8503A;
-  --accent4: #4A7C6F;
-  --accent5: #6B4E8A;
-  --accent6: #2C5F8A;
-  --ok: #3A7D55;
-  --warn: #C8503A;
-  --card-bg: #FFFDF8;
-  --border: #E8DDD0;
-  --shadow: rgba(45,42,38,0.12);
-  --line-h: 1.75;
-  --font-size: 22px;
-  --max-w: 720px;
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>吳鼎濬 115 學測單字閱讀練習</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #667085;
+      --line: #d8e0eb;
+      --paper: #f6f8fc;
+      --card: #ffffff;
+      --navy: #24476f;
+      --teal: #06746f;
+      --amber: #b65f10;
+      --rose: #b43c5d;
+      --green: #267354;
+      --violet: #6251b8;
+      --good: #0f7b45;
+      --bad: #b42318;
+      --soft-blue: #edf4ff;
+      --soft-amber: #fff4df;
+      --soft-green: #eaf8f0;
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Noto Sans TC', sans-serif;
-  font-size: var(--font-size);
-  font-weight: 400;
-  line-height: var(--line-h);
-  min-height: 100vh;
-}
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(36,71,111,.10), transparent 32%),
+        linear-gradient(315deg, rgba(6,116,111,.10), transparent 30%),
+        var(--paper);
+      line-height: 1.65;
+    }
 
-.wrapper {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
+    header {
+      color: white;
+      background: linear-gradient(135deg, #1f3658 0%, #066f69 58%, #8d4f17 100%);
+      padding: 42px 18px 30px;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+    }
 
-/* ─── HERO ─── */
-.hero {
-  text-align: center;
-  padding: 56px 0 48px;
-  position: relative;
-}
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-.hero-badge {
-  display: inline-block;
-  background: var(--accent3);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  padding: 6px 20px;
-  border-radius: 999px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
+    h1, h2, h3, p { margin-top: 0; }
 
-.hero h1 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 42px;
-  font-weight: 900;
-  color: var(--accent1);
-  line-height: 1.25;
-  margin-bottom: 12px;
-}
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(1.9rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
 
-.hero h1 span {
-  color: var(--accent3);
-  display: block;
-  font-size: 52px;
-}
+    .lead {
+      max-width: 860px;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-size: 1.04rem;
+    }
 
-.hero-sub {
-  font-size: 18px;
-  color: #7A6F65;
-  margin-top: 12px;
-}
+    .top-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
 
-.hero-divider {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent3), var(--accent2));
-  border-radius: 2px;
-  margin: 28px auto 0;
-}
+    .stat {
+      min-height: 108px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.25);
+    }
 
-/* ─── SECTION TITLE ─── */
-.section-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--accent1);
-  margin: 52px 0 24px;
-  padding-left: 16px;
-  border-left: 5px solid var(--accent2);
-  line-height: 1.4;
-}
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
 
-/* ─── CALLOUT BOX ─── */
-.callout {
-  background: var(--card-bg);
-  border: 2px solid var(--border);
-  border-left: 6px solid var(--accent2);
-  border-radius: 12px;
-  padding: 28px 28px 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 12px var(--shadow);
-}
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,.82);
+      font-size: .92rem;
+    }
 
-.callout p {
-  font-size: 20px;
-  line-height: 1.8;
-}
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: rgba(246,248,252,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
 
-.callout strong { color: var(--accent1); font-weight: 700; }
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0;
+    }
 
-/* ─── VERDICT BANNER ─── */
-.verdict {
-  background: linear-gradient(135deg, var(--accent1) 0%, #5C3A20 100%);
-  color: #F8F4ED;
-  border-radius: 16px;
-  padding: 32px 28px;
-  margin: 32px 0;
-  box-shadow: 0 4px 20px rgba(139,94,60,0.35);
-}
-.verdict .v-label {
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  opacity: 0.75;
-  margin-bottom: 8px;
-}
-.verdict .v-text {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-.verdict .v-sub {
-  margin-top: 10px;
-  font-size: 17px;
-  opacity: 0.85;
-  line-height: 1.6;
-}
+    .tab {
+      flex: 0 0 auto;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
 
-/* ─── GOAL CARDS ─── */
-.goals-grid {
-  display: grid;
-  gap: 20px;
-  margin-bottom: 8px;
-}
+    .tab.active {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
 
-.goal-card {
-  background: var(--card-bg);
-  border: 2px solid var(--border);
-  border-radius: 14px;
-  padding: 24px 24px 20px;
-  box-shadow: 0 2px 10px var(--shadow);
-  position: relative;
-  overflow: hidden;
-}
+    main { padding: 24px 0 56px; }
 
-.goal-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-}
-.goal-card.ok::before  { background: var(--ok); }
-.goal-card.warn::before { background: var(--warn); }
-.goal-card.caution::before { background: #E09020; }
+    .section { display: none; }
+    .section.active { display: block; }
 
-.goal-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
-}
+    .panel, .vocab-card, .question {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(22, 34, 51, .07);
+    }
 
-.goal-num {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  font-weight: 900;
-  font-family: 'Playfair Display', serif;
-  flex-shrink: 0;
-}
-.ok .goal-num    { background: #E8F5EE; color: var(--ok); }
-.warn .goal-num  { background: #FDECEA; color: var(--warn); }
-.caution .goal-num { background: #FEF3E2; color: #C07010; }
+    .panel {
+      padding: 22px;
+      margin-bottom: 18px;
+    }
 
-.goal-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.35;
-  flex: 1;
-}
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
 
-.goal-badge {
-  font-size: 13px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.ok .goal-badge    { background: #E8F5EE; color: var(--ok); }
-.warn .goal-badge  { background: #FDECEA; color: var(--warn); }
-.caution .goal-badge { background: #FEF3E2; color: #C07010; }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.25;
+    }
 
-.goal-body {
-  font-size: 19px;
-  line-height: 1.75;
-  color: #3D3730;
-}
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #214f9a;
+      background: var(--soft-blue);
+      font-size: .86rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
-.goal-body ul {
-  padding-left: 4px;
-  list-style: none;
-  margin-top: 10px;
-}
-.goal-body ul li {
-  padding: 5px 0 5px 28px;
-  position: relative;
-  font-size: 18px;
-  border-bottom: 1px solid var(--border);
-}
-.goal-body ul li:last-child { border-bottom: none; }
-.goal-body ul li::before {
-  content: '▸';
-  position: absolute; left: 4px;
-  color: var(--accent2);
-  font-size: 16px;
-}
+    .pill.green { color: #236843; background: var(--soft-green); }
+    .pill.amber { color: #915004; background: var(--soft-amber); }
+    .pill.rose { color: #9a2f4e; background: #ffeaf1; }
 
-.key-tip {
-  background: #FFF8EE;
-  border: 1.5px solid var(--accent2);
-  border-radius: 8px;
-  padding: 14px 16px;
-  margin-top: 14px;
-  font-size: 18px;
-  line-height: 1.7;
-}
-.key-tip strong { color: var(--accent3); }
+    .study-note {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
 
-.cannot-do {
-  background: #FDECEA;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-top: 10px;
-  font-size: 17px;
-  color: #8B2A20;
-}
-.can-do {
-  background: #E8F5EE;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-top: 10px;
-  font-size: 17px;
-  color: #1E5C38;
-}
+    .vocab-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
 
-/* ─── DATA SOURCES ─── */
-.data-grid {
-  display: grid;
-  gap: 14px;
-  margin: 20px 0;
-}
+    .filter {
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
 
-.data-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  box-shadow: 0 1px 6px var(--shadow);
-}
+    .filter.active {
+      color: white;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
 
-.data-icon {
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
-}
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
 
-.data-content .label {
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--accent1);
-  margin-bottom: 4px;
-}
+    .vocab-card {
+      padding: 16px;
+      border-top: 6px solid var(--accent, var(--navy));
+      min-height: 210px;
+    }
 
-.data-content .desc {
-  font-size: 17px;
-  color: #5A5048;
-  line-height: 1.6;
-}
+    .word-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
 
-/* ─── BOTTLENECK ─── */
-.bottleneck-list {
-  list-style: none;
-  display: grid;
-  gap: 14px;
-  margin: 16px 0;
-}
-.bottleneck-list li {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 18px;
-  font-size: 19px;
-  line-height: 1.65;
-}
-.bottleneck-list li .bi {
-  font-size: 26px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
+    .word {
+      font-size: 1.35rem;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
 
-/* ─── HIDDEN DATA ─── */
-.hidden-grid {
-  display: grid;
-  gap: 14px;
-  margin: 16px 0;
-}
+    .pos {
+      color: white;
+      background: var(--accent, var(--navy));
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
-.hidden-item {
-  background: var(--card-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 20px;
-}
+    .zh {
+      margin: 4px 0 10px;
+      color: #475467;
+      font-weight: 800;
+    }
 
-.h-label {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--accent5);
-  margin-bottom: 6px;
-}
-.h-desc {
-  font-size: 17px;
-  color: #4A4038;
-  line-height: 1.65;
-}
-.h-tag {
-  display: inline-block;
-  background: #EDE8F5;
-  color: var(--accent5);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
+    .usage {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f3f6fb;
+      color: #46566b;
+      font-size: .93rem;
+    }
 
-/* ─── KNOWLEDGE GOLD ─── */
-.gold-box {
-  background: linear-gradient(135deg, #FFF8EE 0%, #FFF3DD 100%);
-  border: 2px solid var(--accent2);
-  border-radius: 16px;
-  padding: 28px 28px 24px;
-  margin: 24px 0;
-}
-.gold-box .g-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent1);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.gold-list {
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-.gold-list li {
-  display: flex;
-  gap: 12px;
-  font-size: 19px;
-  line-height: 1.7;
-}
-.gold-list li::before {
-  content: '✦';
-  color: var(--accent2);
-  font-size: 16px;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
+    .mini {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .91rem;
+    }
 
-/* ─── FUTURE VALUE ─── */
-.future-banner {
-  background: linear-gradient(135deg, var(--accent4) 0%, #2E5C50 100%);
-  color: #F0FAF6;
-  border-radius: 14px;
-  padding: 28px 28px 24px;
-  margin: 24px 0;
-}
-.future-banner .f-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.future-banner p {
-  font-size: 19px;
-  line-height: 1.75;
-  opacity: 0.92;
-}
-.future-banner strong { color: #A8E6CE; }
+    .reading {
+      font-size: 1.03rem;
+    }
 
-/* ─── CONCLUSION ─── */
-.conclusion {
-  background: linear-gradient(135deg, #2D2A26 0%, #1A1714 100%);
-  color: #F8F4ED;
-  border-radius: 20px;
-  padding: 40px 32px;
-  margin-top: 48px;
-  box-shadow: 0 8px 32px rgba(45,42,38,0.3);
-  text-align: center;
-}
-.conclusion .c-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--accent2);
-  margin-bottom: 20px;
-}
-.conclusion p {
-  font-size: 20px;
-  line-height: 1.8;
-  opacity: 0.9;
-  max-width: 560px;
-  margin: 0 auto 16px;
-}
-.conclusion .c-not {
-  color: #FF8A75;
-  font-weight: 700;
-}
-.conclusion .c-yes {
-  color: #7DD5AA;
-  font-weight: 700;
-}
-.conclusion .c-cta {
-  display: inline-block;
-  margin-top: 24px;
-  background: var(--accent2);
-  color: var(--text);
-  font-size: 18px;
-  font-weight: 700;
-  padding: 16px 36px;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(212,165,116,0.4);
-}
+    .reading p {
+      margin-bottom: 16px;
+    }
 
-/* ─── PROGRESS BAR ─── */
-.feasibility-bar {
-  margin: 20px 0 6px;
-}
-.fb-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-  color: #7A6F65;
-  margin-bottom: 6px;
-}
-.fb-track {
-  height: 12px;
-  background: var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-}
-.fb-fill {
-  height: 100%;
-  border-radius: 6px;
-  transition: width 1s ease;
-}
+    .target {
+      padding: 1px 4px;
+      border-radius: 5px;
+      background: #fff0bf;
+      font-weight: 900;
+    }
 
-@media (max-width: 540px) {
-  body { font-size: 18px; }
-  .hero h1 { font-size: 32px; }
-  .hero h1 span { font-size: 38px; }
-  .section-title { font-size: 22px; }
-  .goal-title { font-size: 19px; }
-}
-</style>
+    .question {
+      padding: 18px;
+      margin-bottom: 14px;
+      border-left: 6px solid var(--accent, var(--navy));
+    }
+
+    .q-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .q-text {
+      font-size: 1.04rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 128px;
+      padding: 0 8px 1px;
+      border-bottom: 3px solid #8ea2bd;
+      color: #5d6b80;
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .option {
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid #bfccdc;
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .option:hover { border-color: var(--navy); }
+    .option.correct { color: white; background: var(--good); border-color: var(--good); }
+    .option.wrong { color: white; background: var(--bad); border-color: var(--bad); }
+    .option:disabled { cursor: default; opacity: .95; }
+
+    .feedback {
+      min-height: 24px;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+
+    .feedback.ok { color: var(--good); }
+    .feedback.no { color: var(--bad); }
+
+    .scorebox {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .score {
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .reset {
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--navy);
+      border-radius: 8px;
+      background: var(--navy);
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .strategy {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+
+    .strategy b { color: var(--navy); }
+
+    @media (max-width: 920px) {
+      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      header { padding-top: 32px; }
+      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: 1fr; }
+      .section-title { display: block; }
+      .section-title .pill { margin-top: 8px; }
+      .panel, .question { padding: 16px; }
+      .word { font-size: 1.22rem; }
+      .tab { min-height: 40px; padding: 0 11px; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrapper">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-badge">📚 高三英文教學系統設計</div>
-    <h1>學測<span>200天</span>衝刺計劃</h1>
-    <p class="hero-sub">數位學習者模型 × AI 演算法 × 34年教學經驗</p>
-    <div class="hero-divider"></div>
-  </div>
-
-  <!-- VERDICT -->
-  <div class="verdict">
-    <div class="v-label">⚖️ 整體可行性評估</div>
-    <div class="v-text">核心概念「學生數位英文分身」：高度可行</div>
-    <div class="v-sub">這在學界稱為 Learner Model（學習者模型）或 Knowledge Tracing（知識追蹤），Duolingo、Khan Academy、ETS 內部都在使用。方向完全正確——問題只在個人教師條件下能做到多深。</div>
-  </div>
-
-  <!-- SECTION 1: 四大目標 -->
-  <div class="section-title">🎯 四大目標逐一分析</div>
-
-  <div class="goals-grid">
-
-    <!-- Goal 1 -->
-    <div class="goal-card ok">
-      <div class="goal-header">
-        <div class="goal-num">1</div>
-        <div class="goal-title">數位備份學生英文狀況</div>
-        <div class="goal-badge">✅ 完全可行</div>
-      </div>
-      <div class="goal-body">
-        <p>這是整個計劃最紮實的基礎。你已有訂正數據和不熟單字，再加以下維度即接近完整：</p>
-        <ul>
-          <li>錯題本（題目、選項、答案、<strong>錯誤類型標籤</strong>）</li>
-          <li>不熟單字庫（首次情境、複習次數、最後測試結果）</li>
-          <li>文法弱點清單（從錯題反推，如「假設語氣過去式」連錯三次）</li>
-          <li>閱讀速度與理解率（每篇用時、正確率）</li>
-          <li>寫作樣本（含錯誤類型分析）</li>
-          <li>模考分數時序（歷次各題型得分）</li>
-        </ul>
-        <div class="key-tip">
-          <strong>🔑 關鍵建議：</strong>不只存「錯了什麼」，要存「為什麼錯」。同樣選錯B，可能是單字不認得、文法判斷錯誤、或粗心。這個分類欄位是整個系統的命脈。
-        </div>
+  <header>
+    <div class="wrap">
+      <h1>115 學測英文｜單字閱讀練習</h1>
+      <p class="lead">為吳鼎濬設計：先複習不熟單字，再用一篇接近學測語氣的閱讀文章做填充，最後練直接單字選擇。內容適合 17-18 歲高三學生，重點放在精準字義、搭配、詞形與推論。</p>
+      <div class="top-stats">
+        <div class="stat"><strong>41 words</strong><span>納入本次不熟單字清單</span></div>
+        <div class="stat"><strong>12 blanks</strong><span>練摘要填空與詞形判斷</span></div>
+        <div class="stat"><strong>16 choices</strong><span>練詞彙題常見干擾選項</span></div>
+        <div class="stat"><strong>4 skills</strong><span>字義、搭配、推論、詞形</span></div>
       </div>
     </div>
+  </header>
 
-    <!-- Goal 2 -->
-    <div class="goal-card ok">
-      <div class="goal-header">
-        <div class="goal-num">2</div>
-        <div class="goal-title">規劃週 / 月學習計畫表</div>
-        <div class="goal-badge">✅ AI 最強項</div>
+  <nav class="tabs">
+    <div class="wrap tab-row">
+      <button class="tab active" data-tab="vocab">1. 單字複習</button>
+      <button class="tab" data-tab="cloze">2. 閱讀填充</button>
+      <button class="tab" data-tab="choice">3. 單字選擇</button>
+      <button class="tab" data-tab="strategy">學測提醒</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="vocab" class="section active">
+      <div class="section-title">
+        <h2>Unit 1｜單字複習</h2>
+        <span class="pill">先看用法，不只背中文</span>
       </div>
-      <div class="goal-body">
-        <p>把錯題本 + 單字庫 + 剩餘天數 + 學測題型權重交給 Claude，產出每日學習計畫是最成熟的 AI 應用。</p>
-        <div class="feasibility-bar">
-          <div class="fb-label"><span>可行性</span><span>95%</span></div>
-          <div class="fb-track"><div class="fb-fill" style="width:95%;background:linear-gradient(90deg,var(--ok),#5AB87A)"></div></div>
-        </div>
-        <div class="key-tip" style="margin-top:12px">
-          類似 <code>/kid-processor</code>、<code>/article-processor</code> 的架構，製作一個 <strong>/student-planner skill</strong> 完全可行：<br>
-          輸入 JSON 格式學生資料 + 目標天數 → 輸出含間隔重複排程的每日計畫表。
-        </div>
+      <p class="study-note">點分類可以縮小範圍。建議先讀「核心用法」，再進入填充練習；這位學生最需要把單字放回句子裡判斷詞性與搭配。</p>
+      <div class="vocab-tools" id="filters"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
+
+    <section id="cloze" class="section">
+      <div class="section-title">
+        <h2>Unit 2｜閱讀填充練習</h2>
+        <span class="pill amber">主題：傳統街區如何轉型</span>
       </div>
-    </div>
 
-    <!-- Goal 3 -->
-    <div class="goal-card caution">
-      <div class="goal-header">
-        <div class="goal-num">3</div>
-        <div class="goal-title">設計考卷</div>
-        <div class="goal-badge">⚠️ 有條件可行</div>
+      <article class="panel reading">
+        <h3>Reading Passage: When an Old District Learns to Face a New Direction</h3>
+        <p>For decades, Harbor Lane was treated as a quiet stop between the train station and the coast. Its wooden houses, narrow alleys, and stone staircases attracted only a few visitors. Recently, however, the district has become more <span class="target">prominent</span>. Young shop owners have <span class="target">founded</span> small businesses there, while older <span class="target">artisans</span> continue to make baskets, wooden beads, and hand-carved signs.</p>
+        <p>The change did not simply replace tradition with fashion. Instead, local leaders tried to create a careful <span class="target">blend</span> of memory and <span class="target">innovation</span>. A tiny <span class="target">boutique</span> sells clothes made by indigenous designers. A scent studio offers customized <span class="target">fragrances</span>. A restaurant serves <span class="target">gourmet</span> pizzas with local pineapples and mountain herbs. The goal is not to make the neighborhood a tourist <span class="target">mecca</span>, but to let residents earn a living without losing their cultural roots.</p>
+        <p>Even the map at the visitor center teaches a lesson. Unlike most modern maps, it is not fixed with north at the top. Its <span class="target">orientation</span> changes according to the path a visitor chooses. Some historians explain that map <span class="target">layouts</span> have always reflected power: during the age of European <span class="target">imperialism</span>, many maps became <span class="target">Eurocentric</span>, while today GPS systems are often <span class="target">oriented</span> toward the user. In that sense, the north-up habit may be only a historical <span class="target">blip</span>.</p>
+        <p>Harbor Lane still faces problems. During a recent storm, a shop window was <span class="target">shattered</span> and several signboards were <span class="target">overturned</span>. Some residents expressed <span class="target">grave</span> concerns about safety. Yet the shop owners did not <span class="target">resort</span> to blaming one another. They repaired the damage, raised money to <span class="target">compensate</span> affected stores, and agreed that community needs should take <span class="target">precedence</span> over quick profits.</p>
+      </article>
+
+      <div class="scorebox">
+        <div class="score" id="clozeScore">填充得分：0 / 12</div>
+        <button class="reset" data-reset="cloze">重新作答</button>
       </div>
-      <div class="goal-body">
-        <p>Claude 出英文題目沒問題，但有兩個限制：</p>
-        <ul>
-          <li>學測「鑑別度」是命題老師的工藝，AI 易偏簡單或鑽牛角尖</li>
-          <li>AI 從零生成閱讀文章易有「塑膠感」，不像真實英文媒體</li>
-        </ul>
-        <div class="key-tip">
-          <strong>💡 務實做法：</strong>用 AI 從學生錯題<em>反向設計同類型變化題</em>，而非憑空出整份卷。例如學生在關係代名詞錯了，就讓 AI 出 5 題同文法點不同情境的題目——品質和學習價值最高。
-        </div>
+      <div id="clozeQuestions"></div>
+    </section>
+
+    <section id="choice" class="section">
+      <div class="section-title">
+        <h2>Unit 3｜直接單字選擇</h2>
+        <span class="pill rose">練學測詞彙題判斷</span>
       </div>
-    </div>
-
-    <!-- Goal 4 -->
-    <div class="goal-card warn">
-      <div class="goal-header">
-        <div class="goal-num">4</div>
-        <div class="goal-title">預測考試分數</div>
-        <div class="goal-badge">⚠️⚠️ 須管理期待</div>
+      <p class="study-note">這一段專門練他錯題常見的「選項都看過，但只有一個搭配最自然」。答錯時會顯示短解釋。</p>
+      <div class="scorebox">
+        <div class="score" id="choiceScore">選擇得分：0 / 16</div>
+        <button class="reset" data-reset="choice">重新作答</button>
       </div>
-      <div class="goal-body">
-        <p>這是整個計畫最容易翻車的部分——統計上的問題：</p>
-        <div class="cannot-do">
-          ✗ <strong>做不到：</strong>「學測會考13級分」這種點預測。<br>
-          即使有10次模考，也只有10個資料點，學測當天狀態、題目難度、心理因素都可能造成 ±10 級分。
-        </div>
-        <div class="can-do">
-          ✓ <strong>可以做到：</strong>「閱讀測驗正確率在 70–80% 區間，文法在 60–70%」的弱點權重與區間估計。
-        </div>
-        <div class="key-tip" style="margin-top:14px">
-          <strong>🔄 建議重新定義：</strong>「分數預測」→「<strong>弱點排名 + 進步軌跡視覺化</strong>」。對學生和家長更有說服力，也更負責任。
-        </div>
+      <div id="choiceQuestions"></div>
+    </section>
+
+    <section id="strategy" class="section">
+      <div class="section-title">
+        <h2>學測提醒</h2>
+        <span class="pill green">針對本學生錯題</span>
       </div>
-    </div>
+      <div class="strategy-grid">
+        <div class="strategy"><b>1. 搭配先行</b><br>看到 concern 要想到 grave / serious；看到 take ___ over 要想到 precedence。</div>
+        <div class="strategy"><b>2. 詞形檢查</b><br>be perfectly ___ with foreign elements 需要過去分詞 blended，不是原形 blend。</div>
+        <div class="strategy"><b>3. 推論詞義</b><br>blip 不用硬背，從 less a rule and more a blip 推出「短暫狀態」。</div>
+        <div class="strategy"><b>4. 細節回文</b><br>閱讀題問 true / inferred 時，回到原文找時間、方向、主詞，不靠印象答。</div>
+      </div>
+      <article class="panel" style="margin-top:18px">
+        <h3>建議練習順序</h3>
+        <p>第一輪：單字卡只看英文，遮住中文回想意思。第二輪：做 Unit 2 填充，逼自己判斷詞性。第三輪：做 Unit 3 選擇題，練干擾選項。最後把錯題整理成「搭配短語」，例如 <i>dread the thought of V-ing</i>、<i>resort to V-ing</i>、<i>take precedence over</i>。</p>
+      </article>
+    </section>
+  </main>
 
-  </div>
+  <script>
+    const colors = {
+      "高頻核心": "#24476f",
+      "閱讀進階": "#06746f",
+      "題目關鍵": "#b65f10",
+      "文化地理": "#6251b8",
+      "易混詞形": "#b43c5d"
+    };
 
-  <!-- SECTION 2: 隱性知識 -->
-  <div class="section-title">💎 你沒問但最重要的事</div>
+    const vocab = [
+      {w:"assaulted", pos:"v.", zh:"攻擊；襲擊", cat:"題目關鍵", use:"assault someone with something：用某物攻擊某人"},
+      {w:"compensate", pos:"v.", zh:"補償；彌補", cat:"高頻核心", use:"compensate A for B / compensate for a loss"},
+      {w:"condemned", pos:"v.", zh:"譴責；宣告有罪", cat:"題目關鍵", use:"condemn behavior：譴責行為；不是實際攻擊"},
+      {w:"dimension", pos:"n.", zh:"尺寸；面向；維度", cat:"閱讀進階", use:"a cultural/social dimension：文化/社會層面"},
+      {w:"dreads", pos:"v.", zh:"害怕；畏懼", cat:"題目關鍵", use:"dread the thought of V-ing：害怕想到做某事"},
+      {w:"elbow", pos:"v./n.", zh:"用手肘推擠；手肘", cat:"題目關鍵", use:"elbow one's way through the crowd：在人群中擠出路"},
+      {w:"found", pos:"v.", zh:"創立；建立", cat:"易混詞形", use:"found-founded-founded；不要和 find-found-found 混淆"},
+      {w:"grave", pos:"adj./n.", zh:"嚴重的；墳墓", cat:"題目關鍵", use:"grave concerns：嚴重關切"},
+      {w:"just", pos:"adv./adj.", zh:"只是；剛剛；公正的", cat:"高頻核心", use:"not just A but also B；a just decision"},
+      {w:"overturned", pos:"v.", zh:"翻倒；推翻", cat:"題目關鍵", use:"overturn a car / overturn a decision"},
+      {w:"shattered", pos:"v./adj.", zh:"打碎；粉碎的", cat:"題目關鍵", use:"shatter glass / shattered dreams"},
+      {w:"smell at", pos:"phr.", zh:"聞；嗅", cat:"易混詞形", use:"英文較自然常用 smell 或 sniff at"},
+      {w:"cramming", pos:"v-ing", zh:"臨時抱佛腳；密集準備", cat:"閱讀進階", use:"cram for an exam：為考試臨時硬背"},
+      {w:"enhance", pos:"v.", zh:"提升；增強", cat:"高頻核心", use:"enhance memory / performance / appeal"},
+      {w:"hand", pos:"n./v.", zh:"手；交給；方面", cat:"高頻核心", use:"right-hand side；hand in homework"},
+      {w:"manifestations", pos:"n.", zh:"表現；顯示；徵兆", cat:"閱讀進階", use:"manifestations of stress：壓力的表現"},
+      {w:"nappers", pos:"n.", zh:"小睡的人", cat:"閱讀進階", use:"habitual nappers：有固定小睡習慣的人"},
+      {w:"planks", pos:"n.", zh:"木板；厚板", cat:"閱讀進階", use:"wooden planks；ship's planks"},
+      {w:"precedence", pos:"n.", zh:"優先；優先權", cat:"閱讀進階", use:"take precedence over：優先於"},
+      {w:"resort", pos:"v./n.", zh:"訴諸；度假勝地", cat:"高頻核心", use:"resort to violence / smiling：訴諸暴力/微笑"},
+      {w:"smiling", pos:"n./v-ing", zh:"微笑；正在笑", cat:"高頻核心", use:"Smiling can be a social signal."},
+      {w:"stemmed", pos:"v.", zh:"源自；起因於", cat:"閱讀進階", use:"stem from：起因於"},
+      {w:"artisans", pos:"n.", zh:"工匠；手藝人", cat:"文化地理", use:"local artisans：在地工藝師"},
+      {w:"ascend", pos:"v.", zh:"上升；攀登", cat:"題目關鍵", use:"ascend the stairs/mountain：上樓梯/登山"},
+      {w:"blip", pos:"n.", zh:"短暫現象；小波動", cat:"題目關鍵", use:"a historical blip：歷史上的短暫現象"},
+      {w:"boutique", pos:"n.", zh:"精品店；小型特色店", cat:"文化地理", use:"a boutique that sells local designs"},
+      {w:"descend", pos:"v.", zh:"下降；下來", cat:"題目關鍵", use:"descend the stairs；the plane descends"},
+      {w:"eurocentric", pos:"adj.", zh:"以歐洲為中心的", cat:"文化地理", use:"a Eurocentric view/map：歐洲中心觀點/地圖"},
+      {w:"fragrances", pos:"n.", zh:"香氣；香水", cat:"文化地理", use:"customized fragrances：客製化香氣"},
+      {w:"gourmet", pos:"adj./n.", zh:"美食的；美食家", cat:"文化地理", use:"gourmet pizza / a gourmet restaurant"},
+      {w:"imperialism", pos:"n.", zh:"帝國主義", cat:"文化地理", use:"European imperialism：歐洲帝國主義"},
+      {w:"layouts", pos:"n.", zh:"版面；配置；布局", cat:"閱讀進階", use:"map layouts / page layouts"},
+      {w:"marble", pos:"n.", zh:"大理石", cat:"文化地理", use:"stone and marble steps：石頭和大理石階梯"},
+      {w:"mecca", pos:"n.", zh:"麥加；嚮往之地", cat:"文化地理", use:"a mecca for food lovers：美食愛好者聖地"},
+      {w:"orientation", pos:"n.", zh:"方向；取向；迎新", cat:"題目關鍵", use:"map orientation：地圖方向"},
+      {w:"oriented", pos:"adj./v.", zh:"朝向的；以……為導向的", cat:"題目關鍵", use:"oriented toward the east / user-oriented"},
+      {w:"prominent", pos:"adj.", zh:"顯著的；重要的；知名的", cat:"閱讀進階", use:"a prominent feature/person：顯著特色/知名人物"},
+      {w:"rejoiced", pos:"v.", zh:"欣喜；高興", cat:"文化地理", use:"residents rejoiced at the news"},
+      {w:"sparkling", pos:"adj.", zh:"閃閃發光的；氣泡的", cat:"文化地理", use:"sparkling coastline / sparkling water"},
+      {w:"blend", pos:"v./n.", zh:"混合；融合", cat:"易混詞形", use:"blend A with B；a blend of old and new"},
+      {w:"innovation", pos:"n.", zh:"創新", cat:"易混詞形", use:"tradition coexists with innovation"}
+    ];
 
-  <div class="gold-box">
-    <div class="g-title">🏆 34年教學直覺：真正的金礦</div>
-    <ul class="gold-list">
-      <li><strong>放大</strong>你會做的事——一次處理30個學生的數據，不只一個</li>
-      <li><strong>外顯化</strong>你的判斷——讓學生自己看得到自己的弱點地圖</li>
-      <li><strong>累積</strong>資料——明年帶新一屆時，可以對照「類似程度的學生最後200天進步了多少」</li>
-    </ul>
-  </div>
+    const cloze = [
+      {q:"Local leaders wanted tradition to coexist with ____ rather than disappear.", ans:"innovation", opts:["innovation","imperialism","dimension","marble"], note:"coexist with innovation 是第 47 題的關鍵搭配。"},
+      {q:"The new stores created a careful ____ of local culture and modern business.", ans:"blend", opts:["blend","blip","grave","hand"], note:"a blend of A and B 表示 A 與 B 的融合。"},
+      {q:"The scent studio sells customized ____ for visitors with different tastes.", ans:"fragrances", opts:["fragrances","planks","layouts","manifestations"], note:"scent studio 對應 fragrances。"},
+      {q:"The visitor map changes its ____ according to the path chosen by each user.", ans:"orientation", opts:["orientation","precedence","compensation","assault"], note:"map orientation 是地圖方向。"},
+      {q:"Some maps became ____ during the European age of exploration.", ans:"Eurocentric", opts:["Eurocentric","sparkling","gourmet","grave"], note:"以歐洲為中心的地圖是 Eurocentric maps。"},
+      {q:"The north-up habit may be a historical ____, not a permanent rule.", ans:"blip", opts:["blip","boutique","resort","dimension"], note:"blip 在此是短暫狀態。"},
+      {q:"After the storm, several signboards were ____ by the wind.", ans:"overturned", opts:["overturned","condemned","founded","oriented"], note:"signboards 被風吹翻，用 overturned。"},
+      {q:"A shop window was ____ into pieces during the storm.", ans:"shattered", opts:["shattered","enhanced","rejoiced","stemmed"], note:"玻璃碎裂用 shattered。"},
+      {q:"Residents had ____ concerns about safety after the damage.", ans:"grave", opts:["grave","just","gourmet","sparkling"], note:"grave concerns 是嚴重關切。"},
+      {q:"The owners raised money to ____ shops affected by the storm.", ans:"compensate", opts:["compensate","ascend","descend","elbow"], note:"compensate affected stores 表示補償受影響店家。"},
+      {q:"The group agreed that community needs should take ____ over quick profits.", ans:"precedence", opts:["precedence","orientation","fragrance","imperialism"], note:"take precedence over 是優先於。"},
+      {q:"Instead of blaming others, the owners did not ____ to public arguments.", ans:"resort", opts:["resort","found","enhance","smell at"], note:"resort to 表示訴諸某手段。"}
+    ];
 
-  <div class="future-banner">
-    <div class="f-title">📈 長期最有價值的一點</div>
-    <p>今年累積的學生資料，<strong>會變成明年預測的基準</strong>。一年後你的「分數預測」會比現在準十倍，因為你有同質母體當對照。</p>
-  </div>
+    const choice = [
+      {q:"As a shy student, Kevin ____ the thought of speaking before hundreds of people.", ans:"dreads", opts:["dreads","wanders","escapes","stresses"], note:"dread the thought of V-ing 是固定搭配。"},
+      {q:"The driver was arrested after he ____ a passer-by with a bottle.", ans:"assaulted", opts:["shattered","assaulted","overturned","condemned"], note:"用瓶子攻擊人，選 assaulted。"},
+      {q:"There were so many people that I had to ____ my way through the crowd.", ans:"elbow", opts:["elbow","descend","found","enhance"], note:"elbow one's way through 是在人群中擠過去。"},
+      {q:"The shootings raised ____ concerns about campus safety.", ans:"grave", opts:["just","grave","sparkling","gourmet"], note:"grave concerns 表示嚴重關切。"},
+      {q:"The problem ____ from poor communication between the two teams.", ans:"stemmed", opts:["rejoiced","stemmed","compensated","oriented"], note:"stem from 表示起因於。"},
+      {q:"Students ____ for exams may remember less if they never sleep.", ans:"cramming", opts:["cramming","smiling","nappers","planks"], note:"cram for exams 是臨時抱佛腳準備考試。"},
+      {q:"A twenty-minute nap can ____ memory and attention.", ans:"enhance", opts:["condemn","enhance","descend","resort"], note:"enhance memory 是提升記憶力。"},
+      {q:"The absence of smiles was once seen as a ____ of good manners.", ans:"manifestation", opts:["manifestation","fragrance","boutique","mecca"], note:"manifestation 是表現；此題練單複數概念。"},
+      {q:"Attackers had to ____ the narrow staircase one at a time.", ans:"ascend", opts:["ascend","compensate","shatter","rejoice"], note:"ascend the staircase 是上樓梯。"},
+      {q:"It is harder to ____ uneven steps in the dark.", ans:"descend", opts:["descend","found","condemn","smell at"], note:"descend 是往下走。"},
+      {q:"The old staircase was carved in stone and ____.", ans:"marble", opts:["marble","layouts","precedence","imperialism"], note:"marble 是大理石。"},
+      {q:"The district became a ____ for coffee lovers.", ans:"mecca", opts:["mecca","blip","hand","plank"], note:"a mecca for... 表示某族群嚮往之地。"},
+      {q:"The shop sells items made by local ____.", ans:"artisans", opts:["artisans","nappers","dimensions","manifestations"], note:"artisans 是工匠。"},
+      {q:"The company was ____ in 1996 by two young designers.", ans:"founded", opts:["found","founded","foundeded","finding"], note:"創立是 found-founded-founded。"},
+      {q:"The GPS map is ____ toward the driver's travel path.", ans:"oriented", opts:["oriented","overturned","condemned","shattered"], note:"be oriented toward 是朝向/以……為導向。"},
+      {q:"A leader should make a ____ decision, not one based on anger.", ans:"just", opts:["just","grave","blip","sparkling"], note:"just 作形容詞可表示公正的。"}
+    ];
 
-  <!-- SECTION 3: 資料輸入瓶頸 -->
-  <div class="section-title">⚠️ 資料輸入的瓶頸</div>
+    const sections = document.querySelectorAll(".section");
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(item => item.classList.toggle("active", item === tab));
+        sections.forEach(sec => sec.classList.toggle("active", sec.id === tab.dataset.tab));
+        window.scrollTo({top: 0, behavior: "smooth"});
+      });
+    });
 
-  <div class="callout">
-    <p>200天 × 每週2–3次小考 + 每月模考，每個學生資料量龐大。<br>
-    你現在最該想的不是 AI 怎麼分析，而是<strong>錯題怎麼快速進系統</strong>。手動打字會讓你做不下去。</p>
-  </div>
+    const filtersEl = document.querySelector("#filters");
+    const vocabGrid = document.querySelector("#vocabGrid");
+    const cats = ["全部", ...Array.from(new Set(vocab.map(item => item.cat)))];
 
-  <ul class="bottleneck-list">
-    <li><span class="bi">📱</span><div><strong>手機拍照 + OCR</strong>：學生拍訂正照片，自動進系統</div></li>
-    <li><span class="bi">📋</span><div><strong>Google Form 自填</strong>：學生考完自己填錯題，最低成本</div></li>
-    <li><span class="bi">🎙️</span><div><strong>Whisper 口頭錄音</strong>：讓學生口頭講解錯誤原因——這個資料超有價值，且你已有環境</div></li>
-  </ul>
+    function renderFilters(active = "全部") {
+      filtersEl.innerHTML = cats.map(cat => `<button class="filter ${cat === active ? "active" : ""}" data-cat="${cat}">${cat}</button>`).join("");
+    }
 
-  <!-- SECTION 4: 還有哪些資料 -->
-  <div class="section-title">➕ 建議額外收集的資料</div>
+    function renderVocab(cat = "全部") {
+      renderFilters(cat);
+      const list = cat === "全部" ? vocab : vocab.filter(item => item.cat === cat);
+      vocabGrid.innerHTML = list.map(item => `
+        <article class="vocab-card" style="--accent:${colors[item.cat]}">
+          <div class="word-line"><div class="word">${item.w}</div><div class="pos">${item.pos}</div></div>
+          <div class="zh">${item.zh}</div>
+          <div class="usage">${item.use}</div>
+          <div class="mini">分類：${item.cat}</div>
+        </article>
+      `).join("");
+    }
 
-  <div class="hidden-grid">
-    <div class="hidden-item">
-      <div class="h-tag">🎯 高信號</div>
-      <div class="h-label">學生自選「最沒把握」題目</div>
-      <div class="h-desc">即使答對也標記——這個訊號比錯題更敏銳，反映深層不安全感</div>
-    </div>
-    <div class="hidden-item">
-      <div class="h-tag">🔴 真弱點</div>
-      <div class="h-label">重複錯誤追蹤</div>
-      <div class="h-desc">同類型錯了第二次以上——這才是真正的弱點，不是偶然失誤</div>
-    </div>
-    <div class="hidden-item">
-      <div class="h-tag">⏱️ 熟練度</div>
-      <div class="h-label">時間壓力下的表現</div>
-      <div class="h-desc">限時 vs 無限時的正確率差距——直接反映學測當天的實際表現</div>
-    </div>
-    <div class="hidden-item">
-      <div class="h-tag">🧠 狀態管理</div>
-      <div class="h-label">每日學習情緒自評（1–10分）</div>
-      <div class="h-desc">200天衝刺，情緒狀態和知識量同等重要。這筆資料能預測「考前焦慮週期」</div>
-    </div>
-  </div>
+    filtersEl.addEventListener("click", event => {
+      const btn = event.target.closest(".filter");
+      if (btn) renderVocab(btn.dataset.cat);
+    });
 
-  <!-- CONCLUSION -->
-  <div class="conclusion">
-    <div class="c-title">📌 最終結論</div>
-    <p>這個計畫 <strong>該做、可做、200天時程合理</strong>。</p>
-    <p>但建議調整框架：</p>
-    <p>
-      <span class="c-not">✗ 不是</span>「做一個會預測分數的 AI 分身」<br>
-      <span class="c-yes">✓ 而是</span>「做一個放大老師判斷力、<br>讓學生看見自己的學習儀表板」
-    </p>
-    <p style="opacity:0.7; font-size:18px; margin-top:16px">
-      前者是科幻片。後者是 34 年教學經驗 + Claude Code 工具鏈<br>可以在兩個月內做出 MVP 的東西。
-    </p>
-    <span class="c-cta">下一步：設計 /student-planner skill →</span>
-  </div>
+    function buildExercise(target, data, scoreId, type) {
+      const host = document.querySelector(target);
+      host.innerHTML = data.map((item, index) => `
+        <article class="question" data-answer="${item.ans}" data-type="${type}" style="--accent:${index % 2 ? "var(--teal)" : "var(--amber)"}">
+          <div class="q-head"><span>Question ${index + 1}</span><span>${type === "cloze" ? "Fill in the blank" : "Choose the best word"}</span></div>
+          <div class="q-text">${type === "cloze" ? item.q.replace("____", '<span class="blank">____</span>') : item.q}</div>
+          <div class="options">
+            ${item.opts.map(opt => `<button class="option" data-opt="${opt}">${opt}</button>`).join("")}
+          </div>
+          <div class="feedback"></div>
+          <div class="mini">${item.note}</div>
+        </article>
+      `).join("");
+      updateScore(type, scoreId);
+    }
 
-</div>
+    function updateScore(type, scoreId) {
+      const cards = [...document.querySelectorAll(`.question[data-type="${type}"]`)];
+      const correct = cards.filter(card => card.dataset.done === "true").length;
+      document.querySelector(scoreId).textContent = `${type === "cloze" ? "填充" : "選擇"}得分：${correct} / ${cards.length}`;
+    }
+
+    document.addEventListener("click", event => {
+      const opt = event.target.closest(".option");
+      if (!opt) return;
+      const card = opt.closest(".question");
+      if (card.dataset.answered === "true") return;
+
+      const answer = card.dataset.answer;
+      const type = card.dataset.type;
+      const feedback = card.querySelector(".feedback");
+      const isCorrect = opt.dataset.opt === answer;
+
+      card.dataset.answered = "true";
+      card.dataset.done = isCorrect ? "true" : "false";
+      card.querySelectorAll(".option").forEach(button => {
+        button.disabled = true;
+        if (button.dataset.opt === answer) button.classList.add("correct");
+      });
+      if (!isCorrect) opt.classList.add("wrong");
+      feedback.className = `feedback ${isCorrect ? "ok" : "no"}`;
+      feedback.textContent = isCorrect ? "Correct. 這個搭配很自然。" : `答案是 ${answer}。先看主詞、動詞搭配和句意。`;
+      updateScore(type, type === "cloze" ? "#clozeScore" : "#choiceScore");
+    });
+
+    document.querySelectorAll(".reset").forEach(button => {
+      button.addEventListener("click", () => {
+        if (button.dataset.reset === "cloze") {
+          buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
+        } else {
+          buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
+        }
+      });
+    });
+
+    renderVocab();
+    buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
+    buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
+  </script>
 </body>
 </html>
