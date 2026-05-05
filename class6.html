@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google 企業深度自學課程｜自動化與勞工分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --warm1: #FFF3E0;
+    --warm2: #FFE0B2;
+    --amber: #F59E0B;
+    --amber-deep: #D97706;
+    --coral: #F97316;
+    --coral-light: #FFEDD5;
+    --rose: #FB7185;
+    --rose-light: #FFF1F2;
+    --brown: #92400E;
+    --brown-mid: #B45309;
+    --gold: #FCD34D;
+    --green-warm: #84CC16;
+    --teal-warm: #14B8A6;
+    --blue-warm: #3B82F6;
+    --text: #1C1917;
+    --text-mid: #57534E;
+    --text-light: #A8A29E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ===== NAV LINKS BAR ===== */
+  .nav-bar {
+    background: linear-gradient(135deg, #7C3AED 0%, #DB2777 50%, #F97316 100%);
+    padding: 0;
+  }
+
+  .nav-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 10px 14px;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-link:hover { background: rgba(255,255,255,0.28); transform: translateY(-1px); }
+
+  .nav-link-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .nav-link-text { flex: 1; }
+  .nav-link-title { font-size: 13px; font-weight: 700; color: #fff; display: block; }
+  .nav-link-desc { font-size: 11px; color: rgba(255,255,255,0.75); display: block; margin-top: 1px; }
+
+  .nav-link-arrow { color: rgba(255,255,255,0.6); font-size: 14px; }
+
+  .icon-echo { background: rgba(251,191,36,0.3); color: #FCD34D; }
+  .icon-student { background: rgba(74,222,128,0.3); color: #4ADE80; }
+  .icon-line { background: rgba(74,222,128,0.9); color: #fff; font-weight: 900; font-size: 13px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #FFF7ED 0%, #FFEDD5 60%, #FEF3C7 100%);
+    border-bottom: 3px solid var(--warm2);
+    padding: 32px 16px 28px;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--coral), var(--amber));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 6vw, 32px);
+    color: var(--brown);
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .hero-stat {
+    background: #fff;
+    border: 1.5px solid var(--warm2);
+    border-radius: 10px;
+    padding: 10px 4px;
+    text-align: center;
+  }
+
+  .hero-stat-n { font-size: 18px; font-weight: 700; }
+  .hero-stat-l { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+
+  /* ===== SECTION ===== */
+  .section {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .sec-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .sec-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brown);
+  }
+
+  .sec-sub { font-size: 12px; color: var(--text-light); }
+
+  /* ===== MODULE CARDS ===== */
+  .module-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .module-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1.5px solid;
+  }
+
+  .module-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .module-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .module-title { font-size: 14px; font-weight: 700; flex: 1; }
+  .module-days { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; }
+
+  .module-body {
+    padding: 12px 16px 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .module-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 10px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .tag {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  /* module 1 */
+  .m1 { border-color: #FBBF24; }
+  .m1 .module-head { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+  .m1 .module-num { background: #F59E0B; color: #fff; }
+  .m1 .module-title { color: #92400E; }
+  .m1 .module-days { background: #FCD34D; color: #78350F; }
+  .m1 .module-body { background: #FFFBEB; }
+
+  /* module 2 */
+  .m2 { border-color: #F97316; }
+  .m2 .module-head { background: linear-gradient(135deg, #FFEDD5, #FED7AA); }
+  .m2 .module-num { background: #F97316; color: #fff; }
+  .m2 .module-title { color: #7C2D12; }
+  .m2 .module-days { background: #FB923C; color: #fff; }
+  .m2 .module-body { background: #FFF7ED; }
+
+  /* module 3 */
+  .m3 { border-color: #FB7185; }
+  .m3 .module-head { background: linear-gradient(135deg, #FFF1F2, #FFE4E6); }
+  .m3 .module-num { background: #FB7185; color: #fff; }
+  .m3 .module-title { color: #881337; }
+  .m3 .module-days { background: #F43F5E; color: #fff; }
+  .m3 .module-body { background: #FFF1F2; }
+
+  /* module 4 */
+  .m4 { border-color: #A78BFA; }
+  .m4 .module-head { background: linear-gradient(135deg, #F5F3FF, #EDE9FE); }
+  .m4 .module-num { background: #8B5CF6; color: #fff; }
+  .m4 .module-title { color: #4C1D95; }
+  .m4 .module-days { background: #A78BFA; color: #fff; }
+  .m4 .module-body { background: #F5F3FF; }
+
+  /* module 5 */
+  .m5 { border-color: #34D399; }
+  .m5 .module-head { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); }
+  .m5 .module-num { background: #10B981; color: #fff; }
+  .m5 .module-title { color: #064E3B; }
+  .m5 .module-days { background: #34D399; color: #064E3B; }
+  .m5 .module-body { background: #ECFDF5; }
+
+  .tag-read { background: #DBEAFE; color: #1E40AF; }
+  .tag-watch { background: #FFE4E6; color: #9F1239; }
+  .tag-reflect { background: #F5F3FF; color: #5B21B6; }
+  .tag-quiz { background: #FEF9C3; color: #713F12; }
+  .tag-habit { background: #DCFCE7; color: #14532D; }
+  .tag-debate { background: #FEE2E2; color: #991B1B; }
+  .tag-write { background: #FDF4FF; color: #701A75; }
+  .tag-analyze { background: #FFF7ED; color: #7C2D12; }
+
+  /* ===== AUTO-LABOR SECTION ===== */
+  .divider {
+    max-width: 680px;
+    margin: 0 auto 0;
+    padding: 0 16px;
+  }
+
+  .divider-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0 0;
+  }
+
+  .divider-line::before, .divider-line::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--warm2), transparent);
+  }
+
+  .divider-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--amber-deep);
+    white-space: nowrap;
+    padding: 4px 12px;
+    background: #FEF3C7;
+    border-radius: 20px;
+    border: 1.5px solid #FCD34D;
+  }
+
+  /* ===== HIGHLIGHT PANELS ===== */
+  .highlight-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hl-card {
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid;
+  }
+
+  .hl-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .hl-card-icon { font-size: 18px; }
+  .hl-card-title { font-size: 13px; font-weight: 700; }
+  .hl-card-body { font-size: 12px; line-height: 1.65; }
+
+  .hl-red { background: #FFF5F5; border-color: #FCA5A5; }
+  .hl-red .hl-card-title { color: #991B1B; }
+  .hl-red .hl-card-body { color: #7F1D1D; }
+
+  .hl-blue { background: #EFF6FF; border-color: #93C5FD; }
+  .hl-blue .hl-card-title { color: #1D4ED8; }
+  .hl-blue .hl-card-body { color: #1E3A8A; }
+
+  .hl-green { background: #F0FDF4; border-color: #86EFAC; }
+  .hl-green .hl-card-title { color: #15803D; }
+  .hl-green .hl-card-body { color: #14532D; }
+
+  .hl-amber { background: #FFFBEB; border-color: #FCD34D; }
+  .hl-amber .hl-card-title { color: #B45309; }
+  .hl-amber .hl-card-body { color: #92400E; }
+
+  /* ===== TIMELINE ===== */
+  .timeline-wrap {
+    background: #fff;
+    border: 1.5px solid var(--warm2);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .tl { position: relative; padding-left: 22px; }
+  .tl::before { content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(180deg, #F59E0B, #F97316, #FB7185); border-radius: 2px; }
+
+  .tl-item { position: relative; margin-bottom: 16px; }
+  .tl-item:last-child { margin-bottom: 0; }
+
+  .tl-dot {
+    position: absolute; left: -22px; top: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+
+  .dot-blue { border-color: #3B82F6; background: #DBEAFE; }
+  .dot-red { border-color: #EF4444; background: #FEE2E2; }
+  .dot-green { border-color: #10B981; background: #D1FAE5; }
+
+  .tl-year { font-size: 10px; font-weight: 700; font-family: monospace; color: var(--text-light); }
+  .tl-text { font-size: 12px; color: var(--text-mid); line-height: 1.5; margin-top: 2px; }
+
+  /* ===== METER ===== */
+  .meter-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .meter-row { display: flex; align-items: center; gap: 10px; }
+  .meter-label { font-size: 12px; color: var(--text-mid); width: 100px; flex-shrink: 0; }
+  .meter-bar { flex: 1; height: 7px; background: #F5E6D3; border-radius: 4px; overflow: hidden; }
+  .meter-fill { height: 7px; border-radius: 4px; }
+  .meter-val { font-size: 12px; font-weight: 700; width: 30px; text-align: right; }
+
+  /* ===== EXTRA DAYS ===== */
+  .extra-day-card {
+    background: #fff;
+    border: 1.5px solid var(--warm2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .extra-day-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--coral), var(--rose));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .extra-day-title { font-size: 14px; font-weight: 700; color: var(--brown); margin-bottom: 5px; }
+  .extra-day-desc { font-size: 12px; color: var(--text-mid); line-height: 1.6; margin-bottom: 8px; }
+
+  /* ===== FOOTER NAV = same as top ===== */
+
+  /* ===== RESPONSIVE ===== */
+  @media (min-width: 520px) {
+    .highlight-grid { flex-direction: row; flex-wrap: wrap; }
+    .hl-card { flex: 1 1 calc(50% - 6px); }
+  }
+
+  @media (max-width: 360px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .hero-stat-n { font-size: 16px; }
+  }
+
+  /* ===== SCROLL ANIMATION ===== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== SEPARATOR ===== */
+  .warm-sep {
+    height: 6px;
+    background: linear-gradient(90deg, #F59E0B, #F97316, #FB7185, #A78BFA, #34D399);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV BAR ===== -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-label">📌 七月開課 &amp; 聯絡方式</div>
+    <div class="nav-links">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-echo">🎯</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">錯中學 ECHO 計劃</span>
+          <span class="nav-link-desc">2025年7月開課 · 從錯誤中學習的互動英語課程</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-student">📊</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">學生學習分析系統</span>
+          <span class="nav-link-desc">2025年7月上線 · 個人化學習進度追蹤工具</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-line">L</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">加我 LINE：linwayet</span>
+          <span class="nav-link-desc">有問題歡迎直接聯繫！課程諮詢 · 學習建議</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="warm-sep"></div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-badge">🎓 30天自學課程 × AI 時代必修</div>
+  <h1 class="hero-title">Google 企業深度自學<br>— 自動化與勞工關係 —</h1>
+  <p class="hero-sub">以原子習慣為框架 · 五大模組 · 每日15–30分鐘<br>從創辦人故事到AI時代的勞工衝擊，全方位理解Google</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-n" style="color:#F59E0B">33</div>
+      <div class="hero-stat-l">學習天數</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n" style="color:#F97316">5</div>
+      <div class="hero-stat-l">課程模組</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n" style="color:#FB7185">18萬</div>
+      <div class="hero-stat-l">Google員工</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-n" style="color:#8B5CF6">60%</div>
+      <div class="hero-stat-l">AI輔助比例</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 五大模組 ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#FEF3C7">📚</div>
+    <div>
+      <div class="sec-title">五大學習模組總覽</div>
+      <div class="sec-sub">原子習慣框架 · 每天一個任務 · 循序漸進</div>
+    </div>
+  </div>
+
+  <div class="module-grid">
+
+    <div class="module-card m1 fade-in">
+      <div class="module-head">
+        <div class="module-num">1</div>
+        <div class="module-title">起源與創辦人故事</div>
+        <div class="module-days">Day 1–6</div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">深入了解 Larry Page 與 Sergey Brin 如何從 Stanford 博士生，創建全球最有影響力的科技公司。從 BackRub 到 PageRank，從車庫到帝國。</p>
+        <div class="tags">
+          <span class="tag tag-read">閱讀</span>
+          <span class="tag tag-watch">觀看</span>
+          <span class="tag tag-reflect">反思筆記</span>
+          <span class="tag tag-quiz">小測驗</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card m2 fade-in">
+      <div class="module-head">
+        <div class="module-num">2</div>
+        <div class="module-title">核心產品與技術演進</div>
+        <div class="module-days">Day 7–13</div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">從搜尋引擎到 Android、YouTube、Gmail，理解 Google 如何系統性建立產品帝國。每一個產品背後都是一場技術與商業的博弈。</p>
+        <div class="tags">
+          <span class="tag tag-read">閱讀</span>
+          <span class="tag tag-watch">觀看</span>
+          <span class="tag tag-analyze">分析</span>
+          <span class="tag tag-habit">打卡</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card m3 fade-in">
+      <div class="module-head">
+        <div class="module-num">3</div>
+        <div class="module-title">產業版圖與商業模式</div>
+        <div class="module-days">Day 14–20</div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">Alphabet 架構、廣告帝國、反壟斷訴訟、Google 在中國的進退，以及 Moonshot 工廠的瘋狂實驗。理解 Google 如何在各產業佈局。</p>
+        <div class="tags">
+          <span class="tag tag-read">閱讀</span>
+          <span class="tag tag-quiz">測驗</span>
+          <span class="tag tag-reflect">反思</span>
+          <span class="tag tag-debate">辯論</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card m4 fade-in">
+      <div class="module-head">
+        <div class="module-num">4</div>
+        <div class="module-title">組織文化與人才策略</div>
+        <div class="module-days">Day 21–25</div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">解密 OKR 制度、20% 時間政策、薪酬結構。Google 如何吸引頂尖工程師？Googleplex 的免費餐廳是真心照顧員工，還是留住人才的策略？</p>
+        <div class="tags">
+          <span class="tag tag-watch">觀看</span>
+          <span class="tag tag-reflect">反思</span>
+          <span class="tag tag-habit">打卡</span>
+          <span class="tag tag-debate">辯論</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card m5 fade-in">
+      <div class="module-head">
+        <div class="module-num">5</div>
+        <div class="module-title">AI 未來與自動化衝擊</div>
+        <div class="module-days">Day 26–30</div>
+      </div>
+      <div class="module-body">
+        <p class="module-desc">Sundar Pichai 的 AI 優先戰略、Gemini 與 ChatGPT 的搜尋引擎保衛戰、DeepMind 合併，以及自動化對 18 萬名員工的深遠影響。</p>
+        <div class="tags">
+          <span class="tag tag-read">閱讀</span>
+          <span class="tag tag-quiz">測驗</span>
+          <span class="tag tag-write">寫作</span>
+          <span class="tag tag-reflect">反思</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">
+  <div class="divider-line">
+    <span class="divider-text">⚡ 新增：自動化 × 勞工關係深度分析</span>
+  </div>
+</div>
+
+<!-- ===== 自動化現狀 ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#FFF1F2">🤖</div>
+    <div>
+      <div class="sec-title">Google 自動化現狀快照 (2024–2025)</div>
+      <div class="sec-sub">五個互動分析面板 · 完整補充原有課程</div>
+    </div>
+  </div>
+
+  <div class="highlight-grid fade-in">
+    <div class="hl-card hl-red">
+      <div class="hl-card-top">
+        <span class="hl-card-icon">✂️</span>
+        <span class="hl-card-title">裁員壓力 (2023–2024)</span>
+      </div>
+      <p class="hl-card-body">連續兩年大規模裁員，合計超過 1.5 萬人。官方理由均指向「AI 重組」與「效率提升」，是科技業自動化浪潮的縮影。</p>
+    </div>
+    <div class="hl-card hl-blue">
+      <div class="hl-card-top">
+        <span class="hl-card-icon">🎯</span>
+        <span class="hl-card-title">AI 優先轉型</span>
+      </div>
+      <p class="hl-card-body">Sundar Pichai 宣示「AI First」後，大量重複性工作由 Gemini 模型接管，工程師比例持續上升，但門檻更高。</p>
+    </div>
+    <div class="hl-card hl-green">
+      <div class="hl-card-top">
+        <span class="hl-card-icon">🌱</span>
+        <span class="hl-card-title">新職位創造</span>
+      </div>
+      <p class="hl-card-body">AI 提示工程師、模型評估員、AI 倫理研究員等新職位需求激增。舊工作消失，新機會出現，但轉型需要時間。</p>
+    </div>
+    <div class="hl-card hl-amber">
+      <div class="hl-card-top">
+        <span class="hl-card-icon">⚠️</span>
+        <span class="hl-card-title">兩層勞工制度</span>
+      </div>
+      <p class="hl-card-body">合約工 (TVCs) 佔 Google 勞動力約 40%。使用相同設備、完成同類工作，薪酬與保障卻差異巨大。工會長期抗議的核心議題。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 各職能衝擊 ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#FFFBEB">📊</div>
+    <div>
+      <div class="sec-title">自動化衝擊：各職能評估</div>
+      <div class="sec-sub">衝擊程度量化分析 · 高 / 中 / 低 三級</div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1.5px solid #FFE0B2;border-radius:14px;padding:16px;">
+    <div class="meter-list">
+      <div class="meter-row">
+        <div class="meter-label">客服 / 支援</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:85%;background:linear-gradient(90deg,#EF4444,#F97316)"></div></div>
+        <div class="meter-val" style="color:#EF4444">85%</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label">廣告優化</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:78%;background:linear-gradient(90deg,#F97316,#FB923C)"></div></div>
+        <div class="meter-val" style="color:#F97316">78%</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label">數據標注</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:72%;background:linear-gradient(90deg,#FBBF24,#F59E0B)"></div></div>
+        <div class="meter-val" style="color:#D97706">72%</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label">軟體測試</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:65%;background:linear-gradient(90deg,#FBBF24,#F59E0B)"></div></div>
+        <div class="meter-val" style="color:#D97706">65%</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label">研究分析</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:40%;background:linear-gradient(90deg,#34D399,#10B981)"></div></div>
+        <div class="meter-val" style="color:#059669">40%</div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label">量子 / 硬體</div>
+        <div class="meter-bar"><div class="meter-fill" style="width:15%;background:linear-gradient(90deg,#34D399,#10B981)"></div></div>
+        <div class="meter-val" style="color:#059669">15%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIMELINE ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#FFF7ED">⏱️</div>
+    <div>
+      <div class="sec-title">自動化發展時間軸</div>
+      <div class="sec-sub">2012 → 2025 關鍵節點</div>
+    </div>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot dot-blue"></div>
+        <div class="tl-year">2012</div>
+        <div class="tl-text">Google Brain 首次將深度學習用於搜尋排名，開始取代人工規則調整</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-blue"></div>
+        <div class="tl-year">2015</div>
+        <div class="tl-text">RankBrain 上線——AI 首次主導核心搜尋演算法，部分搜尋工程師職能縮減</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-blue"></div>
+        <div class="tl-year">2017</div>
+        <div class="tl-text">Smart Reply 自動回覆功能上線 Gmail，客服輔助工具進入生產環境</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-red"></div>
+        <div class="tl-year">2020</div>
+        <div class="tl-text">疫情推動遠端工作，同步加速內部流程自動化，合約員工首波縮減</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-red"></div>
+        <div class="tl-year">2023</div>
+        <div class="tl-text">裁員 1.2 萬人——官方理由：過度雇用 + AI 重組。同月發布 Bard（現 Gemini）</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-red"></div>
+        <div class="tl-year">2024</div>
+        <div class="tl-text">再裁約千人（硬體 / 廣告部門），同時宣布 AI 投資 2300 億台幣</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-green"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-text">Project Astra、Gemini 2.0 上線，AI Agent 開始承擔跨系統工作流程</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 勞工關係 ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#F0FDF4">✊</div>
+    <div>
+      <div class="sec-title">勞工關係大事記</div>
+      <div class="sec-sub">Alphabet Workers Union · 2018 大罷工 → 2025</div>
+    </div>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot dot-blue"></div>
+        <div class="tl-year">2018</div>
+        <div class="tl-text">全球 <strong>2 萬員工罷工</strong>——抗議性騷擾處理不當，史上最大科技業員工集體行動</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-blue"></div>
+        <div class="tl-year">2021</div>
+        <div class="tl-text">AWU（Alphabet Workers Union）正式成立，加入 CWA 工會，為科技業工會化重要里程碑</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-red"></div>
+        <div class="tl-year">2023</div>
+        <div class="tl-text">裁員期間工會指控：未提前協商、違反勞工法規，提出法律申訴</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-red"></div>
+        <div class="tl-year">2024</div>
+        <div class="tl-text">以色列 Project Nimbus 抗議：50 名員工靜坐，9 人遭解雇，引發全球媒體關注</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dot-green"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-text">AWU 持續推動 AI 倫理規範，要求公司建立自動化影響員工的透明評估機制</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 延伸課程 ===== -->
+<div class="section fade-in">
+  <div class="sec-header">
+    <div class="sec-icon" style="background:#FFF1F2">🆕</div>
+    <div>
+      <div class="sec-title">延伸課程：Day 31–33</div>
+      <div class="sec-sub">自動化 × 勞工關係 · 深度思辨任務</div>
+    </div>
+  </div>
+
+  <div class="extra-day-card fade-in">
+    <div class="extra-day-badge">Day 31 · 新增</div>
+    <div class="extra-day-title">合約工問題：科技業的影子勞動力</div>
+    <p class="extra-day-desc">閱讀「Shadow Work at Google」相關報導。反思：如果你是合約工，你會加入工會嗎？Google 有道德義務改善嗎？</p>
+    <div class="tags">
+      <span class="tag tag-read">閱讀</span>
+      <span class="tag tag-reflect">反思</span>
+      <span class="tag tag-debate">辯論</span>
+    </div>
+  </div>
+
+  <div class="extra-day-card fade-in">
+    <div class="extra-day-badge">Day 32 · 新增</div>
+    <div class="extra-day-title">2018 大罷工解析：員工如何改變公司文化</div>
+    <p class="extra-day-desc">觀看 Google Walkout 紀錄片片段。分析：集體行動的成效？Google 後來改變了什麼？沒改變什麼？</p>
+    <div class="tags">
+      <span class="tag tag-watch">觀看</span>
+      <span class="tag tag-analyze">分析</span>
+      <span class="tag tag-habit">打卡</span>
+    </div>
+  </div>
+
+  <div class="extra-day-card fade-in">
+    <div class="extra-day-badge">Day 33 · 最終任務</div>
+    <div class="extra-day-title">最終辯論：自動化是解放還是剝削？</div>
+    <p class="extra-day-desc">寫 500 字論文：以 Google 為例，說明 AI 自動化對勞工的淨影響。提出你對企業的政策建議，分享到 LINE 群！</p>
+    <div class="tags">
+      <span class="tag tag-write">寫作</span>
+      <span class="tag tag-reflect">綜合反思</span>
+      <span class="tag tag-debate">政策建議</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 核心思考 ===== -->
+<div class="section fade-in">
+  <div style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5,#FEF3C7);border:2px solid #FCD34D;border-radius:16px;padding:20px 18px;text-align:center;">
+    <div style="font-size:28px;margin-bottom:10px">💡</div>
+    <div style="font-size:15px;font-weight:700;color:#92400E;margin-bottom:8px">學習這個主題的核心問題</div>
+    <p style="font-size:13px;color:#78350F;line-height:1.7">Google 一邊用 AI 提升效率、裁減人力，<br>一邊又強調「AI 是輔助工具」——<br>這個矛盾，正是現代科技勞工關係<br>最值得深思的地方。</p>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid #FCD34D">
+      <span style="font-size:12px;color:#B45309">原子習慣提醒：每天只做一件事，每天進步 1%</span>
+    </div>
+  </div>
+</div>
+
+<div class="warm-sep"></div>
+
+<!-- ===== BOTTOM NAV BAR ===== -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-label">📌 七月開課 &amp; 聯絡方式</div>
+    <div class="nav-links">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-echo">🎯</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">錯中學 ECHO 計劃</span>
+          <span class="nav-link-desc">2025年7月開課 · 從錯誤中學習的互動英語課程</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-student">📊</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">學生學習分析系統</span>
+          <span class="nav-link-desc">2025年7月上線 · 個人化學習進度追蹤工具</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="nav-link" target="_blank" rel="noopener">
+        <div class="nav-link-icon icon-line">L</div>
+        <div class="nav-link-text">
+          <span class="nav-link-title">加我 LINE：linwayet</span>
+          <span class="nav-link-desc">有問題歡迎直接聯繫！課程諮詢 · 學習建議</span>
+        </div>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:6px;font-size:10px;color:rgba(255,255,255,0.45)">
+      © 2025 Google 企業自學課程 · Charlie 製作
+    </div>
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
