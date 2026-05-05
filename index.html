@@ -109,7 +109,7 @@
         /* ── LAYOUT ── */
         .page-wrapper {
             display: flex;
-            max-width: 1140px;
+            max-width: 1380px;
             margin: 0 auto;
             align-items: flex-start;
             gap: 0;
@@ -121,7 +121,7 @@
             padding: 48px 20px 80px;
         }
 
-        /* ── RIGHT SIDEBAR ── */
+        /* ── RIGHT SIDEBAR (時事) ── */
         .news-sidebar {
             width: 200px;
             flex-shrink: 0;
@@ -204,6 +204,77 @@
         .news-link:nth-child(5n+5) { border-left-color: var(--echo-p); }
         .news-link:nth-child(5n+5) .news-num { color: var(--echo-p); }
 
+        /* ── CLASS SIDEBAR (課程表) ── */
+        .class-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            padding: 48px 16px 80px 8px;
+            position: sticky;
+            top: 0;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .class-sidebar::-webkit-scrollbar { width: 4px; }
+        .class-sidebar::-webkit-scrollbar-track { background: transparent; }
+        .class-sidebar::-webkit-scrollbar-thumb { background: var(--gold-lt); border-radius: 4px; }
+
+        .class-sidebar .sidebar-header {
+            border-bottom-color: var(--echo-g);
+        }
+
+        .class-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .class-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #fff;
+            border: 1.5px solid transparent;
+            border-left: 3px solid var(--echo-g);
+            box-shadow: 0 2px 8px rgba(45,42,38,0.07);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+            line-height: 1.35;
+        }
+        .class-link:hover {
+            transform: translateX(3px);
+            box-shadow: 0 4px 16px rgba(45,42,38,0.12);
+            background: #F0F9F4;
+            border-color: var(--echo-g);
+        }
+        .class-link:active { transform: scale(0.97); }
+
+        .class-num {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--echo-g);
+            opacity: 0.6;
+            min-width: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        /* 課程表交替色（與時事使用不同的色序，視覺上區別開） */
+        .class-link:nth-child(5n+1) { border-left-color: var(--echo-g); }
+        .class-link:nth-child(5n+1) .class-num { color: var(--echo-g); }
+        .class-link:nth-child(5n+2) { border-left-color: var(--echo-o); }
+        .class-link:nth-child(5n+2) .class-num { color: var(--echo-o); }
+        .class-link:nth-child(5n+3) { border-left-color: var(--echo-p); }
+        .class-link:nth-child(5n+3) .class-num { color: var(--echo-p); }
+        .class-link:nth-child(5n+4) { border-left-color: var(--echo-b); }
+        .class-link:nth-child(5n+4) .class-num { color: var(--echo-b); }
+        .class-link:nth-child(5n+5) { border-left-color: var(--echo-r); }
+        .class-link:nth-child(5n+5) .class-num { color: var(--echo-r); }
+
         /* ── 手機 / 小平板：側邊欄移到頁面下方，改為網格排列 ── */
         @media (max-width: 860px) {
             .page-wrapper {
@@ -223,6 +294,16 @@
                 overflow: visible;
                 padding: 32px 20px 16px;
                 border-top: 2px solid var(--gold-lt);
+                margin-top: 8px;
+            }
+
+            .class-sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+                overflow: visible;
+                padding: 24px 20px 32px;
+                border-top: 2px solid var(--echo-g);
                 margin-top: 8px;
             }
 
@@ -257,6 +338,23 @@
                 font-size: 11px;
                 min-width: 22px;
             }
+
+            /* 課程表改為多欄 grid（與時事一致） */
+            .class-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 8px;
+            }
+
+            .class-link {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .class-num {
+                font-size: 11px;
+                min-width: 22px;
+            }
         }
 
         /* 一般手機：稍微再縮小 */
@@ -276,6 +374,25 @@
             }
 
             .news-num {
+                font-size: 10px;
+                min-width: 20px;
+            }
+
+            .class-sidebar {
+                padding: 20px 14px 24px;
+            }
+
+            .class-list {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 6px;
+            }
+
+            .class-link {
+                font-size: 13px;
+                padding: 9px 10px;
+            }
+
+            .class-num {
                 font-size: 10px;
                 min-width: 20px;
             }
@@ -760,6 +877,56 @@
             <a href="news38.html" class="news-link"><span class="news-num">38</span>時事38</a>
             <a href="news39.html" class="news-link"><span class="news-num">39</span>時事39</a>
             <a href="news40.html" class="news-link"><span class="news-num">40</span>時事40</a>
+        </div>
+    </aside>
+
+    <!-- ── CLASS SIDEBAR ── -->
+    <aside class="class-sidebar">
+        <div class="sidebar-header">
+            <span>📅</span>
+            <h3>課程表</h3>
+        </div>
+        <div class="class-list">
+            <a href="class1.html" class="class-link"><span class="class-num">01</span>課程表 1</a>
+            <a href="class2.html" class="class-link"><span class="class-num">02</span>課程表 2</a>
+            <a href="class3.html" class="class-link"><span class="class-num">03</span>課程表 3</a>
+            <a href="class4.html" class="class-link"><span class="class-num">04</span>課程表 4</a>
+            <a href="class5.html" class="class-link"><span class="class-num">05</span>課程表 5</a>
+            <a href="class6.html" class="class-link"><span class="class-num">06</span>課程表 6</a>
+            <a href="class7.html" class="class-link"><span class="class-num">07</span>課程表 7</a>
+            <a href="class8.html" class="class-link"><span class="class-num">08</span>課程表 8</a>
+            <a href="class9.html" class="class-link"><span class="class-num">09</span>課程表 9</a>
+            <a href="class10.html" class="class-link"><span class="class-num">10</span>課程表 10</a>
+            <a href="class11.html" class="class-link"><span class="class-num">11</span>課程表 11</a>
+            <a href="class12.html" class="class-link"><span class="class-num">12</span>課程表 12</a>
+            <a href="class13.html" class="class-link"><span class="class-num">13</span>課程表 13</a>
+            <a href="class14.html" class="class-link"><span class="class-num">14</span>課程表 14</a>
+            <a href="class15.html" class="class-link"><span class="class-num">15</span>課程表 15</a>
+            <a href="class16.html" class="class-link"><span class="class-num">16</span>課程表 16</a>
+            <a href="class17.html" class="class-link"><span class="class-num">17</span>課程表 17</a>
+            <a href="class18.html" class="class-link"><span class="class-num">18</span>課程表 18</a>
+            <a href="class19.html" class="class-link"><span class="class-num">19</span>課程表 19</a>
+            <a href="class20.html" class="class-link"><span class="class-num">20</span>課程表 20</a>
+            <a href="class21.html" class="class-link"><span class="class-num">21</span>課程表 21</a>
+            <a href="class22.html" class="class-link"><span class="class-num">22</span>課程表 22</a>
+            <a href="class23.html" class="class-link"><span class="class-num">23</span>課程表 23</a>
+            <a href="class24.html" class="class-link"><span class="class-num">24</span>課程表 24</a>
+            <a href="class25.html" class="class-link"><span class="class-num">25</span>課程表 25</a>
+            <a href="class26.html" class="class-link"><span class="class-num">26</span>課程表 26</a>
+            <a href="class27.html" class="class-link"><span class="class-num">27</span>課程表 27</a>
+            <a href="class28.html" class="class-link"><span class="class-num">28</span>課程表 28</a>
+            <a href="class29.html" class="class-link"><span class="class-num">29</span>課程表 29</a>
+            <a href="class30.html" class="class-link"><span class="class-num">30</span>課程表 30</a>
+            <a href="class31.html" class="class-link"><span class="class-num">31</span>課程表 31</a>
+            <a href="class32.html" class="class-link"><span class="class-num">32</span>課程表 32</a>
+            <a href="class33.html" class="class-link"><span class="class-num">33</span>課程表 33</a>
+            <a href="class34.html" class="class-link"><span class="class-num">34</span>課程表 34</a>
+            <a href="class35.html" class="class-link"><span class="class-num">35</span>課程表 35</a>
+            <a href="class36.html" class="class-link"><span class="class-num">36</span>課程表 36</a>
+            <a href="class37.html" class="class-link"><span class="class-num">37</span>課程表 37</a>
+            <a href="class38.html" class="class-link"><span class="class-num">38</span>課程表 38</a>
+            <a href="class39.html" class="class-link"><span class="class-num">39</span>課程表 39</a>
+            <a href="class40.html" class="class-link"><span class="class-num">40</span>課程表 40</a>
         </div>
     </aside>
 
