@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timmy the Stranded Whale Rescued After Weekslong Effort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8F0;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--kw:#0D47A1;--s1:#0D47A1;--s1b:#90CAF9;--s1in:#F3F8FF;--s2:#BF360C;--s2b:#FFAB91;--s2in:#FFF3EF;--s3:#1B5E20;--s3b:#81C784;--s3in:#F1F8F2;--s4:#4A148C;--s4b:#CE93D8;--s4in:#F9F0FF;--fold:#4A3728;--foldb:#C4A06A;--foldin:#FAF6F0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 16px 56px}
+.page{max-width:880px;margin:0 auto}
+.link-strip{margin:0 0 24px;padding:18px;background:#FFE4C7;border:3px solid #F4A261;border-radius:14px;box-shadow:0 8px 0 rgba(230,81,0,.18)}
+.link-strip.bottom{margin:36px 0 0}
+.link-strip h2{margin:0 0 14px;color:#BF360C;font-size:1.65rem;text-align:center}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.link-card{display:flex;flex-direction:column;justify-content:space-between;min-height:172px;padding:18px;border-radius:12px;text-decoration:none;color:#1A0F00;border:3px solid;background:#fff;font-weight:700;transition:transform .25s ease,box-shadow .25s ease}
+.link-card:hover,.link-card:focus{transform:translateY(-3px);box-shadow:0 8px 0 rgba(26,15,0,.14);outline:3px solid #FFD54F;outline-offset:3px}
+.link-card strong{font-size:1.25rem;line-height:1.35;margin-bottom:8px}.link-card span{font-size:1rem;line-height:1.55;font-weight:400}
+.course-a{border-color:#E65100;background:#FFF3E0}.course-a strong{color:#E65100}
+.course-b{border-color:#C0392B;background:#FDEDEC}.course-b strong{color:#C0392B}
+.line-card{border-color:#2E7D32;background:#EAFAF1}.line-card strong{color:#2E7D32}
+.hero{padding:28px 18px 22px;text-align:center}
+h1{display:inline-block;margin:0 auto 16px;padding:18px 26px;border:5px solid var(--h1);border-radius:8px;color:var(--h1);font-size:3.15rem;line-height:1.18;font-weight:700;background:#fffdf8;box-shadow:8px 8px 0 #F7C6BD}
+.subtitle{margin:0 0 12px;color:var(--h2);font-size:2.25rem;line-height:1.28;font-weight:700}
+.credit{margin:0;color:#0D47A1;font-size:1.5rem;font-weight:700;letter-spacing:.04em;text-shadow:1px 1px 0 #BBDEFB}
+h2{margin:42px 0 16px;color:var(--h2);font-size:2.2rem;line-height:1.25;font-weight:700}
+h3{margin:22px 0 12px;color:var(--h3);font-size:1.6rem;line-height:1.35;font-weight:700}
+h4{margin:22px 0 8px;color:var(--purple);font-size:1.28rem;line-height:1.4;font-weight:700}
+p{margin:12px 0}
+.panel{border:3px solid;border-radius:8px;overflow:hidden;background:#fff}
+.head{padding:16px 20px;color:#fff;font-size:1.35rem;font-weight:700}
+.body{padding:22px 24px}
+.article{border-color:var(--s1b)}.article .head{background:var(--s1)}.article .body{background:var(--s1in)}
+.reading{border-color:var(--s2b)}.reading .head{background:var(--s2)}.reading .body{background:var(--s2in)}
+.vocabulary{border-color:var(--s3b)}.vocabulary .head{background:var(--s3)}.vocabulary .body{background:var(--s3in)}
+.grammar{border-color:var(--s4b)}.grammar .head{background:var(--s4)}.grammar .body{background:var(--s4in)}
+strong.kw{color:var(--kw);font-weight:700;text-decoration:none}
+.sentence-card,.vocab-card,.grammar-card{border-top:2px solid rgba(26,15,0,.18);padding-top:22px;margin-top:24px}
+.sentence-card:first-child,.vocab-card:first-child,.grammar-card:first-child{border-top:0;padding-top:0;margin-top:0}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--s2);color:#fff;font-weight:700;margin-right:12px;vertical-align:middle}
+.quote{font-weight:700;color:#3A1F00}
+.quote em{font-style:normal}
+.translation{background:#fffaf6;border-left:8px solid var(--orange);padding:12px 16px;border-radius:6px}
+.analysis{background:#ffffff;border:2px solid #FFD0BD;padding:14px 16px;border-radius:8px}
+.pill{display:inline-block;margin:6px 8px 6px 0;padding:8px 14px;border-radius:999px;background:#FEF9E7;color:#8B5A00;border:2px solid #F1C36D;font-weight:700}
+.vocab-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--s3);color:#fff;font-size:1rem;margin-right:10px}
+.kk{color:#C0392B;font-size:1.05rem}.pos{color:#1565C0;font-weight:700}
+.tag-row{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:stretch;margin:10px 0}
+.tag{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:18px 0 0 18px;padding:8px 12px;font-size:1rem;font-weight:700}
+.tag-text{display:flex;align-items:center;background:#fff;padding:8px 14px;border-radius:0 8px 8px 0;border:2px solid rgba(26,15,0,.1)}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
+.examples{background:#fff;border:2px solid #B7E0B9;border-radius:8px;padding:12px 16px;margin-top:12px}.examples span{color:#3B2B18}
+ul{margin:8px 0 12px 1.25em;padding:0}li{margin:8px 0}
+.formula{font-weight:700;font-style:normal;color:#4A148C;background:#fff;padding:10px 14px;border-radius:6px;display:inline-block}
+.wrong{color:#C0392B;font-weight:700}.right{color:#1B5E20;font-weight:700}
+details{margin:22px 0;border:3px solid var(--foldb);border-radius:8px;overflow:hidden;background:var(--foldin)}
+summary{min-height:72px;padding:16px 20px;background:var(--fold);color:#fff;font-size:1.35rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}.arrow{transition:transform .3s ease;font-size:1.4rem}details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:20px 24px;background:var(--foldin)}
+.mini-row{padding:8px 0;border-bottom:1px solid #D8B983}.mini-row:last-child{border-bottom:0}.term{font-weight:700;color:#7A3B00}
+.compact-list li{padding-bottom:6px}.writing-item{margin:18px 0;padding:14px 16px;background:#fff;border-left:8px solid var(--purple);border-radius:6px}
+@media(max-width:720px){body{font-size:22px;padding:20px 10px 44px}.page{max-width:100%}.link-grid{grid-template-columns:1fr}.link-card{min-height:132px}.link-strip{padding:14px}h1{font-size:3rem;padding:14px}.subtitle{font-size:2.2rem}.body,.detail-body{padding:18px 16px}.tag-row{grid-template-columns:1fr}.tag,.tag-text{border-radius:8px;justify-content:flex-start}.badge{width:44px;height:44px}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="link-strip">
+<h2>七月課程與聯絡方式</h2>
+<div class="link-grid">
+<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html"><strong>七月課程介紹：錯中學 ECHO 計劃</strong><span>用錯誤回饋建立英文實力，適合想把弱點變成進步路線的高中生。</span></a>
+<a class="link-card course-b" href="https://linwayet.github.io/popup/index"><strong>學生分析</strong><span>透過學習分析看見學生目前狀態，協助安排更精準的複習方向。</span></a>
+<a class="link-card line-card" href="https://line.me/ti/p/~linwayet"><strong>林威老師 Line：linwayet</strong><span>想詢問課程、教材或學習規劃，可以加入 Line 直接聯絡。</span></a>
+</div>
+</section>
+<section class="hero">
+<h1>Timmy the Stranded Whale Rescued After Weekslong Effort</h1>
+<p class="subtitle">受困鯨魚 Timmy 歷經數週救援後重返大海</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>英文文章原文</h2>
+<div class="panel article">
+<div class="head">Original Article</div>
+<div class="body">
+<p>Timmy is a young <strong class="kw">humpback</strong> whale that became famous around the world after getting stuck for several weeks in <strong class="kw">shallow</strong> waters near Germany’s Baltic Sea coast. He was first seen there in early March, far from his usual home in the Atlantic Ocean, and videos of the lonely whale quickly spread online. Many whale lovers worried he would die, and experts said his health was getting worse as he stayed in the wrong <strong class="kw">habitat</strong> for so long.</p>
+<p>Rescuers tried several times to guide Timmy back to deeper water, but the first four <strong class="kw">attempts</strong> all failed. Finally, two wealthy German <strong class="kw">entrepreneurs</strong> paid for a special <strong class="kw">solution</strong>: a huge <strong class="kw">barge</strong> filled with seawater, about half the length of a football field, was prepared to carry him safely. After carefully moving Timmy into the <strong class="kw">barge</strong>, tugboats slowly <strong class="kw">transported</strong> him around the top of Denmark and into the North Sea, where rescuers opened the gate and watched him swim out, <strong class="kw">spouting</strong> a “great fountain” from his <strong class="kw">blowhole</strong>.</p>
+<p>Many people <strong class="kw">celebrated</strong> online when they saw Timmy swimming freely again, and social media was filled with hopeful messages wishing him a long life. However, scientists warned that the <strong class="kw">rescue</strong> is only the beginning of his <strong class="kw">recovery</strong>, not the end of the story. They say success will depend on whether he can swim strongly, <strong class="kw">overcome</strong> the <strong class="kw">effects</strong> of being <strong class="kw">stranded</strong> for weeks, find his way back to a healthy <strong class="kw">habitat</strong>, and start feeding <strong class="kw">normally</strong> again. Timmy’s story shows both the power of human kindness and the serious <strong class="kw">challenges</strong> wild animals face when they are trapped in the wrong <strong class="kw">environment</strong>.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>8句精讀</h2>
+<div class="panel reading">
+<div class="head">Key Sentence Analysis</div>
+<div class="body">
+<article class="sentence-card"><h3><span class="badge">①</span>關係子句與時間副詞片語</h3><p class="quote"><em>Timmy is a young humpback whale that became famous around the world after getting stuck for several weeks in shallow waters near Germany's Baltic Sea coast.</em></p><p class="translation">Timmy 是一隻年輕的座頭鯨，在德國波羅的海海岸附近的淺水區受困數週後，牠聞名全球。</p><p class="analysis">文法解析：這句主幹是 Timmy is a young humpback whale。that became famous around the world 是形容詞子句，修飾 whale。after getting stuck... 是 after + V-ing 的時間片語，說明「在受困之後」；getting stuck 表示「陷入受困狀態」。</p><p><span class="pill">humpback whale 座頭鯨</span><span class="pill">get stuck 受困</span><span class="pill">shallow waters 淺水區</span></p></article>
+<article class="sentence-card"><h3><span class="badge">②</span>分詞片語補充說明</h3><p class="quote"><em>He was first seen there in early March, far from his usual home in the Atlantic Ocean, and videos of the lonely whale quickly spread online.</em></p><p class="translation">牠最早在三月初於那裡被看見，遠離牠在大西洋的平常住處，而這隻孤獨鯨魚的影片也迅速在網路上傳開。</p><p class="analysis">文法解析：He was first seen 是被動語態，表示「牠被看見」。far from his usual home... 是插入的補充片語，說明牠出現的位置很不尋常。and 連接兩個主要子句，使句子同時呈現發現地點與網路傳播結果。</p><p><span class="pill">be seen 被看見</span><span class="pill">far from 遠離</span><span class="pill">spread online 在網路上傳開</span></p></article>
+<article class="sentence-card"><h3><span class="badge">③</span>as 引導原因子句</h3><p class="quote"><em>Many whale lovers worried he would die, and experts said his health was getting worse as he stayed in the wrong habitat for so long.</em></p><p class="translation">許多愛鯨人士擔心牠會死亡，而專家表示，由於牠在錯誤棲地停留太久，健康狀況正在惡化。</p><p class="analysis">文法解析：worried 後面省略 that，接 he would die 作受詞子句。experts said 後面也接名詞子句 his health was getting worse。as 在這裡表示原因，意思接近 because，用來說明健康惡化的原因。</p><p><span class="pill">would die 可能會死亡</span><span class="pill">get worse 惡化</span><span class="pill">wrong habitat 錯誤棲地</span></p></article>
+<article class="sentence-card"><h3><span class="badge">④</span>but 連接對比結果</h3><p class="quote"><em>Rescuers tried several times to guide Timmy back to deeper water, but the first four attempts all failed.</em></p><p class="translation">救援人員多次試著引導 Timmy 回到較深的水域，但前四次嘗試都失敗了。</p><p class="analysis">文法解析：tried several times to guide... 中的 to guide 是不定詞，說明嘗試做的事情。back to deeper water 表示方向與目標位置。but 連接前後對比：前半句是努力，後半句是失敗結果。</p><p><span class="pill">try to V 試著做...</span><span class="pill">guide A back 引導 A 回去</span><span class="pill">attempt 嘗試</span></p></article>
+<article class="sentence-card"><h3><span class="badge">⑤</span>同位語與被動語態</h3><p class="quote"><em>Finally, two wealthy German entrepreneurs paid for a special solution: a huge barge filled with seawater, about half the length of a football field, was prepared to carry him safely.</em></p><p class="translation">最後，兩位富有的德國企業家出資提供一個特別解方：一艘裝滿海水、約半個足球場長的巨大駁船被準備好安全運送牠。</p><p class="analysis">文法解析：冒號後面的 a huge barge... 是 special solution 的具體說明，功能接近同位語。filled with seawater 是過去分詞片語，修飾 barge。was prepared 是被動語態；to carry him safely 是不定詞表目的，to 是不定詞，不是介係詞。</p><p><span class="pill">pay for 出資</span><span class="pill">filled with 裝滿</span><span class="pill">to carry 表目的</span></p></article>
+<article class="sentence-card"><h3><span class="badge">⑥</span>where 引導地點關係子句</h3><p class="quote"><em>After carefully moving Timmy into the barge, tugboats slowly transported him around the top of Denmark and into the North Sea, where rescuers opened the gate and watched him swim out, spouting a "great fountain" from his blowhole.</em></p><p class="translation">在小心翼翼把 Timmy 移入駁船後，拖船慢慢將牠繞過丹麥頂端並送入北海；在那裡，救援人員打開閘門，看著牠游出去，從氣孔噴出「壯觀水柱」。</p><p class="analysis">文法解析：After carefully moving... 是時間片語，主詞與主要子句相同，因此可用 V-ing。where rescuers opened... 是地點關係子句，修飾 the North Sea。watched him swim out 使用感官動詞 watch + 受詞 + 原形動詞；spouting... 是分詞構句，補充牠游出時的動作。</p><p><span class="pill">transport A into B 把 A 運進 B</span><span class="pill">watch O V 看著某人做...</span><span class="pill">blowhole 氣孔</span></p></article>
+<article class="sentence-card"><h3><span class="badge">⑦</span>when 時間副詞子句</h3><p class="quote"><em>Many people celebrated online when they saw Timmy swimming freely again, and social media was filled with hopeful messages wishing him a long life.</em></p><p class="translation">當許多人看到 Timmy 再次自由游泳時，他們在網路上慶祝，而社群媒體上也充滿了祝牠長壽的希望訊息。</p><p class="analysis">文法解析：when they saw... 是時間副詞子句，說明大家慶祝的時間點。saw Timmy swimming 使用感官動詞 see + 受詞 + V-ing，強調看見動作正在進行。wishing him a long life 是現在分詞片語，修飾 hopeful messages。</p><p><span class="pill">celebrate online 線上慶祝</span><span class="pill">swim freely 自由游泳</span><span class="pill">be filled with 充滿</span></p></article>
+<article class="sentence-card"><h3><span class="badge">⑧</span>whether 名詞子句與並列動詞</h3><p class="quote"><em>They say success will depend on whether he can swim strongly, overcome the effects of being stranded for weeks, find his way back to a healthy habitat, and start feeding normally again.</em></p><p class="translation">他們說，成功將取決於牠是否能有力地游泳、克服受困數週的影響、找到回到健康棲地的路，並再次開始正常進食。</p><p class="analysis">文法解析：depend on 後面接 whether 名詞子句，表示「取決於是否...」。whether 子句中有四個並列動詞：swim, overcome, find, start。of being stranded 中的 being stranded 是動名詞被動式，因為 of 是介係詞，後面要接名詞或 V-ing。</p><p><span class="pill">depend on 取決於</span><span class="pill">whether 是否</span><span class="pill">feed normally 正常進食</span></p></article>
+</div>
+</div>
+</section>
+
+<section>
+<h2>18-20個單字整理</h2>
+<div class="panel vocabulary">
+<div class="head">Vocabulary Focus</div>
+<div class="body">
+<article class="vocab-card">
+<h3><span class="vocab-num">1</span>stranded <span class="kk">[ˈstrændɪd]</span> <span class="pos">adj.</span> 擱淺的；受困的</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">strand (v. 使擱淺；使受困)；stranding (n. 擱淺事件)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">be stranded in/on/near... 受困於...；a stranded whale 擱淺的鯨魚</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a seriously stranded animal 嚴重受困的動物；stranded travelers 受困旅客</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">stranded 強調被困在某處無法離開；trapped 多指被困在封閉或危險空間。</span></p>
+<div class="examples"><p>Timmy became famous after getting stuck for several weeks in shallow waters.<br><span>（Timmy 在淺水區受困數週後變得知名。）</span></p><p>The typhoon left many travelers stranded at the airport.<br><span>（颱風讓許多旅客受困在機場。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">2</span>rescue <span class="kk">[ˈrɛskju]</span> <span class="pos">v./n.</span> 救援；營救</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">rescuer (n. 救援者)；rescued (adj. 獲救的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">rescue A from B 從 B 中救出 A；a rescue effort 救援行動</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a difficult rescue 困難的救援；rescue workers 救援人員</span></p>
+<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">rescue + 受詞 + from + 危險來源，from 是介係詞，後接名詞或 V-ing。</span></p>
+<div class="examples"><p>Scientists warned that the rescue was only the beginning of Timmy's recovery.<br><span>（科學家警告，這次救援只是 Timmy 復原的開始。）</span></p><p>The team worked through the night to rescue people from the flood.<br><span>（團隊徹夜工作，從洪水中救出人們。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">3</span>effort <span class="kk">[ˈɛfɚt]</span> <span class="pos">n.</span> 努力；費力的嘗試</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">effortless (adj. 不費力的)；effortlessly (adv. 輕鬆地)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make an effort 努力；a weekslong effort 持續數週的努力</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a joint effort 共同努力；serious effort 認真的努力</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">effort 指付出的力氣；attempt 指一次嘗試，可能成功也可能失敗。</span></p>
+<div class="examples"><p>Timmy was rescued after a weekslong effort.<br><span>（Timmy 在持續數週的努力後獲救。）</span></p><p>Learning vocabulary well requires daily effort.<br><span>（學好單字需要每天努力。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">4</span>humpback <span class="kk">[ˈhʌmpˌbæk]</span> <span class="pos">n./adj.</span> 座頭鯨；背部隆起的</h3>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">humpback whale 座頭鯨；a young humpback whale 年輕座頭鯨</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a protected humpback whale 受保護的座頭鯨</span></p>
+<div class="examples"><p>Timmy is a young humpback whale.<br><span>（Timmy 是一隻年輕的座頭鯨。）</span></p><p>A humpback whale can travel great distances across the ocean.<br><span>（座頭鯨能跨越海洋長距離遷徙。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">5</span>shallow <span class="kk">[ˈʃælo]</span> <span class="pos">adj.</span> 淺的；膚淺的</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">shallowness (n. 淺；膚淺)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">shallow waters 淺水區；a shallow river 淺河</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">dangerously shallow water 危險的淺水；a shallow understanding 膚淺的理解</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">shallow 指水、容器或理解很淺；low 指高度、數量或程度低。</span></p>
+<div class="examples"><p>Timmy got stuck in shallow waters near Germany's Baltic Sea coast.<br><span>（Timmy 卡在德國波羅的海海岸附近的淺水區。）</span></p><p>Children should not dive into a shallow pool.<br><span>（孩子不應跳入淺水池。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">6</span>habitat <span class="kk">[ˈhæbəˌtæt]</span> <span class="pos">n.</span> 棲地；生長環境</h3>
+<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">habit/hab「居住、持有」：inhabit（居住於）、habitant（居民）、habitation（住所）</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">natural habitat 自然棲地；healthy habitat 健康棲地</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a suitable habitat 合適的棲地；destroy a habitat 破壞棲地</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">habitat 是動植物自然生活環境；environment 可泛指任何周遭環境。</span></p>
+<div class="examples"><p>Experts said Timmy's health was getting worse in the wrong habitat.<br><span>（專家說，Timmy 在錯誤棲地中健康惡化。）</span></p><p>Wetlands provide an important habitat for many birds.<br><span>（濕地為許多鳥類提供重要棲地。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">7</span>attempt <span class="kk">[əˈtɛmpt]</span> <span class="pos">n./v.</span> 嘗試；試圖</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">attempted (adj. 未遂的；企圖的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make an attempt to V 嘗試做...；a failed attempt 失敗的嘗試</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a serious attempt 認真的嘗試；several rescue attempts 幾次救援嘗試</span></p>
+<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">attempt to V 中的 to 是不定詞，表示「試圖做某事」，不是介係詞。</span></p>
+<div class="examples"><p>The first four attempts to guide Timmy back to deeper water all failed.<br><span>（前四次引導 Timmy 回到深水的嘗試都失敗了。）</span></p><p>She made an attempt to explain the difficult idea in simple English.<br><span>（她嘗試用簡單英文解釋這個困難概念。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">8</span>entrepreneur <span class="kk">[ˌɑntrəprəˈnɝ]</span> <span class="pos">n.</span> 企業家；創業者</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">entrepreneurial (adj. 企業家的；創業的)；entrepreneurship (n. 創業精神)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">a successful entrepreneur 成功企業家；local entrepreneurs 在地創業者</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a wealthy entrepreneur 富有的企業家；entrepreneurial spirit 創業精神</span></p>
+<div class="examples"><p>Two wealthy German entrepreneurs paid for a special solution.<br><span>（兩位富有的德國企業家出資提供特別解方。）</span></p><p>A good entrepreneur must understand both risk and opportunity.<br><span>（好的企業家必須理解風險與機會。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">9</span>solution <span class="kk">[səˈluʃən]</span> <span class="pos">n.</span> 解決辦法；溶液</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">solve (v. 解決)；solvable (adj. 可解決的)</span></p>
+<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">solv/solu「鬆開、解決」：solve（解決）、resolve（解決）、dissolve（溶解）</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">find a solution 找到解方；a practical solution 實際的解決辦法</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a creative solution 有創意的解方；a long-term solution 長期解方</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">solution 是問題的解方；answer 多指題目的答案。</span></p>
+<div class="examples"><p>The entrepreneurs paid for a special solution: a huge barge filled with seawater.<br><span>（企業家出資提供特別解方：一艘裝滿海水的巨大駁船。）</span></p><p>Education is not a quick solution to every social problem.<br><span>（教育不是每個社會問題的快速解方。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">10</span>barge <span class="kk">[bɑrdʒ]</span> <span class="pos">n.</span> 駁船；大型平底船</h3>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">a huge barge 巨大駁船；a barge filled with seawater 裝滿海水的駁船</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a transport barge 運輸駁船；a rescue barge 救援駁船</span></p>
+<div class="examples"><p>A huge barge filled with seawater was prepared to carry Timmy safely.<br><span>（一艘裝滿海水的巨大駁船被準備好安全運送 Timmy。）</span></p><p>Workers used a barge to move heavy equipment across the river.<br><span>（工人用駁船把重型設備運過河。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">11</span>transport <span class="kk">[trænsˈpɔrt]</span> <span class="pos">v./n.</span> 運送；交通運輸</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">transportation (n. 交通；運輸)；transportable (adj. 可運送的)</span></p>
+<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">trans「穿越、轉移」+ port「搬運」：portable（可攜帶的）、export（出口）、import（進口）</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">transport A to B 把 A 運送到 B；public transport 大眾運輸</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">safely transport 安全運送；transport system 運輸系統</span></p>
+<div class="examples"><p>Tugboats slowly transported Timmy around Denmark and into the North Sea.<br><span>（拖船慢慢將 Timmy 繞過丹麥並運進北海。）</span></p><p>The MRT transports thousands of students every morning.<br><span>（捷運每天早上運送數以千計的學生。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">12</span>spout <span class="kk">[spaʊt]</span> <span class="pos">v./n.</span> 噴出；噴口</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">spouting (n./adj. 噴出；噴出的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">spout water 噴水；a whale's spout 鯨魚噴出的水柱</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a great spout of water 一大股水柱；spout from a blowhole 從氣孔噴出</span></p>
+<div class="examples"><p>Rescuers watched Timmy swim out, spouting a great fountain from his blowhole.<br><span>（救援人員看著 Timmy 游出去，從氣孔噴出壯觀水柱。）</span></p><p>The fountain spouted water high into the air.<br><span>（噴泉把水高高噴向空中。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">13</span>blowhole <span class="kk">[ˈbloˌhol]</span> <span class="pos">n.</span> 鯨豚氣孔；噴水孔</h3>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">from its blowhole 從牠的氣孔；a whale's blowhole 鯨魚的氣孔</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a visible blowhole 清楚可見的氣孔</span></p>
+<div class="examples"><p>Timmy spouted a great fountain from his blowhole.<br><span>（Timmy 從氣孔噴出壯觀水柱。）</span></p><p>A whale breathes through a blowhole on top of its head.<br><span>（鯨魚透過頭頂的氣孔呼吸。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">14</span>celebrate <span class="kk">[ˈsɛləˌbret]</span> <span class="pos">v.</span> 慶祝；讚揚</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">celebration (n. 慶祝)；celebrated (adj. 著名的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">celebrate online 在網路上慶祝；celebrate success 慶祝成功</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">widely celebrated 廣受讚揚的；a public celebration 公開慶祝活動</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">celebrate 是主動慶祝；congratulate 是向某人道賀，常用 congratulate A on B。</span></p>
+<div class="examples"><p>Many people celebrated online when they saw Timmy swimming freely again.<br><span>（許多人看到 Timmy 再次自由游泳時在網路上慶祝。）</span></p><p>The class celebrated its success with a small party.<br><span>（全班用小派對慶祝成功。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">15</span>recovery <span class="kk">[rɪˈkʌvərɪ]</span> <span class="pos">n.</span> 復原；恢復</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">recover (v. 復原；找回)；recoverable (adj. 可恢復的)</span></p>
+<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">cover/cov「覆蓋、取回」：discover（發現）、uncover（揭露）、recover（恢復）</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make a recovery 復原；the beginning of recovery 復原的開始</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a slow recovery 緩慢復原；full recovery 完全康復</span></p>
+<div class="examples"><p>Scientists warned that the rescue is only the beginning of his recovery.<br><span>（科學家警告，救援只是牠復原的開始。）</span></p><p>After weeks of rest, the athlete made a full recovery.<br><span>（休息數週後，這位運動員完全康復。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">16</span>overcome <span class="kk">[ˌovɚˈkʌm]</span> <span class="pos">v.</span> 克服；戰勝</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">overcoming (n./adj. 克服；克服中的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">overcome difficulties 克服困難；overcome the effects of... 克服...的影響</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">successfully overcome 成功克服；overcome fear 克服恐懼</span></p>
+<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">overcome + 名詞，後面若接動作可用 overcome the difficulty of V-ing。</span></p>
+<div class="examples"><p>Timmy must overcome the effects of being stranded for weeks.<br><span>（Timmy 必須克服受困數週造成的影響。）</span></p><p>Students can overcome anxiety by practicing step by step.<br><span>（學生可以透過一步步練習克服焦慮。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">17</span>effect <span class="kk">[ɪˈfɛkt]</span> <span class="pos">n.</span> 影響；效果；結果</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">effective (adj. 有效的)；effectively (adv. 有效地)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">the effects of... ...的影響；have an effect on... 對...有影響</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a lasting effect 長久影響；positive effects 正面效果</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">effect 是名詞「影響」；affect 是動詞「影響」。</span></p>
+<div class="examples"><p>Success depends on whether Timmy can overcome the effects of being stranded.<br><span>（成功取決於 Timmy 是否能克服受困的影響。）</span></p><p>Sleep has a strong effect on memory and learning.<br><span>（睡眠對記憶與學習有強烈影響。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">18</span>normally <span class="kk">[ˈnɔrməlɪ]</span> <span class="pos">adv.</span> 正常地；通常</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">normal (adj. 正常的)；normalize (v. 使正常化)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">feed normally 正常進食；function normally 正常運作</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">perfectly normal 完全正常的；return to normal 恢復正常</span></p>
+<div class="examples"><p>Scientists hope Timmy can start feeding normally again.<br><span>（科學家希望 Timmy 能再次開始正常進食。）</span></p><p>The computer worked normally after it was restarted.<br><span>（電腦重新啟動後正常運作。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">19</span>environment <span class="kk">[ɪnˈvaɪrənmənt]</span> <span class="pos">n.</span> 環境；周遭情況</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">environmental (adj. 環境的)；environmentally (adv. 在環境方面)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">the wrong environment 錯誤環境；protect the environment 保護環境</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a healthy environment 健康環境；learning environment 學習環境</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">environment 泛指周遭環境；habitat 特別指動植物自然棲地。</span></p>
+<div class="examples"><p>Wild animals face serious challenges when trapped in the wrong environment.<br><span>（野生動物受困在錯誤環境時會面臨嚴重挑戰。）</span></p><p>A quiet environment helps many students focus better.<br><span>（安靜的環境能幫助許多學生更專心。）</span></p></div>
+</article>
+<article class="vocab-card">
+<h3><span class="vocab-num">20</span>challenge <span class="kk">[ˈtʃælɪndʒ]</span> <span class="pos">n./v.</span> 挑戰；質疑</h3>
+<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">challenging (adj. 具挑戰性的)</span></p>
+<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">face a challenge 面對挑戰；serious challenges 嚴重挑戰</span></p>
+<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a major challenge 重大挑戰；a challenging task 具挑戰性的任務</span></p>
+<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">challenge 作名詞是挑戰；difficulty 是困難本身，語氣較中性。</span></p>
+<div class="examples"><p>Timmy's story shows the serious challenges wild animals face.<br><span>（Timmy 的故事顯示野生動物面臨的嚴重挑戰。）</span></p><p>Preparing for a big exam is a challenge, but a clear plan helps.<br><span>（準備大考是挑戰，但清楚計畫會有幫助。）</span></p></div>
+</article>
+</div>
+</div>
+</section>
+
+<section>
+<h2>文法解析</h2>
+<div class="panel grammar">
+<div class="head">Grammar Focus</div>
+<div class="body">
+<article class="grammar-card"><h3>一、關係代名詞 that 引導形容詞子句</h3><h4>【引句 Quote】</h4><p class="quote"><em>Timmy is a young humpback whale that became famous around the world.</em></p><h4>【句型】</h4><p><span class="formula">S + V + N + that + V...</span></p><h4>【核心說明】</h4><p>that 引導的形容詞子句用來修飾前面的名詞，讓讀者知道這個名詞是哪一個、具備什麼特徵。此句中的 that became famous around the world 修飾 a young humpback whale。</p><p>形容詞子句能把兩句話合併成一句，使文章資訊更緊密，也常見於學測與分科測驗閱讀測驗。</p><h4>【使用規則】</h4><ul><li>that 可代替人或物，但在非限定用法中通常不用 that。</li><li>that 在子句中若作主詞，後面直接接動詞。</li><li>先行詞是特定名詞時，形容詞子句能補充必要資訊。</li><li>不要把 that 子句誤判成名詞子句；先看它是否修飾前面的名詞。</li></ul><h4>【主題例句】</h4><p>The whale that stayed in shallow waters needed immediate help.<br>（那隻待在淺水區的鯨魚需要立即協助。）</p><h4>【學習提醒】</h4><p>看到 that 時，不要只背「那個」。請先判斷 that 後面是否有完整子句，以及它是否回頭修飾前面的名詞。若是修飾名詞，就是形容詞子句。</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ Timmy is a whale became famous.</span><br><span class="right">✓ Timmy is a whale that became famous.</span>（修飾 whale 時需要關係代名詞 that。）</p><p>選擇：The animal ___ was trapped near the coast became famous online. (A) who (B) that (C) what<br>答案：B。animal 是物或動物，that 可作主詞引導形容詞子句。</p></article>
+<article class="grammar-card"><h3>二、whether 引導名詞子句</h3><h4>【引句 Quote】</h4><p class="quote"><em>Success will depend on whether he can swim strongly.</em></p><h4>【句型】</h4><p><span class="formula">S + V + prep. + whether + S + V...</span></p><h4>【核心說明】</h4><p>whether 表示「是否」，可引導名詞子句。這個名詞子句可以當主詞、受詞或介係詞的受詞；本文中 whether he can swim strongly 是 depend on 的受詞。</p><p>depend on whether... 常用來表達「結果取決於某條件是否成立」，很適合描述救援、計畫、政策或研究結果。</p><h4>【使用規則】</h4><ul><li>whether 後面接完整句子，不用倒裝。</li><li>介係詞後面通常用 whether，不用 if。</li><li>whether 可和 or not 搭配，但不一定每次都要出現。</li><li>depend on 中 on 是介係詞，後面可接名詞或名詞子句。</li></ul><h4>【主題例句】</h4><p>The whale's recovery depends on whether it can find enough food.<br>（這隻鯨魚的復原取決於牠是否能找到足夠食物。）</p><h4>【學習提醒】</h4><p>中文的「是否」很容易讓人寫成疑問句語序，但英文名詞子句要用直述句語序：whether + S + V，不寫 whether can he...</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ The result depends on whether can Timmy survive.</span><br><span class="right">✓ The result depends on whether Timmy can survive.</span>（whether 名詞子句使用直述句語序。）</p><p>改錯：Scientists wondered whether could the whale feed normally again.<br>答案：Scientists wondered whether the whale could feed normally again.</p></article>
+<article class="grammar-card"><h3>三、分詞構句補充結果或伴隨動作</h3><h4>【引句 Quote】</h4><p class="quote"><em>Rescuers watched him swim out, spouting a "great fountain" from his blowhole.</em></p><h4>【句型】</h4><p><span class="formula">S + V..., V-ing...</span></p><h4>【核心說明】</h4><p>現在分詞 V-ing 可放在主要子句後面，補充同一主詞或前面情境所伴隨的動作、結果或狀態。本文中 spouting... 描述 Timmy 游出時同時發生的動作。</p><p>分詞構句能讓句子更精簡，也能增加畫面感。它常用於新聞、敘事與說明文中，尤其適合描寫一個事件連帶產生的結果。</p><h4>【使用規則】</h4><ul><li>分詞構句的邏輯主詞通常要和主要子句主詞或受詞清楚連結。</li><li>主動關係用 V-ing；被動關係常用 V-ed。</li><li>放在句尾時，常表示伴隨動作或自然結果。</li><li>不要讓分詞的主詞不明，否則句意會混亂。</li></ul><h4>【主題例句】</h4><p>Timmy moved toward deeper water, leaving the shallow coast behind.<br>（Timmy 游向較深水域，把淺水海岸留在身後。）</p><h4>【學習提醒】</h4><p>分詞構句不是單純把 and 刪掉。改寫前要確認兩個動作的主詞關係合理，且時間或因果關係清楚。</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ Opening the gate, Timmy swam out by the rescuers.</span><br><span class="right">✓ After the rescuers opened the gate, Timmy swam out.</span>（開閘門的是 rescuers，不是 Timmy，不能造成主詞錯置。）</p><p>選擇：The whale swam away, ___ water from its blowhole. (A) spouted (B) spouting (C) to spouted<br>答案：B。句尾用現在分詞表示伴隨動作。</p></article>
+</div>
+</div>
+</section>
+
+<section>
+<h2>底部折疊區塊</h2>
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body"><div class="mini-row"><span class="term">ab-</span>　離開、相反　—　abnormal（異常的）</div><div class="mini-row"><span class="term">ad-</span>　向、加　—　advance（前進）</div><div class="mini-row"><span class="term">ambi-</span>　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="mini-row"><span class="term">anti-</span>　反對、抗　—　antibiotic（抗生素）</div><div class="mini-row"><span class="term">arch-</span>　主要、首要　—　archenemy（死敵）</div><div class="mini-row"><span class="term">auto-</span>　自動、自我　—　autograph（親筆簽名）</div><div class="mini-row"><span class="term">bene-</span>　好的、善　—　benefit（好處）</div><div class="mini-row"><span class="term">bi-</span>　二、雙　—　bilingual（雙語的）</div><div class="mini-row"><span class="term">circum-</span>　環繞、周圍　—　circumstance（情況）</div><div class="mini-row"><span class="term">co-/con-/com-</span>　一起、共同　—　cooperate（合作）</div><div class="mini-row"><span class="term">contra-</span>　相反、對抗　—　contradict（反駁）</div><div class="mini-row"><span class="term">de-</span>　去除、下降　—　decode（解碼）</div><div class="mini-row"><span class="term">dia-</span>　穿過、透過　—　dialogue（對話）</div><div class="mini-row"><span class="term">dis-</span>　否定、分離　—　disagree（不同意）</div><div class="mini-row"><span class="term">en-/em-</span>　使成為　—　enable（使能夠）</div><div class="mini-row"><span class="term">epi-</span>　在上、在外　—　epidemic（流行病）</div><div class="mini-row"><span class="term">ex-</span>　外、前任　—　export（出口）；ex-president（前總統）</div><div class="mini-row"><span class="term">extra-</span>　額外、外部　—　extraordinary（非凡的）</div><div class="mini-row"><span class="term">hetero-</span>　不同　—　heterogeneous（異質的）</div><div class="mini-row"><span class="term">homo-</span>　相同　—　homogeneous（同質的）</div><div class="mini-row"><span class="term">hyper-</span>　過度、超　—　hyperactive（過動的）</div><div class="mini-row"><span class="term">hypo-</span>　低於、不足　—　hypodermic（皮下的）</div><div class="mini-row"><span class="term">in-/im-</span>　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="mini-row"><span class="term">inter-</span>　在...之間　—　international（國際的）</div><div class="mini-row"><span class="term">iso-</span>　相等、相同　—　isolate（隔離）</div><div class="mini-row"><span class="term">mal-</span>　壞、不良　—　malfunction（故障）</div><div class="mini-row"><span class="term">micro-</span>　微小　—　microscope（顯微鏡）</div><div class="mini-row"><span class="term">mis-</span>　錯誤　—　misunderstand（誤解）</div><div class="mini-row"><span class="term">mono-</span>　單一　—　monologue（獨白）</div><div class="mini-row"><span class="term">multi-</span>　多　—　multicultural（多元文化的）</div><div class="mini-row"><span class="term">neo-</span>　新的　—　neonatal（新生的）</div><div class="mini-row"><span class="term">non-</span>　非、沒有　—　nonsense（無意義）</div><div class="mini-row"><span class="term">pan-</span>　全部　—　pandemic（大流行病）</div><div class="mini-row"><span class="term">peri-</span>　周圍　—　perimeter（周長）</div><div class="mini-row"><span class="term">poly-</span>　多　—　polygon（多邊形）</div><div class="mini-row"><span class="term">post-</span>　之後　—　postwar（戰後的）</div><div class="mini-row"><span class="term">pre-</span>　之前　—　preview（預覽）</div><div class="mini-row"><span class="term">pro-</span>　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="mini-row"><span class="term">pseudo-</span>　假的　—　pseudonym（筆名）</div><div class="mini-row"><span class="term">re-</span>　再、回　—　review（複習）</div><div class="mini-row"><span class="term">semi-</span>　一半、部分　—　semicircle（半圓）</div><div class="mini-row"><span class="term">sub-</span>　在下、次級　—　subway（地鐵）</div><div class="mini-row"><span class="term">super-</span>　超越、在上　—　superstar（超級明星）</div><div class="mini-row"><span class="term">syn-/sym-</span>　一起、共同　—　synchronize（同步）</div><div class="mini-row"><span class="term">tele-</span>　遠距　—　telephone（電話）</div><div class="mini-row"><span class="term">trans-</span>　穿越、轉變　—　transport（運輸）</div><div class="mini-row"><span class="term">tri-</span>　三　—　triangle（三角形）</div><div class="mini-row"><span class="term">un-</span>　否定、不　—　unhappy（不快樂的）</div><div class="mini-row"><span class="term">vice-</span>　副、代替　—　vice-president（副總統）</div></div>
+</details>
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body"><div class="mini-row"><span class="term">-tion/-sion/-ation</span>　名詞：動作、過程或結果　—　education（教育）、decision（決定）</div><div class="mini-row"><span class="term">-ment</span>　名詞：行為或結果　—　agreement（協議）、development（發展）</div><div class="mini-row"><span class="term">-ness</span>　名詞：狀態或性質　—　happiness（快樂）、darkness（黑暗）</div><div class="mini-row"><span class="term">-ity/-ty</span>　名詞：抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div><div class="mini-row"><span class="term">-er/-or</span>　名詞：執行某動作的人或物　—　teacher（老師）、actor（演員）</div><div class="mini-row"><span class="term">-ist</span>　名詞：信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div><div class="mini-row"><span class="term">-ship</span>　名詞：身分或關係　—　friendship（友誼）、leadership（領導）</div><div class="mini-row"><span class="term">-hood</span>　名詞：階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div><div class="mini-row"><span class="term">-ence/-ance</span>　名詞：狀態或行為　—　difference（差異）、performance（表現）</div><div class="mini-row"><span class="term">-al</span>　名詞：行為或結果　—　arrival（抵達）、refusal（拒絕）</div><div class="mini-row"><span class="term">-able/-ible</span>　形容詞：能夠...的　—　readable（可讀的）、credible（可信的）</div><div class="mini-row"><span class="term">-ous</span>　形容詞：充滿...的　—　dangerous（危險的）、famous（著名的）</div><div class="mini-row"><span class="term">-ful</span>　形容詞：具有...的　—　hopeful（充滿希望的）、beautiful（美麗的）</div><div class="mini-row"><span class="term">-less</span>　形容詞：缺乏...的　—　hopeless（絕望的）、powerless（無力的）</div><div class="mini-row"><span class="term">-al/-ic</span>　形容詞：與...相關的　—　natural（自然的）、poetic（詩意的）</div><div class="mini-row"><span class="term">-ive</span>　形容詞：有...傾向的　—　creative（有創造力的）、active（活躍的）</div><div class="mini-row"><span class="term">-ary</span>　形容詞：與...有關的　—　ordinary（普通的）、temporary（暫時的）</div><div class="mini-row"><span class="term">-ize/-ise</span>　動詞：使成為...　—　realize（實現）、industrialize（工業化）</div><div class="mini-row"><span class="term">-ify</span>　動詞：使成為...　—　beautify（美化）、clarify（澄清）</div><div class="mini-row"><span class="term">-ate</span>　動詞：形成動詞　—　dominate（支配）、activate（啟動）</div><div class="mini-row"><span class="term">-en</span>　動詞：使變成...　—　strengthen（加強）、soften（使柔軟）</div><div class="mini-row"><span class="term">-ly</span>　副詞：形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div><div class="mini-row"><span class="term">-ward(s)</span>　副詞：表示方向　—　upwards（向上）、homeward（回家）</div><div class="mini-row"><span class="term">-wise</span>　副詞：表示方式或角度　—　clockwise（順時針方向）</div></div>
+</details>
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body"><ol class="compact-list"><li>Timmy [ˈtɪmɪ] (n. 人名：提米) — a young whale（一隻年輕鯨魚）</li><li>stranded [ˈstrændɪd] (adj. 擱淺的；受困的) — strand (v. 使受困)</li><li>whale [hwel] (n. 鯨魚) — whale lover（愛鯨人士）</li><li>rescue [ˈrɛskju] (v./n. 救援) — rescuer (n. 救援者)</li><li>effort [ˈɛfɚt] (n. 努力) — joint effort（共同努力）</li><li>humpback [ˈhʌmpˌbæk] (n. 座頭鯨) — humpback whale（座頭鯨）</li><li>famous [ˈfeməs] (adj. 著名的) — fame (n. 名聲)</li><li>shallow [ˈʃælo] (adj. 淺的) — shallow waters（淺水區）</li><li>coast [kost] (n. 海岸) — coastal (adj. 沿海的)</li><li>Atlantic [ətˈlæntɪk] (adj./n. 大西洋的；大西洋) — Atlantic Ocean（大西洋）</li><li>habitat [ˈhæbəˌtæt] (n. 棲地) — natural habitat（自然棲地）</li><li>rescuer [ˈrɛskjuɚ] (n. 救援者) — rescue effort（救援行動）</li><li>attempt [əˈtɛmpt] (n./v. 嘗試) — make an attempt（嘗試）</li><li>wealthy [ˈwɛlθɪ] (adj. 富有的) — wealth (n. 財富)</li><li>entrepreneur [ˌɑntrəprəˈnɝ] (n. 企業家) — entrepreneurship (n. 創業精神)</li><li>solution [səˈluʃən] (n. 解決辦法) — solve (v. 解決)</li><li>barge [bɑrdʒ] (n. 駁船) — transport barge（運輸駁船）</li><li>seawater [ˈsiˌwɔtɚ] (n. 海水) — sea level（海平面）</li><li>transport [trænsˈpɔrt] (v. 運送) — transportation (n. 交通運輸)</li><li>spout [spaʊt] (v. 噴出) — spout water（噴水）</li><li>blowhole [ˈbloˌhol] (n. 鯨豚氣孔) — from its blowhole（從牠的氣孔）</li><li>celebrate [ˈsɛləˌbret] (v. 慶祝) — celebration (n. 慶祝)</li><li>freely [ˈfrilɪ] (adv. 自由地) — free (adj. 自由的)</li><li>scientist [ˈsaɪəntɪst] (n. 科學家) — scientific (adj. 科學的)</li><li>recovery [rɪˈkʌvərɪ] (n. 復原) — recover (v. 復原)</li><li>depend [dɪˈpɛnd] (v. 取決於；依賴) — depend on（取決於）</li><li>overcome [ˌovɚˈkʌm] (v. 克服) — overcome difficulty（克服困難）</li><li>effect [ɪˈfɛkt] (n. 影響) — effective (adj. 有效的)</li><li>normally [ˈnɔrməlɪ] (adv. 正常地) — normal (adj. 正常的)</li><li>environment [ɪnˈvaɪrənmənt] (n. 環境) — environmental (adj. 環境的)</li></ol><h3>文章相關常用片語 5 個</h3><p>• get stuck（受困）</p><p>• guide A back to B（引導 A 回到 B）</p><p>• pay for a solution（出資提供解方）</p><p>• depend on whether...（取決於是否...）</p><p>• be trapped in the wrong environment（受困在錯誤環境）</p></div>
+</details>
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="writing-item">① after + V-ing（在...之後）<br>→ 適用：描寫事件發生的時間順序<br>例：After staying in shallow waters for weeks, the whale needed help.</div>
+<div class="writing-item">② far from + N（遠離...）<br>→ 適用：強調位置或情況不尋常<br>例：The animal was found far from its natural habitat.</div>
+<div class="writing-item">③ as + S + V（因為；隨著）<br>→ 適用：說明原因或變化背景<br>例：The whale grew weaker as it remained in the wrong environment.</div>
+<div class="writing-item">④ try several times to V（多次嘗試做...）<br>→ 適用：描述持續努力<br>例：The team tried several times to guide the whale back.</div>
+<div class="writing-item">⑤ be prepared to V（被準備好用來...）<br>→ 適用：說明工具或計畫的目的<br>例：A special boat was prepared to carry the animal safely.</div>
+<div class="writing-item">⑥ where + S + V（在那裡...）<br>→ 適用：補充地點資訊<br>例：The whale reached the sea, where rescuers opened the gate.</div>
+<div class="writing-item">⑦ watch + O + V/V-ing（看著某人做/正在做...）<br>→ 適用：描寫觀察到的動作<br>例：People watched the whale swim away.</div>
+<div class="writing-item">⑧ be filled with + N（充滿...）<br>→ 適用：描述情緒、訊息或空間<br>例：Social media was filled with hopeful messages.</div>
+<div class="writing-item">⑨ not A but B（不是 A，而是 B）<br>→ 適用：修正讀者可能的誤解<br>例：The rescue was not the end, but the beginning of recovery.</div>
+<div class="writing-item">⑩ depend on whether + S + V（取決於是否...）<br>→ 適用：分析成功條件<br>例：The plan depends on whether the animal can feed normally.</div>
+<div class="writing-item">⑪ the effects of + N/V-ing（...的影響）<br>→ 適用：討論事件後果<br>例：The whale had to overcome the effects of being stranded.</div>
+<div class="writing-item">⑫ both A and B（A 和 B 兩者都）<br>→ 適用：強調雙重面向<br>例：The story shows both kindness and responsibility.</div>
+<div class="writing-item">⑬ when + S + V（當...時）<br>→ 適用：連接事件與反應<br>例：People celebrated when they saw the whale swimming freely.</div>
+<div class="writing-item">⑭ find one's way back to + N（找到回到...的路）<br>→ 適用：描寫恢復方向或返程<br>例：The whale needed to find its way back to a healthy habitat.</div>
+<div class="writing-item">⑮ face serious challenges（面臨嚴重挑戰）<br>→ 適用：議論野生動物、環境或社會問題<br>例：Wild animals face serious challenges when humans change their environment.</div>
+</div>
+</details>
+</section>
+<section class="link-strip bottom">
+<h2>七月課程與聯絡方式</h2>
+<div class="link-grid">
+<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html"><strong>七月課程介紹：錯中學 ECHO 計劃</strong><span>用錯誤回饋建立英文實力，適合想把弱點變成進步路線的高中生。</span></a>
+<a class="link-card course-b" href="https://linwayet.github.io/popup/index"><strong>學生分析</strong><span>透過學習分析看見學生目前狀態，協助安排更精準的複習方向。</span></a>
+<a class="link-card line-card" href="https://line.me/ti/p/~linwayet"><strong>林威老師 Line：linwayet</strong><span>想詢問課程、教材或學習規劃，可以加入 Line 直接聯絡。</span></a>
+</div>
+</section>
+</main>
+</body>
+</html>
