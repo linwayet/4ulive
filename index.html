@@ -107,10 +107,105 @@
         .hero-team .dot { color: var(--gold); font-size: 22px; line-height: 1; }
 
         /* ── LAYOUT ── */
-        .page-body {
-            max-width: 720px;
+        .page-wrapper {
+            display: flex;
+            max-width: 1140px;
             margin: 0 auto;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .page-body {
+            flex: 1;
+            min-width: 0;
             padding: 48px 20px 80px;
+        }
+
+        /* ── RIGHT SIDEBAR ── */
+        .news-sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            padding: 48px 16px 80px 8px;
+            position: sticky;
+            top: 0;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .news-sidebar::-webkit-scrollbar { width: 4px; }
+        .news-sidebar::-webkit-scrollbar-track { background: transparent; }
+        .news-sidebar::-webkit-scrollbar-thumb { background: var(--gold-lt); border-radius: 4px; }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold-lt);
+        }
+        .sidebar-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .sidebar-header span { font-size: 16px; }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .news-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #fff;
+            border: 1.5px solid transparent;
+            border-left: 3px solid var(--echo-r);
+            box-shadow: 0 2px 8px rgba(45,42,38,0.07);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+            line-height: 1.35;
+        }
+        .news-link:hover {
+            transform: translateX(3px);
+            box-shadow: 0 4px 16px rgba(45,42,38,0.12);
+            background: #FFF8F0;
+            border-color: var(--echo-r);
+        }
+        .news-link:active { transform: scale(0.97); }
+
+        .news-num {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--echo-r);
+            opacity: 0.6;
+            min-width: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Alternating accent colors */
+        .news-link:nth-child(5n+1) { border-left-color: var(--echo-r); }
+        .news-link:nth-child(5n+1) .news-num { color: var(--echo-r); }
+        .news-link:nth-child(5n+2) { border-left-color: var(--echo-b); }
+        .news-link:nth-child(5n+2) .news-num { color: var(--echo-b); }
+        .news-link:nth-child(5n+3) { border-left-color: var(--echo-g); }
+        .news-link:nth-child(5n+3) .news-num { color: var(--echo-g); }
+        .news-link:nth-child(5n+4) { border-left-color: var(--echo-o); }
+        .news-link:nth-child(5n+4) .news-num { color: var(--echo-o); }
+        .news-link:nth-child(5n+5) { border-left-color: var(--echo-p); }
+        .news-link:nth-child(5n+5) .news-num { color: var(--echo-p); }
+
+        @media (max-width: 860px) {
+            .news-sidebar { display: none; }
         }
 
         .section-header {
@@ -276,9 +371,9 @@
 
         /* ── CONTACT SECTION ── */
         .contact-section {
-            max-width: 720px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 48px 20px 56px;
+            padding: 0 216px 56px 20px;
         }
         .contact-card {
             background: #fff;
@@ -406,6 +501,7 @@
     </div>
 </header>
 
+<div class="page-wrapper">
 <div class="page-body">
 
     <!-- Feature pills -->
@@ -543,6 +639,58 @@
     </div>
 
 </div><!-- /page-body -->
+
+    <!-- ── NEWS SIDEBAR ── -->
+    <aside class="news-sidebar">
+        <div class="sidebar-header">
+            <span>📰</span>
+            <h3>時事專區</h3>
+        </div>
+        <div class="news-list">
+            <a href="news1.html" class="news-link"><span class="news-num">01</span>時事1</a>
+            <a href="news2.html" class="news-link"><span class="news-num">02</span>時事2</a>
+            <a href="news3.html" class="news-link"><span class="news-num">03</span>時事3</a>
+            <a href="news4.html" class="news-link"><span class="news-num">04</span>時事4</a>
+            <a href="news5.html" class="news-link"><span class="news-num">05</span>時事5</a>
+            <a href="news6.html" class="news-link"><span class="news-num">06</span>時事6</a>
+            <a href="news7.html" class="news-link"><span class="news-num">07</span>時事7</a>
+            <a href="news8.html" class="news-link"><span class="news-num">08</span>時事8</a>
+            <a href="news9.html" class="news-link"><span class="news-num">09</span>時事9</a>
+            <a href="news10.html" class="news-link"><span class="news-num">10</span>時事10</a>
+            <a href="news11.html" class="news-link"><span class="news-num">11</span>時事11</a>
+            <a href="news12.html" class="news-link"><span class="news-num">12</span>時事12</a>
+            <a href="news13.html" class="news-link"><span class="news-num">13</span>時事13</a>
+            <a href="news14.html" class="news-link"><span class="news-num">14</span>時事14</a>
+            <a href="news15.html" class="news-link"><span class="news-num">15</span>時事15</a>
+            <a href="news16.html" class="news-link"><span class="news-num">16</span>時事16</a>
+            <a href="news17.html" class="news-link"><span class="news-num">17</span>時事17</a>
+            <a href="news18.html" class="news-link"><span class="news-num">18</span>時事18</a>
+            <a href="news19.html" class="news-link"><span class="news-num">19</span>時事19</a>
+            <a href="news20.html" class="news-link"><span class="news-num">20</span>時事20</a>
+            <a href="news21.html" class="news-link"><span class="news-num">21</span>時事21</a>
+            <a href="news22.html" class="news-link"><span class="news-num">22</span>時事22</a>
+            <a href="news23.html" class="news-link"><span class="news-num">23</span>時事23</a>
+            <a href="news24.html" class="news-link"><span class="news-num">24</span>時事24</a>
+            <a href="news25.html" class="news-link"><span class="news-num">25</span>時事25</a>
+            <a href="news26.html" class="news-link"><span class="news-num">26</span>時事26</a>
+            <a href="news27.html" class="news-link"><span class="news-num">27</span>時事27</a>
+            <a href="news28.html" class="news-link"><span class="news-num">28</span>時事28</a>
+            <a href="news29.html" class="news-link"><span class="news-num">29</span>時事29</a>
+            <a href="news30.html" class="news-link"><span class="news-num">30</span>時事30</a>
+            <a href="news31.html" class="news-link"><span class="news-num">31</span>時事31</a>
+            <a href="news32.html" class="news-link"><span class="news-num">32</span>時事32</a>
+            <a href="news33.html" class="news-link"><span class="news-num">33</span>時事33</a>
+            <a href="news34.html" class="news-link"><span class="news-num">34</span>時事34</a>
+            <a href="news35.html" class="news-link"><span class="news-num">35</span>時事35</a>
+            <a href="news36.html" class="news-link"><span class="news-num">36</span>時事36</a>
+            <a href="news37.html" class="news-link"><span class="news-num">37</span>時事37</a>
+            <a href="news38.html" class="news-link"><span class="news-num">38</span>時事38</a>
+            <a href="news39.html" class="news-link"><span class="news-num">39</span>時事39</a>
+            <a href="news40.html" class="news-link"><span class="news-num">40</span>時事40</a>
+        </div>
+    </aside>
+
+</div><!-- /page-wrapper -->
 
 <!-- ── CONTACT ── -->
 <section class="contact-section">
