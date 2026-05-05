@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表觀遺傳學 100天 · Epigenetics 100 Days</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Noto+Serif+TC:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:    #FDF6EC;
+  --warm1:    #F9EDD8;
+  --warm2:    #F5E0C0;
+  --amber:    #E8A840;
+  --rust:     #C8612A;
+  --terra:    #A04020;
+  --coral:    #E07050;
+  --gold:     #D4920A;
+  --sage:     #7A9A6A;
+  --teal:     #4A8A80;
+  --plum:     #8A5080;
+  --ink:      #2C1A0E;
+  --mid:      #5C3A1E;
+  --light:    #8A6040;
+
+  /* stage colors */
+  --s1: #E07858;
+  --s2: #D4920A;
+  --s3: #C05A30;
+  --s4: #7A9A6A;
+  --s5: #C04060;
+  --s6: #7060A0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Noto Serif TC', serif;
+  line-height: 1.7;
+}
+
+/* ── PROMO BANNER ── */
+.promo-banner {
+  background: linear-gradient(135deg, #3A1A08 0%, #6A2E10 40%, #3A2050 100%);
+  padding: 20px 16px;
+}
+.promo-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.promo-title {
+  color: var(--amber);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: .05em;
+}
+.promo-cards {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.promo-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(232,168,64,0.35);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  flex: 1 1 200px;
+  max-width: 260px;
+  transition: transform .2s, background .2s;
+  display: block;
+}
+.promo-card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.12); }
+.promo-card-icon { font-size: 1.5rem; margin-bottom: 6px; }
+.promo-card-name { color: #FFD580; font-weight: 700; font-size: .9rem; margin-bottom: 4px; font-family: 'Lato', sans-serif; }
+.promo-card-desc { color: rgba(255,255,255,0.7); font-size: .78rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+.promo-card-badge {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--amber);
+  color: #2C1A0E;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+}
+.line-card {
+  background: rgba(0,185,0,0.12);
+  border: 1px solid rgba(0,200,80,0.4);
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 200px;
+  max-width: 260px;
+  transition: transform .2s;
+}
+.line-card:hover { transform: translateY(-3px); }
+.line-icon { font-size: 2rem; }
+.line-info { color: rgba(255,255,255,0.85); font-family: 'Lato', sans-serif; font-size: .82rem; line-height: 1.6; }
+.line-info strong { color: #90EE90; display: block; margin-bottom: 2px; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, #F9E8D0 0%, #F0D4A8 35%, #E8C8B0 65%, #DEB890 100%);
+  padding: 48px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,168,64,0.25) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,97,42,0.15) 0%, transparent 70%);
+}
+.dna-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--rust), var(--amber));
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  padding: 5px 16px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 6vw, 3.2rem);
+  font-weight: 800;
+  color: var(--terra);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.hero h1 span { color: var(--rust); }
+.hero-sub {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(.95rem, 2.5vw, 1.15rem);
+  color: var(--mid);
+  margin-bottom: 20px;
+  font-weight: 300;
+  letter-spacing: .04em;
+}
+.hero-tagline {
+  font-size: clamp(.88rem, 2vw, 1rem);
+  color: var(--rust);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(200,97,42,0.25);
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-family: 'Lato', sans-serif;
+  font-size: .82rem;
+  color: var(--mid);
+}
+.stat-pill strong { color: var(--rust); font-size: 1rem; }
+
+/* ── SECTION HEADERS ── */
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 20px 14px;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.stage-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  flex-shrink: 0;
+}
+.stage-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  color: var(--ink);
+  flex: 1;
+}
+.stage-range {
+  font-family: 'Lato', sans-serif;
+  font-size: .78rem;
+  color: var(--light);
+  background: var(--warm2);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.stage-desc {
+  max-width: 900px;
+  margin: 0 auto 8px;
+  padding: 0 20px;
+  font-size: .88rem;
+  color: var(--mid);
+  font-style: italic;
+}
+
+/* ── EPISODE GRID ── */
+.ep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 8px;
+}
+
+.ep-card {
+  background: white;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border-left: 4px solid #ccc;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: transform .15s, box-shadow .15s;
+  position: relative;
+}
+.ep-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+.ep-card.review {
+  background: linear-gradient(135deg, #FFF9EE, #FFF3D8);
+  border-left-width: 4px;
+}
+.ep-num {
+  font-family: 'Lato', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  color: var(--light);
+  letter-spacing: .08em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.ep-title-zh {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+.ep-title-en {
+  font-family: 'Lato', sans-serif;
+  font-size: .75rem;
+  color: var(--light);
+  line-height: 1.3;
+}
+.review-star {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: .9rem;
+}
+
+/* ── DIVIDER ── */
+.stage-divider {
+  height: 2px;
+  max-width: 900px;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  opacity: 0.25;
+}
+
+/* ── KNOWLEDGE MAP ── */
+.map-section {
+  background: linear-gradient(135deg, #3A1808, #5A2E18);
+  padding: 32px 20px;
+  margin-top: 20px;
+}
+.map-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--amber);
+  text-align: center;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-bottom: 20px;
+}
+.map-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.map-box {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(232,168,64,0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  flex: 1 1 200px;
+  max-width: 260px;
+}
+.map-box-title {
+  color: var(--amber);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-bottom: 8px;
+}
+.map-box ul {
+  list-style: none;
+  padding: 0;
+}
+.map-box li {
+  color: rgba(255,255,255,0.7);
+  font-family: 'Lato', sans-serif;
+  font-size: .76rem;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  line-height: 1.4;
+}
+.map-box li:last-child { border-bottom: none; }
+.map-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--amber);
+  font-size: 1.4rem;
+  opacity: 0.5;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #2C1A0E;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 16px;
+  font-family: 'Lato', sans-serif;
+  font-size: .78rem;
+}
+
+/* ── SCROLL LINE ── */
+.scroll-line {
+  height: 3px;
+  background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6));
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .ep-grid { grid-template-columns: 1fr; }
+  .promo-cards { flex-direction: column; align-items: center; }
+  .promo-card, .line-card { max-width: 100%; }
+  .map-grid { flex-direction: column; align-items: center; }
+  .map-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TOP PROMO ══════════════ -->
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-title">🔥 2025年七月開課 × 立即了解 × 聯絡我</div>
+    <div class="promo-cards">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-card-icon">🎯</div>
+        <div class="promo-card-name">錯中學 ECHO 計劃</div>
+        <div class="promo-card-desc">透過錯誤分析深化英文學習，科學化反饋系統，讓每次犯錯都成為進步的燃料。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-card-icon">📊</div>
+        <div class="promo-card-name">學生分析系統</div>
+        <div class="promo-card-desc">個人化學習軌跡追蹤，精準診斷弱點，為每位學生打造專屬成長路徑。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="line-card" href="https://line.me/ti/p/linwayet" target="_blank">
+        <div class="line-icon">💬</div>
+        <div class="line-info">
+          <strong>LINE 直接聯絡</strong>
+          ID：linwayet<br>歡迎詢問課程資訊
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-line"></div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero">
+  <div class="dna-badge">🧬 自學系列 · Self-Study Series</div>
+  <h1>表觀遺傳學<br><span>Epigenetics</span></h1>
+  <div class="hero-sub">100天 雙語 Podcast 自學計畫 · 100-Day Bilingual Podcast Curriculum</div>
+  <div class="hero-tagline">「基因是劇本，表觀遺傳是你的演技。」<br>Your genes are the script. Epigenetics is how you perform it.</div>
+  <div class="stats-row">
+    <div class="stat-pill"><strong>100</strong> 集</div>
+    <div class="stat-pill"><strong>6</strong> 大階段</div>
+    <div class="stat-pill"><strong>中文 + 英文</strong> 雙語</div>
+    <div class="stat-pill">每集 <strong>1200字+</strong></div>
+    <div class="stat-pill">TTS 友善朗讀格式</div>
+  </div>
+</div>
+
+<!-- ══════════════ STAGE 1 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s1);">S1</div>
+  <h2>第一階段｜表觀遺傳學基礎</h2>
+  <span class="stage-range">D01–15</span>
+</div>
+<div class="stage-desc">從「什麼是表觀遺傳學」出發，建立基本語言與概念框架，理解染色質結構與細胞記憶。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 01</div>
+    <div class="ep-title-zh">什麼是表觀遺傳學？基因不是命運</div>
+    <div class="ep-title-en">What Is Epigenetics? Your Genes Are Not Your Destiny</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 02</div>
+    <div class="ep-title-zh">細胞記憶：為什麼肝細胞不會變成腦細胞</div>
+    <div class="ep-title-en">Cell Memory: Why a Liver Cell Never Becomes a Brain Cell</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 03</div>
+    <div class="ep-title-zh">染色質的兩種狀態：開放與緊閉</div>
+    <div class="ep-title-en">Open and Closed: The Two States of Chromatin</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 04</div>
+    <div class="ep-title-zh">核小體：DNA 的第一層包裝</div>
+    <div class="ep-title-en">The Nucleosome: DNA's First Layer of Packaging</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 05</div>
+    <div class="ep-title-zh">組蛋白家族：H1、H2A、H2B、H3、H4 的角色</div>
+    <div class="ep-title-en">Meet the Histones: H1 Through H4</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 06</div>
+    <div class="ep-title-zh">表觀遺傳的「寫手、讀手、橡皮擦」</div>
+    <div class="ep-title-en">Writers, Readers, and Erasers of the Epigenome</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 07</div>
+    <div class="ep-title-zh">發育的開關：幹細胞如何決定變成什麼</div>
+    <div class="ep-title-en">The Developmental Switch: How Stem Cells Choose a Fate</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 08</div>
+    <div class="ep-title-zh">基因組印記：父母的標記</div>
+    <div class="ep-title-en">Genomic Imprinting: Your Parents' Marks on Your DNA</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 09</div>
+    <div class="ep-title-zh">X 染色體去活化：一半沉默的故事</div>
+    <div class="ep-title-en">X-Inactivation: Silencing Half the Story</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s1);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 10 · 整合回顧</div>
+    <div class="ep-title-zh">表觀遺傳學的基本語言</div>
+    <div class="ep-title-en">Review: The Basic Language of Epigenetics</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 11</div>
+    <div class="ep-title-zh">同卵雙胞胎的表觀遺傳謎題</div>
+    <div class="ep-title-en">The Identical Twin Mystery</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 12</div>
+    <div class="ep-title-zh">表觀遺傳的時間軸：從受精卵到老年</div>
+    <div class="ep-title-en">The Epigenetic Timeline: Fertilization to Old Age</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 13</div>
+    <div class="ep-title-zh">環境如何寫入你的基因組</div>
+    <div class="ep-title-en">How the Environment Writes Into Your Genome</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 14</div>
+    <div class="ep-title-zh">研究工具：ChIP-seq 與 ATAC-seq</div>
+    <div class="ep-title-en">Tools of the Trade: ChIP-seq and ATAC-seq</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s1);">
+    <div class="ep-num">Day 15</div>
+    <div class="ep-title-zh">表觀基因組地圖：ENCODE 與 Roadmap</div>
+    <div class="ep-title-en">Mapping the Epigenome: ENCODE and Roadmap</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s1);"></div>
+
+<!-- ══════════════ STAGE 2 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s2);">S2</div>
+  <h2>第二階段｜DNA 甲基化的世界</h2>
+  <span class="stage-range">D16–30</span>
+</div>
+<div class="stage-desc">深入 CpG 島、DNMT 家族與 TET 酵素，探索甲基化如何關閉基因，飲食與壓力如何留下分子印記。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 16</div>
+    <div class="ep-title-zh">DNA 甲基化：在基因上貼沉默標籤</div>
+    <div class="ep-title-en">DNA Methylation: Silencing Genes with a Chemical Tag</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 17</div>
+    <div class="ep-title-zh">CpG 島：甲基化的主要戰場</div>
+    <div class="ep-title-en">CpG Islands: The Battleground of Methylation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 18</div>
+    <div class="ep-title-zh">DNMT 家族：三種甲基化酵素</div>
+    <div class="ep-title-en">The DNMT Family: Three Methylation Enzymes</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 19</div>
+    <div class="ep-title-zh">TET 酵素：甲基化的去除者</div>
+    <div class="ep-title-en">TET Enzymes: Erasing the Methyl Mark</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s2);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 20 · 整合回顧</div>
+    <div class="ep-title-zh">甲基化的寫入與清除循環</div>
+    <div class="ep-title-en">Review: The Cycle of Methylation Writing and Erasure</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 21</div>
+    <div class="ep-title-zh">基因啟動子甲基化與基因靜默</div>
+    <div class="ep-title-en">Promoter Methylation and Gene Silencing</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 22</div>
+    <div class="ep-title-zh">癌症的全基因組低甲基化現象</div>
+    <div class="ep-title-en">Global Hypomethylation in Cancer</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 23</div>
+    <div class="ep-title-zh">甲基化與轉座子：沉默基因組的暗物質</div>
+    <div class="ep-title-en">Methylation and Transposons: Silencing Genomic Dark Matter</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 24</div>
+    <div class="ep-title-zh">印記基因的甲基化機制：IGF2 與 H19</div>
+    <div class="ep-title-en">Imprinting Mechanisms: The IGF2-H19 Story</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 25</div>
+    <div class="ep-title-zh">飲食與甲基化：葉酸、膽鹼、SAM</div>
+    <div class="ep-title-en">Diet and Methylation: Folate, Choline, and SAM</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 26</div>
+    <div class="ep-title-zh">壓力與甲基化：童年逆境的分子印記</div>
+    <div class="ep-title-en">Stress and Methylation: Molecular Scars of Early Adversity</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 27</div>
+    <div class="ep-title-zh">老化時鐘：Horvath 甲基化時鐘</div>
+    <div class="ep-title-en">The Epigenetic Clock: Horvath's Methylation Age</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 28</div>
+    <div class="ep-title-zh">5-甲基胞嘧啶與 5-羥甲基胞嘧啶</div>
+    <div class="ep-title-en">5-mC and 5-hmC: Beyond Simple Methylation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s2);">
+    <div class="ep-num">Day 29</div>
+    <div class="ep-title-zh">甲基化偵測技術：亞硫酸氫鹽定序</div>
+    <div class="ep-title-en">Detecting Methylation: Bisulfite Sequencing</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s2);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 30 · 整合回顧</div>
+    <div class="ep-title-zh">甲基化全景圖</div>
+    <div class="ep-title-en">Review: The Complete Methylation Landscape</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s2);"></div>
+
+<!-- ══════════════ STAGE 3 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s3);">S3</div>
+  <h2>第三階段｜組蛋白密碼</h2>
+  <span class="stage-range">D31–45</span>
+</div>
+<div class="stage-desc">解碼組蛋白尾端的化學修飾語言，從乙醯化、甲基化到 Polycomb/Trithorax 系統，以及三維基因組的空間組織。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 31</div>
+    <div class="ep-title-zh">組蛋白修飾：乙醯化、甲基化、磷酸化</div>
+    <div class="ep-title-en">Histone Modifications: Acetylation, Methylation, Phosphorylation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 32</div>
+    <div class="ep-title-zh">組蛋白乙醯化：開啟基因的鑰匙</div>
+    <div class="ep-title-en">Histone Acetylation: Unlocking Genes</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 33</div>
+    <div class="ep-title-zh">HAT 與 HDAC：乙醯基的加入與移除</div>
+    <div class="ep-title-en">HATs and HDACs: Adding and Removing Acetyl Groups</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 34</div>
+    <div class="ep-title-zh">組蛋白甲基化：訊號的精細調控</div>
+    <div class="ep-title-en">Histone Methylation: Fine-Tuning the Signal</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 35</div>
+    <div class="ep-title-zh">H3K4me3 vs H3K27me3：活化與抑制的標記</div>
+    <div class="ep-title-en">H3K4me3 vs H3K27me3: Marks of Activation and Repression</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 36</div>
+    <div class="ep-title-zh">Polycomb 複合體：發育的沉默守門人</div>
+    <div class="ep-title-en">Polycomb Complexes: Silent Guardians of Development</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 37</div>
+    <div class="ep-title-zh">Trithorax 複合體：維持基因活化記憶</div>
+    <div class="ep-title-en">Trithorax Complexes: Maintaining Active Gene Memory</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 38</div>
+    <div class="ep-title-zh">組蛋白磷酸化與 DNA 損傷反應</div>
+    <div class="ep-title-en">Histone Phosphorylation and DNA Damage Response</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 39</div>
+    <div class="ep-title-zh">染色質重塑複合體：SWI/SNF 家族</div>
+    <div class="ep-title-en">Chromatin Remodeling: The SWI/SNF Family</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s3);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 40 · 整合回顧</div>
+    <div class="ep-title-zh">組蛋白密碼總覽</div>
+    <div class="ep-title-en">Review: Decoding the Histone Code</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 41</div>
+    <div class="ep-title-zh">組蛋白變體：H2A.Z、macroH2A、H3.3</div>
+    <div class="ep-title-en">Histone Variants: H2A.Z, macroH2A, and H3.3</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 42</div>
+    <div class="ep-title-zh">增強子的表觀遺傳標記：H3K4me1</div>
+    <div class="ep-title-en">Enhancers and Their Epigenetic Marks: H3K4me1</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 43</div>
+    <div class="ep-title-zh">超級增強子：控制細胞命運的主調控區</div>
+    <div class="ep-title-en">Super-Enhancers: Master Regulators of Cell Identity</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 44</div>
+    <div class="ep-title-zh">拓樸關聯域（TAD）與三維基因組</div>
+    <div class="ep-title-en">TADs and the 3D Genome: Organizing Chromatin in Space</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s3);">
+    <div class="ep-num">Day 45</div>
+    <div class="ep-title-zh">相分離與凝聚體：染色質的新物理學</div>
+    <div class="ep-title-en">Phase Separation and Condensates: A New Physics of Chromatin</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s3);"></div>
+
+<!-- ══════════════ STAGE 4 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s4);">S4</div>
+  <h2>第四階段｜非編碼 RNA 的調控宇宙</h2>
+  <span class="stage-range">D46–65</span>
+</div>
+<div class="stage-desc">miRNA、siRNA、piRNA、lncRNA、circRNA 與 RNA 修飾——探索沉默多數如何精密調控基因表現。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 46</div>
+    <div class="ep-title-zh">非編碼 RNA 概覽：沉默的多數</div>
+    <div class="ep-title-en">Non-Coding RNAs: The Silent Majority</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 47</div>
+    <div class="ep-title-zh">miRNA 的發現：線蟲給人類的禮物</div>
+    <div class="ep-title-en">miRNA Discovery: A Gift from the Worm</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 48</div>
+    <div class="ep-title-zh">miRNA 的生合成：Drosha、Dicer、RISC</div>
+    <div class="ep-title-en">miRNA Biogenesis: From Drosha to RISC</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 49</div>
+    <div class="ep-title-zh">miRNA 調控網絡：一個管一百個基因</div>
+    <div class="ep-title-en">miRNA Networks: One miRNA, One Hundred Targets</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s4);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 50 · 整合回顧</div>
+    <div class="ep-title-zh">miRNA 在表觀調控中的地位</div>
+    <div class="ep-title-en">Review: miRNA's Place in Epigenetic Regulation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 51</div>
+    <div class="ep-title-zh">siRNA 與 RNA 干擾：諾貝爾獎等級的發現</div>
+    <div class="ep-title-en">siRNA and RNA Interference: A Nobel Discovery</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 52</div>
+    <div class="ep-title-zh">piRNA：保護生殖細胞基因組的衛兵</div>
+    <div class="ep-title-en">piRNA: Guardians of the Germline Genome</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 53</div>
+    <div class="ep-title-zh">lncRNA 的世界：XIST、HOTAIR、MALAT1</div>
+    <div class="ep-title-en">The World of lncRNAs: XIST, HOTAIR, and MALAT1</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 54</div>
+    <div class="ep-title-zh">XIST 與 X 染色體去活化的分子機制</div>
+    <div class="ep-title-en">XIST and the Molecular Mechanism of X-Inactivation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 55</div>
+    <div class="ep-title-zh">circRNA：沒有頭尾的環狀 RNA</div>
+    <div class="ep-title-en">Circular RNAs: RNA Without a Beginning or End</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 56</div>
+    <div class="ep-title-zh">RNA m6A 修飾：RNA 表觀遺傳學</div>
+    <div class="ep-title-en">RNA m6A Modification: Epitranscriptomics</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 57</div>
+    <div class="ep-title-zh">增強子 RNA（eRNA）：功能型調控 RNA</div>
+    <div class="ep-title-en">Enhancer RNAs: Functional Regulatory Transcripts</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 58</div>
+    <div class="ep-title-zh">RNA 與染色質的交互作用</div>
+    <div class="ep-title-en">RNA-Chromatin Interactions</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 59</div>
+    <div class="ep-title-zh">ceRNA 假說：競爭性內源 RNA 網絡</div>
+    <div class="ep-title-en">The ceRNA Hypothesis: Competing Endogenous RNAs</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s4);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 60 · 整合回顧</div>
+    <div class="ep-title-zh">非編碼 RNA 調控圖譜</div>
+    <div class="ep-title-en">Review: The Non-Coding RNA Regulatory Map</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 61</div>
+    <div class="ep-title-zh">RNA 修飾的類型：假尿苷、inosine、m5C</div>
+    <div class="ep-title-en">RNA Modification Types: Pseudouridine, Inosine, m5C</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 62</div>
+    <div class="ep-title-zh">RNA 結合蛋白與 RNA 穩定性調控</div>
+    <div class="ep-title-en">RNA-Binding Proteins and mRNA Stability</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 63</div>
+    <div class="ep-title-zh">外泌體中的非編碼 RNA：細胞間通訊</div>
+    <div class="ep-title-en">Non-Coding RNAs in Exosomes: Cell-to-Cell Communication</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 64</div>
+    <div class="ep-title-zh">非編碼 RNA 與幹細胞多能性</div>
+    <div class="ep-title-en">Non-Coding RNAs and Stem Cell Pluripotency</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s4);">
+    <div class="ep-num">Day 65</div>
+    <div class="ep-title-zh">非編碼 RNA 的演化保守性</div>
+    <div class="ep-title-en">Evolutionary Conservation of Non-Coding RNAs</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s4);"></div>
+
+<!-- ══════════════ STAGE 5 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s5);">S5</div>
+  <h2>第五階段｜表觀遺傳學與疾病</h2>
+  <span class="stage-range">D66–85</span>
+</div>
+<div class="stage-desc">癌症、神經疾病、代謝病、老化與免疫——表觀遺傳異常如何引發疾病，以及表觀遺傳藥物的治療革命。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 66</div>
+    <div class="ep-title-zh">癌症的表觀遺傳異常：甲基化的全局失控</div>
+    <div class="ep-title-en">Epigenetic Aberrations in Cancer: Global Methylation Chaos</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 67</div>
+    <div class="ep-title-zh">腫瘤抑制基因的甲基化靜默</div>
+    <div class="ep-title-en">Silencing Tumor Suppressors by Methylation</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 68</div>
+    <div class="ep-title-zh">致癌組蛋白突變：H3K27M 與兒童腦癌</div>
+    <div class="ep-title-en">Oncohistones: H3K27M and Pediatric Brain Cancer</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 69</div>
+    <div class="ep-title-zh">EZH2 突變與淋巴瘤</div>
+    <div class="ep-title-en">EZH2 Mutations and Lymphoma</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s5);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 70 · 整合回顧</div>
+    <div class="ep-title-zh">癌症表觀遺傳學</div>
+    <div class="ep-title-en">Review: Cancer Epigenetics</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 71</div>
+    <div class="ep-title-zh">表觀遺傳藥物：HDAC 抑制劑</div>
+    <div class="ep-title-en">Epigenetic Drugs: HDAC Inhibitors</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 72</div>
+    <div class="ep-title-zh">表觀遺傳藥物：甲基化抑制劑</div>
+    <div class="ep-title-en">Epigenetic Drugs: DNA Methylation Inhibitors</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 73</div>
+    <div class="ep-title-zh">BET 蛋白抑制劑與超級增強子靶向治療</div>
+    <div class="ep-title-en">BET Inhibitors: Targeting Super-Enhancers</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 74</div>
+    <div class="ep-title-zh">IDH 突變、2-HG 與表觀遺傳重塑</div>
+    <div class="ep-title-en">IDH Mutations, 2-HG, and Epigenetic Reprogramming</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 75</div>
+    <div class="ep-title-zh">神經發育疾病：Rett 症候群與 MeCP2</div>
+    <div class="ep-title-en">Neurodevelopmental Disorders: Rett Syndrome and MeCP2</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 76</div>
+    <div class="ep-title-zh">精神疾病的表觀遺傳學：憂鬱症與 PTSD</div>
+    <div class="ep-title-en">Mental Health Epigenetics: Depression and PTSD</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 77</div>
+    <div class="ep-title-zh">代謝疾病與表觀遺傳學：肥胖與糖尿病</div>
+    <div class="ep-title-en">Metabolic Disease Epigenetics: Obesity and Diabetes</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 78</div>
+    <div class="ep-title-zh">老化的表觀遺傳學：時鐘能撥回嗎？</div>
+    <div class="ep-title-en">Aging Epigenetics: Can We Turn Back the Clock?</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 79</div>
+    <div class="ep-title-zh">免疫系統的表觀遺傳調控</div>
+    <div class="ep-title-en">Epigenetic Regulation of the Immune System</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s5);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 80 · 整合回顧</div>
+    <div class="ep-title-zh">疾病中的表觀遺傳異常</div>
+    <div class="ep-title-en">Review: Epigenetic Dysregulation in Disease</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 81</div>
+    <div class="ep-title-zh">心血管疾病與表觀遺傳學</div>
+    <div class="ep-title-en">Cardiovascular Disease and Epigenetics</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 82</div>
+    <div class="ep-title-zh">病毒感染如何重寫宿主基因組</div>
+    <div class="ep-title-en">Epigenetics of Infection: How Viruses Rewrite the Host Genome</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 83</div>
+    <div class="ep-title-zh">癌症免疫治療與表觀遺傳學的結合</div>
+    <div class="ep-title-en">Combining Epigenetic Therapy with Cancer Immunotherapy</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 84</div>
+    <div class="ep-title-zh">表觀遺傳生物標記：早期診斷與預後預測</div>
+    <div class="ep-title-en">Epigenetic Biomarkers: Early Diagnosis and Prognosis</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s5);">
+    <div class="ep-num">Day 85</div>
+    <div class="ep-title-zh">液態活檢中的表觀遺傳學：cfDNA 甲基化</div>
+    <div class="ep-title-en">Epigenetics in Liquid Biopsy: cfDNA Methylation</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s5);"></div>
+
+<!-- ══════════════ STAGE 6 ══════════════ -->
+<div class="stage-header">
+  <div class="stage-dot" style="background:var(--s6);">S6</div>
+  <h2>第六階段｜環境、演化與未來應用</h2>
+  <span class="stage-range">D86–100</span>
+</div>
+<div class="stage-desc">跨代遺傳、飢荒記憶、表觀基因組編輯、AI 應用，以及運動、飲食、冥想的分子機制——走向可程式化基因表現的未來。</div>
+<div class="ep-grid">
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 86</div>
+    <div class="ep-title-zh">跨代表觀遺傳遺傳：祖先的飢荒影響你嗎？</div>
+    <div class="ep-title-en">Transgenerational Epigenetic Inheritance: Does Famine Echo Across Generations?</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 87</div>
+    <div class="ep-title-zh">荷蘭飢荒實驗：歷史事件的分子記憶</div>
+    <div class="ep-title-en">The Dutch Hunger Winter: Molecular Memory of a Historical Trauma</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 88</div>
+    <div class="ep-title-zh">父親的表觀遺傳貢獻：精子不只是 DNA 載體</div>
+    <div class="ep-title-en">Paternal Epigenetics: Sperm Carries More Than DNA</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 89</div>
+    <div class="ep-title-zh">植物的表觀遺傳學：春化作用與季節感知</div>
+    <div class="ep-title-en">Plant Epigenetics: Vernalization and Seasonal Memory</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s6);">
+    <div class="review-star">⭐</div>
+    <div class="ep-num">Day 90 · 整合回顧</div>
+    <div class="ep-title-zh">跨代遺傳與演化意義</div>
+    <div class="ep-title-en">Review: Transgenerational Inheritance and Evolution</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 91</div>
+    <div class="ep-title-zh">表觀遺傳學與演化：拉馬克主義的回歸？</div>
+    <div class="ep-title-en">Epigenetics and Evolution: The Return of Lamarck?</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 92</div>
+    <div class="ep-title-zh">表觀基因組編輯：dCas9 與精準表觀調控</div>
+    <div class="ep-title-en">Epigenome Editing: dCas9 and Precise Epigenetic Control</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 93</div>
+    <div class="ep-title-zh">個人化表觀遺傳醫療：你的表觀基因組地圖</div>
+    <div class="ep-title-en">Personalized Epigenetic Medicine: Your Epigenome Map</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 94</div>
+    <div class="ep-title-zh">表觀遺傳學與運動：鍛鍊如何重塑基因表現</div>
+    <div class="ep-title-en">Exercise Epigenetics: How Physical Activity Reshapes Gene Expression</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 95</div>
+    <div class="ep-title-zh">表觀遺傳學與飲食：地中海飲食的分子機制</div>
+    <div class="ep-title-en">Dietary Epigenetics: The Molecular Basis of the Mediterranean Diet</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 96</div>
+    <div class="ep-title-zh">冥想、壓力管理與表觀遺傳學</div>
+    <div class="ep-title-en">Mindfulness, Stress Management, and Epigenetics</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 97</div>
+    <div class="ep-title-zh">表觀遺傳學在農業與育種的應用</div>
+    <div class="ep-title-en">Epigenetics in Agriculture and Plant Breeding</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 98</div>
+    <div class="ep-title-zh">人工智慧與表觀基因組學的未來</div>
+    <div class="ep-title-en">AI and the Epigenome: After AlphaFold</div>
+  </div>
+  <div class="ep-card" style="border-left-color:var(--s6);">
+    <div class="ep-num">Day 99</div>
+    <div class="ep-title-zh">未來的表觀遺傳學：可程式化基因表現</div>
+    <div class="ep-title-en">The Future of Epigenetics: Programmable Gene Expression</div>
+  </div>
+  <div class="ep-card review" style="border-left-color:var(--s6); background: linear-gradient(135deg, #F0E8FF, #E8D8F8);">
+    <div class="review-star">🎓</div>
+    <div class="ep-num">Day 100 · 百日總回顧</div>
+    <div class="ep-title-zh">從甲基到命運的知識地圖</div>
+    <div class="ep-title-en">Day 100 Review: From Methyl Groups to Human Destiny</div>
+  </div>
+</div>
+<div class="stage-divider" style="background:var(--s6);"></div>
+
+<!-- ══════════════ KNOWLEDGE MAP ══════════════ -->
+<div class="map-section">
+  <h2>🗺️ 三大系列知識銜接圖</h2>
+  <div class="map-grid">
+    <div class="map-box">
+      <div class="map-box-title">🧬 遺傳學 100天</div>
+      <ul>
+        <li>D16–20 表觀遺傳初介紹</li>
+        <li>DNA 甲基化基礎</li>
+        <li>組蛋白修飾概念</li>
+        <li>非編碼 RNA 入門</li>
+        <li>CRISPR 基礎</li>
+        <li>基因組學研究工具</li>
+      </ul>
+    </div>
+    <div class="map-arrow">→</div>
+    <div class="map-box" style="border-color: rgba(232,168,64,0.5); background: rgba(232,168,64,0.08);">
+      <div class="map-box-title" style="color: #FFD580;">🔬 表觀遺傳學 100天</div>
+      <ul>
+        <li>D01–15 完整基礎展開</li>
+        <li>D16–30 甲基化深度世界</li>
+        <li>D31–45 組蛋白密碼</li>
+        <li>D46–65 ncRNA 全宇宙</li>
+        <li>D66–85 疾病應用</li>
+        <li>D86–100 演化與未來</li>
+      </ul>
+    </div>
+    <div class="map-arrow">↔</div>
+    <div class="map-box">
+      <div class="map-box-title">🧪 蛋白質 300天</div>
+      <ul>
+        <li>D141–160 翻譯後修飾</li>
+        <li>組蛋白蛋白質結構</li>
+        <li>酵素調控</li>
+        <li>信號傳導蛋白</li>
+        <li>蛋白質工程</li>
+        <li>AlphaFold</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ BOTTOM PROMO ══════════════ -->
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-title">🔥 2025年七月開課 × 立即了解 × 聯絡我</div>
+    <div class="promo-cards">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-card-icon">🎯</div>
+        <div class="promo-card-name">錯中學 ECHO 計劃</div>
+        <div class="promo-card-desc">透過錯誤分析深化英文學習，科學化反饋系統，讓每次犯錯都成為進步的燃料。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-card-icon">📊</div>
+        <div class="promo-card-name">學生分析系統</div>
+        <div class="promo-card-desc">個人化學習軌跡追蹤，精準診斷弱點，為每位學生打造專屬成長路徑。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="line-card" href="https://line.me/ti/p/linwayet" target="_blank">
+        <div class="line-icon">💬</div>
+        <div class="line-info">
+          <strong>LINE 直接聯絡</strong>
+          ID：linwayet<br>歡迎詢問課程資訊
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="site-footer">
+  <p>表觀遺傳學 100天自學計畫 · 雙語 Podcast 腳本系列 · Epigenetics 100-Day Bilingual Self-Study Program</p>
+</div>
+
+</body>
+</html>
