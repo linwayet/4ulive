@@ -204,8 +204,81 @@
         .news-link:nth-child(5n+5) { border-left-color: var(--echo-p); }
         .news-link:nth-child(5n+5) .news-num { color: var(--echo-p); }
 
+        /* ── 手機 / 小平板：側邊欄移到頁面下方，改為網格排列 ── */
         @media (max-width: 860px) {
-            .news-sidebar { display: none; }
+            .page-wrapper {
+                flex-direction: column;
+            }
+
+            .page-body {
+                width: 100%;
+                padding: 32px 20px 24px;
+            }
+
+            .news-sidebar {
+                /* 不再隱藏，改成靜態區塊 */
+                width: 100%;
+                position: static;
+                max-height: none;
+                overflow: visible;
+                padding: 32px 20px 16px;
+                border-top: 2px solid var(--gold-lt);
+                margin-top: 8px;
+            }
+
+            .sidebar-header {
+                justify-content: center;
+                border-bottom: none;
+                padding-bottom: 8px;
+                margin-bottom: 16px;
+            }
+
+            .sidebar-header h3 {
+                font-size: 18px;
+            }
+
+            .sidebar-header span {
+                font-size: 20px;
+            }
+
+            /* 時事列表改為多欄 grid，自動依螢幕寬度排列 */
+            .news-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 8px;
+            }
+
+            .news-link {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .news-num {
+                font-size: 11px;
+                min-width: 22px;
+            }
+        }
+
+        /* 一般手機：稍微再縮小 */
+        @media (max-width: 520px) {
+            .news-sidebar {
+                padding: 28px 14px 12px;
+            }
+
+            .news-list {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 6px;
+            }
+
+            .news-link {
+                font-size: 13px;
+                padding: 9px 10px;
+            }
+
+            .news-num {
+                font-size: 10px;
+                min-width: 20px;
+            }
         }
 
         .section-header {
