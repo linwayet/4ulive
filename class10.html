@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本泡沫30年 — 完整學習地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #FDF6EC;
+  --sand:    #F5E6CC;
+  --amber:   #E8A838;
+  --amber2:  #D4832A;
+  --rust:    #C0522A;
+  --rose:    #D9604A;
+  --mellow:  #F2C97E;
+  --warm1:   #FAF0DC;
+  --warm2:   #F7E2C0;
+  --warm3:   #F0D0A0;
+  --text:    #3A2510;
+  --text2:   #6B4226;
+  --text3:   #9C6540;
+  --white:   #FFFDF8;
+  --shadow:  rgba(180,90,30,.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  font-family: 'Noto Sans TC', sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── LINKS BAR ─── */
+.links-bar {
+  background: linear-gradient(135deg, var(--rust) 0%, var(--amber2) 50%, var(--amber) 100%);
+  padding: 0;
+}
+.links-bar-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.links-bar-title {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.75);
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+.link-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 14px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #fff;
+  transition: background .2s, transform .15s;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+}
+.link-card:hover {
+  background: rgba(255,255,255,.28);
+  transform: translateY(-2px);
+}
+.link-card .lc-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.link-card .lc-body { flex: 1; }
+.link-card .lc-tag {
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 2px;
+}
+.link-card .lc-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+.link-card .lc-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,.8);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.link-card.line-card { background: rgba(0,185,0,.25); border-color: rgba(0,255,0,.3); }
+.link-card.line-card:hover { background: rgba(0,185,0,.38); }
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, #F5DEB3 0%, #EDCF99 30%, #E8B870 60%, #D4943A 100%);
+  padding: 60px 20px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '失';
+  font-family: 'Noto Serif TC', serif;
+  font-size: 260px;
+  font-weight: 900;
+  color: rgba(180,90,20,.08);
+  position: absolute;
+  top: -40px; left: -20px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.hero::after {
+  content: '泡';
+  font-family: 'Noto Serif TC', serif;
+  font-size: 200px;
+  font-weight: 900;
+  color: rgba(180,90,20,.07);
+  position: absolute;
+  bottom: -30px; right: -10px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--rust);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(26px, 7vw, 42px);
+  font-weight: 900;
+  color: var(--rust);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero-sub {
+  font-size: clamp(13px, 3.5vw, 16px);
+  color: var(--text2);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.hero-stat {
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(200,120,40,.25);
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  min-width: 80px;
+}
+.hero-stat .sv { font-size: 22px; font-weight: 700; color: var(--rust); font-family: 'Noto Serif TC', serif; }
+.hero-stat .sl { font-size: 10px; color: var(--text2); margin-top: 2px; }
+
+/* ─── SECTION ─── */
+.section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 700;
+  color: var(--rust);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 22px;
+  background: linear-gradient(var(--amber), var(--rust));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-desc {
+  font-size: 13px;
+  color: var(--text3);
+  margin-bottom: 22px;
+  padding-left: 14px;
+}
+
+/* ─── PHASE BLOCKS ─── */
+.phase-list { display: flex; flex-direction: column; gap: 14px; }
+.phase-card {
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-radius: 16px;
+  padding: 18px 20px;
+  border-left: 5px solid var(--amber);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.phase-card:hover { box-shadow: 0 4px 20px var(--shadow); }
+.phase-card.p1 { border-left-color: #C04828; }
+.phase-card.p2 { border-left-color: #BA7517; }
+.phase-card.p3 { border-left-color: #6B9F2A; }
+.phase-card.p4 { border-left-color: #2260A0; }
+.phase-card.p5 { border-left-color: #534AB7; }
+.phase-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.phase-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; font-weight: 700;
+  color: #fff;
+}
+.p1 .phase-dot { background: #C04828; }
+.p2 .phase-dot { background: #BA7517; }
+.p3 .phase-dot { background: #6B9F2A; }
+.p4 .phase-dot { background: #2260A0; }
+.p5 .phase-dot { background: #534AB7; }
+.phase-title { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.35; }
+.phase-years { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.phase-desc { font-size: 12px; color: var(--text2); line-height: 1.65; }
+.phase-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.ptag {
+  font-size: 10px; padding: 3px 10px; border-radius: 10px;
+  font-weight: 500;
+}
+.p1 .ptag { background: #FAECE7; color: #712B13; }
+.p2 .ptag { background: #FAEEDA; color: #633806; }
+.p3 .ptag { background: #EAF3DE; color: #3B6D11; }
+.p4 .ptag { background: #E6F1FB; color: #0C447C; }
+.p5 .ptag { background: #EEEDFE; color: #3C3489; }
+
+/* ─── INDUSTRY GRID ─── */
+.ind-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+.ind-card {
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.ind-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--shadow); }
+.ind-icon { font-size: 26px; margin-bottom: 8px; }
+.ind-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+.ind-desc { font-size: 11px; color: var(--text3); line-height: 1.5; }
+
+/* ─── PEOPLE CARDS ─── */
+.people-list { display: flex; flex-direction: column; gap: 12px; }
+.person-card {
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: box-shadow .2s;
+}
+.person-card:hover { box-shadow: 0 4px 18px var(--shadow); }
+.person-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; font-weight: 700; color: #fff;
+  font-family: 'Noto Serif TC', serif;
+}
+.person-body { flex: 1; }
+.person-name { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.35; }
+.person-role { font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+.person-quote {
+  font-size: 12px; color: var(--text2); line-height: 1.6;
+  border-left: 3px solid var(--mellow); padding-left: 10px;
+  font-style: italic;
+}
+
+/* ─── UNIQUE INDUSTRIES ─── */
+.unique-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.unique-card {
+  background: var(--white);
+  border: 1px solid var(--warm3);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.unique-card:hover { box-shadow: 0 6px 24px var(--shadow); }
+.unique-header {
+  padding: 14px 16px 10px;
+  display: flex; gap: 10px; align-items: center;
+}
+.unique-ico {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.unique-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.unique-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.unique-body { padding: 0 16px 14px; }
+.unique-diff {
+  background: var(--warm1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+.unique-diff-title { font-size: 10px; color: var(--text3); font-weight: 700; margin-bottom: 3px; text-transform: uppercase; letter-spacing: .05em; }
+.unique-diff-text { font-size: 11px; color: var(--text); line-height: 1.6; }
+.unique-nums { display: flex; gap: 8px; }
+.unum { background: var(--warm2); border-radius: 8px; padding: 6px 8px; text-align: center; flex: 1; }
+.unum-val { font-size: 13px; font-weight: 700; color: var(--rust); }
+.unum-lbl { font-size: 9px; color: var(--text3); margin-top: 1px; }
+
+/* ─── HABIT BOX ─── */
+.habit-box {
+  background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+  border: 2px solid var(--mellow);
+  border-radius: 20px;
+  padding: 24px 22px;
+}
+.habit-title { font-family: 'Noto Serif TC', serif; font-size: 16px; font-weight: 700; color: var(--rust); margin-bottom: 16px; }
+.habit-steps { display: flex; flex-direction: column; gap: 10px; }
+.hstep { display: flex; gap: 12px; align-items: flex-start; }
+.hnum {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--rust));
+  color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.htext { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+/* ─── DIVIDER ─── */
+.wave-divider {
+  width: 100%; height: 36px;
+  background: var(--sand);
+  clip-path: ellipse(55% 100% at 50% 0%);
+  margin-bottom: -1px;
+}
+.alt-bg { background: var(--sand); }
+.alt-bg2 { background: var(--warm1); }
+
+/* ─── FOOTER ─── */
+.footer-main {
+  background: linear-gradient(135deg, #3A2510, #5C3418);
+  color: rgba(255,255,255,.85);
+  padding: 32px 20px;
+  text-align: center;
+}
+.footer-main p { font-size: 12px; line-height: 1.8; margin-bottom: 12px; }
+.footer-main .copyright { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 16px; margin-bottom: 0; }
+
+/* ─── BANNER STRIP ─── */
+.banner-strip {
+  background: linear-gradient(90deg, var(--amber2), var(--rust), var(--amber2));
+  background-size: 200% 100%;
+  animation: shimmer 4s ease infinite;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: .06em;
+}
+@keyframes shimmer { 0%{background-position:0%}50%{background-position:100%}100%{background-position:0%} }
+
+/* ─── PULSE ─── */
+.pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: pulse 1.8s ease infinite;
+  vertical-align: middle;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 480px) {
+  .link-cards { flex-direction: column; align-items: stretch; }
+  .link-card { max-width: 100%; }
+  .ind-grid { grid-template-columns: repeat(2, 1fr); }
+  .unique-grid { grid-template-columns: 1fr; }
+  .hero::before { font-size: 160px; }
+  .hero::after { font-size: 130px; }
+}
+
+/* fade-in animation */
+.fade-in { animation: fadeUp .6s ease both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fade-in:nth-child(2){animation-delay:.1s}
+.fade-in:nth-child(3){animation-delay:.2s}
+.fade-in:nth-child(4){animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     TOP LINKS BAR
+═════════════════════════════════════════ -->
+<div class="banner-strip">
+  ✦ 2025 年七月開課 · 名額有限 · 立即了解 ✦
+</div>
+<div class="links-bar">
+  <div class="links-bar-inner">
+    <div class="links-bar-title">▸ 七月課程 &amp; 聯絡方式</div>
+    <div class="link-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card">
+        <div class="lc-icon">🎯</div>
+        <div class="lc-body">
+          <div class="lc-tag">七月開課</div>
+          <div class="lc-name">錯中學 ECHO 計劃</div>
+          <div class="lc-desc">從錯誤中深度學習的創新課程，打造真正的英語理解力</div>
+        </div>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card">
+        <div class="lc-icon">📊</div>
+        <div class="lc-body">
+          <div class="lc-tag">七月開課</div>
+          <div class="lc-name">學生學習分析</div>
+          <div class="lc-desc">個人化學習進度追蹤，精準了解每位學生的成長軌跡</div>
+        </div>
+      </a>
+
+      <a href="https://line.me/ti/p/linwayet" target="_blank" class="link-card line-card">
+        <div class="lc-icon">💬</div>
+        <div class="lc-body">
+          <div class="lc-tag"><span class="pulse-dot"></span>LINE 聯絡</div>
+          <div class="lc-name">加我的 LINE</div>
+          <div class="lc-desc">ID：linwayet ／ 課程諮詢 &amp; 報名</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HERO
+═════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">完整學習地圖 · 原子習慣框架</div>
+  <h1>日本泡沫30年</h1>
+  <p class="hero-sub">從1989年日經42,000點的巔峰，<br>到2026年的薪資春鬥與新NISA時代。<br>每天15分鐘，走過失落三十年的每一個真實現場。</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="sv">365+</div><div class="sl">學習天數</div></div>
+    <div class="hero-stat"><div class="sv">52</div><div class="sl">週次單元</div></div>
+    <div class="hero-stat"><div class="sv">20+</div><div class="sl">真實人物</div></div>
+    <div class="hero-stat"><div class="sv">12</div><div class="sl">産業維度</div></div>
+    <div class="hero-stat"><div class="sv">1989</div><div class="sl">起點年份</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     五大階段
+═════════════════════════════════════════ -->
+<div class="wave-divider"></div>
+<div class="alt-bg">
+<div class="section">
+  <div class="section-title">五大歷史階段</div>
+  <p class="section-desc">從泡沫誕生到2026年的完整課程脈絡</p>
+  <div class="phase-list">
+
+    <div class="phase-card p1 fade-in">
+      <div class="phase-header">
+        <div class="phase-dot">一</div>
+        <div>
+          <div class="phase-title">泡沫形成與破滅（1985–1993）</div>
+          <div class="phase-years">第 1–8 週 · 廣場協議→日圓升值→地価狂熱→黑色1990</div>
+        </div>
+      </div>
+      <div class="phase-desc">廣場協議讓日圓從240急升至85，寬鬆貨幣推升地価股價至極端泡沫。日経平均在1989年12月觸及42,000點後急速崩落，銀行不良債権开始积累。帝国ホテルで祝杯を挙げていた証券ディーラーたちは、翌朝から別の現実を生きることになる。</div>
+      <div class="phase-tags">
+        <span class="ptag">廣場協議</span>
+        <span class="ptag">不動産バブル</span>
+        <span class="ptag">日銀利上げ</span>
+        <span class="ptag">株価崩落</span>
+      </div>
+    </div>
+
+    <div class="phase-card p2 fade-in">
+      <div class="phase-header">
+        <div class="phase-dot">二</div>
+        <div>
+          <div class="phase-title">失落的十年（1993–2002）</div>
+          <div class="phase-years">第 9–20 週 · 銀行危機→就職冰河期→長銀破産</div>
+        </div>
+      </div>
+      <div class="phase-desc">終身雇用崩解，派遣労働が拡大。「就職氷河期」世代が社会に放り出され、百圓店崛起、超商進化。1997年の金融危機と山一証券破綻が社会不安を頂点へ。医療現場では地域医療崩壊が始まり、地方では不動産負資産家庭が静かに苦しんでいた。</div>
+      <div class="phase-tags">
+        <span class="ptag">就職氷河期</span>
+        <span class="ptag">銀行破綻</span>
+        <span class="ptag">コンビニ進化</span>
+        <span class="ptag">地域崩壊</span>
+      </div>
+    </div>
+
+    <div class="phase-card p3 fade-in">
+      <div class="phase-header">
+        <div class="phase-dot">三</div>
+        <div>
+          <div class="phase-title">小泉改革與結構掙扎（2002–2012）</div>
+          <div class="phase-years">第 21–34 週 · 郵政民營化→派遣地獄→3·11震災</div>
+        </div>
+      </div>
+      <div class="phase-desc">小泉純一郎の「聖域なき構造改革」が格差を拡大。派遣村・ワーキングプアという言葉が社会に定着。製造業は韓中競争に敗れ空洞化。2011年3月11日、震災と原発事故が日本の脆弱性をさらけ出した。少子高齢化は「時間の爆弾」として確実に刻み続けていた。</div>
+      <div class="phase-tags">
+        <span class="ptag">格差社会</span>
+        <span class="ptag">製造業衰退</span>
+        <span class="ptag">3·11震災</span>
+        <span class="ptag">原発政策</span>
+      </div>
+    </div>
+
+    <div class="phase-card p4 fade-in">
+      <div class="phase-header">
+        <div class="phase-dot">四</div>
+        <div>
+          <div class="phase-title">安倍經濟學與微溫復甦（2012–2020）</div>
+          <div class="phase-years">第 35–46 週 · 三支箭→訪日熱潮→女性活躍→科技掙扎</div>
+        </div>
+      </div>
+      <div class="phase-desc">日銀の「異次元緩和」が株価と円安を演出。訪日外国人が爆買い。しかし実質賃金は上がらず。働き方改革は形式にとどまり、過労死は続く。高橋まつりさんの死が社会に問いを突きつけた。IT産業ではGAFAの侵食が進み、日本企業のガラパゴス化が加速した。</div>
+      <div class="phase-tags">
+        <span class="ptag">アベノミクス</span>
+        <span class="ptag">訪日ブーム</span>
+        <span class="ptag">過労死問題</span>
+        <span class="ptag">GAFA侵食</span>
+      </div>
+    </div>
+
+    <div class="phase-card p5 fade-in">
+      <div class="phase-header">
+        <div class="phase-dot">五</div>
+        <div>
+          <div class="phase-title">疫情後的岐路（2020–2026）</div>
+          <div class="phase-years">第 47–52 週 · 數位落後→日圓崩跌→物價上漲→春鬥</div>
+        </div>
+      </div>
+      <div class="phase-desc">コロナがハンコとFAXの日本を直撃。DX後進国の現実が露わに。2022年から円が急落し輸入インフレが家庭を直撃。しかし2024年の春闘では30年ぶりの5%賃上げ。日銀が利上げへ転換。失われた30年は終わったのか、それとも新たな罠に向かっているのか。</div>
+      <div class="phase-tags">
+        <span class="ptag">DX後進</span>
+        <span class="ptag">円安・物価高</span>
+        <span class="ptag">春闘5%賃上げ</span>
+        <span class="ptag">新NISA</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     12大産業維度
+═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">12大産業維度</div>
+  <p class="section-desc">從金融到動漫，從超商到傳統工藝，每個産業都是一扇理解日本的窗口</p>
+  <div class="ind-grid">
+    <div class="ind-card"><div class="ind-icon">🏦</div><div class="ind-name">金融・銀行業</div><div class="ind-desc">壞帳危機與長銀破産</div></div>
+    <div class="ind-card"><div class="ind-icon">🏗️</div><div class="ind-name">不動産・建設</div><div class="ind-desc">地価神話崩壊・空き家問題</div></div>
+    <div class="ind-card"><div class="ind-icon">🏭</div><div class="ind-name">製造業・電機</div><div class="ind-desc">夏普東芝困境</div></div>
+    <div class="ind-card"><div class="ind-icon">🏪</div><div class="ind-name">超市・超商</div><div class="ind-desc">百圓店崛起・コンビニ進化</div></div>
+    <div class="ind-card"><div class="ind-icon">🎌</div><div class="ind-name">動漫・遊戲</div><div class="ind-desc">失落中逆市的文化出口</div></div>
+    <div class="ind-card"><div class="ind-icon">🏥</div><div class="ind-name">醫療・製藥</div><div class="ind-desc">地域崩壊・醫師過勞</div></div>
+    <div class="ind-card"><div class="ind-icon">🎰</div><div class="ind-name">パチンコ産業</div><div class="ind-desc">全球唯一灰色賭博模式</div></div>
+    <div class="ind-card"><div class="ind-icon">⚱️</div><div class="ind-name">葬儀・終活</div><div class="ind-desc">多死社会の新産業</div></div>
+    <div class="ind-card"><div class="ind-icon">🤖</div><div class="ind-name">ロボット産業</div><div class="ind-desc">世界シェア38%の底力</div></div>
+    <div class="ind-card"><div class="ind-icon">⛩️</div><div class="ind-name">觀光・服務業</div><div class="ind-desc">爆買→觀光公害→後遺症</div></div>
+    <div class="ind-card"><div class="ind-icon">🍱</div><div class="ind-name">弁当・中食</div><div class="ind-desc">デフレが生んだ13兆円市場</div></div>
+    <div class="ind-card"><div class="ind-icon">🍶</div><div class="ind-name">日本酒・和食</div><div class="ind-desc">国内衰退→海外で高級化</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     真實人物 — 代表性20例（精選8）
+═════════════════════════════════════════ -->
+<div class="wave-divider" style="background:var(--sand);clip-path:ellipse(55% 100% at 50% 0%)"></div>
+<div class="alt-bg2">
+<div class="section">
+  <div class="section-title">真實人物故事（精選）</div>
+  <p class="section-desc">每一個數字背後，都是一個真實的人。20個案例貫穿全課程。</p>
+  <div class="people-list">
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#C04828">田</div>
+      <div class="person-body">
+        <div class="person-name">田中誠一（バブル世代・60歲）元大手証券ディーラー</div>
+        <div class="person-role">1989年日経42,000点の夜を生きた証人</div>
+        <div class="person-quote">"1989年12月、帝国ホテルで飲んでいた。翌朝、何かが終わった気がした。退職金で買ったマンションは今、購入価格の40%以下だ。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#BA7517">佐</div>
+      <div class="person-body">
+        <div class="person-name">佐藤恵子（氷河期世代・49歲）派遣社員 27年</div>
+        <div class="person-role">1997年大卒・就活200社落ち・現在も非正規</div>
+        <div class="person-quote">"就職活動で200社落ちた。派遣で働き始めて27年経っても正社員になれていない。老後の年金見込みは月6万円以下。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#0F6E56">宮</div>
+      <div class="person-body">
+        <div class="person-name">宮崎駿（アニメ監督・83歲）スタジオジブリ</div>
+        <div class="person-role">失落30年が生んだ日本最大の文化輸出産業</div>
+        <div class="person-quote">"バブル期に日本中がお金に狂っていた頃、私たちは『となりのトトロ』を作っていた。お金より物語を信じた。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#C04828">高</div>
+      <div class="person-body">
+        <div class="person-name">高橋まつり（過労死・享年24歲）電通新入社員</div>
+        <div class="person-role">2015年クリスマスに逝去・働き方改革の起点</div>
+        <div class="person-quote">"体が震えるほど辛い。泣きながら仕事をしている。なんでこんな仕事をしているのか。"（生前SNS投稿）</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#185FA5">加</div>
+      <div class="person-body">
+        <div class="person-name">加藤健太（42歲）2008年派遣切り・派遣村で年越し</div>
+        <div class="person-role">リーマンショックの最前線を生きた労働者</div>
+        <div class="person-quote">"派遣契約が切れた日の夜、どこにも行く場所がなかった。日比谷公園に行ったら、同じ状況の人が何百人もいた。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#534AB7">山</div>
+      <div class="person-body">
+        <div class="person-name">山本拓也（Z世代・23歲）IT企業正社員・新NISA投資中</div>
+        <div class="person-role">バブル崩壊後に生まれた世代の価値観</div>
+        <div class="person-quote">"祖父は証券マン、父は氷河期の派遣社員。僕は新NISAで毎月3万円積み立てている。失われた30年を知ってるから、会社に依存しない。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#BA7517">伊</div>
+      <div class="person-body">
+        <div class="person-name">伊藤恭子（68歲）秋田県限界集落・農家</div>
+        <div class="person-role">地方消滅の最前線に立つ女性</div>
+        <div class="person-quote">"息子たちは東京へ行った。隣の家が空き家になったのはもう10年前。冬に倒れたら、誰もいない。"</div>
+      </div>
+    </div>
+
+    <div class="person-card fade-in">
+      <div class="person-avatar" style="background:#0F6E56">グ</div>
+      <div class="person-body">
+        <div class="person-name">グエン・ティ・フォン（29歲）ベトナム出身・介護施設</div>
+        <div class="person-role">借金300万円を抱えて来日した技能実習生</div>
+        <div class="person-quote">"日本に来る前、300万円の借金を作った。月収16万円から返済するのは、思ったより大変だった。でも今は施設のリーダー。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     日本特殊産業
+═════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">日本特殊産業深探</div>
+  <p class="section-desc">これらは日本だけ、あるいは日本の形態が世界と全く異なる産業</p>
+  <div class="unique-grid">
+
+    <div class="unique-card">
+      <div class="unique-header">
+        <div class="unique-ico" style="background:#FAECE7">🎰</div>
+        <div><div class="unique-title">パチンコ産業</div><div class="unique-sub">世界唯一の合法賭博灰色地帶</div></div>
+      </div>
+      <div class="unique-body">
+        <div class="unique-diff">
+          <div class="unique-diff-title">為何其他國家沒有？</div>
+          <div class="unique-diff-text">「三店方式」——景品→景品交換所→現金，維持70年的法律漏洞。韓國2006年已全面禁止，台灣從未有此業態。</div>
+        </div>
+        <div class="unique-nums">
+          <div class="unum"><div class="unum-val">30兆円</div><div class="unum-lbl">1994年市場ピーク</div></div>
+          <div class="unum"><div class="unum-val">-60%</div><div class="unum-lbl">参加人口30年で</div></div>
+          <div class="unum"><div class="unum-val">7,655</div><div class="unum-lbl">現存ホール(2024)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="unique-card">
+      <div class="unique-header">
+        <div class="unique-ico" style="background:#EEEDFE">👩‍🎨</div>
+        <div><div class="unique-title">オタク・コスプレ産業</div><div class="unique-sub">不況が生んだ「内向き消費」文化</div></div>
+      </div>
+      <div class="unique-body">
+        <div class="unique-diff">
+          <div class="unique-diff-title">失落期との関係</div>
+          <div class="unique-diff-text">バブル崩壊後、お金をかけない内向き消費がアニメ・マンガ・コスプレを育てた。コミケ70万人参加、同人誌700億円市場。</div>
+        </div>
+        <div class="unique-nums">
+          <div class="unum"><div class="unum-val">70万人</div><div class="unum-lbl">コミケ年間参加者</div></div>
+          <div class="unum"><div class="unum-val">700億円+</div><div class="unum-lbl">同人誌市場</div></div>
+          <div class="unum"><div class="unum-val">40か国</div><div class="unum-lbl">世界コスプレ大会</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="unique-card">
+      <div class="unique-header">
+        <div class="unique-ico" style="background:#E6F1FB">🏢</div>
+        <div><div class="unique-title">廃墟・空き家再生業</div><div class="unique-sub">「縮む国」が生んだ新産業</div></div>
+      </div>
+      <div class="unique-body">
+        <div class="unique-diff">
+          <div class="unique-diff-title">台灣と共通する未来</div>
+          <div class="unique-diff-text">1円で古民家を購入してゲストハウスに再生。空き家率13.8%という世界先行事例——台灣も同じ道を歩みつつある。</div>
+        </div>
+        <div class="unique-nums">
+          <div class="unum"><div class="unum-val">900万戸</div><div class="unum-lbl">2023年空き家数</div></div>
+          <div class="unum"><div class="unum-val">13.8%</div><div class="unum-lbl">空き家率</div></div>
+          <div class="unum"><div class="unum-val">1円</div><div class="unum-lbl">古民家購入最安値</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="unique-card">
+      <div class="unique-header">
+        <div class="unique-ico" style="background:#E1F5EE">🤖</div>
+        <div><div class="unique-title">産業用ロボット産業</div><div class="unique-sub">鉄腕アトム文化×人手不足の答え</div></div>
+      </div>
+      <div class="unique-body">
+        <div class="unique-diff">
+          <div class="unique-diff-title">日本だけの文化基盤</div>
+          <div class="unique-diff-text">欧米はロボット＝労働者の敵。日本は鉄腕アトム以来「ロボットは仲間」。この文化差がTSMC熊本工場との台日連携を可能にした。</div>
+        </div>
+        <div class="unique-nums">
+          <div class="unum"><div class="unum-val">38%</div><div class="unum-lbl">産業ロボット世界シェア</div></div>
+          <div class="unum"><div class="unum-val">1952年</div><div class="unum-lbl">鉄腕アトム文化起源</div></div>
+          <div class="unum"><div class="unum-val">TSMC</div><div class="unum-lbl">台日連携拠点</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     原子習慣
+═════════════════════════════════════════ -->
+<div class="wave-divider" style="background:var(--sand);clip-path:ellipse(55% 100% at 50% 0%)"></div>
+<div class="alt-bg">
+<div class="section">
+  <div class="section-title">原子習慣學習設計</div>
+  <p class="section-desc">每天只需15分鐘，讓「失落30年」真正變成你的知識資産</p>
+  <div class="habit-box">
+    <div class="habit-title">每日標準學習流程（15分鐘）</div>
+    <div class="habit-steps">
+      <div class="hstep">
+        <div class="hnum">1</div>
+        <div class="htext"><strong>提示（Cue）</strong>：早晨咖啡或通勤時打開固定學習材料，建立穩定的觸發情境</div>
+      </div>
+      <div class="hstep">
+        <div class="hnum">2</div>
+        <div class="htext"><strong>概念+人物（10分鐘）</strong>：閱讀當日主題，搭配一位真實人物的故事，讓歷史有了臉孔</div>
+      </div>
+      <div class="hstep">
+        <div class="hnum">3</div>
+        <div class="htext"><strong>一句話摘要（3分鐘）</strong>：用自己的話寫下「今天最讓我驚訝的事實」，強化記憶固化</div>
+      </div>
+      <div class="hstep">
+        <div class="hnum">4</div>
+        <div class="htext"><strong>鏈條儀式（2分鐘）</strong>：在習慣追蹤本打格，感受「不斷鏈」的成就感，形成正向回饋</div>
+      </div>
+      <div class="hstep">
+        <div class="hnum">5</div>
+        <div class="htext"><strong>週五輸出</strong>：每週五用 Claude 整理筆記、提出延伸問題，輸出強化深層理解</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     BOTTOM LINKS BAR (identical to top)
+═════════════════════════════════════════ -->
+<div class="links-bar">
+  <div class="links-bar-inner">
+    <div class="links-bar-title">▸ 七月開課 · 名額有限 · 立即聯絡</div>
+    <div class="link-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card">
+        <div class="lc-icon">🎯</div>
+        <div class="lc-body">
+          <div class="lc-tag">七月開課</div>
+          <div class="lc-name">錯中學 ECHO 計劃</div>
+          <div class="lc-desc">從錯誤中深度學習的創新課程，打造真正的英語理解力</div>
+        </div>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card">
+        <div class="lc-icon">📊</div>
+        <div class="lc-body">
+          <div class="lc-tag">七月開課</div>
+          <div class="lc-name">學生學習分析</div>
+          <div class="lc-desc">個人化學習進度追蹤，精準了解每位學生的成長軌跡</div>
+        </div>
+      </a>
+
+      <a href="https://line.me/ti/p/linwayet" target="_blank" class="link-card line-card">
+        <div class="lc-icon">💬</div>
+        <div class="lc-body">
+          <div class="lc-tag"><span class="pulse-dot"></span>LINE 聯絡</div>
+          <div class="lc-name">加我的 LINE</div>
+          <div class="lc-desc">ID：linwayet ／ 課程諮詢 &amp; 報名</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+═════════════════════════════════════════ -->
+<div class="footer-main">
+  <p>日本泡沫30年 完整學習地圖<br>
+  以原子習慣框架設計 · 每日15分鐘 · 從1989到2026</p>
+  <p>課程諮詢請加 LINE：<strong style="color:var(--mellow)">linwayet</strong></p>
+  <p class="copyright">© 2025 Lin Wayet · 保留一切權利</p>
+</div>
+
+</body>
+</html>
