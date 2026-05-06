@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghost Soldiers｜鬼兵 — 二戰最偉大的救援任務</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --cream:    #FFF8EF;
+    --warm-bg:  #FEF0DC;
+    --card-bg:  #FFFBF5;
+    --peach:    #F2A35E;
+    --amber:    #E8873A;
+    --rust:     #C95F2E;
+    --deep:     #8C3A18;
+    --gold:     #F5C26B;
+    --brown:    #5C3317;
+    --text:     #3D2210;
+    --muted:    #8B6347;
+    --white:    #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Noto Serif TC', serif;
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  /* ── LINK BAR ─────────────────────────────── */
+  .link-bar {
+    background: linear-gradient(135deg, var(--rust) 0%, var(--amber) 60%, var(--gold) 100%);
+    padding: 16px 20px;
+  }
+  .link-bar-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .link-card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 14px;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: var(--brown);
+    flex: 1 1 200px;
+    min-width: 180px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 3px 10px rgba(140,58,24,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid var(--rust);
+  }
+  .link-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(140,58,24,0.28); }
+  .link-card .lc-icon { font-size: 22px; }
+  .link-card .lc-title { font-weight: 700; font-size: 14.5px; color: var(--rust); }
+  .link-card .lc-desc  { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  .line-card { border-left-color: #06C755; }
+  .line-card .lc-title { color: #06C755; }
+
+  /* ── HERO ──────────────────────────────────── */
+  .hero {
+    background: linear-gradient(170deg, #7B2D10 0%, #B85030 40%, #D4773A 80%, #E9A060 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 56px 24px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12.5px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 8vw, 46px);
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: clamp(13px, 3.5vw, 17px);
+    opacity: 0.88;
+    margin-bottom: 20px;
+  }
+  .hero-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.22);
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+  .hero-author span { opacity: 0.7; font-size: 12px; }
+
+  /* ── BOOK INTRO ────────────────────────────── */
+  .section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 36px 20px 0;
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-label .sl-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--peach), transparent);
+  }
+  .section-label h2 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--rust);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .book-intro {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 24px 22px;
+    box-shadow: 0 4px 20px rgba(200,95,46,0.10);
+    border: 1px solid #F3E0CC;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-intro::after {
+    content: '📖';
+    position: absolute;
+    right: 18px; top: 18px;
+    font-size: 36px;
+    opacity: 0.15;
+  }
+  .book-intro p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+  .book-intro p:last-child { margin-bottom: 0; }
+  .book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .meta-pill {
+    background: linear-gradient(135deg, var(--gold), var(--peach));
+    color: var(--brown);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  /* ── CHAPTER GRID ──────────────────────────── */
+  .chapters {
+    max-width: 700px;
+    margin: 32px auto 0;
+    padding: 0 20px;
+  }
+  .chapter-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px 20px 20px 0;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 0;
+    box-shadow: 0 3px 14px rgba(200,95,46,0.09);
+    border: 1px solid #F0DDD0;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .chapter-card:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(200,95,46,0.17); }
+
+  /* alternating accent colors */
+  .chapter-card:nth-child(1)  .ch-num { background: linear-gradient(180deg, #C95F2E, #E8873A); }
+  .chapter-card:nth-child(2)  .ch-num { background: linear-gradient(180deg, #9B4A1E, #C95F2E); }
+  .chapter-card:nth-child(3)  .ch-num { background: linear-gradient(180deg, #7B3510, #A04828); }
+  .chapter-card:nth-child(4)  .ch-num { background: linear-gradient(180deg, #B86430, #D8843A); }
+  .chapter-card:nth-child(5)  .ch-num { background: linear-gradient(180deg, #D47428, #F0A040); }
+  .chapter-card:nth-child(6)  .ch-num { background: linear-gradient(180deg, #C95F2E, #E8873A); }
+  .chapter-card:nth-child(7)  .ch-num { background: linear-gradient(180deg, #8C3A18, #B85030); }
+  .chapter-card:nth-child(8)  .ch-num { background: linear-gradient(180deg, #A04828, #CC6835); }
+  .chapter-card:nth-child(9)  .ch-num { background: linear-gradient(180deg, #D47428, #F0A040); }
+  .chapter-card:nth-child(10) .ch-num { background: linear-gradient(180deg, #9B4A1E, #C95F2E); }
+  .chapter-card:nth-child(11) .ch-num { background: linear-gradient(180deg, #7B3510, #A04828); }
+  .chapter-card:nth-child(12) .ch-num { background: linear-gradient(180deg, #B85030, #D4703A); }
+  .chapter-card:nth-child(13) .ch-num { background: linear-gradient(180deg, #8C2A08, #C04820); }
+
+  .ch-num {
+    width: 60px;
+    min-width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    padding: 16px 6px;
+    margin-right: 18px;
+  }
+  .ch-num .cn-label { font-size: 10px; letter-spacing: 1.5px; opacity: 0.8; text-transform: uppercase; }
+  .ch-num .cn-n { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1; }
+
+  .ch-body { flex: 1; padding-top: 4px; }
+  .ch-title-zh {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .ch-title-en {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+  .ch-desc {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .ch-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .ch-tag {
+    background: var(--warm-bg);
+    border: 1px solid #F0D8C0;
+    color: var(--brown);
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: 11.5px;
+  }
+
+  /* ── TIMELINE DIVIDER ──────────────────────── */
+  .timeline-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 700px;
+    margin: 28px auto 0;
+    padding: 0 20px;
+  }
+  .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+  .tl-line { flex: 1; height: 2px; background: linear-gradient(90deg, var(--amber), var(--gold), transparent); }
+
+  /* ── FOOTER STRIP ──────────────────────────── */
+  .footer-strip {
+    text-align: center;
+    padding: 28px 20px 14px;
+    color: var(--muted);
+    font-size: 12.5px;
+    max-width: 700px;
+    margin: 32px auto 0;
+  }
+  .footer-strip strong { color: var(--rust); }
+
+  .bottom-pad { height: 40px; }
+
+  /* ── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 480px) {
+    .ch-num { width: 50px; min-width: 50px; margin-right: 14px; }
+    .ch-num .cn-n { font-size: 22px; }
+    .ch-title-zh { font-size: 15px; }
+    .link-card { flex: 1 1 100%; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ TOP LINK BAR ══════════════════════════════════ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎓</span>
+      <span class="lc-title">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">今年七月開課！從錯誤中學習的英文進階課程，突破舊有思維框架</span>
+    </a>
+
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">📊</span>
+      <span class="lc-title">學生分析系統</span>
+      <span class="lc-desc">七月課程配套工具，個人化分析學習優勢與弱點，精準提升</span>
+    </a>
+
+    <a class="link-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-title">加我 Line：linwayet</span>
+      <span class="lc-desc">有問題直接找我！課程諮詢、學習建議，歡迎加Line聊聊</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-tag">二 戰 歷 史 真 實 事 件</div>
+  <h1>Ghost Soldiers</h1>
+  <p class="hero-sub">鬼兵 — 二次大戰最偉大的救援任務<br>卡巴納圖安戰俘營突擊行動全紀錄</p>
+  <div class="hero-author">
+    <span>作者</span>
+    <strong>Hampton Sides</strong>
+    <span>·</span>
+    <span>2002年出版</span>
+  </div>
+</div>
+
+<!-- ══ BOOK INTRO ═════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">
+    <h2>📚 書籍介紹</h2>
+    <div class="sl-line"></div>
+  </div>
+  <div class="book-intro">
+    <p>一九四二年，菲律賓巴丹半島的美菲聯軍在彈盡援絕之下宣告投降，超過七萬名士兵成為日本戰俘，經歷了震驚世界的「死亡行軍」。倖存者被關進卡巴納圖安等戰俘營，在飢餓、疾病與恐懼中苦撐超過三年。</p>
+    <p>一九四五年一月，當美軍大部隊重返菲律賓，日軍即將撤退之際，一個令人聞之喪膽的情報傳來：日軍可能在撤退前屠殺所有戰俘，就像一年前在巴拉旺島發生的那場慘案。時間緊迫，美軍第六游騎兵營一百二十一名精銳士兵，在菲律賓游擊隊的協同下，深入三十英里的敵後，發動了二次大戰中最大膽的一次戰俘救援行動。</p>
+    <p>本書由美國知名作家 Hampton Sides 以細膩的筆觸還原了這段真實歷史，兼具軍事精準性與人性深度，已被多所大學列為歷史課程選讀書目。</p>
+    <div class="book-meta">
+      <span class="meta-pill">🏅 非虛構類暢銷書</span>
+      <span class="meta-pill">🎖 二戰太平洋戰場</span>
+      <span class="meta-pill">🇵🇭 菲律賓戰役</span>
+      <span class="meta-pill">📍 13章節</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHAPTERS ════════════════════════════════════════ -->
+<div class="chapters" style="margin-top:28px;">
+  <div class="section-label">
+    <h2>📖 各章概覽</h2>
+    <div class="sl-line"></div>
+  </div>
+
+  <!-- CH 1 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">1</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">巴丹半島的淪陷</div>
+      <div class="ch-title-en">The Fall of Bataan</div>
+      <p class="ch-desc">一九四二年四月，菲律賓巴丹半島。軍醫希布斯博士倒在叢林旁的泥溝裡，高燒不退，體內瘧疾蟲肆虐，卻連一粒奎寧也找不到。美菲聯軍在彈盡糧絕中苦撐四個月後，金將軍下令投降，超過七萬名士兵成為戰俘，創下美國史上最大規模的集體投降。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🦟 瘧疾危機</span>
+        <span class="ch-tag">🏳️ 巴丹投降</span>
+        <span class="ch-tag">🩺 希布斯博士</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 2 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">2</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">游騎兵出征</div>
+      <div class="ch-title-en">Rangers Mobilize</div>
+      <p class="ch-desc">一九四五年一月二十八日凌晨四點半，卡拉西奧的美軍營地。第六游騎兵營在穆奇上校的帶領下，在黑暗中整裝待發。一百二十一名精銳士兵，即將踏上深入三十英里敵後、拯救五百名戰俘的任務。連隊的吉祥物蜘蛛猴Keezel也感受到那股無法掩飾的緊張氣氛。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🎖 穆奇上校</span>
+        <span class="ch-tag">⚔️ 第六游騎兵營</span>
+        <span class="ch-tag">🗺️ 任務規劃</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 3 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">3</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">死亡行軍</div>
+      <div class="ch-title-en">The Death March</div>
+      <p class="ch-desc">拳擊冠軍出身的上士艾比·亞伯拉罕，帶著背部的彈片和大腿的槍傷，跟著其他七萬名戰俘踏上這段噩夢般的行軍。一百公里的路程，烈日、飢渴、日軍的刺刀與槍托。那一口清涼的山泉水就在眼前，守衛卻不讓人喝。這是所有倖存者此生都無法忘記的五分鐘。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">💀 巴丹死亡行軍</span>
+        <span class="ch-tag">🥊 亞伯拉罕</span>
+        <span class="ch-tag">⚖️ 戰爭罪行</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 4 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">4</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">夜行蘆葦草原</div>
+      <div class="ch-title-en">Night March Through Cogon</div>
+      <p class="ch-desc">深夜，游騎兵部隊在茂密的cogon草叢中前進，視線被高過人頭的草牆截斷，濕靴子踩在草地上發出令人不安的聲響。突然，遠處公路上出現日軍車隊的車頭燈。一百二十一人同時臥倒，靜止不動，讓日軍的燈光從頭頂掃過。那幾秒鐘，沒有人呼吸。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🌙 夜間行軍</span>
+        <span class="ch-tag">🌾 cogon草地</span>
+        <span class="ch-tag">🚗 日軍車隊</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 5 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">5</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">卡巴納圖安戰俘營歲月</div>
+      <div class="ch-title-en">Life at Cabanatuan</div>
+      <p class="ch-desc">每天清晨，太陽像熱燈一樣升起。一千個幾乎一模一樣的日子。戰俘們靠稀薄的米粥維生，捕食蜥蜴和昆蟲補充蛋白質，在戰俘營裡辦非正式大學、打棒球。湯米·托馬斯每天在腦海裡建造一棟回家後要蓋的房子，一磚一瓦，用這個方式把自己的意志力撐過每個夜晚。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🍚 飢餓求生</span>
+        <span class="ch-tag">🧠 心理韌性</span>
+        <span class="ch-tag">🏫 戰俘大學</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 6 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">6</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">突擊前的最後準備</div>
+      <div class="ch-title-en">Last Preparations in Platero</div>
+      <p class="ch-desc">距離戰俘營兩公里的普拉泰羅村，成為整個行動的前進指揮所。游擊隊指揮官帕霍塔已把村裡所有的狗用稻草繩捆住嘴，關進竹棚。沒有狗叫的亞洲農村，讓穆奇知道他可以信任這個人。費雪醫師在村子裡架起了野戰外科手術台，北方的卡布河橋邊，帕霍塔的機槍已經瞄準橋口。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🏘️ 普拉泰羅村</span>
+        <span class="ch-tag">🐕 無聲的村莊</span>
+        <span class="ch-tag">🔫 帕霍塔部署</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 7 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">7</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">地下援助網絡</div>
+      <div class="ch-title-en">The Underground Network</div>
+      <p class="ch-desc">在日軍嚴密監控下，一群勇敢的平民組成了秘密援助網絡。美籍女士尤廷斯基冒著被殺的風險把藥品和食物帶進戰俘營；德國神父布滕布魯克利用照相式記憶在腦子裡傳遞幾十條私人訊息；希布斯博士的菲律賓女友坎波斯，在守衛眼皮底下把食物悄悄遞給外出工作的戰俘。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🕵️ 秘密網絡</span>
+        <span class="ch-tag">✝️ 布滕布魯克神父</span>
+        <span class="ch-tag">❤️ 人道主義</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 8 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">8</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">渡越龐帕加河</div>
+      <div class="ch-title-en">Crossing the Pampanga River</div>
+      <p class="ch-desc">龐帕加河是整個行動的物理與心理分水嶺。乾季讓這條平時洶湧的大河退成溫和的淺灘。游騎兵們高舉武器，踩著卵石涉水而過。穆奇明白：若是雨季，這個行動根本不可能執行。渡過這條河，退路斷了。從這一刻起，只有向前，沒有回頭。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🌊 龐帕加河</span>
+        <span class="ch-tag">🔴 不歸點</span>
+        <span class="ch-tag">📅 乾季時機</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 9 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">9</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">戰俘的希望曙光</div>
+      <div class="ch-title-en">Hope in the Prison Camp</div>
+      <p class="ch-desc">一月初的某個夜晚，西北方的地平線燃起橙紅色的螢光，那不是風暴，是美軍砲火。消息在戰俘中悄悄流傳。但希望同時帶來了恐懼：美軍越近，日軍越可能屠殺戰俘。一年前巴拉旺島的一百五十名戰俘被活活燒死的記憶，讓所有人都知道這不是空穴來風。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🔥 砲火曙光</span>
+        <span class="ch-tag">😰 希望與恐懼</span>
+        <span class="ch-tag">🏝️ 巴拉旺慘案</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 10 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">10</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">游騎兵悄然逼近</div>
+      <div class="ch-title-en">Rangers at the Gate</div>
+      <p class="ch-desc">普林斯上尉帶著C連趴在距離圍欄一百公尺的草地裡，動也不動。此時，一架漆黑如炭的P-61夜間戰鬥機「難以征服號」從天而降，以震耳欲聾的引擎聲在戰俘營上空反覆低空飛過。守衛全都仰頭看天。草地上的影子趁機悄悄向前移動，一英寸，又一英寸。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">✈️ P-61黑寡婦</span>
+        <span class="ch-tag">🐾 匍匐前進</span>
+        <span class="ch-tag">🎯 最後逼近</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 11 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">11</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">決戰前夕</div>
+      <div class="ch-title-en">Eve of Battle</div>
+      <p class="ch-desc">傍晚五點四十分。圍欄外，一百二十一名游騎兵在黑暗中靜止不動，等候那聲槍響。圍欄內，戰俘們像每個平常的傍晚一樣喝著稀粥，沉默地望著暮色。兩個世界，一道鐵絲網。沒有人知道，三十秒後，這個世界將永遠改變。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">⏱️ 最後倒數</span>
+        <span class="ch-tag">🌅 傍晚靜默</span>
+        <span class="ch-tag">🔔 等待信號</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 12 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">12</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">卡巴納圖安突擊行動</div>
+      <div class="ch-title-en">The Cabanatuan Raid</div>
+      <p class="ch-desc">一聲槍響，整個戰俘營外圍在十五秒內被密集火力覆蓋。圍欄被炸開，游騎兵衝進去高喊：「我們是美國人！你們自由了！」有人奔跑，有人哭倒，有人愣在原地不敢相信。最虛弱的戰俘被游騎兵扛在肩上。整個疏散行動在不到三十分鐘內完成。五百一十二人，一個也沒留下。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">💥 突擊行動</span>
+        <span class="ch-tag">🕊️ 512人獲救</span>
+        <span class="ch-tag">🏆 零人落下</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CH 13 -->
+  <div class="chapter-card">
+    <div class="ch-num">
+      <span class="cn-label">Ch.</span>
+      <span class="cn-n">13</span>
+    </div>
+    <div class="ch-body">
+      <div class="ch-title-zh">帕霍塔守橋與歸鄉之路</div>
+      <div class="ch-title-en">Pajota's Last Stand &amp; Road Home</div>
+      <p class="ch-desc">卡布河橋，帕霍塔率幾百名游擊隊員，獨擋超過一千名日軍一個多小時，讓游騎兵順利完成任務。當最後一名戰俘安全撤離的信號傳來，游擊隊悄悄消失在夜色中。湯米·托馬斯踏出戰俘營大門的那一刻，決定那棟在腦海裡蓋了三年的房子，終於可以真的動工了。</p>
+      <div class="ch-tags">
+        <span class="ch-tag">🌉 卡布河橋阻擊</span>
+        <span class="ch-tag">🦅 帕霍塔英雄</span>
+        <span class="ch-tag">🏠 歸鄉之路</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ QUOTE ═══════════════════════════════════════════ -->
+<div style="max-width:700px;margin:32px auto 0;padding:0 20px;">
+  <div style="background:linear-gradient(135deg,#8C3A18,#C95F2E);border-radius:18px;padding:28px 24px;color:white;text-align:center;">
+    <div style="font-size:36px;margin-bottom:8px;">❝</div>
+    <p style="font-style:italic;font-size:15.5px;line-height:1.85;opacity:0.95;">
+      Not one left behind.<br>
+      <span style="opacity:0.75;font-size:13px;">——  一個人，也沒有被落下。</span>
+    </p>
+    <div style="margin-top:14px;font-size:12px;opacity:0.65;">Ghost Soldiers · Hampton Sides · 2002</div>
+  </div>
+</div>
+
+<!-- ══ BOTTOM LINK BAR ════════════════════════════════ -->
+<div class="link-bar" style="margin-top:36px;">
+  <div class="link-bar-inner">
+
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎓</span>
+      <span class="lc-title">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">今年七月開課！從錯誤中學習的英文進階課程，突破舊有思維框架</span>
+    </a>
+
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">📊</span>
+      <span class="lc-title">學生分析系統</span>
+      <span class="lc-desc">七月課程配套工具，個人化分析學習優勢與弱點，精準提升</span>
+    </a>
+
+    <a class="link-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-title">加我 Line：linwayet</span>
+      <span class="lc-desc">有問題直接找我！課程諮詢、學習建議，歡迎加Line聊聊</span>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer-strip">
+  <strong>Ghost Soldiers</strong> · Hampton Sides · Anchor Books 2002<br>
+  本頁面為教學參考用途製作，圖文整理 · 林威老師與 AI agent 團隊
+</div>
+
+<div class="bottom-pad"></div>
+</body>
+</html>
