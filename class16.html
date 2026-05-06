@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哈里發塔自學課程 — 11回合完整課程表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6ED;
+    --warm-white: #FFF9F2;
+    --amber-light: #FCECD4;
+    --amber: #E8A44A;
+    --amber-dark: #C47F20;
+    --burnt: #B85C2C;
+    --rust: #C94A2A;
+    --terracotta: #D4613A;
+    --gold: #D4A020;
+    --sage: #7A8C6A;
+    --brown-deep: #5C3A1E;
+    --brown-mid: #8B5A2B;
+    --text-dark: #3A2410;
+    --text-mid: #6B4423;
+    --text-light: #9A7255;
+    --shadow: rgba(100,50,10,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Decorative background pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(232,164,74,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(184,92,44,0.07) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(212,160,32,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ───── TOP / BOTTOM NAV BAR ───── */
+  .nav-bar {
+    background: linear-gradient(135deg, #8B3A0F 0%, #C47F20 50%, #8B3A0F 100%);
+    padding: 16px 20px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav-bar::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFD580, #E8A44A, #FFD580, transparent);
+    margin-top: 12px;
+    border-radius: 2px;
+  }
+
+  .nav-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .nav-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,220,160,0.75);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,220,160,0.25);
+    border-radius: 12px;
+    padding: 10px 14px;
+    text-decoration: none;
+    transition: all 0.25s;
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-link-item:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,220,160,0.55);
+    transform: translateY(-1px);
+  }
+
+  .nav-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+
+  .nav-text-wrap { flex: 1; }
+
+  .nav-link-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFE4A0;
+    line-height: 1.3;
+    display: block;
+  }
+
+  .nav-link-desc {
+    font-size: 11px;
+    color: rgba(255,220,160,0.75);
+    line-height: 1.4;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .nav-arrow {
+    color: rgba(255,220,160,0.6);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ───── HERO SECTION ───── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 48px 24px 36px;
+    background: linear-gradient(180deg, rgba(253,246,237,0) 0%, rgba(252,236,212,0.4) 100%);
+  }
+
+  .hero-tower-icon {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 12px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--amber-dark);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(26px, 7vw, 40px);
+    font-weight: 700;
+    color: var(--brown-deep);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .hero-title span {
+    color: var(--terracotta);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+  }
+
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .badge-amber { background: #FDF0D5; color: #8B5A10; border: 1px solid #E8C470; }
+  .badge-rust  { background: #FCEEE8; color: #8B2A10; border: 1px solid #E88060; }
+  .badge-sage  { background: #EFF3EC; color: #3A5030; border: 1px solid #A0B890; }
+
+  /* ───── SECTION TITLE ───── */
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brown-deep);
+    text-align: center;
+    margin: 32px 24px 16px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .section-title::before,
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber));
+    max-width: 60px;
+  }
+  .section-title::after {
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+
+  /* ───── EPISODE CARDS ───── */
+  .cards-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin: 24px 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .phase-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--amber-light), transparent);
+  }
+
+  .ep-card {
+    background: var(--warm-white);
+    border-radius: 16px;
+    border: 1px solid rgba(232,164,74,0.25);
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .ep-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(100,50,10,0.18);
+  }
+
+  .ep-card-inner {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .ep-stripe {
+    width: 6px;
+    flex-shrink: 0;
+    border-radius: 0;
+  }
+
+  .ep-body {
+    padding: 14px 16px;
+    flex: 1;
+  }
+
+  .ep-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .ep-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .ep-emoji { font-size: 16px; flex-shrink: 0; }
+
+  .ep-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown-deep);
+    line-height: 1.35;
+  }
+
+  .ep-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .ep-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .ep-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+
+  /* ───── COLOR THEMES PER PHASE ───── */
+  .phase-1 .ep-stripe { background: linear-gradient(180deg, #D4613A, #E8A44A); }
+  .phase-1 .ep-num    { background: #C94A2A; }
+  .phase-1 .ep-tag    { background: #FCEEE8; color: #7A2010; border-color: #F0A080; }
+
+  .phase-2 .ep-stripe { background: linear-gradient(180deg, #3A7AB8, #60A8E0); }
+  .phase-2 .ep-num    { background: #2A5E9A; }
+  .phase-2 .ep-tag    { background: #E8F2FC; color: #1A3A6A; border-color: #80B8E8; }
+
+  .phase-3 .ep-stripe { background: linear-gradient(180deg, #B85C2C, #D49030); }
+  .phase-3 .ep-num    { background: #96440E; }
+  .phase-3 .ep-tag    { background: #FDF0D8; color: #5A3010; border-color: #D4A060; }
+
+  .phase-4 .ep-stripe { background: linear-gradient(180deg, #7A8C6A, #A8BC90); }
+  .phase-4 .ep-num    { background: #506040; }
+  .phase-4 .ep-tag    { background: #EFF4EA; color: #304020; border-color: #90B078; }
+
+  .phase-5 .ep-stripe { background: linear-gradient(180deg, #9A60B8, #C090D8); }
+  .phase-5 .ep-num    { background: #7A3898; }
+  .phase-5 .ep-tag    { background: #F4ECFC; color: #4A1A6A; border-color: #C090D8; }
+
+  /* ───── SUMMARY BOX ───── */
+  .summary-box {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .summary-inner {
+    background: linear-gradient(135deg, #8B3A0F, #C47F20);
+    border-radius: 20px;
+    padding: 24px 20px;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFD580;
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,220,160,0.85);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ───── FOOTER NAV ───── */
+  .footer-nav {
+    background: linear-gradient(135deg, #5C2A08 0%, #8B5A20 50%, #5C2A08 100%);
+    padding: 20px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .footer-nav::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFD580, #E8A44A, #FFD580, transparent);
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+
+  .footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .footer-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255,210,140,0.7);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,210,140,0.5);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ───── DECORATIVE DIVIDER ───── */
+  .divider {
+    text-align: center;
+    font-size: 18px;
+    color: var(--amber);
+    margin: 8px 0 0;
+    letter-spacing: 6px;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 480px) {
+    .summary-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-link-title { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         TOP NAV BAR         ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<nav class="nav-bar" role="navigation" aria-label="課程連結">
+  <div class="nav-inner">
+    <div class="nav-label">🗓 2025年七月開課 · 點擊了解</div>
+    <div class="nav-links">
+      <a class="nav-link-item" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="nav-icon">🌀</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">錯中學 ECHO 計劃</span>
+          <span class="nav-link-desc">七月新課！從錯誤中學習的翻轉教育方法</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+      <a class="nav-link-item" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">學生分析</span>
+          <span class="nav-link-desc">互動式學習分析工具 · 了解你的學習輪廓</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+      <a class="nav-link-item" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">加 Line 聯絡老師</span>
+          <span class="nav-link-desc">Line ID：linwayet · 課程諮詢與報名</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         HERO SECTION        ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<header class="hero">
+  <span class="hero-tower-icon">🏙</span>
+  <div class="hero-eyebrow">World's Tallest Building · Self-Study Series</div>
+  <h1 class="hero-title">哈里發塔<br><span>自學課程</span></h1>
+  <p class="hero-subtitle">從流沙地基到政治命名，完整 11 回合深度探索</p>
+  <div class="hero-badges">
+    <span class="badge badge-amber">🏗 工程 &amp; 建築</span>
+    <span class="badge badge-rust">🔥 材料科學</span>
+    <span class="badge badge-sage">🌿 社會 &amp; 人文</span>
+  </div>
+</header>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║      STATS SUMMARY BOX      ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<div class="summary-box">
+  <div class="summary-inner">
+    <div>
+      <span class="stat-num">11</span>
+      <span class="stat-label">回合數</span>
+    </div>
+    <div>
+      <span class="stat-num">828</span>
+      <span class="stat-label">公尺高度</span>
+    </div>
+    <div>
+      <span class="stat-num">~40</span>
+      <span class="stat-label">分鐘/回合</span>
+    </div>
+    <div>
+      <span class="stat-num">6</span>
+      <span class="stat-label">主題維度</span>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║      PHASE 1: FOUNDATION    ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<div class="section-title">完整課程表</div>
+<div class="cards-wrap">
+
+  <div class="phase-label">🪨 第一階段 · 地基挑戰</div>
+
+  <div class="ep-card phase-1">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 01</span>
+          <span class="ep-emoji">🏜</span>
+          <div class="ep-title">沙漠流沙上的地基挑戰</div>
+        </div>
+        <p class="ep-desc">為什麼這棟樓「理論上不該存在」？介紹杜拜地質條件、流沙問題，以及 192 根混凝土樁如何解決承重問題。泥漿護壁工法與樁基力學完整解析。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">地質工程</span>
+          <span class="ep-tag">混凝土樁</span>
+          <span class="ep-tag">泥漿護壁</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-1">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 02</span>
+          <span class="ep-emoji">⏱</span>
+          <div class="ep-title">48小時不間斷——澆底板的驚心動魄</div>
+        </div>
+        <p class="ep-desc">3.7 公尺厚的超大底板為何一秒都不能停？人類史上最大單次混凝土澆築的施工邏輯、冷縫風險，與三班倒工人如何撐過 48 小時。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">混凝土工程</span>
+          <span class="ep-tag">施工管理</span>
+          <span class="ep-tag">冷縫風險</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-1">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 03</span>
+          <span class="ep-emoji">⚗️</span>
+          <div class="ep-title">地下的侵略者——鹹水腐蝕與特殊混凝土配方</div>
+        </div>
+        <p class="ep-desc">工地地下水含高濃度化學腐蝕成分，普通混凝土根本活不了！工程師如何開發高密度、低滲透率的特殊配方，從材料化學的角度理解「客製化混凝土」。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">材料化學</span>
+          <span class="ep-tag">地下水腐蝕</span>
+          <span class="ep-tag">配方設計</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2: VERTICAL CONSTRUCTION -->
+  <div class="phase-label">🏗 第二階段 · 垂直施工</div>
+
+  <div class="ep-card phase-2">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 04</span>
+          <span class="ep-emoji">🤖</span>
+          <div class="ep-title">爬模工法——每三天長出一層樓</div>
+        </div>
+        <p class="ep-desc">爬模機器如何自動爬升？「普茨邁斯特」超級泵如何將混凝土轟上 601 公尺？管道爆管的切割危機，解析垂直施工的核心機械奇蹟。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">爬模技術</span>
+          <span class="ep-tag">超高壓泵送</span>
+          <span class="ep-tag">世界紀錄</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-2">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 05</span>
+          <span class="ep-emoji">🧊</span>
+          <div class="ep-title">用冰塊蓋摩天大樓——混凝土的溫控科學</div>
+        </div>
+        <p class="ep-desc">高溫為何讓混凝土開裂？夜間澆築、投入冰塊、超塑化劑三大策略的科學原理。從材料科學角度理解工程決策，以及為何最終還要「讓混凝土變稀」。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">材料科學</span>
+          <span class="ep-tag">超塑化劑</span>
+          <span class="ep-tag">溫控工程</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3: WIND & STRUCTURE -->
+  <div class="phase-label">💨 第三階段 · 抗風與造型</div>
+
+  <div class="ep-card phase-3">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 06</span>
+          <span class="ep-emoji">🌸</span>
+          <div class="ep-title">用花的形狀打敗風——Y 型平面的設計密碼</div>
+        </div>
+        <p class="ep-desc">為什麼哈里發塔從空中看像一朵花？以蜘蛛百合（Hymenocallis）為靈感的 Y 型平面，如何透過每層樓微微旋轉偏移，破壞氣流共振、征服 200km/h 的頂層強風。40 個風洞模型背後的設計科學。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">風洞測試</span>
+          <span class="ep-tag">結構設計</span>
+          <span class="ep-tag">伊斯蘭建築</span>
+          <span class="ep-tag">仿生設計</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-3">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 07</span>
+          <span class="ep-emoji">🪟</span>
+          <div class="ep-title">颶風中掛玻璃與望遠鏡式塔尖</div>
+        </div>
+        <p class="ep-desc">24,348 塊玻璃面板如何在高空強風中一塊一塊定位安裝？為什麼玻璃要特殊配方以反射沙漠強光？塔尖為何要從內部用液壓頂出、節節「鑽出來」而非用吊車吊上去？</p>
+        <div class="ep-tags">
+          <span class="ep-tag">幕牆工程</span>
+          <span class="ep-tag">塔尖安裝</span>
+          <span class="ep-tag">液壓系統</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-3">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 08</span>
+          <span class="ep-emoji">🪆</span>
+          <div class="ep-title">俄羅斯套娃——困在 800 公尺的塔吊怎麼下來</div>
+        </div>
+        <p class="ep-desc">施工完成後塔吊困在超高空，從大到小層層互解的套娃式拆卸邏輯，以及最後那台最小的如何把自己拆成零件坐電梯下樓。逆向思維與工程創意的精彩案例。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">塔吊工程</span>
+          <span class="ep-tag">逆向施工</span>
+          <span class="ep-tag">系統思維</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4: SOCIETY & EXTENSION -->
+  <div class="phase-label">💡 第四階段 · 延伸思考</div>
+
+  <div class="ep-card phase-4">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 09</span>
+          <span class="ep-emoji">🚽</span>
+          <div class="ep-title">沒有排汙管的世界最高樓——都市規劃的系統失靈</div>
+        </div>
+        <p class="ep-desc">每日十幾噸排泄物靠罐車運出城外，是設計師的錯嗎？探討城市基礎設施規劃失速於建設野心的根本原因，以及「水回收系統」這個正面版水故事——每年 6,800 萬公升的冷氣回收水如何成為噴泉之源。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">都市規劃</span>
+          <span class="ep-tag">基礎設施</span>
+          <span class="ep-tag">系統失靈</span>
+          <span class="ep-tag">水資源回收</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ep-card phase-4">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 10</span>
+          <span class="ep-emoji">💰</span>
+          <div class="ep-title">命名之謎——它差點不叫哈里發塔</div>
+        </div>
+        <p class="ep-desc">整個施工期間它都叫「杜拜塔」，直到開幕前一天才改名。2008 年金融危機讓杜拜借了至少 800 億美元，阿布達比出手 100 億救場，而改名是杜拜對這份恩情的回應。一棟樓的名字，是用錢買來的——這是政治、金融與外交的課。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">金融危機</span>
+          <span class="ep-tag">政治外交</span>
+          <span class="ep-tag">命名故事</span>
+          <span class="ep-tag">阿聯酋歷史</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 5: FINAL -->
+  <div class="phase-label">🌍 第五階段 · 人與總結</div>
+
+  <div class="ep-card phase-5">
+    <div class="ep-card-inner">
+      <div class="ep-stripe"></div>
+      <div class="ep-body">
+        <div class="ep-header">
+          <span class="ep-num">EP 11</span>
+          <span class="ep-emoji">🧑‍🏭</span>
+          <div class="ep-title">22 萬工時背後的人——移工、人權與建設代價</div>
+        </div>
+        <p class="ep-desc">12,000 名工人、100 種國籍，日薪最低只有 175 元台幣。2006 年 2,500 人在工地爆發暴動，護照被沒收、罷工違法、語言不通是刻意安排。這棟象徵人類極限的樓，是由哪些人、在什麼條件下蓋起來的？批判性思考與人文反思的最終回合。</p>
+        <div class="ep-tags">
+          <span class="ep-tag">移工人權</span>
+          <span class="ep-tag">卡法拉制度</span>
+          <span class="ep-tag">勞工歷史</span>
+          <span class="ep-tag">批判思考</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+</div><!-- end cards-wrap -->
+
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║        BOTTOM NAV BAR       ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<footer class="footer-nav" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-label">🗓 2025年七月開課 · 立即了解 / 聯絡老師</div>
+    <div class="nav-links">
+      <a class="nav-link-item" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="nav-icon">🌀</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">錯中學 ECHO 計劃</span>
+          <span class="nav-link-desc">七月新課！從錯誤中學習的翻轉教育方法</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+      <a class="nav-link-item" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">學生分析</span>
+          <span class="nav-link-desc">互動式學習分析工具 · 了解你的學習輪廓</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+      <a class="nav-link-item" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text-wrap">
+          <span class="nav-link-title">加 Line 聯絡老師</span>
+          <span class="nav-link-desc">Line ID：linwayet · 課程諮詢與報名</span>
+        </span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </div>
+    <div class="footer-copy">哈里發塔自學課程 · 11回合完整計劃 · 2025</div>
+  </div>
+</footer>
+
+</body>
+</html>
