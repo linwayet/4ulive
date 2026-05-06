@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>區塊鏈帳本課程 — 林老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #FDF6EC;
+  --warm1:   #FFF0D6;
+  --warm2:   #FDDCAA;
+  --amber:   #E8930A;
+  --amber-d: #B86E00;
+  --coral:   #E05C2A;
+  --coral-l: #F9D4C0;
+  --rust:    #C0420F;
+  --gold:    #F5B700;
+  --sage:    #8B7355;
+  --text:    #3A2A14;
+  --text2:   #6B4C26;
+  --text3:   #9E7B52;
+  --line-green: #06C755;
+  --shadow: 0 4px 24px rgba(180,100,20,0.13);
+  --radius: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Decorative background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 10% 20%, rgba(248,180,60,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(224,92,42,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(253,220,170,0.25) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV LINKS STRIP ── */
+.nav-strip {
+  background: linear-gradient(135deg, #C0420F 0%, #E8930A 50%, #F5B700 100%);
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(192,66,15,0.25);
+}
+
+.nav-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 14px 20px 10px;
+}
+
+.nav-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 7px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+  white-space: nowrap;
+}
+.nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.22); opacity: 0.92; }
+.nav-btn:active { transform: scale(0.97); }
+
+.nb-echo {
+  background: #fff;
+  color: var(--rust);
+  border: 2px solid rgba(255,255,255,0.8);
+}
+.nb-student {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(4px);
+}
+.nb-line {
+  background: var(--line-green);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.nav-icon { font-size: 14px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 36px 20px 24px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--amber), var(--coral));
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(232,147,10,0.35);
+}
+
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(26px, 7vw, 40px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.hero h1 span { color: var(--coral); }
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hstat {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  border: 1.5px solid var(--warm2);
+}
+.hstat-n { font-size: 26px; font-weight: 700; color: var(--amber-d); font-family: 'Noto Serif TC', serif; }
+.hstat-l { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+/* ── SECTION TITLE ── */
+.sec-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0 20px;
+  margin: 30px 0 16px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-title::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 22px;
+  background: linear-gradient(180deg, var(--amber), var(--coral));
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── PHASES ── */
+.phases {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.phase {
+  margin-bottom: 14px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1.5px solid rgba(232,147,10,0.18);
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+.phase:hover { box-shadow: 0 8px 32px rgba(180,100,20,0.18); }
+
+.ph-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.ph1 .ph-head { background: linear-gradient(90deg, #FFF5E6, #FFF0D6); }
+.ph2 .ph-head { background: linear-gradient(90deg, #FFF0E0, #FFE8CC); }
+.ph3 .ph-head { background: linear-gradient(90deg, #FDEBD0, #FCE0B8); }
+.ph4 .ph-head { background: linear-gradient(90deg, #FDE8D0, #FCD8B0); }
+.ph5 .ph-head { background: linear-gradient(90deg, #FDDFC8, #FCD0A0); }
+
+.ph-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700;
+  flex-shrink: 0;
+  font-family: 'Noto Serif TC', serif;
+}
+.ph1 .ph-dot { background: linear-gradient(135deg, #F5B700, #E8930A); color: #fff; }
+.ph2 .ph-dot { background: linear-gradient(135deg, #E8930A, #D4730A); color: #fff; }
+.ph3 .ph-dot { background: linear-gradient(135deg, #D4730A, #C05500); color: #fff; }
+.ph4 .ph-dot { background: linear-gradient(135deg, #C05500, #A84000); color: #fff; }
+.ph5 .ph-dot { background: linear-gradient(135deg, #A84000, #8B2E00); color: #fff; }
+
+.ph-info { flex: 1; min-width: 0; }
+.ph-name { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.ph-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+.ph-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.ppill {
+  font-size: 10px; padding: 3px 9px;
+  border-radius: 20px; white-space: nowrap; font-weight: 500;
+}
+.pp-w { background: #FDE8C8; color: #8B5000; }
+.pp-l { background: #FFE0C8; color: #7A3500; }
+
+.chev {
+  font-size: 13px; color: var(--text3);
+  transition: transform 0.25s; flex-shrink: 0;
+}
+.phase.open .chev { transform: rotate(180deg); }
+
+.ph-body { display: none; }
+.phase.open .ph-body { display: block; }
+
+/* ── LESSONS ── */
+.lesson {
+  padding: 15px 18px;
+  border-top: 1px solid #F5E8D0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.lesson:hover { background: #FFFAF2; }
+
+.les-top {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px;
+}
+.les-num { font-size: 10px; color: var(--text3); flex-shrink: 0; font-weight: 500; }
+.les-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.45; }
+
+.les-body {
+  font-size: 12.5px; color: var(--text2);
+  line-height: 1.7; margin-bottom: 10px;
+}
+
+.story-box {
+  background: linear-gradient(135deg, #FFF3DC, #FFE9C5);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 13px;
+  margin-bottom: 10px;
+}
+.story-label {
+  font-size: 10px; font-weight: 700;
+  color: var(--amber-d); margin-bottom: 4px;
+  letter-spacing: 1px;
+  display: flex; align-items: center; gap: 5px;
+}
+.story-label::before { content: '📖'; font-size: 12px; }
+.story-text { font-size: 12px; color: #6B4500; line-height: 1.65; }
+
+.les-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.ltag {
+  font-size: 10px; padding: 3px 9px; border-radius: 20px;
+  background: #FDE8C8; color: #8B5000;
+  border: 1px solid #F5D0A0;
+  font-weight: 500;
+}
+
+.ph-outcome {
+  padding: 12px 18px;
+  background: linear-gradient(90deg, #FFF8EC, #FFF3E0);
+  border-top: 2px dashed #F5D090;
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 12.5px; color: var(--text2); line-height: 1.6;
+}
+.out-lbl {
+  font-size: 11px; font-weight: 700; color: var(--amber-d);
+  flex-shrink: 0; padding-top: 1px;
+}
+
+/* ── FOOTER STRIP ── */
+.footer-strip {
+  background: linear-gradient(135deg, #3A2000 0%, #7A4000 50%, #C07000 100%);
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 20px 28px;
+}
+
+.footer-title {
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,220,120,0.75);
+  margin-bottom: 12px; font-weight: 500;
+}
+
+.footer-links {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;
+}
+
+.footer-copy {
+  font-size: 11px; color: rgba(255,220,120,0.5); text-align: center;
+  padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);
+  line-height: 1.7;
+}
+
+/* ── COURSE INTRO CARDS ── */
+.course-cards {
+  max-width: 680px; margin: 0 auto;
+  padding: 0 16px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  position: relative; z-index: 1;
+}
+@media (max-width: 400px) { .course-cards { grid-template-columns: 1fr; } }
+
+.course-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  border: 1.5px solid rgba(232,147,10,0.2);
+  text-decoration: none;
+  display: block;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.course-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(180,100,20,0.22); }
+
+.cc-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.cc1 .cc-badge { background: linear-gradient(90deg, #E8930A, #F5B700); color: #fff; }
+.cc2 .cc-badge { background: linear-gradient(90deg, #C05500, #E8930A); color: #fff; }
+
+.cc-title {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  line-height: 1.4; margin-bottom: 6px;
+  font-family: 'Noto Serif TC', serif;
+}
+.cc-desc { font-size: 12px; color: var(--text2); line-height: 1.65; }
+.cc-link {
+  font-size: 11px; color: var(--coral);
+  font-weight: 700; margin-top: 10px;
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ── LINE CARD ── */
+.line-card {
+  max-width: 680px; margin: 0 auto 0;
+  padding: 0 16px 4px;
+  position: relative; z-index: 1;
+}
+.line-inner {
+  background: linear-gradient(135deg, #E8F8EE, #C8F0D8);
+  border: 2px solid var(--line-green);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.line-inner:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,199,85,0.25); }
+.line-logo { font-size: 30px; flex-shrink: 0; }
+.line-info {}
+.line-info strong { font-size: 15px; font-weight: 700; color: #065230; display: block; }
+.line-info span { font-size: 12px; color: #2A7050; }
+
+/* ── DIVIDER ── */
+.divider {
+  max-width: 680px; margin: 24px auto 0;
+  padding: 0 20px;
+  display: flex; align-items: center; gap: 12px;
+  position: relative; z-index: 1;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--warm2), transparent);
+}
+.divider-txt {
+  font-size: 11px; color: var(--text3);
+  white-space: nowrap; font-weight: 500;
+}
+
+/* ── SCROLL FADE IN ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fadein { animation: fadeUp 0.55s ease both; }
+.fadein:nth-child(1) { animation-delay: 0.05s; }
+.fadein:nth-child(2) { animation-delay: 0.12s; }
+.fadein:nth-child(3) { animation-delay: 0.19s; }
+.fadein:nth-child(4) { animation-delay: 0.26s; }
+.fadein:nth-child(5) { animation-delay: 0.33s; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TOP NAV STRIP ══════════════ -->
+<div class="nav-strip">
+  <div class="nav-inner">
+    <div class="nav-label">🎓 2025年七月開課 &amp; 聯絡老師</div>
+    <div class="nav-links">
+      <a class="nav-btn nb-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <span class="nav-icon">🔥</span> 錯中學 ECHO 計畫
+      </a>
+      <a class="nav-btn nb-student" href="https://linwayet.github.io/popup/index" target="_blank">
+        <span class="nav-icon">📊</span> 學生分析系統
+      </a>
+      <a class="nav-btn nb-line" href="https://line.me/ti/p/~linwayet" target="_blank">
+        <span class="nav-icon">💬</span> LINE：linwayet
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero fadein">
+  <div class="hero-badge">BLOCKCHAIN COURSE 2025</div>
+  <h1>區塊鏈<span>帳本</span>課程<br>從零開始的完整入門</h1>
+  <p class="hero-sub">專為資訊小白設計 · 以「帳本 Ledger」為核心<br>每堂搭配真實故事，讓概念不再抽象</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">16</div><div class="hstat-l">堂課</div></div>
+    <div class="hstat"><div class="hstat-n">11</div><div class="hstat-l">週</div></div>
+    <div class="hstat"><div class="hstat-n">16</div><div class="hstat-l">真實故事</div></div>
+    <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">學習階段</div></div>
+  </div>
+</div>
+
+<!-- ══════════════ 七月課程卡片 ══════════════ -->
+<div class="divider"><span class="divider-txt">✦ 七月開課資訊 ✦</span></div>
+
+<div class="course-cards">
+  <a class="course-card cc1 fadein" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    <span class="cc-badge">七月 開課</span>
+    <div class="cc-title">錯中學 ECHO 計畫</div>
+    <div class="cc-desc">在錯誤中學習的回響教學法。互動式課程，讓學生從失敗中建立真實的理解力。</div>
+    <div class="cc-link">🔗 前往了解 →</div>
+  </a>
+  <a class="course-card cc2 fadein" href="https://linwayet.github.io/popup/index" target="_blank">
+    <span class="cc-badge">七月 開課</span>
+    <div class="cc-title">學生分析系統</div>
+    <div class="cc-desc">深度剖析學習者類型與弱點，為每位學生量身打造最適合的學習路徑。</div>
+    <div class="cc-link">🔗 前往了解 →</div>
+  </a>
+</div>
+
+<!-- LINE 聯絡 -->
+<div class="line-card" style="margin-top:12px;">
+  <a class="line-inner" href="https://line.me/ti/p/~linwayet" target="_blank">
+    <div class="line-logo">💬</div>
+    <div class="line-info">
+      <strong>LINE 聯絡老師：linwayet</strong>
+      <span>課程諮詢、報名、任何問題都歡迎加LINE詢問</span>
+    </div>
+  </a>
+</div>
+
+<!-- ══════════════ 課程內容 ══════════════ -->
+<div class="divider" style="margin-top:28px;"><span class="divider-txt">✦ 完整課程內容 ✦</span></div>
+
+<div class="sec-title">五大學習階段 · 16堂課程</div>
+
+<div class="phases">
+
+<!-- ████ Phase 1 ████ -->
+<div class="phase ph1 open fadein">
+  <div class="ph-head" onclick="toggle(this)">
+    <div class="ph-dot">1</div>
+    <div class="ph-info">
+      <div class="ph-name">帳本的本質 — 為什麼人類需要記帳？</div>
+      <div class="ph-sub">從生活出發，不碰任何技術術語</div>
+    </div>
+    <div class="ph-pills">
+      <span class="ppill pp-w">第1–2週</span>
+      <span class="ppill pp-l">3堂</span>
+    </div>
+    <span class="chev">▾</span>
+  </div>
+  <div class="ph-body">
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第1堂</span><span class="les-title">帳本是什麼？5000年的記帳史</span></div>
+      <div class="les-body">人類最早的文字不是詩，是帳單。美索不達米亞泥板記錄「幾頭羊換幾斤麥」。帳本三要素：誰（from）、給誰（to）、多少（amount）。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">1494年義大利數學家帕喬利出版史上第一本複式記帳教科書，成為現代會計的祖師爺。同一套借貸邏輯，今天的銀行、比特幣都還在用。威尼斯商人因為有可信帳本，才能放心借錢給遠方的陌生商船。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">帳本起源</span><span class="ltag">複式記帳</span><span class="ltag">無技術門檻</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第2堂</span><span class="les-title">銀行——人類史上最成功的帳本管理員</span></div>
+      <div class="les-body">為什麼大家信任銀行？政府擔保、存款保險、法律約束。集中式帳本的優點（方便、快速）與致命缺點（單點失敗、可被操控）。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2008年雷曼兄弟倒閉：這家158年歷史的銀行一夜消失，帳戶記錄岌岌可危。更早的例子：1930年代美國大蕭條，民眾擠兌銀行，帳本裡的錢蒸發了。這些故事讓人開始問：有沒有「不依賴任何機構」的帳本？</div>
+      </div>
+      <div class="les-tags"><span class="ltag">銀行信任</span><span class="ltag">系統性風險</span><span class="ltag">2008金融危機</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第3堂</span><span class="les-title">不需要銀行的帳本——人類早就試過了</span></div>
+      <div class="les-body">用「小組 LINE 群組共同記帳」做互動練習。每人都有一份帳，改一份其他人能發現。這就是區塊鏈的靈魂，但這個概念其實很古老。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事（超精彩）</div>
+        <div class="story-text">太平洋小島 Yap 的石幣（Rai Stone）：石頭重達4噸根本搬不動，交易時只要「全村人見證」所有權換人就算完成。石頭沉入海底？沒關係，大家記得它在誰名下就好。這就是最早的「分散式共識帳本」，比比特幣早了幾千年。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">Yap島石幣</span><span class="ltag">分散式共識</span><span class="ltag">社群驗證</span></div>
+    </div>
+
+    <div class="ph-outcome">
+      <span class="out-lbl">📌 階段成果</span>
+      <span>學生能用 Yap 島石幣解釋「分散式帳本」，不需任何技術背景即可理解。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ████ Phase 2 ████ -->
+<div class="phase ph2 fadein">
+  <div class="ph-head" onclick="toggle(this)">
+    <div class="ph-dot">2</div>
+    <div class="ph-info">
+      <div class="ph-name">區塊鏈的防竄改結構</div>
+      <div class="ph-sub">Hash、區塊、鏈——用比喻和真實事件解釋</div>
+    </div>
+    <div class="ph-pills">
+      <span class="ppill pp-w">第3–5週</span>
+      <span class="ppill pp-l">4堂</span>
+    </div>
+    <span class="chev">▾</span>
+  </div>
+  <div class="ph-body">
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第4堂</span><span class="les-title">資料的「DNA指紋」——Hash函數</span></div>
+      <div class="les-body">任何資料都能產生固定長度的「指紋」。同樣資料指紋永遠相同；改一個字，指紋完全不同。無法從指紋反推原資料（單向性）。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2020年 SolarWinds 供應鏈攻擊：駭客在軟體裡植入後門，但如果當初有驗證 Hash，就能立刻發現檔案被動了手腳——18000個企業或許能倖免。下載軟體時網站附的 SHA-256 字串，就是 Hash。這是數位世界的「封條」。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">SHA-256</span><span class="ltag">SolarWinds攻擊</span><span class="ltag">數位封條</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第5堂</span><span class="les-title">解剖一個「區塊」——帳本的一頁長什麼樣</span></div>
+      <div class="les-body">區塊四要素：交易清單、時間戳、前一個區塊的 Hash（prev Hash）、自己的 Hash。用活頁夾比喻：每頁都印著上一頁摘要，撕掉任一頁馬上被發現。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">比特幣第一個區塊（創世區塊，2009年1月3日），中本聰在裡面藏了一行英國報紙標題：「財政大臣正站在銀行第二次紓困的邊緣」。這句話永遠被刻在區塊鏈上，無法修改。這是對舊金融體系的永久宣言。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">創世區塊</span><span class="ltag">中本聰</span><span class="ltag">不可竄改</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第6堂</span><span class="les-title">為什麼改一筆帳，整條鏈都垮掉？</span></div>
+      <div class="les-body">修改區塊3的數據 → 區塊3的 Hash 改變 → 區塊4的 prev Hash 對不上 → 要重算4、5、6…全部。誠實節點繼續跑，攻擊者永遠追不上。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2019年以太坊經典（ETC）51%攻擊：攻擊者租用算力控制超過一半節點，成功「雙花」——同一筆錢花兩次，損失超過100萬美元。但比特幣要做同樣的事，2023年算力成本估計是每小時100萬美元以上，根本划不來。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">51%攻擊</span><span class="ltag">ETC</span><span class="ltag">雙花問題</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第7堂</span><span class="les-title">動手看！查詢薩爾瓦多政府的比特幣錢包</span></div>
+      <div class="les-body">帶學生上 Etherscan / Blockchain.com，找真實交易，對應課堂所學結構。這堂讓「抽象變具體」，是整個課程的關鍵轉折點。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2021年薩爾瓦多成為全球第一個以比特幣為法定貨幣的國家。其政府錢包地址是公開的——任何人都能查到國家財政買了多少比特幣、何時買、現在剩多少。課堂實作：親眼看到「政府帳本公開透明」是什麼意思。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">實作練習</span><span class="ltag">薩爾瓦多</span><span class="ltag">Etherscan</span></div>
+    </div>
+
+    <div class="ph-outcome">
+      <span class="out-lbl">📌 階段成果</span>
+      <span>學生能畫出區塊結構，解釋51%攻擊為何在比特幣上不划算，並能用 Block Explorer 查詢真實交易。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ████ Phase 3 ████ -->
+<div class="phase ph3 fadein">
+  <div class="ph-head" onclick="toggle(this)">
+    <div class="ph-dot">3</div>
+    <div class="ph-info">
+      <div class="ph-name">共識機制——大家怎麼決定哪本帳是真的？</div>
+      <div class="ph-sub">PoW、PoS，以及真實的礦工故事</div>
+    </div>
+    <div class="ph-pills">
+      <span class="ppill pp-w">第6–8週</span>
+      <span class="ppill pp-l">4堂</span>
+    </div>
+    <span class="chev">▾</span>
+  </div>
+  <div class="ph-body">
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第8堂</span><span class="les-title">拜占庭將軍問題——不信任環境裡如何達成共識</span></div>
+      <div class="les-body">10個將軍要決定攻擊或撤退，有人是叛徒會說謊。沒有中央指揮怎麼辦？這個1982年的數學問題，是區塊鏈共識機制的理論基礎。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">NASA 太空梭的飛控電腦用的就是拜占庭容錯設計：5台電腦同時運算，4台同意才執行指令，就算1台故障也沒事。中本聰2008年的白皮書，是第一次用密碼學解決了「網路環境的拜占庭問題」——這是電腦科學幾十年的懸案。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">拜占庭容錯</span><span class="ltag">NASA</span><span class="ltag">中本聰白皮書</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第9堂</span><span class="les-title">挖礦——誰算得最快，誰來寫帳</span></div>
+      <div class="les-body">PoW 本質：解一道「猜數字」謎題，全球電腦比賽，誰先猜中誰就有資格把這一批交易寫入帳本，獲得比特幣獎勵。難度每兩週自動調整。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2021年中國禁止挖礦之前，全球超過65%的比特幣算力來自中國四川、新疆、內蒙古——因為電費便宜。禁令發布後，礦機在48小時內開始空運到哈薩克、美國德州。這場「算力大遷徙」讓我們看到：挖礦本質是電費的競賽。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">PoW</span><span class="ltag">中國禁礦</span><span class="ltag">能源消耗</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第10堂</span><span class="les-title">權益證明——押錢才能說話，說謊就沒收</span></div>
+      <div class="les-body">PoS：不比算力，比「質押金額」。被選中寫帳的驗證者若說謊，押金被沒收（Slashing）。比 PoW 省99%電力。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2022年9月15日「The Merge」：以太坊在不停機的情況下，把整個網路從 PoW 切換成 PoS，相當於「飛機在飛行中換引擎」。切換後以太坊能源消耗減少99.95%，一夕之間從「環保殺手」變成相對綠色的區塊鏈。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">PoS</span><span class="ltag">The Merge</span><span class="ltag">以太坊升級</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第11堂</span><span class="les-title">當帳本說謊——交易所崩盤的真相</span></div>
+      <div class="les-body">區塊鏈帳本誠實，但在帳本之外的「交易所」卻可以造假。這堂從帳本視角解析史上兩大崩盤，是批判性思考的關鍵一課。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事（兩個）</div>
+        <div class="story-text">① Mt.Gox（2014）：曾處理全球80%比特幣交易的交易所，一夜宣告85萬枚比特幣「不見了」，用戶求償到今天還沒結束。② FTX（2022）：幣圈「好人形象」的 SBF 偷偷挪用用戶資產炒作。核心教訓：「去中心化的帳本」≠「去中心化的交易所」。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">Mt.Gox</span><span class="ltag">FTX崩盤</span><span class="ltag">批判思考</span></div>
+    </div>
+
+    <div class="ph-outcome">
+      <span class="out-lbl">📌 階段成果</span>
+      <span>學生能比較PoW/PoS，並能從「帳本是否真正去中心化」的角度批判交易所風險。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ████ Phase 4 ████ -->
+<div class="phase ph4 fadein">
+  <div class="ph-head" onclick="toggle(this)">
+    <div class="ph-dot">4</div>
+    <div class="ph-info">
+      <div class="ph-name">帳本的新應用——不只是轉帳</div>
+      <div class="ph-sub">智慧合約、NFT、DeFi，都從帳本視角切入</div>
+    </div>
+    <div class="ph-pills">
+      <span class="ppill pp-w">第9–10週</span>
+      <span class="ppill pp-l">3堂</span>
+    </div>
+    <span class="chev">▾</span>
+  </div>
+  <div class="ph-body">
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第12堂</span><span class="les-title">智慧合約——寫在帳本上的自動執行規則</span></div>
+      <div class="les-body">自動販賣機比喻：條件滿足就自動執行，無需中間人。「Code is Law」：合約一旦部署，連開發者都無法修改。這是優點，也是致命弱點。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2016年 The DAO 事件：史上第一個去中心化自治組織，募集了1.5億美元。一個駭客發現合約漏洞，「合法地」（按合約規則）抽走6000萬美元。以太坊社群為了追回資金，強制修改帳本（硬分叉），因此分裂成 ETH 和 ETC 兩條鏈。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">The DAO</span><span class="ltag">智慧合約漏洞</span><span class="ltag">硬分叉</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第13堂</span><span class="les-title">NFT——帳本記錄的數位所有權憑證</span></div>
+      <div class="les-body">NFT 本質：帳本裡的一筆記錄「Token #1234 屬於地址 0xABC」。像土地謄本，複印謄本沒用，只有登記在冊的才算數。JPEG 可以複製，但帳本記錄的所有權不行。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2021年 NBA Top Shot：一段 LeBron James 的灌籃影片 NFT 賣了 20 萬美元，但 YouTube 上一樣的影片人人都能看。買的人買的不是影片，是帳本上那筆「官方認證我擁有這個瞬間」的記錄。這荒謬嗎？球卡收藏家 50 年前就在幹一樣的事了。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">NBA Top Shot</span><span class="ltag">數位稀缺性</span><span class="ltag">所有權</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第14堂</span><span class="les-title">DeFi——銀行功能全部寫進帳本</span></div>
+      <div class="les-body">借貸（Compound）、兌換（Uniswap）、利息，全靠智慧合約在帳本上自動執行，24小時不停、無國界。但風險同樣驚人。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2022年 Terra/Luna 崩盤：一個「演算法穩定幣」系統宣稱能永遠維持1美元，一旦有人大量拋售，演算法失控，400億美元在72小時內蒸發。受害者包括把退休金全押進去的韓國散戶。「帳本透明」不代表「系統安全」。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">Terra Luna崩盤</span><span class="ltag">DeFi風險</span><span class="ltag">算法穩定幣</span></div>
+    </div>
+
+    <div class="ph-outcome">
+      <span class="out-lbl">📌 階段成果</span>
+      <span>學生能用「帳本視角」解釋NFT和DeFi，並理解「透明帳本」不等於「安全系統」的關鍵區別。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ████ Phase 5 ████ -->
+<div class="phase ph5 fadein">
+  <div class="ph-head" onclick="toggle(this)">
+    <div class="ph-dot">5</div>
+    <div class="ph-info">
+      <div class="ph-name">批判與未來——區塊鏈真的解決了問題嗎？</div>
+      <div class="ph-sub">理性評估，不盲目崇拜也不一概否定</div>
+    </div>
+    <div class="ph-pills">
+      <span class="ppill pp-w">第11週</span>
+      <span class="ppill pp-l">2堂</span>
+    </div>
+    <span class="chev">▾</span>
+  </div>
+  <div class="ph-body">
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第15堂</span><span class="les-title">三難困境——安全、去中心、效率只能選兩個</span></div>
+      <div class="les-body">「區塊鏈三難困境」（Blockchain Trilemma）：安全性、去中心化、可擴展性，三者不可兼得。這解釋了為什麼比特幣每秒只能處理7筆交易，而 VISA 是24000筆。</div>
+      <div class="story-box">
+        <div class="story-label">真實故事</div>
+        <div class="story-text">2017年 CryptoKitties（加密貓）熱潮：一款收集虛擬貓咪的遊戲，讓以太坊網路大塞車，交易費用暴漲10倍，普通轉帳全部延誤。一個遊戲就能癱瘓整個以太坊，暴露了去中心化帳本的擴容問題。為了解決這個問題，Layer 2、Polygon 等方案才誕生。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">三難困境</span><span class="ltag">CryptoKitties</span><span class="ltag">Layer 2</span></div>
+    </div>
+
+    <div class="lesson">
+      <div class="les-top"><span class="les-num">第16堂</span><span class="les-title">總複習——哪些問題，區塊鏈真的能解決？</span></div>
+      <div class="les-body">用「帳本思維」重新評估：什麼情境真的需要去中心化帳本？什麼情境用傳統資料庫就夠了？學生分組辯論：替區塊鏈辯護 vs. 攻擊。</div>
+      <div class="story-box">
+        <div class="story-label">真實對比</div>
+        <div class="story-text">✅ 適合：跨國匯款（現在要3天高手續費）、非洲土地所有權登記（腐敗帳本導致土地糾紛）、沃爾瑪用以太坊追蹤食品從農場到貨架。❌ 不適合：小型企業記帳（PostgreSQL就好）、投票（身份驗證才是真正難題）、任何需要「更新舊記錄」的系統。</div>
+      </div>
+      <div class="les-tags"><span class="ltag">批判思考</span><span class="ltag">適用場景</span><span class="ltag">辯論</span><span class="ltag">總複習</span></div>
+    </div>
+
+    <div class="ph-outcome">
+      <span class="out-lbl">📌 最終成果</span>
+      <span>學生能清楚說明「什麼問題適合用區塊鏈解決，什麼不適合」，具備獨立判斷能力。</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end phases -->
+
+<!-- ══════════════ BOTTOM COURSE CARDS ══════════════ -->
+<div class="divider" style="margin-top:32px;"><span class="divider-txt">✦ 七月開課 · 立即了解 ✦</span></div>
+
+<div class="course-cards" style="margin-top:16px;">
+  <a class="course-card cc1" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    <span class="cc-badge">七月 開課</span>
+    <div class="cc-title">錯中學 ECHO 計畫</div>
+    <div class="cc-desc">在錯誤中學習的回響教學法。互動式課程，讓學生從失敗中建立真實的理解力。</div>
+    <div class="cc-link">🔗 前往了解 →</div>
+  </a>
+  <a class="course-card cc2" href="https://linwayet.github.io/popup/index" target="_blank">
+    <span class="cc-badge">七月 開課</span>
+    <div class="cc-title">學生分析系統</div>
+    <div class="cc-desc">深度剖析學習者類型與弱點，為每位學生量身打造最適合的學習路徑。</div>
+    <div class="cc-link">🔗 前往了解 →</div>
+  </a>
+</div>
+
+<div class="line-card" style="margin-top:12px; margin-bottom:0;">
+  <a class="line-inner" href="https://line.me/ti/p/~linwayet" target="_blank">
+    <div class="line-logo">💬</div>
+    <div class="line-info">
+      <strong>LINE 聯絡老師：linwayet</strong>
+      <span>課程諮詢、報名、任何問題都歡迎加LINE詢問</span>
+    </div>
+  </a>
+</div>
+
+<!-- ══════════════ FOOTER STRIP ══════════════ -->
+<div class="footer-strip">
+  <div class="footer-inner">
+    <div class="footer-title">🎓 2025年七月開課資訊 &amp; 聯絡老師</div>
+    <div class="footer-links">
+      <a class="nav-btn nb-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <span>🔥</span> 錯中學 ECHO 計畫
+      </a>
+      <a class="nav-btn nb-student" href="https://linwayet.github.io/popup/index" target="_blank">
+        <span>📊</span> 學生分析系統
+      </a>
+      <a class="nav-btn nb-line" href="https://line.me/ti/p/~linwayet" target="_blank">
+        <span>💬</span> LINE：linwayet
+      </a>
+    </div>
+    <div class="footer-copy">
+      區塊鏈帳本課程 · 16堂 · 11週 · 16個真實故事<br>
+      專為資訊小白大學生設計 · 林老師編製 © 2025
+    </div>
+  </div>
+</div>
+
+<script>
+function toggle(headEl) {
+  const phase = headEl.closest('.phase');
+  phase.classList.toggle('open');
+}
+
+// Intersection Observer for scroll-triggered fade
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.phase').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity 0.5s ease ${i * 0.07}s, transform 0.5s ease ${i * 0.07}s`;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

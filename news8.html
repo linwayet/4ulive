@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Out of Their Shell: Conquering Land and Sea</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF3E4;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--key:#0D47A1;--orange:#E65100;--purple:#6A1B9A;--original-head:#0D47A1;--original-border:#90CAF9;--original-body:#F3F8FF;--read-head:#BF360C;--read-border:#FFAB91;--read-body:#FFF3EF;--vocab-head:#1B5E20;--vocab-border:#81C784;--vocab-body:#F1F8F2;--grammar-head:#4A148C;--grammar-border:#CE93D8;--grammar-body:#F9F0FF;--fold-head:#4A3728;--fold-border:#C4A06A;--fold-body:#FAF6F0}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFE4C2 0%,#FFF3E4 18%,#FFF8F0 58%,#FFEEDC 100%);color:var(--ink);font-family:'BIZ UDPGothic','PingFang TC','Microsoft JhengHei',sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 14px 72px}
+.page{max-width:880px;margin:0 auto}
+.hero{text-align:center;padding:22px 16px 28px}
+h1{display:inline-block;margin:0 auto 16px;padding:18px 24px;border:5px solid var(--h1);border-radius:8px;color:var(--h1);background:#FFFDF8;font-size:3.1rem;line-height:1.22;font-weight:700;box-shadow:0 8px 0 #F6C7BD}
+.subtitle{margin:8px 0 10px;color:var(--h2);font-size:2.25rem;line-height:1.28;font-weight:700}
+.credit{margin:0;color:#1565C0;font-size:1.55rem;font-weight:700;letter-spacing:.06em;text-shadow:1px 1px 0 #D8ECFF}
+h2{margin:34px 0 14px;color:var(--h2);font-size:2.2rem;line-height:1.3;font-weight:700}
+h3{margin:0 0 12px;color:var(--h3);font-size:1.65rem;line-height:1.35;font-weight:700}
+p{margin:12px 0}
+.card{border:3px solid;border-radius:8px;overflow:hidden;background:#FFFFFF}
+.head{padding:16px 20px;color:#FFFFFF;font-size:1.35rem;font-weight:700;line-height:1.35}
+.body{padding:24px}
+.original{border-color:var(--original-border)}.original .head{background:var(--original-head)}.original .body{background:var(--original-body)}
+.reading{border-color:var(--read-border)}.reading .head{background:var(--read-head)}.reading .body{background:var(--read-body)}
+.vocab{border-color:var(--vocab-border)}.vocab .head{background:var(--vocab-head)}.vocab .body{background:var(--vocab-body)}
+.grammar{border-color:var(--grammar-border)}.grammar .head{background:var(--grammar-head)}.grammar .body{background:var(--grammar-body)}
+.kw{color:var(--key);font-weight:700;text-decoration:none}
+.article p{max-width:40em}
+.analysis,.vocab-item,.grammar-item{padding:20px 0;border-top:2px solid rgba(26,15,0,.12)}
+.analysis:first-child,.vocab-item:first-child,.grammar-item:first-child{padding-top:0;border-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:var(--read-head);color:#FFFFFF;font-size:1.25rem;font-weight:700;margin-right:10px;vertical-align:middle}
+.quote{margin:10px 0;padding:14px 16px;border-radius:8px;background:#FFFFFF;color:#3A1A06;font-weight:700}
+.translation,.note{margin:10px 0;padding:14px 16px;border-radius:8px;background:rgba(255,255,255,.7)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border-radius:999px;background:#FEF0E7;color:#E65100;font-size:1rem;font-weight:700}
+.vocab-top{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin-bottom:8px}
+.vocab-num{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--vocab-head);color:#FFFFFF;font-weight:700}
+.word{font-size:1.45rem;color:var(--key);font-weight:700}
+.kk{color:#BF360C;font-weight:700}
+.pos{font-weight:700;color:#2E7D32}
+.tagline{display:grid;grid-template-columns:minmax(108px,auto) 1fr;gap:10px;align-items:start;margin:10px 0}
+.tag{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border-radius:18px 0 0 18px;padding:6px 14px;font-size:.95rem;font-weight:700}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
+.examples{margin:12px 0 0 0;padding-left:28px}
+.examples li{margin:10px 0}
+.grammar-label{display:inline-block;margin:14px 0 6px;padding:4px 12px;border-radius:6px;background:#FFFFFF;color:var(--purple);font-weight:700}
+.formula{font-weight:700;color:var(--key)}
+ul{margin:8px 0 8px 30px;padding:0}li{margin:7px 0}
+details{margin-top:22px;border:3px solid var(--fold-border);border-radius:8px;overflow:hidden;background:var(--fold-body)}
+summary{min-height:72px;padding:16px 20px;background:var(--fold-head);color:#FFFFFF;font-size:1.3rem;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease;font-size:1.4rem}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px 24px}
+.prefix-item,.suffix-item{padding:9px 0;border-bottom:1px solid #D9C19A}
+.prefix-item:last-child,.suffix-item:last-child{border-bottom:0}
+.pf{color:#4A3728;font-weight:700}
+.link-panel{margin:0 auto 26px;padding:18px;border:3px solid #F4A261;border-radius:14px;background:linear-gradient(135deg,#FFF7D6 0%,#FFE0B2 52%,#FFD7C2 100%);box-shadow:0 10px 24px rgba(191,54,12,.16)}
+.link-panel.bottom{margin:34px auto 0}
+.link-title{margin:0 0 14px;color:#BF360C;font-size:1.45rem;font-weight:700;text-align:center}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.promo-link{display:flex;flex-direction:column;justify-content:center;min-height:116px;padding:16px;border-radius:12px;text-decoration:none;color:#1A0F00;border:3px solid rgba(255,255,255,.82);box-shadow:0 6px 0 rgba(106,27,154,.16);transition:transform .2s ease,box-shadow .2s ease}
+.promo-link:hover,.promo-link:focus{transform:translateY(-2px);box-shadow:0 8px 0 rgba(106,27,154,.22);outline:3px solid #FFFFFF;outline-offset:2px}
+.promo-echo{background:#FFE0B2}.promo-popup{background:#E8F5E9}.promo-line{background:#E3F2FD}
+.promo-kicker{font-size:.92rem;font-weight:700;color:#6A1B9A}
+.promo-name{margin-top:2px;font-size:1.15rem;font-weight:700;color:#C0392B;line-height:1.35}
+.promo-desc{margin-top:6px;font-size:.95rem;line-height:1.5;color:#4A3728}
+@media(max-width:760px){body{font-size:21px;padding:20px 10px 54px}.body{padding:18px}h1{font-size:3rem;padding:14px 16px}.subtitle{font-size:2.2rem}.credit{font-size:1.35rem}.tagline{grid-template-columns:1fr}.tag{justify-content:flex-start;border-radius:18px}.link-panel{padding:14px}.link-grid{grid-template-columns:1fr;gap:16px}.promo-link{min-height:100px}.promo-name{font-size:1.2rem}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="link-panel" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="promo-link promo-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">從錯題回音中找出弱點，建立英文閱讀、文法與表達的修正路線。</span>
+</a>
+<a class="promo-link promo-popup" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">整理學習狀況與答題習慣，協助學生看見目前最需要補強的方向。</span>
+</a>
+<a class="promo-link promo-line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問、學習安排與教材相關問題，可透過 Line 聯絡。</span>
+</a>
+</div>
+</nav>
+<section class="hero">
+<h1>Coming Out of Their Shell: Conquering Land and Sea</h1>
+<p class="subtitle">龜龜生存這件小事：征服陸地與海洋</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+<section>
+<h2>英文文章原文</h2>
+<div class="card original">
+<div class="head">原文 Original Article</div>
+<div class="body article">
+<p>Turtles are amazing <strong class="kw">survivors</strong> that can live on land, in <strong class="kw">freshwater</strong>, and even in the ocean. At first glance, they all look similar, but their bodies are carefully designed for different homes. Land tortoises have thick, pillar-like legs that support heavy shells, while <strong class="kw">aquatic</strong> turtles have <strong class="kw">webbed</strong> feet that act like <strong class="kw">paddles</strong> in the water. Sea turtles go even further, with flipper-shaped limbs and smooth, <strong class="kw">streamlined</strong> shells that help them <strong class="kw">glide</strong> through waves.</p>
+<p>Living in both land and water is not easy, so turtles have <strong class="kw">developed</strong> special tricks to stay alive. <strong class="kw">Aquatic</strong> turtles <strong class="kw">depend</strong> on water to eat, move, and <strong class="kw">escape</strong> from danger, but they still need dry land to <strong class="kw">bask</strong> in the sun and rest. Sea turtles spend most of their lives swimming, yet females must <strong class="kw">crawl</strong> onto sandy beaches to lay their eggs. Baby sea turtles then face a dangerous <strong class="kw">journey</strong> from nest to sea, trying to avoid hungry crabs and birds as they <strong class="kw">scramble</strong> across the sand.</p>
+<p>Turtles also show that being different can be a powerful advantage in nature. Because each <strong class="kw">species</strong> fits a different <strong class="kw">environment</strong>, turtles as a group can <strong class="kw">conquer</strong> deserts, ponds, rivers, and oceans. Their hard shells protect them from many enemies, but their greatest strength is their ability to <strong class="kw">adapt</strong> to new challenges. In a way, turtles are “coming out of their shells” by proving that quiet <strong class="kw">persistence</strong> and <strong class="kw">unique</strong> skills are enough to survive on both land and sea.</p>
+</div>
+</div>
+</section>
+<section>
+<h2>8句精讀</h2>
+<div class="card reading">
+<div class="head">八句精讀 8 Key Sentence Analyses</div>
+<div class="body">
+<div class="analysis">
+<h3><span class="num">①</span>句 1</h3>
+<div class="quote"><em>Turtles are amazing survivors that can live on land, in freshwater, and even in the ocean.</em></div>
+<div class="translation">烏龜是驚人的生存者，能住在陸地、淡水中，甚至海洋裡。</div>
+<div class="note"><strong>文法解析：</strong>本句使用關係代名詞 that 引導形容詞子句，修飾前面的 survivors。that 在子句中當主詞，後面接 can live，說明這些 survivors 具備的能力。on land、in freshwater、in the ocean 是三個平行的地方片語，呈現棲地範圍由陸地到海洋的延伸。</div>
+<div class="pills"><span class="pill">survivors 生存者</span><span class="pill">freshwater 淡水</span><span class="pill">on land 在陸地上</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">②</span>句 2</h3>
+<div class="quote"><em>At first glance, they all look similar, but their bodies are carefully designed for different homes.</em></div>
+<div class="translation">乍看之下牠們都很相似，但牠們的身體其實被細心設計來適應不同的家園。</div>
+<div class="note"><strong>文法解析：</strong>At first glance 是句首副詞片語，表示「乍看之下」。but 連接兩個對等子句，前半說外觀看起來相似，後半轉折到身體構造其實不同。are carefully designed 是被動語態，強調身體的功能性設計，而非誰設計。</div>
+<div class="pills"><span class="pill">at first glance 乍看之下</span><span class="pill">carefully designed 細心設計的</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">③</span>句 3</h3>
+<div class="quote"><em>Land tortoises have thick, pillar-like legs that support heavy shells, while aquatic turtles have webbed feet that act like paddles in the water.</em></div>
+<div class="translation">陸龜有厚實、柱狀的腿來支撐沉重的殼，而水龜有蹼狀的腳，在水中像槳一樣發揮作用。</div>
+<div class="note"><strong>文法解析：</strong>這句用 while 表示對比，將 land tortoises 和 aquatic turtles 的身體構造並列比較。兩個 that 都引導形容詞子句，分別修飾 legs 和 feet。act like paddles 中的 like 是介係詞，後面接名詞 paddles，表示「像槳一樣」。</div>
+<div class="pills"><span class="pill">pillar-like 柱狀的</span><span class="pill">webbed feet 蹼狀的腳</span><span class="pill">act like 像……一樣作用</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">④</span>句 4</h3>
+<div class="quote"><em>Sea turtles go even further, with flipper-shaped limbs and smooth, streamlined shells that help them glide through waves.</em></div>
+<div class="translation">海龜更進一步，擁有鰭狀的四肢與光滑、流線型的殼，幫助牠們穿越海浪滑行。</div>
+<div class="note"><strong>文法解析：</strong>with flipper-shaped limbs and smooth, streamlined shells 是介係詞片語，用來補充海龜具備的身體特徵。that help them glide through waves 是形容詞子句，修飾 shells。help + O + 原形動詞 表示「幫助某人做某事」，所以 glide 不加 to。</div>
+<div class="pills"><span class="pill">streamlined 流線型的</span><span class="pill">glide through 穿越……滑行</span><span class="pill">go even further 更進一步</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑤</span>句 5</h3>
+<div class="quote"><em>Living in both land and water is not easy, so turtles have developed special tricks to stay alive.</em></div>
+<div class="translation">同時生活在陸地與水中並不容易，所以烏龜已發展出特殊技巧來維持生命。</div>
+<div class="note"><strong>文法解析：</strong>Living in both land and water 是動名詞片語作主詞，整個片語視為單數，所以後面用 is。so 連接結果，說明不容易生存帶來的演化結果。to stay alive 是不定詞表目的，to 是不定詞標記，不是介係詞。</div>
+<div class="pills"><span class="pill">developed 發展出</span><span class="pill">stay alive 維持生命</span><span class="pill">both ... and ... 兩者都</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑥</span>句 6</h3>
+<div class="quote"><em>Aquatic turtles depend on water to eat, move, and escape from danger, but they still need dry land to bask in the sun and rest.</em></div>
+<div class="translation">水龜依靠水來進食、移動並逃離危險，但牠們仍然需要乾燥的陸地來曬太陽和休息。</div>
+<div class="note"><strong>文法解析：</strong>depend on 是固定動詞片語，表示「依靠」。to eat, move, and escape 是三個平行不定詞，說明依靠水的目的；這裡的 to 是不定詞，不是介係詞。but 連接轉折，指出水龜雖依賴水，仍需要陸地。</div>
+<div class="pills"><span class="pill">depend on 依靠</span><span class="pill">escape from 逃離</span><span class="pill">bask in the sun 曬太陽</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑦</span>句 7</h3>
+<div class="quote"><em>Baby sea turtles then face a dangerous journey from nest to sea, trying to avoid hungry crabs and birds as they scramble across the sand.</em></div>
+<div class="translation">接著，海龜寶寶面對從巢穴到海洋的危險旅程，牠們在沙地上急忙爬行時，努力避開飢餓的螃蟹和鳥類。</div>
+<div class="note"><strong>文法解析：</strong>trying to avoid hungry crabs and birds 是分詞構句，補充說明 baby sea turtles 在旅程中做的事。to avoid 是不定詞作 try 的受詞，表示「試著避免」。as they scramble across the sand 是時間副詞子句，說明動作發生的背景。</div>
+<div class="pills"><span class="pill">dangerous journey 危險旅程</span><span class="pill">avoid 避免</span><span class="pill">scramble across 急忙穿越</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑧</span>句 8</h3>
+<div class="quote"><em>In a way, turtles are “coming out of their shells” by proving that quiet persistence and unique skills are enough to survive on both land and sea.</em></div>
+<div class="translation">從某種角度來說，烏龜正透過證明安靜的堅持與獨特技能足以在陸地和海洋中生存，而「走出自己的殼」。</div>
+<div class="note"><strong>文法解析：</strong>by proving ... 是介係詞 by 加 V-ing，表示方法或手段。that quiet persistence and unique skills are enough ... 是名詞子句，當 proving 的受詞。enough to survive 表示「足以生存」，to survive 是不定詞，用來補充 enough 的結果或程度。</div>
+<div class="pills"><span class="pill">in a way 從某種角度</span><span class="pill">persistence 堅持</span><span class="pill">unique skills 獨特技能</span></div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2>20個單字整理</h2>
+<div class="card vocab">
+<div class="head">單字表 Vocabulary List</div>
+<div class="body">
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">1</span><span class="word">survivor</span><span class="kk">[sɚˈvaɪvɚ]</span><span class="pos">n. 生存者；倖存者</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>survive (v. 生存；倖存)；survival (n. 生存；倖存)；surviving (adj. 尚存的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>survive on 靠……生存；survive a disaster 從災難中倖存</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>an amazing survivor 驚人的生存者；a determined survivor 意志堅定的倖存者</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>survive 是動詞；survivor 是人或動物；survival 是抽象名詞，指「生存」這件事。</span></div>
+<ul class="examples"><li>Turtles are amazing survivors that can live on land and in water.<br>（烏龜是驚人的生存者，能生活在陸地與水中。）</li><li>After the typhoon, every survivor needed clean water and warm food.<br>（颱風過後，每位倖存者都需要乾淨的水和溫熱的食物。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">2</span><span class="word">freshwater</span><span class="kk">[ˈfrɛʃˌwɔtɚ]</span><span class="pos">n./adj. 淡水；淡水的</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>fresh (adj. 新鮮的；淡的)；water (n. 水)；freshwater fish (n. 淡水魚)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>freshwater lake 淡水湖；freshwater ecosystem 淡水生態系</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a clean freshwater stream 一條乾淨的淡水溪；freshwater species 淡水物種</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>freshwater 指不含鹽的淡水；seawater 指海水；drinking water 指可飲用水。</span></div>
+<ul class="examples"><li>Turtles can live on land, in freshwater, and even in the ocean.<br>（烏龜能生活在陸地、淡水中，甚至海洋裡。）</li><li>Pollution can quickly damage a small freshwater lake.<br>（污染可能很快破壞一座小型淡水湖。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">3</span><span class="word">aquatic</span><span class="kk">[əˈkwætɪk]</span><span class="pos">adj. 水生的；水中的</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>aquarium (n. 水族館)；aquaculture (n. 水產養殖)；aquatics (n. 水上運動)</span></div>
+<div class="tagline"><span class="tag root">字根</span><span>aqua「水」：aquarium（水族館）；aqueduct（導水渠）；aquamarine（海藍色）</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>aquatic plants 水生植物；aquatic animals 水生動物；aquatic sports 水上運動</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>an aquatic environment 水中環境；highly aquatic species 高度水生的物種</span></div>
+<ul class="examples"><li>Aquatic turtles have webbed feet that act like paddles in the water.<br>（水龜有蹼狀的腳，在水中像槳一樣發揮作用。）</li><li>Aquatic plants provide food and shelter for many small animals.<br>（水生植物為許多小動物提供食物和庇護。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">4</span><span class="word">webbed</span><span class="kk">[wɛbd]</span><span class="pos">adj. 有蹼的；網狀的</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>web (n. 網；蹼狀組織)；webbing (n. 蹼；帶狀織物)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>webbed feet 蹼足；webbed toes 有蹼的腳趾</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>wide webbed feet 寬大的蹼足；a webbed structure 網狀結構</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>webbed 描述腳趾之間有蹼；web 通常指蜘蛛網或網路；webbing 指蹼或帶狀材料。</span></div>
+<ul class="examples"><li>Aquatic turtles have webbed feet that help them move in water.<br>（水龜有蹼狀的腳，幫助牠們在水中移動。）</li><li>Ducks use their webbed feet to swim across the pond.<br>（鴨子用牠們的蹼足游過池塘。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">5</span><span class="word">paddle</span><span class="kk">[ˈpædəl]</span><span class="pos">n. 槳；v. 划槳</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>paddler (n. 划槳者)；paddling (n. 划槳；涉水)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>act like paddles 像槳一樣作用；paddle a canoe 划獨木舟</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a wooden paddle 木槳；powerful paddles 有力的槳狀部位</span></div>
+<ul class="examples"><li>Their webbed feet act like paddles in the water.<br>（牠們的蹼足在水中像槳一樣作用。）</li><li>We used a light paddle to move the boat forward.<br>（我們用一支輕便的槳讓船前進。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">6</span><span class="word">streamlined</span><span class="kk">[ˈstrimˌlaɪnd]</span><span class="pos">adj. 流線型的；精簡的</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>streamline (v. 使成流線型；精簡)；streamline (n. 流線型)</span></div>
+<div class="tagline"><span class="tag root">字根</span><span>stream「流」：mainstream（主流）；streamer（串流平台；飄帶）；streamline（使流暢）</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>streamlined shell 流線型的殼；streamlined design 流線型設計</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a smooth, streamlined body 光滑的流線型身體；a highly streamlined process 高度精簡的流程</span></div>
+<ul class="examples"><li>Sea turtles have smooth, streamlined shells that help them glide through waves.<br>（海龜有光滑、流線型的殼，幫助牠們穿越海浪滑行。）</li><li>The train has a streamlined shape to reduce air resistance.<br>（這列火車有流線型外形，以減少空氣阻力。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">7</span><span class="word">glide</span><span class="kk">[ɡlaɪd]</span><span class="pos">v. 滑行；滑翔；n. 滑行</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>glider (n. 滑翔機；滑翔者)；gliding (n. 滑翔運動)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>glide through waves 穿越海浪滑行；glide across the water 滑過水面</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a graceful glide 優雅的滑行；glide smoothly 平穩滑行</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>glide 強調平順滑行；slide 常指在表面上滑動；fly 則是飛行。</span></div>
+<ul class="examples"><li>Streamlined shells help sea turtles glide through waves.<br>（流線型的殼幫助海龜穿越海浪滑行。）</li><li>The skater seemed to glide across the ice without effort.<br>（那名溜冰者似乎毫不費力地滑過冰面。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">8</span><span class="word">develop</span><span class="kk">[dɪˈvɛləp]</span><span class="pos">v. 發展；養成；開發</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>development (n. 發展)；developer (n. 開發者)；developing (adj. 發展中的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>develop skills 培養技能；develop a habit 養成習慣；develop into 發展成</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>gradually develop 逐漸發展；develop special tricks 發展出特殊技巧</span></div>
+<div class="tagline"><span class="tag pattern">句型</span><span>S + develop + N：主詞發展出某種能力、特徵或習慣。</span></div>
+<ul class="examples"><li>Turtles have developed special tricks to stay alive.<br>（烏龜已發展出特殊技巧來維持生命。）</li><li>Students can develop confidence by practicing English every day.<br>（學生可以透過每天練習英文來培養信心。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">9</span><span class="word">depend</span><span class="kk">[dɪˈpɛnd]</span><span class="pos">v. 依靠；取決於</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>dependent (adj. 依賴的)；dependence (n. 依賴)；dependable (adj. 可靠的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>depend on 依靠；be dependent on 依賴；depend on the weather 取決於天氣</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>heavily depend on 高度依賴；a dependable friend 可靠的朋友</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>depend on 表「依靠；取決於」；rely on 語意接近但較強調信任某人或某物。</span></div>
+<div class="tagline"><span class="tag pattern">句型</span><span>depend on + N/V-ing；若接動作要用 V-ing，on 是介係詞。</span></div>
+<ul class="examples"><li>Aquatic turtles depend on water to eat, move, and escape from danger.<br>（水龜依靠水來進食、移動並逃離危險。）</li><li>Whether we can go hiking tomorrow depends on the weather.<br>（我們明天能不能去健行取決於天氣。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">10</span><span class="word">escape</span><span class="kk">[ɪˈskep]</span><span class="pos">v. 逃脫；避開；n. 逃脫</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>escapee (n. 逃脫者)；escapism (n. 逃避現實)；inescapable (adj. 不可避免的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>escape from danger 逃離危險；escape notice 未被注意到；make an escape 逃脫</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a narrow escape 死裡逃生；escape safely 安全逃脫</span></div>
+<div class="tagline"><span class="tag pattern">句型</span><span>escape from + 地點/危險；escape + V-ing 表「逃過做某事」。</span></div>
+<ul class="examples"><li>Aquatic turtles use water to escape from danger.<br>（水龜利用水來逃離危險。）</li><li>The child had a narrow escape when the car stopped just in time.<br>（車子及時停下時，那個孩子驚險逃過一劫。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">11</span><span class="word">bask</span><span class="kk">[bæsk]</span><span class="pos">v. 曬太陽；沉浸於</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>basking (adj. 曬太陽的；享受中的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>bask in the sun 曬太陽；bask in praise 沉浸在讚美中</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>bask warmly in sunlight 溫暖地曬著陽光；a basking turtle 正在曬太陽的烏龜</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>bask 強調享受陽光或讚美；bathe in sunlight 也可指沐浴在陽光中，但較偏景物描寫。</span></div>
+<ul class="examples"><li>Turtles still need dry land to bask in the sun and rest.<br>（烏龜仍需要乾燥的陸地來曬太陽和休息。）</li><li>The old dog liked to bask in the warm afternoon sun.<br>（那隻老狗喜歡曬午後溫暖的太陽。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">12</span><span class="word">crawl</span><span class="kk">[krɔl]</span><span class="pos">v. 爬行；緩慢移動；n. 爬行</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>crawler (n. 爬行者；爬蟲程式)；crawling (adj. 爬行的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>crawl onto the beach 爬上海灘；crawl across the floor 爬過地板</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a slow crawl 緩慢爬行；crawl carefully 小心爬行</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>crawl 強調貼近地面慢慢爬；scramble 強調匆忙、艱難地移動。</span></div>
+<ul class="examples"><li>Female sea turtles must crawl onto sandy beaches to lay their eggs.<br>（母海龜必須爬上沙灘產卵。）</li><li>The baby learned to crawl before he learned to walk.<br>（那個寶寶學會走路前先學會爬行。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">13</span><span class="word">journey</span><span class="kk">[ˈdʒɝnɪ]</span><span class="pos">n. 旅程；歷程</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>journal (n. 日誌；期刊)；journalist (n. 記者)；journalism (n. 新聞業)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>a journey from A to B 從 A 到 B 的旅程；begin a journey 展開旅程</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a dangerous journey 危險旅程；a long journey 漫長旅途；a learning journey 學習歷程</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>journey 常指較長或有意義的旅程；trip 較口語，可指短途旅行；travel 是較廣泛的旅行概念。</span></div>
+<ul class="examples"><li>Baby sea turtles face a dangerous journey from nest to sea.<br>（海龜寶寶面對從巢穴到海洋的危險旅程。）</li><li>Preparing for the exam is a long journey, not a one-day race.<br>（準備考試是一段漫長歷程，不是一天的賽跑。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">14</span><span class="word">scramble</span><span class="kk">[ˈskræmbəl]</span><span class="pos">v. 急忙移動；爭搶；n. 匆忙</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>scrambled (adj. 混亂的；炒的)；scrambler (n. 攀爬者；混頻器)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>scramble across 急忙穿越；scramble to survive 為生存而倉促行動；scrambled eggs 炒蛋</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a desperate scramble 拼命的爭搶；scramble quickly 快速爬行</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>scramble 比 crawl 更有「慌忙、艱難」的感覺；climb 則通常指往上爬。</span></div>
+<ul class="examples"><li>Baby sea turtles scramble across the sand to reach the sea.<br>（海龜寶寶急忙爬過沙地抵達大海。）</li><li>People scrambled for shelter when the heavy rain began.<br>（大雨開始時，人們急忙尋找遮蔽處。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">15</span><span class="word">species</span><span class="kk">[ˈspiʃiz]</span><span class="pos">n. 物種；種類</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>speciation (n. 物種形成)；specific (adj. 特定的)；specifically (adv. 特別地)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>endangered species 瀕危物種；native species 原生物種；species of turtle 烏龜的種類</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a rare species 稀有物種；a newly discovered species 新發現的物種</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>species 單複數同形；one species 和 many species 都用 species。</span></div>
+<ul class="examples"><li>Because each species fits a different environment, turtles can live in many places.<br>（因為每個物種適合不同環境，烏龜能生活在許多地方。）</li><li>The scientist found a rare species of frog in the forest.<br>（科學家在森林裡發現一種稀有青蛙。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">16</span><span class="word">conquer</span><span class="kk">[ˈkɑŋkɚ]</span><span class="pos">v. 征服；克服</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>conquest (n. 征服)；conqueror (n. 征服者)；conquered (adj. 被征服的)</span></div>
+<div class="tagline"><span class="tag root">字根</span><span>quer/quest「尋求；取得」：quest（探索）；question（問題）；conquest（征服）</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>conquer fear 克服恐懼；conquer deserts 征服沙漠；conquer a challenge 克服挑戰</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>successfully conquer 成功征服；conquer difficult conditions 克服艱難條件</span></div>
+<ul class="examples"><li>Turtles as a group can conquer deserts, ponds, rivers, and oceans.<br>（烏龜作為一個群體能征服沙漠、池塘、河流和海洋。）</li><li>She learned to conquer her fear of speaking English in public.<br>（她學會克服在公開場合說英文的恐懼。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">17</span><span class="word">adapt</span><span class="kk">[əˈdæpt]</span><span class="pos">v. 適應；改編</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>adaptation (n. 適應；改編)；adaptable (adj. 適應性強的)；adaptive (adj. 適應的)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>adapt to 適應；adapt a novel 改編小說；adapt quickly 快速適應</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>highly adaptable animals 適應力強的動物；adapt to new challenges 適應新挑戰</span></div>
+<div class="tagline"><span class="tag pattern">句型</span><span>adapt to + N/V-ing；to 是介係詞，所以後面若接動作要用 V-ing。</span></div>
+<ul class="examples"><li>Their greatest strength is their ability to adapt to new challenges.<br>（牠們最大的力量是適應新挑戰的能力。）</li><li>Good learners adapt to change instead of giving up.<br>（好的學習者會適應改變，而不是放棄。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">18</span><span class="word">persistence</span><span class="kk">[pɚˈsɪstəns]</span><span class="pos">n. 堅持；毅力；持續存在</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>persist (v. 堅持；持續)；persistent (adj. 堅持不懈的；持續的)；persistently (adv. 持續地)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>quiet persistence 安靜的堅持；persist in 堅持做；with persistence 憑著毅力</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>remarkable persistence 非凡的毅力；persistent effort 持續努力</span></div>
+<div class="tagline"><span class="tag pattern">句型</span><span>persist in + V-ing：in 是介係詞，後面動詞要加 -ing。</span></div>
+<ul class="examples"><li>Quiet persistence and unique skills are enough for turtles to survive.<br>（安靜的堅持與獨特技能足以讓烏龜生存。）</li><li>Her persistence helped her improve her writing step by step.<br>（她的毅力幫助她一步一步改善寫作。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">19</span><span class="word">unique</span><span class="kk">[juˈnik]</span><span class="pos">adj. 獨特的；獨一無二的</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>uniqueness (n. 獨特性)；uniquely (adv. 獨特地)</span></div>
+<div class="tagline"><span class="tag root">字根</span><span>uni「一」：uniform（一致的；制服）；unite（聯合）；unicycle（單輪車）</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>unique skills 獨特技能；a unique opportunity 難得的機會；be unique to 為……所特有</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>truly unique 真正獨特的；a unique feature 獨特特徵</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>unique 本身已有「獨一無二」之意，正式寫作中避免 very unique，可用 truly unique。</span></div>
+<ul class="examples"><li>Turtles prove that quiet persistence and unique skills are enough to survive.<br>（烏龜證明安靜的堅持與獨特技能足以生存。）</li><li>Every student has a unique way of learning new words.<br>（每位學生都有獨特的單字學習方式。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">20</span><span class="word">environment</span><span class="kk">[ɪnˈvaɪrənmənt]</span><span class="pos">n. 環境；周遭情況</span></div>
+<div class="tagline"><span class="tag deriv">衍生詞</span><span>environmental (adj. 環境的)；environmentally (adv. 環境方面地)；environmentalist (n. 環保人士)</span></div>
+<div class="tagline"><span class="tag phrase">片語</span><span>natural environment 自然環境；fit an environment 適合某環境；protect the environment 保護環境</span></div>
+<div class="tagline"><span class="tag idiom">慣用語</span><span>a harsh environment 嚴苛環境；a different environment 不同環境</span></div>
+<div class="tagline"><span class="tag confuse">容易混淆</span><span>environment 指整體環境；surroundings 偏向周遭事物；habitat 是動植物的棲地。</span></div>
+<ul class="examples"><li>Each species fits a different environment.<br>（每個物種都適合不同的環境。）</li><li>A quiet environment can help students focus on reading.<br>（安靜的環境能幫助學生專心閱讀。）</li></ul>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2>文法解析</h2>
+<div class="card grammar">
+<div class="head">Grammar Focus</div>
+<div class="body">
+<div class="grammar-item">
+<h3>形容詞子句：that 修飾名詞</h3>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Turtles are amazing survivors that can live on land, in freshwater, and even in the ocean.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>N + that/which/who + V ...</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>形容詞子句用來修飾前面的名詞，讓名詞的意思更清楚。這句中的 that can live ... 修飾 survivors，告訴讀者這些生存者有什麼能力。</p>
+<p>that 可修飾人、動物或事物，常用在限定子句中。若子句只是補充資訊並用逗號隔開，正式寫作通常不用 that。</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>先行詞是人時可用 who 或 that；先行詞是物或動物時可用 which 或 that。</li><li>that 在子句中若當主詞，後面直接接動詞。</li><li>that 不放在介係詞後面；介係詞後通常用 which 或 whom。</li><li>逗號隔開的非限定子句不用 that。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Sea turtles have streamlined shells that help them swim efficiently.<br>（海龜有流線型的殼，幫助牠們有效率地游泳。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>很多同學會把形容詞子句和名詞子句混在一起。判斷方式很簡單：如果 that 子句前面有一個名詞，而且它在補充那個名詞的特徵，多半就是形容詞子句。</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Turtles are animals which can live on land, in freshwater, and even in the ocean, are amazing.<br>✓ Turtles are amazing animals that can live on land, in freshwater, and even in the ocean.（形容詞子句要緊貼修飾的名詞，主要句也要完整。）</p>
+<p>選擇題：Sea turtles have limbs ________ look like flippers.<br>A. who　B. that　C. where<br>答案：B</p>
+</div>
+<div class="grammar-item">
+<h3>分詞構句：補充主要動作</h3>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Baby sea turtles then face a dangerous journey from nest to sea, trying to avoid hungry crabs and birds as they scramble across the sand.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>S + V ..., V-ing ...</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>分詞構句可以把兩個主詞相同、關係緊密的動作合在一起，使句子更流暢。這句中的 trying to avoid ... 補充 baby sea turtles 面對危險旅程時正在努力做的事。</p>
+<p>現在分詞 V-ing 常表示主動、同時發生或自然結果。若原本副詞子句的動詞是被動，則常用過去分詞或 being + p.p. 的形式。</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>分詞構句的邏輯主詞通常要和主要子句主詞一致。</li><li>V-ing 表主動或同時進行；p.p. 表被動。</li><li>分詞片語可放句首、句中或句尾，但要避免造成主詞不清。</li><li>若要保留時間、原因、讓步語意，可在分詞前保留 when、while、although 等連接詞。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Moving slowly across the sand, the baby turtle tried to reach the sea.<br>（小海龜慢慢爬過沙地，試著抵達大海。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>分詞構句最常見的錯誤是主詞不一致。例如句首寫 Walking on the beach，後面的主詞就應該是正在走的人或動物，不能突然變成 the weather 或 the ocean。</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Scrambling across the sand, the sea was finally reached.<br>✓ Scrambling across the sand, the baby turtles finally reached the sea.（分詞構句的動作者必須和主要子句主詞一致。）</p>
+<p>改錯題：Trying to escape from birds, the ocean looked close to the baby turtles.<br>參考答案：Trying to escape from birds, the baby turtles saw the ocean ahead.</p>
+</div>
+<div class="grammar-item">
+<h3>副詞子句：讓步與轉折 yet</h3>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Sea turtles spend most of their lives swimming, yet females must crawl onto sandy beaches to lay their eggs.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>S + V ..., yet S + V ...</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>yet 在這裡是連接副詞或對等連接詞，語意接近 but，表示「然而；可是」。前半句說海龜大多數時間都在海中游泳，後半句卻指出母海龜仍必須回到沙灘產卵，形成明顯轉折。</p>
+<p>讓步或轉折結構常用來呈現「雖然 A，但 B 仍然成立」。文章用 yet 讓句子簡潔，也凸顯海龜生活型態中的矛盾與適應力。</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>yet 可連接兩個對等子句，前面常加逗號。</li><li>although/though 引導讓步副詞子句時，不要再用 but 連接主要子句。</li><li>yet 語氣比 but 稍正式，常用於書面敘述。</li><li>若要強調「即使」，可用 even though 或 even if。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Turtles move slowly on land, yet they have survived for millions of years.<br>（烏龜在陸地上移動緩慢，然而牠們已存活了數百萬年。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>中文常說「雖然……但是……」，但英文的 although 和 but 不要同時控制同一組子句。可以寫 Although sea turtles live in the ocean, females return to beaches.，也可以寫 Sea turtles live in the ocean, yet females return to beaches.</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Although sea turtles spend most of their lives swimming, but females must crawl onto beaches.<br>✓ Although sea turtles spend most of their lives swimming, females must crawl onto beaches.（although 已有「雖然」語意，不再加 but。）</p>
+<p>選擇題：Turtles look slow, ________ they are excellent survivors.<br>A. yet　B. because　C. if<br>答案：A</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="pf">ab-</span>　離開、相反　—　abnormal（異常的）</div>
+<div class="prefix-item"><span class="pf">ad-</span>　向、加　—　advance（前進）</div>
+<div class="prefix-item"><span class="pf">ambi-</span>　雙方、兩面　—　ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="pf">anti-</span>　反對、抗　—　antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="pf">arch-</span>　主要、首要　—　archenemy（死敵）</div>
+<div class="prefix-item"><span class="pf">auto-</span>　自動、自我　—　autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="pf">bene-</span>　好的、善　—　benefit（好處）</div>
+<div class="prefix-item"><span class="pf">bi-</span>　二、雙　—　bilingual（雙語的）</div>
+<div class="prefix-item"><span class="pf">circum-</span>　環繞、周圍　—　circumstance（情況）</div>
+<div class="prefix-item"><span class="pf">co-/con-/com-</span>　一起、共同　—　cooperate（合作）</div>
+<div class="prefix-item"><span class="pf">contra-</span>　相反、對抗　—　contradict（反駁）</div>
+<div class="prefix-item"><span class="pf">de-</span>　去除、下降　—　decode（解碼）</div>
+<div class="prefix-item"><span class="pf">dia-</span>　穿過、透過　—　dialogue（對話）</div>
+<div class="prefix-item"><span class="pf">dis-</span>　否定、分離　—　disagree（不同意）</div>
+<div class="prefix-item"><span class="pf">en-/em-</span>　使成為　—　enable（使能夠）</div>
+<div class="prefix-item"><span class="pf">epi-</span>　在上、在外　—　epidemic（流行病）</div>
+<div class="prefix-item"><span class="pf">ex-</span>　外、前任　—　export（出口）；ex-president（前總統）</div>
+<div class="prefix-item"><span class="pf">extra-</span>　額外、外部　—　extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="pf">hetero-</span>　不同　—　heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="pf">homo-</span>　相同　—　homogeneous（同質的）</div>
+<div class="prefix-item"><span class="pf">hyper-</span>　過度、超　—　hyperactive（過動的）</div>
+<div class="prefix-item"><span class="pf">hypo-</span>　低於、不足　—　hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="pf">in-/im-</span>　否定、進入　—　invisible（看不見的）；import（輸入）</div>
+<div class="prefix-item"><span class="pf">inter-</span>　在…之間　—　international（國際的）</div>
+<div class="prefix-item"><span class="pf">iso-</span>　相等、相同　—　isolate（隔離）</div>
+<div class="prefix-item"><span class="pf">mal-</span>　壞、不良　—　malfunction（故障）</div>
+<div class="prefix-item"><span class="pf">micro-</span>　微小　—　microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="pf">mis-</span>　錯誤　—　misunderstand（誤解）</div>
+<div class="prefix-item"><span class="pf">mono-</span>　單一　—　monologue（獨白）</div>
+<div class="prefix-item"><span class="pf">multi-</span>　多　—　multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="pf">neo-</span>　新的　—　neonatal（新生的）</div>
+<div class="prefix-item"><span class="pf">non-</span>　非、沒有　—　nonsense（無意義）</div>
+<div class="prefix-item"><span class="pf">pan-</span>　全部　—　pandemic（大流行病）</div>
+<div class="prefix-item"><span class="pf">peri-</span>　周圍　—　perimeter（周長）</div>
+<div class="prefix-item"><span class="pf">poly-</span>　多　—　polygon（多邊形）</div>
+<div class="prefix-item"><span class="pf">post-</span>　之後　—　postwar（戰後的）</div>
+<div class="prefix-item"><span class="pf">pre-</span>　之前　—　preview（預覽）</div>
+<div class="prefix-item"><span class="pf">pro-</span>　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div>
+<div class="prefix-item"><span class="pf">pseudo-</span>　假的　—　pseudonym（筆名）</div>
+<div class="prefix-item"><span class="pf">re-</span>　再、回　—　review（複習）</div>
+<div class="prefix-item"><span class="pf">semi-</span>　一半、部分　—　semicircle（半圓）</div>
+<div class="prefix-item"><span class="pf">sub-</span>　在下、次級　—　subway（地鐵）</div>
+<div class="prefix-item"><span class="pf">super-</span>　超越、在上　—　superstar（超級明星）</div>
+<div class="prefix-item"><span class="pf">syn-/sym-</span>　一起、共同　—　synchronize（同步）</div>
+<div class="prefix-item"><span class="pf">tele-</span>　遠距　—　telephone（電話）</div>
+<div class="prefix-item"><span class="pf">trans-</span>　穿越、轉變　—　transport（運輸）</div>
+<div class="prefix-item"><span class="pf">tri-</span>　三　—　triangle（三角形）</div>
+<div class="prefix-item"><span class="pf">un-</span>　否定、不　—　unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="pf">vice-</span>　副、代替　—　vice-president（副總統）</div>
+</div>
+</details>
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item"><span class="pf">-tion/-sion/-ation</span>　動作、過程或結果　—　education（教育）、decision（決定）</div>
+<div class="suffix-item"><span class="pf">-ment</span>　行為或結果　—　agreement（協議）、development（發展）</div>
+<div class="suffix-item"><span class="pf">-ness</span>　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item"><span class="pf">-ity/-ty</span>　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div>
+<div class="suffix-item"><span class="pf">-er/-or</span>　執行某動作的人或物　—　teacher（老師）、actor（演員）</div>
+<div class="suffix-item"><span class="pf">-ist</span>　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item"><span class="pf">-ship</span>　身分或關係　—　friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item"><span class="pf">-hood</span>　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item"><span class="pf">-able/-ible</span>　能夠…的　—　readable（可讀的）、credible（可信的）</div>
+<div class="suffix-item"><span class="pf">-ous</span>　充滿…的　—　dangerous（危險的）、famous（著名的）</div>
+<div class="suffix-item"><span class="pf">-ful</span>　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div>
+<div class="suffix-item"><span class="pf">-less</span>　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div>
+<div class="suffix-item"><span class="pf">-al/-ic</span>　與…相關的　—　natural（自然的）、poetic（詩意的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item"><span class="pf">-ize/-ise</span>　使成為…　—　realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item"><span class="pf">-ify</span>　使成為…　—　beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item"><span class="pf">-ate</span>　形成動詞　—　dominate（支配）、activate（啟動）</div>
+<div class="suffix-item"><span class="pf">-en</span>　使變成…　—　strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item"><span class="pf">-ly</span>　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div>
+<div class="suffix-item"><span class="pf">-ward(s)</span>　表示方向　—　upwards（向上）、homeward（回家）</div>
+<div class="suffix-item"><span class="pf">-wise</span>　表示方式或角度　—　clockwise（順時針方向）</div>
+</div>
+</details>
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<ol>
+<li>turtle [ˈtɝtəl] (n. 龜；烏龜) — sea turtle（海龜）</li>
+<li>survive [sɚˈvaɪv] (v. 生存；倖存) — survival [sɚˈvaɪvəl] (n. 生存)</li>
+<li>land [lænd] (n. 陸地) — on land（在陸地上）</li>
+<li>freshwater [ˈfrɛʃˌwɔtɚ] (n./adj. 淡水；淡水的) — freshwater lake（淡水湖）</li>
+<li>ocean [ˈoʃən] (n. 海洋) — ocean life（海洋生物）</li>
+<li>similar [ˈsɪməlɚ] (adj. 相似的) — similarity [ˌsɪməˈlærətɪ] (n. 相似性)</li>
+<li>design [dɪˈzaɪn] (v./n. 設計) — designer [dɪˈzaɪnɚ] (n. 設計師)</li>
+<li>support [səˈpɔrt] (v. 支撐；支持) — supportive [səˈpɔrtɪv] (adj. 支持的)</li>
+<li>aquatic [əˈkwætɪk] (adj. 水生的) — aquatic plants（水生植物）</li>
+<li>webbed [wɛbd] (adj. 有蹼的) — webbed feet（蹼足）</li>
+<li>paddle [ˈpædəl] (n. 槳) — paddler [ˈpædlɚ] (n. 划槳者)</li>
+<li>limb [lɪm] (n. 肢；四肢) — flipper-shaped limbs（鰭狀四肢）</li>
+<li>smooth [smuð] (adj. 光滑的；順利的) — smoothly [ˈsmuðlɪ] (adv. 順利地)</li>
+<li>streamlined [ˈstrimˌlaɪnd] (adj. 流線型的) — streamline [ˈstrimˌlaɪn] (v. 精簡)</li>
+<li>glide [ɡlaɪd] (v. 滑行) — glider [ˈɡlaɪdɚ] (n. 滑翔機)</li>
+<li>develop [dɪˈvɛləp] (v. 發展) — development [dɪˈvɛləpmənt] (n. 發展)</li>
+<li>depend [dɪˈpɛnd] (v. 依靠；取決於) — dependable [dɪˈpɛndəbəl] (adj. 可靠的)</li>
+<li>escape [ɪˈskep] (v. 逃離) — escape from（從……逃離）</li>
+<li>bask [bæsk] (v. 曬太陽) — bask in the sun（曬太陽）</li>
+<li>crawl [krɔl] (v. 爬行) — crawler [ˈkrɔlɚ] (n. 爬行者)</li>
+<li>sandy [ˈsændɪ] (adj. 沙質的) — sand [sænd] (n. 沙)</li>
+<li>journey [ˈdʒɝnɪ] (n. 旅程) — a safe journey（一路平安）</li>
+<li>avoid [əˈvɔɪd] (v. 避免) — avoidance [əˈvɔɪdəns] (n. 避免)</li>
+<li>scramble [ˈskræmbəl] (v. 急忙移動) — scramble to survive（為生存而急忙行動）</li>
+<li>powerful [ˈpaʊɚfəl] (adj. 強大的) — power [ˈpaʊɚ] (n. 力量)</li>
+<li>advantage [ədˈvæntɪdʒ] (n. 優勢) — take advantage of（利用）</li>
+<li>species [ˈspiʃiz] (n. 物種) — endangered species（瀕危物種）</li>
+<li>environment [ɪnˈvaɪrənmənt] (n. 環境) — environmental [ɪnˌvaɪrənˈmɛntəl] (adj. 環境的)</li>
+<li>adapt [əˈdæpt] (v. 適應；改編) — adaptation [ˌædæpˈteʃən] (n. 適應；改編)</li>
+<li>persistence [pɚˈsɪstəns] (n. 堅持) — persistent [pɚˈsɪstənt] (adj. 堅持不懈的)</li>
+</ol>
+<p><strong>文章相關常用片語 5 個：</strong></p>
+<ul>
+<li>at first glance（乍看之下）</li>
+<li>depend on（依靠；取決於）</li>
+<li>escape from danger（逃離危險）</li>
+<li>adapt to new challenges（適應新挑戰）</li>
+<li>come out of one's shell（走出舒適圈；變得開朗）</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>① At first glance, S + V, but S + V（乍看之下……但……）<br>→ 適用：先提出表面印象，再翻轉到深層觀察。<br>例：At first glance, the plan seems simple, but it requires careful teamwork.</p>
+<p>② be carefully designed for + N（被細心設計來適合……）<br>→ 適用：描述工具、身體構造、制度的功能。<br>例：The app is carefully designed for students with busy schedules.</p>
+<p>③ while + S + V（而；用來對比）<br>→ 適用：比較兩種人、事、物的不同特點。<br>例：Some students learn best by reading, while others learn by listening.</p>
+<p>④ with + N + and + N（帶有……與……）<br>→ 適用：補充主詞具有的特徵。<br>例：The robot moves quickly, with small wheels and a light body.</p>
+<p>⑤ help + O + 原形動詞（幫助某人／某物做……）<br>→ 適用：說明功能與效果。<br>例：Good notes help students review lessons faster.</p>
+<p>⑥ Living in + N is not easy, so S + V（生活在……並不容易，所以……）<br>→ 適用：描述環境壓力與結果。<br>例：Living in a crowded city is not easy, so people need public spaces.</p>
+<p>⑦ depend on + N to V（依靠……來……）<br>→ 適用：說明生存、學習或運作所需條件。<br>例：Many families depend on public transportation to reach work and school.</p>
+<p>⑧ spend time + V-ing（花時間做……）<br>→ 適用：描述習慣與生活型態。<br>例：Teenagers spend more time using digital tools than before.</p>
+<p>⑨ face a dangerous journey from A to B（面對從 A 到 B 的危險旅程）<br>→ 適用：描寫挑戰、轉變或成長過程。<br>例：New immigrants often face a difficult journey from fear to confidence.</p>
+<p>⑩ trying to V（試著……；分詞構句補充動作）<br>→ 適用：描寫主角同時努力做某件事。<br>例：The team worked late, trying to solve the final problem.</p>
+<p>⑪ Because each + N + V, S + V（因為每一個……都……，所以……）<br>→ 適用：從個別差異推論整體結果。<br>例：Because each learner has different needs, teachers should use various methods.</p>
+<p>⑫ one's greatest strength is one's ability to V（某人最大的力量是做……的能力）<br>→ 適用：寫人物、組織、動物或社會的核心優勢。<br>例：Her greatest strength is her ability to stay calm under pressure.</p>
+<p>⑬ In a way, S + V（從某種角度來說……）<br>→ 適用：提出較有深度或較抽象的詮釋。<br>例：In a way, failure teaches us more than easy success.</p>
+<p>⑭ by + V-ing（透過……方式）<br>→ 適用：說明達成目標的方法。<br>例：We can protect the environment by reducing plastic waste.</p>
+<p>⑮ enough to V（足以……）<br>→ 適用：表達能力、程度或條件已達標。<br>例：A small act of kindness can be powerful enough to change someone's day.</p>
+</div>
+</details>
+</section>
+<nav class="link-panel bottom" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="promo-link promo-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">從錯題回音中找出弱點，建立英文閱讀、文法與表達的修正路線。</span>
+</a>
+<a class="promo-link promo-popup" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">整理學習狀況與答題習慣，協助學生看見目前最需要補強的方向。</span>
+</a>
+<a class="promo-link promo-line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問、學習安排與教材相關問題，可透過 Line 聯絡。</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
