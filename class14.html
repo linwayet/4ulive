@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>經濟學課程表 | Erik Angner《How to Think Like an Economist》</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+      background: linear-gradient(160deg, #fff8f0 0%, #fff3e0 40%, #fef9f0 100%);
+      min-height: 100vh;
+      color: #4a2e0e;
+    }
+
+    /* ── LINK BANNER ── */
+    .link-banner {
+      background: linear-gradient(135deg, #ff7043 0%, #ff9800 50%, #ffc107 100%);
+      padding: 14px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .banner-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+    .btn-echo    { background: #fff; color: #e64a19; border: 2px solid #ff7043; }
+    .btn-student { background: #fff; color: #e65100; border: 2px solid #ff9800; }
+    .btn-line    { background: #06c755; color: #fff; border: 2px solid #06c755; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 48px 20px 32px;
+    }
+    .hero h1 {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #bf360c;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      color: #795548;
+      margin-bottom: 6px;
+    }
+    .hero .meta-badge {
+      display: inline-block;
+      background: #ffe0b2;
+      color: #bf360c;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    /* ── OVERVIEW CARDS ── */
+    .overview {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+    .ov-card {
+      background: #fff;
+      border: 1.5px solid #ffe0b2;
+      border-radius: 16px;
+      padding: 16px 22px;
+      text-align: center;
+      flex: 1 1 140px;
+      box-shadow: 0 2px 10px rgba(180,100,40,0.09);
+    }
+    .ov-card .num { font-size: 2rem; font-weight: 900; color: #ff7043; }
+    .ov-card .lbl { font-size: 0.8rem; color: #8d6e63; margin-top: 2px; }
+
+    /* ── INTRO BOX ── */
+    .intro-box {
+      max-width: 720px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+    .intro-box .box {
+      background: linear-gradient(135deg, #fff3e0, #fff8f0);
+      border-left: 5px solid #ff7043;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #5d4037;
+    }
+    .intro-box .box strong { color: #bf360c; }
+
+    /* ── PHASE SECTION ── */
+    .main-content { max-width: 820px; margin: 0 auto; padding: 0 16px 60px; }
+
+    .phase-block { margin-bottom: 40px; }
+    .phase-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .phase-dot {
+      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+    }
+    .phase-title h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .phase-line {
+      flex: 1; height: 2px; border-radius: 2px;
+    }
+
+    /* Phase colors */
+    .p1 .phase-dot, .p1 .phase-line { background: #ff7043; }
+    .p1 .phase-title h2 { color: #bf360c; }
+    .p2 .phase-dot, .p2 .phase-line { background: #ff9800; }
+    .p2 .phase-title h2 { color: #e65100; }
+    .p3 .phase-dot, .p3 .phase-line { background: #f9a825; }
+    .p3 .phase-title h2 { color: #f57f17; }
+    .p4 .phase-dot, .p4 .phase-line { background: #66bb6a; }
+    .p4 .phase-title h2 { color: #2e7d32; }
+    .p5 .phase-dot, .p5 .phase-line { background: #42a5f5; }
+    .p5 .phase-title h2 { color: #1565c0; }
+
+    /* Session card */
+    .session-card {
+      background: #fff;
+      border: 1.5px solid #ffe0b2;
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 12px rgba(180,100,40,0.08);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .session-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(180,100,40,0.14); }
+
+    .session-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .session-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.9rem; color: #fff;
+      flex-shrink: 0;
+    }
+    .p1 .session-num { background: #ff7043; }
+    .p2 .session-num { background: #ff9800; }
+    .p3 .session-num { background: #f9a825; }
+    .p4 .session-num { background: #66bb6a; }
+    .p5 .session-num { background: #42a5f5; }
+
+    .session-title-wrap {}
+    .session-title-wrap .s-num { font-size: 0.72rem; color: #a1887f; font-weight: 600; }
+    .session-title-wrap .s-title { font-size: 1.0rem; font-weight: 800; color: #3e2723; }
+
+    .time-badge {
+      margin-left: auto;
+      background: #fff8f0;
+      border: 1px solid #ffe0b2;
+      border-radius: 12px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      color: #ff7043;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .chapter-tag {
+      display: inline-block;
+      background: #fff3e0;
+      color: #e65100;
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .session-body { font-size: 0.88rem; color: #5d4037; line-height: 1.7; }
+    .session-body .row { margin-bottom: 6px; }
+    .session-body .row span { font-weight: 700; color: #bf360c; }
+
+    .concepts-list {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    }
+    .concept-chip {
+      background: #fff3e0;
+      border: 1px solid #ffcc80;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      color: #bf360c;
+      font-weight: 600;
+    }
+
+    /* ── TIPS BOX ── */
+    .tips-box {
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      border-left: 5px solid #66bb6a;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #2e7d32;
+    }
+    .tips-box h3 { font-size: 1rem; margin-bottom: 10px; color: #1b5e20; }
+    .tips-box ul { padding-left: 18px; }
+    .tips-box li { margin-bottom: 4px; }
+
+    /* ── FOOTER ── */
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #a1887f;
+      padding: 16px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 1.4rem; }
+      .banner-btn { font-size: 0.82rem; padding: 9px 14px; }
+      .session-header { flex-wrap: wrap; }
+      .time-badge { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ TOP BANNER ══ -->
+<div class="link-banner">
+  <a class="banner-btn btn-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    🎯 七月課程：錯中學 ECHO 計劃
+  </a>
+  <a class="banner-btn btn-student" href="https://linwayet.github.io/popup/index" target="_blank">
+    📊 七月課程：學生分析
+  </a>
+  <a class="banner-btn btn-line" href="https://line.me/ti/p/linwayet" target="_blank">
+    💬 Line 私訊：linwayet
+  </a>
+</div>
+
+<!-- ══ BANNER DESCRIPTIONS ══ -->
+<div style="background:#fff7f0; text-align:center; padding:10px 16px; font-size:0.8rem; color:#795548; border-bottom:1px solid #ffe0b2;">
+  🎯 <strong>錯中學 ECHO 計劃</strong>：從錯誤中深度學習的互動課程 ｜ 📊 <strong>學生分析</strong>：了解自己的學習類型與優勢 ｜ 💬 有任何問題歡迎 Line 私訊
+</div>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <h1>📚 經濟學思維課程表</h1>
+  <div class="subtitle">Erik Angner《How to Think Like an Economist》</div>
+  <div class="subtitle" style="font-size:0.88rem; margin-top:4px;">如何像經濟學家一樣思考</div>
+  <div class="meta-badge">📅 共 10 堂課 × 5 大主題階段 ｜ 每堂 90–120 分鐘</div>
+</div>
+
+<!-- ══ OVERVIEW ══ -->
+<div class="overview">
+  <div class="ov-card">
+    <div class="num">10</div>
+    <div class="lbl">堂課</div>
+  </div>
+  <div class="ov-card">
+    <div class="num">5</div>
+    <div class="lbl">學習階段</div>
+  </div>
+  <div class="ov-card">
+    <div class="num">15–20</div>
+    <div class="lbl">週完成</div>
+  </div>
+  <div class="ov-card">
+    <div class="num">90–120</div>
+    <div class="lbl">分鐘／堂</div>
+  </div>
+</div>
+
+<!-- ══ INTRO ══ -->
+<div class="intro-box">
+  <div class="box">
+    本課程表依據 Erik Angner 的著作，系統性地安排 <strong>10 堂課</strong>，帶領學員從理解經濟學的核心工具出發，逐步探索貧窮、育兒、氣候、市場設計、幸福感、謙遜與財富等真實世界議題，最終整合出個人的「經濟學思維工具箱」。每堂課包含：閱讀、概念解析、案例討論，以及思考練習。
+  </div>
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div class="main-content">
+
+  <!-- ── PHASE 1 ── -->
+  <div class="phase-block p1">
+    <div class="phase-title">
+      <div class="phase-dot"></div>
+      <h2>第一階段：認識經濟學的本質與工具</h2>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- Session 1 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">1</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 1 堂</div>
+          <div class="s-title">經濟學是什麼？為何重要？</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 前言 · 第 1–2 章（Preface, A Moral Science, Looking Ahead）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>理解經濟學的道德科學起源、分析平等主義假設，建立學習框架</div>
+        <div class="row"><span>核心問題：</span>為什麼道德哲學家要創造經濟學？「像經濟學家一樣思考」意味著什麼？</div>
+        <div class="row"><span>活動：</span>閱讀前言與第 1–2 章，小組討論「你認為經濟學是在研究什麼？」</div>
+        <div class="concepts-list">
+          <span class="concept-chip">分析平等主義</span>
+          <span class="concept-chip">稀缺性</span>
+          <span class="concept-chip">方法論個人主義</span>
+          <span class="concept-chip">機會成本</span>
+          <span class="concept-chip">邊際效用</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session 2 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">2</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 2 堂</div>
+          <div class="s-title">理性與非理性：行為經濟學入門</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 3 章（Economics and Tolerance · Rationality and Irrationality）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>理解理性選擇理論的基礎，以及行為經濟學對「非理性」的重新詮釋</div>
+        <div class="row"><span>核心問題：</span>人真的是理性的嗎？當人們「不理性」時，有哪些可預測的模式？</div>
+        <div class="row"><span>活動：</span>學習賽局理論基礎，討論現實生活中的捷思（heuristics）與偏誤</div>
+        <div class="concepts-list">
+          <span class="concept-chip">理性選擇理論</span>
+          <span class="concept-chip">賽局理論</span>
+          <span class="concept-chip">納許均衡</span>
+          <span class="concept-chip">捷思</span>
+          <span class="concept-chip">偏好排序</span>
+          <span class="concept-chip">時間折現</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 2 ── -->
+  <div class="phase-block p2">
+    <div class="phase-title">
+      <div class="phase-dot"></div>
+      <h2>第二階段：用經濟學解決真實社會問題</h2>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- Session 3 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">3</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 3 堂</div>
+          <div class="s-title">希望與改變：消除貧窮的經濟學</div>
+        </div>
+        <div class="time-badge">⏱ 120 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 4 章（Hope and Change）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>學習實驗經濟學方法（RCT），了解如何以實證解決貧窮問題</div>
+        <div class="row"><span>核心問題：</span>什麼干預措施能真正幫助貧窮人口？如何設計有效的政策實驗？</div>
+        <div class="row"><span>核心案例：</span>Banerjee & Duflo 的諾貝爾研究、金融素養干預方案、條件式現金移轉</div>
+        <div class="concepts-list">
+          <span class="concept-chip">隨機對照試驗（RCT）</span>
+          <span class="concept-chip">實地實驗</span>
+          <span class="concept-chip">實驗經濟學</span>
+          <span class="concept-chip">金融素養</span>
+          <span class="concept-chip">田野調查</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session 4 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">4</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 4 堂</div>
+          <div class="s-title">市場、外部性與氣候變遷</div>
+        </div>
+        <div class="time-badge">⏱ 120 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 5 章（Economics, Markets, and Values）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>理解市場失靈、外部性與庇古稅的政策意涵</div>
+        <div class="row"><span>核心問題：</span>為什麼市場會失靈？政府應如何介入氣候問題？碳稅有效嗎？</div>
+        <div class="row"><span>核心案例：</span>碳交易機制、溫室氣體定價、污染的外部成本計算</div>
+        <div class="concepts-list">
+          <span class="concept-chip">外部性</span>
+          <span class="concept-chip">庇古稅</span>
+          <span class="concept-chip">市場失靈</span>
+          <span class="concept-chip">帕雷托改善</span>
+          <span class="concept-chip">帕雷托最優</span>
+          <span class="concept-chip">社會規範</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 3 ── -->
+  <div class="phase-block p3">
+    <div class="phase-title">
+      <div class="phase-dot"></div>
+      <h2>第三階段：市場設計與育兒經濟學</h2>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- Session 5 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">5</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 5 堂</div>
+          <div class="s-title">配對市場：演算法如何拯救生命</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 6 章（What Gives?）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>了解配對市場理論，學習 Al Roth 的市場設計如何解決腎臟捐贈等問題</div>
+        <div class="row"><span>核心問題：</span>哪些東西「不應該」有價格？如何設計公平又有效率的非金錢市場？</div>
+        <div class="row"><span>核心案例：</span>腎臟交換配對、學校分發系統、住院醫師配對（NRMP）</div>
+        <div class="concepts-list">
+          <span class="concept-chip">配對市場</span>
+          <span class="concept-chip">市場設計</span>
+          <span class="concept-chip">福利/幸福感</span>
+          <span class="concept-chip">效率</span>
+          <span class="concept-chip">制度</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session 6 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">6</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 6 堂</div>
+          <div class="s-title">育兒的經濟學：如何養出快樂的孩子？</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 7 章（Discussion）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>用激勵設計與實驗經濟學理解親子關係，找出有效的育兒策略</div>
+        <div class="row"><span>核心問題：</span>父母的哪些行為對孩子長期發展影響最大？獎勵會破壞內在動機嗎？</div>
+        <div class="row"><span>活動：</span>分析不同激勵結構的效果，討論「過度教養」vs 放任式教養的成本效益</div>
+        <div class="concepts-list">
+          <span class="concept-chip">激勵</span>
+          <span class="concept-chip">自然實驗</span>
+          <span class="concept-chip">均衡求解</span>
+          <span class="concept-chip">邊際思考</span>
+          <span class="concept-chip">取捨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 4 ── -->
+  <div class="phase-block p4">
+    <div class="phase-title">
+      <div class="phase-dot"></div>
+      <h2>第四階段：幸福、謙遜與財富</h2>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- Session 7 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">7</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 7 堂</div>
+          <div class="s-title">幸福經濟學：錢能買到快樂嗎？</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 8 章（Having It All）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>理解 Easterlin 悖論，學習幸福測量方法與快樂的決定因素</div>
+        <div class="row"><span>核心問題：</span>為什麼一個國家越來越富有，人民卻未必越來越快樂？什麼才真正帶來幸福？</div>
+        <div class="row"><span>核心案例：</span>Easterlin 悖論、關係資本的價值、工作與幸福感研究</div>
+        <div class="concepts-list">
+          <span class="concept-chip">幸福</span>
+          <span class="concept-chip">效用</span>
+          <span class="concept-chip">邊際效用遞減</span>
+          <span class="concept-chip">Easterlin 悖論</span>
+          <span class="concept-chip">調查研究</span>
+          <span class="concept-chip">價值觀</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session 8 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">8</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 8 堂</div>
+          <div class="s-title">過度自信與謙遜：認識自己的知識邊界</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 9 章（Economics, Expertise, and Values）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>理解校準（calibration）概念，學習如何對自己的判斷保持適當謙遜</div>
+        <div class="row"><span>核心問題：</span>為什麼專家也會犯錯？如何校準自己的主觀機率？過度自信的代價是什麼？</div>
+        <div class="row"><span>活動：</span>信心區間練習、預測市場討論、Kahneman 系統一 vs 系統二</div>
+        <div class="concepts-list">
+          <span class="concept-chip">校準</span>
+          <span class="concept-chip">過度自信</span>
+          <span class="concept-chip">認識論謙遜</span>
+          <span class="concept-chip">主觀機率</span>
+          <span class="concept-chip">計量經濟學</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Session 9 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">9</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 9 堂</div>
+          <div class="s-title">如何致富：理性投資與金融素養</div>
+        </div>
+        <div class="time-badge">⏱ 90 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 9 章延伸（Wealth & Financial Literacy）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>了解效率市場假說、複利威力，建立長期理性投資的心智模型</div>
+        <div class="row"><span>核心問題：</span>為什麼大多數主動管理基金跑輸大盤？指數投資的邏輯是什麼？</div>
+        <div class="row"><span>核心案例：</span>效率市場研究、儲蓄行為 RCT、行為金融學的非理性偏誤</div>
+        <div class="concepts-list">
+          <span class="concept-chip">效率市場假說</span>
+          <span class="concept-chip">金融素養</span>
+          <span class="concept-chip">行為金融學</span>
+          <span class="concept-chip">時間折現</span>
+          <span class="concept-chip">複利</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 5 ── -->
+  <div class="phase-block p5">
+    <div class="phase-title">
+      <div class="phase-dot"></div>
+      <h2>第五階段：共同體、永續與經濟學的未來</h2>
+      <div class="phase-line"></div>
+    </div>
+
+    <!-- Session 10 -->
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-num">10</div>
+        <div class="session-title-wrap">
+          <div class="s-num">第 10 堂</div>
+          <div class="s-title">建構永續社區：Ostrom 原則與總結</div>
+        </div>
+        <div class="time-badge">⏱ 120 分鐘</div>
+      </div>
+      <div class="chapter-tag">📖 第 10 章 + 結語（Final Words · Glossary）</div>
+      <div class="session-body">
+        <div class="row"><span>學習目標：</span>學習公共財理論與 Elinor Ostrom 八大設計原則，整合全書思維</div>
+        <div class="row"><span>核心問題：</span>共同資源一定會被濫用嗎？社區如何自我治理？你的「經濟學工具箱」有哪些？</div>
+        <div class="row"><span>活動：</span>公共財賽局體驗、個人學習整合報告、全班反思分享</div>
+        <div class="concepts-list">
+          <span class="concept-chip">Ostrom 八大原則</span>
+          <span class="concept-chip">公共財</span>
+          <span class="concept-chip">共有資源</span>
+          <span class="concept-chip">制度設計</span>
+          <span class="concept-chip">社會規範</span>
+          <span class="concept-chip">永續性</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TIPS ── -->
+  <div class="tips-box">
+    <h3>📌 學習建議</h3>
+    <ul>
+      <li>每堂課前請先閱讀對應章節（約 30–40 分鐘），上課重點在討論與應用</li>
+      <li>建議每 1–2 週上一堂課，共需約 <strong>15–20 週</strong>完成全部內容</li>
+      <li>課後可用「一頁筆記」法記錄：本堂核心概念、一個現實例子、一個疑問</li>
+      <li>第 3、4、10 堂內容較豐富，建議預留完整 2 小時</li>
+      <li>鼓勵學員在 Line 群組分享每堂課的「最有共鳴的概念」</li>
+    </ul>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- ══ BOTTOM BANNER ══ -->
+<div style="background:#fff7f0; text-align:center; padding:10px 16px; font-size:0.8rem; color:#795548; border-top:1px solid #ffe0b2; border-bottom:1px solid #ffe0b2;">
+  🎯 <strong>錯中學 ECHO 計劃</strong>：從錯誤中深度學習的互動課程 ｜ 📊 <strong>學生分析</strong>：了解自己的學習類型與優勢 ｜ 💬 有任何問題歡迎 Line 私訊
+</div>
+<div class="link-banner">
+  <a class="banner-btn btn-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    🎯 七月課程：錯中學 ECHO 計劃
+  </a>
+  <a class="banner-btn btn-student" href="https://linwayet.github.io/popup/index" target="_blank">
+    📊 七月課程：學生分析
+  </a>
+  <a class="banner-btn btn-line" href="https://line.me/ti/p/linwayet" target="_blank">
+    💬 Line 私訊：linwayet
+  </a>
+</div>
+
+<div class="footer-note">
+  課程設計參考：Erik Angner《How to Think Like an Economist》｜ 製作：linwayet
+</div>
+
+</body>
+</html>
