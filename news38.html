@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高中英文單字本 Unit 7–12</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #F5EDD8;
+  --cream: #FBF6EC;
+  --parchment: #EFE4C6;
+  --amber: #C8821A;
+  --amber-soft: #E8A83A;
+  --rust: #B84020;
+  --rust-soft: #D4623A;
+  --clay: #A05030;
+  --sienna: #8B4513;
+  --olive: #6B7A2A;
+  --olive-soft: #8E9E3A;
+  --forest: #2D5A27;
+  --gold: #C49A20;
+  --warm-brown: #5C3A1E;
+  --mid-brown: #7A5030;
+  --light-brown: #A07040;
+  --border-warm: #D8C4A0;
+  --shadow-warm: rgba(120, 70, 20, 0.12);
+
+  --u7: #C8821A;
+  --u8: #B84020;
+  --u9: #6B7A2A;
+  --u10: #8B4513;
+  --u11: #A05030;
+  --u12: #2D5A27;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Serif 4', 'Noto Serif TC', Georgia, serif;
+  background: var(--sand);
+  color: var(--warm-brown);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 15% 8%, rgba(200,130,26,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 88% 92%, rgba(184,64,32,0.07) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8821A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(160deg, #4A2008 0%, #8B3A10 25%, #C8621A 55%, #D4961E 80%, #C4A030 100%);
+  padding: 48px 24px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(80,30,0,0.35);
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -55deg, transparent, transparent 30px,
+    rgba(255,255,255,0.025) 30px, rgba(255,255,255,0.025) 60px
+  );
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,220,100,0.6), transparent);
+}
+.header-inner { position: relative; z-index: 1; }
+.header-eyebrow {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,220,150,0.8);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #FFF8E8;
+  text-shadow: 2px 4px 12px rgba(0,0,0,0.35);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.header-title em {
+  font-style: italic;
+  color: #FFD97A;
+}
+.header-sub {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.92rem;
+  color: rgba(255,230,170,0.85);
+  margin-top: 8px;
+}
+.header-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+.header-pill {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,220,130,0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  color: rgba(255,230,180,0.9);
+  font-family: 'Noto Serif TC', serif;
+  backdrop-filter: blur(4px);
+}
+
+/* ── CONTROLS ── */
+.controls-bar {
+  background: var(--cream);
+  border-bottom: 2px solid var(--border-warm);
+  padding: 14px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 16px var(--shadow-warm);
+}
+.controls-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 9px 14px 9px 38px;
+  border: 2px solid var(--border-warm);
+  border-radius: 25px;
+  background: white;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.93rem;
+  color: var(--warm-brown);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-wrap input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(200,130,26,0.12);
+}
+.search-icon {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--light-brown);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+.unit-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.utab {
+  padding: 6px 14px;
+  border-radius: 18px;
+  border: 2px solid var(--border-warm);
+  background: white;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--mid-brown);
+  white-space: nowrap;
+}
+.utab:hover { border-color: var(--amber); color: var(--amber); }
+.utab.active { color: white; border-color: transparent; }
+.utab[data-unit="all"].active  { background: var(--warm-brown); }
+.utab[data-unit="7"].active   { background: var(--u7); }
+.utab[data-unit="8"].active   { background: var(--u8); }
+.utab[data-unit="9"].active   { background: var(--u9); }
+.utab[data-unit="10"].active  { background: var(--u10); }
+.utab[data-unit="11"].active  { background: var(--u11); }
+.utab[data-unit="12"].active  { background: var(--u12); }
+
+/* ── MAIN ── */
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+.stats-row {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.82rem;
+  color: var(--light-brown);
+  margin-bottom: 20px;
+  text-align: right;
+}
+.stats-row strong { color: var(--amber); }
+
+/* ── UNIT SECTIONS ── */
+.unit-section { margin-bottom: 48px; }
+.unit-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-warm);
+}
+.unit-badge {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.unit-title-text {}
+.unit-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-bottom: 2px;
+}
+.unit-topic {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--warm-brown);
+}
+.unit-count-tag {
+  margin-left: auto;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.78rem;
+  color: var(--light-brown);
+  background: var(--parchment);
+  border: 1px solid var(--border-warm);
+  border-radius: 12px;
+  padding: 3px 12px;
+}
+
+/* ── GRID ── */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 18px;
+}
+
+/* ── CARD ── */
+.vocab-card {
+  background: var(--cream);
+  border: 1.5px solid var(--border-warm);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 2px 10px var(--shadow-warm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.vocab-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 14px 14px 0 0;
+}
+.vocab-card[data-unit="7"]::before  { background: linear-gradient(90deg, var(--u7), var(--amber-soft)); }
+.vocab-card[data-unit="8"]::before  { background: linear-gradient(90deg, var(--u8), var(--rust-soft)); }
+.vocab-card[data-unit="9"]::before  { background: linear-gradient(90deg, var(--u9), var(--olive-soft)); }
+.vocab-card[data-unit="10"]::before { background: linear-gradient(90deg, var(--u10), var(--clay)); }
+.vocab-card[data-unit="11"]::before { background: linear-gradient(90deg, var(--u11), var(--clay)); }
+.vocab-card[data-unit="12"]::before { background: linear-gradient(90deg, var(--u12), var(--forest)); }
+.vocab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(100,50,10,0.18);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.word-block {}
+.word-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--warm-brown);
+}
+.word-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  color: var(--mid-brown);
+  margin-top: 3px;
+}
+.pos-tag {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: white;
+  margin-top: 4px;
+}
+.vocab-card[data-unit="7"]  .pos-tag { background: var(--u7); }
+.vocab-card[data-unit="8"]  .pos-tag { background: var(--u8); }
+.vocab-card[data-unit="9"]  .pos-tag { background: var(--u9); }
+.vocab-card[data-unit="10"] .pos-tag { background: var(--u10); }
+.vocab-card[data-unit="11"] .pos-tag { background: var(--u11); }
+.vocab-card[data-unit="12"] .pos-tag { background: var(--u12); }
+
+/* DERIVATION */
+.deriv-box {
+  background: var(--parchment);
+  border: 1px solid var(--border-warm);
+  border-radius: 9px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+.deriv-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--olive);
+  margin-bottom: 6px;
+}
+.deriv-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border: 1px solid #E0CBA0;
+  border-radius: 16px;
+  padding: 2px 9px;
+  font-size: 0.77rem;
+}
+.chip-pos {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--olive-soft);
+}
+.chip-word {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--sienna);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+}
+.chip-zh {
+  color: var(--mid-brown);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.72rem;
+}
+
+/* EXAMPLES */
+.ex-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rust);
+  margin-bottom: 7px;
+}
+.ex-item {
+  border-left: 3px solid;
+  border-radius: 0 7px 7px 0;
+  padding: 7px 10px;
+  margin-bottom: 7px;
+  background: rgba(255,255,255,0.55);
+}
+.ex-item:last-child { margin-bottom: 0; }
+.vocab-card[data-unit="7"]  .ex-item { border-color: var(--u7); }
+.vocab-card[data-unit="8"]  .ex-item { border-color: var(--u8); }
+.vocab-card[data-unit="9"]  .ex-item { border-color: var(--u9); }
+.vocab-card[data-unit="10"] .ex-item { border-color: var(--u10); }
+.vocab-card[data-unit="11"] .ex-item { border-color: var(--u11); }
+.vocab-card[data-unit="12"] .ex-item { border-color: var(--u12); }
+.ex-en {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--warm-brown);
+  margin-bottom: 3px;
+}
+.ex-en em { font-style: italic; font-weight: 700; color: var(--rust); }
+.ex-zh {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--mid-brown);
+  font-family: 'Noto Serif TC', serif;
+}
+
+/* HIDDEN / NO RESULTS */
+.vocab-card.hidden { display: none; }
+.no-results {
+  text-align: center;
+  padding: 60px;
+  color: var(--light-brown);
+  font-size: 1rem;
+  font-family: 'Noto Serif TC', serif;
+  display: none;
+}
+.no-results.show { display: block; }
+.unit-section.hidden { display: none; }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.78rem;
+  color: var(--light-brown);
+  border-top: 1px solid var(--border-warm);
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+  .controls-inner { flex-direction: column; }
+  .unit-tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow">高中英文單字本</div>
+    <h1 class="header-title">Unit 7 – 12<br><em>Vocabulary Cards</em></h1>
+    <p class="header-sub">含衍生詞・慣用語・雙語例句</p>
+    <div class="header-pills">
+      <span class="header-pill">Unit 7 Cologne</span>
+      <span class="header-pill">Unit 8 Olympics</span>
+      <span class="header-pill">Unit 9 Water</span>
+      <span class="header-pill">Unit 10 Navigation</span>
+      <span class="header-pill">Unit 11 Memory</span>
+      <span class="header-pill">Unit 12 Food Waste</span>
+    </div>
+  </div>
+</header>
+
+<nav class="controls-bar">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜尋英文單字或中文意思..." oninput="applyFilters()">
+    </div>
+    <div class="unit-tabs">
+      <button class="utab active" data-unit="all" onclick="setUnit('all',this)">全部</button>
+      <button class="utab" data-unit="7"  onclick="setUnit('7',this)">Unit 7</button>
+      <button class="utab" data-unit="8"  onclick="setUnit('8',this)">Unit 8</button>
+      <button class="utab" data-unit="9"  onclick="setUnit('9',this)">Unit 9</button>
+      <button class="utab" data-unit="10" onclick="setUnit('10',this)">Unit 10</button>
+      <button class="utab" data-unit="11" onclick="setUnit('11',this)">Unit 11</button>
+      <button class="utab" data-unit="12" onclick="setUnit('12',this)">Unit 12</button>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="mainContent">
+  <div class="stats-row">顯示 <strong id="visibleCount">0</strong> 個單字</div>
+  <div id="noResults" class="no-results">😕 找不到符合的單字</div>
+</main>
+
+<footer>高中英文 Unit 7–12 互動單字卡 ｜ 衍生詞・雙語例句</footer>
+
+<script>
+const UNITS = {
+  7:  { topic:"Cologne: A Cultural Capital",  color:"#C8821A" },
+  8:  { topic:"Olympics Out of the Ordinary", color:"#B84020" },
+  9:  { topic:"The Benefits of Conserving Water", color:"#6B7A2A" },
+  10: { topic:"Stellar Navigating Skills",    color:"#8B4513" },
+  11: { topic:"Tips for Remembering What You've Learned", color:"#A05030" },
+  12: { topic:"The War against Food Waste",   color:"#2D5A27" },
+};
+
+const VOCAB = [
+  // ── UNIT 7 ──
+  {u:7,w:"majesty",pos:"n.",zh:"雄偉；威嚴；陛下",
+   d:[{p:"adj.",w:"majestic",z:"雄偉的；壯麗的"},{p:"adv.",w:"majestically",z:"雄偉地"}],
+   e:[{en:"The <em>majesty</em> of the ancient cathedral took our breath away.",zh:"那座古老大教堂的雄偉壯觀讓我們屏息。"},
+      {en:"The queen's <em>majesty</em> commanded instant respect from all.",zh:"女王的威嚴令所有人立刻肅然起敬。"}]},
+  {u:7,w:"recommended",pos:"adj.",zh:"被推薦的；受到好評的",
+   d:[{p:"v.",w:"recommend",z:"推薦；建議"},{p:"n.",w:"recommendation",z:"推薦；建議"}],
+   e:[{en:"This hotel is highly <em>recommended</em> by travel bloggers.",zh:"這家飯店受到許多旅遊部落客的大力推薦。"},
+      {en:"Her doctor's <em>recommendation</em> was to get more rest.",zh:"她的醫生建議她多休息。"}]},
+  {u:7,w:"thoroughly",pos:"adv.",zh:"徹底地；非常；完全地",
+   d:[{p:"adj.",w:"thorough",z:"徹底的；仔細的"},{p:"n.",w:"thoroughness",z:"徹底；仔細"}],
+   e:[{en:"She <em>thoroughly</em> enjoyed every moment of the trip.",zh:"她徹底享受了旅途中的每一刻。"},
+      {en:"Please read the contract <em>thoroughly</em> before signing.",zh:"簽名前請徹底閱讀合約。"}]},
+  {u:7,w:"cityscape",pos:"n.",zh:"城市風景；都市景觀",
+   d:[{p:"n.",w:"landscape",z:"風景；地貌"},{p:"phrase",w:"urban cityscape",z:"都市景觀"}],
+   e:[{en:"The photographer captured a stunning <em>cityscape</em> at dusk.",zh:"攝影師在黃昏時拍攝了一幅令人驚嘆的城市風景。"},
+      {en:"The <em>cityscape</em> of Cologne is dominated by its famous cathedral.",zh:"科隆的城市風景以其著名大教堂為主角。"}]},
+  {u:7,w:"distinctive",pos:"adj.",zh:"獨特的；有特色的",
+   d:[{p:"v.",w:"distinguish",z:"區別；辨認"},{p:"n.",w:"distinction",z:"區別；特色；榮譽"}],
+   e:[{en:"The old town has a very <em>distinctive</em> European charm.",zh:"這座舊城擁有非常獨特的歐洲魅力。"},
+      {en:"The musician has a <em>distinctive</em> style that fans instantly recognize.",zh:"這位音樂家有一種粉絲能立刻辨認出的獨特風格。"}]},
+  {u:7,w:"architecture",pos:"n.",zh:"建築；建築學；建築風格",
+   d:[{p:"adj.",w:"architectural",z:"建築的；建築學上的"},{p:"n.",w:"architect",z:"建築師"}],
+   e:[{en:"The Gothic <em>architecture</em> of the cathedral is breathtaking.",zh:"大教堂的哥德式建築令人嘆為觀止。"},
+      {en:"She studied <em>architecture</em> and now designs public buildings.",zh:"她學習建築學，現在設計公共建築。"}]},
+  {u:7,w:"reservation",pos:"n.",zh:"預訂；保留；保留意見",
+   d:[{p:"v.",w:"reserve",z:"預訂；保留；預約"},{p:"adj.",w:"reserved",z:"已預訂的；內斂的"}],
+   e:[{en:"I made a <em>reservation</em> at the restaurant for Saturday.",zh:"我預訂了週六的餐廳座位。"},
+      {en:"He agreed to the plan but had some <em>reservations</em>.",zh:"他同意了這個計劃，但持有一些保留意見。"}]},
+  {u:7,w:"duration",pos:"n.",zh:"持續時間；期間",
+   d:[{p:"phrase",w:"for the duration of",z:"在……期間"},{p:"adj.",w:"durable",z:"耐用的；持久的"}],
+   e:[{en:"The <em>duration</em> of the concert was about two hours.",zh:"這場音樂會的持續時間約兩個小時。"},
+      {en:"She stayed silent for the <em>duration</em> of the meeting.",zh:"她在整個會議期間都保持沉默。"}]},
+  {u:7,w:"fascinated",pos:"adj.",zh:"著迷的；被迷住的",
+   d:[{p:"v.",w:"fascinate",z:"使著迷；吸引"},{p:"n.",w:"fascination",z:"著迷；迷戀"}],
+   e:[{en:"She was completely <em>fascinated</em> by the ancient ruins.",zh:"她完全被那些古代遺跡迷住了。"},
+      {en:"His <em>fascination</em> with astronomy began in childhood.",zh:"他對天文學的迷戀始於童年時期。"}]},
+  {u:7,w:"galleries",pos:"n.",zh:"畫廊；藝廊；美術館（複數）",
+   d:[{p:"n.",w:"gallery",z:"畫廊；美術館（單數）"},{p:"phrase",w:"art gallery",z:"藝廊；美術館"}],
+   e:[{en:"The city's <em>galleries</em> showcase both local and international art.",zh:"這座城市的畫廊展示了本地和國際藝術作品。"},
+      {en:"We visited three different <em>galleries</em> during our trip.",zh:"我們在旅途中參觀了三個不同的藝廊。"}]},
+  {u:7,w:"contemporary",pos:"adj./n.",zh:"當代的；現代的；同時代的人",
+   d:[{p:"adv.",w:"contemporarily",z:"在當代"},{p:"n.",w:"contemporaneity",z:"同時代性；當代性"}],
+   e:[{en:"The museum has an excellent collection of <em>contemporary</em> art.",zh:"這座博物館收藏了優秀的當代藝術作品。"},
+      {en:"Einstein and Picasso were <em>contemporaries</em> who changed the world.",zh:"愛因斯坦和畢卡索是改變世界的同時代人。"}]},
+  {u:7,w:"overlooking",pos:"v./adj.",zh:"俯瞰；眺望；忽視；俯瞰……的",
+   d:[{p:"v.",w:"overlook",z:"俯瞰；忽視"},{p:"phrase",w:"overlook a mistake",z:"忽視一個錯誤"}],
+   e:[{en:"The hotel room <em>overlooking</em> the river had a beautiful view.",zh:"俯瞰河流的飯店房間風景優美。"},
+      {en:"Don't <em>overlook</em> the small details in the contract.",zh:"不要忽視合約中的小細節。"}]},
+  {u:7,w:"masterpiece",pos:"n.",zh:"傑作；名作；大師之作",
+   d:[{p:"n.",w:"master",z:"大師；主人；碩士"},{p:"phrase",w:"a masterpiece of",z:"……的傑作"}],
+   e:[{en:"Beethoven's Ninth Symphony is considered a <em>masterpiece</em>.",zh:"貝多芬的第九號交響曲被視為一部傑作。"},
+      {en:"The chef's signature dish is a true <em>masterpiece</em> of flavor.",zh:"主廚的招牌菜是口味上的真正傑作。"}]},
+  {u:7,w:"massive",pos:"adj.",zh:"巨大的；龐大的；大量的",
+   d:[{p:"adv.",w:"massively",z:"大量地；龐大地"},{p:"n.",w:"mass",z:"大量；群眾；質量"}],
+   e:[{en:"The cathedral has <em>massive</em> stone pillars that reach the ceiling.",zh:"大教堂有巨大的石柱高聳至天花板。"},
+      {en:"The storm caused <em>massive</em> damage to the coastal town.",zh:"這場暴風雨對海岸城鎮造成了巨大的損害。"}]},
+  {u:7,w:"Gothic",pos:"adj.",zh:"哥德式的；中世紀的",
+   d:[{p:"n.",w:"Gothic architecture",z:"哥德式建築"},{p:"phrase",w:"Gothic style",z:"哥德式風格"}],
+   e:[{en:"The <em>Gothic</em> cathedral features pointed arches and tall spires.",zh:"這座哥德式大教堂以尖拱和高聳的尖塔為特色。"},
+      {en:"She loves reading <em>Gothic</em> novels set in old castles.",zh:"她喜歡閱讀以古老城堡為背景的哥德式小說。"}]},
+  {u:7,w:"ornamented",pos:"adj.",zh:"裝飾的；有裝飾的",
+   d:[{p:"v.",w:"ornament",z:"裝飾；點綴"},{p:"n.",w:"ornamentation",z:"裝飾；裝飾品"}],
+   e:[{en:"The <em>ornamented</em> ceiling of the palace dazzled all visitors.",zh:"宮殿裝飾華麗的天花板令所有參觀者目眩神迷。"},
+      {en:"The Christmas tree was beautifully <em>ornamented</em>.",zh:"聖誕樹被漂亮地裝飾起來了。"}]},
+  {u:7,w:"shrine",pos:"n.",zh:"聖殿；神龕；聖地",
+   d:[{p:"phrase",w:"pilgrimage shrine",z:"朝聖地"},{p:"phrase",w:"shrine to",z:"……的聖地"}],
+   e:[{en:"Thousands of pilgrims visit the sacred <em>shrine</em> each year.",zh:"每年有數千名朝聖者前往那座神聖的聖殿。"},
+      {en:"Her bedroom had become a <em>shrine</em> to her favorite singer.",zh:"她的臥室已成為她最喜愛歌手的聖地。"}]},
+  {u:7,w:"biblical",pos:"adj.",zh:"聖經的；聖經上的",
+   d:[{p:"n.",w:"Bible",z:"聖經"},{p:"phrase",w:"of biblical proportions",z:"規模龐大的；史詩級的"}],
+   e:[{en:"The stained glass windows depict <em>biblical</em> scenes.",zh:"彩色玻璃窗描繪了聖經中的場景。"},
+      {en:"The flood was described as a disaster of <em>biblical</em> proportions.",zh:"這場洪水被形容為規模龐大的災難。"}]},
+  {u:7,w:"affords",pos:"v.",zh:"提供；給予（機會、視野等）；負擔得起",
+   d:[{p:"adj.",w:"affordable",z:"負擔得起的；合理的"},{p:"n.",w:"affordability",z:"可負擔性"}],
+   e:[{en:"The tower <em>affords</em> a stunning view of the entire city.",zh:"這座塔樓提供了整個城市的絕佳視野。"},
+      {en:"Not everyone can <em>afford</em> to travel abroad every year.",zh:"不是每個人都負擔得起每年出國旅遊。"}]},
+  {u:7,w:"marvelous",pos:"adj.",zh:"奇妙的；絕妙的；令人驚嘆的",
+   d:[{p:"adv.",w:"marvelously",z:"奇妙地；絕妙地"},{p:"n.",w:"marvel",z:"奇蹟；奇觀"}],
+   e:[{en:"The view from the top of the cathedral was absolutely <em>marvelous</em>.",zh:"從大教堂頂端俯瞰的景色絕對令人驚嘆。"},
+      {en:"She has a <em>marvelous</em> talent for playing the piano.",zh:"她有彈鋼琴的絕妙天賦。"}]},
+  {u:7,w:"cuisine",pos:"n.",zh:"菜系；烹調風格；美食",
+   d:[{p:"phrase",w:"local cuisine",z:"當地美食"},{p:"phrase",w:"French cuisine",z:"法式料理"}],
+   e:[{en:"German <em>cuisine</em> is famous for its sausages and bread.",zh:"德國菜系以其香腸和麵包聞名。"},
+      {en:"She took a cooking class to learn Italian <em>cuisine</em>.",zh:"她上了烹飪課以學習義式料理。"}]},
+  {u:7,w:"translated",pos:"v./adj.",zh:"翻譯的；被翻譯；表達",
+   d:[{p:"n.",w:"translation",z:"翻譯；譯文"},{p:"n.",w:"translator",z:"翻譯員；譯者"}],
+   e:[{en:"The novel has been <em>translated</em> into over thirty languages.",zh:"這部小說已被翻譯成三十多種語言。"},
+      {en:"Her hard work <em>translated</em> into great success.",zh:"她的努力轉化成了巨大的成功。"}]},
+  {u:7,w:"mashed",pos:"adj.",zh:"壓成泥的；搗碎的",
+   d:[{p:"v.",w:"mash",z:"搗碎；壓爛"},{p:"phrase",w:"mashed potatoes",z:"馬鈴薯泥"}],
+   e:[{en:"She ordered steak with <em>mashed</em> potatoes on the side.",zh:"她點了牛排，配上馬鈴薯泥。"},
+      {en:"The baby could only eat soft, <em>mashed</em> food.",zh:"嬰兒只能吃軟爛的食物泥。"}]},
+  {u:7,w:"accompanied",pos:"v.",zh:"陪同；伴隨；附有",
+   d:[{p:"n.",w:"accompaniment",z:"伴奏；陪伴；配菜"},{p:"adj.",w:"unaccompanied",z:"無人陪伴的；無伴奏的"}],
+   e:[{en:"The dish was <em>accompanied</em> by a rich mushroom sauce.",zh:"這道菜附有濃郁的蘑菇醬。"},
+      {en:"She <em>accompanied</em> her mother to the doctor's appointment.",zh:"她陪同母親去看醫生。"}]},
+
+  // ── UNIT 8 ──
+  {u:8,w:"withdrawn",pos:"adj.",zh:"退出的；撤回的；內向的",
+   d:[{p:"v.",w:"withdraw",z:"退出；撤回；提款"},{p:"n.",w:"withdrawal",z:"退出；撤回；提款"}],
+   e:[{en:"The athlete was <em>withdrawn</em> from the competition due to injury.",zh:"那位運動員因傷而退出了比賽。"},
+      {en:"She made a cash <em>withdrawal</em> at the ATM.",zh:"她在自動提款機提取了現金。"}]},
+  {u:8,w:"admission",pos:"n.",zh:"承認；入場費；入學許可",
+   d:[{p:"v.",w:"admit",z:"承認；允許進入"},{p:"adj.",w:"admissible",z:"可接受的；允許的"}],
+   e:[{en:"Free <em>admission</em> is offered to children under five.",zh:"五歲以下兒童免費入場。"},
+      {en:"His <em>admission</em> of guilt surprised everyone in court.",zh:"他在法庭上承認有罪，讓所有人都感到驚訝。"}]},
+  {u:8,w:"adjustments",pos:"n.",zh:"調整；修正；適應（複數）",
+   d:[{p:"v.",w:"adjust",z:"調整；適應"},{p:"adj.",w:"adjustable",z:"可調整的"}],
+   e:[{en:"The coach made several <em>adjustments</em> to the team's strategy.",zh:"教練對團隊的策略做了幾項調整。"},
+      {en:"Moving to a new country requires many <em>adjustments</em>.",zh:"移居新國家需要許多適應與調整。"}]},
+  {u:8,w:"cannon",pos:"n.",zh:"大砲；發射",
+   d:[{p:"phrase",w:"cannonball",z:"砲彈"},{p:"phrase",w:"loose cannon",z:"難以控制的人；行事衝動的人"}],
+   e:[{en:"The old fortress still has original <em>cannons</em> on display.",zh:"那座古老的堡壘仍展示著原始的大砲。"},
+      {en:"He was known as a <em>loose cannon</em> in the department.",zh:"他在部門裡以行事衝動著稱。"}]},
+  {u:8,w:"tug-of-war",pos:"n.",zh:"拔河；激烈競爭",
+   d:[{p:"phrase",w:"tug at",z:"用力拉；使心動"},{p:"phrase",w:"a tug-of-war between",z:"……之間的激烈競爭"}],
+   e:[{en:"The students had a fun <em>tug-of-war</em> competition on Sports Day.",zh:"學生們在運動會上進行了一場有趣的拔河比賽。"},
+      {en:"There was a <em>tug-of-war</em> between quality and cost in the project.",zh:"在這個專案中，品質和成本之間存在激烈的博弈。"}]},
+  {u:8,w:"Olympic-worthy",pos:"adj.",zh:"符合奧運水準的；達到奧運標準的",
+   d:[{p:"adj.",w:"worthy",z:"值得的；有價值的"},{p:"phrase",w:"worthy of",z:"值得……的"}],
+   e:[{en:"Her performance was truly <em>Olympic-worthy</em>.",zh:"她的表現真正達到了奧運水準。"},
+      {en:"Not every athlete has <em>Olympic-worthy</em> speed and endurance.",zh:"不是每位運動員都具備奧運水準的速度和耐力。"}]},
+  {u:8,w:"contested",pos:"adj./v.",zh:"受爭議的；競爭的；提出異議",
+   d:[{p:"n.",w:"contest",z:"比賽；競爭；爭議"},{p:"adj.",w:"uncontested",z:"無人競爭的；無異議的"}],
+   e:[{en:"The decision was hotly <em>contested</em> by several teams.",zh:"這個決定遭到幾支隊伍的強烈異議。"},
+      {en:"The result of the election remained <em>contested</em> for days.",zh:"選舉結果在好幾天內持續受到爭議。"}]},
+  {u:8,w:"revived",pos:"v./adj.",zh:"復活的；重新振興的；恢復",
+   d:[{p:"n.",w:"revival",z:"復興；復活；再度流行"},{p:"v.",w:"revive",z:"使復活；使振興"}],
+   e:[{en:"The ancient tradition was <em>revived</em> by local communities.",zh:"這個古老傳統由當地社區重新振興。"},
+      {en:"The economic <em>revival</em> brought hope to the struggling region.",zh:"經濟復興為這個掙扎中的地區帶來了希望。"}]},
+  {u:8,w:"capture",pos:"v./n.",zh:"捕獲；捕捉；吸引（注意力）",
+   d:[{p:"n.",w:"captive",z:"被俘者；俘虜"},{p:"phrase",w:"capture attention",z:"吸引注意力"}],
+   e:[{en:"The photographer <em>captured</em> a perfect moment at sunset.",zh:"攝影師在日落時捕捉到了一個完美的瞬間。"},
+      {en:"The story <em>captured</em> the hearts of millions of readers.",zh:"這個故事俘獲了數百萬讀者的心。"}]},
+  {u:8,w:"scholars",pos:"n.",zh:"學者；獎學金得主（複數）",
+   d:[{p:"adj.",w:"scholarly",z:"學術性的；有學問的"},{p:"n.",w:"scholarship",z:"學術；獎學金"}],
+   e:[{en:"Ancient Greek <em>scholars</em> laid the foundation of Western philosophy.",zh:"古希臘學者為西方哲學奠定了基礎。"},
+      {en:"She won a full <em>scholarship</em> to study abroad.",zh:"她獲得了全額獎學金出國留學。"}]},
+  {u:8,w:"artistic",pos:"adj.",zh:"藝術的；有藝術氣質的",
+   d:[{p:"n.",w:"art",z:"藝術"},{p:"n.",w:"artist",z:"藝術家"},{p:"adv.",w:"artistically",z:"藝術地"}],
+   e:[{en:"The opening ceremony was a stunning <em>artistic</em> performance.",zh:"開幕式是一場令人驚嘆的藝術表演。"},
+      {en:"She has a natural <em>artistic</em> talent for painting.",zh:"她對繪畫有天生的藝術才能。"}]},
+  {u:8,w:"distinctions",pos:"n.",zh:"區別；卓越；榮譽（複數）",
+   d:[{p:"v.",w:"distinguish",z:"區別；辨認"},{p:"adj.",w:"distinctive",z:"獨特的；有特色的"}],
+   e:[{en:"There are important <em>distinctions</em> between the two approaches.",zh:"這兩種方法之間有重要的區別。"},
+      {en:"She graduated with <em>distinction</em>, ranking first in her class.",zh:"她以優異成績畢業，排名班級第一。"}]},
+  {u:8,w:"excellence",pos:"n.",zh:"卓越；優秀；傑出",
+   d:[{p:"adj.",w:"excellent",z:"優秀的；卓越的"},{p:"adv.",w:"excellently",z:"出色地；優秀地"}],
+   e:[{en:"The award recognizes <em>excellence</em> in scientific research.",zh:"這個獎項表彰科學研究方面的卓越成就。"},
+      {en:"She always strives for <em>excellence</em> in everything she does.",zh:"她在所做的每件事上都追求卓越。"}]},
+  {u:8,w:"poets",pos:"n.",zh:"詩人（複數）",
+   d:[{p:"adj.",w:"poetic",z:"詩意的；詩的"},{p:"n.",w:"poetry",z:"詩；詩歌"}],
+   e:[{en:"Ancient <em>poets</em> used verse to record history and emotion.",zh:"古代詩人用詩歌記錄歷史和情感。"},
+      {en:"She admired the works of Romantic <em>poets</em> like Keats.",zh:"她欽佩濟慈等浪漫主義詩人的作品。"}]},
+  {u:8,w:"sculptors",pos:"n.",zh:"雕刻家；雕塑家（複數）",
+   d:[{p:"n.",w:"sculpture",z:"雕塑；雕刻品"},{p:"v.",w:"sculpt",z:"雕塑；雕刻"}],
+   e:[{en:"Renaissance <em>sculptors</em> created some of the world's finest statues.",zh:"文藝復興時期的雕刻家創造了一些世界上最精美的雕像。"},
+      {en:"The young <em>sculptor</em> carved a lifelike face from marble.",zh:"這位年輕的雕塑家從大理石中雕刻出栩栩如生的臉。"}]},
+  {u:8,w:"sportsmen",pos:"n.",zh:"運動員；體育人（複數）",
+   d:[{p:"n.",w:"sportsmanship",z:"運動精神；體育道德"},{p:"adj.",w:"sportsmanlike",z:"有運動精神的"}],
+   e:[{en:"The best <em>sportsmen</em> show both skill and good sportsmanship.",zh:"最優秀的運動員展現出技巧和良好的運動精神。"},
+      {en:"The audience applauded the <em>sportsmen</em> who finished the race.",zh:"觀眾為完成比賽的運動員鼓掌。"}]},
+  {u:8,w:"competed",pos:"v.",zh:"競爭；參加比賽",
+   d:[{p:"n.",w:"competition",z:"競爭；比賽"},{p:"n.",w:"competitor",z:"競爭者；參賽者"}],
+   e:[{en:"Athletes from 200 nations <em>competed</em> in the Olympic Games.",zh:"來自200個國家的運動員參加了奧運會。"},
+      {en:"The two companies <em>competed</em> fiercely for the same market.",zh:"這兩家公司為相同市場激烈競爭。"}]},
+  {u:8,w:"hover",pos:"v.",zh:"盤旋；徘徊；猶豫",
+   d:[{p:"phrase",w:"hover over",z:"在……上方盤旋；滑鼠停在……上"},{p:"n.",w:"hovercraft",z:"氣墊船"}],
+   e:[{en:"The helicopter <em>hovered</em> above the rescue site.",zh:"直升機在救援現場上方盤旋。"},
+      {en:"She <em>hovered</em> over the decision for days before choosing.",zh:"她在做出選擇前猶豫了好幾天。"}]},
+  {u:8,w:"craters",pos:"n.",zh:"隕石坑；彈坑；火山口（複數）",
+   d:[{p:"phrase",w:"meteor crater",z:"隕石坑"},{p:"phrase",w:"volcanic crater",z:"火山口"}],
+   e:[{en:"The moon's surface is covered with <em>craters</em>.",zh:"月球表面覆蓋著許多隕石坑。"},
+      {en:"The bomb left large <em>craters</em> in the field.",zh:"炸彈在田野裡留下了巨大的彈坑。"}]},
+  {u:8,w:"established",pos:"adj./v.",zh:"建立的；確立的；已被公認的",
+   d:[{p:"n.",w:"establishment",z:"建立；機構；當權階級"},{p:"v.",w:"establish",z:"建立；確立；創辦"}],
+   e:[{en:"Harvard is one of the most <em>established</em> universities in the world.",zh:"哈佛是世界上最有聲望的大學之一。"},
+      {en:"The company was <em>established</em> over one hundred years ago.",zh:"這家公司是在一百多年前創辦的。"}]},
+  {u:8,w:"sprint",pos:"v./n.",zh:"衝刺；短跑",
+   d:[{p:"n.",w:"sprinter",z:"短跑選手；衝刺者"},{p:"phrase",w:"100-meter sprint",z:"百米短跑"}],
+   e:[{en:"She <em>sprinted</em> to catch the bus before it left.",zh:"她衝刺跑向公車，趕在它離站前上車。"},
+      {en:"The <em>sprinter</em> broke the world record in the finals.",zh:"這位短跑選手在決賽中打破了世界紀錄。"}]},
+
+  // ── UNIT 9 ──
+  {u:9,w:"conserve",pos:"v.",zh:"節省；保護；保存",
+   d:[{p:"n.",w:"conservation",z:"保護；節約；保存"},{p:"n.",w:"conservationist",z:"環保人士；自然保育者"}],
+   e:[{en:"We must <em>conserve</em> water during the dry season.",zh:"我們必須在乾燥季節節約用水。"},
+      {en:"Wildlife <em>conservation</em> is vital for our planet's future.",zh:"野生動物保護對我們地球的未來至關重要。"}]},
+  {u:9,w:"threat",pos:"n.",zh:"威脅；恐嚇；危險跡象",
+   d:[{p:"v.",w:"threaten",z:"威脅；恐嚇"},{p:"adj.",w:"threatening",z:"威脅的；恐嚇的"}],
+   e:[{en:"Climate change is a serious <em>threat</em> to biodiversity.",zh:"氣候變遷對生物多樣性是一個嚴重威脅。"},
+      {en:"The dark clouds <em>threatened</em> rain all afternoon.",zh:"整個下午烏雲密布，預示著即將下雨。"}]},
+  {u:9,w:"neglecting",pos:"v.",zh:"忽視；疏忽；不顧",
+   d:[{p:"n.",w:"neglect",z:"忽視；疏忽"},{p:"adj.",w:"neglectful",z:"疏忽的；粗心的"}],
+   e:[{en:"He was <em>neglecting</em> his health by skipping meals.",zh:"他不規律進食，忽視了自身健康。"},
+      {en:"<em>Neglecting</em> regular maintenance can damage your car.",zh:"忽視定期保養可能會損壞你的汽車。"}]},
+  {u:9,w:"persisted",pos:"v.",zh:"堅持；持續；執意",
+   d:[{p:"adj.",w:"persistent",z:"持續的；堅持不懈的"},{p:"n.",w:"persistence",z:"堅持；持續"}],
+   e:[{en:"The drought <em>persisted</em> for several months.",zh:"這場乾旱持續了好幾個月。"},
+      {en:"Her <em>persistence</em> finally paid off when she got the job.",zh:"她的堅持終於在她獲得這份工作時得到了回報。"}]},
+  {u:9,w:"restrictions",pos:"n.",zh:"限制；管制；約束（複數）",
+   d:[{p:"v.",w:"restrict",z:"限制；約束"},{p:"adj.",w:"restrictive",z:"限制性的；約束的"}],
+   e:[{en:"Water use <em>restrictions</em> were imposed during the drought.",zh:"旱災期間實施了用水限制措施。"},
+      {en:"Travel <em>restrictions</em> were lifted after the pandemic.",zh:"疫情結束後旅行限制被解除了。"}]},
+  {u:9,w:"routine",pos:"n./adj.",zh:"慣例；例行程序；日常的",
+   d:[{p:"adv.",w:"routinely",z:"慣常地；例行地"},{p:"adj.",w:"non-routine",z:"非例行的；特殊的"}],
+   e:[{en:"She follows a strict morning <em>routine</em> every day.",zh:"她每天都遵循嚴格的早晨慣例。"},
+      {en:"Checking water meters is a <em>routine</em> task for inspectors.",zh:"檢查水錶是檢查員的例行任務。"}]},
+  {u:9,w:"financially",pos:"adv.",zh:"在財務上；經濟上",
+   d:[{p:"adj.",w:"financial",z:"財務的；金融的"},{p:"n.",w:"finance",z:"財務；金融"}],
+   e:[{en:"Wasting water can be costly both <em>financially</em> and environmentally.",zh:"浪費水在財務上和環境上都代價高昂。"},
+      {en:"She struggled <em>financially</em> after losing her job.",zh:"失業後，她在財務上陷入了困境。"}]},
+  {u:9,w:"campaign",pos:"n./v.",zh:"活動；運動；競選；發起運動",
+   d:[{p:"n.",w:"campaigner",z:"活動倡導者；競選者"},{p:"phrase",w:"campaign for",z:"為……發起運動"}],
+   e:[{en:"The city launched a <em>campaign</em> to reduce water waste.",zh:"這座城市發起了一場減少水資源浪費的運動。"},
+      {en:"She <em>campaigned</em> tirelessly for environmental protection.",zh:"她為環境保護不懈地推動活動。"}]},
+  {u:9,w:"framework",pos:"n.",zh:"框架；架構；體制",
+   d:[{p:"phrase",w:"within a framework",z:"在……框架之內"},{p:"n.",w:"structural framework",z:"結構性架構"}],
+   e:[{en:"The government created a legal <em>framework</em> for water conservation.",zh:"政府建立了一個節水的法律框架。"},
+      {en:"The company operates within a strict ethical <em>framework</em>.",zh:"公司在嚴格的道德框架下運作。"}]},
+  {u:9,w:"violating",pos:"v.",zh:"違反；侵犯；褻瀆",
+   d:[{p:"n.",w:"violation",z:"違反；侵犯"},{p:"n.",w:"violator",z:"違反者；侵犯者"}],
+   e:[{en:"<em>Violating</em> water restrictions may result in heavy fines.",zh:"違反用水限制可能會導致重額罰款。"},
+      {en:"He was fined for <em>violating</em> traffic rules.",zh:"他因違反交通規則而被罰款。"}]},
+  {u:9,w:"minimum",pos:"n./adj.",zh:"最低限度；最小量；最低限度的",
+   d:[{p:"adj.",w:"minimal",z:"最小的；極少的"},{p:"adv.",w:"minimally",z:"最低限度地；很少地"}],
+   e:[{en:"Each household must use a <em>minimum</em> amount of water daily.",zh:"每個家庭每天必須使用最低限度的水量。"},
+      {en:"The damage was kept to a <em>minimum</em> thanks to early action.",zh:"由於及早採取行動，損害被降至最低。"}]},
+  {u:9,w:"passage",pos:"n.",zh:"通道；段落；通過；旅程",
+   d:[{p:"v.",w:"pass",z:"通過；傳遞；超過"},{p:"phrase",w:"a rite of passage",z:"成年禮；人生轉捩點"}],
+   e:[{en:"She highlighted an important <em>passage</em> in the textbook.",zh:"她在教科書中標示了一個重要段落。"},
+      {en:"Getting a driver's license is a <em>rite of passage</em> for many teens.",zh:"對許多青少年來說，考取駕照是一個重要的人生轉捩點。"}]},
+  {u:9,w:"regulations",pos:"n.",zh:"規定；法規；管制（複數）",
+   d:[{p:"v.",w:"regulate",z:"規範；調節；管制"},{p:"adj.",w:"regulatory",z:"調節的；管制的"}],
+   e:[{en:"Strict <em>regulations</em> govern industrial water usage.",zh:"嚴格的法規規範著工業用水。"},
+      {en:"The company must comply with all environmental <em>regulations</em>.",zh:"公司必須遵守所有環境法規。"}]},
+  {u:9,w:"swiftly",pos:"adv.",zh:"迅速地；敏捷地",
+   d:[{p:"adj.",w:"swift",z:"迅速的；敏捷的"},{p:"n.",w:"swiftness",z:"迅速；敏捷"}],
+   e:[{en:"The authorities acted <em>swiftly</em> to address the water shortage.",zh:"當局迅速採取行動應對缺水問題。"},
+      {en:"Time passes <em>swiftly</em> when you are enjoying yourself.",zh:"當你享受生活時，時間流逝得很快。"}]},
+  {u:9,w:"demands",pos:"n./v.",zh:"需求；要求（複數）；要求",
+   d:[{p:"adj.",w:"demanding",z:"要求高的；費力的"},{p:"phrase",w:"in demand",z:"有需求的；受歡迎的"}],
+   e:[{en:"The population growth has increased <em>demands</em> on water supply.",zh:"人口增長增加了對供水的需求。"},
+      {en:"Being a nurse is a highly <em>demanding</em> job.",zh:"當護士是一份要求很高的工作。"}]},
+  {u:9,w:"vital",pos:"adj.",zh:"不可或缺的；至關重要的；充滿活力的",
+   d:[{p:"n.",w:"vitality",z:"活力；生命力"},{p:"adv.",w:"vitally",z:"極其重要地"}],
+   e:[{en:"Water is <em>vital</em> for all forms of life on Earth.",zh:"水對地球上所有生命形式都至關重要。"},
+      {en:"Exercise and rest are both <em>vital</em> for good health.",zh:"運動和休息對於良好的健康都是不可或缺的。"}]},
+  {u:9,w:"irrigation",pos:"n.",zh:"灌溉；沖洗（傷口）",
+   d:[{p:"v.",w:"irrigate",z:"灌溉；沖洗"},{p:"phrase",w:"irrigation system",z:"灌溉系統"}],
+   e:[{en:"Farmers rely on <em>irrigation</em> to water crops in dry regions.",zh:"農民依賴灌溉系統在乾燥地區灌溉農作物。"},
+      {en:"The new <em>irrigation</em> system saved 40% of water usage.",zh:"新的灌溉系統節省了40%的用水量。"}]},
+  {u:9,w:"rainfall",pos:"n.",zh:"降雨量；降雨",
+   d:[{p:"phrase",w:"annual rainfall",z:"年降雨量"},{p:"n.",w:"rainwater",z:"雨水"}],
+   e:[{en:"This region receives very little <em>rainfall</em> in summer.",zh:"這個地區夏季降雨量極少。"},
+      {en:"Farmers pray for adequate <em>rainfall</em> every planting season.",zh:"農民每個種植季節都祈禱能有足夠的降雨。"}]},
+  {u:9,w:"excess",pos:"n./adj.",zh:"過量；多餘；超額；過多的",
+   d:[{p:"adj.",w:"excessive",z:"過度的；過多的"},{p:"adv.",w:"excessively",z:"過度地；過分地"}],
+   e:[{en:"An <em>excess</em> of water can damage plant roots.",zh:"過多的水分會損害植物的根部。"},
+      {en:"She found his <em>excessive</em> spending habits worrying.",zh:"她對他過度消費的習慣感到擔憂。"}]},
+  {u:9,w:"drains",pos:"v./n.",zh:"排水；耗盡；消耗；排水管",
+   d:[{p:"n.",w:"drainage",z:"排水；下水道系統"},{p:"phrase",w:"down the drain",z:"浪費掉；付諸東流"}],
+   e:[{en:"All the water <em>drains</em> into the river after heavy rain.",zh:"大雨過後，所有的水都排入河流。"},
+      {en:"All his effort went <em>down the drain</em> when the deal failed.",zh:"交易失敗後，他所有的努力都付諸東流。"}]},
+  {u:9,w:"pollute",pos:"v.",zh:"污染；弄髒",
+   d:[{p:"n.",w:"pollution",z:"污染；污染物"},{p:"n.",w:"pollutant",z:"污染物；汙染源"}],
+   e:[{en:"Factories that dump waste into rivers <em>pollute</em> the water supply.",zh:"將廢棄物傾倒入河流的工廠污染了供水來源。"},
+      {en:"Air <em>pollution</em> is a serious public health issue.",zh:"空氣污染是一個嚴重的公共衛生問題。"}]},
+  {u:9,w:"manufacturers",pos:"n.",zh:"製造商；廠商（複數）",
+   d:[{p:"v.",w:"manufacture",z:"製造；生產"},{p:"n.",w:"manufacturing",z:"製造業；生產"}],
+   e:[{en:"Car <em>manufacturers</em> are now producing more electric vehicles.",zh:"汽車製造商現在正在生產更多電動車。"},
+      {en:"The <em>manufacturing</em> industry requires vast amounts of water.",zh:"製造業需要大量的用水。"}]},
+  {u:9,w:"simply put",pos:"phrase",zh:"簡單說；換句話說",
+   d:[{p:"phrase",w:"to put it simply",z:"簡單地說"},{p:"phrase",w:"in simple terms",z:"用簡單的話來說"}],
+   e:[{en:"<em>Simply put</em>, wasting water harms our future.",zh:"簡單地說，浪費水會損害我們的未來。"},
+      {en:"<em>Simply put</em>, if you work hard, you will succeed.",zh:"簡單說，如果你努力工作，你就會成功。"}]},
+
+  // ── UNIT 10 ──
+  {u:10,w:"satellites",pos:"n.",zh:"衛星；人造衛星（複數）",
+   d:[{p:"adj.",w:"satellite",z:"衛星的；依附的"},{p:"phrase",w:"satellite navigation",z:"衛星導航"}],
+   e:[{en:"Modern <em>satellites</em> help us navigate anywhere on Earth.",zh:"現代衛星幫助我們在地球上任何地方導航。"},
+      {en:"The country launched its first weather <em>satellite</em> last year.",zh:"這個國家去年發射了第一顆氣象衛星。"}]},
+  {u:10,w:"primitive",pos:"adj.",zh:"原始的；初級的；簡陋的",
+   d:[{p:"adv.",w:"primitively",z:"原始地"},{p:"n.",w:"primitiveness",z:"原始性；簡陋"}],
+   e:[{en:"Before GPS, people used <em>primitive</em> tools to navigate.",zh:"在GPS之前，人們使用原始工具來導航。"},
+      {en:"The cave paintings are a form of <em>primitive</em> communication.",zh:"洞穴壁畫是一種原始的溝通形式。"}]},
+  {u:10,w:"ancestors",pos:"n.",zh:"祖先；先人（複數）",
+   d:[{p:"adj.",w:"ancestral",z:"祖先的；祖傳的"},{p:"n.",w:"ancestry",z:"祖先；血統"}],
+   e:[{en:"Our <em>ancestors</em> used stars to find their way at sea.",zh:"我們的祖先用星星在海上導航找路。"},
+      {en:"She traced her <em>ancestry</em> back to ancient China.",zh:"她把自己的血統追溯到古代中國。"}]},
+  {u:10,w:"relied",pos:"v.",zh:"依靠；仰賴；信任",
+   d:[{p:"n.",w:"reliance",z:"依靠；信任"},{p:"adj.",w:"reliable",z:"可靠的；值得信賴的"}],
+   e:[{en:"Ancient sailors <em>relied</em> on stars for navigation.",zh:"古代水手依靠星星來導航。"},
+      {en:"She is a very <em>reliable</em> team member who always delivers.",zh:"她是一個非常可靠的團隊成員，總是能完成任務。"}]},
+  {u:10,w:"acute",pos:"adj.",zh:"敏銳的；嚴重的；急性的",
+   d:[{p:"adv.",w:"acutely",z:"敏銳地；劇烈地"},{p:"n.",w:"acuteness",z:"敏銳；嚴重性"}],
+   e:[{en:"Birds have an <em>acute</em> sense of direction and spatial memory.",zh:"鳥類擁有敏銳的方向感和空間記憶力。"},
+      {en:"The region is facing an <em>acute</em> water shortage.",zh:"這個地區正面臨嚴重的缺水問題。"}]},
+  {u:10,w:"magnetic",pos:"adj.",zh:"磁性的；有磁力的；有吸引力的",
+   d:[{p:"n.",w:"magnetism",z:"磁性；魅力"},{p:"n.",w:"magnet",z:"磁鐵；有吸引力的人事物"}],
+   e:[{en:"Some animals sense the Earth's <em>magnetic</em> field to navigate.",zh:"一些動物感應地球的磁場來導航。"},
+      {en:"She has a <em>magnetic</em> personality that draws everyone to her.",zh:"她擁有一種能吸引所有人的迷人個性。"}]},
+  {u:10,w:"dedicates",pos:"v.",zh:"奉獻；致力於；獻身於",
+   d:[{p:"adj.",w:"dedicated",z:"專注的；獻身的"},{p:"n.",w:"dedication",z:"奉獻；獻身；題辭"}],
+   e:[{en:"She <em>dedicates</em> hours every day to improving her skills.",zh:"她每天花費數小時致力於提升自己的技能。"},
+      {en:"His <em>dedication</em> to research earned him international recognition.",zh:"他對研究的奉獻為他贏得了國際認可。"}]},
+  {u:10,w:"pursuit",pos:"n.",zh:"追求；追趕；嗜好；活動",
+   d:[{p:"v.",w:"pursue",z:"追求；從事；追趕"},{p:"phrase",w:"in pursuit of",z:"追求……；追趕……"}],
+   e:[{en:"The scientist spent her life in <em>pursuit</em> of a cure.",zh:"這位科學家畢生都在追求治療方法。"},
+      {en:"He left his job in <em>pursuit</em> of his dream.",zh:"他為了追求夢想而辭去工作。"}]},
+  {u:10,w:"disgust",pos:"n./v.",zh:"厭惡；噁心；令人厭惡",
+   d:[{p:"adj.",w:"disgusting",z:"令人噁心的；令人厭惡的"},{p:"adj.",w:"disgusted",z:"感到厭惡的"}],
+   e:[{en:"She looked at the polluted river with <em>disgust</em>.",zh:"她厭惡地看著那條被污染的河流。"},
+      {en:"The <em>disgusting</em> smell coming from the drain was unbearable.",zh:"從排水管散發出的噁心氣味令人難以忍受。"}]},
+  {u:10,w:"indispensable",pos:"adj.",zh:"不可或缺的；必不可少的",
+   d:[{p:"adv.",w:"indispensably",z:"不可或缺地"},{p:"phrase",w:"indispensable to",z:"對……不可或缺的"}],
+   e:[{en:"Water is <em>indispensable</em> to all living things.",zh:"水對所有生命來說都是不可或缺的。"},
+      {en:"A good map is <em>indispensable</em> for hikers in the mountains.",zh:"一張好地圖對山中的健行者來說是不可或缺的。"}]},
+  {u:10,w:"nutrients",pos:"n.",zh:"營養素；養分（複數）",
+   d:[{p:"adj.",w:"nutritious",z:"營養的；有益健康的"},{p:"n.",w:"nutrition",z:"營養；營養學"}],
+   e:[{en:"Birds need key <em>nutrients</em> to maintain their navigation ability.",zh:"鳥類需要關鍵營養素來維持其導航能力。"},
+      {en:"Vegetables are packed with <em>nutrients</em> that the body needs.",zh:"蔬菜富含身體所需的營養素。"}]},
+  {u:10,w:"storage",pos:"n.",zh:"儲存；儲藏；倉儲",
+   d:[{p:"v.",w:"store",z:"儲存；存放"},{p:"adj.",w:"stored",z:"儲存的；存放的"}],
+   e:[{en:"Migratory birds have excellent mental <em>storage</em> for landmarks.",zh:"候鳥對地標擁有出色的心理儲存能力。"},
+      {en:"The warehouse has large <em>storage</em> space for goods.",zh:"這個倉庫有大型貨物儲存空間。"}]},
+  {u:10,w:"expertise",pos:"n.",zh:"專業知識；專長；專業技能",
+   d:[{p:"n.",w:"expert",z:"專家；行家"},{p:"adj.",w:"expert",z:"專業的；內行的"}],
+   e:[{en:"Her <em>expertise</em> in bird behavior helped solve the mystery.",zh:"她在鳥類行為方面的專業知識幫助解開了這個謎。"},
+      {en:"The surgeon's <em>expertise</em> saved the patient's life.",zh:"外科醫生的專業技能救了病人的生命。"}]},
+  {u:10,w:"collector",pos:"n.",zh:"收集者；收藏家；收稅員",
+   d:[{p:"v.",w:"collect",z:"收集；收藏；徵收"},{p:"n.",w:"collection",z:"收藏；集合；收款"}],
+   e:[{en:"A stamp <em>collector</em> can travel the world through rare prints.",zh:"集郵者可以通過稀有郵票遊歷世界。"},
+      {en:"She is an avid <em>collector</em> of vintage jewelry.",zh:"她是一位狂熱的古董珠寶收藏家。"}]},
+  {u:10,w:"scents",pos:"n.",zh:"氣味；香味；嗅跡（複數）",
+   d:[{p:"v.",w:"scent",z:"嗅出；使充滿氣味"},{p:"adj.",w:"scented",z:"有香味的；散發氣味的"}],
+   e:[{en:"Dogs track criminals using their powerful sense of <em>scent</em>.",zh:"狗用牠們強大的嗅覺追蹤罪犯。"},
+      {en:"The air was filled with the <em>scents</em> of blooming flowers.",zh:"空氣中充滿了盛開花朵的香味。"}]},
+  {u:10,w:"attribute",pos:"v./n.",zh:"歸因於；把……歸功於；特質；屬性",
+   d:[{p:"n.",w:"attribution",z:"歸因；歸屬"},{p:"phrase",w:"attribute to",z:"將……歸因於"}],
+   e:[{en:"Scientists <em>attribute</em> birds' navigation skills to magnetic sensitivity.",zh:"科學家將鳥類的導航技能歸因於對磁場的敏感度。"},
+      {en:"She <em>attributed</em> her success to hard work and determination.",zh:"她把自己的成功歸功於努力和決心。"}]},
+  {u:10,w:"conduct",pos:"v./n.",zh:"進行；指揮；行為；導電",
+   d:[{p:"n.",w:"conductor",z:"指揮；導體；車長"},{p:"adj.",w:"well-conducted",z:"管理良好的"}],
+   e:[{en:"Researchers <em>conducted</em> experiments on bird navigation.",zh:"研究人員對鳥類導航進行了實驗。"},
+      {en:"His <em>conduct</em> during the debate was professional and polite.",zh:"他在辯論期間的行為專業而有禮貌。"}]},
+  {u:10,w:"detecting",pos:"v.",zh:"偵測；發現；察覺",
+   d:[{p:"n.",w:"detection",z:"偵測；發現"},{p:"n.",w:"detector",z:"偵測器；探測器"}],
+   e:[{en:"Some fish are capable of <em>detecting</em> electric fields in water.",zh:"一些魚類能夠偵測水中的電場。"},
+      {en:"The smoke <em>detector</em> saved the family during the fire.",zh:"煙霧偵測器在火災中救了這家人。"}]},
+  {u:10,w:"symmetry",pos:"n.",zh:"對稱；均衡；對稱性",
+   d:[{p:"adj.",w:"symmetrical",z:"對稱的；均衡的"},{p:"adv.",w:"symmetrically",z:"對稱地；均衡地"}],
+   e:[{en:"Bees use <em>symmetry</em> to identify the center of flowers.",zh:"蜜蜂利用對稱性來識別花的中心。"},
+      {en:"The human face has a natural <em>symmetry</em> that we find attractive.",zh:"人臉具有我們覺得有吸引力的自然對稱性。"}]},
+  {u:10,w:"consults",pos:"v.",zh:"諮詢；請教；查閱",
+   d:[{p:"n.",w:"consultation",z:"諮詢；商量"},{p:"n.",w:"consultant",z:"顧問；諮詢師"}],
+   e:[{en:"The explorer always <em>consults</em> local maps before hiking.",zh:"探險家在健行前總是查閱當地地圖。"},
+      {en:"She regularly <em>consults</em> a nutritionist about her diet.",zh:"她定期向營養師諮詢關於飲食的問題。"}]},
+  {u:10,w:"galaxy",pos:"n.",zh:"星系；銀河；眾多出色的人事物",
+   d:[{p:"adj.",w:"galactic",z:"銀河的；星系的"},{p:"phrase",w:"Milky Way galaxy",z:"銀河系"}],
+   e:[{en:"The <em>galaxy</em> contains billions of stars like our sun.",zh:"這個星系包含了數十億顆像我們太陽一樣的恆星。"},
+      {en:"Ancient navigators used the <em>galaxy</em> as their guide at night.",zh:"古代航海家在夜晚以銀河作為引路的嚮導。"}]},
+  {u:10,w:"diverted",pos:"v.",zh:"使轉移；使轉向；轉移注意力",
+   d:[{p:"n.",w:"diversion",z:"轉移；繞行；消遣"},{p:"adj.",w:"diverted",z:"被轉移的；繞道的"}],
+   e:[{en:"The river was <em>diverted</em> to irrigate farmland.",zh:"河流被引導轉向以灌溉農地。"},
+      {en:"She <em>diverted</em> the child's attention with a toy.",zh:"她用玩具轉移了孩子的注意力。"}]},
+
+  // ── UNIT 11 ──
+  {u:11,w:"earnest",pos:"adj.",zh:"認真的；真誠的；誠摯的",
+   d:[{p:"adv.",w:"earnestly",z:"認真地；誠摯地"},{p:"phrase",w:"in earnest",z:"認真地；正式開始"}],
+   e:[{en:"She made an <em>earnest</em> effort to improve her grades.",zh:"她認真地努力改善自己的成績。"},
+      {en:"He began studying <em>in earnest</em> after failing the first test.",zh:"第一次考試不及格後，他開始認真學習。"}]},
+  {u:11,w:"obediently",pos:"adv.",zh:"順從地；服從地；乖地",
+   d:[{p:"adj.",w:"obedient",z:"順從的；服從的"},{p:"n.",w:"obedience",z:"服從；順從"}],
+   e:[{en:"The dog sat <em>obediently</em> and waited for its owner.",zh:"那隻狗乖乖地坐著等待主人。"},
+      {en:"The students listened <em>obediently</em> to the teacher's instructions.",zh:"學生們順從地聆聽老師的指示。"}]},
+  {u:11,w:"drilling",pos:"v./n.",zh:"反覆練習；操練；鑽孔",
+   d:[{p:"v.",w:"drill",z:"操練；反覆練習；鑽孔"},{p:"phrase",w:"drilling exercises",z:"操練練習；鑽孔作業"}],
+   e:[{en:"The teacher was <em>drilling</em> the students on grammar rules.",zh:"老師正在反覆操練學生熟記文法規則。"},
+      {en:"Oil companies are <em>drilling</em> for resources offshore.",zh:"石油公司正在近海鑽探資源。"}]},
+  {u:11,w:"economic",pos:"adj.",zh:"經濟的；與經濟有關的",
+   d:[{p:"n.",w:"economy",z:"經濟；節約"},{p:"n.",w:"economics",z:"經濟學"}],
+   e:[{en:"The country faced a serious <em>economic</em> crisis.",zh:"這個國家面臨了嚴重的經濟危機。"},
+      {en:"Education has <em>economic</em> benefits for both individuals and society.",zh:"教育對個人和社會都有經濟上的益處。"}]},
+  {u:11,w:"occupation",pos:"n.",zh:"職業；工作；佔領",
+   d:[{p:"v.",w:"occupy",z:"佔據；使從事"},{p:"adj.",w:"occupied",z:"被佔用的；忙碌的"}],
+   e:[{en:"What is your <em>occupation</em>? — I am a teacher.",zh:"你的職業是什麼？——我是一名老師。"},
+      {en:"The historical site was under foreign <em>occupation</em> for decades.",zh:"這個歷史遺址被外國佔領了數十年。"}]},
+  {u:11,w:"initial",pos:"adj./n.",zh:"最初的；初始的；首字母",
+   d:[{p:"adv.",w:"initially",z:"最初；起初"},{p:"v.",w:"initiate",z:"開始；發起；引介"}],
+   e:[{en:"The <em>initial</em> stage of learning is always the hardest.",zh:"學習的最初階段總是最困難的。"},
+      {en:"<em>Initially</em>, she was shy, but she soon opened up.",zh:"起初她很害羞，但很快就敞開心房了。"}]},
+  {u:11,w:"reciting",pos:"v.",zh:"背誦；朗誦；逐一列舉",
+   d:[{p:"n.",w:"recitation",z:"背誦；朗誦"},{p:"v.",w:"recite",z:"背誦；朗誦"}],
+   e:[{en:"The students were <em>reciting</em> multiplication tables out loud.",zh:"學生們在大聲背誦乘法表。"},
+      {en:"She impressed the judges by <em>reciting</em> the poem from memory.",zh:"她憑記憶朗誦那首詩，讓評審留下了深刻印象。"}]},
+  {u:11,w:"procedure",pos:"n.",zh:"程序；步驟；手術",
+   d:[{p:"adj.",w:"procedural",z:"程序上的；手術的"},{p:"phrase",w:"follow procedures",z:"遵循程序"}],
+   e:[{en:"Follow the correct <em>procedure</em> when submitting your application.",zh:"提交申請時請遵循正確的程序。"},
+      {en:"The operation is a minor <em>procedure</em> that takes thirty minutes.",zh:"這個手術是一個只需三十分鐘的小型手術。"}]},
+  {u:11,w:"forgetful",pos:"adj.",zh:"健忘的；容易忘記的",
+   d:[{p:"n.",w:"forgetfulness",z:"健忘；失憶"},{p:"adv.",w:"forgetfully",z:"健忘地"}],
+   e:[{en:"He has become more <em>forgetful</em> as he gets older.",zh:"隨著年齡增長，他變得越來越健忘。"},
+      {en:"Being <em>forgetful</em> about deadlines can hurt your career.",zh:"對截止日期的健忘可能會傷害你的職業生涯。"}]},
+  {u:11,w:"retaining",pos:"v.",zh:"保留；保持；記住",
+   d:[{p:"n.",w:"retention",z:"保留；記憶力；留住"},{p:"adj.",w:"retentive",z:"有記憶力的；保留的"}],
+   e:[{en:"Reading aloud helps with <em>retaining</em> new vocabulary.",zh:"大聲朗讀有助於記住新詞彙。"},
+      {en:"The company focuses on <em>retaining</em> its best employees.",zh:"公司專注於留住最優秀的員工。"}]},
+  {u:11,w:"illustrate",pos:"v.",zh:"說明；舉例；插圖",
+   d:[{p:"n.",w:"illustration",z:"插圖；說明；例子"},{p:"n.",w:"illustrator",z:"插畫家；繪圖者"}],
+   e:[{en:"She used diagrams to <em>illustrate</em> her explanation.",zh:"她用圖表來說明她的解釋。"},
+      {en:"The book's <em>illustrations</em> are beautiful and detailed.",zh:"這本書的插圖既美麗又細緻。"}]},
+  {u:11,w:"continents",pos:"n.",zh:"大洲；洲（複數）",
+   d:[{p:"adj.",w:"continental",z:"大洲的；大陸性的"},{p:"phrase",w:"across continents",z:"跨洲；橫跨各大洲"}],
+   e:[{en:"She has traveled to all seven <em>continents</em>.",zh:"她走遍了所有七大洲。"},
+      {en:"Students must memorize the names of all seven <em>continents</em>.",zh:"學生必須記住所有七大洲的名稱。"}]},
+  {u:11,w:"vividly",pos:"adv.",zh:"生動地；鮮明地；清晰地",
+   d:[{p:"adj.",w:"vivid",z:"生動的；鮮明的；逼真的"},{p:"n.",w:"vividness",z:"生動；鮮明"}],
+   e:[{en:"She could <em>vividly</em> recall every detail of that day.",zh:"她能清晰地回憶起那天的每一個細節。"},
+      {en:"The author described the scenery so <em>vividly</em> that we felt we were there.",zh:"作者描寫風景如此生動，讓我們感覺身臨其境。"}]},
+  {u:11,w:"clarify",pos:"v.",zh:"澄清；說明；闡明",
+   d:[{p:"n.",w:"clarification",z:"澄清；說明"},{p:"adj.",w:"clear",z:"清楚的；明白的"}],
+   e:[{en:"Could you <em>clarify</em> what you meant by that statement?",zh:"你能澄清你那句話的意思嗎？"},
+      {en:"She asked for <em>clarification</em> before answering the question.",zh:"她在回答問題前要求澄清。"}]},
+  {u:11,w:"cramming",pos:"v.",zh:"臨時抱佛腳；死記硬背；塞滿",
+   d:[{p:"phrase",w:"cram for an exam",z:"為考試臨時抱佛腳"},{p:"v.",w:"cram",z:"塞滿；臨時苦讀"}],
+   e:[{en:"Students who keep <em>cramming</em> the night before exams tend to forget quickly.",zh:"在考前一晚臨時抱佛腳的學生往往很快就忘記了。"},
+      {en:"Don't <em>cram</em>—regular review is much more effective.",zh:"不要臨時抱佛腳——定期複習有效得多。"}]},
+  {u:11,w:"deadline",pos:"n.",zh:"截止期限；最後期限",
+   d:[{p:"phrase",w:"meet a deadline",z:"趕上截止期限"},{p:"phrase",w:"miss a deadline",z:"錯過截止期限"}],
+   e:[{en:"She always manages to meet her <em>deadlines</em> on time.",zh:"她總是能準時趕上截止期限。"},
+      {en:"The team worked through the night to beat the <em>deadline</em>.",zh:"團隊徹夜工作以趕上截止期限。"}]},
+  {u:11,w:"adequate",pos:"adj.",zh:"足夠的；適當的；差強人意的",
+   d:[{p:"adv.",w:"adequately",z:"足夠地；適當地"},{p:"n.",w:"adequacy",z:"足夠；適當"}],
+   e:[{en:"Make sure you get <em>adequate</em> sleep before the exam.",zh:"確保你在考試前睡眠充足。"},
+      {en:"Her preparation was barely <em>adequate</em> for the advanced class.",zh:"她的準備對於進階班來說勉強足夠。"}]},
+  {u:11,w:"foundation",pos:"n.",zh:"基礎；地基；基金會；奠基",
+   d:[{p:"v.",w:"found",z:"建立；創辦"},{p:"adj.",w:"foundational",z:"基礎的；根本的"}],
+   e:[{en:"A strong <em>foundation</em> in grammar helps you write better.",zh:"紮實的文法基礎幫助你寫得更好。"},
+      {en:"She built her business on a solid <em>foundation</em> of trust.",zh:"她在堅實的信任基礎上建立了她的事業。"}]},
+  {u:11,w:"gaps",pos:"n.",zh:"缺口；差距；空白；知識漏洞（複數）",
+   d:[{p:"phrase",w:"fill the gaps",z:"填補漏洞；填補差距"},{p:"phrase",w:"achievement gap",z:"學習差距；成就落差"}],
+   e:[{en:"The teacher helped students identify <em>gaps</em> in their knowledge.",zh:"老師幫助學生找出知識上的漏洞。"},
+      {en:"There are still significant <em>gaps</em> in our understanding of the brain.",zh:"我們對大腦的理解仍存在重大的差距。"}]},
+  {u:11,w:"sessions",pos:"n.",zh:"課程；會期；一段時間（複數）",
+   d:[{p:"phrase",w:"study session",z:"學習課程；讀書時間"},{p:"phrase",w:"recording session",z:"錄音時間"}],
+   e:[{en:"Short study <em>sessions</em> are more effective than long ones.",zh:"短暫的學習課程比長時間學習更有效率。"},
+      {en:"They had three practice <em>sessions</em> before the performance.",zh:"他們在演出前進行了三次練習課程。"}]},
+  {u:11,w:"diligence",pos:"n.",zh:"勤奮；努力；勤勉",
+   d:[{p:"adj.",w:"diligent",z:"勤奮的；努力的"},{p:"adv.",w:"diligently",z:"勤奮地；努力地"}],
+   e:[{en:"Her <em>diligence</em> in studying paid off with top scores.",zh:"她在學業上的勤奮努力以頂尖的分數得到了回報。"},
+      {en:"He worked <em>diligently</em> every day to master the language.",zh:"他每天勤奮地工作以精通這門語言。"}]},
+
+  // ── UNIT 12 ──
+  {u:12,w:"hesitation",pos:"n.",zh:"猶豫；遲疑；躊躇",
+   d:[{p:"v.",w:"hesitate",z:"猶豫；遲疑"},{p:"adj.",w:"hesitant",z:"猶豫的；不確定的"}],
+   e:[{en:"Without <em>hesitation</em>, she donated her leftovers to charity.",zh:"她毫不猶豫地把多餘的食物捐給了慈善機構。"},
+      {en:"He spoke <em>without hesitation</em> when asked about his beliefs.",zh:"當被問及他的信念時，他毫不猶豫地說了出來。"}]},
+  {u:12,w:"discard",pos:"v./n.",zh:"丟棄；拋棄；廢棄物",
+   d:[{p:"adj.",w:"discarded",z:"被丟棄的；被捨棄的"},{p:"phrase",w:"discard waste",z:"丟棄廢物"}],
+   e:[{en:"Many restaurants <em>discard</em> tons of uneaten food each day.",zh:"許多餐廳每天丟棄大量未食用的食物。"},
+      {en:"She <em>discarded</em> the old clothes she no longer wore.",zh:"她丟棄了不再穿的舊衣服。"}]},
+  {u:12,w:"issue",pos:"n./v.",zh:"問題；議題；發行；發放",
+   d:[{p:"phrase",w:"address an issue",z:"處理問題"},{p:"phrase",w:"at issue",z:"爭議中的；討論中的"}],
+   e:[{en:"Food waste is a major <em>issue</em> facing the world today.",zh:"食物浪費是當今世界面臨的重大問題。"},
+      {en:"The government <em>issued</em> new guidelines on waste management.",zh:"政府發布了新的廢棄物管理指導方針。"}]},
+  {u:12,w:"tons",pos:"n.",zh:"噸；大量（複數）",
+   d:[{p:"phrase",w:"tons of",z:"大量的"},{p:"n.",w:"tonnage",z:"噸位；噸數"}],
+   e:[{en:"Supermarkets throw away <em>tons</em> of food every day.",zh:"超市每天丟棄大量的食物。"},
+      {en:"She has <em>tons</em> of experience in marketing.",zh:"她在行銷方面有大量的經驗。"}]},
+  {u:12,w:"heaps",pos:"n.",zh:"堆；大量；很多（複數）",
+   d:[{p:"phrase",w:"heaps of",z:"一大堆的；很多的"},{p:"v.",w:"heap",z:"堆積；大量給予"}],
+   e:[{en:"There were <em>heaps</em> of food wasted at the banquet.",zh:"宴會上有大量食物被浪費掉了。"},
+      {en:"She received <em>heaps</em> of praise for her performance.",zh:"她的表演獲得了大量的讚揚。"}]},
+  {u:12,w:"exclude",pos:"v.",zh:"排除；排斥；把……排除在外",
+   d:[{p:"n.",w:"exclusion",z:"排除；除外"},{p:"adj.",w:"exclusive",z:"排外的；獨家的；高級的"}],
+   e:[{en:"The law does not <em>exclude</em> anyone from access to food aid.",zh:"這項法律不排除任何人獲得糧食援助。"},
+      {en:"She felt <em>excluded</em> from the group discussion.",zh:"她感到被排除在群體討論之外。"}]},
+  {u:12,w:"substantial",pos:"adj.",zh:"大量的；重要的；堅固的",
+   d:[{p:"adv.",w:"substantially",z:"大量地；實質上"},{p:"n.",w:"substance",z:"物質；實質；大量"}],
+   e:[{en:"A <em>substantial</em> amount of food is lost during transportation.",zh:"大量食物在運輸過程中損失了。"},
+      {en:"Her salary has increased <em>substantially</em> this year.",zh:"她今年的薪資大幅增加了。"}]},
+  {u:12,w:"economically",pos:"adv.",zh:"在經濟上；節約地",
+   d:[{p:"adj.",w:"economic",z:"經濟的"},{p:"adj.",w:"economical",z:"節省的；合算的"}],
+   e:[{en:"Food waste harms both the environment and <em>economically</em> disadvantaged families.",zh:"食物浪費既傷害環境，也傷害了在經濟上處於不利地位的家庭。"},
+      {en:"She manages her budget very <em>economically</em>.",zh:"她非常節省地管理自己的預算。"}]},
+  {u:12,w:"emissions",pos:"n.",zh:"排放；排放物（複數）",
+   d:[{p:"v.",w:"emit",z:"排放；散發"},{p:"phrase",w:"carbon emissions",z:"碳排放"}],
+   e:[{en:"Rotting food in landfills produces harmful greenhouse gas <em>emissions</em>.",zh:"垃圾填埋場中腐爛的食物會產生有害的溫室氣體排放。"},
+      {en:"Many countries are pledging to cut their <em>emissions</em>.",zh:"許多國家正在承諾削減其排放量。"}]},
+  {u:12,w:"intend",pos:"v.",zh:"打算；意圖；有意",
+   d:[{p:"n.",w:"intention",z:"意圖；目的；打算"},{p:"adj.",w:"intentional",z:"故意的；有意的"}],
+   e:[{en:"I <em>intend</em> to reduce food waste starting this week.",zh:"我打算從本週開始減少食物浪費。"},
+      {en:"His <em>intention</em> was to help, but the result was confusing.",zh:"他的意圖是幫忙，但結果卻造成了混亂。"}]},
+  {u:12,w:"ban",pos:"v./n.",zh:"禁止；禁令",
+   d:[{p:"adj.",w:"banned",z:"被禁止的"},{p:"phrase",w:"lift a ban",z:"解除禁令"}],
+   e:[{en:"Several countries have introduced a <em>ban</em> on single-use plastics.",zh:"幾個國家已對一次性塑膠製品實施了禁令。"},
+      {en:"The city <em>banned</em> restaurants from throwing away edible food.",zh:"這座城市禁止餐廳丟棄可食用的食物。"}]},
+  {u:12,w:"initiated",pos:"v.",zh:"發起；開始；引介",
+   d:[{p:"n.",w:"initiative",z:"主動性；倡議；行動"},{p:"adj.",w:"initial",z:"最初的；初始的"}],
+   e:[{en:"The government <em>initiated</em> a program to reduce food waste.",zh:"政府發起了一項減少食物浪費的計劃。"},
+      {en:"She took the <em>initiative</em> to organize the community event.",zh:"她主動發起組織了社區活動。"}]},
+  {u:12,w:"inspect",pos:"v.",zh:"檢查；視察；審視",
+   d:[{p:"n.",w:"inspection",z:"檢查；視察"},{p:"n.",w:"inspector",z:"檢察官；視察員"}],
+   e:[{en:"Health officials regularly <em>inspect</em> restaurants for safety.",zh:"衛生官員定期檢查餐廳的安全情況。"},
+      {en:"The <em>inspector</em> found several violations during the check.",zh:"視察員在檢查中發現了幾項違規行為。"}]},
+  {u:12,w:"reflect",pos:"v.",zh:"反映；反射；深思；反省",
+   d:[{p:"n.",w:"reflection",z:"反射；倒影；深思；反省"},{p:"adj.",w:"reflective",z:"反射的；沉思的"}],
+   e:[{en:"The new law <em>reflects</em> growing public concern about food waste.",zh:"新法律反映了公眾對食物浪費日益增長的關注。"},
+      {en:"She took time to <em>reflect</em> on her past choices.",zh:"她花時間反省了自己過去的選擇。"}]},
+  {u:12,w:"instituted",pos:"v.",zh:"建立；制定；實施",
+   d:[{p:"n.",w:"institution",z:"機構；制度；慣例"},{p:"adj.",w:"institutional",z:"機構的；制度的"}],
+   e:[{en:"The city <em>instituted</em> strict rules to reduce food waste.",zh:"這座城市制定了嚴格的規定以減少食物浪費。"},
+      {en:"She was admitted to a prestigious academic <em>institution</em>.",zh:"她被一所享有盛譽的學術機構錄取。"}]},
+  {u:12,w:"livestock",pos:"n.",zh:"家畜；牲畜",
+   d:[{p:"phrase",w:"livestock farming",z:"畜牧業"},{p:"phrase",w:"raise livestock",z:"飼養家畜"}],
+   e:[{en:"Food scraps can be used to feed <em>livestock</em> on farms.",zh:"食物殘渣可以用來餵養農場上的家畜。"},
+      {en:"The drought severely affected <em>livestock</em> and crop production.",zh:"乾旱嚴重影響了家畜和農作物的生產。"}]},
+  {u:12,w:"cooperation",pos:"n.",zh:"合作；協作；配合",
+   d:[{p:"v.",w:"cooperate",z:"合作；協力；配合"},{p:"adj.",w:"cooperative",z:"合作的；協作的"}],
+   e:[{en:"Solving food waste requires <em>cooperation</em> between governments and citizens.",zh:"解決食物浪費需要政府和市民之間的合作。"},
+      {en:"Thank you for your <em>cooperation</em> during the inspection.",zh:"感謝您在視察期間的配合。"}]},
+  {u:12,w:"mission",pos:"n.",zh:"使命；任務；宗旨",
+   d:[{p:"n.",w:"missionary",z:"傳教士；使命傳播者"},{p:"phrase",w:"on a mission",z:"正在執行任務；一心一意"}],
+   e:[{en:"The organization's <em>mission</em> is to end hunger worldwide.",zh:"這個組織的使命是消除全世界的飢餓。"},
+      {en:"She was <em>on a mission</em> to cut down waste in the kitchen.",zh:"她一心一意地想要減少廚房裡的浪費。"}]},
+  {u:12,w:"tempted",pos:"adj./v.",zh:"受誘惑的；動心的；誘惑",
+   d:[{p:"n.",w:"temptation",z:"誘惑；魅力"},{p:"adj.",w:"tempting",z:"誘人的；有吸引力的"}],
+   e:[{en:"She was <em>tempted</em> to throw away the leftover food.",zh:"她受到誘惑，想把剩下的食物扔掉。"},
+      {en:"The dessert was very <em>tempting</em>, but she resisted.",zh:"那個甜點非常誘人，但她忍住了。"}]},
+  {u:12,w:"guidelines",pos:"n.",zh:"指導方針；準則（複數）",
+   d:[{p:"phrase",w:"follow guidelines",z:"遵循指導方針"},{p:"n.",w:"guideline",z:"指導方針（單數）"}],
+   e:[{en:"The health department issued new <em>guidelines</em> for food storage.",zh:"衛生部門發布了新的食物儲存指導方針。"},
+      {en:"She follows strict dietary <em>guidelines</em> recommended by her doctor.",zh:"她遵循醫生推薦的嚴格飲食準則。"}]},
+  {u:12,w:"leftovers",pos:"n.",zh:"剩菜；剩餘物（複數）",
+   d:[{p:"adj.",w:"leftover",z:"剩餘的；留下的"},{p:"phrase",w:"use up leftovers",z:"用完剩菜"}],
+   e:[{en:"She made a delicious soup from last night's <em>leftovers</em>.",zh:"她用昨晚的剩菜做了一道美味的湯。"},
+      {en:"Always store <em>leftovers</em> in airtight containers.",zh:"剩菜請務必存放在密封容器中。"}]},
+  {u:12,w:"doggy bag",pos:"phrase/n.",zh:"打包帶走的餐盒；外帶剩菜的袋子",
+   d:[{p:"phrase",w:"ask for a doggy bag",z:"要求打包"},{p:"phrase",w:"take home in a doggy bag",z:"打包帶回家"}],
+   e:[{en:"She asked the waiter for a <em>doggy bag</em> to take home the rest of her meal.",zh:"她請服務生幫她打包帶走剩餘的食物。"},
+      {en:"Asking for a <em>doggy bag</em> at restaurants helps reduce food waste.",zh:"在餐廳要求打包有助於減少食物浪費。"}]},
+  {u:12,w:"gobble",pos:"v.",zh:"狼吞虎嚥；急切地消費；咕嚕叫",
+   d:[{p:"phrase",w:"gobble up",z:"狼吞虎嚥；迅速吞噬"},{p:"phrase",w:"gobble down",z:"急忙吃下"}],
+   e:[{en:"The children <em>gobbled</em> up all the pizza in minutes.",zh:"孩子們幾分鐘內就狼吞虎嚥地吃完了所有披薩。"},
+      {en:"Don't <em>gobble</em> your food—eat slowly and enjoy each bite.",zh:"不要狼吞虎嚥——慢慢吃，享受每一口。"}]},
+];
+
+let currentUnit = 'all';
+
+function buildPage() {
+  const main = document.getElementById('mainContent');
+  [7,8,9,10,11,12].forEach(u => {
+    const words = VOCAB.filter(v => v.u === u);
+    const sec = document.createElement('div');
+    sec.className = 'unit-section';
+    sec.dataset.unit = u;
+
+    const col = UNITS[u].color;
+    sec.innerHTML = `
+      <div class="unit-heading">
+        <div class="unit-badge" style="background:${col}">${u}</div>
+        <div class="unit-title-text">
+          <div class="unit-num" style="color:${col}">Unit ${u}</div>
+          <div class="unit-topic">${UNITS[u].topic}</div>
+        </div>
+        <span class="unit-count-tag">${words.length} 個單字</span>
+      </div>
+      <div class="vocab-grid" id="grid-${u}"></div>
+    `;
+    main.appendChild(sec);
+
+    const grid = sec.querySelector('.vocab-grid');
+    words.forEach(v => {
+      const card = document.createElement('div');
+      card.className = 'vocab-card';
+      card.dataset.unit = u;
+      card.dataset.word = v.w.toLowerCase();
+      card.dataset.zh = v.zh;
+
+      const chips = v.d.map(d =>
+        `<span class="chip"><span class="chip-pos">${d.p}</span><span class="chip-word">${d.w}</span><span class="chip-zh">${d.z}</span></span>`
+      ).join('');
+
+      const exs = v.e.map(e =>
+        `<div class="ex-item"><div class="ex-en">${e.en}</div><div class="ex-zh">${e.zh}</div></div>`
+      ).join('');
+
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="word-block">
+            <div class="word-en">${v.w}</div>
+            <div class="word-zh">${v.zh}</div>
+          </div>
+          <span class="pos-tag">${v.pos}</span>
+        </div>
+        <div class="deriv-box">
+          <div class="deriv-label">衍生詞 / 片語</div>
+          <div class="deriv-chips">${chips}</div>
+        </div>
+        <div class="ex-section">
+          <div class="ex-label">例句</div>
+          ${exs}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  });
+  updateCount();
+}
+
+function setUnit(u, btn) {
+  currentUnit = u;
+  document.querySelectorAll('.utab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.vocab-card');
+  let vis = 0;
+  cards.forEach(c => {
+    const uMatch = currentUnit === 'all' || c.dataset.unit === currentUnit;
+    const qMatch = !q || c.dataset.word.includes(q) || c.dataset.zh.includes(q);
+    const show = uMatch && qMatch;
+    c.classList.toggle('hidden', !show);
+    if (show) vis++;
+  });
+
+  document.querySelectorAll('.unit-section').forEach(s => {
+    const unitMatch = currentUnit === 'all' || s.dataset.unit === currentUnit;
+    s.classList.toggle('hidden', !unitMatch);
+  });
+
+  document.getElementById('visibleCount').textContent = vis;
+  document.getElementById('noResults').classList.toggle('show', vis === 0 && q !== '');
+}
+
+function updateCount() {
+  document.getElementById('visibleCount').textContent = VOCAB.length;
+}
+
+buildPage();
+</script>
+</body>
+</html>
