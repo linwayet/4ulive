@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿聯酋完整課程 · 20回系列</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDF6EC;
+  --warm1: #F5E6C8;
+  --warm2: #EDCFA0;
+  --amber: #D4923A;
+  --amber-deep: #B8732A;
+  --amber-light: #F0B863;
+  --coral: #E07A5F;
+  --coral-light: #F2A68F;
+  --sand: #C8A96E;
+  --brown: #7B5230;
+  --brown-light: #A07040;
+  --text-dark: #3D2B1F;
+  --text-mid: #6B4C35;
+  --text-light: #9A7860;
+  --phase1: #E8B86D;
+  --phase2: #7DBB9E;
+  --phase3: #6B9EC7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--text-dark);
+  font-family: 'Noto Sans TC', sans-serif;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(212,146,58,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(224,122,95,0.07) 0%, transparent 50%);
+}
+
+/* ── 頂部連結列 ─────────────────────────────── */
+.nav-bar {
+  background: linear-gradient(135deg, #7B5230 0%, #A07040 50%, #B8732A 100%);
+  padding: 0;
+  box-shadow: 0 3px 20px rgba(123,82,48,0.35);
+}
+
+.nav-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 2px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.22);
+  transform: translateX(3px);
+}
+
+.nav-link-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.nav-link-text {
+  flex: 1;
+}
+
+.nav-link-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.nav-link-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+  margin-top: 1px;
+  line-height: 1.4;
+}
+
+.nav-link-arrow {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+/* LINE 帳號特殊樣式 */
+.nav-link.line-link {
+  background: rgba(0,185,0,0.2);
+  border-color: rgba(0,200,80,0.35);
+}
+.nav-link.line-link:hover {
+  background: rgba(0,185,0,0.3);
+}
+
+/* ── 主頁首區域 ─────────────────────────────── */
+.hero {
+  background: linear-gradient(160deg, #D4923A 0%, #E07A5F 60%, #C8793A 100%);
+  padding: 40px 20px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-emoji {
+  font-size: 44px;
+  display: block;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  margin-bottom: 6px;
+}
+
+.hero-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* ── 主內容區 ────────────────────────────────── */
+.main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 14px 32px;
+}
+
+/* ── 階段標題 ────────────────────────────────── */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 14px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+}
+
+.phase1 { background: linear-gradient(135deg, #F5E6C8, #EDCFA0); border-left: 4px solid var(--phase1); }
+.phase2 { background: linear-gradient(135deg, #D4EDE3, #B8DFD0); border-left: 4px solid var(--phase2); }
+.phase3 { background: linear-gradient(135deg, #D0E4F5, #B8D4ED); border-left: 4px solid var(--phase3); }
+
+.phase-icon { font-size: 24px; flex-shrink: 0; }
+
+.phase-text { flex: 1; }
+.phase-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+.phase-sub {
+  font-size: 11px;
+  color: var(--text-mid);
+  margin-top: 2px;
+}
+
+/* ── 集數卡片 ────────────────────────────────── */
+.ep-card {
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 12px rgba(123,82,48,0.08);
+  border: 1px solid rgba(212,146,58,0.15);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+}
+
+.ep-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123,82,48,0.15);
+}
+
+.ep-card.open .ep-detail { display: block; }
+.ep-card.open .ep-chevron { transform: rotate(180deg); }
+
+.ep-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.ep-num {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.phase1-num { background: linear-gradient(135deg, #F0B863, #D4923A); color: #fff; }
+.phase2-num { background: linear-gradient(135deg, #7DBB9E, #4A9B7F); color: #fff; }
+.phase3-num { background: linear-gradient(135deg, #6B9EC7, #3A78AA); color: #fff; }
+
+.ep-info { flex: 1; min-width: 0; }
+.ep-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.35;
+}
+.ep-sub {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.ep-chevron {
+  font-size: 16px;
+  color: var(--text-light);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+/* ── 展開內容 ────────────────────────────────── */
+.ep-detail {
+  display: none;
+  padding: 0 16px 16px;
+  border-top: 1px solid rgba(212,146,58,0.12);
+  margin-top: 0;
+}
+
+.ep-detail-inner {
+  padding-top: 14px;
+}
+
+.detail-section {
+  margin-bottom: 12px;
+}
+
+.detail-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+
+.detail-topics {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-topics li {
+  font-size: 12px;
+  color: var(--text-mid);
+  padding: 4px 0 4px 16px;
+  position: relative;
+  line-height: 1.5;
+  border-bottom: 1px dashed rgba(212,146,58,0.15);
+}
+
+.detail-topics li:last-child { border-bottom: none; }
+
+.detail-topics li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  font-size: 7px;
+  color: var(--amber-light);
+  top: 6px;
+}
+
+.detail-key {
+  background: linear-gradient(135deg, #FDF0DC, #F9E4C0);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.detail-vocab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.vocab-tag {
+  background: rgba(212,146,58,0.1);
+  border: 1px solid rgba(212,146,58,0.25);
+  color: var(--brown);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* ── 底部導覽列（同頂部）─────────────────────── */
+.footer-nav {
+  background: linear-gradient(135deg, #6B4020 0%, #8A5A30 50%, #A07040 100%);
+  padding: 0;
+  box-shadow: 0 -3px 20px rgba(123,82,48,0.3);
+  margin-top: 8px;
+}
+
+.footer-copy {
+  background: #3D2B1F;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+/* ── 分隔裝飾 ────────────────────────────────── */
+.divider {
+  text-align: center;
+  margin: 8px 0 20px;
+  color: var(--amber-light);
+  font-size: 18px;
+  letter-spacing: 6px;
+}
+
+/* ── 課程說明區 ──────────────────────────────── */
+.intro-box {
+  background: linear-gradient(135deg, #FFF8EE, #FDF0DC);
+  border: 1px solid rgba(212,146,58,0.25);
+  border-radius: 16px;
+  padding: 18px 18px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.intro-box::before {
+  content: '🕌';
+  position: absolute;
+  top: -14px;
+  right: 16px;
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.intro-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 8px;
+}
+
+.intro-text {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+.stat-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.stat-box {
+  flex: 1;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(212,146,58,0.2);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--amber-deep);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 頂部導覽列 ══════════════════════════════════════ -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-label">📌 七月開課資訊 · 點擊了解詳情</div>
+    <div class="nav-links">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="nav-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">🎯</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">錯中學 ECHO 計劃 — 七月開課</span>
+          <span class="nav-link-desc">從錯誤中學習英文的沉浸式課程，今年七月正式啟動</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="nav-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">📊</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">學生分析平台 — 七月上線</span>
+          <span class="nav-link-desc">了解你的英文學習弱點，精準提升，七月開放使用</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="nav-link line-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">💬</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">LINE 聯絡老師：linwayet</span>
+          <span class="nav-link-desc">課程諮詢、報名資訊，歡迎加 LINE 直接詢問</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ══ 主頁首 ════════════════════════════════════════════ -->
+<header class="hero">
+  <span class="hero-emoji">🇦🇪</span>
+  <h1 class="hero-title">阿聯酋完整課程</h1>
+  <p class="hero-en">UAE Complete Podcast Series</p>
+  <div class="hero-badges">
+    <span class="hero-badge">📻 Podcast 形式</span>
+    <span class="hero-badge">🌏 雙語中英</span>
+    <span class="hero-badge">20 回完整系列</span>
+  </div>
+</header>
+
+<!-- ══ 主內容 ═════════════════════════════════════════════ -->
+<main class="main">
+
+  <div class="intro-box">
+    <div class="intro-title">從沙漠部落到全球樞紐</div>
+    <p class="intro-text">
+      本系列以 Podcast 有聲課程形式，帶你走過阿聯酋五千年的歷史脈絡。從貝都因部落的沙漠生存智慧，到現代杜拜的摩天大樓與 AI 戰略，每一集都有完整中文版與英文版腳本，並附關鍵詞彙與術語白話解釋。
+    </p>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">20</div>
+        <div class="stat-label">集完整<br>系列</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-label">大歷史<br>階段</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">雙語</div>
+        <div class="stat-label">中英文<br>腳本</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1200+</div>
+        <div class="stat-label">每集<br>字數</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 第一階段 ──────────────────────── -->
+  <div class="phase-header phase1">
+    <span class="phase-icon">🏜️</span>
+    <div class="phase-text">
+      <div class="phase-title">第一階段：土地與部落</div>
+      <div class="phase-sub">前伊斯蘭時期 — 1971年建國</div>
+    </div>
+  </div>
+
+  <!-- EP 01 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">01</div>
+      <div class="ep-info">
+        <div class="ep-title">沙漠、海岸與珊瑚礁</div>
+        <div class="ep-sub">地理環境如何決定命運</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>波斯灣地理特徵與阿拉伯半島氣候</li>
+            <li>沙漠、海岸線、珊瑚礁三種生態</li>
+            <li>古代綠洲與法拉吉灌溉系統</li>
+            <li>海岸線帶來的珍珠、魚業與貿易路線</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋的一切起點——沒有地理，就沒有珍珠、石油、貿易路線的故事。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Peninsula 半島</span>
+            <span class="vocab-tag">Oasis 綠洲</span>
+            <span class="vocab-tag">Gulf 海灣</span>
+            <span class="vocab-tag">Coral reef 珊瑚礁</span>
+            <span class="vocab-tag">Arid 乾旱的</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 02 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">02</div>
+      <div class="ep-info">
+        <div class="ep-title">貝都因人與部落社會</div>
+        <div class="ep-sub">七個酋長國的祖先是誰？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>貝都因人的游牧生活與沙漠生存智慧</li>
+            <li>部落忠誠、榮譽文化與血統制度</li>
+            <li>七個酋長國的起源氏族追溯</li>
+            <li>駱駝、水源、帳篷——沙漠三寶</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">理解「酋長國 Emirate」的本質——以家族血脈為核心的政治單位。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Tribe 部落</span>
+            <span class="vocab-tag">Sheikh 酋長</span>
+            <span class="vocab-tag">Emirate 酋長國</span>
+            <span class="vocab-tag">Nomadic 游牧的</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 03 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">03</div>
+      <div class="ep-info">
+        <div class="ep-title">珍珠帝國的黃金時代</div>
+        <div class="ep-sub">19世紀的全球珍珠貿易中心</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>珍珠採集的技術、季節與危險</li>
+            <li>阿布達比、杜拜的珍珠港繁榮景象</li>
+            <li>印度、歐洲買家與全球貿易網絡</li>
+            <li>潛水夫的社會地位與債務陷阱制度</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">石油發現前，珍珠是整個海灣地區唯一的財富來源，也埋下殖民介入的引線。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Pearl diving 採珍珠</span>
+            <span class="vocab-tag">Merchant 商人</span>
+            <span class="vocab-tag">Export 出口</span>
+            <span class="vocab-tag">Debt 債務</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 04 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">04</div>
+      <div class="ep-info">
+        <div class="ep-title">英國的海灣保護國</div>
+        <div class="ep-sub">從「海盜海岸」到條約海岸</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>英國東印度公司與波斯灣貿易擴張</li>
+            <li>「海盜海岸」的由來與歷史爭議</li>
+            <li>1820年總和平條約簽署過程</li>
+            <li>保護國地位：主權的喪失與部分保留</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋的建國是一場不完整的去殖民——英國撤退才讓聯邦成為可能。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Protectorate 保護國</span>
+            <span class="vocab-tag">Treaty 條約</span>
+            <span class="vocab-tag">Sovereignty 主權</span>
+            <span class="vocab-tag">Colonialism 殖民主義</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 05 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">05</div>
+      <div class="ep-info">
+        <div class="ep-title">石油的誕生與改變一切</div>
+        <div class="ep-sub">1950s：黑色黃金如何降臨沙漠</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>阿布達比1958年首次商業石油出口</li>
+            <li>英國石油、荷蘭殼牌公司的介入</li>
+            <li>Zayed家族掌控石油收入的過程</li>
+            <li>十年內從無電無路到現代基礎建設</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">石油不只是能源，更是政治合法性的來源——誰控制油田，誰就決定建國方向。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Petroleum 石油</span>
+            <span class="vocab-tag">Concession 採油特許權</span>
+            <span class="vocab-tag">Revenue 收入</span>
+            <span class="vocab-tag">Infrastructure 基礎建設</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 06 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase1-num">06</div>
+      <div class="ep-info">
+        <div class="ep-title">建國！1971年聯邦誕生</div>
+        <div class="ep-sub">七個酋長國如何走向聯合</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>1968年英國撤退宣告的震撼衝擊</li>
+            <li>Sheikh Zayed的建國外交斡旋</li>
+            <li>卡達、巴林為何最終未加入</li>
+            <li>1971年12月2日宣布獨立的歷史現場</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">UAE的誕生是奇蹟——七個競爭的部落家族，在三年內同意共享同一面旗幟。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Federation 聯邦</span>
+            <span class="vocab-tag">Independence 獨立</span>
+            <span class="vocab-tag">Union 聯合</span>
+            <span class="vocab-tag">Diplomacy 外交</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 第二階段 ──────────────────────── -->
+  <div class="phase-header phase2">
+    <span class="phase-icon">🏗️</span>
+    <div class="phase-text">
+      <div class="phase-title">第二階段：建設狂潮</div>
+      <div class="phase-sub">1971年建國 — 2000年</div>
+    </div>
+  </div>
+
+  <!-- EP 07 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase2-num">07</div>
+      <div class="ep-info">
+        <div class="ep-title">Sheikh Zayed：父親的傳說</div>
+        <div class="ep-sub">阿聯酋最重要的人是誰？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>Zayed 的牧駱駝少年時代與成長背景</li>
+            <li>阿布達比總督時期的草根改革</li>
+            <li>石油財富的分配哲學與社會福利政策</li>
+            <li>2004年去世後留下的遺產與國族神話</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">Zayed最重要的決定是把石油錢花在人民身上，而非自己口袋——這是阿聯酋的建國精神。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Founding Father 國父</span>
+            <span class="vocab-tag">Vision 願景</span>
+            <span class="vocab-tag">Legacy 遺產</span>
+            <span class="vocab-tag">Welfare 福利</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 08 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase2-num">08</div>
+      <div class="ep-info">
+        <div class="ep-title">杜拜的崛起：貿易本能</div>
+        <div class="ep-sub">沒有石油，如何變得富有？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>杜拜溪（Dubai Creek）的百年貿易史</li>
+            <li>Jebel Ali 自由貿易區的誕生邏輯</li>
+            <li>黃金市場（Gold Souk）的全球貿易地位</li>
+            <li>Sheikh Mohammed 的貿易立國夢</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">杜拜從建國第一天就知道石油終將耗盡——它選擇用貿易賭未來。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Free zone 自由貿易區</span>
+            <span class="vocab-tag">Entrepôt 轉口港</span>
+            <span class="vocab-tag">Commerce 商業</span>
+            <span class="vocab-tag">Hub 樞紐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 09 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase2-num">09</div>
+      <div class="ep-info">
+        <div class="ep-title">外勞國家的矛盾</div>
+        <div class="ep-sub">建設奇蹟的背後是誰的汗水？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>Kafala 保薦制度的運作機制與批評</li>
+            <li>南亞勞工的跨國招募鏈</li>
+            <li>本地人 vs 外籍人的社會分層結構</li>
+            <li>護照沒收、工資拖欠等勞工人權問題</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋88%的人口是外籍人——這個國家是一部由外人建造、被本地人擁有的機器。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Migrant worker 外籍勞工</span>
+            <span class="vocab-tag">Kafala 保薦制度</span>
+            <span class="vocab-tag">Expat 外籍人士</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 10 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase2-num">10</div>
+      <div class="ep-info">
+        <div class="ep-title">伊斯蘭與現代性的張力</div>
+        <div class="ep-sub">清真寺旁邊可以有酒吧嗎？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>遜尼派伊斯蘭的國教地位與日常影響</li>
+            <li>飲酒、豬肉、著裝規範的法律規定</li>
+            <li>齋戒月（Ramadan）的社會運作方式</li>
+            <li>宗教開放度：有和無之間的精心平衡</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋選擇了一條獨特的路：保持穆斯林認同，同時對外籍人開放西方生活方式。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Sunni Islam 遜尼派</span>
+            <span class="vocab-tag">Halal 清真</span>
+            <span class="vocab-tag">Ramadan 齋戒月</span>
+            <span class="vocab-tag">Sharia 伊斯蘭律法</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 第三階段 ──────────────────────── -->
+  <div class="phase-header phase3">
+    <span class="phase-icon">🌐</span>
+    <div class="phase-text">
+      <div class="phase-title">第三階段：全球野心</div>
+      <div class="phase-sub">2000年 — 今日與未來</div>
+    </div>
+  </div>
+
+  <!-- EP 11 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">11</div>
+      <div class="ep-info">
+        <div class="ep-title">九一一之後的最佳公關</div>
+        <div class="ep-sub">阿拉伯世界如何重塑形象</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>九一一與阿聯酋的尷尬關聯</li>
+            <li>阿聯酋的去激進化國家戰略</li>
+            <li>與美國的軍事合作與 Al Dhafra 基地</li>
+            <li>以開放形象重塑阿拉伯世界的外部印象</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">九一一之後，阿聯酋決定成為「不一樣的阿拉伯國家」——這是精心計算的品牌轉型。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Terrorism 恐怖主義</span>
+            <span class="vocab-tag">Alliance 同盟</span>
+            <span class="vocab-tag">Soft power 軟實力</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 12 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">12</div>
+      <div class="ep-info">
+        <div class="ep-title">杜拜瘋狂建設時代</div>
+        <div class="ep-sub">棕櫚島、哈里發塔、人工島的誕生</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>Palm Jumeirah 棕櫚島的工程奇蹟</li>
+            <li>Burj Khalifa 哈里發塔828米建造過程</li>
+            <li>杜拜模式的房地產泡沫邏輯</li>
+            <li>2008年金融危機與杜拜的崩潰邊緣</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">杜拜的瘋狂建設是精心設計的注意力經濟——每一棟超高樓都是最昂貴的廣告。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Skyscraper 摩天大樓</span>
+            <span class="vocab-tag">Real estate 房地產</span>
+            <span class="vocab-tag">Ambition 野心</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 13 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">13</div>
+      <div class="ep-info">
+        <div class="ep-title">阿布達比的主權財富基金</div>
+        <div class="ep-sub">全球最有錢的投資者之一</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>ADIA（阿布達比投資局）規模與全球策略</li>
+            <li>主權財富基金的概念與運作機制</li>
+            <li>阿聯酋投資了哪些全球知名企業</li>
+            <li>後石油時代的財富保全與傳承邏輯</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">今日的石油收入，要養活百年後的子孫——這是國家財務管理的終極課題。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Sovereign wealth fund 主權財富基金</span>
+            <span class="vocab-tag">Portfolio 投資組合</span>
+            <span class="vocab-tag">Diversification 多角化</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 14 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">14</div>
+      <div class="ep-info">
+        <div class="ep-title">Emirates 航空的國家戰略</div>
+        <div class="ep-sub">翅膀上飛行的國家品牌</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>1985年以一千萬美元創立 Emirates 的故事</li>
+            <li>杜拜全球五小時飛行圈的地緣優勢</li>
+            <li>A380機隊策略與頂級艙豪華定位</li>
+            <li>與卡達航空、土耳其航空的競爭格局</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">Emirates 不只是航空公司，它是阿聯酋最昂貴的國家廣告——每班飛機都在說「杜拜值得造訪」。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Hub 樞紐機場</span>
+            <span class="vocab-tag">Fleet 機隊</span>
+            <span class="vocab-tag">Aviation 航空業</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 15 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">15</div>
+      <div class="ep-info">
+        <div class="ep-title">觀光帝國與文化外交</div>
+        <div class="ep-sub">盧浮宮、古根漢為何落腳阿布達比</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>Louvre Abu Dhabi 的誕生與批評爭議</li>
+            <li>Guggenheim Abu Dhabi 計畫的進展</li>
+            <li>Expo 2020 Dubai 對國家品牌的意義</li>
+            <li>沙漠觀光、海灘觀光、文化觀光三路線</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋用博物館購買文化資本——在沒有數千年歷史的土地上，花錢購買別人的歷史。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Heritage 文化遺產</span>
+            <span class="vocab-tag">Tourism 觀光業</span>
+            <span class="vocab-tag">Cultural diplomacy 文化外交</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 16 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">16</div>
+      <div class="ep-info">
+        <div class="ep-title">以國防力量換取安全感</div>
+        <div class="ep-sub">小國的大軍隊邏輯</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>阿聯酋軍隊規模與現代化程度</li>
+            <li>葉門戰爭中 UAE 扮演的角色</li>
+            <li>與美國、法國的防務合作框架</li>
+            <li>無人機科技與進口武器的依賴困境</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋是全球人均軍費最高的國家之一——小國的生存焦慮驅動了龐大的國防投資。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Defense spending 國防支出</span>
+            <span class="vocab-tag">Alliance 聯盟</span>
+            <span class="vocab-tag">Drone 無人機</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 17 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">17</div>
+      <div class="ep-info">
+        <div class="ep-title">亞伯拉罕協議：以色列握手</div>
+        <div class="ep-sub">2020年阿聯酋承認以色列的震撼</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>亞伯拉罕協議簽署的政治背景</li>
+            <li>阿聯酋對巴勒斯坦問題的立場轉變</li>
+            <li>與以色列的科技、農業經濟合作</li>
+            <li>伊朗對此協議的強烈反應</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">與以色列建立外交關係，是阿聯酋告別泛阿拉伯主義、走向實用主義外交的里程碑。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Normalization 關係正常化</span>
+            <span class="vocab-tag">Diplomacy 外交</span>
+            <span class="vocab-tag">Pragmatism 實用主義</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 18 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">18</div>
+      <div class="ep-info">
+        <div class="ep-title">AI、科技與未來城市</div>
+        <div class="ep-sub">UAE 想成為下一個矽谷嗎？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>阿聯酋2017年國家人工智慧戰略</li>
+            <li>Masdar City 零碳城市實驗的現況</li>
+            <li>G42 與全球 AI 競賽的角色</li>
+            <li>吸引全球科技人才的黃金簽證政策</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋的 AI 野心不是夢想，是生存計算——石油耗盡之前，必須找到下一個優勢。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Artificial intelligence 人工智慧</span>
+            <span class="vocab-tag">Renewable energy 再生能源</span>
+            <span class="vocab-tag">Innovation hub 創新樞紐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 19 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">19</div>
+      <div class="ep-info">
+        <div class="ep-title">女性、人權與威權之間</div>
+        <div class="ep-sub">在缺乏選舉的社會裡，誰有發言權？</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>阿聯酋女性的教育成就與職場地位</li>
+            <li>政治自由的限制：無政黨、無普選</li>
+            <li>批評政府的法律後果與社群媒體管制</li>
+            <li>繁榮換政治沉默：這個交換值得嗎？</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">阿聯酋提供了繁榮與秩序，代價是政治沉默——這個交換值得嗎？這是本課的核心辯題。</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Human rights 人權</span>
+            <span class="vocab-tag">Authoritarianism 威權主義</span>
+            <span class="vocab-tag">Civil liberties 公民自由</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EP 20 -->
+  <div class="ep-card" onclick="toggleEp(this)">
+    <div class="ep-header">
+      <div class="ep-num phase3-num">20</div>
+      <div class="ep-info">
+        <div class="ep-title">阿聯酋2050：沙漠中的烏托邦？</div>
+        <div class="ep-sub">這個國家的下一個五十年</div>
+      </div>
+      <span class="ep-chevron">▾</span>
+    </div>
+    <div class="ep-detail">
+      <div class="ep-detail-inner">
+        <div class="detail-section">
+          <div class="detail-label">本集主題</div>
+          <ul class="detail-topics">
+            <li>UAE Centennial 2071 百年計畫</li>
+            <li>氣候變遷對沙漠國家的生存威脅</li>
+            <li>COP28 在杜拜舉辦的深刻意義</li>
+            <li>石油時代結束後，奇蹟還能持續嗎？</li>
+          </ul>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">核心觀念</div>
+          <div class="detail-key">最終一課問最難的問題：一個靠石油財富建立的奇蹟，在化石燃料時代結束後，還能存在嗎？</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">關鍵詞彙</div>
+          <div class="detail-vocab">
+            <span class="vocab-tag">Sustainability 永續發展</span>
+            <span class="vocab-tag">Carbon neutral 碳中和</span>
+            <span class="vocab-tag">Centennial 百年</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+</main>
+
+<!-- ══ 底部導覽列（同頂部）════════════════════════════════ -->
+<nav class="footer-nav">
+  <div class="nav-inner">
+    <div class="nav-label">📌 七月開課資訊 · 點擊了解詳情</div>
+    <div class="nav-links">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="nav-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">🎯</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">錯中學 ECHO 計劃 — 七月開課</span>
+          <span class="nav-link-desc">從錯誤中學習英文的沉浸式課程，今年七月正式啟動</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="nav-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">📊</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">學生分析平台 — 七月上線</span>
+          <span class="nav-link-desc">了解你的英文學習弱點，精準提升，七月開放使用</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="nav-link line-link" target="_blank" rel="noopener">
+        <span class="nav-link-icon">💬</span>
+        <span class="nav-link-text">
+          <span class="nav-link-title">LINE 聯絡老師：linwayet</span>
+          <span class="nav-link-desc">課程諮詢、報名資訊，歡迎加 LINE 直接詢問</span>
+        </span>
+        <span class="nav-link-arrow">›</span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+<div class="footer-copy">
+  阿聯酋完整課程 · UAE Complete Series · 共20回<br>
+  雙語 Podcast 形式 · 中英文腳本 · 關鍵詞彙 · 術語解析
+</div>
+
+<script>
+function toggleEp(card) {
+  const wasOpen = card.classList.contains('open');
+  // 關閉所有
+  document.querySelectorAll('.ep-card.open').forEach(c => c.classList.remove('open'));
+  // 若原本是關的，就打開
+  if (!wasOpen) card.classList.add('open');
+}
+</script>
+</body>
+</html>
