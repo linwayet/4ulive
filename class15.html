@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naked Economics Undressing the Dismal Scienc｜18 回合自學規劃</title>
+  <style>
+    :root {
+      --bg: #fff3e3;
+      --bg-soft: #ffe7c7;
+      --ink: #3d251c;
+      --muted: #7b5a4a;
+      --card: #fffaf3;
+      --line: #f1c79d;
+      --orange: #f47b35;
+      --coral: #e85d75;
+      --gold: #f0b429;
+      --green: #6f9f76;
+      --shadow: 0 16px 40px rgba(128, 69, 24, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(244, 123, 53, 0.22), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(232, 93, 117, 0.18), transparent 28rem),
+        linear-gradient(145deg, #fff6e8 0%, #ffe4c2 52%, #ffd6bc 100%);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .link-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 10px auto 22px;
+    }
+
+    .link-card {
+      min-height: 108px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 18px;
+      background: rgba(255, 250, 243, 0.82);
+      box-shadow: 0 10px 24px rgba(117, 61, 18, 0.12);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(117, 61, 18, 0.18);
+    }
+
+    .tag {
+      width: fit-content;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fffaf4;
+      background: var(--orange);
+    }
+
+    .link-card:nth-child(2) .tag {
+      background: var(--coral);
+    }
+
+    .link-card:nth-child(3) .tag {
+      background: var(--green);
+    }
+
+    .link-card strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 1.03rem;
+      line-height: 1.25;
+    }
+
+    .link-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    header {
+      margin: 0 auto 20px;
+      padding: 30px 22px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255, 250, 243, 0.92), rgba(255, 232, 198, 0.86));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: #7c3f16;
+      background: #ffe0b5;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      margin: 16px auto 12px;
+      max-width: 780px;
+      font-size: clamp(2rem, 7vw, 4.25rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+      color: #4a2618;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .main-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 250, 243, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .note,
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff1dc;
+      border: 1px solid var(--line);
+    }
+
+    .stat {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #ffcb77, #ff9671);
+      color: #452215;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 3.2rem;
+      line-height: 1;
+    }
+
+    h2 {
+      margin: 26px 0 12px;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .rounds {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .round {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(241, 199, 157, 0.9);
+      border-radius: 18px;
+      background: #fffbf5;
+    }
+
+    .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--orange), var(--coral));
+      box-shadow: 0 8px 18px rgba(232, 93, 117, 0.2);
+    }
+
+    .round h3 {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #ffe5bd;
+      color: #704120;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .round p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .method {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 12px 0 6px;
+    }
+
+    .method-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff2df;
+      border: 1px solid var(--line);
+    }
+
+    .method-card b {
+      display: block;
+      margin-bottom: 6px;
+      color: #623218;
+    }
+
+    footer {
+      margin-top: 22px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 12px;
+      }
+
+      .link-band,
+      .intro,
+      .method {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 26px 16px;
+        border-radius: 22px;
+      }
+
+      .main-card {
+        padding: 14px;
+        border-radius: 20px;
+      }
+
+      .round {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .num {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="link-band" aria-label="課程與聯絡連結">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <div>
+          <span class="tag">七月開課</span>
+          <strong>錯中學 ECHO 計劃</strong>
+          <span>從錯誤中整理學習路徑，適合想把弱點轉成進步節奏的學生。</span>
+        </div>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <div>
+          <span class="tag">七月開課</span>
+          <strong>學生分析</strong>
+          <span>透過學習資料與表現分析，找出需要補強的主題與讀書方向。</span>
+        </div>
+      </a>
+      <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <div>
+          <span class="tag">Line</span>
+          <strong>個人 Line 帳號</strong>
+          <span>Line ID：linwayet。想了解課程或自學安排，可以用 Line 聯絡。</span>
+        </div>
+      </a>
+    </nav>
+
+    <header>
+      <div class="eyebrow">20 分鐘自學版</div>
+      <h1>Naked Economics Undressing the Dismal Scienc</h1>
+      <p class="subtitle">18 回合自學規劃：用短時間建立經濟直覺，從市場、誘因、政府、金融，一路理解全球化與發展經濟。</p>
+    </header>
+
+    <main class="main-card">
+      <section class="intro" aria-label="自學說明">
+        <div class="note">
+          <h2>自學目標</h2>
+          <p>這份規劃適合每次約 20 分鐘的自學。第一輪不重背誦名詞，而是建立經濟學看世界的習慣：看到一個社會現象時，能主動問出誘因、成本、資訊、政策副作用與資源配置。</p>
+        </div>
+        <div class="stat">
+          <div>
+            <strong>18</strong>
+            <span>回合完成後半部核心概念</span>
+          </div>
+        </div>
+      </section>
+
+      <h2>18 回合自學規劃</h2>
+      <section class="rounds" aria-label="18 回合">
+        <article class="round">
+          <div class="num">1</div>
+          <div>
+            <h3>市場如何自動協調</h3>
+            <div class="meta"><span class="pill">Ch.10</span><span class="pill">The Power of Markets</span></div>
+            <p>看懂「誰餵飽巴黎？」與價格訊號，理解市場如何在沒有中央指揮的情況下安排生產與分配。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">2</div>
+          <div>
+            <h3>成本與選擇</h3>
+            <div class="meta"><span class="pill">Ch.10</span><span class="pill">機會成本</span></div>
+            <p>理解效用、資源配置與機會成本，練習用「放棄了什麼」來看真正的成本。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">3</div>
+          <div>
+            <h3>誘因的力量</h3>
+            <div class="meta"><span class="pill">Ch.11</span><span class="pill">Incentives Matter</span></div>
+            <p>理解人會回應獎懲，不只回應道德呼籲；政策設計要先看人們會怎麼反應。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">4</div>
+          <div>
+            <h3>公共資源問題</h3>
+            <div class="meta"><span class="pill">Ch.11</span><span class="pill">共有資源</span></div>
+            <p>理解為什麼共有資源容易被過度使用，以及財產權、規範與誘因如何改變行為。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">5</div>
+          <div>
+            <h3>政府介入的理由</h3>
+            <div class="meta"><span class="pill">Ch.12</span><span class="pill">市場失靈</span></div>
+            <p>理解外部性、公共財與市場失靈，知道政府為何有時候需要介入市場。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">6</div>
+          <div>
+            <h3>政府介入的代價</h3>
+            <div class="meta"><span class="pill">Ch.13</span><span class="pill">政策副作用</span></div>
+            <p>理解政府也會失靈，政策可能造成浪費、錯誤誘因或被特定利益團體利用。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">7</div>
+          <div>
+            <h3>資訊不對稱</h3>
+            <div class="meta"><span class="pill">Ch.14</span><span class="pill">Economics of Information</span></div>
+            <p>理解買家和賣家知道不同資訊時，市場會如何偏離理想結果。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">8</div>
+          <div>
+            <h3>生產力</h3>
+            <div class="meta"><span class="pill">Ch.15</span><span class="pill">Productivity</span></div>
+            <p>理解為什麼生產力是生活水準的核心，也是一個社會能否變富的根本力量。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">9</div>
+          <div>
+            <h3>人力資本</h3>
+            <div class="meta"><span class="pill">Ch.15</span><span class="pill">Human Capital</span></div>
+            <p>理解教育、技能、健康與經驗如何影響收入，也影響一個國家的發展潛力。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">10</div>
+          <div>
+            <h3>金融市場的功能</h3>
+            <div class="meta"><span class="pill">Ch.16</span><span class="pill">Financial Markets</span></div>
+            <p>理解金融不只是賭場，本質是配置資本、分散風險，讓今天的資源投入未來的機會。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">11</div>
+          <div>
+            <h3>投資與風險</h3>
+            <div class="meta"><span class="pill">Ch.16</span><span class="pill">風險報酬</span></div>
+            <p>理解為什麼快速致富通常不可靠，投資報酬、風險與時間必須一起看。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">12</div>
+          <div>
+            <h3>利益團體</h3>
+            <div class="meta"><span class="pill">Ch.17</span><span class="pill">Organized Interests</span></div>
+            <p>理解為什麼少數人常能從政策中取得好處，而多數人雖然付成本卻不容易反對。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">13</div>
+          <div>
+            <h3>GDP 與經濟指標</h3>
+            <div class="meta"><span class="pill">Ch.18</span><span class="pill">Keeping Score</span></div>
+            <p>理解 GDP、失業率、通膨各自衡量什麼，也知道這些數字不能代表一切。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">14</div>
+          <div>
+            <h3>景氣循環</h3>
+            <div class="meta"><span class="pill">Ch.18</span><span class="pill">繁榮與衰退</span></div>
+            <p>理解為什麼經濟會繁榮、衰退、再復甦，以及總體經濟指標如何描繪這些變化。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">15</div>
+          <div>
+            <h3>聯準會與貨幣政策</h3>
+            <div class="meta"><span class="pill">Ch.19</span><span class="pill">The Federal Reserve</span></div>
+            <p>理解利率、通膨與央行的角色，知道貨幣政策如何影響借貸、投資與景氣。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">16</div>
+          <div>
+            <h3>國際經濟</h3>
+            <div class="meta"><span class="pill">Ch.20</span><span class="pill">International Economics</span></div>
+            <p>理解匯率、資本流動與國際收支，知道一國經濟如何和世界其他地方連在一起。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">17</div>
+          <div>
+            <h3>貿易與全球化</h3>
+            <div class="meta"><span class="pill">Ch.21</span><span class="pill">Trade and Globalization</span></div>
+            <p>理解比較利益、貿易得失與全球化爭議，分辨整體受益與個別受損之間的差異。</p>
+          </div>
+        </article>
+        <article class="round">
+          <div class="num">18</div>
+          <div>
+            <h3>發展經濟與未來</h3>
+            <div class="meta"><span class="pill">Ch.22、Ch.23</span><span class="pill">Development and 2050</span></div>
+            <p>理解為什麼國家有貧富差距，以及作者在 2050 七個問題中提出的經濟選擇。</p>
+          </div>
+        </article>
+      </section>
+
+      <h2>每次 20 分鐘建議</h2>
+      <section class="method" aria-label="20 分鐘讀法">
+        <div class="method-card">
+          <b>12 分鐘讀原文</b>
+          <span>只讀該回合相關段落，不求快，先抓作者想解釋的現象。</span>
+        </div>
+        <div class="method-card">
+          <b>5 分鐘寫三句筆記</b>
+          <span>核心概念是什麼？作者用了什麼例子？可以解釋生活中的哪件事？</span>
+        </div>
+        <div class="method-card">
+          <b>3 分鐘自問一題</b>
+          <span>例如：如果政府補貼某產業，誰受益？誰付成本？誰改變行為？</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <nav class="link-band" aria-label="課程與聯絡連結重複">
+        <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+          <div>
+            <span class="tag">七月開課</span>
+            <strong>錯中學 ECHO 計劃</strong>
+            <span>從錯誤中整理學習路徑，適合想把弱點轉成進步節奏的學生。</span>
+          </div>
+        </a>
+        <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+          <div>
+            <span class="tag">七月開課</span>
+            <strong>學生分析</strong>
+            <span>透過學習資料與表現分析，找出需要補強的主題與讀書方向。</span>
+          </div>
+        </a>
+        <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <div>
+            <span class="tag">Line</span>
+            <strong>個人 Line 帳號</strong>
+            <span>Line ID：linwayet。想了解課程或自學安排，可以用 Line 聯絡。</span>
+          </div>
+        </a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
