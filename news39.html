@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中壢高中單字本 Unit 6-2 ～ 7-3</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+TC:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDF6EC;
+  --warm-bg: #FAF0DC;
+  --card-bg: #FFFBF4;
+  --amber: #D4821A;
+  --amber-light: #F0A830;
+  --amber-dark: #A0620F;
+  --rust: #C1440E;
+  --rust-light: #E8673A;
+  --terracotta: #C4622D;
+  --olive: #7A7A2A;
+  --olive-light: #A8A840;
+  --brown: #6B4226;
+  --brown-light: #9A6845;
+  --gold: #C9961A;
+  --text-dark: #2C1A0A;
+  --text-mid: #5C3D1E;
+  --text-light: #8A6540;
+  --border: #E8D5B0;
+  --shadow: rgba(160, 98, 15, 0.15);
+  --tag-emotion: #E8673A;
+  --tag-vocab: #D4821A;
+  --tag-academic: #7A7A2A;
+  --tag-arts: #9B59B6;
+  --tag-society: #2980B9;
+  --tag-economy: #16A085;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lora', 'Noto Serif TC', serif;
+  background: var(--warm-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse at 20% 10%, rgba(212,130,26,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(193,68,14,0.06) 0%, transparent 50%);
+}
+
+/* HEADER */
+.site-header {
+  background: linear-gradient(135deg, #8B3A10 0%, #C1440E 30%, #D4821A 60%, #C9961A 100%);
+  color: white;
+  padding: 40px 24px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(139,58,16,0.4);
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(255,255,255,0.03) 40px,
+    rgba(255,255,255,0.03) 80px
+  );
+}
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-shadow: 2px 3px 8px rgba(0,0,0,0.3);
+  position: relative;
+}
+.site-header .subtitle {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  margin-top: 8px;
+  opacity: 0.9;
+  position: relative;
+}
+.header-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+/* CONTROLS */
+.controls {
+  background: var(--cream);
+  border-bottom: 2px solid var(--border);
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.controls-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 2px solid var(--border);
+  border-radius: 30px;
+  background: white;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-box input:focus { border-color: var(--amber); }
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--text-light);
+}
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tab-btn {
+  padding: 7px 16px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+  color: var(--text-mid);
+  border-color: var(--border);
+}
+.tab-btn:hover { border-color: var(--amber); color: var(--amber-dark); }
+.tab-btn.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: white;
+}
+.count-badge {
+  background: var(--rust);
+  color: white;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+/* MAIN */
+.main { max-width: 1200px; margin: 0 auto; padding: 28px 20px 60px; }
+
+.unit-section {
+  margin-bottom: 40px;
+}
+.unit-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--rust);
+  border-left: 5px solid var(--amber);
+  padding-left: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.unit-count { font-size: 0.9rem; color: var(--text-light); font-family: 'Lora', serif; font-weight: normal; }
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.vocab-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 3px 12px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.vocab-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--amber), var(--rust));
+  border-radius: 16px 16px 0 0;
+}
+.vocab-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(160,98,15,0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.word-main {
+  flex: 1;
+}
+.word-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--rust);
+  line-height: 1.2;
+}
+.word-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin-top: 3px;
+}
+.word-pos {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--amber);
+  color: white;
+  border-radius: 8px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* DERIVATION */
+.deriv-section {
+  background: linear-gradient(135deg, #FFF4E6, #FFF8EE);
+  border: 1px solid #F0D8A8;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+.deriv-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--olive);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.deriv-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.deriv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border: 1.5px solid #E8C87A;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+}
+.deriv-word { font-weight: 700; color: var(--brown); font-family: 'Lora', serif; font-style: italic; }
+.deriv-pos { font-size: 0.68rem; color: var(--olive); font-weight: 600; }
+.deriv-zh { font-size: 0.75rem; color: var(--text-mid); font-family: 'Noto Serif TC', serif; }
+
+/* EXAMPLES */
+.examples-section { }
+.ex-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.example-item {
+  background: rgba(212,130,26,0.05);
+  border-left: 3px solid var(--amber-light);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+.example-item:last-child { margin-bottom: 0; }
+.ex-en {
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin-bottom: 3px;
+}
+.ex-en em { color: var(--rust); font-style: italic; font-weight: 600; }
+.ex-zh {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-family: 'Noto Serif TC', serif;
+  line-height: 1.5;
+}
+
+/* hidden */
+.vocab-card.hidden { display: none; }
+
+/* no results */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  display: none;
+}
+.no-results.show { display: block; }
+
+/* stats bar */
+.stats-bar {
+  text-align: right;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  font-family: 'Noto Serif TC', serif;
+}
+.stats-bar strong { color: var(--amber-dark); }
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-light);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Noto Serif TC', serif;
+}
+
+@media (max-width: 600px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+  .controls-inner { flex-direction: column; }
+  .filter-tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>📖 中壢高中單字本</h1>
+  <p class="subtitle">Unit 6-2 ／ 6-3 ／ 7-1 ／ 7-2 ／ 7-3</p>
+  <span class="header-badge">✦ 含衍生詞・雙語例句・詞性標示 ✦</span>
+</header>
+
+<nav class="controls">
+  <div class="controls-inner">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜尋英文單字或中文意思..." oninput="filterCards()">
+    </div>
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterUnit('all')">全部 <span class="count-badge" id="cnt-all">240</span></button>
+      <button class="tab-btn" onclick="filterUnit('6-2')">Unit 6-2 <span class="count-badge" id="cnt-62"></span></button>
+      <button class="tab-btn" onclick="filterUnit('6-3')">Unit 6-3 <span class="count-badge" id="cnt-63"></span></button>
+      <button class="tab-btn" onclick="filterUnit('7-1')">Unit 7-1 <span class="count-badge" id="cnt-71"></span></button>
+      <button class="tab-btn" onclick="filterUnit('7-2')">Unit 7-2 <span class="count-badge" id="cnt-72"></span></button>
+      <button class="tab-btn" onclick="filterUnit('7-3')">Unit 7-3 <span class="count-badge" id="cnt-73"></span></button>
+    </div>
+  </div>
+</nav>
+
+<main class="main" id="mainContent">
+  <div class="stats-bar">顯示 <strong id="visibleCount">240</strong> / 240 個單字</div>
+  <div id="noResults" class="no-results">😕 找不到符合的單字，請試試其他關鍵字</div>
+</main>
+
+<footer>
+  中壢高中英文單字本 Unit 6-2 ～ 7-3 ｜ 互動式學習頁面 ｜ 含衍生詞・雙語例句
+</footer>
+
+<script>
+const VOCAB = [
+  // ===== UNIT 6-2 =====
+  {unit:"6-2",word:"dislike",pos:"v./n.",zh:"不喜歡；厭惡",
+   deriv:[{w:"dislikable",pos:"adj.",zh:"令人不喜歡的"}],
+   ex:[{en:"She <em>disliked</em> the smell of cigarettes.",zh:"她不喜歡香菸的氣味。"},
+       {en:"He has a strong <em>dislike</em> for spicy food.",zh:"他非常討厭辛辣食物。"}]},
+  {unit:"6-2",word:"dizzy",pos:"adj.",zh:"頭暈的；眩暈的",
+   deriv:[{w:"dizziness",pos:"n.",zh:"頭暈；眩暈"}],
+   ex:[{en:"She felt <em>dizzy</em> after spinning around.",zh:"她旋轉之後感到頭暈。"},
+       {en:"The heat made him <em>dizzy</em> and weak.",zh:"高溫讓他頭暈且虛弱。"}]},
+  {unit:"6-2",word:"dread",pos:"v./n.",zh:"畏懼；恐懼",
+   deriv:[{w:"dreadful",pos:"adj.",zh:"可怕的；糟糕的"}],
+   ex:[{en:"I <em>dread</em> going to the dentist every time.",zh:"我每次都很怕去看牙醫。"},
+       {en:"The thought of failure filled him with <em>dread</em>.",zh:"失敗的念頭讓他充滿恐懼。"}]},
+  {unit:"6-2",word:"eager",pos:"adj.",zh:"熱切的；渴望的",
+   deriv:[{w:"eagerness",pos:"n.",zh:"熱切；渴望"}],
+   ex:[{en:"She was <em>eager</em> to learn new skills.",zh:"她渴望學習新技能。"},
+       {en:"The students showed great <em>eagerness</em> to participate.",zh:"學生們表現出極大的參與熱情。"}]},
+  {unit:"6-2",word:"embarrass",pos:"v.",zh:"使尷尬；使難堪",
+   deriv:[{w:"embarrassment",pos:"n.",zh:"尷尬；難堪"},{w:"embarrassing",pos:"adj.",zh:"令人尷尬的"}],
+   ex:[{en:"His rude comment <em>embarrassed</em> everyone at the table.",zh:"他粗魯的評論讓桌上所有人感到尷尬。"},
+       {en:"She turned red with <em>embarrassment</em>.",zh:"她因為尷尬而臉紅。"}]},
+  {unit:"6-2",word:"emotional",pos:"adj.",zh:"情緒的；感情用事的",
+   deriv:[{w:"emotion",pos:"n.",zh:"情緒；感情"},{w:"emotionally",pos:"adv.",zh:"情緒上地"}],
+   ex:[{en:"The farewell speech was very <em>emotional</em>.",zh:"這場告別演講非常感人。"},
+       {en:"She struggled to control her <em>emotions</em>.",zh:"她努力控制自己的情緒。"}]},
+  {unit:"6-2",word:"enjoyable",pos:"adj.",zh:"令人愉快的；有趣的",
+   deriv:[{w:"enjoy",pos:"v.",zh:"享受"},{w:"enjoyment",pos:"n.",zh:"享受；樂趣"}],
+   ex:[{en:"The picnic was a truly <em>enjoyable</em> experience.",zh:"這次野餐是個非常愉快的體驗。"},
+       {en:"He finds great <em>enjoyment</em> in reading novels.",zh:"他從閱讀小說中獲得極大的樂趣。"}]},
+  {unit:"6-2",word:"envy",pos:"v./n.",zh:"嫉妒；羨慕",
+   deriv:[{w:"envious",pos:"adj.",zh:"羨慕的；嫉妒的"},{w:"enviously",pos:"adv.",zh:"嫉妒地"}],
+   ex:[{en:"I <em>envy</em> her ability to speak so many languages.",zh:"我羨慕她能說那麼多種語言的能力。"},
+       {en:"His success made his colleagues green with <em>envy</em>.",zh:"他的成功讓同事們羨慕不已。"}]},
+  {unit:"6-2",word:"exaggerate",pos:"v.",zh:"誇大；誇張",
+   deriv:[{w:"exaggeration",pos:"n.",zh:"誇大；誇張"},{w:"exaggerated",pos:"adj.",zh:"誇大的"}],
+   ex:[{en:"Don't <em>exaggerate</em>—it wasn't that bad.",zh:"別誇大——事情沒那麼糟。"},
+       {en:"His story was full of wild <em>exaggeration</em>.",zh:"他的故事充滿了誇大的成分。"}]},
+  {unit:"6-2",word:"exhaust",pos:"v./n.",zh:"使精疲力竭；廢氣",
+   deriv:[{w:"exhaustion",pos:"n.",zh:"精疲力竭"},{w:"exhausted",pos:"adj.",zh:"精疲力竭的"}],
+   ex:[{en:"The long hike completely <em>exhausted</em> us.",zh:"漫長的健行讓我們完全筋疲力盡。"},
+       {en:"She collapsed from <em>exhaustion</em> after the marathon.",zh:"她在馬拉松後因疲憊而倒下。"}]},
+  {unit:"6-2",word:"expectation",pos:"n.",zh:"期待；預期",
+   deriv:[{w:"expect",pos:"v.",zh:"期待；預期"},{w:"expected",pos:"adj.",zh:"預期的"}],
+   ex:[{en:"The film exceeded all my <em>expectations</em>.",zh:"這部電影超越了我所有的期待。"},
+       {en:"She worked hard to meet her parents' <em>expectations</em>.",zh:"她努力達到父母的期望。"}]},
+  {unit:"6-2",word:"expressive",pos:"adj.",zh:"富有表情的；善於表達的",
+   deriv:[{w:"express",pos:"v.",zh:"表達"},{w:"expression",pos:"n.",zh:"表情；表達"}],
+   ex:[{en:"Her <em>expressive</em> eyes showed every emotion.",zh:"她富有表情的眼睛展現了每一種情緒。"},
+       {en:"He used hand gestures as a form of <em>expression</em>.",zh:"他用手勢作為一種表達方式。"}]},
+  {unit:"6-2",word:"fantasy",pos:"n.",zh:"幻想；奇幻",
+   deriv:[{w:"fantasize",pos:"v.",zh:"幻想"},{w:"fantastic",pos:"adj.",zh:"極好的；奇幻的"}],
+   ex:[{en:"She lived in a world of <em>fantasy</em> and dreams.",zh:"她生活在幻想與夢境的世界裡。"},
+       {en:"He often <em>fantasizes</em> about traveling the world.",zh:"他常常幻想著環遊世界。"}]},
+  {unit:"6-2",word:"fearful",pos:"adj.",zh:"恐懼的；令人害怕的",
+   deriv:[{w:"fear",pos:"n./v.",zh:"恐懼；害怕"},{w:"fearfully",pos:"adv.",zh:"恐懼地"}],
+   ex:[{en:"The child was <em>fearful</em> of the dark.",zh:"這個孩子害怕黑暗。"},
+       {en:"She looked around <em>fearfully</em> in the empty house.",zh:"她在空蕩的房子裡恐懼地四處張望。"}]},
+  {unit:"6-2",word:"fond",pos:"adj.",zh:"喜愛的；摯愛的",
+   deriv:[{w:"fondness",pos:"n.",zh:"喜愛；鍾情"},{w:"fondly",pos:"adv.",zh:"深情地"}],
+   ex:[{en:"She is very <em>fond</em> of classical music.",zh:"她非常喜愛古典音樂。"},
+       {en:"He remembered his childhood <em>fondly</em>.",zh:"他深情地回憶起自己的童年。"}]},
+  {unit:"6-2",word:"fright",pos:"n.",zh:"恐嚇；驚嚇",
+   deriv:[{w:"frighten",pos:"v.",zh:"使驚嚇"},{w:"frightening",pos:"adj.",zh:"令人恐懼的"}],
+   ex:[{en:"The loud thunder gave her a terrible <em>fright</em>.",zh:"巨大的雷聲把她嚇得半死。"},
+       {en:"The horror movie was really <em>frightening</em>.",zh:"這部恐怖電影真的非常嚇人。"}]},
+  {unit:"6-2",word:"frighten",pos:"v.",zh:"使驚嚇；使恐懼",
+   deriv:[{w:"frightened",pos:"adj.",zh:"受驚嚇的"},{w:"frightening",pos:"adj.",zh:"令人恐懼的"}],
+   ex:[{en:"The dog barking loudly <em>frightened</em> the little boy.",zh:"狗大聲吠叫把小男孩嚇到了。"},
+       {en:"Don't <em>frighten</em> the birds away.",zh:"別把鳥嚇跑了。"}]},
+  {unit:"6-2",word:"frustrated",pos:"adj.",zh:"沮喪的；挫折的",
+   deriv:[{w:"frustrate",pos:"v.",zh:"使挫折"},{w:"frustration",pos:"n.",zh:"挫折；沮喪"}],
+   ex:[{en:"He felt <em>frustrated</em> after failing the exam.",zh:"考試不及格後他感到很沮喪。"},
+       {en:"The delay caused a lot of <em>frustration</em> for travelers.",zh:"延誤讓旅客非常沮喪。"}]},
+  {unit:"6-2",word:"furious",pos:"adj.",zh:"憤怒的；狂怒的",
+   deriv:[{w:"fury",pos:"n.",zh:"憤怒；狂暴"},{w:"furiously",pos:"adv.",zh:"憤怒地"}],
+   ex:[{en:"She was <em>furious</em> when she discovered the lie.",zh:"當她發現謊言時，她勃然大怒。"},
+       {en:"His <em>fury</em> was evident from his flushed face.",zh:"他通紅的臉龐清楚顯示出他的憤怒。"}]},
+  {unit:"6-2",word:"giggle",pos:"v./n.",zh:"咯咯笑；傻笑",
+   deriv:[{w:"giggler",pos:"n.",zh:"愛傻笑的人"},{w:"fit of giggles",pos:"idiom",zh:"忍不住大笑"}],
+   ex:[{en:"The girls <em>giggled</em> at the silly joke.",zh:"女孩們因為那個蠢笑話咯咯笑。"},
+       {en:"She got a fit of <em>giggles</em> during the serious meeting.",zh:"她在嚴肅的會議中忍不住笑了起來。"}]},
+  {unit:"6-2",word:"glory",pos:"n.",zh:"榮耀；光榮",
+   deriv:[{w:"glorious",pos:"adj.",zh:"光榮的；壯麗的"},{w:"glorify",pos:"v.",zh:"頌揚；美化"}],
+   ex:[{en:"The athlete basked in the <em>glory</em> of winning gold.",zh:"這位運動員沉浸在贏得金牌的榮耀中。"},
+       {en:"It was a <em>glorious</em> sunset over the mountains.",zh:"那是山間一片壯麗的日落景色。"}]},
+  {unit:"6-2",word:"grace",pos:"n.",zh:"優雅；恩典",
+   deriv:[{w:"graceful",pos:"adj.",zh:"優雅的"},{w:"gracefully",pos:"adv.",zh:"優雅地"}],
+   ex:[{en:"She moved across the stage with natural <em>grace</em>.",zh:"她帶著天生的優雅走過舞台。"},
+       {en:"The ballerina danced <em>gracefully</em> across the floor.",zh:"芭蕾舞者優雅地在地板上起舞。"}]},
+  {unit:"6-2",word:"grateful",pos:"adj.",zh:"感激的；感謝的",
+   deriv:[{w:"gratitude",pos:"n.",zh:"感激；感謝"},{w:"gratefully",pos:"adv.",zh:"感激地"}],
+   ex:[{en:"I am truly <em>grateful</em> for your help.",zh:"我真心感謝您的幫助。"},
+       {en:"She smiled <em>gratefully</em> and thanked everyone.",zh:"她感激地微笑並感謝所有人。"}]},
+  {unit:"6-2",word:"gratitude",pos:"n.",zh:"感激；感謝之情",
+   deriv:[{w:"grateful",pos:"adj.",zh:"感激的"},{w:"express gratitude",pos:"phrase",zh:"表達感謝"}],
+   ex:[{en:"She expressed her deep <em>gratitude</em> for the scholarship.",zh:"她深切表達了對獎學金的感謝之情。"},
+       {en:"He showed his <em>gratitude</em> by sending flowers.",zh:"他送了鮮花以表達感謝。"}]},
+  {unit:"6-2",word:"grief",pos:"n.",zh:"悲痛；哀傷",
+   deriv:[{w:"grieve",pos:"v.",zh:"悲傷；哀悼"},{w:"grievous",pos:"adj.",zh:"令人悲痛的"}],
+   ex:[{en:"She was overcome with <em>grief</em> after losing her dog.",zh:"失去愛犬後她悲痛欲絕。"},
+       {en:"The family <em>grieved</em> together at the funeral.",zh:"一家人在葬禮上一同哀悼。"}]},
+  {unit:"6-2",word:"guilty",pos:"adj.",zh:"有罪的；內疚的",
+   deriv:[{w:"guilt",pos:"n.",zh:"罪惡感；內疚"},{w:"guiltily",pos:"adv.",zh:"內疚地"}],
+   ex:[{en:"He felt <em>guilty</em> about forgetting her birthday.",zh:"他因為忘記她的生日而感到內疚。"},
+       {en:"The judge declared him <em>guilty</em> of theft.",zh:"法官宣判他犯了竊盜罪。"}]},
+  {unit:"6-2",word:"harsh",pos:"adj.",zh:"嚴厲的；刺耳的；惡劣的",
+   deriv:[{w:"harshly",pos:"adv.",zh:"嚴厲地"},{w:"harshness",pos:"n.",zh:"嚴厲；刺耳"}],
+   ex:[{en:"The teacher's <em>harsh</em> words hurt the student's feelings.",zh:"老師嚴厲的話語傷害了學生的感情。"},
+       {en:"The explorers survived the <em>harsh</em> winter conditions.",zh:"探險家們在惡劣的冬季條件下存活了下來。"}]},
+  {unit:"6-2",word:"hateful",pos:"adj.",zh:"充滿仇恨的；令人憎恨的",
+   deriv:[{w:"hate",pos:"v./n.",zh:"憎恨；厭惡"},{w:"hatred",pos:"n.",zh:"仇恨；憎惡"}],
+   ex:[{en:"His <em>hateful</em> remarks shocked everyone in the room.",zh:"他充滿仇恨的言論震驚了房間裡的每個人。"},
+       {en:"Spreading <em>hateful</em> content online is harmful.",zh:"在網路上散播仇恨內容是有害的。"}]},
+  {unit:"6-2",word:"hatred",pos:"n.",zh:"仇恨；憎惡",
+   deriv:[{w:"hate",pos:"v.",zh:"憎恨"},{w:"hateful",pos:"adj.",zh:"充滿仇恨的"}],
+   ex:[{en:"She looked at him with <em>hatred</em> in her eyes.",zh:"她用充滿仇恨的眼神看著他。"},
+       {en:"War breeds <em>hatred</em> between people.",zh:"戰爭在人們之間滋生仇恨。"}]},
+  {unit:"6-2",word:"hesitation",pos:"n.",zh:"猶豫；遲疑",
+   deriv:[{w:"hesitate",pos:"v.",zh:"猶豫；遲疑"},{w:"hesitant",pos:"adj.",zh:"猶豫的；遲疑的"}],
+   ex:[{en:"Without <em>hesitation</em>, she jumped into the cold water.",zh:"她毫不猶豫地跳入冷水中。"},
+       {en:"He answered the question without any <em>hesitation</em>.",zh:"他毫不猶豫地回答了這個問題。"}]},
+  {unit:"6-2",word:"homesick",pos:"adj.",zh:"想家的；鄉愁的",
+   deriv:[{w:"homesickness",pos:"n.",zh:"思鄉之情；鄉愁"}],
+   ex:[{en:"She felt <em>homesick</em> during her first month abroad.",zh:"她在國外的第一個月感到非常想家。"},
+       {en:"His <em>homesickness</em> faded as he made new friends.",zh:"隨著結交新朋友，他的思鄉之情逐漸消退。"}]},
+  {unit:"6-2",word:"horrible",pos:"adj.",zh:"可怕的；糟透的",
+   deriv:[{w:"horribly",pos:"adv.",zh:"可怕地；糟透地"},{w:"horror",pos:"n.",zh:"恐怖；恐懼"}],
+   ex:[{en:"The accident was a <em>horrible</em> sight.",zh:"那場事故是令人可怕的景象。"},
+       {en:"The weather was <em>horribly</em> cold that day.",zh:"那天天氣冷得可怕。"}]},
+  {unit:"6-2",word:"horrify",pos:"v.",zh:"使恐懼；使震驚",
+   deriv:[{w:"horrified",pos:"adj.",zh:"感到恐懼的"},{w:"horrifying",pos:"adj.",zh:"令人恐懼的"}],
+   ex:[{en:"The graphic images <em>horrified</em> the audience.",zh:"那些影像讓觀眾感到震驚和恐懼。"},
+       {en:"It was a <em>horrifying</em> experience to witness.",zh:"目睹那一切是個令人恐懼的經歷。"}]},
+  {unit:"6-2",word:"horror",pos:"n.",zh:"恐怖；恐懼",
+   deriv:[{w:"horrify",pos:"v.",zh:"使恐懼"},{w:"horrible",pos:"adj.",zh:"可怕的"}],
+   ex:[{en:"She screamed in <em>horror</em> when she saw the spider.",zh:"她看見蜘蛛時嚇得大叫。"},
+       {en:"He loves watching <em>horror</em> movies on Halloween.",zh:"他喜歡在萬聖節看恐怖電影。"}]},
+  {unit:"6-2",word:"hug",pos:"v./n.",zh:"擁抱",
+   deriv:[{w:"hugger",pos:"n.",zh:"喜歡擁抱的人"},{w:"give someone a hug",pos:"phrase",zh:"給某人一個擁抱"}],
+   ex:[{en:"She gave her friend a warm <em>hug</em> at the airport.",zh:"她在機場給了朋友一個溫暖的擁抱。"},
+       {en:"He <em>hugged</em> his dog tightly after a long day.",zh:"漫長的一天後，他緊緊地抱著他的狗。"}]},
+  {unit:"6-2",word:"humor",pos:"n.",zh:"幽默；幽默感",
+   deriv:[{w:"humorous",pos:"adj.",zh:"幽默的；有趣的"},{w:"humorously",pos:"adv.",zh:"幽默地"}],
+   ex:[{en:"His <em>humor</em> always lightened the mood at parties.",zh:"他的幽默總能讓派對氣氛更輕鬆。"},
+       {en:"She told the story in a <em>humorous</em> way.",zh:"她用幽默的方式講述了這個故事。"}]},
+  {unit:"6-2",word:"identify",pos:"v.",zh:"辨識；認同；確認",
+   deriv:[{w:"identification",pos:"n.",zh:"身分確認；辨識"},{w:"identity",pos:"n.",zh:"身分；認同"}],
+   ex:[{en:"Can you <em>identify</em> the bird in this photo?",zh:"你能辨識出這張照片裡的鳥嗎？"},
+       {en:"She struggled to form her own <em>identity</em> as a teenager.",zh:"她在青少年時期努力建立自己的認同感。"}]},
+  {unit:"6-2",word:"impress",pos:"v.",zh:"給……留下深刻印象",
+   deriv:[{w:"impression",pos:"n.",zh:"印象"},{w:"impressive",pos:"adj.",zh:"令人印象深刻的"}],
+   ex:[{en:"His performance <em>impressed</em> all the judges.",zh:"他的表演給所有評審留下深刻印象。"},
+       {en:"She made an excellent first <em>impression</em>.",zh:"她留下了極好的第一印象。"}]},
+  {unit:"6-2",word:"impression",pos:"n.",zh:"印象；感想",
+   deriv:[{w:"impress",pos:"v.",zh:"使留下印象"},{w:"impressive",pos:"adj.",zh:"令人印象深刻的"}],
+   ex:[{en:"He made a strong <em>impression</em> at the job interview.",zh:"他在求職面試中留下了強烈的印象。"},
+       {en:"What was your first <em>impression</em> of the city?",zh:"你對這座城市的第一印象是什麼？"}]},
+  {unit:"6-2",word:"inspiration",pos:"n.",zh:"靈感；啟發",
+   deriv:[{w:"inspire",pos:"v.",zh:"激勵；賦予靈感"},{w:"inspirational",pos:"adj.",zh:"激勵人心的"}],
+   ex:[{en:"Nature is a great source of <em>inspiration</em> for artists.",zh:"大自然是藝術家靈感的重要來源。"},
+       {en:"Her story was truly <em>inspirational</em> to many.",zh:"她的故事對很多人來說真的非常激勵人心。"}]},
+  {unit:"6-2",word:"inspire",pos:"v.",zh:"激勵；賦予靈感",
+   deriv:[{w:"inspiration",pos:"n.",zh:"靈感；啟發"},{w:"inspiring",pos:"adj.",zh:"激勵人心的"}],
+   ex:[{en:"Her courage <em>inspired</em> everyone around her.",zh:"她的勇氣激勵了她周圍的每個人。"},
+       {en:"The teacher <em>inspired</em> students to pursue their dreams.",zh:"這位老師激勵學生追求自己的夢想。"}]},
+  {unit:"6-2",word:"instinct",pos:"n.",zh:"本能；直覺",
+   deriv:[{w:"instinctive",pos:"adj.",zh:"本能的"},{w:"instinctively",pos:"adv.",zh:"本能地"}],
+   ex:[{en:"Animals rely on <em>instinct</em> to survive in the wild.",zh:"動物靠本能在野外生存。"},
+       {en:"She <em>instinctively</em> grabbed the child before it fell.",zh:"她本能地在孩子摔倒前將他抓住。"}]},
+  // ===== UNIT 6-3 =====
+  {unit:"6-3",word:"insult",pos:"v./n.",zh:"侮辱；冒犯",
+   deriv:[{w:"insulting",pos:"adj.",zh:"侮辱性的；無禮的"},{w:"insulted",pos:"adj.",zh:"感到被侮辱的"}],
+   ex:[{en:"It is rude to <em>insult</em> someone in public.",zh:"在公開場合侮辱別人是非常無禮的。"},
+       {en:"She felt deeply <em>insulted</em> by his comment.",zh:"她因他的評論而深感被侮辱。"}]},
+  {unit:"6-3",word:"intuition",pos:"n.",zh:"直覺；直覺力",
+   deriv:[{w:"intuitive",pos:"adj.",zh:"直覺的"},{w:"intuitively",pos:"adv.",zh:"直覺地"}],
+   ex:[{en:"She had a strong <em>intuition</em> that something was wrong.",zh:"她有強烈的直覺感到有什麼不對勁。"},
+       {en:"Good detectives rely on both logic and <em>intuition</em>.",zh:"優秀的偵探既依賴邏輯也依賴直覺。"}]},
+  {unit:"6-3",word:"jealous",pos:"adj.",zh:"嫉妒的；妒忌的",
+   deriv:[{w:"jealousy",pos:"n.",zh:"嫉妒；妒忌"},{w:"jealously",pos:"adv.",zh:"嫉妒地"}],
+   ex:[{en:"He was <em>jealous</em> of his friend's new car.",zh:"他嫉妒朋友的新車。"},
+       {en:"She <em>jealously</em> guarded her position in the company.",zh:"她嫉妒地守護著她在公司中的地位。"}]},
+  {unit:"6-3",word:"jealousy",pos:"n.",zh:"嫉妒；妒忌",
+   deriv:[{w:"jealous",pos:"adj.",zh:"嫉妒的"},{w:"green with jealousy",pos:"idiom",zh:"嫉妒得臉色發綠"}],
+   ex:[{en:"<em>Jealousy</em> can destroy even the strongest friendships.",zh:"嫉妒甚至能毀掉最深厚的友誼。"},
+       {en:"Her success filled her coworkers with <em>jealousy</em>.",zh:"她的成功讓同事們充滿嫉妒。"}]},
+  {unit:"6-3",word:"joyful",pos:"adj.",zh:"快樂的；充滿喜悅的",
+   deriv:[{w:"joy",pos:"n.",zh:"喜悅；歡樂"},{w:"joyfully",pos:"adv.",zh:"快樂地；喜悅地"}],
+   ex:[{en:"The children's faces were <em>joyful</em> on Christmas morning.",zh:"聖誕節早晨孩子們的臉上充滿喜悅。"},
+       {en:"She <em>joyfully</em> accepted the marriage proposal.",zh:"她喜悅地接受了求婚。"}]},
+  {unit:"6-3",word:"laughter",pos:"n.",zh:"笑聲；歡笑",
+   deriv:[{w:"laugh",pos:"v.",zh:"笑；大笑"},{w:"laughter is the best medicine",pos:"idiom",zh:"笑是最好的藥"}],
+   ex:[{en:"The room was filled with <em>laughter</em> after the joke.",zh:"笑話說完後房間裡充滿了笑聲。"},
+       {en:"She couldn't hold back her <em>laughter</em>.",zh:"她忍不住笑了出來。"}]},
+  {unit:"6-3",word:"leisurely",pos:"adj./adv.",zh:"悠閒的（地）；從容的（地）",
+   deriv:[{w:"leisure",pos:"n.",zh:"閒暇；休閒"},{w:"at leisure",pos:"phrase",zh:"在空閒時；從容地"}],
+   ex:[{en:"We took a <em>leisurely</em> walk along the beach.",zh:"我們沿著海灘悠閒地散步。"},
+       {en:"He spent his <em>leisure</em> time reading and painting.",zh:"他把閒暇時間用來讀書和畫畫。"}]},
+  {unit:"6-3",word:"lousy",pos:"adj.",zh:"糟糕的；很差勁的",
+   deriv:[{w:"feel lousy",pos:"phrase",zh:"感覺很糟糕"}],
+   ex:[{en:"I feel <em>lousy</em> today because of this cold.",zh:"因為感冒，我今天感覺很糟糕。"},
+       {en:"The service at that restaurant was absolutely <em>lousy</em>.",zh:"那家餐廳的服務真的很差勁。"}]},
+  {unit:"6-3",word:"mercy",pos:"n.",zh:"仁慈；寬恕；憐憫",
+   deriv:[{w:"merciful",pos:"adj.",zh:"仁慈的；寬容的"},{w:"merciless",pos:"adj.",zh:"無情的；殘忍的"}],
+   ex:[{en:"He begged for <em>mercy</em> from the judge.",zh:"他向法官乞求寬恕。"},
+       {en:"The king showed <em>mercy</em> to the defeated soldiers.",zh:"國王對戰敗的士兵展現了仁慈。"}]},
+  {unit:"6-3",word:"merry",pos:"adj.",zh:"歡樂的；愉快的",
+   deriv:[{w:"merrily",pos:"adv.",zh:"愉快地；歡樂地"},{w:"merriment",pos:"n.",zh:"歡樂；歡慶"}],
+   ex:[{en:"Everyone wished each other a <em>Merry</em> Christmas.",zh:"大家互祝聖誕快樂。"},
+       {en:"The children laughed <em>merrily</em> at the clown.",zh:"孩子們愉快地對著小丑大笑。"}]},
+  {unit:"6-3",word:"mischief",pos:"n.",zh:"惡作劇；頑皮",
+   deriv:[{w:"mischievous",pos:"adj.",zh:"調皮的；愛惡作劇的"},{w:"mischievously",pos:"adv.",zh:"調皮地"}],
+   ex:[{en:"The boy was always getting into <em>mischief</em>.",zh:"那個男孩總是在搗蛋惹麻煩。"},
+       {en:"She gave a <em>mischievous</em> grin before playing the prank.",zh:"她在惡作劇之前露出調皮的笑容。"}]},
+  {unit:"6-3",word:"mislead",pos:"v.",zh:"誤導；欺騙",
+   deriv:[{w:"misleading",pos:"adj.",zh:"誤導性的"},{w:"misled",pos:"adj.",zh:"被誤導的"}],
+   ex:[{en:"The advertisement <em>misled</em> customers about the product.",zh:"這則廣告誤導了顧客對產品的認知。"},
+       {en:"The report contained <em>misleading</em> information.",zh:"這份報告包含誤導性的資訊。"}]},
+  {unit:"6-3",word:"misunderstand",pos:"v.",zh:"誤解；誤會",
+   deriv:[{w:"misunderstanding",pos:"n.",zh:"誤解；誤會"},{w:"misunderstood",pos:"adj.",zh:"被誤解的"}],
+   ex:[{en:"I think you <em>misunderstood</em> what I said.",zh:"我想你誤解了我說的話。"},
+       {en:"The argument started from a simple <em>misunderstanding</em>.",zh:"這場爭論源於一個簡單的誤會。"}]},
+  {unit:"6-3",word:"neglect",pos:"v./n.",zh:"忽視；疏忽",
+   deriv:[{w:"neglectful",pos:"adj.",zh:"疏忽的；不關心的"},{w:"negligence",pos:"n.",zh:"疏失；疏忽"}],
+   ex:[{en:"Don't <em>neglect</em> your health for the sake of work.",zh:"不要為了工作而忽視你的健康。"},
+       {en:"The child suffered from parental <em>neglect</em>.",zh:"這個孩子遭受了父母的忽視。"}]},
+  {unit:"6-3",word:"offend",pos:"v.",zh:"冒犯；觸怒；違犯",
+   deriv:[{w:"offense",pos:"n.",zh:"冒犯；違法行為"},{w:"offensive",pos:"adj.",zh:"冒犯性的；攻擊性的"}],
+   ex:[{en:"He didn't mean to <em>offend</em> anyone with his joke.",zh:"他開玩笑並非故意要冒犯任何人。"},
+       {en:"His <em>offensive</em> behavior upset the entire team.",zh:"他冒犯性的行為讓整個團隊都不高興。"}]},
+  {unit:"6-3",word:"offense",pos:"n.",zh:"冒犯；違法行為；進攻",
+   deriv:[{w:"offend",pos:"v.",zh:"冒犯"},{w:"offensive",pos:"adj.",zh:"冒犯的；攻擊性的"}],
+   ex:[{en:"He committed a serious <em>offense</em> and was arrested.",zh:"他犯了嚴重的罪行而被逮捕。"},
+       {en:"No <em>offense</em>, but I disagree with your idea.",zh:"無意冒犯，但我不同意你的想法。"}]},
+  {unit:"6-3",word:"offensive",pos:"adj.",zh:"冒犯的；無禮的；攻擊性的",
+   deriv:[{w:"offend",pos:"v.",zh:"冒犯"},{w:"offensively",pos:"adv.",zh:"無禮地；攻擊性地"}],
+   ex:[{en:"His <em>offensive</em> language shocked everyone present.",zh:"他無禮的語言讓在場所有人震驚。"},
+       {en:"The team launched an <em>offensive</em> play in the final quarter.",zh:"球隊在最後一節發起了進攻。"}]},
+  {unit:"6-3",word:"panic",pos:"v./n.",zh:"恐慌；驚慌失措",
+   deriv:[{w:"panicky",pos:"adj.",zh:"恐慌的"},{w:"panic-stricken",pos:"adj.",zh:"驚慌失措的"}],
+   ex:[{en:"Don't <em>panic</em>—everything will be fine.",zh:"不要驚慌——一切都會沒事的。"},
+       {en:"There was widespread <em>panic</em> during the earthquake.",zh:"地震期間出現了大規模的恐慌。"}]},
+  {unit:"6-3",word:"passion",pos:"n.",zh:"熱情；激情",
+   deriv:[{w:"passionate",pos:"adj.",zh:"熱情的；充滿激情的"},{w:"passionately",pos:"adv.",zh:"熱情地"}],
+   ex:[{en:"She has a deep <em>passion</em> for painting.",zh:"她對繪畫懷有深厚的熱情。"},
+       {en:"He argued his point <em>passionately</em> in the debate.",zh:"他在辯論中充滿激情地表達自己的觀點。"}]},
+  {unit:"6-3",word:"pessimistic",pos:"adj.",zh:"悲觀的",
+   deriv:[{w:"pessimism",pos:"n.",zh:"悲觀主義"},{w:"pessimist",pos:"n.",zh:"悲觀主義者"}],
+   ex:[{en:"Try not to be so <em>pessimistic</em> about the future.",zh:"試著不要對未來如此悲觀。"},
+       {en:"His <em>pessimism</em> made it hard to work with him.",zh:"他的悲觀主義讓人很難與他共事。"}]},
+  {unit:"6-3",word:"pity",pos:"n./v.",zh:"同情；憐憫；可惜",
+   deriv:[{w:"pitiful",pos:"adj.",zh:"可憐的；令人同情的"},{w:"pitifully",pos:"adv.",zh:"可憐地"}],
+   ex:[{en:"I felt great <em>pity</em> for the homeless man.",zh:"我對那個無家可歸的人深感同情。"},
+       {en:"What a <em>pity</em> that the concert was cancelled.",zh:"音樂會被取消真是太可惜了。"}]},
+  {unit:"6-3",word:"rage",pos:"n./v.",zh:"狂怒；憤怒；盛行",
+   deriv:[{w:"raging",pos:"adj.",zh:"狂怒的；激烈的"},{w:"fly into a rage",pos:"idiom",zh:"勃然大怒"}],
+   ex:[{en:"He flew into a <em>rage</em> when he heard the news.",zh:"當他聽到這個消息時，他勃然大怒。"},
+       {en:"A <em>raging</em> storm hit the coast last night.",zh:"昨晚一場猛烈的暴風雨侵襲了海岸。"}]},
+  {unit:"6-3",word:"regret",pos:"v./n.",zh:"後悔；遺憾",
+   deriv:[{w:"regretful",pos:"adj.",zh:"後悔的；遺憾的"},{w:"regrettable",pos:"adj.",zh:"令人遺憾的"}],
+   ex:[{en:"She deeply <em>regretted</em> her harsh words.",zh:"她深深後悔說了那些嚴厲的話。"},
+       {en:"He had no <em>regrets</em> about his decision.",zh:"他對自己的決定毫不後悔。"}]},
+  {unit:"6-3",word:"relieve",pos:"v.",zh:"減輕；緩解；使寬慰",
+   deriv:[{w:"relief",pos:"n.",zh:"緩解；寬慰"},{w:"relieved",pos:"adj.",zh:"鬆了一口氣的"}],
+   ex:[{en:"The medicine helped to <em>relieve</em> his headache.",zh:"這藥幫助緩解了他的頭痛。"},
+       {en:"She felt a sense of <em>relief</em> after the exam.",zh:"考試結束後她感到一陣輕鬆。"}]},
+  {unit:"6-3",word:"reluctant",pos:"adj.",zh:"不情願的；勉強的",
+   deriv:[{w:"reluctance",pos:"n.",zh:"不情願；勉強"},{w:"reluctantly",pos:"adv.",zh:"不情願地"}],
+   ex:[{en:"He was <em>reluctant</em> to admit he was wrong.",zh:"他不情願承認自己錯了。"},
+       {en:"She <em>reluctantly</em> agreed to help with the project.",zh:"她不情願地同意協助這個專案。"}]},
+  {unit:"6-3",word:"satisfaction",pos:"n.",zh:"滿足感；滿意",
+   deriv:[{w:"satisfy",pos:"v.",zh:"使滿足；使滿意"},{w:"satisfying",pos:"adj.",zh:"令人滿足的"}],
+   ex:[{en:"He felt deep <em>satisfaction</em> after completing the project.",zh:"完成專案後，他感到深深的滿足感。"},
+       {en:"The meal was truly <em>satisfying</em>.",zh:"這頓飯真的很令人滿足。"}]},
+  {unit:"6-3",word:"scary",pos:"adj.",zh:"令人害怕的；嚇人的",
+   deriv:[{w:"scare",pos:"v.",zh:"使害怕；嚇唬"},{w:"scared",pos:"adj.",zh:"受驚嚇的；害怕的"}],
+   ex:[{en:"The haunted house was really <em>scary</em>.",zh:"那棟鬼屋真的很嚇人。"},
+       {en:"She was too <em>scared</em> to speak in front of the class.",zh:"她太害怕了，不敢在班上講話。"}]},
+  {unit:"6-3",word:"shameful",pos:"adj.",zh:"可恥的；丟臉的",
+   deriv:[{w:"shame",pos:"n.",zh:"羞恥；丟臉"},{w:"shamefully",pos:"adv.",zh:"可恥地"}],
+   ex:[{en:"It is <em>shameful</em> to bully weaker students.",zh:"欺負弱小的學生是可恥的行為。"},
+       {en:"He <em>shamefully</em> lied to his parents.",zh:"他可恥地對父母撒謊。"}]},
+  {unit:"6-3",word:"sincerely",pos:"adv.",zh:"真誠地；誠摯地",
+   deriv:[{w:"sincere",pos:"adj.",zh:"真誠的；誠摯的"},{w:"sincerity",pos:"n.",zh:"真誠；誠意"}],
+   ex:[{en:"I <em>sincerely</em> apologize for the inconvenience.",zh:"我誠摯地為造成的不便道歉。"},
+       {en:"She <em>sincerely</em> wished him good luck.",zh:"她真誠地祝他好運。"}]},
+  {unit:"6-3",word:"sorrow",pos:"n.",zh:"悲傷；哀愁",
+   deriv:[{w:"sorrowful",pos:"adj.",zh:"悲傷的；哀愁的"},{w:"sorrowfully",pos:"adv.",zh:"悲傷地"}],
+   ex:[{en:"She was filled with <em>sorrow</em> when she heard the news.",zh:"當她聽到這個消息時，她充滿了悲傷。"},
+       {en:"He <em>sorrowfully</em> said goodbye to his old home.",zh:"他悲傷地向舊家告別。"}]},
+  {unit:"6-3",word:"suffer",pos:"v.",zh:"遭受；受苦；忍受",
+   deriv:[{w:"suffering",pos:"n.",zh:"痛苦；苦難"},{w:"sufferer",pos:"n.",zh:"受害者；患者"}],
+   ex:[{en:"She <em>suffered</em> from severe back pain for years.",zh:"她多年來飽受嚴重背痛之苦。"},
+       {en:"War causes tremendous <em>suffering</em> for civilians.",zh:"戰爭給平民帶來了巨大的苦難。"}]},
+  {unit:"6-3",word:"suspect",pos:"v./n.",zh:"懷疑；嫌疑人",
+   deriv:[{w:"suspicion",pos:"n.",zh:"懷疑；嫌疑"},{w:"suspicious",pos:"adj.",zh:"可疑的；懷疑的"}],
+   ex:[{en:"The police <em>suspect</em> him of committing the crime.",zh:"警方懷疑他犯了這起罪行。"},
+       {en:"The main <em>suspect</em> was questioned for hours.",zh:"主要嫌疑人被審問了好幾個小時。"}]},
+  {unit:"6-3",word:"suspicion",pos:"n.",zh:"懷疑；嫌疑",
+   deriv:[{w:"suspect",pos:"v.",zh:"懷疑"},{w:"suspicious",pos:"adj.",zh:"可疑的"}],
+   ex:[{en:"She had a growing <em>suspicion</em> that he was lying.",zh:"她越來越懷疑他在說謊。"},
+       {en:"His strange behavior aroused <em>suspicion</em>.",zh:"他奇怪的行為引起了懷疑。"}]},
+  {unit:"6-3",word:"suspicious",pos:"adj.",zh:"可疑的；懷疑的",
+   deriv:[{w:"suspicion",pos:"n.",zh:"懷疑；嫌疑"},{w:"suspiciously",pos:"adv.",zh:"懷疑地；可疑地"}],
+   ex:[{en:"The police noticed his <em>suspicious</em> behavior.",zh:"警察注意到他可疑的行為。"},
+       {en:"She looked at the stranger <em>suspiciously</em>.",zh:"她懷疑地看著那個陌生人。"}]},
+  {unit:"6-3",word:"sympathetic",pos:"adj.",zh:"同情的；有同情心的",
+   deriv:[{w:"sympathy",pos:"n.",zh:"同情；同情心"},{w:"sympathetically",pos:"adv.",zh:"同情地"}],
+   ex:[{en:"The teacher gave a <em>sympathetic</em> smile to the nervous student.",zh:"老師對緊張的學生給予一個同情的微笑。"},
+       {en:"She nodded <em>sympathetically</em> as he told his story.",zh:"她在他講述自己的故事時同情地點頭。"}]},
+  {unit:"6-3",word:"sympathy",pos:"n.",zh:"同情；同情心",
+   deriv:[{w:"sympathize",pos:"v.",zh:"同情；表示理解"},{w:"sympathetic",pos:"adj.",zh:"同情的"}],
+   ex:[{en:"She expressed her <em>sympathy</em> for the victims.",zh:"她對受害者表達了同情。"},
+       {en:"He couldn't help but feel deep <em>sympathy</em> for her.",zh:"他忍不住對她感到深深的同情。"}]},
+  {unit:"6-3",word:"tense",pos:"adj./v.",zh:"緊張的；拉緊",
+   deriv:[{w:"tension",pos:"n.",zh:"緊張；張力"},{w:"tensely",pos:"adv.",zh:"緊張地"}],
+   ex:[{en:"The room felt <em>tense</em> before the announcement.",zh:"宣布消息前，房間裡瀰漫著緊張的氣氛。"},
+       {en:"She <em>tensed</em> up when she heard the noise.",zh:"她聽到聲音時肌肉緊繃了起來。"}]},
+  {unit:"6-3",word:"tension",pos:"n.",zh:"緊張；張力；矛盾",
+   deriv:[{w:"tense",pos:"adj.",zh:"緊張的"},{w:"ease the tension",pos:"phrase",zh:"緩解緊張局勢"}],
+   ex:[{en:"There was visible <em>tension</em> between the two teams.",zh:"兩支隊伍之間有明顯的緊張氣氛。"},
+       {en:"Music helped ease the <em>tension</em> in the room.",zh:"音樂幫助緩解了房間裡的緊張氣氛。"}]},
+  {unit:"6-3",word:"terror",pos:"n.",zh:"恐懼；恐怖",
+   deriv:[{w:"terrify",pos:"v.",zh:"使恐懼"},{w:"terrifying",pos:"adj.",zh:"令人恐懼的"},{w:"terrible",pos:"adj.",zh:"可怕的"}],
+   ex:[{en:"The children ran in <em>terror</em> from the wasp nest.",zh:"孩子們因為那個黃蜂巢驚恐地奔跑逃開。"},
+       {en:"The <em>terrifying</em> film kept her awake all night.",zh:"那部令人恐懼的電影讓她整夜睡不著。"}]},
+  {unit:"6-3",word:"thankful",pos:"adj.",zh:"感謝的；感激的",
+   deriv:[{w:"thankfully",pos:"adv.",zh:"感謝地；幸好"},{w:"thankfulness",pos:"n.",zh:"感謝；感激"}],
+   ex:[{en:"She was <em>thankful</em> for all the support she received.",zh:"她對所有她獲得的支持深表感謝。"},
+       {en:"<em>Thankfully</em>, no one was hurt in the accident.",zh:"幸好，事故中沒有人受傷。"}]},
+  {unit:"6-3",word:"tolerable",pos:"adj.",zh:"可以忍受的；還過得去的",
+   deriv:[{w:"tolerate",pos:"v.",zh:"忍受；容忍"},{w:"tolerance",pos:"n.",zh:"忍受力；容忍"}],
+   ex:[{en:"The pain was <em>tolerable</em> with the medication.",zh:"有了藥物，疼痛是可以忍受的。"},
+       {en:"The living conditions were barely <em>tolerable</em>.",zh:"生活條件勉強還過得去。"}]},
+  {unit:"6-3",word:"tolerance",pos:"n.",zh:"忍受力；容忍；寬容",
+   deriv:[{w:"tolerate",pos:"v.",zh:"忍受"},{w:"tolerant",pos:"adj.",zh:"寬容的；容忍的"}],
+   ex:[{en:"She has a high <em>tolerance</em> for pain.",zh:"她對疼痛有很高的忍受力。"},
+       {en:"Cultural <em>tolerance</em> is important in a diverse society.",zh:"文化包容在多元社會中非常重要。"}]},
+  {unit:"6-3",word:"tolerant",pos:"adj.",zh:"寬容的；容忍的",
+   deriv:[{w:"tolerate",pos:"v.",zh:"忍受"},{w:"tolerance",pos:"n.",zh:"容忍；忍受力"}],
+   ex:[{en:"We must be <em>tolerant</em> of different cultures.",zh:"我們必須對不同文化保持寬容。"},
+       {en:"A good teacher is <em>tolerant</em> of students' mistakes.",zh:"一個好老師對學生的錯誤是寬容的。"}]},
+  {unit:"6-3",word:"tolerate",pos:"v.",zh:"忍受；容忍",
+   deriv:[{w:"tolerance",pos:"n.",zh:"容忍"},{w:"intolerable",pos:"adj.",zh:"無法忍受的"}],
+   ex:[{en:"I cannot <em>tolerate</em> rude behavior in class.",zh:"我無法容忍課堂上的粗魯行為。"},
+       {en:"The doctor said his body could <em>tolerate</em> the treatment.",zh:"醫生說他的身體可以忍受這個治療。"}]},
+  {unit:"6-3",word:"troublesome",pos:"adj.",zh:"麻煩的；令人苦惱的",
+   deriv:[{w:"trouble",pos:"n./v.",zh:"麻煩；使苦惱"},{w:"troubled",pos:"adj.",zh:"煩惱的；問題叢生的"}],
+   ex:[{en:"The <em>troublesome</em> student kept disrupting the class.",zh:"那個麻煩的學生不斷打擾課堂秩序。"},
+       {en:"Fixing the bug proved to be <em>troublesome</em>.",zh:"修復這個錯誤被證明非常麻煩。"}]},
+  {unit:"6-3",word:"weep",pos:"v.",zh:"哭泣；流淚",
+   deriv:[{w:"weeping",pos:"adj.",zh:"哭泣的"},{w:"weep for joy",pos:"phrase",zh:"因喜悅而落淚"}],
+   ex:[{en:"She <em>wept</em> when she heard the sad news.",zh:"她聽到悲傷的消息時哭了起來。"},
+       {en:"The audience <em>wept</em> at the end of the emotional film.",zh:"觀眾在這部感人的電影結尾落淚了。"}]},
+  // ===== UNIT 7-1 =====
+  {unit:"7-1",word:"academic",pos:"adj./n.",zh:"學術的；學院的；學者",
+   deriv:[{w:"academically",pos:"adv.",zh:"學術上地"},{w:"academy",pos:"n.",zh:"學院；學會"}],
+   ex:[{en:"She excelled in all her <em>academic</em> subjects.",zh:"她在所有學術科目上都表現優異。"},
+       {en:"The <em>academy</em> offers courses in music and art.",zh:"這所學院提供音樂和藝術課程。"}]},
+  {unit:"7-1",word:"accent",pos:"n.",zh:"口音；重音；著重",
+   deriv:[{w:"accentuate",pos:"v.",zh:"強調；使更顯眼"},{w:"accented",pos:"adj.",zh:"有口音的"}],
+   ex:[{en:"She speaks English with a strong French <em>accent</em>.",zh:"她說英語帶有濃厚的法語口音。"},
+       {en:"The bold color <em>accentuates</em> the design.",zh:"鮮豔的顏色強調了這個設計。"}]},
+  {unit:"7-1",word:"accuse",pos:"v.",zh:"指控；控告；指責",
+   deriv:[{w:"accusation",pos:"n.",zh:"指控；控告"},{w:"accused",pos:"n./adj.",zh:"被告；被指控的"}],
+   ex:[{en:"He was <em>accused</em> of stealing company funds.",zh:"他被指控盜取公司資金。"},
+       {en:"She made a false <em>accusation</em> against her neighbor.",zh:"她對鄰居提出了虛假的指控。"}]},
+  {unit:"7-1",word:"adventure",pos:"n.",zh:"冒險；奇遇",
+   deriv:[{w:"adventurous",pos:"adj.",zh:"愛冒險的；大膽的"},{w:"adventurer",pos:"n.",zh:"冒險家"}],
+   ex:[{en:"Climbing the mountain was a real <em>adventure</em>.",zh:"攀登那座山真是一次真正的冒險。"},
+       {en:"She has an <em>adventurous</em> spirit and loves to travel.",zh:"她有冒險精神，喜歡旅行。"}]},
+  {unit:"7-1",word:"advertise",pos:"v.",zh:"做廣告；宣傳",
+   deriv:[{w:"advertisement",pos:"n.",zh:"廣告"},{w:"advertising",pos:"n.",zh:"廣告業；廣告"}],
+   ex:[{en:"The company spent millions to <em>advertise</em> its new product.",zh:"公司花費數百萬來宣傳新產品。"},
+       {en:"I saw the <em>advertisement</em> for the sale on TV.",zh:"我在電視上看到了這場特賣的廣告。"}]},
+  {unit:"7-1",word:"advertisement",pos:"n.",zh:"廣告；廣告啟事",
+   deriv:[{w:"advertise",pos:"v.",zh:"做廣告"},{w:"advertising",pos:"n.",zh:"廣告業"}],
+   ex:[{en:"The colorful <em>advertisement</em> caught everyone's attention.",zh:"那個色彩鮮豔的廣告吸引了所有人的目光。"},
+       {en:"She placed an <em>advertisement</em> for a used piano.",zh:"她刊登了一則二手鋼琴的廣告。"}]},
+  {unit:"7-1",word:"agency",pos:"n.",zh:"機構；代理商；代理",
+   deriv:[{w:"agent",pos:"n.",zh:"代理人；代理商"},{w:"through an agency",pos:"phrase",zh:"透過機構"}],
+   ex:[{en:"She found her job through a recruitment <em>agency</em>.",zh:"她透過招募機構找到了工作。"},
+       {en:"The travel <em>agency</em> arranged a perfect trip for us.",zh:"旅行社為我們安排了一趟完美的旅程。"}]},
+  {unit:"7-1",word:"agriculture",pos:"n.",zh:"農業；農耕",
+   deriv:[{w:"agricultural",pos:"adj.",zh:"農業的；農耕的"},{w:"agriculturalist",pos:"n.",zh:"農業專家"}],
+   ex:[{en:"Taiwan's <em>agriculture</em> produces excellent tropical fruits.",zh:"台灣農業生產出色的熱帶水果。"},
+       {en:"The region is known for its <em>agricultural</em> output.",zh:"這個地區以其農業產出聞名。"}]},
+  {unit:"7-1",word:"analysis",pos:"n.",zh:"分析；剖析",
+   deriv:[{w:"analyze",pos:"v.",zh:"分析"},{w:"analytical",pos:"adj.",zh:"分析的；善於分析的"}],
+   ex:[{en:"A careful <em>analysis</em> of the data revealed surprising results.",zh:"對數據的仔細分析揭示了驚人的結果。"},
+       {en:"She has an <em>analytical</em> mind and solves problems quickly.",zh:"她有分析性的頭腦，能迅速解決問題。"}]},
+  {unit:"7-1",word:"analyze",pos:"v.",zh:"分析；解析",
+   deriv:[{w:"analysis",pos:"n.",zh:"分析"},{w:"analyst",pos:"n.",zh:"分析師；分析者"}],
+   ex:[{en:"Scientists <em>analyzed</em> the water samples for pollutants.",zh:"科學家分析水樣本以尋找污染物。"},
+       {en:"The financial <em>analyst</em> predicted market growth.",zh:"金融分析師預測市場將會成長。"}]},
+  {unit:"7-1",word:"angel",pos:"n.",zh:"天使；可愛的人",
+   deriv:[{w:"angelic",pos:"adj.",zh:"天使般的；純潔的"}],
+   ex:[{en:"The little girl looked like an <em>angel</em> in her white dress.",zh:"那個小女孩穿著白色洋裝看起來就像天使。"},
+       {en:"She had an <em>angelic</em> voice that moved everyone.",zh:"她有著天使般的聲音，感動了所有人。"}]},
+  {unit:"7-1",word:"application",pos:"n.",zh:"申請；應用；申請書",
+   deriv:[{w:"apply",pos:"v.",zh:"申請；應用"},{w:"applicant",pos:"n.",zh:"申請人"}],
+   ex:[{en:"She submitted her <em>application</em> for the scholarship.",zh:"她提交了獎學金的申請書。"},
+       {en:"This math concept has many real-world <em>applications</em>.",zh:"這個數學概念有許多現實生活中的應用。"}]},
+  {unit:"7-1",word:"artistic",pos:"adj.",zh:"藝術的；有藝術天賦的",
+   deriv:[{w:"art",pos:"n.",zh:"藝術"},{w:"artist",pos:"n.",zh:"藝術家"},{w:"artistically",pos:"adv.",zh:"藝術地"}],
+   ex:[{en:"She has a very <em>artistic</em> eye for color and design.",zh:"她對色彩和設計有非常藝術性的眼光。"},
+       {en:"The room was <em>artistically</em> decorated.",zh:"這個房間被藝術性地裝飾了。"}]},
+  {unit:"7-1",word:"autobiography",pos:"n.",zh:"自傳",
+   deriv:[{w:"autobiographical",pos:"adj.",zh:"自傳體的"},{w:"autobiography vs biography",pos:"phrase",zh:"自傳vs傳記"}],
+   ex:[{en:"She wrote an <em>autobiography</em> about her life as a scientist.",zh:"她撰寫了一本關於她科學家生涯的自傳。"},
+       {en:"The book was <em>autobiographical</em>, based on his own experiences.",zh:"這本書是自傳體的，以他自己的經歷為基礎。"}]},
+  {unit:"7-1",word:"autograph",pos:"n./v.",zh:"親筆簽名；簽名",
+   deriv:[{w:"autograph session",pos:"phrase",zh:"簽名會"}],
+   ex:[{en:"The fans waited hours for the star's <em>autograph</em>.",zh:"粉絲們等了好幾個小時來獲得明星的親筆簽名。"},
+       {en:"She <em>autographed</em> dozens of books at the signing event.",zh:"她在簽書活動中簽了數十本書。"}]},
+  {unit:"7-1",word:"ballet",pos:"n.",zh:"芭蕾舞；芭蕾舞劇",
+   deriv:[{w:"ballet dancer",pos:"phrase",zh:"芭蕾舞者"},{w:"balletic",pos:"adj.",zh:"像芭蕾舞的；優雅的"}],
+   ex:[{en:"She has been training in <em>ballet</em> since she was five.",zh:"她從五歲起就開始接受芭蕾舞訓練。"},
+       {en:"The <em>ballet</em> performance was breathtakingly beautiful.",zh:"那場芭蕾舞表演美得令人窒息。"}]},
+  {unit:"7-1",word:"bankrupt",pos:"adj./v.",zh:"破產的；使破產",
+   deriv:[{w:"bankruptcy",pos:"n.",zh:"破產；倒閉"},{w:"go bankrupt",pos:"phrase",zh:"破產"}],
+   ex:[{en:"The company went <em>bankrupt</em> after years of losses.",zh:"這家公司在多年虧損後倒閉破產。"},
+       {en:"Filing for <em>bankruptcy</em> was his last option.",zh:"申請破產是他最後的選擇。"}]},
+  {unit:"7-1",word:"barn",pos:"n.",zh:"穀倉；農舍",
+   deriv:[{w:"barn dance",pos:"phrase",zh:"農舍舞會"}],
+   ex:[{en:"The farmer stored hay in the old red <em>barn</em>.",zh:"農夫把乾草存放在那棟紅色的舊穀倉裡。"},
+       {en:"The children played hide-and-seek in the <em>barn</em>.",zh:"孩子們在穀倉裡玩捉迷藏。"}]},
+  {unit:"7-1",word:"biography",pos:"n.",zh:"傳記；傳記文學",
+   deriv:[{w:"biographical",pos:"adj.",zh:"傳記的"},{w:"biographer",pos:"n.",zh:"傳記作者"}],
+   ex:[{en:"He read a fascinating <em>biography</em> of Einstein.",zh:"他讀了一本關於愛因斯坦的引人入勝的傳記。"},
+       {en:"The film was <em>biographical</em>, based on a true story.",zh:"這部電影是傳記性的，改編自真實故事。"}]},
+  {unit:"7-1",word:"biology",pos:"n.",zh:"生物學；生物",
+   deriv:[{w:"biological",pos:"adj.",zh:"生物的；生物學的"},{w:"biologist",pos:"n.",zh:"生物學家"}],
+   ex:[{en:"She majored in <em>biology</em> at university.",zh:"她在大學主修生物學。"},
+       {en:"The <em>biological</em> diversity of the rainforest is amazing.",zh:"雨林的生物多樣性令人驚嘆。"}]},
+  {unit:"7-1",word:"bless",pos:"v.",zh:"祝福；保佑",
+   deriv:[{w:"blessing",pos:"n.",zh:"祝福；恩典"},{w:"blessed",pos:"adj.",zh:"受祝福的；幸福的"}],
+   ex:[{en:"She <em>blessed</em> her children before they left.",zh:"她在孩子們離開前為他們祝福。"},
+       {en:"Good health is truly a <em>blessing</em>.",zh:"健康真的是一種祝福。"}]},
+  {unit:"7-1",word:"bond",pos:"n./v.",zh:"紐帶；連結；債券；黏合",
+   deriv:[{w:"bonding",pos:"n.",zh:"建立連結；黏合"},{w:"bondage",pos:"n.",zh:"束縛；奴役"}],
+   ex:[{en:"There is a strong <em>bond</em> of trust between them.",zh:"他們之間有著強烈的信任紐帶。"},
+       {en:"Playing together helped the children <em>bond</em> quickly.",zh:"一起玩耍幫助孩子們迅速建立感情。"}]},
+  {unit:"7-1",word:"bowling",pos:"n.",zh:"保齡球（運動）",
+   deriv:[{w:"bowl",pos:"v.",zh:"打保齡球；投球"},{w:"bowling alley",pos:"phrase",zh:"保齡球館"}],
+   ex:[{en:"Let's go <em>bowling</em> this weekend!",zh:"這個週末我們去打保齡球吧！"},
+       {en:"She threw a perfect strike at the <em>bowling</em> alley.",zh:"她在保齡球館投出了完美的全倒。"}]},
+  {unit:"7-1",word:"broadcast",pos:"v./n.",zh:"廣播；播送；播出",
+   deriv:[{w:"broadcaster",pos:"n.",zh:"廣播員；播音員"},{w:"broadcasting",pos:"n.",zh:"廣播業；播送"}],
+   ex:[{en:"The news was <em>broadcast</em> live across the country.",zh:"這條新聞在全國進行了現場直播。"},
+       {en:"She works as a news <em>broadcaster</em> on national TV.",zh:"她在國家電視台擔任新聞播報員。"}]},
+  {unit:"7-1",word:"budget",pos:"n./v.",zh:"預算；做預算",
+   deriv:[{w:"budgetary",pos:"adj.",zh:"預算的"},{w:"on a budget",pos:"phrase",zh:"節省預算地"}],
+   ex:[{en:"The school set a strict <em>budget</em> for the event.",zh:"學校為這個活動設定了嚴格的預算。"},
+       {en:"She <em>budgeted</em> carefully to save for her trip.",zh:"她仔細地做預算以存錢旅行。"}]},
+  {unit:"7-1",word:"bullet",pos:"n.",zh:"子彈；黑點符號",
+   deriv:[{w:"bullet point",pos:"phrase",zh:"條列重點"},{w:"bulletproof",pos:"adj.",zh:"防彈的；無懈可擊的"}],
+   ex:[{en:"The soldier was shot by a <em>bullet</em> in the battle.",zh:"那名士兵在戰鬥中被子彈射中。"},
+       {en:"The vest is made of <em>bulletproof</em> material.",zh:"這件背心是由防彈材料製成的。"}]},
+  {unit:"7-1",word:"campaign",pos:"n./v.",zh:"活動；競選；戰役",
+   deriv:[{w:"campaigner",pos:"n.",zh:"活動倡導者；競選者"},{w:"campaign for",pos:"phrase",zh:"為……發起活動"}],
+   ex:[{en:"She ran a successful election <em>campaign</em>.",zh:"她發起了一場成功的選舉競選活動。"},
+       {en:"The charity launched a <em>campaign</em> to raise funds.",zh:"這家慈善機構發起了一場籌款活動。"}]},
+  {unit:"7-1",word:"canoe",pos:"n./v.",zh:"獨木舟；划獨木舟",
+   deriv:[{w:"canoeing",pos:"n.",zh:"獨木舟運動"},{w:"canoeist",pos:"n.",zh:"划獨木舟的人"}],
+   ex:[{en:"They paddled down the river in a <em>canoe</em>.",zh:"他們划著獨木舟順著河流而下。"},
+       {en:"<em>Canoeing</em> is a popular activity in summer camps.",zh:"獨木舟運動是夏令營的熱門活動。"}]},
+  {unit:"7-1",word:"capitalism",pos:"n.",zh:"資本主義",
+   deriv:[{w:"capitalist",pos:"n./adj.",zh:"資本家；資本主義的"},{w:"capitalize",pos:"v.",zh:"利用；資本化"}],
+   ex:[{en:"Many economies around the world are based on <em>capitalism</em>.",zh:"世界上許多經濟體都是建立在資本主義的基礎上。"},
+       {en:"The <em>capitalist</em> system rewards innovation and risk-taking.",zh:"資本主義制度獎勵創新和冒險。"}]},
+  {unit:"7-1",word:"career",pos:"n.",zh:"職業生涯；事業",
+   deriv:[{w:"career path",pos:"phrase",zh:"職業道路"},{w:"careerist",pos:"n.",zh:"野心勃勃的人"}],
+   ex:[{en:"She built a successful <em>career</em> in medicine.",zh:"她在醫學領域建立了成功的職業生涯。"},
+       {en:"He changed his <em>career</em> at the age of forty.",zh:"他在四十歲時轉換了職業跑道。"}]},
+  {unit:"7-1",word:"carve",pos:"v.",zh:"雕刻；切割；開闢",
+   deriv:[{w:"carving",pos:"n.",zh:"雕刻品；雕刻術"},{w:"carve out",pos:"phrase",zh:"開創；雕鑿出"}],
+   ex:[{en:"He carefully <em>carved</em> a wooden bear for his daughter.",zh:"他仔細地為女兒雕刻了一隻木熊。"},
+       {en:"The artist's <em>carvings</em> are displayed in the gallery.",zh:"那位藝術家的雕刻作品在畫廊中展出。"}]},
+  {unit:"7-1",word:"catalogue",pos:"n./v.",zh:"目錄；型錄；編目",
+   deriv:[{w:"cataloguing",pos:"n.",zh:"編目作業"},{w:"catalog",pos:"n.",zh:"（美式）型錄"}],
+   ex:[{en:"She browsed through the fashion <em>catalogue</em>.",zh:"她瀏覽了時尚型錄。"},
+       {en:"The librarian <em>catalogued</em> all the new books.",zh:"圖書館員為所有新書編製了目錄。"}]},
+  {unit:"7-1",word:"celebration",pos:"n.",zh:"慶祝；慶典",
+   deriv:[{w:"celebrate",pos:"v.",zh:"慶祝"},{w:"celebratory",pos:"adj.",zh:"慶祝的"}],
+   ex:[{en:"The whole town joined in the <em>celebration</em>.",zh:"整個城鎮都參與了慶典活動。"},
+       {en:"They had a <em>celebratory</em> dinner after graduating.",zh:"他們在畢業後舉行了一頓慶祝晚餐。"}]},
+  {unit:"7-1",word:"champion",pos:"n./v.",zh:"冠軍；捍衛；支持",
+   deriv:[{w:"championship",pos:"n.",zh:"冠軍賽；冠軍頭銜"},{w:"champion of",pos:"phrase",zh:"……的捍衛者"}],
+   ex:[{en:"She became the world <em>champion</em> in swimming at 18.",zh:"她在18歲時成為游泳世界冠軍。"},
+       {en:"He <em>championed</em> the rights of workers throughout his career.",zh:"他在整個職業生涯中都在捍衛工人的權利。"}]},
+  {unit:"7-1",word:"characteristic",pos:"n./adj.",zh:"特徵；特性；典型的",
+   deriv:[{w:"characterize",pos:"v.",zh:"描述特徵；表現……的特色"},{w:"characteristically",pos:"adv.",zh:"有特色地"}],
+   ex:[{en:"Honesty is her most admirable <em>characteristic</em>.",zh:"誠實是她最令人欽佩的特質。"},
+       {en:"Pandas are <em>characteristic</em> of western China.",zh:"大熊貓是中國西部的典型動物。"}]},
+  {unit:"7-1",word:"charity",pos:"n.",zh:"慈善；慈善機構；仁慈",
+   deriv:[{w:"charitable",pos:"adj.",zh:"慈善的；仁慈的"},{w:"charitably",pos:"adv.",zh:"仁慈地"}],
+   ex:[{en:"She donates money to <em>charity</em> every month.",zh:"她每個月都捐錢給慈善機構。"},
+       {en:"His <em>charitable</em> work earned him great respect.",zh:"他的慈善工作為他贏得了極高的尊敬。"}]},
+  {unit:"7-1",word:"chorus",pos:"n./v.",zh:"合唱；副歌；齊聲",
+   deriv:[{w:"choral",pos:"adj.",zh:"合唱的"},{w:"in chorus",pos:"phrase",zh:"齊聲；一起"}],
+   ex:[{en:"The children sang the <em>chorus</em> together perfectly.",zh:"孩子們完美地齊聲唱出了副歌。"},
+       {en:"The class answered <em>in chorus</em>: 'Yes, teacher!'",zh:"全班齊聲回答：「是的，老師！」"}]},
+  {unit:"7-1",word:"circus",pos:"n.",zh:"馬戲團；雜耍表演",
+   deriv:[{w:"circus act",pos:"phrase",zh:"馬戲節目"},{w:"circus performer",pos:"phrase",zh:"馬戲表演者"}],
+   ex:[{en:"The children were amazed by the <em>circus</em> acrobats.",zh:"孩子們對馬戲團的特技演員感到驚訝。"},
+       {en:"The press conference turned into a media <em>circus</em>.",zh:"那場記者會變成了一場媒體鬧劇。"}]},
+  {unit:"7-1",word:"civil",pos:"adj.",zh:"公民的；文明的；禮貌的",
+   deriv:[{w:"civilization",pos:"n.",zh:"文明"},{w:"civility",pos:"n.",zh:"禮貌；文明"}],
+   ex:[{en:"They tried to have a <em>civil</em> conversation despite disagreements.",zh:"儘管有分歧，他們努力保持有禮貌的對話。"},
+       {en:"<em>Civil</em> rights movements changed history forever.",zh:"公民權利運動永遠改變了歷史。"}]},
+  {unit:"7-1",word:"civilization",pos:"n.",zh:"文明；文明社會",
+   deriv:[{w:"civilize",pos:"v.",zh:"使文明"},{w:"civilized",pos:"adj.",zh:"文明的"}],
+   ex:[{en:"Ancient Egypt was one of the earliest great <em>civilizations</em>.",zh:"古埃及是最早的偉大文明之一。"},
+       {en:"A <em>civilized</em> society respects human rights.",zh:"文明社會尊重人權。"}]},
+  {unit:"7-1",word:"classification",pos:"n.",zh:"分類；類別",
+   deriv:[{w:"classify",pos:"v.",zh:"分類"},{w:"classified",pos:"adj.",zh:"機密的；分類的"}],
+   ex:[{en:"The <em>classification</em> of plants is a key part of botany.",zh:"植物的分類是植物學的核心部分。"},
+       {en:"The documents were <em>classified</em> as top secret.",zh:"這些文件被列為最高機密。"}]},
+  {unit:"7-1",word:"classify",pos:"v.",zh:"分類；歸類",
+   deriv:[{w:"classification",pos:"n.",zh:"分類"},{w:"classified",pos:"adj.",zh:"機密的"}],
+   ex:[{en:"Scientists <em>classify</em> animals into groups based on features.",zh:"科學家根據特徵將動物分成各組。"},
+       {en:"How would you <em>classify</em> this type of music?",zh:"你會如何為這類音樂分類？"}]},
+  {unit:"7-1",word:"comedy",pos:"n.",zh:"喜劇；喜劇片",
+   deriv:[{w:"comedian",pos:"n.",zh:"喜劇演員"},{w:"comedic",pos:"adj.",zh:"喜劇性的"}],
+   ex:[{en:"I love watching romantic <em>comedies</em> on weekends.",zh:"我喜歡在週末看浪漫喜劇。"},
+       {en:"The young <em>comedian</em> made the whole audience laugh.",zh:"這位年輕的喜劇演員逗得全場觀眾大笑。"}]},
+  {unit:"7-1",word:"comment",pos:"n./v.",zh:"評論；意見；發表評論",
+   deriv:[{w:"commentary",pos:"n.",zh:"評論；實況報導"},{w:"commentator",pos:"n.",zh:"評論員；解說員"}],
+   ex:[{en:"She left a positive <em>comment</em> on the article.",zh:"她在這篇文章上留下了正面的評論。"},
+       {en:"The sports <em>commentator</em> described every goal vividly.",zh:"體育解說員生動地描述了每一個進球。"}]},
+  {unit:"7-1",word:"commerce",pos:"n.",zh:"商業；貿易",
+   deriv:[{w:"commercial",pos:"adj./n.",zh:"商業的；廣告"},{w:"commercially",pos:"adv.",zh:"商業上地"}],
+   ex:[{en:"The internet has transformed global <em>commerce</em>.",zh:"網路已經改變了全球商業面貌。"},
+       {en:"The product was a huge <em>commercial</em> success.",zh:"這個產品在商業上獲得了巨大的成功。"}]},
+  {unit:"7-1",word:"commit",pos:"v.",zh:"犯（罪）；承諾；投入",
+   deriv:[{w:"commitment",pos:"n.",zh:"承諾；責任"},{w:"committed",pos:"adj.",zh:"忠誠的；有承諾的"}],
+   ex:[{en:"He <em>committed</em> himself fully to the project.",zh:"他全心全意地投入這個專案。"},
+       {en:"She showed a strong <em>commitment</em> to her studies.",zh:"她對學業展現了強烈的承諾。"}]},
+  {unit:"7-1",word:"compose",pos:"v.",zh:"創作；作曲；組成",
+   deriv:[{w:"composition",pos:"n.",zh:"作品；作文；組成"},{w:"composer",pos:"n.",zh:"作曲家"}],
+   ex:[{en:"She <em>composed</em> a beautiful piece of music for piano.",zh:"她為鋼琴創作了一首優美的曲子。"},
+       {en:"Beethoven was a legendary <em>composer</em>.",zh:"貝多芬是一位傳奇作曲家。"}]},
+  {unit:"7-1",word:"composition",pos:"n.",zh:"作品；作文；組成；作曲",
+   deriv:[{w:"compose",pos:"v.",zh:"作曲；組成"},{w:"composite",pos:"adj.",zh:"混合的；複合的"}],
+   ex:[{en:"The students wrote a <em>composition</em> about their summer vacation.",zh:"學生們寫了一篇關於暑假的作文。"},
+       {en:"The chemical <em>composition</em> of water is H₂O.",zh:"水的化學組成是H₂O。"}]},
+  {unit:"7-1",word:"concert",pos:"n.",zh:"音樂會；演奏會",
+   deriv:[{w:"concertgoer",pos:"n.",zh:"音樂會觀眾"},{w:"in concert",pos:"phrase",zh:"共同；合作"}],
+   ex:[{en:"She attended a live <em>concert</em> by her favorite band.",zh:"她去聽了她最喜歡的樂團的現場音樂會。"},
+       {en:"The countries worked <em>in concert</em> to solve the problem.",zh:"各國共同合作以解決這個問題。"}]},
+  {unit:"7-1",word:"conference",pos:"n.",zh:"會議；研討會",
+   deriv:[{w:"confer",pos:"v.",zh:"商議；授予"},{w:"press conference",pos:"phrase",zh:"記者會"}],
+   ex:[{en:"She presented her research at the international <em>conference</em>.",zh:"她在國際研討會上發表了她的研究成果。"},
+       {en:"The CEO held a <em>press conference</em> to address the crisis.",zh:"執行長召開記者會來處理這場危機。"}]},
+  // ===== UNIT 7-2 =====
+  {unit:"7-2",word:"congress",pos:"n.",zh:"國會；議會；代表大會",
+   deriv:[{w:"congressional",pos:"adj.",zh:"國會的"},{w:"congressman",pos:"n.",zh:"國會議員"}],
+   ex:[{en:"The bill was passed by <em>Congress</em> last year.",zh:"這項法案去年由國會通過。"},
+       {en:"The <em>congressional</em> committee reviewed the budget.",zh:"國會委員會審查了預算。"}]},
+  {unit:"7-2",word:"constitution",pos:"n.",zh:"憲法；體質；組成",
+   deriv:[{w:"constitutional",pos:"adj.",zh:"憲法的；符合憲法的"},{w:"constitutionally",pos:"adv.",zh:"依憲法地"}],
+   ex:[{en:"The freedom of speech is protected by the <em>Constitution</em>.",zh:"言論自由受憲法保護。"},
+       {en:"The court ruled that the law was <em>constitutional</em>.",zh:"法院裁定這項法律符合憲法。"}]},
+  {unit:"7-2",word:"construct",pos:"v.",zh:"建造；建構；構建",
+   deriv:[{w:"construction",pos:"n.",zh:"建造；建築；建設"},{w:"constructive",pos:"adj.",zh:"建設性的"}],
+   ex:[{en:"Workers <em>constructed</em> the bridge in just two years.",zh:"工人們僅花了兩年就建造了這座橋。"},
+       {en:"The teacher gave <em>constructive</em> feedback on her essay.",zh:"老師對她的文章給予了建設性的回饋。"}]},
+  {unit:"7-2",word:"construction",pos:"n.",zh:"建造；建設；施工",
+   deriv:[{w:"construct",pos:"v.",zh:"建造"},{w:"under construction",pos:"phrase",zh:"施工中"}],
+   ex:[{en:"The road has been under <em>construction</em> for months.",zh:"這條道路已施工了好幾個月。"},
+       {en:"The <em>construction</em> of the new library took five years.",zh:"新圖書館的建造花了五年時間。"}]},
+  {unit:"7-2",word:"consult",pos:"v.",zh:"諮詢；請教；查閱",
+   deriv:[{w:"consultation",pos:"n.",zh:"諮詢；磋商"},{w:"consultant",pos:"n.",zh:"顧問；諮詢師"}],
+   ex:[{en:"You should <em>consult</em> a doctor before taking this medicine.",zh:"服用這種藥物之前，你應該諮詢醫生。"},
+       {en:"The company hired a business <em>consultant</em>.",zh:"公司聘請了一位商業顧問。"}]},
+  {unit:"7-2",word:"consume",pos:"v.",zh:"消耗；消費；食用",
+   deriv:[{w:"consumption",pos:"n.",zh:"消耗；消費"},{w:"consumer",pos:"n.",zh:"消費者"}],
+   ex:[{en:"This appliance <em>consumes</em> very little electricity.",zh:"這個家電消耗的電力非常少。"},
+       {en:"The factory's energy <em>consumption</em> was extremely high.",zh:"工廠的能源消耗量極高。"}]},
+  {unit:"7-2",word:"content",pos:"n./adj.",zh:"內容；滿足的",
+   deriv:[{w:"contentment",pos:"n.",zh:"滿足感"},{w:"contented",pos:"adj.",zh:"感到滿足的"}],
+   ex:[{en:"The <em>content</em> of the lecture was very interesting.",zh:"這堂課的內容非常有趣。"},
+       {en:"She was <em>content</em> with a simple life in the countryside.",zh:"她對鄉村的簡單生活感到滿足。"}]},
+  {unit:"7-2",word:"contest",pos:"n./v.",zh:"比賽；競爭；異議",
+   deriv:[{w:"contestant",pos:"n.",zh:"比賽參賽者"},{w:"contested",pos:"adj.",zh:"受爭議的；有競爭的"}],
+   ex:[{en:"She won the singing <em>contest</em> with a moving performance.",zh:"她以感人的表演贏得了歌唱比賽。"},
+       {en:"All <em>contestants</em> must arrive on time.",zh:"所有參賽者必須準時到場。"}]},
+  {unit:"7-2",word:"context",pos:"n.",zh:"背景；脈絡；上下文",
+   deriv:[{w:"contextual",pos:"adj.",zh:"與上下文有關的"},{w:"in context",pos:"phrase",zh:"在適當的背景下"}],
+   ex:[{en:"You need to understand the word in <em>context</em>.",zh:"你需要在上下文中理解這個詞。"},
+       {en:"The decision makes more sense when seen in <em>context</em>.",zh:"在了解背景後，這個決定更有意義。"}]},
+  {unit:"7-2",word:"contribute",pos:"v.",zh:"貢獻；捐獻；助長",
+   deriv:[{w:"contribution",pos:"n.",zh:"貢獻；捐獻"},{w:"contributor",pos:"n.",zh:"貢獻者；捐獻者"}],
+   ex:[{en:"Everyone was asked to <em>contribute</em> to the charity drive.",zh:"每個人都被要求為慈善活動做出貢獻。"},
+       {en:"His <em>contribution</em> to science was widely recognized.",zh:"他對科學的貢獻獲得了廣泛的認可。"}]},
+  {unit:"7-2",word:"contribution",pos:"n.",zh:"貢獻；捐獻",
+   deriv:[{w:"contribute",pos:"v.",zh:"貢獻"},{w:"contributor",pos:"n.",zh:"貢獻者"}],
+   ex:[{en:"Her <em>contribution</em> to the team was invaluable.",zh:"她對團隊的貢獻是無可估量的。"},
+       {en:"They made a generous <em>contribution</em> to the hospital fund.",zh:"他們慷慨地捐款給醫院基金。"}]},
+  {unit:"7-2",word:"convention",pos:"n.",zh:"慣例；公約；會議；習俗",
+   deriv:[{w:"conventional",pos:"adj.",zh:"傳統的；慣常的"},{w:"unconventional",pos:"adj.",zh:"非傳統的"}],
+   ex:[{en:"It's a <em>convention</em> to shake hands when greeting.",zh:"打招呼時握手是一種慣例。"},
+       {en:"She preferred an <em>unconventional</em> approach to art.",zh:"她偏好用非傳統的方式來創作藝術。"}]},
+  {unit:"7-2",word:"craft",pos:"n./v.",zh:"工藝；技巧；精心製作",
+   deriv:[{w:"craftsman",pos:"n.",zh:"工匠；技藝精湛的人"},{w:"craftsmanship",pos:"n.",zh:"技藝；工藝"}],
+   ex:[{en:"She learned the <em>craft</em> of pottery from her grandmother.",zh:"她從祖母那裡學到了陶藝技巧。"},
+       {en:"The <em>craftsmanship</em> in this furniture is exceptional.",zh:"這件家具的工藝令人讚嘆。"}]},
+  {unit:"7-2",word:"declare",pos:"v.",zh:"宣告；宣布；申報",
+   deriv:[{w:"declaration",pos:"n.",zh:"宣告；宣言；申報"},{w:"declared",pos:"adj.",zh:"已宣布的；公開表明的"}],
+   ex:[{en:"The government <em>declared</em> a state of emergency.",zh:"政府宣布進入緊急狀態。"},
+       {en:"The <em>Declaration</em> of Independence was signed in 1776.",zh:"獨立宣言於1776年簽署。"}]},
+  {unit:"7-2",word:"decorate",pos:"v.",zh:"裝飾；布置",
+   deriv:[{w:"decoration",pos:"n.",zh:"裝飾；裝飾品"},{w:"decorative",pos:"adj.",zh:"裝飾性的"}],
+   ex:[{en:"They <em>decorated</em> the hall with flowers and balloons.",zh:"他們用花朵和氣球裝飾了大廳。"},
+       {en:"The Christmas <em>decorations</em> were absolutely stunning.",zh:"聖誕裝飾品美得令人驚嘆。"}]},
+  {unit:"7-2",word:"decoration",pos:"n.",zh:"裝飾；裝飾品",
+   deriv:[{w:"decorate",pos:"v.",zh:"裝飾"},{w:"decorative",pos:"adj.",zh:"裝飾性的"}],
+   ex:[{en:"She spent hours on the <em>decoration</em> of the birthday cake.",zh:"她花了好幾個小時裝飾生日蛋糕。"},
+       {en:"The <em>decorations</em> for the festival were colorful.",zh:"節慶的裝飾品色彩繽紛。"}]},
+  {unit:"7-2",word:"democracy",pos:"n.",zh:"民主；民主制度",
+   deriv:[{w:"democratic",pos:"adj.",zh:"民主的"},{w:"democrat",pos:"n.",zh:"民主人士；民主黨人"}],
+   ex:[{en:"Freedom of speech is a core value of <em>democracy</em>.",zh:"言論自由是民主的核心價值。"},
+       {en:"She fought for a more <em>democratic</em> system of government.",zh:"她為更民主的政府制度而奮鬥。"}]},
+  {unit:"7-2",word:"democratic",pos:"adj.",zh:"民主的；民主制度的",
+   deriv:[{w:"democracy",pos:"n.",zh:"民主"},{w:"democratically",pos:"adv.",zh:"民主地"}],
+   ex:[{en:"The president was <em>democratically</em> elected by the people.",zh:"總統是由人民民主選舉產生的。"},
+       {en:"A <em>democratic</em> vote was held to choose the new leader.",zh:"進行了民主投票來選出新領導人。"}]},
+  {unit:"7-2",word:"demonstrate",pos:"v.",zh:"示範；示威；證明",
+   deriv:[{w:"demonstration",pos:"n.",zh:"示範；示威；展示"},{w:"demonstrative",pos:"adj.",zh:"表達感情的；示範的"}],
+   ex:[{en:"The teacher <em>demonstrated</em> how to solve the equation.",zh:"老師示範了如何解這道方程式。"},
+       {en:"Thousands joined the <em>demonstration</em> against pollution.",zh:"數千人參加了反污染示威遊行。"}]},
+  {unit:"7-2",word:"demonstration",pos:"n.",zh:"示範；示威；展示",
+   deriv:[{w:"demonstrate",pos:"v.",zh:"示範；示威"},{w:"demonstrator",pos:"n.",zh:"示威者；示範者"}],
+   ex:[{en:"The chef gave a cooking <em>demonstration</em> on live TV.",zh:"那位主廚在電視直播上進行了烹飪示範。"},
+       {en:"Police monitored the peaceful <em>demonstration</em>.",zh:"警察監視著這場和平示威。"}]},
+  {unit:"7-2",word:"deposit",pos:"n./v.",zh:"定金；存款；存放；沉積",
+   deriv:[{w:"depositor",pos:"n.",zh:"存款人"},{w:"on deposit",pos:"phrase",zh:"以定金方式"}],
+   ex:[{en:"She paid a <em>deposit</em> to reserve the apartment.",zh:"她付了定金來預訂這間公寓。"},
+       {en:"He <em>deposited</em> his savings into the bank account.",zh:"他把存款存入銀行帳戶。"}]},
+  {unit:"7-2",word:"devil",pos:"n.",zh:"惡魔；魔鬼",
+   deriv:[{w:"devilish",pos:"adj.",zh:"邪惡的；像惡魔的"},{w:"speak of the devil",pos:"idiom",zh:"說曹操曹操到"}],
+   ex:[{en:"The villain was portrayed as the <em>devil</em> himself.",zh:"那個惡棍被描繪成惡魔本身。"},
+       {en:"Speak of the <em>devil</em>—there he is now!",zh:"說曹操曹操到——他來了！"}]},
+  {unit:"7-2",word:"devote",pos:"v.",zh:"奉獻；致力於；專注於",
+   deriv:[{w:"devotion",pos:"n.",zh:"奉獻；忠誠；熱愛"},{w:"devoted",pos:"adj.",zh:"忠誠的；專心致志的"}],
+   ex:[{en:"She <em>devoted</em> her life to helping the poor.",zh:"她把一生奉獻給幫助窮人的事業。"},
+       {en:"His <em>devotion</em> to his work was truly admirable.",zh:"他對工作的奉獻精神令人欽佩。"}]},
+  {unit:"7-2",word:"diploma",pos:"n.",zh:"文憑；畢業證書",
+   deriv:[{w:"diplomatic",pos:"adj.",zh:"外交的；圓滑的"},{w:"diplomat",pos:"n.",zh:"外交官"}],
+   ex:[{en:"She received her high school <em>diploma</em> last June.",zh:"她去年六月拿到了高中文憑。"},
+       {en:"The <em>diploma</em> was hung proudly on the wall.",zh:"那張文憑驕傲地掛在牆上。"}]},
+  {unit:"7-2",word:"discipline",pos:"n./v.",zh:"紀律；訓練；學科；懲戒",
+   deriv:[{w:"disciplined",pos:"adj.",zh:"有紀律的；受過訓練的"},{w:"disciplinary",pos:"adj.",zh:"紀律的；懲戒的"}],
+   ex:[{en:"Self-<em>discipline</em> is key to academic success.",zh:"自律是學業成功的關鍵。"},
+       {en:"The army trains soldiers to be highly <em>disciplined</em>.",zh:"軍隊訓練士兵保持高度的紀律性。"}]},
+  {unit:"7-2",word:"discount",pos:"n./v.",zh:"折扣；打折；忽視",
+   deriv:[{w:"discounted",pos:"adj.",zh:"打折的；打折後的"},{w:"at a discount",pos:"phrase",zh:"以折扣價"}],
+   ex:[{en:"She bought the dress at a 30% <em>discount</em>.",zh:"她以七折的優惠買了那件洋裝。"},
+       {en:"Don't <em>discount</em> his idea—it might actually work.",zh:"別忽視他的想法——它可能真的行得通。"}]},
+  {unit:"7-2",word:"dive",pos:"v./n.",zh:"潛水；俯衝；猛跌",
+   deriv:[{w:"diver",pos:"n.",zh:"潛水員；跳水選手"},{w:"diving",pos:"n.",zh:"潛水；跳水"}],
+   ex:[{en:"She <em>dived</em> into the pool from the high board.",zh:"她從高板跳入了泳池。"},
+       {en:"The professional <em>diver</em> explored the coral reef.",zh:"那位專業潛水員探索了珊瑚礁。"}]},
+  {unit:"7-2",word:"draft",pos:"n./v.",zh:"草稿；草案；起草；徵兵",
+   deriv:[{w:"drafter",pos:"n.",zh:"起草人"},{w:"in draft",pos:"phrase",zh:"草稿狀態"}],
+   ex:[{en:"She wrote three <em>drafts</em> before submitting the essay.",zh:"她在提交文章前寫了三份草稿。"},
+       {en:"The lawyer <em>drafted</em> a contract for both parties.",zh:"律師為雙方起草了合約。"}]},
+  {unit:"7-2",word:"dramatic",pos:"adj.",zh:"戲劇性的；誇張的；顯著的",
+   deriv:[{w:"drama",pos:"n.",zh:"戲劇；戲劇性事件"},{w:"dramatically",pos:"adv.",zh:"戲劇性地；顯著地"}],
+   ex:[{en:"There was a <em>dramatic</em> increase in sales this year.",zh:"今年銷售額出現了顯著的增長。"},
+       {en:"The price of oil dropped <em>dramatically</em> last month.",zh:"上個月石油價格大幅下跌。"}]},
+  {unit:"7-2",word:"dynasty",pos:"n.",zh:"王朝；朝代",
+   deriv:[{w:"dynastic",pos:"adj.",zh:"王朝的；朝代的"}],
+   ex:[{en:"The Tang <em>Dynasty</em> is known for its poetry and culture.",zh:"唐朝以詩歌和文化著稱。"},
+       {en:"The king hoped to establish a long-lasting <em>dynasty</em>.",zh:"國王希望建立一個長久的王朝。"}]},
+  {unit:"7-2",word:"economic",pos:"adj.",zh:"經濟的；與經濟有關的",
+   deriv:[{w:"economy",pos:"n.",zh:"經濟；節約"},{w:"economically",pos:"adv.",zh:"在經濟上；節省地"}],
+   ex:[{en:"The country faced serious <em>economic</em> difficulties.",zh:"這個國家面臨嚴重的經濟困難。"},
+       {en:"The region is growing <em>economically</em> at a rapid pace.",zh:"這個地區在經濟上正在快速成長。"}]},
+  {unit:"7-2",word:"economical",pos:"adj.",zh:"節省的；經濟實惠的",
+   deriv:[{w:"economy",pos:"n.",zh:"節約；經濟"},{w:"economically",pos:"adv.",zh:"節省地"}],
+   ex:[{en:"This car is very <em>economical</em> on fuel.",zh:"這輛車非常省油。"},
+       {en:"She chose a small, <em>economical</em> apartment.",zh:"她選擇了一間小而實惠的公寓。"}]},
+  {unit:"7-2",word:"economics",pos:"n.",zh:"經濟學",
+   deriv:[{w:"economist",pos:"n.",zh:"經濟學家"},{w:"economic",pos:"adj.",zh:"經濟的"}],
+   ex:[{en:"She studied <em>economics</em> at National Taiwan University.",zh:"她在國立臺灣大學學習經濟學。"},
+       {en:"The famous <em>economist</em> predicted a recession.",zh:"那位著名經濟學家預測了一場衰退。"}]},
+  {unit:"7-2",word:"economy",pos:"n.",zh:"經濟；節約",
+   deriv:[{w:"economic",pos:"adj.",zh:"經濟的"},{w:"economist",pos:"n.",zh:"經濟學家"}],
+   ex:[{en:"The global <em>economy</em> has recovered slowly.",zh:"全球經濟緩慢地復甦了。"},
+       {en:"She drives an <em>economy</em> car to save on gas.",zh:"她開節能車以節省汽油費用。"}]},
+  {unit:"7-2",word:"edit",pos:"v.",zh:"編輯；剪輯；校訂",
+   deriv:[{w:"editor",pos:"n.",zh:"編輯；主編"},{w:"editorial",pos:"n./adj.",zh:"社論；編輯的"}],
+   ex:[{en:"She spent hours <em>editing</em> her final report.",zh:"她花了好幾個小時修改她的期末報告。"},
+       {en:"The <em>editor</em> reviewed the article before publishing.",zh:"編輯在刊登文章前進行了審查。"}]},
+  {unit:"7-2",word:"educate",pos:"v.",zh:"教育；培養",
+   deriv:[{w:"education",pos:"n.",zh:"教育"},{w:"educational",pos:"adj.",zh:"教育性的；教育的"}],
+   ex:[{en:"Parents have a responsibility to <em>educate</em> their children.",zh:"父母有責任教育自己的孩子。"},
+       {en:"The <em>educational</em> program helped students learn faster.",zh:"這個教育計劃幫助學生學習得更快。"}]},
+  {unit:"7-2",word:"educational",pos:"adj.",zh:"教育性的；有益的",
+   deriv:[{w:"educate",pos:"v.",zh:"教育"},{w:"education",pos:"n.",zh:"教育"}],
+   ex:[{en:"The museum visit was highly <em>educational</em>.",zh:"這次博物館參觀非常有教育意義。"},
+       {en:"She works in the <em>educational</em> sector as a curriculum designer.",zh:"她在教育部門擔任課程設計師。"}]},
+  {unit:"7-2",word:"election",pos:"n.",zh:"選舉；當選",
+   deriv:[{w:"elect",pos:"v.",zh:"選舉；選擇"},{w:"electoral",pos:"adj.",zh:"選舉的"}],
+   ex:[{en:"The presidential <em>election</em> drew millions of voters.",zh:"總統大選吸引了數百萬選民參與。"},
+       {en:"He was <em>elected</em> as class representative.",zh:"他被選為班級代表。"}]},
+  {unit:"7-2",word:"electronics",pos:"n.",zh:"電子學；電子產品",
+   deriv:[{w:"electronic",pos:"adj.",zh:"電子的"},{w:"electronically",pos:"adv.",zh:"用電子方式"}],
+   ex:[{en:"Taiwan is famous for its <em>electronics</em> industry.",zh:"台灣以電子業聞名。"},
+       {en:"All documents were submitted <em>electronically</em>.",zh:"所有文件都以電子方式提交。"}]},
+  {unit:"7-2",word:"empire",pos:"n.",zh:"帝國；龐大的企業",
+   deriv:[{w:"emperor",pos:"n.",zh:"皇帝"},{w:"imperial",pos:"adj.",zh:"帝國的；皇帝的"}],
+   ex:[{en:"The Roman <em>Empire</em> lasted for centuries.",zh:"羅馬帝國延續了好幾個世紀。"},
+       {en:"She built a business <em>empire</em> from scratch.",zh:"她從零開始建立起了一個商業帝國。"}]},
+  {unit:"7-2",word:"engineering",pos:"n.",zh:"工程學；工程",
+   deriv:[{w:"engineer",pos:"n.",zh:"工程師"},{w:"engineered",pos:"adj.",zh:"人工設計的；刻意安排的"}],
+   ex:[{en:"She studied civil <em>engineering</em> at university.",zh:"她在大學學習土木工程學。"},
+       {en:"The <em>engineer</em> designed the new bridge.",zh:"那位工程師設計了新橋梁。"}]},
+  {unit:"7-2",word:"entertain",pos:"v.",zh:"娛樂；招待；考慮",
+   deriv:[{w:"entertainment",pos:"n.",zh:"娛樂；招待"},{w:"entertaining",pos:"adj.",zh:"有趣的；娛樂性的"}],
+   ex:[{en:"The comedian <em>entertained</em> the audience for hours.",zh:"那位喜劇演員讓觀眾娛樂了好幾個小時。"},
+       {en:"The movie was highly <em>entertaining</em>.",zh:"這部電影非常有趣。"}]},
+  {unit:"7-2",word:"equality",pos:"n.",zh:"平等；均等",
+   deriv:[{w:"equal",pos:"adj./v.",zh:"相等的；等於"},{w:"equally",pos:"adv.",zh:"同等地；平等地"}],
+   ex:[{en:"She fought for gender <em>equality</em> all her life.",zh:"她一生都在為性別平等而奮鬥。"},
+       {en:"All students should be treated <em>equally</em>.",zh:"所有學生都應該被平等對待。"}]},
+  {unit:"7-2",word:"evidence",pos:"n.",zh:"證據；跡象",
+   deriv:[{w:"evident",pos:"adj.",zh:"明顯的；顯而易見的"},{w:"evidently",pos:"adv.",zh:"明顯地；顯然"}],
+   ex:[{en:"The police found strong <em>evidence</em> at the crime scene.",zh:"警方在犯罪現場找到了有力的證據。"},
+       {en:"It was <em>evident</em> that she had worked very hard.",zh:"顯然她非常努力工作。"}]},
+  {unit:"7-2",word:"exhibit",pos:"v./n.",zh:"展示；展覽；展品",
+   deriv:[{w:"exhibition",pos:"n.",zh:"展覽；展覽會"},{w:"exhibitor",pos:"n.",zh:"展示者；參展商"}],
+   ex:[{en:"The gallery <em>exhibits</em> works by local artists.",zh:"這家畫廊展示了本地藝術家的作品。"},
+       {en:"She entered her painting in the art <em>exhibition</em>.",zh:"她把她的畫作送去參加藝術展覽。"}]},
+  {unit:"7-2",word:"exhibition",pos:"n.",zh:"展覽；展覽會；表現",
+   deriv:[{w:"exhibit",pos:"v.",zh:"展示"},{w:"exhibitor",pos:"n.",zh:"參展者"}],
+   ex:[{en:"The science <em>exhibition</em> attracted many school groups.",zh:"這場科學展覽吸引了許多學校團體參觀。"},
+       {en:"She gave an <em>exhibition</em> of her dance skills.",zh:"她展示了她的舞蹈技巧。"}]},
+  {unit:"7-2",word:"explore",pos:"v.",zh:"探索；探勘；研究",
+   deriv:[{w:"exploration",pos:"n.",zh:"探索；探勘"},{w:"explorer",pos:"n.",zh:"探險家"}],
+   ex:[{en:"She loves to <em>explore</em> new places on her travels.",zh:"她喜歡在旅行中探索新地方。"},
+       {en:"The famous <em>explorer</em> sailed around the world.",zh:"那位著名的探險家環行了世界。"}]},
+  {unit:"7-2",word:"export",pos:"v./n.",zh:"出口；輸出；出口商品",
+   deriv:[{w:"exporter",pos:"n.",zh:"出口商；出口國"},{w:"exportation",pos:"n.",zh:"出口；輸出"}],
+   ex:[{en:"Taiwan <em>exports</em> large amounts of semiconductors.",zh:"台灣出口大量的半導體。"},
+       {en:"Coffee is the country's top <em>export</em>.",zh:"咖啡是這個國家最大宗的出口商品。"}]},
+  {unit:"7-2",word:"fairy",pos:"n./adj.",zh:"仙子；仙女；仙境的",
+   deriv:[{w:"fairy tale",pos:"phrase",zh:"童話故事"},{w:"fairylike",pos:"adj.",zh:"像仙子的；夢幻的"}],
+   ex:[{en:"She loved reading <em>fairy</em> tales before bed.",zh:"她喜歡在睡前讀童話故事。"},
+       {en:"The garden looked like a <em>fairy</em> tale setting.",zh:"這座花園看起來像是童話故事裡的場景。"}]},
+  {unit:"7-2",word:"faith",pos:"n.",zh:"信念；信仰；信任",
+   deriv:[{w:"faithful",pos:"adj.",zh:"忠誠的；虔誠的"},{w:"faithfully",pos:"adv.",zh:"忠誠地；如實地"}],
+   ex:[{en:"She has great <em>faith</em> in her students' abilities.",zh:"她對學生的能力深具信心。"},
+       {en:"He remained <em>faithful</em> to his principles throughout.",zh:"他始終忠於自己的原則。"}]},
+  {unit:"7-2",word:"fame",pos:"n.",zh:"名聲；名望",
+   deriv:[{w:"famous",pos:"adj.",zh:"著名的；有名的"},{w:"famed",pos:"adj.",zh:"聞名的；著稱的"}],
+   ex:[{en:"She achieved international <em>fame</em> through her music.",zh:"她透過音樂獲得了國際名聲。"},
+       {en:"The region is <em>famed</em> for its beautiful landscapes.",zh:"這個地區以其美麗的風景聞名。"}]},
+  // ===== UNIT 7-3 =====
+  {unit:"7-3",word:"fashionable",pos:"adj.",zh:"時髦的；流行的",
+   deriv:[{w:"fashion",pos:"n.",zh:"時尚；流行"},{w:"fashionably",pos:"adv.",zh:"時髦地"}],
+   ex:[{en:"She always wears <em>fashionable</em> outfits to parties.",zh:"她總是穿著時髦的服裝去參加派對。"},
+       {en:"Minimalist home decor has become very <em>fashionable</em>.",zh:"極簡主義的家居裝飾變得非常流行。"}]},
+  {unit:"7-3",word:"feast",pos:"n./v.",zh:"盛宴；節日；大吃大喝",
+   deriv:[{w:"festive",pos:"adj.",zh:"節日的；喜慶的"},{w:"feast on",pos:"phrase",zh:"盡情享用；大快朵頤"}],
+   ex:[{en:"The family prepared a wonderful <em>feast</em> for Thanksgiving.",zh:"這家人為感恩節準備了一頓豐盛的大餐。"},
+       {en:"We <em>feasted</em> on fresh seafood at the harbor.",zh:"我們在港口大快朵頤地享用了新鮮海鮮。"}]},
+  {unit:"7-3",word:"fiction",pos:"n.",zh:"小說；虛構的事物",
+   deriv:[{w:"fictional",pos:"adj.",zh:"虛構的；小說的"},{w:"fictitious",pos:"adj.",zh:"虛假的；虛構的"}],
+   ex:[{en:"Science <em>fiction</em> often imagines future technologies.",zh:"科幻小說常常想像未來的技術。"},
+       {en:"The characters in the story are completely <em>fictional</em>.",zh:"故事中的人物完全是虛構的。"}]},
+  {unit:"7-3",word:"finance",pos:"n./v.",zh:"財務；金融；資助",
+   deriv:[{w:"financial",pos:"adj.",zh:"財務的；金融的"},{w:"financially",pos:"adv.",zh:"在財務上"}],
+   ex:[{en:"She works in <em>finance</em> at a large bank.",zh:"她在一家大型銀行從事金融工作。"},
+       {en:"The project was <em>financed</em> by a government grant.",zh:"這個專案由政府補助資助。"}]},
+  {unit:"7-3",word:"financial",pos:"adj.",zh:"財務的；金融的",
+   deriv:[{w:"finance",pos:"n.",zh:"財務；金融"},{w:"financially",pos:"adv.",zh:"在財務上"}],
+   ex:[{en:"She sought <em>financial</em> advice before investing.",zh:"她在投資前尋求了財務建議。"},
+       {en:"The company faced serious <em>financial</em> problems.",zh:"公司面臨嚴重的財務問題。"}]},
+  {unit:"7-3",word:"firework",pos:"n.",zh:"煙火；煙火表演",
+   deriv:[{w:"fireworks display",pos:"phrase",zh:"煙火表演"},{w:"set off fireworks",pos:"phrase",zh:"放煙火"}],
+   ex:[{en:"We watched beautiful <em>fireworks</em> on New Year's Eve.",zh:"我們在除夕夜觀看了美麗的煙火。"},
+       {en:"The <em>fireworks</em> display lasted for thirty minutes.",zh:"煙火表演持續了三十分鐘。"}]},
+  {unit:"7-3",word:"flute",pos:"n.",zh:"長笛；直笛",
+   deriv:[{w:"flutist",pos:"n.",zh:"長笛演奏者"},{w:"flute solo",pos:"phrase",zh:"長笛獨奏"}],
+   ex:[{en:"She has been playing the <em>flute</em> since age six.",zh:"她從六歲起就開始演奏長笛。"},
+       {en:"The <em>flutist</em> performed a beautiful solo piece.",zh:"那位長笛演奏者演奏了一首美麗的獨奏曲。"}]},
+  {unit:"7-3",word:"forecast",pos:"n./v.",zh:"預報；預測",
+   deriv:[{w:"forecaster",pos:"n.",zh:"預報員；預測者"},{w:"weather forecast",pos:"phrase",zh:"天氣預報"}],
+   ex:[{en:"The <em>forecast</em> says there will be rain tomorrow.",zh:"天氣預報說明天會下雨。"},
+       {en:"Economists <em>forecast</em> slow growth next year.",zh:"經濟學家預測明年成長緩慢。"}]},
+  {unit:"7-3",word:"formation",pos:"n.",zh:"形成；隊形；構造；地層",
+   deriv:[{w:"form",pos:"v.",zh:"形成；組成"},{w:"formative",pos:"adj.",zh:"形成的；影響形成的"}],
+   ex:[{en:"The birds flew in a V-shaped <em>formation</em>.",zh:"那些鳥以V字型的隊形飛行。"},
+       {en:"The rock <em>formation</em> took millions of years to form.",zh:"這個岩石地層花了數百萬年才形成。"}]},
+  {unit:"7-3",word:"formula",pos:"n.",zh:"公式；配方；方案",
+   deriv:[{w:"formulate",pos:"v.",zh:"制定；規劃；配製"},{w:"formulaic",pos:"adj.",zh:"公式化的；照本宣科的"}],
+   ex:[{en:"She memorized every math <em>formula</em> for the exam.",zh:"她為了考試記住了每一個數學公式。"},
+       {en:"The scientists <em>formulated</em> a new plan for the experiment.",zh:"科學家制定了一個新的實驗計劃。"}]},
+  {unit:"7-3",word:"fortune",pos:"n.",zh:"財富；命運；運氣",
+   deriv:[{w:"fortunate",pos:"adj.",zh:"幸運的"},{w:"fortunately",pos:"adv.",zh:"幸運地；幸好"}],
+   ex:[{en:"She made a <em>fortune</em> by investing in technology.",zh:"她透過投資科技賺了一大筆財富。"},
+       {en:"<em>Fortunately</em>, we arrived just before the storm hit.",zh:"幸好，我們在暴風雨來襲之前及時抵達。"}]},
+  {unit:"7-3",word:"foundation",pos:"n.",zh:"基礎；地基；基金會",
+   deriv:[{w:"found",pos:"v.",zh:"建立；創辦"},{w:"foundational",pos:"adj.",zh:"基礎的；根本的"}],
+   ex:[{en:"A strong <em>foundation</em> in reading is essential.",zh:"閱讀的良好基礎是不可缺少的。"},
+       {en:"The charity <em>foundation</em> helps disadvantaged children.",zh:"這個慈善基金會幫助弱勢兒童。"}]},
+  {unit:"7-3",word:"fund",pos:"n./v.",zh:"基金；資金；資助",
+   deriv:[{w:"funding",pos:"n.",zh:"資金；經費"},{w:"fundraiser",pos:"n.",zh:"募款人；募款活動"}],
+   ex:[{en:"The school organized a <em>fund</em>-raiser for the library.",zh:"學校為圖書館組織了一次募款活動。"},
+       {en:"The research project was <em>funded</em> by the government.",zh:"這個研究計劃由政府資助。"}]},
+  {unit:"7-3",word:"gamble",pos:"v./n.",zh:"賭博；冒險",
+   deriv:[{w:"gambler",pos:"n.",zh:"賭博者；冒險者"},{w:"gambling",pos:"n.",zh:"賭博"}],
+   ex:[{en:"He <em>gambled</em> away all his savings at the casino.",zh:"他在賭場把所有積蓄都輸掉了。"},
+       {en:"Starting a new business is always a <em>gamble</em>.",zh:"開始一個新事業總是一種冒險。"}]},
+  {unit:"7-3",word:"golf",pos:"n.",zh:"高爾夫球（運動）",
+   deriv:[{w:"golfer",pos:"n.",zh:"高爾夫球手"},{w:"golf course",pos:"phrase",zh:"高爾夫球場"}],
+   ex:[{en:"He plays <em>golf</em> every Saturday morning.",zh:"他每週六早上都打高爾夫球。"},
+       {en:"The professional <em>golfer</em> won three championships.",zh:"那位職業高爾夫球手贏得了三個冠軍。"}]},
+  {unit:"7-3",word:"graduate",pos:"v./n.",zh:"畢業；畢業生",
+   deriv:[{w:"graduation",pos:"n.",zh:"畢業；畢業典禮"},{w:"graduate school",pos:"phrase",zh:"研究所"}],
+   ex:[{en:"She will <em>graduate</em> from high school this year.",zh:"她今年將從高中畢業。"},
+       {en:"The <em>graduation</em> ceremony was held in the main hall.",zh:"畢業典禮在大廳舉行。"}]},
+  {unit:"7-3",word:"funeral",pos:"n.",zh:"葬禮；喪禮",
+   deriv:[{w:"funerary",pos:"adj.",zh:"葬禮的；喪葬的"},{w:"funeral home",pos:"phrase",zh:"殯儀館"}],
+   ex:[{en:"Hundreds attended the soldier's <em>funeral</em>.",zh:"數百人出席了那名士兵的葬禮。"},
+       {en:"She wore black to the <em>funeral</em> as a sign of respect.",zh:"她穿黑色衣服出席葬禮以表示尊重。"}]},
+  {unit:"7-3",word:"graduation",pos:"n.",zh:"畢業；畢業典禮",
+   deriv:[{w:"graduate",pos:"v.",zh:"畢業"},{w:"graduation ceremony",pos:"phrase",zh:"畢業典禮"}],
+   ex:[{en:"Her family came from far away for her <em>graduation</em>.",zh:"她的家人從遠方趕來參加她的畢業典禮。"},
+       {en:"After <em>graduation</em>, she started working at a hospital.",zh:"畢業後，她開始在醫院工作。"}]},
+  {unit:"7-3",word:"grammar",pos:"n.",zh:"文法；語法",
+   deriv:[{w:"grammatical",pos:"adj.",zh:"文法上的；合乎語法的"},{w:"grammarian",pos:"n.",zh:"文法學家"}],
+   ex:[{en:"Learning English <em>grammar</em> takes time and practice.",zh:"學習英文文法需要時間和練習。"},
+       {en:"She made several <em>grammatical</em> errors in her essay.",zh:"她的文章中出現了幾個文法錯誤。"}]},
+  {unit:"7-3",word:"grammatical",pos:"adj.",zh:"文法上的；語法正確的",
+   deriv:[{w:"grammar",pos:"n.",zh:"文法；語法"},{w:"grammatically",pos:"adv.",zh:"文法上地；合乎語法地"}],
+   ex:[{en:"His sentence was not <em>grammatical</em> and needed fixing.",zh:"他的句子不合文法，需要修正。"},
+       {en:"She speaks <em>grammatically</em> correct English.",zh:"她說的英語文法正確。"}]},
+  {unit:"7-3",word:"guarantee",pos:"v./n.",zh:"保證；擔保；保固",
+   deriv:[{w:"guaranteed",pos:"adj.",zh:"有保障的；被保證的"},{w:"money-back guarantee",pos:"phrase",zh:"退款保證"}],
+   ex:[{en:"The company <em>guarantees</em> a full refund if unhappy.",zh:"公司保證不滿意可獲全額退款。"},
+       {en:"Hard work is no <em>guarantee</em> of success, but it helps.",zh:"努力工作不一定保證成功，但確實有幫助。"}]},
+  {unit:"7-3",word:"guilt",pos:"n.",zh:"罪惡感；內疚；有罪",
+   deriv:[{w:"guilty",pos:"adj.",zh:"有罪的；內疚的"},{w:"guiltlessly",pos:"adv.",zh:"無罪地；無愧地"}],
+   ex:[{en:"He was consumed by <em>guilt</em> after lying to his friend.",zh:"對朋友說謊之後，他被罪惡感所吞噬。"},
+       {en:"The jury found the defendant not <em>guilty</em>.",zh:"陪審團裁定被告無罪。"}]},
+  {unit:"7-3",word:"handwriting",pos:"n.",zh:"筆跡；書法；手寫",
+   deriv:[{w:"handwritten",pos:"adj.",zh:"手寫的"},{w:"handwrite",pos:"v.",zh:"手寫"}],
+   ex:[{en:"Her <em>handwriting</em> is so neat and elegant.",zh:"她的筆跡非常工整又優雅。"},
+       {en:"He received a <em>handwritten</em> thank-you card.",zh:"他收到了一張手寫的感謝卡。"}]},
+  {unit:"7-3",word:"healing",pos:"n./adj.",zh:"療癒；治癒的；治癒",
+   deriv:[{w:"heal",pos:"v.",zh:"治癒；療癒"},{w:"healer",pos:"n.",zh:"治療者；癒合物"}],
+   ex:[{en:"Music has a powerful <em>healing</em> effect on the mind.",zh:"音樂對心靈有強大的療癒效果。"},
+       {en:"The wound took two weeks to <em>heal</em> completely.",zh:"這個傷口花了兩個星期才完全癒合。"}]},
+  {unit:"7-3",word:"hell",pos:"n.",zh:"地獄；極糟糕的地方",
+   deriv:[{w:"hellish",pos:"adj.",zh:"地獄般的；極壞的"},{w:"hell of a",pos:"idiom",zh:"極大的；非常…的"}],
+   ex:[{en:"The traffic jam was absolute <em>hell</em> this morning.",zh:"今早的交通堵塞簡直是地獄。"},
+       {en:"That was a <em>hell of a</em> game to watch last night.",zh:"昨晚那場比賽看得真過癮。"}]},
+  {unit:"7-3",word:"historic",pos:"adj.",zh:"歷史性的；具有歷史意義的",
+   deriv:[{w:"history",pos:"n.",zh:"歷史"},{w:"historical",pos:"adj.",zh:"歷史的；有關歷史的"}],
+   ex:[{en:"The peace agreement was a <em>historic</em> moment.",zh:"這份和平協議是一個歷史性的時刻。"},
+       {en:"The museum preserves many <em>historical</em> artifacts.",zh:"這座博物館保存了許多歷史文物。"}]},
+  {unit:"7-3",word:"holy",pos:"adj.",zh:"神聖的；聖潔的",
+   deriv:[{w:"holiness",pos:"n.",zh:"神聖；聖潔"},{w:"holy place",pos:"phrase",zh:"聖地"}],
+   ex:[{en:"Jerusalem is considered a <em>holy</em> city by many religions.",zh:"耶路撒冷被許多宗教視為聖城。"},
+       {en:"She felt a sense of peace in the <em>holy</em> temple.",zh:"她在神聖的廟宇中感到一種平靜。"}]},
+  {unit:"7-3",word:"honor",pos:"n./v.",zh:"榮譽；尊敬；向……致敬",
+   deriv:[{w:"honorable",pos:"adj.",zh:"可敬的；光榮的"},{w:"honorably",pos:"adv.",zh:"光榮地；可敬地"}],
+   ex:[{en:"She graduated with <em>honors</em> from the top of her class.",zh:"她以優等成績從班級第一名畢業。"},
+       {en:"It is an <em>honor</em> to represent our school.",zh:"代表我們學校是一種榮譽。"}]},
+  {unit:"7-3",word:"humanity",pos:"n.",zh:"人類；人性；人道",
+   deriv:[{w:"human",pos:"adj./n.",zh:"人類的；人"},{w:"humanitarian",pos:"adj./n.",zh:"人道主義的；人道主義者"}],
+   ex:[{en:"Literature helps us understand <em>humanity</em> more deeply.",zh:"文學幫助我們更深入地理解人性。"},
+       {en:"The organization provides <em>humanitarian</em> aid to refugees.",zh:"該組織向難民提供人道主義援助。"}]},
+  {unit:"7-3",word:"idiom",pos:"n.",zh:"慣用語；成語；方言",
+   deriv:[{w:"idiomatic",pos:"adj.",zh:"慣用的；地道的"},{w:"idiomatically",pos:"adv.",zh:"依慣用法地"}],
+   ex:[{en:"'It's raining cats and dogs' is an English <em>idiom</em>.",zh:"「It's raining cats and dogs」是英語慣用語。"},
+       {en:"She speaks <em>idiomatic</em> English, not just textbook phrases.",zh:"她說的是地道的英語，不只是教科書上的句子。"}]},
+  {unit:"7-3",word:"idol",pos:"n.",zh:"偶像；偶像崇拜的對象",
+   deriv:[{w:"idolize",pos:"v.",zh:"崇拜；視……為偶像"},{w:"idolization",pos:"n.",zh:"崇拜；偶像化"}],
+   ex:[{en:"Many teenagers <em>idolize</em> their favorite pop stars.",zh:"許多青少年崇拜他們喜愛的流行明星。"},
+       {en:"He became an <em>idol</em> for millions of fans worldwide.",zh:"他成為了全球數百萬粉絲的偶像。"}]},
+  {unit:"7-3",word:"import",pos:"v./n.",zh:"進口；輸入；進口貨",
+   deriv:[{w:"importer",pos:"n.",zh:"進口商；進口國"},{w:"importation",pos:"n.",zh:"進口；輸入"}],
+   ex:[{en:"Taiwan <em>imports</em> most of its energy resources.",zh:"台灣進口大部分的能源資源。"},
+       {en:"Coffee is one of the country's major <em>imports</em>.",zh:"咖啡是這個國家的主要進口商品之一。"}]},
+  {unit:"7-3",word:"inflation",pos:"n.",zh:"通貨膨脹；膨脹",
+   deriv:[{w:"inflate",pos:"v.",zh:"使膨脹；通貨膨脹"},{w:"inflationary",pos:"adj.",zh:"通貨膨脹的；引起通膨的"}],
+   ex:[{en:"Rising food prices are a sign of <em>inflation</em>.",zh:"食品價格上漲是通貨膨脹的跡象。"},
+       {en:"The government tried to control <em>inflationary</em> pressures.",zh:"政府試圖控制通貨膨脹的壓力。"}]},
+  {unit:"7-3",word:"information",pos:"n.",zh:"資訊；情報；消息",
+   deriv:[{w:"inform",pos:"v.",zh:"通知；告知"},{w:"informative",pos:"adj.",zh:"資訊豐富的；有益的"}],
+   ex:[{en:"Please call us for more <em>information</em>.",zh:"如需更多資訊，請致電我們。"},
+       {en:"The documentary was very <em>informative</em>.",zh:"這部紀錄片非常富有資訊性。"}]},
+  {unit:"7-3",word:"instruct",pos:"v.",zh:"指導；命令；教導",
+   deriv:[{w:"instruction",pos:"n.",zh:"指示；說明；教導"},{w:"instructor",pos:"n.",zh:"教師；教練；指導者"}],
+   ex:[{en:"The coach <em>instructed</em> the players on the new strategy.",zh:"教練向球員們說明了新的戰術。"},
+       {en:"Please read the <em>instructions</em> carefully before starting.",zh:"開始之前請仔細閱讀說明書。"}]},
+  {unit:"7-3",word:"insurance",pos:"n.",zh:"保險；保險費；保障",
+   deriv:[{w:"insure",pos:"v.",zh:"投保；確保"},{w:"insurer",pos:"n.",zh:"保險公司；承保人"}],
+   ex:[{en:"Everyone should have health <em>insurance</em>.",zh:"每個人都應該有健康保險。"},
+       {en:"She <em>insured</em> her new car against theft.",zh:"她為新車投保了防盜險。"}]},
+  {unit:"7-3",word:"interpret",pos:"v.",zh:"解釋；詮釋；口譯",
+   deriv:[{w:"interpretation",pos:"n.",zh:"解釋；詮釋；口譯"},{w:"interpreter",pos:"n.",zh:"口譯員；詮釋者"}],
+   ex:[{en:"The lawyer asked the witness to <em>interpret</em> the events.",zh:"律師要求目擊者解釋那些事件的經過。"},
+       {en:"Different people <em>interpret</em> art in different ways.",zh:"不同的人以不同的方式詮釋藝術。"}]},
+  {unit:"7-3",word:"invest",pos:"v.",zh:"投資；投入",
+   deriv:[{w:"investment",pos:"n.",zh:"投資"},{w:"investor",pos:"n.",zh:"投資者"}],
+   ex:[{en:"She decided to <em>invest</em> in real estate.",zh:"她決定投資房地產。"},
+       {en:"A wise <em>investment</em> can grow your wealth over time.",zh:"明智的投資可以讓你的財富隨時間增長。"}]},
+  {unit:"7-3",word:"jazz",pos:"n.",zh:"爵士樂",
+   deriv:[{w:"jazzy",pos:"adj.",zh:"爵士風格的；花俏的"},{w:"jazz up",pos:"phrase",zh:"使更生動活潑；裝飾"}],
+   ex:[{en:"She loves listening to <em>jazz</em> on rainy evenings.",zh:"她喜歡在雨天夜晚聆聽爵士樂。"},
+       {en:"The designer <em>jazzed up</em> the plain outfit with bright accessories.",zh:"設計師用鮮豔的配件使那套樸素的服裝更加搶眼。"}]},
+  {unit:"7-3",word:"investigation",pos:"n.",zh:"調查；搜查；研究",
+   deriv:[{w:"investigate",pos:"v.",zh:"調查；研究"},{w:"investigator",pos:"n.",zh:"調查員；偵查人員"}],
+   ex:[{en:"The police launched an <em>investigation</em> into the fraud.",zh:"警方對這起詐騙案展開了調查。"},
+       {en:"The detective <em>investigated</em> every clue carefully.",zh:"那位偵探仔細調查了每一條線索。"}]},
+  {unit:"7-3",word:"learning",pos:"n.",zh:"學習；學問；知識",
+   deriv:[{w:"learn",pos:"v.",zh:"學習；得知"},{w:"learner",pos:"n.",zh:"學習者"}],
+   ex:[{en:"Lifelong <em>learning</em> keeps the mind sharp and active.",zh:"終身學習能使頭腦保持敏銳和活躍。"},
+       {en:"She is an eager <em>learner</em> who never gives up.",zh:"她是一個永不放棄的熱情學習者。"}]},
+  {unit:"7-3",word:"lecture",pos:"n./v.",zh:"演講；授課；訓誡",
+   deriv:[{w:"lecturer",pos:"n.",zh:"演講者；大學講師"},{w:"lecture hall",pos:"phrase",zh:"演講廳；階梯教室"}],
+   ex:[{en:"The professor gave an interesting <em>lecture</em> on history.",zh:"教授做了一場關於歷史的有趣演講。"},
+       {en:"The <em>lecturer</em> spoke for two hours without notes.",zh:"那位演講者不看稿子連講了兩個小時。"}]},
+  {unit:"7-3",word:"legend",pos:"n.",zh:"傳說；傳奇人物；圖例",
+   deriv:[{w:"legendary",pos:"adj.",zh:"傳奇的；著名的"},{w:"legend has it",pos:"phrase",zh:"傳說中……"}],
+   ex:[{en:"Bruce Lee is a <em>legend</em> in martial arts.",zh:"李小龍是武術界的傳奇人物。"},
+       {en:"The <em>legendary</em> singer sold out every venue.",zh:"那位傳奇歌手的所有演唱會都座無虛席。"}]},
+  {unit:"7-3",word:"leisure",pos:"n.",zh:"閒暇；休閒；悠閒",
+   deriv:[{w:"leisurely",pos:"adj./adv.",zh:"悠閒的（地）"},{w:"at leisure",pos:"phrase",zh:"在空閒時；從容地"}],
+   ex:[{en:"She enjoys reading in her <em>leisure</em> time.",zh:"她喜歡在閒暇時間閱讀。"},
+       {en:"He strolled through the park at a <em>leisurely</em> pace.",zh:"他悠閒地漫步穿過公園。"}]},
+  {unit:"7-3",word:"license",pos:"n./v.",zh:"執照；許可；授權",
+   deriv:[{w:"licensed",pos:"adj.",zh:"持有執照的；被授權的"},{w:"licensee",pos:"n.",zh:"被許可人；獲得許可的人"}],
+   ex:[{en:"You need a driver's <em>license</em> to operate a vehicle.",zh:"你需要駕照才能駕駛車輛。"},
+       {en:"Only <em>licensed</em> doctors can prescribe medication.",zh:"只有持有執照的醫生才能開藥方。"}]},
+  {unit:"7-3",word:"literary",pos:"adj.",zh:"文學的；文字的；愛好文學的",
+   deriv:[{w:"literature",pos:"n.",zh:"文學；文獻"},{w:"literally",pos:"adv.",zh:"字面上地；確實地"}],
+   ex:[{en:"She has a deep interest in <em>literary</em> works.",zh:"她對文學作品有深厚的興趣。"},
+       {en:"The novel won several major <em>literary</em> awards.",zh:"這部小說獲得了幾個重要的文學獎項。"}]},
+  {unit:"7-3",word:"literature",pos:"n.",zh:"文學；文學作品；文獻",
+   deriv:[{w:"literary",pos:"adj.",zh:"文學的"},{w:"literate",pos:"adj.",zh:"識字的；有文化的"}],
+   ex:[{en:"She teaches English <em>literature</em> at the high school.",zh:"她在高中教英國文學。"},
+       {en:"Reading great <em>literature</em> expands the imagination.",zh:"閱讀偉大的文學作品能拓展想像力。"}]},
+  {unit:"7-3",word:"loan",pos:"n./v.",zh:"貸款；借出；借用",
+   deriv:[{w:"lender",pos:"n.",zh:"貸款人；出借者"},{w:"on loan",pos:"phrase",zh:"借出；借調"}],
+   ex:[{en:"She took out a bank <em>loan</em> to start her business.",zh:"她從銀行貸款來創業。"},
+       {en:"The painting was <em>on loan</em> from the national gallery.",zh:"這幅畫是從國家畫廊借調來的。"}]},
+  {unit:"7-3",word:"logic",pos:"n.",zh:"邏輯；邏輯學；道理",
+   deriv:[{w:"logical",pos:"adj.",zh:"邏輯的；合乎邏輯的"},{w:"logically",pos:"adv.",zh:"邏輯上地；合理地"}],
+   ex:[{en:"His argument lacked <em>logic</em> and fell apart quickly.",zh:"他的論點缺乏邏輯，很快就站不住腳了。"},
+       {en:"She thought through the problem <em>logically</em>.",zh:"她以合乎邏輯的方式思考了這個問題。"}]},
+  {unit:"7-3",word:"logical",pos:"adj.",zh:"邏輯的；合乎邏輯的",
+   deriv:[{w:"logic",pos:"n.",zh:"邏輯；道理"},{w:"logically",pos:"adv.",zh:"邏輯地"}],
+   ex:[{en:"The most <em>logical</em> solution is to work as a team.",zh:"最合乎邏輯的解決方案是作為一個團隊共同合作。"},
+       {en:"She gave a <em>logical</em> explanation for her decision.",zh:"她對自己的決定給出了合乎邏輯的解釋。"}]},
+  {unit:"7-3",word:"marathon",pos:"n.",zh:"馬拉松；馬拉松式的活動",
+   deriv:[{w:"marathoner",pos:"n.",zh:"馬拉松選手"},{w:"marathon session",pos:"phrase",zh:"馬拉松式的長時間會議"}],
+   ex:[{en:"She trained for six months to run a <em>marathon</em>.",zh:"她訓練了六個月來參加馬拉松比賽。"},
+       {en:"The negotiations turned into a <em>marathon</em> that lasted twelve hours.",zh:"談判變成了一場長達十二個小時的馬拉松式會議。"}]},
+];
+
+// Unit counts
+const units = ['6-2','6-3','7-1','7-2','7-3'];
+const unitNames = {'6-2':'Unit 6-2：情感・感受 I','6-3':'Unit 6-3：情感・感受 II','7-1':'Unit 7-1：文化・社會 I','7-2':'Unit 7-2：文化・社會 II','7-3':'Unit 7-3：人文・學術'};
+
+let currentUnit = 'all';
+let currentSearch = '';
+
+function buildCards() {
+  const main = document.getElementById('mainContent');
+  // Remove old sections
+  main.querySelectorAll('.unit-section').forEach(s => s.remove());
+
+  units.forEach(unit => {
+    const section = document.createElement('div');
+    section.className = 'unit-section';
+    section.dataset.unit = unit;
+    
+    const words = VOCAB.filter(v => v.unit === unit);
+    const title = document.createElement('div');
+    title.className = 'unit-title';
+    title.innerHTML = `${unitNames[unit]} <span class="unit-count">(${words.length} 個單字)</span>`;
+    section.appendChild(title);
+    
+    const grid = document.createElement('div');
+    grid.className = 'vocab-grid';
+    
+    words.forEach(v => {
+      const card = document.createElement('div');
+      card.className = 'vocab-card';
+      card.dataset.unit = v.unit;
+      card.dataset.word = v.word.toLowerCase();
+      card.dataset.zh = v.zh;
+
+      // Deriv HTML
+      const derivHTML = v.deriv.map(d =>
+        `<span class="deriv-chip"><span class="deriv-pos">${d.pos}</span><span class="deriv-word">${d.w}</span><span class="deriv-zh">${d.zh}</span></span>`
+      ).join('');
+
+      // Examples HTML
+      const exHTML = v.ex.map(e =>
+        `<div class="example-item"><div class="ex-en">${e.en}</div><div class="ex-zh">${e.zh}</div></div>`
+      ).join('');
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="word-main">
+            <div class="word-en">${v.word}</div>
+            <div class="word-zh">${v.zh}</div>
+          </div>
+          <span class="word-pos">${v.pos}</span>
+        </div>
+        <div class="deriv-section">
+          <div class="deriv-label">衍生詞 / 片語</div>
+          <div class="deriv-items">${derivHTML}</div>
+        </div>
+        <div class="examples-section">
+          <div class="ex-label">例句</div>
+          ${exHTML}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    main.appendChild(section);
+  });
+
+  updateCounts();
+}
+
+function updateCounts() {
+  const allCards = document.querySelectorAll('.vocab-card');
+  document.getElementById('cnt-all').textContent = allCards.length;
+  units.forEach(u => {
+    const cnt = VOCAB.filter(v=>v.unit===u).length;
+    document.getElementById(`cnt-${u.replace('-','')}`).textContent = cnt;
+  });
+}
+
+function filterUnit(unit) {
+  currentUnit = unit;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyFilters();
+}
+
+function filterCards() {
+  currentSearch = document.getElementById('searchInput').value.toLowerCase().trim();
+  applyFilters();
+}
+
+function applyFilters() {
+  const sections = document.querySelectorAll('.unit-section');
+  sections.forEach(section => {
+    const sectionUnit = section.dataset.unit;
+    const unitMatch = currentUnit === 'all' || sectionUnit === currentUnit;
+    section.style.display = unitMatch ? '' : 'none';
+  });
+
+  const cards = document.querySelectorAll('.vocab-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const unitMatch = currentUnit === 'all' || card.dataset.unit === currentUnit;
+    const searchMatch = !currentSearch ||
+      card.dataset.word.includes(currentSearch) ||
+      card.dataset.zh.includes(currentSearch);
+    const show = unitMatch && searchMatch;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+
+  document.getElementById('visibleCount').textContent = visible;
+  document.getElementById('noResults').classList.toggle('show', visible === 0 && currentSearch !== '');
+}
+
+buildCards();
+</script>
+</body>
+</html>
