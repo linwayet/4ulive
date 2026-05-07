@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dresden im Luftkrieg × 原子習慣 — 18週課程大綱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Noto+Serif+TC:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page-bg:#fdf6ec;
+  --page-bg2:#f7ead6;
+  --text:#2c1a0e;
+  --text2:#5a3a1a;
+  --text3:#8b6045;
+  --border:#d4b896;
+  --max-w:860px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lora','Noto Serif TC',Georgia,serif;background:var(--page-bg);color:var(--text);line-height:1.8;font-size:16px}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#c0392b,#e67e22,#f1c40f,#10b981,#8b5cf6);z-index:2000;transition:width .1s}
+
+/* COLOR STRIP */
+.clr-strip{height:5px;background:linear-gradient(90deg,#c0392b 0%,#e67e22 20%,#f1c40f 40%,#10b981 60%,#8b5cf6 80%,#c0392b 100%)}
+
+/* HEADER */
+.site-hdr{background:linear-gradient(155deg,#3d0c02 0%,#7b1a0a 40%,#b84a18 75%,#d4730e 100%);color:#fdf5e8;padding:2.4rem 1.2rem 1.8rem;text-align:center;position:relative;overflow:hidden}
+.site-hdr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.02) 30px,rgba(255,255,255,.02) 31px)}
+.hdr-eyebrow{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:.22rem 1rem;font-size:.7rem;letter-spacing:.18em;color:#f5deb3;text-transform:uppercase;margin-bottom:.8rem}
+.hdr-main{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5.5vw,2.6rem);font-weight:700;font-style:italic;color:#fff9f2;line-height:1.2;text-shadow:0 2px 16px rgba(0,0,0,.45);margin-bottom:.4rem}
+.hdr-sub{font-size:.8rem;color:#f0d090;letter-spacing:.08em;margin-bottom:.3rem}
+.hdr-badge{display:inline-block;background:rgba(255,220,100,.18);border:1px solid rgba(255,220,100,.3);border-radius:8px;padding:.35rem 1.1rem;font-size:.82rem;color:#fde68a;margin:.65rem auto 1.4rem;font-family:'Noto Serif TC',serif}
+
+/* LINKS STRIP */
+.links-strip{display:flex;flex-direction:column;gap:.55rem;max-width:640px;margin:0 auto}
+.lcard{display:flex;align-items:center;gap:.8rem;padding:.6rem .95rem;border-radius:12px;text-decoration:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);transition:background .2s}
+.lcard:hover{background:rgba(255,255,255,.2)}
+.lcard-icon{font-size:1.45rem;flex-shrink:0;width:2rem;text-align:center}
+.lcard-body{display:flex;flex-direction:column;flex:1;min-width:0}
+.lcard-sub{font-size:.63rem;text-transform:uppercase;letter-spacing:.12em;color:#f0d090}
+.lcard-title{font-weight:600;font-size:.88rem;color:#fff8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lcard-desc{font-size:.68rem;color:#e8c990;display:none}
+@media(min-width:480px){.lcard-desc{display:block}}
+.lcard-arrow{flex-shrink:0;font-size:.95rem;color:rgba(255,255,255,.5)}
+.echo-card .lcard-arrow{color:#fca5a5}
+.analysis-card .lcard-arrow{color:#fdba74}
+.line-card .lcard-arrow{color:#86efac}
+
+/* NAV */
+.toc-wrap{background:var(--page-bg2);border-bottom:2px solid var(--border);padding:.85rem 1.2rem .7rem;position:sticky;top:0;z-index:100}
+.toc-toggle{display:flex;align-items:center;justify-content:center;gap:.5rem;background:none;border:1.5px solid var(--border);border-radius:8px;padding:.45rem 1.1rem;font-family:inherit;font-size:.83rem;color:var(--text2);cursor:pointer;width:100%;max-width:380px;margin:0 auto;transition:background .2s}
+.toc-toggle:hover{background:var(--page-bg)}
+.toc-panel{display:none;max-width:var(--max-w);margin:.7rem auto 0}
+.toc-panel.open{display:block}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.3rem}
+.toc-u{display:flex;align-items:center;gap:.5rem;padding:.38rem .65rem;border-radius:6px;text-decoration:none;color:var(--text2);border-left:3px solid var(--tc,#ccc);font-size:.8rem;transition:all .15s}
+.toc-u:hover{background:var(--page-bg)}
+.toc-num{font-weight:700;font-size:.7rem;color:var(--tc)}
+
+/* MAIN */
+main{max-width:var(--max-w);margin:0 auto;padding:1.5rem 1rem 2rem}
+
+/* OVERVIEW BOX */
+.overview{background:linear-gradient(135deg,#fffbeb,#fff7ed);border:1.5px solid #fde68a;border-radius:14px;padding:1.3rem 1.4rem;margin-bottom:2rem}
+.overview h2{font-family:'Playfair Display',serif;font-size:1.15rem;color:#78350f;margin-bottom:.8rem;font-style:italic}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.5rem}
+.ov-stat{background:#fff;border-radius:8px;padding:.6rem .9rem;border:1px solid #fde68a;text-align:center}
+.ov-num{font-size:1.5rem;font-weight:700;color:#d97706;font-family:'Playfair Display',serif}
+.ov-lbl{font-size:.72rem;color:#92600a}
+
+/* WEEKLY TABLE */
+.weekly-wrap{margin-bottom:2rem}
+.weekly-wrap h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:#7c2d12;margin-bottom:.7rem;font-style:italic;padding-left:.2rem;border-left:3px solid #f97316;padding-left:.7rem}
+.week-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.week-table th{background:#7c2d12;color:#fde8d8;padding:.45rem .7rem;text-align:left;font-weight:600;font-size:.75rem}
+.week-table tr:nth-child(even){background:#fff7ed}
+.week-table tr:nth-child(odd){background:#fffbf7}
+.week-table td{padding:.38rem .7rem;border-bottom:1px solid #fed7aa;color:var(--text2)}
+.week-table tr:hover td{background:#ffedd5}
+
+/* UNIT CARD */
+.unit-card{background:var(--uc-bg,#fff);border:1.5px solid var(--uc-border,#ddd);border-radius:16px;margin-bottom:1.8rem;overflow:hidden;box-shadow:0 3px 18px rgba(0,0,0,.07)}
+.uc-header{background:linear-gradient(135deg,var(--uc-bg),color-mix(in srgb,var(--uc-bg) 70%,white));border-bottom:2px solid var(--uc-border);padding:1.3rem 1.4rem 1rem}
+.uc-top-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.uc-pill{background:var(--uc-pill);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:.2rem .75rem;border-radius:20px;text-transform:uppercase}
+.uc-weeks{font-size:.72rem;color:var(--text3);letter-spacing:.07em}
+.uc-title{font-family:'Playfair Display',serif;font-size:clamp(1.05rem,3vw,1.4rem);color:var(--uc-hdr);font-weight:700;line-height:1.3;margin-bottom:.15rem}
+.uc-subtitle{font-size:.85rem;color:var(--text3);font-style:italic;margin-bottom:.85rem}
+
+/* HABIT FRAME */
+.habit-frame{background:var(--uc-bb);border-left:3px solid var(--uc-accent);border-radius:0 8px 8px 0;padding:.65rem .9rem .6rem;margin-bottom:.75rem}
+.hf-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:.3rem .5rem;font-size:.79rem;line-height:1.6}
+.hf-tag{font-weight:700;color:var(--uc-bt);white-space:nowrap;flex-shrink:0}
+.en-tag{font-style:italic;font-size:.72rem}
+.hf-val{color:var(--uc-hdr)}
+.hf-en{font-style:italic;font-size:.76rem;opacity:.8}
+.hf-q{padding-top:.25rem;border-top:1px dashed var(--uc-border)}
+
+/* LOOP ROW */
+.loop-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:.3rem;font-size:.75rem;background:rgba(255,255,255,.55);border-radius:6px;padding:.35rem .7rem;border:1px solid var(--uc-border)}
+.loop-lbl{font-weight:600;color:var(--uc-hdr);white-space:nowrap}
+.loop-ex{color:var(--text2);font-style:italic}
+
+/* BODY */
+.uc-body{padding:1rem 1.4rem 1.2rem}
+.section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--uc-hdr);margin-bottom:.6rem;padding-bottom:.25rem;border-bottom:1px solid var(--uc-border)}
+.ws-label{margin-top:1rem}
+
+/* CHAPTER ROWS */
+.ch-list{display:flex;flex-direction:column;gap:.55rem;margin-bottom:.3rem}
+.ch-row{display:flex;gap:.75rem;align-items:flex-start;padding:.55rem .7rem;background:rgba(255,255,255,.6);border-radius:8px;border:1px solid var(--uc-border);transition:background .15s}
+.ch-row:hover{background:rgba(255,255,255,.9)}
+.ch-row-left{flex-shrink:0;padding-top:.15rem}
+.ch-num-badge{display:inline-block;background:var(--uc-accent);color:#fff;font-size:.65rem;font-weight:700;padding:.18rem .5rem;border-radius:4px;white-space:nowrap}
+.ch-row-right{flex:1;min-width:0}
+.ch-title-line{font-weight:600;font-size:.85rem;color:var(--uc-hdr);margin-bottom:.25rem;line-height:1.4}
+.ch-desc{font-size:.78rem;color:var(--text2);line-height:1.65}
+
+/* WORKSHEET */
+.ws-list{padding-left:1.3rem;font-size:.82rem;color:var(--text2);line-height:1.9}
+.ws-list li{padding-left:.2rem}
+.ws-list li::marker{color:var(--uc-accent);font-weight:700}
+
+/* LOOP BANNER */
+.loop-banner{background:linear-gradient(135deg,#3d0c02,#7b1a0a,#b84a18);padding:1.3rem 1.2rem;text-align:center;margin:2rem 0 0}
+.loop-steps{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.4rem .5rem;margin:.6rem 0 .4rem}
+.loop-step{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:.2rem .6rem;font-size:.78rem;color:#fff8f0}
+.loop-arr{color:#f6d860}
+
+/* FOOTER */
+.site-footer{background:linear-gradient(155deg,#3d0c02,#7b1a0a,#b84a18);padding:1.8rem 1.2rem;text-align:center}
+.footer-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#f0d090;margin-bottom:.25rem}
+.footer-copy{font-size:.7rem;color:#c8a870;margin-top:.8rem}
+
+/* BACK TOP */
+.back-top{position:fixed;bottom:1.2rem;right:1.2rem;background:linear-gradient(135deg,#c0392b,#e67e22);color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);display:none;align-items:center;justify-content:center;z-index:999;transition:transform .2s}
+.back-top:hover{transform:scale(1.1)}
+.back-top.vis{display:flex}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="clr-strip"></div>
+
+<header class="site-hdr">
+  <div class="hdr-eyebrow">歷史 × 習慣科學 · 跨書學習課程</div>
+  <h1 class="hdr-main">Dresden im Luftkrieg</h1>
+  <p class="hdr-sub">Vorgeschichte · Zerstörung · Folgen &nbsp;·&nbsp; Götz Bergander 著，Böhlau Verlag 1994</p>
+  <div class="hdr-badge">以《原子習慣》Atomic Habits 框架深度解讀 · 18 週完整課程大綱</div>
+  <div class="links-strip">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="lcard echo-card">
+    <span class="lcard-icon">🎯</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">七月開課 · 課程介紹</span>
+      <span class="lcard-title">錯中學 ECHO 計劃</span>
+      <span class="lcard-desc">從錯誤中成長的創新學習方案，七月正式開課</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+  <a href="https://linwayet.github.io/popup/index" target="_blank" class="lcard analysis-card">
+    <span class="lcard-icon">📊</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">七月開課 · 學習工具</span>
+      <span class="lcard-title">學生分析系統</span>
+      <span class="lcard-desc">精準掌握每位學生的學習狀況，個別化教學輔助</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+  <a href="https://line.me/ti/p/~linwayet" target="_blank" class="lcard line-card">
+    <span class="lcard-icon">💬</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">聯絡老師</span>
+      <span class="lcard-title">Line：linwayet</span>
+      <span class="lcard-desc">有任何問題歡迎加 Line 聯絡，隨時為您解答</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+</div>
+</header>
+
+<nav class="toc-wrap" aria-label="課程導覽">
+  <button class="toc-toggle" id="tocBtn" aria-expanded="false">
+    📖 課程單元導覽 <span id="tocArr">▾</span>
+  </button>
+  <div class="toc-panel" id="tocPanel">
+    <div class="toc-grid">
+      <a href="#unit1" class="toc-u" style="--tc:#d97706"><span class="toc-num">Unit 1</span> 習慣的盲點</a>
+      <a href="#unit2" class="toc-u" style="--tc:#ea580c"><span class="toc-num">Unit 2</span> 系統設計的失敗</a>
+      <a href="#unit3" class="toc-u" style="--tc:#dc2626"><span class="toc-num">Unit 3</span> 習慣迴路的極限</a>
+      <a href="#unit4" class="toc-u" style="--tc:#db2777"><span class="toc-num">Unit 4</span> 謊言的習慣</a>
+      <a href="#unit5" class="toc-u" style="--tc:#7c3aed"><span class="toc-num">Unit 5</span> 同盟的習慣</a>
+      <a href="#unit6" class="toc-u" style="--tc:#059669"><span class="toc-num">Unit 6</span> 重建的習慣</a>
+      <a href="#weekly" class="toc-u" style="--tc:#78350f"><span class="toc-num">📅</span> 週次行事曆</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<div class="overview">
+  <h2>課程總覽</h2>
+  <div class="ov-grid">
+    <div class="ov-stat"><div class="ov-num">6</div><div class="ov-lbl">學習單元</div></div>
+    <div class="ov-stat"><div class="ov-num">18</div><div class="ov-lbl">週次</div></div>
+    <div class="ov-stat"><div class="ov-num">19</div><div class="ov-lbl">章節（含前言）</div></div>
+    <div class="ov-stat"><div class="ov-num">4</div><div class="ov-lbl">習慣迴路步驟</div></div>
+    <div class="ov-stat"><div class="ov-num">18</div><div class="ov-lbl">學習工作單題</div></div>
+    <div class="ov-stat"><div class="ov-num">1945</div><div class="ov-lbl">歷史焦點年份</div></div>
+  </div>
+</div>
+
+
+<section class="unit-card" id="unit1"
+  style="--uc-pill:#d97706;--uc-hdr:#78350f;--uc-bg:#fffbeb;--uc-border:#fde68a;--uc-accent:#f59e0b;--uc-bb:#fef3c7;--uc-bt:#78350f">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 1</span>
+      <span class="uc-weeks">第 1–3 週</span>
+    </div>
+    <h2 class="uc-title">習慣的盲點</h2>
+    <p class="uc-subtitle">為何危機來臨時我們看不見？</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">習慣的不顯眼性・環境設計・2分鐘法則</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">Invisible Habits · Environment Design · 2-Minute Rule</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">德勒斯登人為何對空襲風險視而不見？習慣性的安全感如何成為最大漏洞？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">戰爭持續 → 日常警報 → 忽視警告 → 虛假安全感</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">前言</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Vorwort</div>
+            <div class="ch-desc">作者說明研究動機與史料來源，為全書習慣分析奠定基礎。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 1 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Fünf Jahre ohne Bomben 五年無炸彈</div>
+            <div class="ch-desc">1939–1944年間德勒斯登毫髮無損，市民逐漸形成「安全城市」的集體認知習慣。這章展示習慣如何在重複確認中自我強化——每次警報解除都是一次「獎勵」，鞏固了「不會有事」的信念。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 2 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Die ersten Bomben 最初的炸彈</div>
+            <div class="ch-desc">1944年10月第一批炸彈落下。習慣慣性使市民與官員第一反應是「異常事件」而非「系統警訊」，展示了習慣的滯後性：即使環境已改變，行為模式仍依循舊有迴路。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 3 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Hell's Angels 地獄天使</div>
+            <div class="ch-desc">美軍第303轟炸機群的任務視角。本章從攻擊者的組織慣性切入——空軍指揮官如何將「轟炸城市」的程序習慣化，以至於對平民傷亡的道德考量被系統性地邊緣化。</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>找出本單元中三個「習慣盲點」的具體歷史案例</li><li>用原子習慣的「線索→渴望→回應→獎勵」拆解德勒斯登市民的安全感習慣</li><li>類比：你生活中有哪個「安全感習慣」可能是盲點？</li></ol>
+  </div>
+</section>
+
+<section class="unit-card" id="unit2"
+  style="--uc-pill:#ea580c;--uc-hdr:#7c2d12;--uc-bg:#fff7ed;--uc-border:#fed7aa;--uc-accent:#f97316;--uc-bb:#ffedd5;--uc-bt:#7c2d12">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 2</span>
+      <span class="uc-weeks">第 4–6 週</span>
+    </div>
+    <h2 class="uc-title">系統設計的失敗</h2>
+    <p class="uc-subtitle">防空習慣如何被建立或遺忘？</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">習慣堆疊・摩擦力設計・環境即提示</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">Habit Stacking · Friction Design · Environment as Cue</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">一個城市的防災習慣系統是如何被設計或忽視的？官僚慣性如何加速毀滅？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">空襲警報 → 追求安全 → 進入防空洞 → 生存確認</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 4 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Flak in Dresden 德勒斯登的防空砲</div>
+            <div class="ch-desc">城市防空體系的建立過程。這章是「習慣堆疊」的反面教材：防空砲陣地的部署邏輯混亂，不同單位間缺乏「堆疊」的系統設計，各自為政導致整體防禦效能低下。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 5 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Erwachen im Januar 一月的覺醒</div>
+            <div class="ch-desc">1945年1月盟軍逼近，城市才「醒來」。詹姆斯·克利爾說：改變習慣最難的一步是讓提示變得顯眼。這章展示當危機訊號長期被壓制，集體「覺醒」來得太遲。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 6 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Was wußte die Bevölkerung? 民眾對空戰知道多少</div>
+            <div class="ch-desc">資訊封鎖如何系統性地「提高摩擦力」——讓民眾無法建立正確的危機應對習慣。當正確資訊的「取得成本」被人為抬高，壞習慣（輕忽空襲）就自然佔了優勢。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 7 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Wie wurde die Bevölkerung geschützt? 防空保護</div>
+            <div class="ch-desc">官方防空措施的全面檢視。從習慣設計角度看：政府提供了哪些「環境提示」？哪些措施降低了正確行為的摩擦力，哪些反而製造了致命障礙？</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>畫出德勒斯登防空系統的「習慣堆疊圖」，標出每個斷裂點</li><li>分析資訊封鎖如何影響市民的「提示→行為」連結</li><li>設計一個改良版的防空習慣系統，說明你如何降低摩擦力</li></ol>
+  </div>
+</section>
+
+<section class="unit-card" id="unit3"
+  style="--uc-pill:#dc2626;--uc-hdr:#7f1d1d;--uc-bg:#fff5f5;--uc-border:#fecaca;--uc-accent:#ef4444;--uc-bb:#fee2e2;--uc-bt:#7f1d1d">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 3</span>
+      <span class="uc-weeks">第 7–9 週</span>
+    </div>
+    <h2 class="uc-title">習慣迴路的極限</h2>
+    <p class="uc-subtitle">最長的夜晚與崩潰的回應</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">四步驟迴路・即時獎勵 vs 延遲後果・身份認同危機</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">4-Step Loop · Immediate vs Delayed Reward · Identity Crisis</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">在極限情境下，個人與集體的習慣回應如何決定生死？身份認同如何在一夜間崩潰？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">轟炸聲響 → 生存本能 → 逃跑或躲藏 → 活下來的當下</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 8 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Die längste Nacht 最長的夜晚</div>
+            <div class="ch-desc">1945年2月13日夜間轟炸的分鐘級重建。這是整本書最震撼的「習慣崩潰」時刻：當環境在幾分鐘內改變到無法辨認，所有後天建立的習慣系統全部失效，人被迫回到最原始的即時反應迴路。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 9 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Aschermittwoch 聖灰星期三</div>
+            <div class="ch-desc">轟炸後次日的城市景象。克利爾說身份認同是習慣的根基：「我是一個德勒斯登人」這個身份在一夜間被摧毀。倖存者必須重新回答「我是誰」才能繼續前進。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 10 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Aus deutscher Sicht 從德國視角</div>
+            <div class="ch-desc">德國官方與媒體的即時反應框架。這章展示「習慣性敘事」如何在危機中被動員——宣傳機器用既有的意識型態習慣來詮釋新事件，即時獎勵（民心穩定）掩蓋了延遲後果（歷史失真）。</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>用「即時獎勵 vs 延遲後果」分析納粹宣傳機器在轟炸後的操作策略</li><li>描述一個倖存者的「身份認同危機」，並用習慣框架解釋他的重建過程</li><li>你的哪些習慣是建立在某個「身份認同」上？如果身份消失，習慣會怎樣？</li></ol>
+  </div>
+</section>
+
+<section class="unit-card" id="unit4"
+  style="--uc-pill:#db2777;--uc-hdr:#831843;--uc-bg:#fdf2f8;--uc-border:#fbcfe8;--uc-accent:#ec4899;--uc-bb:#fce7f3;--uc-bt:#831843">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 4</span>
+      <span class="uc-weeks">第 10–12 週</span>
+    </div>
+    <h2 class="uc-title">謊言的習慣</h2>
+    <p class="uc-subtitle">宣傳如何改寫集體記憶與行為？</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">身份型習慣・信念重塑・渴望的本質</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">Identity-based Habits · Belief Reshaping · Nature of Craving</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">政府如何利用習慣性服從操控資訊？謊言如何成為整個社會無法擺脫的集體習慣？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">官方說法 → 渴望秩序感 → 接受謊言 → 暫時的心理安慰</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 11 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Phosphor – Tiefangriffe 磷彈與低空攻擊</div>
+            <div class="ch-desc">磷彈神話的誕生與傳播——這是全書最精彩的「謊言習慣化」案例。宣傳創造了一個錯誤的提示（盟軍使用磷彈屠殺難民），觸發真實的渴望（對敵人的憤怒），產生服從行為，並以道德義憤感作為獎勵。整個謊言迴路設計得完美無缺。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 12 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Flüchtlinge – Tote 難民與死亡</div>
+            <div class="ch-desc">死亡人數的政治操弄史。克利爾說：渴望的本質不是行為本身，而是行為帶來的「感受」。本章展示各方如何操弄死亡數字——真正渴望的不是「真相」，而是數字所帶來的「震撼感」或「正當性感」。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 13 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Viertenmal Ausweichziel 第四次替代目標</div>
+            <div class="ch-desc">後續轟炸的歷史紀錄。習慣一旦建立，需要比建立時多得多的力氣才能打破。這章記錄盟軍轟炸機群如何因組織慣性，繼續將德勒斯登列為目標，即使戰略價值已大幅降低。</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>解構「磷彈神話」的完整習慣迴路，找出每個操控點</li><li>比較不同來源的死亡數字，分析「數字習慣」如何影響歷史詮釋</li><li>找一個當代例子，說明謊言如何用同樣的習慣迴路設計維持下去</li></ol>
+  </div>
+</section>
+
+<section class="unit-card" id="unit5"
+  style="--uc-pill:#7c3aed;--uc-hdr:#4c1d95;--uc-bg:#f5f3ff;--uc-border:#ddd6fe;--uc-accent:#8b5cf6;--uc-bb:#ede9fe;--uc-bt:#4c1d95">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 5</span>
+      <span class="uc-weeks">第 13–15 週</span>
+    </div>
+    <h2 class="uc-title">同盟的習慣</h2>
+    <p class="uc-subtitle">英美轟炸策略背後的決策慣性</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">問責系統・壞習慣的回饋延遲・組織慣性</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">Accountability · Delayed Feedback Loop · Organizational Inertia</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">盟軍如何陷入轟炸平民的組織慣性？決策者怎樣用習慣性框架合理化系統性暴力？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">轟炸任務清單 → 完成任務的成就感 → 執行轟炸 → 戰略目標達成</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 14 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Der vergessene Angriff 被遺忘的攻擊</div>
+            <div class="ch-desc">1945年3月後的後續轟炸幾乎被歷史遺忘。克利爾說壞習慣之所以難以改變，是因為即時獎勵（任務完成）遠比延遲後果（道德責任）感受更強烈。這章展示「任務習慣」如何讓轟炸繼續超越戰略必要性。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 15 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Mit Bomben und Kameras 炸彈與相機</div>
+            <div class="ch-desc">航空攝影紀錄與轟炸效果評估。問責系統需要「可量化的回饋」——盟軍用攝影建立了一套習慣性評估迴路，但這個系統只量化物理破壞，完全排除平民傷亡，形成系統性的道德盲點。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 16 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Das seltsame Bündnis 奇異的聯盟</div>
+            <div class="ch-desc">英美蘇三方的政治協作背景。組織習慣如何跨越國界運作：盟軍的轟炸策略在同盟框架下被「習慣化」為理所當然，沒有任何一方建立足夠的問責機制來挑戰這個集體慣性。</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>設計一個能打破盟軍「轟炸慣性」的問責系統，說明如何縮短回饋延遲</li><li>分析航空攝影評估系統的設計缺陷，它強化了哪些壞習慣？</li><li>在你的學習或工作中，有哪個「組織慣性」你想打破？需要什麼問責系統？</li></ol>
+  </div>
+</section>
+
+<section class="unit-card" id="unit6"
+  style="--uc-pill:#059669;--uc-hdr:#064e3b;--uc-bg:#f0fdf4;--uc-border:#a7f3d0;--uc-accent:#10b981;--uc-bb:#d1fae5;--uc-bt:#064e3b">
+  <div class="uc-header">
+    <div class="uc-top-row">
+      <span class="uc-pill">Unit 6</span>
+      <span class="uc-weeks">第 16–18 週</span>
+    </div>
+    <h2 class="uc-title">重建的習慣</h2>
+    <p class="uc-subtitle">從廢墟中建立新的身份認同</p>
+    <div class="habit-frame">
+      <div class="hf-row">
+        <span class="hf-tag">🔬 原子習慣概念</span>
+        <span class="hf-val">身份認同重建・1% 改善・環境重塑與習慣重置</span>
+      </div>
+      <div class="hf-row">
+        <span class="hf-tag en-tag">Atomic Habits</span>
+        <span class="hf-val hf-en">Identity Rebuilding · 1% Improvement · Environment Redesign</span>
+      </div>
+      <div class="hf-row hf-q">
+        <span class="hf-tag">❓ 核心提問</span>
+        <span class="hf-val">歷史的創傷如何成為新習慣的起點？德勒斯登的重建如何示範「身份型改變」的長期歷程？</span>
+      </div>
+    </div>
+    <div class="loop-row">
+      <span class="loop-lbl">習慣迴路示例：</span>
+      <span class="loop-ex">廢墟景象 → 重建家園的渴望 → 每日一塊磚 → 城市逐漸成形</span>
+    </div>
+  </div>
+  <div class="uc-body">
+    <div class="section-label">📖 本單元章節</div>
+    <div class="ch-list">
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 17 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Der Angriff auf die Kriegsmoral 對戰爭士氣的攻擊</div>
+            <div class="ch-desc">轟炸是否真的摧毀了德國人的戰爭意志？這章提供了反直覺的答案——習慣性服從反而在極端壓力下更加強化。克利爾的「身份型習慣」在此得到殘酷驗證：當人的身份與體制深度綁定，外部破壞反而強化內部習慣。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">第 18 章</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Schrecken ohne Ende 無盡的恐懼與終結</div>
+            <div class="ch-desc">全書總結與歷史評價。這是最重要的一章：戰後德勒斯登如何重新建立集體身份？從廢墟中誕生的新習慣系統，展示了原子習慣最核心的訊息：環境重塑是習慣重置的前提，而身份的重新定義是一切改變的起點。</div>
+          </div>
+        </div>
+        <div class="ch-row">
+          <div class="ch-row-left">
+            <span class="ch-num-badge">前言</span>
+          </div>
+          <div class="ch-row-right">
+            <div class="ch-title-line">Vorwort — 作者的視角與方法論</div>
+            <div class="ch-desc">回頭重讀前言，以課程視角重新審視：作者Bergander自己如何建立「歷史研究習慣」？他的方法論中隱含了哪些原子習慣的原則——小步驟積累、系統優先於目標、從一手史料建立可靠的認知習慣？</div>
+          </div>
+        </div></div>
+    <div class="section-label ws-label">✏️ 學習工作單</div>
+    <ol class="ws-list"><li>用「1%改善」框架描述德勒斯登戰後重建的習慣積累過程</li><li>比較「戰爭士氣習慣」與「重建習慣」在身份認同上的異同</li><li>課程總結：這18週你的哪個習慣改變了？用本書框架寫下你的「習慣重建宣言」</li></ol>
+  </div>
+</section>
+
+<div class="weekly-wrap" id="weekly">
+  <h2>📅 18 週學習行事曆</h2>
+  <table class="week-table">
+    <thead><tr><th>週次</th><th>閱讀章節</th><th>習慣焦點</th></tr></thead>
+    <tbody><tr><td>第1週</td><td>前言 · Vorwort</td><td>建立閱讀習慣基礎</td></tr>
+<tr><td>第2週</td><td>第1章</td><td>習慣盲點案例分析</td></tr>
+<tr><td>第3週</td><td>第2–3章</td><td>攻守雙方的習慣慣性</td></tr>
+<tr><td>第4週</td><td>第4章</td><td>組織防禦習慣系統</td></tr>
+<tr><td>第5週</td><td>第5章</td><td>遲來的覺醒與習慣滯後</td></tr>
+<tr><td>第6週</td><td>第6–7章</td><td>資訊摩擦與習慣設計</td></tr>
+<tr><td>第7週</td><td>第8章</td><td>極限情境下的習慣崩潰</td></tr>
+<tr><td>第8週</td><td>第9章</td><td>身份認同的瞬間瓦解</td></tr>
+<tr><td>第9週</td><td>第10章</td><td>習慣性敘事與即時獎勵</td></tr>
+<tr><td>第10週</td><td>第11章</td><td>謊言迴路的精密設計</td></tr>
+<tr><td>第11週</td><td>第12章</td><td>數字操弄與渴望的本質</td></tr>
+<tr><td>第12週</td><td>第13章</td><td>組織慣性的慢速延伸</td></tr>
+<tr><td>第13週</td><td>第14章</td><td>被遺忘的習慣性暴力</td></tr>
+<tr><td>第14週</td><td>第15章</td><td>量化評估與道德盲點</td></tr>
+<tr><td>第15週</td><td>第16章</td><td>跨國組織慣性分析</td></tr>
+<tr><td>第16週</td><td>第17章</td><td>極限壓力下的習慣強化</td></tr>
+<tr><td>第17週</td><td>第18章</td><td>環境重塑與身份重建</td></tr>
+<tr><td>第18週</td><td>總複習</td><td>習慣重建宣言發表</td></tr>
+</tbody>
+  </table>
+</div>
+
+</main>
+
+<div class="loop-banner">
+  <p style="font-size:.76rem;color:#f0d090;letter-spacing:.1em">原子習慣四步驟 · 每單元解構框架</p>
+  <div class="loop-steps">
+    <span class="loop-step">🔵 線索 Cue</span>
+    <span class="loop-arr">→</span>
+    <span class="loop-step">🟠 渴望 Craving</span>
+    <span class="loop-arr">→</span>
+    <span class="loop-step">🔴 回應 Response</span>
+    <span class="loop-arr">→</span>
+    <span class="loop-step">🟢 獎勵 Reward</span>
+  </div>
+  <p style="font-size:.7rem;color:#c8a870;margin-top:.3rem">每章閱讀後，用習慣迴路分析表解構書中人物的行為模式</p>
+</div>
+
+<footer class="site-footer">
+  <p class="footer-title">Dresden im Luftkrieg × 原子習慣 — 18 週課程大綱</p>
+  <p style="font-size:.74rem;color:#d4a080;margin:.3rem 0 1.3rem">Götz Bergander / Böhlau Verlag 1994 &nbsp;·&nbsp; James Clear / Atomic Habits 2018</p>
+  <div class="links-strip">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="lcard echo-card">
+    <span class="lcard-icon">🎯</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">七月開課 · 課程介紹</span>
+      <span class="lcard-title">錯中學 ECHO 計劃</span>
+      <span class="lcard-desc">從錯誤中成長的創新學習方案，七月正式開課</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+  <a href="https://linwayet.github.io/popup/index" target="_blank" class="lcard analysis-card">
+    <span class="lcard-icon">📊</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">七月開課 · 學習工具</span>
+      <span class="lcard-title">學生分析系統</span>
+      <span class="lcard-desc">精準掌握每位學生的學習狀況，個別化教學輔助</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+  <a href="https://line.me/ti/p/~linwayet" target="_blank" class="lcard line-card">
+    <span class="lcard-icon">💬</span>
+    <span class="lcard-body">
+      <span class="lcard-sub">聯絡老師</span>
+      <span class="lcard-title">Line：linwayet</span>
+      <span class="lcard-desc">有任何問題歡迎加 Line 聯絡，隨時為您解答</span>
+    </span>
+    <span class="lcard-arrow">→</span>
+  </a>
+</div>
+  <p class="footer-copy">© 本頁面僅供學術閱讀與教學參考使用</p>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="回頂端">↑</button>
+
+<script>
+const prog=document.getElementById('prog');
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  bt.classList.toggle('vis',h.scrollTop>500);
+});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const tb=document.getElementById('tocBtn');
+const tp=document.getElementById('tocPanel');
+const ta=document.getElementById('tocArr');
+tb.addEventListener('click',()=>{
+  const o=tp.classList.toggle('open');
+  tb.setAttribute('aria-expanded',o);
+  ta.textContent=o?'▴':'▾';
+});
+</script>
+</body>
+</html>
