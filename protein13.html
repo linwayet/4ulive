@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>蛋白質300天｜資料庫實戰 UniProt · PDB · HPA</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Fira+Code:wght@400;500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#FBF5E9;
+  --parchment2:#F4E9D0;
+  --ink:#221408;
+  --ink-mid:#6B4520;
+  --ink-light:#A0724A;
+  --rust:#C04A10;
+  --amber:#C98010;
+  --gold:#E0A800;
+  --teal:#1A6058;
+  --uni:#C04A10;       /* UniProt rust */
+  --pdb:#1A6058;       /* PDB teal */
+  --hpa:#8B3A6A;       /* HPA plum */
+  --sand:#E8D5A8;
+  --card:#FFFCF4;
+  --shadow:rgba(34,20,8,.13);
+  --r:12px;
+  --mono:'Fira Code',monospace;
+  --cjk:'BIZ UDPGothic','Noto Serif TC',sans-serif;
+  --serif:'Noto Serif TC',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--parchment);color:var(--ink);font-family:var(--cjk);font-size:17px;line-height:1.8;overflow-x:hidden}
+
+/* ══ HEADER ══ */
+.hdr{background:var(--ink);color:var(--parchment);padding:13px 26px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;border-bottom:3px solid var(--rust)}
+.hdr-l .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:3px;opacity:.5;text-transform:uppercase}
+.hdr-l .ht{font-size:14px;font-weight:700}
+.hdr-nav{display:flex;gap:4px;flex-wrap:wrap}
+.hdr-nav a{color:rgba(251,245,233,.6);text-decoration:none;font-size:12px;font-family:var(--mono);padding:4px 10px;border-radius:4px;transition:background .18s,color .18s;white-space:nowrap}
+.hdr-nav a:hover{background:var(--rust);color:#fff}
+
+/* ══ HERO ══ */
+.hero{
+  background:linear-gradient(160deg,#1A0E04 0%,#3A1C08 30%,#2A1A0A 60%,#0E2018 100%);
+  color:#fff;padding:68px 28px 56px;text-align:center;position:relative;overflow:hidden
+}
+.hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 65% 55% at 20% 55%,rgba(192,74,16,.2) 0%,transparent 55%),
+             radial-gradient(ellipse 55% 65% at 78% 38%,rgba(26,96,88,.18) 0%,transparent 55%),
+             radial-gradient(ellipse 40% 40% at 50% 90%,rgba(139,58,106,.13) 0%,transparent 55%);
+  pointer-events:none}
+/* DNA strand background */
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:.08}
+.hero-ey{font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(251,245,233,.45);margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-size:clamp(26px,5vw,50px);font-weight:700;line-height:1.22;margin-bottom:12px;position:relative}
+.hero h1 em{font-style:normal;color:#FFD080}
+.hero-en{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.45);letter-spacing:2px;margin-bottom:24px}
+.hero-desc{max-width:640px;margin:0 auto 30px;font-size:15px;color:rgba(255,255,255,.76);line-height:1.9}
+.db-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:10px}
+.db-badge{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:40px;font-family:var(--mono);font-size:13px;border:1.5px solid;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.db-badge:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.db-badge.uni{background:rgba(192,74,16,.25);border-color:rgba(192,74,16,.6);color:#FFB090}
+.db-badge.pdb{background:rgba(26,96,88,.25);border-color:rgba(26,96,88,.6);color:#90FFE8}
+.db-badge.hpa{background:rgba(139,58,106,.25);border-color:rgba(139,58,106,.6);color:#FFB0E0}
+.db-badge .dot{width:8px;height:8px;border-radius:50%}
+.db-badge.uni .dot{background:#FF8060}
+.db-badge.pdb .dot{background:#60FFD0}
+.db-badge.hpa .dot{background:#FF80C8}
+
+/* ══ WORKFLOW PIPELINE ══ */
+.pipeline{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-bottom:36px;justify-content:center}
+.pip-step{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--card);border:1.5px solid var(--sand);
+  border-radius:10px;padding:14px 18px;min-width:120px;
+  cursor:pointer;position:relative;transition:transform .18s,box-shadow .18s,border-color .18s
+}
+.pip-step:hover{transform:translateY(-3px);box-shadow:0 6px 20px var(--shadow)}
+.pip-step .ps-num{font-family:var(--mono);font-size:11px;color:var(--ink-light);margin-bottom:4px}
+.pip-step .ps-icon{font-size:22px;margin-bottom:4px}
+.pip-step .ps-zh{font-size:13px;font-weight:700}
+.pip-step .ps-en{font-size:10px;font-family:var(--mono);color:var(--ink-light);margin-top:2px}
+.pip-arr{font-size:20px;color:var(--sand);padding:0 4px;margin-top:-8px}
+.pip-step.s-uni{border-color:var(--uni);--hc:var(--uni)}
+.pip-step.s-pdb{border-color:var(--pdb);--hc:var(--pdb)}
+.pip-step.s-hpa{border-color:var(--hpa);--hc:var(--hpa)}
+.pip-step.s-result{border-color:var(--amber);--hc:var(--amber)}
+.pip-step::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:var(--hc,var(--rust))}
+
+/* ══ SECTION ══ */
+.sec{max-width:990px;margin:0 auto;padding:52px 24px 16px}
+.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);font-weight:700;margin-bottom:12px}
+.sec-sub{font-size:15px;color:var(--ink-mid);margin-bottom:36px;max-width:700px;line-height:1.88}
+.tap-hint{font-size:12px;color:var(--ink-light);font-family:var(--mono);margin-bottom:22px;padding:7px 14px;background:var(--sand);border-radius:6px;display:inline-block}
+
+/* ══ DATABASE SECTION HEADER ══ */
+.db-header{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 22px;border-radius:var(--r) var(--r) 0 0;
+  margin-bottom:0;color:#fff;position:relative;overflow:hidden
+}
+.db-header::after{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.06)}
+.db-header.uni-hdr{background:linear-gradient(135deg,var(--rust),#8A2C08)}
+.db-header.pdb-hdr{background:linear-gradient(135deg,var(--teal),#0A3A30)}
+.db-header.hpa-hdr{background:linear-gradient(135deg,#8B3A6A,#5A1840)}
+.db-header .db-logo{font-family:var(--mono);font-size:28px;font-weight:700;opacity:.95}
+.db-header .db-info h3{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:3px}
+.db-header .db-info p{font-size:12px;opacity:.75;font-family:var(--mono)}
+.db-header .db-url{
+  margin-left:auto;font-family:var(--mono);font-size:11px;
+  background:rgba(255,255,255,.15);padding:5px 12px;border-radius:20px;
+  text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.25);
+  transition:background .2s;white-space:nowrap
+}
+.db-header .db-url:hover{background:rgba(255,255,255,.28)}
+
+.db-body{background:var(--card);border:1.5px solid var(--sand);border-top:none;border-radius:0 0 var(--r) var(--r);padding:28px;margin-bottom:36px}
+
+/* ══ FIELD TABLE ══ */
+.field-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:24px;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px var(--shadow)}
+.field-table th{background:var(--ink);color:var(--parchment);padding:11px 14px;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+.field-table td{padding:11px 14px;border-bottom:1px solid var(--sand);vertical-align:top;line-height:1.7}
+.field-table tr:nth-child(even) td{background:#FDFAF0}
+.field-table tr:last-child td{border-bottom:none}
+.field-table tr:hover td{background:#F5EDD8}
+.field-key{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--rust);white-space:nowrap}
+.field-key.pdb{color:var(--teal)}
+.field-key.hpa{color:var(--hpa)}
+.badge-label{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:12px;margin-left:6px;vertical-align:middle;color:#fff}
+.badge-r{background:var(--rust)}
+.badge-t{background:var(--teal)}
+.badge-h{background:var(--hpa)}
+.badge-a{background:var(--amber)}
+
+/* ══ CODE BLOCK ══ */
+.code-block{
+  background:#1E1208;border-radius:10px;padding:18px 20px;
+  font-family:var(--mono);font-size:12.5px;color:#E8D5A8;
+  margin-bottom:22px;overflow-x:auto;position:relative;
+  border:1px solid rgba(232,168,0,.2)
+}
+.code-block .cb-label{
+  position:absolute;top:10px;right:14px;
+  font-size:10px;letter-spacing:1px;opacity:.5;text-transform:uppercase
+}
+.code-block .kw{color:#FF9060}
+.code-block .str{color:#90E090}
+.code-block .cmt{color:#666;font-style:italic}
+.code-block .url{color:#60C8FF;text-decoration:underline;cursor:pointer}
+.code-block .num{color:#FFD080}
+
+/* ══ ENTRY PREVIEW CARD ══ */
+.entry-card{
+  border:1.5px solid var(--sand);border-radius:var(--r);
+  overflow:hidden;margin-bottom:22px;
+  box-shadow:0 2px 12px var(--shadow)
+}
+.entry-card-hdr{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 16px;background:var(--parchment2);
+  border-bottom:1px solid var(--sand)
+}
+.ec-tag{font-family:var(--mono);font-size:11px;color:#fff;padding:3px 10px;border-radius:12px}
+.ec-id{font-family:var(--mono);font-size:15px;font-weight:700}
+.ec-name{font-size:14px;font-weight:700;margin-left:auto;color:var(--ink-mid)}
+.entry-card-body{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.ec-field{font-size:13px}
+.ec-field .ecf-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-light);margin-bottom:3px}
+.ec-field .ecf-val{color:var(--ink);font-weight:600;line-height:1.5}
+.ec-field .ecf-val.mono{font-family:var(--mono);font-size:12px;color:var(--rust)}
+.ec-field .ecf-val.link{color:#0066CC;text-decoration:underline;cursor:pointer;font-family:var(--mono);font-size:12px}
+
+/* ══ WORKFLOW STEPS (interactive) ══ */
+.wf-steps{counter-reset:wf;display:flex;flex-direction:column;gap:16px;margin-bottom:30px}
+.wf-step{
+  display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;
+  background:var(--card);border:1.5px solid var(--sand);border-radius:10px;
+  padding:16px;cursor:pointer;transition:border-color .18s,box-shadow .18s;
+  position:relative
+}
+.wf-step:hover{border-color:var(--amber);box-shadow:0 4px 16px var(--shadow)}
+.wf-step .wf-num{
+  counter-increment:wf;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--ink);color:var(--parchment);
+  font-family:var(--mono);font-size:16px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.wf-step .wf-body h4{font-size:15px;font-weight:700;margin-bottom:5px}
+.wf-step .wf-body p{font-size:13.5px;color:var(--ink-mid);line-height:1.78}
+.wf-step .wf-cmd{
+  margin-top:8px;font-family:var(--mono);font-size:12px;
+  background:#1E1208;color:#90E090;padding:7px 12px;
+  border-radius:6px;display:inline-block
+}
+.wf-step.s-uni .wf-num{background:var(--rust)}
+.wf-step.s-pdb .wf-num{background:var(--teal)}
+.wf-step.s-hpa .wf-num{background:var(--hpa)}
+
+/* ══ ANALOGY ══ */
+.analogy{background:linear-gradient(135deg,#FFF5E0,#FDEAC8);border:1.5px solid #E8C888;border-radius:var(--r);padding:20px 22px;margin-bottom:32px;display:flex;gap:14px;align-items:flex-start}
+.an-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.an-body h4{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--rust)}
+.an-body p{font-size:14px;color:#4A2808;line-height:1.82}
+
+/* ══ COMPARISON TABLE ══ */
+.cmp-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:34px;border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px var(--shadow)}
+.cmp-table th{background:var(--ink);color:var(--parchment);padding:13px 15px;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+.cmp-table td{padding:12px 15px;border-bottom:1px solid var(--sand);vertical-align:top;line-height:1.72}
+.cmp-table tr:nth-child(even) td{background:#FDFAF0}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table tr:hover td{background:#F5EDD8}
+.chip{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:10px;color:#fff;margin:1px}
+.chip-r{background:var(--rust)}
+.chip-t{background:var(--teal)}
+.chip-h{background:var(--hpa)}
+.chip-a{background:var(--amber)}
+
+/* ══ TIPS GRID ══ */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:36px}
+.tip-card{background:var(--card);border:1.5px solid var(--sand);border-radius:var(--r);padding:18px;position:relative;overflow:hidden;transition:transform .18s,box-shadow .18s}
+.tip-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow)}
+.tip-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tc,var(--rust));border-radius:4px 0 0 4px}
+.tip-tag{font-family:var(--mono);font-size:10px;color:#fff;padding:2px 8px;border-radius:10px;margin-bottom:8px;display:inline-block}
+.tip-title{font-size:14px;font-weight:700;margin-bottom:5px}
+.tip-desc{font-size:13px;color:var(--ink-mid);line-height:1.74}
+
+/* ══ GLOSSARY ══ */
+.glo{padding:38px 24px 56px;max-width:990px;margin:0 auto}
+.glo h2{font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:6px}
+.glo .gsub{font-size:13px;color:var(--ink-light);margin-bottom:30px;font-family:var(--mono)}
+.glo-grp{margin-bottom:28px}
+.glo-gt{font-size:12px;font-family:var(--mono);letter-spacing:2px;text-transform:uppercase;color:#fff;padding:7px 15px;border-radius:6px;margin-bottom:1px;display:inline-block}
+details.gi{border:1px solid var(--sand);overflow:hidden}
+details.gi:first-child{border-radius:8px 8px 0 0}
+details.gi:last-child{border-radius:0 0 8px 8px}
+details.gi+details.gi{border-top:none}
+details.gi[open]{box-shadow:0 4px 14px var(--shadow);border-color:var(--gc,var(--rust))}
+details.gi>summary{padding:13px 16px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;background:var(--card);transition:background .15s;user-select:none}
+details.gi>summary::-webkit-details-marker{display:none}
+details.gi>summary:hover{background:var(--parchment2)}
+details.gi[open]>summary{background:var(--parchment2);border-bottom:1px solid var(--sand)}
+.g-ab{font-family:var(--mono);font-size:13px;font-weight:700;min-width:52px}
+.g-ns{flex:1}.g-nz{font-size:15px;font-weight:700;display:block}.g-ne{font-size:11px;color:var(--ink-light);font-family:var(--mono)}
+.g-ct{font-size:11px;font-family:var(--mono);color:#fff;padding:2px 8px;border-radius:20px;flex-shrink:0}
+.g-cv{font-size:11px;color:#bbb;transition:transform .2s;flex-shrink:0}
+details.gi[open] .g-cv{transform:rotate(90deg)}
+.g-bd{padding:16px 18px 16px 70px;background:#fff;border-top:1px solid var(--sand)}
+.g-bd .exp{font-size:13.5px;color:#2A1808;line-height:1.85;margin-bottom:10px}
+.g-bd .fml{font-family:var(--mono);font-size:12px;background:#F5EDD8;padding:8px 13px;border-radius:6px;color:var(--ink);margin-bottom:8px;border-left:3px solid var(--gc,var(--rust))}
+.g-bd .ai{font-size:13px;color:#6A4828;font-style:italic;border-left:3px solid #DDD;padding-left:11px;margin-top:8px}
+
+/* ══ DIVIDER ══ */
+.div{height:1.5px;background:linear-gradient(to right,transparent,var(--sand),transparent);margin:0 24px}
+
+/* ══ MODAL ══ */
+.mo-ov{display:none;position:fixed;inset:0;background:rgba(22,10,2,.65);z-index:600;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.mo-ov.on{display:flex}
+.mo{background:var(--card);border-radius:16px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.38);animation:mIn .24s ease-out;position:relative}
+@keyframes mIn{from{opacity:0;transform:translateY(26px) scale(.96)}to{opacity:1;transform:none}}
+.mo-hd{padding:24px 24px 16px;border-bottom:1.5px solid var(--sand);position:sticky;top:0;background:var(--card);border-radius:16px 16px 0 0;z-index:2}
+.mo-cls{position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--sand);border:none;border-radius:50%;cursor:pointer;font-size:15px;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:background .18s}
+.mo-cls:hover{background:var(--rust);color:#fff}
+.mo-ab{font-family:var(--mono);font-size:22px;font-weight:700;margin-bottom:4px}
+.mo-zh{font-size:18px;font-weight:700;margin-bottom:3px}
+.mo-en{font-size:12px;font-family:var(--mono);color:var(--ink-light)}
+.mo-bd{padding:20px 24px 26px}
+.mo-sec{margin-bottom:16px}
+.mo-sec h4{font-size:11px;font-family:var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--rust);margin-bottom:7px}
+.mo-sec p{font-size:13.5px;color:#2A1808;line-height:1.85}
+.mo-fml{font-family:var(--mono);font-size:12px;background:#F5EDD8;padding:8px 12px;border-radius:6px;color:var(--ink);border-left:3px solid var(--rust);margin-top:7px}
+.mo-an{background:linear-gradient(135deg,#FFF5E0,#FDEAC8);border:1px solid #E8C888;border-radius:10px;padding:13px 15px;font-size:13px;color:#4A2808;line-height:1.82;font-style:italic}
+.mo-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-family:var(--mono);font-size:12px;color:#0066CC;text-decoration:none;padding:5px 12px;background:#EEF4FF;border-radius:6px;border:1px solid #BDD0FF}
+.mo-link:hover{background:#DDE8FF}
+
+/* ══ FOOTER ══ */
+footer{background:var(--ink);color:rgba(251,245,233,.45);text-align:center;padding:26px 20px;font-family:var(--mono);font-size:11px;letter-spacing:1px;margin-top:58px}
+
+/* ══ SCROLL ANIMATION ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeUp .5s ease-out both}
+
+@media(max-width:600px){
+  .hdr-nav{display:none}
+  .pipeline{flex-direction:column;align-items:flex-start}
+  .pip-arr{transform:rotate(90deg)}
+  .g-bd{padding-left:18px}
+  .db-header{flex-wrap:wrap}
+  .db-header .db-url{margin-left:0;margin-top:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="hdr">
+  <div class="hdr-l">
+    <div class="eyebrow">PROTEIN 300 DAYS</div>
+    <div class="ht">蛋白質資料庫實戰</div>
+  </div>
+  <nav class="hdr-nav">
+    <a href="#overview">總覽</a>
+    <a href="#workflow">工作流</a>
+    <a href="#uniprot">UniProt</a>
+    <a href="#pdb">PDB</a>
+    <a href="#hpa">HPA</a>
+    <a href="#compare">三庫比較</a>
+    <a href="#tips">實戰技巧</a>
+    <a href="#glossary">術語字典</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <svg class="hero-bg" viewBox="0 0 900 260" preserveAspectRatio="xMidYMid slice">
+    <!-- sequence data visual background -->
+    <g fill="none" stroke="rgba(232,168,0,1)" stroke-width="0.8" opacity=".6">
+      <text x="20" y="40" font-size="9" fill="rgba(232,168,0,.8)" font-family="monospace">MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQAPILSRVGDGTQDNLSGAEKAVQVKVKALPDAQFEVVHSLAKWKRQTLGQHDFSAGEGLYTHMKALRPDEDRLSPLHSVYVDQWDWERVMGDGERQFSTLKSTVEAIWAGIKATEAAVSEEFGLAPFLPDQIHFVHSQELLSRYPDLDAKGRERAIAKDLGAVFLVGIGGKLSDGHRHDVRAPDYDDWSTPSELGHAGLNGDILVWNPSVIEDIEDCNVILHQPELEGRRGKIFCLTAVNKSGALQTRKAVLHWLNEATKLNLPVHKTAEIGR</text>
+      <text x="20" y="60" font-size="9" fill="rgba(192,74,16,.7)" font-family="monospace">10        20        30        40        50        60        70        80        90       100</text>
+      <text x="20" y="80" font-size="9" fill="rgba(232,168,0,.5)" font-family="monospace">MNIFEMLRIDEGLRLKIYKDTEGYYTIGIGHLLTKSPSLNAAKSELDKAIGRNTNGVITKDEAEKLFNQDVDAAVRGILRNAKLKPVYDSLDAVRRAALINMVFQMGETGVAGFTNSLRMLQQKRWDEAAVNLAKSRWYNQTPNRAKRVITTFRTGTWDAYKNL</text>
+      <text x="20" y="110" font-size="8" fill="rgba(26,96,88,.6)" font-family="monospace">ATOM      1  N   MET A   1      27.340  24.430   2.614  1.00 15.62           N</text>
+      <text x="20" y="123" font-size="8" fill="rgba(26,96,88,.5)" font-family="monospace">ATOM      2  CA  MET A   1      26.266  25.413   2.842  1.00 15.06           C</text>
+      <text x="20" y="136" font-size="8" fill="rgba(26,96,88,.4)" font-family="monospace">ATOM      3  C   MET A   1      26.913  26.639   3.531  1.00 14.27           C</text>
+    </g>
+  </svg>
+
+  <p class="hero-ey">PROTEIN 300 DAYS · 資料庫實戰</p>
+  <h1>蛋白質功能全景<br><em>資料庫實戰</em></h1>
+  <p class="hero-en">UniProt · PDB · Human Protein Atlas</p>
+  <p class="hero-desc">從一個蛋白質名稱出發，三個資料庫帶你看清它的
+  序列、結構、功能、組織分佈與疾病關聯。
+  這是現代生物學家的標準查詢工作流，也是理解蛋白質的最快路徑。</p>
+  <div class="db-badges">
+    <div class="db-badge uni" onclick="scrollTo('uniprot')">
+      <span class="dot"></span>UniProt<span style="opacity:.6;font-size:10px">序列 · 功能 · 本體</span>
+    </div>
+    <div class="db-badge pdb" onclick="scrollTo('pdb')">
+      <span class="dot"></span>PDB<span style="opacity:.6;font-size:10px">3D 結構 · 配體</span>
+    </div>
+    <div class="db-badge hpa" onclick="scrollTo('hpa')">
+      <span class="dot"></span>Human Protein Atlas<span style="opacity:.6;font-size:10px">組織 · 細胞 · 癌症</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PART 01 OVERVIEW ══ -->
+<div id="overview"></div>
+<div class="sec">
+  <p class="sec-label">PART 01</p>
+  <h2 class="sec-title">為什麼需要三個資料庫？</h2>
+  <p class="sec-sub">沒有任何一個資料庫能回答蛋白質的所有問題。
+  UniProt 知道「它是誰」；PDB 知道「它長什麼樣」；HPA 知道「它在哪裡」。
+  三庫合用，才能得到蛋白質的完整面貌。</p>
+
+  <div class="tap-hint">👆 點擊下方所有卡片 / 圖示查看詳細說明與使用技巧</div>
+
+  <!-- Three-DB overview SVG diagram -->
+  <div style="background:var(--card);border:1.5px solid var(--sand);border-radius:var(--r);box-shadow:0 4px 24px var(--shadow);overflow:hidden;margin-bottom:34px">
+    <div style="overflow-x:auto">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;min-width:560px">
+        <defs>
+          <linearGradient id="uniG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#C04A10"/><stop offset="100%" style="stop-color:#7A2808"/>
+          </linearGradient>
+          <linearGradient id="pdbG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1A6058"/><stop offset="100%" style="stop-color:#0A3830"/>
+          </linearGradient>
+          <linearGradient id="hpaG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#8B3A6A"/><stop offset="100%" style="stop-color:#5A1848"/>
+          </linearGradient>
+        </defs>
+
+        <!-- centre: protein query -->
+        <circle cx="380" cy="150" r="48" fill="#FBF5E9" stroke="#E8C888" stroke-width="2"/>
+        <text x="380" y="143" text-anchor="middle" font-size="20" font-family="monospace" fill="#C04A10">🧬</text>
+        <text x="380" y="159" text-anchor="middle" font-size="12" font-family="monospace" fill="#6B4520" font-weight="bold">蛋白質</text>
+        <text x="380" y="172" text-anchor="middle" font-size="10" font-family="monospace" fill="#A0724A">Protein Query</text>
+
+        <!-- UniProt (left) -->
+        <g onclick="openModal('uniprot_ov')" style="cursor:pointer">
+          <rect x="50" y="85" width="160" height="130" rx="12" fill="url(#uniG)" opacity=".92"/>
+          <text x="130" y="114" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-family="monospace">UniProt</text>
+          <text x="130" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)" font-family="monospace">uniprot.org</text>
+          <g fill="rgba(255,255,255,.85)" font-size="11" font-family="monospace" text-anchor="middle">
+            <text x="130" y="152">📋 序列 Sequence</text>
+            <text x="130" y="168">⚙️ 功能 Function</text>
+            <text x="130" y="184">🏷️ GO 本體</text>
+            <text x="130" y="200">🔗 跨庫連結</text>
+          </g>
+          <!-- arrow to center -->
+          <line x1="210" y1="150" x2="330" y2="150" stroke="#FF9060" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <polygon points="330,145 342,150 330,155" fill="#FF9060"/>
+        </g>
+
+        <!-- PDB (right) -->
+        <g onclick="openModal('pdb_ov')" style="cursor:pointer">
+          <rect x="550" y="85" width="160" height="130" rx="12" fill="url(#pdbG)" opacity=".92"/>
+          <text x="630" y="114" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-family="monospace">PDB</text>
+          <text x="630" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)" font-family="monospace">rcsb.org</text>
+          <g fill="rgba(255,255,255,.85)" font-size="11" font-family="monospace" text-anchor="middle">
+            <text x="630" y="152">🔬 3D 結構</text>
+            <text x="630" y="168">⚗️ 配體結合</text>
+            <text x="630" y="184">📐 分辨率</text>
+            <text x="630" y="200">🧪 實驗方法</text>
+          </g>
+          <line x1="550" y1="150" x2="428" y2="150" stroke="#60E0C8" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <polygon points="428,145 416,150 428,155" fill="#60E0C8"/>
+        </g>
+
+        <!-- HPA (bottom) -->
+        <g onclick="openModal('hpa_ov')" style="cursor:pointer">
+          <rect x="270" y="228" width="220" height="58" rx="12" fill="url(#hpaG)" opacity=".92"/>
+          <text x="380" y="251" text-anchor="middle" font-size="14" font-weight="bold" fill="white" font-family="monospace">Human Protein Atlas</text>
+          <text x="380" y="266" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)" font-family="monospace">proteinatlas.org  |  組織 · 細胞 · 癌症</text>
+          <line x1="380" y1="228" x2="380" y2="198" stroke="#E060C0" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <polygon points="375,198 380,186 385,198" fill="#E060C0"/>
+        </g>
+
+        <!-- labels -->
+        <text x="380" y="28" text-anchor="middle" font-size="13" font-family="monospace" fill="#6B4520" font-weight="bold">三大蛋白質資料庫的互補分工</text>
+        <text x="380" y="44" text-anchor="middle" font-size="10" font-family="monospace" fill="#A0724A">點擊各資料庫查看詳細說明</text>
+
+        <!-- mutual links annotation -->
+        <text x="252" y="136" font-size="10" fill="#FF9060" font-family="monospace" text-anchor="middle">AC 號碼</text>
+        <text x="252" y="148" font-size="10" fill="#FF9060" font-family="monospace" text-anchor="middle">→ PDB ID</text>
+        <text x="500" y="136" font-size="10" fill="#60E0C8" font-family="monospace" text-anchor="middle">PDB ID</text>
+        <text x="500" y="148" font-size="10" fill="#60E0C8" font-family="monospace" text-anchor="middle">↔ UniProt</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Quick comparison row -->
+  <table class="cmp-table">
+    <thead>
+      <tr><th>資料庫</th><th>核心問題</th><th>數據類型</th><th>最佳使用場景</th><th>條目數量</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--rust)">UniProt</strong></td>
+        <td>這個蛋白質「是什麼」？能做什麼？</td>
+        <td>序列、功能、GO 標注、PTM、疾病</td>
+        <td>功能查詢、序列分析起點、批量下載</td>
+        <td>250M+ 條目<br><span class="chip chip-r">Swiss-Prot 570K</span> 人工審核</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--teal)">PDB</strong></td>
+        <td>這個蛋白質「長什麼樣」？和誰結合？</td>
+        <td>3D 原子座標、配體、對稱性</td>
+        <td>結構可視化、藥物對接、AlphaFold 比對</td>
+        <td>220K+ 結構<br><span class="chip chip-t">X-ray 85%</span> 主要方法</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--hpa)">HPA</strong></td>
+        <td>這個蛋白質「在哪裡」？癌症中如何？</td>
+        <td>組織影像、RNA 表現、癌症生存率</td>
+        <td>組織特異性、生物標誌物、癌症預後</td>
+        <td>20K+ 人類蛋白<br><span class="chip chip-h">40 種組織</span> 免疫組化</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ PART 02 WORKFLOW ══ -->
+<div id="workflow"></div>
+<div class="sec">
+  <p class="sec-label">PART 02</p>
+  <h2 class="sec-title">從序列到功能：完整查詢工作流</h2>
+  <p class="sec-sub">以 <strong>人類 p53 腫瘤抑制蛋白（TP53）</strong>為例，
+  示範三庫串聯的標準查詢流程——這也是絕大多數蛋白質研究的通用起點。</p>
+
+  <!-- Pipeline visual -->
+  <div class="pipeline" style="margin-bottom:30px">
+    <div class="pip-step s-uni" onclick="openModal('wf_start')">
+      <div class="ps-num">STEP 0</div>
+      <div class="ps-icon">🔍</div>
+      <div class="ps-zh">輸入蛋白名稱</div>
+      <div class="ps-en">Protein Name</div>
+    </div>
+    <div class="pip-arr">→</div>
+    <div class="pip-step s-uni" onclick="openModal('wf_uni')">
+      <div class="ps-num">STEP 1</div>
+      <div class="ps-icon">📋</div>
+      <div class="ps-zh">UniProt 查功能</div>
+      <div class="ps-en">Function &amp; GO</div>
+    </div>
+    <div class="pip-arr">→</div>
+    <div class="pip-step s-pdb" onclick="openModal('wf_pdb')">
+      <div class="ps-num">STEP 2</div>
+      <div class="ps-icon">🔬</div>
+      <div class="ps-zh">PDB 查結構</div>
+      <div class="ps-en">3D Structure</div>
+    </div>
+    <div class="pip-arr">→</div>
+    <div class="pip-step s-hpa" onclick="openModal('wf_hpa')">
+      <div class="ps-num">STEP 3</div>
+      <div class="ps-icon">🫀</div>
+      <div class="ps-zh">HPA 查分佈</div>
+      <div class="ps-en">Tissue &amp; Cancer</div>
+    </div>
+    <div class="pip-arr">→</div>
+    <div class="pip-step s-result" onclick="openModal('wf_result')">
+      <div class="ps-num">STEP 4</div>
+      <div class="ps-icon">✅</div>
+      <div class="ps-zh">整合報告</div>
+      <div class="ps-en">Integrated View</div>
+    </div>
+  </div>
+
+  <!-- p53 example entry -->
+  <div class="entry-card">
+    <div class="entry-card-hdr">
+      <span class="ec-tag" style="background:var(--rust)">UniProt</span>
+      <span class="ec-id">P04637</span>
+      <span class="ec-name">Cellular tumor antigen p53 (TP53_HUMAN)</span>
+    </div>
+    <div class="entry-card-body">
+      <div class="ec-field"><div class="ecf-label">物種</div><div class="ecf-val">Homo sapiens (Human)</div></div>
+      <div class="ec-field"><div class="ecf-label">長度</div><div class="ecf-val">393 個胺基酸</div></div>
+      <div class="ec-field"><div class="ecf-label">分子量</div><div class="ecf-val">43,653 Da</div></div>
+      <div class="ec-field"><div class="ecf-label">資料庫狀態</div><div class="ecf-val mono">Swiss-Prot ✓ 人工審核</div></div>
+      <div class="ec-field"><div class="ecf-label">PDB 結構數</div><div class="ecf-val mono">400+ 個 PDB 條目</div></div>
+      <div class="ec-field"><div class="ecf-label">疾病關聯</div><div class="ecf-val">50%+ 癌症含 TP53 突變</div></div>
+      <div class="ec-field"><div class="ecf-label">UniProt 連結</div><div class="ecf-val link" onclick="window.open('https://www.uniprot.org/uniprotkb/P04637','_blank')">uniprot.org/P04637 ↗</div></div>
+      <div class="ec-field"><div class="ecf-label">代表 PDB</div><div class="ecf-val link" onclick="window.open('https://www.rcsb.org/structure/2OCJ','_blank')">2OCJ — DNA 結合域 ↗</div></div>
+    </div>
+  </div>
+
+  <!-- Workflow Steps -->
+  <div class="wf-steps">
+    <div class="wf-step s-uni" onclick="openModal('wf_uni')">
+      <div class="wf-num">1</div>
+      <div class="wf-body">
+        <h4>UniProt：確認蛋白質身份與功能</h4>
+        <p>搜尋 "TP53 human" 或直接輸入 AC 號碼 P04637。確認 Swiss-Prot（人工審核）或 TrEMBL（自動）、查看功能描述、GO 標注（分子功能/生物過程/細胞定位）、已知 PTM（磷酸化位點）和疾病關聯。</p>
+        <div class="wf-cmd">🌐 https://www.uniprot.org/uniprotkb/P04637</div>
+      </div>
+    </div>
+    <div class="wf-step s-uni" onclick="openModal('wf_seq')">
+      <div class="wf-num">2</div>
+      <div class="wf-body">
+        <h4>UniProt：下載 FASTA 序列 / 查看域結構</h4>
+        <p>點擊「Sequences」下載 FASTA 格式，或在「Features」頁查看結構域（TAD、DBD、OD、CTD）、信號肽、跨膜區和已知功能性殘基的位置。</p>
+        <div class="wf-cmd">下載：Download → Format: FASTA → Go</div>
+      </div>
+    </div>
+    <div class="wf-step s-pdb" onclick="openModal('wf_pdb')">
+      <div class="wf-num">3</div>
+      <div class="wf-body">
+        <h4>PDB：找到最佳代表結構</h4>
+        <p>從 UniProt 頁面的「Structure」欄直接點入，或在 RCSB.org 搜尋 "P04637"。篩選條件：分辨率 ≤ 2.5 Å、R-factor、是否有配體/藥物。p53 DBD + DNA 複合體（2OCJ, 2.05 Å）是教學標準結構。</p>
+        <div class="wf-cmd">🌐 https://www.rcsb.org/search?query=P04637</div>
+      </div>
+    </div>
+    <div class="wf-step s-pdb" onclick="openModal('wf_3d')">
+      <div class="wf-num">4</div>
+      <div class="wf-body">
+        <h4>PDB：3D 可視化與配體分析</h4>
+        <p>使用 RCSB 內建的 Mol* 或 NGL Viewer 查看 3D 結構。切換「表面 Surface」模式看疏水口袋、「電荷 Electrostatics」模式看 DNA 結合面。下載 mmCIF 或 PDB 格式用於本地分析。</p>
+        <div class="wf-cmd">View → 3D View → Mol* → Surface → Hydrophobicity</div>
+      </div>
+    </div>
+    <div class="wf-step s-hpa" onclick="openModal('wf_hpa')">
+      <div class="wf-num">5</div>
+      <div class="wf-body">
+        <h4>HPA：查詢組織和細胞定位</h4>
+        <p>在 proteinatlas.org 搜尋 "TP53"。查看「Tissue Atlas」（40 種正常組織的免疫組化染色圖）、「Cell Atlas」（單細胞水平的亞細胞定位）和「Pathology Atlas」（癌症預後與生存曲線）。</p>
+        <div class="wf-cmd">🌐 https://www.proteinatlas.org/ENSG00000141510-TP53</div>
+      </div>
+    </div>
+    <div class="wf-step s-result" onclick="openModal('wf_result')">
+      <div class="wf-num">✓</div>
+      <div class="wf-body">
+        <h4>整合：蛋白質完整功能報告</h4>
+        <p>三庫整合後得出：UniProt → p53 是轉錄因子，DNA 損傷後激活（功能）；PDB → 四聚體 DBD 插入 DNA 大溝（結構機制）；HPA → 在多種癌症中高表現且與患者存活率顯著相關（臨床意義）。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <div class="an-icon">🗂️</div>
+    <div class="an-body">
+      <h4>圖書館比喻</h4>
+      <p>UniProt 是圖書館的<strong>館藏目錄</strong>（你查的書叫什麼、由誰寫、內容是什麼）；
+      PDB 是<strong>實體書本</strong>（你可以翻開看每頁、每行的字）；
+      HPA 是<strong>讀者報告</strong>（這本書在哪些城市最流行、在哪些人群中最暢銷、讀完有什麼效果）。
+      三本工具書缺一不可。</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ PART 03 UNIPROT ══ -->
+<div id="uniprot"></div>
+<div class="sec">
+  <p class="sec-label">PART 03</p>
+  <h2 class="sec-title">UniProt 深度導覽</h2>
+  <p class="sec-sub">UniProt（Universal Protein Resource）是全球最全面的蛋白質序列和功能資料庫，
+  由 EBI / SIB / PIR 聯合維護。Swiss-Prot（人工審核）是其黃金標準子庫。</p>
+
+  <div class="db-header uni-hdr">
+    <div class="db-logo">U</div>
+    <div class="db-info">
+      <h3>UniProt · Universal Protein Resource</h3>
+      <p>Swiss-Prot（人工審核 570K）+ TrEMBL（自動注解 250M+）· 每 8 週更新</p>
+    </div>
+    <a class="db-url" href="https://www.uniprot.org" target="_blank">uniprot.org ↗</a>
+  </div>
+  <div class="db-body">
+    <!-- Key sections table -->
+    <table class="field-table">
+      <thead><tr><th>頁面區塊</th><th>內容</th><th>研究用途</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="field-key">Function</span></td>
+          <td>蛋白質功能描述、催化機制、輔因子、pH 最適範圍</td>
+          <td>快速了解蛋白的「工作內容」，是所有分析的起點</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Names &amp; Taxonomy</span></td>
+          <td>推薦名稱、別名、基因名稱、EC 號（酵素）、物種分類</td>
+          <td>確認蛋白質身份，找正確的 gene name 查文獻</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Subcellular Location</span><span class="badge-label badge-r">GO</span></td>
+          <td>細胞定位（細胞核/膜/分泌/粒線體），含證據等級</td>
+          <td>設計實驗（如抗體染色）時確認要看哪個細胞區域</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">PTM / Processing</span></td>
+          <td>磷酸化、泛素化、糖基化、蛋白酶切割等修飾位點（殘基精確位置）</td>
+          <td>研究信號調控，設計磷酸化特異性抗體</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Interaction</span></td>
+          <td>已知蛋白質-蛋白質相互作用（PPI），含實驗證據</td>
+          <td>找相互作用夥伴，建立信號網路圖</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Disease &amp; Variants</span></td>
+          <td>相關遺傳疾病、已知突變（SNP）、臨床意義</td>
+          <td>理解突變致病機制，找藥物靶點</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Family &amp; Domains</span></td>
+          <td>蛋白質家族歸屬、結構域類型（含 Pfam ID）</td>
+          <td>預測未知功能，找同源蛋白</td>
+        </tr>
+        <tr>
+          <td><span class="field-key">Sequences</span></td>
+          <td>標準序列 + 變體（isoforms）的 FASTA，可直接下載</td>
+          <td>序列比對（BLAST）、多序列比對、系統發生樹起點</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Code example: UniProt API -->
+    <div class="code-block">
+      <span class="cb-label">UniProt REST API 範例</span>
+      <span class="cmt"># 直接從 UniProt API 下載 p53 的 FASTA 序列</span><br>
+      <span class="kw">curl</span> <span class="str">"https://rest.uniprot.org/uniprotkb/P04637.fasta"</span><br><br>
+      <span class="cmt"># 批量查詢：搜尋所有人類激酶（示範）</span><br>
+      <span class="kw">curl</span> <span class="str">"https://rest.uniprot.org/uniprotkb/search?query=kinase+AND+organism_id:9606&format=tsv&fields=accession,gene_names,length,go_p"</span><br><br>
+      <span class="cmt"># Python 範例：取得 JSON 格式功能描述</span><br>
+      <span class="kw">import</span> requests<br>
+      r = requests.<span class="kw">get</span>(<span class="str">"https://rest.uniprot.org/uniprotkb/P04637.json"</span>)<br>
+      data = r.json()<br>
+      print(data[<span class="str">'proteinDescription'</span>][<span class="str">'recommendedName'</span>])
+    </div>
+
+    <div class="wf-steps" style="margin-bottom:0">
+      <div class="wf-step s-uni" onclick="openModal('uni_swiss')">
+        <div class="wf-num" style="font-size:13px">SP</div>
+        <div class="wf-body">
+          <h4>Swiss-Prot vs TrEMBL：先選 Swiss-Prot！</h4>
+          <p>搜尋結果中優先選「Reviewed · Swiss-Prot」（金色標誌）——由生物學家人工核對，準確性最高。TrEMBL 是電腦自動注解，數量多但錯誤率也高，適合找罕見物種蛋白。</p>
+        </div>
+      </div>
+      <div class="wf-step s-uni" onclick="openModal('uni_go')">
+        <div class="wf-num" style="font-size:13px">GO</div>
+        <div class="wf-body">
+          <h4>GO 本體論三大分類</h4>
+          <p>分子功能（MF, Molecular Function）、生物過程（BP, Biological Process）、細胞組成（CC, Cellular Component）。GO 標注有「實驗證據（EXP）」和「計算預測（IEA）」之分，研究時優先看有實驗證據的。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ PART 04 PDB ══ -->
+<div id="pdb"></div>
+<div class="sec">
+  <p class="sec-label">PART 04</p>
+  <h2 class="sec-title">PDB 蛋白質資料庫深度導覽</h2>
+  <p class="sec-sub">Protein Data Bank（RCSB PDB）是全球最大的生物大分子三維結構儲存庫，
+  1971 年成立，現有 220,000+ 個結構。每個 PDB 條目存放原子的精確 3D 座標（x, y, z），
+  是現代結構生物學和藥物設計的基石。</p>
+
+  <div class="db-header pdb-hdr">
+    <div class="db-logo" style="color:#60FFD0">P</div>
+    <div class="db-info">
+      <h3>RCSB PDB · Protein Data Bank</h3>
+      <p>X-ray 晶體繞射 · Cryo-EM · NMR · 220K+ 結構 · 每週更新</p>
+    </div>
+    <a class="db-url" href="https://www.rcsb.org" target="_blank">rcsb.org ↗</a>
+  </div>
+  <div class="db-body">
+
+    <!-- PDB entry anatomy -->
+    <div class="code-block">
+      <span class="cb-label">PDB 格式（.pdb 檔案）片段解讀</span>
+      <span class="cmt">HEADER    TRANSCRIPTION REGULATION             01-JAN-02   2OCJ</span><br>
+      <span class="cmt">TITLE     CRYSTAL STRUCTURE OF HUMAN P53 DBD BOUND TO DNA</span><br>
+      <span class="cmt">EXPDTA    X-RAY DIFFRACTION</span><br>
+      <span class="cmt">REMARK   2 RESOLUTION.    2.05 ANGSTROMS.</span><br>
+      <br>
+      <span class="kw">ATOM</span>      <span class="num">1</span>  N   MET A   <span class="num">94</span>      <span class="num">45.382</span>  <span class="num">32.156</span>   <span class="num">8.814</span>  <span class="num">1.00</span> <span class="num">28.14</span>           N<br>
+      <span class="kw">ATOM</span>      <span class="num">2</span>  CA  MET A   <span class="num">94</span>      <span class="num">46.514</span>  <span class="num">31.302</span>   <span class="num">8.368</span>  <span class="num">1.00</span> <span class="num">26.88</span>           C<br>
+      <span class="kw">ATOM</span>      <span class="num">3</span>  C   MET A   <span class="num">94</span>      <span class="num">47.683</span>  <span class="num">31.983</span>   <span class="num">7.672</span>  <span class="num">1.00</span> <span class="num">25.93</span>           C<br>
+      <span class="cmt">...（每個原子一行，含 x, y, z 座標、佔有率、B-factor）</span><br>
+      <span class="kw">HETATM</span>  <span class="num">3012</span>  ZN  ZN  A <span class="num">502</span>      <span class="num">38.420</span>  <span class="num">18.340</span>  <span class="num">12.156</span>  <span class="num">1.00</span>  <span class="num">8.66</span>          ZN<br>
+      <span class="cmt"># HETATM = 非蛋白質原子（配體、金屬、水分子）</span>
+    </div>
+
+    <table class="field-table">
+      <thead><tr><th>PDB 關鍵資訊</th><th>說明</th><th>評估標準</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="field-key pdb">Resolution</span></td>
+          <td>結構解析度（Å）。越小越清晰：1.0-1.5 Å 原子級，2.0-2.5 Å 可靠，3.0 Å+ 需謹慎</td>
+          <td>選 ≤ 2.5 Å 作為研究用結構</td>
+        </tr>
+        <tr>
+          <td><span class="field-key pdb">R-factor / Rfree</span></td>
+          <td>結構模型和原始繞射數據的擬合程度。R &lt; 0.25, Rfree &lt; 0.30 為可接受</td>
+          <td>Rfree - R &lt; 0.05 為良好，差距大表示過擬合</td>
+        </tr>
+        <tr>
+          <td><span class="field-key pdb">Method</span></td>
+          <td>X-ray（主流）、Cryo-EM（大複合體）、NMR（溶液狀態、小蛋白）、Neutron</td>
+          <td>Cryo-EM 現已可達 1.5 Å 分辨率</td>
+        </tr>
+        <tr>
+          <td><span class="field-key pdb">Ligand / HETATM</span></td>
+          <td>配體、藥物分子、金屬離子、輔因子。HETATM 記錄區別於蛋白主鏈</td>
+          <td>查藥物靶點時找含相關配體的結構</td>
+        </tr>
+        <tr>
+          <td><span class="field-key pdb">B-factor</span></td>
+          <td>溫度因子，反映原子位置的不確定性/靈活性。高 B-factor 表示該區域柔性大</td>
+          <td>活性位的高 B-factor 可能影響藥物結合</td>
+        </tr>
+        <tr>
+          <td><span class="field-key pdb">Biological Assembly</span></td>
+          <td>晶體中的不對稱單元（asymmetric unit）可能只是生物功能體的一部分（如四聚體）</td>
+          <td>用「Biological Assembly」頁查看真正的功能性多聚體</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="analogy" style="margin-bottom:0">
+      <div class="an-icon">🏛️</div>
+      <div class="an-body">
+        <h4>建築藍圖比喻</h4>
+        <p>PDB 就像一棟建築的<strong>精密藍圖</strong>——每個原子的位置精確到 Å（0.1 nm）等級。
+        分辨率是「藍圖的比例尺」：1 Å 能看到每顆石頭的紋路，3 Å 只能看到牆壁的輪廓。
+        B-factor 是「工程公差」：B 值高的地方是「施工時晃動太多」的柔性部位，藥物很難精確嵌合。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ PART 05 HPA ══ -->
+<div id="hpa"></div>
+<div class="sec">
+  <p class="sec-label">PART 05</p>
+  <h2 class="sec-title">Human Protein Atlas 深度導覽</h2>
+  <p class="sec-sub">HPA 是瑞典卡羅林斯卡學院主導的系統性蛋白質圖譜計畫，
+  對超過 20,000 個人類蛋白質進行免疫組化染色，涵蓋 40 種正常組織、
+  多種癌症和細胞株，並整合 RNA 定量數據，是組織蛋白質體學的聖經。</p>
+
+  <div class="db-header hpa-hdr">
+    <div class="db-logo" style="color:#FFB0E0">H</div>
+    <div class="db-info">
+      <h3>Human Protein Atlas · 人類蛋白質圖譜</h3>
+      <p>免疫組化 · 單細胞定位 · 癌症生存分析 · 20K+ 蛋白 · 40+ 組織</p>
+    </div>
+    <a class="db-url" href="https://www.proteinatlas.org" target="_blank">proteinatlas.org ↗</a>
+  </div>
+  <div class="db-body">
+
+    <table class="field-table">
+      <thead><tr><th>HPA 子資料庫</th><th>內容</th><th>最佳查詢問題</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="field-key hpa">Tissue Atlas</span></td>
+          <td>40 種正常組織的免疫組化（IHC）染色圖片，蛋白質表現量（高/中/低/陰性）</td>
+          <td>「這個蛋白在哪些組織高表達？是否有組織特異性？」</td>
+        </tr>
+        <tr>
+          <td><span class="field-key hpa">Cell Atlas</span></td>
+          <td>30 種細胞株的亞細胞定位螢光染色（核 / 細胞質 / 粒線體 / ER / 高基氏）</td>
+          <td>「這個蛋白在細胞的哪個區域？」（比 UniProt GO 更直觀）</td>
+        </tr>
+        <tr>
+          <td><span class="field-key hpa">Pathology Atlas</span></td>
+          <td>17 種癌症的蛋白質表現量 + 患者 Kaplan-Meier 生存曲線</td>
+          <td>「高表達這個蛋白的癌症患者，預後是好是壞？」</td>
+        </tr>
+        <tr>
+          <td><span class="field-key hpa">Single Cell Atlas</span></td>
+          <td>單細胞 RNA-seq 數據，顯示不同細胞類型的基因表現模式（UMAP 圖）</td>
+          <td>「在腫瘤微環境中，哪種細胞表達這個蛋白？」</td>
+        </tr>
+        <tr>
+          <td><span class="field-key hpa">Blood Atlas</span></td>
+          <td>血漿蛋白質組學數據，血中分泌蛋白的濃度</td>
+          <td>「這個蛋白是否可作為血液生物標誌物？」</td>
+        </tr>
+        <tr>
+          <td><span class="field-key hpa">Brain Atlas</span></td>
+          <td>腦區特異性表現（皮層、海馬、小腦、腦幹等）+ 單細胞神經元分類</td>
+          <td>「這個蛋白在神經退化疾病（阿茲海默、帕金森）的相關腦區中如何？」</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="wf-steps" style="margin-bottom:0">
+      <div class="wf-step s-hpa" onclick="openModal('hpa_survival')">
+        <div class="wf-num" style="font-size:11px;font-family:var(--mono)">KM</div>
+        <div class="wf-body">
+          <h4>Kaplan-Meier 生存曲線分析</h4>
+          <p>HPA Pathology Atlas 提供各癌症中高/低表達該蛋白的患者生存率比較（log-rank test）。
+          這是判斷「蛋白質是否為癌症預後生物標誌物」的最快方法，無需自己跑統計。
+          例：TP53 高表達在結直腸癌中與較差預後相關（unfavorable）。</p>
+        </div>
+      </div>
+      <div class="wf-step s-hpa" onclick="openModal('hpa_ihc')">
+        <div class="wf-num" style="font-size:11px;font-family:var(--mono)">IHC</div>
+        <div class="wf-body">
+          <h4>免疫組化圖片判讀</h4>
+          <p>棕色（DAB 染色）= 蛋白質陽性，藍色（蘇木精）= 細胞核背景染色。
+          染色強度分 High / Medium / Low / Not detected。
+          注意：HPA 的抗體可能對某些蛋白不夠特異，要配合「Antibody Validation」評分（Enhanced Validation 最可靠）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ PART 06 COMPARE & TIPS ══ -->
+<div id="compare"></div>
+<div class="sec">
+  <p class="sec-label">PART 06</p>
+  <h2 class="sec-title">三庫串聯實戰技巧</h2>
+  <p class="sec-sub">掌握這些技巧，讓三個資料庫的查詢效率提升 10 倍。</p>
+
+  <div id="tips"></div>
+  <div class="tips-grid">
+    <div class="tip-card" style="--tc:var(--rust)" onclick="openModal('tip_id')">
+      <span class="tip-tag" style="background:var(--rust)">UniProt</span>
+      <div class="tip-title">用 AC 號碼，不要用蛋白質名</div>
+      <div class="tip-desc">同一個蛋白可能有 10+ 個別名（p53 = TP53 = TRP53 = Li-Fraumeni...）。一旦確認 UniProt AC（如 P04637），用它當「通用護照」查詢所有資料庫，永遠指向同一個蛋白。</div>
+    </div>
+    <div class="tip-card" style="--tc:var(--teal)" onclick="openModal('tip_pdb_filter')">
+      <span class="tip-tag" style="background:var(--teal)">PDB</span>
+      <div class="tip-title">同一蛋白有 400+ 結構怎麼選？</div>
+      <div class="tip-desc">篩選策略：① 分辨率最高（≤ 2.0 Å）；② 有配體/藥物的優先（針對藥物對接）；③ 選擇含完整功能域的結構；④ 引用量最高的通常是「社群標準結構」。PDB 的 "Representative Structure" 功能自動選最佳。</div>
+    </div>
+    <div class="tip-card" style="--tc:var(--hpa)" onclick="openModal('tip_hpa_ab')">
+      <span class="tip-tag" style="background:var(--hpa)">HPA</span>
+      <div class="tip-title">Enhanced Validation 抗體優先</div>
+      <div class="tip-desc">HPA 每個蛋白可能有多隻抗體，驗證等級不同。選「Enhanced Validation」（綠色盾牌）的抗體結果最可靠，有 WB / IF / IHC 多平台一致驗證，適合實驗設計參考。</div>
+    </div>
+    <div class="tip-card" style="--tc:var(--amber)" onclick="openModal('tip_alphafold')">
+      <span class="tip-tag" style="background:var(--amber)">AlphaFold</span>
+      <div class="tip-title">找不到 PDB 結構？用 AlphaFold DB</div>
+      <div class="tip-desc">若蛋白沒有實驗結構，UniProt 頁面會直接嵌入 AlphaFold 預測結構（alphafold.ebi.ac.uk，涵蓋 200M+ 蛋白）。pLDDT 分數 > 90 = 高置信度，可作為後續分析的基礎。</div>
+    </div>
+    <div class="tip-card" style="--tc:var(--rust)" onclick="openModal('tip_batch')">
+      <span class="tip-tag" style="background:var(--rust)">批量查詢</span>
+      <div class="tip-title">ID Mapping：一鍵跨庫轉換</div>
+      <div class="tip-desc">UniProt 的 ID Mapping 工具（uniprot.org/id-mapping）可一次輸入 100+ 個基因名或 Ensembl ID，自動輸出 UniProt AC、PDB ID、RefSeq、Ensembl 等所有對應 ID，是多蛋白研究的必備工具。</div>
+    </div>
+    <div class="tip-card" style="--tc:var(--teal)" onclick="openModal('tip_mol')">
+      <span class="tip-tag" style="background:var(--teal)">可視化</span>
+      <div class="tip-title">免費 3D 可視化工具選擇</div>
+      <div class="tip-desc">線上：RCSB Mol*（最新）；離線：PyMOL（最強，需授權）、ChimeraX（免費，Cryo-EM 首選）、UCSF Chimera（老牌）。初學者從 RCSB 內建 Mol* 開始，進階用 PyMOL 做高品質論文圖。</div>
+    </div>
+  </div>
+
+  <!-- Full integration workflow code -->
+  <h3 style="font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:14px">三庫 Python 自動化查詢腳本</h3>
+  <div class="code-block">
+    <span class="cb-label">Python · requests · 三庫串聯</span>
+    <span class="kw">import</span> requests, json<br><br>
+    <span class="cmt"># ① UniProt：取得基本資訊 + PDB ID 列表</span><br>
+    <span class="kw">def</span> get_uniprot(ac):<br>
+    &nbsp;&nbsp;url = <span class="str">f"https://rest.uniprot.org/uniprotkb/<span class="kw">{ac}</span>.json"</span><br>
+    &nbsp;&nbsp;data = requests.get(url).json()<br>
+    &nbsp;&nbsp;<span class="cmt"># 提取 PDB ID 列表</span><br>
+    &nbsp;&nbsp;pdb_ids = [ref[<span class="str">'id'</span>] <span class="kw">for</span> ref <span class="kw">in</span> data.get(<span class="str">'uniProtKBCrossReferences'</span>,[])<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> ref[<span class="str">'database'</span>] == <span class="str">'PDB'</span>]<br>
+    &nbsp;&nbsp;<span class="kw">return</span> data, pdb_ids<br><br>
+    <span class="cmt"># ② PDB：取得最高分辨率結構資訊</span><br>
+    <span class="kw">def</span> get_best_pdb(pdb_ids):<br>
+    &nbsp;&nbsp;url = <span class="str">f"https://data.rcsb.org/rest/v1/core/entry/<span class="kw">{pdb_ids[0]}</span>"</span><br>
+    &nbsp;&nbsp;<span class="kw">return</span> requests.get(url).json()<br><br>
+    <span class="cmt"># ③ HPA：透過 Ensembl ID 查詢表現數據</span><br>
+    <span class="cmt"># （HPA 無公開 REST API，建議直接訪問頁面或下載 TSV 檔案）</span><br>
+    hpa_url = <span class="str">"https://www.proteinatlas.org/api/search_download.php?search=TP53&format=json"</span><br><br>
+    <span class="cmt"># 執行查詢</span><br>
+    uni_data, pdb_ids = get_uniprot(<span class="str">"P04637"</span>)  <span class="cmt"># p53</span><br>
+    print(<span class="str">f"找到 </span><span class="kw">{len(pdb_ids)}</span><span class="str"> 個 PDB 結構"</span>)<br>
+    best_pdb = get_best_pdb(pdb_ids)<br>
+    print(<span class="str">f"最佳結構：</span><span class="kw">{best_pdb['entry']['id']}</span><span class="str"> | 分辨率：</span><span class="kw">{best_pdb.get('reflns',{}).get('d_resolution_high','N/A')}</span><span class="str"> Å"</span>)
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ══ GLOSSARY ══ -->
+<div id="glossary"></div>
+<div class="glo">
+  <h2>完整術語字典</h2>
+  <p class="gsub">蛋白質資料庫與查詢術語｜中英對照｜點擊展開</p>
+
+  <!-- Group 1: UniProt -->
+  <div class="glo-grp">
+    <div class="glo-gt" style="background:var(--rust)">📋 UniProt 術語</div>
+    <div style="display:flex;flex-direction:column">
+      <details class="gi" style="--gc:var(--rust)">
+        <summary>
+          <span class="g-ab" style="color:var(--rust)">AC</span>
+          <span class="g-ns"><span class="g-nz">Accession Number（登錄號）</span><span class="g-ne">UniProt Accession</span></span>
+          <span class="g-ct" style="background:var(--rust)">識別碼</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">UniProt 給每個蛋白質條目的唯一永久識別碼，格式如 P04637（p53）。AC 永遠不變，即使蛋白質名稱被修改。查詢蛋白質時永遠用 AC，不要用名稱，避免名稱混亂問題。Swiss-Prot 條目以 P/Q/O 開頭；TrEMBL 條目以字母+數字組合。</p>
+          <div class="fml" style="--gc:var(--rust)">Swiss-Prot 格式：[A-N,R-Z][0-9][A-Z][A-Z,0-9][A-Z,0-9][0-9] | TrEMBL：[O,P,Q][0-9][A-Z,0-9]{4}[0-9]</div>
+          <p class="ai">AC 就像身份證號——名字可以改（蛋白質重新命名），身份證號永遠不變。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--rust)">
+        <summary>
+          <span class="g-ab" style="color:var(--rust)">SP</span>
+          <span class="g-ns"><span class="g-nz">Swiss-Prot（人工審核資料庫）</span><span class="g-ne">UniProtKB/Swiss-Prot</span></span>
+          <span class="g-ct" style="background:var(--rust)">資料品質</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">UniProt 中人工審核的高品質子資料庫，約 570,000 條目（截至 2024）。每條由生物學家手動核查文獻、整合功能注解、確認序列正確性。搜尋時選「Reviewed」過濾出 Swiss-Prot 條目。</p>
+          <div class="fml" style="--gc:var(--rust)">Swiss-Prot 條目標識：「Reviewed · UniProtKB」金色標誌 | Entry status: Reviewed</div>
+          <p class="ai">Swiss-Prot 是「精校版百科」，TrEMBL 是「機器初稿」——前者慢但準，後者多但有錯。研究用前者，搜尋新蛋白才考慮後者。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--rust)">
+        <summary>
+          <span class="g-ab" style="color:var(--rust)">GO</span>
+          <span class="g-ns"><span class="g-nz">基因本體論</span><span class="g-ne">Gene Ontology</span></span>
+          <span class="g-ct" style="background:var(--rust)">功能標注</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">標準化的生物學詞彙系統，描述基因/蛋白質的分子功能（MF）、生物過程（BP）和細胞組成（CC）。每個 GO term 有唯一 ID（如 GO:0003677 = DNA binding）。GO 標注有「實驗證據代碼（EXP, IMP, IDA）」和「計算推論（IEA, ISS）」之分。</p>
+          <div class="fml" style="--gc:var(--rust)">MF：molecular function（做什麼）| BP：biological process（參與什麼）| CC：cellular component（在哪裡）</div>
+          <p class="ai">GO 本體論就像圖書館的分類系統——不管你管它叫「氧化還原酶」還是「去氫酶」，GO 給它一個統一編號 GO:0016491，全球研究者都能比對。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--rust)">
+        <summary>
+          <span class="g-ab" style="color:var(--rust)">PTM</span>
+          <span class="g-ns"><span class="g-nz">翻譯後修飾</span><span class="g-ne">Post-Translational Modification</span></span>
+          <span class="g-ct" style="background:var(--rust)">修飾</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">蛋白質合成後在特定胺基酸殘基上發生的化學修飾，改變蛋白質的活性、定位、穩定性和交互作用。UniProt 在 PTM/Processing 頁面列出已知修飾的精確位置（殘基序號）和類型。</p>
+          <div class="fml" style="--gc:var(--rust)">常見 PTM：磷酸化(P)·泛素化(Ub)·乙醯化(Ac)·甲基化(Me)·糖基化(Gly)·SUMO 化</div>
+          <p class="ai">PTM 就像給蛋白質「換裝」或「貼標籤」——同一條蛋白質鏈，磷酸化後可能從「沉睡」變「激活」，泛素化後就被送去垃圾桶（蛋白酶體）。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--rust)">
+        <summary>
+          <span class="g-ab" style="color:var(--rust)">Iso</span>
+          <span class="g-ns"><span class="g-nz">異構體 / 剪接變體</span><span class="g-ne">Isoform / Splice Variant</span></span>
+          <span class="g-ct" style="background:var(--rust)">序列</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">同一個基因透過選擇性剪接（alternative splicing）產生的不同 mRNA 和蛋白質形式。UniProt 的 Canonical sequence 是主要形式，其他 isoform 以序列差異標示。p53 有 9 種 isoform（α, β, γ, δ...），不同 isoform 有不同功能。</p>
+          <div class="fml" style="--gc:var(--rust)">Isoform ID 格式：P04637-1（canonical）, P04637-2, P04637-3...</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 2: PDB -->
+  <div class="glo-grp">
+    <div class="glo-gt" style="background:var(--teal)">🔬 PDB 結構術語</div>
+    <div style="display:flex;flex-direction:column">
+      <details class="gi" style="--gc:var(--teal)">
+        <summary>
+          <span class="g-ab" style="color:var(--teal)">PDB ID</span>
+          <span class="g-ns"><span class="g-nz">PDB 四字元識別碼</span><span class="g-ne">PDB Entry Identifier</span></span>
+          <span class="g-ct" style="background:var(--teal)">識別碼</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">每個 PDB 結構條目的 4 字元識別碼，格式為數字 + 字母（如 2OCJ = p53 DBD-DNA 複合體）。2024 年後新格式升為 8 字元（如 1ABC1234）以容納更多條目。透過 PDB ID 可直接訪問任何結構：rcsb.org/structure/2OCJ。</p>
+          <div class="fml" style="--gc:var(--teal)">舊格式（4字元）：[0-9][A-Z,0-9]{3} | 新格式（8字元）：[0-9][A-Z,0-9]{7}</div>
+          <p class="ai">PDB ID 就像結構的「身份證」——全球所有研究者引用相同結構時用這個碼，確保討論的是同一個結晶實驗結果。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--teal)">
+        <summary>
+          <span class="g-ab" style="color:var(--teal)">Å</span>
+          <span class="g-ns"><span class="g-nz">埃格斯特倫（解析度單位）</span><span class="g-ne">Ångström — Resolution Unit</span></span>
+          <span class="g-ct" style="background:var(--teal)">解析度</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">1 Å = 0.1 nm = 10⁻¹⁰ m。PDB 結構的解析度以 Å 表示，數字越小越清晰：≤ 1.5 Å 可見氫原子位置（原子級），2.0 Å 可靠（適合大多數研究），2.5-3.0 Å 可見主鏈走向，>3.5 Å 只能確定整體折疊。</p>
+          <div class="fml" style="--gc:var(--teal)">C-C 鍵長 ≈ 1.54 Å | C-N 鍵長 ≈ 1.47 Å | 氫鍵長度 ≈ 2.8-3.0 Å</div>
+          <p class="ai">解析度就像相機像素——1 Å 結構是 4K 超清，能看清每個原子的「臉」；3 Å 結構是標清，能認出蛋白質的「輪廓」但模糊。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--teal)">
+        <summary>
+          <span class="g-ab" style="color:var(--teal)">cryo</span>
+          <span class="g-ns"><span class="g-nz">冷凍電子顯微鏡</span><span class="g-ne">Cryo-EM · Cryo-Electron Microscopy</span></span>
+          <span class="g-ct" style="background:var(--teal)">實驗方法</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">2017 年諾貝爾化學獎得主技術（Jacques Dubochet, Joachim Frank, Richard Henderson）。將蛋白質在液氮中快速冷凍、保留天然構象，用電子束成像。優點：無需結晶，適合大複合體（核糖體、蛋白酶體）；缺點：解析度曾不如 X-ray，但現已可達 1.2 Å。</p>
+          <div class="fml" style="--gc:var(--teal)">Cryo-EM 流程：純化蛋白 → 玻璃化冷凍 → TEM 成像 → 顆粒挑選 → 3D 重建（CTF 校正）</div>
+          <p class="ai">Cryo-EM 就像「分子冰雕攝影」——把蛋白質瞬間冷凍在接近原生的水溶液狀態，拍下無數個方向的投影，電腦再重建出 3D 像。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--teal)">
+        <summary>
+          <span class="g-ab" style="color:var(--teal)">B-fac</span>
+          <span class="g-ns"><span class="g-nz">B 因子（溫度因子）</span><span class="g-ne">B-factor · Temperature Factor</span></span>
+          <span class="g-ct" style="background:var(--teal)">結構品質</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">PDB 結構中每個原子的「位置不確定性」指標。B 因子高 = 該原子在晶體中位置變化大（柔性/無序）。通常以彩色管狀圖呈現（藍=低B，紅=高B）。蛋白質活性位的 B 因子分析是預測蛋白質-配體結合口袋柔性的重要指標。</p>
+          <div class="fml" style="--gc:var(--teal)">B = 8π²&lt;u²&gt;（u² = 原子均方位移）| 典型值：5-20 Å² 為剛性，>50 Å² 為高度柔性</div>
+          <p class="ai">B 因子就像照片的「動態模糊」——低 B 因子（清晰）代表原子幾乎不動，高 B 因子（模糊）代表這個位置的原子在跳舞，你沒法精確定位它。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--teal)">
+        <summary>
+          <span class="g-ab" style="color:var(--teal)">AF2</span>
+          <span class="g-ns"><span class="g-nz">AlphaFold 2 結構預測</span><span class="g-ne">AlphaFold 2 · DeepMind</span></span>
+          <span class="g-ct" style="background:var(--teal)">AI 結構</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">DeepMind 2021 年發布的 AI 蛋白質結構預測系統，2024 諾貝爾化學獎。預測超過 2 億個蛋白質結構（幾乎覆蓋所有已知序列的蛋白）。UniProt 頁面直接內嵌 AlphaFold 預測結構。pLDDT 分數（0-100）評估預測可信度：>90 高置信，50-70 低置信（常為無序區域）。</p>
+          <div class="fml" style="--gc:var(--teal)">pLDDT 顏色碼：深藍（>90 高置信）→ 淺藍（70-90）→ 黃色（50-70）→ 橙色（&lt;50 低置信/無序）</div>
+          <p class="ai">AlphaFold 是「蛋白質的 Google Maps 衛星圖」——對於沒有實驗結構的蛋白，AlphaFold 提供第一張「預測地圖」。準確度很高（主鏈），但配體結合口袋和柔性區域仍需實驗驗證。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 3: HPA -->
+  <div class="glo-grp">
+    <div class="glo-gt" style="background:var(--hpa)">🔭 HPA 術語</div>
+    <div style="display:flex;flex-direction:column">
+      <details class="gi" style="--gc:var(--hpa)">
+        <summary>
+          <span class="g-ab" style="color:var(--hpa)">IHC</span>
+          <span class="g-ns"><span class="g-nz">免疫組化</span><span class="g-ne">Immunohistochemistry</span></span>
+          <span class="g-ct" style="background:var(--hpa)">實驗技術</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">用特異性抗體在組織切片上偵測目標蛋白的技術。棕色（HRP-DAB）= 陽性；藍色（蘇木精）= 核背景。HPA 的 Tissue Atlas 使用 IHC，對每個蛋白在 40 種組織的染色圖片進行人工評分（Not detected / Low / Medium / High）。</p>
+          <div class="fml" style="--gc:var(--hpa)">IHC 流程：組織固定（FFPE）→ 抗原修復 → 一抗（目標蛋白）→ 二抗（HRP 標記）→ DAB 顯色 → 蘇木精複染</div>
+          <p class="ai">IHC 就像給組織切片「染指紋粉」——只有表達目標蛋白的細胞才會染成棕色，讓你一眼看出蛋白在哪個組織、哪種細胞類型高表達。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--hpa)">
+        <summary>
+          <span class="g-ab" style="color:var(--hpa)">KM</span>
+          <span class="g-ns"><span class="g-nz">Kaplan-Meier 生存曲線</span><span class="g-ne">Kaplan-Meier Survival Analysis</span></span>
+          <span class="g-ct" style="background:var(--hpa)">臨床統計</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">比較「高/低蛋白質表現」兩組癌症患者存活率的統計方法。HPA Pathology Atlas 對 17 種癌症提供 KM 曲線，並以 log-rank test 計算 p 值。Favorable（高表達 = 長存活）= 腫瘤抑制蛋白；Unfavorable（高表達 = 短存活）= 癌症驅動蛋白。</p>
+          <div class="fml" style="--gc:var(--hpa)">HPA 預後分類：Favorable / Unfavorable / Not significant | p &lt; 0.05 = 統計顯著</div>
+          <p class="ai">KM 曲線就像「患者命運圖」——兩條線（高低表達組）分得越開，說明這個蛋白的預後預測力越強。可以在 5 分鐘內判斷一個蛋白是否值得作為癌症生物標誌物。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--hpa)">
+        <summary>
+          <span class="g-ab" style="color:var(--hpa)">UMAP</span>
+          <span class="g-ns"><span class="g-nz">單細胞資料降維圖</span><span class="g-ne">Uniform Manifold Approximation</span></span>
+          <span class="g-ct" style="background:var(--hpa)">單細胞</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">HPA Single Cell Atlas 使用 UMAP 降維圖展示單細胞 RNA-seq 數據。每個點是一個細胞，顏色代表基因表現量。可以看出目標蛋白在哪種細胞亞群（T 細胞 vs B 細胞 vs 腫瘤細胞）中高表達，比傳統 bulk RNA-seq 更精細。</p>
+          <div class="fml" style="--gc:var(--hpa)">UMAP 顏色碼：深紅 = 高表現 → 灰色 = 不表現 | 每個群集 = 一種細胞類型</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 4: General -->
+  <div class="glo-grp">
+    <div class="glo-gt" style="background:var(--amber)">⚡ 通用概念 General Concepts</div>
+    <div style="display:flex;flex-direction:column">
+      <details class="gi" style="--gc:var(--amber)">
+        <summary>
+          <span class="g-ab" style="color:var(--amber)">FASTA</span>
+          <span class="g-ns"><span class="g-nz">序列格式</span><span class="g-ne">FASTA Sequence Format</span></span>
+          <span class="g-ct" style="background:var(--amber)">格式</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">最通用的序列文字格式，以 ">" 開頭的描述行 + 序列行組成。可用於蛋白質（胺基酸單字母碼）或核酸（ATCG）。BLAST 序列比對、多序列比對（CLUSTAL, MUSCLE）、系統發生樹分析的起點都需要 FASTA 格式。</p>
+          <div class="fml" style="--gc:var(--amber)">>sp|P04637|P53_HUMAN Cellular tumor antigen p53 OS=Homo sapiens<br>MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDP</div>
+          <p class="ai">FASTA 是序列的「文字版食譜」——一行描述（">" 開頭），然後是胺基酸組成，全球所有序列分析軟體都能讀懂。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--amber)">
+        <summary>
+          <span class="g-ab" style="color:var(--amber)">BLAST</span>
+          <span class="g-ns"><span class="g-nz">基本局部比對搜索工具</span><span class="g-ne">Basic Local Alignment Search Tool</span></span>
+          <span class="g-ct" style="background:var(--amber)">序列比對</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">NCBI 的序列相似性搜索工具，在 2 億+ 序列資料庫中找出與查詢序列相似的條目。E-value（期望值）= 随機比對到這種相似程度的概率；E &lt; 0.001 為顯著。UniProt 頁面提供直接的 BLAST 搜索按鈕。</p>
+          <div class="fml" style="--gc:var(--amber)">BLASTP（蛋白→蛋白）| BLASTX（核酸→蛋白）| tBLASTn（蛋白→核酸）<br>Identity > 30% = 同源蛋白 | E-value &lt; e-10 = 高度顯著</div>
+          <p class="ai">BLAST 是序列世界的「Google 圖片搜索」——你上傳一張圖（序列），它找出資料庫中所有視覺上相似的圖（同源序列），按相似度排名輸出。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--amber)">
+        <summary>
+          <span class="g-ab" style="color:var(--amber)">IDM</span>
+          <span class="g-ns"><span class="g-nz">ID Mapping（跨庫 ID 轉換）</span><span class="g-ne">Identifier Mapping</span></span>
+          <span class="g-ct" style="background:var(--amber)">工具</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">UniProt ID Mapping 工具可一次批量轉換基因名、Ensembl ID、RefSeq、PDB ID、NCBI Gene ID 等不同資料庫的識別碼，是多蛋白研究（如蛋白質組學）的關鍵工具。支援最多 100,000 個 ID 批量轉換。</p>
+          <div class="fml" style="--gc:var(--amber)">https://www.uniprot.org/id-mapping<br>輸入：gene names / Ensembl IDs → 輸出：UniProt AC + PDB + RefSeq + ...</div>
+          <p class="ai">ID Mapping 就像「翻譯字典」——TP53（HGNC 名）= P04637（UniProt）= ENSG00000141510（Ensembl）= 7157（Entrez Gene）= 2OCJ（代表 PDB），全都是同一個蛋白的不同「語言」。</p>
+        </div>
+      </details>
+      <details class="gi" style="--gc:var(--amber)">
+        <summary>
+          <span class="g-ab" style="color:var(--amber)">mmCIF</span>
+          <span class="g-ns"><span class="g-nz">大分子晶體學資訊框架</span><span class="g-ne">macromolecular Crystallographic Information File</span></span>
+          <span class="g-ct" style="background:var(--amber)">檔案格式</span><span class="g-cv">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="exp">PDB 官方推薦的現代結構格式，取代舊的 .pdb 格式（有 99,999 原子數量上限）。mmCIF（.cif）格式支援超大結構（如核糖體、病毒衣殼），包含更豐富的元數據和驗證報告。PyMOL、ChimeraX、Mol* 都支援 mmCIF。</p>
+          <div class="fml" style="--gc:var(--amber)">下載：rcsb.org/structure/2OCJ → Download Files → mmCIF Format</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<footer>
+  蛋白質三百天 · 資料庫實戰<br>
+  UniProt · PDB · Human Protein Atlas · 從序列到功能的完整查詢工作流<br><br>
+  所有流程圖 / 卡片 / 步驟可點擊查看詳細說明｜術語字典 details/summary 可展開
+</footer>
+
+<!-- ══ MODALS ══ -->
+<div class="mo-ov" id="moOv" onclick="handleOvClick(event)">
+  <div class="mo">
+    <div class="mo-hd">
+      <button class="mo-cls" onclick="closeMo()">×</button>
+      <div class="mo-ab" id="mAb"></div>
+      <div class="mo-zh" id="mZh"></div>
+      <div class="mo-en" id="mEn"></div>
+    </div>
+    <div class="mo-bd" id="mBd"></div>
+  </div>
+</div>
+
+<script>
+const MD={
+  uniprot_ov:{abbr:'UniProt',zh:'Universal Protein Resource',en:'uniprot.org · 全球最全蛋白質序列與功能資料庫',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>UniProt 整合了三個來源：Swiss-Prot（人工審核高品質）、TrEMBL（電腦自動注解）、UniRef（序列群集）。對一個蛋白質而言，UniProt 頁面是「一站式」資訊中心，你能在這裡找到功能、序列、PTM、疾病、跨物種同源蛋白的所有資訊。</p></div>
+    <div class="mo-sec"><h4>關鍵頁面路徑</h4><p>搜尋蛋白名稱 → 選 Reviewed（Swiss-Prot）→ 查看：<strong>Function</strong>（功能描述）→ <strong>Subcellular Location</strong>（細胞定位）→ <strong>PTM</strong>（修飾）→ <strong>Disease</strong>（疾病）→ <strong>Structure</strong>（跳轉 PDB）</p></div>
+    <div class="mo-sec"><h4>最重要的快捷方式</h4><p>直接在瀏覽器輸入：<br>uniprot.org/P04637 → p53 頁面<br>uniprot.org/P00533 → EGFR 頁面<br>任何 AC 號碼直接加在網址後面就能跳轉。</p></div>
+    <div class="mo-an">📋 UniProt 就是「蛋白質的維基百科」——但每一條資訊都有文獻引用，每個標注都有證據等級，比維基百科嚴格多了。</div>
+    <a class="mo-link" href="https://www.uniprot.org" target="_blank">🌐 前往 UniProt ↗</a>`},
+  pdb_ov:{abbr:'PDB',zh:'Protein Data Bank',en:'rcsb.org · 全球最大蛋白質三維結構資料庫',c:'#1A6058',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>PDB 存放蛋白質、核酸及其複合體的原子三維座標。每個條目包含：實驗方法（X-ray/Cryo-EM/NMR）、分辨率、所有原子的 x/y/z 座標、配體資訊、晶體學統計。是藥物設計、結構分析、AlphaFold 驗證的必查資料庫。</p></div>
+    <div class="mo-sec"><h4>如何找最佳結構</h4><p>① 在 UniProt 頁面「Structure」欄直接跳轉；② 在 rcsb.org 用 UniProt AC 搜尋；③ 使用 Advanced Search 篩選分辨率 ≤ 2.5 Å；④ 看「Representative Structures」推薦選項；⑤ 有配體的結構通常更有研究價值。</p></div>
+    <div class="mo-an">🔬 PDB 是「分子世界的 Google Earth」——你可以把任何蛋白質放大到原子級別，旋轉觀察、測量距離、分析結合口袋，這是理解機制、設計藥物的基礎。</div>
+    <a class="mo-link" href="https://www.rcsb.org" target="_blank">🌐 前往 RCSB PDB ↗</a>`},
+  hpa_ov:{abbr:'HPA',zh:'Human Protein Atlas',en:'proteinatlas.org · 人類蛋白質組織分佈圖譜',c:'#8B3A6A',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>HPA 整合了 6 個子資料庫：Tissue Atlas（40 種組織 IHC）、Cell Atlas（細胞定位螢光）、Pathology Atlas（17 種癌症預後）、Single Cell Atlas（scRNA-seq）、Blood Atlas（血漿蛋白）、Brain Atlas（腦區分佈）。完全免費開放使用。</p></div>
+    <div class="mo-sec"><h4>最常用的兩個功能</h4><p><strong>Tissue Atlas</strong>：判斷蛋白質是否有組織特異性，找到最高表達的組織（對開發靶向療法重要）。<br><strong>Pathology Atlas</strong>：查某癌症中高/低表達的預後意義——5 分鐘內得出「是否值得深入研究」的初步判斷。</p></div>
+    <div class="mo-an">🫀 HPA 是「全身 PET 掃描蛋白質版」——不是掃射線，而是用免疫抗體掃描每個組織的每個蛋白，把人體蛋白質分佈畫成一張精細的地圖。</div>
+    <a class="mo-link" href="https://www.proteinatlas.org" target="_blank">🌐 前往 Human Protein Atlas ↗</a>`},
+  wf_start:{abbr:'STEP 0',zh:'查詢起點',en:'Protein Identification',c:'#C98010',body:`
+    <div class="mo-sec"><h4>第一步：確認蛋白質身份</h4><p>從蛋白質名稱或基因名稱開始。注意：同一蛋白質可能有 5-20 個別名。最佳實踐：先在 UniProt 搜尋，確認 Swiss-Prot 條目，記下 AC 號碼，後續所有查詢都用 AC。</p></div>
+    <div class="mo-sec"><h4>常見別名問題示例</h4><p>p53 = TP53 = TRP53 = p53 tumor suppressor = cellular tumor antigen p53 = Li-Fraumeni syndrome protein<br>→ 全部是同一個蛋白，UniProt AC = P04637</p></div>
+    <div class="mo-an">🔑 記住 AC 號碼，就像記住身份證號。名字可以有很多個，但 AC 永遠只有一個，而且不會改變。</div>`},
+  wf_uni:{abbr:'STEP 1',zh:'UniProt 查功能',en:'Function & GO Annotation',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>重點查詢項目清單</h4><p>✓ <strong>Function</strong>：蛋白質做什麼工作<br>✓ <strong>GO Molecular Function</strong>：分子功能（如 DNA binding, kinase activity）<br>✓ <strong>GO Biological Process</strong>：參與什麼生物過程（如apoptosis, cell cycle）<br>✓ <strong>GO Cellular Component</strong>：在細胞哪裡（如nucleus, plasma membrane）<br>✓ <strong>PTM</strong>：已知修飾位點<br>✓ <strong>Disease</strong>：疾病關聯</p></div>
+    <div class="mo-sec"><h4>p53 在 UniProt 的主要 GO 標注</h4><p>MF：sequence-specific DNA binding, transcription factor activity<br>BP：apoptotic process, cell cycle arrest, DNA damage response<br>CC：nucleus, transcription factor complex</p></div>`},
+  wf_pdb:{abbr:'STEP 2',zh:'PDB 查結構',en:'3D Structure Analysis',c:'#1A6058',body:`
+    <div class="mo-sec"><h4>p53 結構選擇指南</h4><p>p53 有 400+ 個 PDB 條目，推薦：<br><strong>2OCJ</strong>（2.05 Å, X-ray）：p53 DBD + DNA，最常引用的教學結構<br><strong>1TUP</strong>（2.2 Å）：p53 四聚體 + DNA<br><strong>6SHZ</strong>（Cryo-EM）：全長 p53 四聚體<br><strong>3DAB</strong>：含抗癌突變位點 R175H</p></div>
+    <div class="mo-sec"><h4>結構選擇優先順序</h4><p>① 分辨率 ≤ 2.5 Å → ② 含目標配體/藥物 → ③ 含完整功能域 → ④ 近年發表（技術更先進）→ ⑤ Rfree &lt; 0.30</p></div>`},
+  wf_3d:{abbr:'STEP 3',zh:'3D 可視化',en:'3D Visualization',c:'#1A6058',body:`
+    <div class="mo-sec"><h4>Mol* 可視化快速上手</h4><p>① 在 PDB 頁面點「3D View」→ Mol* Viewer<br>② 右鍵 → Surface → Molecular Surface（查看口袋）<br>③ 右鍵 → Color → Hydrophobicity（疏水性著色）<br>④ 選取配體 → 右鍵 → Focus → 查看結合環境（氫鍵距離）</p></div>
+    <div class="mo-sec"><h4>PyMOL 基礎指令（本地安裝）</h4><p>fetch 2OCJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>// 直接下載結構</em><br>show surface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>// 顯示分子表面</em><br>color hydrophobic&nbsp;<em>// 疏水性著色</em><br>select lig, resn ZN&nbsp;<em>// 選取鋅離子</em></p></div>`},
+  wf_hpa:{abbr:'STEP 4',zh:'HPA 查分佈',en:'Tissue & Cancer Distribution',c:'#8B3A6A',body:`
+    <div class="mo-sec"><h4>p53 在 HPA 的主要發現</h4><p>• <strong>Tissue</strong>：幾乎所有組織均有表達，但在淋巴組織、睪丸高表達<br>• <strong>Subcellular</strong>：主要位於細胞核（轉錄因子）<br>• <strong>Pathology</strong>：在多種癌症中呈「Unfavorable」預後（高表達 = 突變 p53 積累 = 壞預後）<br>• <strong>Single Cell</strong>：在不同腫瘤細胞亞群中表達有差異</p></div>
+    <div class="mo-sec"><h4>注意！TP53 的特殊解讀</h4><p>正常 p53 半衰期很短（幾分鐘），IHC 幾乎看不到。腫瘤中「IHC 強陽性」通常代表 p53 突變蛋白積累（突變後蛋白不被降解），而非正常功能性 p53。這是使用 HPA 數據時需要的專業背景知識。</p></div>`},
+  wf_result:{abbr:'整合報告',zh:'蛋白質完整功能面貌',en:'Integrated Protein Profile',c:'#C98010',body:`
+    <div class="mo-sec"><h4>p53 三庫整合結論</h4><p>
+    🟧 <strong>UniProt（是什麼）</strong>：393 aa 轉錄因子，DNA 損傷守護者，>50% 癌症 TP53 突變，有 TAD/DBD/Linker/OD/CTD 五個結構域，10+ 種 PTM 調控活性<br><br>
+    🟩 <strong>PDB（長什麼樣）</strong>：DBD 以 β-sandwich 插入 DNA 大溝，四聚體覆蓋兩個半位點，活性位含 Zn²⁺（Cys176, His179, Cys238, Cys242），400+ PDB 結構可分析各突變體構象<br><br>
+    🟪 <strong>HPA（在哪裡）</strong>：核蛋白，廣泛表達，在多種癌症呈 Unfavorable 預後（突變蛋白積累標誌），可作為 IHC 突變篩查的病理診斷工具
+    </p></div>
+    <div class="mo-an">✅ 三庫合用後，你對 p53 的了解從「它是個癌症相關蛋白」提升到「知道它的序列、知道它在細胞核、知道它的 3D 構象如何辨認 DNA、知道它在哪些癌症中突變積累且預後差」——這才是現代分子生物學家的標準操作。</div>`},
+  uni_swiss:{abbr:'SP',zh:'Swiss-Prot 人工審核',en:'Reviewed Entries — Gold Standard',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>為什麼一定選 Swiss-Prot？</h4><p>TrEMBL 有 250M+ 條目，大部分是電腦自動從基因組序列預測出的蛋白質，功能注解可能不準確（特別是 GO 標注，很多是從同源蛋白推斷）。Swiss-Prot 的每條記錄都有生物學家看過文獻、手動確認。品質差距巨大。</p></div>
+    <div class="mo-sec"><h4>判斷方法</h4><p>在搜尋結果頁，Swiss-Prot 條目顯示「Reviewed」黃色標誌；TrEMBL 顯示「Unreviewed」。在條目頁面頂部也有明顯標示。進入 UniProt 後，預設的 Filter 選單中勾選「Reviewed (Swiss-Prot)」即可過濾。</p></div>`},
+  uni_go:{abbr:'GO',zh:'基因本體論標注',en:'Gene Ontology Annotation',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>三大分類的實際應用</h4><p>• <strong>MF（分子功能）</strong>：設計 knockout 實驗時，確認要抑制的具體生化活性<br>• <strong>BP（生物過程）</strong>：富集分析（GO enrichment）的核心，找「這批蛋白質參與什麼通路」<br>• <strong>CC（細胞組成）</strong>：設計實驗前確認要做哪個分區的蛋白質提取</p></div>
+    <div class="mo-sec"><h4>GO 證據代碼層級</h4><p><strong>高可信（實驗）</strong>：EXP, IDA, IMP, IGI, IPI, IEP<br><strong>中等（計算推論）</strong>：ISS, ISO, ISA, ISM, IGC, IBA, RCA<br><strong>低可信（電腦）</strong>：IEA（Inferred from Electronic Annotation）</p></div>`},
+  hpa_survival:{abbr:'KM',zh:'生存曲線分析',en:'Kaplan-Meier Survival',c:'#8B3A6A',body:`
+    <div class="mo-sec"><h4>如何在 5 分鐘內判斷生物標誌物潛力</h4><p>① proteinatlas.org 搜尋蛋白名稱<br>② 點「Pathology Atlas」<br>③ 選癌症類型（如 Breast cancer）<br>④ 看 KM 圖：兩條線分開且 p < 0.05？<br>⑤ Favorable = 高表達有利存活（腫瘤抑制）；Unfavorable = 高表達加速死亡（癌基因）</p></div>
+    <div class="mo-sec"><h4>解讀陷阱</h4><p>KM 曲線只是相關性，不是因果性。高表達可能是基因擴增、啟動子超甲基化去除、外泌體分泌增加等多種原因，需要後續實驗驗證機制。另外注意樣本量（N）：N < 50 的癌症類型結果不可靠。</p></div>`},
+  hpa_ihc:{abbr:'IHC',zh:'免疫組化圖片判讀',en:'Immunohistochemistry Interpretation',c:'#8B3A6A',body:`
+    <div class="mo-sec"><h4>顏色解讀</h4><p>棕色（強）= 高表達；棕色（淡）= 低表達；不染色（只見藍色細胞核）= 陰性。注意：DAB 的「棕色」深淺受多種因素影響（抗體稀釋度、抗原修復、組織處理），不同批次染色強度不可直接比較。</p></div>
+    <div class="mo-sec"><h4>抗體驗證等級</h4><p><strong>Enhanced Validation</strong>（綠盾）：最可靠，多平台（WB/IF/IHC）一致<br><strong>Supported</strong>：有部分驗證<br><strong>Approved</strong>：基本驗證<br>→ 設計實驗時優先參考 Enhanced Validation 的結果</p></div>`},
+  tip_id:{abbr:'AC',zh:'用 AC 號碼查詢',en:'Use Accession Number',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>為什麼名稱查詢會出錯？</h4><p>同一蛋白可能有：通俗名（p53）、基因名（TP53）、HGNC 符號（TP53）、舊命名（p53 tumor suppressor）、別名（Li-Fraumeni syndrome protein）等 5-20 個名稱。在不同資料庫搜尋時，可能找到不同條目甚至錯誤蛋白。</p></div>
+    <div class="mo-sec"><h4>最佳實踐</h4><p>第一次查：用蛋白名稱找到 UniProt，確認 Swiss-Prot 條目，記下 AC（如 P04637）。<br>後續所有查詢：直接用 AC。<br>跨庫跳轉：UniProt 頁面的 External Links 區域有 PDB、Ensembl、Entrez Gene 等所有 ID。</p></div>
+    <div class="mo-an">🆔 AC 號碼是蛋白質的「護照」——全球通用，永遠有效，不管蛋白質改了幾次名字，AC 都指向同一個條目。</div>`},
+  tip_pdb_filter:{abbr:'PDB',zh:'篩選最佳結構',en:'Select Best PDB Entry',c:'#1A6058',body:`
+    <div class="mo-sec"><h4>RCSB 進階篩選步驟</h4><p>① Search → 輸入 UniProt AC → 搜尋<br>② 左側 Refinements → Resolution: 0 to 2.5 Å<br>③ Method: X-RAY DIFFRACTION（最多選擇）或 ELECTRON MICROSCOPY（大複合體）<br>④ 勾選「Has Ligands」（針對藥物研究）<br>⑤ 按 Citation Count 排序（最常被引用的通常是社群標準）</p></div>
+    <div class="mo-sec"><h4>PDB Validation Report</h4><p>每個 PDB 條目都有 Validation Report（WWW PDB 驗證）。查看 MolProbity score（越低越好）、Ramachandran outliers（< 0.5% 為佳）、Clashscore（越低越好）。</p></div>`},
+  tip_hpa_ab:{abbr:'HPA',zh:'Enhanced Validation 抗體',en:'HPA Antibody Validation',c:'#8B3A6A',body:`
+    <div class="mo-sec"><h4>為什麼抗體驗證很重要？</h4><p>抗體特異性問題是生物醫學研究中重要的可重複性危機來源。HPA 的某些抗體在一種組織特異，但在另一種組織可能有非特異染色。Enhanced Validation 抗體已在 WB（Western blot）、IF（免疫螢光）、IHC 多個平台驗證一致，是設計實驗時最安全的選擇。</p></div>
+    <div class="mo-sec"><h4>驗證等級如何找</h4><p>HPA 蛋白質頁面 → Antibodies → 每隻抗體旁邊的盾牌圖示 → Enhanced Validation（綠）> Supported（藍）> Approved（灰）</p></div>`},
+  tip_alphafold:{abbr:'AF2',zh:'AlphaFold 結構預測',en:'AlphaFold Database',c:'#C98010',body:`
+    <div class="mo-sec"><h4>何時用 AlphaFold？</h4><p>✓ 目標蛋白沒有實驗 PDB 結構<br>✓ 只有部分域有 PDB 結構，需要全長結構<br>✓ 用作同源建模（homology modeling）模板<br>✓ 作為 Cryo-EM 分子置換的初始模型<br>✗ 預測蛋白質-蛋白質複合體（請用 AlphaFold-Multimer）</p></div>
+    <div class="mo-sec"><h4>pLDDT 分數解讀</h4><p>藍色（> 90）：非常高置信，接近實驗結構品質<br>水藍（70-90）：良好，可用於大部分分析<br>黃色（50-70）：低置信，可能是柔性區域<br>橙色（< 50）：非常低，通常是無序區域（IDP）</p></div>
+    <div class="mo-an">🤖 AlphaFold 是「蛋白質結構的 ChatGPT」——快速給出一個好的「草稿」答案，但對於精確的配體結合口袋分析，仍然需要實驗結構來最終確認。</div>
+    <a class="mo-link" href="https://alphafold.ebi.ac.uk" target="_blank">🌐 前往 AlphaFold DB ↗</a>`},
+  tip_batch:{abbr:'IDM',zh:'批量 ID Mapping',en:'UniProt ID Mapping Tool',c:'#C04A10',body:`
+    <div class="mo-sec"><h4>使用場景（蛋白質組學研究）</h4><p>質譜實驗得到 1000 個 UniProt AC → 想要找所有對應的 PDB 結構、Ensembl ID、Gene Name<br>→ 使用 UniProt ID Mapping 一次完成，輸出 TSV 格式可直接用 Python/R 分析</p></div>
+    <div class="mo-sec"><h4>操作步驟</h4><p>① uniprot.org/id-mapping<br>② From: UniProtKB AC/ID<br>③ To: 目標資料庫（PDB, Ensembl, RefSeq...）<br>④ 貼上 AC 列表（每行一個）<br>⑤ Download → TSV 格式</p></div>
+    <a class="mo-link" href="https://www.uniprot.org/id-mapping" target="_blank">🌐 前往 ID Mapping ↗</a>`},
+  tip_mol:{abbr:'3D',zh:'分子可視化工具',en:'Molecular Visualization Tools',c:'#1A6058',body:`
+    <div class="mo-sec"><h4>工具選擇指南</h4><p><strong>RCSB Mol*（線上）</strong>：零安裝，直接在瀏覽器用，功能完整，適合教學<br><strong>PyMOL（離線）</strong>：最強功能，出版品質圖片，需 Schrödinger 授權（學術免費版可用）<br><strong>ChimeraX（免費）</strong>：Cryo-EM 分析首選，UCSF 開發，功能強大<br><strong>VMD（免費）</strong>：分子動力學模擬可視化</p></div>
+    <div class="mo-sec"><h4>PyMOL 最常用指令</h4><p>fetch 2OCJ → 下載<br>bg_color white → 白底<br>show cartoon → 卡通<br>show surface → 表面<br>color red, chain A → 著色<br>distance d1, resi 248, resi 273 → 測距離</p></div>`}
+};
+
+function openModal(id){
+  const d=MD[id]; if(!d)return;
+  document.getElementById('mAb').textContent=d.abbr;
+  document.getElementById('mAb').style.color=d.c;
+  document.getElementById('mZh').textContent=d.zh;
+  document.getElementById('mEn').textContent=d.en;
+  document.getElementById('mBd').innerHTML=d.body;
+  document.getElementById('moOv').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeMo(){document.getElementById('moOv').classList.remove('on');document.body.style.overflow='';}
+function handleOvClick(e){if(e.target===document.getElementById('moOv'))closeMo();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMo();});
+function scrollTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
+</script>
+</body>
+</html>
