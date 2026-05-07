@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>注意力日交易 — 14天習慣養成課程</title>
+<style>
+  :root {
+    --bg: #fff8f2;
+    --primary: #7a2e0e;
+    --accent1: #e8602f;
+    --accent2: #f5a623;
+    --accent3: #d4521a;
+    --teal: #2a9d8f;
+    --purple: #7c4f9e;
+    --soft: #fdf0e4;
+    --text: #3a2010;
+    --muted: #9a7060;
+    --card: #ffffff;
+    --radius: 16px;
+    --shadow: 0 4px 18px rgba(180,80,20,0.10);
+    --week1: #fef3e0;
+    --week1b: #f5a623;
+    --week2: #fde8d5;
+    --week2b: #e8602f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI','Helvetica Neue',Arial,'PingFang TC','Microsoft JhengHei',sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── TOP & BOTTOM LINK BAR ── */
+  .link-bar {
+    background: linear-gradient(135deg, #7a2e0e 0%, #c45020 50%, #e8602f 100%);
+    padding: 0;
+  }
+  .link-bar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 18px 16px 10px;
+  }
+  .link-bar-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .link-bar-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 16px;
+  }
+  .link-card {
+    background: rgba(255,255,255,0.13);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    border-radius: 14px;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 220px;
+    max-width: 300px;
+    min-width: 200px;
+    transition: background 0.2s, transform 0.15s;
+    backdrop-filter: blur(4px);
+  }
+  .link-card:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateY(-2px);
+  }
+  .link-card-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .link-card-body {}
+  .link-card-name {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .link-card-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.4;
+  }
+  .link-card.line-card {
+    background: rgba(6,199,85,0.22);
+    border-color: rgba(6,199,85,0.45);
+  }
+  .link-card.line-card:hover { background: rgba(6,199,85,0.32); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(145deg, #6b2208 0%, #a83812 40%, #e06030 80%, #f5a623 100%);
+    color: white;
+    padding: 52px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(255,200,80,0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,100,30,0.20) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .hero h1 {
+    font-size: clamp(24px, 6vw, 44px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .hero h1 span { color: #ffe08a; }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.88);
+    max-width: 540px;
+    margin: 0 auto 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-size: 30px; font-weight: 900; color: #ffe08a; line-height: 1; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 1px; margin-top: 4px; }
+
+  /* ── MANIFESTO ── */
+  .manifesto {
+    background: linear-gradient(90deg, #e85d2f, #f5a623);
+    color: white;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .manifesto p {
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 660px;
+    margin: 0 auto;
+    line-height: 1.9;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .manifesto strong { font-weight: 900; color: #ffe08a; }
+
+  /* ── SECTIONS ── */
+  .inner { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .section-gap { margin-top: 44px; }
+
+  /* ── IDENTITY ── */
+  .identity-card {
+    background: linear-gradient(135deg, #6b2208 0%, #b84020 60%, #e06030 100%);
+    color: white;
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(180,60,20,0.30);
+  }
+  .identity-card::before {
+    content: '"';
+    font-size: 200px;
+    position: absolute; top: -40px; left: 8px;
+    color: rgba(255,255,255,0.06);
+    font-family: Georgia, serif; line-height: 1;
+  }
+  .identity-card h3 {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 16px;
+  }
+  .identity-card blockquote {
+    font-size: clamp(18px,4vw,24px); font-weight: 800; line-height: 1.55;
+    max-width: 600px; margin: 0 auto 18px;
+  }
+  .identity-card blockquote span { color: #ffe08a; }
+  .identity-card p { font-size: 14px; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 12px; font-weight: 800; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 18px; text-align: center;
+  }
+
+  /* ── PRINCIPLES ── */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    gap: 14px;
+  }
+  .principle-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    border-top: 4px solid;
+    box-shadow: var(--shadow);
+  }
+  .principle-card:nth-child(1){border-color:#e85d2f; background: linear-gradient(160deg,#fff8f4,white);}
+  .principle-card:nth-child(2){border-color:#f5a623; background: linear-gradient(160deg,#fffbf2,white);}
+  .principle-card:nth-child(3){border-color:#2a9d8f; background: linear-gradient(160deg,#f2faf9,white);}
+  .principle-card:nth-child(4){border-color:#7c4f9e; background: linear-gradient(160deg,#f8f4fc,white);}
+  .principle-icon { font-size: 28px; margin-bottom: 10px; }
+  .principle-title { font-weight: 800; font-size: 15px; margin-bottom: 6px; }
+  .principle-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ── WEEK HEADER ── */
+  .week-header {
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 36px;
+  }
+  .week-header.w1 {
+    background: linear-gradient(135deg, #fef0cc, #fde8a0);
+    border-left: 6px solid #f5a623;
+    box-shadow: 0 4px 16px rgba(240,160,30,0.18);
+  }
+  .week-header.w2 {
+    background: linear-gradient(135deg, #fde8d8, #fcd4b8);
+    border-left: 6px solid #e85d2f;
+    box-shadow: 0 4px 16px rgba(230,90,40,0.18);
+  }
+  .week-emoji { font-size: 42px; flex-shrink: 0; }
+  .week-num { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .week-title { font-size: 19px; font-weight: 900; }
+  .week-header.w1 .week-title { color: #7a4800; }
+  .week-header.w2 .week-title { color: #8b2800; }
+  .week-goal { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+  /* ── DAY CARDS ── */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px,1fr));
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .day-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(180,60,20,0.15); }
+  .day-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .w1 .day-card::after { background: linear-gradient(90deg,#f5a623,#e85d2f); }
+  .w2 .day-card::after { background: linear-gradient(90deg,#e85d2f,#7c4f9e); }
+
+  /* day number colors by week */
+  .w1 .day-num { background: linear-gradient(135deg,#c47a00,#f5a623); }
+  .w2 .day-num { background: linear-gradient(135deg,#b83012,#e85d2f); }
+
+  .day-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .day-num { color: white; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; }
+  .day-tag { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; }
+  .tag-identity { background: #fde8d5; color: #9a2e00; }
+  .tag-knowledge { background: #fef3d0; color: #7a4800; }
+  .tag-action { background: #d8f5ee; color: #0a6b5a; }
+  .tag-review { background: #ede4f8; color: #5b21b6; }
+  .tag-system { background: #d8eef5; color: #0a5f6a; }
+
+  .day-emoji { font-size: 28px; margin-bottom: 8px; display: block; }
+  .day-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; line-height: 1.35; color: var(--text); }
+  .day-concept { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .day-desc { font-size: 13px; color: #6a5040; line-height: 1.65; margin-bottom: 12px; }
+
+  .habit-box {
+    background: linear-gradient(135deg, #fff8f0, #fef0e0);
+    border-left: 3px solid #f5a623;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .w2 .habit-box { border-left-color: #e85d2f; background: linear-gradient(135deg, #fff5f0, #feeae0); }
+  .habit-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 5px; }
+  .habit-text { font-size: 12.5px; color: var(--text); font-weight: 500; line-height: 1.55; }
+
+  .time-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); background: #f8ede4; padding: 4px 10px; border-radius: 20px; font-weight: 700; }
+  .book-ref { font-size: 11px; color: #b09080; margin-top: 10px; display: flex; align-items: flex-start; gap: 5px; }
+
+  /* ── TABLE ── */
+  .overview-section { padding-bottom: 8px; }
+  .overview-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow); }
+  .overview-table { width: 100%; min-width: 520px; border-collapse: collapse; background: white; border-radius: var(--radius); overflow: hidden; }
+  .overview-table th { background: linear-gradient(90deg,#7a2e0e,#c45020); color: white; font-size: 12px; font-weight: 800; letter-spacing: 1px; padding: 13px 14px; text-align: left; }
+  .overview-table td { padding: 12px 14px; font-size: 12.5px; border-bottom: 1px solid #fde8d5; vertical-align: top; }
+  .overview-table tr:last-child td { border-bottom: none; }
+  .overview-table tr:nth-child(odd) td { background: #fffaf6; }
+  .overview-table tr:nth-child(even) td { background: #fff5ec; }
+  .td-day { font-weight: 900; color: #a83812; white-space: nowrap; }
+  .td-title { font-weight: 700; }
+  .td-action { color: var(--muted); font-size: 12px; }
+
+  /* ── CLOSING IDENTITY ── */
+  .closing-identity {
+    background: linear-gradient(145deg, #6b2208, #b84020, #e06030);
+    color: white; border-radius: var(--radius);
+    padding: 36px 24px; text-align: center;
+    position: relative; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(180,60,20,0.30);
+  }
+  .closing-identity::before {
+    content: '"'; font-size: 200px;
+    position: absolute; top: -40px; left: 8px;
+    color: rgba(255,255,255,0.06);
+    font-family: Georgia, serif; line-height: 1;
+  }
+  .closing-identity h3 { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+  .closing-identity blockquote { font-size: clamp(18px,4vw,24px); font-weight: 800; line-height: 1.5; max-width: 580px; margin: 0 auto 18px; }
+  .closing-identity blockquote span { color: #ffe08a; }
+  .closing-identity p { font-size: 14px; color: rgba(255,255,255,0.72); max-width: 460px; margin: 0 auto; }
+
+  /* ── FOOTER ── */
+  .footer-main {
+    background: linear-gradient(135deg, #4a1800 0%, #7a2e0e 100%);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 28px 24px 8px;
+    font-size: 13px;
+  }
+  .footer-main strong { color: #f5c880; }
+  .footer-main p + p { margin-top: 6px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .hero-stats { gap: 20px; }
+    .days-grid { grid-template-columns: 1fr; }
+    .link-card { min-width: 100%; max-width: 100%; }
+    .week-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .week-emoji { font-size: 32px; }
+    .hero { padding: 40px 16px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ TOP LINK BAR ══════════════════ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <div class="link-bar-title">✨ 2025年7月開課 · 聯絡我 ✨</div>
+    <div class="link-bar-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card">
+        <div class="link-card-icon">🎯</div>
+        <div class="link-card-body">
+          <div class="link-card-name">錯中學 ECHO 計劃</div>
+          <div class="link-card-desc">七月課程 · 從錯誤中快速學習的行動課程，點擊了解完整內容</div>
+        </div>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card">
+        <div class="link-card-icon">📊</div>
+        <div class="link-card-body">
+          <div class="link-card-name">學生成果分析</div>
+          <div class="link-card-desc">七月課程 · 看看學生的學習成果與案例分析，立即查看</div>
+        </div>
+      </a>
+
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="link-card line-card">
+        <div class="link-card-icon">💬</div>
+        <div class="link-card-body">
+          <div class="link-card-name">加我 Line 聊聊</div>
+          <div class="link-card-desc">ID：linwayet · 有任何問題歡迎直接傳訊息給我</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="hero">
+  <div class="hero-badge">自媒體 × 個人品牌 × 創業者</div>
+  <h1>《注意力日交易》<br><span>14天習慣養成課程</span></h1>
+  <p>不是要你一夜爆紅，而是讓你每天進步 1%，直到你成為一個真正懂得交易注意力的創作者。</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">學習天數</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">週次模組</div></div>
+    <div class="stat"><div class="stat-num">15~30</div><div class="stat-label">每日分鐘</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">核心身分認同</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ MANIFESTO ══════════════════ -->
+<div class="manifesto">
+  <p>大多數人失敗，不是因為沒有目標，而是因為沒有<strong>系統</strong>。<br>
+  這門課程不問你「你想要多少粉絲」，而是問你：<strong>你每天願意做哪一件小事？</strong><br>
+  把每日微習慣疊加在一起，就是你贏過 99% 對手的方式。</p>
+</div>
+
+<!-- ══════════════════ IDENTITY ══════════════════ -->
+<div class="inner section-gap">
+  <div class="identity-card">
+    <h3>課程核心身分認同</h3>
+    <blockquote>「我是一個每天<span>觀察注意力流向</span>、<br>用內容交換關係與信任的創作者。」</blockquote>
+    <p>在開始第一天之前，先問自己這個問題。習慣的最深層根基，是你對自己的定義——不是你想做什麼，而是你是誰。</p>
+  </div>
+</div>
+
+<!-- ══════════════════ PRINCIPLES ══════════════════ -->
+<div class="inner section-gap">
+  <div class="section-title">四大底層原則（貫穿14天）</div>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-icon">🧭</div>
+      <div class="principle-title">讓它顯而易見</div>
+      <div class="principle-desc">每天在固定時間、固定地點做同一件事。把課程打開放在桌面，把手機攝影機對準你的臉。環境設計先行。</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">🔥</div>
+      <div class="principle-title">讓它充滿吸引力</div>
+      <div class="principle-desc">把內容創作和你喜歡的事配對：邊走路邊錄音、邊喝咖啡邊觀察數據。學習不必痛苦。</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">⚡</div>
+      <div class="principle-title">讓它容易執行</div>
+      <div class="principle-desc">每日任務最長 30 分鐘。開始永遠比完美更重要。發一則不完美的貼文，勝過一個永遠沒發出去的完美草稿。</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">🏆</div>
+      <div class="principle-title">讓它立即有回報</div>
+      <div class="principle-desc">每完成一天，在課程表上打勾。追蹤你的「連勝天數」。數據不是壓力，是你與市場的即時對話。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ WEEK 1 ══════════════════ -->
+<div class="inner">
+  <div class="week-header w1">
+    <div class="week-emoji">🏗️</div>
+    <div>
+      <div class="week-num">第一週 · Day 1–7</div>
+      <div class="week-title">奠基：認知重建與身分確立</div>
+      <div class="week-goal">目標：在腦中裝入正確的世界觀，設計你的「交易者環境」，並完成人生第一次有意識的發文。</div>
+    </div>
+  </div>
+
+  <div class="days-grid w1">
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 1</span><span class="day-tag tag-identity">身分認同</span></div>
+      <span class="day-emoji">🔄</span>
+      <div class="day-concept">觀念翻轉</div>
+      <div class="day-title">你不是在「發文」，你在「交易注意力」</div>
+      <div class="day-desc">所有廣告的本質，都是在找到人們正在注意的地方，然後出現在那裡。社群媒體不是「工具」，是當代最被低估的注意力市場。你每次發文，都是在這個市場上投注一筆資本。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">在手機備忘錄寫下：「我目前在哪些平台上發文？我真的了解在那裡活動的人嗎？」寫3句話就好，不用完整。</div>
+      </div>
+      <div class="time-chip">⏱ 15 分鐘</div>
+      <div class="book-ref"><span>📖</span>引言：「Attention is the game. Underpriced attention is the opportunity.」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 2</span><span class="day-tag tag-knowledge">核心知識</span></div>
+      <span class="day-emoji">🌐</span>
+      <div class="day-concept">興趣圖譜 vs 社交圖譜</div>
+      <div class="day-title">演算法已經變了，你的策略卻還停在2015</div>
+      <div class="day-desc">過去平台展示「你追蹤的人」的內容（社交圖譜）；現在所有平台都在轉向「你感興趣的主題」（興趣圖譜）。這代表：你今天開一個零粉絲帳號，只要內容夠好，明天就能被10萬人看見。遊戲規則已對小創作者極度有利。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">打開TikTok或Instagram的「探索頁」，花10分鐘觀察：哪些內容你沒有追蹤卻出現了？它們的共同特徵是什麼？寫下3個觀察。</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 1：社群媒體的TikTok化與興趣圖譜</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 3</span><span class="day-tag tag-identity">身分認同</span></div>
+      <span class="day-emoji">🛠️</span>
+      <div class="day-concept">環境設計</div>
+      <div class="day-title">建立你的「交易者工作台」</div>
+      <div class="day-desc">最能持續的習慣，不是靠意志力——而是靠環境。今天你要「佈置場地」：確認帳號設定是否完整、選定你主攻的1個平台、設定每天發文提醒。環境設計好了，行動就不需要思考。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">檢查你主要帳號：(1)大頭照清晰嗎？(2)簡介說明你能給觀眾什麼價值？(3)聯絡方式是否完整？完成後拍截圖記錄。</div>
+      </div>
+      <div class="time-chip">⏱ 25 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 4：平台概覽——了解每個平台的情境脈絡</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 4</span><span class="day-tag tag-knowledge">核心知識</span></div>
+      <span class="day-emoji">🎯</span>
+      <div class="day-concept">受眾群定義</div>
+      <div class="day-title">你在對誰說話？給受眾「加上牙齒」</div>
+      <div class="day-desc">「所有人」等於沒有人。真正有效的內容，是為一個非常具體的人而做的——他住在哪？幾歲？有什麼煩惱？越具體，內容越有共鳴，演算法越容易幫你找到更多同類型的人。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">寫下你的3個「有牙齒的受眾」。格式：「[年齡層] + [性別/職業] + [地區] + [關心的事或痛點]」例如：28-33歲的台北上班族女性，白天忙到爆、晚上想學副業變現。</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 3：「Cohorts with teeth」受眾群定義方法</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 5</span><span class="day-tag tag-knowledge">核心知識</span></div>
+      <span class="day-emoji">🔍</span>
+      <div class="day-concept">PAC 研究法</div>
+      <div class="day-title">在你發文之前，先花30分鐘「田野調查」</div>
+      <div class="day-desc">PAC = 平台（Platform）× 文化（Culture）。在你選定的平台上搜尋你受眾會搜的關鍵字，觀察哪種內容格式得到最多回應、什麼開場讓人停下來、有哪些你不知道的社群「行話」。模仿是學習最快的起點。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">在你主要平台搜尋一個和你受眾相關的關鍵字。找出3支表現特別好的影片，記下：(1)開場方式 (2)影片長度 (3)留言的關鍵字。</div>
+      </div>
+      <div class="time-chip">⏱ 30 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 2：現代廣告框架中的 PAC（平台與文化知識）</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 6</span><span class="day-tag tag-action">立即行動</span></div>
+      <span class="day-emoji">🎬</span>
+      <div class="day-concept">第一次有意識發文</div>
+      <div class="day-title">現在就發出去。完美是完成的敵人</div>
+      <div class="day-desc">你已經研究了5天。今天是執行日。根據Day4定義的受眾群之一，用Day5學到的格式，做一支「直視鏡頭」的自拍影片或圖文貼文。不需要完美剪輯——真實比精緻更有力量。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">用手機前鏡頭錄一支60-90秒的影片，分享一個「你的受眾會想知道但還不知道」的觀點或技巧。加上一個吸引人的標題文字，然後——發出去。</div>
+      </div>
+      <div class="time-chip">⏱ 30 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 5：「Posting is better than not posting.」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 7</span><span class="day-tag tag-review">回顧反思</span></div>
+      <span class="day-emoji">📊</span>
+      <div class="day-concept">週回顧 + 數據入門</div>
+      <div class="day-title">數字說的話，比你的直覺更誠實</div>
+      <div class="day-desc">回顧第一週。你昨天的貼文有什麼數據反應？不要用「很差」或「還好」這種感覺來判斷——看具體數字。觀看數、平均觀看時間、留言內容，這些是市場給你的即時回饋，比任何人的意見都更值得相信。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">打開昨天的貼文，記錄：觀看數、完播率（如有）、留言數、最有趣的一則留言。再問自己：「如果我做一支類似主題的影片，我會改變什麼？」</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 2：PCS（貼文後創作策略）——用留言和數據聆聽市場</div>
+    </div>
+  </div>
+
+<!-- ══════════════════ WEEK 2 ══════════════════ -->
+  <div class="week-header w2">
+    <div class="week-emoji">⚙️</div>
+    <div>
+      <div class="week-num">第二週 · Day 8–14</div>
+      <div class="week-title">深化：建立可持續的內容交易系統</div>
+      <div class="week-goal">目標：將上週的單次行動，轉化為可以每週自動運行的內容系統——從「偶爾發文」升級為「持續交易」。</div>
+    </div>
+  </div>
+
+  <div class="days-grid w2">
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 8</span><span class="day-tag tag-knowledge">核心知識</span></div>
+      <span class="day-emoji">⏱️</span>
+      <div class="day-concept">SOC 策略內容</div>
+      <div class="day-title">前3秒：你只有這麼多時間抓住一個人</div>
+      <div class="day-desc">演算法用「完播率」和「前幾秒的留存率」來決定要不要繼續推播你的內容。如果你的開場是「嗨大家好我是XXX今天要來跟大家分享」，你已經輸了。前3秒必須讓人有理由留下來——用問題、用衝突、用觀點、用畫面。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">重看你上週發的影片前3秒，然後重新寫3個「更強的開場版本」。格式：(1)反直覺觀點「大多數人都認為OO，但其實你錯了」(2)直接切入問題 (3)數字勾住人「我用這3件事讓第一支影片被看了5萬次」</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 3：「Pay extra attention to the first three seconds.」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 9</span><span class="day-tag tag-action">立即行動</span></div>
+      <span class="day-emoji">🎥</span>
+      <div class="day-concept">真實性內容</div>
+      <div class="day-title">破牆而出：分享你的真實故事</div>
+      <div class="day-desc">最能建立深度連結的內容，是讓人感覺「這個人在對我說話」的真實性。你不需要編故事——你的創業挫折、你犯過的錯、你改變想法的瞬間，這些才是真正有溫度、有力量的內容素材。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">做第二支影片。這次分享一個「你之前相信、但現在改變了的觀念」，或「你在創業/自媒體路上踩過的一個坑」。用Day8學到的開場技巧起頭。發出去。</div>
+      </div>
+      <div class="time-chip">⏱ 30 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 5：直視鏡頭自拍影片——「打破第四面牆，分享你真實的旅程」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 10</span><span class="day-tag tag-system">系統建立</span></div>
+      <span class="day-emoji">💬</span>
+      <div class="day-concept">PCS 市場聆聽</div>
+      <div class="day-title">留言區是你最便宜的市場調查部門</div>
+      <div class="day-desc">每一則留言都是你的受眾在告訴你：他們的語言、他們的痛點、他們想要什麼樣的後續內容。認真閱讀留言，不只是「謝謝支持」——而是提煉出新的內容靈感、發現新的受眾群、發現你沒想到的使用場景。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">回顧你目前所有貼文的留言，挑出3則「最有資訊含量」的留言（不是只說「讚」的那種）。從這3則留言中，找出至少1個新的內容題目。寫下來。</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 2：PCS（Post-Creative Strategy）——「聆聽是廣告最被忽視的形式。」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 11</span><span class="day-tag tag-knowledge">核心知識</span></div>
+      <span class="day-emoji">📣</span>
+      <div class="day-concept">放大策略</div>
+      <div class="day-title">先驗證，再花錢——有機才是廣告的試驗場</div>
+      <div class="day-desc">很多人的第一反應是「我付廣告費推廣就好了」，但這是本末倒置。先有機發文，讓演算法告訴你哪支內容有共鳴；再把有機表現好的內容，拿去跑付費廣告。這樣你花的每一塊錢，勝算都更高。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">回顧你發出的所有內容，選出表現最好的一則。問自己：「如果我要把這則內容加上一個行動呼籲（讓人點連結/留言/私訊），我會怎麼改它？」寫下你的想法。</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 2：放大策略——「把有機表現好的內容，轉化成廣告。」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 12</span><span class="day-tag tag-action">立即行動</span></div>
+      <span class="day-emoji">🏢</span>
+      <div class="day-concept">真實情境應用</div>
+      <div class="day-title">把書裡的策略，套進你的行業</div>
+      <div class="day-desc">書中有一個核心問題：「如果你的業務是XXX，你的社群策略長什麼樣子？」今天你要用這個框架，把你自己的業務、你的受眾群、你最擅長的一種內容格式，三件事合在一起，寫出屬於你自己的個人廣告框架。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">寫下你的「個人廣告框架」：(1)我的核心受眾群是？(2)我最適合的發文平台是？(3)我每週能做幾支影片/幾篇圖文？(4)我最自然的內容風格是？（教學型/故事型/觀點型/幕後型）</div>
+      </div>
+      <div class="time-chip">⏱ 30 分鐘</div>
+      <div class="book-ref"><span>📖</span>Chapter 6：真實情境案例——從水電工到律師事務所的社群策略</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 13</span><span class="day-tag tag-system">系統建立</span></div>
+      <span class="day-emoji">🔄</span>
+      <div class="day-concept">日常工作流程</div>
+      <div class="day-title">把「發文」變成像刷牙一樣的事</div>
+      <div class="day-desc">最強大的創作者，不是靈感最多的人，而是系統最穩定的人。今天你要設計一個屬於你的「每週內容循環」——哪一天拍片、哪一天剪輯、哪一天發文、哪一天看數據。系統設計好了，「要不要做」的問題就消失了，只剩「怎麼做更好」。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">在行事曆排入下週的「內容週期」：固定一天拍攝、固定一天發文、固定一天看數據與留言。把這三個時段當成不可取消的會議。</div>
+      </div>
+      <div class="time-chip">⏱ 20 分鐘</div>
+      <div class="book-ref"><span>📖</span>全書核心概念：「Just as a day trader constantly studies markets, you must constantly study attention.」</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-meta"><span class="day-num">DAY 14</span><span class="day-tag tag-review">回顧反思</span></div>
+      <span class="day-emoji">🌱</span>
+      <div class="day-concept">系統總結 + 下一步</div>
+      <div class="day-title">14天後，你改變的不只是技能，而是你是誰</div>
+      <div class="day-desc">恭喜你完成14天。這不是終點，而是一個新習慣系統的起點。現在的你，已經不只是「偶爾發文」的人——你是一個有意識在交易注意力、在持續學習市場語言的創作者。接下來的30、60、90天，就是讓這個系統自動化、越來越好的時間。</div>
+      <div class="habit-box">
+        <div class="habit-label">⏱ 今日微習慣</div>
+        <div class="habit-text">寫下你的「14天後宣言」：(1)這14天我最大的改變是？(2)我接下來30天的一個具體承諾是？(3)我從書中學到最想持續實踐的一個觀念是？把這份宣言截圖或存檔，30天後回來看。</div>
+      </div>
+      <div class="time-chip">⏱ 25 分鐘</div>
+      <div class="book-ref"><span>📖</span>Conclusion：結語——持續進化的注意力交易者</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ OVERVIEW TABLE ══════════════════ -->
+<div class="inner section-gap overview-section">
+  <div class="section-title" style="margin-bottom:16px;">14天一覽表</div>
+  <div class="overview-table-wrap">
+    <table class="overview-table">
+      <thead>
+        <tr><th>天次</th><th>主題</th><th>對應章節</th><th>今日行動</th><th>時間</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-day">Day 1</td><td class="td-title">注意力交易者身分認同</td><td>引言</td><td class="td-action">備忘錄寫下現況反思</td><td>15分</td></tr>
+        <tr><td class="td-day">Day 2</td><td class="td-title">興趣圖譜 vs 社交圖譜</td><td>Chapter 1</td><td class="td-action">觀察探索頁，記錄3個現象</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 3</td><td class="td-title">帳號環境設計</td><td>Chapter 4</td><td class="td-action">優化帳號簡介與聯絡資訊</td><td>25分</td></tr>
+        <tr><td class="td-day">Day 4</td><td class="td-title">定義有牙齒的受眾群</td><td>Chapter 3</td><td class="td-action">寫下3個具體受眾人物</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 5</td><td class="td-title">PAC 平台文化研究</td><td>Chapter 2</td><td class="td-action">搜尋關鍵字，分析3支好影片</td><td>30分</td></tr>
+        <tr><td class="td-day">Day 6</td><td class="td-title">第一次有意識發文</td><td>Chapter 5</td><td class="td-action">拍攝並發出第一支自拍影片</td><td>30分</td></tr>
+        <tr><td class="td-day">Day 7</td><td class="td-title">數據週回顧</td><td>Chapter 2 PCS</td><td class="td-action">記錄發文數據，寫下改進方向</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 8</td><td class="td-title">前3秒黃金開場法</td><td>Chapter 3</td><td class="td-action">重寫3個更強的開場版本</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 9</td><td class="td-title">真實故事型內容</td><td>Chapter 5</td><td class="td-action">分享改變過的觀念或踩坑故事</td><td>30分</td></tr>
+        <tr><td class="td-day">Day 10</td><td class="td-title">留言區市場調查</td><td>Chapter 2 PCS</td><td class="td-action">提煉留言，找出下一個題目</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 11</td><td class="td-title">從有機到放大的邏輯</td><td>Chapter 2</td><td class="td-action">選出最佳內容，設計放大方案</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 12</td><td class="td-title">個人廣告框架設計</td><td>Chapter 6</td><td class="td-action">寫出你的個人內容定位表</td><td>30分</td></tr>
+        <tr><td class="td-day">Day 13</td><td class="td-title">每週內容工作流程</td><td>全書整合</td><td class="td-action">在行事曆排入固定內容時段</td><td>20分</td></tr>
+        <tr><td class="td-day">Day 14</td><td class="td-title">14天總結 + 宣言</td><td>Conclusion</td><td class="td-action">寫下14天後宣言與30天承諾</td><td>25分</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════ CLOSING IDENTITY ══════════════════ -->
+<div class="inner section-gap" style="padding-bottom: 44px;">
+  <div class="closing-identity">
+    <h3>14天後，你的新身分</h3>
+    <blockquote>「我不是在<span>等靈感</span>的人。<br>我是每天都在<span>交易注意力</span>的人。」</blockquote>
+    <p>目標不是一次爆紅。目標是建立一個系統，讓你每一天都比昨天更了解你的受眾、更懂得講故事、更能在對的地方出現。</p>
+  </div>
+</div>
+
+<!-- ══════════════════ BOTTOM LINK BAR ══════════════════ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <div class="link-bar-title">🎓 報名七月課程 · 或加 Line 詢問 🎓</div>
+    <div class="link-bar-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card">
+        <div class="link-card-icon">🎯</div>
+        <div class="link-card-body">
+          <div class="link-card-name">錯中學 ECHO 計劃</div>
+          <div class="link-card-desc">七月課程 · 從錯誤中快速學習的行動課程，點擊了解完整內容</div>
+        </div>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card">
+        <div class="link-card-icon">📊</div>
+        <div class="link-card-body">
+          <div class="link-card-name">學生成果分析</div>
+          <div class="link-card-desc">七月課程 · 看看學生的學習成果與案例分析，立即查看</div>
+        </div>
+      </a>
+
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="link-card line-card">
+        <div class="link-card-icon">💬</div>
+        <div class="link-card-body">
+          <div class="link-card-name">加我 Line 聊聊</div>
+          <div class="link-card-desc">ID：linwayet · 有任何問題歡迎直接傳訊息給我</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="footer-main">
+  <p>本課程根據 <strong>《Day Trading Attention》Gary Vaynerchuk 著</strong> 整理設計</p>
+  <p style="margin-top:6px;">底層原則：讓它顯而易見 · 讓它充滿吸引力 · 讓它容易執行 · 讓它立即有回報</p>
+  <p style="margin-top:12px; font-size:12px; opacity:0.5;">© 2025 · Line: linwayet</p>
+</div>
+
+</body>
+</html>
