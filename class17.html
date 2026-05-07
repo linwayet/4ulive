@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making Sense of Chaos｜41回閱讀課程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDF6EE;
+    --bg2: #FFF3E8;
+    --bg3: #FFEEDD;
+    --warm1: #E07B39;
+    --warm2: #F4A261;
+    --warm3: #FFBD7A;
+    --warm4: #FDD9A0;
+    --brown: #3D2B1F;
+    --brown2: #6B4226;
+    --brown3: #A0622A;
+    --gray: #8B7355;
+    --white: #FFFAF5;
+    --shadow: 0 2px 12px rgba(180,100,30,0.10);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--brown);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV BAR ── */
+  .nav {
+    background: linear-gradient(135deg, #E07B39 0%, #F4A261 60%, #FFBD7A 100%);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .nav-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-title {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    letter-spacing: .04em;
+    margin-bottom: 2px;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.22);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 40px;
+    padding: 7px 16px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    backdrop-filter: blur(4px);
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.38); transform: translateY(-1px); }
+  .nav-btn .icon { font-size: 15px; }
+  .nav-btn.line { background: rgba(0,195,80,0.55); border-color: rgba(0,255,100,0.5); }
+  .nav-btn.line:hover { background: rgba(0,195,80,0.75); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #F9ECD8 0%, #FFF3E8 50%, #FFEEDD 100%);
+    text-align: center;
+    padding: 40px 20px 32px;
+    border-bottom: 2px solid var(--warm4);
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--warm1);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: clamp(22px, 5vw, 34px);
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero-subtitle {
+    font-size: clamp(14px, 3vw, 17px);
+    color: var(--brown2);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .hero-author {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  .stat-pill {
+    background: var(--white);
+    border: 1.5px solid var(--warm3);
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 13px;
+    color: var(--brown2);
+    font-weight: 500;
+  }
+  .stat-pill strong { color: var(--warm1); font-weight: 700; }
+
+  /* ── HABIT BOX ── */
+  .habit-box {
+    max-width: 680px;
+    margin: 24px auto 0;
+    padding: 0 16px;
+  }
+  .habit-card {
+    background: var(--white);
+    border: 1.5px solid var(--warm3);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    box-shadow: var(--shadow);
+  }
+  .habit-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px 12px;
+    border-right: 1px solid var(--warm4);
+    text-align: center;
+  }
+  .habit-item:last-child { border-right: none; }
+  .habit-min { font-size: 20px; font-weight: 700; color: var(--warm1); }
+  .habit-label { font-size: 12px; color: var(--brown2); margin-top: 2px; line-height: 1.4; }
+  .habit-caption { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+  /* ── PROGRESS ── */
+  .prog-section {
+    max-width: 680px;
+    margin: 20px auto 0;
+    padding: 0 16px;
+  }
+  .prog-bar-bg {
+    height: 10px;
+    background: var(--warm4);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--warm1), var(--warm2));
+    border-radius: 5px;
+    transition: width .5s ease;
+  }
+  .prog-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 5px;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 680px;
+    margin: 24px auto 32px;
+    padding: 0 16px;
+  }
+
+  /* ── PART BLOCK ── */
+  .part-block {
+    margin-bottom: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1.5px solid;
+  }
+  .part-header {
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    gap: 8px;
+  }
+  .part-header-left { display: flex; flex-direction: column; gap: 1px; }
+  .part-part { font-size: 11px; font-weight: 700; letter-spacing: .06em; opacity: .75; }
+  .part-name { font-size: 14px; font-weight: 700; }
+  .part-count { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.45); white-space: nowrap; font-weight: 500; }
+  .part-body { padding: 10px 12px 14px; background: var(--white); }
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+  }
+  @media(max-width:420px){ .sessions-grid { grid-template-columns: 1fr; } }
+
+  /* ── SESSION CARD ── */
+  .scard {
+    background: #FFF8F2;
+    border: 1.5px solid var(--warm4);
+    border-radius: 10px;
+    padding: 10px 11px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    position: relative;
+  }
+  .scard:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(180,100,30,0.15); }
+  .scard.done { opacity: 0.52; background: #F2F9F4; border-color: #A8DDB8; }
+  .scard.review-card { background: #F0FAF4; border-color: #7DCFA0; }
+  .scard.review-card.done { opacity: 0.5; }
+  .scard-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .scard-num { font-size: 11px; color: var(--gray); font-weight: 500; }
+  .scard-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .badge-read { background: var(--warm4); color: var(--brown2); }
+  .badge-done { background: #2E9E5B; color: #fff; }
+  .badge-review { background: #A8DDB8; color: #1a5c35; }
+  .badge-final { background: linear-gradient(90deg,#E07B39,#F4A261); color: #fff; }
+  .scard-ch { font-size: 12px; font-weight: 700; color: var(--brown2); margin-bottom: 2px; }
+  .scard-title { font-size: 12px; color: var(--brown); line-height: 1.4; margin-bottom: 3px; }
+  .scard-sub { font-size: 10px; color: var(--gray); }
+
+  /* Part colors */
+  .p0 { border-color: #F4B07A; }
+  .p0 .part-header { background: linear-gradient(135deg,#F4C08A,#F9DAB0); color: #6B3A14; }
+  .p1 { border-color: #C3A8E8; }
+  .p1 .part-header { background: linear-gradient(135deg,#CDB8F0,#E0D0FA); color: #3C2870; }
+  .p2 { border-color: #F4B07A; }
+  .p2 .part-header { background: linear-gradient(135deg,#F9CA8A,#FDE0B0); color: #7A4010; }
+  .p3 { border-color: #F4A0A0; }
+  .p3 .part-header { background: linear-gradient(135deg,#F4B8B8,#FAD8D8); color: #7A2020; }
+  .p4 { border-color: #90D0A8; }
+  .p4 .part-header { background: linear-gradient(135deg,#A8E0BC,#C8F0D4); color: #1A5C35; }
+  .p5 { border-color: #80C8E8; }
+  .p5 .part-header { background: linear-gradient(135deg,#98D8F0,#C0EAF8); color: #0C4470; }
+
+  /* ── FOOTER ── */
+  .footer-nav {
+    background: linear-gradient(135deg, #C8602A 0%, #E07B39 50%, #F4A261 100%);
+    padding: 16px 16px 20px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .footer-inner { max-width: 680px; margin: 0 auto; }
+  .footer-slogan { color: rgba(255,255,255,0.85); font-size: 12px; margin-bottom: 10px; font-weight: 500; }
+  .footer-credit { color: rgba(255,255,255,0.6); font-size: 11px; margin-top: 12px; }
+
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::marker { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ── TOP NAV ── -->
+<nav class="nav" role="navigation" aria-label="頁首導覽">
+  <div class="nav-inner">
+    <div class="nav-title">林威老師 2025 年課程 · 限量招生中</div>
+    <div class="nav-links">
+      <a class="nav-btn" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="icon">🎯</span> 錯中學 ECHO 計劃
+      </a>
+      <a class="nav-btn" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="icon">📊</span> 學生分析
+      </a>
+      <a class="nav-btn line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="icon">💬</span> Line：linwayet
+      </a>
+    </div>
+    <div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:4px;">
+      七月開課 · 點擊連結了解詳情
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero" role="banner">
+  <div class="hero-eyebrow">41 回 · 每天 15 分鐘 · 原子習慣閱讀計劃</div>
+  <h1 class="hero-title">Making Sense of Chaos</h1>
+  <p class="hero-subtitle">A Better Economics for a Better World</p>
+  <p class="hero-author">J. Doyne Farmer 著</p>
+  <div class="hero-stats">
+    <span class="stat-pill"><strong>41</strong> 回閱讀</span>
+    <span class="stat-pill"><strong>15</strong> 分鐘／回</span>
+    <span class="stat-pill"><strong>6</strong> 週完成</span>
+    <span class="stat-pill"><strong>87,920</strong> 英文字</span>
+    <span class="stat-pill"><strong>16</strong> 章 ＋ 4 複習</span>
+  </div>
+</header>
+
+<!-- ── HABIT DESIGN ── -->
+<div class="habit-box">
+  <div class="habit-card">
+    <div class="habit-item">
+      <div class="habit-min">12 min</div>
+      <div class="habit-label">📖 專注閱讀</div>
+      <div class="habit-caption">指定段落</div>
+    </div>
+    <div class="habit-item">
+      <div class="habit-min">2 min</div>
+      <div class="habit-label">✏️ 手寫洞察</div>
+      <div class="habit-caption">一句關鍵筆記</div>
+    </div>
+    <div class="habit-item">
+      <div class="habit-min">1 min</div>
+      <div class="habit-label">👀 預覽下回</div>
+      <div class="habit-caption">降低拖延摩擦力</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROGRESS ── -->
+<div class="prog-section">
+  <div class="prog-bar-bg">
+    <div class="prog-bar-fill" id="progFill" style="width:0%"></div>
+  </div>
+  <div class="prog-labels">
+    <span id="progText">點擊卡片打勾追蹤進度</span>
+    <span id="progPct">0 / 41 回完成</span>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="main" id="mainContent">
+  <!-- Rendered by JS -->
+</main>
+
+<!-- ── BOTTOM NAV ── -->
+<footer class="footer-nav" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-slogan">🔥 2025 年七月課程，名額有限，立即了解！</div>
+    <div class="nav-links" style="justify-content:center;">
+      <a class="nav-btn" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="icon">🎯</span> 錯中學 ECHO 計劃
+      </a>
+      <a class="nav-btn" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="icon">📊</span> 學生分析
+      </a>
+      <a class="nav-btn line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="icon">💬</span> Line：linwayet
+      </a>
+    </div>
+    <div class="footer-credit">林威老師與 AI agent 團隊 · Making Sense of Chaos 閱讀計劃</div>
+  </div>
+</footer>
+
+<script>
+const PARTS = [
+  {
+    idx:0, cls:'p0',
+    part:'前言 · 導論', name:'Welcome to the Book',
+    sessions:[
+      {n:1, ch:'導論', title:'What is Complexity Economics?', sub:'Words 1–3,000'},
+      {n:2, ch:'導論', title:'Motivation & structure of the book', sub:'Words 3,001–4,364'},
+    ]
+  },
+  {
+    idx:1, cls:'p1',
+    part:'Part I', name:'複雜性經濟學是什麼',
+    sessions:[
+      {n:3,  ch:'第 1 章', title:'What is a Complex System? (1/3)', sub:'Words 1–3,000'},
+      {n:4,  ch:'第 1 章', title:'What is a Complex System? (2/3)', sub:'Words 3,001–6,000'},
+      {n:5,  ch:'第 1 章', title:'What is a Complex System? (3/3)', sub:'Words 6,001–8,133'},
+      {n:6,  ch:'第 2 章', title:'The Economy is a Complex System', sub:'全章 2,031 字'},
+      {n:7,  ch:'第 3 章', title:'Metabolism of Civilization (1/3)', sub:'Words 1–3,000'},
+      {n:8,  ch:'第 3 章', title:'Metabolism of Civilization (2/3)', sub:'Words 3,001–6,000'},
+      {n:9,  ch:'第 3 章', title:'Metabolism of Civilization (3/3)', sub:'Words 6,001–7,644'},
+      {n:10, ch:'第 4 章', title:'How Simulations Help (1/2)', sub:'Words 1–3,000'},
+      {n:11, ch:'第 4 章', title:'How Simulations Help (2/2)', sub:'Words 3,001–5,691'},
+      {n:12, ch:'複習', title:'Part I 複習回', sub:'整理筆記 · 比較四章核心概念', review:true},
+    ]
+  },
+  {
+    idx:2, cls:'p2',
+    part:'Part II', name:'標準經濟學 vs 複雜經濟學',
+    sessions:[
+      {n:13, ch:'第 5 章', title:'Standard Economics (1/2)', sub:'Words 1–3,000'},
+      {n:14, ch:'第 5 章', title:'Standard Economics (2/2)', sub:'Words 3,001–5,013'},
+      {n:15, ch:'第 6 章', title:'Modeling an Uncertain Economy (1/2)', sub:'Words 1–3,000'},
+      {n:16, ch:'第 6 章', title:'Modeling an Uncertain Economy (2/2)', sub:'Words 3,001–4,673'},
+      {n:17, ch:'第 7 章', title:'Why Is the Economy Always Changing? (1/2)', sub:'Words 1–3,000'},
+      {n:18, ch:'第 7 章', title:'Why Is the Economy Always Changing? (2/2)', sub:'Words 3,001–4,493'},
+      {n:19, ch:'複習', title:'Part II 複習回', sub:'整理筆記 · 與 Part I 對照', review:true},
+    ]
+  },
+  {
+    idx:3, cls:'p3',
+    part:'Part III', name:'金融系統',
+    sessions:[
+      {n:20, ch:'第 8 章',  title:'Inefficient Markets (1/3)', sub:'Words 1–3,000'},
+      {n:21, ch:'第 8 章',  title:'Inefficient Markets (2/3)', sub:'Words 3,001–6,000'},
+      {n:22, ch:'第 8 章',  title:'Inefficient Markets (3/3)', sub:'Words 6,001–7,891'},
+      {n:23, ch:'第 9 章',  title:'The Self-Referential Market (1/2)', sub:'Words 1–3,000'},
+      {n:24, ch:'第 9 章',  title:'The Self-Referential Market (2/2)', sub:'Words 3,001–4,440'},
+      {n:25, ch:'第 10 章', title:'Ecology & Evolution in Finance (1/2)', sub:'Words 1–3,000'},
+      {n:26, ch:'第 10 章', title:'Ecology & Evolution in Finance (2/2)', sub:'Words 3,001–5,514'},
+      {n:27, ch:'第 11 章', title:'How Credit Causes Turbulence (1/4)', sub:'Words 1–3,000'},
+      {n:28, ch:'第 11 章', title:'How Credit Causes Turbulence (2/4)', sub:'Words 3,001–6,000'},
+      {n:29, ch:'第 11 章', title:'How Credit Causes Turbulence (3/4)', sub:'Words 6,001–9,000'},
+      {n:30, ch:'第 11 章', title:'How Credit Causes Turbulence (4/4)', sub:'Words 9,001–9,931'},
+      {n:31, ch:'複習',     title:'Part III 複習回', sub:'整理筆記 · 金融系統全貌', review:true},
+    ]
+  },
+  {
+    idx:4, cls:'p4',
+    part:'Part IV', name:'氣候經濟學',
+    sessions:[
+      {n:32, ch:'第 12 章', title:'Predicting Weather & Climate (1/2)', sub:'Words 1–3,000'},
+      {n:33, ch:'第 12 章', title:'Predicting Weather & Climate (2/2)', sub:'Words 3,001–3,631'},
+      {n:34, ch:'第 13 章', title:'Climate Economics & Tech Progress (1/3)', sub:'Words 1–3,000'},
+      {n:35, ch:'第 13 章', title:'Climate Economics & Tech Progress (2/3)', sub:'Words 3,001–6,000'},
+      {n:36, ch:'第 13 章', title:'Climate Economics & Tech Progress (3/3)', sub:'Words 6,001–6,940'},
+      {n:37, ch:'複習',     title:'Part IV 複習回', sub:'整理筆記 · 氣候政策連結', review:true},
+    ]
+  },
+  {
+    idx:5, cls:'p5',
+    part:'Part V', name:'為更好的未來建模',
+    sessions:[
+      {n:38, ch:'第 14 章', title:'Guidance for Big Problems (1/2)', sub:'Words 1–3,000'},
+      {n:39, ch:'第 14 章', title:'Guidance for Big Problems (2/2)', sub:'Words 3,001–3,942'},
+      {n:40, ch:'第 15 章', title:'Removing the Roadblocks', sub:'全章 2,137 字'},
+      {n:41, ch:'第 16 章', title:'Becoming a Conscious Civilization', sub:'全章 1,452 字', final:true},
+    ]
+  },
+];
+
+const TOTAL = 41;
+let done = new Set(JSON.parse(localStorage.getItem('chaos_done_v2') || '[]'));
+
+function save(){ localStorage.setItem('chaos_done_v2', JSON.stringify([...done])); }
+
+function updateProgress(){
+  const n = done.size;
+  const pct = Math.round(n / TOTAL * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progText').textContent = n === 0 ? '點擊卡片打勾追蹤進度' : n === TOTAL ? '🎉 恭喜完成全書！' : '進行中…加油！';
+  document.getElementById('progPct').textContent = n + ' / ' + TOTAL + ' 回完成';
+}
+
+function buildBadge(s){
+  if(done.has(s.n)) return '<span class="scard-badge badge-done">✓ 完成</span>';
+  if(s.final)       return '<span class="scard-badge badge-final">🎉 終章</span>';
+  if(s.review)      return '<span class="scard-badge badge-review">複習</span>';
+  return '<span class="scard-badge badge-read">閱讀</span>';
+}
+
+function render(){
+  const container = document.getElementById('mainContent');
+  container.innerHTML = '';
+  PARTS.forEach(p => {
+    const doneCount = p.sessions.filter(s => done.has(s.n)).length;
+    const block = document.createElement('div');
+    block.className = 'part-block ' + p.cls;
+
+    const hdr = document.createElement('div');
+    hdr.className = 'part-header';
+    hdr.setAttribute('role','button');
+    hdr.setAttribute('aria-expanded','true');
+    hdr.innerHTML = `
+      <div class="part-header-left">
+        <span class="part-part">${p.part}</span>
+        <span class="part-name">${p.name}</span>
+      </div>
+      <span class="part-count">${doneCount}/${p.sessions.length} 完成</span>
+    `;
+
+    const body = document.createElement('div');
+    body.className = 'part-body';
+
+    const grid = document.createElement('div');
+    grid.className = 'sessions-grid';
+
+    p.sessions.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'scard' + (s.review ? ' review-card' : '') + (done.has(s.n) ? ' done' : '');
+      card.setAttribute('role','button');
+      card.setAttribute('tabindex','0');
+      card.setAttribute('aria-label', `第 ${s.n} 回 ${s.ch} ${s.title}`);
+      card.innerHTML = `
+        <div class="scard-top">
+          <span class="scard-num">第 ${s.n} 回</span>
+          ${buildBadge(s)}
+        </div>
+        <div class="scard-ch">${s.ch}</div>
+        <div class="scard-title">${s.title}</div>
+        <div class="scard-sub">${s.sub}</div>
+      `;
+      const toggle = () => {
+        if(done.has(s.n)) done.delete(s.n); else done.add(s.n);
+        save(); render(); updateProgress();
+      };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); }});
+      grid.appendChild(card);
+    });
+
+    body.appendChild(grid);
+    block.appendChild(hdr);
+    block.appendChild(body);
+    container.appendChild(block);
+  });
+  updateProgress();
+}
+
+render();
+</script>
+</body>
+</html>
