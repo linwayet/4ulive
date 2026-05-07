@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 01 ｜ 璇 ｜ Castles, Stairs &amp; Strongholds 城堡．樓梯．堡壘</title>
+<style>
+  :root{
+    --c1:#7b2cbf; --c2:#c8b6ff; --c3:#ffd166; --c4:#ef476f; --c5:#06d6a0;
+    --c6:#118ab2; --c7:#073b4c; --bg:#fef9f3; --ink:#22223b;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{font-size:17px}
+  body{margin:0;padding:0;background:linear-gradient(135deg,#fef9f3 0%,#ffe5b4 35%,#e0c3fc 100%);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);line-height:1.7;}
+  header{background:linear-gradient(135deg,#7b2cbf,#c77dff,#ffd166);color:#fff;padding:38px 28px 30px;
+    text-align:center;position:relative;overflow:hidden;}
+  header::after{content:"🏰 🗝️ ⚔️ 🛡️ 👑 🏛️";position:absolute;bottom:10px;right:18px;font-size:20px;opacity:.6;}
+  header h1{margin:0 0 8px;font-size:30px;letter-spacing:1px;}
+  header .sub{font-size:16px;opacity:.95;}
+  header .meta{margin-top:10px;font-size:14px;opacity:.92;}
+  main{max-width:1100px;margin:0 auto;padding:24px 18px 60px;}
+  section{margin:34px 0;}
+  details.unit{margin:24px 0;border-radius:18px;overflow:hidden;background:#fff;
+    box-shadow:0 8px 22px rgba(123,44,191,.13);border:1px solid rgba(123,44,191,.18);}
+  details.unit summary{padding:16px 20px;
+    background:linear-gradient(90deg,var(--c4),var(--c3));color:#fff;
+    font-size:22px;font-weight:900;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    border-left:8px solid var(--c1);}
+  details.unit summary::-webkit-details-marker{display:none;}
+  details.unit summary::marker{content:"";}
+  details.unit summary .label{display:block;}
+  details.unit .unit-content{padding:22px 20px 24px;background:rgba(255,255,255,.92);}
+  .arrow{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.58);
+    transition:transform .25s ease;font-size:18px;}
+  details[open] .arrow{transform:rotate(180deg);}
+  .vocab-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  .vocab{background:var(--card);border-radius:18px;padding:20px 24px;
+    box-shadow:0 8px 22px rgba(123,44,191,.1);border-top:7px solid var(--c1);position:relative;}
+  .vocab.unfam{border-top-color:var(--c4);background:linear-gradient(180deg,#fff2f6,#fff);}
+  .vocab.fam{border-top-color:var(--c5);background:linear-gradient(180deg,#eefcf6,#fff);}
+  .vocab .num{position:absolute;top:-15px;left:20px;background:var(--c1);color:#fff;
+    width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:16px;box-shadow:0 4px 10px rgba(0,0,0,.2);}
+  .vocab .tag{position:absolute;top:-13px;right:20px;padding:5px 14px;border-radius:20px;
+    font-size:13px;color:#fff;font-weight:800;letter-spacing:.5px;}
+  .vocab.unfam .tag{background:var(--c4);} .vocab.fam .tag{background:var(--c5);}
+  .word-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:10px 0 6px;}
+  .word{font-size:30px;font-weight:800;color:var(--c1);}
+  .pos{color:#888;font-style:italic;font-size:15px;} .ipa{color:#999;font-size:14px;}
+  .meaning{color:#22223b;font-size:17px;margin:6px 0 14px;font-weight:700;}
+  .deriv{background:#fff8e1;border-left:5px solid var(--c3);padding:11px 15px;border-radius:8px;margin:11px 0;font-size:15px;}
+  .deriv b{color:#c46210;}
+  .root{background:#e6f7fb;border-left:5px solid var(--c6);padding:11px 15px;border-radius:8px;margin:11px 0;font-size:15px;}
+  .root b{color:var(--c6);}
+  .ex{margin:9px 0;padding:11px 14px;background:#faf8ff;border-radius:8px;}
+  .ex .en{color:#3d1c5e;font-size:15.5px;}
+  .ex .zh{color:#666;font-size:15px;margin-top:4px;}
+  .ex b{color:var(--c4);background:#fff3cd;padding:0 4px;border-radius:3px;}
+  .gram{background:#fff;border-radius:18px;padding:20px 24px;margin:16px 0;
+    box-shadow:0 5px 16px rgba(123,44,191,.12);border-left:8px solid var(--c1);}
+  .gram h4{margin:0 0 10px;color:var(--c1);font-size:19px;}
+  .gram .rule{background:#f5e9ff;padding:12px 16px;border-radius:8px;margin:10px 0;
+    font-family:Consolas,Menlo,monospace;color:var(--c1);font-size:14.5px;line-height:1.7;}
+  .gram .rule b{color:var(--c4);}
+  .reading{background:#fff;border-radius:18px;padding:24px 28px;
+    box-shadow:0 6px 18px rgba(0,0,0,.09);border-top:8px solid var(--c3);}
+  .reading h3{color:var(--c1);margin:0 0 12px;font-size:20px;}
+  .reading p{font-size:16.5px;line-height:1.9;}
+  .reading b{background:#fff3cd;color:var(--c4);padding:0 4px;border-radius:3px;}
+  .reading .zh{background:#fff8e1;padding:16px 20px;border-radius:10px;margin-top:16px;
+    color:#555;font-size:15px;line-height:1.85;}
+  .mcq{background:#fff;border-radius:14px;padding:18px 24px;margin:14px 0;
+    box-shadow:0 4px 12px rgba(0,0,0,.07);border-left:7px solid var(--c6);}
+  .mcq .q{font-weight:700;margin-bottom:10px;color:#222;font-size:16px;}
+  .mcq ol{margin:8px 0 0 0;padding-left:26px;font-size:15.5px;}
+  .mcq li{margin:5px 0;}
+  details.answer-box{margin-top:20px;border-radius:14px;overflow:hidden;
+    box-shadow:0 5px 14px rgba(123,44,191,.18);}
+  details.answer-box summary{padding:16px 20px;
+    background:linear-gradient(120deg,var(--c1),var(--c4));
+    color:#fff;font-weight:700;font-size:16px;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  details.answer-box summary::-webkit-details-marker{display:none;}
+  details.answer-box summary::marker{content:"";}
+  details.answer-box > summary .arrow{display:inline-flex;transition:transform .25s ease;font-size:18px;}
+  details.answer-box:not([open]) > summary .arrow{transform:rotate(0);}
+  details.answer-box .answer-content{padding:16px 20px;background:#f4ffea;
+    color:#22223b;font-size:15px;line-height:1.9;}
+  footer{text-align:center;padding:24px;color:#666;font-size:13.5px;border-top:2px dashed #ccc;margin-top:44px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:14px 0 0;font-size:14px;}
+  .dot{width:14px;height:14px;border-radius:50%;display:inline-block;}
+  .dot.unfam{background:var(--c4);} .dot.fam{background:var(--c5);}
+  @media(max-width:640px){
+    details.unit summary{font-size:19px;padding:14px 16px;}
+    details.unit .unit-content{padding:18px 14px 22px;}
+  }
+  @media(min-width:760px){.vocab-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏰 Day 01 ｜ 璇 ｜ Castles, Stairs &amp; Strongholds 城堡．樓梯．堡壘</h1>
+  <div class="sub">學測等級主題單字本｜程度量身打造（中上版）</div>
+  <div class="meta">2026-04-30 ｜ 第一日試做版 ｜ 主題：建築、防禦、歷史地標</div>
+  <div class="legend" style="color:#fff;margin-top:14px;">
+    <span><i class="dot unfam"></i>不熟悉單字（取自璇 115 學測 66 個不熟詞表）</span>
+    <span><i class="dot fam"></i>同等級熟悉單字（主題延伸）</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PART 1 ============ -->
+<details class="unit" open>
+  <summary><span class="label">🗝️ Part 1 ｜ 主題單字 20 字</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+  <p style="text-align:center;color:#555;font-size:15px;">
+    比例：<b style="color:#ef476f">不熟 6 字（30%）</b> + <b style="color:#06d6a0">熟悉 14 字（70%）</b>　｜　衍生詞 100% 取自 <code>vocabulary_database_dotm.txt</code>
+  </p>
+
+  <div class="vocab-grid">
+
+  <!-- 1 ascend UNFAM -->
+  <div class="vocab unfam"><div class="num">1</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">ascend</span><span class="pos">v.</span><span class="ipa">/əˈsɛnd/</span></div>
+    <div class="meaning">上升；登高；攀登（+ to）</div>
+    <div class="deriv"><b>衍生詞：</b><b>ascend to</b> 上升到／攀登到｜<b>ascent</b> n. 上升；攀登；上坡路｜<b>ascension</b> n. 上升</div>
+    <div class="root"><b>字根：</b>scend「登」｜ascend 攀登, descend 下降, transcend 超越, condescend 屈尊, ascendant 上升的</div>
+    <div class="ex"><div class="en">In medieval castles, attackers had to <b>ascend</b> the stairs one by one.</div>
+      <div class="zh">在中世紀城堡裡，攻擊者必須一個一個爬上樓梯。<i style="color:#888">（即 115 學測 Q39-42 螺旋梯文章用法）</i></div></div>
+    <div class="ex"><div class="en">She made a rapid <b>ascent</b> to the top of the company within five years.</div>
+      <div class="zh">她在五年內快速晉升到公司高層。</div></div>
+    <div class="ex"><div class="en">The hot-air balloon began to <b>ascend</b> slowly into the morning sky.</div>
+      <div class="zh">熱氣球開始緩緩上升到清晨的天空。</div></div>
+  </div>
+
+  <!-- 2 narrow UNFAM -->
+  <div class="vocab unfam"><div class="num">2</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">narrow</span><span class="pos">adj. / v.</span><span class="ipa">/ˈnæroʊ/</span></div>
+    <div class="meaning">狹窄的；使變窄</div>
+    <div class="deriv"><b>衍生詞：</b><b>narrowly</b> adv. 勉強地｜<b>a narrow escape</b> 九死一生｜<b>narrow ~ down</b> 縮減；篩選</div>
+    <div class="ex"><div class="en">The spiral staircase was so <b>narrow</b> that only one person could pass.</div>
+      <div class="zh">那座螺旋梯非常<b>狹窄</b>，只能一人通過。</div></div>
+    <div class="ex"><div class="en">She <b>narrowly</b> escaped being hit by a speeding car.</div>
+      <div class="zh">她<b>險些</b>被一輛疾馳的車撞到。（九死一生）</div></div>
+    <div class="ex"><div class="en">We <b>narrowed</b> the list of candidates <b>down</b> from ten to three.</div>
+      <div class="zh">我們把候選人從十位<b>篩減</b>到三位。</div></div>
+  </div>
+
+  <!-- 3 prominent UNFAM -->
+  <div class="vocab unfam"><div class="num">3</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">prominent</span><span class="pos">adj.</span><span class="ipa">/ˈprɑːmənənt/</span></div>
+    <div class="meaning">顯著的；顯眼的；卓越的；著名的（= outstanding）</div>
+    <div class="deriv"><b>衍生詞：</b><b>prominence</b> n. 顯著；傑出；聲望</div>
+    <div class="ex"><div class="en">The spiral staircase was once a <b>prominent</b> structure in royal castles.</div>
+      <div class="zh">螺旋梯曾是王室城堡中的<b>顯著</b>建築。</div></div>
+    <div class="ex"><div class="en">She rose to <b>prominence</b> after publishing her bestseller about castles.</div>
+      <div class="zh">她在出版那本暢銷的城堡之書後一舉成名。</div></div>
+    <div class="ex"><div class="en">The lighthouse stands in a <b>prominent</b> spot on the rocky coast.</div>
+      <div class="zh">燈塔矗立在岩岸上一個<b>顯眼的</b>位置。</div></div>
+  </div>
+
+  <!-- 4 captivate UNFAM -->
+  <div class="vocab unfam"><div class="num">4</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">captivate</span><span class="pos">v.</span><span class="ipa">/ˈkæptɪveɪt/</span></div>
+    <div class="meaning">使著迷；吸引</div>
+    <div class="deriv"><b>衍生詞：</b><b>captivation</b> n. 著迷｜<b>captivating</b> adj. 迷人的｜近義詞：fascinate, charm, enchant</div>
+    <div class="root"><b>字根：</b>capt「捕、捉」｜<b>captivate</b> 著迷, captive 俘虜, captivity 囚禁, capture 捕獲, capable 有能力的</div>
+    <div class="ex"><div class="en">The grand staircase <b>captivated</b> every visitor who walked into the hall.</div>
+      <div class="zh">這座宏偉的樓梯<b>使</b>每位走進大廳的訪客<b>著迷</b>。</div></div>
+    <div class="ex"><div class="en">Her story was <b>captivating</b> from the very first sentence.</div>
+      <div class="zh">她的故事從第一句話就很<b>吸引人</b>。</div></div>
+    <div class="ex"><div class="en">Venice's beauty completely <b>captivated</b> the old man.</div>
+      <div class="zh">威尼斯的美完全<b>迷住</b>了那位老人。</div></div>
+  </div>
+
+  <!-- 5 strategically UNFAM (via strategy) -->
+  <div class="vocab unfam"><div class="num">5</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">strategically</span><span class="pos">adv.</span><span class="ipa">/strəˈtiːdʒɪkli/</span></div>
+    <div class="meaning">策略地；戰略上地</div>
+    <div class="deriv"><b>衍生詞：</b><b>strategy</b> n. 策略；戰略（= tactics）｜<b>strategic / strategical</b> adj. 戰略的；戰略上的</div>
+    <div class="ex"><div class="en">The castle was <b>strategically</b> built on top of a steep hill.</div>
+      <div class="zh">這座城堡被<b>策略性地</b>建在陡峭的山頂上。</div></div>
+    <div class="ex"><div class="en">A clever <b>strategy</b> can win a battle even with fewer soldiers.</div>
+      <div class="zh">即使兵力較少，聰明的<b>戰略</b>仍可贏得戰役。</div></div>
+    <div class="ex"><div class="en">The new shop was <b>strategically</b> placed near the school gate.</div>
+      <div class="zh">這家新店<b>策略性地</b>設在校門口附近。</div></div>
+  </div>
+
+  <!-- 6 medieval UNFAM -->
+  <div class="vocab unfam"><div class="num">6</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">medieval</span><span class="pos">adj.</span><span class="ipa">/ˌmɛdiˈiːvl/</span></div>
+    <div class="meaning">中世紀的（西元 5–15 世紀）</div>
+    <div class="ex"><div class="en"><b>Medieval</b> castles often had narrow spiral staircases for defense.</div>
+      <div class="zh"><b>中世紀</b>城堡通常設計有狹窄的螺旋梯作為防禦。</div></div>
+    <div class="ex"><div class="en">The town is famous for its <b>medieval</b> walls and stone churches.</div>
+      <div class="zh">這座小鎮以其<b>中世紀</b>城牆與石造教堂聞名。</div></div>
+    <div class="ex"><div class="en">In the <b>medieval</b> period, knights served local kings and queens.</div>
+      <div class="zh">在<b>中世紀</b>，騎士為當地的國王與王后效忠。</div></div>
+  </div>
+
+  <!-- 7 structure FAM -->
+  <div class="vocab fam"><div class="num">7</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">structure</span><span class="pos">n.</span><span class="ipa">/ˈstrʌktʃɚ/</span></div>
+    <div class="meaning">結構；構造；建築物</div>
+    <div class="deriv"><b>衍生詞：</b><b>construct</b> v. 建造｜<b>construction</b> n. 建設｜<b>destruction</b> n. 破壞｜<b>instruction</b> n. 教育；指示｜<b>infrastructure</b> n. 公共建設｜<b>obstruction</b> n. 阻礙</div>
+    <div class="root"><b>字根：</b>struct「建設」｜construction 建設, destruction 破壞, instruction 指示, structure 結構, obstruct 阻礙, reconstruct 重建, infrastructure 基礎設施</div>
+    <div class="ex"><div class="en">The Eiffel Tower is one of the most famous <b>structures</b> in Europe.</div>
+      <div class="zh">艾菲爾鐵塔是歐洲最著名的<b>建築物</b>之一。</div></div>
+    <div class="ex"><div class="en">Old castles often had a complex inner <b>structure</b> for defense.</div>
+      <div class="zh">古老城堡的內部<b>結構</b>常常複雜，便於防禦。</div></div>
+    <div class="ex"><div class="en">A country needs strong <b>infrastructure</b> to support its economy.</div>
+      <div class="zh">國家需要堅固的<b>公共建設</b>來支撐經濟。</div></div>
+  </div>
+
+  <!-- 8 construct FAM -->
+  <div class="vocab fam"><div class="num">8</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">construct</span><span class="pos">v.</span><span class="ipa">/kənˈstrʌkt/</span></div>
+    <div class="meaning">建造；構造</div>
+    <div class="deriv"><b>衍生詞：</b><b>construction</b> n. 建設｜<b>constructive</b> adj. 建設性的｜<b>under construction</b> 施工中｜<b>destroy</b> v. 破壞｜<b>obstruct</b> v. 妨礙</div>
+    <div class="ex"><div class="en">The castle was <b>constructed</b> from huge blocks of grey stone.</div>
+      <div class="zh">這座城堡是用巨大的灰色石塊<b>建造</b>而成。</div></div>
+    <div class="ex"><div class="en">A new museum is <b>under construction</b> next to the old church.</div>
+      <div class="zh">一座新博物館在老教堂旁邊<b>施工中</b>。</div></div>
+    <div class="ex"><div class="en">Please give us <b>constructive</b> feedback, not just criticism.</div>
+      <div class="zh">請給我們<b>有建設性的</b>回饋，不要只是批評。</div></div>
+  </div>
+
+  <!-- 9 attract FAM -->
+  <div class="vocab fam"><div class="num">9</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">attract</span><span class="pos">v.</span><span class="ipa">/əˈtrækt/</span></div>
+    <div class="meaning">吸引（= appeal to）</div>
+    <div class="deriv"><b>衍生詞：</b><b>attraction</b> n. 吸引；景點｜<b>distract</b> v. 分心 + from｜<b>distraction</b> n. 分心的事物｜<b>contract</b> n. 合約 v. 感染；收縮</div>
+    <div class="root"><b>字根：</b>tract「拉」｜attraction 吸引, distraction 分心, contract 合約, subtract 減去, extract 提取, retract 收回, abstract 抽象的</div>
+    <div class="ex"><div class="en">Old castles still <b>attract</b> millions of tourists every year.</div>
+      <div class="zh">古老的城堡每年仍<b>吸引</b>數百萬遊客。</div></div>
+    <div class="ex"><div class="en">Don't let your phone <b>distract</b> you from your homework.</div>
+      <div class="zh">別讓手機讓你從功課中<b>分心</b>。</div></div>
+    <div class="ex"><div class="en">Taipei 101 is one of Taiwan's most popular tourist <b>attractions</b>.</div>
+      <div class="zh">台北 101 是台灣最熱門的觀光<b>景點</b>之一。</div></div>
+  </div>
+
+  <!-- 10 impress FAM -->
+  <div class="vocab fam"><div class="num">10</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">impress</span><span class="pos">v.</span><span class="ipa">/ɪmˈprɛs/</span></div>
+    <div class="meaning">使⋯有印象（+ with）</div>
+    <div class="deriv"><b>衍生詞：</b><b>impression</b> n. 印象（+ on）｜<b>impressive</b> adj. 給人深刻印象的｜I am <b>impressed by / with</b> it. = It leaves an <b>impression</b> on me.｜<b>First impressions are lasting.</b></div>
+    <div class="root"><b>字根：</b>press「壓」｜impression 印象, suppress 鎮壓, pressure 壓力, depression 沮喪, express 表達, compress 壓縮, oppress 壓迫, repress 壓抑</div>
+    <div class="ex"><div class="en">The castle's grand hall <b>impressed</b> every visitor on the tour.</div>
+      <div class="zh">城堡的宏偉大廳讓每位旅客留下深刻<b>印象</b>。</div></div>
+    <div class="ex"><div class="en">First <b>impressions</b> are lasting, so dress properly for the interview.</div>
+      <div class="zh">第一<b>印象</b>最久遠，所以面試要穿得體。</div></div>
+    <div class="ex"><div class="en">The new museum has a very <b>impressive</b> collection of paintings.</div>
+      <div class="zh">這家新博物館有非常<b>令人印象深刻的</b>畫作收藏。</div></div>
+  </div>
+
+  <!-- 11 magnificent FAM -->
+  <div class="vocab fam"><div class="num">11</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">magnificent</span><span class="pos">adj.</span><span class="ipa">/mæɡˈnɪfɪsnt/</span></div>
+    <div class="meaning">壯大的；華麗的（= splendid; grand; stately; majestic）</div>
+    <div class="deriv"><b>衍生詞：</b><b>magnificence</b> n. 富麗堂皇；華麗｜<b>magnify</b> v. 放大（= enlarge）</div>
+    <div class="ex"><div class="en">The royal palace had a <b>magnificent</b> view of the entire city.</div>
+      <div class="zh">皇家宮殿擁有整座城市的<b>壯麗</b>景觀。</div></div>
+    <div class="ex"><div class="en">She admired the <b>magnificence</b> of the medieval cathedral.</div>
+      <div class="zh">她讚嘆中世紀大教堂的<b>富麗堂皇</b>。</div></div>
+    <div class="ex"><div class="en">A microscope can <b>magnify</b> objects up to 1,000 times.</div>
+      <div class="zh">顯微鏡可以將物體<b>放大</b>達 1,000 倍。</div></div>
+  </div>
+
+  <!-- 12 fortress FAM -->
+  <div class="vocab fam"><div class="num">12</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">fortress</span><span class="pos">n.</span><span class="ipa">/ˈfɔːrtrəs/</span></div>
+    <div class="meaning">要塞；堡壘（= fort, stronghold）</div>
+    <div class="deriv"><b>衍生詞：</b>近義 <b>fort</b> 堡壘｜<b>stronghold</b> 據點；要塞</div>
+    <div class="ex"><div class="en">The old <b>fortress</b> on the hill protected the town for hundreds of years.</div>
+      <div class="zh">山上的古老<b>要塞</b>保護了這座城鎮幾百年。</div></div>
+    <div class="ex"><div class="en">Stone walls turned the building into a true <b>fortress</b>.</div>
+      <div class="zh">石牆讓這棟建築成為真正的<b>堡壘</b>。</div></div>
+    <div class="ex"><div class="en">During the war, the village became a <b>stronghold</b> of resistance.</div>
+      <div class="zh">戰爭期間，這座村莊成了抵抗的<b>據點</b>。</div></div>
+  </div>
+
+  <!-- 13 defend FAM -->
+  <div class="vocab fam"><div class="num">13</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">defend</span><span class="pos">v.</span><span class="ipa">/dɪˈfɛnd/</span></div>
+    <div class="meaning">防禦；保衛</div>
+    <div class="deriv"><b>衍生詞：</b><b>defense</b> n. 防衛；防禦物（against ~）｜<b>defensive</b> adj. 防禦的｜<b>defendant</b> n. 被告｜<b>defensible</b> adj. 合乎情理的｜<b>national defense</b> 國防｜<b>Defense Secretary</b> 國防部長</div>
+    <div class="root"><b>字根：</b>fend「擊退、保護」｜fend 抵擋, defend 防禦, defense 防禦, offend 冒犯, offense 攻擊, fencing 擊劍</div>
+    <div class="ex"><div class="en">Soldiers stood ready to <b>defend</b> the castle at any moment.</div>
+      <div class="zh">士兵隨時準備<b>防衛</b>這座城堡。</div></div>
+    <div class="ex"><div class="en">The country spends a lot on national <b>defense</b>.</div>
+      <div class="zh">這個國家在<b>國防</b>上投入大量經費。</div></div>
+    <div class="ex"><div class="en">She gave a <b>defensive</b> answer when asked about the mistake.</div>
+      <div class="zh">當被問起這個錯誤時，她的回答帶著<b>防衛</b>的語氣。</div></div>
+  </div>
+
+  <!-- 14 dwell FAM -->
+  <div class="vocab fam"><div class="num">14</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">dwell</span><span class="pos">v.</span><span class="ipa">/dwɛl/</span></div>
+    <div class="meaning">居住；住</div>
+    <div class="deriv"><b>衍生詞：</b><b>dweller</b> n. 居民；居住者（= inhabitant）｜<b>dwell on</b> 老是想著、一直在說（尤指不好的事）</div>
+    <div class="ex"><div class="en">Once, only kings and queens <b>dwelled</b> in such grand castles.</div>
+      <div class="zh">過去，只有國王與王后才<b>居住</b>在這樣壯麗的城堡。</div></div>
+    <div class="ex"><div class="en">City <b>dwellers</b> often dream of a quiet life in the mountains.</div>
+      <div class="zh">城市<b>居民</b>常夢想山中的寧靜生活。</div></div>
+    <div class="ex"><div class="en">Don't <b>dwell on</b> your mistakes; learn from them and move on.</div>
+      <div class="zh">別<b>老是想著</b>自己的錯誤；從中學習並向前走。</div></div>
+  </div>
+
+  <!-- 15 ancient FAM -->
+  <div class="vocab fam"><div class="num">15</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">ancient</span><span class="pos">adj.</span><span class="ipa">/ˈeɪnʃənt/</span></div>
+    <div class="meaning">古代的（反 modern）</div>
+    <div class="deriv"><b>衍生詞：</b><b>ancestor</b> n. 祖宗；祖先（= forefather）｜<b>ancestry</b> n. 祖先；血統</div>
+    <div class="ex"><div class="en">Many <b>ancient</b> castles in Europe are now popular tourist sites.</div>
+      <div class="zh">許多歐洲的<b>古老</b>城堡如今都是熱門景點。</div></div>
+    <div class="ex"><div class="en">She is proud of her noble <b>ancestry</b> dating back to the 12th century.</div>
+      <div class="zh">她對自己可追溯至 12 世紀的高貴<b>血統</b>感到自豪。</div></div>
+    <div class="ex"><div class="en">Our <b>ancestors</b> built the temple over 500 years ago.</div>
+      <div class="zh">我們的<b>祖先</b>在 500 多年前建造了這座寺廟。</div></div>
+  </div>
+
+  <!-- 16 unique FAM -->
+  <div class="vocab fam"><div class="num">16</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">unique</span><span class="pos">adj.</span><span class="ipa">/juˈniːk/</span></div>
+    <div class="meaning">獨一無二的；與眾不同的（= one of a kind）</div>
+    <div class="deriv"><b>衍生詞：</b>be <b>unique to</b> + 地點／人 = 為⋯獨有｜慣用片語：<b>one of a kind</b> 獨一無二的</div>
+    <div class="ex"><div class="en">The spiral staircase has a <b>unique</b> design that no other castle has.</div>
+      <div class="zh">這座螺旋梯有著其他城堡都沒有的<b>獨特</b>設計。</div></div>
+    <div class="ex"><div class="en">This handmade vase is truly <b>one of a kind</b>.</div>
+      <div class="zh">這個手工花瓶真的是<b>獨一無二的</b>。<i style="color:#888">（即 115 學測 Q50 完整片語）</i></div></div>
+    <div class="ex"><div class="en">Sumo wrestling is <b>unique to</b> Japan.</div>
+      <div class="zh">相撲是日本<b>獨有的</b>運動。</div></div>
+  </div>
+
+  <!-- 17 monument FAM -->
+  <div class="vocab fam"><div class="num">17</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">monument</span><span class="pos">n.</span><span class="ipa">/ˈmɑːnjumənt/</span></div>
+    <div class="meaning">紀念碑；紀念塔；紀念館（+ to）</div>
+    <div class="deriv"><b>衍生詞：</b><b>Grade I listed monument</b> 一級古蹟｜<b>monumental</b> adj. 巨大的；不朽的</div>
+    <div class="ex"><div class="en">The old castle is now a national <b>monument</b>.</div>
+      <div class="zh">這座古老的城堡現在是國家<b>古蹟</b>。</div></div>
+    <div class="ex"><div class="en">The statue stands as a <b>monument to</b> the brave soldiers.</div>
+      <div class="zh">這座雕像是<b>對</b>那些勇士們的<b>紀念</b>。</div></div>
+    <div class="ex"><div class="en">The trip to Europe was a truly <b>monumental</b> experience.</div>
+      <div class="zh">那次歐洲之旅是真正<b>不朽的</b>經歷。</div></div>
+  </div>
+
+  <!-- 18 royal FAM -->
+  <div class="vocab fam"><div class="num">18</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">royal</span><span class="pos">adj.</span><span class="ipa">/ˈrɔɪəl/</span></div>
+    <div class="meaning">王的；王室的</div>
+    <div class="deriv"><b>衍生詞：</b><b>royalty</b> n.（總稱）皇族／王族成員｜<b>royalties</b> n. 專利使用費；版稅；租用費｜諺語：<b>There is no royal road to learning.</b> 學問無捷徑。</div>
+    <div class="ex"><div class="en">The princess lived in a <b>royal</b> castle with thick stone walls.</div>
+      <div class="zh">公主住在一座有厚石牆的<b>皇家</b>城堡。</div></div>
+    <div class="ex"><div class="en">The author earns <b>royalties</b> every time her book is sold.</div>
+      <div class="zh">每當她的書被賣出時，這位作者就會收到<b>版稅</b>。</div></div>
+    <div class="ex"><div class="en">Members of the British <b>royalty</b> often visit historic sites.</div>
+      <div class="zh">英國<b>皇室</b>成員經常造訪歷史景點。</div></div>
+  </div>
+
+  <!-- 19 feature FAM -->
+  <div class="vocab fam"><div class="num">19</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">feature</span><span class="pos">n. / v.</span><span class="ipa">/ˈfiːtʃɚ/</span></div>
+    <div class="meaning">特色；容貌；以⋯為特色</div>
+    <div class="deriv"><b>衍生詞：</b><b>facial features</b> 面貌｜<b>earth features</b> 地貌｜<b>be prominently featured</b> 成為亮點</div>
+    <div class="ex"><div class="en">Spiral staircases are a typical <b>feature</b> of medieval castles.</div>
+      <div class="zh">螺旋梯是中世紀城堡的典型<b>特色</b>。</div></div>
+    <div class="ex"><div class="en">Our latest model of phone has several new <b>features</b>.</div>
+      <div class="zh">我們最新款的手機有好幾個新<b>功能</b>。</div></div>
+    <div class="ex"><div class="en">The grand staircase is <b>prominently featured</b> in every photo.</div>
+      <div class="zh">那座宏偉的樓梯在每張照片裡都是<b>顯眼的亮點</b>。</div></div>
+  </div>
+
+  <!-- 20 strategy FAM -->
+  <div class="vocab fam"><div class="num">20</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">strategy</span><span class="pos">n.</span><span class="ipa">/ˈstrætədʒi/</span></div>
+    <div class="meaning">策略；戰略（= tactics）</div>
+    <div class="deriv"><b>衍生詞：</b><b>strategic / strategical</b> adj. 戰略的；戰略上的｜<b>strategically</b> adv. 策略地</div>
+    <div class="ex"><div class="en">A clever defense <b>strategy</b> kept the castle safe for centuries.</div>
+      <div class="zh">一個聰明的防禦<b>策略</b>讓這座城堡安全了數個世紀。</div></div>
+    <div class="ex"><div class="en">The team needs a clear <b>strategy</b> to win the championship.</div>
+      <div class="zh">這支隊伍需要明確的<b>策略</b>才能贏得冠軍。</div></div>
+    <div class="ex"><div class="en">The tower was placed at a <b>strategic</b> point overlooking the river.</div>
+      <div class="zh">塔被設於可俯瞰河流的<b>戰略</b>位置。</div></div>
+  </div>
+
+  </div>
+</div>
+</details>
+
+<!-- ============ PART 2: GRAMMAR ============ -->
+<details class="unit">
+  <summary><span class="label">📐 Part 2 ｜ 三大文法重點（璇 115 學測錯題分析）</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+  <p style="color:#555;font-size:14.5px;text-align:center;">
+    璇詞彙題很穩，主要弱點在<b>綜合測驗</b>（6/10）和<b>混合題</b>（2/4）。今天聚焦三大常錯題型。
+  </p>
+
+  <!-- Grammar 1: 邏輯連接詞 -->
+  <div class="gram">
+    <h4>① <b>邏輯連接詞辨析</b>　It turns out / All in all / In other words / What is more</h4>
+    <p>★ <b>來源：</b>115 學測 Q11（璇選 D「all in all」，正解 B「<b>it turns out</b>」）</p>
+    <div class="rule">
+      <b>It turns out (that) ...</b>　＝　結果發現⋯（引出意外或最後揭曉的結論）<br>
+      <b>All in all</b>　＝　總結來說（用於整體歸納）<br>
+      <b>In other words</b>　＝　換句話說（同義改述）<br>
+      <b>What is more</b>　＝　更甚者（補充更強的點）
+    </div>
+    <p style="color:#444;font-size:14.5px;">辨識訣竅：看後面是「意外的事實」用 <b>it turns out</b>；看後面是「整體結論」用 <b>all in all</b>。</p>
+
+    <div class="ex"><div class="en">White rhinoceroses do the same thing. <b>It turns out</b> their meeting place is a giant pile of poop.</div>
+      <div class="zh">白犀牛也做一樣的事。<b>結果發現</b>，牠們聚會的地方是一大堆糞便。<i style="color:#888">（115 Q11 原句）</i></div></div>
+    <div class="ex"><div class="en">She studied for hours. <b>It turns out</b> the test was much easier than expected.</div>
+      <div class="zh">她讀了好幾個小時。<b>結果發現</b>那場考試比預期簡單很多。</div></div>
+    <div class="ex"><div class="en"><b>All in all</b>, the trip to the medieval castle was the highlight of our summer.</div>
+      <div class="zh"><b>總結來說</b>，那趟中世紀城堡之旅是我們夏天最棒的回憶。</div></div>
+  </div>
+
+  <!-- Grammar 2: 完整片語 -->
+  <div class="gram">
+    <h4>② <b>完整片語的「動詞 + 介系詞」搭配</b>　point to / take precedence over / one of a kind</h4>
+    <p>★ <b>來源：</b>115 學測 Q26（璇選 H「minimal」，正解 J「<b>point to</b>」）；Q50（璇寫「one」，正解「<b>one of a kind</b>」）</p>
+    <div class="rule">
+      <b>point to + N</b>　＝　指向；建議；強調（動詞片語，非形容詞）<br>
+      <b>take precedence over + N</b>　＝　優先於⋯<br>
+      <b>one of a kind</b>　＝　獨一無二的（必須完整三字）<br>
+      <b>add fuel to the fire</b>　＝　火上加油（比喻）
+    </div>
+    <p style="color:#444;font-size:14.5px;">注意：「point to」是動詞片語、「minimal」是形容詞 ─ 兩者詞性不同。看上下文要先判斷需要的是「<b>動詞</b>」還是「<b>形容詞</b>」。</p>
+
+    <div class="ex"><div class="en">Some studies recommend napping for 20–40 minutes, while others <b>point to</b> shorter naps.</div>
+      <div class="zh">有些研究建議午睡 20–40 分鐘，而其他研究則<b>指向</b>更短的午睡。<i style="color:#888">（115 Q26 原句）</i></div></div>
+    <div class="ex"><div class="en">In some cultures, individual rights <b>take precedence over</b> the needs of the group.</div>
+      <div class="zh">在某些文化中，個人權利<b>優先於</b>群體需求。</div></div>
+    <div class="ex"><div class="en">This handmade castle model is truly <b>one of a kind</b>.</div>
+      <div class="zh">這個手工城堡模型真的是<b>獨一無二的</b>。<i style="color:#888">（115 Q50 完整片語）</i></div></div>
+  </div>
+
+  <!-- Grammar 3: 被動語態 + 不定詞 -->
+  <div class="gram">
+    <h4>③ <b>be + 過去分詞</b>　被動結構（含 be meant to be / be blended with）</h4>
+    <p>★ <b>來源：</b>115 學測 Q18（璇選 B「brought up as」，正解 D「<b>meant to be</b>」）；Q48（璇寫「product」，正解「<b>blended</b>」）</p>
+    <div class="rule">
+      <b>S + be + 過去分詞 (Vp.p.) + 介系詞</b>　＝　被動句式<br>
+      <b>be meant to be + N</b>　＝　本意是；被設計成<br>
+      <b>be blended with + N</b>　＝　與⋯融合<br>
+      <b>be designed to + 原形 V</b>　＝　被設計來做⋯<br>
+      <b>be intended for + N</b>　＝　為⋯而設計
+    </div>
+
+    <div class="ex"><div class="en">Dim sum <b>is meant to be</b> an enjoyable dining experience.</div>
+      <div class="zh">點心<b>本來就是</b>一種愉快的用餐體驗。<i style="color:#888">（115 Q18 原句）</i></div></div>
+    <div class="ex"><div class="en">Local features are perfectly <b>blended with</b> foreign elements.</div>
+      <div class="zh">在地特色與外國元素完美<b>融合</b>。<i style="color:#888">（115 Q48 原句，注意是 blended，不是 product）</i></div></div>
+    <div class="ex"><div class="en">The narrow staircase <b>was designed to</b> slow down attackers.</div>
+      <div class="zh">那座狹窄的樓梯<b>被設計來</b>拖慢攻擊者。</div></div>
+  </div>
+</div>
+</details>
+
+<!-- ============ PART 3: READING ============ -->
+<details class="unit">
+  <summary><span class="label">📖 Part 3 ｜ 主題閱讀測驗（115 學測長度的 2/3，約 200 字）</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+  <div class="reading">
+    <h3>The Spiral Staircase: A Castle's Hidden Strategy</h3>
+    <p>
+      Many people are <b>captivated</b> by the spiral staircases inside <b>medieval</b> castles, but few
+      realize they were not built only for beauty. They were also <b>strategically</b> designed for
+      <b>defense</b>. In an age when stone <b>structures</b> protected <b>royal</b> families, every detail
+      mattered.
+    </p>
+    <p>
+      The stairs were narrow and turned in a clockwise direction. Attackers who had to <b>ascend</b> these
+      <b>narrow</b> steps could swing their swords only with their left hand, while right-handed
+      <b>defenders</b> at the top had full freedom to attack downward. <b>It turns out</b> that this
+      simple <b>feature</b> of design—a single curve—often made the difference between victory and
+      defeat. The castle's <b>strategy</b>, in other words, was hidden in its <b>structure</b>.
+    </p>
+    <p>
+      Today these old <b>fortresses</b> are no longer used for war. They <b>are meant to be</b> visited,
+      photographed, and protected as national <b>monuments</b>. Many of them <b>are</b> beautifully
+      <b>blended with</b> the surrounding hills, attracting tourists from around the world. A
+      <b>magnificent</b> staircase that once helped <b>royalty</b> survive is now a truly <b>one of a
+      kind</b> historical experience for every visitor. Even if you have never <b>dwelled</b> in such a
+      grand place, walking up its stone steps connects you to centuries of human stories.
+    </p>
+    <div class="zh">
+      <b>中譯重點：</b>許多人被<b>中世紀</b>城堡中的螺旋梯<b>迷住</b>，但很少人意識到它們不只是為了美觀，更是<b>策略性地</b>設計來作<b>防禦</b>。在那個石造<b>建築</b>保護<b>王室</b>家族的年代，每個細節都至關重要。<br>
+      樓梯狹窄、順時針旋轉。被迫<b>攀登</b>這些<b>狹窄</b>階梯的攻擊者，只能用左手揮劍，而站在上方的右撇子<b>防衛者</b>則能自由攻擊。<b>結果證明</b>這個簡單的設計<b>特色</b>——一個彎曲——往往決定了勝負。換句話說，城堡的<b>戰略</b>就藏在它的<b>結構</b>之中。<br>
+      今天這些古<b>堡</b>不再作戰。它們<b>本意是</b>讓人參觀、拍照，並作為國家<b>古蹟</b>受到保護。許多城堡與周圍山丘優美地<b>融合</b>，吸引世界各地的遊客。一座曾幫助<b>皇室</b>生存的<b>壯麗</b>樓梯，如今成為對每位訪客<b>獨一無二</b>的歷史體驗。即使你從未<b>住過</b>這麼宏偉的地方，踏上它的石階，仍能讓你連結到數世紀的人類故事。
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- ============ PART 4: MCQ ============ -->
+<details class="unit">
+  <summary><span class="label">🧪 Part 4 ｜ 五題單字單選複習</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+
+  <div class="mcq"><div class="q">1. The narrow staircase was ______ designed to slow down attackers.</div>
+    <ol type="A"><li>strategically</li><li>magnificently</li><li>narrowly</li><li>typically</li></ol></div>
+
+  <div class="mcq"><div class="q">2. The grand spiral staircase is one of the most ______ features in this castle.</div>
+    <ol type="A"><li>narrow</li><li>prominent</li><li>defensive</li><li>medieval</li></ol></div>
+
+  <div class="mcq"><div class="q">3. Old castles still ______ millions of tourists every year.</div>
+    <ol type="A"><li>captivate</li><li>construct</li><li>defend</li><li>dwell</li></ol></div>
+
+  <div class="mcq"><div class="q">4. This handmade castle model is truly ______; you'll never find another exactly like it.</div>
+    <ol type="A"><li>one of a kind</li><li>under construction</li><li>Grade I listed</li><li>strategically placed</li></ol></div>
+
+  <div class="mcq"><div class="q">5. The narrow staircase ______ to keep enemies from climbing easily.</div>
+    <ol type="A"><li>was meant to be designed</li><li>was meant to design</li><li>is meant to be enjoyed</li><li>was designed</li></ol></div>
+
+  <details class="answer-box">
+    <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
+    <div class="answer-content">
+      <b>1. (A) strategically</b>　策略地 — 修飾動詞 designed，需要副詞；strategically + designed 是學測螺旋梯文章原句搭配。<br>
+      <b>2. (B) prominent</b>　顯著的 — most prominent features 是固定搭配，「最顯眼的特色」。<br>
+      <b>3. (A) captivate</b>　吸引／使著迷 — 「millions of tourists」是受詞，captivate 與 attract 同義；defend / construct / dwell 語意不合。<br>
+      <b>4. (A) one of a kind</b>　獨一無二的 — 完整片語 <b>one of a kind</b>（115 Q50 還原），三字缺一不可。<br>
+      <b>5. (D) was designed</b>　被設計來 — 雖然 (C) is meant to be enjoyed 文法對，但語意不符（敵人不該被「享受」）；正確是「被設計來防止敵人攀登」，be designed to + V。
+    </div>
+  </details>
+</div>
+</details>
+
+<footer>
+  Day 01 ｜ 璇 ｜ Castles, Stairs &amp; Strongholds（中上版）<br>
+  資料來源：學生 115 學測作答結果與 66 個不熟詞表、vocabulary_database_dotm.txt、article-root-word字根52個.txt
+</footer>
+
+</main>
+</body>
+</html>
