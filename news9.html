@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Are Touchscreens Made of Glass, Not Plastic?</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF4E4;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--deep:#0D47A1;--s1:#F3F8FF;--s2:#FFF3EF;--s3:#F1F8F2;--s4:#F9F0FF;--fold:#FAF6F0;--brown:#4A3728;--line:#C4A06A}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(255,183,77,.38),transparent 28%),radial-gradient(circle at 88% 8%,rgba(255,112,67,.18),transparent 30%),linear-gradient(180deg,#FFF7E8 0%,#FFEBD2 42%,#FFF8F0 100%);color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:22px 14px 64px}
+.page{max-width:880px;margin:0 auto}
+.hero{text-align:center;padding:24px 18px 28px;margin-bottom:34px}
+h1{display:inline-block;margin:0 0 16px;padding:18px 24px;border:5px solid var(--h1);border-radius:8px;color:var(--h1);font-size:3rem;line-height:1.22;font-weight:700;background:#fffdf8;box-shadow:8px 8px 0 #F7C7BE}
+.subtitle{margin:0 0 10px;color:var(--h2);font-size:2.2rem;line-height:1.35;font-weight:700}
+.credit{margin:0;color:#1565C0;font-family:'Pacifico','BIZ UDPGothic',sans-serif;font-size:2rem;line-height:1.5}
+.promo-panel{margin:0 auto 30px;padding:18px;border:3px solid #F0A23A;border-radius:18px;background:linear-gradient(135deg,#FFF3D6 0%,#FFE0B2 46%,#FFD4C2 100%);box-shadow:0 14px 30px rgba(122,61,16,.16)}
+.promo-panel.bottom{margin:34px auto 0}
+.promo-title{margin:0 0 14px;color:#8F2F00;font-size:1.55rem;line-height:1.4;font-weight:700;text-align:center}
+.promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.promo-card{display:flex;flex-direction:column;gap:8px;min-height:156px;padding:16px;border-radius:14px;text-decoration:none;color:#1A0F00;background:#FFFCF5;border:2px solid rgba(122,61,16,.18);box-shadow:0 8px 18px rgba(122,61,16,.10)}
+.promo-card:nth-child(1){background:#FFF7D7;border-color:#F6B84F}
+.promo-card:nth-child(2){background:#FFE7CF;border-color:#F28B50}
+.promo-card:nth-child(3){background:#FDE8E8;border-color:#E57373}
+.promo-kicker{font-size:.95rem;font-weight:700;color:#A33A00}
+.promo-name{font-size:1.28rem;font-weight:700;color:#0D47A1;line-height:1.35}
+.promo-desc{font-size:1rem;line-height:1.55;color:#3A2414;margin:0}
+.promo-cta{margin-top:auto;align-self:flex-start;padding:6px 12px;border-radius:999px;background:#C0392B;color:#fff;font-size:.95rem;font-weight:700}
+h2{margin:38px 0 16px;color:var(--h2);font-size:2.2rem;line-height:1.35;font-weight:700}
+h3{margin:0 0 12px;color:var(--h3);font-size:1.6rem;line-height:1.45;font-weight:700}
+p{margin:12px 0}
+.section-card{border-radius:14px;overflow:hidden;border:2px solid #90CAF9;background:#fff;box-shadow:0 10px 24px rgba(122,61,16,.10)}
+.section-head{padding:16px 22px;color:#fff;font-size:1.45rem;font-weight:700}
+.body{padding:24px}
+.original{border-color:#90CAF9}.original .section-head{background:#0D47A1}.original .body{background:#F3F8FF}
+.analysis{border-color:#FFAB91}.analysis .section-head{background:#BF360C}.analysis .body{background:#FFF3EF}
+.vocab{border-color:#81C784}.vocab .section-head{background:#1B5E20}.vocab .body{background:#F1F8F2}
+.grammar{border-color:#CE93D8}.grammar .section-head{background:#4A148C}.grammar .body{background:#F9F0FF}
+.article-title{font-size:1.45rem;font-weight:700;color:#0D47A1}
+.key{color:#0D47A1;font-weight:700;text-decoration:none}
+.analysis-block,.vocab-item,.grammar-point{background:rgba(255,255,255,.7);border:2px solid rgba(26,15,0,.12);border-radius:8px;padding:20px;margin:0 0 20px}
+.num-circle{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:#BF360C;color:#fff;font-size:1.4rem;font-weight:700;margin-right:10px}
+blockquote{margin:14px 0;padding:14px 18px;border-left:8px solid #E65100;background:#FFF8F0;font-style:normal;font-weight:700}
+.sentence{font-style:italic;color:#1A0F00}
+.pill{display:inline-block;border-radius:999px;padding:5px 12px;margin:4px 6px 4px 0;background:#FEF0E7;color:#E65100;font-weight:700}
+.vocab-top{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px}
+.vocab-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:#1B5E20;color:#fff;font-weight:700}
+.word{font-size:1.65rem;color:#1565C0;font-weight:700}
+.kk{color:#C0392B;font-weight:700}
+.label{display:inline-block;min-width:112px;text-align:center;border-radius:8px;padding:4px 10px;margin:4px 8px 4px 0;font-size:1rem;font-weight:700}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
+ul{margin:8px 0 12px 28px;padding:0}li{margin:8px 0}
+.example{margin:12px 0;padding:12px 16px;background:#fff;border-radius:8px;border:1px solid rgba(26,15,0,.14)}
+.grammar-point h3{color:#4A148C}
+.formula{font-weight:700;color:#6A1B9A}
+details{margin:20px 0;border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--fold)}
+summary{min-height:72px;padding:18px 22px;background:var(--brown);color:#fff;font-size:1.35rem;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px 24px;background:#FAF6F0}
+.prefix-item,.suffix-item{border-bottom:1px solid #D8C4A4;padding:8px 0}
+.prefix-item:last-child,.suffix-item:last-child{border-bottom:none}
+.term{color:#4A3728;font-weight:700}
+@media(max-width:720px){body{font-size:21px;padding:14px 10px 48px}.promo-panel{padding:14px;border-radius:14px}.promo-grid{grid-template-columns:1fr}.promo-card{min-height:0}.promo-title{font-size:1.35rem}h1{font-size:2.35rem}.subtitle{font-size:1.9rem}.credit{font-size:1.55rem}h2{font-size:1.85rem}.body{padding:18px}.label{min-width:96px}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="promo-panel" aria-label="七月課程與聯絡連結">
+<p class="promo-title">七月課程與聯絡方式</p>
+<div class="promo-grid">
+<a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">從錯題中找出英文弱點，透過回音式練習建立穩定閱讀、文法與寫作能力。</span>
+<span class="promo-cta">查看課程</span>
+</a>
+<a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">協助整理學習狀況與常見卡點，讓學生更清楚知道下一步該補強什麼。</span>
+<span class="promo-cta">查看分析</span>
+</a>
+<a class="promo-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問、學習規劃與英文教材相關問題，可透過 Line 帳號聯絡。</span>
+<span class="promo-cta">加入 Line</span>
+</a>
+</div>
+</nav>
+<section class="hero">
+<h1>Why Are Touchscreens Made of Glass, Not Plastic?</h1>
+<p class="subtitle">為什麼觸控螢幕是玻璃做的，而不是塑膠？</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="section-card original">
+<div class="section-head">英文文章原文 Original Article</div>
+<div class="body">
+<p class="article-title">Why Are Touchscreens Made of Glass, Not Plastic?</p>
+<p>Modern smartphones mostly use <strong class="key">glass</strong> on their <strong class="key">touchscreens</strong> because it works better with <strong class="key">capacitive</strong> <strong class="key">sensing</strong> and stays clear and smooth after long-term use. <strong class="key">Capacitive</strong> <strong class="key">touchscreens</strong> <strong class="key">detect</strong> tiny changes in electric <strong class="key">charge</strong> when your finger touches the <strong class="key">surface</strong>, so the top layer must <strong class="key">cooperate</strong> with the <strong class="key">transparent</strong> <strong class="key">conductive</strong> layer (often indium tin oxide, ITO) underneath. <strong class="key">Glass</strong> is <strong class="key">rigid</strong> and <strong class="key">dimensionally</strong> stable, which helps keep this <strong class="key">conductive</strong> pattern flat and <strong class="key">precisely</strong> aligned, so the phone can <strong class="key">accurately</strong> sense even small touches or swipes.</p>
+<p>Chemically strengthened <strong class="key">glass</strong> also has excellent <strong class="key">hardness</strong>, usually around 6–7 on the Mohs scale, so it <strong class="key">resists</strong> scratches from keys, coins, or sand in your pocket. This <strong class="key">hardness</strong> is important for daily use: a softer plastic screen would quickly become covered with small scratches, which would make reading text and watching videos more difficult. In addition, high‑quality cover <strong class="key">glass</strong> has very good <strong class="key">optical</strong> clarity and high light <strong class="key">transmittance</strong>, so more backlight from the display can pass through to your eyes without <strong class="key">distortion</strong> or color shift. That is one reason why images and colors on <strong class="key">glass</strong> <strong class="key">touchscreens</strong> often look brighter and sharper.</p>
+<p>From an engineering point of view, <strong class="key">glass</strong> also helps the electrical performance of <strong class="key">capacitive</strong> touch panels. Because <strong class="key">glass</strong> does not expand or <strong class="key">warp</strong> as much as plastic with temperature changes, the distance between the electrodes in the touch sensor remains stable, which keeps the <strong class="key">capacitance</strong> signals more consistent. This <strong class="key">stability</strong> allows the touchscreen controller to <strong class="key">detect</strong> small changes caused by your fingertip more <strong class="key">reliably</strong> and respond quickly when you tap, zoom, or draw on the screen. For these materials science and electrical reasons, chemically strengthened <strong class="key">glass</strong> has become the standard choice for most <strong class="key">capacitive</strong> <strong class="key">touchscreens</strong> in phones and tablets today.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊二】8句精讀</h2>
+<div class="section-card analysis">
+<div class="section-head">八句精讀 8 Key Sentence Analyses</div>
+<div class="body">
+<div class="analysis-block">
+<h3><span class="num-circle">①</span>句 1</h3>
+<blockquote class="sentence">Modern smartphones mostly use glass on their touchscreens because it works better with capacitive sensing and stays clear and smooth after long-term use.</blockquote>
+<p>現代智慧型手機大多在觸控螢幕上使用玻璃，因為玻璃能更好地配合電容式感測，而且在長期使用後仍保持清晰平滑。</p>
+<p><strong>文法解析：</strong>這句是「主要子句 + because 原因副詞子句」的複合句。主句說明現代手機採用玻璃的事實，because 子句解釋原因。works better with 和 stays clear and smooth 是並列動詞片語，共同說明玻璃的優勢。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">capacitive sensing 電容式感測</span><span class="pill">long-term use 長期使用</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">②</span>句 2</h3>
+<blockquote class="sentence">Capacitive touchscreens detect tiny changes in electric charge when your finger touches the surface, so the top layer must cooperate with the transparent conductive layer (often indium tin oxide, ITO) underneath.</blockquote>
+<p>電容式觸控螢幕會在你的手指碰到表面時偵測電荷的微小變化，因此最上層必須和下方的透明導電層合作，這層通常是氧化銦錫。</p>
+<p><strong>文法解析：</strong>這句由 so 連接兩個主要子句，呈現「原因結果」關係。when your finger touches the surface 是時間副詞子句，說明偵測發生的時機。often indium tin oxide, ITO 是插入補充資訊，幫助讀者理解 transparent conductive layer 的材料。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">electric charge 電荷</span><span class="pill">conductive layer 導電層</span><span class="pill">underneath 在下方</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">③</span>句 3</h3>
+<blockquote class="sentence">Glass is rigid and dimensionally stable, which helps keep this conductive pattern flat and precisely aligned, so the phone can accurately sense even small touches or swipes.</blockquote>
+<p>玻璃堅硬且尺寸穩定，這有助於讓導電圖案保持平整並精準對齊，因此手機甚至能準確感測到小小的觸碰或滑動。</p>
+<p><strong>文法解析：</strong>which helps... 是非限定形容詞子句，which 指前面整件事「玻璃堅硬且尺寸穩定」。keep + O + adj. 表示「使某物維持某種狀態」。so 引導結果，說明前面穩定結構帶來的功能成果。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">dimensionally stable 尺寸穩定的</span><span class="pill">precisely aligned 精準對齊</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">④</span>句 4</h3>
+<blockquote class="sentence">Chemically strengthened glass also has excellent hardness, usually around 6-7 on the Mohs scale, so it resists scratches from keys, coins, or sand in your pocket.</blockquote>
+<p>化學強化玻璃也有極佳的硬度，通常在莫氏硬度約 6 到 7，因此能抵抗口袋裡鑰匙、硬幣或沙粒造成的刮痕。</p>
+<p><strong>文法解析：</strong>Chemically strengthened 是過去分詞片語當形容詞，修飾 glass，表示「經過化學方式強化的」。usually around 6-7 on the Mohs scale 是補充硬度範圍的插入資訊。so it resists... 說明硬度造成的結果。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">chemically strengthened 化學強化的</span><span class="pill">resist scratches 抗刮</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑤</span>句 5</h3>
+<blockquote class="sentence">This hardness is important for daily use: a softer plastic screen would quickly become covered with small scratches, which would make reading text and watching videos more difficult.</blockquote>
+<p>這種硬度對日常使用很重要：較軟的塑膠螢幕很快就會布滿小刮痕，而這會讓閱讀文字和觀看影片變得更困難。</p>
+<p><strong>文法解析：</strong>冒號後的內容解釋前面「硬度很重要」的原因。would become 和 would make 帶有假設語氣，描述若使用較軟塑膠可能產生的結果。which would make... 是非限定形容詞子句，which 指前面整件事。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">become covered with 被覆蓋</span><span class="pill">daily use 日常使用</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑥</span>句 6</h3>
+<blockquote class="sentence">In addition, high-quality cover glass has very good optical clarity and high light transmittance, so more backlight from the display can pass through to your eyes without distortion or color shift.</blockquote>
+<p>此外，高品質的覆蓋玻璃具有很好的光學清晰度和高透光率，因此顯示器發出的更多背光能穿透到你的眼睛，而不會產生變形或偏色。</p>
+<p><strong>文法解析：</strong>In addition 是轉承語，用來補充另一個理由。so 連接結果子句，表示光學特性帶來更好的觀看效果。without + N. 表示「沒有……」，這裡的 distortion 和 color shift 是兩個並列名詞。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">optical clarity 光學清晰度</span><span class="pill">light transmittance 透光率</span><span class="pill">color shift 偏色</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑦</span>句 7</h3>
+<blockquote class="sentence">Because glass does not expand or warp as much as plastic with temperature changes, the distance between the electrodes in the touch sensor remains stable, which keeps the capacitance signals more consistent.</blockquote>
+<p>因為玻璃不會像塑膠那樣隨溫度變化而膨脹或變形，觸控感測器中電極之間的距離會保持穩定，這使電容訊號更一致。</p>
+<p><strong>文法解析：</strong>Because 引導原因副詞子句，主句是 the distance... remains stable。as much as plastic 是比較結構，表示「程度不像塑膠那麼大」。which keeps... 是非限定形容詞子句，說明距離穩定所造成的結果。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">expand or warp 膨脹或變形</span><span class="pill">remains stable 保持穩定</span></p>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑧</span>句 8</h3>
+<blockquote class="sentence">This stability allows the touchscreen controller to detect small changes caused by your fingertip more reliably and respond quickly when you tap, zoom, or draw on the screen.</blockquote>
+<p>這種穩定性讓觸控螢幕控制器能更可靠地偵測由指尖造成的微小變化，並在你點按、縮放或在螢幕上繪圖時快速回應。</p>
+<p><strong>文法解析：</strong>allow + O + to V 表示「允許或使某人事物能做某事」。to detect 和 respond 是並列的不定詞概念，共同說明 controller 能做的事。caused by your fingertip 是過去分詞片語，修飾 small changes，表示「由指尖造成的」。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">touchscreen controller 觸控螢幕控制器</span><span class="pill">more reliably 更可靠地</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊三】20個單字整理</h2>
+<div class="section-card vocab">
+<div class="section-head">關鍵單字 Vocabulary</div>
+<div class="body">
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">1</span><span class="word">capacitive</span><span class="kk">[kəˈpæsətɪv]</span><span>adj. 電容式的；有電容性質的</span></div><p><span class="label deriv">衍生詞</span>capacity (n. 容量；能力)；capacitance (n. 電容)；capacitor (n. 電容器)</p><p><span class="label root">字根</span>cap「拿取；容納」：capture 捕捉；capable 有能力的；capacity 容量</p><p><span class="label phrase">片語</span>capacitive touchscreen 電容式觸控螢幕；capacitive sensing 電容式感測</p><p><span class="label idiom">慣用語</span>a highly capacitive system 高電容性的系統；capacitive touch technology 電容式觸控技術</p><p><span class="label confuse">容易混淆</span>capacitive 指電容式；capable 指有能力的，兩者字形相近但意思不同。</p><div class="example">Modern smartphones mostly use glass on their touchscreens because it works better with capacitive sensing.<br>（現代智慧型手機大多使用玻璃，因為它更適合電容式感測。）</div><div class="example">Many tablets use capacitive screens because they respond quickly to fingers.<br>（許多平板使用電容式螢幕，因為它們能快速回應手指。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">2</span><span class="word">sensing</span><span class="kk">[ˈsɛnsɪŋ]</span><span>n. 感測；偵測</span></div><p><span class="label deriv">衍生詞</span>sense (v./n. 感覺；感測；意義)；sensor (n. 感測器)；sensitive (adj. 敏感的)</p><p><span class="label phrase">片語</span>capacitive sensing 電容式感測；remote sensing 遙測；motion sensing 動作感測</p><p><span class="label idiom">慣用語</span>accurate sensing 精準感測；real-time sensing 即時感測</p><p><span class="label pattern">句型</span>sensing of + N. 表示「對……的感測」。</p><div class="example">Modern smartphones mostly use glass on their touchscreens because it works better with capacitive sensing.<br>（現代智慧型手機大多使用玻璃，因為它更適合電容式感測。）</div><div class="example">The sensing system turns on the lights when someone enters the room.<br>（當有人進入房間時，感測系統會開燈。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">3</span><span class="word">detect</span><span class="kk">[dɪˈtɛkt]</span><span>v. 偵測；察覺；發現</span></div><p><span class="label deriv">衍生詞</span>detection (n. 偵測)；detectable (adj. 可偵測的)；detector (n. 偵測器)</p><p><span class="label root">字根</span>tect「覆蓋」：protect 保護；detect 發現被覆蓋的事；technology 技術</p><p><span class="label phrase">片語</span>detect changes 偵測變化；detect a signal 偵測訊號；detect movement 偵測移動</p><p><span class="label idiom">慣用語</span>quickly detect 快速偵測；hard to detect 難以察覺</p><div class="example">Capacitive touchscreens detect tiny changes in electric charge when your finger touches the surface.<br>（電容式觸控螢幕會在手指碰到表面時偵測電荷的微小變化。）</div><div class="example">The app can detect unusual activity and warn the user.<br>（這個應用程式能偵測異常活動並警告使用者。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">4</span><span class="word">charge</span><span class="kk">[tʃɑrdʒ]</span><span>n. 電荷；費用；責任 v. 收費；充電</span></div><p><span class="label deriv">衍生詞</span>charged (adj. 帶電的；情緒激動的)；charger (n. 充電器)；recharge (v. 再充電)</p><p><span class="label phrase">片語</span>electric charge 電荷；charge a battery 為電池充電；in charge of 負責</p><p><span class="label idiom">慣用語</span>a positive charge 正電荷；a service charge 服務費</p><p><span class="label confuse">容易混淆</span>charge 當名詞可指電荷或費用；fee 多指固定費用。</p><div class="example">Capacitive touchscreens detect tiny changes in electric charge.<br>（電容式觸控螢幕會偵測電荷的微小變化。）</div><div class="example">Please charge your phone before the long trip.<br>（長途旅行前請先把手機充電。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">5</span><span class="word">surface</span><span class="kk">[ˈsɝfɪs]</span><span>n. 表面；外層</span></div><p><span class="label deriv">衍生詞</span>surfacing (n. 表面處理)；resurface (v. 重新出現；重鋪表面)；surface-level (adj. 表面的)</p><p><span class="label root">字根</span>sur「在上方」+ face「面」：surface 表面；surpass 超越；surround 包圍</p><p><span class="label phrase">片語</span>touch the surface 觸碰表面；on the surface 表面上；smooth surface 平滑表面</p><p><span class="label idiom">慣用語</span>a clean surface 乾淨的表面；surface tension 表面張力</p><div class="example">Your finger touches the surface of the screen.<br>（你的手指碰到螢幕表面。）</div><div class="example">Clean the surface before you put the sticker on it.<br>（貼貼紙之前先清潔表面。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">6</span><span class="word">cooperate</span><span class="kk">[koˈɑpəˌret]</span><span>v. 合作；配合</span></div><p><span class="label deriv">衍生詞</span>cooperation (n. 合作)；cooperative (adj. 合作的)；cooperatively (adv. 合作地)</p><p><span class="label root">字根</span>co-/com「共同」+ oper「工作」：operate 操作；operator 操作者；cooperate 合作</p><p><span class="label phrase">片語</span>cooperate with 與……合作；cooperate closely 密切合作</p><p><span class="label idiom">慣用語</span>active cooperation 積極合作；international cooperation 國際合作</p><p><span class="label pattern">句型</span>cooperate with + N. 表示「與……合作」，with 是介係詞，後面接名詞或 V-ing。</p><div class="example">The top layer must cooperate with the transparent conductive layer underneath.<br>（最上層必須和下方的透明導電層合作。）</div><div class="example">Students must cooperate with each other to finish the project.<br>（學生必須彼此合作才能完成專題。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">7</span><span class="word">transparent</span><span class="kk">[trænsˈpɛrənt]</span><span>adj. 透明的；清楚易懂的</span></div><p><span class="label deriv">衍生詞</span>transparency (n. 透明度)；transparently (adv. 透明地；坦率地)；opaque (adj. 不透明的)</p><p><span class="label root">字根</span>trans「穿越」：transport 運輸；transfer 轉移；transform 轉變</p><p><span class="label phrase">片語</span>transparent layer 透明層；transparent material 透明材料；transparent process 透明流程</p><p><span class="label idiom">慣用語</span>highly transparent 高度透明的；a transparent policy 透明的政策</p><div class="example">The top layer must cooperate with the transparent conductive layer underneath.<br>（最上層必須和下方的透明導電層合作。）</div><div class="example">The bottle is transparent, so we can see the water inside.<br>（這個瓶子是透明的，所以我們看得到裡面的水。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">8</span><span class="word">conductive</span><span class="kk">[kənˈdʌktɪv]</span><span>adj. 導電的；傳導的</span></div><p><span class="label deriv">衍生詞</span>conduct (v. 傳導；進行)；conductor (n. 導體；指揮)；conductivity (n. 導電性)</p><p><span class="label root">字根</span>duc/duct「引導」：produce 生產；reduce 減少；introduce 介紹；conduct 傳導</p><p><span class="label phrase">片語</span>conductive layer 導電層；conductive material 導電材料；highly conductive 高導電的</p><p><span class="label idiom">慣用語</span>a conductive coating 導電塗層；electrically conductive 導電的</p><div class="example">The top layer must cooperate with the transparent conductive layer underneath.<br>（最上層必須和下方的透明導電層合作。）</div><div class="example">Copper is a conductive metal often used in wires.<br>（銅是一種常用於電線的導電金屬。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">9</span><span class="word">rigid</span><span class="kk">[ˈrɪdʒɪd]</span><span>adj. 堅硬的；僵硬的；嚴格的</span></div><p><span class="label deriv">衍生詞</span>rigidity (n. 堅硬；僵化)；rigidly (adv. 嚴格地；僵硬地)</p><p><span class="label phrase">片語</span>rigid structure 堅固結構；rigid material 堅硬材料；rigid rules 嚴格規則</p><p><span class="label idiom">慣用語</span>extremely rigid 極為堅硬的；a rigid frame 堅固框架</p><p><span class="label confuse">容易混淆</span>rigid 強調不易彎曲；strict 強調規則或人很嚴格。</p><div class="example">Glass is rigid and dimensionally stable.<br>（玻璃堅硬且尺寸穩定。）</div><div class="example">The bridge needs a rigid frame to support heavy traffic.<br>（這座橋需要堅固的框架來支撐大量車流。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">10</span><span class="word">dimensionally</span><span class="kk">[dɪˈmɛnʃənəlɪ]</span><span>adv. 在尺寸方面；從維度上</span></div><p><span class="label deriv">衍生詞</span>dimension (n. 尺寸；面向)；dimensional (adj. 尺寸的；維度的)；three-dimensional (adj. 三維的)</p><p><span class="label phrase">片語</span>dimensionally stable 尺寸穩定的；dimensionally accurate 尺寸精準的</p><p><span class="label idiom">慣用語</span>a dimensionally stable material 尺寸穩定的材料；highly dimensional data 高維資料</p><p><span class="label pattern">句型</span>副詞 dimensionally 修飾形容詞 stable，表示穩定的面向是「尺寸」。</p><div class="example">Glass is rigid and dimensionally stable.<br>（玻璃堅硬且尺寸穩定。）</div><div class="example">Engineers need parts that remain dimensionally stable under heat.<br>（工程師需要在高溫下仍維持尺寸穩定的零件。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">11</span><span class="word">precisely</span><span class="kk">[prɪˈsaɪslɪ]</span><span>adv. 精確地；正好</span></div><p><span class="label deriv">衍生詞</span>precise (adj. 精確的)；precision (n. 精確度)；imprecise (adj. 不精確的)</p><p><span class="label phrase">片語</span>precisely aligned 精準對齊；measure precisely 精確測量；precisely because 正是因為</p><p><span class="label idiom">慣用語</span>highly precise 高度精準的；with great precision 非常精確地</p><p><span class="label confuse">容易混淆</span>precisely 強調精確；properly 強調正確或適當。</p><div class="example">Glass helps keep this conductive pattern flat and precisely aligned.<br>（玻璃有助於讓導電圖案保持平整並精準對齊。）</div><div class="example">The robot can cut the metal precisely within one millimeter.<br>（機器人能在一毫米內精準切割金屬。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">12</span><span class="word">accurately</span><span class="kk">[ˈækjərətlɪ]</span><span>adv. 準確地</span></div><p><span class="label deriv">衍生詞</span>accurate (adj. 準確的)；accuracy (n. 準確性)；inaccurate (adj. 不準確的)</p><p><span class="label phrase">片語</span>accurately sense 準確感測；report accurately 準確回報；measure accurately 準確測量</p><p><span class="label idiom">慣用語</span>highly accurate 高度準確的；an accurate result 準確結果</p><p><span class="label confuse">容易混淆</span>accurate 指結果正確；precise 指細節精細，兩者常一起出現但重點不同。</p><div class="example">The phone can accurately sense even small touches or swipes.<br>（手機甚至能準確感測小小的觸碰或滑動。）</div><div class="example">A good map shows distances accurately.<br>（好的地圖會準確顯示距離。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">13</span><span class="word">hardness</span><span class="kk">[ˈhɑrdnəs]</span><span>n. 硬度；堅硬</span></div><p><span class="label deriv">衍生詞</span>hard (adj. 硬的；困難的)；harden (v. 使變硬)；hardener (n. 硬化劑)</p><p><span class="label phrase">片語</span>excellent hardness 極佳硬度；surface hardness 表面硬度；measure hardness 測量硬度</p><p><span class="label idiom">慣用語</span>a high level of hardness 高硬度；hardness test 硬度測試</p><p><span class="label confuse">容易混淆</span>hardness 是名詞「硬度」；difficulty 是「困難度」。</p><div class="example">Chemically strengthened glass also has excellent hardness.<br>（化學強化玻璃也有極佳的硬度。）</div><div class="example">The hardness of the material makes it useful for tools.<br>（這種材料的硬度使它適合用於工具。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">14</span><span class="word">resist</span><span class="kk">[rɪˈzɪst]</span><span>v. 抵抗；抗拒；耐得住</span></div><p><span class="label deriv">衍生詞</span>resistance (n. 抵抗；阻力)；resistant (adj. 有抵抗力的)；irresistible (adj. 難以抗拒的)</p><p><span class="label root">字根</span>sist「站立」：insist 堅持；exist 存在；resist 抵抗</p><p><span class="label phrase">片語</span>resist scratches 抗刮；resist pressure 承受壓力；water-resistant 防水的</p><p><span class="label idiom">慣用語</span>highly resistant 高抗性的；scratch-resistant glass 抗刮玻璃</p><div class="example">It resists scratches from keys, coins, or sand in your pocket.<br>（它能抵抗口袋裡鑰匙、硬幣或沙粒造成的刮痕。）</div><div class="example">This jacket can resist light rain during a short walk.<br>（這件外套能在短時間散步時抵擋小雨。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">15</span><span class="word">optical</span><span class="kk">[ˈɑptɪkəl]</span><span>adj. 光學的；視覺的</span></div><p><span class="label deriv">衍生詞</span>optic (adj. 眼睛的；光學的)；optics (n. 光學)；optically (adv. 光學上)</p><p><span class="label root">字根</span>opt「看」：optical 光學的；optic 視覺的；optician 眼鏡師</p><p><span class="label phrase">片語</span>optical clarity 光學清晰度；optical fiber 光纖；optical illusion 視覺錯覺</p><p><span class="label idiom">慣用語</span>excellent optical quality 優良光學品質；an optical device 光學裝置</p><div class="example">High-quality cover glass has very good optical clarity.<br>（高品質的覆蓋玻璃具有很好的光學清晰度。）</div><div class="example">The camera uses optical technology to keep the image sharp.<br>（這台相機使用光學技術來保持影像清晰。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">16</span><span class="word">transmittance</span><span class="kk">[trænsˈmɪtəns]</span><span>n. 透光率；傳輸率</span></div><p><span class="label deriv">衍生詞</span>transmit (v. 傳送；傳導)；transmission (n. 傳輸)；transmitter (n. 發射器)</p><p><span class="label root">字根</span>mit/miss「送」：emit 排放；admit 承認；submit 提交；transmit 傳送</p><p><span class="label phrase">片語</span>light transmittance 透光率；high transmittance 高透光率</p><p><span class="label idiom">慣用語</span>a high-transmittance material 高透光材料；optical transmittance 光學透光率</p><div class="example">Cover glass has high light transmittance.<br>（覆蓋玻璃具有高透光率。）</div><div class="example">The window film has low transmittance, so the room stays cooler.<br>（這種窗膜透光率低，所以房間比較涼。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">17</span><span class="word">distortion</span><span class="kk">[dɪˈstɔrʃən]</span><span>n. 扭曲；變形；失真</span></div><p><span class="label deriv">衍生詞</span>distort (v. 扭曲；使變形)；distorted (adj. 扭曲的)；undistorted (adj. 未失真的)</p><p><span class="label phrase">片語</span>without distortion 沒有失真；image distortion 影像變形；sound distortion 聲音失真</p><p><span class="label idiom">慣用語</span>serious distortion 嚴重失真；visual distortion 視覺扭曲</p><p><span class="label confuse">容易混淆</span>distortion 指形狀、影像或聲音失真；distraction 指分心的事物。</p><div class="example">More backlight can pass through to your eyes without distortion or color shift.<br>（更多背光能穿透到你的眼睛，而不會變形或偏色。）</div><div class="example">Poor speakers may cause sound distortion at high volume.<br>（品質差的喇叭在高音量時可能造成聲音失真。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">18</span><span class="word">warp</span><span class="kk">[wɔrp]</span><span>v. 變形；翹曲 n. 變形</span></div><p><span class="label deriv">衍生詞</span>warped (adj. 變形的；扭曲的)；warping (n. 翹曲；變形)</p><p><span class="label phrase">片語</span>expand or warp 膨脹或變形；warp with heat 受熱變形</p><p><span class="label idiom">慣用語</span>a warped board 變形的木板；severe warping 嚴重翹曲</p><p><span class="label confuse">容易混淆</span>warp 指材料因熱或壓力變形；bend 指彎曲，可能是暫時或刻意的。</p><div class="example">Glass does not expand or warp as much as plastic with temperature changes.<br>（玻璃不會像塑膠那樣隨溫度變化而膨脹或變形。）</div><div class="example">Cheap plastic may warp if it is left in a hot car.<br>（便宜塑膠若放在炎熱車內可能會變形。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">19</span><span class="word">stability</span><span class="kk">[stəˈbɪlətɪ]</span><span>n. 穩定性；穩固</span></div><p><span class="label deriv">衍生詞</span>stable (adj. 穩定的)；stabilize (v. 使穩定)；unstable (adj. 不穩定的)</p><p><span class="label root">字根</span>sta「站立」：stable 穩定的；station 車站；status 狀態；constant 持續的</p><p><span class="label phrase">片語</span>thermal stability 熱穩定性；emotional stability 情緒穩定；improve stability 改善穩定性</p><p><span class="label idiom">慣用語</span>long-term stability 長期穩定性；a stable signal 穩定訊號</p><div class="example">This stability allows the touchscreen controller to detect small changes.<br>（這種穩定性讓觸控螢幕控制器能偵測微小變化。）</div><div class="example">Good sleep helps improve emotional stability before an exam.<br>（充足睡眠有助於考前提升情緒穩定性。）</div></div>
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">20</span><span class="word">reliably</span><span class="kk">[rɪˈlaɪəblɪ]</span><span>adv. 可靠地；可信賴地</span></div><p><span class="label deriv">衍生詞</span>rely (v. 依賴)；reliable (adj. 可靠的)；reliability (n. 可靠性)</p><p><span class="label phrase">片語</span>respond reliably 可靠地回應；work reliably 可靠運作；rely on 依賴</p><p><span class="label idiom">慣用語</span>highly reliable 高度可靠的；a reliable source 可靠來源</p><p><span class="label pattern">句型</span>rely on + N./V-ing 表示「依賴……」，on 是介係詞，後面接名詞或動名詞。</p><div class="example">The controller can detect small changes caused by your fingertip more reliably.<br>（控制器能更可靠地偵測由指尖造成的微小變化。）</div><div class="example">This train runs reliably even during heavy rain.<br>（這班火車即使在大雨中也能可靠運行。）</div></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="section-card grammar">
+<div class="section-head">三個文法點 Grammar Focus</div>
+<div class="body">
+<div class="grammar-point">
+<h3>【非限定形容詞子句】Non-restrictive Relative Clause 非限定關係子句</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="sentence">Glass is rigid and dimensionally stable, which helps keep this conductive pattern flat and precisely aligned.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula"><em><strong>S + V ..., which + V ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>非限定形容詞子句用逗號隔開，補充前面名詞或整個子句的資訊。這裡的 which 不是只指 stable，而是指「玻璃堅硬且尺寸穩定」這整件事。</p>
+<p>這種寫法常出現在科技或學術文章中，因為它能把原因、結果或補充說明放在同一句裡，讓邏輯更緊密。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>非限定子句前通常要加逗號。</li><li>非限定子句不能用 that，要用 which、who、whose 等關係詞。</li><li>which 可以指前面整個句子的內容。</li><li>去掉非限定子句後，主句意思仍然完整。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>The glass layer stays flat, which improves touch accuracy.<br>（玻璃層保持平整，這提升了觸控準確度。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>看到逗號加 which 時，不要急著只往前找一個名詞；它常常是在指前面整件事。翻譯時可譯成「這一點……」或「而這……」。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Glass is stable, that helps the sensor work better.</p>
+<p>✓ Glass is stable, which helps the sensor work better.<br>說明：逗號後的非限定關係子句不可使用 that。</p>
+<p>選出正確句：A. The screen is clear, that helps users read. B. The screen is clear, which helps users read. C. The screen is clear which helps users read. D. The screen is clear, what helps users read.</p>
+<p>答案：B。說明：逗號後補充前句結果時，應使用 which。</p>
+</div>
+<div class="grammar-point">
+<h3>【分詞當形容詞】Participles as Adjectives 分詞形容詞</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="sentence">Chemically strengthened glass also has excellent hardness.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula"><em><strong>Adv. + past participle + N. + V ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>過去分詞可以放在名詞前面當形容詞，表示「被……的」或「已經……的」。chemically strengthened glass 指「經化學方式被強化的玻璃」。</p>
+<p>分詞前也可以加副詞，說明動作完成的方式，例如 chemically、carefully、newly。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>現在分詞 V-ing 多表示主動或正在進行。</li><li>過去分詞 p.p. 多表示被動或完成。</li><li>分詞片語較長時常放在名詞後方。</li><li>單一分詞或短片語常放在名詞前方。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>The precisely aligned pattern helps the phone sense small touches.<br>（精準對齊的圖案幫助手機感測小小的觸碰。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>判斷用 V-ing 或 p.p. 時，要看名詞和動作的關係。glass 是「被強化」，所以用 strengthened，不是 strengthening。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Chemically strengthening glass has excellent hardness.</p>
+<p>✓ Chemically strengthened glass has excellent hardness.<br>說明：玻璃是被強化的材料，應使用過去分詞 strengthened。</p>
+<p>填空：The ________ (align) conductive pattern improves accuracy. A. aligning B. aligned C. align D. aligns</p>
+<p>答案：B。說明：pattern 是被對齊的圖案，所以用過去分詞 aligned。</p>
+</div>
+<div class="grammar-point">
+<h3>【原因副詞子句】Adverbial Clause of Reason 原因副詞子句</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="sentence">Because glass does not expand or warp as much as plastic with temperature changes, the distance between the electrodes in the touch sensor remains stable.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula"><em><strong>Because + S + V ..., S + V ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>Because 引導原因副詞子句，用來說明主句動作或狀態成立的理由。原因子句放句首時，後面通常要加逗號，再接主要子句。</p>
+<p>本文用 Because 說明玻璃在溫度變化下較穩定，因此電極距離能保持一致。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>Because 後面必須接完整子句，不可只接單一名詞。</li><li>Because 子句放句首時，子句結束後加逗號。</li><li>Because 和 so 通常不在同一句中同時連接同一組因果。</li><li>because of 後面接名詞或 V-ing，不接完整子句。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>Because glass is hard, it resists scratches better than soft plastic.<br>（因為玻璃很硬，所以它比軟塑膠更能抗刮。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>中文常說「因為……所以……」，但英文標準句型通常選 because 或 so 其中一個作主要連接，不需要兩者同時使用。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Because glass is stable, so the signal is consistent.</p>
+<p>✓ Because glass is stable, the signal is consistent.<br>說明：英文中 because 已表示原因，不需要再用 so 連接主句。</p>
+<p>選出正確句：A. Because the glass is clear, images look sharp. B. Because of the glass is clear, images look sharp. C. Because the glass clear, images look sharp. D. Because glass is clear, so images look sharp.</p>
+<p>答案：A。說明：Because 後接完整子句，主句前不用 so。</p>
+</div>
+</div>
+</div>
+</section>
+
+<details>
+<summary>常見字首整理（50個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="term">ab-</span>　離開、相反　-　abnormal（異常的）</div>
+<div class="prefix-item"><span class="term">ad-</span>　向、加　-　advance（前進）</div>
+<div class="prefix-item"><span class="term">ambi-</span>　雙方、兩面　-　ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="term">anti-</span>　反對、抗　-　antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="term">arch-</span>　主要、首要　-　archenemy（死敵）</div>
+<div class="prefix-item"><span class="term">auto-</span>　自動、自我　-　autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="term">bene-</span>　好的、善　-　benefit（好處）</div>
+<div class="prefix-item"><span class="term">bi-</span>　二、雙　-　bilingual（雙語的）</div>
+<div class="prefix-item"><span class="term">circum-</span>　環繞、周圍　-　circumstance（情況）</div>
+<div class="prefix-item"><span class="term">co-/con-/com-</span>　一起、共同　-　cooperate（合作）</div>
+<div class="prefix-item"><span class="term">contra-</span>　相反、對抗　-　contradict（反駁）</div>
+<div class="prefix-item"><span class="term">de-</span>　去除、下降　-　decode（解碼）</div>
+<div class="prefix-item"><span class="term">dia-</span>　穿過、透過　-　dialogue（對話）</div>
+<div class="prefix-item"><span class="term">dis-</span>　否定、分離　-　disagree（不同意）</div>
+<div class="prefix-item"><span class="term">en-/em-</span>　使成為　-　enable（使能夠）</div>
+<div class="prefix-item"><span class="term">epi-</span>　在上、在外　-　epidemic（流行病）</div>
+<div class="prefix-item"><span class="term">ex-</span>　外、前任　-　export（出口）；ex-president（前總統）</div>
+<div class="prefix-item"><span class="term">extra-</span>　額外、外部　-　extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="term">hetero-</span>　不同　-　heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="term">homo-</span>　相同　-　homogeneous（同質的）</div>
+<div class="prefix-item"><span class="term">hyper-</span>　過度、超　-　hyperactive（過動的）</div>
+<div class="prefix-item"><span class="term">hypo-</span>　低於、不足　-　hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="term">in-/im-</span>　否定、進入　-　invisible（看不見的）；import（輸入）</div>
+<div class="prefix-item"><span class="term">inter-</span>　在...之間　-　international（國際的）</div>
+<div class="prefix-item"><span class="term">iso-</span>　相等、相同　-　isolate（隔離）</div>
+<div class="prefix-item"><span class="term">mal-</span>　壞、不良　-　malfunction（故障）</div>
+<div class="prefix-item"><span class="term">micro-</span>　微小　-　microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="term">mis-</span>　錯誤　-　misunderstand（誤解）</div>
+<div class="prefix-item"><span class="term">mono-</span>　單一　-　monologue（獨白）</div>
+<div class="prefix-item"><span class="term">multi-</span>　多　-　multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="term">neo-</span>　新的　-　neonatal（新生的）</div>
+<div class="prefix-item"><span class="term">non-</span>　非、沒有　-　nonsense（無意義）</div>
+<div class="prefix-item"><span class="term">pan-</span>　全部　-　pandemic（大流行病）</div>
+<div class="prefix-item"><span class="term">peri-</span>　周圍　-　perimeter（周長）</div>
+<div class="prefix-item"><span class="term">poly-</span>　多　-　polygon（多邊形）</div>
+<div class="prefix-item"><span class="term">post-</span>　之後　-　postwar（戰後的）</div>
+<div class="prefix-item"><span class="term">pre-</span>　之前　-　preview（預覽）</div>
+<div class="prefix-item"><span class="term">pro-</span>　向前、支持　-　progress（進步）；pro-democracy（支持民主的）</div>
+<div class="prefix-item"><span class="term">pseudo-</span>　假的　-　pseudonym（筆名）</div>
+<div class="prefix-item"><span class="term">re-</span>　再、回　-　review（複習）</div>
+<div class="prefix-item"><span class="term">semi-</span>　一半、部分　-　semicircle（半圓）</div>
+<div class="prefix-item"><span class="term">sub-</span>　在下、次級　-　subway（地鐵）</div>
+<div class="prefix-item"><span class="term">super-</span>　超越、在上　-　superstar（超級明星）</div>
+<div class="prefix-item"><span class="term">syn-/sym-</span>　一起、共同　-　synchronize（同步）</div>
+<div class="prefix-item"><span class="term">tele-</span>　遠距　-　telephone（電話）</div>
+<div class="prefix-item"><span class="term">trans-</span>　穿越、轉變　-　transport（運輸）</div>
+<div class="prefix-item"><span class="term">tri-</span>　三　-　triangle（三角形）</div>
+<div class="prefix-item"><span class="term">un-</span>　否定、不　-　unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="term">vice-</span>　副、代替　-　vice-president（副總統）</div>
+</div>
+</details>
+
+<details>
+<summary>常見英文字尾整理（約30個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item"><span class="term">-tion/-sion/-ation</span>　動作、過程或結果　-　education（教育）、decision（決定）</div>
+<div class="suffix-item"><span class="term">-ment</span>　行為或結果　-　agreement（協議）、development（發展）</div>
+<div class="suffix-item"><span class="term">-ness</span>　狀態或性質　-　happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item"><span class="term">-ity/-ty</span>　抽象概念或狀態　-　ability（能力）、cruelty（殘酷）</div>
+<div class="suffix-item"><span class="term">-er/-or</span>　執行某動作的人或物　-　teacher（老師）、actor（演員）</div>
+<div class="suffix-item"><span class="term">-ist</span>　信仰或專業的人　-　artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item"><span class="term">-ship</span>　身分或關係　-　friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item"><span class="term">-hood</span>　階段或狀態　-　childhood（童年）、neighborhood（鄰里）</div>
+<div class="suffix-item"><span class="term">-age</span>　集合、狀態或費用　-　package（包裹）、postage（郵資）</div>
+<div class="suffix-item"><span class="term">-ance/-ence</span>　狀態或性質　-　performance（表現）、difference（差異）</div>
+<div class="suffix-item"><span class="term">-ism</span>　主義或制度　-　realism（寫實主義）、tourism（觀光業）</div>
+<div class="suffix-item"><span class="term">-logy</span>　學科或研究　-　biology（生物學）、technology（科技）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item"><span class="term">-able/-ible</span>　能夠...的　-　readable（可讀的）、credible（可信的）</div>
+<div class="suffix-item"><span class="term">-ous</span>　充滿...的　-　dangerous（危險的）、famous（著名的）</div>
+<div class="suffix-item"><span class="term">-ful</span>　具有...的　-　hopeful（充滿希望的）、beautiful（美麗的）</div>
+<div class="suffix-item"><span class="term">-less</span>　缺乏...的　-　hopeless（絕望的）、powerless（無力的）</div>
+<div class="suffix-item"><span class="term">-al/-ic</span>　與...相關的　-　natural（自然的）、poetic（詩意的）</div>
+<div class="suffix-item"><span class="term">-ive</span>　具有...性質的　-　active（主動的）、creative（有創意的）</div>
+<div class="suffix-item"><span class="term">-ent/-ant</span>　具有...特性的　-　different（不同的）、important（重要的）</div>
+<div class="suffix-item"><span class="term">-ary/-ory</span>　與...有關的　-　ordinary（普通的）、introductory（介紹性的）</div>
+<div class="suffix-item"><span class="term">-ed</span>　具有...的；感到...的　-　talented（有才華的）、interested（感興趣的）</div>
+<div class="suffix-item"><span class="term">-ing</span>　令人...的；正在...的　-　interesting（有趣的）、developing（發展中的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item"><span class="term">-ize/-ise</span>　使成為...　-　realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item"><span class="term">-ify</span>　使成為...　-　beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item"><span class="term">-ate</span>　形成動詞　-　dominate（支配）、activate（啟動）</div>
+<div class="suffix-item"><span class="term">-en</span>　使變成...　-　strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item"><span class="term">-ly</span>　形容詞轉副詞　-　quickly（快速地）、carefully（仔細地）</div>
+<div class="suffix-item"><span class="term">-ward(s)</span>　表示方向　-　upwards（向上）、homeward（回家）</div>
+<div class="suffix-item"><span class="term">-wise</span>　表示方式或角度　-　clockwise（順時針方向）</div>
+</div>
+</details>
+
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>1. smartphone [ˈsmɑrtˌfon] (n. 智慧型手機) - smart device（智慧裝置）</p>
+<p>2. touchscreen [ˈtʌtʃˌskrin] (n. 觸控螢幕) - touch panel（觸控面板）</p>
+<p>3. glass [ɡlæs] (n. 玻璃) - glassy (adj. 玻璃般的)</p>
+<p>4. plastic [ˈplæstɪk] (n./adj. 塑膠；塑膠的) - plastic waste（塑膠垃圾）</p>
+<p>5. capacitive [kəˈpæsətɪv] (adj. 電容式的) - capacitance (n. 電容)</p>
+<p>6. sensing [ˈsɛnsɪŋ] (n. 感測) - sensor (n. 感測器)</p>
+<p>7. detect [dɪˈtɛkt] (v. 偵測) - detection (n. 偵測)</p>
+<p>8. electric [ɪˈlɛktrɪk] (adj. 電的) - electricity (n. 電力)</p>
+<p>9. charge [tʃɑrdʒ] (n./v. 電荷；充電) - charger (n. 充電器)</p>
+<p>10. surface [ˈsɝfɪs] (n. 表面) - resurface (v. 重新出現；重鋪)</p>
+<p>11. layer [ˈleɚ] (n. 層) - layered (adj. 分層的)</p>
+<p>12. transparent [trænsˈpɛrənt] (adj. 透明的) - transparency (n. 透明度)</p>
+<p>13. conductive [kənˈdʌktɪv] (adj. 導電的) - conductor (n. 導體)</p>
+<p>14. underneath [ˌʌndɚˈniθ] (adv./prep. 在下方) - under (prep. 在下面)</p>
+<p>15. rigid [ˈrɪdʒɪd] (adj. 堅硬的) - rigidity (n. 堅硬；僵化)</p>
+<p>16. stable [ˈstebəl] (adj. 穩定的) - stability (n. 穩定性)</p>
+<p>17. pattern [ˈpætɚn] (n. 圖案；模式) - patterned (adj. 有圖案的)</p>
+<p>18. precisely [prɪˈsaɪslɪ] (adv. 精確地) - precision (n. 精確度)</p>
+<p>19. aligned [əˈlaɪnd] (adj. 對齊的) - alignment (n. 對齊)</p>
+<p>20. accurately [ˈækjərətlɪ] (adv. 準確地) - accuracy (n. 準確性)</p>
+<p>21. hardness [ˈhɑrdnəs] (n. 硬度) - harden (v. 使變硬)</p>
+<p>22. resist [rɪˈzɪst] (v. 抵抗) - resistance (n. 抵抗；阻力)</p>
+<p>23. scratch [skrætʃ] (n./v. 刮痕；刮傷) - scratch-resistant（抗刮的）</p>
+<p>24. optical [ˈɑptɪkəl] (adj. 光學的) - optics (n. 光學)</p>
+<p>25. clarity [ˈklærətɪ] (n. 清晰度) - clear (adj. 清楚的)</p>
+<p>26. transmittance [trænsˈmɪtəns] (n. 透光率) - transmit (v. 傳送)</p>
+<p>27. distortion [dɪˈstɔrʃən] (n. 失真；扭曲) - distort (v. 扭曲)</p>
+<p>28. electrode [ɪˈlɛkˌtrod] (n. 電極) - electronic (adj. 電子的)</p>
+<p>29. controller [kənˈtrolɚ] (n. 控制器) - control (v./n. 控制)</p>
+<p>30. reliably [rɪˈlaɪəblɪ] (adv. 可靠地) - reliable (adj. 可靠的)</p>
+<h3>文章相關常用片語 5 個</h3>
+<p>• work better with（更適合與……搭配）</p>
+<p>• cooperate with（與……配合）</p>
+<p>• pass through（穿透；通過）</p>
+<p>• point of view（觀點；角度）</p>
+<p>• respond quickly（快速回應）</p>
+</div>
+</details>
+
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>① because + S + V（因為……）<br>→ 適用：解釋科技選擇或設計理由時<br>例：Glass is used because it stays clear after long-term use.</p>
+<p>② works better with + N.（更適合搭配……）<br>→ 適用：比較兩種材料、工具或方法時<br>例：This software works better with a faster processor.</p>
+<p>③ when + S + V（當……時）<br>→ 適用：說明條件、時機或使用情境<br>例：The sensor reacts when a finger touches the screen.</p>
+<p>④ so + S + V（所以……）<br>→ 適用：呈現原因造成的結果<br>例：The surface is smooth, so the image looks clearer.</p>
+<p>⑤ which + V（這一點……）<br>→ 適用：補充前面整件事造成的影響<br>例：The layer stays flat, which improves accuracy.</p>
+<p>⑥ keep + O + adj.（使……保持某狀態）<br>→ 適用：說明設計如何維持穩定效果<br>例：The frame keeps the display stable.</p>
+<p>⑦ allow + O + to V（使……能夠……）<br>→ 適用：說明功能帶來的能力<br>例：The sensor allows the device to detect small movements.</p>
+<p>⑧ without + N./V-ing（沒有……；不……）<br>→ 適用：說明避免負面結果<br>例：The glass lets light pass through without distortion.</p>
+<p>⑨ from a/an + adj. + point of view（從……角度來看）<br>→ 適用：切換分析角度<br>例：From an engineering point of view, stability is essential.</p>
+<p>⑩ as much as + N.（像……一樣多；達到……程度）<br>→ 適用：比較變化程度<br>例：Glass does not warp as much as plastic.</p>
+<p>⑪ caused by + N.（由……造成的）<br>→ 適用：修飾問題、變化或結果<br>例：The scratches caused by sand are hard to remove.</p>
+<p>⑫ has become the standard choice for + N.（已成為……的標準選擇）<br>→ 適用：描述趨勢或主流做法<br>例：Online payment has become the standard choice for many stores.</p>
+</div>
+</details>
+<nav class="promo-panel bottom" aria-label="七月課程與聯絡連結">
+<p class="promo-title">七月課程與聯絡方式</p>
+<div class="promo-grid">
+<a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">從錯題中找出英文弱點，透過回音式練習建立穩定閱讀、文法與寫作能力。</span>
+<span class="promo-cta">查看課程</span>
+</a>
+<a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">協助整理學習狀況與常見卡點，讓學生更清楚知道下一步該補強什麼。</span>
+<span class="promo-cta">查看分析</span>
+</a>
+<a class="promo-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問、學習規劃與英文教材相關問題，可透過 Line 帳號聯絡。</span>
+<span class="promo-cta">加入 Line</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
