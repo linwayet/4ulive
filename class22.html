@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>區塊鏈入門20週課程・林威老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F0;
+  --warm0:#FFFAF4;
+  --warm1:#FFF3E0;
+  --warm2:#FFE0B2;
+  --warm3:#FFCC80;
+  --warm4:#FFB74D;
+  --amber:#FF8F00;
+  --amber2:#FFA000;
+  --amber-light:#FFF8E1;
+  --coral:#FF6B35;
+  --coral2:#E8573A;
+  --coral-light:#FFF0EB;
+  --rose:#E8735A;
+  --rose-light:#FDECEA;
+  --gold:#F4A811;
+  --gold2:#E09900;
+  --gold-light:#FFFDE7;
+  --brown:#5D2E0C;
+  --brown-mid:#8B4513;
+  --brown2:#A0522D;
+  --text:#3E1F00;
+  --text2:#7B4F2E;
+  --text3:#B07A50;
+  --border:#F0D5B8;
+  --shadow:rgba(160,82,45,0.12);
+  --shadow2:rgba(160,82,45,0.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--warm0);color:var(--text);line-height:1.7;min-height:100vh}
+
+/* ── TOP / BOTTOM BANNER ── */
+.site-banner{
+  background:linear-gradient(135deg,#5D2E0C 0%,#8B4513 40%,#B05A20 70%,#D4762A 100%);
+  padding:14px 16px;
+}
+.banner-inner{max-width:900px;margin:0 auto}
+.banner-title{color:#FFE0B2;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;opacity:.8}
+.banner-links{display:flex;flex-direction:column;gap:10px}
+.blink-card{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,220,150,.25);
+  border-radius:12px;padding:10px 14px;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.blink-card:hover{background:rgba(255,255,255,.18);transform:translateX(3px)}
+.blink-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.blink-icon.course1{background:linear-gradient(135deg,#FF6B35,#F4A811)}
+.blink-icon.course2{background:linear-gradient(135deg,#F4A811,#FFD54F)}
+.blink-icon.line{background:linear-gradient(135deg,#00B900,#00E000)}
+.blink-text{}
+.blink-label{font-size:11px;color:#FFD5A0;font-weight:700;letter-spacing:.04em}
+.blink-desc{font-size:13px;color:#fff;font-weight:500;line-height:1.3;margin-top:1px}
+.blink-badge{
+  margin-left:auto;flex-shrink:0;
+  background:rgba(255,200,100,.25);border:1px solid rgba(255,200,100,.4);
+  color:#FFE0B2;font-size:10px;padding:3px 9px;border-radius:999px;
+}
+
+@media(min-width:600px){
+  .banner-links{flex-direction:row;gap:10px}
+  .blink-card{flex:1}
+}
+
+/* ── NAV ── */
+nav{
+  background:linear-gradient(90deg,#7B3F00,#A0522D 50%,#C8622A);
+  padding:0 16px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:48px}
+.nav-logo{color:#FFE0B2;font-size:15px;font-weight:700}
+.nav-links{display:flex;gap:1rem;list-style:none}
+.nav-links a{color:#FFD5A0;font-size:12px;text-decoration:none;padding:4px 8px;border-radius:6px;transition:background .2s}
+.nav-links a:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(160deg,#FF6B35 0%,#F4A811 55%,#FF8F00 100%);
+  padding:3rem 1.5rem 2.5rem;text-align:center;color:#fff;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;text-shadow:0 2px 12px rgba(0,0,0,.2);margin-bottom:.5rem;position:relative}
+.hero p{font-size:14px;opacity:.92;max-width:500px;margin:0 auto 1.2rem;position:relative}
+.hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative}
+.hbadge{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 14px;font-size:12px;color:#fff}
+
+/* ── SECTION WRAPPER ── */
+.section-wrap{max-width:900px;margin:0 auto;padding:2rem 1rem}
+.sec-title{font-size:1.3rem;font-weight:700;color:var(--brown);margin-bottom:.2rem}
+.sec-sub{font-size:13px;color:var(--text3);margin-bottom:1.5rem}
+.divider{height:3px;width:50px;background:linear-gradient(90deg,var(--coral),var(--gold));border-radius:2px;margin-bottom:.6rem}
+
+/* ── PHASE TABS ── */
+.phase-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.3rem}
+.ptab{padding:6px 14px;border-radius:999px;font-size:12px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text2);font-family:inherit;transition:all .18s}
+.ptab.active{background:var(--coral);color:#fff;border-color:var(--coral)}
+.ptab:hover:not(.active){border-color:var(--coral);color:var(--coral)}
+
+/* ── PHASE HEADER ── */
+.phase-header{display:flex;align-items:center;gap:8px;margin:1.5rem 0 .7rem}
+.phase-dot{width:12px;height:12px;border-radius:50%}
+.phase-name{font-size:13px;font-weight:700;letter-spacing:.03em}
+
+/* ── WEEK CARDS ── */
+.week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.wcard{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s;box-shadow:0 2px 8px var(--shadow)}
+.wcard:hover{box-shadow:0 6px 20px var(--shadow2);transform:translateY(-2px)}
+.wcard-top{padding:12px 14px 9px;border-bottom:1px solid var(--border)}
+.wnum-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.wnum{font-size:10px;font-weight:700;padding:2px 9px;border-radius:999px}
+.wtag{font-size:10px;color:var(--text3)}
+.wtitle{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.4}
+.wcard-story{padding:9px 14px;font-size:11.5px;color:var(--text2);line-height:1.5;border-bottom:1px solid var(--border);background:var(--amber-light)}
+.wcard-bottom{padding:9px 14px;display:flex;gap:5px;flex-wrap:wrap}
+.concept-pill{font-size:10px;background:var(--warm1);border:1px solid var(--warm2);padding:2px 8px;border-radius:999px;color:var(--text2)}
+
+/* ── MODAL ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(50,20,0,.5);z-index:300;align-items:flex-end;justify-content:center;padding:0}
+.overlay.open{display:flex}
+@media(min-width:600px){.overlay{align-items:center;padding:1rem}}
+.modal{background:#fff;border-radius:18px 18px 0 0;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 -8px 40px rgba(0,0,0,.2)}
+@media(min-width:600px){.modal{border-radius:18px;max-width:600px;max-height:85vh}}
+.modal-head{background:linear-gradient(135deg,var(--coral),var(--gold));padding:1.2rem 1.2rem .9rem;color:#fff;border-radius:18px 18px 0 0;position:relative}
+@media(min-width:600px){.modal-head{border-radius:18px 18px 0 0}}
+.modal-head h2{font-size:16px;font-weight:700}
+.modal-head .mweek{font-size:11px;opacity:.85;margin-bottom:3px}
+.modal-close{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.25);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:15px;color:#fff;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:1rem 1.2rem 1.4rem}
+.m-section{margin-bottom:.9rem}
+.m-label{font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.05em;margin-bottom:5px}
+.story-block{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 12px;font-size:12.5px;color:var(--text);line-height:1.6}
+.concept-list{list-style:none}
+.concept-list li{font-size:12.5px;padding:4px 0;border-bottom:1px solid var(--border);color:var(--text);display:flex;align-items:flex-start;gap:7px}
+.concept-list li:last-child{border:none}
+.concept-list li::before{content:"▸";color:var(--coral);font-size:11px;margin-top:3px}
+.app-chips{display:flex;flex-wrap:wrap;gap:5px}
+.app-chip{font-size:11.5px;background:var(--coral-light);border:1px solid #f0c0b0;color:var(--brown2);padding:4px 11px;border-radius:7px}
+
+/* ── GLOSSARY ── */
+.gloss-bg{background:linear-gradient(180deg,var(--warm1) 0%,var(--warm0) 100%)}
+.cat-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.3rem}
+.ctab{padding:6px 14px;border-radius:999px;font-size:12px;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text2);font-family:inherit;transition:all .18s}
+.ctab.active{color:#fff}
+
+.diff-block{margin-bottom:1.8rem}
+.diff-title{display:flex;align-items:center;gap:10px;margin-bottom:.7rem}
+.diff-badge{font-size:11px;font-weight:700;padding:3px 12px;border-radius:999px;color:#fff}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.term-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;transition:box-shadow .18s}
+.term-card:hover{box-shadow:0 4px 14px var(--shadow)}
+.term-en{font-size:13px;font-weight:700;color:var(--brown)}
+.term-zh{font-size:12px;color:var(--coral);font-weight:700;margin-bottom:4px}
+.term-def{font-size:11.5px;color:var(--text2);line-height:1.6}
+.term-example{font-size:11px;color:var(--text3);margin-top:5px;font-style:italic;border-top:1px dashed var(--border);padding-top:4px}
+
+/* ── BOTTOM BANNER ── */
+.bottom-banner{
+  background:linear-gradient(135deg,#5D2E0C 0%,#8B4513 40%,#B05A20 70%,#D4762A 100%);
+}
+
+/* ── FOOTER ── */
+footer{background:#3E1F00;color:#FFD5A0;text-align:center;padding:1.2rem 1rem;font-size:12px}
+footer a{color:#FFB74D;text-decoration:none}
+
+.hidden{display:none!important}
+
+/* section backgrounds */
+.course-section{background:var(--warm1)}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BANNER ═══ -->
+<div class="site-banner">
+  <div class="banner-inner">
+    <div class="banner-title">📅 2025年7月開課・林威老師課程</div>
+    <div class="banner-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="blink-card">
+        <div class="blink-icon course1">🔥</div>
+        <div class="blink-text">
+          <div class="blink-label">七月新課</div>
+          <div class="blink-desc">錯中學 ECHO 計劃<br><span style="font-size:11px;opacity:.8">從錯誤中學習的革命性教學法</span></div>
+        </div>
+        <span class="blink-badge">7月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="blink-card">
+        <div class="blink-icon course2">📊</div>
+        <div class="blink-text">
+          <div class="blink-label">七月新課</div>
+          <div class="blink-desc">學生分析工具<br><span style="font-size:11px;opacity:.8">深度了解你的學習狀況</span></div>
+        </div>
+        <span class="blink-badge">7月開課</span>
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" target="_blank" class="blink-card">
+        <div class="blink-icon line">💬</div>
+        <div class="blink-text">
+          <div class="blink-label">聯絡老師</div>
+          <div class="blink-desc">加LINE好友<br><span style="font-size:11px;opacity:.8">ID：linwayet</span></div>
+        </div>
+        <span class="blink-badge">LINE</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">⛓ 區塊鏈入門</div>
+    <ul class="nav-links">
+      <li><a href="#course">課程</a></li>
+      <li><a href="#glossary">術語</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <h1>區塊鏈入門20週課程</h1>
+  <p>為資訊小白設計・從真實故事出發・每週一個改變世界的案例</p>
+  <div class="hero-badges">
+    <span class="hbadge">📖 20週完整課程</span>
+    <span class="hbadge">📚 82 核心術語</span>
+    <span class="hbadge">💡 每週真實故事</span>
+    <span class="hbadge">🔧 動手實作活動</span>
+  </div>
+</div>
+
+<!-- ═══ COURSE SECTION ═══ -->
+<div id="course" class="course-section" style="padding:2rem 1rem">
+<div style="max-width:900px;margin:0 auto">
+  <div class="divider"></div>
+  <div class="sec-title">20週課程地圖</div>
+  <div class="sec-sub">點擊任意週卡查看完整教學內容、故事案例與應用活動</div>
+  <div class="phase-tabs">
+    <button class="ptab active" onclick="filterPhase('all',this)">全部20週</button>
+    <button class="ptab" onclick="filterPhase(1,this)">第一階段：基礎</button>
+    <button class="ptab" onclick="filterPhase(2,this)">第二階段：比特幣</button>
+    <button class="ptab" onclick="filterPhase(3,this)">第三階段：以太坊</button>
+    <button class="ptab" onclick="filterPhase(4,this)">第四階段：DeFi/NFT</button>
+    <button class="ptab" onclick="filterPhase(5,this)">第五階段：未來</button>
+  </div>
+  <div id="course-list"></div>
+</div>
+</div>
+
+<!-- ═══ GLOSSARY ═══ -->
+<div id="glossary" class="gloss-bg" style="padding:2rem 1rem">
+<div style="max-width:900px;margin:0 auto">
+  <div class="divider"></div>
+  <div class="sec-title">區塊鏈術語大全</div>
+  <div class="sec-sub">按功能分類・從簡單到困難・共 82 個核心術語</div>
+  <div class="cat-tabs" id="cat-tabs"></div>
+  <div id="gloss-content"></div>
+</div>
+</div>
+
+<!-- ═══ BOTTOM BANNER ═══ -->
+<div class="bottom-banner site-banner">
+  <div class="banner-inner">
+    <div class="banner-title">📅 2025年7月開課・林威老師課程</div>
+    <div class="banner-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="blink-card">
+        <div class="blink-icon course1">🔥</div>
+        <div class="blink-text">
+          <div class="blink-label">七月新課</div>
+          <div class="blink-desc">錯中學 ECHO 計劃<br><span style="font-size:11px;opacity:.8">從錯誤中學習的革命性教學法</span></div>
+        </div>
+        <span class="blink-badge">7月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="blink-card">
+        <div class="blink-icon course2">📊</div>
+        <div class="blink-text">
+          <div class="blink-label">七月新課</div>
+          <div class="blink-desc">學生分析工具<br><span style="font-size:11px;opacity:.8">深度了解你的學習狀況</span></div>
+        </div>
+        <span class="blink-badge">7月開課</span>
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" target="_blank" class="blink-card">
+        <div class="blink-icon line">💬</div>
+        <div class="blink-text">
+          <div class="blink-label">聯絡老師</div>
+          <div class="blink-desc">加LINE好友<br><span style="font-size:11px;opacity:.8">ID：linwayet</span></div>
+        </div>
+        <span class="blink-badge">LINE</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 林威老師・區塊鏈入門課程・為台灣資訊小白設計 ｜
+  <a href="https://line.me/ti/p/~linwayet" target="_blank">LINE：linwayet</a>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-head" id="modal-head">
+      <div class="mweek" id="modal-week"></div>
+      <h2 id="modal-title"></h2>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="m-section">
+        <div class="m-label">📖 真實故事案例</div>
+        <div class="story-block" id="modal-story"></div>
+      </div>
+      <div class="m-section">
+        <div class="m-label">🔑 本週核心概念</div>
+        <ul class="concept-list" id="modal-concepts"></ul>
+      </div>
+      <div class="m-section">
+        <div class="m-label">🔧 應用與討論活動</div>
+        <div class="app-chips" id="modal-apps"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const phaseInfo={
+  1:{name:"第一階段：基礎概念 W1–4",color:"#E8735A",bg:"#FDE8E2",numBg:"#F5C2B5",numColor:"#7B2A15"},
+  2:{name:"第二階段：比特幣 W5–8",color:"#F4A811",bg:"#FFF8DC",numBg:"#FFE68A",numColor:"#7B5A00"},
+  3:{name:"第三階段：以太坊 W9–12",color:"#D4622A",bg:"#FAE8DC",numBg:"#F0C098",numColor:"#6B2A0A"},
+  4:{name:"第四階段：DeFi與NFT W13–16",color:"#C0392B",bg:"#FDECEA",numBg:"#F5B8B2",numColor:"#6B1A12"},
+  5:{name:"第五階段：未來與應用 W17–20",color:"#A0522D",bg:"#F5EAE0",numBg:"#DEB88A",numColor:"#5A2A0A"}
+};
+
+const weeks=[
+{w:1,phase:1,title:"網路上為什麼需要信任？",tag:"基礎哲學",story:"🏦 2008年金融海嘯：雷曼兄弟倒閉，銀行騙了所有人。當機構失去信任，怎麼辦？中本聰的問題從這裡開始。",concepts:["信任的問題：我怎麼知道你沒騙我？","第三方中介（銀行、公證人）的角色","「去中心化信任」的概念初探","點對點（P2P）網路的基本概念"],apps:["思考：你最近用過哪些中介機構？","活動：列出3件你不得不信任中間人的事","討論：如果沒有銀行，你怎麼轉帳給朋友？"]},
+{w:2,phase:1,title:"什麼是區塊鏈？用故事說明白",tag:"核心定義",story:"📒 公開帳本的比喻：想像全村1000人都有一本帳本，有人要說謊，其他999本都會跳出來反對。這就是分散式帳本的精神。",concepts:["分散式帳本（Distributed Ledger）","區塊 = 一頁帳本；鏈 = 把每頁縫在一起","不可篡改性的直覺理解","節點（Node）是什麼"],apps:["類比：Google共用試算表 vs 區塊鏈的差異","遊戲：模擬3人帳本記帳","畫出你理解的區塊鏈示意圖"]},
+{w:3,phase:1,title:"密碼學：鎖頭是怎麼做的",tag:"密碼基礎",story:"🔑 WWII謎機（Enigma）的故事：德軍用加密保護訊息，盟軍破解改變二戰走向。現代區塊鏈加密遠比Enigma複雜。",concepts:["雜湊函數（Hash Function）：任意資料→固定指紋","公鑰（Public Key）/ 私鑰（Private Key）","數位簽章（Digital Signature）","SHA-256是什麼意思"],apps:["實作：在網路上玩SHA-256 hash工具","類比：私鑰 = 印章，公鑰 = 你的名字","挑戰：改一個字，hash有什麼變化？"]},
+{w:4,phase:1,title:"共識機制：大家怎麼說好",tag:"核心機制",story:"🗳️ 拜占庭將軍問題：幾位將軍分散各地，如何在有叛徒的情況下達成攻城共識？這正是區塊鏈要解決的問題。",concepts:["拜占庭容錯（Byzantine Fault Tolerance）","工作量證明（Proof of Work）的直覺","權益證明（Proof of Stake）簡介","51%攻擊是什麼威脅"],apps:["類比：投票選班長的規則設計","思考：什麼樣的共識最公平？","討論：PoW與PoS誰更好？"]},
+{w:5,phase:2,title:"中本聰是誰？比特幣誕生",tag:"比特幣歷史",story:"👤 2008年一個匿名的「中本聰」發布了9頁白皮書，創造了第一個加密貨幣，至今沒人知道他是誰。史上最神秘的科技發明。",concepts:["比特幣白皮書的核心思想","創世區塊（Genesis Block）","Coinbase交易（礦工獎勵）","UTXO模型（未花費交易輸出）"],apps:["閱讀：中本聰白皮書第一段（中文版）","思考：為什麼要匿名發明這個？","查詢：創世區塊裡藏了什麼訊息？"]},
+{w:6,phase:2,title:"挖礦：電腦在算什麼？",tag:"PoW機制",story:"⛏️ 2010年佛羅里達程式設計師Laszlo用10,000顆比特幣買了兩片披薩。這是比特幣第一筆商業交易。那兩片披薩現在值多少？",concepts:["挖礦的本質：暴力猜謎比賽","Nonce（隨機數）是什麼","難度調整（Difficulty Adjustment）機制","礦池（Mining Pool）的出現"],apps:["計算：10,000 BTC今天等於多少台幣？","思考：挖礦消耗電力合理嗎？","查詢：目前全球比特幣算力多大？"]},
+{w:7,phase:2,title:"比特幣的暴漲暴跌：故事時間",tag:"市場與人性",story:"📈 2017年比特幣從$1,000漲到$20,000，隔年跌回$3,000。台灣有人賣房買幣大賺，也有人傾家蕩產。這背後是什麼心理？",concepts:["供需原理 + 有限供給（2100萬顆上限）","FOMO（錯失恐懼）心理學","市場操縱與鯨魚（Whale）","減半事件（Halving）的影響"],apps:["看一張比特幣10年K線圖","討論：你會在什麼時候買賣？","分析：每次減半後價格走勢規律"]},
+{w:8,phase:2,title:"比特幣錢包與私鑰管理",tag:"實用操作",story:"💸 2013年英國男子James Howells不小心丟棄了含有7,500 BTC私鑰的硬碟，現在值數億美元，他一直在申請挖垃圾場。",concepts:["熱錢包（Hot Wallet）vs 冷錢包（Cold Wallet）","私鑰遺失 = 永遠沒了","助記詞（Seed Phrase / Mnemonic）","硬體錢包（Hardware Wallet）介紹"],apps:["實際下載MetaMask（不存錢）體驗","練習：備份助記詞的正確方式","討論：你把私鑰存在哪裡最安全？"]},
+{w:9,phase:3,title:"以太坊：可程式化的區塊鏈",tag:"以太坊基礎",story:"🧑‍💻 2013年Vitalik Buterin 19歲提出以太坊白皮書。靈感來自魔獸世界：暴雪修改了他最愛的技能，他意識到中心化系統不可信。",concepts:["智能合約（Smart Contract）是什麼","EVM（以太坊虛擬機）","以太坊 vs 比特幣的根本差異","Solidity語言初探"],apps:["類比：自動販賣機 = 最早期的智能合約","討論：你想用智能合約自動化什麼？","看一個最簡單的智能合約code"]},
+{w:10,phase:3,title:"智能合約實例：這不只是概念",tag:"智能合約應用",story:"🏠 巴拿馬房產交易：2018年一棟房子用智能合約完成交割，從簽約到過戶不到10分鐘，傳統流程要幾週甚至幾個月。",concepts:["Gas費（手續費）是什麼","合約一旦部署無法修改","ERC-20代幣標準","Oracle（預言機）連接現實世界"],apps:["看一個真實的ERC-20代幣合約","思考：哪些合約最適合智能化？","體驗：在測試網部署簡單合約"]},
+{w:11,phase:3,title:"DAO：沒有老闆的組織",tag:"組織創新",story:"🗳️ ConstitutionDAO 2021年：網路上陌生人在72小時募款$47M美元試圖競標美國憲法原件。最後標輸了，但証明了DAO的革命力量。",concepts:["DAO（去中心化自治組織）定義","治理代幣（Governance Token）","提案（Proposal）與投票機制","多簽錢包（Multisig Wallet）"],apps:["加入一個真實的DAO Discord觀察","思考：台灣的里民大會如果用DAO？","討論：DAO有辦法完全取代公司嗎？"]},
+{w:12,phase:3,title:"駭客攻擊：智能合約有漏洞",tag:"風險與安全",story:"💣 2016年The DAO駭客事件：駭客利用合約漏洞偷走$60M美元的ETH。以太坊社群選擇「時光倒流」，引發以太坊/以太坊經典（ETC）分裂。",concepts:["重入攻擊（Reentrancy Attack）","硬分叉（Hard Fork）vs 軟分叉（Soft Fork）","「Code is law」的哲學爭議","智能合約審計（Audit）的重要性"],apps:["討論：出問題應該回滾還是承擔？","現實類比：法律漏洞被利用時怎麼辦？","查詢：近年最大DeFi駭客事件"]},
+{w:13,phase:4,title:"DeFi：去中心化金融是什麼",tag:"DeFi入門",story:"🏦 Uniswap 2020年：任何人不需要KYC就能換代幣，當年交易量超過Coinbase。一個22歲工程師Hayden Adams幾個月內寫出來的。",concepts:["DEX（去中心化交易所）","流動性池（Liquidity Pool）","AMM（自動化做市商）原理","無常損失（Impermanent Loss）"],apps:["在Uniswap用測試幣體驗換幣","計算：提供流動性能賺多少？","比較：DEX與CEX的優缺點"]},
+{w:14,phase:4,title:"穩定幣：幣的世界裡的錨",tag:"穩定幣",story:"💵 2022年UST/LUNA崩盤：一週內蒸發$400億美元，無數台灣投資人血本無歸。算法穩定幣的死亡螺旋是怎麼發生的？",concepts:["法幣抵押型（USDT/USDC）","超額抵押型（DAI）","算法穩定幣（Algorithmic Stablecoin）","脫鉤（De-peg）危機"],apps:["比較USDT、USDC、DAI的風險","討論：你信任哪一種穩定幣？","分析：LUNA崩盤的時間軸"]},
+{w:15,phase:4,title:"NFT：數位所有權的故事",tag:"NFT入門",story:"🎨 Beeple 2021年：一張JPG在佳士得拍賣行賣了$6,900萬美元。花這筆錢買了什麼？右鍵可以存圖，NFT到底是什麼所有權？",concepts:["NFT（非同質化代幣）定義","Token ID與所有權記錄","ERC-721 vs ERC-1155標準","版稅（Royalty）與二級市場機制"],apps:["在OpenSea上瀏覽免費NFT","討論：數位藝術的所有權有意義嗎？","比較：NFT vs 傳統藝術品的所有權"]},
+{w:16,phase:4,title:"NFT的炒作與崩盤",tag:"NFT市場現實",story:"📉 無聊猿（BAYC）從巔峰$400,000跌到$30,000，許多台灣網紅高點買入血虧。泡沫的形成與破滅，在加密世界一再重演。",concepts:["PFP文化與社群效應","洗盤（Wash Trading）操作手法","地板價（Floor Price）","真實應用（門票/會員/遊戲資產）vs 純炒作"],apps:["分析：哪些NFT應用有長期價值？","討論：你如何判斷一個項目是否詐騙？","研究：現在地板價最高的NFT是什麼？"]},
+{w:17,phase:5,title:"Layer 2：擴容方案與現實挑戰",tag:"技術擴容",story:"🚦 以太坊塞車：2021年NFT熱潮，一筆交易Gas費高達$200美元。Polygon、Optimism、Arbitrum如何解決這個問題？",concepts:["Layer 1 vs Layer 2的比喻","Rollup（Optimistic vs ZK）原理","跨鏈橋（Cross-chain Bridge）的風險","交易最終性（Finality）"],apps:["體驗：在Polygon上送出低Gas費交易","比較主流L2手續費差異","討論：哪個L2方案未來最有潛力？"]},
+{w:18,phase:5,title:"真實世界應用：供應鏈與身份",tag:"實體應用",story:"🥩 沃爾瑪食品安全計畫：2018年起用IBM Food Trust區塊鏈追蹤農場到貨架，芒果溯源從7天縮短到2.2秒。",concepts:["供應鏈溯源的真實應用","數位身份（DID）與自主主權身份","CBDC（央行數位貨幣）","台灣政府的區塊鏈實驗計畫"],apps:["查詢：台灣有哪些區塊鏈政府計畫？","討論：區塊鏈最適合解決什麼現實問題？","研究：各國CBDC發展進度比較"]},
+{w:19,phase:5,title:"監管與法律：各國怎麼看",tag:"法規政策",story:"⚖️ 2023年幣安（Binance）被美國司法部罰款$43億美元，創辦人趙長鵬認罪。這是加密世界最大的監管衝擊，標誌著野蠻生長的終結。",concepts:["各國監管態度對比（美/歐/中/台）","KYC（認識你的客戶）/AML（反洗錢）","台灣虛擬資產服務業管理法規","MiCA（歐盟加密法規）框架"],apps:["查詢：台灣金管會對加密貨幣的最新規定","討論：監管是保護還是扼殺創新？","分析：哪個國家監管環境對創業最友善？"]},
+{w:20,phase:5,title:"20週總結：你的區塊鏈地圖",tag:"課程整合",story:"🗺️ 從中本聰的9頁白皮書，到今天數兆美元的生態系。這20週走了一條從「為什麼需要信任」到「未來怎麼信任」的完整旅程。",concepts:["完整心智圖回顧：5個階段核心概念","Web3的願景與現實落差","你學了這些，可以做什麼職涯選擇？","下一步：你最感興趣的分支是哪個？"],apps:["製作自己的區塊鏈學習心智圖","分享：你認為區塊鏈最有潛力的應用","討論：10年後區塊鏈會普及到什麼程度？"]}
+];
+
+const glossaryData={
+  "基礎結構":{color:"#E8735A",terms:[
+    {en:"Blockchain",zh:"區塊鏈",diff:1,def:"把交易資料打包成「區塊」，用密碼學串成一條無法竄改的「鏈」。",ex:"就像用膠水把帳本的每一頁都黏起來，拆一頁就全毀。"},
+    {en:"Block",zh:"區塊",diff:1,def:"一批打包在一起的交易記錄，包含時間戳、前一個區塊的hash值和交易清單。",ex:"就像帳本的「一頁」，記錄了這段時間內發生的所有交易。"},
+    {en:"Node",zh:"節點",diff:1,def:"加入區塊鏈網路的每一台電腦，負責儲存完整帳本或驗證交易。",ex:"想像一個村莊，每一戶人家都是一個節點，各自保存一份帳本。"},
+    {en:"Distributed Ledger",zh:"分散式帳本",diff:1,def:"帳本不儲存在單一地點，而是同時存在於成千上萬台電腦上。",ex:"vs Google試算表（中心化）vs 區塊鏈（分散式）。"},
+    {en:"Hash Function",zh:"雜湊函數",diff:2,def:"把任意長度的資料轉換成固定長度「指紋」的數學函數，無法逆推。",ex:"「Hello」→ SHA256 → 185f8db3... 改一個字母，指紋完全不同。"},
+    {en:"Genesis Block",zh:"創世區塊",diff:2,def:"區塊鏈上的第一個區塊，沒有前驅區塊。比特幣創世區塊藏有反銀行的政治宣言。",ex:"比特幣創世區塊（Block 0）由中本聰在2009年1月3日創建。"},
+    {en:"Merkle Tree",zh:"梅克爾樹",diff:3,def:"一種把大量交易資料壓縮成單一hash值的樹狀資料結構，用於快速驗證。",ex:"像一棵倒置的樹，葉子是每筆交易hash，往上匯總成根hash（Merkle Root）。"},
+    {en:"Immutability",zh:"不可篡改性",diff:1,def:"已確認的區塊資料在技術上不可能被更改，因為更改需要重算所有後續區塊。",ex:"就像水泥乾了就不能再雕刻，已寫入區塊鏈的資料永久保存。"}
+  ]},
+  "密碼學與安全":{color:"#D4622A",terms:[
+    {en:"Public Key",zh:"公鑰",diff:1,def:"可以公開分享的地址，相當於你的「銀行帳號」，別人用它來給你轉帳。",ex:"你可以把公鑰印在名片上，告訴別人「把幣轉到這裡」。"},
+    {en:"Private Key",zh:"私鑰",diff:1,def:"絕對不能洩露的秘密鑰匙，掌控你的資產。私鑰遺失 = 資產永久消失。",ex:"James Howells丟棄含有私鑰的硬碟，7500 BTC永遠找不回來。"},
+    {en:"Digital Signature",zh:"數位簽章",diff:2,def:"用私鑰對交易「簽名」，證明這筆交易確實是你發出的，且沒被篡改。",ex:"就像在合約上蓋印章，但數學上可以驗證，偽造幾乎不可能。"},
+    {en:"Seed Phrase",zh:"助記詞",diff:1,def:"12或24個英文單字，用於備份和還原整個錢包。洩露助記詞等於洩露所有資產。",ex:"例：apple banana... 這12個詞可以在任何裝置恢復你的錢包。"},
+    {en:"SHA-256",zh:"SHA-256演算法",diff:2,def:"比特幣使用的雜湊演算法，會把任意輸入轉成256位元（64個16進位字元）的輸出。",ex:"挖礦就是不斷嘗試不同Nonce，讓SHA-256的結果小於目標難度值。"},
+    {en:"Zero-Knowledge Proof",zh:"零知識證明",diff:3,def:"可以向驗證者證明你「知道某件事」，而不需要透露那件事的內容本身。",ex:"ZK Rollup用零知識證明驗證大量交易，而不需要公開每筆交易細節。"},
+    {en:"51% Attack",zh:"51%攻擊",diff:3,def:"若有人控制超過全網51%算力，理論上可以重寫最近的區塊歷史或雙重支付。",ex:"比特幣算力太大，實際執行51%攻擊的成本天文數字，幾乎不可能。"},
+    {en:"Double Spend",zh:"雙重支付",diff:2,def:"同一筆數位貨幣被花兩次。區塊鏈要解決的核心問題之一。",ex:"傳統電子檔案可以複製，數位貨幣如何確保同一筆錢只花一次？"}
+  ]},
+  "共識與挖礦":{color:"#C0392B",terms:[
+    {en:"Consensus Mechanism",zh:"共識機制",diff:1,def:"區塊鏈上所有節點就「哪個版本才是正確帳本」達成一致的規則。",ex:"就像班上要選班長，需要一套大家都認可的投票規則。"},
+    {en:"Proof of Work",zh:"工作量證明（PoW）",diff:2,def:"礦工透過大量計算競爭記帳權，消耗真實電力來保護網路安全。",ex:"比特幣使用PoW，礦工每10分鐘猜中一道數學難題，獲得比特幣獎勵。"},
+    {en:"Proof of Stake",zh:"權益證明（PoS）",diff:2,def:"驗證者抵押（質押）代幣來獲得記帳機會，取代PoW的算力競爭，更省電。",ex:"以太坊2022年從PoW切換到PoS，能耗降低99.95%。"},
+    {en:"Mining",zh:"挖礦",diff:1,def:"礦工用電腦算力不斷嘗試找到符合條件的Nonce值，找到者獲得新區塊獎勵。",ex:"2010年披薩故事：Laszlo用挖礦得來的10,000 BTC換了兩片披薩。"},
+    {en:"Nonce",zh:"隨機數（Nonce）",diff:2,def:"礦工不斷嘗試的一個數字，配上區塊資料後讓SHA-256結果符合難度要求。",ex:"挖礦就是不停猜Nonce：0, 1, 2, 3...直到hash結果開頭有足夠多的0。"},
+    {en:"Difficulty Adjustment",zh:"難度調整",diff:2,def:"比特幣每2016個區塊（約2週）自動調整挖礦難度，確保平均每10分鐘出一個區塊。",ex:"礦工變多 → 出塊變快 → 難度自動提高；礦工減少則相反。"},
+    {en:"Halving",zh:"減半",diff:2,def:"比特幣每21萬個區塊（約4年）礦工獎勵減半，最終供給上限2100萬顆。",ex:"2024年4月第四次減半，區塊獎勵從6.25降到3.125 BTC。"},
+    {en:"Mining Pool",zh:"礦池",diff:2,def:"多個礦工聯合算力共同挖礦，按貢獻比例分配獎勵，降低單人挖礦的不確定性。",ex:"就像多人合資買彩券，中獎機率高但獎金要分。"}
+  ]},
+  "以太坊與智能合約":{color:"#A0522D",terms:[
+    {en:"Smart Contract",zh:"智能合約",diff:1,def:"部署在區塊鏈上、自動執行的程式。條件達成就自動執行，無需人工介入。",ex:"自動販賣機：投入硬幣→選擇商品→自動出貨，無需店員，智能合約也是如此。"},
+    {en:"EVM",zh:"以太坊虛擬機",diff:3,def:"以太坊的核心計算引擎，負責執行智能合約。所有節點同步執行同樣的合約代碼。",ex:"就像一台全球共用、永不關機的電腦，所有人都在上面跑同一個程式。"},
+    {en:"Solidity",zh:"Solidity語言",diff:3,def:"撰寫以太坊智能合約的主要程式語言，語法類似JavaScript。",ex:"開發者用Solidity寫合約，編譯後部署到以太坊，永久執行。"},
+    {en:"Gas",zh:"Gas費",diff:1,def:"執行智能合約或發送交易需要支付的手續費，用ETH計算，支付給驗證者。",ex:"2021年NFT熱潮時，一筆簡單轉帳Gas費高達$200美元。"},
+    {en:"ERC-20",zh:"ERC-20代幣標準",diff:2,def:"以太坊上可互換代幣的技術標準，大多數DeFi代幣都遵循此標準。",ex:"USDT、UNI、LINK等都是ERC-20代幣，可以在任何支援的錢包使用。"},
+    {en:"ERC-721",zh:"ERC-721 NFT標準",diff:2,def:"以太坊上非同質化代幣（NFT）的技術標準，每個Token ID都是獨一無二的。",ex:"CryptoPunks、BAYC等NFT都使用ERC-721標準。"},
+    {en:"Oracle",zh:"預言機",diff:3,def:"將外部世界資料（價格、天氣、賽事結果）輸入到智能合約的中介服務。",ex:"Chainlink是最大的預言機，提供ETH/USD等價格給DeFi合約使用。"},
+    {en:"Hard Fork",zh:"硬分叉",diff:2,def:"對區塊鏈協議做出不向後相容的重大修改，舊節點無法跟上新規則，導致分裂。",ex:"2016年The DAO事件後，以太坊硬分叉，原鏈成為「以太坊經典（ETC）」。"}
+  ]},
+  "DeFi生態":{color:"#BF6A02",terms:[
+    {en:"DeFi",zh:"去中心化金融",diff:1,def:"用智能合約取代銀行、交易所等金融中介，讓任何人都能使用金融服務。",ex:"Uniswap讓任何人不需KYC就能換代幣；Aave讓任何人可以借貸。"},
+    {en:"DEX",zh:"去中心化交易所",diff:1,def:"透過智能合約自動撮合交易，無需中央機構，用戶保管自己的資產。",ex:"Uniswap是最大的DEX。vs CEX（中心化交易所）如幣安、Coinbase。"},
+    {en:"AMM",zh:"自動化做市商",diff:2,def:"用數學公式（x×y=k）自動決定代幣兌換比率，取代傳統訂單簿撮合。",ex:"Uniswap的AMM：ETH多了就貴，少了就便宜，由公式自動平衡。"},
+    {en:"Liquidity Pool",zh:"流動性池",diff:2,def:"用戶把兩種代幣存入智能合約，供他人兌換，並收取手續費作為回報。",ex:"在Uniswap ETH/USDC流動性池存入$1000，每筆交易賺0.3%手續費。"},
+    {en:"Impermanent Loss",zh:"無常損失",diff:3,def:"提供流動性時，因為代幣價格變動導致資產價值低於單純持有的損失。",ex:"若ETH大漲，你在池子裡的ETH會被換走，持有反而比提供流動性賺更多。"},
+    {en:"Yield Farming",zh:"流動性挖礦",diff:2,def:"把加密資產提供給DeFi協議賺取獎勵，通常以協議代幣作為額外激勵。",ex:"2020年DeFi Summer：Compound發放COMP代幣，年化收益率一度超過1000%。"},
+    {en:"TVL",zh:"總鎖倉量",diff:2,def:"Total Value Locked，衡量DeFi協議規模的指標，代表有多少資金存在合約內。",ex:"Uniswap TVL達$50億，代表池子裡有50億美元的流動性供使用。"},
+    {en:"Stablecoin",zh:"穩定幣",diff:1,def:"設計為價值穩定（通常錨定$1美元）的加密貨幣，分法幣抵押、超額抵押、算法三種。",ex:"USDT/USDC（法幣抵押）、DAI（超額抵押）、UST（算法，已崩盤）。"}
+  ]},
+  "NFT與Web3":{color:"#9C3A1E",terms:[
+    {en:"NFT",zh:"非同質化代幣",diff:1,def:"Non-Fungible Token，每個都獨一無二的數位所有權憑證，記錄在區塊鏈上。",ex:"Beeple的$6900萬NFT：你買的是「區塊鏈上的所有權記錄」，不是圖片本身。"},
+    {en:"Floor Price",zh:"地板價",diff:1,def:"一個NFT系列中目前掛賣的最低價格，是衡量系列價值的常用指標。",ex:"BAYC地板價從400 ETH跌到10 ETH，代表最便宜的無聊猿從$80萬跌到$2萬。"},
+    {en:"Metadata",zh:"元數據",diff:2,def:"NFT的描述資料，包含名稱、圖片連結、屬性等，通常存在IPFS上而非鏈上。",ex:"你的NFT圖片通常存在IPFS，連結存在區塊鏈，圖片消失NFT就沒圖了。"},
+    {en:"IPFS",zh:"星際檔案系統",diff:3,def:"去中心化的分散式檔案儲存網路，用內容hash而非伺服器位置來尋找檔案。",ex:"NFT圖片存IPFS比存在中心化伺服器更耐久，但仍有節點下線風險。"},
+    {en:"Web3",zh:"Web3",diff:1,def:"以區塊鏈為基礎，讓使用者自主控制數據和資產的下一代網路願景。",ex:"Web1唯讀→Web2讀寫（但平台控制）→Web3讀寫擁有（用戶控制）。"},
+    {en:"Wallet",zh:"加密錢包",diff:1,def:"管理公私鑰、儲存資產並與區塊鏈互動的工具。分熱錢包和冷錢包。",ex:"MetaMask是最常用的熱錢包（瀏覽器插件），Ledger是知名冷錢包（實體裝置）。"},
+    {en:"DAO",zh:"去中心化自治組織",diff:2,def:"用智能合約和治理代幣運作的組織，成員投票決定一切，沒有傳統管理層。",ex:"ConstitutionDAO在72小時募資$47M試圖購買美國憲法，證明DAO的組織力。"},
+    {en:"Airdrop",zh:"空投",diff:1,def:"項目方免費發送代幣給特定地址，通常用於早期用戶獎勵或行銷推廣。",ex:"Uniswap 2020年空投400 UNI給所有歷史用戶，當時價值約$1200美元。"}
+  ]},
+  "擴容與跨鏈":{color:"#7B4F2E",terms:[
+    {en:"Layer 1",zh:"第一層（主鏈）",diff:1,def:"基礎區塊鏈本身，如比特幣、以太坊，負責最終的安全性和資料存儲。",ex:"Layer 1是地基，所有Layer 2都建立在它之上，繼承其安全性。"},
+    {en:"Layer 2",zh:"第二層（擴容層）",diff:2,def:"建立在Layer 1之上的解決方案，處理大量交易後把結果提交到主鏈，速度快費用低。",ex:"Polygon、Optimism、Arbitrum、zkSync都是以太坊的Layer 2。"},
+    {en:"Rollup",zh:"Rollup（匯總）",diff:3,def:"把大量交易在鏈下執行，將壓縮後的結果提交到L1，分Optimistic和ZK兩種。",ex:"Optimistic Rollup假設交易有效，有7天挑戰期；ZK Rollup用數學即時驗證。"},
+    {en:"Cross-chain Bridge",zh:"跨鏈橋",diff:2,def:"讓資產在不同區塊鏈之間轉移的工具，歷史上橋樑攻擊損失超過數十億美元。",ex:"2022年Ronin Bridge被駭$6.25億，是史上最大的加密貨幣盜竊之一。"},
+    {en:"Sharding",zh:"分片",diff:3,def:"把區塊鏈分成多個平行片段（shard）同時處理不同交易，大幅提升吞吐量。",ex:"以太坊長期路線圖包含分片，目標每秒處理數萬筆交易。"},
+    {en:"Finality",zh:"交易最終性",diff:2,def:"交易被確認後「不可逆轉」的程度。PoW需要等多個確認；PoS通常更快達到最終性。",ex:"比特幣通常等6個確認（約1小時）才算最終確認，才能安全提領。"}
+  ]},
+  "監管與實務":{color:"#8B4513",terms:[
+    {en:"KYC",zh:"認識你的客戶",diff:1,def:"Know Your Customer，交易所要求用戶驗證真實身份（身份證、自拍）的合規程序。",ex:"在幣安、MAX交易所開戶都需要KYC，DeFi通常不需要。"},
+    {en:"AML",zh:"反洗錢",diff:2,def:"Anti-Money Laundering，防止非法資金透過加密貨幣洗白的規範和監控措施。",ex:"幣安2023年被罰$43億，主因是違反AML法規，允許非法資金流通。"},
+    {en:"CEX",zh:"中心化交易所",diff:1,def:"Centralized Exchange，由公司運營的加密貨幣交易所，用戶把資產託管給平台。",ex:"幣安、Coinbase、MAX都是CEX。FTX崩盤就是CEX風險的最大案例。"},
+    {en:"CBDC",zh:"央行數位貨幣",diff:2,def:"Central Bank Digital Currency，由國家央行發行的數位形式法定貨幣。",ex:"中國數位人民幣（e-CNY）是最大規模的CBDC試點，台灣央行也在研究。"},
+    {en:"DID",zh:"去中心化身份",diff:3,def:"Decentralized Identity，讓用戶自主控制數位身份而不依賴單一平台的技術。",ex:"未來你可以用區塊鏈上的DID登入網站，不需要Google/Facebook帳號。"},
+    {en:"Custody",zh:"資產托管",diff:2,def:"由第三方（交易所或信託機構）代為保管加密資產，「Not your keys, not your coins」。",ex:"FTX崩盤時，在FTX托管的資產全部蒸發。自託管錢包才是真正的掌控。"}
+  ]}
+};
+
+function renderCourses(pf){
+  const c=document.getElementById('course-list');
+  c.innerHTML='';
+  let last=null;
+  weeks.forEach(w=>{
+    if(pf!=='all'&&w.phase!==pf)return;
+    if(w.phase!==last){
+      const ph=phaseInfo[w.phase];
+      const h=document.createElement('div');
+      h.className='phase-header';
+      h.innerHTML=`<div class="phase-dot" style="background:${ph.color}"></div><span class="phase-name" style="color:${ph.color}">${ph.name}</span>`;
+      c.appendChild(h);
+      const g=document.createElement('div');
+      g.className='week-grid';
+      g.id='pg'+w.phase;
+      c.appendChild(g);
+      last=w.phase;
+    }
+    const g=document.getElementById('pg'+w.phase);
+    const ph=phaseInfo[w.phase];
+    const card=document.createElement('div');
+    card.className='wcard';
+    card.innerHTML=`
+      <div class="wcard-top">
+        <div class="wnum-row">
+          <span class="wnum" style="background:${ph.numBg};color:${ph.numColor}">Week ${w.w}</span>
+          <span class="wtag">${w.tag}</span>
+        </div>
+        <div class="wtitle">${w.title}</div>
+      </div>
+      <div class="wcard-story">${w.story}</div>
+      <div class="wcard-bottom">${w.concepts.slice(0,3).map(cc=>`<span class="concept-pill">${cc.length>22?cc.slice(0,22)+'…':cc}</span>`).join('')}</div>`;
+    card.addEventListener('click',()=>openModal(w));
+    g.appendChild(card);
+  });
+}
+
+function filterPhase(p,btn){
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderCourses(p);
+}
+
+function openModal(w){
+  const ph=phaseInfo[w.phase];
+  document.getElementById('modal-week').textContent=`Week ${w.w} ・ ${ph.name}`;
+  document.getElementById('modal-title').textContent=w.title;
+  document.getElementById('modal-story').textContent=w.story;
+  document.getElementById('modal-head').style.background=`linear-gradient(135deg,${ph.color},#F4A811)`;
+  document.getElementById('modal-concepts').innerHTML=w.concepts.map(cc=>`<li>${cc}</li>`).join('');
+  document.getElementById('modal-apps').innerHTML=w.apps.map(a=>`<span class="app-chip">${a}</span>`).join('');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){if(e.target===document.getElementById('overlay'))closeModalDirect();}
+function closeModalDirect(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
+
+const cats=Object.keys(glossaryData);
+const diffLabels={1:{label:"入門",color:"#E8735A"},2:{label:"進階",color:"#D4622A"},3:{label:"深入",color:"#8B1A00"}};
+
+function renderGlossary(catFilter){
+  const ct=document.getElementById('cat-tabs');
+  if(!ct.childElementCount){
+    const ab=document.createElement('button');
+    ab.className='ctab active';ab.textContent='全部';
+    ab.style.cssText='background:#E8735A;color:#fff;border-color:#E8735A';
+    ab.onclick=()=>switchCat('all',ab);
+    ct.appendChild(ab);
+    cats.forEach(cat=>{
+      const b=document.createElement('button');
+      b.className='ctab';b.textContent=cat;
+      b.onclick=()=>switchCat(cat,b);
+      ct.appendChild(b);
+    });
+  }
+  const content=document.getElementById('gloss-content');
+  content.innerHTML='';
+  const toShow=catFilter==='all'?cats:[catFilter];
+  toShow.forEach(cat=>{
+    const data=glossaryData[cat];
+    const sec=document.createElement('div');
+    sec.style.marginBottom='2rem';
+    sec.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem"><div style="width:10px;height:10px;border-radius:50%;background:${data.color}"></div><span style="font-size:14px;font-weight:700;color:${data.color}">${cat}</span></div>`;
+    [1,2,3].forEach(diff=>{
+      const dl=diffLabels[diff];
+      const terms=data.terms.filter(t=>t.diff===diff);
+      if(!terms.length)return;
+      const db=document.createElement('div');
+      db.className='diff-block';
+      db.innerHTML=`<div class="diff-title"><span class="diff-badge" style="background:${dl.color}">${dl.label}</span><span style="font-size:12px;color:var(--text3)">難度 ${'★'.repeat(diff)}${'☆'.repeat(3-diff)}</span></div>`;
+      const grid=document.createElement('div');
+      grid.className='terms-grid';
+      terms.forEach(t=>{
+        const tc=document.createElement('div');
+        tc.className='term-card';
+        tc.style.borderLeft=`3px solid ${data.color}`;
+        tc.innerHTML=`<div class="term-en">${t.en}</div><div class="term-zh">${t.zh}</div><div class="term-def">${t.def}</div><div class="term-example">📌 ${t.ex}</div>`;
+        grid.appendChild(tc);
+      });
+      db.appendChild(grid);
+      sec.appendChild(db);
+    });
+    content.appendChild(sec);
+  });
+}
+
+function switchCat(cat,btn){
+  document.querySelectorAll('.ctab').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';b.style.borderColor='';});
+  btn.classList.add('active');
+  const c=cat==='all'?'#E8735A':glossaryData[cat].color;
+  btn.style.cssText=`background:${c};color:#fff;border-color:${c}`;
+  renderGlossary(cat);
+}
+
+renderCourses('all');
+renderGlossary('all');
+</script>
+</body>
+</html>
