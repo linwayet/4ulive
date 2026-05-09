@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anatomy 解剖學 50 回課程</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --color-bg: #f8f2ea;
+      --color-surface: #fff8f2;
+      --color-surface-2: #fffdf9;
+      --color-surface-offset: #f4e6d8;
+      --color-border: #e3cfbd;
+      --color-text: #4c3528;
+      --color-text-muted: #7a6251;
+      --color-text-faint: #ab8f7c;
+      --color-primary: #c96f4a;
+      --color-primary-hover: #ab5635;
+      --color-secondary: #d7a34b;
+      --color-accent: #8fbc8f;
+      --color-rose: #d9897e;
+      --radius-sm: 0.5rem; --radius-md: 0.9rem; --radius-lg: 1.2rem; --radius-xl: 1.6rem; --radius-full: 999px;
+      --shadow-sm: 0 2px 8px rgba(104, 72, 44, 0.08);
+      --shadow-md: 0 10px 30px rgba(104, 72, 44, 0.12);
+      --content: 1100px;
+      --font-display: 'Zodiak', Georgia, serif;
+      --font-body: 'Satoshi', 'Noto Sans TC', sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #201813;
+      --color-surface: #2a2019;
+      --color-surface-2: #33271f;
+      --color-surface-offset: #3d2d22;
+      --color-border: #5b4537;
+      --color-text: #f7eadf;
+      --color-text-muted: #d6bba7;
+      --color-text-faint: #b89579;
+      --color-primary: #f09a70;
+      --color-primary-hover: #ffb48e;
+      --color-secondary: #efc269;
+      --color-accent: #9fd19f;
+      --color-rose: #ecaa9e;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.24);
+      --shadow-md: 0 12px 32px rgba(0,0,0,0.34);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, rgba(215,163,75,0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(201,111,74,0.15), transparent 30%),
+        linear-gradient(180deg, var(--color-bg), #f6eee4 45%, #f8f2ea 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    .skip-link {
+      position: absolute; left: -9999px; top: auto;
+    }
+    .skip-link:focus {
+      left: var(--space-4); top: var(--space-4); z-index: 999;
+      background: var(--color-primary); color: white; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+    }
+    .shell {
+      width: min(100% - 1.25rem, var(--content));
+      margin-inline: auto;
+    }
+    .top-banner, .bottom-banner {
+      position: relative;
+      padding: var(--space-4) 0;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+    .link-card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-4);
+    }
+    .link-card strong { display: block; margin-bottom: var(--space-2); font-size: var(--text-sm); }
+    .link-card span { display: block; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em;
+      color: var(--color-primary); background: rgba(201,111,74,0.12);
+      padding: 0.45rem 0.8rem; border-radius: var(--radius-full);
+      margin-bottom: var(--space-4);
+    }
+    header.hero {
+      padding: var(--space-6) 0 var(--space-8);
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,248,242,0.95), rgba(255,253,249,0.94));
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-xl) + 0.35rem);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      display: grid;
+      gap: var(--space-6);
+      padding: var(--space-6);
+    }
+    .hero-grid {
+      display: grid;
+      gap: var(--space-6);
+      align-items: center;
+    }
+    .logo-row {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+    .brand {
+      display: flex; align-items: center; gap: var(--space-3);
+      min-width: 0;
+    }
+    .brand svg { width: 44px; height: 44px; color: var(--color-primary); flex: 0 0 auto; }
+    .brand-text { min-width: 0; }
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin: 0;
+    }
+    .brand-text p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .theme-toggle {
+      min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
+      border: 1px solid var(--color-border); background: var(--color-surface-2);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-copy h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 1.08;
+      margin: 0 0 var(--space-4);
+    }
+    .hero-copy p { margin: 0 0 var(--space-4); color: var(--color-text-muted); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .meta-card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      min-width: 130px;
+    }
+    .meta-card strong { display: block; color: var(--color-primary); }
+    .meta-card span { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .hero-visual {
+      background: linear-gradient(145deg, rgba(215,163,75,0.18), rgba(201,111,74,0.12), rgba(143,188,143,0.13));
+      border: 1px solid rgba(201,111,74,0.18);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+    }
+    .anatomy-map {
+      display: grid; gap: var(--space-3);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .map-card {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(201,111,74,0.16);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .map-card h3 { margin: 0 0 0.35rem; font-size: var(--text-sm); color: var(--color-primary); }
+    .map-card p { margin: 0; font-size: var(--text-sm); color: var(--color-text-muted); }
+    main { padding-bottom: var(--space-12); }
+    section.panel {
+      margin-top: var(--space-8);
+      background: rgba(255, 250, 245, 0.78);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-6);
+    }
+    .section-head { margin-bottom: var(--space-5); }
+    .section-head h2 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.2rem);
+    }
+    .section-head p { margin: 0; color: var(--color-text-muted); }
+    .overview-grid, .module-grid, .vocab-grid {
+      display: grid; gap: var(--space-4);
+    }
+    .overview-card, .module-card, .vocab-card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+    .overview-card h3, .module-card h3, .vocab-card h3 {
+      margin: 0 0 var(--space-2);
+      color: var(--color-primary);
+      font-size: var(--text-base);
+    }
+    .overview-card p, .module-card p, .vocab-card p { margin: 0; color: var(--color-text-muted); }
+    .lesson-list {
+      display: grid; gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .lesson-item {
+      display: grid; gap: var(--space-2);
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,251,247,0.88));
+      border: 1px solid var(--color-border);
+      border-left: 8px solid var(--accent, var(--color-primary));
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+    .lesson-top {
+      display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);
+      justify-content: space-between;
+    }
+    .lesson-no {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+    }
+    .lesson-time {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(143,188,143,0.16);
+      color: #4b6b4b;
+      padding: 0.35rem 0.7rem; border-radius: var(--radius-full);
+      font-size: var(--text-xs); font-weight: 700;
+    }
+    .lesson-item h4 { margin: 0; font-size: var(--text-lg); }
+    .lesson-item p { margin: 0; color: var(--color-text-muted); }
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: var(--space-2);
+      margin-top: var(--space-1);
+    }
+    .keywords span {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(215,163,75,0.14);
+      color: #8a6421;
+      font-size: var(--text-xs);
+      font-weight: 700;
+    }
+    .vocab-card ul {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: var(--space-2);
+    }
+    .vocab-card li {
+      background: rgba(255,255,255,0.72);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+    }
+    .vocab-card b { color: var(--color-primary); }
+    footer {
+      padding: 0 0 var(--space-10);
+    }
+    @media (min-width: 720px) {
+      .link-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+      .overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .vocab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lesson-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .hero-card { padding: var(--space-8); }
+      .lesson-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">跳到主要內容</a>
+
+  <div class="top-banner shell">
+    <div class="link-grid" aria-label="重要連結區塊">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+        <strong>七月課程介紹｜錯中學 ECHO 計劃</strong>
+        <span>今年七月開課，適合想用互動方式提升英文與學習效率的學生與家長。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+        <strong>七月課程介紹｜學生分析</strong>
+        <span>今年七月開課，幫助你快速了解學生現況、學習盲點與後續規劃方向。</span>
+      </a>
+      <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+        <strong>Line 聯絡｜linwayet</strong>
+        <span>想詢問課程、合作或排課，可直接透過 Line 帳號聯繫：linwayet。</span>
+      </a>
+    </div>
+  </div>
+
+  <header class="hero shell">
+    <div class="hero-card">
+      <div class="logo-row">
+        <div class="brand">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Anatomy 課程標誌">
+            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="3" />
+            <path d="M32 15C26 15 22 19.5 22 25c0 4.6 2.7 8.1 6.6 9.7v3.1c-6 .9-10.6 5.8-10.6 11.7v.5h28v-.5c0-5.9-4.6-10.8-10.6-11.7v-3.1c3.9-1.6 6.6-5.1 6.6-9.7 0-5.5-4-10-10-10Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M28 26c1.4-1.6 2.8-2.4 4-2.4s2.6.8 4 2.4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="brand-text">
+            <h1>Anatomy 解剖學 50 回課程</h1>
+            <p>暖色系、手機友善、主要內容置中，保留完整課程與解剖學關鍵字整理。</p>
+          </div>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切換深淺色模式">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="pill">由零開始 → 入門到中級</div>
+          <h2>用 50 回、每次 10–15 分鐘，建立看得懂人體地圖的解剖學基礎。</h2>
+          <p>這份網頁課程設計以「興趣導向 70％、未來醫護／生科預備 30％」為主軸，讓生物初學者與高三學生都能逐步理解解剖姿勢、器官位置、骨骼肌肉、心血管與神經等核心內容。</p>
+          <p>課程從最基本的方向用語與切面開始，慢慢帶到骨、肌、內臟與臨床生活連結；同時整理了重要 anatomical terms，方便中英對照學習。</p>
+          <div class="hero-meta">
+            <div class="meta-card"><strong>50 回</strong><span>完整課程安排</span></div>
+            <div class="meta-card"><strong>10–15 分鐘</strong><span>短時段可持續學習</span></div>
+            <div class="meta-card"><strong>中英並行</strong><span>中文主體，英文補充</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="anatomy-map">
+            <div class="map-card"><h3>Body Map</h3><p>先看整體，再進細節，建立人體空間感。</p></div>
+            <div class="map-card"><h3>Skeletal</h3><p>從骨頭位置到關節結構，理解支架系統。</p></div>
+            <div class="map-card"><h3>Muscular</h3><p>把肌群和動作綁在一起，學得更直觀。</p></div>
+            <div class="map-card"><h3>Organ Systems</h3><p>用系統化方式認識心肺、消化、神經與內分泌。</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="shell">
+    <section class="panel">
+      <div class="section-head">
+        <h2>課程總覽</h2>
+        <p>整體共分成五大段：基礎概念、人體系統地圖、骨骼與肌肉、內臟系統、統整複習。每一回都保持短小清楚，適合個人學習、親子共學，或師生對話式帶讀。</p>
+      </div>
+      <div class="overview-grid">
+        <article class="overview-card">
+          <h3>階段 1｜基礎概念</h3>
+          <p>建立人體層級、解剖姿勢、方向用語與切面觀念，先把語言系統學清楚。</p>
+        </article>
+        <article class="overview-card">
+          <h3>階段 2｜全身地圖</h3>
+          <p>快速理解 11 大系統在哪裡、做什麼，先有全局，再切細節。</p>
+        </article>
+        <article class="overview-card">
+          <h3>階段 3｜骨與肌</h3>
+          <p>把骨頭、關節、肌群與日常動作連結，讓抽象名詞變立體。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>50 回完整課程</h2>
+        <p>以下保留完整 50 回規劃，從入門到中級。每一回建議用 10–15 分鐘完成，可以視情況加入圖卡、簡單口頭測驗或白板小圖示。</p>
+      </div>
+
+      <div class="module-grid">
+        <article class="module-card">
+          <h3>模組 A｜入門基礎（第 1–10 回）</h3>
+          <p>重點是把解剖學的語言與空間概念建立起來，降低之後看圖、看片或讀大學教材的門檻。</p>
+          <div class="lesson-list">
+            <article class="lesson-item" style="--accent:#c96f4a">
+              <div class="lesson-top"><span class="lesson-no">Lesson 01</span><span class="lesson-time">10–12 分鐘</span></div>
+              <h4>解剖學是什麼？ Anatomy vs. Physiology</h4>
+              <p>了解解剖學研究「構造」，生理學研究「功能」，先把學科邊界分清楚。</p>
+              <div class="keywords"><span>Anatomy</span><span>Physiology</span><span>Structure</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#d7a34b">
+              <div class="lesson-top"><span class="lesson-no">Lesson 02</span><span class="lesson-time">10–12 分鐘</span></div>
+              <h4>人體層級 1：Cells to Tissues</h4>
+              <p>從細胞、組織開始理解人體是如何一層一層構成。</p>
+              <div class="keywords"><span>Cell</span><span>Tissue</span><span>Level</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#d9897e">
+              <div class="lesson-top"><span class="lesson-no">Lesson 03</span><span class="lesson-time">10–15 分鐘</span></div>
+              <h4>人體層級 2：Organs and Systems</h4>
+              <p>器官如何組成系統，系統又如何彼此協作，建立全身運作概念。</p>
+              <div class="keywords"><span>Organ</span><span>System</span><span>Integration</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#8fbc8f">
+              <div class="lesson-top"><span class="lesson-no">Lesson 04</span><span class="lesson-time">10–12 分鐘</span></div>
+              <h4>解剖姿勢 Anatomical Position</h4>
+              <p>學會標準人體姿勢，理解為什麼所有位置描述都要以它為基準。</p>
+              <div class="keywords"><span>Anatomical Position</span><span>Standard</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#c96f4a">
+              <div class="lesson-top"><span class="lesson-no">Lesson 05</span><span class="lesson-time">10–15 分鐘</span></div>
+              <h4>方向用語 1：Superior / Inferior</h4>
+              <p>上、下、頭側、尾側的概念，配合實際身體部位說明。</p>
+              <div class="keywords"><span>Superior</span><span>Inferior</span><span>Cranial</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#d7a34b">
+              <div class="lesson-top"><span class="lesson-no">Lesson 06</span><span class="lesson-time">10–15 分鐘</span></div>
+              <h4>方向用語 2：Anterior / Posterior</h4>
+              <p>前後、腹側、背側的用法，學會讀懂解剖圖常見標示。</p>
+              <div class="keywords"><span>Anterior</span><span>Posterior</span><span>Dorsal</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#d9897e">
+              <div class="lesson-top"><span class="lesson-no">Lesson 07</span><span class="lesson-time">10–15 分鐘</span></div>
+              <h4>方向用語 3：Medial / Lateral, Proximal / Distal</h4>
+              <p>學習內側、外側、近端、遠端，特別適用於四肢骨與肌肉。</p>
+              <div class="keywords"><span>Medial</span><span>Lateral</span><span>Distal</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#8fbc8f">
+              <div class="lesson-top"><span class="lesson-no">Lesson 08</span><span class="lesson-time">10–12 分鐘</span></div>
+              <h4>切面 1：Sagittal / Midsagittal</h4>
+              <p>理解矢狀面如何把人體分成左右兩側。</p>
+              <div class="keywords"><span>Sagittal</span><span>Midsagittal</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#c96f4a">
+              <div class="lesson-top"><span class="lesson-no">Lesson 09</span><span class="lesson-time">10–12 分鐘</span></div>
+              <h4>切面 2：Frontal and Transverse</h4>
+              <p>理解冠狀面與水平面，建立看 CT、MRI 圖的前置感。</p>
+              <div class="keywords"><span>Frontal</span><span>Transverse</span><span>Plane</span></div>
+            </article>
+            <article class="lesson-item" style="--accent:#d7a34b">
+              <div class="lesson-top"><span class="lesson-no">Lesson 10</span><span class="lesson-time">10–15 分鐘</span></div>
+              <h4>身體區域名稱總整理</h4>
+              <p>認識頭頸、胸、腹、骨盆、上肢、下肢等主要 body regions。</p>
+              <div class="keywords"><span>Region</span><span>Thoracic</span><span>Pelvic</span></div>
+            </article>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>模組 B｜全身系統地圖（第 11–20 回）</h3>
+          <p>這一段先不追求背大量細節，而是建立 11 大系統的位置與功能印象。</p>
+          <div class="lesson-list">
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 11</span><span class="lesson-time">10–12 分鐘</span></div><h4>Integumentary System 皮膚系統</h4><p>皮膚、毛髮、指甲的基本構造與保護功能。</p><div class="keywords"><span>Skin</span><span>Hair</span><span>Nail</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 12</span><span class="lesson-time">10–12 分鐘</span></div><h4>Skeletal System 骨骼系統總覽</h4><p>了解骨頭像支架，支持、保護並提供動作槓桿。</p><div class="keywords"><span>Skeletal</span><span>Bone</span><span>Support</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 13</span><span class="lesson-time">10–12 分鐘</span></div><h4>Muscular System 肌肉系統總覽</h4><p>了解骨骼肌如何產生動作，並和骨骼形成協作系統。</p><div class="keywords"><span>Muscle</span><span>Movement</span><span>Contract</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 14</span><span class="lesson-time">10–12 分鐘</span></div><h4>Nervous System 神經系統總覽</h4><p>大腦、脊髓、周邊神經如何傳遞訊息。</p><div class="keywords"><span>Brain</span><span>Spinal Cord</span><span>Nerve</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 15</span><span class="lesson-time">10–12 分鐘</span></div><h4>Endocrine System 內分泌系統</h4><p>從腦下垂體、甲狀腺到腎上腺，認識荷爾蒙控制。</p><div class="keywords"><span>Hormone</span><span>Gland</span><span>Endocrine</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 16</span><span class="lesson-time">10–12 分鐘</span></div><h4>Cardiovascular System 心血管系統</h4><p>心臟與血管如何把氧氣和養分送到全身。</p><div class="keywords"><span>Heart</span><span>Blood Vessel</span><span>Circulation</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 17</span><span class="lesson-time">10–12 分鐘</span></div><h4>Lymphatic System 淋巴系統</h4><p>理解淋巴液、淋巴結與免疫防禦的關係。</p><div class="keywords"><span>Lymph</span><span>Node</span><span>Immune</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 18</span><span class="lesson-time">10–12 分鐘</span></div><h4>Respiratory System 呼吸系統</h4><p>認識鼻腔、氣管、肺與氣體交換的大流程。</p><div class="keywords"><span>Lung</span><span>Airway</span><span>Respiration</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 19</span><span class="lesson-time">10–12 分鐘</span></div><h4>Digestive System 消化系統</h4><p>食物從口腔到腸道的消化旅程。</p><div class="keywords"><span>Digestive</span><span>Stomach</span><span>Intestine</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 20</span><span class="lesson-time">10–15 分鐘</span></div><h4>Urinary & Reproductive Systems</h4><p>用溫和方式認識泌尿與生殖系統的主要器官與功能。</p><div class="keywords"><span>Kidney</span><span>Bladder</span><span>Reproductive</span></div></article>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>模組 C｜骨骼系統深入（第 21–30 回）</h3>
+          <p>這一段是未來銜接醫護、生科最有幫助的部分之一，但仍保持興趣導向與視覺化。</p>
+          <div class="lesson-list">
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 21</span><span class="lesson-time">10–12 分鐘</span></div><h4>骨的基本構造</h4><p>認識 compact bone、spongy bone、bone marrow 等基本概念。</p><div class="keywords"><span>Compact Bone</span><span>Spongy Bone</span><span>Marrow</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 22</span><span class="lesson-time">10–15 分鐘</span></div><h4>頭骨與臉骨概念</h4><p>認識 skull 作為保護腦部與形成臉部輪廓的主要骨架。</p><div class="keywords"><span>Skull</span><span>Cranium</span><span>Facial Bones</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 23</span><span class="lesson-time">10–12 分鐘</span></div><h4>脊柱 Vertebral Column</h4><p>頸椎、胸椎、腰椎、薦骨與尾骨的大地圖。</p><div class="keywords"><span>Vertebra</span><span>Cervical</span><span>Lumbar</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 24</span><span class="lesson-time">10–12 分鐘</span></div><h4>胸廓 Rib Cage</h4><p>胸骨、肋骨如何保護心肺，並參與呼吸動作。</p><div class="keywords"><span>Rib</span><span>Sternum</span><span>Thorax</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 25</span><span class="lesson-time">10–15 分鐘</span></div><h4>肩帶與上肢骨 1</h4><p>鎖骨、肩胛骨、肱骨的位置和功能概念。</p><div class="keywords"><span>Clavicle</span><span>Scapula</span><span>Humerus</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 26</span><span class="lesson-time">10–15 分鐘</span></div><h4>上肢骨 2：前臂與手</h4><p>尺骨、橈骨、腕骨、掌骨與指骨的基礎位置。</p><div class="keywords"><span>Ulna</span><span>Radius</span><span>Phalanges</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 27</span><span class="lesson-time">10–15 分鐘</span></div><h4>骨盆 Pelvis</h4><p>從支撐重量、保護器官到連接下肢來理解骨盆。</p><div class="keywords"><span>Pelvis</span><span>Ilium</span><span>Hip</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 28</span><span class="lesson-time">10–15 分鐘</span></div><h4>下肢骨 1：股骨與膝</h4><p>股骨、髕骨與膝關節周邊骨性結構。</p><div class="keywords"><span>Femur</span><span>Patella</span><span>Knee</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 29</span><span class="lesson-time">10–15 分鐘</span></div><h4>下肢骨 2：脛骨、腓骨、足部</h4><p>了解走路、站立如何仰賴下肢骨與足弓結構。</p><div class="keywords"><span>Tibia</span><span>Fibula</span><span>Foot</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 30</span><span class="lesson-time">10–15 分鐘</span></div><h4>關節 Joint 基本類型</h4><p>了解滑液關節、球窩關節、鉸鏈關節等最重要分類。</p><div class="keywords"><span>Joint</span><span>Synovial</span><span>Hinge</span></div></article>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>模組 D｜肌肉與動作（第 31–40 回）</h3>
+          <p>透過深蹲、推、拉、呼吸與姿勢動作來理解肌群，降低純背誦的痛苦感。</p>
+          <div class="lesson-list">
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 31</span><span class="lesson-time">10–12 分鐘</span></div><h4>肌肉怎麼命名？</h4><p>用位置、形狀、大小、功能來理解肌肉名稱，不再只是死背。</p><div class="keywords"><span>Muscle Naming</span><span>Origin</span><span>Insertion</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 32</span><span class="lesson-time">10–12 分鐘</span></div><h4>骨骼肌的收縮概念</h4><p>了解 contraction、tendon、movement 的基本關係。</p><div class="keywords"><span>Contraction</span><span>Tendon</span><span>Action</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 33</span><span class="lesson-time">10–15 分鐘</span></div><h4>肩膀與胸前肌群</h4><p>認識 deltoid、pectoralis major 與推的動作。</p><div class="keywords"><span>Deltoid</span><span>Pectoralis Major</span><span>Push</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 34</span><span class="lesson-time">10–15 分鐘</span></div><h4>背部與拉的動作</h4><p>理解 trapezius、latissimus dorsi 與上背穩定。</p><div class="keywords"><span>Trapezius</span><span>Latissimus Dorsi</span><span>Pull</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 35</span><span class="lesson-time">10–15 分鐘</span></div><h4>上臂肌群：Biceps and Triceps</h4><p>用彎曲與伸直手肘動作認識肱二頭肌與肱三頭肌。</p><div class="keywords"><span>Biceps</span><span>Triceps</span><span>Elbow</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 36</span><span class="lesson-time">10–15 分鐘</span></div><h4>腹部與核心 Core</h4><p>了解 rectus abdominis、obliques 與姿勢穩定概念。</p><div class="keywords"><span>Core</span><span>Abdominis</span><span>Obliques</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 37</span><span class="lesson-time">10–15 分鐘</span></div><h4>臀部與髖部肌群</h4><p>從走路、站起、深蹲認識 gluteus maximus 與髖動作。</p><div class="keywords"><span>Gluteus Maximus</span><span>Hip</span><span>Squat</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 38</span><span class="lesson-time">10–15 分鐘</span></div><h4>大腿前後肌群</h4><p>了解 quadriceps 與 hamstrings 在跑跳與蹲站中的角色。</p><div class="keywords"><span>Quadriceps</span><span>Hamstrings</span><span>Thigh</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 39</span><span class="lesson-time">10–12 分鐘</span></div><h4>小腿與腳踝動作</h4><p>認識 gastrocnemius、soleus 與踮腳、步態控制。</p><div class="keywords"><span>Gastrocnemius</span><span>Soleus</span><span>Ankle</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 40</span><span class="lesson-time">10–15 分鐘</span></div><h4>整合：從動作回推肌肉</h4><p>看深蹲、推牆、拉門、走路等動作，說出可能參與的肌群。</p><div class="keywords"><span>Movement Analysis</span><span>Function</span><span>Muscle Group</span></div></article>
+          </div>
+        </article>
+
+        <article class="module-card">
+          <h3>模組 E｜器官系統＋統整（第 41–50 回）</h3>
+          <p>最後把內臟地圖與整體複習做收束，兼顧大學先備感與學習成就感。</p>
+          <div class="lesson-list">
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 41</span><span class="lesson-time">10–15 分鐘</span></div><h4>心臟位置與四腔室</h4><p>右心房、右心室、左心房、左心室的大結構與位置感。</p><div class="keywords"><span>Atrium</span><span>Ventricle</span><span>Heart</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 42</span><span class="lesson-time">10–15 分鐘</span></div><h4>主要血管與血流方向</h4><p>主動脈、靜脈、肺循環與體循環的入門理解。</p><div class="keywords"><span>Aorta</span><span>Vein</span><span>Circulation</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 43</span><span class="lesson-time">10–12 分鐘</span></div><h4>呼吸道與肺</h4><p>鼻腔、咽喉、氣管、支氣管與肺葉的位置概念。</p><div class="keywords"><span>Trachea</span><span>Bronchus</span><span>Lung</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 44</span><span class="lesson-time">10–12 分鐘</span></div><h4>消化道地圖</h4><p>從 mouth 到 esophagus、stomach、小腸、大腸的路線圖。</p><div class="keywords"><span>Mouth</span><span>Stomach</span><span>Intestine</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 45</span><span class="lesson-time">10–12 分鐘</span></div><h4>肝、膽、胰的配角角色</h4><p>理解 liver、gallbladder、pancreas 如何支援消化與代謝。</p><div class="keywords"><span>Liver</span><span>Gallbladder</span><span>Pancreas</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 46</span><span class="lesson-time">10–12 分鐘</span></div><h4>腎臟與泌尿路徑</h4><p>腎臟過濾、輸尿管運送、膀胱儲存與尿道排出。</p><div class="keywords"><span>Kidney</span><span>Ureter</span><span>Bladder</span></div></article>
+            <article class="lesson-item" style="--accent:#d9897e"><div class="lesson-top"><span class="lesson-no">Lesson 47</span><span class="lesson-time">10–12 分鐘</span></div><h4>腦與脊髓的大地圖</h4><p>大腦、小腦、腦幹、脊髓的基礎分工與位置。</p><div class="keywords"><span>Cerebrum</span><span>Cerebellum</span><span>Brainstem</span></div></article>
+            <article class="lesson-item" style="--accent:#8fbc8f"><div class="lesson-top"><span class="lesson-no">Lesson 48</span><span class="lesson-time">10–12 分鐘</span></div><h4>內分泌重要腺體速覽</h4><p>腦下垂體、甲狀腺、腎上腺、胰臟與荷爾蒙連結。</p><div class="keywords"><span>Pituitary</span><span>Thyroid</span><span>Adrenal</span></div></article>
+            <article class="lesson-item" style="--accent:#c96f4a"><div class="lesson-top"><span class="lesson-no">Lesson 49</span><span class="lesson-time">10–15 分鐘</span></div><h4>整合複習：畫出人體地圖</h4><p>把主要器官、骨頭與系統位置用空白人體圖標記出來。</p><div class="keywords"><span>Review</span><span>Body Map</span><span>Recall</span></div></article>
+            <article class="lesson-item" style="--accent:#d7a34b"><div class="lesson-top"><span class="lesson-no">Lesson 50</span><span class="lesson-time">10–15 分鐘</span></div><h4>口頭總結與小測驗</h4><p>用自己的話說出各系統做什麼、在哪裡，完成入門到中級的第一輪。</p><div class="keywords"><span>Summary</span><span>Quiz</span><span>Confidence</span></div></article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>重要解剖學關鍵單字</h2>
+        <p>以下整理常用 anatomical terms，以中文理解為主、英文補充為輔。可以搭配課程進度分段吸收，不需要一次全背。</p>
+      </div>
+      <div class="vocab-grid">
+        <article class="vocab-card">
+          <h3>方向與切面</h3>
+          <ul>
+            <li><b>Anatomical position</b>：解剖姿勢，描述人體位置的標準基準。</li>
+            <li><b>Superior / Inferior</b>：上方／下方。</li>
+            <li><b>Anterior / Posterior</b>：前方／後方。</li>
+            <li><b>Medial / Lateral</b>：內側／外側。</li>
+            <li><b>Proximal / Distal</b>：近端／遠端，常用於四肢。</li>
+            <li><b>Superficial / Deep</b>：淺層／深層。</li>
+            <li><b>Sagittal plane</b>：矢狀面。</li>
+            <li><b>Frontal plane</b>：冠狀面。</li>
+            <li><b>Transverse plane</b>：水平面、橫切面。</li>
+          </ul>
+        </article>
+        <article class="vocab-card">
+          <h3>人體層級與組織</h3>
+          <ul>
+            <li><b>Cell</b>：細胞，生命的基本單位。</li>
+            <li><b>Tissue</b>：組織，多個相似細胞形成的結構。</li>
+            <li><b>Organ</b>：器官，例如 heart、lung。</li>
+            <li><b>Organ system</b>：器官系統，例如 digestive system。</li>
+            <li><b>Epithelial tissue</b>：上皮組織。</li>
+            <li><b>Connective tissue</b>：結締組織。</li>
+            <li><b>Muscle tissue</b>：肌肉組織。</li>
+            <li><b>Nervous tissue</b>：神經組織。</li>
+          </ul>
+        </article>
+        <article class="vocab-card">
+          <h3>骨骼與關節</h3>
+          <ul>
+            <li><b>Bone</b>：骨頭。</li>
+            <li><b>Skull</b>：頭骨。</li>
+            <li><b>Vertebra</b>：椎骨。</li>
+            <li><b>Rib</b>：肋骨。</li>
+            <li><b>Sternum</b>：胸骨。</li>
+            <li><b>Clavicle</b>：鎖骨。</li>
+            <li><b>Scapula</b>：肩胛骨。</li>
+            <li><b>Humerus</b>：肱骨。</li>
+            <li><b>Radius / Ulna</b>：橈骨／尺骨。</li>
+            <li><b>Pelvis</b>：骨盆。</li>
+            <li><b>Femur</b>：股骨。</li>
+            <li><b>Tibia / Fibula</b>：脛骨／腓骨。</li>
+            <li><b>Joint</b>：關節。</li>
+            <li><b>Cartilage</b>：軟骨。</li>
+            <li><b>Ligament</b>：韌帶。</li>
+          </ul>
+        </article>
+        <article class="vocab-card">
+          <h3>肌肉與動作</h3>
+          <ul>
+            <li><b>Muscle</b>：肌肉。</li>
+            <li><b>Tendon</b>：肌腱，連接肌肉與骨頭。</li>
+            <li><b>Contraction</b>：收縮。</li>
+            <li><b>Flexion / Extension</b>：屈曲／伸展。</li>
+            <li><b>Abduction / Adduction</b>：外展／內收。</li>
+            <li><b>Rotation</b>：旋轉。</li>
+            <li><b>Deltoid</b>：三角肌。</li>
+            <li><b>Pectoralis major</b>：胸大肌。</li>
+            <li><b>Biceps brachii</b>：肱二頭肌。</li>
+            <li><b>Triceps brachii</b>：肱三頭肌。</li>
+            <li><b>Quadriceps</b>：股四頭肌。</li>
+            <li><b>Hamstrings</b>：腿後肌群。</li>
+            <li><b>Gastrocnemius</b>：腓腸肌。</li>
+          </ul>
+        </article>
+        <article class="vocab-card">
+          <h3>器官與系統</h3>
+          <ul>
+            <li><b>Heart</b>：心臟。</li>
+            <li><b>Atrium / Ventricle</b>：心房／心室。</li>
+            <li><b>Artery / Vein</b>：動脈／靜脈。</li>
+            <li><b>Lung</b>：肺。</li>
+            <li><b>Trachea</b>：氣管。</li>
+            <li><b>Esophagus</b>：食道。</li>
+            <li><b>Stomach</b>：胃。</li>
+            <li><b>Liver</b>：肝臟。</li>
+            <li><b>Pancreas</b>：胰臟。</li>
+            <li><b>Small intestine / Large intestine</b>：小腸／大腸。</li>
+            <li><b>Kidney</b>：腎臟。</li>
+            <li><b>Bladder</b>：膀胱。</li>
+            <li><b>Brain</b>：大腦。</li>
+            <li><b>Spinal cord</b>：脊髓。</li>
+          </ul>
+        </article>
+        <article class="vocab-card">
+          <h3>學習用語與常見指令</h3>
+          <ul>
+            <li><b>Identify</b>：辨認、指出。</li>
+            <li><b>Label</b>：標示名稱。</li>
+            <li><b>Locate</b>：找出位置。</li>
+            <li><b>Compare</b>：比較。</li>
+            <li><b>Function</b>：功能。</li>
+            <li><b>Structure</b>：結構。</li>
+            <li><b>Diagram</b>：示意圖。</li>
+            <li><b>Body cavity</b>：體腔。</li>
+            <li><b>Thoracic cavity</b>：胸腔。</li>
+            <li><b>Abdominal cavity</b>：腹腔。</li>
+            <li><b>Pelvic cavity</b>：骨盆腔。</li>
+            <li><b>Review</b>：複習。</li>
+            <li><b>Quiz</b>：小測驗。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell bottom-banner">
+    <div class="link-grid" aria-label="頁尾重要連結區塊">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+        <strong>七月課程介紹｜錯中學 ECHO 計劃</strong>
+        <span>今年七月開課，適合想用互動方式提升英文與學習效率的學生與家長。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+        <strong>七月課程介紹｜學生分析</strong>
+        <span>今年七月開課，幫助你快速了解學生現況、學習盲點與後續規劃方向。</span>
+      </a>
+      <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+        <strong>Line 聯絡｜linwayet</strong>
+        <span>想詢問課程、合作或排課，可直接透過 Line 帳號聯繫：linwayet。</span>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const renderIcon = () => {
+        toggle.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+      };
+      renderIcon();
+      toggle.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        renderIcon();
+      });
+    })();
+  </script>
+</body>
+</html>

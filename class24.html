@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>解剖學入門課程 50回 | Anatomy for Beginners</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FFF8F0;
+  --warm1: #FF8C42;
+  --warm2: #FFB347;
+  --warm3: #FF6B6B;
+  --warm4: #F4A261;
+  --warm5: #E76F51;
+  --warm6: #FFCC80;
+  --warm7: #FFD54F;
+  --teal: #4ECDC4;
+  --green: #88D8A3;
+  --purple: #C77DFF;
+  --blue: #74B9FF;
+  --text: #3D2B1F;
+  --subtext: #7A5C4E;
+  --card-bg: #FFFDF9;
+  --shadow: rgba(180,100,50,0.13);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(160deg, #FFF3E0 0%, #FFF8F0 40%, #FFF3E0 100%);
+  color: var(--text);
+  font-family: 'Nunito', 'Noto Serif TC', sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(255,179,71,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 90% 80%, rgba(255,107,107,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ───── PROMO BANNER ───── */
+.promo-banner {
+  background: linear-gradient(135deg, #FF8C42 0%, #FF6B6B 50%, #C77DFF 100%);
+  color: #fff;
+  padding: 18px 16px 14px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.promo-banner h2 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+.promo-links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+}
+.promo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  border-radius: 50px;
+  padding: 9px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s, transform 0.2s;
+  max-width: 340px;
+  width: 100%;
+}
+.promo-link:hover { background: rgba(255,255,255,0.32); transform: scale(1.03); }
+.promo-link .icon { font-size: 1.3rem; flex-shrink: 0; }
+.promo-link-desc { font-size: 0.78rem; font-weight: 400; opacity: 0.9; display: block; }
+.line-link { background: rgba(0,185,0,0.30); border-color: rgba(255,255,255,0.6); }
+.line-link:hover { background: rgba(0,185,0,0.50); }
+
+/* ───── HERO ───── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 36px 20px 28px;
+  background: linear-gradient(180deg, rgba(255,179,71,0.08) 0%, transparent 100%);
+}
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #FF8C42, #FF6B6B);
+  color: #fff;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--warm5);
+  margin-bottom: 8px;
+}
+.hero h1 span { color: var(--warm1); }
+.hero-sub {
+  font-size: 1rem;
+  color: var(--subtext);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.pill {
+  background: #fff;
+  border: 2px solid;
+  border-radius: 50px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.pill.orange { border-color: var(--warm1); color: var(--warm1); }
+.pill.red { border-color: var(--warm3); color: var(--warm3); }
+.pill.teal { border-color: var(--teal); color: var(--teal); }
+.pill.green { border-color: var(--green); color: #3a9c68; }
+.pill.purple { border-color: var(--purple); color: #9b4dca; }
+
+/* ───── SECTION HEADER ───── */
+.section-header {
+  text-align: center;
+  padding: 10px 20px 4px;
+  position: relative;
+  z-index: 1;
+}
+.section-header h2 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--warm5);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-header p {
+  font-size: 0.88rem;
+  color: var(--subtext);
+  margin-top: 4px;
+}
+
+/* ───── PHASE CONTAINER ───── */
+.phases { padding: 8px 12px 0; position: relative; z-index: 1; }
+
+.phase-block {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.phase-header::after {
+  content: '▼';
+  position: absolute;
+  right: 18px;
+  font-size: 0.85rem;
+  transition: transform 0.3s;
+  opacity: 0.85;
+}
+.phase-block.open .phase-header::after { transform: rotate(180deg); }
+.phase-emoji { font-size: 1.8rem; }
+.phase-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.05rem; }
+.phase-meta { font-size: 0.78rem; opacity: 0.9; margin-top: 1px; }
+
+.ph1 .phase-header { background: linear-gradient(135deg, #FF8C42, #FFB347); }
+.ph2 .phase-header { background: linear-gradient(135deg, #FF6B6B, #FF8C42); }
+.ph3 .phase-header { background: linear-gradient(135deg, #4ECDC4, #74B9FF); }
+.ph4 .phase-header { background: linear-gradient(135deg, #C77DFF, #FF6B6B); }
+.ph5 .phase-header { background: linear-gradient(135deg, #88D8A3, #FFD54F); }
+
+.phase-content { display: none; background: var(--card-bg); padding: 10px 12px 14px; }
+.phase-block.open .phase-content { display: block; }
+
+.episode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (min-width: 480px) { .episode-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.ep-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px 10px 10px 12px;
+  border-left: 4px solid;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.ep-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.10); }
+.ep-card.done { opacity: 0.55; }
+.ep-card.done::after { content: '✓'; position: absolute; top: 6px; right: 8px; font-size: 1rem; color: #88D8A3; font-weight: 900; }
+
+.ep-num {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  margin-bottom: 3px;
+  opacity: 0.7;
+}
+.ep-title { font-size: 0.82rem; font-weight: 700; line-height: 1.35; color: var(--text); }
+.ep-en { font-size: 0.70rem; color: var(--subtext); margin-top: 2px; line-height: 1.3; }
+.ep-time { font-size: 0.68rem; color: #aaa; margin-top: 4px; }
+.ep-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  padding: 1px 7px;
+  border-radius: 20px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+.tag-fun { background: #FFF3CD; color: #B8860B; }
+.tag-med { background: #FFE0E0; color: #C0392B; }
+.tag-sci { background: #E0F7FA; color: #00838F; }
+
+.ph1 .ep-card { border-color: #FF8C42; }
+.ph2 .ep-card { border-color: #FF6B6B; }
+.ph3 .ep-card { border-color: #4ECDC4; }
+.ph4 .ep-card { border-color: #C77DFF; }
+.ph5 .ep-card { border-color: #88D8A3; }
+
+/* ───── VOCAB SECTION ───── */
+.vocab-section {
+  margin: 8px 12px 20px;
+  position: relative;
+  z-index: 1;
+}
+.vocab-intro {
+  background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
+  border: 2px solid #FFB347;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.vocab-intro h3 { font-family: 'Baloo 2', sans-serif; font-size: 1.1rem; color: var(--warm5); margin-bottom: 4px; }
+.vocab-intro p { font-size: 0.83rem; color: var(--subtext); }
+
+.vocab-cat-block {
+  margin-bottom: 14px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px var(--shadow);
+}
+.vocab-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.vocab-cat-header::after {
+  content: '▼';
+  position: absolute;
+  right: 16px;
+  font-size: 0.8rem;
+  transition: transform 0.3s;
+}
+.vocab-cat-block.open .vocab-cat-header::after { transform: rotate(180deg); }
+.vc1 .vocab-cat-header { background: linear-gradient(135deg, #FF8C42, #FFD54F); }
+.vc2 .vocab-cat-header { background: linear-gradient(135deg, #FF6B6B, #FFB347); }
+.vc3 .vocab-cat-header { background: linear-gradient(135deg, #4ECDC4, #74B9FF); }
+.vc4 .vocab-cat-header { background: linear-gradient(135deg, #C77DFF, #FF8C42); }
+.vc5 .vocab-cat-header { background: linear-gradient(135deg, #88D8A3, #4ECDC4); }
+.vc6 .vocab-cat-header { background: linear-gradient(135deg, #FFD54F, #FF8C42); }
+.vocab-cat-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 0.98rem; }
+.vocab-cat-count { font-size: 0.75rem; opacity: 0.9; }
+
+.vocab-cat-content { display: none; background: var(--card-bg); padding: 10px 12px; }
+.vocab-cat-block.open .vocab-cat-content { display: block; }
+
+.vocab-list { display: flex; flex-direction: column; gap: 7px; }
+.vocab-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  border-left: 3px solid;
+}
+.vc1 .vocab-item { border-color: #FF8C42; }
+.vc2 .vocab-item { border-color: #FF6B6B; }
+.vc3 .vocab-item { border-color: #4ECDC4; }
+.vc4 .vocab-item { border-color: #C77DFF; }
+.vc5 .vocab-item { border-color: #88D8A3; }
+.vc6 .vocab-item { border-color: #FFD54F; }
+
+.vocab-en { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--warm5); min-width: 120px; }
+.vocab-zh { font-size: 0.83rem; color: var(--text); flex: 1; }
+.vocab-note { font-size: 0.72rem; color: var(--subtext); display: block; margin-top: 2px; }
+
+/* ───── PROGRESS BAR ───── */
+.progress-wrap {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 0 12px 20px;
+  box-shadow: 0 3px 14px var(--shadow);
+  position: relative;
+  z-index: 1;
+}
+.progress-wrap h3 { font-family: 'Baloo 2', sans-serif; font-size: 1rem; color: var(--warm5); margin-bottom: 10px; }
+.progress-bar-outer { background: #FFE0CC; border-radius: 50px; height: 14px; overflow: hidden; }
+.progress-bar-inner { height: 100%; border-radius: 50px; background: linear-gradient(90deg, #FF8C42, #FF6B6B); transition: width 0.5s; }
+.progress-text { font-size: 0.82rem; color: var(--subtext); margin-top: 6px; text-align: right; }
+.progress-stats { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.stat-box { background: var(--cream); border-radius: 10px; padding: 8px 12px; flex: 1; min-width: 80px; text-align: center; }
+.stat-num { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--warm1); }
+.stat-label { font-size: 0.72rem; color: var(--subtext); }
+
+/* ───── FOOTER / BOTTOM PROMO ───── */
+.bottom-promo { background: linear-gradient(135deg, #E76F51 0%, #FF8C42 50%, #FFB347 100%); padding: 22px 16px 28px; text-align: center; position: relative; z-index: 1; }
+.bottom-promo h2 { font-family: 'Baloo 2', sans-serif; font-size: 1.1rem; color: #fff; font-weight: 800; margin-bottom: 14px; text-shadow: 0 1px 4px rgba(0,0,0,0.18); }
+.footer-note { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-top: 16px; }
+
+/* ───── MISC ───── */
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFB347, #FF6B6B, #FFB347, transparent);
+  margin: 8px 0;
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.tip-box {
+  background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
+  border: 1.5px solid #FFB347;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 0 12px 16px;
+  font-size: 0.83rem;
+  color: var(--text);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+.tip-box strong { color: var(--warm5); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero { animation: fadeUp 0.6s ease both; }
+.section-header { animation: fadeUp 0.6s 0.1s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP PROMO ═══ -->
+<div class="promo-banner">
+  <h2>🎓 七月開課！歡迎加入 Charlie 老師的課程</h2>
+  <div class="promo-links">
+    <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="icon">🔥</span>
+      <span>
+        錯中學 ECHO 計劃
+        <span class="promo-link-desc">從錯誤中學習，螺旋式英文進步法｜七月開課</span>
+      </span>
+    </a>
+    <a class="promo-link" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="icon">📊</span>
+      <span>
+        學生學習分析工具
+        <span class="promo-link-desc">個人化英文程度診斷，找出你的學習盲點</span>
+      </span>
+    </a>
+    <a class="promo-link line-link" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="icon">💬</span>
+      <span>
+        加 LINE：linwayet
+        <span class="promo-link-desc">直接聯絡 Charlie 老師，歡迎詢問課程</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-badge">🫀 50回 漸進式課程</div>
+  <h1>解剖學<span> Anatomy</span><br>入門到中級</h1>
+  <p class="hero-sub">
+    適合生物小白 × 高三學生<br>
+    興趣導向 70% ＋ 醫護生科方向 30%<br>
+    每回 10–15 分鐘，按自己節奏學習
+  </p>
+  <div class="hero-pills">
+    <span class="pill orange">🎯 50 回完整課程</span>
+    <span class="pill red">🩺 醫護導向</span>
+    <span class="pill teal">🔬 生科方向</span>
+    <span class="pill green">😄 興趣優先</span>
+    <span class="pill purple">📖 關鍵詞彙整理</span>
+  </div>
+</div>
+
+<!-- ═══ PROGRESS ═══ -->
+<div class="progress-wrap">
+  <h3>📈 我的學習進度</h3>
+  <div class="progress-bar-outer">
+    <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
+  </div>
+  <div class="progress-text" id="progressText">已完成 0 / 50 回</div>
+  <div class="progress-stats">
+    <div class="stat-box"><div class="stat-num" id="doneCount">0</div><div class="stat-label">已完成</div></div>
+    <div class="stat-box"><div class="stat-num" id="leftCount">50</div><div class="stat-label">剩餘</div></div>
+    <div class="stat-box"><div class="stat-num" id="minCount">0</div><div class="stat-label">分鐘累積</div></div>
+  </div>
+</div>
+
+<div class="tip-box">
+  💡 <strong>學習小提醒：</strong>點擊每一回的卡片可以打勾記錄完成！每回 10–15 分鐘，建議搭配 <strong>Visible Body App</strong> 或 <strong>Netter's Atlas</strong> 圖鑑一起看，效果更佳。
+</div>
+
+<!-- ═══ PHASES ═══ -->
+<div class="section-header">
+  <h2>🗺️ 課程地圖 · 五大階段</h2>
+  <p>點擊各階段展開詳細課程，點擊卡片記錄完成</p>
+</div>
+
+<div class="phases">
+
+<!-- Phase 1 -->
+<div class="phase-block ph1 open" id="ph1">
+  <div class="phase-header" onclick="togglePhase('ph1')">
+    <span class="phase-emoji">🌱</span>
+    <div>
+      <div class="phase-title">第一階段｜打好地基（第 1–10 回）</div>
+      <div class="phase-meta">從零開始，建立身體地圖概念</div>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="episode-grid">
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep1')">
+        <div class="ep-num">EP 01</div>
+        <div class="ep-title">解剖學是什麼？為什麼要學？</div>
+        <div class="ep-en">What is Anatomy?</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep2')">
+        <div class="ep-num">EP 02</div>
+        <div class="ep-title">方向術語：前後上下內外</div>
+        <div class="ep-en">Anatomical Directions</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep3')">
+        <div class="ep-num">EP 03</div>
+        <div class="ep-title">身體區域與體腔</div>
+        <div class="ep-en">Body Regions & Cavities</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep4')">
+        <div class="ep-num">EP 04</div>
+        <div class="ep-title">細胞→組織→器官→系統</div>
+        <div class="ep-en">Organization Levels</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep5')">
+        <div class="ep-num">EP 05</div>
+        <div class="ep-title">四大組織類型</div>
+        <div class="ep-en">4 Tissue Types</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep6')">
+        <div class="ep-num">EP 06</div>
+        <div class="ep-title">皮膚：最大的器官</div>
+        <div class="ep-en">Integumentary System</div>
+        <div class="ep-time">⏱ 11 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep7')">
+        <div class="ep-num">EP 07</div>
+        <div class="ep-title">骨骼系統概覽：206塊骨頭</div>
+        <div class="ep-en">Skeletal System Overview</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep8')">
+        <div class="ep-num">EP 08</div>
+        <div class="ep-title">關節與軟骨的世界</div>
+        <div class="ep-en">Joints & Cartilage</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep9')">
+        <div class="ep-num">EP 09</div>
+        <div class="ep-title">三種肌肉：骨骼、心、平滑</div>
+        <div class="ep-en">3 Types of Muscle</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph1" onclick="toggleDone(this,'ep10')">
+        <div class="ep-num">EP 10</div>
+        <div class="ep-title">人體的11大系統總覽</div>
+        <div class="ep-en">11 Body Systems</div>
+        <div class="ep-time">⏱ 15 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 2 -->
+<div class="phase-block ph2" id="ph2">
+  <div class="phase-header" onclick="togglePhase('ph2')">
+    <span class="phase-emoji">🦴</span>
+    <div>
+      <div class="phase-title">第二階段｜骨骼與肌肉（第 11–22 回）</div>
+      <div class="phase-meta">運動系統詳解，動起來才懂身體</div>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="episode-grid">
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep11')">
+        <div class="ep-num">EP 11</div>
+        <div class="ep-title">頭顱骨：保護大腦的盔甲</div>
+        <div class="ep-en">Skull & Cranium</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep12')">
+        <div class="ep-num">EP 12</div>
+        <div class="ep-title">脊椎：身體的中軸</div>
+        <div class="ep-en">Vertebral Column</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep13')">
+        <div class="ep-num">EP 13</div>
+        <div class="ep-title">胸廓與肋骨</div>
+        <div class="ep-en">Thoracic Cage & Ribs</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep14')">
+        <div class="ep-num">EP 14</div>
+        <div class="ep-title">上肢骨骼：肩膀到指尖</div>
+        <div class="ep-en">Upper Limb Bones</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep15')">
+        <div class="ep-num">EP 15</div>
+        <div class="ep-title">下肢骨骼：骨盆到腳趾</div>
+        <div class="ep-en">Lower Limb Bones</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep16')">
+        <div class="ep-num">EP 16</div>
+        <div class="ep-title">肌肉命名邏輯大揭密</div>
+        <div class="ep-en">How Muscles Are Named</div>
+        <div class="ep-time">⏱ 11 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep17')">
+        <div class="ep-num">EP 17</div>
+        <div class="ep-title">臉部與頸部肌肉</div>
+        <div class="ep-en">Facial & Neck Muscles</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep18')">
+        <div class="ep-num">EP 18</div>
+        <div class="ep-title">上肢主要肌群</div>
+        <div class="ep-en">Major Upper Limb Muscles</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep19')">
+        <div class="ep-num">EP 19</div>
+        <div class="ep-title">核心肌群：腹部與背部</div>
+        <div class="ep-en">Core Muscles</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep20')">
+        <div class="ep-num">EP 20</div>
+        <div class="ep-title">下肢主要肌群</div>
+        <div class="ep-en">Major Lower Limb Muscles</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep21')">
+        <div class="ep-num">EP 21</div>
+        <div class="ep-title">肌腱、韌帶與筋膜</div>
+        <div class="ep-en">Tendons, Ligaments & Fascia</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph2" onclick="toggleDone(this,'ep22')">
+        <div class="ep-num">EP 22</div>
+        <div class="ep-title">運動損傷常見部位解析</div>
+        <div class="ep-en">Common Sports Injuries</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 3 -->
+<div class="phase-block ph3" id="ph3">
+  <div class="phase-header" onclick="togglePhase('ph3')">
+    <span class="phase-emoji">🧠</span>
+    <div>
+      <div class="phase-title">第三階段｜神經與感官（第 23–32 回）</div>
+      <div class="phase-meta">大腦、神經網路、感覺器官</div>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="episode-grid">
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep23')">
+        <div class="ep-num">EP 23</div>
+        <div class="ep-title">神經系統大框架：CNS vs PNS</div>
+        <div class="ep-en">CNS & PNS Overview</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep24')">
+        <div class="ep-num">EP 24</div>
+        <div class="ep-title">大腦的各個分區</div>
+        <div class="ep-en">Brain Regions</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep25')">
+        <div class="ep-num">EP 25</div>
+        <div class="ep-title">小腦、腦幹、間腦</div>
+        <div class="ep-en">Cerebellum, Brainstem & Diencephalon</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep26')">
+        <div class="ep-num">EP 26</div>
+        <div class="ep-title">腦膜、腦室與腦脊液</div>
+        <div class="ep-en">Meninges, Ventricles & CSF</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep27')">
+        <div class="ep-num">EP 27</div>
+        <div class="ep-title">12對腦神經</div>
+        <div class="ep-en">12 Cranial Nerves</div>
+        <div class="ep-time">⏱ 15 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep28')">
+        <div class="ep-num">EP 28</div>
+        <div class="ep-title">脊神經與神經叢</div>
+        <div class="ep-en">Spinal Nerves & Plexuses</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep29')">
+        <div class="ep-num">EP 29</div>
+        <div class="ep-title">自律神經：交感 vs 副交感</div>
+        <div class="ep-en">Autonomic Nervous System</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep30')">
+        <div class="ep-num">EP 30</div>
+        <div class="ep-title">眼睛的解剖構造</div>
+        <div class="ep-en">Anatomy of the Eye</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep31')">
+        <div class="ep-num">EP 31</div>
+        <div class="ep-title">耳朵：從外耳到內耳</div>
+        <div class="ep-en">Anatomy of the Ear</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph3" onclick="toggleDone(this,'ep32')">
+        <div class="ep-num">EP 32</div>
+        <div class="ep-title">嗅覺、味覺的神經路徑</div>
+        <div class="ep-en">Olfaction & Taste Pathways</div>
+        <div class="ep-time">⏱ 11 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 4 -->
+<div class="phase-block ph4" id="ph4">
+  <div class="phase-header" onclick="togglePhase('ph4')">
+    <span class="phase-emoji">🫀</span>
+    <div>
+      <div class="phase-title">第四階段｜內臟系統（第 33–44 回）</div>
+      <div class="phase-meta">心臟、肺、消化、泌尿、生殖</div>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="episode-grid">
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep33')">
+        <div class="ep-num">EP 33</div>
+        <div class="ep-title">心臟解剖：四個腔室與瓣膜</div>
+        <div class="ep-en">Heart Anatomy</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep34')">
+        <div class="ep-num">EP 34</div>
+        <div class="ep-title">冠狀動脈與心臟血流</div>
+        <div class="ep-en">Coronary Circulation</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep35')">
+        <div class="ep-num">EP 35</div>
+        <div class="ep-title">大動脈與大靜脈主幹</div>
+        <div class="ep-en">Major Arteries & Veins</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep36')">
+        <div class="ep-num">EP 36</div>
+        <div class="ep-title">呼吸道：鼻腔到細支氣管</div>
+        <div class="ep-en">Respiratory Tract</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep37')">
+        <div class="ep-num">EP 37</div>
+        <div class="ep-title">肺葉、胸膜與橫膈</div>
+        <div class="ep-en">Lung Lobes, Pleura & Diaphragm</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep38')">
+        <div class="ep-num">EP 38</div>
+        <div class="ep-title">消化系統：口腔到食道</div>
+        <div class="ep-en">Upper Digestive Tract</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep39')">
+        <div class="ep-num">EP 39</div>
+        <div class="ep-title">胃、小腸、大腸到肛門</div>
+        <div class="ep-en">Lower Digestive Tract</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep40')">
+        <div class="ep-num">EP 40</div>
+        <div class="ep-title">肝臟、膽囊、胰臟</div>
+        <div class="ep-en">Liver, Gallbladder & Pancreas</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep41')">
+        <div class="ep-num">EP 41</div>
+        <div class="ep-title">腎臟構造與腎元</div>
+        <div class="ep-en">Kidney & Nephron</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep42')">
+        <div class="ep-num">EP 42</div>
+        <div class="ep-title">輸尿管、膀胱與尿道</div>
+        <div class="ep-en">Ureter, Bladder & Urethra</div>
+        <div class="ep-time">⏱ 11 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep43')">
+        <div class="ep-num">EP 43</div>
+        <div class="ep-title">男性生殖系統解剖</div>
+        <div class="ep-en">Male Reproductive Anatomy</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph4" onclick="toggleDone(this,'ep44')">
+        <div class="ep-num">EP 44</div>
+        <div class="ep-title">女性生殖系統解剖</div>
+        <div class="ep-en">Female Reproductive Anatomy</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 5 -->
+<div class="phase-block ph5" id="ph5">
+  <div class="phase-header" onclick="togglePhase('ph5')">
+    <span class="phase-emoji">🎓</span>
+    <div>
+      <div class="phase-title">第五階段｜整合與進階（第 45–50 回）</div>
+      <div class="phase-meta">融會貫通，接軌大學水準</div>
+    </div>
+  </div>
+  <div class="phase-content">
+    <div class="episode-grid">
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep45')">
+        <div class="ep-num">EP 45</div>
+        <div class="ep-title">內分泌腺體大集合</div>
+        <div class="ep-en">Endocrine Glands</div>
+        <div class="ep-time">⏱ 13 分鐘</div>
+        <span class="ep-tag tag-sci">🔬 生科</span>
+      </div>
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep46')">
+        <div class="ep-num">EP 46</div>
+        <div class="ep-title">淋巴系統與免疫器官</div>
+        <div class="ep-en">Lymphatic & Immune Organs</div>
+        <div class="ep-time">⏱ 12 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep47')">
+        <div class="ep-num">EP 47</div>
+        <div class="ep-title">腹腔器官位置整合圖</div>
+        <div class="ep-en">Abdominal Topography</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep48')">
+        <div class="ep-num">EP 48</div>
+        <div class="ep-title">斷面解剖學：CT/MRI 怎麼看</div>
+        <div class="ep-en">Cross-Sectional Anatomy</div>
+        <div class="ep-time">⏱ 15 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep49')">
+        <div class="ep-num">EP 49</div>
+        <div class="ep-title">臨床應用：注射、手術切口</div>
+        <div class="ep-en">Clinical Applications</div>
+        <div class="ep-time">⏱ 14 分鐘</div>
+        <span class="ep-tag tag-med">🩺 醫護</span>
+      </div>
+      <div class="ep-card ph5" onclick="toggleDone(this,'ep50')">
+        <div class="ep-num">EP 50</div>
+        <div class="ep-title">🎉 總複習：系統圖+自我測驗</div>
+        <div class="ep-en">Final Review & Self-Test</div>
+        <div class="ep-time">⏱ 15 分鐘</div>
+        <span class="ep-tag tag-fun">😄 趣味</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /phases -->
+
+<!-- ═══ VOCAB SECTION ═══ -->
+<div class="divider" style="margin: 0 12px;"></div>
+
+<div class="section-header" style="padding-top:20px;">
+  <h2>📖 關鍵解剖學詞彙整理</h2>
+  <p>按系統分類，中英對照，含記憶提示</p>
+</div>
+
+<div class="vocab-section">
+  <div class="vocab-intro">
+    <h3>🧩 如何使用詞彙表？</h3>
+    <p>遇到陌生詞先看詞根：<strong>-ology</strong> 表示「學科」，<strong>-itis</strong> 表示「發炎」，<strong>osteo-</strong> 表示「骨骼」——懂詞根，自然讀得懂！</p>
+  </div>
+
+  <!-- Cat 1: Directions -->
+  <div class="vocab-cat-block vc1 open" id="vc1">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc1')">
+      <span style="font-size:1.4rem">🧭</span>
+      <div>
+        <div class="vocab-cat-title">方向與位置術語</div>
+        <div class="vocab-cat-count">Anatomical Directions · 14 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Anterior / Posterior</span><span class="vocab-zh">前 / 後<span class="vocab-note">腹側為前（anterior），背側為後（posterior）</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Superior / Inferior</span><span class="vocab-zh">上 / 下<span class="vocab-note">靠頭為上，靠腳為下</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Medial / Lateral</span><span class="vocab-zh">內側 / 外側<span class="vocab-note">靠身體中線為 medial</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Proximal / Distal</span><span class="vocab-zh">近端 / 遠端<span class="vocab-note">四肢用語：靠軀幹為近端</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Superficial / Deep</span><span class="vocab-zh">淺層 / 深層<span class="vocab-note">距體表遠近的相對位置</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Ipsilateral / Contralateral</span><span class="vocab-zh">同側 / 對側<span class="vocab-note">神經學常用術語</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Sagittal plane</span><span class="vocab-zh">矢狀面<span class="vocab-note">將身體分為左右兩半的切面</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Coronal / Frontal plane</span><span class="vocab-zh">冠狀面<span class="vocab-note">將身體分為前後兩半</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Transverse / Axial plane</span><span class="vocab-zh">橫切面<span class="vocab-note">CT 掃描最常用的角度</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Ventral / Dorsal</span><span class="vocab-zh">腹側 / 背側<span class="vocab-note">多用於脊椎動物比較解剖</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Cranial / Caudal</span><span class="vocab-zh">頭側 / 尾側<span class="vocab-note">cranium = 頭顱，cauda = 尾巴</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Prone / Supine</span><span class="vocab-zh">俯臥 / 仰臥<span class="vocab-note">手術姿勢術語</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Flexion / Extension</span><span class="vocab-zh">屈曲 / 伸展<span class="vocab-note">關節角度減小/增大的動作</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Abduction / Adduction</span><span class="vocab-zh">外展 / 內收<span class="vocab-note">遠離/靠近身體中線的動作</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat 2: Skeletal -->
+  <div class="vocab-cat-block vc2" id="vc2">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc2')">
+      <span style="font-size:1.4rem">🦴</span>
+      <div>
+        <div class="vocab-cat-title">骨骼系統關鍵詞</div>
+        <div class="vocab-cat-count">Skeletal System · 16 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Cranium</span><span class="vocab-zh">頭顱骨<span class="vocab-note">crani- 來自希臘語「頭」</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Vertebra (pl. vertebrae)</span><span class="vocab-zh">脊椎骨<span class="vocab-note">cervical / thoracic / lumbar / sacral</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Sternum</span><span class="vocab-zh">胸骨<span class="vocab-note">位於胸部正中，共三節</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Clavicle</span><span class="vocab-zh">鎖骨<span class="vocab-note">最常骨折的骨骼之一</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Scapula</span><span class="vocab-zh">肩胛骨<span class="vocab-note">三角形，俗稱「翅膀骨」</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Humerus / Radius / Ulna</span><span class="vocab-zh">肱骨 / 橈骨 / 尺骨<span class="vocab-note">上臂一根 + 前臂兩根</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Carpals / Metacarpals / Phalanges</span><span class="vocab-zh">腕骨 / 掌骨 / 指骨<span class="vocab-note">手部三段骨骼結構</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Pelvis / Ilium / Ischium / Pubis</span><span class="vocab-zh">骨盆 / 髂骨 / 坐骨 / 恥骨<span class="vocab-note">骨盆由三塊骨融合而成</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Femur</span><span class="vocab-zh">股骨（大腿骨）<span class="vocab-note">人體最長、最強壯的骨骼</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Patella</span><span class="vocab-zh">髕骨（膝蓋骨）<span class="vocab-note">種子骨（sesamoid bone）的最大代表</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Tibia / Fibula</span><span class="vocab-zh">脛骨 / 腓骨<span class="vocab-note">小腿兩根骨，tibia 較粗</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Tarsals / Metatarsals</span><span class="vocab-zh">跗骨 / 蹠骨<span class="vocab-note">足部骨骼</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Periosteum</span><span class="vocab-zh">骨膜<span class="vocab-note">覆蓋骨骼表面的緻密結締組織</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Compact / Spongy bone</span><span class="vocab-zh">緻密骨 / 海綿骨<span class="vocab-note">骨骼的兩種基本組織型態</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Bone marrow</span><span class="vocab-zh">骨髓<span class="vocab-note">紅骨髓造血，黃骨髓儲存脂肪</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Synovial joint</span><span class="vocab-zh">滑液關節<span class="vocab-note">有關節腔、滑液的活動性關節</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat 3: Muscle -->
+  <div class="vocab-cat-block vc3" id="vc3">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc3')">
+      <span style="font-size:1.4rem">💪</span>
+      <div>
+        <div class="vocab-cat-title">肌肉系統關鍵詞</div>
+        <div class="vocab-cat-count">Muscular System · 14 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Skeletal muscle</span><span class="vocab-zh">骨骼肌（橫紋肌）<span class="vocab-note">有意識控制，附著於骨骼</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Cardiac muscle</span><span class="vocab-zh">心肌<span class="vocab-note">不受意識控制，有閏盤</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Smooth muscle</span><span class="vocab-zh">平滑肌<span class="vocab-note">內臟、血管壁，無橫紋</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Origin / Insertion</span><span class="vocab-zh">起端 / 止端<span class="vocab-note">origin 固定不動，insertion 跟著移動</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Agonist / Antagonist</span><span class="vocab-zh">主動肌 / 拮抗肌<span class="vocab-note">二頭肌收縮時，三頭肌為拮抗肌</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Biceps brachii</span><span class="vocab-zh">肱二頭肌<span class="vocab-note">bicep = 兩頭，brachii = 手臂的</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Triceps brachii</span><span class="vocab-zh">肱三頭肌<span class="vocab-note">伸展手肘的主要肌肉</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Deltoid</span><span class="vocab-zh">三角肌<span class="vocab-note">希臘字母 Δ（Delta）形狀</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Quadriceps / Hamstrings</span><span class="vocab-zh">股四頭肌 / 股後肌群<span class="vocab-note">大腿前後的主要肌群</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Gastrocnemius</span><span class="vocab-zh">腓腸肌（小腿肚）<span class="vocab-note">gastro = 肚子；跑步主力肌</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Diaphragm</span><span class="vocab-zh">橫膈<span class="vocab-note">呼吸最重要的肌肉</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Rectus abdominis</span><span class="vocab-zh">腹直肌<span class="vocab-note">俗稱「六塊腹肌」</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Rotator cuff</span><span class="vocab-zh">旋轉肌袖<span class="vocab-note">穩定肩關節的4條肌肉</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Tendon / Ligament</span><span class="vocab-zh">肌腱 / 韌帶<span class="vocab-note">腱連接肌肉與骨骼，韌帶連接骨與骨</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat 4: Neuro -->
+  <div class="vocab-cat-block vc4" id="vc4">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc4')">
+      <span style="font-size:1.4rem">🧠</span>
+      <div>
+        <div class="vocab-cat-title">神經系統關鍵詞</div>
+        <div class="vocab-cat-count">Nervous System · 16 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Neuron</span><span class="vocab-zh">神經元<span class="vocab-note">神經系統的基本單位，有軸突和樹突</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Axon / Dendrite</span><span class="vocab-zh">軸突 / 樹突<span class="vocab-note">axon 傳出訊號，dendrite 接收訊號</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Synapse</span><span class="vocab-zh">突觸<span class="vocab-note">神經元之間傳遞訊號的接合點</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">CNS / PNS</span><span class="vocab-zh">中樞神經 / 周邊神經<span class="vocab-note">CNS = 腦+脊髓；PNS = 其他所有神經</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Cerebrum</span><span class="vocab-zh">大腦<span class="vocab-note">分左右半球，負責高階思考</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Cerebellum</span><span class="vocab-zh">小腦<span class="vocab-note">協調動作與平衡</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Brainstem</span><span class="vocab-zh">腦幹<span class="vocab-note">中腦 + 橋腦 + 延髓；維持生命基本功能</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Frontal / Parietal / Temporal / Occipital lobe</span><span class="vocab-zh">額 / 頂 / 顳 / 枕葉<span class="vocab-note">大腦的四大分葉</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Meninges</span><span class="vocab-zh">腦脊膜<span class="vocab-note">硬腦膜 / 蜘蛛膜 / 軟腦膜（三層）</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">CSF (Cerebrospinal fluid)</span><span class="vocab-zh">腦脊液<span class="vocab-note">緩衝保護大腦的液體</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Cranial nerves I–XII</span><span class="vocab-zh">12 對腦神經<span class="vocab-note">記憶口訣：Oh Oh Oh To Touch And Feel Very Good Vacations Are Heaven</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Sympathetic / Parasympathetic</span><span class="vocab-zh">交感 / 副交感神經<span class="vocab-note">fight-or-flight vs rest-and-digest</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Spinal cord</span><span class="vocab-zh">脊髓<span class="vocab-note">從延髓延伸至第一腰椎</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Dermatome</span><span class="vocab-zh">皮節<span class="vocab-note">每條脊神經支配的皮膚區域</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Gray matter / White matter</span><span class="vocab-zh">灰質 / 白質<span class="vocab-note">灰質含神經元體；白質含有髓鞘軸突</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Blood-brain barrier (BBB)</span><span class="vocab-zh">血腦屏障<span class="vocab-note">保護大腦不被血液中有害物質侵入</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat 5: Cardio/Resp -->
+  <div class="vocab-cat-block vc5" id="vc5">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc5')">
+      <span style="font-size:1.4rem">🫀</span>
+      <div>
+        <div class="vocab-cat-title">心臟血管 ＋ 呼吸系統</div>
+        <div class="vocab-cat-count">Cardio & Respiratory · 14 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Atrium / Ventricle</span><span class="vocab-zh">心房 / 心室<span class="vocab-note">上方兩個心房，下方兩個心室</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Mitral / Tricuspid valve</span><span class="vocab-zh">二尖瓣 / 三尖瓣<span class="vocab-note">左側二尖瓣，右側三尖瓣</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Aorta</span><span class="vocab-zh">主動脈<span class="vocab-note">全身最大動脈，離開左心室</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Pulmonary circulation</span><span class="vocab-zh">肺循環<span class="vocab-note">右心 → 肺 → 左心的路線</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Coronary arteries</span><span class="vocab-zh">冠狀動脈<span class="vocab-note">供應心臟本身血液的動脈</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Pericardium</span><span class="vocab-zh">心包膜<span class="vocab-note">包覆心臟的囊袋，分三層</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Capillary</span><span class="vocab-zh">微血管<span class="vocab-note">氣體與養分交換的最小血管單位</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Nasopharynx / Larynx / Trachea</span><span class="vocab-zh">鼻咽 / 喉 / 氣管<span class="vocab-note">上呼吸道的主要構造</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Bronchus / Bronchiole / Alveolus</span><span class="vocab-zh">支氣管 / 細支氣管 / 肺泡<span class="vocab-note">alveolus 是氣體交換的最終場所</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Pleura</span><span class="vocab-zh">肋膜（胸膜）<span class="vocab-note">臟層 + 壁層，中間有少量液體</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Tidal volume</span><span class="vocab-zh">潮氣量<span class="vocab-note">正常一次呼吸約 500 mL</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Vital capacity</span><span class="vocab-zh">肺活量<span class="vocab-note">最大吸氣後最大呼氣的氣量</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Surfactant</span><span class="vocab-zh">表面張力素<span class="vocab-note">防止肺泡塌陷的磷脂質</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Pulmonary artery / vein</span><span class="vocab-zh">肺動脈 / 肺靜脈<span class="vocab-note">肺動脈含缺氧血（少見規律）</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat 6: Misc -->
+  <div class="vocab-cat-block vc6" id="vc6">
+    <div class="vocab-cat-header" onclick="toggleVocab('vc6')">
+      <span style="font-size:1.4rem">🔬</span>
+      <div>
+        <div class="vocab-cat-title">消化、泌尿 ＋ 常用字根</div>
+        <div class="vocab-cat-count">Digestive, Urinary & Roots · 16 詞</div>
+      </div>
+    </div>
+    <div class="vocab-cat-content">
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-en">Esophagus</span><span class="vocab-zh">食道<span class="vocab-note">連接咽喉與胃的管道，約25公分</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Peritoneum</span><span class="vocab-zh">腹膜<span class="vocab-note">覆蓋腹腔臟器的漿膜</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Duodenum / Jejunum / Ileum</span><span class="vocab-zh">十二指腸 / 空腸 / 迴腸<span class="vocab-note">小腸三段，全長約 6–7 公尺</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Liver / Hepatic</span><span class="vocab-zh">肝臟 / 肝的<span class="vocab-note">hepato- 是「肝臟」的前綴</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Nephron</span><span class="vocab-zh">腎元<span class="vocab-note">腎臟的功能單位，每顆腎有約 100 萬個</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Glomerulus</span><span class="vocab-zh">腎絲球<span class="vocab-note">過濾血液的毛細血管球</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Renal cortex / medulla</span><span class="vocab-zh">腎皮質 / 腎髓質<span class="vocab-note">皮質在外，髓質在內</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">Urethra</span><span class="vocab-zh">尿道<span class="vocab-note">男性約 20 cm，女性約 3–4 cm</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">osteo-</span><span class="vocab-zh">骨骼（字根）<span class="vocab-note">osteoporosis = 骨質疏鬆症</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">neuro-</span><span class="vocab-zh">神經（字根）<span class="vocab-note">neurology = 神經學</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">cardio-</span><span class="vocab-zh">心臟（字根）<span class="vocab-note">cardiovascular = 心血管的</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">-itis</span><span class="vocab-zh">發炎（後綴）<span class="vocab-note">appendicitis = 闌尾炎</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">-ectomy</span><span class="vocab-zh">切除術（後綴）<span class="vocab-note">appendectomy = 闌尾切除術</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">-plasty</span><span class="vocab-zh">整形重建術（後綴）<span class="vocab-note">rhinoplasty = 鼻整形</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">-scopy</span><span class="vocab-zh">內視鏡術（後綴）<span class="vocab-note">colonoscopy = 大腸鏡</span></span></div>
+        <div class="vocab-item"><span class="vocab-en">-graphy</span><span class="vocab-zh">影像記錄術（後綴）<span class="vocab-note">angiography = 血管攝影</span></span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /vocab-section -->
+
+<!-- ═══ BOTTOM PROMO ═══ -->
+<div class="bottom-promo">
+  <h2>🎓 七月課程開始！歡迎報名 Charlie 老師的課程</h2>
+  <div class="promo-links">
+    <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="icon">🔥</span>
+      <span>
+        錯中學 ECHO 計劃
+        <span class="promo-link-desc">螺旋式英文進步法，七月正式開課，名額有限</span>
+      </span>
+    </a>
+    <a class="promo-link" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="icon">📊</span>
+      <span>
+        學生學習分析工具
+        <span class="promo-link-desc">免費測試！找出你的英文弱點在哪裡</span>
+      </span>
+    </a>
+    <a class="promo-link line-link" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="icon">💬</span>
+      <span>
+        加 LINE：linwayet
+        <span class="promo-link-desc">有問題直接問老師，歡迎詢問任何課程細節</span>
+      </span>
+    </a>
+  </div>
+  <p class="footer-note">© 2025 Charlie 老師 · 解剖學50回課程 · 興趣×醫護×生科</p>
+</div>
+
+<script>
+// Toggle phase
+function togglePhase(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// Toggle vocab
+function toggleVocab(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// Toggle episode done + update progress
+const doneSet = new Set(JSON.parse(localStorage.getItem('anatomyDone') || '[]'));
+
+function updateProgress() {
+  const total = 50;
+  const done = doneSet.size;
+  const pct = Math.round((done/total)*100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `已完成 ${done} / ${total} 回（${pct}%）`;
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('leftCount').textContent = total - done;
+  document.getElementById('minCount').textContent = done * 12;
+  localStorage.setItem('anatomyDone', JSON.stringify([...doneSet]));
+}
+
+function toggleDone(card, id) {
+  if (doneSet.has(id)) {
+    doneSet.delete(id);
+    card.classList.remove('done');
+  } else {
+    doneSet.add(id);
+    card.classList.add('done');
+  }
+  updateProgress();
+}
+
+// Restore done state on load
+document.addEventListener('DOMContentLoaded', () => {
+  doneSet.forEach(id => {
+    const cards = document.querySelectorAll('.ep-card');
+    cards.forEach(c => {
+      if (c.getAttribute('onclick') && c.getAttribute('onclick').includes(id)) {
+        c.classList.add('done');
+      }
+    });
+  });
+  updateProgress();
+});
+</script>
+</body>
+</html>
