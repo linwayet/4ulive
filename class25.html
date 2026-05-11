@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🩸 血液腫瘤科微課程 · 82會合完整版</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rust:    #C0522A;
+  --rust-l:  #D97848;
+  --amber:   #D4831A;
+  --amber-l: #F0A83A;
+  --gold:    #C8973A;
+  --gold-l:  #E8C06A;
+  --sage:    #7A8C5A;
+  --sage-l:  #9CAE70;
+  --cream:   #FDF6ED;
+  --parch:   #F5ECD8;
+  --parch2:  #EDE0C4;
+  --ink:     #2C1A0E;
+  --ink-mid: #3D2810;
+  --text:    #3A2010;
+  --text-m:  #6A4828;
+  --text-l:  #9A7858;
+  --line-green: #06C755;
+  --phase1: #C0522A;
+  --phase2: #B84A6A;
+  --phase3: #7A5AA0;
+  --phase4: #3A7AC0;
+  --phase5: #2A8C6A;
+  --phase6: #C8782A;
+  --tw1:    #2D6B4F;
+  --tw2:    #1A5A8A;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Noto Serif TC', serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ─── TOP & BOTTOM PROMO BARS ─── */
+.promo-bar {
+  background: linear-gradient(135deg, #2C1A0E 0%, #4A2C14 40%, #3A1E0A 100%);
+  padding: 18px 16px 22px;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.promo-bar::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(200,151,58,0.04) 20px,
+    rgba(200,151,58,0.04) 40px
+  );
+  pointer-events:none;
+}
+
+.promo-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.promo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--gold-l);
+  text-align: center;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+.promo-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.promo-link-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-decoration: none;
+  transition: all 0.25s;
+  backdrop-filter: blur(4px);
+}
+
+.promo-link-card:hover, .promo-link-card:active {
+  background: rgba(200,151,58,0.15);
+  border-color: rgba(200,151,58,0.5);
+  transform: translateY(-1px);
+}
+
+.promo-link-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.icon-echo   { background: linear-gradient(135deg,#C0522A,#D97848); }
+.icon-popup  { background: linear-gradient(135deg,#3A7AC0,#5A9AE0); }
+.icon-line   { background: var(--line-green); }
+
+.promo-link-text {}
+.promo-link-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+.promo-link-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.promo-line-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6,199,85,0.1);
+  border: 1px solid rgba(6,199,85,0.3);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+.promo-line-text { color: rgba(255,255,255,0.9); font-size: 0.85rem; }
+.promo-line-id   { color: var(--line-green); font-weight: 700; font-size: 0.92rem; }
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, #C0522A 0%, #A03A1A 30%, #7A2A10 70%, #4A1A06 100%);
+  padding: 48px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero::after {
+  content:'🩸';
+  position:absolute;
+  font-size: 16rem;
+  opacity: 0.05;
+  right: -40px;
+  top: -40px;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.hero-sub-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem,6vw,3rem);
+  color: #fff;
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero h1 em { color: var(--gold-l); font-style: italic; }
+
+.hero-desc {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 28px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-stat {
+  flex: 1;
+  padding: 14px 8px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat:last-child { border-right: none; }
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--gold-l);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 0.66rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 3px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── MAIN ─── */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 14px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── FILTER TABS ─── */
+.filter-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  padding: 12px 0 10px;
+  margin: 0 -14px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-bottom: 1px solid rgba(192,82,42,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.filter-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.filter-scroll::-webkit-scrollbar { display: none; }
+
+.ftab {
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.ftab-all   { border-color: var(--rust);    color: var(--rust); }
+.ftab-p1    { border-color: var(--phase1);  color: var(--phase1); }
+.ftab-p2    { border-color: var(--phase2);  color: var(--phase2); }
+.ftab-p3    { border-color: var(--phase3);  color: var(--phase3); }
+.ftab-p4    { border-color: var(--phase4);  color: var(--phase4); }
+.ftab-p5    { border-color: var(--phase5);  color: var(--phase5); }
+.ftab-p6    { border-color: var(--phase6);  color: var(--phase6); }
+.ftab-tw    { border-color: var(--tw1);     color: var(--tw1); }
+.ftab-case  { border-color: var(--gold);    color: #A07020; }
+
+.ftab.active, .ftab:hover {
+  color: #fff;
+}
+.ftab-all.active, .ftab-all:hover   { background: var(--rust); }
+.ftab-p1.active, .ftab-p1:hover     { background: var(--phase1); }
+.ftab-p2.active, .ftab-p2:hover     { background: var(--phase2); }
+.ftab-p3.active, .ftab-p3:hover     { background: var(--phase3); }
+.ftab-p4.active, .ftab-p4:hover     { background: var(--phase4); }
+.ftab-p5.active, .ftab-p5:hover     { background: var(--phase5); }
+.ftab-p6.active, .ftab-p6:hover     { background: var(--phase6); }
+.ftab-tw.active, .ftab-tw:hover     { background: var(--tw1); }
+.ftab-case.active, .ftab-case:hover { background: var(--gold); color: var(--ink); }
+
+/* ─── PHASE BLOCK ─── */
+.phase-block {
+  margin-top: 28px;
+}
+
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ph-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  opacity: 0.18;
+  line-height: 1;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.ph-info {}
+.ph-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+.ph-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.ph-desc {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  margin-top: 4px;
+  line-height: 1.5;
+  max-width: 440px;
+}
+
+/* Phase header bg colors */
+.ph-1 { background: linear-gradient(135deg,#FBE8DF,#F5D8C8); color: #6A2010; }
+.ph-2 { background: linear-gradient(135deg,#F5DCE8,#EEC8D8); color: #6A1840; }
+.ph-3 { background: linear-gradient(135deg,#E8E0F2,#D8CFF0); color: #3A2860; }
+.ph-4 { background: linear-gradient(135deg,#D8E8F8,#C8DCEE); color: #1A3A60; }
+.ph-5 { background: linear-gradient(135deg,#D4EDE2,#C0E0D0); color: #0A3A28; }
+.ph-6 { background: linear-gradient(135deg,#F5E8D0,#EDD8B0); color: #6A3808; }
+.ph-tw{ background: linear-gradient(135deg,#D4E8DC,#C0D8C8); color: #0A4028; }
+
+/* ─── SESSION CARDS ─── */
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.s-card::before {
+  content:'';
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: var(--session-color, #ccc);
+}
+
+.s-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.12);
+}
+
+.s-card.is-case {
+  background: linear-gradient(135deg,#FFFBF0,#FFF8E8);
+  border-color: rgba(200,151,58,0.3);
+}
+
+.s-card.is-review {
+  background: linear-gradient(135deg,#F0F5F0,#E8F0E8);
+  border-color: rgba(90,130,90,0.25);
+}
+
+.s-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  min-width: 38px;
+}
+
+.s-num-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--session-color, #999);
+  padding: 2px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.s-icon { font-size: 1.1rem; }
+
+.s-right { flex: 1; min-width: 0; }
+
+.s-title {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.s-card.is-case .s-title { color: #7A5000; }
+
+.s-meta {
+  display: flex;
+  gap: 6px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.s-chip {
+  font-size: 0.66rem;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.chip-case   { background:rgba(200,151,58,0.12); border-color:rgba(200,151,58,0.4); color:#9A6A00; }
+.chip-review { background:rgba(90,130,90,0.1);   border-color:rgba(90,130,90,0.3);  color:#3A6A3A; }
+.chip-tw     { background:rgba(45,107,79,0.1);   border-color:rgba(45,107,79,0.3);  color:#0A4A28; }
+.chip-15     { background:rgba(192,82,42,0.08);  border-color:rgba(192,82,42,0.25); color:#8A3010; }
+
+.s-person {
+  font-size: 0.72rem;
+  color: var(--text-l);
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* ─── DRAWER ─── */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,26,14,0.6);
+  z-index: 500;
+  backdrop-filter: blur(3px);
+}
+.drawer-overlay.open { display: block; }
+
+.drawer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--parch);
+  border-radius: 24px 24px 0 0;
+  z-index: 501;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
+  -webkit-overflow-scrolling: touch;
+}
+
+.drawer.open { transform: translateY(0); }
+
+.drawer-handle {
+  width: 40px; height: 4px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+.drawer-inner { padding: 20px 22px 40px; }
+
+.drawer-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-l);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.drawer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.drawer-section {
+  margin-bottom: 16px;
+}
+
+.drawer-sec-title {
+  font-size: 0.68rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(192,82,42,0.15);
+}
+
+.drawer-body {
+  font-size: 0.86rem;
+  color: var(--text-m);
+  line-height: 1.75;
+}
+
+.drawer-body ul { padding-left: 18px; }
+.drawer-body li { margin-bottom: 4px; }
+
+.time-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.t-seg {
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.t-seg:nth-child(1) { background:rgba(192,82,42,0.1);  color:#8A3010; }
+.t-seg:nth-child(2) { background:rgba(58,122,192,0.1); color:#1A3A70; }
+.t-seg:nth-child(3) { background:rgba(200,151,58,0.1); color:#7A5000; }
+.t-seg:nth-child(4) { background:rgba(90,130,90,0.12); color:#2A5A2A; }
+
+.t-seg span { font-family:'JetBrains Mono',monospace; font-weight:500; display:block; }
+
+.close-drawer {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* ─── HIDDEN CARDS ─── */
+.s-card.hidden, .phase-block.hidden { display: none; }
+
+/* ─── FOOTER SPACER ─── */
+.footer-spacer { height: 32px; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ TOP PROMO BAR ═══════════════════════ -->
+<div class="promo-bar" id="topPromo">
+  <div class="promo-inner">
+    <div class="promo-title">✨ 2025年7月 最新開課 · Charlie老師推薦</div>
+    <div class="promo-links">
+
+      <a class="promo-link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-link-icon icon-echo">🎯</div>
+        <div class="promo-link-text">
+          <div class="promo-link-name">錯中學 ECHO 計劃</div>
+          <div class="promo-link-desc">在錯誤中學習英文的突破性課程 · 7月正式開課 · 點此了解詳情</div>
+        </div>
+        <span style="color:rgba(255,255,255,0.4); font-size:1.1rem; margin-left:auto;">›</span>
+      </a>
+
+      <a class="promo-link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-link-icon icon-popup">📊</div>
+        <div class="promo-link-text">
+          <div class="promo-link-name">學生分析工具</div>
+          <div class="promo-link-desc">個人化英文學習分析 · 了解你的學習弱點 · 立即體驗</div>
+        </div>
+        <span style="color:rgba(255,255,255,0.4); font-size:1.1rem; margin-left:auto;">›</span>
+      </a>
+
+      <a class="promo-line-row" href="https://line.me/ti/p/~linwayet" target="_blank">
+        <div class="promo-link-icon icon-line" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">💬</div>
+        <div>
+          <div class="promo-line-text" style="font-weight:700;">加 Charlie 老師的 LINE</div>
+          <div class="promo-link-desc">直接諮詢課程、學習資源 · LINE ID：<span class="promo-line-id">linwayet</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<div class="hero">
+  <div class="hero-sub-label">HEMATOLOGICAL ONCOLOGY · MICRO-LEARNING</div>
+  <h1>血液腫瘤科<br><em>微課程</em></h1>
+  <p class="hero-desc">為生物小白設計 · 每次15分鐘 · 82會合完整學習旅程<br>從血液基礎到最前沿CAR-T療法，搭配20則真實歷史病例</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">82</div>
+      <div class="hero-stat-label">總會合</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">15</div>
+      <div class="hero-stat-label">分鐘/次</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">20</div>
+      <div class="hero-stat-label">歷史病例</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">21<small style="font-size:1rem">hr</small></div>
+      <div class="hero-stat-label">總時數</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<main>
+
+<!-- FILTER TABS -->
+<div class="filter-wrap">
+  <div class="filter-scroll">
+    <button class="ftab ftab-all active" onclick="filter('all',this)">全部 82</button>
+    <button class="ftab ftab-p1"  onclick="filter('p1',this)">🔴 地基期</button>
+    <button class="ftab ftab-p2"  onclick="filter('p2',this)">🟣 白血病</button>
+    <button class="ftab ftab-p3"  onclick="filter('p3',this)">💜 淋巴瘤</button>
+    <button class="ftab ftab-p4"  onclick="filter('p4',this)">🔵 治療期</button>
+    <button class="ftab ftab-p5"  onclick="filter('p5',this)">🟢 臨床思維</button>
+    <button class="ftab ftab-p6"  onclick="filter('p6',this)">🟠 前沿期</button>
+    <button class="ftab ftab-tw"  onclick="filter('tw',this)">🇹🇼 台灣單元</button>
+    <button class="ftab ftab-case" onclick="filter('case',this)">⭐ 歷史病例</button>
+  </div>
+</div>
+
+<!-- ═══ PHASE 1 ═══ -->
+<div class="phase-block" data-phase="p1">
+  <div class="phase-header ph-1">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 01 · Sessions 1–12</div>
+      <div class="ph-title">🔴 地基期：血液基礎概念</div>
+      <div class="ph-desc">從血液組成到骨髓造血，打好踏入血液腫瘤的必備基礎</div>
+    </div>
+    <div class="ph-num">01</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s1')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S01</div><div class="s-icon">🩸</div></div>
+      <div class="s-right"><div class="s-title">血液的四種成分：紅血球、白血球、血小板、血漿</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s2')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S02</div><div class="s-icon">🏭</div></div>
+      <div class="s-right"><div class="s-title">骨髓是什麼？造血工廠的運作方式</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s3')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S03</div><div class="s-icon">🦠</div></div>
+      <div class="s-right"><div class="s-title">白血球的家族：淋巴球 vs. 骨髓系細胞</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s4')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S04</div><div class="s-icon">🛡</div></div>
+      <div class="s-right"><div class="s-title">免疫系統入門：B細胞與T細胞的分工</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s5')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S05</div><div class="s-icon">⚠️</div></div>
+      <div class="s-right"><div class="s-title">什麼是「癌」？細胞失控增殖的基本概念</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s6')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S06</div><div class="s-icon">⚖️</div></div>
+      <div class="s-right"><div class="s-title">血液癌症 vs. 實體腫瘤：為什麼截然不同？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s7')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S07</div><div class="s-icon">📋</div></div>
+      <div class="s-right"><div class="s-title">如何讀懂血液常規報告（CBC）？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s8')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S08</div><div class="s-icon">🔬</div></div>
+      <div class="s-right"><div class="s-title">骨髓切片是怎麼一回事？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card" style="--session-color:#C0522A" data-phase="p1" onclick="openDrawer('s9')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C0522A">S09</div><div class="s-icon">🧬</div></div>
+      <div class="s-right"><div class="s-title">染色體與基因突變入門</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div>
+    </div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p1" data-case="1" onclick="openDrawer('c1')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C8973A">S10</div><div class="s-icon">⭐</div></div>
+      <div class="s-right"><div class="s-title">⭐ 歷史病例：達爾文的長期貧血之謎</div><div class="s-person">Charles Darwin · 1809–1882</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div>
+    </div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p1" data-case="1" onclick="openDrawer('c2')">
+      <div class="s-left"><div class="s-num-badge" style="background:#C8973A">S11</div><div class="s-icon">⭐</div></div>
+      <div class="s-right"><div class="s-title">⭐ 歷史病例：維多利亞女王與歐洲王室血友病</div><div class="s-person">Queen Victoria · 歐洲王室遺傳病案例</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div>
+    </div>
+    <div class="s-card is-review" style="--session-color:#5A8A5A" data-phase="p1" onclick="openDrawer('r1')">
+      <div class="s-left"><div class="s-num-badge" style="background:#5A8A5A">S12</div><div class="s-icon">✦</div></div>
+      <div class="s-right"><div class="s-title">✦ 複習整合：階段一總整理 + 名詞速查地圖</div><div class="s-meta"><span class="s-chip chip-review">複習</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PHASE 2 ═══ -->
+<div class="phase-block" data-phase="p2">
+  <div class="phase-header ph-2">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 02 · Sessions 13–26</div>
+      <div class="ph-title">🩷 疾病認識期：白血病</div>
+      <div class="ph-desc">逐一拆解四大白血病，搭配真實名人案例理解急慢性之分</div>
+    </div>
+    <div class="ph-num">02</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s13')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S13</div><div class="s-icon">⚡</div></div><div class="s-right"><div class="s-title">急性 vs. 慢性白血病：差在哪裡？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s14')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S14</div><div class="s-icon">🔴</div></div><div class="s-right"><div class="s-title">急性骨髓性白血病（AML）：分類與常見突變</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p2" data-case="1" onclick="openDrawer('c3')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S15</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：蘇聯作曲家普羅高菲夫的AML之死</div><div class="s-person">Sergei Prokofiev · 1953年逝世</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s16')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S16</div><div class="s-icon">👶</div></div><div class="s-right"><div class="s-title">急性淋巴性白血病（ALL）：成人 vs. 兒童差異</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p2" data-case="1" onclick="openDrawer('c4')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S17</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：Jimmy的故事與ALL治療革命</div><div class="s-person">Jimmy · St. Jude兒童研究醫院創立契機</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s18')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S18</div><div class="s-icon">🧬</div></div><div class="s-right"><div class="s-title">慢性骨髓性白血病（CML）與費城染色體</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p2" data-case="1" onclick="openDrawer('c5')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S19</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：CML奇蹟 — 第一個被基利克救活的病人</div><div class="s-person">Bud Romine · 2001年改變癌症治療史</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s20')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S20</div><div class="s-icon">🔵</div></div><div class="s-right"><div class="s-title">慢性淋巴性白血病（CLL）的特殊性格</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s21')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S21</div><div class="s-icon">📈</div></div><div class="s-right"><div class="s-title">骨髓增生性腫瘤（MPN）入門</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s22')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S22</div><div class="s-icon">🌫️</div></div><div class="s-right"><div class="s-title">骨髓發育不良症候群（MDS）：癌前的灰色地帶</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p2" data-case="1" onclick="openDrawer('c6')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S23</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：前美國總統卡特的MDS診斷與高齡治療倫理</div><div class="s-person">Jimmy Carter · 2023年診斷，享壽100歲</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s24')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S24</div><div class="s-icon">🔍</div></div><div class="s-right"><div class="s-title">嗜酸性球增多症與罕見白血病</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#B84A6A" data-phase="p2" onclick="openDrawer('s25')"><div class="s-left"><div class="s-num-badge" style="background:#B84A6A">S25</div><div class="s-icon">📊</div></div><div class="s-right"><div class="s-title">白血病診斷工具：流式細胞術入門</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-review" style="--session-color:#5A8A5A" data-phase="p2" onclick="openDrawer('r2')"><div class="s-left"><div class="s-num-badge" style="background:#5A8A5A">S26</div><div class="s-icon">✦</div></div><div class="s-right"><div class="s-title">✦ 複習：白血病總複習 — 病型對照表 + 病例回顧</div><div class="s-meta"><span class="s-chip chip-review">複習</span></div></div></div>
+  </div>
+</div>
+
+<!-- ═══ PHASE 3 ═══ -->
+<div class="phase-block" data-phase="p3">
+  <div class="phase-header ph-3">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 03 · Sessions 27–42</div>
+      <div class="ph-title">💜 疾病認識期：淋巴瘤與骨髓瘤</div>
+      <div class="ph-desc">從霍奇金到多發性骨髓瘤，搭配音樂家、政治家的真實病例</div>
+    </div>
+    <div class="ph-num">03</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s27')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S27</div><div class="s-icon">🔎</div></div><div class="s-right"><div class="s-title">淋巴結腫大 ≠ 淋巴瘤：如何區分反應性與惡性？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s28')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S28</div><div class="s-icon">🏆</div></div><div class="s-right"><div class="s-title">霍奇金淋巴瘤（HL）：RS細胞與Ann Arbor分期</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p3" data-case="1" onclick="openDrawer('c7')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S29</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：搖滾巨星大衛·鮑伊的霍奇金淋巴瘤治癒</div><div class="s-person">David Bowie · 治癒後正常生活數十年</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s30')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S30</div><div class="s-icon">🌳</div></div><div class="s-right"><div class="s-title">非霍奇金淋巴瘤（NHL）的大家族</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s31')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S31</div><div class="s-icon">⚡</div></div><div class="s-right"><div class="s-title">瀰漫性大B細胞淋巴瘤（DLBCL）：最常見的惡性淋巴瘤</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p3" data-case="1" onclick="openDrawer('c8')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S32</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：拜登之子 Beau Biden 的DLBCL</div><div class="s-person">Beau Biden · 2015年逝世，引發公眾討論</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s33')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S33</div><div class="s-icon">🐢</div></div><div class="s-right"><div class="s-title">濾泡性淋巴瘤：慢性、可控、但難以根治</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s34')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S34</div><div class="s-icon">⚡</div></div><div class="s-right"><div class="s-title">Burkitt 淋巴瘤：最快速增殖的腫瘤之一</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p3" data-case="1" onclick="openDrawer('c9')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S35</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：Denis Burkitt的非洲兒童腫瘤發現</div><div class="s-person">Denis Burkitt · 1950年代烏干達現場研究</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s36')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S36</div><div class="s-icon">🔮</div></div><div class="s-right"><div class="s-title">T細胞淋巴瘤的特殊族群</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s37')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S37</div><div class="s-icon">💀</div></div><div class="s-right"><div class="s-title">多發性骨髓瘤（MM）：漿細胞的失控</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s38')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S38</div><div class="s-icon">🧪</div></div><div class="s-right"><div class="s-title">M蛋白、輕鏈、CRAB標準解析</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p3" data-case="1" onclick="openDrawer('c10')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S39</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：約翰·麥凱恩的多重惡性腫瘤病史</div><div class="s-person">John McCain · 骨髓瘤後腦癌，2018年逝世</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s40')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S40</div><div class="s-icon">🌫️</div></div><div class="s-right"><div class="s-title">MGUS vs. 骨髓瘤：監測中的灰色地帶</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#7A5AA0" data-phase="p3" onclick="openDrawer('s41')"><div class="s-left"><div class="s-num-badge" style="background:#7A5AA0">S41</div><div class="s-icon">🔭</div></div><div class="s-right"><div class="s-title">淋巴瘤分期工具：PET-CT 怎麼看？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-review" style="--session-color:#5A8A5A" data-phase="p3" onclick="openDrawer('r3')"><div class="s-left"><div class="s-num-badge" style="background:#5A8A5A">S42</div><div class="s-icon">✦</div></div><div class="s-right"><div class="s-title">✦ 複習：淋巴瘤 + 骨髓瘤總複習</div><div class="s-meta"><span class="s-chip chip-review">複習</span></div></div></div>
+  </div>
+</div>
+
+<!-- ═══ PHASE 4 ═══ -->
+<div class="phase-block" data-phase="p4">
+  <div class="phase-header ph-4">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 04 · Sessions 43–58</div>
+      <div class="ph-title">🔵 治療原理期：從化療到 CAR-T</div>
+      <div class="ph-desc">藥物如何殺癌？從化療到基因療法，搭配治療革命的歷史突破病例</div>
+    </div>
+    <div class="ph-num">04</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s43')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S43</div><div class="s-icon">💊</div></div><div class="s-right"><div class="s-title">化療原理：為什麼要攻擊快速分裂的細胞？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p4" data-case="1" onclick="openDrawer('c11')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S44</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：二戰毒氣事故與第一個化療藥物的誕生</div><div class="s-person">1943年巴里港事件 · 氮芥（Nitrogen Mustard）的起源</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s45')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S45</div><div class="s-icon">🧪</div></div><div class="s-right"><div class="s-title">常見化療藥物分類：烷化劑、抗代謝物、拓撲異構酶</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s46')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S46</div><div class="s-icon">🎯</div></div><div class="s-right"><div class="s-title">標靶治療：從 Imatinib（基利克）講起</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s47')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S47</div><div class="s-icon">🔑</div></div><div class="s-right"><div class="s-title">單株抗體：Rituximab 如何認識 CD20？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s48')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S48</div><div class="s-icon">🛡</div></div><div class="s-right"><div class="s-title">免疫療法入門：PD-1/PD-L1 檢查點抑制劑</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p4" data-case="1" onclick="openDrawer('c12')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S49</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：卡特總統的黑色素瘤腦轉移與免疫療法奇蹟</div><div class="s-person">Jimmy Carter · 2015年 Pembrolizumab 完全緩解</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s50')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S50</div><div class="s-icon">🤖</div></div><div class="s-right"><div class="s-title">CAR-T 細胞療法：改造自己的免疫兵</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p4" data-case="1" onclick="openDrawer('c13')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S51</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：Emily Whitehead — 世界第一個CAR-T兒童患者</div><div class="s-person">Emily Whitehead · 2012年完全緩解至今</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s52')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S52</div><div class="s-icon">🏥</div></div><div class="s-right"><div class="s-title">骨髓移植原理：自體 vs. 異體移植</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p4" data-case="1" onclick="openDrawer('c14')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S53</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：柏林病人 — 骨髓移植雙重奇蹟（AML+HIV）</div><div class="s-person">Timothy Ray Brown · 2007年首例HIV功能性治癒</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s54')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S54</div><div class="s-icon">⚠️</div></div><div class="s-right"><div class="s-title">GVHD（移植物抗宿主病）的機制與管理</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s55')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S55</div><div class="s-icon">💉</div></div><div class="s-right"><div class="s-title">治療副作用管理：骨髓抑制、感染、出血</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s56')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S56</div><div class="s-icon">📋</div></div><div class="s-right"><div class="s-title">AML 誘導化療（7+3）方案解析</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#3A7AC0" data-phase="p4" onclick="openDrawer('s57')"><div class="s-left"><div class="s-num-badge" style="background:#3A7AC0">S57</div><div class="s-icon">💊</div></div><div class="s-right"><div class="s-title">DLBCL 的 R-CHOP 與 MM 的三聯療法</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-review" style="--session-color:#5A8A5A" data-phase="p4" onclick="openDrawer('r4')"><div class="s-left"><div class="s-num-badge" style="background:#5A8A5A">S58</div><div class="s-icon">✦</div></div><div class="s-right"><div class="s-title">✦ 複習：治療期總複習 — 藥物機制速查 + 病例療效回顧</div><div class="s-meta"><span class="s-chip chip-review">複習</span></div></div></div>
+  </div>
+</div>
+
+<!-- ═══ PHASE 5 ═══ -->
+<div class="phase-block" data-phase="p5">
+  <div class="phase-header ph-5">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 05 · Sessions 59–70</div>
+      <div class="ph-title">🟢 臨床思維期：像醫師一樣思考</div>
+      <div class="ph-desc">閱讀真實病歷、理解預後指標、探討醫療倫理，補齊臨床的最後一哩路</div>
+    </div>
+    <div class="ph-num">05</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s59')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S59</div><div class="s-icon">📄</div></div><div class="s-right"><div class="s-title">如何閱讀血液科病歷？關鍵欄位解析</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p5" data-case="1" onclick="openDrawer('c15')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S60</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：賈伯斯的胰島素瘤 vs. 延誤手術的悲劇</div><div class="s-person">Steve Jobs · 2003–2011年，另類療法的代價</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s61')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S61</div><div class="s-icon">🤔</div></div><div class="s-right"><div class="s-title">病例討論：老年 CLL — 觀察 vs. 早期介入？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s62')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S62</div><div class="s-icon">🔄</div></div><div class="s-right"><div class="s-title">病例討論：DLBCL 完全緩解後復發，怎麼辦？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p5" data-case="1" onclick="openDrawer('c16')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S63</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：作家克里斯多夫·希欽斯公開抗癌歷程</div><div class="s-person">Christopher Hitchens · 2010–2011，勇敢記錄癌症全程</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s64')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S64</div><div class="s-icon">🔬</div></div><div class="s-right"><div class="s-title">微小殘留病灶（MRD）監測的臨床意義</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s65')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S65</div><div class="s-icon">📊</div></div><div class="s-right"><div class="s-title">臨床試驗怎麼讀？Phase I / II / III 設計邏輯</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s66')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S66</div><div class="s-icon">📈</div></div><div class="s-right"><div class="s-title">預後指標：IPI、IPSS、ISS 如何預測存活率？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p5" data-case="1" onclick="openDrawer('c17')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S67</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 倫理病例：Henrietta Lacks 與 HeLa 細胞——誰擁有你的腫瘤？</div><div class="s-person">Henrietta Lacks · 1951年，最重要的人體組織倫理案</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s68')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S68</div><div class="s-icon">🧬</div></div><div class="s-right"><div class="s-title">血液腫瘤的遺傳諮詢與家族篩檢</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#2A8C6A" data-phase="p5" onclick="openDrawer('s69')"><div class="s-left"><div class="s-num-badge" style="background:#2A8C6A">S69</div><div class="s-icon">🕊️</div></div><div class="s-right"><div class="s-title">安寧緩和醫療在血液腫瘤的特殊性</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-review" style="--session-color:#5A8A5A" data-phase="p5" onclick="openDrawer('r5')"><div class="s-left"><div class="s-num-badge" style="background:#5A8A5A">S70</div><div class="s-icon">✦</div></div><div class="s-right"><div class="s-title">✦ 複習：臨床思維總複習 — 決策流程圖 + 倫理議題</div><div class="s-meta"><span class="s-chip chip-review">複習</span></div></div></div>
+  </div>
+</div>
+
+<!-- ═══ PHASE 6 ═══ -->
+<div class="phase-block" data-phase="p6">
+  <div class="phase-header ph-6">
+    <div class="ph-info">
+      <div class="ph-tag">PHASE 06 · Sessions 71–80</div>
+      <div class="ph-title">🟠 前沿整合期：站在知識邊界</div>
+      <div class="ph-desc">次世代定序、雙特異性抗體、ADC藥物，以及最震撼的歷史治癒故事</div>
+    </div>
+    <div class="ph-num">06</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s71')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S71</div><div class="s-icon">🧬</div></div><div class="s-right"><div class="s-title">次世代定序（NGS）如何改變血液腫瘤診斷？</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s72')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S72</div><div class="s-icon">🎯</div></div><div class="s-right"><div class="s-title">雙特異性抗體（Bispecific）：讓免疫細胞認識癌細胞</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s73')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S73</div><div class="s-icon">💣</div></div><div class="s-right"><div class="s-title">抗體藥物複合體（ADC）：精準炸彈的原理</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p6" data-case="1" onclick="openDrawer('c18')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S74</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：Alyssa — 鹼基編輯CAR-T首個成功案例</div><div class="s-person">Alyssa · 2022年倫敦，T-ALL完全緩解</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s75')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S75</div><div class="s-icon">💧</div></div><div class="s-right"><div class="s-title">液態切片（Liquid Biopsy）：抽血找癌症突變</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p6" data-case="1" onclick="openDrawer('c19')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S76</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 病例：Victoria Gray — CRISPR 治癒鐮刀形紅血球病</div><div class="s-person">Victoria Gray · 2019年CRISPR基因療法全球首例</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s77')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S77</div><div class="s-icon">🤖</div></div><div class="s-right"><div class="s-title">AI 在血液腫瘤診斷的應用：細胞形態辨識</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-case" style="--session-color:#C8973A" data-phase="p6" data-case="1" onclick="openDrawer('c20')"><div class="s-left"><div class="s-num-badge" style="background:#C8973A">S78</div><div class="s-icon">⭐</div></div><div class="s-right"><div class="s-title">⭐ 世紀病例回顧：ALL從5%到90%存活率的完整演進史</div><div class="s-person">Donald Pinkel · St. Jude 醫院化療方案的一甲子</div><div class="s-meta"><span class="s-chip chip-case">歷史病例</span></div></div></div>
+    <div class="s-card" style="--session-color:#C8782A" data-phase="p6" onclick="openDrawer('s79')"><div class="s-left"><div class="s-num-badge" style="background:#C8782A">S79</div><div class="s-icon">🚀</div></div><div class="s-right"><div class="s-title">血液腫瘤 2024–2025 重大突破整理</div><div class="s-meta"><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card is-review" style="--session-color:#C0522A" data-phase="p6" onclick="openDrawer('r6')"><div class="s-left"><div class="s-num-badge" style="background:#C0522A">S80</div><div class="s-icon">🎓</div></div><div class="s-right"><div class="s-title">🎓 結業總複習：從白血球到治癒的完整旅程 · 20則病例大串聯</div><div class="s-meta"><span class="s-chip chip-review">結業</span></div></div></div>
+  </div>
+</div>
+
+<!-- ═══ TAIWAN SPECIAL ═══ -->
+<div class="phase-block" data-phase="tw">
+  <div class="phase-header ph-tw">
+    <div class="ph-info">
+      <div class="ph-tag">🇹🇼 TAIWAN SPECIAL · Sessions 81–82</div>
+      <div class="ph-title">🟢 台灣特別單元</div>
+      <div class="ph-desc">台灣疾病譜的在地特色 · 慈濟骨髓庫 · NK/T淋巴瘤 · GBD 2021台灣數據</div>
+    </div>
+    <div class="ph-num">TW</div>
+  </div>
+  <div class="sessions-list">
+    <div class="s-card" style="--session-color:#2D6B4F" data-phase="tw" onclick="openDrawer('tw1')"><div class="s-left"><div class="s-num-badge" style="background:#2D6B4F">S81</div><div class="s-icon">🇹🇼</div></div><div class="s-right"><div class="s-title">台灣血液腫瘤的疾病譜：我們和歐美哪裡不一樣？</div><div class="s-meta"><span class="s-chip chip-tw">台灣特別</span><span class="s-chip chip-15">15分鐘</span></div></div></div>
+    <div class="s-card" style="--session-color:#2D6B4F" data-phase="tw" onclick="openDrawer('tw2')"><div class="s-left"><div class="s-num-badge" style="background:#2D6B4F">S82</div><div class="s-icon">🏥</div></div><div class="s-right"><div class="s-title">台灣血液腫瘤研究的里程碑與當代突破</div><div class="s-meta"><span class="s-chip chip-tw">台灣特別</span><span class="s-chip chip-15">15分鐘</span></div></div></div>
+  </div>
+</div>
+
+<div class="footer-spacer"></div>
+</main>
+
+<!-- ═══ BOTTOM PROMO BAR (identical) ═══ -->
+<div class="promo-bar">
+  <div class="promo-inner">
+    <div class="promo-title">✨ 2025年7月 最新開課 · Charlie老師推薦</div>
+    <div class="promo-links">
+      <a class="promo-link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-link-icon icon-echo">🎯</div>
+        <div class="promo-link-text">
+          <div class="promo-link-name">錯中學 ECHO 計劃</div>
+          <div class="promo-link-desc">在錯誤中學習英文的突破性課程 · 7月正式開課 · 點此了解詳情</div>
+        </div>
+        <span style="color:rgba(255,255,255,0.4); font-size:1.1rem; margin-left:auto;">›</span>
+      </a>
+      <a class="promo-link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-link-icon icon-popup">📊</div>
+        <div class="promo-link-text">
+          <div class="promo-link-name">學生分析工具</div>
+          <div class="promo-link-desc">個人化英文學習分析 · 了解你的學習弱點 · 立即體驗</div>
+        </div>
+        <span style="color:rgba(255,255,255,0.4); font-size:1.1rem; margin-left:auto;">›</span>
+      </a>
+      <a class="promo-line-row" href="https://line.me/ti/p/~linwayet" target="_blank">
+        <div class="promo-link-icon icon-line" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">💬</div>
+        <div>
+          <div class="promo-line-text" style="font-weight:700;">加 Charlie 老師的 LINE</div>
+          <div class="promo-link-desc">直接諮詢課程、學習資源 · LINE ID：<span class="promo-line-id">linwayet</span></div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:16px; font-size:0.7rem; color:rgba(255,255,255,0.25); letter-spacing:0.06em;">
+      血液腫瘤科微課程 · 82會合 · 21小時 · 20則歷史病例 · 為生物小白設計
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DRAWER ═══════════════════════ -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-handle"></div>
+  <div class="drawer-inner" id="drawerContent"></div>
+</div>
+
+<script>
+const data = {
+  s1:{num:'SESSION 01',title:'血液的四種成分',body:'<ul><li>紅血球（RBC）：血紅素攜帶氧氣</li><li>白血球（WBC）：免疫防禦主力</li><li>血小板（PLT）：凝血功能</li><li>血漿：液態基底，含蛋白質與電解質</li></ul>'},
+  s2:{num:'SESSION 02',title:'骨髓是什麼？造血工廠的運作方式',body:'<ul><li>造血幹細胞（HSC）是所有血液細胞的共同祖先</li><li>紅骨髓 vs. 黃骨髓的分布差異</li><li>造血過程：幹細胞→前驅細胞→成熟細胞</li><li>骨髓衰竭時會發生什麼？</li></ul>'},
+  s3:{num:'SESSION 03',title:'白血球的家族',body:'<ul><li>淋巴系：T細胞、B細胞、NK細胞</li><li>骨髓系：中性球、嗜酸球、嗜鹼球、單核球</li><li>各自的功能分工與生命週期</li><li>血液癌症就是這個家族出問題</li></ul>'},
+  s4:{num:'SESSION 04',title:'免疫系統入門：B細胞與T細胞',body:'<ul><li>先天免疫 vs. 後天免疫</li><li>B細胞：製造抗體的工廠</li><li>T細胞：直接殺傷與調控免疫的指揮官</li><li>淋巴結是免疫系統的「戰場」</li></ul>'},
+  s5:{num:'SESSION 05',title:'什麼是「癌」？',body:'<ul><li>正常細胞增殖 vs. 癌細胞失控增殖</li><li>基因突變累積的過程</li><li>腫瘤抑制基因（P53）與致癌基因的角色</li><li>血液癌症的特殊性：流動的惡性細胞</li></ul>'},
+  s6:{num:'SESSION 06',title:'血液癌症 vs. 實體腫瘤',body:'<ul><li>實體腫瘤：固定位置、局部生長、可手術</li><li>血液癌症：全身擴散、難以局限</li><li>為什麼化療對血液癌症特別重要</li><li>骨髓作為「戰場」的特殊意義</li></ul>'},
+  s7:{num:'SESSION 07',title:'如何讀懂血液常規報告（CBC）',body:'<ul><li>WBC、RBC、HGB、PLT 正常範圍</li><li>WBC 分類計數（differential）解讀</li><li>貧血、白血球增多、血小板低下的臨床意義</li><li>看到哪些數值應該警覺？</li></ul>'},
+  s8:{num:'SESSION 08',title:'骨髓切片是怎麼一回事',body:'<ul><li>骨髓穿刺（抽吸）vs. 骨髓活切片的差異</li><li>常見取樣部位：髂骨後上棘</li><li>報告中的「細胞密度」與「芽細胞比例」</li><li>什麼情況下需要做骨髓切片？</li></ul>'},
+  s9:{num:'SESSION 09',title:'染色體與基因突變入門',body:'<ul><li>染色體 vs. 基因 vs. DNA 的關係</li><li>染色體轉位（translocation）是什麼？</li><li>FISH、PCR、NGS 等偵測工具概覽</li><li>費城染色體作為入門案例</li></ul>'},
+  c1:{num:'SESSION 10 ⭐',title:'達爾文的長期貧血之謎',isCase:true,person:'Charles Darwin · 1809–1882',body:'達爾文終其一生飽受慢性疾病折磨：疲倦、噁心、心悸、皮下出血點。現代血液學推測可能是 Chagas 病（錐蟲感染）引起的溶血性貧血，或是自體免疫性溶血。此案例是醫學史上最著名的「未解診斷」之一，帶我們理解慢性貧血的多種成因與非特異性症狀。'},
+  c2:{num:'SESSION 11 ⭐',title:'維多利亞女王與歐洲王室血友病',isCase:true,person:'Queen Victoria · 歐洲王室遺傳病',body:'維多利亞女王是血友病B（Factor IX缺乏）的攜帶者，透過王室聯姻將突變散布至整個歐洲。兒子Leopold患血友病31歲死於腦出血，外孫俄國沙皇亞歷克謝也受影響。這個案例完美說明X染色體連鎖遺傳、凝血因子缺乏，以及遺傳病如何改變歷史走向。'},
+  r1:{num:'SESSION 12 ✦',title:'階段一複習整合',isReview:true,body:'CBC快讀技巧複習 · 造血路徑圖譜 · 達爾文與維多利亞病例重點 · 20題快問快答'},
+  s13:{num:'SESSION 13',title:'急性 vs. 慢性白血病',body:'<ul><li>急性：芽細胞（blasts）積累 > 20%，快速致命</li><li>慢性：成熟細胞為主，進展緩慢</li><li>骨髓系 vs. 淋巴系的區分</li><li>四大白血病：AML / ALL / CML / CLL 速覽</li></ul>'},
+  s14:{num:'SESSION 14',title:'急性骨髓性白血病（AML）',body:'<ul><li>FAB 分類（M0–M7）的意義</li><li>常見突變：FLT3、NPM1、IDH1/2</li><li>AML 為什麼在老年人多見（中位年齡68歲）</li><li>預後好 vs. 預後差的分子亞型</li></ul>'},
+  c3:{num:'SESSION 15 ⭐',title:'普羅高菲夫的AML之死',isCase:true,person:'Sergei Prokofiev · 1953年逝世',body:'蘇聯作曲家普羅高菲夫晚年出現嚴重疲倦、反覆出血，符合AML特徵。1953年3月5日與史達林在同一天去世。當時蘇聯醫療無法確診AML，今日的7+3誘導化療可達60–70%初步緩解率。此案例展示AML急性發作特性與現代治療的革命性進展。'},
+  s16:{num:'SESSION 16',title:'急性淋巴性白血病（ALL）',body:'<ul><li>兒童 ALL：最常見兒童癌症，治癒率 > 90%</li><li>成人 ALL：預後較差，費城染色體陽性率高</li><li>B-ALL vs. T-ALL 的不同臨床特性</li><li>CNS 預防性治療的重要性</li></ul>'},
+  c4:{num:'SESSION 17 ⭐',title:'Jimmy 與 St. Jude 醫院的誕生',isCase:true,person:'Jimmy · ALL兒童，1950年代',body:'1950年代Jimmy是一位患ALL的12歲男孩，透過電視節目引發關注，藝人Ralph Edwards承諾以Jimmy之名創立兒童癌症醫院。1962年 St. Jude 兒童研究醫院成立，ALL存活率從 < 10% 提升至今日 > 90%。'},
+  c5:{num:'SESSION 19 ⭐',title:'第一個被基利克救活的CML病人',isCase:true,person:'Bud Romine · 2001年',body:'俄勒岡州退休工程師Bud Romine，2001年被診斷CML末期，加入Imatinib（基利克）第一期臨床試驗。數週內白血球數目正常化，一年後骨髓幾乎找不到費城染色體，至今持續服藥正常生活超過20年。Time Magazine稱Imatinib為「魔法子彈」，開創精準標靶治療時代。'},
+  s18:{num:'SESSION 18',title:'慢性骨髓性白血病（CML）與費城染色體',body:'<ul><li>費城染色體：t(9;22) BCR-ABL 融合基因</li><li>CML 三期：慢性期、加速期、急變期</li><li>Imatinib 如何精準阻斷 BCR-ABL 激酶</li><li>治療後監測：PCR 追蹤 BCR-ABL 殘留</li></ul>'},
+  s20:{num:'SESSION 20',title:'慢性淋巴性白血病（CLL）',body:'<ul><li>老年人最常見白血病，中位診斷年齡70歲</li><li>多數人無症狀，觀察為主（Watch and Wait）</li><li>Rai 分期與 Binet 分期系統</li><li>BTK 抑制劑（Ibrutinib）的現代治療革命</li></ul>'},
+  s21:{num:'SESSION 21',title:'骨髓增生性腫瘤（MPN）',body:'<ul><li>三大 MPN：真性紅血球增多症（PV）、原發性血小板增多症（ET）、骨髓纖維化（MF）</li><li>JAK2 V617F 突變：診斷的關鍵</li><li>血栓風險：MPN 最主要的併發症</li></ul>'},
+  s22:{num:'SESSION 22',title:'骨髓發育不良症候群（MDS）',body:'<ul><li>什麼是「病態造血」（dysplasia）</li><li>MDS 如何轉化成 AML？風險評估</li><li>IPSS-R 預後評分系統</li><li>低危 MDS 支持性治療 vs. 高危 MDS 的積極治療</li></ul>'},
+  c6:{num:'SESSION 23 ⭐',title:'卡特總統的MDS診斷',isCase:true,person:'Jimmy Carter · 享壽100歲',body:'2023年，98歲的吉米·卡特確診MDS，選擇在家接受安寧緩和照護，拒絕積極治療。他的決定引發全球對「善終」與「過度醫療」的討論。MDS在老年人中極為常見，此案例展示高齡患者治療決策的倫理框架：積極化療 vs. 生活品質。'},
+  s24:{num:'SESSION 24',title:'嗜酸性球增多症與罕見白血病',body:'<ul><li>嗜酸性球增多症（Eosinophilia）的鑑別診斷</li><li>毛細胞白血病（HCL）：最罕見的白血病之一</li><li>大顆粒淋巴球白血病（LGL leukemia）</li><li>漿細胞白血病與骨髓瘤的關係</li></ul>'},
+  s25:{num:'SESSION 25',title:'流式細胞術入門',body:'<ul><li>什麼是流式細胞術（Flow Cytometry）？</li><li>免疫表現型：CD19、CD3、CD20等標誌的意義</li><li>如何區分B細胞 vs. T細胞淋巴瘤</li><li>報告中的「免疫表現型分析」怎麼看？</li></ul>'},
+  r2:{num:'SESSION 26 ✦',title:'白血病總複習',isReview:true,body:'AML / ALL / CML / CLL 病型對照表 · 費城染色體快記 · 病例串聯：普羅高菲夫、Jimmy、Bud Romine、卡特'},
+  s27:{num:'SESSION 27',title:'淋巴結腫大 ≠ 淋巴瘤',body:'<ul><li>反應性淋巴結腫大：感染、疫苗後</li><li>惡性淋巴結：質地硬、無痛、持續增大</li><li>需要切片的警示症狀（B症狀）</li><li>頸部 vs. 鎖骨上 vs. 縱膈腔淋巴結的意義差異</li></ul>'},
+  s28:{num:'SESSION 28',title:'霍奇金淋巴瘤（HL）',body:'<ul><li>Reed-Sternberg（R-S）巨細胞：HL的診斷標誌</li><li>Ann Arbor 四期分期系統</li><li>B症狀：發燒、盜汗、體重下降10%</li><li>為什麼HL的治癒率最高（>90%）？</li></ul>'},
+  c7:{num:'SESSION 29 ⭐',title:'大衛·鮑伊的霍奇金淋巴瘤治癒',isCase:true,person:'David Bowie · 1947–2016',body:'1970年代大衛·鮑伊被診斷出霍奇金淋巴瘤，接受放射治療後成功治癒，此後正常生活數十年，2016年因肝癌過世（與淋巴瘤無關）。此案例說明早期HL的高治癒率，以及放射治療在淋巴瘤中的重要角色。'},
+  s30:{num:'SESSION 30',title:'非霍奇金淋巴瘤（NHL）的大家族',body:'<ul><li>NHL vs. HL 的核心差異：沒有R-S細胞</li><li>B細胞NHL vs. T細胞NHL的比例差異</li><li>惰性（Indolent）vs. 侵襲性（Aggressive）NHL</li><li>40+種亞型：WHO 2022分類概覽</li></ul>'},
+  s31:{num:'SESSION 31',title:'瀰漫性大B細胞淋巴瘤（DLBCL）',body:'<ul><li>全球最常見的惡性淋巴瘤（NHL的31%）</li><li>GCB型 vs. ABC型的分子分型</li><li>標準治療：R-CHOP 6療程</li><li>5年存活率：約60–70%</li></ul>'},
+  c8:{num:'SESSION 32 ⭐',title:'Beau Biden 的DLBCL',isCase:true,person:'Beau Biden · 2015年逝世，享年46歲',body:'美國前副總統喬·拜登的長子博·拜登，2013年診斷腦癌合併DLBCL，治療期間承受雙重惡性腫瘤的挑戰，2015年逝世。其父隨後推動「癌症登月計畫」（Cancer Moonshot），加速血液腫瘤研究的資金投入。'},
+  s33:{num:'SESSION 33',title:'濾泡性淋巴瘤（FL）',body:'<ul><li>最常見的惰性B細胞NHL（NHL的22%）</li><li>t(14;18) BCL-2 過度表達：逃避細胞凋亡</li><li>「觀察等待」的適用時機</li><li>Rituximab + 化療的現代標準治療</li></ul>'},
+  s34:{num:'SESSION 34',title:'Burkitt 淋巴瘤',body:'<ul><li>c-MYC 基因轉位：細胞增殖衝破極限</li><li>倍增時間約24小時：最快速增殖的腫瘤之一</li><li>地方型（非洲）vs. 散發型 vs. 免疫缺乏型</li><li>強力化療可治癒，但需即刻啟動</li></ul>'},
+  c9:{num:'SESSION 35 ⭐',title:'Denis Burkitt的非洲兒童腫瘤發現',isCase:true,person:'Denis Burkitt 醫師 · 1950年代烏干達',body:'英國外科醫師Denis Burkitt在1950年代烏干達發現一種奇特的兒童顎部腫瘤，一週就能明顯變大，且分布與瘧疾流行區高度重疊。後來確認EB病毒是觸發因子，這是人類首次確認「病毒可以導致癌症」的關鍵證據之一。'},
+  s36:{num:'SESSION 36',title:'T細胞淋巴瘤的特殊族群',body:'<ul><li>T細胞NHL只佔NHL的10–15%（台灣偏高：20–30%）</li><li>周邊T細胞淋巴瘤（PTCL）：最常見的T細胞淋巴瘤</li><li>鼻腔NK/T細胞淋巴瘤：亞洲特有，EBV相關</li><li>皮膚T細胞淋巴瘤：蕈樣肉芽腫（MF）</li></ul>'},
+  s37:{num:'SESSION 37',title:'多發性骨髓瘤（MM）',body:'<ul><li>漿細胞惡性增殖：過度分泌單一免疫球蛋白</li><li>CRAB 標準：高鈣血症、腎損傷、貧血、骨病變</li><li>骨骼疼痛是最常見的初始症狀</li><li>好發年齡：中位診斷年齡65歲以上</li></ul>'},
+  s38:{num:'SESSION 38',title:'M蛋白、輕鏈、CRAB標準',body:'<ul><li>M蛋白（單株免疫球蛋白）：電泳偵測方法</li><li>輕鏈（Light chain）：腎臟損傷的元兇</li><li>CRAB四大症狀的記憶技巧</li><li>血清蛋白電泳（SPEP）報告怎麼看？</li></ul>'},
+  c10:{num:'SESSION 39 ⭐',title:'約翰·麥凱恩的多重惡性腫瘤',isCase:true,person:'John McCain · 2018年逝世',body:'美國參議員麥凱恩早年有黑色素瘤病史，2017年診斷腦部膠質母細胞瘤（GBM），2018年逝世。多發惡性腫瘤展示免疫監控的失敗。他選擇在家停止治療、與家人共度最後時光，成為高齡癌症患者自主決策的典範案例。'},
+  s40:{num:'SESSION 40',title:'MGUS vs. 骨髓瘤',body:'<ul><li>MGUS（意義未明的單株丙種球蛋白病）：癌前狀態</li><li>每年約1%的 MGUS 進展為骨髓瘤</li><li>監測策略：多久追蹤一次？</li><li>如何向患者解釋「你有可能但不一定會得癌症」</li></ul>'},
+  s41:{num:'SESSION 41',title:'淋巴瘤分期工具：PET-CT',body:'<ul><li>PET-CT 為什麼優於傳統CT？</li><li>FDG（氟脫氧葡萄糖）攝取原理</li><li>Deauville 5分系統：療效評估的標準</li><li>Lugano 2014分期更新要點</li></ul>'},
+  r3:{num:'SESSION 42 ✦',title:'淋巴瘤+骨髓瘤總複習',isReview:true,body:'HL vs. NHL 快速鑑別 · DLBCL / FL / Burkitt 特徵比較 · MM的CRAB標準 · 病例串聯：鮑伊、Beau Biden、Burkitt、麥凱恩'},
+  s43:{num:'SESSION 43',title:'化療原理',body:'<ul><li>細胞週期的六個階段（G0/G1/S/G2/M）</li><li>為什麼癌細胞比正常細胞更容易被化療傷害？</li><li>骨髓抑制、掉髮、噁心的生物學解釋</li><li>聯合化療（Combination）優於單一藥物的理由</li></ul>'},
+  c11:{num:'SESSION 44 ⭐',title:'化療起源：1943年巴里港毒氣事件',isCase:true,person:'1943年二戰意大利 · 氮芥誕生史',body:'1943年12月德軍空襲義大利巴里港，美軍秘密運輸的芥子氣洩漏，數百名士兵白血球急劇下降。Stewart Alexander 醫師記錄此現象，推論：若毒氣能殺死白血球，是否也能殺死白血病細胞？1943–1946年氮芥（Nitrogen Mustard）開始用於淋巴瘤試驗，化療時代正式開始。'},
+  s45:{num:'SESSION 45',title:'常見化療藥物分類',body:'<ul><li>烷化劑（Cyclophosphamide）：DNA交叉連接</li><li>抗代謝物（Methotrexate）：葉酸拮抗</li><li>拓撲異構酶抑制劑（Doxorubicin）：干擾DNA複製</li><li>長春花生物鹼（Vincristine）：阻止紡錘絲形成</li></ul>'},
+  s46:{num:'SESSION 46',title:'標靶治療：從 Imatinib 講起',body:'<ul><li>什麼是「標靶」？分子靶點的概念</li><li>Imatinib 精準阻斷 BCR-ABL 酪胺酸激酶</li><li>第二代（Dasatinib）、第三代（Ponatinib）TKI 發展</li><li>耐藥機制：T315I 突變如何逃脫標靶藥</li></ul>'},
+  s47:{num:'SESSION 47',title:'單株抗體：Rituximab 如何認識 CD20',body:'<ul><li>抗體的基本結構：Fab 與 Fc 段的功能</li><li>CD20 為什麼是理想的淋巴瘤靶點？</li><li>Rituximab 的三種殺傷機制：CDC、ADCC、凋亡誘導</li><li>R-CHOP 為什麼優於 CHOP？歷史性試驗</li></ul>'},
+  s48:{num:'SESSION 48',title:'免疫療法入門：PD-1/PD-L1',body:'<ul><li>免疫檢查點：腫瘤如何「偽裝」逃脫免疫</li><li>PD-1（T細胞）vs. PD-L1（腫瘤細胞）的互動</li><li>Pembrolizumab、Nivolumab 的適應症</li><li>免疫相關副作用（irAE）：為什麼會攻擊自己？</li></ul>'},
+  c12:{num:'SESSION 49 ⭐',title:'卡特總統：免疫療法奇蹟',isCase:true,person:'Jimmy Carter · 2015年完全緩解',body:'2015年8月，90歲的吉米·卡特宣布黑色素瘤腦轉移，接受 Pembrolizumab（Keytruda）後，2015年12月宣告腦部腫瘤完全消失。此案例讓全球認識PD-1抑制劑的力量，理解免疫療法「重啟」T細胞的機制，也打破「老年人不適合免疫療法」的迷思。'},
+  s50:{num:'SESSION 50',title:'CAR-T 細胞療法',body:'<ul><li>CAR（嵌合抗原受體）的基本結構</li><li>製造流程：採集→基因改造→擴增→回輸（需4–6週）</li><li>現成（Off-the-shelf）CAR-T vs. 自體 CAR-T</li><li>細胞因子風暴（CRS）：最危險的副作用</li></ul>'},
+  c13:{num:'SESSION 51 ⭐',title:'Emily Whitehead：世界第一個CAR-T兒童患者',isCase:true,person:'Emily Whitehead · 2012年至今完全緩解超過12年',body:'2012年，6歲的Emily在費城兒童醫院接受全球首例CAR-T治療，回輸後出現嚴重細胞因子風暴，醫師意外發現Tocilizumab（IL-6抑制劑）可控制CRS。數週後體內找不到任何白血病細胞。她的案例直接推動FDA於2017年批准首個CAR-T療法（Kymriah）。'},
+  s52:{num:'SESSION 52',title:'骨髓移植原理',body:'<ul><li>自體移植：自己的幹細胞，無排斥，復發率稍高</li><li>異體移植：他人的幹細胞，有排斥，但有GVT效應</li><li>清髓性 vs. 減強度預處理方案</li><li>配型（HLA matching）的重要性</li></ul>'},
+  c14:{num:'SESSION 53 ⭐',title:'柏林病人：骨髓移植雙重奇蹟',isCase:true,person:'Timothy Ray Brown · 2007年',body:'提摩西·雷·布朗，美國人，在柏林確診HIV合併AML。主治醫師大膽選擇帶有CCR5-Δ32突變（對HIV天然抵抗）的骨髓捐贈者。2007年接受移植後，AML治癒，HIV亦功能性治癒——停藥後病毒未復發。成為全球首個被功能性治癒HIV的人類，2020年因AML復發逝世。'},
+  s54:{num:'SESSION 54',title:'GVHD：移植物抗宿主病',body:'<ul><li>急性GVHD vs. 慢性GVHD 的差異</li><li>三大目標器官：皮膚、腸道、肝臟</li><li>GVT（移植物抗腫瘤）效應：GVHD的正面意義</li><li>免疫抑制治療：類固醇、Cyclosporine</li></ul>'},
+  s55:{num:'SESSION 55',title:'治療副作用管理',body:'<ul><li>骨髓抑制三聯症：貧血、感染風險、出血</li><li>中性球低下：何時使用G-CSF？</li><li>腫瘤溶解症候群（TLS）：最危急的腫瘤科急症</li><li>化療誘發性噁心嘔吐（CINV）的預防策略</li></ul>'},
+  s56:{num:'SESSION 56',title:'AML誘導化療（7+3）',body:'<ul><li>7天 Cytarabine + 3天 Anthracycline 的原理</li><li>誘導後評估：骨髓切片的時機</li><li>完全緩解（CR）的定義</li><li>鞏固治療 vs. 移植的選擇時機</li></ul>'},
+  s57:{num:'SESSION 57',title:'DLBCL的R-CHOP與MM的三聯療法',body:'<ul><li>R-CHOP：Rituximab + CTX + ADM + VCR + Pred</li><li>MM三聯：VRd（Bortezomib + Lenalidomide + Dexamethasone）</li><li>療程週期與評估節點</li><li>治療失敗後的二線選項</li></ul>'},
+  r4:{num:'SESSION 58 ✦',title:'治療期總複習',isReview:true,body:'化療→標靶→免疫→CAR-T演進時間軸 · 病例串聯：巴里港、卡特、Emily、柏林病人 · 治療選擇邏輯樹'},
+  s59:{num:'SESSION 59',title:'如何閱讀血液科病歷',body:'<ul><li>主訴（CC）與現病史（HPI）的閱讀重點</li><li>血液科常見縮寫解碼（WBC、ANC、plt、HGB）</li><li>病歷中的「分期」與「危險分層」在哪裡找</li><li>治療計畫欄位怎麼看？</li></ul>'},
+  c15:{num:'SESSION 60 ⭐',title:'賈伯斯的另類療法悲劇',isCase:true,person:'Steve Jobs · 2003–2011年',body:'2003年賈伯斯確診胰島素瘤（高度可治癒），但拒絕立即手術，選擇九個月另類療法（素食、靈氣治療）。九個月後腫瘤明顯擴大轉移，手術已為時已晚。2011年10月5日因胰臟神經內分泌腫瘤肝轉移去世。此案例提醒：治療時機的重要性遠超越任何替代療法。'},
+  s61:{num:'SESSION 61',title:'病例討論：老年CLL — 觀察 vs. 早期介入',body:'<ul><li>Rai 0期 CLL：何時可以觀察等待？</li><li>啟動治療的標準：ANC < 1000、Hgb < 10、PLT < 100</li><li>老年患者的體能狀態評估（ECOG/Fit-Unfit-Frail）</li><li>BTK抑制劑 vs. 化療免疫療法的選擇</li></ul>'},
+  s62:{num:'SESSION 62',title:'病例討論：DLBCL復發怎麼辦',body:'<ul><li>一線R-CHOP失敗後的評估</li><li>二線化療：R-ICE、R-DHAP、R-GDP</li><li>自體移植的條件與時機</li><li>CAR-T在復發/難治型DLBCL的角色（Axi-cel、Tisa-cel）</li></ul>'},
+  c16:{num:'SESSION 63 ⭐',title:'克里斯多夫·希欽斯：公開抗癌歷程',isCase:true,person:'Christopher Hitchens · 2010–2011',body:'英裔美國作家希欽斯2010年確診食道癌，在生命最後18個月持續寫作記錄抗癌歷程，發表《Mortality》。他拒絕「抗癌鬥士」的比喻，積極參加免疫療法臨床試驗。他的文字重新定義了我們如何用語言談論癌症與死亡，成為醫學人文的重要文本。'},
+  s64:{num:'SESSION 64',title:'微小殘留病灶（MRD）監測',body:'<ul><li>什麼是 MRD？為什麼「完全緩解」≠「治癒」</li><li>偵測方法：流式細胞術、qPCR、NGS</li><li>MRD陰性 vs. MRD陽性的臨床決策差異</li><li>MRD引導的鞏固治療：個人化醫療的新趨勢</li></ul>'},
+  s65:{num:'SESSION 65',title:'臨床試驗怎麼讀',body:'<ul><li>Phase I（安全性）、II（療效初探）、III（大規模比較）</li><li>主要終點（Primary endpoint）的選擇：OS vs. PFS vs. CR率</li><li>CONSORT 流程圖怎麼看</li><li>如何判斷「統計顯著」vs. 「臨床有意義」</li></ul>'},
+  s66:{num:'SESSION 66',title:'預後指標：IPI、IPSS、ISS',body:'<ul><li>DLBCL 的 IPI 5因子評分系統</li><li>MDS 的 IPSS-R 修訂版評分</li><li>MM 的 ISS 與 R-ISS 分期</li><li>如何向患者解釋「你屬於中高危組」？</li></ul>'},
+  c17:{num:'SESSION 67 ⭐',title:'Henrietta Lacks 與 HeLa 細胞的倫理衝擊',isCase:true,person:'Henrietta Lacks · 1951年，醫學倫理里程碑',body:'1951年 Henrietta Lacks 在約翰霍普金斯接受宮頸腺癌治療，未經告知取樣的腫瘤細胞在體外無限增殖，成為 HeLa 細胞株。HeLa 細胞被全球實驗室廣泛使用超過70年（從小兒麻痺疫苗到COVID-19疫苗），但 Lacks 家族從未獲得任何補償。此案例是「知情同意」倫理規範的重要歷史依據。'},
+  s68:{num:'SESSION 68',title:'血液腫瘤的遺傳諮詢',body:'<ul><li>哪些血液腫瘤有遺傳傾向？（家族性骨髓瘤、Li-Fraumeni症候群）</li><li>基因檢測的時機與適應症</li><li>如何與家屬討論遺傳風險？</li><li>胚系（germline）突變 vs. 體細胞（somatic）突變的差異</li></ul>'},
+  s69:{num:'SESSION 69',title:'安寧緩和醫療在血液腫瘤的特殊性',body:'<ul><li>血液腫瘤患者的生命末期特性：急性惡化、感染</li><li>安寧緩和與積極治療的平行模式</li><li>輸血依賴患者的安寧決策：最後一次輸血</li><li>家屬溝通的技巧：如何告知壞消息（SPIKES模型）</li></ul>'},
+  r5:{num:'SESSION 70 ✦',title:'臨床思維總複習',isReview:true,body:'臨床決策框架：診斷→分期→治療選擇 · 病例串聯：賈伯斯、希欽斯、HeLa倫理 · MRD監測意義回顧'},
+  s71:{num:'SESSION 71',title:'次世代定序（NGS）',body:'<ul><li>NGS vs. 傳統 Sanger 定序的革命性差異</li><li>血液腫瘤常見基因 Panel（FLT3、IDH1/2、TP53等）</li><li>Tumor Mutational Burden（TMB）的意義</li><li>液態切片NGS：從血漿DNA找突變</li></ul>'},
+  s72:{num:'SESSION 72',title:'雙特異性抗體（Bispecific）',body:'<ul><li>原理：一端抓B細胞（CD19/20），一端抓T細胞（CD3）</li><li>Blinatumomab（BiTE）：ALL的突破性治療</li><li>Mosunetuzumab、Glofitamab：淋巴瘤的新選擇</li><li>與CAR-T相比：現成使用、無需細胞製造</li></ul>'},
+  s73:{num:'SESSION 73',title:'抗體藥物複合體（ADC）',body:'<ul><li>結構：抗體 + 連接子（Linker）+ 細胞毒性藥物</li><li>Brentuximab Vedotin（CD30）：HL與ALCL的利器</li><li>Polatuzumab Vedotin（CD79b）：DLBCL新方案</li><li>ADC 的精準殺傷 vs. 傍觀者效應（Bystander effect）</li></ul>'},
+  c18:{num:'SESSION 74 ⭐',title:'Alyssa：鹼基編輯CAR-T的突破',isCase:true,person:'Alyssa · 2022年英國倫敦',body:'Alyssa患T-ALL，傳統CAR-T因靶向同一T細胞標誌無法使用。倫敦大奧蒙德街醫院使用鹼基編輯（Base Editing）CAR-T，修改他人T細胞的多個基因，使其既能攻擊癌細胞又不被宿主排斥。2022年11月癌細胞消失，成為鹼基編輯療法的全球首例成功案例。'},
+  s75:{num:'SESSION 75',title:'液態切片（Liquid Biopsy）',body:'<ul><li>什麼是循環腫瘤DNA（ctDNA）？</li><li>ctDNA 監測在血液腫瘤的應用：MRD追蹤</li><li>液態切片 vs. 傳統組織切片：各自的優缺點</li><li>2024年最新臨床應用進展</li></ul>'},
+  c19:{num:'SESSION 76 ⭐',title:'Victoria Gray：CRISPR治癒鐮刀形紅血球病',isCase:true,person:'Victoria Gray · 2019年CRISPR首例',body:'Victoria Gray患嚴重鐮刀形紅血球病34年，每年數十次住院。2019年成為全球首位接受CRISPR/Cas9基因編輯治療的患者。取出造血幹細胞後用CRISPR開啟胎兒血紅素（HbF）基因，回輸後一年內幾乎不再發作。2023年FDA批准Casgevy（首個CRISPR療法）主要基於此研究。'},
+  s77:{num:'SESSION 77',title:'AI在血液腫瘤診斷的應用',body:'<ul><li>AI輔助血塗片判讀：偵測芽細胞比例</li><li>深度學習在骨髓切片病理的應用</li><li>預後預測模型：整合臨床 + 基因 + 影像數據</li><li>AI在台灣血液科的應用現況</li></ul>'},
+  c20:{num:'SESSION 78 ⭐',title:'世紀病例回顧：ALL從5%到90%存活率',isCase:true,person:'Donald Pinkel · St. Jude醫院，化療方案一甲子',body:'1950年代ALL存活率 < 5%。1962年St. Jude醫院成立，Donald Pinkel推行全身放射+化療。1970年代8種藥物聯合化療存活率升至50%。1990年代費城染色體陽性ALL加入Imatinib。2012年Emily CAR-T成功。2024年兒童ALL治癒率 > 90%。這是70年醫學奮鬥的完整縮影。'},
+  s79:{num:'SESSION 79',title:'血液腫瘤2024–2025重大突破',body:'<ul><li>FDA 2024年批准的新型血液腫瘤藥物</li><li>T細胞淋巴瘤的PD-1抑制劑新適應症</li><li>骨髓瘤的BCMA靶向ADC進展</li><li>台灣本地：CAR-T健保給付討論現況</li></ul>'},
+  r6:{num:'SESSION 80 🎓',title:'結業總複習：20則病例大串聯',isReview:true,body:'20則歷史病例完整回顧 · 血液腫瘤疾病全圖譜 · 治療演進完整時間軸：1943–2024 · 你已具備閱讀醫學文獻 + 理解門診對話的基礎能力 🎓'},
+  tw1:{num:'SESSION 81 🇹🇼',title:'台灣血液腫瘤的疾病譜：我們和歐美哪裡不一樣？',isTW:true,body:'<ul><li>T細胞淋巴瘤比例：台灣20–30% vs. 歐美9–14%</li><li>鼻腔NK/T細胞淋巴瘤：亞洲特有，台灣約2.8%</li><li>地中海貧血帶因率：台灣5–8%，α型為主</li><li>GBD 2021：台灣白血病發生率與死亡率逆勢上升</li><li>台灣濾泡性淋巴瘤（FL）比例低於歐美（16% vs. 22%）</li></ul>'},
+  tw2:{num:'SESSION 82 🇹🇼',title:'台灣血液腫瘤研究的里程碑與當代突破',isTW:true,body:'<ul><li>1974年：台灣啟動全國地中海貧血篩檢計畫，全亞洲最早</li><li>1993年：慈濟骨髓庫成立，45萬志願捐贈者，全球最大華人骨髓庫</li><li>2000年代：台大、榮總NK/T細胞淋巴瘤研究獲國際重視</li><li>2010年代：Rituximab納入健保，存活率大幅提升</li><li>2019年：CAR-T療法引進台灣，台大執行首例</li><li>NHIRD全民健保資料庫：2300萬人口的真實世界數據寶庫</li></ul>'},
+};
+
+function openDrawer(key){
+  const d=data[key];
+  if(!d) return;
+  let color=d.isCase?'#9A6A00':d.isReview?'#2A5A2A':d.isTW?'#0A4A28':'#8A3010';
+  let bg=d.isCase?'rgba(200,151,58,0.08)':d.isReview?'rgba(90,130,90,0.06)':d.isTW?'rgba(45,107,79,0.06)':'rgba(192,82,42,0.06)';
+  let html=`
+    <div class="drawer-num">${d.num}</div>
+    <div class="drawer-title">${d.title}</div>
+    ${d.person?`<div style="font-size:0.8rem;color:#9A7858;font-style:italic;margin-top:-10px;margin-bottom:14px;">👤 ${d.person}</div>`:''}
+    <div class="drawer-section">
+      <div class="drawer-sec-title" style="color:${color};">學習重點</div>
+      <div class="drawer-body">${typeof d.body==='string'&&d.body.startsWith('<')?d.body:`<p>${d.body}</p>`}</div>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-sec-title" style="color:${color};">15分鐘學習結構</div>
+      <div class="time-row">
+        <div class="t-seg"><span>0–2min</span>前情提要</div>
+        <div class="t-seg"><span>2–10min</span>核心講解</div>
+        <div class="t-seg"><span>10–13min</span>臨床連結</div>
+        <div class="t-seg"><span>13–15min</span>快問快答</div>
+      </div>
+    </div>
+    <button class="close-drawer" onclick="closeDrawer()">關閉 ✕</button>
+  `;
+  document.getElementById('drawerContent').innerHTML=html;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeDrawer(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function filter(type, btn){
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(type==='all'){
+    document.querySelectorAll('.phase-block').forEach(b=>b.style.display='');
+    document.querySelectorAll('.s-card').forEach(c=>c.style.display='');
+    return;
+  }
+  if(type==='case'){
+    document.querySelectorAll('.phase-block').forEach(b=>{
+      const hasCases=b.querySelectorAll('[data-case]').length>0;
+      b.style.display=hasCases?'':'none';
+    });
+    document.querySelectorAll('.s-card').forEach(c=>{
+      c.style.display=c.dataset.case?'':'none';
+    });
+    return;
+  }
+  document.querySelectorAll('.phase-block').forEach(b=>{
+    b.style.display=b.dataset.phase===type?'':'none';
+  });
+  document.querySelectorAll('.s-card').forEach(c=>c.style.display='');
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+</script>
+</body>
+</html>
