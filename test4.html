@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 02 ｜ 璇 ｜ Exploration &amp; Voyage 探險．航行．生存</title>
+<style>
+  :root{
+    --c1:#0077b6; --c2:#90e0ef; --c3:#ffd166; --c4:#e63946; --c5:#2ec4b6;
+    --c6:#023e8a; --c7:#03045e; --bg:#f0f9ff; --ink:#1b2838;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{font-size:17px}
+  body{margin:0;padding:0;background:linear-gradient(135deg,#f0f9ff 0%,#caf0f8 40%,#ade8f4 100%);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);line-height:1.7;}
+  header{background:linear-gradient(135deg,#023e8a,#0077b6,#90e0ef);color:#fff;padding:38px 28px 30px;
+    text-align:center;position:relative;overflow:hidden;}
+  header::after{content:"🚢 🧊 🌊 🧭 ⚓ 🌍";position:absolute;bottom:10px;right:18px;font-size:20px;opacity:.6;}
+  header h1{margin:0 0 8px;font-size:30px;letter-spacing:1px;}
+  header .sub{font-size:16px;opacity:.95;}
+  header .meta{margin-top:10px;font-size:14px;opacity:.92;}
+  main{max-width:1100px;margin:0 auto;padding:24px 18px 60px;}
+  section{margin:34px 0;}
+  details.unit{margin:24px 0;border-radius:18px;overflow:hidden;background:#fff;
+    box-shadow:0 8px 22px rgba(0,119,182,.13);border:1px solid rgba(0,119,182,.18);}
+  details.unit summary{padding:16px 20px;
+    background:linear-gradient(90deg,var(--c4),var(--c3));color:#fff;
+    font-size:22px;font-weight:900;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    border-left:8px solid var(--c1);}
+  details.unit summary::-webkit-details-marker{display:none;}
+  details.unit summary::marker{content:"";}
+  details.unit summary .label{display:block;}
+  details.unit .unit-content{padding:22px 20px 24px;background:rgba(255,255,255,.92);}
+  .arrow{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.58);
+    transition:transform .25s ease;font-size:18px;}
+  details[open] .arrow{transform:rotate(180deg);}
+  .vocab-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  .vocab{background:var(--card);border-radius:18px;padding:20px 24px;
+    box-shadow:0 8px 22px rgba(0,119,182,.1);border-top:7px solid var(--c1);position:relative;}
+  .vocab.unfam{border-top-color:var(--c4);background:linear-gradient(180deg,#fff2f4,#fff);}
+  .vocab.fam{border-top-color:var(--c5);background:linear-gradient(180deg,#eefcfa,#fff);}
+  .vocab .num{position:absolute;top:-15px;left:20px;background:var(--c1);color:#fff;
+    width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:16px;box-shadow:0 4px 10px rgba(0,0,0,.2);}
+  .vocab .tag{position:absolute;top:-13px;right:20px;padding:5px 14px;border-radius:20px;
+    font-size:13px;color:#fff;font-weight:800;letter-spacing:.5px;}
+  .vocab.unfam .tag{background:var(--c4);} .vocab.fam .tag{background:var(--c5);}
+  .word-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin:10px 0 6px;}
+  .word{font-size:30px;font-weight:800;color:var(--c1);}
+  .pos{color:#888;font-style:italic;font-size:15px;} .ipa{color:#999;font-size:14px;}
+  .meaning{color:#1b2838;font-size:17px;margin:6px 0 14px;font-weight:700;}
+  .deriv{background:#fff8e1;border-left:5px solid var(--c3);padding:11px 15px;border-radius:8px;margin:11px 0;font-size:15px;}
+  .deriv b{color:#c46210;}
+  .root{background:#e0f5fb;border-left:5px solid var(--c1);padding:11px 15px;border-radius:8px;margin:11px 0;font-size:15px;}
+  .root b{color:var(--c6);}
+  .ex{margin:9px 0;padding:11px 14px;background:#f4fbff;border-radius:8px;}
+  .ex .en{color:#03045e;font-size:15.5px;}
+  .ex .zh{color:#666;font-size:15px;margin-top:4px;}
+  .ex b{color:var(--c4);background:#fff3cd;padding:0 4px;border-radius:3px;}
+  .gram{background:#fff;border-radius:18px;padding:20px 24px;margin:16px 0;
+    box-shadow:0 5px 16px rgba(0,119,182,.12);border-left:8px solid var(--c1);}
+  .gram h4{margin:0 0 10px;color:var(--c1);font-size:19px;}
+  .gram .rule{background:#e8f4fd;padding:12px 16px;border-radius:8px;margin:10px 0;
+    font-family:Consolas,Menlo,monospace;color:var(--c6);font-size:14.5px;line-height:1.7;}
+  .gram .rule b{color:var(--c4);}
+  .errbox{background:linear-gradient(135deg,#fff0f0,#fff);border:2px solid var(--c4);border-radius:14px;
+    padding:16px 20px;margin:12px 0;font-size:14.5px;}
+  .errbox .etitle{font-weight:800;color:var(--c4);font-size:15px;margin-bottom:8px;}
+  .errbox .wrong{color:#c0392b;} .errbox .right{color:#16a085;font-weight:700;}
+  .reading{background:#fff;border-radius:18px;padding:24px 28px;
+    box-shadow:0 6px 18px rgba(0,0,0,.09);border-top:8px solid var(--c3);}
+  .reading h3{color:var(--c1);margin:0 0 12px;font-size:20px;}
+  .reading p{font-size:16.5px;line-height:1.9;}
+  .reading b{background:#fff3cd;color:var(--c4);padding:0 4px;border-radius:3px;}
+  .reading .zh{background:#e8f4fd;padding:16px 20px;border-radius:10px;margin-top:16px;
+    color:#555;font-size:15px;line-height:1.85;}
+  .mcq{background:#fff;border-radius:14px;padding:18px 24px;margin:14px 0;
+    box-shadow:0 4px 12px rgba(0,0,0,.07);border-left:7px solid var(--c6);}
+  .mcq .q{font-weight:700;margin-bottom:10px;color:#222;font-size:16px;}
+  .mcq ol{margin:8px 0 0 0;padding-left:26px;font-size:15.5px;}
+  .mcq li{margin:5px 0;}
+  details.answer-box{margin-top:20px;border-radius:14px;overflow:hidden;
+    box-shadow:0 5px 14px rgba(0,119,182,.18);}
+  details.answer-box summary{padding:16px 20px;
+    background:linear-gradient(120deg,var(--c1),var(--c4));
+    color:#fff;font-weight:700;font-size:16px;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  details.answer-box summary::-webkit-details-marker{display:none;}
+  details.answer-box summary::marker{content:"";}
+  details.answer-box > summary .arrow{display:inline-flex;transition:transform .25s ease;font-size:18px;}
+  details.answer-box:not([open]) > summary .arrow{transform:rotate(0);}
+  details.answer-box .answer-content{padding:16px 20px;background:#f0fff8;
+    color:#1b2838;font-size:15px;line-height:1.9;}
+  footer{text-align:center;padding:24px;color:#666;font-size:13.5px;border-top:2px dashed #ccc;margin-top:44px;}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:14px 0 0;font-size:14px;}
+  .dot{width:14px;height:14px;border-radius:50%;display:inline-block;}
+  .dot.unfam{background:var(--c4);} .dot.fam{background:var(--c5);}
+  .err-badge{display:inline-block;background:#e63946;color:#fff;font-size:12px;font-weight:800;
+    padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  @media(max-width:640px){
+    details.unit summary{font-size:19px;padding:14px 16px;}
+    details.unit .unit-content{padding:18px 14px 22px;}
+  }
+  @media(min-width:760px){.vocab-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚢 Day 02 ｜ 璇 ｜ Exploration &amp; Voyage 探險．航行．生存</h1>
+  <div class="sub">學測等級主題單字本｜程度量身打造（中上版）</div>
+  <div class="meta">2026-05-11 ｜ 第二日｜主題：極地探險、海上航行、生存挑戰</div>
+  <div class="legend" style="color:#fff;margin-top:14px;">
+    <span><i class="dot unfam"></i>不熟悉單字（取自璇 115 學測 66 個不熟詞表）</span>
+    <span><i class="dot fam"></i>同等級熟悉單字（主題延伸）</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ PART 1 ============ -->
+<details class="unit" open>
+  <summary><span class="label">⚓ Part 1 ｜ 主題單字 20 字</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+  <p style="text-align:center;color:#555;font-size:15px;">
+    比例：<b style="color:#e63946">不熟 6 字（30%）</b> + <b style="color:#2ec4b6">熟悉 14 字（70%）</b>　｜　所有衍生詞均與 115 學測閱讀測驗（南極探險文章）直接相關
+  </p>
+
+  <div class="vocab-grid">
+
+  <!-- 1 expedition UNFAM -->
+  <div class="vocab unfam"><div class="num">1</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">expedition</span><span class="pos">n.</span><span class="ipa">/ˌɛkspəˈdɪʃən/</span></div>
+    <div class="meaning">遠征；探險隊；探險旅行</div>
+    <div class="deriv"><b>衍生詞：</b><b>expedition team</b> 探險隊｜<b>go on an expedition</b> 出發遠征｜<b>expeditionary</b> adj. 遠征的</div>
+    <div class="root"><b>字根：</b>ex「向外」+ ped「腳」｜expedition 遠征, expedite 加速, pedestrian 行人, pedal 踏板, impede 阻礙</div>
+    <div class="ex"><div class="en">All the members of the <b>expedition</b> team survived despite months on the ice.</div>
+      <div class="zh">儘管在冰上待了幾個月，所有<b>探險隊</b>成員都倖存了下來。<i style="color:#888">（115 Q37 原文核心詞）</i></div></div>
+    <div class="ex"><div class="en">The school organized an <b>expedition</b> to the rainforest for senior students.</div>
+      <div class="zh">學校為高年級學生舉辦了一次雨林<b>探險之旅</b>。</div></div>
+    <div class="ex"><div class="en">She went on a mountain <b>expedition</b> and returned three weeks later.</div>
+      <div class="zh">她出發進行登山<b>遠征</b>，三週後才回來。</div></div>
+  </div>
+
+  <!-- 2 vessel UNFAM -->
+  <div class="vocab unfam"><div class="num">2</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">vessel</span><span class="pos">n.</span><span class="ipa">/ˈvɛsl/</span></div>
+    <div class="meaning">船隻；容器；血管</div>
+    <div class="deriv"><b>衍生詞：</b><b>blood vessel</b> 血管｜<b>a worthy vessel</b> 優良的船隻｜<b>spacecraft / aircraft</b> 類比用法</div>
+    <div class="ex"><div class="en">The worthy <b>vessel</b> held up for nine months, drifting slowly in the ice.</div>
+      <div class="zh">這艘優良的<b>船隻</b>撐了九個月，在冰中緩緩漂流。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">The rescue <b>vessel</b> arrived just in time to save the sailors.</div>
+      <div class="zh">救援<b>船隻</b>及時抵達，救了那些水手。</div></div>
+    <div class="ex"><div class="en">A broken <b>blood vessel</b> in the brain can cause serious damage.</div>
+      <div class="zh">腦部破裂的<b>血管</b>可能造成嚴重傷害。</div></div>
+  </div>
+
+  <!-- 3 voyage UNFAM -->
+  <div class="vocab unfam"><div class="num">3</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">voyage</span><span class="pos">n. / v.</span><span class="ipa">/ˈvɔɪɪdʒ/</span></div>
+    <div class="meaning">航行；（長途）海上旅程</div>
+    <div class="deriv"><b>衍生詞：</b><b>set sail on a voyage</b> 啟航｜<b>maiden voyage</b> 首航｜<b>voyager</b> n. 航行者</div>
+    <div class="ex"><div class="en">The ship set sail on a dangerous <b>voyage</b> toward Antarctica.</div>
+      <div class="zh">那艘船向南極啟航，踏上一段危險的<b>航程</b>。<i style="color:#888">（115 Q35–38 主題文章）</i></div></div>
+    <div class="ex"><div class="en">Columbus's first <b>voyage</b> to the Americas changed the history of the world.</div>
+      <div class="zh">哥倫布首次<b>航行</b>到美洲，改變了世界歷史。</div></div>
+    <div class="ex"><div class="en">After a <b>voyage</b> of seven days, they finally reached Elephant Island.</div>
+      <div class="zh">經過七天的<b>航程</b>，他們終於到達象島。</div></div>
+  </div>
+
+  <!-- 4 fatigue UNFAM -->
+  <div class="vocab unfam"><div class="num">4</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">fatigue</span><span class="pos">n. / v.</span><span class="ipa">/fəˈtiːɡ/</span></div>
+    <div class="meaning">疲勞；疲憊（感）；使疲倦</div>
+    <div class="deriv"><b>衍生詞：</b><b>fatigue level</b> 疲勞程度（115 Q27 文意選填）｜<b>fatigued</b> adj. 疲憊的｜<b>fatigue fracture</b> 疲勞性骨折</div>
+    <div class="ex"><div class="en">The best nap length may depend on a person's physical condition and <b>fatigue</b> level.</div>
+      <div class="zh">最適合的午睡時間取決於一個人的身體狀況與<b>疲勞</b>程度。<i style="color:#888">（115 Q27 文意選填原句）</i></div></div>
+    <div class="ex"><div class="en">After months at sea, the crew was overwhelmed by extreme <b>fatigue</b>.</div>
+      <div class="zh">在海上數月後，船員們被極度的<b>疲憊</b>所壓倒。</div></div>
+    <div class="ex"><div class="en">Even short breaks can help reduce mental <b>fatigue</b> during long study sessions.</div>
+      <div class="zh">即使短暫休息也能幫助減少長時間學習中的腦力<b>疲勞</b>。</div></div>
+  </div>
+
+  <!-- 5 weary UNFAM -->
+  <div class="vocab unfam"><div class="num">5</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">weary</span><span class="pos">adj. / v.</span><span class="ipa">/ˈwɪri/</span></div>
+    <div class="meaning">疲倦的；厭倦的；使疲倦（= tired, exhausted）</div>
+    <div class="deriv"><b>衍生詞：</b><b>weary of + N</b> 對⋯感到厭倦｜<b>wearily</b> adv. 疲憊地｜<b>weariness</b> n. 疲倦感</div>
+    <div class="ex"><div class="en">Teahouses sprang up to accommodate the <b>weary</b> travelers along the Silk Road.</div>
+      <div class="zh">茶館沿絲路興起，以接待<b>疲憊</b>的旅人。<i style="color:#888">（115 Q16 dim sum 文章原句）</i></div></div>
+    <div class="ex"><div class="en">After five months on the ice, the expedition crew was <b>weary</b> but alive.</div>
+      <div class="zh">在冰上度過五個月後，探險隊員們雖然<b>疲憊</b>，卻都還活著。</div></div>
+    <div class="ex"><div class="en">She grew <b>weary of</b> hearing the same excuses every time.</div>
+      <div class="zh">她<b>厭倦了</b>每次都聽到同樣的藉口。</div></div>
+  </div>
+
+  <!-- 6 condemned UNFAM -->
+  <div class="vocab unfam"><div class="num">6</div><div class="tag">不熟</div>
+    <div class="word-line"><span class="word">condemn</span><span class="pos">v.</span><span class="ipa">/kənˈdɛm/</span></div>
+    <div class="meaning">譴責；判刑；判決（建築）不適使用</div>
+    <div class="deriv"><b>衍生詞：</b><b>condemned</b> adj. 被判刑的｜<b>condemnation</b> n. 譴責｜<b>condemn sb to death</b> 判某人死刑</div>
+    <div class="root"><b>字根：</b>con「完全」+ demn「損害」｜condemn 譴責, damage 損壞, damn 詛咒, indemnity 賠償</div>
+    <div class="ex"><div class="en">The ship was practically <b>condemned</b> when ice crushed its wooden planks.</div>
+      <div class="zh">當冰塊壓碎木製船板，那艘船幾乎就<b>被判了死刑</b>。<i style="color:#888">（南極探險文章情境延伸）</i></div></div>
+    <div class="ex"><div class="en">World leaders <b>condemned</b> the attack and demanded an immediate ceasefire.</div>
+      <div class="zh">全球領袖<b>譴責</b>這次攻擊並要求立即停火。</div></div>
+    <div class="ex"><div class="en">The old building was <b>condemned</b> by the city and scheduled for demolition.</div>
+      <div class="zh">那棟舊建築被市府<b>列為危樓</b>，預定拆除。</div></div>
+  </div>
+
+  <!-- 7 encounter FAM -->
+  <div class="vocab fam"><div class="num">7</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">encounter</span><span class="pos">v. / n.</span><span class="ipa">/ɪnˈkaʊntər/</span></div>
+    <div class="meaning">遭遇；邂逅；遇到（困難等）</div>
+    <div class="deriv"><b>衍生詞：</b><b>encounter difficulties / obstacles</b> 遭遇困難／障礙｜<b>first encounter</b> 第一次相遇</div>
+    <div class="ex"><div class="en">The Endurance <b>encountered</b> floating ice and was soon completely trapped.</div>
+      <div class="zh">「堅忍號」<b>遭遇</b>浮冰，很快便被完全困住了。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">During her solo trip, she <b>encountered</b> many unexpected challenges.</div>
+      <div class="zh">在她的獨自旅行中，她<b>遭遇</b>了許多意想不到的挑戰。</div></div>
+    <div class="ex"><div class="en">Their first <b>encounter</b> happened on a stormy night at sea.</div>
+      <div class="zh">他們的第一次<b>相遇</b>發生在海上一個暴風雨的夜晚。</div></div>
+  </div>
+
+  <!-- 8 gradually FAM -->
+  <div class="vocab fam"><div class="num">8</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">gradually</span><span class="pos">adv.</span><span class="ipa">/ˈɡrædʒuəli/</span></div>
+    <div class="meaning">漸漸地；逐步地（= slowly, step by step）</div>
+    <div class="deriv"><b>衍生詞：</b><b>gradual</b> adj. 漸進的｜<b>gradually increase / decrease</b> 逐漸增加／減少｜<b>grade</b> 等級（同根）</div>
+    <div class="root"><b>字根：</b>grad「步」｜gradual 漸進, graduate 畢業, upgrade 升級, retrograde 倒退, gradient 坡度</div>
+    <div class="ex"><div class="en">The pressure from the ice <b>gradually</b> buckled the wooden planks of the ship.</div>
+      <div class="zh">冰的壓力<b>逐漸</b>壓彎了船的木板。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">In our early 20s, our brain starts shrinking, which <b>gradually</b> slows cognition.</div>
+      <div class="zh">二十多歲時，我們的大腦開始萎縮，這<b>逐漸</b>使認知能力下降。<i style="color:#888">（115 Q22–24 午睡文章）</i></div></div>
+    <div class="ex"><div class="en">With practice, her confidence in speaking English <b>gradually</b> improved.</div>
+      <div class="zh">透過練習，她說英語的自信<b>漸漸地</b>提升了。</div></div>
+  </div>
+
+  <!-- 9 abandon FAM -->
+  <div class="vocab fam"><div class="num">9</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">abandon</span><span class="pos">v.</span><span class="ipa">/əˈbændən/</span></div>
+    <div class="meaning">放棄；遺棄；丟棄</div>
+    <div class="deriv"><b>衍生詞：</b><b>abandon ship</b> 棄船！（海上緊急命令）｜<b>abandoned</b> adj. 被遺棄的｜<b>abandonment</b> n. 遺棄</div>
+    <div class="ex"><div class="en">On October 27, 1915, Shackleton ordered his crew to <b>abandon</b> the ship.</div>
+      <div class="zh">1915 年 10 月 27 日，沙克頓命令船員<b>棄船</b>。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">The rising tide of pet <b>abandonment</b> is a growing problem in Taiwan.</div>
+      <div class="zh">寵物<b>遺棄</b>的浪潮日益嚴重，是台灣越來越大的問題。<i style="color:#888">（璇作文主題延伸）</i></div></div>
+    <div class="ex"><div class="en">Never <b>abandon</b> your values just to please others.</div>
+      <div class="zh">絕不要為了取悅他人而<b>放棄</b>自己的價值觀。</div></div>
+  </div>
+
+  <!-- 10 perseverance FAM -->
+  <div class="vocab fam"><div class="num">10</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">perseverance</span><span class="pos">n.</span><span class="ipa">/ˌpɜːrsɪˈvɪərəns/</span></div>
+    <div class="meaning">毅力；堅持不懈（= persistence, determination）</div>
+    <div class="deriv"><b>衍生詞：</b><b>persevere</b> v. 堅持｜<b>persevere in / through</b> 堅持度過｜<b>perseverant</b> adj. 有毅力的</div>
+    <div class="ex"><div class="en">The discovery marked the final chapter of a legendary story of courage and <b>perseverance</b>.</div>
+      <div class="zh">這次發現標誌著一段充滿勇氣與<b>毅力</b>的傳奇故事的最終章。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en"><b>Perseverance</b> is what separates those who succeed from those who give up.</div>
+      <div class="zh"><b>毅力</b>是區別成功者與放棄者的關鍵。</div></div>
+    <div class="ex"><div class="en">Learning a new language requires a great deal of <b>perseverance</b>.</div>
+      <div class="zh">學習一門新語言需要極大的<b>堅持</b>。</div></div>
+  </div>
+
+  <!-- 11 rescue FAM -->
+  <div class="vocab fam"><div class="num">11</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">rescue</span><span class="pos">v. / n.</span><span class="ipa">/ˈrɛskjuː/</span></div>
+    <div class="meaning">救援；拯救；解救</div>
+    <div class="deriv"><b>衍生詞：</b><b>come to sb's rescue</b> 前來救援｜<b>rescue mission</b> 救援任務｜<b>rescuer</b> n. 救援者</div>
+    <div class="ex"><div class="en">Shackleton finally returned with a ship big enough to <b>rescue</b> the rest of his men.</div>
+      <div class="zh">沙克頓終於帶著一艘足夠大的船回來<b>救援</b>其餘的隊員。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">The firefighters managed to <b>rescue</b> three people from the burning building.</div>
+      <div class="zh">消防員設法從燃燒的建築物中<b>救出</b>了三人。</div></div>
+    <div class="ex"><div class="en">Fortunately, a passing fisherman came to their <b>rescue</b>.</div>
+      <div class="zh">幸運地，一位路過的漁夫<b>前來救援</b>。</div></div>
+  </div>
+
+  <!-- 12 drift FAM -->
+  <div class="vocab fam"><div class="num">12</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">drift</span><span class="pos">v. / n.</span><span class="ipa">/drɪft/</span></div>
+    <div class="meaning">漂流；漂移；偏離（方向）</div>
+    <div class="deriv"><b>衍生詞：</b><b>drift off</b> 漸漸入睡｜<b>snow drift</b> 積雪堆｜<b>drift apart</b> 漸行漸遠</div>
+    <div class="ex"><div class="en">The vessel held up for nine months, <b>drifting</b> down south and then northward.</div>
+      <div class="zh">這艘船撐了九個月，先向南後向北<b>漂流</b>。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">The two old friends had <b>drifted apart</b> after going to different universities.</div>
+      <div class="zh">兩位老朋友在上了不同的大學後<b>漸行漸遠</b>。</div></div>
+    <div class="ex"><div class="en">Without a map or compass, a small boat can easily <b>drift</b> off course.</div>
+      <div class="zh">沒有地圖或指南針，小船很容易<b>偏離</b>航線。</div></div>
+  </div>
+
+  <!-- 13 survive FAM -->
+  <div class="vocab fam"><div class="num">13</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">survive</span><span class="pos">v.</span><span class="ipa">/sərˈvaɪv/</span></div>
+    <div class="meaning">倖存；存活；熬過</div>
+    <div class="deriv"><b>衍生詞：</b><b>survival</b> n. 生存｜<b>survivor</b> n. 倖存者｜<b>survival instinct</b> 求生本能｜<b>survive on</b> 靠⋯維生</div>
+    <div class="root"><b>字根：</b>sur「超過」+ vive「生命」｜survive 倖存, revive 復活, vivid 生動, vital 重要的, vitamin 維生素</div>
+    <div class="ex"><div class="en">The crew <b>survived</b> on penguins, seals, and seaweed for five months.</div>
+      <div class="zh">船員們靠企鵝、海豹與海藻<b>存活</b>了五個月。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">All 28 members of Shackleton's expedition team <b>survived</b>.</div>
+      <div class="zh">沙克頓探險隊的全部 28 名成員都<b>倖存</b>了下來。</div></div>
+    <div class="ex"><div class="en">Increasing number of families struggle to <b>survive</b> in today's expensive cities.</div>
+      <div class="zh">越來越多家庭在現今昂貴的城市中掙扎<b>維生</b>。</div></div>
+  </div>
+
+  <!-- 14 hinder FAM -->
+  <div class="vocab fam"><div class="num">14</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">hinder</span><span class="pos">v.</span><span class="ipa">/ˈhɪndər/</span></div>
+    <div class="meaning">阻礙；妨礙（+ from）</div>
+    <div class="deriv"><b>衍生詞：</b><b>hindrance</b> n. 阻礙物｜<b>hinder sb from V-ing</b> 阻止某人做⋯｜近義：impede, obstruct, hamper</div>
+    <div class="ex"><div class="en">Ice and bad weather <b>hindered</b> their return to Elephant Island.</div>
+      <div class="zh">冰和惡劣天氣<b>阻礙了</b>他們返回象島。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">Lack of sleep can seriously <b>hinder</b> your ability to focus in class.</div>
+      <div class="zh">睡眠不足會嚴重<b>妨礙</b>你在課堂上集中注意力的能力。</div></div>
+    <div class="ex"><div class="en">Financial problems were the biggest <b>hindrance</b> to her dream of studying abroad.</div>
+      <div class="zh">財務問題是她出國留學夢想最大的<b>阻礙</b>。</div></div>
+  </div>
+
+  <!-- 15 persevere FAM -->
+  <div class="vocab fam"><div class="num">15</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">courage</span><span class="pos">n.</span><span class="ipa">/ˈkɜːrɪdʒ/</span></div>
+    <div class="meaning">勇氣；膽識（= bravery）</div>
+    <div class="deriv"><b>衍生詞：</b><b>courageous</b> adj. 勇敢的｜<b>courageously</b> adv.｜<b>encourage</b> v. 鼓勵｜<b>discourage</b> v. 使氣餒</div>
+    <div class="root"><b>字根：</b>cour「心」（拉丁 cor）｜courage 勇氣, encourage 鼓勵, core 核心, cordial 熱情友好的</div>
+    <div class="ex"><div class="en">The story of Shackleton is remembered for extraordinary <b>courage</b> and perseverance.</div>
+      <div class="zh">沙克頓的故事以超凡的<b>勇氣</b>與毅力被後人銘記。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">It takes real <b>courage</b> to admit that you were wrong.</div>
+      <div class="zh">承認自己犯錯需要真正的<b>勇氣</b>。</div></div>
+    <div class="ex"><div class="en">The teacher's words <b>encouraged</b> her to keep trying when she wanted to give up.</div>
+      <div class="zh">老師的話<b>鼓勵了</b>她在想放棄時繼續嘗試。</div></div>
+  </div>
+
+  <!-- 16 inhabit FAM -->
+  <div class="vocab fam"><div class="num">16</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">inhabit</span><span class="pos">v.</span><span class="ipa">/ɪnˈhæbɪt/</span></div>
+    <div class="meaning">居住於；棲息於</div>
+    <div class="deriv"><b>衍生詞：</b><b>uninhabited</b> adj. 無人居住的（115 閱讀用字）｜<b>inhabitant</b> n. 居民｜<b>habitat</b> n. 棲息地</div>
+    <div class="ex"><div class="en">They sailed to the <b>uninhabited</b> Elephant Island to seek temporary shelter.</div>
+      <div class="zh">他們航行到<b>無人居住</b>的象島尋求臨時庇護。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">Polar bears <b>inhabit</b> the Arctic regions of the Northern Hemisphere.</div>
+      <div class="zh">北極熊<b>棲息於</b>北半球的北極地區。</div></div>
+    <div class="ex"><div class="en">The island has been <b>uninhabited</b> since the last residents left in 1950.</div>
+      <div class="zh">自從最後一批居民在 1950 年離開後，這座島就<b>無人居住</b>了。</div></div>
+  </div>
+
+  <!-- 17 attempt FAM -->
+  <div class="vocab fam"><div class="num">17</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">attempt</span><span class="pos">n. / v.</span><span class="ipa">/əˈtɛmpt/</span></div>
+    <div class="meaning">嘗試；試圖（= try）</div>
+    <div class="deriv"><b>衍生詞：</b><b>make an attempt</b> 嘗試｜<b>in an attempt to + V</b> 試圖⋯｜<b>attempted</b> adj. 未遂的</div>
+    <div class="ex"><div class="en">Shackleton made a dangerous <b>attempt</b> to get help by sailing 800 miles.</div>
+      <div class="zh">沙克頓進行了一次危險的<b>嘗試</b>，航行 800 英里去求援。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">He <b>attempted</b> to climb the mountain three times before finally succeeding.</div>
+      <div class="zh">他三次<b>嘗試</b>攀登這座山，最終才成功。</div></div>
+    <div class="ex"><div class="en">In an <b>attempt</b> to save money, she started cooking her own meals.</div>
+      <div class="zh">為了<b>試圖</b>省錢，她開始自己煮飯。</div></div>
+  </div>
+
+  <!-- 18 exacerbate FAM (idiom) -->
+  <div class="vocab fam"><div class="num">18</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">exacerbate</span><span class="pos">v.</span><span class="ipa">/ɪɡˈzæsərbeɪt/</span></div>
+    <div class="meaning">使惡化；使加劇（= worsen, aggravate）</div>
+    <div class="deriv"><b>衍生詞：</b><b>exacerbation</b> n. 惡化｜近義：worsen, aggravate｜反義：alleviate, improve, mitigate</div>
+    <div class="ex"><div class="en">Freezing water rushed in and <b>exacerbated</b> the situation.</div>
+      <div class="zh">冰冷的海水湧入，使情況<b>更加惡化</b>。<i style="color:#888">（115 閱讀原句 Q36 考點）</i></div></div>
+    <div class="ex"><div class="en">Excessive smartphone use can <b>exacerbate</b> sleep problems and fatigue.</div>
+      <div class="zh">過度使用智慧型手機會<b>加劇</b>睡眠問題與疲勞。</div></div>
+    <div class="ex"><div class="en">The drought <b>exacerbated</b> the already serious food shortage in the region.</div>
+      <div class="zh">乾旱<b>使</b>該地區原本嚴重的糧食短缺<b>更加惡化</b>。</div></div>
+  </div>
+
+  <!-- 19 landmark FAM -->
+  <div class="vocab fam"><div class="num">19</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">legendary</span><span class="pos">adj.</span><span class="ipa">/ˈlɛdʒəndɛri/</span></div>
+    <div class="meaning">傳奇的；極其著名的</div>
+    <div class="deriv"><b>衍生詞：</b><b>legend</b> n. 傳說；傳奇人物｜<b>legendary figure</b> 傳奇人物｜<b>become legendary</b> 變得家喻戶曉</div>
+    <div class="ex"><div class="en">The discovery marked the final chapter in a <b>legendary</b> story of courage.</div>
+      <div class="zh">這次發現標誌著一段<b>傳奇</b>勇氣故事的最終章。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">Michael Jordan is a <b>legendary</b> figure in the history of basketball.</div>
+      <div class="zh">麥可·喬丹是籃球史上的一位<b>傳奇人物</b>。</div></div>
+    <div class="ex"><div class="en">The explorer's <b>legendary</b> bravery has inspired generations of adventurers.</div>
+      <div class="zh">這位探險家<b>傳奇式的</b>勇氣激勵了一代代的冒險者。</div></div>
+  </div>
+
+  <!-- 20 trap FAM -->
+  <div class="vocab fam"><div class="num">20</div><div class="tag">熟悉</div>
+    <div class="word-line"><span class="word">trap</span><span class="pos">v. / n.</span><span class="ipa">/træp/</span></div>
+    <div class="meaning">困住；使陷入困境；陷阱</div>
+    <div class="deriv"><b>衍生詞：</b><b>be trapped in / by</b> 被困於｜<b>trapped</b> adj. 被困的｜<b>a trap</b> 陷阱；圈套</div>
+    <div class="ex"><div class="en">The Endurance was soon completely <b>trapped</b> in pack ice.</div>
+      <div class="zh">「堅忍號」很快便被浮冰完全<b>困住</b>了。<i style="color:#888">（115 閱讀原句）</i></div></div>
+    <div class="ex"><div class="en">Many young people feel <b>trapped</b> in jobs they don't enjoy but can't afford to quit.</div>
+      <div class="zh">許多年輕人覺得被<b>困在</b>自己不喜歡卻又無法辭掉的工作裡。</div></div>
+    <div class="ex"><div class="en">Be careful not to fall into the <b>trap</b> of procrastination during exam season.</div>
+      <div class="zh">考試季節要小心不要落入拖延症的<b>陷阱</b>。</div></div>
+  </div>
+
+  </div><!-- end vocab-grid -->
+  </div>
+</details>
+
+<!-- ============ PART 2: GRAMMAR ============ -->
+<details class="unit">
+  <summary><span class="label">🔧 Part 2 ｜ 文法錯誤精析（Q33、Q36、Q42、Q45）</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+
+  <!-- 錯題回顧盒 -->
+  <div style="background:#fff3cd;border:2px solid var(--c3);border-radius:14px;padding:18px 22px;margin-bottom:22px;">
+    <div style="font-weight:800;color:#856404;font-size:15px;margin-bottom:10px;">📌 本次文法針對璇的四個錯題</div>
+    <table style="width:100%;border-collapse:collapse;font-size:14.5px;">
+      <tr style="background:rgba(0,0,0,.05);">
+        <th style="padding:8px 12px;text-align:left;">題號</th>
+        <th style="padding:8px 12px;text-align:left;">璇選</th>
+        <th style="padding:8px 12px;text-align:left;">正解</th>
+        <th style="padding:8px 12px;text-align:left;">錯誤原因</th>
+      </tr>
+      <tr><td style="padding:8px 12px;">Q33</td><td style="padding:8px 12px;color:#c0392b;">D（genuine smile）</td><td style="padding:8px 12px;color:#16a085;font-weight:700;">A（immigration diversity）</td><td style="padding:8px 12px;">段落邏輯：下一句講移民，選 A 才能引出</td></tr>
+      <tr style="background:rgba(0,0,0,.03);"><td style="padding:8px 12px;">Q36</td><td style="padding:8px 12px;color:#c0392b;">A（Broke the ice）</td><td style="padding:8px 12px;color:#16a085;font-weight:700;">D（Added fuel to the fire）</td><td style="padding:8px 12px;">慣用語語意：exacerbate = 使惡化 = 火上加油</td></tr>
+      <tr><td style="padding:8px 12px;">Q42</td><td style="padding:8px 12px;color:#c0392b;">A（too narrow to retreat）</td><td style="padding:8px 12px;color:#16a085;font-weight:700;">B（favored right-handed defenders）</td><td style="padding:8px 12px;">細節推論：defenders 在上方、有全力揮劍空間</td></tr>
+      <tr style="background:rgba(0,0,0,.03);"><td style="padding:8px 12px;">Q45</td><td style="padding:8px 12px;color:#c0392b;">D（advanced system）</td><td style="padding:8px 12px;color:#16a085;font-weight:700;">A（a temporary state）</td><td style="padding:8px 12px;">a blip = 短暫的偏差；上下文強調「短暫」</td></tr>
+    </table>
+  </div>
+
+  <!-- Grammar 1 -->
+  <div class="gram">
+    <h4>① <b>慣用語語意判斷</b>　exacerbate = "add fuel to the fire" <span class="err-badge">Q36 錯題</span></h4>
+    <p>★ <b>來源：</b>Q36（璇選 A「Broke the ice」，正解 D「<b>Added fuel to the fire</b>」）</p>
+    <div class="errbox">
+      <div class="etitle">❌ 璇的思路（為何選錯）</div>
+      <div class="wrong">「broke the ice」也是常見慣用語，而且「ice」出現在文章情境裡⋯</div>
+      <div style="margin-top:8px;color:#16a085;font-weight:700;">✅ 正確判斷方式：先查語意，再對照上下文</div>
+    </div>
+    <div class="rule">
+      <b>add fuel to the fire</b>　＝　火上加油（使事情更嚴重）→ 對應 exacerbate「使惡化」<br>
+      <b>break the ice</b>　＝　打破僵局（開始對話或活動）→ 與「惡化」無關<br>
+      <b>cost an arm and a leg</b>　＝　代價高昂 → 與語意無關<br>
+      <b>miss the boat</b>　＝　錯過機會 → 與語意無關
+    </div>
+    <p style="color:#444;font-size:14.5px;">🔑 解題心法：遇到慣用語替換題，先把四個選項都用「中文語意」對照，再看哪一個最接近原句動詞的意思。<b>「exacerbate」= 使惡化 = 火上加油</b>，不是「打破僵局」。</p>
+    <div class="ex"><div class="en">Freezing water rushed in and <b>exacerbated</b> the situation — it was like adding <b>fuel to the fire</b>.</div>
+      <div class="zh">冰冷的海水湧入，使情況更加惡化——就像<b>火上加油</b>一樣。</div></div>
+    <div class="ex"><div class="en">Her angry reply only <b>added fuel to the fire</b> and made the argument worse.</div>
+      <div class="zh">她憤怒的回應只是<b>火上加油</b>，讓爭吵更加激烈。</div></div>
+    <div class="ex"><div class="en">To <b>break the ice</b> at the party, he suggested playing a group game first.</div>
+      <div class="zh">為了在派對上<b>打破僵局</b>，他建議先玩一個團體遊戲。</div></div>
+  </div>
+
+  <!-- Grammar 2 -->
+  <div class="gram">
+    <h4>② <b>篇章結構：段落邏輯 + 代名詞回指</b>　<span class="err-badge">Q33 錯題</span></h4>
+    <p>★ <b>來源：</b>Q33（璇選 D「genuine smile」，正解 A「<b>Another crucial factor is immigration diversity</b>」）</p>
+    <div class="errbox">
+      <div class="etitle">❌ 璇的思路（為什麼 D 看起來對）</div>
+      <div class="wrong">「genuine smile」vs「forced smile」 聽起來很完整，像是一個對比說明的好句子⋯</div>
+      <div style="margin-top:8px;color:#16a085;font-weight:700;">✅ 正確判斷方式：看「空格後面」的句子，找關鍵詞線索</div>
+    </div>
+    <div class="rule">
+      篇章結構題解題三步驟：<br>
+      <b>Step 1</b>　讀空格<b>前一句</b>：找主題關鍵詞<br>
+      <b>Step 2</b>　讀空格<b>後一句</b>：找「銜接詞」或「代名詞」<br>
+      <b>Step 3</b>　確認哪個選項能同時承上啟下
+    </div>
+    <p style="color:#444;font-size:14.5px;">
+      Q33 情境：空格後句說「<b>Newcomers from different parts of the world</b> are found to smile more...」→ 關鍵詞是「移民」。只有 A「Another crucial factor is <b>immigration diversity</b>」能帶出「移民」這個主題。選項 D 說的是「真誠微笑 vs 假笑」，後面的句子完全沒有接這個對比，所以 D 邏輯不通。
+    </p>
+    <div class="ex"><div class="en"><b>A:</b> Another crucial factor is a society's immigration diversity.<br>
+      → <b>後句：</b>"Newcomers from different parts of the world are found to smile more."</div>
+      <div class="zh">A：另一個關鍵因素是社會的<b>移民多元性</b>。→ 後句提到「移民」→ 完美銜接 ✅</div></div>
+    <div class="ex"><div class="en"><b>D:</b> A genuine smile indicates contentment, while a forced smile suggests underlying distress.<br>
+      → <b>後句：</b>"Newcomers from different parts of the world are found to smile more."</div>
+      <div class="zh">D：真誠的微笑代表滿足，假笑代表潛在痛苦。→ 後句跳到移民話題 → 邏輯斷裂 ❌</div></div>
+  </div>
+
+  <!-- Grammar 3 -->
+  <div class="gram">
+    <h4>③ <b>細節推論：正確理解 "favored" 的方向</b>　<span class="err-badge">Q42 錯題</span></h4>
+    <p>★ <b>來源：</b>Q42（璇選 A「too narrow to allow any quick retreat」，正解 B「<b>favored right-handed defenders</b>」）</p>
+    <div class="errbox">
+      <div class="etitle">❌ 璇的思路（A 的陷阱）</div>
+      <div class="wrong">文章確實說樓梯很「narrow」⋯ 但 A 說「too narrow to allow <b>any</b> quick retreat」，文章說的是 defenders 可以 retreat swiftly，所以 A 說「無法快速撤退」是錯的。</div>
+      <div style="margin-top:8px;color:#16a085;font-weight:700;">✅ B 說的是：順時針設計讓右撇子「防衛者」佔優勢</div>
+    </div>
+    <div class="rule">
+      原文重點：<br>
+      - attackers: right hand tight against the <b>narrowest part</b> → <b>cannot use sword effectively</b><br>
+      - defenders: <b>familiar with stair pattern</b> → <b>can retreat up them very swiftly</b><br>
+      → 結論：B「favored <b>right-handed</b> castle defenders」正確 ✅
+    </div>
+    <p style="color:#444;font-size:14.5px;">🔑 解題心法：推論題（infer）一定要回原文核對。選項 A 說「too narrow to allow <b>any</b> quick retreat」，但原文說守衛者能「<b>swiftly</b> retreat」—— 這是 A 的錯誤關鍵。閱讀時要注意 <b>any / all / never / only</b> 這類絕對用語，往往是干擾選項的設計點。</p>
+    <div class="ex"><div class="en">The defenders, <b>familiar with</b> the stair pattern, could retreat up them <b>very swiftly</b>.</div>
+      <div class="zh">守衛者對樓梯的規律<b>熟悉</b>，因此能夠<b>非常迅速地</b>向上撤退。<i style="color:#888">（原文）</i></div></div>
+    <div class="ex"><div class="en">The clockwise design <b>favored</b> right-handed defenders by limiting the attackers' sword arm.</div>
+      <div class="zh">順時針的設計限制了攻擊者的持劍手臂，從而<b>有利於</b>右撇子守衛者。</div></div>
+  </div>
+
+  <!-- Grammar 4 -->
+  <div class="gram">
+    <h4>④ <b>單字語意推論：a blip = a temporary state</b>　<span class="err-badge">Q45 錯題</span></h4>
+    <p>★ <b>來源：</b>Q45（璇選 D「an advanced system」，正解 A「<b>a temporary state</b>」）</p>
+    <div class="rule">
+      <b>"a blip"</b> 字面義：雷達螢幕上短暫出現的光點<br>
+      <b>引申義：</b>短暫的偏差；一時的例外（= a temporary irregularity）<br><br>
+      上下文線索：<br>
+      "...perhaps the north-on-top practice is <b>less a rule</b> and more <b>a blip</b>."<br>
+      "...it seems we've ended up <b>right where we began</b> in ancient times..."<br>
+      → 全句意思：「北方朝上」不是永久規則，而是歷史上的<b>短暫偏差</b>
+    </div>
+    <p style="color:#444;font-size:14.5px;">🔑 不認識生字怎麼辦？<br>
+      Step 1：用上下文推斷：「<b>less a rule</b> and more a blip」→ blip 與 rule 相對 → blip 不是「規則」，而是「例外」<br>
+      Step 2：看尾段主旨：「我們回到了古代的出發點」→ 暗示北方朝上只是<b>一時的</b><br>
+      Step 3：刪去法：B「urgent need」、C「critical decision」、D「advanced system」都與「短暫」無關 → 選 A
+    </p>
+    <div class="ex"><div class="en">The north-on-top standard was perhaps <b>a blip</b>—a temporary state—not a fixed universal rule.</div>
+      <div class="zh">「北方朝上」的標準也許只是<b>短暫的偏差</b>，而非固定的普遍規則。</div></div>
+    <div class="ex"><div class="en">Don't worry; this low score is just <b>a blip</b>. You'll do better next time.</div>
+      <div class="zh">別擔心，這次低分只是<b>暫時的狀況</b>，下次你會更好的。</div></div>
+  </div>
+
+  </div>
+</details>
+
+<!-- ============ PART 3: READING ============ -->
+<details class="unit">
+  <summary><span class="label">📖 Part 3 ｜ 主題閱讀測驗（約 220 字）</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+  <div class="reading">
+    <h3>Against All Odds: The Story of Shackleton's Endurance</h3>
+    <p>
+      In 1914, Sir Ernest Shackleton set sail on a <b>legendary</b> <b>voyage</b> to Antarctica. His goal was
+      to lead the first land crossing of the continent. Along with a skilled crew, he departed from
+      Plymouth, UK, on a <b>vessel</b> called the Endurance. Little did he know that the <b>expedition</b>
+      would soon face disaster.
+    </p>
+    <p>
+      Two days after leaving South Georgia Island, the ship <b>encountered</b> floating ice and was
+      completely <b>trapped</b>. For nine months, the vessel drifted helplessly. <b>Gradually</b>, the
+      pressure from the ice buckled the wooden planks. Freezing water rushed in, <b>exacerbating</b>
+      the situation — in other words, <b>adding fuel to the fire</b>. Shackleton was forced to order his
+      crew to <b>abandon</b> the ship.
+    </p>
+    <p>
+      For five months, the <b>weary</b> crew camped on the ice, surviving on penguins and seals. Ice and
+      bad weather continued to <b>hinder</b> any attempt to escape. Finally, the ice broke up enough for
+      them to sail in lifeboats to the <b>uninhabited</b> Elephant Island. From there, Shackleton made a
+      daring <b>attempt</b>: he sailed 800 miles across freezing seas to find help, driven by
+      extraordinary <b>courage</b> and <b>perseverance</b>.
+    </p>
+    <p>
+      Despite months of <b>fatigue</b> and danger, all 28 members of the expedition <b>survived</b>. The
+      Endurance, however, was <b>condemned</b> to the ocean floor — lost for over a century until its
+      rediscovery in 2022.
+    </p>
+    <div class="zh">
+      <b>中譯重點：</b>1914 年，沙克頓爵士踏上一段<b>傳奇的</b>南極<b>航程</b>。他的目標是率領船員完成首次橫越南極洲的陸地穿越。然而，船隻遭遇浮冰後，被完全<b>困住</b>，整整漂流九個月。冰塊<b>逐漸</b>壓彎木板，海水湧入使情況<b>更加惡化</b>——猶如<b>火上加油</b>。沙克頓被迫命令船員<b>棄船</b>。<br>
+      五個月後，疲憊的<b>探險隊</b>員在冰上露營，靠企鵝與海豹<b>存活</b>。各種阻礙<b>妨礙</b>了逃脫的計畫。冰層終於裂開，他們乘救生艇抵達<b>無人居住</b>的象島。沙克頓隨後展開一次大膽的<b>嘗試</b>：憑藉超凡的<b>勇氣</b>與<b>毅力</b>，航行 800 英里前往求援。儘管歷經<b>疲勞</b>與危險，全部 28 名隊員均<b>倖存</b>下來。
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- ============ PART 4: MCQ ============ -->
+<details class="unit">
+  <summary><span class="label">🧪 Part 4 ｜ 六題單選複習（含慣用語推論）</span><span class="arrow">▼</span></summary>
+  <div class="unit-content">
+
+  <div class="mcq"><div class="q">1. The ship was completely ______ in pack ice and could not move at all.</div>
+    <ol type="A"><li>condemned</li><li>hindered</li><li>trapped</li><li>exacerbated</li></ol></div>
+
+  <div class="mcq"><div class="q">2. Freezing water rushed in and ______ the situation — just like adding fuel to the fire.</div>
+    <ol type="A"><li>abandoned</li><li>rescued</li><li>exacerbated</li><li>drifted</li></ol></div>
+
+  <div class="mcq"><div class="q">3. All the members of the ______ team survived, despite months on the freezing ice.</div>
+    <ol type="A"><li>expedition</li><li>vessel</li><li>fatigue</li><li>voyage</li></ol></div>
+
+  <div class="mcq"><div class="q">4. Which idiom is closest in meaning to "exacerbated the situation"?</div>
+    <ol type="A"><li>Broke the ice.</li><li>Missed the boat.</li><li>Added fuel to the fire.</li><li>Cost an arm and a leg.</li></ol></div>
+
+  <div class="mcq"><div class="q">5. Read the paragraph below. Which sentence best fills the blank?
+    <br><br>
+    <i>"People smile more when they are from countries high in individualism. _______ Newcomers from different parts of the world are found to smile more."</i></div>
+    <ol type="A"><li>Another crucial factor is a society's immigration diversity.</li><li>A genuine smile indicates contentment, while a forced smile suggests distress.</li><li>For most of recorded history, the open smile has been deeply unfashionable.</li><li>Smiling is a gesture that many people engage in dozens of times a day.</li></ol></div>
+
+  <div class="mcq"><div class="q">6. According to the passage about spiral staircases, which statement can be INFERRED about medieval castle defenders?</div>
+    <ol type="A"><li>The staircase was too narrow to allow any quick retreat.</li><li>The clockwise design favored right-handed defenders.</li><li>The uneven steps made it easier to ascend than descend.</li><li>The dark staircase helped defenders hide from attackers.</li></ol></div>
+
+  <details class="answer-box">
+    <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
+    <div class="answer-content">
+      <b>1. (C) trapped</b>　被困住的 — "completely trapped in pack ice" 是 115 閱讀原句。condemned = 譴責；hindered = 妨礙；exacerbated = 使惡化，語意均不符。<br><br>
+      <b>2. (C) exacerbated</b>　使惡化 — "add fuel to the fire" 是 exacerbate 的同義慣用語（Q36 錯題核心）。abandoned = 遺棄；rescued = 救援；drifted = 漂流，語意不符。<br><br>
+      <b>3. (A) expedition</b>　探險隊 — "expedition team" 是 115 閱讀最後一段原句。vessel = 船隻；fatigue = 疲勞；voyage = 航程，均為名詞但搭配不對。<br><br>
+      <b>4. (C) Added fuel to the fire</b>　火上加油 — exacerbate 語意 = 使惡化 = 火上加油（Q36 正解）。Broke the ice = 打破僵局（璇選 A 的錯誤）。<br><br>
+      <b>5. (A) Another crucial factor is a society's immigration diversity.</b>　後句講「移民」，空格必須引出「移民」主題 → A 完美銜接（Q33 錯題解析）。選 B 則後句出現邏輯跳躍。<br><br>
+      <b>6. (B) The clockwise design favored right-handed defenders.</b>　原文明確說 defenders 熟悉階梯，能 swiftly retreat；A 說 "too narrow to allow any quick retreat" 與原文矛盾（Q42 錯題）。
+    </div>
+  </details>
+  </div>
+</details>
+
+<footer>
+  Day 02 ｜ 璇 ｜ Exploration &amp; Voyage 探險．航行．生存（中上版）<br>
+  資料來源：115 學測英文 Q35–38（Endurance 南極探險）、Q36（慣用語）、Q33 Q42 Q45（錯題精析）、璇 66 個不熟詞表
+</footer>
+
+</main>
+</body>
+</html>
