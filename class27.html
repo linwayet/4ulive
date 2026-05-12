@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiFi 微課程 ✦ 10 回合自學之旅</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF8EC;
+    --warm-white: #FFFCF5;
+    --terracotta: #E07856;
+    --coral: #F09D7C;
+    --mustard: #E8B14C;
+    --honey: #F5C76A;
+    --sage: #8FB996;
+    --teal: #4F9D8A;
+    --plum: #8E5A6B;
+    --rust: #C45A3F;
+    --ink: #3A2E2A;
+    --soft-ink: #5C4A42;
+    --shadow: rgba(58, 46, 42, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.75;
+    background-image:
+      radial-gradient(circle at 10% 15%, rgba(245, 199, 106, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(143, 185, 150, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(240, 157, 124, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* ─────────  HEADER ───────── */
+  header {
+    text-align: center;
+    padding: 80px 24px 40px;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  h1 .wifi-symbol {
+    display: inline-block;
+    color: var(--terracotta);
+    font-style: italic;
+    position: relative;
+  }
+
+  h1 .wifi-symbol::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mustard), var(--terracotta));
+    border-radius: 2px;
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--soft-ink);
+    max-width: 620px;
+    margin: 0 auto 32px;
+    font-weight: 400;
+  }
+
+  .meta-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .badge {
+    background: white;
+    border: 1.5px solid var(--ink);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .badge.warm { background: var(--honey); }
+  .badge.cool { background: var(--sage); }
+  .badge.pink { background: var(--coral); color: white; }
+
+  /* ─────────  PROGRESS BAR ───────── */
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 248, 236, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(58, 46, 42, 0.1);
+  }
+
+  .progress-info {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .progress-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--soft-ink);
+    letter-spacing: 0.05em;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(58, 46, 42, 0.08);
+    border-radius: 100px;
+    overflow: hidden;
+    max-width: 500px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--terracotta), var(--mustard));
+    width: 0%;
+    transition: width 0.4s ease;
+    border-radius: 100px;
+  }
+
+  /* ─────────  NAVIGATION ───────── */
+  .lesson-nav {
+    max-width: 1000px;
+    margin: 32px auto 64px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .nav-card {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0 var(--ink);
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .nav-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .nav-card.active {
+    background: var(--mustard);
+  }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    font-weight: 700;
+  }
+
+  .nav-card.active .nav-num { color: var(--rust); }
+
+  .nav-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 4px;
+    color: var(--ink);
+  }
+
+  /* ─────────  LESSON CARDS ───────── */
+  .lessons {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .lesson {
+    background: var(--warm-white);
+    border: 2.5px solid var(--ink);
+    border-radius: 28px;
+    padding: 48px;
+    margin-bottom: 48px;
+    box-shadow: 8px 8px 0 var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lesson::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--terracotta), var(--mustard), var(--sage));
+  }
+
+  .lesson-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .lesson-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 4rem;
+    line-height: 0.9;
+    color: var(--terracotta);
+    font-style: italic;
+  }
+
+  .lesson-header-text { flex: 1; min-width: 200px; }
+
+  .lesson-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--soft-ink);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .lesson-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .lesson-meta {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .meta-pill.time { background: var(--honey); }
+  .meta-pill.level { background: var(--sage); color: white; }
+
+  /* ─────────  CONTENT BLOCKS ───────── */
+  .lesson-body { font-size: 1.05rem; color: var(--soft-ink); }
+
+  .lesson-body p { margin-bottom: 18px; }
+
+  .lesson-body strong { color: var(--ink); font-weight: 700; }
+
+  .key-concept {
+    background: linear-gradient(135deg, #FFF1D9 0%, #FFE5C7 100%);
+    border-left: 5px solid var(--terracotta);
+    padding: 24px 28px;
+    border-radius: 0 16px 16px 0;
+    margin: 24px 0;
+  }
+
+  .key-concept-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .key-concept-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .info-card {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .info-card.warm { background: linear-gradient(135deg, #FFE5C7 0%, #F5C76A 100%); }
+  .info-card.cool { background: linear-gradient(135deg, #D5E8D9 0%, #8FB996 100%); }
+  .info-card.coral { background: linear-gradient(135deg, #FFD6C2 0%, #F09D7C 100%); }
+  .info-card.plum { background: linear-gradient(135deg, #E8D0D8 0%, #B989A0 100%); }
+
+  .info-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .info-card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .info-card-text {
+    font-size: 0.9rem;
+    color: var(--soft-ink);
+    line-height: 1.6;
+  }
+
+  /* ─────────  TIMELINE ───────── */
+  .timeline {
+    margin: 28px 0;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--terracotta), var(--mustard), var(--sage));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 22px;
+    width: 16px;
+    height: 16px;
+    background: var(--terracotta);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+  }
+
+  .timeline-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--rust);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-event {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 4px 0 6px;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--soft-ink);
+  }
+
+  /* ─────────  COMPARISON TABLE ───────── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .compare-table th {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 16px;
+    text-align: left;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(58, 46, 42, 0.1);
+    font-size: 0.92rem;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table tr:nth-child(even) { background: rgba(245, 199, 106, 0.1); }
+
+  /* ─────────  QUIZ ───────── */
+  .quiz {
+    background: linear-gradient(135deg, #E8F4EA 0%, #D5E8D9 100%);
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 28px 0;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .quiz-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .quiz-question {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+
+  .quiz-option {
+    background: white;
+    border: 2px solid var(--ink);
+    padding: 14px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-align: left;
+    color: var(--ink);
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .quiz-option:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .quiz-option.correct {
+    background: var(--sage);
+    color: white;
+    border-color: var(--ink);
+  }
+
+  .quiz-option.wrong {
+    background: var(--coral);
+    color: white;
+  }
+
+  .quiz-feedback {
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    display: none;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-feedback { background: white; border: 2px solid var(--teal); }
+  .quiz-feedback.wrong-feedback { background: white; border: 2px solid var(--terracotta); }
+
+  /* ─────────  FUN FACT ───────── */
+  .fun-fact {
+    background: linear-gradient(135deg, #FFE5C7 0%, #FFD0A8 100%);
+    border: 2px dashed var(--rust);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .fun-fact::before {
+    content: '✦';
+    position: absolute;
+    top: -16px;
+    left: 24px;
+    background: var(--cream);
+    padding: 4px 10px;
+    color: var(--rust);
+    font-size: 1.2rem;
+    border: 2px solid var(--rust);
+    border-radius: 100px;
+  }
+
+  .fun-fact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* ─────────  WIFI WAVES VISUAL ───────── */
+  .wave-demo {
+    background: white;
+    border: 2px solid var(--ink);
+    border-radius: 18px;
+    padding: 30px;
+    margin: 24px 0;
+    text-align: center;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .wave-svg-container {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+
+  .wave-caption {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--soft-ink);
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+
+  /* ─────────  CHECKPOINT ───────── */
+  .checkpoint {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin: 32px 0 0;
+    text-align: center;
+  }
+
+  .checkpoint-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--mustard);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .checkpoint-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
+
+  .checkpoint-text strong {
+    color: var(--honey);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ─────────  COMPLETION ───────── */
+  .complete-section {
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--mustard) 100%);
+    border: 2.5px solid var(--ink);
+    border-radius: 28px;
+    padding: 60px 48px;
+    text-align: center;
+    margin: 0 auto 60px;
+    max-width: 900px;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .complete-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .complete-text {
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--soft-ink);
+    font-size: 0.9rem;
+  }
+
+  /* ─────────  ANIMATIONS ───────── */
+  @keyframes pulse-wave {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+  }
+
+  .pulse { animation: pulse-wave 2s ease-in-out infinite; }
+
+  /* ─────────  RESPONSIVE ───────── */
+  @media (max-width: 640px) {
+    .lesson { padding: 32px 24px; }
+    .lesson-number { font-size: 3rem; }
+    .lesson-title { font-size: 1.5rem; }
+    .complete-section { padding: 40px 24px; }
+    .complete-title { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="eyebrow">A 100-Minute Self-Learning Course</div>
+  <h1>WiFi 的<span class="wifi-symbol">奇幻之旅</span></h1>
+  <p class="subtitle">從無線電波到 WiFi 7 ── 用 10 個 10 分鐘，徹底搞懂你每天都在用的這項魔法。</p>
+  <div class="meta-badges">
+    <span class="badge warm">10 個回合</span>
+    <span class="badge cool">每回合約 10 分鐘</span>
+    <span class="badge pink">自學適用</span>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span class="progress-label" id="progressLabel">進度 0 / 10</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label" id="progressPercent">0%</span>
+  </div>
+</div>
+
+<!-- LESSON NAV -->
+<div class="lesson-nav" id="lessonNav"></div>
+
+<!-- LESSONS -->
+<main class="lessons">
+
+<!-- ═══════════ LESSON 1 ═══════════ -->
+<section class="lesson" id="lesson-1">
+  <div class="lesson-header">
+    <div class="lesson-number">01</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round One ── 從零開始</div>
+      <h2 class="lesson-title">WiFi 到底是什麼？</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">入門</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>每天打開手機、筆電就會自動連上 WiFi，但你有沒有想過：<strong>WiFi 到底是什麼？它真的是「無線」的嗎？</strong></p>
+
+    <p>WiFi 是一種<strong>無線區域網路（WLAN）技術</strong>，讓電腦、手機、智慧家電在「沒有網路線」的情況下交換資料。它背後的技術規範叫做 <strong>IEEE 802.11</strong>，由國際電機電子工程師學會（IEEE）所制定。</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 核心觀念</div>
+      <div class="key-concept-title">WiFi ≠ 網路本身</div>
+      <p>WiFi 只是「你的裝置」到「路由器」之間的那段無線橋樑。真正的網際網路，是從路由器透過電纜、光纖連到電信公司，再連到全世界。</p>
+    </div>
+
+    <p>「Wi-Fi」這個名字其實是 <strong>Wi-Fi Alliance（Wi-Fi 聯盟）</strong> 的商標。很多人以為它是「Wireless Fidelity」的縮寫，其實這只是後來編出來的解釋——原本它就是個讓人朗朗上口的品牌名而已。</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">📡</div>
+        <div class="info-card-title">用什麼傳？</div>
+        <div class="info-card-text">用「無線電波」── 跟廣播、電視、手機訊號是同一家族。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">🏠</div>
+        <div class="info-card-title">傳多遠？</div>
+        <div class="info-card-text">室內約 20 公尺，戶外更遠。一個熱點就能涵蓋一個家庭或辦公室。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">🔢</div>
+        <div class="info-card-title">傳多快？</div>
+        <div class="info-card-text">從 1997 年的 2 Mbps 到現在 WiFi 7 的 46 Gbps，快了 23,000 倍！</div>
+      </div>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">趣味小知識</div>
+      <p>WiFi 最早設計時，<strong>除了無線電波，居然還可以用「紅外線」</strong>傳輸！只是後來無線電波勝出，紅外線方案就被棄用了。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 1 重點</div>
+      <div class="checkpoint-text">WiFi 是 <strong>裝置 ↔ 路由器</strong> 之間的無線橋樑，使用無線電波，遵循 <strong>IEEE 802.11</strong> 標準。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 2 ═══════════ -->
+<section class="lesson" id="lesson-2">
+  <div class="lesson-header">
+    <div class="lesson-number">02</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Two ── 看不見的波</div>
+      <h2 class="lesson-title">無線電波 ── WiFi 的祕密語言</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">入門</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>WiFi 真正的工作原理，其實是<strong>「用無線電波講話」</strong>。你的手機把訊號用電波丟出去，路由器接到後再把它變成可以理解的資料，反過來也一樣。</p>
+
+    <p>那什麼是「無線電波」？它其實是<strong>電磁波的一種</strong>，跟陽光、X 光、微波都是同一家族，差別只在「頻率」不同。</p>
+
+    <div class="wave-demo">
+      <svg width="100%" height="120" viewBox="0 0 400 120" style="max-width: 400px;">
+        <defs>
+          <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#E07856;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#E8B14C;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4F9D8A;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#8FB996;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <text x="10" y="22" font-family="JetBrains Mono" font-size="11" fill="#5C4A42">2.4 GHz · 長波 · 走得遠</text>
+        <path d="M 10 50 Q 30 25, 50 50 T 90 50 T 130 50 T 170 50 T 210 50 T 250 50 T 290 50 T 330 50 T 370 50" stroke="url(#wave1)" stroke-width="3" fill="none"/>
+        <text x="10" y="92" font-family="JetBrains Mono" font-size="11" fill="#5C4A42">5 GHz · 短波 · 跑得快</text>
+        <path d="M 10 110 Q 20 95, 30 110 T 50 110 T 70 110 T 90 110 T 110 110 T 130 110 T 150 110 T 170 110 T 190 110 T 210 110 T 230 110 T 250 110 T 270 110 T 290 110 T 310 110 T 330 110 T 350 110 T 370 110" stroke="url(#wave2)" stroke-width="3" fill="none"/>
+      </svg>
+      <div class="wave-caption">頻率越高，波越短；波越短，能塞的資料越多，但走不遠。</div>
+    </div>
+
+    <p><strong>頻率（Hz, 赫茲）</strong>指的是波每秒上下震動幾次：</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">🌊</div>
+        <div class="info-card-title">低頻 = 長波</div>
+        <div class="info-card-text">波長長，繞過牆壁能力強，<strong>跑得遠</strong>，但能載的資料少。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">⚡</div>
+        <div class="info-card-title">高頻 = 短波</div>
+        <div class="info-card-text">波長短，遇到障礙就減弱，<strong>跑不遠</strong>，但每秒能載的資料多。</div>
+      </div>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 核心觀念</div>
+      <div class="key-concept-title">想像 WiFi 是「公路」</div>
+      <p>2.4 GHz 是一條<strong>能開到偏遠郊區、但只有一線道</strong>的鄉間小路；<br>5 GHz 是一條<strong>不那麼長、但有 8 線道</strong>的市區大道；<br>6 GHz 則是 2020 年才剛開通的<strong>嶄新高速公路</strong>，目前車流量還很稀疏。</p>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">小提醒</div>
+      <p>微波爐工作的頻率<strong>剛好也在 2.4 GHz</strong>！這就是為什麼有時候熱便當的時候，WiFi 訊號會突然變差──你家微波爐在「干擾」你的網路。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 2 重點</div>
+      <div class="checkpoint-text">WiFi 用「無線電波」傳資料。<strong>頻率越高，速度越快但距離越短</strong>；頻率越低則相反。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 3 ═══════════ -->
+<section class="lesson" id="lesson-3">
+  <div class="lesson-header">
+    <div class="lesson-number">03</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Three ── 三條頻段</div>
+      <h2 class="lesson-title">2.4、5、6 GHz ── 該選哪一條路？</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">入門</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>現代家用 WiFi 路由器同時提供 <strong>2.4 GHz、5 GHz、6 GHz</strong> 三條頻段。它們各自有什麼特性？什麼時候該用哪一條？</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>2.4 GHz</th>
+          <th>5 GHz</th>
+          <th>6 GHz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>推出年代</strong></td>
+          <td>1997</td>
+          <td>1999（普及在 2009 後）</td>
+          <td>2020</td>
+        </tr>
+        <tr>
+          <td><strong>最大速度</strong></td>
+          <td>約 100–150 Mbps</td>
+          <td>500+ Mbps</td>
+          <td>數 Gbps</td>
+        </tr>
+        <tr>
+          <td><strong>室內範圍</strong></td>
+          <td>約 45 公尺</td>
+          <td>約 23 公尺</td>
+          <td>更短</td>
+        </tr>
+        <tr>
+          <td><strong>穿牆能力</strong></td>
+          <td>★★★ 最強</td>
+          <td>★★</td>
+          <td>★（最弱）</td>
+        </tr>
+        <tr>
+          <td><strong>擁擠程度</strong></td>
+          <td>★★★ 最擁擠</td>
+          <td>★★</td>
+          <td>★（最空曠）</td>
+        </tr>
+        <tr>
+          <td><strong>適合裝置</strong></td>
+          <td>IoT、智慧家電、遠距離手機</td>
+          <td>筆電、電視、遊戲機</td>
+          <td>VR、8K 串流、最新裝置</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 實用建議</div>
+      <div class="key-concept-title">什麼時候用哪一條？</div>
+      <p><strong>1. 距離路由器很遠？</strong>→ 用 2.4 GHz<br>
+      <strong>2. 看 4K 影片、打遊戲、視訊會議？</strong>→ 用 5 GHz<br>
+      <strong>3. 你的裝置和路由器都很新（WiFi 6E / 7）？</strong>→ 用 6 GHz</p>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">頻段擁擠的真相</div>
+      <p>2.4 GHz 不只是 WiFi 在用——藍牙、無線滑鼠、嬰兒監視器、無線電話、車庫遙控器、甚至微波爐<strong>都共用這個頻段</strong>。所以 2.4 GHz 常常擠到動彈不得，網速變慢。</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card cool">
+        <div class="info-card-icon">📶</div>
+        <div class="info-card-title">通道（Channel）</div>
+        <div class="info-card-text">每個頻段又分成多個「通道」。2.4 GHz 只有 3 個不重疊的通道（1、6、11），5 GHz 有 23 個。</div>
+      </div>
+      <div class="info-card plum">
+        <div class="info-card-icon">🚦</div>
+        <div class="info-card-title">頻寬（Bandwidth）</div>
+        <div class="info-card-text">通道寬度。WiFi 6 最寬 160 MHz，WiFi 7 達到 320 MHz——車道翻倍！</div>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 3 重點</div>
+      <div class="checkpoint-text">2.4 GHz <strong>遠但慢</strong>、5 GHz <strong>快但短</strong>、6 GHz <strong>最新最快但範圍最小</strong>。挑頻段就像挑公路。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 4 ═══════════ -->
+<section class="lesson" id="lesson-4">
+  <div class="lesson-header">
+    <div class="lesson-number">04</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Four ── 時光機</div>
+      <h2 class="lesson-title">WiFi 編年史 ── 從 1990 到現在</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">基礎</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>WiFi 不是一夜誕生的。從第一個原型到今天的 WiFi 7，走了將近 35 年。讓我們快轉這段精彩旅程：</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1990</div>
+        <div class="timeline-event">WaveLAN ── WiFi 的祖父</div>
+        <div class="timeline-desc">第一個能被稱為「無線區域網路」的系統誕生，最初是為銀行收銀系統設計的。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1997</div>
+        <div class="timeline-event">IEEE 802.11 原始版（速度 2 Mbps）</div>
+        <div class="timeline-desc">IEEE 正式發布第一個 802.11 標準，這是 WiFi 的官方起點。但因為規格寫得模糊，廠商互通性很差。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-event">802.11b 上市（11 Mbps）── 第一個爆紅</div>
+        <div class="timeline-desc">Apple 在 iBook 內建 WiFi，讓無線網路一夕進入大眾市場。同年 Wi-Fi Alliance 成立。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2003</div>
+        <div class="timeline-event">802.11g（54 Mbps）── 全面普及</div>
+        <div class="timeline-desc">速度快五倍，且向下相容 b。價格平民化，WiFi 從此走進每個家庭。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-event">802.11n / WiFi 4（450 Mbps）</div>
+        <div class="timeline-desc">引入革命性的 <strong>MIMO（多重輸入多重輸出）</strong>，同時用 2.4 GHz 與 5 GHz，剛好搭上智慧型手機普及潮。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-event">802.11ac / WiFi 5（1.3 Gbps）</div>
+        <div class="timeline-desc">主打 5 GHz，速度進入 Gigabit 級。4K 串流時代正式開啟。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-event">802.11ax / WiFi 6（9.6 Gbps）</div>
+        <div class="timeline-desc">不再只追求速度，重點是<strong>「效率」</strong>──在裝置很多的環境下也能順暢運作。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-event">WiFi 6E ── 開放 6 GHz 新頻段</div>
+        <div class="timeline-desc">FCC 釋出 6 GHz 給 WiFi 使用，一條全新乾淨的高速公路被開通。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-event">802.11be / WiFi 7（46 Gbps）</div>
+        <div class="timeline-desc">Wi-Fi Alliance 在 2024 年 1 月推出 WiFi 7 認證計畫，IEEE 正式版於 2025 年 7 月發布。</div>
+      </div>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">命名小故事</div>
+      <p>以前的 WiFi 都用 <strong>802.11a/b/g/n/ac</strong> 這種讓人頭痛的字母代號。直到 2018 年 Wi-Fi Alliance 才決定改用<strong>「WiFi 4、5、6、7」</strong>這種簡單編號，讓消費者一看就懂誰新誰舊。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 4 重點</div>
+      <div class="checkpoint-text">WiFi 的速度在 28 年間從 2 Mbps 飆到 46 Gbps，成長了 <strong>23,000 倍</strong>。每一代都向下相容。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 5 ═══════════ -->
+<section class="lesson" id="lesson-5">
+  <div class="lesson-header">
+    <div class="lesson-number">05</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Five ── 拆解硬體</div>
+      <h2 class="lesson-title">路由器內部 ── 那台小盒子做了什麼？</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">基礎</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>你家牆角那台閃爍著綠燈紅燈、有時還會發燙的小盒子——「<strong>WiFi 路由器（Router）</strong>」——到底在做什麼？讓我們把它打開來看看。</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 核心觀念</div>
+      <div class="key-concept-title">路由器其實是「三合一」裝置</div>
+      <p>家用 WiFi 路由器同時扮演了三個角色：<strong>數據機（Modem）</strong>把電信公司訊號翻譯成網路訊號；<strong>路由器（Router）</strong>負責決定資料該往哪走；<strong>無線接入點（Access Point）</strong>負責發出 WiFi 訊號。</p>
+    </div>
+
+    <p>那它內部到底裝了什麼？</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">🧠</div>
+        <div class="info-card-title">CPU + RAM</div>
+        <div class="info-card-text">沒錯，它就是一台小電腦。處理封包、做加密、管理連線。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">📡</div>
+        <div class="info-card-title">無線晶片組</div>
+        <div class="info-card-text">負責把資料變成電波，再把收到的電波變成資料。WiFi 6/7 路由器通常內建多個無線晶片同時工作。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">📶</div>
+        <div class="info-card-title">天線</div>
+        <div class="info-card-text">那些向外伸出來的「兔耳朵」就是天線。越多天線，能同時跟越多裝置溝通（MIMO 技術）。</div>
+      </div>
+      <div class="info-card plum">
+        <div class="info-card-icon">🔌</div>
+        <div class="info-card-title">有線埠</div>
+        <div class="info-card-text">背後的網路孔（RJ-45）讓你能用實體網路線連接，速度更穩定。</div>
+      </div>
+    </div>
+
+    <p><strong>路由器的工作流程</strong>（你按下手機 YouTube 的那一瞬間）：</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">STEP 1</div>
+        <div class="timeline-event">手機把請求變成無線電波</div>
+        <div class="timeline-desc">「我要看這支影片」這個請求，被手機的 WiFi 晶片變成電波發出去。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">STEP 2</div>
+        <div class="timeline-event">路由器接收並翻譯</div>
+        <div class="timeline-desc">天線收到電波，無線晶片解碼成數位封包。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">STEP 3</div>
+        <div class="timeline-event">路由器決定方向</div>
+        <div class="timeline-desc">CPU 看封包要去哪，透過 WAN 埠送到電信公司，再透過光纖傳到 YouTube 伺服器。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">STEP 4</div>
+        <div class="timeline-event">影片資料回傳</div>
+        <div class="timeline-desc">YouTube 把影片切成封包送回來，路由器收到後再變回電波送到你手機。</div>
+      </div>
+    </div>
+
+    <p>整個過程，<strong>不到 100 毫秒</strong>。</p>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">為什麼路由器要重開機？</div>
+      <p>路由器是 24 小時運作的小電腦，記憶體會累積垃圾、晶片會發熱、連線會卡住。<strong>每隔一陣子重開機</strong>，就像幫它睡個午覺，可以重置記憶、清除快取，網速馬上回春。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 5 重點</div>
+      <div class="checkpoint-text">家用路由器是<strong>「數據機 + 路由器 + 無線基地台」三合一</strong>的小電腦，靠天線、晶片、CPU 來收發資料。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 6 ═══════════ -->
+<section class="lesson" id="lesson-6">
+  <div class="lesson-header">
+    <div class="lesson-number">06</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Six ── 技術魔法</div>
+      <h2 class="lesson-title">MIMO、OFDMA 與調變 ── 工程師的祕密武器</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">進階</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>為什麼 WiFi 越來越快？並不是電波本身變快了（電波始終是光速），而是工程師發明了一堆<strong>「同時做更多事」</strong>的技術。讓我們認識三個關鍵法寶：</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 法寶一</div>
+      <div class="key-concept-title">MIMO（多重輸入多重輸出）</div>
+      <p>傳統 WiFi 像「一個人講話、一個人聽」。MIMO 讓<strong>多支天線同時收發不同資料</strong>，等於同時有 4 個人、8 個人、甚至 16 個人在跟你講話。WiFi 4 開始支援 MIMO，WiFi 7 支援到 <strong>16 條空間流</strong>。</p>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 法寶二</div>
+      <div class="key-concept-title">OFDMA（正交分頻多工存取）</div>
+      <p>傳統 WiFi 像「一個人來，整條馬路給他用」，沒效率。OFDMA 把通道<strong>切成很多細小的子頻道</strong>，可以同時讓很多裝置一起傳資料。WiFi 6 開始支援，特別適合<strong>裝置很多</strong>的環境（咖啡店、機場）。</p>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 法寶三</div>
+      <div class="key-concept-title">QAM（正交振幅調變）</div>
+      <p>每一個電波訊號可以「打包」多少位元？這就是調變的工作。<strong>位元打包越多，速度越快</strong>。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>世代</th>
+          <th>調變方式</th>
+          <th>每個符號攜帶位元</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>WiFi 4</td><td>64-QAM</td><td>6 bits</td></tr>
+        <tr><td>WiFi 5</td><td>256-QAM</td><td>8 bits</td></tr>
+        <tr><td>WiFi 6</td><td>1024-QAM</td><td>10 bits</td></tr>
+        <tr><td><strong>WiFi 7</strong></td><td><strong>4096-QAM</strong></td><td><strong>12 bits</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">🎭</div>
+        <div class="info-card-title">MU-MIMO</div>
+        <div class="info-card-text">Multi-User MIMO，路由器同時跟多人講話。WiFi 5 起支援下行，WiFi 6 起支援雙向。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">🎯</div>
+        <div class="info-card-title">波束成形（Beamforming）</div>
+        <div class="info-card-text">天線不再向四面八方亂噴訊號，而是「定向發射」對準你的裝置。</div>
+      </div>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">為什麼 QAM 越高越難做？</div>
+      <p>4096-QAM 雖然每個訊號能塞更多位元，但<strong>對訊號雜訊比（SNR）的要求極高</strong>——任何一點干擾都會解錯。所以 4096-QAM 通常只在<strong>靠近路由器、訊號乾淨</strong>時才會啟動。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 6 重點</div>
+      <div class="checkpoint-text">WiFi 速度的提升來自三招：<strong>MIMO（多天線）、OFDMA（多用戶切割）、QAM（更密的調變）</strong>。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 7 ═══════════ -->
+<section class="lesson" id="lesson-7">
+  <div class="lesson-header">
+    <div class="lesson-number">07</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Seven ── 保護你的網</div>
+      <h2 class="lesson-title">WiFi 安全 ── WEP、WPA、WPA2、WPA3</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">基礎</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>WiFi 是「廣播訊號」── 任何人只要在範圍內、有一台接收器，理論上都能<strong>「偷聽」</strong>你的資料。所以從一開始，WiFi 就需要加密保護。</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1997</div>
+        <div class="timeline-event">WEP（Wired Equivalent Privacy）</div>
+        <div class="timeline-desc">第一代 WiFi 安全協議，用 64 / 128 位元金鑰加密。<strong>但設計有嚴重瑕疵</strong>，幾分鐘內就能被破解。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2003</div>
+        <div class="timeline-event">WPA（Wi-Fi Protected Access）</div>
+        <div class="timeline-desc">為了補救 WEP 的破洞，緊急推出的過渡方案。引入 <strong>TKIP（動態金鑰）</strong>，但仍然不夠安全。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2004</div>
+        <div class="timeline-event">WPA2 ── 黃金標準</div>
+        <div class="timeline-desc">改用 <strong>AES 加密 + CCMP</strong>，成為超過十年的主流標準。多數家用路由器至今還在用。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-event">KRACK 攻擊曝光</div>
+        <div class="timeline-desc">研究人員發現 WPA2 的 <strong>金鑰重灌攻擊（KRACK）</strong>漏洞，加速了 WPA3 的推出。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-event">WPA3 ── 現役最強</div>
+        <div class="timeline-desc">引入 <strong>SAE（同等並發認證）</strong>取代 PSK，即使密碼弱也很難被字典攻擊破解；公開網路也用 <strong>OWE</strong> 自動加密。</div>
+      </div>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>協議</th>
+          <th>加密強度</th>
+          <th>現在還能用嗎？</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>WEP</strong></td><td>★（很弱）</td><td>❌ 絕對不要用</td></tr>
+        <tr><td><strong>WPA</strong></td><td>★★</td><td>❌ 應避免</td></tr>
+        <tr><td><strong>WPA2</strong></td><td>★★★★</td><td>✅ 仍可接受</td></tr>
+        <tr><td><strong>WPA3</strong></td><td>★★★★★</td><td>✅✅ 強烈推薦</td></tr>
+      </tbody>
+    </table>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 實用建議</div>
+      <div class="key-concept-title">檢查你家路由器</div>
+      <p>登入路由器管理介面，找「無線安全」設定。<br>
+      看到 <strong>WPA3</strong>？✅ 太棒了，請用它。<br>
+      看到 <strong>WPA2-PSK (AES)</strong>？✅ 可以接受。<br>
+      看到 <strong>WEP 或 WPA</strong>？⚠ 立刻換新路由器，或至少升級韌體。</p>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">公共 WiFi 危險嗎？</div>
+      <p>沒密碼的公共 WiFi（咖啡店、機場）是駭客最愛的攻擊場所。<strong>請務必搭配 VPN 使用</strong>，且不要在這種網路上登入網銀。WPA3 的 OWE 加密能改善這個問題，但目前還沒普及。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 7 重點</div>
+      <div class="checkpoint-text">WiFi 安全演進：<strong>WEP（破）→ WPA（補丁）→ WPA2（主流）→ WPA3（現役最強）</strong>。家裡至少用 WPA2，最好升級到 WPA3。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 8 ═══════════ -->
+<section class="lesson" id="lesson-8">
+  <div class="lesson-header">
+    <div class="lesson-number">08</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Eight ── 最新代</div>
+      <h2 class="lesson-title">WiFi 7 ── 極致高吞吐量的時代</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">進階</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>2024 年 1 月 Wi-Fi Alliance 正式推出 <strong>WiFi 7 認證計畫</strong>，IEEE 802.11be 標準終版則於 <strong>2025 年 7 月 22 日</strong> 公布。它被冠上一個霸氣的名字：<strong>EHT（Extremely High Throughput，極致高吞吐量）</strong>。</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">🚀</div>
+        <div class="info-card-title">最高 46 Gbps</div>
+        <div class="info-card-text">理論峰值。比 WiFi 6 的 9.6 Gbps 快 4.8 倍，比 WiFi 5 快 13 倍。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">⚡</div>
+        <div class="info-card-title">320 MHz 頻寬</div>
+        <div class="info-card-text">通道寬度從 WiFi 6 的 160 MHz 翻倍。等於把「8 線道」拓寬到「16 線道」。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">🎯</div>
+        <div class="info-card-title">4096-QAM</div>
+        <div class="info-card-text">每個訊號塞 12 bits（WiFi 6 是 10 bits），位元密度提升 20%。</div>
+      </div>
+      <div class="info-card plum">
+        <div class="info-card-icon">⏱</div>
+        <div class="info-card-title">延遲 &lt; 1 毫秒</div>
+        <div class="info-card-text">比 WiFi 6 低 4 倍。VR、雲端遊戲、遠端手術都成為可能。</div>
+      </div>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 殺手級新技術</div>
+      <div class="key-concept-title">MLO（Multi-Link Operation）多鏈路操作</div>
+      <p>這是 WiFi 7 最革命性的功能！以前裝置一次只能用一條頻段，現在 <strong>2.4 + 5 + 6 GHz 可以同時連線</strong>。三條路一起走，不只更快，還更可靠──其中一條塞車，自動切換到別條，幾乎不會斷線。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>規格</th>
+          <th>WiFi 5</th>
+          <th>WiFi 6/6E</th>
+          <th>WiFi 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>最大速度</td><td>3.5 Gbps</td><td>9.6 Gbps</td><td>46 Gbps</td></tr>
+        <tr><td>最大頻寬</td><td>160 MHz</td><td>160 MHz</td><td>320 MHz</td></tr>
+        <tr><td>調變</td><td>256-QAM</td><td>1024-QAM</td><td>4096-QAM</td></tr>
+        <tr><td>空間流數</td><td>8</td><td>8</td><td>16</td></tr>
+        <tr><td>頻段</td><td>5 GHz</td><td>2.4/5/6 GHz</td><td>2.4/5/6 GHz</td></tr>
+        <tr><td>多鏈路</td><td>❌</td><td>❌</td><td>✅</td></tr>
+      </tbody>
+    </table>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">該升級到 WiFi 7 嗎？</div>
+      <p>實際應用中，真正能跑出 46 Gbps 的環境幾乎不存在（會受硬體、距離、干擾影響）。<strong>一般家庭的真實速度大約 1–3 Gbps</strong>。如果你的網路頻寬還在 500 Mbps 以下，WiFi 6 已經夠用；除非你常做大型本地檔案傳輸、玩 VR、有很多裝置，否則可以再等等。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 8 重點</div>
+      <div class="checkpoint-text">WiFi 7 (802.11be) 的核心三大新技術：<strong>320 MHz 頻寬、4096-QAM、MLO 多鏈路</strong>。理論速度 46 Gbps，延遲低於 1 毫秒。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 9 ═══════════ -->
+<section class="lesson" id="lesson-9">
+  <div class="lesson-header">
+    <div class="lesson-number">09</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Nine ── 解決問題</div>
+      <h2 class="lesson-title">WiFi 怎麼變慢？實用診斷指南</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">實用</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>「WiFi 又卡了！」這句話你一定說過。家裡 WiFi 變慢，通常不是電信業者的錯，而是<strong>很多可以自己排除的小問題</strong>。讓我們從常見原因一一拆解：</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">📍</div>
+        <div class="info-card-title">位置不對</div>
+        <div class="info-card-text">路由器放在沙發後、櫃子裡、地板上？無線電波被嚴重阻擋。<strong>放在房子的中心、高處、開放處</strong>。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">🌊</div>
+        <div class="info-card-title">通道擁擠</div>
+        <div class="info-card-text">鄰居都用同個通道？用 WiFi Analyzer App 掃描，<strong>2.4 GHz 改到 1、6、11</strong> 中最空的。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">🍳</div>
+        <div class="info-card-title">家電干擾</div>
+        <div class="info-card-text">微波爐、無線電話、藍牙裝置都在 2.4 GHz 上吵架。<strong>把手機或筆電改連 5 GHz</strong>。</div>
+      </div>
+      <div class="info-card plum">
+        <div class="info-card-icon">📱</div>
+        <div class="info-card-title">裝置太多</div>
+        <div class="info-card-text">家裡 30 台 IoT 同時連線？路由器處理不來。<strong>不用的裝置關閉，或換 WiFi 6/7 路由器</strong>。</div>
+      </div>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 黃金 SOP</div>
+      <div class="key-concept-title">WiFi 慢了？依序執行這 5 步</div>
+      <p><strong>1.</strong> 重開機 ── 路由器拔電 30 秒後重插。<br>
+      <strong>2.</strong> 移位置 ── 移到房子中心、避開金屬家具與水管。<br>
+      <strong>3.</strong> 改通道 ── 進路由器後台，2.4 GHz 改 1/6/11，5 GHz 用「自動」。<br>
+      <strong>4.</strong> 升頻段 ── 主力裝置改連 5 GHz 或 6 GHz。<br>
+      <strong>5.</strong> 升韌體 ── 路由器後台找「韌體更新」，新版常修復效能問題。</p>
+    </div>
+
+    <p><strong>還是不行？</strong>可能是「<strong>覆蓋範圍不夠</strong>」的問題。一個房間訊號滿格，另一個房間卻收不到。解決方案：</p>
+
+    <div class="info-grid">
+      <div class="info-card cool">
+        <div class="info-card-icon">📶</div>
+        <div class="info-card-title">中繼器 (Repeater)</div>
+        <div class="info-card-text">最便宜方案，但會減半速度，且訊號常斷裂切換。</div>
+      </div>
+      <div class="info-card warm">
+        <div class="info-card-icon">🕸</div>
+        <div class="info-card-title">Mesh 網狀網路</div>
+        <div class="info-card-text">多個節點組成一個無縫網路，<strong>移動時自動切換不掉線</strong>，目前主流解決方案。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">🔌</div>
+        <div class="info-card-title">電力線網路 (Powerline)</div>
+        <div class="info-card-text">用家裡電線傳網路，再轉出 WiFi。透天厝最愛用。</div>
+      </div>
+    </div>
+
+    <div class="fun-fact">
+      <div class="fun-fact-label">小撇步</div>
+      <p>用 Speedtest 在<strong>路由器旁邊</strong>和<strong>有問題的房間</strong>各測一次。如果兩邊速度差很多 → 是 WiFi 訊號問題（要改善覆蓋）；如果兩邊都慢 → 是電信業者或方案問題（要升級網速）。</p>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">回合 9 重點</div>
+      <div class="checkpoint-text">WiFi 卡頓多半是<strong>位置、通道、干擾、覆蓋</strong>四大問題。先重開機、再診斷、最後考慮 Mesh。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LESSON 10 ═══════════ -->
+<section class="lesson" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-number">10</div>
+    <div class="lesson-header-text">
+      <div class="lesson-eyebrow">Round Ten ── 未來與測驗</div>
+      <h2 class="lesson-title">WiFi 8 與未來 + 小測驗</h2>
+      <div class="lesson-meta">
+        <span class="meta-pill time">⏱ 約 10 分鐘</span>
+        <span class="meta-pill level">總結</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-body">
+    <p>WiFi 7 才剛上市，IEEE 已經開始規劃<strong>WiFi 8（802.11bn）</strong>了。預計 2028 年問世，重點不再是<strong>「更快」</strong>，而是<strong>「超可靠」（UHR, Ultra High Reliability）</strong>。</p>
+
+    <div class="info-grid">
+      <div class="info-card warm">
+        <div class="info-card-icon">🛡</div>
+        <div class="info-card-title">超可靠</div>
+        <div class="info-card-text">為遠端醫療、工業自動化、自駕車設計，連線品質媲美有線。</div>
+      </div>
+      <div class="info-card cool">
+        <div class="info-card-icon">🤝</div>
+        <div class="info-card-title">多 AP 協調</div>
+        <div class="info-card-text">多個路由器互相協作，像合唱團一樣分工，而不是各自為政。</div>
+      </div>
+      <div class="info-card coral">
+        <div class="info-card-icon">🏎</div>
+        <div class="info-card-title">高速移動</div>
+        <div class="info-card-text">支援更高速移動的場景──你在火車上滑手機也不會斷。</div>
+      </div>
+    </div>
+
+    <div class="key-concept">
+      <div class="key-concept-label">★ 未來趨勢</div>
+      <div class="key-concept-title">WiFi 將變成「感測器」</div>
+      <p><strong>WiFi Sensing</strong>（IEEE 802.11bf）是另一個正在發展的方向──利用 WiFi 電波的反射來「感應」環境，可以偵測呼吸、跌倒、有沒有人在房間。家裡的 WiFi 將不只是「網路」，還是「健康監視器」與「保全系統」。</p>
+    </div>
+
+    <!-- QUIZ SECTION -->
+    <div class="quiz">
+      <div class="quiz-label">★ 測驗 1 / 3</div>
+      <div class="quiz-question">下列哪一個頻段「傳得最遠但速度最慢」？</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-correct="true" data-explain="✓ 正確！2.4 GHz 波長最長，能穿牆、跑得遠，但通道少又擁擠，速度最慢。">2.4 GHz</button>
+        <button class="quiz-option" data-correct="false" data-explain="✗ 5 GHz 比 2.4 GHz 快很多，但範圍較小。">5 GHz</button>
+        <button class="quiz-option" data-correct="false" data-explain="✗ 6 GHz 是最新的頻段，速度最快但範圍最小。">6 GHz</button>
+      </div>
+      <div class="quiz-feedback" id="fb-q1"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-label">★ 測驗 2 / 3</div>
+      <div class="quiz-question">家裡 WiFi 應該設定哪一種安全協議最安全？</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-correct="false" data-explain="✗ WEP 已經被破解多年，不要使用。">WEP</button>
+        <button class="quiz-option" data-correct="false" data-explain="✗ WPA2 仍可接受，但 WPA3 更安全。">WPA2</button>
+        <button class="quiz-option" data-correct="true" data-explain="✓ 正確！WPA3 是 2018 年推出的最新標準，提供最強的加密與字典攻擊防護。">WPA3</button>
+        <button class="quiz-option" data-correct="false" data-explain="✗ WPA 只是過渡方案，已過時。">WPA</button>
+      </div>
+      <div class="quiz-feedback" id="fb-q2"></div>
+    </div>
+
+    <div class="quiz">
+      <div class="quiz-label">★ 測驗 3 / 3</div>
+      <div class="quiz-question">WiFi 7 最具革命性的新功能是什麼？</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-correct="false" data-explain="✗ 320 MHz 雖然是新規格，但只是頻寬翻倍。">320 MHz 頻寬</button>
+        <button class="quiz-option" data-correct="true" data-explain="✓ 正確！MLO 多鏈路操作讓裝置同時用三個頻段，大幅提升速度與可靠性，是真正的革命。">MLO 多鏈路操作</button>
+        <button class="quiz-option" data-correct="false" data-explain="✗ 4096-QAM 雖然提升 20% 速度，但對訊號品質要求極高。">4096-QAM</button>
+      </div>
+      <div class="quiz-feedback" id="fb-q3"></div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-label">最終回合重點</div>
+      <div class="checkpoint-text">WiFi 8 預計 2028 年問世，主打<strong>「超可靠」</strong>與多 AP 協調。<br>WiFi 也將從「網路」演化成「感測器」，融入我們的生活。</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLETION -->
+<section class="complete-section">
+  <div class="complete-title">🎉 你完成了！</div>
+  <p class="complete-text">恭喜！100 分鐘的 WiFi 微課程到這裡結束。從 1997 年的 2 Mbps 到 2024 年的 46 Gbps，從紅外線到 6 GHz，從 WEP 到 WPA3，從手機收發到 VR 雲端遊戲──你已經掌握了你每天都在用、卻可能從沒真正了解過的這項偉大發明。<br><br><strong>下次 WiFi 卡頓時，你會知道該怎麼做。</strong></p>
+</section>
+
+</main>
+
+<footer>
+  ✦ 一份溫暖的 WiFi 自學旅程 ✦<br>
+  Based on IEEE 802.11 standards · Wi-Fi Alliance · 2026
+</footer>
+
+<script>
+  // 進度條更新
+  const lessons = document.querySelectorAll('.lesson');
+  const navContainer = document.getElementById('lessonNav');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+  const progressPercent = document.getElementById('progressPercent');
+
+  // 建立導覽
+  const titles = [
+    'WiFi 是什麼', '無線電波', '頻段選擇', 'WiFi 編年史', '路由器內部',
+    'MIMO 與調變', 'WiFi 安全', 'WiFi 7', '排錯指南', '未來與測驗'
+  ];
+
+  titles.forEach((title, i) => {
+    const card = document.createElement('button');
+    card.className = 'nav-card';
+    card.innerHTML = `<div class="nav-num">回合 ${String(i+1).padStart(2,'0')}</div><div class="nav-title">${title}</div>`;
+    card.onclick = () => {
+      document.getElementById(`lesson-${i+1}`).scrollIntoView({behavior:'smooth', block:'start'});
+    };
+    navContainer.appendChild(card);
+  });
+
+  const navCards = document.querySelectorAll('.nav-card');
+
+  // 使用 IntersectionObserver 追蹤進度
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(lessons).indexOf(entry.target);
+        navCards.forEach((c, i) => c.classList.toggle('active', i === idx));
+        const progress = ((idx + 1) / lessons.length) * 100;
+        progressFill.style.width = `${progress}%`;
+        progressLabel.textContent = `進度 ${idx+1} / 10`;
+        progressPercent.textContent = `${Math.round(progress)}%`;
+      }
+    });
+  }, { threshold: 0.3 });
+
+  lessons.forEach(l => observer.observe(l));
+
+  // 測驗互動
+  document.querySelectorAll('.quiz').forEach((quiz, qIdx) => {
+    const options = quiz.querySelectorAll('.quiz-option');
+    const feedback = quiz.querySelector('.quiz-feedback');
+    let answered = false;
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (answered) return;
+        answered = true;
+        const correct = opt.dataset.correct === 'true';
+        const explain = opt.dataset.explain;
+
+        options.forEach(o => {
+          if (o.dataset.correct === 'true') o.classList.add('correct');
+          else if (o === opt && !correct) o.classList.add('wrong');
+        });
+
+        feedback.textContent = explain;
+        feedback.classList.add('show');
+        feedback.classList.add(correct ? 'correct-feedback' : 'wrong-feedback');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
