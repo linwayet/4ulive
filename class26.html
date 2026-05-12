@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光通訊完整課程 · Charlie老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #fdf6ee;
+  --bg2:      #fef9f4;
+  --warm1:    #f97316;   /* 橙 */
+  --warm2:    #fb923c;   /* 淡橙 */
+  --warm3:    #fbbf24;   /* 金黃 */
+  --warm4:    #f59e0b;
+  --warm5:    #ef4444;   /* 紅橙 */
+  --rose:     #fb7185;
+  --teal:     #0d9488;
+  --blue:     #3b82f6;
+  --card:     #fffbf5;
+  --border:   #f3d8b8;
+  --text:     #3d2c1e;
+  --muted:    #92715a;
+  --dim:      #c9a882;
+  --shadow:   rgba(120,60,20,0.10);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════
+   TOP / BOTTOM LINK BARS
+═══════════════════════════════════════ */
+.link-bar {
+  background: linear-gradient(135deg, #7c2d12 0%, #b45309 40%, #d97706 70%, #f59e0b 100%);
+  padding: 0.7rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.2rem;
+}
+
+.link-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.8rem;
+  width: 100%;
+  max-width: 760px;
+}
+
+.lb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  padding: 0.4rem 0.9rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.lb-item:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.lb-icon { font-size: 1rem; }
+.lb-label { line-height: 1.2; }
+.lb-sublabel {
+  font-size: 0.62rem;
+  opacity: 0.8;
+  display: block;
+  font-weight: 300;
+}
+.lb-divider {
+  color: rgba(255,255,255,0.4);
+  font-size: 1.2rem;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  background: linear-gradient(160deg, #fff7ed 0%, #ffedd5 40%, #fef3c7 70%, #fde68a 100%);
+  text-align: center;
+  padding: 3.5rem 1.2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--warm3);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251,146,60,0.18), transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251,191,36,0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--warm1), var(--warm3));
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 3px 12px rgba(249,115,22,0.35);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #7c2d12;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--warm1), var(--warm3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 500px;
+  margin-left: auto; margin-right: auto;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.8rem;
+}
+
+.stat-pill {
+  background: #fff;
+  border: 2px solid var(--warm3);
+  border-radius: 12px;
+  padding: 0.6rem 1.1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(249,115,22,0.12);
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--warm1);
+  display: block;
+}
+.stat-lbl {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════════
+   SECTION WRAPPER
+═══════════════════════════════════════ */
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.1rem;
+}
+
+.section {
+  padding: 3rem 1.1rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--warm1), var(--warm3));
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+}
+
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 900;
+  color: #7c2d12;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.sec-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+}
+
+.divider {
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--warm3), var(--warm2), transparent);
+  border: none;
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════
+   COURSE ROUNDS (回合)
+═══════════════════════════════════════ */
+.rounds-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.round-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 0.9rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+.round-card:hover {
+  box-shadow: 0 6px 22px rgba(120,60,20,0.14);
+  transform: translateY(-2px);
+}
+
+.round-header {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.round-num {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.round-info h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.round-info p {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.round-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.round-body {
+  display: none;
+  padding: 0 1.1rem 1.1rem;
+  border-top: 1px dashed var(--border);
+  margin-top: 0;
+  animation: slideDown 0.25s ease;
+}
+.round-card.open .round-body { display: block; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.round-body-text {
+  font-size: 0.82rem;
+  line-height: 1.95;
+  color: #5a3e2e;
+  padding-top: 0.9rem;
+}
+.round-body-text strong { color: var(--warm1); }
+
+.round-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.chip {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.chevron-btn {
+  background: none; border: none;
+  color: var(--warm1);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.round-card.open .chevron-btn { transform: rotate(180deg); }
+
+/* colour variants */
+.r1 { background: linear-gradient(135deg,#f97316,#fb923c); }
+.r2 { background: linear-gradient(135deg,#f59e0b,#fbbf24); }
+.r3 { background: linear-gradient(135deg,#ef4444,#f97316); }
+.r4 { background: linear-gradient(135deg,#0d9488,#14b8a6); }
+.r5 { background: linear-gradient(135deg,#8b5cf6,#a78bfa); }
+.r6 { background: linear-gradient(135deg,#ec4899,#fb7185); }
+.r7 { background: linear-gradient(135deg,#3b82f6,#60a5fa); }
+.r8 { background: linear-gradient(135deg,#f97316,#fbbf24); }
+
+.tag-concept { background:#fff3e0; color:#c2410c; border-color:#fcd9a6; }
+.tag-tech    { background:#ecfdf5; color:#065f46; border-color:#a7f3d0; }
+.tag-app     { background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+.tag-future  { background:#fdf4ff; color:#7e22ce; border-color:#e9d5ff; }
+
+/* ═══════════════════════════════════════
+   COMPONENT MAP
+═══════════════════════════════════════ */
+.comp-map {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.comp-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 1rem;
+  align-items: start;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.comp-row:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(120,60,20,0.13);
+}
+
+.comp-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.comp-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.comp-en {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--dim);
+  margin-bottom: 0.4rem;
+}
+.comp-desc {
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.comp-tag {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.62rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 8px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ═══════════════════════════════════════
+   PLAYERS MAP  ── 分三層
+═══════════════════════════════════════ */
+.players-section {
+  background: linear-gradient(160deg, #fff7ed, #fef3c7);
+  border-top: 3px solid var(--warm3);
+  border-bottom: 3px solid var(--warm3);
+  padding: 3rem 1.1rem;
+}
+
+.layer-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: #fff;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.9rem;
+}
+.lt1 { background: linear-gradient(135deg,#7c2d12,#c2410c); }
+.lt2 { background: linear-gradient(135deg,#713f12,#a16207); }
+.lt3 { background: linear-gradient(135deg,#0c4a6e,#0369a1); }
+.lt4 { background: linear-gradient(135deg,#3b0764,#7e22ce); }
+
+.players-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 1.8rem;
+}
+
+.player-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  flex: 1 1 160px;
+  min-width: 140px;
+  max-width: 220px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.player-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(120,60,20,0.15);
+}
+
+.pc-flag {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+.pc-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.pc-role {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.pc-badge {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.58rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+}
+.pb-lead    { background:#fef3c7; color:#92400e; }
+.pb-strong  { background:#ecfdf5; color:#065f46; }
+.pb-rising  { background:#eff6ff; color:#1d4ed8; }
+.pb-startup { background:#fdf4ff; color:#7e22ce; }
+.pb-taiwan  { background:#fff1f2; color:#9f1239; }
+
+/* ═══════════════════════════════════════
+   FLOW DIAGRAM (訊號流程)
+═══════════════════════════════════════ */
+.flow-diagram {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 3px 14px var(--shadow);
+  overflow-x: auto;
+}
+
+.flow-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 360px;
+  justify-content: center;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.flow-box {
+  padding: 0.6rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  width: 90px;
+  line-height: 1.3;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.flow-sub {
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  max-width: 90px;
+  line-height: 1.4;
+}
+
+.flow-arrow {
+  color: var(--warm1);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  padding: 0 0.1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ═══════════════════════════════════════
+   MARKET DATA BOX
+═══════════════════════════════════════ */
+.market-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+.mbox {
+  background: linear-gradient(135deg,#fff7ed,#fffbf5);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.mbox-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--warm1), var(--warm3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.mbox-lbl {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.page-footer {
+  background: linear-gradient(160deg, #7c2d12 0%, #b45309 50%, #d97706 100%);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  font-size: 0.78rem;
+}
+.page-footer p { line-height: 1.9; }
+.page-footer strong { color: #fde68a; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 500px) {
+  .round-header { grid-template-columns: 46px 1fr; }
+  .round-tag { display: none; }
+  .flow-steps { justify-content: flex-start; }
+  .stat-pill { padding: 0.5rem 0.8rem; }
+}
+
+/* Scroll-reveal fade */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP LINK BAR ═══ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="lb-item" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lb-icon">🔥</span>
+      <span class="lb-label">錯中學 ECHO 計劃
+        <span class="lb-sublabel">七月開課 · 點此報名</span>
+      </span>
+    </a>
+    <span class="lb-divider">|</span>
+    <a class="lb-item" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lb-icon">📊</span>
+      <span class="lb-label">學生個人分析
+        <span class="lb-sublabel">七月課程 · 了解更多</span>
+      </span>
+    </a>
+    <span class="lb-divider">|</span>
+    <a class="lb-item" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="lb-icon">💬</span>
+      <span class="lb-label">LINE 加老師
+        <span class="lb-sublabel">@linwayet</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-badge">✦ FIBER OPTICS MICRO COURSE · 光通訊完整課程 ✦</div>
+  <h1>光通訊<br><span>從零到懂</span></h1>
+  <p class="hero-sub">光，傳訊號比電快；玻璃，比銅線更有效率。<br>8 回合帶你看懂光通訊的原理、元件、玩家與未來。</p>
+  <div class="hero-stats">
+    <div class="stat-pill">
+      <span class="stat-num">8</span>
+      <span class="stat-lbl">課程回合</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-num">5</span>
+      <span class="stat-lbl">核心元件</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-num">15+</span>
+      <span class="stat-lbl">主要玩家</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-num">29%</span>
+      <span class="stat-lbl">年成長率</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 8 ROUNDS ═══ -->
+<div class="section reveal">
+  <div class="sec-label">📚 CURRICULUM · 課程大綱</div>
+  <h2 class="sec-title">8 回合完整課程</h2>
+  <p class="sec-desc">每回合約 15–20 分鐘，循序漸進，科技小白也能跟上。點擊展開詳細內容。</p>
+
+  <div class="rounds-grid">
+
+    <!-- R1 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r1">1</div>
+        <div class="round-info">
+          <h3>光通訊是什麼？生活中的光</h3>
+          <p>手電筒比喻 · 銅線 vs 光纖 · 為何光比電快</p>
+        </div>
+        <span class="round-tag tag-concept">概念</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          <strong>核心問題：</strong>訊息為何能用光傳送？<br><br>
+          從你手上的手機說起——每次你看 YouTube，資料從伺服器出發，穿越海底電纜、地下光纖管道、路邊分接箱，最終到你家的路由器，全靠光在玻璃絲裡跑。<br><br>
+          本回合學習：<strong>光的「閃爍」= 0 和 1 的訊號</strong>，對比傳統銅線的電子傳輸，理解「速度快、衰減少、不怕電磁干擾」三大優勢。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-concept">光脈衝 = 數位訊號</span>
+          <span class="chip tag-concept">銅線 vs 光纖</span>
+          <span class="chip tag-concept">三大優勢</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R2 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r2">2</div>
+        <div class="round-info">
+          <h3>光纖結構解剖：三層玻璃的秘密</h3>
+          <p>核芯 · 包覆層 · 保護塗層 · 全反射原理</p>
+        </div>
+        <span class="round-tag tag-concept">概念</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          一根光纖細如頭髮（125 微米），卻有三層結構。<strong>核芯</strong>是光真正跑的地方，純矽玻璃，折射率稍高；<strong>包覆層</strong>折射率略低，製造「全反射」讓光無法逃出；<strong>保護塗層</strong>是塑膠外殼，防止物理損傷。<br><br>
+          <strong>全內反射（TIR）</strong>是核心物理：光從高折射率射向低折射率，超過臨界角就完全反彈，像光的「全反射牆」，光就在核芯裡一路彈到目的地。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-concept">全反射 TIR</span>
+          <span class="chip tag-concept">折射率差</span>
+          <span class="chip tag-concept">三層結構</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R3 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r3">3</div>
+        <div class="round-info">
+          <h3>訊號如何傳送：電→光→電的旅程</h3>
+          <p>雷射二極體 · 調製器 · 光電探測器</p>
+        </div>
+        <span class="round-tag tag-tech">技術</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          完整的光通訊系統分三段：<br>
+          ① <strong>發射端</strong>：電腦產生 0/1 訊號 → 調製器控制雷射二極體閃爍 → 光脈衝射入光纖<br>
+          ② <strong>傳輸中</strong>：光在核芯裡全反射前進，每 50–80 公里經過一個 EDFA 放大器補強<br>
+          ③ <strong>接收端</strong>：光電探測器把光脈衝轉回電訊號 → 你的設備解碼讀取<br><br>
+          整個過程全程在「光域」，延遲比銅線電路低得多。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-tech">雷射二極體 LD</span>
+          <span class="chip tag-tech">調製器</span>
+          <span class="chip tag-tech">光電探測器 PD</span>
+          <span class="chip tag-tech">EDFA 放大器</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R4 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r4">4</div>
+        <div class="round-info">
+          <h3>單模 vs 多模：一條路還是多條路？</h3>
+          <p>SMF · MMF · 模態色散 · 適用場景</p>
+        </div>
+        <span class="round-tag tag-tech">技術</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          <strong>多模光纖（MMF）</strong>：核芯 50–62.5μm，光走多條路徑，因抵達時間不同造成「模態色散」，訊號容易模糊，適合短距（&lt;2km），建築內部常見。<br><br>
+          <strong>單模光纖（SMF）</strong>：核芯只有 8–10μm，光只走一條路，無色散，可跑 100km 以上不中繼。海底電纜、城市主幹線全用單模。<br><br>
+          簡單記：<strong>距離長 → 單模；短距低成本 → 多模。</strong>
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-tech">SMF 單模 8μm</span>
+          <span class="chip tag-tech">MMF 多模 50μm</span>
+          <span class="chip tag-tech">模態色散</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R5 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r5">5</div>
+        <div class="round-info">
+          <h3>WDM 彩虹技術：一根光纖同時跑 80 頻道</h3>
+          <p>波長分割多工 · DWDM · 多工器/解多工器</p>
+        </div>
+        <span class="round-tag tag-tech">技術</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          WDM（波長分割多工）讓一根光纖同時傳多個頻道——每個頻道用不同「顏色」（波長）的光，互不干擾，就像彩虹的每個顏色獨立。<br><br>
+          <strong>DWDM（密集波長分割）</strong>：波長間距壓縮至 0.8nm，一根光纖可載 80–160 個頻道，每頻道 100Gbps，總容量超過 <strong>16 Tbps</strong>。<br><br>
+          2025 年最新系統已推進到每頻道 400Gbps，下一代 1.6T 可插拔收發器即將量產。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-tech">DWDM 160頻道</span>
+          <span class="chip tag-tech">16 Tbps / 根</span>
+          <span class="chip tag-tech">1.6T 下一代</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R6 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r6">6</div>
+        <div class="round-info">
+          <h3>光纖在生活與產業的應用</h3>
+          <p>FTTH 光纖到府 · 海底電纜 · AI 資料中心 · 5G</p>
+        </div>
+        <span class="round-tag tag-app">應用</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          你家的光世代寬頻（FTTH）：光纖從電信機房一路拉到你家，台灣普及率超過 90%，速度可達 1–10Gbps。<br><br>
+          <strong>海底電纜</strong>：全球 95% 的洲際網路流量靠 400+ 條海底光纜傳輸，最新電纜橫跨太平洋總容量超過 200 Tbps。<br><br>
+          <strong>AI 資料中心</strong>：GPU 叢集之間用高速光纖互連，NVIDIA H100/B200 伺服器的對外連接已換成 800G 光模組，矽光子元件需求爆發式成長。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-app">FTTH 台灣 90%+</span>
+          <span class="chip tag-app">海底電纜 400+ 條</span>
+          <span class="chip tag-app">800G AI 模組</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R7 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r7">7</div>
+        <div class="round-info">
+          <h3>產業玩家地圖：誰在做光通訊？</h3>
+          <p>系統商 · 元件商 · 晶圓廠 · 台灣角色</p>
+        </div>
+        <span class="round-tag tag-app">產業</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          光通訊產業鏈分三層：<strong>上游</strong>（雷射、晶圓、材料）、<strong>中游</strong>（元件、模組整合）、<strong>下游</strong>（系統整合、部署）。<br><br>
+          台灣在晶圓代工（TSMC）、封裝（日月光）、以及模組組裝方面具關鍵角色，正積極往矽光子整合晶片切入。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-app">上中下游分析</span>
+          <span class="chip tag-app">台灣供應鏈</span>
+          <span class="chip tag-app">矽光子整合</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- R8 -->
+    <div class="round-card" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num r8">8</div>
+        <div class="round-info">
+          <h3>矽光子 × AI：光通訊的未來</h3>
+          <p>矽光子晶片 · Co-packaged Optics · 光電融合</p>
+        </div>
+        <span class="round-tag tag-future">前沿</span>
+        <button class="chevron-btn">▾</button>
+      </div>
+      <div class="round-body">
+        <div class="round-body-text">
+          <strong>矽光子學</strong>把整個光通訊系統縮進一片晶片——雷射、調製器、波導、探測器全在一塊矽基板上，用 TSMC 的 CMOS 製程量產，成本大幅降低。<br><br>
+          <strong>Co-packaged Optics（CPO）</strong>：把光模組直接封裝在交換機晶片旁，省去長長的銅線，耗電降低 30%、頻寬提升數倍，是 NVIDIA、Broadcom、Cisco 都在押注的下一代架構。<br><br>
+          2025 市場規模約 28 億美元，預計 2034 年達 <strong>288 億美元</strong>，年複合成長率 29%。
+        </div>
+        <div class="round-chips">
+          <span class="chip tag-future">矽光子 SiPh</span>
+          <span class="chip tag-future">CPO 共封裝</span>
+          <span class="chip tag-future">288億美元 2034</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══ SIGNAL FLOW ═══ -->
+<div class="section reveal">
+  <div class="sec-label">🔄 SIGNAL FLOW · 訊號流程圖</div>
+  <h2 class="sec-title">電→光→電，完整旅程</h2>
+  <p class="sec-desc">一筆資料從你的電腦出發到目的地，經歷了哪些轉換？</p>
+
+  <div class="flow-diagram">
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#f97316,#fb923c);">💻<br>電訊號</div>
+        <div class="flow-sub">0/1 數位<br>資料</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#ef4444,#f97316);">🔆<br>調製器</div>
+        <div class="flow-sub">電→光<br>編碼</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">💡<br>雷射 LD</div>
+        <div class="flow-sub">產生<br>光脈衝</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#0d9488,#14b8a6);">🌊<br>光纖</div>
+        <div class="flow-sub">全反射<br>傳輸</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);">📡<br>探測器 PD</div>
+        <div class="flow-sub">光→電<br>解碼</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-box" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa);">📱<br>目的地</div>
+        <div class="flow-sub">還原<br>0/1 資料</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══ COMPONENT MAP ═══ -->
+<div class="section reveal">
+  <div class="sec-label">⚙️ COMPONENTS · 五大元件功能圖</div>
+  <h2 class="sec-title">光通訊的<br>五大核心元件</h2>
+  <p class="sec-desc">每個元件各司其職，缺一不可。從「發光」到「接光」，看清楚每個零件的任務。</p>
+
+  <div class="comp-map">
+
+    <div class="comp-row">
+      <div class="comp-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">💡</div>
+      <div>
+        <div class="comp-title">雷射 / 光源</div>
+        <div class="comp-en">Laser / Light Source · EML · VCSEL · DFB</div>
+        <div class="comp-desc">把電訊號轉成光脈衝的「發光器」。現代系統使用電吸收調製雷射（EML），每秒可閃爍數百億次。矽無法自行發光，必須用磷化銦（InP）等III-V族材料製作，是目前最關鍵的供應瓶頸。</div>
+        <span class="comp-tag" style="background:#fef3c7;color:#92400e;">⚡ 電 → 光 轉換起點</span>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-icon" style="background:linear-gradient(135deg,#ffe4e6,#fecaca);">🎛️</div>
+      <div>
+        <div class="comp-title">調製器</div>
+        <div class="comp-en">Modulator · EO Modulator · MZI</div>
+        <div class="comp-desc">在光上「寫入」0 和 1 的裝置。控制光的強度、相位或頻率來編碼資訊。矽基馬赫-曾德爾干涉儀（MZI）是主流，新興的薄膜鈮酸鋰（TFLN）調製器速度更快、耗電更低，2025年開始商用化。</div>
+        <span class="comp-tag" style="background:#ffe4e6;color:#9f1239;">✏️ 訊號編碼</span>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-icon" style="background:linear-gradient(135deg,#ecfdf5,#a7f3d0);">〰️</div>
+      <div>
+        <div class="comp-title">光波導</div>
+        <div class="comp-en">Optical Waveguide · Integrated Waveguide</div>
+        <div class="comp-desc">晶片內部的「迷你光纖」——在矽晶片上刻出奈米級溝槽，讓光在晶片內部按路線傳播，將各個光學元件連接起來。矽光子晶片的核心基礎設施。波導損耗和彎曲半徑是關鍵設計參數。</div>
+        <span class="comp-tag" style="background:#ecfdf5;color:#065f46;">🛤️ 晶片內光路</span>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-icon" style="background:linear-gradient(135deg,#eff6ff,#bfdbfe);">🔗</div>
+      <div>
+        <div class="comp-title">光互連 / 多工器</div>
+        <div class="comp-en">Optical Interconnect · MUX/DEMUX · WDM Filter</div>
+        <div class="comp-desc">WDM 多工器把多個波長的光「合流」進同一根光纖；解多工器在目的端把它們分開，讓每個頻道各走各的。陣列波導光柵（AWG）是最常見的實作方式，可整合在矽光子晶片上。</div>
+        <span class="comp-tag" style="background:#eff6ff;color:#1d4ed8;">🌈 彩虹合流分流</span>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-icon" style="background:linear-gradient(135deg,#fdf4ff,#e9d5ff);">👁️</div>
+      <div>
+        <div class="comp-title">光電探測器</div>
+        <div class="comp-en">Photodetector · PD · APD · Ge-on-Si</div>
+        <div class="comp-desc">接收端的「眼睛」，把光脈衝轉回電訊號。鍺矽（Ge-on-Si）探測器已可整合在矽光子晶片上，響應速度超過 100GHz。雪崩光電二極體（APD）靈敏度更高，適合長距離微弱訊號偵測。</div>
+        <span class="comp-tag" style="background:#fdf4ff;color:#7e22ce;">👁️ 光 → 電 終點</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══ PLAYERS MAP ═══ -->
+<div class="players-section reveal">
+  <div class="wrap">
+    <div class="sec-label">🏢 PLAYERS · 主要玩家地圖</div>
+    <h2 class="sec-title">誰在做<br>光通訊？</h2>
+    <p class="sec-desc">產業分三層：系統整合商、元件晶片商、晶圓製程廠。台灣在製程端具關鍵地位。</p>
+
+    <!-- Layer 1 -->
+    <div class="layer-title lt1">🏗️ 第一層：系統整合 · System Integrators</div>
+    <div class="players-row">
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">NVIDIA</div>
+        <div class="pc-role">2025 年 GTC 推出自研矽光子交換機，搶攻 AI 資料中心光互連</div>
+        <span class="pc-badge pb-lead">市場領導</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Cisco</div>
+        <div class="pc-role">收購 Luxtera、Acacia，整合矽光子進全系列網路設備</div>
+        <span class="pc-badge pb-lead">市場領導</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Broadcom</div>
+        <div class="pc-role">CPO 共封裝光學最積極推動者，交換機 ASIC + 光引擎整合</div>
+        <span class="pc-badge pb-lead">市場領導</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Marvell</div>
+        <div class="pc-role">2025年12月以55億美元收購 Celestial AI，押注光互連標配化</div>
+        <span class="pc-badge pb-rising">快速成長</span>
+      </div>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="layer-title lt2">⚙️ 第二層：元件 / 模組商 · Component Makers</div>
+    <div class="players-row">
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Lumentum</div>
+        <div class="pc-role">目前唯一量產 200G/lane EML 雷射的廠商，1.6T 收發器關鍵供應商</div>
+        <span class="pc-badge pb-lead">關鍵卡位</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Coherent</div>
+        <div class="pc-role">FY25 營收 58 億美元，InP 雷射容量最大，AI 光模組主要供應商</div>
+        <span class="pc-badge pb-strong">強勢玩家</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">MACOM</div>
+        <div class="pc-role">高速模擬與光子半導體，覆蓋資料中心光鏈各節點</div>
+        <span class="pc-badge pb-strong">強勢玩家</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇯🇵</span>
+        <div class="pc-name">Mitsubishi / Sumitomo</div>
+        <div class="pc-role">EML 雷射重要供應商，被 NVIDIA 大量預訂產能至 2027</div>
+        <span class="pc-badge pb-strong">強勢玩家</span>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer-title lt3">🏭 第三層：晶圓製程 · Foundry & Materials</div>
+    <div class="players-row">
+      <div class="player-card">
+        <span class="pc-flag">🇹🇼</span>
+        <div class="pc-name">TSMC</div>
+        <div class="pc-role">矽光子製程領先，CPO 被列為「超越摩爾」核心支柱，台灣最關鍵角色</div>
+        <span class="pc-badge pb-taiwan">台灣之光</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">GlobalFoundries</div>
+        <div class="pc-role">矽光子代工平台，III-V 雷射鍵合與深溝隔離製程</div>
+        <span class="pc-badge pb-strong">強勢玩家</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Intel Foundry</div>
+        <div class="pc-role">自有矽光子製程，兼做代工，與日本政府合作光半導體</div>
+        <span class="pc-badge pb-strong">強勢玩家</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇫🇷</span>
+        <div class="pc-name">Soitec</div>
+        <div class="pc-role">Photonics-SOI 晶圓材料領導者，加入 SEMI 矽光子聯盟</div>
+        <span class="pc-badge pb-rising">快速成長</span>
+      </div>
+    </div>
+
+    <!-- Layer 4 -->
+    <div class="layer-title lt4">🚀 第四層：新創 / 特殊技術</div>
+    <div class="players-row">
+      <div class="player-card">
+        <span class="pc-flag">🇨🇦</span>
+        <div class="pc-name">POET Technologies</div>
+        <div class="pc-role">光學中介層平台，單晶片整合雷射+調製器+電路，獲 Foxconn 合作</div>
+        <span class="pc-badge pb-startup">新創</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Lightwave Logic</div>
+        <div class="pc-role">電光聚合物調製器，耗電超低，兩家財星 500 大已進入設計勝出第三階段</div>
+        <span class="pc-badge pb-startup">新創</span>
+      </div>
+      <div class="player-card">
+        <span class="pc-flag">🇺🇸</span>
+        <div class="pc-name">Celestial AI</div>
+        <div class="pc-role">光學互連 AI 加速架構，2025年被 Marvell 以最高 55 億美元收購</div>
+        <span class="pc-badge pb-startup">已被收購</span>
+      </div>
+    </div>
+
+    <!-- Market data -->
+    <div class="sec-label" style="margin-top:0.5rem;">📈 MARKET · 市場規模</div>
+    <div class="market-box">
+      <div class="mbox">
+        <span class="mbox-num">$28.6億</span>
+        <div class="mbox-lbl">2025 矽光子<br>全球市場</div>
+      </div>
+      <div class="mbox">
+        <span class="mbox-num">29%</span>
+        <div class="mbox-lbl">年複合<br>成長率 CAGR</div>
+      </div>
+      <div class="mbox">
+        <span class="mbox-num">$288億</span>
+        <div class="mbox-lbl">2034 年<br>預測市場</div>
+      </div>
+      <div class="mbox">
+        <span class="mbox-num">58.6%</span>
+        <div class="mbox-lbl">前5大玩家<br>市佔合計</div>
+      </div>
+      <div class="mbox">
+        <span class="mbox-num">40%</span>
+        <div class="mbox-lbl">收發器模組<br>元件佔比</div>
+      </div>
+      <div class="mbox">
+        <span class="mbox-num">21.5%</span>
+        <div class="mbox-lbl">Intel 單一<br>市場份額</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BOTTOM LINK BAR ═══ -->
+<div style="background:#fff7ed; padding:1.5rem 1rem; text-align:center; border-top:2px solid var(--border);">
+  <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.8rem;">📅 2025 年七月開課 · 歡迎加入 Charlie 老師的課程</p>
+</div>
+
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="lb-item" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lb-icon">🔥</span>
+      <span class="lb-label">錯中學 ECHO 計劃
+        <span class="lb-sublabel">七月開課 · 點此報名</span>
+      </span>
+    </a>
+    <span class="lb-divider">|</span>
+    <a class="lb-item" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lb-icon">📊</span>
+      <span class="lb-label">學生個人分析
+        <span class="lb-sublabel">七月課程 · 了解更多</span>
+      </span>
+    </a>
+    <span class="lb-divider">|</span>
+    <a class="lb-item" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <span class="lb-icon">💬</span>
+      <span class="lb-label">LINE 加老師
+        <span class="lb-sublabel">@linwayet</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p>光通訊完整課程 · 8 回合 · 科技小白版</p>
+  <p style="margin-top:0.4rem; font-size:0.72rem; opacity:0.7;">資料來源：MarketsandMarkets · Mordor Intelligence · ExoSwan · 2025–2026</p>
+  <p style="margin-top:0.6rem;"><strong>Charlie 老師</strong> · LINE: linwayet · 光速前進 🚀</p>
+</div>
+
+<script>
+// Toggle rounds
+function toggleRound(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.round-card.open').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
