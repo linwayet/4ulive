@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仙台シーサイド 4～5天自助完全攻略</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FDF6EC; --warm:#FFF9F0;
+  --amber:#E8A83E; --damber:#C47F17;
+  --rust:#C4622D;  --drust:#8B3A1A;
+  --terra:#D4714A;
+  --sage:#5A8A5A;  --dsage:#3A6A3A;
+  --ocean:#4A7A9A; --docean:#2A5A7A;
+  --gold:#D4AF37;
+  --ink:#2C1810;   --muted:#8C6E5A;
+  --blush:#F0D0B0; --sand:#EAD8B8;
+  --peach:#F5B88A;
+  --z1:#E8A83E; --z2:#C4622D; --z3:#5A8A5A;
+  --z4:#4A7A9A; --z5:#8B5A2A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);font-family:'Noto Sans TC',sans-serif;color:var(--ink);overflow-x:hidden;font-size:14px;}
+
+/* HERO */
+.hero{
+  background:linear-gradient(155deg,#4A2A08 0%,#8A3A10 22%,#C4622D 48%,#E8A83E 78%,#F5D080 100%);
+  padding:52px 18px 68px;text-align:center;position:relative;overflow:hidden;
+}
+.float{position:absolute;opacity:.1;animation:flt ease-in-out infinite;}
+.float:nth-child(1){font-size:36px;top:12%;left:4%;animation-duration:8s;}
+.float:nth-child(2){font-size:24px;top:25%;right:7%;animation-duration:11s;animation-delay:2s;}
+.float:nth-child(3){font-size:28px;bottom:20%;left:10%;animation-duration:9s;animation-delay:1s;}
+.float:nth-child(4){font-size:20px;bottom:30%;right:15%;animation-duration:13s;animation-delay:3s;}
+@keyframes flt{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-15px) rotate(10deg);}}
+.h-badge{display:inline-block;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.38);color:#fff;font-size:11px;letter-spacing:3px;padding:5px 18px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:clamp(21px,5vw,44px);color:#fff;font-weight:900;line-height:1.25;text-shadow:0 4px 24px rgba(0,0,0,.3);margin-bottom:8px;}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.82);margin-bottom:20px;}
+.pills{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;padding:5px 11px;border-radius:14px;}
+
+/* PREMISE BOX */
+.premise{margin:14px 15px;padding:14px 15px;border-radius:16px;
+  background:linear-gradient(135deg,#FFF3E0,#FFE5C8);
+  border-left:5px solid var(--amber);
+  font-size:12px;line-height:1.9;}
+.premise strong{font-size:13px;color:var(--drust);display:block;margin-bottom:5px;}
+.premise .tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px;}
+.ptag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:10px;color:#fff;font-weight:700;}
+.ptag.w{background:var(--sage);}
+.ptag.tx{background:var(--terra);}
+.ptag.tr{background:var(--ocean);}
+
+/* NAV */
+.nav{display:flex;background:#fff;border-bottom:2px solid var(--blush);position:sticky;top:0;z-index:200;box-shadow:0 3px 14px rgba(0,0,0,.09);overflow-x:auto;}
+.nav::-webkit-scrollbar{display:none;}
+.nb{flex-shrink:0;padding:12px 12px;font-size:10.5px;font-weight:500;cursor:pointer;border:none;background:none;color:var(--muted);transition:all .25s;border-bottom:3px solid transparent;font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
+.nb.on{color:var(--rust);border-bottom-color:var(--rust);font-weight:700;}
+.nb:hover{background:var(--cream);}
+
+/* TABS */
+.tab{display:none;animation:fu .38s ease both;}
+.tab.on{display:block;}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* SECTION TITLE */
+.stitle{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;color:var(--rust);
+  padding:20px 15px 6px;display:flex;align-items:center;gap:9px;}
+.stitle::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--amber),transparent);}
+
+/* ALERT */
+.al{margin:10px 15px;padding:12px 14px;border-radius:13px;font-size:11.5px;line-height:1.85;}
+.al strong{display:block;font-size:13px;margin-bottom:4px;}
+.al.warn{background:#FFF3CD;border-left:4px solid var(--amber);color:#856404;}
+.al.info{background:#E3EEF5;border-left:4px solid var(--ocean);color:#1a4a60;}
+.al.good{background:#E5F0E5;border-left:4px solid var(--sage);color:#1a4a1a;}
+.al.hot{background:#FDE8DF;border-left:4px solid var(--rust);color:var(--drust);}
+
+/* ZONE LEGEND */
+.zone-wrap{padding:0 15px 10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.zone-box{background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.zone-box .zh{font-size:12px;font-weight:700;color:#fff;padding:4px 10px;border-radius:8px;display:inline-block;margin-bottom:6px;}
+.zone-box p{font-size:10.5px;color:var(--muted);line-height:1.7;}
+
+/* SPOT CARD */
+.sc-wrap{padding:0 15px 6px;}
+.sc{background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);margin-bottom:13px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.sc:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,0,0,.13);}
+.sc-hd{padding:14px 15px;display:flex;align-items:flex-start;gap:11px;}
+.sc-hd.walk{background:linear-gradient(135deg,#3A6A3A,#6B9B6B);}
+.sc-hd.taxi{background:linear-gradient(135deg,#8B5A1A,#D4884A);}
+.sc-hd.train{background:linear-gradient(135deg,#2A5A7A,#4A9ACA);}
+.sc-hd.bus{background:linear-gradient(135deg,#5A4A8A,#8A7ABA);}
+.sc-ic{font-size:34px;flex-shrink:0;}
+.sc-hi h3{font-family:'Noto Serif TC',serif;font-size:15px;font-weight:900;color:#fff;margin-bottom:1px;}
+.sc-hi .jn{font-size:10px;color:rgba(255,255,255,.78);margin-bottom:4px;}
+.sc-hi .badges{display:flex;gap:5px;flex-wrap:wrap;}
+.badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:9.5px;color:#fff;font-weight:700;}
+.bd-walk{background:rgba(255,255,255,.25);}
+.bd-taxi{background:rgba(255,255,255,.25);}
+.bd-train{background:rgba(255,255,255,.25);}
+.bd-time{background:rgba(0,0,0,.25);}
+.bd-price{background:rgba(0,0,0,.2);}
+.bd-free{background:#E8A83E;}
+.sc-bd{padding:13px 15px;}
+.sc-bd p{font-size:11.5px;line-height:1.85;color:#555;margin-bottom:8px;}
+.sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.st{display:inline-block;font-size:10px;padding:2px 9px;border-radius:9px;color:#fff;}
+.st-w{background:var(--sage);}
+.st-tx{background:var(--terra);}
+.st-tr{background:var(--ocean);}
+.st-bu{background:#7A6ABB;}
+.st-fr{background:var(--amber);}
+.st-pay{background:var(--rust);}
+.how{background:var(--cream);border-radius:10px;padding:9px 11px;font-size:11px;display:flex;gap:8px;align-items:flex-start;}
+.how .hi{font-size:17px;flex-shrink:0;}
+.how .hb{line-height:1.8;color:var(--ink);}
+.how .hb .jn{color:var(--muted);font-size:10px;display:block;}
+
+/* MASTER TABLE */
+.tbl-wrap{padding:0 15px 16px;overflow-x:auto;}
+table.mt{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);}
+table.mt th{background:var(--sand);padding:9px 10px;font-size:10.5px;font-weight:700;color:var(--ink);text-align:left;white-space:nowrap;}
+table.mt td{padding:9px 10px;font-size:10.5px;border-bottom:1px solid #f0e8d8;vertical-align:middle;line-height:1.6;}
+table.mt tr:last-child td{border-bottom:none;}
+table.mt tr:nth-child(even) td{background:#FFF9F2;}
+.zone-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle;}
+
+/* DAY PLAN */
+.dp-wrap{padding:0 15px 14px;}
+.dp{background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);overflow:hidden;margin-bottom:13px;}
+.dp-hd{padding:15px;font-family:'Noto Serif TC',serif;font-size:14px;font-weight:900;color:#fff;}
+.dp-hd span{display:block;font-size:10px;opacity:.8;font-weight:300;margin-bottom:2px;}
+.dp-hd.c1{background:linear-gradient(135deg,#3A6A9A,#5AAACA);}
+.dp-hd.c2{background:linear-gradient(135deg,#3A6A3A,#6B9B6B);}
+.dp-hd.c3{background:linear-gradient(135deg,#8B5A1A,#D4884A);}
+.dp-hd.c4{background:linear-gradient(135deg,#5A3A8A,#8A6ABA);}
+.tl{padding:13px 15px;position:relative;}
+.tl::before{content:'';position:absolute;left:25px;top:13px;bottom:13px;width:2px;background:linear-gradient(180deg,var(--amber),var(--ocean));}
+.ti{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
+.tdot{width:16px;height:16px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);flex-shrink:0;margin-top:2px;z-index:1;}
+.tdot.a{background:var(--amber);}
+.tdot.r{background:var(--rust);}
+.tdot.g{background:var(--sage);}
+.tdot.b{background:var(--ocean);}
+.ttime{font-size:10px;font-weight:700;color:#fff;padding:2px 6px;border-radius:6px;flex-shrink:0;min-width:40px;text-align:center;margin-top:2px;}
+.ttime.a{background:var(--amber);}
+.ttime.r{background:var(--rust);}
+.ttime.g{background:var(--sage);}
+.ttime.b{background:var(--ocean);}
+.tc{flex:1;}
+.tc h4{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:700;color:var(--ink);}
+.tc .jn{font-size:10px;color:var(--muted);margin-bottom:2px;}
+.tc p{font-size:11px;color:#666;line-height:1.7;}
+
+/* TIPS */
+.tips-wrap{padding:0 15px 14px;}
+.tip{display:flex;gap:11px;align-items:flex-start;background:#fff;border-radius:14px;padding:13px;margin-bottom:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.tip.a{border-left:4px solid var(--amber);}
+.tip.b{border-left:4px solid var(--ocean);}
+.tip.g{border-left:4px solid var(--sage);}
+.tip.r{border-left:4px solid var(--rust);}
+.tip-ic{font-size:24px;flex-shrink:0;}
+.tip-bd h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;font-family:'Noto Serif TC',serif;}
+.tip-bd p{font-size:11px;color:#666;line-height:1.75;}
+
+/* FOOTER */
+.footer{text-align:center;padding:22px 18px 30px;background:linear-gradient(135deg,#2C1810,#5A3010);color:rgba(255,255,255,.7);font-size:11px;}
+.footer p{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--amber);margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="float">🌊</div><div class="float">⚓</div>
+  <div class="float">🌸</div><div class="float">🐟</div>
+  <div class="h-badge">4～5天自助旅行 · 無大行李版 · 完全攻略</div>
+  <h1>仙台シーサイド<br>自助旅行景點指南</h1>
+  <p class="hero-sub">天然溫泉 海神の湯 · 仙台港エリア · 步行・計程車・電車全攻略</p>
+  <div class="pills">
+    <span class="pill">🚶 步行30分以內</span>
+    <span class="pill">🚕 計程車20分以內</span>
+    <span class="pill">🚃 電車1小時以內</span>
+    <span class="pill">🎒 無大行李出遊</span>
+  </div>
+</div>
+
+<!-- PREMISE -->
+<div class="premise">
+  <strong>📋 本指南前提說明</strong>
+  住宿 4～5 天，<strong>第一天落地</strong>和<strong>最後一天離開</strong>由導遊或計程車接送，大行李交由旅館保管，平日出遊只帶隨身小包，完全不受行李拖累！以下景點依三個交通範圍分類，讓您每天輕鬆規劃。
+  <div class="tag-row">
+    <span class="ptag w">🚶 步行30分以內 ＝ 超方便</span>
+    <span class="ptag tx">🚕 計程車20分以內 ＝ 輕鬆到達</span>
+    <span class="ptag tr">🚃 電車1小時以內 ＝ 一日小旅行</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nb on" onclick="sw('spots',this)">🗺️ 全景點列表</button>
+  <button class="nb" onclick="sw('zone',this)">🟡 依距離分區</button>
+  <button class="nb" onclick="sw('days',this)">📅 每日行程</button>
+  <button class="nb" onclick="sw('transport',this)">🚃 交通說明</button>
+  <button class="nb" onclick="sw('tips',this)">💡 實用技巧</button>
+</div>
+
+<!-- ═══ TAB：全景點列表 ═══ -->
+<div id="tab-spots" class="tab on">
+
+  <div class="al hot"><strong>🌊 Zone A：步行30分以內（飯店直接出發！）</strong>完全不需要電車或計程車，穿上舒服的鞋子就能去，隨身小包輕裝出行最爽！</div>
+
+  <div class="stitle">🟢 步行可達景點</div>
+  <div class="sc-wrap">
+
+    <!-- 仙台港海邊 -->
+    <div class="sc">
+      <div class="sc-hd walk">
+        <div class="sc-ic">🌊</div>
+        <div class="sc-hi">
+          <h3>仙台港・海邊散步道</h3>
+          <div class="jn">せんだいこう · みなとオアシス</div>
+          <div class="badges">
+            <span class="badge bd-walk">🚶 步行即達</span>
+            <span class="badge bd-free">完全免費</span>
+          </div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-fr">🆓 免費</span><span class="st st-w">🚶 步行0分</span></div>
+        <p>飯店就緊鄰仙台港！走出去就是太平洋，港口有大型貨船停靠，傍晚夕陽染紅整個海面非常美。附近有「みなとオアシス仙台港」設施群，年訪客 450 萬人，東北最大海港觀光區。</p>
+        <div class="how"><div class="hi">🚶</div><div class="hb">飯店正門走出去即達，<strong>0分鐘</strong>。<span class="jn">仙台港・宮城野区中野エリア</span></div></div>
+      </div>
+    </div>
+
+    <!-- 三井アウトレット -->
+    <div class="sc">
+      <div class="sc-hd walk">
+        <div class="sc-ic">🛍️</div>
+        <div class="sc-hi">
+          <h3>三井アウトレットパーク 仙台港</h3>
+          <div class="jn">みついアウトレットパーク せんだいこう</div>
+          <div class="badges"><span class="badge bd-walk">🚶 步行20分</span><span class="badge bd-free">入場免費</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-w">🚶 步行20分</span><span class="st st-fr">入場免費</span><span class="st st-pay">💴 退稅¥5,500↑</span></div>
+        <p>東北最大 Outlet！120 間品牌精品，Nike・Coach・Adidas・無印良品等齊全，可憑護照申請退稅。廣場中央的 50 公尺摩天輪（ポートフラワー）是仙台港地標，夜晚亮燈超美！</p>
+        <div class="how"><div class="hi">🚶</div><div class="hb">飯店步行約 <strong>20 分鐘</strong>，沿著港口大道直走即達。<span class="jn">三井アウトレットパーク仙台港 / 中野4丁目</span></div></div>
+      </div>
+    </div>
+
+    <!-- キリン工廠 -->
+    <div class="sc">
+      <div class="sc-hd walk">
+        <div class="sc-ic">🍺</div>
+        <div class="sc-hi">
+          <h3>キリンビアポート仙台</h3>
+          <div class="jn">キリンビール仙台工場・レストラン</div>
+          <div class="badges"><span class="badge bd-walk">🚶 步行15分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-w">🚶 步行15分</span><span class="st st-pay">💴 餐廳消費</span></div>
+        <p>工廠直送最新鮮的キリン生啤酒！附設觀光餐廳提供仙台牛舌・東北料理，晚餐首選。<br>平日15:00～20:00・週末13:00～20:00。口碑評論一致強烈推薦！</p>
+        <div class="how"><div class="hi">🚶</div><div class="hb">飯店步行約 <strong>15 分鐘</strong>。<span class="jn">キリンビアポート仙台 / 宮城野区中野3丁目</span></div></div>
+      </div>
+    </div>
+
+    <!-- 仙台うみの杜水族館（巴士也可） -->
+    <div class="sc">
+      <div class="sc-hd walk">
+        <div class="sc-ic">🐬</div>
+        <div class="sc-hi">
+          <h3>仙台うみの杜水族館</h3>
+          <div class="jn">せんだいうみのもりすいぞくかん</div>
+          <div class="badges"><span class="badge bd-walk">🚶 步行25分</span><span class="badge bd-walk">🚌 巴士7分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-w">🚶 步行25分</span><span class="st st-bu">🚌 巴士¥200・7分</span><span class="st st-pay">💴 大人¥2,400</span></div>
+        <p>東北最大水族館！三陸海洋大水槽重現仙台灣生態，海豚・企鵝表演不設隔板玻璃，距離感超近！還有深海ラボ特展。建議在這裡消磨半天，9:00～17:30開放。</p>
+        <div class="how"><div class="hi">🚌</div><div class="hb">中野栄駅バス乗り場1番から「仙台うみの杜水族館線」約 <strong>7分・¥200</strong>（每30分一班）；或飯店步行25分。<span class="jn">ミヤコーバス・仙台うみの杜水族館線</span></div></div>
+      </div>
+    </div>
+
+    <!-- ミニストップ・スーパー -->
+    <div class="sc">
+      <div class="sc-hd walk">
+        <div class="sc-ic">🏪</div>
+        <div class="sc-hi">
+          <h3>ミニストップ・激安スーパー</h3>
+          <div class="jn">周辺コンビニ・スーパーマーケット</div>
+          <div class="badges"><span class="badge bd-walk">🚶 步行4分～15分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-w">🚶 步行4分</span><span class="st st-fr">生活便利</span></div>
+        <p>ミニストップ便利商店步行4分可達，24小時全年無休。激安スーパー步行約15分，生鮮食品・日用品・宮城名產伴手禮齊全，晚上回飯店前可以採購宵夜！</p>
+        <div class="how"><div class="hi">🚶</div><div class="hb">ミニストップ：步行 <strong>4 分</strong>。激安スーパー：步行約 <strong>15 分</strong>。<span class="jn">宮城野区中野エリア</span></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="al hot" style="margin-top:6px;"><strong>🚕 Zone B：計程車20分以內（輕鬆小旅行）</strong>從中野栄駅叫計程車或搭計程車直達，費用約¥1,000～2,500，快速又舒適。</div>
+
+  <div class="stitle">🟠 計程車20分以內景點</div>
+  <div class="sc-wrap">
+
+    <!-- 荒浜 -->
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">🏖️</div>
+        <div class="sc-hi">
+          <h3>仙台荒浜・海岸散策</h3>
+          <div class="jn">あらはまかいがん・東日本大震災遺構</div>
+          <div class="badges"><span class="badge bd-taxi">🚕 計程車15分</span><span class="badge bd-free">海邊散步</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tx">🚕 計程車15分</span><span class="st st-fr">🆓 海岸免費</span><span class="st st-pay">💴 震災遺構¥600</span></div>
+        <p>仙台最著名的海灘，白沙松林綿延美麗。同時也保存了 2011 年東日本大震災的遺構「荒浜小学校」，可以深刻感受那段歷史。是兼具自然美景與歷史省思的景點。</p>
+        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>15 分・¥1,500 前後</strong>（或巴士：中野栄駅から路線バスで荒浜方面）。<span class="jn">仙台市若林区荒浜・震災遺構荒浜小学校</span></div></div>
+      </div>
+    </div>
+
+    <!-- 多賀城跡 -->
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">🏛️</div>
+        <div class="sc-hi">
+          <h3>多賀城跡・東北歴史博物館</h3>
+          <div class="jn">たがじょうあと・とうほくれきしはくぶつかん</div>
+          <div class="badges"><span class="badge bd-taxi">🚕 計程車15分</span><span class="badge bd-train">🚃 電車10分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tx">🚕 計程車15分</span><span class="st st-tr">🚃 仙石線10分</span><span class="st st-pay">💴 博物館¥600</span></div>
+        <p>1,300年前奈良時代東北地方的政治中心「多賀城」遺跡，是日本的特別史跡！旁邊的「東北歴史博物館」有免費シャトルバス從多賀城駅發車，展示東北各時代文物。</p>
+        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>15 分・¥1,500</strong>，或仙石線「多賀城駅」下車（中野栄から10分・¥200）。<span class="jn">多賀城駅からシャトルバスで博物館まで約15分（無料）</span></div></div>
+      </div>
+    </div>
+
+    <!-- 七ヶ浜 -->
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">🌅</div>
+        <div class="sc-hi">
+          <h3>七ヶ浜・海景公園</h3>
+          <div class="jn">しちがはま・宮城の小さな海辺の町</div>
+          <div class="badges"><span class="badge bd-taxi">🚕 計程車20分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tx">🚕 計程車20分</span><span class="st st-fr">🆓 海景免費</span></div>
+        <p>宮城縣松島灣入口的小漁村，海岸線輪廓獨特，有礁石・白沙灘・松林，景色非常原始自然，比大眾景點更清靜。適合想靜靜欣賞海景、走走海邊步道的旅人。</p>
+        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>20 分・¥2,000 前後</strong>。<span class="jn">宮城郡七ヶ浜町・松島湾沿い</span></div></div>
+      </div>
+    </div>
+
+    <!-- 岩沼・竹駒神社 -->
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">⛩️</div>
+        <div class="sc-hi">
+          <h3>岩沼・竹駒神社</h3>
+          <div class="jn">いわぬま・たけこまじんじゃ</div>
+          <div class="badges"><span class="badge bd-taxi">🚕 計程車20分</span><span class="badge bd-train">🚃 電車+バス</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tx">🚕 計程車20分</span><span class="st st-fr">參拜免費</span></div>
+        <p>仙台近郊著名的稻荷神社，求商業繁盛・招財・開運的能量景點。朱紅鳥居排列整齊壯觀，尤其春天梅花盛開時期美不勝收。可與金蛇水神社一起列為「仙台南部神社巡禮」。</p>
+        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>20 分・¥2,000</strong>，或JR常磐線「岩沼駅」下車徒歩15分。<span class="jn">宮城県岩沼市稲荷町1-1</span></div></div>
+      </div>
+    </div>
+
+    <!-- 金蛇水神社 (已去過) -->
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">🐍</div>
+        <div class="sc-hi">
+          <h3>金蛇水神社（此次已參觀）</h3>
+          <div class="jn">かなへびすいじんじゃ・宮城県岩沼市</div>
+          <div class="badges"><span class="badge bd-taxi">🚕 計程車約18分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tx">🚕 計程車18分</span><span class="st st-fr">東北最強財運</span></div>
+        <p>東北最強能量景點！已在此次旅行參觀過。若未來再訪，5月九龍藤・4月牡丹也各有不同季節美景可期待。後厄年（民國54年）特別推薦再次參拜祈求平安！</p>
+        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>18 分・¥1,800</strong>。<span class="jn">宮城県岩沼市三色吉水神7</span></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="al info" style="margin-top:6px;"><strong>🚃 Zone C：電車1小時以內（一日小旅行）</strong>從中野栄駅出發，搭 JR 仙石線可到達以下所有景點，每個都值得花一整天探索！</div>
+
+  <div class="stitle">🔵 電車1小時以內景點</div>
+  <div class="sc-wrap">
+
+    <!-- 松島 -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">🏝️</div>
+        <div class="sc-hi">
+          <h3>松島（日本三景）</h3>
+          <div class="jn">まつしま・にほんさんけい</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線19分</span><span class="badge bd-free">散步免費</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 電車19分・¥330</span><span class="st st-pay">遊覽船¥1,500</span><span class="st st-pay">瑞巌寺¥700</span></div>
+        <p>距飯店最近的大景點！260 座松島灣小島、国宝瑞巌寺、円通院苔庭、五大堂，全部步行可達。可選搭遊覽船繞島，牡蠣・海膽・穴子丼等海鮮午餐豐盛多樣。強烈推薦安排一整天！</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → JR仙石線「松島海岸駅」下車，約 <strong>19 分・¥330</strong>。<span class="jn">JR仙石線 松島海岸駅 下車・徒歩すぐ</span></div></div>
+      </div>
+    </div>
+
+    <!-- 塩竈神社 -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">⛩️</div>
+        <div class="sc-hi">
+          <h3>鹽竈神社（東北一宮）</h3>
+          <div class="jn">しおがまじんじゃ・おうしゅういちのみや</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線12分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 電車12分・¥200</span><span class="st st-fr">參拜免費</span><span class="st st-pay">博物館¥200</span></div>
+        <p>東北最大・奧州一宮！起源奈良時代，格式崇高。202 階男坂石階壯觀，從山頂能眺望松島灣。境內的鹽竈桜（國家天然紀念物）3～4月盛開絕美。旁邊的御釜神社保存傳說中製鹽的「神釜」，松尾芭蕉奧之細道也曾駐足此地。</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → JR仙石線「本塩釜駅」下車，約 <strong>12 分・¥200</strong>，徒歩 15 分（東参道なら7分）。<span class="jn">JR仙石線 本塩釜駅 下車</span></div></div>
+      </div>
+    </div>
+
+    <!-- 仙台市区 -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">🏯</div>
+        <div class="sc-hi">
+          <h3>仙台市區觀光（仙台駅）</h3>
+          <div class="jn">せんだいしちゅうかんこう・いちばんちょう</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線18分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 電車18分・¥200</span><span class="st st-bu">🚌 るーぷる¥670/日</span></div>
+        <p>仙台駅到了就搭「るーぷる仙台」觀光巴士一日券，可到：仙台城跡（青葉城）・瑞鳳殿・定禅寺通欅樹大道・AER展望台（免費！高145m俯瞰全市）・仙台朝市・一番街牛舌。一整天根本玩不完！</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 仙台駅（JR仙石線 <strong>18 分・¥200</strong>）→ るーぷる仙台乗り場。<span class="jn">るーぷる仙台 1日乗車券¥670・仙台駅前西口バスプール</span></div></div>
+      </div>
+    </div>
+
+    <!-- 塩竈港→松島島めぐり船 -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">⛵</div>
+        <div class="sc-hi">
+          <h3>塩竈港発 松島島めぐり遊覧船</h3>
+          <div class="jn">しおがまこうはつ まつしまゆうらんせん</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線12分</span><span class="badge bd-time">遊覧50分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 電車12分</span><span class="st st-pay">💴 遊覧¥1,500</span></div>
+        <p>從塩竈港搭船遊覽松島灣是最正統的路線，也是松尾芭蕉《奥の細道》描述的航路！船上可以近距離欣賞260個小島，穿越岩礁，氣氛與在松島海岸坐船完全不同，建議與鹽竈神社合併成一天行程。</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 本塩釜駅（12分・¥200）→ 塩竈マリンゲート（徒歩10分）→ 松島島めぐり乗船。<span class="jn">塩竈マリンゲート・遊覧時間約50分</span></div></div>
+      </div>
+    </div>
+
+    <!-- 仙台駅AER展望台 -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">🔭</div>
+        <div class="sc-hi">
+          <h3>AER展望テラス（仙台駅隣）</h3>
+          <div class="jn">エアー てんぼうてらす・高さ145m・無料</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線18分</span><span class="badge bd-free">完全免費</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 電車18分</span><span class="st st-fr">🆓 完全免費</span></div>
+        <p>仙台駅旁 31 樓高、145 公尺高的免費展望台！西側可看到藏王山脈，東側可眺望整個仙台平野直到太平洋。夜景也非常美，而且無需購票，任何時間都可以上去，是仙台市區遊的必訪附加景點。</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 仙台駅（18分・¥200）→ AERビル直結。<span class="jn">AERビル31F展望テラス・JR仙台駅2F出口から徒歩2分・無料</span></div></div>
+      </div>
+    </div>
+
+    <!-- せんだいメディアテーク -->
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">🏗️</div>
+        <div class="sc-hi">
+          <h3>せんだいメディアテーク</h3>
+          <div class="jn">せんだいメディアテーク・国際的建築</div>
+          <div class="badges"><span class="badge bd-train">🚃 仙石線+地下鉄</span><span class="badge bd-free">入館免費</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <div class="sc-tags"><span class="st st-tr">🚃 約35分</span><span class="st st-fr">🆓 入館免費</span></div>
+        <p>建築師伊東豊雄代表作，全玻璃帷幕外牆＋透明管柱結構，榮獲多項國際設計大獎。內有圖書館・美術展・工藝品店・比利時啤酒咖啡廳。定禅寺通欅樹大道旁，建築愛好者必看！</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">仙台駅 → 地下鉄南北線「勾当台公園駅」下車徒歩7分。<span class="jn">仙台市青葉区春日町2-1・入館無料</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ TAB：依距離分區 ═══ -->
+<div id="tab-zone" class="tab">
+  <div class="stitle">🗺️ 三大交通圈景點總表</div>
+  <div class="zone-wrap">
+    <div class="zone-box"><div class="zh" style="background:var(--sage);">🚶 步行圈</div><p>・仙台港海邊<br>・三井アウトレット<br>・キリン工廠餐廳<br>・うみの杜水族館<br>・ミニストップ/スーパー</p></div>
+    <div class="zone-box"><div class="zh" style="background:var(--terra);">🚕 計程車圈</div><p>・荒浜海岸<br>・多賀城跡・博物館<br>・七ヶ浜海景<br>・岩沼竹駒神社<br>・金蛇水神社</p></div>
+    <div class="zone-box" style="grid-column:1/-1;"><div class="zh" style="background:var(--ocean);">🚃 電車圈（仙石線）</div><p>・松島（日本三景）19分 ・鹽竈神社 12分 ・仙台市區 18分 ・AER展望台 18分 ・多賀城跡 10分 ・塩竈港遊覧船 12分 ・せんだいメディアテーク 35分</p></div>
+  </div>
+
+  <div class="stitle">📋 景點交通速查表</div>
+  <div class="tbl-wrap">
+    <table class="mt">
+      <tr><th>景點名稱</th><th>交通</th><th>時間</th><th>費用</th><th>推薦度</th></tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--sage)"></span>仙台港海邊散步</td>
+        <td>🚶</td><td>0分</td><td>免費</td><td>★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--sage)"></span>三井アウトレット</td>
+        <td>🚶</td><td>20分</td><td>入場無料</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--sage)"></span>キリンビアポート</td>
+        <td>🚶</td><td>15分</td><td>餐費</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--sage)"></span>うみの杜水族館</td>
+        <td>🚶/🚌</td><td>25分/7分</td><td>¥2,400</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--terra)"></span>荒浜海岸・震災遺構</td>
+        <td>🚕</td><td>15分</td><td>¥600(遺構)</td><td>★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--terra)"></span>多賀城跡・博物館</td>
+        <td>🚕/🚃</td><td>15分/10分</td><td>¥600</td><td>★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--terra)"></span>七ヶ浜海景</td>
+        <td>🚕</td><td>20分</td><td>免費</td><td>★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--terra)"></span>竹駒神社</td>
+        <td>🚕</td><td>20分</td><td>免費</td><td>★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>鹽竈神社（一宮）</td>
+        <td>🚃</td><td>12分・¥200</td><td>参拝無料</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>塩竈港遊覧船</td>
+        <td>🚃</td><td>12分・¥200</td><td>¥1,500</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>松島（日本三景）</td>
+        <td>🚃</td><td>19分・¥330</td><td>遊覧¥1,500</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>仙台市區+るーぷる</td>
+        <td>🚃</td><td>18分・¥200</td><td>¥670/日</td><td>★★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>AER展望台（免費）</td>
+        <td>🚃</td><td>18分・¥200</td><td>無料</td><td>★★★★</td>
+      </tr>
+      <tr>
+        <td><span class="zone-dot" style="background:var(--ocean)"></span>せんだいメディアテーク</td>
+        <td>🚃+地下鉄</td><td>約35分</td><td>無料</td><td>★★★</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ TAB：每日行程 ═══ -->
+<div id="tab-days" class="tab">
+  <div class="al info"><strong>📋 4～5天住宿的行程建議</strong>第一天・最後一天由遊覽車/計程車接送，其餘每天輕裝隨身包出遊。</div>
+
+  <div class="stitle">📅 五天行程建議安排</div>
+  <div class="dp-wrap">
+
+    <!-- Day 1 -->
+    <div class="dp">
+      <div class="dp-hd c1"><span>Day 1 · 抵達日</span>輕裝安頓・飯店周邊探索</div>
+      <div class="tl">
+        <div class="ti"><div class="tdot a"></div><div class="ttime a">抵達後</div><div class="tc"><h4>♨️ 飯店入住・天然溫泉</h4><div class="jn">天然温泉 海神の湯</div><p>Check-in 後先泡大浴場放鬆！露天風呂眺望星空。</p></div></div>
+        <div class="ti"><div class="tdot g"></div><div class="ttime g">晚餐</div><div class="tc"><h4>🍺 キリンビアポート仙台</h4><div class="jn">徒歩15分・工場直送生ビール</div><p>第一晚步行到キリン工廠餐廳，享受工廠直送生啤酒配東北料理！</p></div></div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="dp">
+      <div class="dp-hd c2"><span>Day 2 · 仙台港エリア日</span>水族館＋アウトレット＋海邊漫步</div>
+      <div class="tl">
+        <div class="ti"><div class="tdot a"></div><div class="ttime a">09:00</div><div class="tc"><h4>🍳 Hatago 早餐</h4><p>海鮮丼吃到飽・牛タンシチュー・三陸カキフライ・ずんだもち，充分享用！</p></div></div>
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">10:00</div><div class="tc"><h4>🐬 仙台うみの杜水族館</h4><div class="jn">バス7分 or 步行25分</div><p>東北最大水族館，海豚・企鵝表演，深海ラボ，預計遊覽約3小時。</p></div></div>
+        <div class="ti"><div class="tdot g"></div><div class="ttime g">14:00</div><div class="tc"><h4>🛍️ 三井アウトレット逛街</h4><div class="jn">步行20分 or バス</div><p>120間品牌購物，退稅優惠，摩天輪打卡，逛到傍晚。</p></div></div>
+        <div class="ti"><div class="tdot r"></div><div class="ttime r">17:30</div><div class="tc"><h4>🌅 仙台港夕陽散步</h4><p>步行回飯店途中欣賞太平洋夕陽，傍晚海風超舒適。</p></div></div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="dp">
+      <div class="dp-hd c3"><span>Day 3 · 松島一日遊</span>日本三景・電車19分・最輕鬆的一天</div>
+      <div class="tl">
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到松島海岸駅</h4><div class="jn">中野栄駅→松島海岸駅 19分・¥330</div><p>叫計程車到中野栄駅，搭仙石線到松島！靠海側坐位欣賞沿途海景。</p></div></div>
+        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>⛵ 松島灣遊覧船</h4><div class="jn">まつしまわんゆうらんせん・¥1,500・50分</div><p>繞行260個小島，日本三景全景盡收眼底！</p></div></div>
+        <div class="ti"><div class="tdot a"></div><div class="ttime a">11:00</div><div class="tc"><h4>🏛️ 瑞巌寺・円通院</h4><div class="jn">ずいがんじ・えんつういん・¥700</div><p>伊達政宗建立的国宝寺院，苔庭幽靜迷人。</p></div></div>
+        <div class="ti"><div class="tdot g"></div><div class="ttime g">12:30</div><div class="tc"><h4>🦪 海鮮ランチ</h4><p>牡蠣・海膽蓋飯・穴子料理，松島港邊海鮮餐廳選擇豐富。</p></div></div>
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">15:30</div><div class="tc"><h4>🚃 搭電車回飯店</h4><p>回飯店泡溫泉，休息一下再享用晚餐！</p></div></div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="dp">
+      <div class="dp-hd c4"><span>Day 4 · 仙台市區深度遊</span>牛舌・伊達政宗・免費展望台</div>
+      <div class="tl">
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到仙台駅</h4><div class="jn">中野栄駅→仙台駅 18分・¥200</div></div></div>
+        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>🔭 AER展望テラス（免費！）</h4><div class="jn">エアー31階・145m・無料</div><p>先到仙台駅旁AER展望台俯瞰全市，晴天可看到藏王山脈！</p></div></div>
+        <div class="ti"><div class="tdot a"></div><div class="ttime a">10:30</div><div class="tc"><h4>🚌 搭るーぷる仙台（一日券¥670）</h4><p>仙台城跡・瑞鳳殿・定禅寺通欅樹大道一次全搞定。</p></div></div>
+        <div class="ti"><div class="tdot g"></div><div class="ttime g">13:00</div><div class="tc"><h4>🥩 一番街 牛たんランチ</h4><div class="jn">せんだいいちばんちょう</div><p>利休・善次郎・旨み助，選一家品嚐道地仙台牛舌！</p></div></div>
+        <div class="ti"><div class="tdot r"></div><div class="ttime r">15:00</div><div class="tc"><h4>🏗️ せんだいメディアテーク・藥妝</h4><p>建築名作參觀後逛定禅寺通藥妝，採購伴手禮回飯店。</p></div></div>
+      </div>
+    </div>
+
+    <!-- Day 5 最後一天 -->
+    <div class="dp">
+      <div class="dp-hd c1"><span>Day 5 · 最後一天</span>鹽竈神社・塩竈寿司・輕鬆返程</div>
+      <div class="tl">
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到本塩釜駅</h4><div class="jn">中野栄駅→本塩釜駅 12分・¥200</div></div></div>
+        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>⛩️ 鹽竈神社 參拜</h4><div class="jn">しおがまじんじゃ・東北一宮</div><p>202階石階壯觀，鹽竈桜・神釜・博物館，感受東北最古老的歷史神社。</p></div></div>
+        <div class="ti"><div class="tdot g"></div><div class="ttime g">12:00</div><div class="tc"><h4>🍣 塩竈の本鮪寿司ランチ</h4><p>東北最高品質壽司激戰區，新鮮本鮪魚！</p></div></div>
+        <div class="ti"><div class="tdot b"></div><div class="ttime b">14:00</div><div class="tc"><h4>🚃 搭電車回飯店・退房準備</h4><p>回飯店整理行李，辦理退房，計程車或接送前往機場！</p></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ TAB：交通說明 ═══ -->
+<div id="tab-transport" class="tab">
+  <div class="stitle">🗺️ 基地：中野栄駅（なかのさかええき）</div>
+  <div class="al info"><strong>✅ 無大行李的關鍵優勢</strong>只帶隨身小包出門，中野栄駅步行20分變得完全可以接受！不像第一天拖行李那麼辛苦，輕裝出行完全不同感受。</div>
+
+  <div class="sc-wrap">
+    <div class="sc">
+      <div class="sc-hd train">
+        <div class="sc-ic">🚉</div>
+        <div class="sc-hi">
+          <h3>中野栄駅（仙石線）出發攻略</h3>
+          <div class="jn">なかのさかええき・JR仙石線</div>
+          <div class="badges"><span class="badge bd-train">飯店步行20分</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <p>飯店到中野栄駅步行約20分，輕裝出遊時步行完全沒問題！或叫計程車¥900，5分鐘到站。駅前有バスプール和計程車乘車處，非常方便。</p>
+        <div class="how"><div class="hi">🚃</div><div class="hb">仙石線的主要方向：<br>
+        ← 往石巻・高城町（松島・塩竈方向）<br>
+        → 往仙台（市區方向）<br>
+        <strong>中野栄駅は快速停まらない！</strong>要搭各停（普通）列車。<span class="jn">各停のみ・快速は通過</span></div></div>
+        <div style="margin-top:8px;">
+          <table class="mt" style="margin:0;">
+            <tr><th>目的地</th><th>電車時間</th><th>費用</th></tr>
+            <tr><td>多賀城駅</td><td>約10分</td><td>¥200</td></tr>
+            <tr><td>本塩釜駅（鹽竈）</td><td>約12分</td><td>¥200</td></tr>
+            <tr><td>松島海岸駅</td><td>約19分</td><td>¥330</td></tr>
+            <tr><td>仙台駅（市區）</td><td>約18分</td><td>¥200</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-hd taxi">
+        <div class="sc-ic">🚕</div>
+        <div class="sc-hi">
+          <h3>計程車利用指南</h3>
+          <div class="jn">タクシー・中野栄駅乗り場あり</div>
+          <div class="badges"><span class="badge bd-taxi">中野栄駅前乗り場</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <p>中野栄駅前有計程車乘車處，可直接排隊搭乘，或用日本的計程車App「GO」叫車。日本計程車安全乾淨，司機非常可靠！</p>
+        <div class="how"><div class="hi">💬</div><div class="hb" style="font-size:11px;line-height:2;">
+          「<strong>ドーミーインEXPRESS仙台シーサイドまでお願いします</strong>」（回飯店）<br>
+          「<strong>荒浜小学校まで（あらはましょうがっこうまで）</strong>」<br>
+          「<strong>金蛇水神社まで（かなへびすいじんじゃまで）</strong>」<br>
+          「<strong>多賀城跡まで（たがじょうあとまで）</strong>」
+        </div></div>
+      </div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-hd bus">
+        <div class="sc-ic">🚌</div>
+        <div class="sc-hi">
+          <h3>バス利用ガイド</h3>
+          <div class="jn">宮城交通バス・中野栄駅バスプール</div>
+          <div class="badges"><span class="badge bd-train">中野栄駅バスプール</span></div>
+        </div>
+      </div>
+      <div class="sc-bd">
+        <p>中野栄駅前有バスプール，以下路線特別實用：</p>
+        <div style="font-size:11px;line-height:2;background:var(--cream);border-radius:10px;padding:10px 12px;">
+          🚌 <strong>仙台うみの杜水族館線</strong>：7分・¥200（每30分一班）<br>
+          🚌 <strong>仙台港フェリー行き</strong>：アウトレット方面・3分・¥200<br>
+          🚌 <strong>仙台駅前行き（50番）</strong>：約40分・¥630<br>
+          <span style="color:var(--muted);font-size:10px;">※班次が少ない路線もあるので事前に時刻表確認推奨</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="al good"><strong>💡 IC卡必備：Suica（スイカ）</strong>電車・巴士・計程車・コンビニ支付全都可以感應付款！仙台空港下機後第一件事就是在自動售票機辦理或加值 Suica，省去每次買票的麻煩。</div>
+</div>
+
+<!-- ═══ TAB：實用技巧 ═══ -->
+<div id="tab-tips" class="tab">
+  <div class="stitle">💡 自助旅行實用技巧</div>
+  <div class="tips-wrap">
+    <div class="tip a"><div class="tip-ic">🎒</div><div class="tip-bd"><h4>無大行李的最大優勢</h4><p>平日出遊只背隨身小包，步行20分到中野栄駅完全不辛苦！比拖行李輕鬆十倍，可以隨意步行探索飯店周邊，下班後順路逛アウトレット・便利商店，不受行李束縛自由度大增。</p></div></div>
+    <div class="tip b"><div class="tip-ic">♨️</div><div class="tip-bd"><h4>溫泉時間策略：早晚各一次</h4><p>大浴場 05:00 開放！建議：每天早上 05:30～06:30 泡一次清醒晨湯，晚上回來 21:00～22:00 再泡一次消除疲勞。清潔時間 11:00～13:30 暫停。這是住這裡最大的享受！露天風呂夜晚可以看星星⭐。</p></div></div>
+    <div class="tip g"><div class="tip-ic">🚃</div><div class="tip-bd"><h4>仙石線快速 vs 各停注意</h4><p>中野栄駅只停各停（普通列車），快速列車不停！在仙台駅或多賀城駅等轉車時記得確認車種。仙石線班次約每 20～25 分一班，出門前用 Google Maps 查好時刻，避免等太久。</p></div></div>
+    <div class="tip r"><div class="tip-ic">🗺️</div><div class="tip-bd"><h4>5天最佳行程組合建議</h4><p>Day1 抵達放鬆 → Day2 港口水族館アウトレット → Day3 松島一日遊 → Day4 仙台市區牛舌 → Day5 鹽竈神社壽司返程。若4天則合併 Day4+5 精華，計程車遊荒浜・多賀城也可插入其中。</p></div></div>
+    <div class="tip a"><div class="tip-ic">🍜</div><div class="tip-bd"><h4>仙台必吃清單（不可錯過）</h4><p>🥩 牛たん（一番街・利休・善次郎）<br>🦪 三陸牡蠣・海膽蓋飯（松島・塩竈）<br>🍣 塩竈の本鮪寿司（本塩釜駅周辺）<br>🟢 ずんだもち（仙台駅・飯店早餐）<br>🐟 笹かまぼこ（仙台駅土産コーナー）</p></div></div>
+    <div class="tip b"><div class="tip-ic">🛍️</div><div class="tip-bd"><h4>退稅攻略：最大化省錢</h4><p>三井アウトレット・仙台市區各百貨，同一店鋪累計未稅 ¥5,500 以上可憑護照退稅（10%）。食品・藥妝・衣服全適用！退稅後記得把購入品放在密封袋保管至出境。</p></div></div>
+    <div class="tip g"><div class="tip-ic">🌸</div><div class="tip-bd"><h4>季節別景點重點</h4><p>🌸 春（4～5月）：鹽竈桜・金蛇水神社九龍藤・みちのく公園鬱金香<br>☀️ 夏（6～8月）：松島灣遊覽・荒浜海水浴・仙台七夕祭り（8/6～8）<br>🍂 秋（9～11月）：松島紅葉・塩竈神社境内紅葉<br>❄️ 冬（12～2月）：SENDAI光のページェント定禅寺通（12月）</p></div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>"輕裝上陣、隨身小包、電車隨走——仙台シーサイドから東北全探索"</p>
+  <div>ドーミーインEXPRESS仙台シーサイド · 022-388-5489</div>
+  <div style="margin-top:3px;">宮城県仙台市宮城野区中野3-4-9 · JR仙石線 中野栄駅 徒歩20分</div>
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
