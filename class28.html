@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心臟 30 天微課程 · 設計規範 Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,400&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* 主色階 — 夕陽橘紅 */
+  --ink:#1f1410;
+  --ink-soft:#3d2817;
+  --paper:#fff4e6;
+  --paper-2:#ffe9d1;
+  --paper-3:#ffdcb3;
+
+  --sun:#ff6b35;        /* 主橘 — 標題、強調 */
+  --ember:#e63946;      /* 磚紅 — 心臟、危險 */
+  --amber:#f4a261;      /* 琥珀 — 副色 */
+  --honey:#ffb547;      /* 蜂蜜 — 亮點 */
+  --terracotta:#c8553d; /* 陶土 — 邊框、次標 */
+  --dusk:#7a2e1e;       /* 暮色 — 深色強調 */
+  --gold:#d4a574;       /* 金沙 — 分隔線 */
+
+  --shadow-sm:0 2px 8px rgba(122,46,30,.08);
+  --shadow-md:0 8px 24px rgba(122,46,30,.12);
+  --shadow-lg:0 20px 60px rgba(122,46,30,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  overflow-x:hidden;
+  position:relative;
+  font-weight:400;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 15% 10%,rgba(255,107,53,.10) 0,transparent 35%),
+    radial-gradient(circle at 85% 90%,rgba(230,57,70,.07) 0,transparent 45%),
+    radial-gradient(circle at 50% 50%,rgba(244,162,97,.04) 0,transparent 60%),
+    url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 0 60px;
+  position:relative;
+}
+.meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:14px;
+}
+.meta::before{content:'';width:40px;height:1px;background:var(--terracotta)}
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  font-size:clamp(56px,9vw,128px);
+  line-height:.95;
+  letter-spacing:-.04em;
+  color:var(--ink);
+  margin-bottom:32px;
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--sun);
+  font-feature-settings:"ss01";
+}
+.hero h1 .accent{
+  display:inline-block;
+  background:linear-gradient(105deg,var(--sun) 0%,var(--ember) 60%,var(--dusk) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-sub{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(20px,2.5vw,28px);
+  color:var(--ink-soft);
+  max-width:720px;
+  margin-bottom:48px;
+  line-height:1.5;
+}
+.hero-info{
+  display:flex;flex-wrap:wrap;gap:32px;
+  padding-top:32px;
+  border-top:1px solid var(--gold);
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  color:var(--ink-soft);
+}
+.hero-info span strong{color:var(--ember);font-weight:700}
+
+/* sun decoration */
+.sun-deco{
+  position:absolute;
+  top:80px;right:0;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--honey) 0%,var(--sun) 40%,var(--ember) 80%);
+  filter:blur(2px);
+  opacity:.55;
+  animation:sunPulse 6s ease-in-out infinite;
+}
+@keyframes sunPulse{
+  0%,100%{transform:scale(1);opacity:.55}
+  50%{transform:scale(1.08);opacity:.7}
+}
+
+/* ============ SECTION ============ */
+.sec{padding:100px 0;position:relative}
+.sec-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.3em;
+  color:var(--terracotta);margin-bottom:16px;
+}
+.sec-title{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin-bottom:24px;
+  color:var(--ink);
+}
+.sec-title em{font-style:italic;color:var(--sun);font-weight:400}
+.sec-intro{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(18px,2vw,22px);
+  color:var(--ink-soft);
+  max-width:680px;
+  margin-bottom:64px;
+}
+
+/* ============ COLOR PALETTE ============ */
+.palette{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:0;
+  border:1px solid var(--gold);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.swatch{
+  padding:32px 24px;
+  min-height:240px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;
+  border-right:1px solid rgba(0,0,0,.06);
+  transition:transform .3s ease;
+}
+.swatch:last-child{border-right:none}
+.swatch:hover{transform:translateY(-4px)}
+.swatch-name{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:20px;
+  line-height:1.2;
+  margin-bottom:4px;
+}
+.swatch-cn{
+  font-size:12px;
+  letter-spacing:.15em;
+  margin-bottom:auto;
+}
+.swatch-hex{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.05em;
+}
+.swatch-use{
+  font-size:11px;
+  margin-top:8px;
+  opacity:.75;
+  line-height:1.5;
+}
+.s-sun{background:var(--sun);color:#fff}
+.s-ember{background:var(--ember);color:#fff}
+.s-dusk{background:var(--dusk);color:#fff}
+.s-terra{background:var(--terracotta);color:#fff}
+.s-amber{background:var(--amber);color:var(--ink)}
+.s-honey{background:var(--honey);color:var(--ink)}
+.s-gold{background:var(--gold);color:var(--ink)}
+.s-paper{background:var(--paper-3);color:var(--ink);border:1px solid var(--gold)}
+.s-ink{background:var(--ink);color:var(--paper)}
+
+/* ============ TYPOGRAPHY ============ */
+.type-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+}
+.type-card{
+  padding:48px 40px;
+  background:var(--paper-2);
+  border:1px solid var(--gold);
+  border-radius:4px;
+  position:relative;
+}
+.type-tag{
+  position:absolute;top:24px;right:24px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.2em;
+  color:var(--terracotta);
+  text-transform:uppercase;
+}
+.type-name{
+  font-size:13px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  margin-bottom:16px;
+}
+.type-sample-1{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  font-size:72px;
+  line-height:.95;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.type-sample-2{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:32px;
+  color:var(--sun);
+  margin-bottom:24px;
+}
+.type-sample-3{
+  font-family:'Noto Sans TC',sans-serif;
+  font-weight:400;
+  font-size:16px;
+  color:var(--ink-soft);
+  margin-bottom:16px;
+}
+.type-sample-mono{
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  color:var(--dusk);
+  padding:8px 12px;
+  background:var(--paper);
+  border-radius:3px;
+  display:inline-block;
+}
+.type-desc{
+  font-size:13px;
+  color:var(--ink-soft);
+  border-top:1px dashed var(--gold);
+  padding-top:16px;
+  margin-top:16px;
+  line-height:1.7;
+}
+
+/* ============ COMPONENTS ============ */
+.comp-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+}
+.comp-card{
+  background:var(--paper-2);
+  border:1px solid var(--gold);
+  border-radius:4px;
+  padding:32px;
+  position:relative;
+  box-shadow:var(--shadow-sm);
+}
+.comp-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.25em;
+  color:var(--terracotta);
+  text-transform:uppercase;
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:1px dashed var(--gold);
+}
+
+/* button samples */
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:15px;
+  letter-spacing:.02em;
+  border:none;
+  cursor:pointer;
+  border-radius:3px;
+  transition:all .25s ease;
+  margin:6px 6px 6px 0;
+  text-decoration:none;
+}
+.btn-primary{background:var(--ember);color:#fff;box-shadow:0 4px 12px rgba(230,57,70,.3)}
+.btn-primary:hover{background:var(--sun);transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,53,.4)}
+.btn-ghost{background:transparent;color:var(--dusk);border:1.5px solid var(--terracotta)}
+.btn-ghost:hover{background:var(--terracotta);color:#fff}
+.btn-honey{background:var(--honey);color:var(--ink)}
+.btn-honey:hover{background:var(--amber)}
+
+/* tag */
+.tag{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  padding:4px 10px;
+  border-radius:2px;
+  margin:4px 4px 4px 0;
+}
+.tag-sun{background:var(--sun);color:#fff}
+.tag-amber{background:var(--amber);color:var(--ink)}
+.tag-outline{background:transparent;border:1px solid var(--terracotta);color:var(--terracotta)}
+
+/* quote block */
+.quote{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:20px;
+  line-height:1.5;
+  color:var(--dusk);
+  padding-left:24px;
+  border-left:3px solid var(--sun);
+}
+.quote-author{
+  display:block;
+  margin-top:12px;
+  font-family:'JetBrains Mono',monospace;
+  font-style:normal;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--terracotta);
+  text-transform:uppercase;
+}
+
+/* callout */
+.callout{
+  background:linear-gradient(135deg,rgba(255,107,53,.08),rgba(230,57,70,.05));
+  border-left:4px solid var(--ember);
+  padding:20px 24px;
+  border-radius:0 4px 4px 0;
+}
+.callout strong{color:var(--ember);font-family:'Fraunces',serif;font-weight:700}
+
+/* vocab card */
+.vocab{
+  background:var(--paper);
+  border:1px solid var(--gold);
+  padding:20px;
+  border-radius:3px;
+}
+.vocab-en{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:22px;
+  color:var(--sun);
+  margin-bottom:4px;
+}
+.vocab-ipa{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--terracotta);
+  margin-bottom:8px;
+}
+.vocab-cn{
+  font-weight:500;
+  font-size:15px;
+  color:var(--ink);
+}
+
+/* heartbeat icon */
+.heart-demo{
+  display:flex;align-items:center;justify-content:center;
+  height:120px;
+}
+.heart-svg{
+  width:80px;height:80px;
+  animation:beat 1.2s ease-in-out infinite;
+  filter:drop-shadow(0 4px 12px rgba(230,57,70,.4));
+}
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  15%{transform:scale(1.15)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.1)}
+  60%{transform:scale(1)}
+}
+
+/* ============ CURRICULUM ============ */
+.weeks{display:flex;flex-direction:column;gap:48px}
+.week{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:48px;
+  align-items:start;
+}
+.week-meta{
+  position:sticky;top:32px;
+}
+.week-num{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:14px;
+  color:var(--terracotta);
+  margin-bottom:8px;
+  letter-spacing:.05em;
+}
+.week-title{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:32px;
+  line-height:1.1;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.week-en{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:18px;
+  color:var(--sun);
+  margin-bottom:16px;
+}
+.week-tag{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.2em;
+  padding:4px 10px;
+  background:var(--paper-3);
+  border:1px solid var(--gold);
+  color:var(--dusk);
+  text-transform:uppercase;
+}
+.days{display:flex;flex-direction:column;gap:2px}
+.day{
+  display:grid;
+  grid-template-columns:60px 1fr 1fr 100px;
+  gap:24px;
+  align-items:center;
+  padding:18px 20px;
+  background:var(--paper-2);
+  border-left:3px solid var(--gold);
+  border-radius:0 3px 3px 0;
+  transition:all .3s ease;
+  cursor:default;
+}
+.day:hover{
+  border-left-color:var(--sun);
+  background:var(--paper-3);
+  transform:translateX(6px);
+}
+.day-num{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  font-size:32px;
+  color:var(--ember);
+  line-height:1;
+  letter-spacing:-.04em;
+}
+.day-title{
+  font-weight:500;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.4;
+}
+.day-en{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:14px;
+  color:var(--terracotta);
+  line-height:1.4;
+}
+.day-core{
+  font-size:12px;
+  color:var(--ink-soft);
+  line-height:1.5;
+}
+.day-type{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.15em;
+  text-align:right;
+  color:var(--terracotta);
+  text-transform:uppercase;
+}
+.day-review{
+  background:linear-gradient(90deg,rgba(255,181,71,.2),transparent);
+  border-left-color:var(--honey);
+}
+.day-review .day-num{color:var(--honey)}
+
+/* ============ MODULE STRUCTURE ============ */
+.modules{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  counter-reset:m;
+}
+.module{
+  background:var(--paper-2);
+  border:1px solid var(--gold);
+  padding:28px 24px;
+  border-radius:4px;
+  position:relative;
+  counter-increment:m;
+  transition:all .3s ease;
+}
+.module:hover{
+  background:var(--paper-3);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+.module::before{
+  content:counter(m,decimal-leading-zero);
+  position:absolute;top:20px;right:24px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--terracotta);
+  letter-spacing:.1em;
+}
+.module-name{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:20px;
+  color:var(--ink);
+  margin-bottom:6px;
+  line-height:1.2;
+}
+.module-en{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:14px;
+  color:var(--sun);
+  margin-bottom:12px;
+}
+.module-desc{
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.65;
+}
+
+/* ============ PRINCIPLES ============ */
+.principles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+.principle{
+  position:relative;
+  padding-top:32px;
+  border-top:2px solid var(--ember);
+}
+.principle-num{
+  position:absolute;top:-14px;left:0;
+  background:var(--paper);
+  padding:0 12px 0 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--ember);
+}
+.principle-title{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:24px;
+  color:var(--ink);
+  margin-bottom:12px;
+  line-height:1.2;
+}
+.principle-body{
+  font-size:14px;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ============ FOOTER ============ */
+footer{
+  margin-top:120px;
+  padding:60px 0 80px;
+  border-top:1px solid var(--gold);
+  text-align:center;
+}
+.footer-mark{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:24px;
+  color:var(--sun);
+  margin-bottom:8px;
+}
+.footer-info{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--terracotta);
+  text-transform:uppercase;
+}
+
+@media(max-width:768px){
+  .hero{padding:60px 0 40px}
+  .sun-deco{width:100px;height:100px;top:40px}
+  .type-grid{grid-template-columns:1fr}
+  .week{grid-template-columns:1fr;gap:24px}
+  .week-meta{position:static}
+  .day{grid-template-columns:50px 1fr;gap:16px;padding:14px 16px}
+  .day-en,.day-core,.day-type{grid-column:2}
+  .palette{grid-template-columns:1fr 1fr}
+  .type-sample-1{font-size:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="sun-deco"></div>
+  <div class="wrap">
+    <div class="meta">Design System · v1.0 · 設計規範</div>
+    <h1>心臟，<em>三十天。</em><br><span class="accent">A Cardiology Almanac.</span></h1>
+    <p class="hero-sub">為一般成人讀者打造的心臟科普課程，從一顆細胞開始，走到整副循環系統。每一天，一頁互動 HTML。每一頁，中英並列。</p>
+    <div class="hero-info">
+      <span><strong>30</strong> &nbsp;DAYS / 課</span>
+      <span><strong>04</strong> &nbsp;WEEKS / 週</span>
+      <span><strong>2</strong> &nbsp;LANGUAGES / 中英並列</span>
+      <span><strong>1</strong> &nbsp;HEART / 一顆心</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOR PALETTE ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">01 — COLOR</div>
+    <h2 class="sec-title">夕陽落在<em>心臟上</em></h2>
+    <p class="sec-intro">主色階取自黃昏 — 從太陽橘到磚紅到暮色。心臟是磚紅 ember，動脈是太陽橘 sun，靜脈是暮色 dusk。整體飽和高、對比強，沒有醫療冷色，沒有 AI 紫漸層。</p>
+    <div class="palette">
+      <div class="swatch s-sun">
+        <div>
+          <div class="swatch-name">Sun</div>
+          <div class="swatch-cn">夕陽橘</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#FF6B35</div>
+          <div class="swatch-use">主色 / 標題斜體 / 動脈</div>
+        </div>
+      </div>
+      <div class="swatch s-ember">
+        <div>
+          <div class="swatch-name">Ember</div>
+          <div class="swatch-cn">餘燼磚紅</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#E63946</div>
+          <div class="swatch-use">心臟 / CTA / 心肌</div>
+        </div>
+      </div>
+      <div class="swatch s-dusk">
+        <div>
+          <div class="swatch-name">Dusk</div>
+          <div class="swatch-cn">暮色深褐</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#7A2E1E</div>
+          <div class="swatch-use">深色強調 / 靜脈 / 引文</div>
+        </div>
+      </div>
+      <div class="swatch s-terra">
+        <div>
+          <div class="swatch-name">Terracotta</div>
+          <div class="swatch-cn">陶土</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#C8553D</div>
+          <div class="swatch-use">次標 / 邊框 / 元資料</div>
+        </div>
+      </div>
+      <div class="swatch s-amber">
+        <div>
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-cn">琥珀</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#F4A261</div>
+          <div class="swatch-use">副色 / 圖表 / 提示</div>
+        </div>
+      </div>
+      <div class="swatch s-honey">
+        <div>
+          <div class="swatch-name">Honey</div>
+          <div class="swatch-cn">蜂蜜黃</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#FFB547</div>
+          <div class="swatch-use">亮點 / 週回顧 / 高光</div>
+        </div>
+      </div>
+      <div class="swatch s-gold">
+        <div>
+          <div class="swatch-name">Gold</div>
+          <div class="swatch-cn">金沙</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#D4A574</div>
+          <div class="swatch-use">分隔線 / 描邊</div>
+        </div>
+      </div>
+      <div class="swatch s-paper">
+        <div>
+          <div class="swatch-name">Paper</div>
+          <div class="swatch-cn">米色紙</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#FFF4E6</div>
+          <div class="swatch-use">背景 / 卡片底</div>
+        </div>
+      </div>
+      <div class="swatch s-ink">
+        <div>
+          <div class="swatch-name">Ink</div>
+          <div class="swatch-cn">墨</div>
+        </div>
+        <div>
+          <div class="swatch-hex">#1F1410</div>
+          <div class="swatch-use">內文 / 標題</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">02 — TYPOGRAPHY</div>
+    <h2 class="sec-title">三種字，<em>各司其職</em></h2>
+    <p class="sec-intro">Fraunces 是雜誌標題，帶古典義式手感；Noto Sans TC 是中文內文，乾淨可讀；JetBrains Mono 是數據與標籤，給課程一點實驗室的感覺。</p>
+    <div class="type-grid">
+
+      <div class="type-card">
+        <div class="type-tag">Display · 標題</div>
+        <div class="type-name">Fraunces</div>
+        <div class="type-sample-1">Heart.</div>
+        <div class="type-sample-2">心 — 一顆會跳的肌肉</div>
+        <p class="type-desc">用於大標、章節標題、單字英文。粗體 900 給標題，斜體 italic 400 給副標與英文片語。letter-spacing 收緊 -.03em。中文與英文混排時，英文常用斜體製造節奏感。</p>
+      </div>
+
+      <div class="type-card">
+        <div class="type-tag">Body · 內文</div>
+        <div class="type-name">Noto Sans TC</div>
+        <div class="type-sample-3" style="font-size:24px;font-weight:500;color:var(--ink)">心肌細胞不會疲勞。</div>
+        <div class="type-sample-3">這個句子描述了心臟最神奇的特性之一。每一顆細胞、每一次收縮、每一個動作電位，都在不知疲倦地工作著，從你出生到死亡，從未停止。</div>
+        <p class="type-desc">中文內文 16px / line-height 1.75。400 與 500 兩個字重交替使用，500 用於需要強調的小段落或關鍵字。</p>
+      </div>
+
+      <div class="type-card">
+        <div class="type-tag">Mono · 數據</div>
+        <div class="type-name">JetBrains Mono</div>
+        <div class="type-sample-mono" style="font-size:24px;margin-bottom:8px">HR: 72 bpm</div>
+        <div class="type-sample-mono">CO = HR × SV</div>
+        <div class="type-sample-mono" style="margin-top:8px">DAY · 01 / 30</div>
+        <p class="type-desc">用於：所有數據、公式、ECG 標籤、課程編號、tag、IPA 音標、單位、時間戳記。letter-spacing 加寬 .15em–.3em 給金屬冷感。</p>
+      </div>
+
+      <div class="type-card">
+        <div class="type-tag">Hierarchy · 層級</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:1;letter-spacing:-.03em;margin-bottom:8px">H1 · 64–128px</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:28px;line-height:1.1;margin-bottom:8px;color:var(--ink)">H2 · 36–64px</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;margin-bottom:8px;color:var(--dusk)">H3 · 20–24px</div>
+        <div style="font-size:14px;color:var(--ink-soft);margin-bottom:8px">Body · 14–16px / 1.75</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.25em;color:var(--terracotta);text-transform:uppercase">Caption · 11–13px</div>
+        <p class="type-desc" style="margin-top:24px">六層字級。任何一頁課程最多用四層，避免雜亂。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">03 — COMPONENTS</div>
+    <h2 class="sec-title">每一塊<em>積木</em></h2>
+    <p class="sec-intro">這些是 30 天裡會反覆出現的元件。按鈕、標籤、單字卡、引文、提示框，都遵循同一套色彩與字型規則。</p>
+    <div class="comp-grid">
+
+      <div class="comp-card">
+        <div class="comp-label">Buttons · 按鈕</div>
+        <button class="btn btn-primary">繼續學習 →</button>
+        <button class="btn btn-honey">作答</button>
+        <button class="btn btn-ghost">略過</button>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Tags · 標籤</div>
+        <span class="tag tag-sun">第一週</span>
+        <span class="tag tag-amber">基礎</span>
+        <span class="tag tag-outline">CARDIOMYOCYTE</span>
+        <span class="tag tag-outline">解剖</span>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Vocabulary · 單字卡</div>
+        <div class="vocab">
+          <div class="vocab-en">Cardiomyocyte</div>
+          <div class="vocab-ipa">/ˌkɑːr.di.oʊˈmaɪ.ə.saɪt/</div>
+          <div class="vocab-cn">心肌細胞 — 構成心臟肌肉的基本單位</div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Quote · 引文</div>
+        <div class="quote">
+          心臟之所以神奇，不是因為它強壯，而是因為它從不停下。
+          <span class="quote-author">— Day 1 · 心肌細胞</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Callout · 提示框</div>
+        <div class="callout">
+          <strong>臨床冷知識 ·</strong> 一顆健康的心臟，一生會跳大約 30 億次。如果你今年 40 歲，它已經為你跳了超過 15 億下。
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Heart Icon · 心跳動畫</div>
+        <div class="heart-demo">
+          <svg class="heart-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z" fill="#E63946"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE STRUCTURE ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">04 — PAGE STRUCTURE</div>
+    <h2 class="sec-title">一堂課的<em>七個區塊</em></h2>
+    <p class="sec-intro">每一天的 HTML 頁面都遵循這個結構。不是每一頁都會用到全部七個，但順序固定，讓讀者建立節奏感。</p>
+    <div class="modules">
+
+      <div class="module">
+        <div class="module-name">引言 Hero</div>
+        <div class="module-en">The Opening Question</div>
+        <p class="module-desc">大標 + 一個讓人想往下看的問題。例如：「為什麼心臟不會累？」附當日核心 SVG 圖示（跳動心臟、神經訊號、血管網等）。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">核心概念 Core</div>
+        <div class="module-en">The Big Idea</div>
+        <p class="module-desc">用白話講清楚一個關鍵概念。配 1 張對比圖或類比（例：心肌 vs 骨骼肌、馬達 vs 引擎）。成人科普版，盡量用生活比喻。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">互動解剖 Interactive</div>
+        <div class="module-en">Click to Explore</div>
+        <p class="module-desc">SVG 結構圖。讀者點擊各部位（細胞膜、心房、瓣膜、神經節）會跳出中英解說。輕量但能讓抽象概念落地。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">三大重點 Highlights</div>
+        <div class="module-en">Three Things to Remember</div>
+        <p class="module-desc">三張並列卡片，每張一個記憶錨點。卡片用 Honey/Amber/Sun 三色區隔。降低資訊負擔，幫助記憶。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">動畫示範 Animation</div>
+        <div class="module-en">See It Move</div>
+        <p class="module-desc">CSS 或 SVG 動畫示範一個動態過程（離子流動、瓣膜開合、血流方向）。可暫停、可重播。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">核心詞彙 Glossary</div>
+        <div class="module-en">Key Vocabulary</div>
+        <p class="module-desc">8–12 個當日關鍵詞，英中對照，附 IPA 音標與一句話定義。網格排列，hover 變色。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">自測 Quiz</div>
+        <div class="module-en">Check Yourself</div>
+        <p class="module-desc">3 道題。點擊作答，立即顯示中英解說。正確會有溫和的 confetti，答錯不扣分、給解釋。</p>
+      </div>
+
+      <div class="module">
+        <div class="module-name">尾聲 Outro</div>
+        <div class="module-en">Tomorrow Preview</div>
+        <p class="module-desc">一句話總結今天 + 預告明天。底部固定有 Day 編號與課程導航條。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CURRICULUM ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">05 — CURRICULUM</div>
+    <h2 class="sec-title">三十天，<em>四段旅程</em></h2>
+    <p class="sec-intro">從一顆細胞開始，走到整套循環系統，最後進入臨床現場。每週七天，週末一天回顧整合。</p>
+
+    <div class="weeks">
+
+      <!-- Week 1 -->
+      <div class="week">
+        <div class="week-meta">
+          <div class="week-num">— Week One</div>
+          <div class="week-title">微觀基礎</div>
+          <div class="week-en">Microscopic Foundations</div>
+          <div class="week-tag">Cell · Molecule</div>
+        </div>
+        <div class="days">
+          <div class="day">
+            <div class="day-num">01</div>
+            <div class="day-title">心肌細胞<div class="day-en">Cardiomyocyte</div></div>
+            <div class="day-core">為什麼心肌不會疲勞？閏盤、肌節</div>
+            <div class="day-type">Cell</div>
+          </div>
+          <div class="day">
+            <div class="day-num">02</div>
+            <div class="day-title">動作電位<div class="day-en">Action Potential</div></div>
+            <div class="day-core">五個相位、離子流動、心律失常的源頭</div>
+            <div class="day-type">Electric</div>
+          </div>
+          <div class="day">
+            <div class="day-num">03</div>
+            <div class="day-title">興奮收縮偶聯<div class="day-en">E-C Coupling</div></div>
+            <div class="day-core">鈣離子如何讓心臟收縮</div>
+            <div class="day-type">Molecular</div>
+          </div>
+          <div class="day">
+            <div class="day-num">04</div>
+            <div class="day-title">傳導系統<div class="day-en">Conduction System</div></div>
+            <div class="day-core">SA → AV → His → Purkinje</div>
+            <div class="day-type">Pathway</div>
+          </div>
+          <div class="day">
+            <div class="day-num">05</div>
+            <div class="day-title">自律性與節律<div class="day-en">Automaticity</div></div>
+            <div class="day-core">為什麼心臟自己會跳？</div>
+            <div class="day-type">Rhythm</div>
+          </div>
+          <div class="day">
+            <div class="day-num">06</div>
+            <div class="day-title">能量代謝<div class="day-en">Cardiac Metabolism</div></div>
+            <div class="day-core">心臟為何最耗氧？ATP 來源</div>
+            <div class="day-type">Energy</div>
+          </div>
+          <div class="day day-review">
+            <div class="day-num">07</div>
+            <div class="day-title">週回顧<div class="day-en">Weekly Review</div></div>
+            <div class="day-core">互動測驗 + 心肌全圖整合</div>
+            <div class="day-type">Review</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week">
+        <div class="week-meta">
+          <div class="week-num">— Week Two</div>
+          <div class="week-title">組織與器官</div>
+          <div class="week-en">Tissue &amp; Organ</div>
+          <div class="week-tag">Anatomy</div>
+        </div>
+        <div class="days">
+          <div class="day">
+            <div class="day-num">08</div>
+            <div class="day-title">心臟解剖<div class="day-en">Anatomy</div></div>
+            <div class="day-core">四腔、瓣膜、心包</div>
+            <div class="day-type">Structure</div>
+          </div>
+          <div class="day">
+            <div class="day-num">09</div>
+            <div class="day-title">冠狀動脈<div class="day-en">Coronary Circulation</div></div>
+            <div class="day-core">LAD / LCX / RCA</div>
+            <div class="day-type">Vessels</div>
+          </div>
+          <div class="day">
+            <div class="day-num">10</div>
+            <div class="day-title">瓣膜力學<div class="day-en">Valve Mechanics</div></div>
+            <div class="day-core">為什麼瓣膜不會逆流？</div>
+            <div class="day-type">Mechanics</div>
+          </div>
+          <div class="day">
+            <div class="day-num">11</div>
+            <div class="day-title">心動週期<div class="day-en">Cardiac Cycle</div></div>
+            <div class="day-core">收縮期 vs 舒張期</div>
+            <div class="day-type">Cycle</div>
+          </div>
+          <div class="day">
+            <div class="day-num">12</div>
+            <div class="day-title">心音<div class="day-en">Heart Sounds</div></div>
+            <div class="day-core">S1 · S2 · S3 · S4</div>
+            <div class="day-type">Audio</div>
+          </div>
+          <div class="day">
+            <div class="day-num">13</div>
+            <div class="day-title">心電圖原理<div class="day-en">ECG Basics</div></div>
+            <div class="day-core">P · QRS · T 波</div>
+            <div class="day-type">Signal</div>
+          </div>
+          <div class="day day-review">
+            <div class="day-num">14</div>
+            <div class="day-title">週回顧<div class="day-en">Weekly Review</div></div>
+            <div class="day-core">互動 ECG 判讀練習</div>
+            <div class="day-type">Review</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week">
+        <div class="week-meta">
+          <div class="week-num">— Week Three</div>
+          <div class="week-title">循環與調節</div>
+          <div class="week-en">Circulation &amp; Regulation</div>
+          <div class="week-tag">System</div>
+        </div>
+        <div class="days">
+          <div class="day">
+            <div class="day-num">15</div>
+            <div class="day-title">體循環與肺循環<div class="day-en">Systemic &amp; Pulmonary</div></div>
+            <div class="day-core">雙循環設計</div>
+            <div class="day-type">Loop</div>
+          </div>
+          <div class="day">
+            <div class="day-num">16</div>
+            <div class="day-title">心輸出量<div class="day-en">Cardiac Output</div></div>
+            <div class="day-core">CO = HR × SV</div>
+            <div class="day-type">Formula</div>
+          </div>
+          <div class="day">
+            <div class="day-num">17</div>
+            <div class="day-title">前負荷與後負荷<div class="day-en">Preload &amp; Afterload</div></div>
+            <div class="day-core">Frank-Starling 定律</div>
+            <div class="day-type">Law</div>
+          </div>
+          <div class="day">
+            <div class="day-num">18</div>
+            <div class="day-title">血壓調節<div class="day-en">BP Regulation</div></div>
+            <div class="day-core">壓力反射、RAAS</div>
+            <div class="day-type">Control</div>
+          </div>
+          <div class="day">
+            <div class="day-num">19</div>
+            <div class="day-title">自主神經控制<div class="day-en">Autonomic Control</div></div>
+            <div class="day-core">交感 vs 副交感</div>
+            <div class="day-type">Neural</div>
+          </div>
+          <div class="day">
+            <div class="day-num">20</div>
+            <div class="day-title">運動生理<div class="day-en">Exercise Physiology</div></div>
+            <div class="day-core">為什麼運動會喘？</div>
+            <div class="day-type">Dynamic</div>
+          </div>
+          <div class="day day-review">
+            <div class="day-num">21</div>
+            <div class="day-title">週回顧<div class="day-en">Weekly Review</div></div>
+            <div class="day-core">互動式心血管模擬</div>
+            <div class="day-type">Review</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week">
+        <div class="week-meta">
+          <div class="week-num">— Week Four</div>
+          <div class="week-title">疾病與臨床</div>
+          <div class="week-en">Diseases &amp; Clinical</div>
+          <div class="week-tag">Pathology</div>
+        </div>
+        <div class="days">
+          <div class="day">
+            <div class="day-num">22</div>
+            <div class="day-title">高血壓<div class="day-en">Hypertension</div></div>
+            <div class="day-core">沉默殺手</div>
+            <div class="day-type">Disease</div>
+          </div>
+          <div class="day">
+            <div class="day-num">23</div>
+            <div class="day-title">動脈粥樣硬化<div class="day-en">Atherosclerosis</div></div>
+            <div class="day-core">斑塊如何形成</div>
+            <div class="day-type">Vessel</div>
+          </div>
+          <div class="day">
+            <div class="day-num">24</div>
+            <div class="day-title">冠心病與心肌梗塞<div class="day-en">CAD &amp; MI</div></div>
+            <div class="day-core">為什麼會心肌梗塞？</div>
+            <div class="day-type">Critical</div>
+          </div>
+          <div class="day">
+            <div class="day-num">25</div>
+            <div class="day-title">心律不整<div class="day-en">Arrhythmias</div></div>
+            <div class="day-core">AFib · VT · VF</div>
+            <div class="day-type">Rhythm</div>
+          </div>
+          <div class="day">
+            <div class="day-num">26</div>
+            <div class="day-title">心臟衰竭<div class="day-en">Heart Failure</div></div>
+            <div class="day-core">收縮性 vs 舒張性</div>
+            <div class="day-type">Failure</div>
+          </div>
+          <div class="day">
+            <div class="day-num">27</div>
+            <div class="day-title">瓣膜疾病<div class="day-en">Valvular Disease</div></div>
+            <div class="day-core">狹窄與逆流</div>
+            <div class="day-type">Valve</div>
+          </div>
+          <div class="day">
+            <div class="day-num">28</div>
+            <div class="day-title">心臟急症<div class="day-en">Cardiac Emergencies</div></div>
+            <div class="day-core">CPR · AED · 急性處置</div>
+            <div class="day-type">Urgent</div>
+          </div>
+          <div class="day">
+            <div class="day-num">29</div>
+            <div class="day-title">預防與保健<div class="day-en">Prevention</div></div>
+            <div class="day-core">飲食 · 運動 · 藥物</div>
+            <div class="day-type">Lifestyle</div>
+          </div>
+          <div class="day day-review">
+            <div class="day-num">30</div>
+            <div class="day-title">心臟全圖<div class="day-en">The Big Picture</div></div>
+            <div class="day-core">互動式心臟全景 · 總整理</div>
+            <div class="day-type">Finale</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-num">06 — PRINCIPLES</div>
+    <h2 class="sec-title">六條<em>不變的原則</em></h2>
+    <p class="sec-intro">無論是哪一天的課程，這六條原則都不動搖。</p>
+    <div class="principles">
+
+      <div class="principle">
+        <div class="principle-num">— 01</div>
+        <div class="principle-title">中英並列，永遠</div>
+        <p class="principle-body">所有專有名詞都用「中文（English）」格式呈現。標題的英文用 Fraunces 斜體，視覺與中文錯落形成節奏。</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">— 02</div>
+        <div class="principle-title">先比喻，再術語</div>
+        <p class="principle-body">這是成人科普課程，不是醫學院教科書。每一個專業名詞，先給生活比喻（馬達、水管、電線），再解釋學理。</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">— 03</div>
+        <div class="principle-title">一頁，一主題</div>
+        <p class="principle-body">每天一個核心概念。寧可少不貪多。資訊密度高，但結構清晰；讀完一頁，腦中只需留下一個畫面。</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">— 04</div>
+        <div class="principle-title">互動是工具，不是裝飾</div>
+        <p class="principle-body">點擊、tooltip、動畫，都必須服務理解。漂亮但無意義的動效一律捨棄。能用 CSS 不用 JS。</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">— 05</div>
+        <div class="principle-title">暖色，但不甜膩</div>
+        <p class="principle-body">夕陽橘紅是基調，但要靠 ink 深褐與 dusk 暮色拉住對比。避免粉橘、淡黃這種「兒童感」配色。</p>
+      </div>
+
+      <div class="principle">
+        <div class="principle-num">— 06</div>
+        <div class="principle-title">記得心臟還在跳</div>
+        <p class="principle-body">每頁右下角都有一顆小心臟在跳，提醒讀者：你現在學的東西，正在你體內運作。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-mark">A Cardiology Almanac · 心臟三十天</div>
+    <div class="footer-info">Design System v1.0 · 設計規範 · Day 0 · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
