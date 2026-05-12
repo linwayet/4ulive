@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 01｜Self-Care & Emotional Resilience 自我照護與心理韌性</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'BIZ UDPGothic', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #2D2A26;
+    background: #F8F4ED;
+    margin: 0;
+    padding: 0 16px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  /* Hero */
+  .hero {
+    padding: 36px 24px 28px;
+    margin: 24px 0 28px;
+    background: linear-gradient(135deg, #B5651D 0%, #8B5E3C 100%);
+    color: #FFF8EE;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(139,94,60,0.18);
+  }
+  .hero .day {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.22);
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .hero p { margin: 0; font-size: 16px; opacity: 0.95; }
+
+  /* Section card */
+  section {
+    background: #FFFCF6;
+    border-radius: 16px;
+    margin: 0 0 24px;
+    box-shadow: 0 2px 10px rgba(139,94,60,0.08);
+    overflow: hidden;
+  }
+  .sec-head {
+    padding: 16px 22px;
+    color: #FFF;
+    font-size: 19px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-head .ico { font-size: 22px; }
+  .sec-1 .sec-head { background: linear-gradient(90deg,#1565C0,#1976D2); }
+  .sec-2 .sec-head { background: linear-gradient(90deg,#6A1B9A,#7B1FA2); }
+  .sec-3 .sec-head { background: linear-gradient(90deg,#2E7D32,#388E3C); }
+  .sec-4 .sec-head { background: linear-gradient(90deg,#C0392B,#E65100); }
+  .sec-body { padding: 22px; }
+
+  /* Analysis 摘要 */
+  .analysis {
+    background: #FFF;
+    border-left: 5px solid #C0392B;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .analysis h2 {
+    margin: 0 0 12px;
+    font-size: 19px;
+    color: #8B3A1F;
+  }
+  .analysis ul { margin: 8px 0; padding-left: 22px; }
+  .analysis li { margin: 6px 0; font-size: 16px; }
+  .analysis .hl { background: #FEF0E7; padding: 2px 7px; border-radius: 4px; color: #C0392B; font-weight: 700; }
+
+  /* Vocab card */
+  .vocab-card {
+    background: #FFF;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    border: 1px solid #E8DFD0;
+  }
+  .vocab-card.new { border-left: 6px solid #C0392B; }
+  .vocab-card.review { border-left: 6px solid #2E7D32; }
+  .vocab-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .vocab-num {
+    display: inline-flex;
+    width: 30px; height: 30px;
+    background: #B5651D;
+    color: #FFF;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .vocab-word {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0D47A1;
+  }
+  .vocab-kk { color: #B5651D; font-size: 16px; }
+  .vocab-pos { font-size: 15px; color: #5C5246; margin-bottom: 14px; }
+  .vocab-pos b { color: #2D2A26; }
+
+  /* Tag pills */
+  .tag-row { margin: 10px 0; display: flex; gap: 10px; align-items: flex-start; }
+  .pill {
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .pill-deriv { background: #FDEDEC; color: #C0392B; }
+  .pill-root  { background: #EBF5FB; color: #1565C0; }
+  .pill-phrase{ background: #EAFAF1; color: #2E7D32; }
+  .pill-idiom { background: #FEF9E7; color: #D68910; }
+  .pill-confuse{ background: #F5EEF8; color: #6A1B9A; }
+  .pill-syn   { background: #FEF0E7; color: #E65100; }
+  .pill-content { flex: 1; font-size: 15px; color: #3D372E; line-height: 1.7; }
+
+  /* 例句 */
+  .examples {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed #D8CFB8;
+  }
+  .ex-en { color: #1A3C5E; margin: 8px 0 2px; font-size: 15.5px; }
+  .ex-zh { color: #5C5246; margin: 0 0 10px; font-size: 14.5px; }
+
+  /* 文法區塊 */
+  .grammar-block {
+    background: #FFF;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #E8DFD0;
+  }
+  .grammar-block h3 {
+    color: #6A1B9A;
+    margin: 0 0 10px;
+    font-size: 17px;
+  }
+  .grammar-block .pattern {
+    background: #F9F0FF;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: 14.5px;
+    color: #4A148C;
+    margin: 10px 0;
+    font-weight: 700;
+  }
+  .grammar-block .ex-pair { margin: 12px 0; padding-left: 14px; border-left: 3px solid #CE93D8; }
+  .grammar-block .ex-pair p { margin: 4px 0; }
+  .grammar-block strong { color: #C0392B; }
+
+  /* 閱讀測驗 */
+  .reading {
+    background: #FFFDF7;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #E8DFD0;
+  }
+  .reading h3 { color: #2E7D32; margin: 0 0 10px; font-size: 17px; }
+  .reading p { margin: 0 0 12px; font-size: 16px; line-height: 1.85; color: #2D2A26; }
+  .reading .q { margin: 18px 0 6px; font-weight: 700; color: #1B5E20; }
+  .reading .opts { padding-left: 12px; }
+  .reading .opts p { margin: 4px 0; font-size: 15px; }
+
+  /* 單字測驗 */
+  .quiz-item {
+    background: #FFF;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #E8DFD0;
+  }
+  .quiz-item .qline { font-weight: 700; margin: 0 0 8px; font-size: 15.5px; }
+  .quiz-item .opts p { margin: 3px 0; font-size: 14.5px; padding-left: 8px; }
+
+  /* 折疊區 */
+  details {
+    margin: 12px 0;
+    background: #FFF;
+    border-radius: 10px;
+    border: 1px solid #E8DFD0;
+    overflow: hidden;
+  }
+  details summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 18px;
+    background: linear-gradient(90deg,#4A3728,#6B4423);
+    color: #FFF;
+    font-weight: 700;
+    font-size: 15.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary .arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-size: 18px;
+  }
+  details[open] summary .arrow { transform: rotate(180deg); }
+  details .inner { padding: 18px 20px; }
+  details .inner p { margin: 6px 0; font-size: 15px; }
+  details .inner .ans { color: #C0392B; font-weight: 700; }
+  details .inner .reason { color: #5C5246; font-size: 14px; margin-left: 12px; }
+
+  /* footer note */
+  .top-note {
+    background: #FEF0E7;
+    border-left: 5px solid #E65100;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 22px;
+    font-size: 14.5px;
+    color: #8B3A1F;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; padding: 0 12px 60px; }
+    .hero h1 { font-size: 24px; }
+    .vocab-word { font-size: 22px; }
+    .sec-head { font-size: 17px; padding: 14px 18px; }
+    .sec-body { padding: 18px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="day">DAY 01</span>
+    <h1>Self-Care &amp; Emotional Resilience<br>自我照護與心理韌性</h1>
+    <p>呼應學測模擬考克漏字「Empathy / 同情疲勞」主題</p>
+  </header>
+
+  <!-- 學測分析摘要 -->
+  <div class="analysis">
+    <h2>📊 你這次學測模擬考的弱點地圖</h2>
+    <ul>
+      <li><span class="hl">假設語氣</span>（第 38、52、55 題）— 4 題錯了 3 題，最需要補強的文法</li>
+      <li><span class="hl">分詞構句</span>（第 33、56、58 題）— 主動 v.s. 被動的判斷不穩</li>
+      <li><span class="hl">字彙判斷</span>（第 11 boost、13 deception）— 形音相近字易混淆</li>
+      <li><span class="hl">動詞片語</span>（第 25 take over、31 relieve oneself、32 point to）— 搭配詞要記熟</li>
+      <li><span class="hl">篇章銜接</span>（第 78、80、81 題）— 邏輯詞與代名詞前後對應</li>
+    </ul>
+    <p style="margin-top:10px;font-size:15px;color:#5C5246;">
+      <b>👉 100 天計畫第一天</b>，從<b>字彙</b>＋<b>分詞構句</b>＋<b>動詞片語</b>三個「最快進步」的弱點切入。
+    </p>
+  </div>
+
+  <!-- ============ 區塊一：單字 ============ -->
+  <section class="sec-1">
+    <div class="sec-head"><span class="ico">📚</span> 區塊一｜10 個單字（3 個新字＋7 個熟字複習）</div>
+    <div class="sec-body">
+
+      <!-- 1. boost (學生第 11 題錯) -->
+      <div class="vocab-card new">
+        <div class="vocab-head">
+          <span class="vocab-num">①</span>
+          <span class="vocab-word">boost</span>
+          <span class="vocab-kk">[bust]</span>
+        </div>
+        <div class="vocab-pos"><b>v.</b> 增強；推升　<b>n.</b> 提振；推動力　<span style="color:#C0392B;font-weight:700;">⚠️ 你第 11 題選錯</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>booster</b> n. 助推器；強化劑｜<b>boosted</b> adj. 受推動的</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>boost morale</b> 提振士氣｜<b>give a boost to</b> 對⋯有幫助</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-confuse">容易混淆</span>
+          <span class="pill-content"><b>boast</b> v. 自誇（學測第 11 題的 C 選項，注意拼字差一個字母！）</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">A balanced diet rich in vitamins helps <b>boost</b> your immune system.</p>
+          <p class="ex-zh">富含維他命的均衡飲食有助於提升你的免疫系統。</p>
+          <p class="ex-en">The coach's speech <b>boosted</b> the team's confidence before the game.</p>
+          <p class="ex-zh">教練的演講在比賽前提升了球隊的信心。</p>
+          <p class="ex-en">Online ads gave a huge <b>boost</b> to the store's holiday sales.</p>
+          <p class="ex-zh">網路廣告大幅推升了這家店的假日銷售。</p>
+        </div>
+      </div>
+
+      <!-- 2. deception (學生第 13 題錯) -->
+      <div class="vocab-card new">
+        <div class="vocab-head">
+          <span class="vocab-num">②</span>
+          <span class="vocab-word">deception</span>
+          <span class="vocab-kk">[dɪˋsɛpʃən]</span>
+        </div>
+        <div class="vocab-pos"><b>n.</b> 欺騙；騙術　<span style="color:#C0392B;font-weight:700;">⚠️ 你第 13 題選錯</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>deceive</b> v. 欺騙｜<b>deceptive</b> adj. 騙人的｜<b>deceptively</b> adv. 看似⋯實則⋯</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-root">字根</span>
+          <span class="pill-content"><b>cept-</b>「拿、取」；同字根：accept（接受）、except（除了）、concept（概念）</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-confuse">容易混淆</span>
+          <span class="pill-content"><b>distinction</b> n. 區別（學測第 13 題 D 選項，意思完全不同）</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">The octopus's camouflage is a perfect example of <b>deception</b> in nature.</p>
+          <p class="ex-zh">章魚的偽裝是大自然中欺敵的完美例子。</p>
+          <p class="ex-en">She felt hurt by his <b>deception</b> about his real name.</p>
+          <p class="ex-zh">她對於他隱瞞真名一事感到受傷。</p>
+          <p class="ex-en">The product's packaging is <b>deceptively</b> simple but very effective.</p>
+          <p class="ex-zh">這產品的包裝看似簡單實則非常有效。</p>
+        </div>
+      </div>
+
+      <!-- 3. resilience (新字，主題核心) -->
+      <div class="vocab-card new">
+        <div class="vocab-head">
+          <span class="vocab-num">③</span>
+          <span class="vocab-word">resilience</span>
+          <span class="vocab-kk">[rɪˋzɪlɪəns]</span>
+        </div>
+        <div class="vocab-pos"><b>n.</b> 韌性；復原力</div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>resilient</b> adj. 有韌性的｜<b>resiliently</b> adv. 有彈性地</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>build resilience</b> 培養韌性｜<b>emotional resilience</b> 心理韌性</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Mental health experts emphasize the need to balance kindness with <b>resilience</b>.</p>
+          <p class="ex-zh">心理健康專家強調必須在善意與韌性之間取得平衡。</p>
+          <p class="ex-en">Children show remarkable <b>resilience</b> after losing a pet.</p>
+          <p class="ex-zh">孩子在失去寵物後展現出驚人的復原力。</p>
+          <p class="ex-en">A <b>resilient</b> economy can recover quickly from a recession.</p>
+          <p class="ex-zh">有韌性的經濟可以快速從衰退中復甦。</p>
+        </div>
+      </div>
+
+      <!-- 4. compromise (學生第 12 題對) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">④</span>
+          <span class="vocab-word">compromise</span>
+          <span class="vocab-kk">[ˋkɑmprə͵maɪz]</span>
+        </div>
+        <div class="vocab-pos"><b>n. / v.</b> 妥協；折衷　<span style="color:#2E7D32;font-weight:700;">✓ 你第 12 題答對</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>compromising</b> adj. 危及（名譽、安全）的｜<b>uncompromising</b> adj. 不妥協的</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>reach a compromise</b> 達成妥協｜<b>compromise on</b> 在⋯做出讓步</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Living in a city requires a <b>compromise</b> between convenience and peace of mind.</p>
+          <p class="ex-zh">住在城市需要在便利與內心平靜之間取得折衷。</p>
+          <p class="ex-en">They finally reached a <b>compromise</b> after hours of discussion.</p>
+          <p class="ex-zh">經過數小時的討論他們終於達成妥協。</p>
+          <p class="ex-en">Don't <b>compromise</b> your health for work.</p>
+          <p class="ex-zh">別為了工作犧牲你的健康。</p>
+        </div>
+      </div>
+
+      <!-- 5. emphasis (學生第 19 題對) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">⑤</span>
+          <span class="vocab-word">emphasis</span>
+          <span class="vocab-kk">[ˋɛmfəsɪs]</span>
+        </div>
+        <div class="vocab-pos"><b>n.</b> 強調；重點　<span style="color:#2E7D32;font-weight:700;">✓ 你第 19 題答對</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>emphasize</b> v. 強調｜<b>emphatic</b> adj. 強調的；斷然的｜<b>emphatically</b> adv. 強烈地</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>put emphasis on</b> 強調⋯｜<b>with emphasis</b> 著重地</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">The teacher put great <b>emphasis</b> on self-care during exam week.</p>
+          <p class="ex-zh">老師在考試週特別強調自我照護。</p>
+          <p class="ex-en">Psychologists <b>emphasize</b> the importance of emotional boundaries.</p>
+          <p class="ex-zh">心理學家強調情緒界線的重要性。</p>
+          <p class="ex-en">She nodded <b>emphatically</b> to show her agreement.</p>
+          <p class="ex-zh">她用力點頭表示同意。</p>
+        </div>
+      </div>
+
+      <!-- 6. exceed (學生第 16 題對) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">⑥</span>
+          <span class="vocab-word">exceed</span>
+          <span class="vocab-kk">[ɪkˋsid]</span>
+        </div>
+        <div class="vocab-pos"><b>v.</b> 超過；超越　<span style="color:#2E7D32;font-weight:700;">✓ 你第 16 題答對</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>excess</b> n. 過量｜<b>excessive</b> adj. 過度的｜<b>excessively</b> adv. 過度地</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-root">字根</span>
+          <span class="pill-content"><b>ceed-/cess-</b>「走、行進」；同字根：proceed（進行）、succeed（成功）、access（進入）</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">The pianist's performance <b>exceeded</b> the audience's expectations.</p>
+          <p class="ex-zh">這位鋼琴家的表演超越了觀眾的期待。</p>
+          <p class="ex-en">An <b>excessive</b> workload can damage your mental health.</p>
+          <p class="ex-zh">過量的工作會損害你的心理健康。</p>
+          <p class="ex-en">Sales this year <b>exceeded</b> last year's total by 20%.</p>
+          <p class="ex-zh">今年的銷售比去年總額多了 20%。</p>
+        </div>
+      </div>
+
+      <!-- 7. prospect (學生第 17 題對) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">⑦</span>
+          <span class="vocab-word">prospect</span>
+          <span class="vocab-kk">[ˋprɑspɛkt]</span>
+        </div>
+        <div class="vocab-pos"><b>n.</b> 前景；展望　<span style="color:#2E7D32;font-weight:700;">✓ 你第 17 題答對</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>prospective</b> adj. 預期的；未來的｜<b>prosper</b> v. 繁榮｜<b>prosperity</b> n. 繁榮</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>long-term prospects</b> 長期展望｜<b>in prospect</b> 在預期中</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Analysts remain optimistic about the long-term <b>prospects</b> for renewable energy.</p>
+          <p class="ex-zh">分析師對再生能源的長期前景仍保持樂觀。</p>
+          <p class="ex-en">She has excellent <b>prospects</b> in the tech industry.</p>
+          <p class="ex-zh">她在科技業有絕佳的發展前景。</p>
+          <p class="ex-en">A <b>prospective</b> buyer visited the apartment yesterday.</p>
+          <p class="ex-zh">昨天有位準買家來看了這間公寓。</p>
+        </div>
+      </div>
+
+      <!-- 8. fertile (學生第 14 題對) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">⑧</span>
+          <span class="vocab-word">fertile</span>
+          <span class="vocab-kk">[ˋfɝtl]</span>
+        </div>
+        <div class="vocab-pos"><b>adj.</b> 肥沃的；多產的；可生育的　<span style="color:#2E7D32;font-weight:700;">✓ 你第 14 題答對</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>fertility</b> n. 生育力；肥沃｜<b>fertilize</b> v. 施肥；使受精｜<b>fertilizer</b> n. 肥料</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-confuse">容易混淆</span>
+          <span class="pill-content"><b>futile</b> adj. 無用的（注意拼字相近，意思完全相反）</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Maintaining a healthy lifestyle is crucial during a woman's <b>fertile</b> years.</p>
+          <p class="ex-zh">在女性生育年齡維持健康生活方式至關重要。</p>
+          <p class="ex-en">The Nile valley has some of the most <b>fertile</b> soil in the world.</p>
+          <p class="ex-zh">尼羅河谷擁有世界上最肥沃的土壤之一。</p>
+          <p class="ex-en">His <b>fertile</b> imagination produced hundreds of stories.</p>
+          <p class="ex-zh">他豐富的想像力創造了數百個故事。</p>
+        </div>
+      </div>
+
+      <!-- 9. drain (與克漏字第 33 題相關，學生錯了) -->
+      <div class="vocab-card new">
+        <div class="vocab-head">
+          <span class="vocab-num">⑨</span>
+          <span class="vocab-word">drain</span>
+          <span class="vocab-kk">[dren]</span>
+        </div>
+        <div class="vocab-pos"><b>v.</b> 排空；耗盡　<b>n.</b> 流失；下水道　<span style="color:#C0392B;font-weight:700;">⚠️ 第 33 題的關鍵字</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>drained</b> adj. 筋疲力盡的｜<b>draining</b> adj. 令人疲憊的</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>feel drained</b> 感到精疲力盡｜<b>drain on</b> 對⋯的耗損</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-idiom">慣用語</span>
+          <span class="pill-content"><b>emotionally drained</b> 情緒枯竭的｜<b>brain drain</b> 人才外流</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Empathy is praised as the glue of society, but it sometimes leaves you feeling <b>drained</b>.</p>
+          <p class="ex-zh">同理心被讚為社會的黏著劑，但有時也讓你感到精疲力盡。</p>
+          <p class="ex-en">After three back-to-back meetings, I felt completely <b>drained</b>.</p>
+          <p class="ex-zh">連續開了三場會後，我感到徹底耗盡。</p>
+          <p class="ex-en">Caring for elderly parents can be a <b>draining</b> experience.</p>
+          <p class="ex-zh">照顧年邁父母可能是一段令人疲憊的歷程。</p>
+        </div>
+      </div>
+
+      <!-- 10. maintain (與克漏字第 36 題相關，學生錯了) -->
+      <div class="vocab-card review">
+        <div class="vocab-head">
+          <span class="vocab-num">⑩</span>
+          <span class="vocab-word">maintain</span>
+          <span class="vocab-kk">[menˋten]</span>
+        </div>
+        <div class="vocab-pos"><b>v.</b> 維持；保養；主張　<span style="color:#C0392B;font-weight:700;">⚠️ 第 36 題你選錯了</span></div>
+
+        <div class="tag-row">
+          <span class="pill pill-deriv">衍生詞</span>
+          <span class="pill-content"><b>maintenance</b> n. 維修；維持｜<b>maintainable</b> adj. 可維持的</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-phrase">片語</span>
+          <span class="pill-content"><b>maintain a distance</b> 保持距離｜<b>maintain a healthy lifestyle</b> 維持健康生活方式</span>
+        </div>
+        <div class="tag-row">
+          <span class="pill pill-syn">同義</span>
+          <span class="pill-content"><b>keep up</b> 保持｜<b>preserve</b> 保存</span>
+        </div>
+
+        <div class="examples">
+          <p class="ex-en">Doctors recommend that everyone <b>maintain</b> a healthy emotional distance from work stress.</p>
+          <p class="ex-zh">醫生建議每個人都應與工作壓力保持健康的情緒距離。</p>
+          <p class="ex-en">Regular exercise helps you <b>maintain</b> both physical and mental health.</p>
+          <p class="ex-zh">規律運動幫助你維持身心健康。</p>
+          <p class="ex-en">The building requires constant <b>maintenance</b>.</p>
+          <p class="ex-zh">這棟建築需要持續的維護。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 區塊二：文法解析（3 個重點） ============ -->
+  <section class="sec-2">
+    <div class="sec-head"><span class="ico">📐</span> 區塊二｜3 個你最容易進步的文法點</div>
+    <div class="sec-body">
+
+      <!-- 文法點 1：分詞構句（第 33、56、58 題） -->
+      <div class="grammar-block">
+        <h3>① 分詞構句：<strong>leave + O + V-ing / Vpp</strong>（學測第 33 題）</h3>
+        <p>當動詞 <b>leave</b> 後面跟受詞時，受詞補語要用「現在分詞」表示「使⋯持續處於某狀態」。看受詞是<b>主動</b>感覺或<b>被動</b>感覺來決定。</p>
+
+        <div class="pattern">
+          leave + sb. + feeling + adj.／V-ing （讓某人感到⋯）<br>
+          leave + sb. + V-pp （讓某人被⋯）
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en">Empathy sometimes leaves you <strong>feeling drained</strong>.</p>
+          <p class="ex-zh">同理心有時讓你感到精疲力盡。</p>
+          <p style="color:#5C5246;font-size:14px;">（you 是主動感覺到 drained 這個狀態，所以用 V-ing 的 feeling）</p>
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en">The news left her <strong>shocked</strong>.</p>
+          <p class="ex-zh">這個消息讓她感到震驚。</p>
+          <p style="color:#5C5246;font-size:14px;">（she 是被消息「震驚」，用 Vpp）</p>
+        </div>
+
+        <p style="color:#C0392B;font-size:14.5px;margin-top:10px;">
+          <b>⚠️ 學測第 33 題你選了 (A) feel drained，但前面是 leaves you，受詞補語要用 V-ing，正確是 (B) feeling drained。</b>
+        </p>
+      </div>
+
+      <!-- 文法點 2：假設語氣 had Vpp（第 38 題） -->
+      <div class="grammar-block">
+        <h3>② 與過去事實相反的假設：<strong>If S + had Vpp, S + would have Vpp</strong>（學測第 38 題）</h3>
+        <p>表達「如果當時⋯就不會⋯」這種「對過去的後悔或假設」。If 子句用<b>過去完成式</b>，主要子句用 <b>would / could / should have + Vpp</b>。</p>
+
+        <div class="pattern">
+          If + S + <strong>had Vpp</strong>, S + would/could/should + <strong>have Vpp</strong>
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en">If these professionals <strong>had known</strong> more about self-care years ago, they would not <strong>have suffered</strong> so deeply.</p>
+          <p class="ex-zh">如果這些專業人員多年前能更了解自我照護，他們就不會受這麼深的苦。</p>
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en">If you <strong>had studied</strong> harder, you would <strong>have passed</strong> the test.</p>
+          <p class="ex-zh">如果你當時更用功，你就會通過考試了。</p>
+        </div>
+
+        <p style="color:#C0392B;font-size:14.5px;margin-top:10px;">
+          <b>⚠️ 學測第 38 題正確答案是 (B) had known。記得「過去事實相反」一定用 had Vpp，不能用 knew（那是與現在事實相反）。</b>
+        </p>
+      </div>
+
+      <!-- 文法點 3：分詞構句 (從屬連接詞省略主詞 + Vpp) -->
+      <div class="grammar-block">
+        <h3>③ 過去分詞構句：<strong>Vpp..., S + V</strong>（學測第 56 題）</h3>
+        <p>當主要子句的主詞「被」分詞所表達的動作影響時，分詞構句用<b>過去分詞 (Vpp)</b> 開頭，等於 (Being) Vpp。</p>
+
+        <div class="pattern">
+          <strong>Vpp</strong> + ..., S + V （= Because/As S + be Vpp, S + V）
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en">Many parents made the choice to part with their children, <strong>convinced</strong> it was the only way.</p>
+          <p class="ex-zh">許多父母做出與孩子分離的決定，他們深信這是唯一的辦法。</p>
+          <p style="color:#5C5246;font-size:14px;">（parents 是<b>被</b>說服 → 用 convinced，等於 being convinced）</p>
+        </div>
+
+        <div class="ex-pair">
+          <p class="ex-en"><strong>Deeply disturbed</strong> by what she saw, Irena joined the resistance.</p>
+          <p class="ex-zh">深受所見之事困擾，Irena 加入了反抗運動。</p>
+          <p style="color:#5C5246;font-size:14px;">（Irena 是被「所見之事」困擾 → Vpp）</p>
+        </div>
+
+        <p style="color:#C0392B;font-size:14.5px;margin-top:10px;">
+          <b>⚠️ 學測第 56 題你選了 (A) convincing（主動「使人信服」），但句子要的是 parents 被「說服」，正解 (D) convinced。判斷主被動是關鍵！</b>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 區塊三：閱讀測驗 ============ -->
+  <section class="sec-3">
+    <div class="sec-head"><span class="ico">📖</span> 區塊三｜閱讀測驗（學測一半長度，約 180 字）</div>
+    <div class="sec-body">
+      <div class="reading">
+        <h3>The Quiet Strength of Saying "No"</h3>
+
+        <p>In an age where productivity is celebrated, many young professionals feel <b>drained</b> by the constant pressure to please others. Psychologists now <b>emphasize</b> that learning to say "no" is not a sign of weakness, but a form of emotional <b>resilience</b>. Without firm boundaries, the endless absorption of other people's demands can <b>exceed</b> a person's emotional capacity.</p>
+
+        <p>Therapist Dr. Lisa Chen argues that healthy adults must <b>maintain</b> a clear emotional distance from work. "If my clients <b>had known</b> this earlier in their careers," she notes, "many would not have suffered burnout." She also warns against <b>deception</b> — pretending to be fine when you are not. Real strength, she insists, requires honesty about your limits.</p>
+
+        <p>Making time for rest can <b>boost</b> productivity in the long run. Even small breaks <b>leave</b> the brain <b>feeling</b> refreshed. The long-term <b>prospects</b> for your career depend less on how much you do, and more on whether you can sustain the energy to keep doing it.</p>
+
+        <p class="q">1. What is the main idea of the passage?</p>
+        <div class="opts">
+          <p>(A) Young workers should always say yes to assignments.</p>
+          <p>(B) Saying "no" can help protect emotional health.</p>
+          <p>(C) Therapists no longer believe in setting boundaries.</p>
+          <p>(D) Productivity is more important than rest.</p>
+        </div>
+
+        <p class="q">2. According to Dr. Chen, what is a form of "deception" that harms people?</p>
+        <div class="opts">
+          <p>(A) Hiding your true emotional limits from yourself.</p>
+          <p>(B) Telling clients about their illnesses.</p>
+          <p>(C) Working harder than your colleagues.</p>
+          <p>(D) Refusing to set career goals.</p>
+        </div>
+
+        <p class="q">3. The phrase "feeling refreshed" in the last paragraph is closest in meaning to ____.</p>
+        <div class="opts">
+          <p>(A) emotionally drained　(B) physically exhausted</p>
+          <p>(C) mentally restored　(D) entirely confused</p>
+        </div>
+
+        <details>
+          <summary>📝 點此查看閱讀答案＆解析 <span class="arrow">▼</span></summary>
+          <div class="inner">
+            <p><span class="ans">1. (B)</span> <span class="reason">主旨題。整篇都在說「設界線、學會說 no」可保護情緒健康。</span></p>
+            <p><span class="ans">2. (A)</span> <span class="reason">細節題。第二段 Dr. Chen 警告 "pretending to be fine when you are not" → 對自己隱瞞真實情緒極限。</span></p>
+            <p><span class="ans">3. (C)</span> <span class="reason">詞義題。refreshed 是「重新煥發」，相當於 mentally restored（心智恢復）。</span></p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 區塊四：5 題單字單選複習 ============ -->
+  <section class="sec-4">
+    <div class="sec-head"><span class="ico">✏️</span> 區塊四｜5 題單字單選複習</div>
+    <div class="sec-body">
+
+      <div class="quiz-item">
+        <p class="qline">1. A balanced diet rich in vitamins is essential to ______ your immune system against seasonal flu.</p>
+        <div class="opts">
+          <p>(A) attempt　(B) escape　(C) boast　(D) boost</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <p class="qline">2. The camouflage of some species such as octopus is a perfect example of ______ in the natural world.</p>
+        <div class="opts">
+          <p>(A) deception　(B) limitation　(C) temptation　(D) distinction</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <p class="qline">3. Emotional ______ is what helps healthcare workers recover from daily stress without burning out.</p>
+        <div class="opts">
+          <p>(A) resilience　(B) reluctance　(C) reduction　(D) recreation</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <p class="qline">4. After working three night shifts in a row, the nurse felt completely ______.</p>
+        <div class="opts">
+          <p>(A) drained　(B) drowned　(C) drowsy　(D) drifted</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <p class="qline">5. Psychologists recommend that everyone ______ a healthy emotional distance to avoid burnout.</p>
+        <div class="opts">
+          <p>(A) maintains　(B) maintained　(C) maintain　(D) maintaining</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>📝 點此查看單字測驗答案＆解析 <span class="arrow">▼</span></summary>
+        <div class="inner">
+          <p><span class="ans">1. (D) boost</span> <span class="reason">增強免疫系統 = boost the immune system。(C) boast 是自誇，拼字相近但意思完全不同！學測原題你選錯了，要記住。</span></p>
+          <p><span class="ans">2. (A) deception</span> <span class="reason">章魚偽裝 = 欺敵 = deception。學測原題你選 (D) distinction（區別）是字義混淆。</span></p>
+          <p><span class="ans">3. (A) resilience</span> <span class="reason">韌性、復原力。是今天主題的核心字。</span></p>
+          <p><span class="ans">4. (A) drained</span> <span class="reason">feel drained = 感到精疲力盡。注意 drained 是<b>過去分詞當形容詞</b>用。</span></p>
+          <p><span class="ans">5. (C) maintain</span> <span class="reason">虛擬語氣！recommend that S + (should) <b>原形動詞</b>。同類動詞還有：suggest, insist, demand, require, propose, urge。</span></p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- 鼓勵語 -->
+  <div class="analysis" style="border-left-color:#2E7D32;">
+    <h2 style="color:#1B5E20;">🎯 Day 1 完成！明天要繼續喔</h2>
+    <p style="font-size:15.5px;color:#3D372E;">
+      今天主題：<b>Self-Care &amp; Emotional Resilience</b>。<br>
+      重點鞏固：<b>boost / deception / maintain / drain</b> 四個關鍵字 ＋ <b>分詞構句</b> 與 <b>過去事實相反假設</b>。<br>
+      明天 Day 2 預計處理你錯比較多的「<b>動詞片語</b>」（take over / point to / relieve）和「<b>篇章銜接邏輯</b>」。
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
