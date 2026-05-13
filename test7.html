@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>武陵高中 114-2 英文期中考 · 單字標記工具</title>
+<style>
+:root {
+  --bg: #FDF6ED;
+  --bg2: #FFF9F2;
+  --warm1: #F5E6CC;
+  --warm2: #EDCFA0;
+  --amber: #D4913A;
+  --amber-dk: #A8692A;
+  --rust: #C0522A;
+  --rust-lt: #F5E8E0;
+  --brown: #6B3A1F;
+  --text: #3A2210;
+  --text2: #7A5230;
+  --text3: #B09070;
+  --border: #E2CCB0;
+  --marked-bg: #FFD580;
+  --marked-border: #C88A00;
+  --marked-text: #5A3A00;
+  --panel-bg: #FFFBF4;
+  --green: #4A7C59;
+  --green-bg: #EAF3EC;
+  --shadow: rgba(160,100,40,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Georgia','Noto Serif TC',serif;
+  font-size:15px;
+  line-height:1.85;
+  padding-bottom:140px;
+}
+
+/* ── TOP BAR ── */
+.topbar{
+  background:linear-gradient(135deg,#8B3A10 0%,#C0522A 45%,#D4913A 100%);
+  color:#fff;
+  padding:14px 16px 12px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 3px 14px rgba(120,50,10,0.28);
+}
+.topbar-title{font-size:13px;font-weight:bold;letter-spacing:0.5px;opacity:.9;}
+.topbar-hint{font-size:11px;opacity:.75;margin-top:1px;}
+.topbar-row{display:flex;align-items:center;justify-content:space-between;margin-top:9px;gap:8px;}
+.counter-badge{
+  background:rgba(255,255,255,0.18);
+  border:1.5px solid rgba(255,255,255,0.4);
+  border-radius:20px;
+  padding:5px 14px;
+  font-size:13px;font-weight:bold;
+  display:flex;align-items:center;gap:6px;
+  flex-shrink:0;
+}
+.counter-num{font-size:20px;font-weight:900;line-height:1;}
+.btn-copy{
+  background:#fff;
+  color:var(--rust);
+  border:none;
+  border-radius:20px;
+  padding:7px 16px;
+  font-size:12px;font-weight:bold;
+  cursor:pointer;
+  flex-shrink:0;
+  transition:all .18s;
+  font-family:inherit;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.btn-copy:active{transform:scale(0.96);background:var(--rust-lt);}
+.btn-clear{
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,0.3);
+  border-radius:20px;
+  padding:7px 14px;
+  font-size:12px;font-weight:bold;
+  cursor:pointer;
+  font-family:inherit;
+  transition:all .18s;
+}
+.btn-clear:active{transform:scale(0.96);}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{height:4px;background:rgba(255,255,255,0.2);margin-top:8px;border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:#FFD580;border-radius:2px;transition:width .3s ease;width:0%;}
+
+/* ── SECTION HEADERS ── */
+.exam-wrap{padding:0 14px;}
+.section-header{
+  margin:20px 0 10px;
+  display:flex;align-items:center;gap:8px;
+}
+.sec-badge{
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  color:#fff;
+  font-size:11px;font-weight:bold;
+  padding:3px 10px;border-radius:12px;
+  letter-spacing:0.5px;flex-shrink:0;
+}
+.sec-title{font-size:13px;color:var(--text2);font-style:italic;}
+
+/* ── QUESTION BLOCKS ── */
+.q-block{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 13px;
+  margin-bottom:10px;
+  position:relative;
+}
+.q-num{
+  font-size:11px;font-weight:bold;
+  color:var(--amber-dk);
+  letter-spacing:0.5px;
+  margin-bottom:5px;
+}
+.q-text{font-size:14px;line-height:1.9;color:var(--text);}
+
+/* ── OPTION ROWS ── */
+.options{margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+.opt{
+  font-size:13px;
+  color:var(--text2);
+  padding:2px 4px;
+  border-radius:5px;
+  line-height:1.7;
+}
+
+/* ── WORD SPANS ── */
+.w{
+  display:inline;
+  cursor:pointer;
+  border-radius:3px;
+  padding:1px 2px;
+  transition:background .15s, color .15s, box-shadow .15s;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.w:hover{background:var(--warm1);}
+.w.marked{
+  background:var(--marked-bg);
+  color:var(--marked-text);
+  border-bottom:2px solid var(--marked-border);
+  font-weight:bold;
+  box-shadow:0 1px 4px rgba(200,138,0,0.3);
+}
+
+/* ── PASSAGE BLOCKS ── */
+.passage{
+  background:var(--bg2);
+  border-left:4px solid var(--amber);
+  border-radius:0 12px 12px 0;
+  padding:13px 14px;
+  margin-bottom:10px;
+  font-size:14px;line-height:2;
+  border-top:1px solid var(--border);
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.passage-title{
+  font-size:12px;font-weight:bold;
+  color:var(--rust);
+  letter-spacing:0.5px;
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.blank{
+  display:inline-block;
+  min-width:36px;
+  border-bottom:2px solid var(--amber);
+  margin:0 2px;
+  text-align:center;
+  color:var(--amber-dk);
+  font-size:12px;
+}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  background:var(--brown);color:#fff;
+  padding:10px 22px;border-radius:30px;
+  font-size:13px;font-weight:bold;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+  z-index:999;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25);
+}
+.toast.show{opacity:1;}
+
+/* ── FLOATING PANEL (right bottom) ── */
+.float-panel{
+  position:fixed;
+  bottom:16px;right:14px;
+  width:54px;height:54px;
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  cursor:pointer;
+  box-shadow:0 4px 18px rgba(160,60,10,0.45);
+  z-index:200;
+  transition:all .22s;
+  -webkit-tap-highlight-color:transparent;
+}
+.float-panel:active{transform:scale(0.93);}
+.float-icon{font-size:22px;line-height:1;}
+.float-count{
+  font-size:11px;font-weight:900;color:#fff;
+  background:rgba(0,0,0,0.25);
+  border-radius:10px;padding:0 5px;
+  line-height:1.4;margin-top:1px;
+}
+
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(60,20,0,0.55);
+  z-index:300;
+  display:none;align-items:flex-end;justify-content:center;
+  padding:0;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--panel-bg);
+  border-radius:22px 22px 0 0;
+  width:100%;max-width:520px;
+  padding:0 0 24px;
+  box-shadow:0 -8px 40px rgba(120,50,10,0.25);
+  max-height:85vh;
+  overflow-y:auto;
+  animation:slideUp .3s ease;
+}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.modal-handle{
+  width:40px;height:4px;
+  background:var(--warm2);border-radius:2px;
+  margin:12px auto 0;
+}
+.modal-header{
+  padding:14px 18px 10px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-title{font-size:16px;font-weight:bold;color:var(--brown);}
+.modal-close{
+  background:var(--warm1);border:none;
+  border-radius:50%;width:30px;height:30px;
+  font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text2);
+  font-family:inherit;
+}
+.modal-body{padding:14px 18px;}
+.modal-empty{
+  text-align:center;padding:30px 0;
+  color:var(--text3);font-size:14px;font-style:italic;
+}
+.modal-stats{
+  display:flex;gap:8px;margin-bottom:14px;
+}
+.stat-pill{
+  background:var(--warm1);border-radius:20px;
+  padding:5px 12px;font-size:12px;
+  color:var(--text2);font-weight:bold;
+  flex:1;text-align:center;
+}
+.stat-pill span{display:block;font-size:18px;color:var(--rust);font-weight:900;}
+.word-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.chip{
+  background:var(--marked-bg);
+  color:var(--marked-text);
+  border:1.5px solid var(--marked-border);
+  border-radius:8px;
+  padding:5px 11px;
+  font-size:13px;font-weight:bold;
+  cursor:pointer;
+  transition:all .15s;
+  position:relative;
+}
+.chip:active{transform:scale(0.95);}
+.chip .chip-x{
+  font-size:11px;margin-left:5px;
+  opacity:.6;
+}
+.copy-section{
+  background:var(--warm1);
+  border-radius:12px;
+  padding:12px 14px;
+  margin-bottom:10px;
+}
+.copy-label{font-size:11px;color:var(--text2);font-weight:bold;letter-spacing:.5px;margin-bottom:6px;}
+.copy-preview{
+  font-size:12px;color:var(--text);
+  line-height:1.8;word-break:break-all;
+  background:var(--bg2);border-radius:8px;
+  padding:8px 10px;border:1px solid var(--border);
+  min-height:40px;max-height:120px;overflow-y:auto;
+}
+.btn-line{
+  width:100%;
+  background:linear-gradient(135deg,#06C755,#00A854);
+  color:#fff;border:none;
+  border-radius:12px;padding:13px;
+  font-size:14px;font-weight:bold;
+  cursor:pointer;margin-top:10px;
+  font-family:inherit;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 3px 12px rgba(6,199,85,0.35);
+  transition:all .18s;
+}
+.btn-line:active{transform:scale(0.97);}
+.btn-modal-copy{
+  width:100%;
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  color:#fff;border:none;
+  border-radius:12px;padding:13px;
+  font-size:14px;font-weight:bold;
+  cursor:pointer;margin-top:8px;
+  font-family:inherit;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 3px 12px var(--shadow);
+  transition:all .18s;
+}
+.btn-modal-copy:active{transform:scale(0.97);}
+
+/* ── DIVIDER ── */
+.hr{height:1px;background:var(--border);margin:14px 0;}
+
+/* ── PASSAGE TEXT formatting ── */
+.p-indent{text-indent:1.5em;}
+.p-gap{margin-bottom:8px;}
+
+/* ── misc ── */
+.note{font-size:12px;color:var(--text3);font-style:italic;padding:4px 0;}
+.answer-opt span{color:var(--amber-dk);}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-title">🏫 武陵高中 114-2 一年級英文期中考</div>
+  <div class="topbar-hint">👆 點任何單字 → 標記為不熟悉</div>
+  <div class="topbar-row">
+    <div class="counter-badge">
+      <div>
+        <div style="font-size:10px;opacity:.8;">已標記</div>
+        <div class="counter-num" id="topCount">0</div>
+      </div>
+      <span style="opacity:.6;">個單字</span>
+    </div>
+    <button class="btn-copy" onclick="openModal()">📋 查看 &amp; 傳送</button>
+    <button class="btn-clear" onclick="confirmClear()">重置</button>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="exam-wrap">
+
+<!-- ══════════════════════════════════
+     二、字彙選擇
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">二</span>
+  <span class="sec-title">字彙選擇（題 9–18）</span>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 9 題</div>
+  <div class="q-text">At her recent <span class="w">concert</span>, the <span class="w">singer</span>'s <span class="w">decision</span> to <span class="w">pair</span> an <span class="w">elegant</span> evening <span class="w">gown</span> with _____ <span class="w">footwear</span> was <span class="w">criticized</span> by <span class="w">stylists</span>, who felt the look was far too <span class="w">relaxed</span> for such a <span class="w">formal</span> event.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">electrical</span>&nbsp; (B) <span class="w">dramatic</span>&nbsp; (C) <span class="w">casual</span>&nbsp; (D) <span class="w">similar</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 10 題</div>
+  <div class="q-text">The <span class="w">steep</span> _____ of the <span class="w">graph</span> <span class="w">indicates</span> that the city's <span class="w">population</span> grew much faster than <span class="w">researchers</span> had originally <span class="w">predicted</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">slope</span>&nbsp; (B) <span class="w">harbor</span>&nbsp; (C) <span class="w">hanger</span>&nbsp; (D) <span class="w">thread</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 11 題</div>
+  <div class="q-text">Shared <span class="w">values</span> and a common <span class="w">history</span> often _____ a <span class="w">community</span> together, creating a strong sense of <span class="w">belonging</span> that helps people support each other during difficult times.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">form</span>&nbsp; (B) <span class="w">bind</span>&nbsp; (C) <span class="w">tailor</span>&nbsp; (D) <span class="w">sum</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 12 題</div>
+  <div class="q-text"><span class="w">Psychologists</span> often study how different people _____ to sudden <span class="w">stress</span>, noting that while some <span class="w">individuals</span> remain calm and focused, others may become completely <span class="w">overwhelmed</span> by <span class="w">anxiety</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">dedicate</span>&nbsp; (B) <span class="w">react</span>&nbsp; (C) <span class="w">conform</span>&nbsp; (D) <span class="w">appeal</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 13 題</div>
+  <div class="q-text">While many people now get their news from social media, her famous newspaper _____ is still important because it <span class="w">challenges</span> readers to think deeply about how <span class="w">society</span> is changing.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">pretention</span>&nbsp; (B) <span class="w">fence</span>&nbsp; (C) <span class="w">framework</span>&nbsp; (D) <span class="w">column</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 14 題</div>
+  <div class="q-text"><span class="w">Constantly</span> <span class="w">comparing</span> our real lives to the "perfect" images we see on social media can make us feel _____, which often damages our <span class="w">self-esteem</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">inferior</span>&nbsp; (B) <span class="w">superior</span>&nbsp; (C) <span class="w">rewarding</span>&nbsp; (D) <span class="w">flexible</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 15 題</div>
+  <div class="q-text">Many developing <span class="w">nations</span> suffer from brain _____, which occurs when <span class="w">professionals</span>, such as <span class="w">scientists</span> and <span class="w">engineers</span>, <span class="w">emigrate</span> to wealthier countries to find better career <span class="w">opportunities</span> and higher <span class="w">salaries</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">punch</span>&nbsp; (B) <span class="w">rocket</span>&nbsp; (C) <span class="w">drain</span>&nbsp; (D) <span class="w">dislike</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 16 題</div>
+  <div class="q-text">In recent years, small coffee shops have _____ all over the city, <span class="w">transforming</span> quiet <span class="w">neighborhoods</span> into busy <span class="w">hubs</span> for youngsters.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">shoveled</span>&nbsp; (B) <span class="w">tugged</span>&nbsp; (C) <span class="w">fueled</span>&nbsp; (D) <span class="w">mushroomed</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 17 題</div>
+  <div class="q-text">Many international <span class="w">organizations</span> aim to <span class="w">eliminate</span> _____ by investing in quality education, believing that <span class="w">empowering</span> people with knowledge is the best way to end the cycle of financial struggle.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">poverty</span>&nbsp; (B) <span class="w">starvation</span>&nbsp; (C) <span class="w">champion</span>&nbsp; (D) <span class="w">budget</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 18 題</div>
+  <div class="q-text">The <span class="w">scientist</span>'s latest research _____ a shocking <span class="w">connection</span> between air <span class="w">pollution</span> and <span class="w">declining</span> mental health, proving that our <span class="w">environment</span> affects our minds more than we previously thought.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">conceals</span>&nbsp; (B) <span class="w">acquires</span>&nbsp; (C) <span class="w">baits</span>&nbsp; (D) <span class="w">reveals</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     三、文法選擇
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">三</span>
+  <span class="sec-title">文法選擇（題 19–26）</span>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 19 題</div>
+  <div class="q-text">The <span class="w">committee</span> members, each _____ had been given a specific task to complete, failed to meet the <span class="w">deadline</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">whom</span>&nbsp; (B) <span class="w">to whom</span>&nbsp; (C) <span class="w">of whom</span>&nbsp; (D) <span class="w">of them</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 20 題</div>
+  <div class="q-text">Is there any <span class="w">evidence</span> _____ the <span class="w">suspect</span> was at the scene of the <span class="w">crime</span> at the time of the murder?</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">which</span>&nbsp; (B) <span class="w">that</span>&nbsp; (C) <span class="w">from which</span>&nbsp; (D) <span class="w">where</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 21 題</div>
+  <div class="q-text">We should provide help to _____ needs it, <span class="w">regardless</span> of their background or past mistakes.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">whomever</span>&nbsp; (B) <span class="w">whoever</span>&nbsp; (C) <span class="w">no matter who</span>&nbsp; (D) <span class="w">anyone</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 22 題</div>
+  <div class="q-text">I've read all the books on the shelf, _____ written by the same Nobel <span class="w">laureate</span>.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">many of which</span>&nbsp; (B) <span class="w">the most of which</span>&nbsp; (C) <span class="w">and some of them</span>&nbsp; (D) <span class="w">half of them</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 23 題</div>
+  <div class="q-text">Fewer people _____ we had expected were present, _____ is very <span class="w">depressing</span> to the host.</div>
+  <div class="options">
+    <div class="opt">(A) than; that&nbsp; (B) as; that&nbsp; (C) than; which&nbsp; (D) as; and it</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 24 題</div>
+  <div class="q-text">The course will be <span class="w">attractive</span> to students interested in a wide range of subjects _____ it is taught by several <span class="w">faculty</span> from the different <span class="w">colleges</span> at the university.</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">in that</span>&nbsp; (B) which&nbsp; (C) <span class="w">the way that</span>&nbsp; (D) , which</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 25 題</div>
+  <div class="q-text">He provides a <span class="w">solution</span> to a problem _____ I <span class="w">suspect</span> _____ he himself believes there is no answer.</div>
+  <div class="options">
+    <div class="opt">(A) which; that&nbsp; (B) for which; that&nbsp; (C) to which; X&nbsp; (D) that; which</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">第 26 題</div>
+  <div class="q-text">This is the very car _____ speed he was <span class="w">bragging</span> about just before the <span class="w">accident</span> occurred.</div>
+  <div class="options">
+    <div class="opt">(A) of which&nbsp; (B) whose&nbsp; (C) that&nbsp; (D) of whose</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     四、克漏字 I (27-36)
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">四①</span>
+  <span class="sec-title">克漏字（題 27–36）Malala</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap"><span class="w">Malala</span> <span class="w">Yousafzai</span>'s story is well-known around the world. However, there was another youth who also <span class="w">encountered</span> similar situation. Her name was <span class="w">Rejoice</span>. For her, life without school was a reality. She had problems <span class="blank">(27)</span> education because her tiny <span class="w">Nigerian</span> village was <span class="blank">(28)</span> small <span class="blank">(28)</span> a school of its own. Therefore, she had to wait a few years until she was old enough to walk to the school in the next village. Sadly, when she was finally able to do so, financial problems <span class="w">posed</span> a major <span class="w">threat</span> <span class="blank">(29)</span> her school career.</div>
+  <div class="p-indent p-gap">Living under the rule of a <span class="w">government</span> <span class="blank">(30)</span> all its <span class="w">citizens</span> an education, she had no choice but to drop out of school and start working. Only in this way <span class="blank">(31)</span> her poor parents and share the <span class="w">burden</span> of supporting the family.</div>
+  <div class="p-indent p-gap"><span class="blank">(32)</span> she found a job moving river sand, it didn't improve the situation. She earned very little money. What's worse, she hurt her arms and back since she needed to carry bags <span class="blank">(33)</span> over ten <span class="w">kilograms</span>. Luckily, a young girl named Peace who worked for the <span class="w">Malala</span> Fund took notice of her struggles. The fund is a worldwide <span class="w">organization</span> which <span class="blank">(34)</span> equal education for all. Peace <span class="w">convinced</span> Rejoice that she had a right to education. She also <span class="w">urged</span> Rejoice <span class="blank">(35)</span> to school and <span class="w">arranged</span> a <span class="w">Malala</span> <span class="w">scholarship</span> for her.</div>
+  <div class="p-indent"><span class="blank">(36)</span> the money that she receives from the <span class="w">Malala</span> Fund, Rejoice has <span class="w">adopted</span> a plan for a brighter future and is studying to become her village's first doctor.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">題 27–36 選項</div>
+  <div class="options">
+    <div class="opt">27. (A) <span class="w">with accessing</span>&nbsp; (B) <span class="w">to access for</span>&nbsp; (C) <span class="w">accessing to</span>&nbsp; (D) <span class="w">so that she could access</span></div>
+    <div class="opt">28. (A) <span class="w">too; to have</span>&nbsp; (B) <span class="w">so; that it had</span>&nbsp; (C) <span class="w">so; as to have</span>&nbsp; (D) <span class="w">as; as</span></div>
+    <div class="opt">29. (A) on&nbsp; (B) for&nbsp; (C) to&nbsp; (D) from</div>
+    <div class="opt">30. (A) <span class="w">having failed to guarantee</span>&nbsp; (B) <span class="w">failed to guarantee</span>&nbsp; (C) <span class="w">failing to guarantee</span>&nbsp; (D) <span class="w">failed to have guaranteed</span></div>
+    <div class="opt">31. (A) <span class="w">to help</span>&nbsp; (B) <span class="w">could she help</span>&nbsp; (C) <span class="w">in which she could help</span>&nbsp; (D) <span class="w">that she could have helped</span></div>
+    <div class="opt">32. (A) <span class="w">Whereas</span>&nbsp; (B) <span class="w">Nonetheless</span>&nbsp; (C) <span class="w">Before</span>&nbsp; (D) So</div>
+    <div class="opt">33. (A) <span class="w">weighed</span>&nbsp; (B) <span class="w">weighing</span>&nbsp; (C) <span class="w">in weight</span>&nbsp; (D) <span class="w">that weigh</span></div>
+    <div class="opt">34. (A) <span class="w">made peace with</span>&nbsp; (B) <span class="w">oversees</span>&nbsp; (C) <span class="w">carried out</span>&nbsp; (D) <span class="w">call for</span></div>
+    <div class="opt">35. (A) <span class="w">returned</span>&nbsp; (B) <span class="w">to have returned</span>&nbsp; (C) <span class="w">to returning</span>&nbsp; (D) <span class="w">that she return</span></div>
+    <div class="opt">36. (A) <span class="w">As a result</span>&nbsp; (B) <span class="w">Despite</span>&nbsp; (C) <span class="w">Apart from</span>&nbsp; (D) <span class="w">On account of</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     四、克漏字 II (37-46)
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">四②</span>
+  <span class="sec-title">克漏字（題 37–46）Wonder Boy</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">The movie <em>Wonder Boy</em> mainly <span class="w">depicts</span> how Auggie, a boy with a <span class="w">deformed</span> face, <span class="w">accepts</span> who he is. Auggie <span class="blank">(37)</span> receive <span class="w">homeschooling</span>, but his parents <span class="w">insisted</span> that he <span class="blank">(38)</span> back to school since it was important for students to <span class="w">socialize</span> with others. However, the first few months at school were nothing but a <span class="blank">(39)</span> for Auggie. Some tried to avoid looking at him, <span class="blank">(40)</span> gave him a long cold stare, and <span class="blank">(40)</span> even laughed at his <span class="w">appearance</span> in public. Fortunately, he still has two friends, Jack and Summer.</div>
+  <div class="p-indent p-gap">On Halloween, Auggie might well put on a mask so that he did not have to worry about others' <span class="blank">(41)</span>. Nevertheless, since others could not tell who he was, he <span class="w">overheard</span> Jack tell Julian that he was asked to take care of Auggie <span class="blank">(42)</span> <span class="w">befriend</span> with him out of his own will. <span class="blank">(43)</span> sorrow and <span class="w">despair</span>, Auggie ran all the way home in tears.</div>
+  <div class="p-indent">After realizing that Auggie <span class="blank">(44)</span> what he said, Jack felt <span class="w">guilty</span> and decided to say sorry to him. <span class="blank">(45)</span>, he <span class="w">volunteered</span> to be on the same team with Auggie in group projects. Through <span class="w">cooperating</span> with him, he found that Auggie was not only <span class="blank">(46)</span> but also kind. Seeing Auggie's <span class="w">talent</span>, more and more classmates began to treat Auggie properly.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">題 37–46 選項</div>
+  <div class="options">
+    <div class="opt">37. (A) <span class="w">is used to</span>&nbsp; (B) <span class="w">was used to</span>&nbsp; (C) <span class="w">used to</span>&nbsp; (D) <span class="w">has used to</span></div>
+    <div class="opt">38. (A) went&nbsp; (B) going&nbsp; (C) had gone&nbsp; (D) go</div>
+    <div class="opt">39. (A) <span class="w">paradise</span>&nbsp; (B) <span class="w">sympathy</span>&nbsp; (C) <span class="w">harmony</span>&nbsp; (D) <span class="w">misery</span></div>
+    <div class="opt">40. (A) some; others&nbsp; (B) others; still others&nbsp; (C) others; all others&nbsp; (D) another; the others</div>
+    <div class="opt">41. (A) <span class="w">glances</span>&nbsp; (B) <span class="w">respect</span>&nbsp; (C) <span class="w">exaggeration</span>&nbsp; (D) <span class="w">courtesy</span></div>
+    <div class="opt">42. (A) <span class="w">as well as</span>&nbsp; (B) <span class="w">instead of</span>&nbsp; (C) <span class="w">rather than</span>&nbsp; (D) <span class="w">only to</span></div>
+    <div class="opt">43. (A) <span class="w">Overwhelming</span>&nbsp; (B) <span class="w">Overwhelm</span>&nbsp; (C) <span class="w">Being overwhelmed</span>&nbsp; (D) <span class="w">Overwhelmed by</span></div>
+    <div class="opt">44. (A) hear&nbsp; (B) hearing&nbsp; (C) had heard&nbsp; (D) being heard</div>
+    <div class="opt">45. (A) <span class="w">Similarly</span>&nbsp; (B) <span class="w">Moreover</span>&nbsp; (C) <span class="w">However</span>&nbsp; (D) <span class="w">Sadly</span></div>
+    <div class="opt">46. (A) <span class="w">pessimistic</span>&nbsp; (B) <span class="w">melancholy</span>&nbsp; (C) <span class="w">brilliant</span>&nbsp; (D) <span class="w">hesitant</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     四、克漏字 III (47-53)
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">四③</span>
+  <span class="sec-title">克漏字（題 47–53）仲夏夜之夢</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">In the city of Athens, a young woman named Hermia faced a terrible problem. Her heart <span class="w">belonged</span> to Lysander <span class="blank">(47)</span> a man she didn't love. According to <span class="w">Athenian</span> law, she had to <span class="w">obey</span> her father or face <span class="w">punishment</span>. But Hermia was brave, and her love was strong. Rather than <span class="blank">(48)</span>, she and Lysander secretly planned to <span class="w">flee</span> the city at night and hide in the forest.</div>
+  <div class="p-indent p-gap">Their plan didn't stay <span class="blank">(49)</span> for long. Helena, Hermia's friend, learned <span class="blank">(50)</span> their escape. Helena was <span class="w">hopelessly</span> in love with Demetrius, who had eyes only for Hermia. <span class="blank">(51)</span> his love, she <span class="w">revealed</span> the plan to him in the hope that he would be <span class="w">grateful</span>. However, Demetrius rushed into the forest right away, and Helena followed him.</div>
+  <div class="p-indent p-gap">But the forest was <span class="blank">(52)</span> peaceful. It was the home of Oberon and Titania, the king and queen of the <span class="w">fairies</span>, who were locked in a heated <span class="w">dispute</span>. Oberon planned a trick on Titania to <span class="w">embarrass</span> her, so he sent his <span class="w">mischievous</span> servant Puck to look for a magical flower to use on her. This flower would make a sleeping person fall in love with the first thing they saw upon waking up.</div>
+  <div class="p-indent">Meanwhile, a group of <span class="w">Athenian</span> workers entered the forest. Puck noticed one of them, a man called Bottom, and thought it would be fun to turn his head into <span class="blank">(53)</span> of a donkey. When Titania woke up under the <span class="w">spell</span>, the first thing she saw was Bottom with his donkey head—and she immediately fell in love! After Oberon felt <span class="w">satisfied</span>, he <span class="w">lifted</span> the spell from Titania, and she returned to normal.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">題 47–53 選項</div>
+  <div class="options">
+    <div class="opt">47. (A) <span class="w">, yet her father insisted that she be married with Demetrius,</span></div>
+    <div class="opt">&nbsp;&nbsp;&nbsp;&nbsp;(B) <span class="w">, however, her father insisted that she marry Demetrius,</span></div>
+    <div class="opt">&nbsp;&nbsp;&nbsp;&nbsp;(C) <span class="w">; however, her father insisted that she marry to Demetrius,</span></div>
+    <div class="opt">&nbsp;&nbsp;&nbsp;&nbsp;(D) <span class="w">, and yet her father insisted on her marrying Demetrius,</span></div>
+    <div class="opt">48. (A) <span class="w">being surrendered</span>&nbsp; (B) <span class="w">having surrendered</span>&nbsp; (C) <span class="w">surrendering</span>&nbsp; (D) <span class="w">to have surrendered</span></div>
+    <div class="opt">49. (A) <span class="w">in its hide</span>&nbsp; (B) <span class="w">hiding</span>&nbsp; (C) <span class="w">hidden from</span>&nbsp; (D) <span class="w">in hiding</span></div>
+    <div class="opt">50. (A) from&nbsp; (B) in&nbsp; (C) <span class="w">by heart</span>&nbsp; (D) of</div>
+    <div class="opt">51. (A) <span class="w">In desperate</span>&nbsp; (B) <span class="w">Be desperate for</span>&nbsp; (C) <span class="w">In desperate need of</span>&nbsp; (D) <span class="w">Having desperation in</span></div>
+    <div class="opt">52. (A) <span class="w">nothing but</span>&nbsp; (B) <span class="w">anything but</span>&nbsp; (C) <span class="w">everything but</span>&nbsp; (D) <span class="w">nothing more than</span></div>
+    <div class="opt">53. (A) that&nbsp; (B) one&nbsp; (C) the other&nbsp; (D) another</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     五、文意選填
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">五</span>
+  <span class="sec-title">文意選填（題 54–60）Clickbait</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">Almost every Internet user has <span class="w">encountered</span> the <span class="w">frustration</span> of falling for <span class="w">clickbait</span>. This happens when a <span class="w">sensational</span> <span class="w">headline</span>—such as "Film Star's HATE-FILLED RANT"—grabs your attention, only to lead you to a page <span class="w">filled</span> with <span class="w">advertisements</span> and a story that <span class="blank">(54)</span> <span class="w">relates</span> to the original title. The <span class="w">fundamental</span> purpose of clickbait is to <span class="w">lure</span> users into clicking links by <span class="w">triggering</span> specific emotions and <span class="blank">(55)</span> urges. Websites profit from the companies whose ads <span class="blank">(56)</span> their pages, meaning the more clicks they can generate, the more money they ultimately earn.</div>
+  <div class="p-indent p-gap">To maximize <span class="w">engagement</span>, clickbait creators <span class="w">employ</span> several clever strategies. One common method involves using <span class="blank">(57)</span> <span class="w">headlines</span> about famous people to target our natural <span class="w">curiosity</span> for gossip. Another <span class="w">tactic</span> is to craft <span class="w">headlines</span> that <span class="w">provoke</span> fear, making readers feel an urgent need to click to remain safe or <span class="blank">(58)</span>. A third approach, known as "rage-bait," uses <span class="w">headlines</span> specifically designed to spark anger.</div>
+  <div class="p-indent p-gap">Clickbait is more than just an <span class="w">annoyance</span>; it has negative effects on the Internet and society as a whole. As <span class="w">misleading</span> <span class="w">headlines</span> and video titles become more <span class="w">prevalent</span>, users become increasingly <span class="blank">(59)</span> of online information, which can eventually lead them to doubt even <span class="w">truthful</span>, high-quality content.</div>
+  <div class="p-indent">By recognizing these signs, we can skip the clickbait and support content that genuinely <span class="blank">(60)</span> our time, potentially killing off clickbait for good.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">選項</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">deserves</span>&nbsp; (B) <span class="w">full</span>&nbsp; (C) <span class="w">populate</span>&nbsp; (D) <span class="w">psychological</span>&nbsp; (E) <span class="w">exaggerated</span></div>
+    <div class="opt">(AB) <span class="w">barely</span>&nbsp; (AC) <span class="w">requires</span>&nbsp; (AD) <span class="w">informed</span>&nbsp; (AE) <span class="w">browse</span>&nbsp; (BC) <span class="w">skeptical</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     六、篇章結構
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">六</span>
+  <span class="sec-title">篇章結構（題 61–64）Spoiler</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">The phrase "<span class="w">spoiler</span> alert" typically arouses a <span class="w">binary</span> response: eager attention or immediate <span class="w">avoidance</span>. Spoiling a <span class="w">narrative</span> can be defined as the <span class="w">revelation</span> of <span class="w">pivotal</span> plot points to those who have not yet <span class="w">concluded</span> the story. <span class="blank">(61)</span> Some research has shown that <span class="w">participants</span> who were intentionally spoiled reported higher levels of <span class="w">enjoyment</span>, as knowing the <span class="w">conclusion</span> allowed them to <span class="w">appreciate</span> the development of the plot without the <span class="w">psychological</span> <span class="w">fatigue</span> of <span class="w">uncertainty</span>.</div>
+  <div class="p-indent p-gap"><span class="w">Conversely</span>, many audiences skillfully avoid spoilers to preserve the story's emotional <span class="w">integrity</span>. For these individuals, the <span class="w">suspense</span> <span class="w">inherent</span> in a fictional work is essential. In a 2014 study, a participant admitted that being "spoiled-free" creates temporary <span class="w">discomfort</span>. <span class="blank">(62)</span></div>
+  <div class="p-indent p-gap"><span class="blank">(63)</span> In Japan, <span class="w">authorities</span> have arrested individuals for operating spoiler websites, arguing that revealing key details decreases <span class="w">viewership</span> and has a negative effect on creators' ability to profit from their <span class="w">intellectual</span> <span class="w">property</span>.</div>
+  <div class="p-indent">To conclude, whether one <span class="w">embraces</span> or rejects spoilers depends on <span class="w">personality</span>. <span class="blank">(64)</span> To <span class="w">safeguard</span> friendships, it remains wise to check whether your peers also finish it before discussing a story's <span class="w">climax</span>.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">選項</div>
+  <div class="options">
+    <div class="opt">(A) <span class="w">Beyond personal preference, spoilers can lead to severe legal trouble.</span></div>
+    <div class="opt">(B) <span class="w">Nevertheless, the eventual resolution of the story provides a rewarding emotional rush that justifies the initial doubt.</span></div>
+    <div class="opt">(C) <span class="w">It is only human nature to be curious about how the story will unfold.</span></div>
+    <div class="opt">(D) <span class="w">While many assume this ruins the experience, some studies suggest otherwise.</span></div>
+    <div class="opt">(E) <span class="w">To make it clear, it can be seen as a choice between plot comprehension and emotional surprise.</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     七、閱讀測驗
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">七</span>
+  <span class="sec-title">閱讀測驗（題 65–68）Heart Disease</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">While often associated with older generations, <span class="w">cardiovascular</span> disease (CVD) is a global health concern that begins with <span class="w">lifestyle</span> choices made as early as <span class="w">adolescence</span>. To understand heart disease, one must first understand the heart's primary function: acting as a high-pressure pump that <span class="w">circulates</span> oxygen-rich blood through a network of <span class="w">arteries</span>.</div>
+  <div class="p-indent p-gap">The most common form of heart disease is <span class="w">Coronary</span> <span class="w">Artery</span> Disease (CAD). This condition is primarily driven by a process called <span class="w">atherosclerosis</span>. Over time, the inner walls of the arteries can become damaged due to high blood pressure, smoking, or high <span class="w">cholesterol</span>. When this damage occurs, the body attempts to repair it, leading to the <span class="w">accumulation</span> of "<span class="w">plaque</span>"—a sticky mixture of fat, cholesterol, and <span class="w">calcium</span>.</div>
+  <div class="p-indent p-gap">As plaque builds up, the arteries narrow and harden, a process known as <span class="w">stenosis</span>. This <span class="w">restricts</span> the flow of blood to the heart muscle. If a piece of plaque <span class="w">ruptures</span>, it can trigger a blood clot that completely blocks the artery. Without oxygen, the heart muscle begins to die, resulting in a <span class="w">myocardial</span> <span class="w">infarction</span>, or a heart attack.</div>
+  <div class="p-indent p-gap">Scientific research <span class="w">distinguishes</span> between risk factors that we can change and those we cannot. <span class="w">Non-modifiable</span> factors are <span class="w">inherent</span> traits such as genetics, advancing age, and biological sex. In contrast, <span class="w">modifiable</span> factors represent lifestyle choices within a person's control, including dietary habits, physical activity levels, and <span class="w">tobacco</span> use.</div>
+  <div class="p-indent">In Taiwan, health experts have observed that the shift toward "<span class="w">Westernized</span>" diets—characterized by high intake of processed sugars and <span class="w">saturated</span> fats—is a major contributor to rising <span class="w">obesity</span> and <span class="w">hypertension</span> rates among the youth. Fortunately, the progression of <span class="w">atherosclerosis</span> can often be slowed or prevented by adopting a fiber-rich diet, engaging in regular <span class="w">aerobic</span> exercise, and avoiding <span class="w">nicotine</span>, which is known to <span class="w">constrict</span> blood vessels and <span class="w">accelerate</span> arterial damage.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-num">題 65–68</div>
+  <div class="options">
+    <div class="opt">65. (A) <span class="w">high pressure</span>&nbsp; (B) <span class="w">complete blockage / ruptured plaque</span>&nbsp; (C) <span class="w">genetic predisposition</span>&nbsp; (D) <span class="w">natural hardening</span></div>
+    <div class="opt">66. (A) <span class="w">rupture of fatty deposits</span>&nbsp; (B) <span class="w">heart repairing tissue</span>&nbsp; (C) <span class="w">narrowing and hardening of arteries</span>&nbsp; (D) <span class="w">calcium and cholesterol in liver</span></div>
+    <div class="opt">67. (A) <span class="w">Modifiable less significant</span>&nbsp; (B) <span class="w">non-modifiable biological traits</span>&nbsp; (C) <span class="w">non-modifiable action</span>&nbsp; (D) <span class="w">arterial damage reduced by daily changes</span></div>
+    <div class="opt">68. (A) <span class="w">environmental and dietary changes impacting youth</span>&nbsp; (B) <span class="w">heart disease decreasing</span>&nbsp; (C) <span class="w">genetic factors primary reason</span>&nbsp; (D) <span class="w">excessive exercise harmful</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     八、混合題 (69-73)
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">八</span>
+  <span class="sec-title">混合題（題 69–73）Oral Health</span>
+</div>
+
+<div class="passage">
+  <div class="passage-title">閱讀文章</div>
+  <div class="p-indent p-gap">For decades, many people viewed oral health as a separate <span class="w">entity</span> from general medicine. However, modern science has increasingly shown that the mouth is the primary <span class="w">gateway</span> to the rest of the body, and its condition often serves as a window into an individual's overall health. From <span class="w">cardiovascular</span> issues to <span class="w">systemic</span> <span class="w">inflammation</span>, the biological links between our gums and our organs are far more profound than previously understood.</div>
+  <div class="p-indent p-gap">In a healthy mouth, thousands of bacteria <span class="w">coexist</span> in a <span class="w">delicate</span> balance. However, when oral <span class="w">hygiene</span> is <span class="w">neglected</span>, these bacteria form a sticky, complex structure known as <span class="w">biofilm</span> (plaque). If not removed through regular brushing and <span class="w">flossing</span>, this biofilm triggers an <span class="w">immune</span> response. This leads to <span class="w">gingivitis</span>—the first stage of gum disease—characterized by redness, swelling, and bleeding.</div>
+  <div class="p-indent p-gap">The real danger arises when gingivitis progresses into <span class="w">periodontitis</span>. In this stage, the infection breaks down the bone and <span class="w">connective</span> tissue that hold teeth in place. More alarmingly, the chronic <span class="w">inflammation</span> in the gums allows oral bacteria to enter the <span class="w">bloodstream</span>. Once circulating, these <span class="w">pathogens</span> can contribute to the formation of arterial plaques, significantly increasing the risk of cardiovascular disease and stroke.</div>
+  <div class="p-indent p-gap">The relationship between oral health and <span class="w">diabetes</span> is particularly noteworthy as a "two-way street." People with diabetes are more <span class="w">susceptible</span> to severe gum disease because they are generally more <span class="w">prone</span> to infections. <span class="w">Conversely</span>, severe gum disease can make it more difficult for patients to control their blood sugar levels. <span class="w">Inflammation</span> in the mouth seems to <span class="w">impair</span> the body's ability to <span class="w">utilize</span> <span class="w">insulin</span>, creating a dangerous cycle that affects the patient's entire <span class="w">metabolic</span> system.</div>
+  <div class="p-indent p-gap">Another overlooked aspect of oral health is the critical role of <span class="w">saliva</span>. Saliva is not just water; it is a complex fluid containing <span class="w">enzymes</span>, proteins, and minerals like calcium and <span class="w">phosphate</span>. It acts as a primary defense <span class="w">mechanism</span> by <span class="w">neutralizing</span> acids produced by bacteria and physically washing away food particles. Conditions that cause "dry mouth" (<span class="w">xerostomia</span>), often a side effect of certain medications, can lead to a rapid increase in tooth decay because this natural protective shield is missing.</div>
+  <div class="p-indent"><span class="w">Ultimately</span>, the myth that "it's just a cavity" or "bleeding gums are normal" is dangerous. Maintaining oral <span class="w">hygiene</span> is not merely about a bright smile; it is a <span class="w">fundamental</span> pillar of <span class="w">preventative</span> medicine. By understanding that the mouth is an <span class="w">integral</span> part of the body's <span class="w">ecosystem</span>, we can make more <span class="w">informed</span> choices that protect our long-term <span class="w">vitality</span>.</div>
+</div>
+
+<!-- ══════════════════════════════════
+     九、文意字彙
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">九</span>
+  <span class="sec-title">文意字彙（題 74–81）</span>
+</div>
+
+<div class="q-block">
+  <div class="q-text">74. The government <span class="w">f___e</span> factories to dump their waste in the sea in order to <span class="w">clean up</span> the coast.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">75. Ever since the <span class="w">e___t</span> of the children's home, it has provided food and protection for over eighty <span class="w">orphans</span>.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">76. The <span class="w">c___s</span> rain has caused floods in many parts of the country.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">77. Alice came up with several <span class="w">p___e</span> arguments and <span class="w">succeeded</span> in getting everybody to agree with her.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">78. The drunk driver publicly <span class="w">a___e</span> to family members of the victim for his wrongdoings, begging for their <span class="w">forgiveness</span>.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">79. The <span class="w">jeweler</span> used a special <span class="w">magnifying</span> glass to confirm the stone was a <span class="w">g___e</span> ruby rather than a clever <span class="w">imitation</span>.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">80. The chef <span class="w">p___ely</span> kept the recipe simple, believing that high-quality <span class="w">ingredients</span> shouldn't be hidden by too many <span class="w">spices</span>.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">81. The pilot warned the passengers to fasten their <span class="w">seatbelts</span> as the airplane began to <span class="w">a___h</span> a large bank of <span class="w">storm clouds</span>.</div>
+</div>
+
+<!-- ══════════════════════════════════
+     十、引導式翻譯
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">十</span>
+  <span class="sec-title">引導式翻譯（題 82–83）</span>
+</div>
+
+<div class="q-block">
+  <div class="q-text">82. 許多愛心的公民公開發表反對興建核電廠。<br>Many <span class="blank">①</span> have <span class="blank">②</span> against the building of <span class="w">nuclear</span> <span class="w">power plants</span>.</div>
+</div>
+<div class="q-block">
+  <div class="q-text">83. 敵軍部隊用飛彈炸毀這座橋樑好讓我們的軍隊無法前進。<br>Enemy forces <span class="blank">①</span> the bridge with a <span class="w">missile</span> <span class="blank">②</span> our army could not <span class="w">advance</span>.</div>
+</div>
+
+<!-- ══════════════════════════════════
+     十一、整句翻譯
+══════════════════════════════════ -->
+<div class="section-header">
+  <span class="sec-badge">十一</span>
+  <span class="sec-title">整句式翻譯（題 84–85）</span>
+</div>
+
+<div class="q-block">
+  <div class="q-text">84. 溫室氣體（主要由 <span class="w">CO₂ carbon dioxide</span> 和 <span class="w">methane</span> 組成）是導致全球暖化的直接原因。（括號部分請用<span class="w">分詞片語</span>）</div>
+</div>
+<div class="q-block">
+  <div class="q-text">85. Benson 目擊一名年長女性雙眼緊閉倒臥在地。（「雙眼緊閉」請用 <span class="w">with+O+OC</span>）</div>
+</div>
+
+</div><!-- end exam-wrap -->
+
+<!-- FLOATING BUTTON -->
+<div class="float-panel" onclick="openModal()" id="floatBtn">
+  <div class="float-icon">📝</div>
+  <div class="float-count" id="floatCount">0 個</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">📋 我的不熟單字</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-empty">還沒有標記任何單字<br>點考卷中的單字開始標記！</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const marked = new Set();
+const TOTAL_WORDS = 280; // approximate
+
+function updateCounter(){
+  const n = marked.size;
+  document.getElementById('topCount').textContent = n;
+  document.getElementById('floatCount').textContent = n + ' 個';
+  const pct = Math.min(100, Math.round(n / TOTAL_WORDS * 100));
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+document.querySelectorAll('.w').forEach(el => {
+  el.addEventListener('click', function(e){
+    e.stopPropagation();
+    const word = this.textContent.trim();
+    if(this.classList.contains('marked')){
+      this.classList.remove('marked');
+      marked.delete(word);
+      showToast('取消標記：' + word);
+    } else {
+      this.classList.add('marked');
+      marked.add(word);
+      showToast('已標記：' + word);
+    }
+    // sync all same words
+    document.querySelectorAll('.w').forEach(other => {
+      if(other.textContent.trim() === word){
+        if(marked.has(word)) other.classList.add('marked');
+        else other.classList.remove('marked');
+      }
+    });
+    updateCounter();
+  });
+});
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+function openModal(){
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.add('open');
+  renderModal();
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function handleOverlayClick(e){
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function renderModal(){
+  const body = document.getElementById('modalBody');
+  if(marked.size === 0){
+    body.innerHTML = '<div class="modal-empty">還沒有標記任何單字<br>點考卷中的單字開始標記！</div>';
+    return;
+  }
+  const words = Array.from(marked).sort();
+  const now = new Date();
+  const dateStr = now.getFullYear() + '/' + (now.getMonth()+1) + '/' + now.getDate();
+  const copyText = '【武陵高中 ' + dateStr + '】\n不熟悉單字（' + words.length + ' 個）：\n' + words.join('、') + '\n\n#英文單字標記 #林威老師';
+
+  let chips = words.map(w =>
+    `<span class="chip" onclick="removeWord('${w.replace(/'/g,"\\'")}')"><span>${w}</span><span class="chip-x">✕</span></span>`
+  ).join('');
+
+  body.innerHTML = `
+    <div class="modal-stats">
+      <div class="stat-pill"><span>${words.length}</span>已標記單字</div>
+      <div class="stat-pill"><span>${Math.round(words.length/TOTAL_WORDS*100)}%</span>佔全卷比例</div>
+    </div>
+    <div class="word-chips">${chips}</div>
+    <div class="copy-section">
+      <div class="copy-label">📤 傳送給林威老師的內容</div>
+      <div class="copy-preview" id="copyPreview">${copyText.replace(/\n/g,'<br>')}</div>
+    </div>
+    <button class="btn-modal-copy" onclick="copyToClipboard()">📋 複製文字</button>
+    <button class="btn-line" onclick="shareToLine()">💬 直接傳送到 LINE</button>
+    <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:8px;">點選單字 ✕ 可從清單移除</div>
+  `;
+}
+
+function removeWord(word){
+  marked.delete(word);
+  document.querySelectorAll('.w').forEach(el => {
+    if(el.textContent.trim() === word) el.classList.remove('marked');
+  });
+  updateCounter();
+  renderModal();
+}
+
+function copyToClipboard(){
+  const words = Array.from(marked).sort();
+  const now = new Date();
+  const dateStr = now.getFullYear() + '/' + (now.getMonth()+1) + '/' + now.getDate();
+  const text = '【武陵高中 ' + dateStr + '】\n不熟悉單字（' + words.length + ' 個）：\n' + words.join('、') + '\n\n#英文單字標記 #林威老師';
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => showToast('✅ 已複製！可貼到 LINE'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;';
+    document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('✅ 已複製！可貼到 LINE');
+  }
+}
+
+function shareToLine(){
+  const words = Array.from(marked).sort();
+  const now = new Date();
+  const dateStr = now.getFullYear() + '/' + (now.getMonth()+1) + '/' + now.getDate();
+  const text = '【武陵高中 ' + dateStr + '】不熟悉單字（' + words.length + ' 個）：' + words.join('、') + ' #英文單字標記 #林威老師';
+  const encoded = encodeURIComponent(text);
+  window.open('https://line.me/R/share?text=' + encoded, '_blank');
+}
+
+function confirmClear(){
+  if(marked.size === 0){ showToast('目前沒有標記的單字'); return; }
+  if(confirm('確定要清除所有 ' + marked.size + ' 個標記嗎？')){
+    marked.clear();
+    document.querySelectorAll('.w.marked').forEach(el => el.classList.remove('marked'));
+    updateCounter();
+    showToast('已清除所有標記');
+  }
+}
+</script>
+</body>
+</html>
