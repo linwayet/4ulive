@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 · 英文學習日誌</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FDF6ED;
+  --warm1: #F5E6CC;
+  --warm2: #EDCFA0;
+  --amber: #D4913A;
+  --amber-dark: #A8692A;
+  --rust: #C0522A;
+  --rust-light: #F0E0D6;
+  --sage: #7A9E7E;
+  --sage-light: #EAF2EA;
+  --text-main: #3A2A1A;
+  --text-sub: #7A5C3A;
+  --text-mute: #B09070;
+  --card-bg: #FFFAF3;
+  --border: #E8D5B7;
+  --shadow: rgba(180,120,60,0.10);
+  --green-tag: #4A7C59;
+  --green-bg: #E8F3EC;
+  --red-tag: #A83222;
+  --red-bg: #F9EAE6;
+  --blue-tag: #2A5F8A;
+  --blue-bg: #E6EFF7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--cream);
+  color: var(--text-main);
+  font-family: 'Nunito', 'Noto Serif TC', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 60px 0;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #C0522A 0%, #D4913A 60%, #E8B96A 100%);
+  padding: 28px 20px 22px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+}
+.header-day { font-size: 12px; letter-spacing: 2px; opacity: 0.85; text-transform: uppercase; }
+.header-title { font-size: 26px; font-weight: 800; margin: 4px 0 2px; }
+.header-sub { font-size: 13px; opacity: 0.80; }
+.header-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.header-tag {
+  background: rgba(255,255,255,0.22);
+  border-radius: 20px;
+  font-size: 11px;
+  padding: 3px 10px;
+  letter-spacing: 0.5px;
+}
+
+/* ── SECTION TITLES ── */
+.sec-wrap { padding: 0 14px; margin-top: 22px; }
+.sec-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--amber-dark);
+  margin-bottom: 12px;
+}
+.sec-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--warm2), transparent);
+}
+.sec-num {
+  width: 22px; height: 22px;
+  background: var(--amber);
+  color: #fff; border-radius: 50%;
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── SCORE DASHBOARD ── */
+.score-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-bottom: 10px;
+}
+.score-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.score-num { font-size: 22px; font-weight: 800; }
+.score-lbl { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+.score-good { color: var(--sage); }
+.score-warn { color: var(--amber); }
+.score-bad  { color: var(--rust); }
+
+.analysis-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.analysis-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.analysis-row:last-child { margin-bottom: 0; }
+.analysis-bar-wrap { flex: 1; background: var(--warm1); border-radius: 6px; height: 14px; overflow: hidden; }
+.analysis-bar { height: 100%; border-radius: 6px; }
+.analysis-name { font-size: 12px; color: var(--text-sub); width: 72px; flex-shrink: 0; text-align: right; }
+.analysis-val { font-size: 12px; font-weight: 700; width: 30px; flex-shrink: 0; }
+
+.weakness-box {
+  background: var(--red-bg);
+  border-left: 4px solid var(--rust);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.weakness-title { font-size: 13px; font-weight: 700; color: var(--red-tag); }
+.weakness-body { font-size: 12px; color: var(--text-main); margin-top: 3px; line-height: 1.6; }
+.strength-box {
+  background: var(--green-bg);
+  border-left: 4px solid var(--sage);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.strength-title { font-size: 13px; font-weight: 700; color: var(--green-tag); }
+.strength-body { font-size: 12px; color: var(--text-main); margin-top: 3px; line-height: 1.6; }
+
+/* ── VOCABULARY CARDS ── */
+.vocab-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.vocab-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.vocab-word { font-size: 22px; font-weight: 800; color: var(--rust); letter-spacing: 0.5px; }
+.vocab-phonetic { font-size: 12px; color: var(--text-mute); margin-top: 2px; }
+.vocab-pos-badge {
+  font-size: 11px; padding: 3px 9px;
+  border-radius: 20px; font-weight: 700;
+  flex-shrink: 0; margin-top: 4px;
+}
+.pos-n  { background: #F0E8D8; color: #7A4A10; }
+.pos-v  { background: #E8F0E8; color: #2A6A2A; }
+.pos-adj{ background: #E8EEF8; color: #1A3A7A; }
+.pos-adv{ background: #F0E8F0; color: #5A1A7A; }
+.pos-vt { background: #E8F4EC; color: #1A5A3A; }
+
+.vocab-meaning { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+.vocab-meaning span { font-size: 13px; font-weight: 400; color: var(--text-sub); }
+
+.vocab-root {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #FFF4E0; border: 1px solid #E8C97A;
+  border-radius: 8px; padding: 4px 9px;
+  font-size: 12px; color: #7A5010;
+  margin-bottom: 8px;
+}
+.vocab-root-icon { font-size: 13px; }
+
+.deriv-section { margin-bottom: 10px; }
+.deriv-label { font-size: 11px; font-weight: 700; color: var(--amber-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.deriv-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.deriv-chip {
+  background: var(--warm1);
+  border: 1px solid var(--warm2);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--text-main);
+}
+.deriv-chip strong { color: var(--rust); }
+.deriv-chip em { color: var(--text-sub); font-style: normal; font-size: 11px; }
+
+.ex-section { margin-top: 8px; }
+.ex-label { font-size: 11px; font-weight: 700; color: var(--text-mute); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.ex-item { background: var(--warm1); border-radius: 10px; padding: 9px 11px; margin-bottom: 6px; }
+.ex-en { font-size: 13px; color: var(--text-main); line-height: 1.6; }
+.ex-en strong { color: var(--rust); font-weight: 700; }
+.ex-zh { font-size: 12px; color: var(--text-sub); margin-top: 3px; line-height: 1.5; }
+
+.vocab-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.vtag { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.vtag-new { background: var(--red-bg); color: var(--red-tag); }
+.vtag-familiar { background: var(--green-bg); color: var(--green-tag); }
+.vtag-topic { background: var(--blue-bg); color: var(--blue-tag); }
+
+/* ── GRAMMAR SECTION ── */
+.grammar-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 14px;
+  margin-bottom: 12px;
+}
+.grammar-title { font-size: 15px; font-weight: 800; color: var(--rust); margin-bottom: 4px; }
+.grammar-subtitle { font-size: 12px; color: var(--text-sub); margin-bottom: 10px; }
+.grammar-rule {
+  background: #FFF8EE;
+  border: 1px solid var(--warm2);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.grammar-rule strong { color: var(--rust); }
+.grammar-rule code {
+  background: var(--warm2);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--amber-dark);
+}
+.grammar-ex { background: var(--warm1); border-radius: 10px; padding: 9px 11px; margin-bottom: 6px; }
+.grammar-ex .en { font-size: 13px; line-height: 1.6; }
+.grammar-ex .en strong { color: var(--rust); }
+.grammar-ex .zh { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+
+/* ── READING ── */
+.reading-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 14px;
+  margin-bottom: 12px;
+}
+.reading-title { font-size: 16px; font-weight: 800; color: var(--rust); margin-bottom: 4px; }
+.reading-meta { font-size: 11px; color: var(--text-mute); margin-bottom: 12px; }
+.reading-body { font-size: 14px; line-height: 1.9; color: var(--text-main); }
+.reading-body strong { color: var(--rust); font-weight: 700; }
+.reading-body p { margin-bottom: 10px; }
+
+/* ── QUIZ / DETAILS ── */
+.quiz-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.quiz-q { font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; line-height: 1.6; }
+.quiz-q strong { color: var(--rust); }
+.quiz-options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.quiz-opt {
+  background: var(--warm1);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text-main);
+  cursor: default;
+}
+
+details.ans-block { margin-top: 2px; }
+details.ans-block summary {
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--rust) 100%);
+  color: #fff;
+  border-radius: 9px;
+  padding: 9px 14px;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+details.ans-block summary::-webkit-details-marker { display: none; }
+details.ans-block summary .arrow {
+  display: inline-block;
+  transition: transform 0.25s;
+  font-size: 15px;
+}
+details.ans-block[open] summary .arrow { transform: rotate(180deg); }
+.ans-content {
+  background: #FFFAF3;
+  border: 1px solid var(--warm2);
+  border-radius: 0 0 10px 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text-main);
+}
+.ans-correct { color: var(--sage); font-weight: 700; font-size: 14px; }
+.ans-explain { margin-top: 6px; }
+.ans-explain strong { color: var(--rust); }
+
+/* ── DIVIDER ── */
+.wave-divider {
+  text-align: center; padding: 8px 0; color: var(--warm2);
+  font-size: 18px; letter-spacing: 4px; margin: 4px 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-day">武陵高中 · 114 學年 · 高一英文</div>
+  <div class="header-title">📖 Day 1 學習日誌</div>
+  <div class="header-sub">主題：社會 · 媒體 · 健康</div>
+  <div class="header-tags">
+    <span class="header-tag">🗓 第一天</span>
+    <span class="header-tag">📝 10 單字</span>
+    <span class="header-tag">📐 3 文法點</span>
+    <span class="header-tag">📖 閱讀練習</span>
+  </div>
+</div>
+
+<!-- ═══ PART 0: 考卷分析 ═══ -->
+<div class="sec-wrap">
+  <div class="sec-label"><span class="sec-num">0</span>考卷成績分析</div>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-num score-good">9/10</div>
+      <div class="score-lbl">字彙選擇</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num score-warn">5/8</div>
+      <div class="score-lbl">文法選擇</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num score-warn">7/10</div>
+      <div class="score-lbl">克漏字①</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num score-warn">7/10</div>
+      <div class="score-lbl">克漏字②</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num score-bad">4/7</div>
+      <div class="score-lbl">克漏字③</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num score-good">7/7</div>
+      <div class="score-lbl">文意選填</div>
+    </div>
+  </div>
+
+  <div class="analysis-card">
+    <div class="analysis-row">
+      <div class="analysis-name">文意選填</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:100%;background:var(--sage);"></div></div>
+      <div class="analysis-val score-good">100%</div>
+    </div>
+    <div class="analysis-row">
+      <div class="analysis-name">篇章結構</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:100%;background:var(--sage);"></div></div>
+      <div class="analysis-val score-good">100%</div>
+    </div>
+    <div class="analysis-row">
+      <div class="analysis-name">字彙選擇</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:90%;background:#7AB87A;"></div></div>
+      <div class="analysis-val score-good">90%</div>
+    </div>
+    <div class="analysis-row">
+      <div class="analysis-name">閱讀測驗</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:75%;background:var(--amber);"></div></div>
+      <div class="analysis-val score-warn">75%</div>
+    </div>
+    <div class="analysis-row">
+      <div class="analysis-name">文法選擇</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:62%;background:#D4913A;"></div></div>
+      <div class="analysis-val score-warn">62%</div>
+    </div>
+    <div class="analysis-row">
+      <div class="analysis-name">克漏字③</div>
+      <div class="analysis-bar-wrap"><div class="analysis-bar" style="width:57%;background:var(--rust);"></div></div>
+      <div class="analysis-val score-bad">57%</div>
+    </div>
+  </div>
+
+  <div class="strength-box">
+    <div class="strength-title">✅ 強項：語感與閱讀理解</div>
+    <div class="strength-body">文意選填和篇章結構雙雙全對，代表你的語境判斷能力很強，閱讀節奏掌握得好，詞彙量也相當充足。這是你最大的競爭優勢！</div>
+  </div>
+
+  <div class="weakness-box">
+    <div class="weakness-title">❌ 最需改進：文法句構</div>
+    <div class="weakness-body">錯誤高度集中在三類：<br>
+    ① <strong>關係代名詞進階用法</strong>（同位語子句、介係詞+關代、插入語）<br>
+    ② <strong>倒裝句</strong>（Only + 介詞片語置首）<br>
+    ③ <strong>固定介係詞搭配</strong>（pose a threat <em>to</em>、on account of 等）
+    </div>
+  </div>
+
+  <div class="weakness-box" style="border-left-color:var(--amber);background:#FFF8EE;">
+    <div class="weakness-title" style="color:var(--amber-dark);">⚡ 最容易短期進步的題型</div>
+    <div class="weakness-body">介係詞搭配（記熟 15 個高頻片語就能立即得分）、倒裝句句型（only/not until 開頭）、動詞搭配（urge/insist/suggest 後接形式）</div>
+  </div>
+</div>
+
+<!-- ═══ PART 1: VOCABULARY ═══ -->
+<div class="sec-wrap">
+  <div class="sec-label"><span class="sec-num">1</span>今日單字 · 10 Words</div>
+  <div style="font-size:12px;color:var(--text-sub);margin-bottom:12px;padding:8px 10px;background:var(--warm1);border-radius:10px;">
+    🔴 <strong>需加強</strong>（考卷出現失誤）&nbsp;&nbsp; 🟢 <strong>同等級鞏固</strong>（熟悉但需深化）<br>
+    主題：<em>社會現象 · 媒體影響 · 健康</em>
+  </div>
+
+  <!-- ─── Word 1: inferior ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">社會心理</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">inferior</div>
+        <div class="vocab-phonetic">/ɪnˈfɪəriər/</div>
+      </div>
+      <span class="vocab-pos-badge pos-adj">adj.</span>
+    </div>
+    <div class="vocab-meaning">低劣的；自卑的 <span>（← 考卷 Q14 正解）</span></div>
+    <div class="vocab-root">
+      <span class="vocab-root-icon">🌱</span>
+      字根 <strong>infer-</strong>（低下）+ <strong>-ior</strong>（比較級後綴）
+    </div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>inferiority</strong> <em>n. 低劣；自卑感</em></div>
+        <div class="deriv-chip"><strong>inferiority complex</strong> <em>n. 自卑情結</em></div>
+        <div class="deriv-chip"><strong>superior</strong> <em>adj. 優秀的；上司</em></div>
+        <div class="deriv-chip"><strong>superiority</strong> <em>n. 優越感</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Scrolling through social media can make people feel <strong>inferior</strong> to others.</div>
+        <div class="ex-zh">滑社群媒體可能讓人覺得自己不如別人。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">She developed a deep sense of <strong>inferiority</strong> after years of being compared to her sister.</div>
+        <div class="ex-zh">多年來被拿來和姊姊比較，她深深產生了自卑感。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">No product is <strong>inferior</strong> simply because it costs less—quality varies independently of price.</div>
+        <div class="ex-zh">沒有哪個產品單純因為便宜就是劣質品——品質與價格無必然關係。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 2: reveal ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">媒體科技</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">reveal</div>
+        <div class="vocab-phonetic">/rɪˈviːl/</div>
+      </div>
+      <span class="vocab-pos-badge pos-vt">v.</span>
+    </div>
+    <div class="vocab-meaning">揭露；透露</div>
+    <div class="vocab-root">
+      <span class="vocab-root-icon">🌱</span>
+      字首 <strong>re-</strong>（反）+ 字根 <strong>vel-</strong>（遮蓋）→ 揭開遮蓋
+    </div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>revelation</strong> <em>n. 揭露；啟示</em></div>
+        <div class="deriv-chip"><strong>revealing</strong> <em>adj. 揭示性的</em></div>
+        <div class="deriv-chip"><strong>concealment</strong> <em>n. 隱瞞（反義）</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">The scientist's latest research <strong>reveals</strong> a shocking connection between air pollution and mental health.</div>
+        <div class="ex-zh">這位科學家最新的研究揭露了空氣污染與心理健康之間令人震驚的關聯。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The documentary made a <strong>revealing</strong> comparison between fast food consumption and rising obesity rates.</div>
+        <div class="ex-zh">這部紀錄片對速食攝取量與肥胖率上升做了一個發人深省的比較。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Her expression <strong>revealed</strong> more than her words ever could.</div>
+        <div class="ex-zh">她的表情所透露的，遠比她說的話還多。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 3: poverty ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">社會議題</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">poverty</div>
+        <div class="vocab-phonetic">/ˈpɒvəti/</div>
+      </div>
+      <span class="vocab-pos-badge pos-n">n.</span>
+    </div>
+    <div class="vocab-meaning">貧困；貧窮</div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>impoverished</strong> <em>adj. 貧困的</em></div>
+        <div class="deriv-chip"><strong>impoverish</strong> <em>v. 使貧困</em></div>
+        <div class="deriv-chip"><strong>poverty line</strong> <em>n. 貧窮線</em></div>
+        <div class="deriv-chip"><strong>poverty-stricken</strong> <em>adj. 極度貧困</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Many international organizations aim to eliminate <strong>poverty</strong> by investing in quality education.</div>
+        <div class="ex-zh">許多國際組織透過投資優質教育來消除貧困。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Millions of children worldwide still live below the <strong>poverty</strong> line.</div>
+        <div class="ex-zh">全球仍有數百萬孩童生活在貧窮線以下。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The <strong>impoverished</strong> village lacked access to clean water and basic healthcare.</div>
+        <div class="ex-zh">這個貧困的村莊缺乏乾淨的水資源和基本醫療設施。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 4: mushroom ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">社會趨勢</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">mushroom</div>
+        <div class="vocab-phonetic">/ˈmʌʃruːm/</div>
+      </div>
+      <span class="vocab-pos-badge pos-v">v. / n.</span>
+    </div>
+    <div class="vocab-meaning">（動）迅速增長；蔓延 ／ （名）蘑菇</div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">In recent years, small coffee shops have <strong>mushroomed</strong> all over the city.</div>
+        <div class="ex-zh">近年來，小型咖啡店在全市各地如雨後春筍般湧現。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Online shopping platforms have <strong>mushroomed</strong> since the pandemic began.</div>
+        <div class="ex-zh">自疫情開始後，線上購物平台迅速激增。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The number of social media users <strong>mushroomed</strong> from one million to fifty million in just three years.</div>
+        <div class="ex-zh">社群媒體用戶數在短短三年內從百萬暴增至五千萬。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 5: drain ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">社會議題</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">drain</div>
+        <div class="vocab-phonetic">/dreɪn/</div>
+      </div>
+      <span class="vocab-pos-badge pos-v">v. / n.</span>
+    </div>
+    <div class="vocab-meaning">（動）耗盡；流失 ／ （名）排水管；消耗</div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Many developing nations suffer from <strong>brain drain</strong>, when professionals emigrate to wealthier countries.</div>
+        <div class="ex-zh">許多發展中國家深受人才外流之苦，專業人士紛紛移民至較富裕的國家。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Constant worrying can <strong>drain</strong> your energy and affect your mental health.</div>
+        <div class="ex-zh">不斷擔憂會耗盡你的精力，影響你的心理健康。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The long commute was a <strong>drain</strong> on her time and motivation.</div>
+        <div class="ex-zh">漫長的通勤是她時間和動力的消耗。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 6: react ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-familiar">🟢 同等級鞏固</span>
+      <span class="vtag vtag-topic">心理行為</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">react</div>
+        <div class="vocab-phonetic">/riˈækt/</div>
+      </div>
+      <span class="vocab-pos-badge pos-v">v.</span>
+    </div>
+    <div class="vocab-meaning">反應；回應</div>
+    <div class="vocab-root">
+      <span class="vocab-root-icon">🌱</span>
+      字首 <strong>re-</strong>（回）+ 字根 <strong>act</strong>（行動）
+    </div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>reaction</strong> <em>n. 反應</em></div>
+        <div class="deriv-chip"><strong>reactive</strong> <em>adj. 反應性的</em></div>
+        <div class="deriv-chip"><strong>overreact</strong> <em>v. 反應過度</em></div>
+        <div class="deriv-chip"><strong>reactionary</strong> <em>adj./n. 保守反動的</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Psychologists study how different people <strong>react</strong> to sudden stress.</div>
+        <div class="ex-zh">心理學家研究不同的人如何對突發壓力作出反應。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The audience <strong>reacted</strong> with both laughter and applause.</div>
+        <div class="ex-zh">觀眾以笑聲和掌聲回應。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Don't <strong>overreact</strong> to minor setbacks—they are part of any learning process.</div>
+        <div class="ex-zh">不要對小挫折反應過度——它們都是學習過程的一部分。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 7: skeptical ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">媒體素養</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">skeptical</div>
+        <div class="vocab-phonetic">/ˈskeptɪkl/</div>
+      </div>
+      <span class="vocab-pos-badge pos-adj">adj.</span>
+    </div>
+    <div class="vocab-meaning">懷疑的；不輕信的</div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>skepticism</strong> <em>n. 懷疑論；懷疑態度</em></div>
+        <div class="deriv-chip"><strong>skeptic</strong> <em>n. 懷疑論者</em></div>
+        <div class="deriv-chip"><strong>skeptically</strong> <em>adv. 以懷疑的態度</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Users become increasingly <strong>skeptical</strong> of online information as clickbait spreads.</div>
+        <div class="ex-zh">隨著標題黨蔓延，使用者對網路資訊越來越持懷疑態度。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">He was <strong>skeptical</strong> about the new diet trend that promised overnight results.</div>
+        <div class="ex-zh">他對那個聲稱能一夜見效的新飲食潮流持懷疑態度。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">A healthy dose of <strong>skepticism</strong> is necessary when reading news headlines.</div>
+        <div class="ex-zh">閱讀新聞標題時，適度的懷疑精神是必要的。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 8: column ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-new">🔴 考卷原題</span>
+      <span class="vtag vtag-topic">媒體新聞</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">column</div>
+        <div class="vocab-phonetic">/ˈkɒləm/</div>
+      </div>
+      <span class="vocab-pos-badge pos-n">n.</span>
+    </div>
+    <div class="vocab-meaning">（報章）專欄；圓柱</div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>columnist</strong> <em>n. 專欄作家</em></div>
+        <div class="deriv-chip"><strong>columnar</strong> <em>adj. 柱狀的</em></div>
+        <div class="deriv-chip"><strong>column inch</strong> <em>n. 報紙欄位單位</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Her famous newspaper <strong>column</strong> challenges readers to think deeply about society.</div>
+        <div class="ex-zh">她著名的報紙專欄讓讀者深思社會的變化。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The <strong>columnist</strong> wrote about the impact of social media on teenage mental health.</div>
+        <div class="ex-zh">這位專欄作家寫了一篇關於社群媒體對青少年心理健康影響的文章。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Reading a quality opinion <strong>column</strong> every day can sharpen your critical thinking.</div>
+        <div class="ex-zh">每天閱讀優質的意見專欄，可以磨練你的批判性思考能力。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 9: bind ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-familiar">🟢 同等級鞏固</span>
+      <span class="vtag vtag-topic">社會連結</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">bind</div>
+        <div class="vocab-phonetic">/baɪnd/</div>
+      </div>
+      <span class="vocab-pos-badge pos-vt">v.</span>
+    </div>
+    <div class="vocab-meaning">捆綁；凝聚；約束</div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>binding</strong> <em>adj./n. 有約束力的；裝訂</em></div>
+        <div class="deriv-chip"><strong>bond</strong> <em>n./v. 紐帶；黏合</em></div>
+        <div class="deriv-chip"><strong>boundless</strong> <em>adj. 無限的</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">Shared values and a common history often <strong>bind</strong> a community together.</div>
+        <div class="ex-zh">共同的價值觀和歷史往往將一個社群凝聚在一起。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The agreement is legally <strong>binding</strong> and cannot be broken without consequence.</div>
+        <div class="ex-zh">這份協議具有法律約束力，違反將有相應後果。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Music has the power to <strong>bond</strong> people across cultural differences.</div>
+        <div class="ex-zh">音樂有能力跨越文化差異，將人們凝聚在一起。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Word 10: prevalent ─── -->
+  <div class="vocab-card">
+    <div class="vocab-tag-row">
+      <span class="vtag vtag-familiar">🟢 同等級鞏固</span>
+      <span class="vtag vtag-topic">社會趨勢</span>
+    </div>
+    <div class="vocab-top">
+      <div>
+        <div class="vocab-word">prevalent</div>
+        <div class="vocab-phonetic">/ˈprevələnt/</div>
+      </div>
+      <span class="vocab-pos-badge pos-adj">adj.</span>
+    </div>
+    <div class="vocab-meaning">普遍的；盛行的</div>
+    <div class="vocab-root">
+      <span class="vocab-root-icon">🌱</span>
+      字首 <strong>pre-</strong>（在前）+ 字根 <strong>val-</strong>（強大）→ 廣泛流行
+    </div>
+    <div class="deriv-section">
+      <div class="deriv-label">衍生詞</div>
+      <div class="deriv-grid">
+        <div class="deriv-chip"><strong>prevalence</strong> <em>n. 普及；流行程度</em></div>
+        <div class="deriv-chip"><strong>prevail</strong> <em>v. 盛行；佔優勢</em></div>
+        <div class="deriv-chip"><strong>prevailing</strong> <em>adj. 主流的；佔優勢的</em></div>
+      </div>
+    </div>
+    <div class="ex-section">
+      <div class="ex-label">例句</div>
+      <div class="ex-item">
+        <div class="ex-en">As misleading headlines become more <strong>prevalent</strong>, users grow skeptical of all online content.</div>
+        <div class="ex-zh">隨著誤導性標題越來越普遍，使用者對所有網路內容越來越懷疑。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">Depression is increasingly <strong>prevalent</strong> among teenagers who spend many hours on social media.</div>
+        <div class="ex-zh">在每天花大量時間使用社群媒體的青少年中，憂鬱症越來越普遍。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en">The <strong>prevailing</strong> view among experts is that diet has a greater impact than exercise alone.</div>
+        <div class="ex-zh">專家的主流看法是，飲食比單純運動影響更大。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PART 2: GRAMMAR ═══ -->
+<div class="sec-wrap">
+  <div class="sec-label"><span class="sec-num">2</span>文法重點 · 3 Points</div>
+  <div style="font-size:12px;color:var(--text-sub);margin-bottom:12px;padding:8px 10px;background:var(--warm1);border-radius:10px;">
+    ⚡ 根據你的考卷失誤，挑選最容易短期進步的題型
+  </div>
+
+  <!-- Grammar 1: pose a threat to -->
+  <div class="grammar-card">
+    <div class="grammar-title">Point 1：固定介係詞片語</div>
+    <div class="grammar-subtitle">你在 Q29 錯選了 on，正解是 to → <em>pose a threat <strong>to</strong></em></div>
+    <div class="grammar-rule">
+      高頻動詞片語中的介係詞是固定的，不能替換。以下三個必背：<br><br>
+      <code>pose a threat <strong>to</strong> sb/sth</code> 對⋯構成威脅<br>
+      <code>have problems <strong>with</strong> + V-ing</code> 在⋯有問題<br>
+      <code><strong>on account of</strong> + N</code> 因為⋯（= because of）
+    </div>
+    <div class="grammar-ex">
+      <div class="en">Air pollution <strong>poses a serious threat to</strong> public health in major cities.</div>
+      <div class="zh">空氣污染對大城市的公共衛生構成嚴重威脅。</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en">Many students have problems <strong>with</strong> managing their time effectively during exam season.</div>
+      <div class="zh">許多學生在考試季節難以有效管理時間。</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en">The match was postponed <strong>on account of</strong> heavy rain.</div>
+      <div class="zh">比賽因大雨而延期。</div>
+    </div>
+  </div>
+
+  <!-- Grammar 2: Only 倒裝 -->
+  <div class="grammar-card">
+    <div class="grammar-title">Point 2：Only + 介詞片語 → 倒裝句</div>
+    <div class="grammar-subtitle">你在 Q31 錯選了 to help，正解是 could she help（助動詞提前）</div>
+    <div class="grammar-rule">
+      當 <strong>only</strong> 搭配介詞片語（in this way / after / then / by + V-ing）置於句首時，主句必須「助動詞/be動詞 + 主詞」倒裝：<br><br>
+      <code>Only + 介詞片語，<strong>助動詞 + 主詞 + 動詞</strong></code>
+    </div>
+    <div class="grammar-ex">
+      <div class="en"><strong>Only in this way</strong> <strong>could she help</strong> her poor parents share the burden.</div>
+      <div class="zh">只有用這種方式，她才能幫助貧困的父母分擔重擔。</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en"><strong>Only after the experiment</strong> <strong>did scientists realize</strong> the true danger.</div>
+      <div class="zh">直到實驗之後，科學家才意識到真正的危險。</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en"><strong>Only by reading widely</strong> <strong>can you improve</strong> your English significantly.</div>
+      <div class="zh">只有廣泛閱讀，你才能大幅提升英文能力。</div>
+    </div>
+  </div>
+
+  <!-- Grammar 3: insist/urge + 動詞形式 -->
+  <div class="grammar-card">
+    <div class="grammar-title">Point 3：urge / insist / suggest 後接形式</div>
+    <div class="grammar-subtitle">你在 Q38 答對（go），但 Q35 的 urge 系列仍需鞏固</div>
+    <div class="grammar-rule">
+      以下動詞後接 that 子句時，子句動詞用原形（假設語氣，should 可省略）：<br><br>
+      <code><strong>insist / urge / suggest / demand</strong> that S (<strong>should</strong>) <strong>V-原形</strong></code><br><br>
+      但 <code>urge sb. <strong>to V</strong></code>（直接受詞後用不定詞）是另一種常見句型。
+    </div>
+    <div class="grammar-ex">
+      <div class="en">His parents <strong>insisted that</strong> he <strong>go</strong> back to school to learn social skills.</div>
+      <div class="zh">他的父母堅持讓他回學校學習社交技能。（go 原形，非 went）</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en">The doctor <strong>suggested that</strong> she <strong>reduce</strong> her sugar intake immediately.</div>
+      <div class="zh">醫生建議她立刻減少糖分攝取。（reduce 原形）</div>
+    </div>
+    <div class="grammar-ex">
+      <div class="en">Peace <strong>urged</strong> Rejoice <strong>to return</strong> to school and pursue her dream.</div>
+      <div class="zh">Peace 力勸 Rejoice 回學校追求她的夢想。（urge sb. to V）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PART 3: READING ═══ -->
+<div class="sec-wrap">
+  <div class="sec-label"><span class="sec-num">3</span>閱讀練習</div>
+  <div style="font-size:12px;color:var(--text-sub);margin-bottom:12px;padding:8px 10px;background:var(--warm1);border-radius:10px;">
+    📏 長度約為 115 年學測閱讀題的 1/2，主題與今日單字高度相關
+  </div>
+
+  <div class="reading-card">
+    <div class="reading-title">The Hidden Cost of Clickbait Culture</div>
+    <div class="reading-meta">約 160 字 · 中等難度 · 主題：媒體素養 &amp; 心理健康</div>
+    <div class="reading-body">
+      <p>In today's digital world, <strong>clickbait</strong> headlines have become alarmingly <strong>prevalent</strong>. These headlines are designed to trigger strong emotions—curiosity, fear, or anger—and lure users into clicking links that <strong>reveal</strong> little of value. The real purpose is financial: every click generates revenue for the website.</p>
+
+      <p>Researchers have found that constant exposure to clickbait <strong>poses a serious threat to</strong> critical thinking. Users who consume misleading content frequently become <strong>skeptical</strong> of even high-quality journalism. This erosion of trust has a <strong>binding</strong> effect on society—it ties people to <strong>inferior</strong> information sources while genuine knowledge becomes harder to access.</p>
+
+      <p>The problem is especially serious for young readers. Studies show that teenagers who rely on social media for news are more likely to develop a sense of information <strong>poverty</strong>—surrounded by content yet lacking real understanding. As misinformation continues to <strong>mushroom</strong> online, developing strong media literacy skills has never been more essential.</p>
+    </div>
+  </div>
+
+  <!-- Reading Qs -->
+  <div class="quiz-card">
+    <div class="quiz-q">Q1. According to the passage, why do websites use clickbait headlines?</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) To educate readers about important social issues</div>
+      <div class="quiz-opt">(B) To generate income through user clicks</div>
+      <div class="quiz-opt">(C) To promote high-quality journalism</div>
+      <div class="quiz-opt">(D) To help users develop critical thinking</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(B)</div>
+        <div class="ans-explain">文章明確指出「every click generates revenue for the website」（每次點擊都為網站產生收益），選 (B) 最直接。(A)(C)(D) 均與文意相反。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q2. What does the word "<strong>prevalent</strong>" (paragraph 1) most closely mean?</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) rare and unusual</div>
+      <div class="quiz-opt">(B) widely common and widespread</div>
+      <div class="quiz-opt">(C) extremely dangerous</div>
+      <div class="quiz-opt">(D) gradually disappearing</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(B)</div>
+        <div class="ans-explain"><strong>prevalent</strong> = 普遍的、盛行的，即 widely common。文中描述 clickbait 已是「令人警惕地普遍」，對應 (B)。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q3. What effect does clickbait have on young readers, according to the passage?</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) It improves their ability to find reliable sources</div>
+      <div class="quiz-opt">(B) It encourages them to read more quality news</div>
+      <div class="quiz-opt">(C) It leads to a lack of genuine understanding despite access to content</div>
+      <div class="quiz-opt">(D) It helps them become more skeptical in a positive way</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(C)</div>
+        <div class="ans-explain">文章提到年輕讀者易陷入「information poverty」——被內容包圍卻缺乏真正的理解。這正是 (C) 的描述。注意 (D) 是干擾項，文中的 skeptical 是負面的（不信任好的新聞）。</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ═══ PART 4: VOCAB QUIZ ═══ -->
+<div class="sec-wrap">
+  <div class="sec-label"><span class="sec-num">4</span>單字複習測驗 · 5題</div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">1. Comparing yourself to others on social media can make you feel _____ and damage your self-esteem.</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) superior</div>
+      <div class="quiz-opt">(B) inferior</div>
+      <div class="quiz-opt">(C) rewarding</div>
+      <div class="quiz-opt">(D) flexible</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(B) inferior</div>
+        <div class="ans-explain"><strong>inferior</strong>（自卑的、低劣的）是 Q14 的考卷原題。damage self-esteem（損害自尊）配合「感到低人一等」，選 (B)。(A) superior 是相反詞。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">2. The new study _____ a surprising link between sleep deprivation and poor academic performance.</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) conceals</div>
+      <div class="quiz-opt">(B) acquires</div>
+      <div class="quiz-opt">(C) reveals</div>
+      <div class="quiz-opt">(D) baits</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(C) reveals</div>
+        <div class="ans-explain"><strong>reveal</strong>（揭露）對應考卷 Q18 的句型。(A) conceals 是反義詞（隱藏），(B) acquires（獲得），(D) baits（誘騙）均不符語意。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">3. The spread of misinformation online _____ a major threat _____ democratic values.</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) causes; for</div>
+      <div class="quiz-opt">(B) poses; to</div>
+      <div class="quiz-opt">(C) makes; on</div>
+      <div class="quiz-opt">(D) creates; of</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(B) poses; to</div>
+        <div class="ans-explain">固定片語 <strong>pose a threat to</strong>（對⋯構成威脅）。這正是你在 Q29 答錯的考點！牢記 pose + to 這個組合。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">4. _____ by studying together with classmates _____ she finally overcome her fear of math.</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) Only; did</div>
+      <div class="quiz-opt">(B) Just; could</div>
+      <div class="quiz-opt">(C) Only; she could</div>
+      <div class="quiz-opt">(D) Only; that</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(A) Only; did</div>
+        <div class="ans-explain">Only + 介詞片語（by studying together）置首 → 主句倒裝：<strong>did she finally overcome</strong>。這正是 Q31 的倒裝句考點！注意 (C) 錯誤，倒裝句不保留正常語序。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">5. Small bubble tea shops have _____ all over Taiwan in the past decade.</div>
+    <div class="quiz-options">
+      <div class="quiz-opt">(A) shoveled</div>
+      <div class="quiz-opt">(B) tugged</div>
+      <div class="quiz-opt">(C) fueled</div>
+      <div class="quiz-opt">(D) mushroomed</div>
+    </div>
+    <details class="ans-block">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-content">
+        <div class="ans-correct">✅ 正解：(D) mushroomed</div>
+        <div class="ans-explain"><strong>mushroom</strong>（動詞）= 如雨後春筍般迅速增加。這是 Q16 的考卷原題，描述咖啡店遍布全市，同樣的概念套用在珍奶店上。(A) shoveled（鏟）(B) tugged（拉）(C) fueled（燃燒驅動）均不符。</div>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+<div class="footer">
+  武陵高中 · 114 學年 · Day 1<br>
+  林威老師 · 錯中學 ECHO 計劃<br>
+  <span style="font-size:11px;">製作日期：2026.05.13</span>
+</div>
+
+</body>
+</html>
