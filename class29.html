@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dexterity Robotic Hand 微課程 | 錯中學 ECHO 計劃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF8F0;
+    --warm1: #FFE8CC;
+    --warm2: #FFDBB5;
+    --warm3: #F5C18A;
+    --amber: #E8933A;
+    --amber-dark: #C5721A;
+    --terracotta: #D4623A;
+    --rust: #B04A28;
+    --sage: #8BAF7C;
+    --teal: #4A9B8E;
+    --gold: #D4A843;
+    --text-dark: #3A2415;
+    --text-mid: #6B4226;
+    --text-soft: #9A6B50;
+    --shadow-warm: rgba(200, 100, 40, 0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(255, 200, 120, 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(212, 98, 58, 0.12) 0%, transparent 50%);
+  }
+
+  /* ─── NAV BAR ─── */
+  .nav-bar {
+    background: linear-gradient(135deg, #B04A28 0%, #E8933A 50%, #D4A843 100%);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: #FFF8F0;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 12px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .nav-link:hover { background: rgba(255,255,255,0.3); }
+
+  .nav-link .link-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .link-icon.echo { background: rgba(212,98,58,0.7); }
+  .link-icon.student { background: rgba(74,155,142,0.7); }
+  .link-icon.line { background: rgba(6,199,85,0.75); }
+
+  .nav-link .link-text strong {
+    display: block; font-size: 13px; font-weight: 700;
+  }
+  .nav-link .link-text span {
+    display: block; font-size: 11px; opacity: 0.9;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(160deg, #FFE8CC 0%, #FFDBB5 40%, #F5C18A 100%);
+    padding: 36px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '🤖';
+    position: absolute;
+    font-size: 160px;
+    opacity: 0.06;
+    top: -20px; right: -20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--terracotta);
+    color: white; font-size: 11px; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(212,98,58,0.4);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--rust);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber-dark);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: white;
+    border: 1.5px solid var(--warm3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--text-mid);
+    font-weight: 500;
+    display: flex; align-items: center; gap: 5px;
+    box-shadow: 0 2px 6px var(--shadow-warm);
+  }
+  .stat-chip .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  /* ─── MAIN ─── */
+  .main { padding: 24px 16px; max-width: 680px; margin: 0 auto; }
+
+  /* ─── PHASE ─── */
+  .phase-section { margin-bottom: 28px; }
+  .phase-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .phase-icon { font-size: 20px; }
+  .phase-header .phase-title { flex: 1; }
+  .phase-header .phase-count {
+    font-size: 11px; font-weight: 500; opacity: 0.8;
+    background: rgba(255,255,255,0.4);
+    padding: 2px 8px; border-radius: 10px;
+  }
+
+  .ph1 { background: linear-gradient(120deg, #FFE8CC, #FFD4A8); color: #7A3A10; }
+  .ph2 { background: linear-gradient(120deg, #D4EBE8, #B8DDD8); color: #1A6B60; }
+  .ph3 { background: linear-gradient(120deg, #E8D8F5, #D5C0EE); color: #4A2880; }
+  .ph4 { background: linear-gradient(120deg, #FFF0CC, #FFE4A0); color: #7A5510; }
+  .ph5 { background: linear-gradient(120deg, #FFE0D8, #F5C8BE); color: #7A2A18; }
+  .ph6 { background: linear-gradient(120deg, #D8EFD8, #BCDCBC); color: #1A5C1A; }
+
+  /* ─── UNIT CARD ─── */
+  .unit-card {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 12px var(--shadow-warm);
+    border-left: 4px solid var(--amber);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .unit-card:active { transform: scale(0.98); }
+  .unit-card:last-child { margin-bottom: 0; }
+
+  .card-top {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .unit-num {
+    min-width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+  .unit-main .title {
+    font-size: 14px; font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin-bottom: 3px;
+  }
+  .unit-main .subtitle {
+    font-size: 12px; color: var(--text-soft);
+    line-height: 1.4;
+  }
+  .time-tag {
+    position: absolute; top: 12px; right: 14px;
+    font-size: 11px; color: var(--text-soft);
+    display: flex; align-items: center; gap: 3px;
+  }
+
+  .topics {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    border-top: 1px solid #F5E8D8;
+    padding-top: 10px;
+  }
+  .topic-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  /* per-phase color tweaks */
+  .u-orange { background: var(--amber); }
+  .u-teal   { background: var(--teal); }
+  .u-purple { background: #8B68C8; }
+  .u-gold   { background: var(--gold); }
+  .u-rust   { background: var(--terracotta); }
+  .u-green  { background: var(--sage); }
+
+  .tag-orange { background: #FFF0E0; color: #B05A10; border: 1px solid #FFD8A8; }
+  .tag-teal   { background: #E0F5F2; color: #1A6B60; border: 1px solid #B0DDD8; }
+  .tag-purple { background: #EDE8F8; color: #4A2880; border: 1px solid #D0C4EE; }
+  .tag-gold   { background: #FFF8E0; color: #7A5510; border: 1px solid #FFE8A0; }
+  .tag-rust   { background: #FFF0EC; color: #7A2A18; border: 1px solid #F5C8BE; }
+  .tag-green  { background: #E8F5E8; color: #1A5C1A; border: 1px solid #BCD8BC; }
+
+  .new-flag {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 10px; font-weight: 700;
+    background: var(--sage);
+    color: white;
+    padding: 2px 7px; border-radius: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ─── FOOTER NAV (same as top nav) ─── */
+  .footer-nav {
+    background: linear-gradient(135deg, #D4A843 0%, #E8933A 50%, #B04A28 100%);
+    padding: 20px 16px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    color: #FFF8F0; font-size: 14px;
+    text-align: center;
+    opacity: 0.9;
+  }
+  .footer-copy {
+    text-align: center;
+    color: rgba(255,255,255,0.65);
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    text-align: center; margin: 24px 0 8px;
+    font-size: 12px; color: var(--text-soft);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--warm3), transparent);
+  }
+
+  /* ─── INTRO BOX ─── */
+  .intro-box {
+    background: linear-gradient(135deg, #FFF5E8, #FFE8D0);
+    border: 1.5px solid var(--warm3);
+    border-radius: 16px;
+    padding: 18px 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+  .intro-box h3 {
+    font-size: 15px; font-weight: 700;
+    color: var(--rust); margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .design-list {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-top: 10px;
+  }
+  .design-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px;
+  }
+  .design-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0; margin-top: 1px;
+    color: white; font-weight: 700;
+  }
+
+  /* mobile landscape */
+  @media (min-width: 540px) {
+    .nav-links { flex-direction: row; }
+    .nav-link { flex: 1; }
+    .hero h1 { font-size: 30px; }
+    .unit-card { padding: 18px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TOP NAV ══════════════ -->
+<nav class="nav-bar" aria-label="頂部導覽">
+  <div class="nav-brand">🤖 林威老師 · 錯中學 ECHO 計劃 · 2025 七月開課</div>
+  <div class="nav-links">
+    <a class="nav-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <div class="link-icon echo">📚</div>
+      <div class="link-text">
+        <strong>錯中學 ECHO 計劃</strong>
+        <span>2025 七月課程開始報名</span>
+      </div>
+    </a>
+    <a class="nav-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <div class="link-icon student">📊</div>
+      <div class="link-text">
+        <strong>學生分析工具</strong>
+        <span>個人化英文學習診斷</span>
+      </div>
+    </a>
+    <a class="nav-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <div class="link-icon line">💬</div>
+      <div class="link-text">
+        <strong>LINE 聯絡林威老師</strong>
+        <span>ID：linwayet</span>
+      </div>
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <div class="hero-badge">🎓 自學微課程 · 2025 最新研究版本</div>
+  <h1>Dexterity<br><em>Robotic Hand</em><br>靈巧機器手</h1>
+  <p class="hero-sub">從人手解剖到 AI 驅動操控<br>完全初學者友善 · 全中文 + 關鍵字英文</p>
+  <div class="hero-stats">
+    <div class="stat-chip"><div class="dot" style="background:#E8933A;"></div>13 個單元</div>
+    <div class="stat-chip"><div class="dot" style="background:#4A9B8E;"></div>每回合 ~10 分鐘</div>
+    <div class="stat-chip"><div class="dot" style="background:#8B68C8;"></div>無需先備知識</div>
+    <div class="stat-chip"><div class="dot" style="background:#8BAF7C;"></div>含 2025 最新突破</div>
+  </div>
+</header>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main class="main">
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <h3>🗺️ 課程設計原則</h3>
+    <div class="design-list">
+      <div class="design-item"><div class="design-dot" style="background:#E8933A;">1</div><span>每單元從生活類比切入，建立直覺後才進入技術細節</span></div>
+      <div class="design-item"><div class="design-dot" style="background:#4A9B8E;">2</div><span>關鍵術語提供英文原名，方便進一步自學查找</span></div>
+      <div class="design-item"><div class="design-dot" style="background:#8B68C8;">3</div><span>觸覺感知、AI 學習、義肢三大主題加深處理</span></div>
+      <div class="design-item"><div class="design-dot" style="background:#8BAF7C;">4</div><span>依據 2025 年最新學術論文與產業發展設計內容</span></div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 1 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph1">
+      <span class="phase-icon">🏛️</span>
+      <span class="phase-title">第一階段：基礎認識</span>
+      <span class="phase-count">Unit 1–2</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#E8933A;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-orange">1</div>
+        <div class="unit-main">
+          <div class="title">為什麼機器手這麼難做？</div>
+          <div class="subtitle">Dexterity 的定義與人手的奇蹟</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-orange">人手 27 個自由度 DoF</span>
+        <span class="topic-tag tag-orange">Dexterity 三層定義</span>
+        <span class="topic-tag tag-orange">潛在靈巧</span>
+        <span class="topic-tag tag-orange">抓握靈巧</span>
+        <span class="topic-tag tag-orange">操控靈巧</span>
+        <span class="topic-tag tag-orange">機器 vs 人手差距</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#E8933A;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-orange">2</div>
+        <div class="unit-main">
+          <div class="title">機器手的演化史</div>
+          <div class="subtitle">從工業夾爪到仿生手的 70 年旅程</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-orange">1950s 工業夾爪 Gripper</span>
+        <span class="topic-tag tag-orange">Stanford/JPL 手 1980s</span>
+        <span class="topic-tag tag-orange">Shadow Robot Hand</span>
+        <span class="topic-tag tag-orange">Tesla Optimus 22 DoF</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">硬體設計</div>
+
+  <!-- ── PHASE 2 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph2">
+      <span class="phase-icon">⚙️</span>
+      <span class="phase-title">第二階段：硬體設計</span>
+      <span class="phase-count">Unit 3–4</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#4A9B8E;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-teal">3</div>
+        <div class="unit-main">
+          <div class="title">驅動方式大比拼</div>
+          <div class="subtitle">肌腱、氣動、電動馬達各有什麼優勢？</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-teal">Tendon-driven 腱傳動</span>
+        <span class="topic-tag tag-teal">Pneumatic 氣動</span>
+        <span class="topic-tag tag-teal">HASEL 電液壓</span>
+        <span class="topic-tag tag-teal">DoF vs DoA 設計取捨</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#4A9B8E;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-teal">4</div>
+        <div class="unit-main">
+          <div class="title">軟體機器手 Soft Robotics</div>
+          <div class="subtitle">柔性材料如何改變遊戲規則</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-teal">順應性 Compliance</span>
+        <span class="topic-tag tag-teal">仿肌肉骨骼設計</span>
+        <span class="topic-tag tag-teal">液晶彈性體 LCE</span>
+        <span class="topic-tag tag-teal">Bio-hybrid 生物肌肉</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">觸覺感知深化</div>
+
+  <!-- ── PHASE 3 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph3">
+      <span class="phase-icon">✋</span>
+      <span class="phase-title">第三階段：觸覺感知深化 <span class="new-flag">✦ 2 單元</span></span>
+      <span class="phase-count">Unit 5–6</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#8B68C8;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-purple">5</div>
+        <div class="unit-main">
+          <div class="title">觸覺感測基礎</div>
+          <div class="subtitle">機器為什麼需要「感覺」？</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-purple">Mechanoreceptor 感受器</span>
+        <span class="topic-tag tag-purple">壓力 / 滑動 / 溫度</span>
+        <span class="topic-tag tag-purple">相機式觸覺感測器</span>
+        <span class="topic-tag tag-purple">缺乏觸感的代價</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#8B68C8;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-purple">6</div>
+        <div class="unit-main">
+          <div class="title">觸覺感測最前線</div>
+          <div class="subtitle">F-TAC Hand 的 0.1mm 解析度突破</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-purple">F-TAC Hand 2025</span>
+        <span class="topic-tag tag-purple">Nature Machine Intelligence</span>
+        <span class="topic-tag tag-purple">70% 表面覆蓋率</span>
+        <span class="topic-tag tag-purple">Electronic Skin 電子皮膚</span>
+        <span class="topic-tag tag-purple">Visuo-tactile 視覺觸覺融合</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">AI 控制深化</div>
+
+  <!-- ── PHASE 4 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph4">
+      <span class="phase-icon">🧠</span>
+      <span class="phase-title">第四階段：AI 控制深化 <span class="new-flag">✦ 3 單元</span></span>
+      <span class="phase-count">Unit 7–9</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#D4A843;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-gold">7</div>
+        <div class="unit-main">
+          <div class="title">AI 怎麼「學」抓東西？</div>
+          <div class="subtitle">強化學習 Reinforcement Learning 入門</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-gold">RL 獎懲機制</span>
+        <span class="topic-tag tag-gold">OpenAI Dactyl 魔術方塊</span>
+        <span class="topic-tag tag-gold">Simulation 仿真環境</span>
+        <span class="topic-tag tag-gold">Sim-to-Real 轉移挑戰</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#D4A843;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-gold">8</div>
+        <div class="unit-main">
+          <div class="title">模仿學習與示範教學</div>
+          <div class="subtitle">讓機器「看著人做」來學技能</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-gold">Imitation Learning 模仿學習</span>
+        <span class="topic-tag tag-gold">DexCap 動作捕捉</span>
+        <span class="topic-tag tag-gold">Teleoperation 遠端操控</span>
+        <span class="topic-tag tag-gold">Human-in-the-loop</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#D4A843;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-gold">9</div>
+        <div class="unit-main">
+          <div class="title">擴散模型與大語言模型加入戰局</div>
+          <div class="subtitle">DexHandDiff、VLA、NVIDIA GR00T</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-gold">Diffusion Model 擴散模型</span>
+        <span class="topic-tag tag-gold">VLA 視覺語言動作模型</span>
+        <span class="topic-tag tag-gold">NVIDIA GR00T N1</span>
+        <span class="topic-tag tag-gold">自然語言指揮機器手</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">應用場景</div>
+
+  <!-- ── PHASE 5 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph5">
+      <span class="phase-icon">🏭</span>
+      <span class="phase-title">第五階段：應用場景</span>
+      <span class="phase-count">Unit 10–11</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#D4623A;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-rust">10</div>
+        <div class="unit-main">
+          <div class="title">工業與醫療的真實應用</div>
+          <div class="subtitle">製造業、手術機器人、物流倉儲</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-rust">Sanctuary AI Phoenix 21 DoF</span>
+        <span class="topic-tag tag-rust">微創手術 $70B 市場</span>
+        <span class="topic-tag tag-rust">物流自動化 $520B</span>
+        <span class="topic-tag tag-rust">精密組裝取代人工</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#D4623A;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-rust">11</div>
+        <div class="unit-main">
+          <div class="title">義肢深化：從失去到超越 <span class="new-flag">✦ 深化</span></div>
+          <div class="subtitle">EMG 控制、感覺回饋、腦機介面</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-rust">EMG 肌電圖控制</span>
+        <span class="topic-tag tag-rust">P2GI 接近感知義手</span>
+        <span class="topic-tag tag-rust">Bidirectional Feedback 雙向回饋</span>
+        <span class="topic-tag tag-rust">BCI 腦機介面未來</span>
+        <span class="topic-tag tag-rust">使用者心理適應</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">未來與反思</div>
+
+  <!-- ── PHASE 6 ── -->
+  <section class="phase-section">
+    <div class="phase-header ph6">
+      <span class="phase-icon">🔭</span>
+      <span class="phase-title">第六階段：未來與反思</span>
+      <span class="phase-count">Unit 12–13</span>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#8BAF7C;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-green">12</div>
+        <div class="unit-main">
+          <div class="title">尚未解決的難題</div>
+          <div class="subtitle">能耗、小型化、可靠度的三大挑戰</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-green">Energy Efficiency 能源效率</span>
+        <span class="topic-tag tag-green">小型化挑戰</span>
+        <span class="topic-tag tag-green">耐用度與維修成本</span>
+        <span class="topic-tag tag-green">台灣 NTU 研究現況</span>
+      </div>
+    </div>
+
+    <div class="unit-card" style="border-left-color:#8BAF7C;">
+      <div class="time-tag">⏱ 10 min</div>
+      <div class="card-top">
+        <div class="unit-num u-green">13</div>
+        <div class="unit-main">
+          <div class="title">$7 兆市場與你的未來</div>
+          <div class="subtitle">人形機器人時代的倫理與機會</div>
+        </div>
+      </div>
+      <div class="topics">
+        <span class="topic-tag tag-green">Humanoid Robot 市場預測</span>
+        <span class="topic-tag tag-green">工作替代 vs 人機協作</span>
+        <span class="topic-tag tag-green">設計倫理</span>
+        <span class="topic-tag tag-green">下一步學習路徑</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ FOOTER NAV ══════════════ -->
+<footer class="footer-nav" aria-label="底部導覽">
+  <div class="footer-brand">🤖 林威老師 · 錯中學 ECHO 計劃 · 2025 七月開課</div>
+  <div class="nav-links">
+    <a class="nav-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <div class="link-icon echo">📚</div>
+      <div class="link-text">
+        <strong>錯中學 ECHO 計劃</strong>
+        <span>2025 七月課程開始報名</span>
+      </div>
+    </a>
+    <a class="nav-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <div class="link-icon student">📊</div>
+      <div class="link-text">
+        <strong>學生分析工具</strong>
+        <span>個人化英文學習診斷</span>
+      </div>
+    </a>
+    <a class="nav-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <div class="link-icon line">💬</div>
+      <div class="link-text">
+        <strong>LINE 聯絡林威老師</strong>
+        <span>ID：linwayet</span>
+      </div>
+    </a>
+  </div>
+  <p class="footer-copy">© 2025 林威老師 · 錯中學 ECHO 計劃 · Dexterity Robotic Hand 微課程</p>
+</footer>
+
+</body>
+</html>
