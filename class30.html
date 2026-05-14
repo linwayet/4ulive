@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🫁 肺與呼吸疾病微課程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FFF8F0;
+  --peach: #FFE8CC;
+  --orange-light: #FFCF99;
+  --orange: #FF8C42;
+  --orange-dark: #E05A00;
+  --red-warm: #D94F2B;
+  --amber: #F4A030;
+  --amber-light: #FDEAC8;
+  --brown: #7A3500;
+  --brown-mid: #A04A10;
+  --green-warm: #6BAA5E;
+  --blue-warm: #5589C8;
+  --purple-warm: #8A60C8;
+  --teal-warm: #2A9D8F;
+  --text: #3A2010;
+  --text-mid: #6A3A18;
+  --text-muted: #9A6040;
+  --border: rgba(200,100,30,0.18);
+  --shadow: rgba(180,80,20,0.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans TC', 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============ BACKGROUND PATTERN ============ */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(255,180,80,0.13) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(255,140,60,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(244,160,48,0.08) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ============ LINKS BAR ============ */
+.links-bar {
+  background: linear-gradient(135deg, #D94F2B 0%, #E07020 40%, #F4A030 100%);
+  padding: 0.85rem 1rem;
+  position: relative; z-index: 10;
+}
+.links-bar-inner {
+  max-width: 680px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.links-bar-title {
+  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.75);
+  letter-spacing: 0.12em; text-transform: uppercase; text-align: center;
+  margin-bottom: 2px;
+}
+.link-card {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  color: #fff;
+}
+.link-card:hover { background: rgba(255,255,255,0.28); transform: translateY(-1px); }
+.link-card:active { transform: scale(0.98); }
+.link-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.icon-echo { background: rgba(255,255,255,0.25); }
+.icon-student { background: rgba(255,255,255,0.20); }
+.icon-line { background: #06C755; }
+.link-text {}
+.link-name { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+.link-desc { font-size: 11px; color: rgba(255,255,255,0.82); line-height: 1.3; margin-top: 1px; }
+.link-arrow { margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.6); flex-shrink: 0; }
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(160deg, #FF6B35 0%, #F4A030 45%, #FFD080 80%, #FFF8F0 100%);
+  padding: 2.5rem 1.25rem 2rem;
+  text-align: center; position: relative; z-index: 1; overflow: hidden;
+}
+.hero::after {
+  content: '🫁';
+  position: absolute; right: -20px; bottom: -30px;
+  font-size: 160px; opacity: 0.08; pointer-events: none;
+  transform: rotate(-10deg);
+}
+.hero-emoji { font-size: 52px; display: block; margin-bottom: 0.5rem; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.hero h1 { font-size: 24px; font-weight: 800; color: #7A1500; line-height: 1.25; margin-bottom: 0.4rem; }
+.hero-en { font-size: 13px; color: #A03010; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: 0.02em; }
+.hero-badges { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.badge {
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+.b-orange { background: rgba(180,60,0,0.15); color: #8A3000; border: 1px solid rgba(180,60,0,0.25); }
+.b-amber  { background: rgba(200,120,0,0.13); color: #7A4A00; border: 1px solid rgba(200,120,0,0.22); }
+.b-cream  { background: rgba(255,255,255,0.55); color: #7A3800; border: 1px solid rgba(180,80,0,0.18); }
+
+/* ============ MAIN ============ */
+.main { max-width: 680px; margin: 0 auto; padding: 1.5rem 1rem 2rem; position: relative; z-index: 1; }
+
+/* Format box */
+.format-box {
+  background: linear-gradient(135deg, #FFF3E0, #FFE4BA);
+  border: 1.5px solid #F4A030;
+  border-radius: 16px; padding: 1rem 1.1rem; margin-bottom: 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.format-item { display: flex; align-items: flex-start; gap: 8px; }
+.f-emoji { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.f-text { font-size: 12.5px; line-height: 1.5; color: var(--text-mid); }
+.f-text strong { color: var(--brown); font-weight: 700; display: block; margin-bottom: 1px; }
+
+/* Stats row */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 1.5rem; }
+.stat-card {
+  border-radius: 14px; padding: 0.8rem 0.4rem; text-align: center;
+  border: 1.5px solid transparent;
+}
+.sc-a { background: #EDFBF2; border-color: #B8EDCA; }
+.sc-b { background: #FFF3E8; border-color: #FFCF99; }
+.sc-c { background: #EEF3FF; border-color: #C0D0F8; }
+.sc-d { background: #F5EEFF; border-color: #D8C0F0; }
+.stat-num { font-size: 28px; font-weight: 800; line-height: 1; }
+.sn-a { color: #2A8A50; }
+.sn-b { color: #CC5500; }
+.sn-c { color: #2050C0; }
+.sn-d { color: #6030B0; }
+.stat-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
+
+/* Section label */
+.section-label {
+  display: flex; align-items: center; gap: 8px;
+  margin: 1.5rem 0 0.7rem; padding: 0;
+}
+.section-pill {
+  font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 20px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.sp-a { background: #DDFAEB; color: #1A7040; border: 1.5px solid #8ADCAC; }
+.sp-b { background: #FFE8D0; color: #B04000; border: 1.5px solid #FFAA60; }
+.sp-c { background: #E4ECFF; color: #1840A0; border: 1.5px solid #90B0F8; }
+.sp-d { background: #EEE2FF; color: #5020A0; border: 1.5px solid #C0A0EE; }
+.section-line { flex: 1; height: 1.5px; background: var(--border); border-radius: 2px; }
+
+/* Module card */
+.module-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px; margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.module-card:hover { box-shadow: 0 4px 16px var(--shadow); transform: translateY(-1px); }
+.card-header {
+  display: grid; grid-template-columns: 50px 1fr auto;
+  align-items: center; gap: 10px;
+  padding: 0.85rem 1rem; cursor: pointer;
+}
+.mod-num {
+  width: 50px; height: 50px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 800; flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+.mn-a { background: linear-gradient(135deg,#DDFAEB,#A8F0C0); color: #155A30; }
+.mn-b { background: linear-gradient(135deg,#FFE8D0,#FFBB70); color: #9A3000; }
+.mn-c { background: linear-gradient(135deg,#E4ECFF,#A8C0FF); color: #1530A0; }
+.mn-d { background: linear-gradient(135deg,#EEE2FF,#C8A8FF); color: #4A1890; }
+.mod-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.35; }
+.mod-sub { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+.word-count-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+  white-space: nowrap; margin-top: 5px; display: inline-block;
+}
+.wc-a { background: #D0F8E0; color: #1A6040; }
+.wc-b { background: #FFE0C0; color: #8A3A00; }
+.wc-c { background: #D8E8FF; color: #1838A0; }
+.wc-d { background: #E8D8FF; color: #4A1880; }
+.card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.time-pill {
+  font-size: 10px; color: var(--text-muted); background: #FFF0E0;
+  padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+  border: 1px solid #FFD4A0; font-weight: 600;
+}
+.toggle-btn {
+  font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+  cursor: pointer; border: none; transition: all 0.2s; white-space: nowrap;
+}
+.tb-a { background: #DDFAEB; color: #1A7040; }
+.tb-b { background: #FFE8D0; color: #B04000; }
+.tb-c { background: #E4ECFF; color: #1840A0; }
+.tb-d { background: #EEE2FF; color: #5020A0; }
+.toggle-btn:hover { opacity: 0.8; }
+
+/* Word preview panel */
+.word-panel {
+  display: none; padding: 0.9rem 1rem 1rem;
+  border-top: 1.5px dashed var(--border);
+  background: linear-gradient(180deg, #FFFBF5 0%, #FFF8EE 100%);
+}
+.word-panel.open { display: block; }
+.word-panel-title {
+  font-size: 11px; font-weight: 800; color: var(--brown-mid);
+  letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 5px;
+}
+.words-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 480px) { .words-grid { grid-template-columns: 1fr; } }
+.word-item {
+  background: #fff; border: 1px solid rgba(200,100,30,0.14);
+  border-radius: 12px; padding: 0.65rem 0.8rem;
+}
+.w-en { font-size: 13px; font-weight: 700; color: var(--brown); }
+.w-zh { font-size: 11.5px; color: var(--orange-dark); font-weight: 600; margin-bottom: 4px; }
+.w-def { font-size: 11.5px; color: var(--text-mid); line-height: 1.5; }
+.w-tip { font-size: 11px; color: #8A5A20; margin-top: 4px; line-height: 1.5; font-style: italic; }
+.w-tip::before { content: '💡 '; font-style: normal; }
+
+/* ============ FOOTER / BOTTOM LINKS ============ */
+.bottom-spacer { height: 1.5rem; }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP LINKS BAR ===== -->
+<div class="links-bar" id="top-links">
+  <div class="links-bar-inner">
+    <div class="links-bar-title">📌 林威老師 七月開課 &amp; 聯絡方式</div>
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <div class="link-icon icon-echo">🎯</div>
+      <div class="link-text">
+        <div class="link-name">錯中學 ECHO 計劃</div>
+        <div class="link-desc">七月開課｜從錯誤中強化英文，系統性學習計畫</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <div class="link-icon icon-student">📊</div>
+      <div class="link-text">
+        <div class="link-name">學生學習分析工具</div>
+        <div class="link-desc">七月開課｜個人化學習診斷，找出你的弱點</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <div class="link-icon icon-line">💬</div>
+      <div class="link-text">
+        <div class="link-name">加 LINE：linwayet</div>
+        <div class="link-desc">林威老師個人帳號｜歡迎詢問課程相關問題</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <span class="hero-emoji">🫁</span>
+  <h1>肺與呼吸疾病微課程</h1>
+  <div class="hero-en">Lung · Respiration Movement · 肺部疾病</div>
+  <div class="hero-badges">
+    <span class="badge b-orange">自學用</span>
+    <span class="badge b-amber">每回合 10 分鐘</span>
+    <span class="badge b-cream">共 14 回合</span>
+    <span class="badge b-cream">生物學小白適用</span>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main">
+
+  <!-- Format intro -->
+  <div class="format-box">
+    <div class="format-item">
+      <div class="f-emoji">📖</div>
+      <div class="f-text"><strong>主題內容</strong>核心概念 + 圖解說明<br>約 7 分鐘</div>
+    </div>
+    <div class="format-item">
+      <div class="f-emoji">🔤</div>
+      <div class="f-text"><strong>關鍵單字整理</strong>6–8 個字｜英文 + 中文<br>定義 + 白話比喻 約 3 分鐘</div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card sc-a"><div class="stat-num sn-a">3</div><div class="stat-label">解剖篇</div></div>
+    <div class="stat-card sc-b"><div class="stat-num sn-b">3</div><div class="stat-label">生理篇</div></div>
+    <div class="stat-card sc-c"><div class="stat-num sn-c">5</div><div class="stat-label">疾病篇</div></div>
+    <div class="stat-card sc-d"><div class="stat-num sn-d">3</div><div class="stat-label">治療篇</div></div>
+  </div>
+
+  <div id="outline"></div>
+
+</div><!-- end main -->
+
+<!-- ===== BOTTOM LINKS BAR ===== -->
+<div class="links-bar">
+  <div class="links-bar-inner">
+    <div class="links-bar-title">📌 林威老師 七月開課 &amp; 聯絡方式</div>
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <div class="link-icon icon-echo">🎯</div>
+      <div class="link-text">
+        <div class="link-name">錯中學 ECHO 計劃</div>
+        <div class="link-desc">七月開課｜從錯誤中強化英文，系統性學習計畫</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <div class="link-icon icon-student">📊</div>
+      <div class="link-text">
+        <div class="link-name">學生學習分析工具</div>
+        <div class="link-desc">七月開課｜個人化學習診斷，找出你的弱點</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <div class="link-icon icon-line">💬</div>
+      <div class="link-text">
+        <div class="link-name">加 LINE：linwayet</div>
+        <div class="link-desc">林威老師個人帳號｜歡迎詢問課程相關問題</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<div class="bottom-spacer"></div>
+
+<script>
+const data = [
+  {
+    section:"Part A — 解剖與構造", pill:"sp-a", num:"mn-a", wc:"wc-a", tb:"tb-a", color:"a",
+    modules:[
+      { id:"A1", title:"肺的大全景：從氣管到肺泡", sub:"上下呼吸道 · 支氣管樹 · 肺葉分區 · 肺泡結構",
+        words:[
+          {en:"Trachea",zh:"氣管",def:"連接喉嚨與肺部的管道。",tip:"像家裡的主水管，空氣從這裡進入分支。"},
+          {en:"Bronchi",zh:"支氣管",def:"氣管分叉後進入左右肺的兩條主幹。",tip:"把氣管當高速公路，支氣管是分出來的兩條大幹道。"},
+          {en:"Alveolus",zh:"肺泡",def:"肺部最末端的微小氣囊，是氣體交換的場所。",tip:"像一串葡萄的顆粒，氧氣在這裡進血、二氧化碳在這裡出來。"},
+          {en:"Bronchiole",zh:"細支氣管",def:"支氣管不斷分支後最細的小管道，直徑不到 1 mm。",tip:"像樹枝越分越細，最細的那段。"},
+          {en:"Pleura",zh:"肋膜",def:"包覆肺臟外面的兩層薄膜，之間有少量液體。",tip:"像肺穿了一件緊身雨衣，讓它在胸腔裡滑順移動。"},
+          {en:"Lobe",zh:"肺葉",def:"肺臟的大分區，右肺三葉、左肺兩葉。",tip:"就像把高麗菜分成幾大片，每片就是一葉。"}
+        ]
+      },
+      { id:"A2", title:"肺的微觀世界：細胞層級", sub:"I 型 / II 型肺泡細胞 · 表面張力素 · 肺泡巨噬細胞 · 黏膜纖毛",
+        words:[
+          {en:"Type I Alveolar Cell",zh:"第一型肺泡細胞",def:"肺泡壁上超薄的細胞，氣體就穿過它擴散。",tip:"像玻璃紙，越薄越好，氧氣才能快速穿越。"},
+          {en:"Type II Alveolar Cell",zh:"第二型肺泡細胞",def:"負責分泌表面張力素，也能修復受損的肺泡壁。",tip:"肺泡的「維修工人」，壞了就靠它修。"},
+          {en:"Surfactant",zh:"表面張力素",def:"一種脂質蛋白質混合物，降低肺泡表面張力防止塌陷。",tip:"像在氣泡內壁塗了一層洗碗精，讓氣泡不那麼容易縮小。"},
+          {en:"Alveolar Macrophage",zh:"肺泡巨噬細胞",def:"駐守肺泡的免疫細胞，負責吃掉吸入的灰塵和細菌。",tip:"肺的「清道夫」，每天默默清掃你吸進去的髒東西。"},
+          {en:"Cilia",zh:"纖毛",def:"氣道內壁上密密麻麻的細毛，不停擺動把黏液往上推。",tip:"像一排微型掃把，把黏在黏液裡的灰塵往喉嚨方向掃。"},
+          {en:"Mucus",zh:"黏液",def:"氣道分泌的黏稠液體，用來黏住並排除異物。",tip:"氣道的「捕蟲紙」，細菌和灰塵黏上去就跑不掉。"}
+        ]
+      },
+      { id:"A3", title:"胸腔機械：肋骨、橫膈膜與肋間肌", sub:"胸腔結構 · 肋膜腔 · 胸膜壓 · 負壓呼吸原理",
+        words:[
+          {en:"Diaphragm",zh:"橫膈膜",def:"分隔胸腔與腹腔的圓頂形肌肉，是最主要的呼吸肌。",tip:"像一個倒扣的碗，收縮時往下壓、胸腔變大，空氣就吸進來。"},
+          {en:"Intercostal Muscles",zh:"肋間肌",def:"位於肋骨之間的肌肉，幫助擴張或壓縮胸腔。",tip:"肋骨之間的「風箱手柄」，一拉胸腔就擴開。"},
+          {en:"Pleural Cavity",zh:"肋膜腔",def:"兩層肋膜之間的密閉空間，維持微負壓狀態。",tip:"像一個抽了真空的密封袋，把肺黏附在胸壁上不會垮。"},
+          {en:"Intrapleural Pressure",zh:"肋膜內壓",def:"肋膜腔內的壓力，正常時低於大氣壓。",tip:"這個「低氣壓」是肺不會自己癟掉的關鍵秘密。"},
+          {en:"Tidal Volume",zh:"潮氣量",def:"每次平靜呼吸時進出肺的空氣量，約 500 mL。",tip:"像潮水，每次漲退帶進帶出約半瓶礦泉水的空氣量。"},
+          {en:"Pneumothorax",zh:"氣胸",def:"空氣跑進肋膜腔，導致負壓消失、肺部塌陷。",tip:"密封袋破了，肺就像漏氣氣球一樣縮下去。"}
+        ]
+      }
+    ]
+  },
+  {
+    section:"Part B — 生理與呼吸運動", pill:"sp-b", num:"mn-b", wc:"wc-b", tb:"tb-b", color:"b",
+    modules:[
+      { id:"B1", title:"吸氣與呼氣：壓力梯度機制", sub:"潮氣量 · Boyle 定律 · 主動 vs. 被動呼氣 · 呼吸頻率",
+        words:[
+          {en:"Boyle's Law",zh:"波以耳定律",def:"在溫度不變的情況下，氣體體積越大、壓力越小。",tip:"擠汽水瓶——鬆手瓶子回彈變大，裡面氣壓降低，空氣衝進來。"},
+          {en:"Inspiration",zh:"吸氣",def:"橫膈膜收縮下降，胸腔體積增大、壓力降低，空氣流入。",tip:"肺是個「負壓吸塵器」，空間變大就把空氣吸進來。"},
+          {en:"Expiration",zh:"呼氣",def:"肌肉放鬆，胸腔回縮，肺彈回，空氣被擠出。",tip:"像放開捏住的氣球，它自己就會縮回去把氣推出來。"},
+          {en:"Compliance",zh:"肺順應性",def:"肺臟擴張的容易程度，順應性越高越好張開。",tip:"像氣球，新的好吹（高），舊的又硬又難吹（低）。"},
+          {en:"Respiratory Rate",zh:"呼吸頻率",def:"每分鐘呼吸的次數，成人靜止時約 12–20 次。",tip:"靜靜坐著每分鐘約呼吸 15 次，完全不用思考自動發生。"},
+          {en:"Dead Space",zh:"解剖死腔",def:"氣道中不能進行氣體交換的空間（約 150 mL）。",tip:"每次呼吸約有 1/3 的空氣只是「過路」，根本沒到肺泡。"}
+        ]
+      },
+      { id:"B2", title:"氣體交換：O₂ 與 CO₂ 的旅程", sub:"分壓差 · 擴散定律 · 血紅素結合 · 通氣灌流比 V/Q",
+        words:[
+          {en:"Partial Pressure",zh:"分壓",def:"混合氣體中，某種氣體單獨佔有的壓力。",tip:"空氣是好幾種氣體的混合，O₂ 的分壓就是它「出力」的那一份。"},
+          {en:"Diffusion",zh:"擴散",def:"分子從高濃度區域自動移向低濃度區域。",tip:"像墨水滴進水裡，不用攪拌自己就散開——O₂ 就這樣從肺泡進血。"},
+          {en:"Hemoglobin",zh:"血紅素",def:"紅血球內攜帶氧氣的蛋白質，含鐵，讓血液呈紅色。",tip:"血液的「氧氣快遞員」，每個分子能綁 4 顆 O₂ 送到全身。"},
+          {en:"Oxyhemoglobin",zh:"氧合血紅素",def:"血紅素與氧氣結合後的狀態，讓動脈血呈鮮紅色。",tip:"血紅素「裝滿貨」的狀態，像快遞員背包裝滿包裹。"},
+          {en:"V/Q Ratio",zh:"通氣灌流比",def:"肺泡通氣量與血流量的比例，理想約 0.8。",tip:"像餐廳的食材供應（血流）要配廚師人數（通氣），比例失衡就出問題。"},
+          {en:"Hypoxia",zh:"缺氧",def:"組織或血液中氧氣不足的狀態。",tip:"細胞「斷糧」——氧氣是細胞的燃料，缺了就開始罷工。"}
+        ]
+      },
+      { id:"B3", title:"大腦控制呼吸：化學感受器", sub:"延腦呼吸中樞 · CO₂ / pH 感應 · 缺氧反應 · 高海拔適應",
+        words:[
+          {en:"Medullary Respiratory Center",zh:"延腦呼吸中樞",def:"位於腦幹延腦，產生基本呼吸節律的中樞。",tip:"像呼吸的「自動駕駛系統」，就算你睡著也持續發號施令。"},
+          {en:"Chemoreceptor",zh:"化學感受器",def:"偵測血液中 CO₂、O₂ 和 pH 的感測細胞。",tip:"血液的「空氣品質偵測器」，CO₂ 太高立刻通知大腦加快呼吸。"},
+          {en:"Hypercapnia",zh:"高碳酸血症",def:"血液中 CO₂ 濃度過高的狀態。",tip:"廢氣沒排乾淨，血液像廢氣超標的空氣，會讓你喘不過氣。"},
+          {en:"pH",zh:"酸鹼度",def:"衡量液體酸鹼程度的指標，血液正常 pH 約 7.35–7.45。",tip:"血液要維持微鹼，CO₂ 太多會讓它變酸，身體立刻啟動警報。"},
+          {en:"Hyperventilation",zh:"過度換氣",def:"呼吸過快過深，導致 CO₂ 濃度異常下降。",tip:"廢氣吹太多，血液反而太鹼，可能頭暈甚至手麻。"},
+          {en:"Acclimatization",zh:"高海拔適應",def:"身體在高海拔低氧環境下增加紅血球等一系列生理調整。",tip:"身體很聰明，住久了就多造紅血球來補償氧氣少的問題。"}
+        ]
+      }
+    ]
+  },
+  {
+    section:"Part C — 肺部疾病", pill:"sp-c", num:"mn-c", wc:"wc-c", tb:"tb-c", color:"c",
+    modules:[
+      { id:"C1", title:"阻塞性疾病：COPD & 氣喘", sub:"可控制但無法根治 · 慢性支氣管炎 · 肺氣腫 · 氣道高反應",
+        words:[
+          {en:"COPD",zh:"慢性阻塞性肺病",def:"以氣流持續受阻為特徵的慢性肺病，通常因長期吸菸引起。",tip:"像水管被鏽蝕慢慢堵住，空氣進出越來越費力，而且很難疏通。"},
+          {en:"Emphysema",zh:"肺氣腫",def:"肺泡壁被破壞，多個肺泡融合成大氣囊，氣體交換面積大減。",tip:"原本葡萄串狀的肺泡變成一顆大氣球，交換氣體的面積大幅縮水。"},
+          {en:"Asthma",zh:"氣喘",def:"氣道慢性發炎、對刺激過度敏感，導致反覆性喘息和胸悶。",tip:"氣道像一根易怒的橡皮管，遇到過敏原就狂縮，空氣擠不過去。"},
+          {en:"Bronchospasm",zh:"支氣管痙攣",def:"支氣管平滑肌突然收縮，造成氣道急速變窄。",tip:"像水管被人突然捏住，水流（空氣）瞬間大幅減少。"},
+          {en:"FEV1",zh:"第一秒用力呼氣量",def:"用力吐氣第一秒能呼出的空氣量，是診斷阻塞性肺病的關鍵數值。",tip:"正常人一秒能吐出很多，阻塞者明顯少——像測試水管有多通暢。"},
+          {en:"Inhaler",zh:"吸入器",def:"將藥物以霧狀或粉末直接吸入肺部的給藥裝置。",tip:"讓藥物直達現場的「快捷方式」，比吃藥快，副作用也小。"}
+        ]
+      },
+      { id:"C2", title:"肺癌：可以治療，但挑戰重重", sub:"NSCLC vs. SCLC · 分期 · 標靶治療 · 免疫療法突破",
+        words:[
+          {en:"NSCLC",zh:"非小細胞肺癌",def:"最常見的肺癌類型，約佔 85%，生長相對較慢。",tip:"肺癌的「大宗款」，早期發現治療機會較高。"},
+          {en:"SCLC",zh:"小細胞肺癌",def:"生長極快、轉移早的肺癌，幾乎都與吸菸強烈相關。",tip:"肺癌裡的「急性子」，發現時往往已擴散，治療最棘手。"},
+          {en:"Metastasis",zh:"轉移",def:"癌細胞離開原發部位，擴散到其他器官。",tip:"癌細胞「出走」——原本在肺，後來跑到腦、骨頭或肝臟。"},
+          {en:"Targeted Therapy",zh:"標靶治療",def:"針對腫瘤特定基因突變設計的藥物，精準攻擊癌細胞。",tip:"像用 GPS 導引的飛彈，只打有特定標記的癌細胞，不傷無辜。"},
+          {en:"Immunotherapy",zh:"免疫療法",def:"利用或增強患者自身免疫系統來攻擊癌細胞。",tip:"教自己的士兵（免疫細胞）認出癌細胞，讓身體自己去打仗。"},
+          {en:"Staging",zh:"癌症分期",def:"以腫瘤大小和擴散程度（I–IV期）評估疾病嚴重度。",tip:"像颱風分級，越高期代表擴散越廣，治療選擇也不同。"}
+        ]
+      },
+      { id:"C3", title:"肺纖維化 (IPF)：目前無法根治", sub:"肺泡疤痕化 · 病程進展 · 現有緩解藥物 · 幹細胞研究",
+        words:[
+          {en:"Pulmonary Fibrosis",zh:"肺纖維化",def:"肺組織形成過多疤痕，使肺部變硬、喪失彈性。",tip:"肺泡壁像被燒傷後留疤，疤越多肺越硬，呼吸越來越費力。"},
+          {en:"IPF",zh:"特發性肺纖維化",def:"原因不明的肺纖維化，是最常見也是預後最差的類型。",tip:"「特發性」就是「不知道為什麼發生的」——最難對付就是找不到根源。"},
+          {en:"Fibrosis",zh:"纖維化",def:"組織受損後由纖維組織（疤痕）取代的修復過程，過度則成病。",tip:"適量是修復，過量是災難——皮膚小傷結薄痂是好事，整個肺都結痂就糟了。"},
+          {en:"Antifibrotic Drug",zh:"抗纖維化藥物",def:"能減緩肺纖維化進展的藥物（如 Pirfenidone），但無法逆轉。",tip:"能踩煞車，但無法倒車——只能讓惡化慢一點，不能讓肺恢復原狀。"},
+          {en:"Lung Transplant",zh:"肺臟移植",def:"以健康捐贈者的肺臟替換嚴重損壞的肺臟。",tip:"最後的選項，就像換一台新引擎，但手術風險高且捐贈者稀缺。"},
+          {en:"Stem Cell Therapy",zh:"幹細胞療法",def:"利用幹細胞修復或再生受損肺組織的實驗性療法。",tip:"目前還在研究階段，像在嘗試用「原廠零件」重建受損的肺。"}
+        ]
+      },
+      { id:"C4", title:"感染性肺病：肺炎 & 肺結核", sub:"可治癒 · 細菌 / 病毒 / 黴菌型 · 抗生素 · 結核菌耐藥性",
+        words:[
+          {en:"Pneumonia",zh:"肺炎",def:"肺組織因感染而發炎，常見症狀為發燒、咳嗽、呼吸困難。",tip:"肺泡被細菌或病毒「佔領」，充滿膿液，氣體交換大受阻礙。"},
+          {en:"Tuberculosis (TB)",zh:"肺結核",def:"由結核分枝桿菌引起的慢性肺部感染，可透過空氣傳播。",tip:"一種古老但仍活躍的病，要吃藥 6 個月以上才能根除。"},
+          {en:"Antibiotic",zh:"抗生素",def:"能殺死或抑制細菌生長的藥物，對病毒性肺炎無效。",tip:"專門對付細菌的武器，但對病毒「無感」，感冒亂吃是沒用的。"},
+          {en:"Drug Resistance",zh:"抗藥性",def:"細菌在抗生素壓力下演化出對藥物免疫的能力。",tip:"細菌版的「升級」——吃藥沒吃完、亂吃藥，都在幫細菌練功升等。"},
+          {en:"Consolidation",zh:"肺葉實變",def:"肺泡充滿液體或膿液，X 光下呈現白色不透明區域。",tip:"正常肺在 X 光下是黑的（有空氣），肺炎時肺泡填滿東西就變白。"},
+          {en:"Sputum",zh:"痰",def:"呼吸道分泌的黏液與細胞混合物。",tip:"痰的顏色和量是醫生判斷感染嚴重度的線索。"}
+        ]
+      },
+      { id:"C5", title:"惡性間皮瘤：罕見但高危", sub:"石棉相關 · 幾乎無法根治 · 姑息性治療 · 現行研究",
+        words:[
+          {en:"Mesothelioma",zh:"惡性間皮瘤",def:"起源於肋膜的惡性腫瘤，與石棉暴露高度相關。",tip:"不是長在肺裡，而是長在「包覆肺的袋子」上。"},
+          {en:"Asbestos",zh:"石棉",def:"一種曾廣泛用於建材的天然礦物纖維，吸入後可致癌。",tip:"一種「慢性定時炸彈」，吸入後可能 20–50 年後才發病。"},
+          {en:"Pleural Effusion",zh:"肋膜積液",def:"肋膜腔異常積聚液體，壓迫肺部造成呼吸困難。",tip:"本來乾燥的「肺外套」裡積了水，把肺從外面壓扁。"},
+          {en:"Palliative Care",zh:"安寧緩和治療",def:"以減輕症狀、改善生活品質為目標而非根治的治療方式。",tip:"讓病人盡量舒適、有尊嚴地生活——是醫學很重要的一部分。"},
+          {en:"Chemotherapy",zh:"化學療法",def:"使用藥物殺死快速分裂的癌細胞，常有副作用。",tip:"像在體內投放炸彈，癌細胞和快速分裂的正常細胞都會受影響。"},
+          {en:"Prognosis",zh:"預後",def:"疾病未來發展與結果的預測。",tip:"醫生說「預後不好」意思是「病情不太樂觀，治療效果有限」。"}
+        ]
+      }
+    ]
+  },
+  {
+    section:"Part D — 治療、預防與未來", pill:"sp-d", num:"mn-d", wc:"wc-d", tb:"tb-d", color:"d",
+    modules:[
+      { id:"D1", title:"治療工具箱：藥物、吸入器與手術", sub:"支氣管擴張劑 · ICS · 肺切除 · 肺臟移植條件",
+        words:[
+          {en:"Bronchodilator",zh:"支氣管擴張劑",def:"使支氣管平滑肌放鬆、管腔擴大，改善氣流的藥物。",tip:"像幫擠壓的水管「鬆開」，讓空氣更容易通過。"},
+          {en:"Inhaled Corticosteroid",zh:"吸入性類固醇",def:"直接吸入肺部的抗發炎類固醇藥，降低氣道慢性發炎。",tip:"局部消炎神器，直達現場，比口服類固醇副作用小很多。"},
+          {en:"Oxygen Therapy",zh:"氧氣療法",def:"給予濃度高於空氣的氧氣，改善低血氧狀態。",tip:"當肺自己吸不夠氧時，用外接氧氣「補貨」維持身體運作。"},
+          {en:"Lobectomy",zh:"肺葉切除術",def:"手術切除肺臟的一個肺葉，常用於早期肺癌。",tip:"把長腫瘤的那一片「葉子」切掉，剩下的肺葉仍能承擔呼吸功能。"},
+          {en:"Pulmonary Rehabilitation",zh:"肺復健",def:"結合運動訓練、衛教和心理支持的整合治療計畫。",tip:"肺版的「復健課程」，訓練呼吸肌肉、改善生活品質。"},
+          {en:"Ventilator",zh:"呼吸器",def:"用機械方式輔助或替代病人自主呼吸的醫療設備。",tip:"肺罷工時的「代打選手」，幫你的肺完成呼吸動作。"}
+        ]
+      },
+      { id:"D2", title:"預防與肺部健康維護", sub:"戒菸科學 · PM2.5 防護 · 肺功能檢測 FEV1/FVC · 肺復健",
+        words:[
+          {en:"Spirometry",zh:"肺量計（肺功能測試）",def:"測量呼吸時空氣進出肺部的速度和量。",tip:"像測試肺的「體能測驗」，吹一口氣就知道氣道通不通。"},
+          {en:"FVC",zh:"用力肺活量",def:"盡力吸飽後再用力全部吐出的最大氣體量。",tip:"肺的「最大容量」，就像測量氣球最多能裝多少空氣。"},
+          {en:"PM2.5",zh:"細懸浮微粒",def:"直徑小於 2.5 微米的空氣污染粒子，能深入肺泡造成傷害。",tip:"比頭髮細 28 倍，小到纖毛清不掉，直接沉積在肺泡。"},
+          {en:"Smoking Cessation",zh:"戒菸",def:"停止吸菸，是預防最多肺部疾病的單一最有效措施。",tip:"戒菸 10 年後肺癌風險降為吸菸者的一半，永遠不嫌晚。"},
+          {en:"Vaccination",zh:"疫苗接種",def:"接種疫苗預防肺炎鏈球菌或流感等感染性肺病。",tip:"給免疫系統「事先訓練」，讓它見過病菌面孔，真的來時快速反應。"},
+          {en:"Peak Flow Meter",zh:"尖峰呼氣流速計",def:"測量最快呼氣速度的簡便工具，氣喘患者用來監測病情。",tip:"像氣道通暢度的「每日體溫計」，數值低了就知道快發作了。"}
+        ]
+      },
+      { id:"D3", title:"未來展望：基因、AI 與再生醫學", sub:"基因療法 · AI 早期篩查 · 類器官肺模型 · 精準醫療",
+        words:[
+          {en:"Gene Therapy",zh:"基因療法",def:"透過修改或補充基因來治療遺傳性疾病的方法。",tip:"直接去修改「設計藍圖」的錯誤，從根本解決問題。"},
+          {en:"AI Diagnostics",zh:"AI 診斷",def:"人工智慧分析 X 光、CT 掃描影像，輔助早期偵測肺部病變。",tip:"AI 的眼睛永不疲勞，能找到人眼可能忽略的微小腫瘤。"},
+          {en:"Lung Organoid",zh:"肺類器官",def:"在實驗室用幹細胞培養出模擬真實肺組織結構的微型器官模型。",tip:"「迷你肺」——科學家用它測試新藥，不用讓真人冒險。"},
+          {en:"Precision Medicine",zh:"精準醫療",def:"依據個人基因、環境和生活習慣量身訂做治療方案。",tip:"告別「一藥治百人」，未來依你的基因選最適合你的藥物。"},
+          {en:"Biomarker",zh:"生物標記",def:"血液或組織中可指示疾病存在或治療反應的生物分子。",tip:"身體的「暗語」，特定蛋白質出現，就暗示某種疾病或治療效果。"},
+          {en:"CRISPR",zh:"基因剪刀技術",def:"一種精確編輯 DNA 序列的基因工程工具，用於修正基因缺陷。",tip:"像分子層級的「剪刀加膠水」，剪掉壞的基因片段、貼上正確的。"}
+        ]
+      }
+    ]
+  }
+];
+
+const outline = document.getElementById("outline");
+
+data.forEach(part => {
+  const labelDiv = document.createElement("div");
+  labelDiv.className = "section-label";
+  labelDiv.innerHTML = `<span class="section-pill ${part.pill}">${part.section}</span><div class="section-line"></div>`;
+  outline.appendChild(labelDiv);
+
+  part.modules.forEach(mod => {
+    const card = document.createElement("div");
+    card.className = "module-card";
+
+    const wordsHtml = mod.words.map(w => `
+      <div class="word-item">
+        <div class="w-en">${w.en}</div>
+        <div class="w-zh">${w.zh}</div>
+        <div class="w-def">${w.def}</div>
+        <div class="w-tip">${w.tip}</div>
+      </div>
+    `).join("");
+
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleWords('${mod.id}', this)">
+        <div class="mod-num ${part.num}">${mod.id}</div>
+        <div>
+          <div class="mod-title">${mod.title}</div>
+          <div class="mod-sub">${mod.sub}</div>
+          <span class="word-count-badge ${part.wc}">🔤 ${mod.words.length} 個關鍵單字</span>
+        </div>
+        <div class="card-right">
+          <span class="time-pill">⏱ ~10 min</span>
+          <button class="toggle-btn ${part.tb}" id="btn-${mod.id}">預覽單字 ▾</button>
+        </div>
+      </div>
+      <div class="word-panel" id="wp-${mod.id}">
+        <div class="word-panel-title">🔤 關鍵單字（共 ${mod.words.length} 個）</div>
+        <div class="words-grid">${wordsHtml}</div>
+      </div>
+    `;
+    outline.appendChild(card);
+  });
+});
+
+function toggleWords(id, header) {
+  const panel = document.getElementById("wp-" + id);
+  const btn = document.getElementById("btn-" + id);
+  const open = panel.classList.toggle("open");
+  btn.textContent = open ? "收起 ▴" : "預覽單字 ▾";
+}
+</script>
+</body>
+</html>
