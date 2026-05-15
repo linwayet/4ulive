@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇩 印尼二十年微課程 | 林威老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm1: #FFF8F0;
+  --warm2: #FFF0DC;
+  --warm3: #FFE4BE;
+  --amber: #E8943A;
+  --amber-dark: #C4711A;
+  --amber-light: #FFD49A;
+  --coral: #E86340;
+  --coral-light: #FFDDD4;
+  --teal: #2D8C7A;
+  --teal-light: #D4F0EA;
+  --green: #4A8C3F;
+  --green-light: #DFF0DC;
+  --blue: #2D6EA8;
+  --blue-light: #D8EAFA;
+  --purple: #6B4FA8;
+  --purple-light: #EBE4FA;
+  --pink: #C45A82;
+  --pink-light: #FAE0EC;
+  --brown: #7A4A28;
+  --cream: #FDF6EC;
+  --text-dark: #2C1A08;
+  --text-mid: #5A3A1A;
+  --text-light: #8A6A4A;
+  --shadow: 0 2px 16px rgba(180,100,30,0.10);
+  --shadow-lg: 0 6px 32px rgba(180,100,30,0.14);
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--warm1);
+  color: var(--text-dark);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(232,148,58,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, rgba(232,99,64,0.07) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255,240,220,0.5) 0%, transparent 70%);
+}
+
+/* ── LINKS BLOCK ────────────────────────────────────────── */
+.links-block {
+  background: linear-gradient(135deg, #8B4513 0%, #C4711A 45%, #E8943A 100%);
+  padding: 18px 16px;
+  color: #fff;
+}
+.links-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.links-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  margin-bottom: 2px;
+}
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  padding: 11px 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.2s, transform 0.15s;
+  backdrop-filter: blur(4px);
+}
+.link-item:hover { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+.link-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.link-icon.echo { background: rgba(255,220,140,0.35); }
+.link-icon.student { background: rgba(180,255,200,0.25); }
+.link-icon.line { background: rgba(100,220,100,0.3); }
+.link-text-main { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.link-text-sub { font-size: 11px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+.link-arrow { margin-left: auto; font-size: 16px; opacity: 0.7; }
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(160deg, #FFE8C8 0%, #FFDDB0 40%, #FFD49A 100%);
+  padding: 40px 20px 36px;
+  text-align: center;
+  border-bottom: 3px solid var(--amber-light);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🇮🇩';
+  position: absolute;
+  font-size: 180px;
+  opacity: 0.06;
+  top: -20px; right: -20px;
+  line-height: 1;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--amber);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: #fff;
+  border: 1.5px solid var(--amber-light);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--amber-dark);
+  font-weight: 500;
+}
+
+/* ── MAIN ────────────────────────────────────────────── */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 14px 40px;
+}
+
+/* ── MODULE CARD ─────────────────────────────────────── */
+.module-card {
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1.5px solid transparent;
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: filter 0.15s;
+}
+.module-header:hover { filter: brightness(0.97); }
+
+.module-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700;
+  background: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+  color: inherit;
+}
+.module-title-wrap { flex: 1; }
+.module-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.module-sub { font-size: 11px; opacity: 0.75; margin-top: 3px; }
+.module-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.module-arrow {
+  font-size: 16px;
+  transition: transform 0.3s;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.module-card.open .module-arrow { transform: rotate(90deg); }
+
+.episodes-list {
+  display: none;
+  background: #fff;
+  padding: 6px 0 8px;
+}
+.module-card.open .episodes-list { display: block; }
+
+.ep-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 18px;
+  border-bottom: 1px solid rgba(200,160,100,0.12);
+  transition: background 0.12s;
+}
+.ep-item:last-child { border-bottom: none; }
+.ep-item:hover { background: var(--warm1); }
+.ep-num-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 32px;
+  text-align: center;
+}
+.ep-text { font-size: 13.5px; color: var(--text-dark); line-height: 1.5; }
+
+/* MODULE COLORS */
+.m1 { background: linear-gradient(135deg, #FFF0DC, #FFE4C0); border-color: #FFD49A; color: var(--brown); }
+.m1 .ep-num-badge { background: #FFD49A; color: #7A4A28; }
+
+.m2 { background: linear-gradient(135deg, #DFF5EE, #C8EFE4); border-color: #9ADEC9; color: #1A5A48; }
+.m2 .ep-num-badge { background: #9ADEC9; color: #0D4035; }
+
+.m3 { background: linear-gradient(135deg, #FFF0DC, #FFE0B0); border-color: #FFC86E; color: #8A4500; }
+.m3 .ep-num-badge { background: #FFC86E; color: #8A4500; }
+
+.m4 { background: linear-gradient(135deg, #FDE8DC, #FDDBD0); border-color: #F4A98A; color: #7A2A10; }
+.m4 .ep-num-badge { background: #F4A98A; color: #7A2A10; }
+
+.m5 { background: linear-gradient(135deg, #E8F0FF, #D8E8FF); border-color: #A0C0F0; color: #1A3A72; }
+.m5 .ep-num-badge { background: #A0C0F0; color: #1A3A72; }
+
+.m6 { background: linear-gradient(135deg, #F0E8FF, #E8D8FF); border-color: #C0A0F0; color: #3A1A72; }
+.m6 .ep-num-badge { background: #C0A0F0; color: #3A1A72; }
+
+.m7 { background: linear-gradient(135deg, #FFE8F0, #FFD8E8); border-color: #F0A0C0; color: #7A1A42; }
+.m7 .ep-num-badge { background: #F0A0C0; color: #7A1A42; }
+
+/* ── FOOTER SECTION ──────────────────────────────────── */
+.footer-info {
+  text-align: center;
+  padding: 20px 16px 10px;
+  color: var(--text-light);
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.footer-info strong { color: var(--amber-dark); }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (min-width: 480px) {
+  .links-inner { flex-direction: row; flex-wrap: wrap; }
+  .link-item { flex: 1; min-width: 180px; }
+  .links-label { width: 100%; }
+}
+@media (max-width: 380px) {
+  .module-title { font-size: 14px; }
+  .ep-text { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP LINKS BLOCK ═══════════════════════════════════ -->
+<div class="links-block">
+  <div class="links-inner">
+    <div class="links-label">📌 林威老師 · 七月開課 &amp; 聯絡</div>
+    <a href="https://linwayet.github.io/4ulive/index.html" class="link-item" target="_blank">
+      <div class="link-icon echo">🔄</div>
+      <div>
+        <div class="link-text-main">錯中學 ECHO 計劃</div>
+        <div class="link-text-sub">七月開課 · 從錯誤中建立系統性英文能力</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+    <a href="https://linwayet.github.io/popup/index" class="link-item" target="_blank">
+      <div class="link-icon student">📊</div>
+      <div>
+        <div class="link-text-main">學生分析系統</div>
+        <div class="link-text-sub">七月開課 · 個人化學習弱點診斷工具</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+    <a href="https://line.me/ti/p/linwayet" class="link-item" target="_blank">
+      <div class="link-icon line">💬</div>
+      <div>
+        <div class="link-text-main">加 LINE：linwayet</div>
+        <div class="link-text-sub">林威老師 · 直接聯絡 · 課程諮詢</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-badge">🌴 微課程 · 自學專用</div>
+  <h1 class="hero-title">🇮🇩 印尼二十年<br>完整微課程</h1>
+  <p class="hero-sub">2004–2024，從崛起到稱霸東南亞<br>台印關係 · 原物料帝國 · 大國角力 · 文化深探</p>
+  <div class="hero-stats">
+    <span class="stat-pill">📚 7 大模組</span>
+    <span class="stat-pill">🎯 35 個回合</span>
+    <span class="stat-pill">⏱ 每次 10 分鐘</span>
+    <span class="stat-pill">📖 總計約 6 小時</span>
+  </div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══════════════════════════════════════ -->
+<main>
+
+  <!-- MODULE 1 -->
+  <div class="module-card m1" id="m1">
+    <div class="module-header" onclick="toggle('m1')">
+      <div class="module-num">1</div>
+      <div class="module-title-wrap">
+        <div class="module-title">印尼的崛起全景</div>
+        <div class="module-sub">歷史脈絡 · 政治轉型 · 二十年大事記</div>
+      </div>
+      <div class="module-badge">入門篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP1</span><span class="ep-text">四億人口的群島大國：地理與民族多樣性全解</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP2</span><span class="ep-text">從亞洲金融危機到民主轉型（1998–2004）</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP3</span><span class="ep-text">蘇西洛（SBY）時代：2004–2014 的穩定成長</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP4</span><span class="ep-text">佐科威（Jokowi）革命：2014–2024 的基礎建設大衝刺</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP5</span><span class="ep-text">2024 年大選：普拉伯沃新時代的開局</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="module-card m2" id="m2">
+    <div class="module-header" onclick="toggle('m2')">
+      <div class="module-num">2</div>
+      <div class="module-title-wrap">
+        <div class="module-title">經濟發展與挑戰</div>
+        <div class="module-sub">GDP成長 · 數位經濟 · 2045 願景</div>
+      </div>
+      <div class="module-badge">經濟篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP6</span><span class="ep-text">GDP 成長引擎：從 6% 到穩健的 5%</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP7</span><span class="ep-text">從農業到製造業：去工業化的隱憂</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP8</span><span class="ep-text">數位經濟爆發：Gojek、Tokopedia 與獨角獸浪潮</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP9</span><span class="ep-text">貧富差距與人口紅利的賽跑</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP10</span><span class="ep-text">2045 願景：成為全球前五大經濟體的雄心</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="module-card m3" id="m3">
+    <div class="module-header" onclick="toggle('m3')">
+      <div class="module-num">3</div>
+      <div class="module-title-wrap">
+        <div class="module-title">台灣與印尼的特殊關係</div>
+        <div class="module-sub">移工 · 投資 · 新南向 · 南島語族</div>
+      </div>
+      <div class="module-badge">台印關係</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP11</span><span class="ep-text">沒有邦交的深厚情：歷史脈絡與外交限制</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP12</span><span class="ep-text">40 萬人的紐帶：印尼移工與留學生在台灣</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP13</span><span class="ep-text">台灣新南向政策：印尼是最重要的夥伴嗎？</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP14</span><span class="ep-text">台商在印尼：紡織、製鞋、塑化到科技</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP15</span><span class="ep-text">共同的南島語族根源：文化 DNA 的連結</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="module-card m4" id="m4">
+    <div class="module-header" onclick="toggle('m4')">
+      <div class="module-num">4</div>
+      <div class="module-title-wrap">
+        <div class="module-title">原物料帝國：鎳、棕櫚油與煤礦</div>
+        <div class="module-sub">資源民族主義 · EV電池 · 下游化政策</div>
+      </div>
+      <div class="module-badge">資源篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP16</span><span class="ep-text">鎳礦禁令：改變全球 EV 電池的一道政令</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP17</span><span class="ep-text">棕櫚油王國：全球食品供應鏈的隱形主角</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP18</span><span class="ep-text">煤炭的矛盾：碳排大國與綠能轉型的掙扎</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP19</span><span class="ep-text">下游化政策：從賣原料到賣成品的國家戰略</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP20</span><span class="ep-text">中國資金滲透：鎳礦場背後的地緣政治</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="module-card m5" id="m5">
+    <div class="module-header" onclick="toggle('m5')">
+      <div class="module-num">5</div>
+      <div class="module-title-wrap">
+        <div class="module-title">東南亞地緣政治中的印尼</div>
+        <div class="module-sub">ASEAN · 南海 · 鄰國關係 · 澳洲</div>
+      </div>
+      <div class="module-badge">區域篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP21</span><span class="ep-text">ASEAN 的領頭羊？印尼的區域角色定位</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP22</span><span class="ep-text">南海爭端：印尼的納土納群島困境</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP23</span><span class="ep-text">與新加坡的愛恨糾葛：鄰國的競合關係</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP24</span><span class="ep-text">馬來西亞、菲律賓：跨界民族與邊界爭議</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP25</span><span class="ep-text">澳洲的「近北方」：印尼澳關係的戰略意義</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="module-card m6" id="m6">
+    <div class="module-header" onclick="toggle('m6')">
+      <div class="module-num">6</div>
+      <div class="module-title-wrap">
+        <div class="module-title">大國競逐：美中與印尼的三角關係</div>
+        <div class="module-sub">不選邊站 · 一帶一路 · 鎳礦協議</div>
+      </div>
+      <div class="module-badge">地緣篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP26</span><span class="ep-text">「自由主動」外交：不選邊站的生存哲學</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP27</span><span class="ep-text">中國的最大貿易夥伴：一帶一路與深度依賴</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP28</span><span class="ep-text">美國的印太戰略：IPEF 框架與印尼的算盤</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP29</span><span class="ep-text">鎳礦協議：2025 年美印尼關鍵礦物大交換</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP30</span><span class="ep-text">軍事現代化：印尼的國防自主與區域嚇阻</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE 7 -->
+  <div class="module-card m7" id="m7">
+    <div class="module-header" onclick="toggle('m7')">
+      <div class="module-num">7</div>
+      <div class="module-title-wrap">
+        <div class="module-title">文化、宗教與社會變遷</div>
+        <div class="module-sub">伊斯蘭 · 華人 · 巴厘島 · 新首都</div>
+      </div>
+      <div class="module-badge">文化篇</div>
+      <div class="module-arrow">▶</div>
+    </div>
+    <div class="episodes-list">
+      <div class="ep-item"><span class="ep-num-badge">EP31</span><span class="ep-text">全球最大穆斯林國：伊斯蘭教的溫和面貌</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP32</span><span class="ep-text">華人族群：歷史創傷到今日的經濟影響力</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP33</span><span class="ep-text">巴厘島之外：多元文化的印尼深度旅行</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP34</span><span class="ep-text">K-pop、珍珠奶茶與台灣文化在印尼的影響力</span></div>
+      <div class="ep-item"><span class="ep-num-badge">EP35</span><span class="ep-text">新首都努桑塔拉（Nusantara）：遷都背後的大夢</span></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══ FOOTER INFO ════════════════════════════════════════ -->
+<div class="footer-info">
+  <strong>林威老師</strong>（林威 · 34 年教學 · LINE: linwayet）<br>
+  本課程為自學微課程設計，每回合約 10 分鐘，適合利用零碎時間深入認識印尼
+</div>
+
+<!-- ═══ BOTTOM LINKS BLOCK ════════════════════════════════ -->
+<div class="links-block">
+  <div class="links-inner">
+    <div class="links-label">📌 林威老師 · 七月開課 &amp; 聯絡</div>
+    <a href="https://linwayet.github.io/4ulive/index.html" class="link-item" target="_blank">
+      <div class="link-icon echo">🔄</div>
+      <div>
+        <div class="link-text-main">錯中學 ECHO 計劃</div>
+        <div class="link-text-sub">七月開課 · 從錯誤中建立系統性英文能力</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+    <a href="https://linwayet.github.io/popup/index" class="link-item" target="_blank">
+      <div class="link-icon student">📊</div>
+      <div>
+        <div class="link-text-main">學生分析系統</div>
+        <div class="link-text-sub">七月開課 · 個人化學習弱點診斷工具</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+    <a href="https://line.me/ti/p/linwayet" class="link-item" target="_blank">
+      <div class="link-icon line">💬</div>
+      <div>
+        <div class="link-text-main">加 LINE：linwayet</div>
+        <div class="link-text-sub">林威老師 · 直接聯絡 · 課程諮詢</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+  </div>
+</div>
+
+<script>
+function toggle(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+</script>
+</body>
+</html>
