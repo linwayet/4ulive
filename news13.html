@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What National Animals Reveal About Their Countries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --text: #1A0F00;
+      --h1: #C0392B;
+      --h2: #1565C0;
+      --h3: #2E7D32;
+      --keyword: #0D47A1;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --paper: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+    .page {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 64px;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    h1 {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 18px 24px;
+      color: var(--h1);
+      font-size: clamp(3rem, 7vw, 4.6rem);
+      line-height: 1.15;
+      font-weight: 700;
+      border: 6px solid #E65100;
+      border-radius: 8px;
+      background: #FFF3EF;
+      box-shadow: 8px 8px 0 #FFAB91;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      margin: 8px 0;
+      color: var(--h2);
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .credit {
+      margin: 6px 0 0;
+      color: #0D47A1;
+      font-size: 1.75rem;
+      line-height: 1.45;
+      font-weight: 700;
+      text-shadow: 2px 2px 0 #BBDEFB;
+    }
+    .course-links {
+      margin: 0 0 34px;
+      padding: 20px;
+      border: 5px solid #F39C12;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #FFF3D6 0%, #FFE4D0 48%, #FFF8F0 100%);
+      box-shadow: 0 8px 0 #F8C471;
+    }
+    .course-links.bottom {
+      margin: 36px 0 0;
+    }
+    .course-heading {
+      margin: 0 0 14px;
+      color: #C0392B;
+      font-size: 1.75rem;
+      line-height: 1.35;
+      font-weight: 700;
+      text-align: center;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .link-card {
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 8px;
+      color: #1A0F00;
+      text-decoration: none;
+      border: 3px solid rgba(26, 15, 0, 0.18);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .link-card:hover,
+    .link-card:focus {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 rgba(26, 15, 0, 0.18);
+      outline: 4px solid #1565C0;
+      outline-offset: 3px;
+    }
+    .link-card.course-a { background: #FFE0B2; border-color: #E65100; }
+    .link-card.course-b { background: #FFCCBC; border-color: #BF360C; }
+    .link-card.line { background: #E8F5E9; border-color: #2E7D32; }
+    .link-title {
+      color: #4A148C;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .link-desc {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    .link-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: #FFFFFF;
+      background: #C0392B;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .line .link-action { background: #2E7D32; }
+    section, details {
+      margin: 28px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .section-title {
+      margin: 0;
+      padding: 16px 22px;
+      color: #FFFFFF;
+      font-size: 1.75rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .content { padding: 22px; }
+    .original { border: 4px solid #90CAF9; background: #F3F8FF; }
+    .original .section-title { background: #0D47A1; }
+    .close-reading { border: 4px solid #FFAB91; background: #FFF3EF; }
+    .close-reading .section-title { background: #BF360C; }
+    .vocab { border: 4px solid #81C784; background: #F1F8F2; }
+    .vocab .section-title { background: #1B5E20; }
+    .grammar { border: 4px solid #CE93D8; background: #F9F0FF; }
+    .grammar .section-title { background: #4A148C; }
+    .fold { border: 4px solid #C4A06A; background: #FAF6F0; }
+    .fold summary {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 22px;
+      color: #FFFFFF;
+      background: #4A3728;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+    .fold summary::-webkit-details-marker { display: none; }
+    .arrow { transition: transform 240ms ease; font-size: 1.6rem; }
+    details[open] .arrow { transform: rotate(180deg); }
+    p { margin: 0 0 1.05em; }
+    strong.keyword {
+      color: var(--keyword);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .sentence-card, .word-card, .grammar-card {
+      margin: 20px 0;
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 3px solid rgba(26, 15, 0, 0.14);
+    }
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin-right: 10px;
+      border-radius: 50%;
+      color: #FFFFFF;
+      background: #BF360C;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .quote { font-style: normal; color: #4A148C; font-weight: 700; }
+    .zh { color: #1B5E20; font-weight: 700; }
+    .analysis { margin-top: 10px; }
+    .pill-row, .tag-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+    .pill, .tag-name {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .p-der { background: #FDEDEC; color: #C0392B; }
+    .p-root { background: #EBF5FB; color: #1565C0; }
+    .p-phrase { background: #EAFAF1; color: #2E7D32; }
+    .p-idiom { background: #FEF9E7; color: #D68910; }
+    .p-confuse { background: #F5EEF8; color: #6A1B9A; }
+    .p-focus { background: #FEF0E7; color: #E65100; }
+    .word-head {
+      color: #1B5E20;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tag-line {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 12px;
+      align-items: start;
+      margin: 10px 0;
+    }
+    .examples {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 2px solid rgba(27, 94, 32, 0.25);
+    }
+    h3 {
+      margin: 18px 0 8px;
+      color: var(--h3);
+      font-size: 1.6rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    ul, ol { padding-left: 1.5em; margin: 8px 0 14px; }
+    li { margin: 6px 0; }
+    .pattern {
+      color: #4A148C;
+      font-weight: 700;
+    }
+    .wrong { color: #C0392B; font-weight: 700; }
+    .right { color: #2E7D32; font-weight: 700; }
+    @media (max-width: 640px) {
+      body { font-size: 22px; }
+      .page { width: min(100% - 24px, 900px); }
+      .content { padding: 18px; }
+      .tag-line { grid-template-columns: 1fr; }
+      .num { width: 48px; height: 48px; }
+      .link-grid { grid-template-columns: 1fr; }
+      .course-links { padding: 16px; }
+      .link-card { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="course-links" aria-label="七月課程與聯絡連結">
+      <div class="course-heading">七月課程與聯絡資訊</div>
+      <div class="link-grid">
+        <a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-desc">從錯題、回饋到重練，幫學生把英文弱點整理成可追蹤的進步路線。</span>
+          <span class="link-action">查看課程介紹</span>
+        </a>
+        <a class="link-card course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+          <span class="link-title">學生分析</span>
+          <span class="link-desc">用學習資料整理學生狀況，協助找出字彙、文法、閱讀與寫作的優先補強方向。</span>
+          <span class="link-action">查看學生分析</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <span class="link-title">林威老師 Line 帳號</span>
+          <span class="link-desc">課程詢問、教材討論與學習安排，可加入 Line：linwayet。</span>
+          <span class="link-action">加入 Line：linwayet</span>
+        </a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1>What National Animals Reveal About Their Countries</h1>
+      <div class="subtitle">國家動物如何展現一個國家的歷史、價值與想像</div>
+      <div class="credit">林威老師與 AI agent 團隊製作</div>
+    </header>
+
+    <section class="original">
+      <h2 class="section-title">英文文章原文</h2>
+      <div class="content">
+        <p>What National Animals Reveal About Their Countries</p>
+        <p>Every nation <strong class="keyword">possesses</strong> unique symbols that reflect its history, values, and cultural <strong class="keyword">identity</strong>. Among these, national animals hold a special place, serving as powerful symbols that <strong class="keyword">represent</strong> the spirit of a country. From industrious creatures to beloved wildlife, these animals tell fascinating stories about the nations they <strong class="keyword">represent</strong> and offer meaningful <strong class="keyword">insights</strong> into what each culture values most deeply.</p>
+        <p>Canada's national animal, the North American beaver, reflects the country's deep connection to its natural <strong class="keyword">landscape</strong> and historical development. During the fur trade <strong class="keyword">era</strong>, beaver furs were so valuable that they <strong class="keyword">essentially</strong> built the Canadian economy and attracted European settlers to the wilderness. Beyond <strong class="keyword">commerce</strong>, the beaver <strong class="keyword">symbolizes</strong> industriousness, <strong class="keyword">perseverance</strong>, and determination, qualities Canadians proudly <strong class="keyword">associate</strong> with their national character.</p>
+        <p>In France, the Gallic rooster has an <strong class="keyword">unexpected</strong> origin story. During the Roman Empire, the Latin word "gallus" meant both rooster and Gaul. The Romans used this pun to mock the Gauls, suggesting they were like roosters, proud, loud, and foolish enough to challenge the mighty Roman eagle. However, the Gauls refused to feel ashamed. Instead, they <strong class="keyword">embraced</strong> the rooster as a symbol of courage, since roosters bravely protect their flocks regardless of the enemy's size. Over time, this once insulting nickname <strong class="keyword">transformed</strong> into a source of national pride.</p>
+        <p>Australia presents a fascinating case with two animals featured on its national coat of arms, the kangaroo and the emu. These creatures were chosen for a remarkable reason: neither animal can walk backward easily. This biological characteristic <strong class="keyword">symbolizes</strong> Australia's commitment to always moving forward and never retreating. Both animals are unique to Australia, making them perfect symbols of the country's one-of-a-kind natural <strong class="keyword">heritage</strong>.</p>
+        <p>What National Animals Reveal About Their Countries</p>
+        <p>While some national animals thrive under governmental protection and <strong class="keyword">conservation</strong> programs, others carry profound lessons about human impact on the natural world. Still others exist purely in the realm of mythology, yet speak volumes about a nation's imagination and cultural <strong class="keyword">aspirations</strong>. The American bison <strong class="keyword">represents</strong> one of <strong class="keyword">conservation</strong>'s greatest success stories and a powerful reminder of past mistakes. Once numbering over 60 million across North America's vast plains, these magnificent animals were hunted nearly to <strong class="keyword">extinction</strong> by the late 1800s, with fewer than 1,000 remaining. The bison's near disappearance deeply harmed <strong class="keyword">indigenous</strong> communities who had depended on them for food, clothing, and shelter for countless generations. Fortunately, dedicated <strong class="keyword">conservation</strong> efforts throughout the 20th century have restored populations to about 500,000 today. In 2016, the bison was officially named America's national mammal. The national animal of Mauritius tells a story of loss through the dodo bird. This flightless creature became extinct in the late 17th century, barely a century after Dutch sailors first encountered it on the island. The dodo's disappearance, caused by hunting and introduced predators, has made it a universal symbol of human-caused <strong class="keyword">extinction</strong> and environmental <strong class="keyword">negligence</strong>. Perhaps the most unusual choice belongs to Scotland, whose national animal is the unicorn, a creature that has never actually existed. This mythical horse with a spiraling horn has appeared in Scottish heraldry since the 12th century, representing purity, innocence, and untamed power. Scotland's <strong class="keyword">embrace</strong> of an imaginary creature demonstrates that national symbols need not be real. They can <strong class="keyword">represent</strong> <strong class="keyword">aspirations</strong> and ideals that transcend physical reality.</p>
+      </div>
+    </section>
+
+    <section class="close-reading">
+      <h2 class="section-title">8句精讀</h2>
+      <div class="content">
+        <div class="sentence-card">
+          <p><span class="num">①</span><span class="quote">Every nation possesses unique symbols that reflect its history, values, and cultural identity.</span></p>
+          <p class="zh">每個國家都擁有獨特的象徵，反映其歷史、價值觀與文化身分。</p>
+          <p class="analysis">文法解析：關係子句修飾名詞。主句是 Every nation possesses unique symbols，that reflect... 是形容詞子句，修飾 symbols。that 在子句中當主詞，動詞 reflect 與先行詞 symbols 保持複數一致。這種句型常用來補充說明抽象名詞的功能或特色。</p>
+          <div class="pill-row"><span class="pill p-focus">possesses 擁有</span><span class="pill p-focus">cultural identity 文化身分</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">②</span><span class="quote">Among these, national animals hold a special place, serving as powerful symbols that represent the spirit of a country.</span></p>
+          <p class="zh">在這些象徵之中，國家動物占有特殊地位，它們是代表一國精神的強大象徵。</p>
+          <p class="analysis">文法解析：現在分詞構句加上關係子句。serving as... 補充說明 national animals 的角色，相當於 and they serve as...。後面的 that represent... 修飾 symbols，指出這些象徵代表的內容。句首 Among these 是介系詞片語，用來連接前文。</p>
+          <div class="pill-row"><span class="pill p-phrase">hold a special place 占有特殊地位</span><span class="pill p-focus">represent 代表</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">③</span><span class="quote">During the fur trade era, beaver furs were so valuable that they essentially built the Canadian economy and attracted European settlers to the wilderness.</span></p>
+          <p class="zh">在毛皮貿易時代，海狸皮毛非常珍貴，以至於它們基本上建立了加拿大經濟，並吸引歐洲移民前往荒野。</p>
+          <p class="analysis">文法解析：so... that... 結果副詞子句。so valuable 表示程度，that 後面接結果。built 和 attracted 是並列動詞，共用主詞 they。這種句型適合寫原因造成的重大後果。</p>
+          <div class="pill-row"><span class="pill p-focus">era 時代</span><span class="pill p-focus">essentially 基本上</span><span class="pill p-phrase">attract A to B 吸引A到B</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">④</span><span class="quote">The Romans used this pun to mock the Gauls, suggesting they were like roosters, proud, loud, and foolish enough to challenge the mighty Roman eagle.</span></p>
+          <p class="zh">羅馬人用這個雙關語嘲笑高盧人，暗示他們像公雞一樣驕傲、吵鬧，而且愚蠢到敢挑戰強大的羅馬之鷹。</p>
+          <p class="analysis">文法解析：不定詞表目的加分詞構句。to mock the Gauls 說明 used this pun 的目的，to 是不定詞符號，不是介系詞。suggesting... 是現在分詞構句，補充羅馬人嘲笑時的含意。enough to V 表示「足夠到能做某事」。</p>
+          <div class="pill-row"><span class="pill p-phrase">use A to V 使用A來做某事</span><span class="pill p-focus">enough to challenge 足以挑戰</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">⑤</span><span class="quote">Instead, they embraced the rooster as a symbol of courage, since roosters bravely protect their flocks regardless of the enemy's size.</span></p>
+          <p class="zh">相反地，他們接受公雞作為勇氣的象徵，因為公雞會勇敢保護牠們的群體，不管敵人的大小。</p>
+          <p class="analysis">文法解析：since 引導原因副詞子句。主句是 they embraced the rooster as a symbol of courage。since 後面說明接受這個象徵的理由。regardless of 是介系詞片語，後接名詞 the enemy's size，表示「不論」。</p>
+          <div class="pill-row"><span class="pill p-focus">embraced 接受</span><span class="pill p-phrase">regardless of 不論</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">⑥</span><span class="quote">These creatures were chosen for a remarkable reason: neither animal can walk backward easily.</span></p>
+          <p class="zh">這些動物被選中是因為一個很特別的理由：兩種動物都不容易倒退行走。</p>
+          <p class="analysis">文法解析：被動語態加冒號說明。were chosen 表示「被選擇」，強調結果而非選擇者。冒號後的 neither animal can walk backward easily 直接解釋 reason 的內容。neither 表示「兩者皆不」，後面接單數名詞與單數概念。</p>
+          <div class="pill-row"><span class="pill p-focus">remarkable 顯著的</span><span class="pill p-confuse">neither 兩者皆不</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">⑦</span><span class="quote">Once numbering over 60 million across North America's vast plains, these magnificent animals were hunted nearly to extinction by the late 1800s, with fewer than 1,000 remaining.</span></p>
+          <p class="zh">這些壯麗的動物曾經在北美廣大平原上超過六千萬隻，但到十九世紀末幾乎被獵殺到滅絕，只剩不到一千隻。</p>
+          <p class="analysis">文法解析：分詞構句、被動語態與 with 複合結構。Once numbering... 表示「曾經數量達到……」，補充主詞的過去狀態。were hunted nearly to extinction 是被動語態，強調野牛遭獵殺的結果。with fewer than 1,000 remaining 表示伴隨狀態。</p>
+          <div class="pill-row"><span class="pill p-focus">extinction 滅絕</span><span class="pill p-phrase">with N V-ing 隨著某狀態</span></div>
+        </div>
+        <div class="sentence-card">
+          <p><span class="num">⑧</span><span class="quote">Scotland's embrace of an imaginary creature demonstrates that national symbols need not be real.</span></p>
+          <p class="zh">蘇格蘭接受一種想像中的生物，顯示國家象徵不一定必須是真實存在的。</p>
+          <p class="analysis">文法解析：名詞子句當受詞。demonstrates 後面的 that national symbols need not be real 是名詞子句，說明被證明的內容。need not V 是正式用法，意思是「不必……」。主詞 Scotland's embrace of an imaginary creature 是名詞片語。</p>
+          <div class="pill-row"><span class="pill p-focus">demonstrates 顯示</span><span class="pill p-focus">need not 不必</span><span class="pill p-focus">imaginary 想像中的</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vocab">
+      <h2 class="section-title">18–20個單字整理</h2>
+      <div class="content">
+        <div class="word-card">
+          <div class="word-head">1　possess　[pəˈzɛs]　v.　擁有；具備；支配</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>possession n. 擁有；possessive adj. 占有慾強的；possessor n. 擁有者</span></div>
+          <div class="tag-line"><span class="tag-name p-root">字根</span><span>pos / sess = 放置、坐；position 位置；session 會議</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>possess the ability to V 具備做某事的能力；be possessed by 被某情緒控制</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>possess 較正式，have 較口語；own 強調法律上的所有權。</span></div>
+          <div class="examples"><p>Every nation possesses unique symbols that reflect its history.</p><p>（每個國家都擁有反映其歷史的獨特象徵。）</p><p>Students who possess clear goals often study more efficiently.</p><p>（具備明確目標的學生通常讀書更有效率。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">2　identity　[aɪˈdɛntətɪ]　n.　身分；認同；特性</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>identify v. 辨認；認同；identification n. 識別；identical adj. 完全相同的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>cultural identity 文化身分；national identity 國家認同；identity card 身分證</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>a strong identity 強烈的認同；a shared identity 共同身分</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>identity 指「我是誰」的身分或認同；personality 指個性。</span></div>
+          <div class="examples"><p>National symbols reflect a country's cultural identity.</p><p>（國家象徵反映一個國家的文化身分。）</p><p>Learning local history can strengthen young people's identity.</p><p>（學習地方歷史能強化年輕人的認同。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">3　represent　[ˌrɛprɪˈzɛnt]　v.　代表；象徵；呈現</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>representation n. 代表；representative n. 代表 adj. 典型的</span></div>
+          <div class="tag-line"><span class="tag-name p-root">字根</span><span>re- = 再、回；present = 呈現；present 呈現；presence 存在</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>represent A as B 把A描繪成B；represent the spirit of 代表……精神</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>represent 強調代表整體或象徵意義；stand for 常用於符號或縮寫。</span></div>
+          <div class="examples"><p>National animals represent the spirit of a country.</p><p>（國家動物代表一個國家的精神。）</p><p>The dove often represents peace in international events.</p><p>（鴿子在國際活動中常代表和平。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">4　insight　[ˈɪnˌsaɪt]　n.　洞察；見解；深入理解</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>insightful adj. 有洞察力的；insightfully adv. 深刻地</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>gain insight into 深入了解；offer insight into 提供對……的見解</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>meaningful insights 有意義的見解；valuable insights 寶貴洞察</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>insight 是深入理解；opinion 只是個人意見，不一定有深度。</span></div>
+          <div class="examples"><p>These animals offer meaningful insights into what each culture values.</p><p>（這些動物讓人深入了解各文化重視什麼。）</p><p>The interview gave us insight into the artist's childhood.</p><p>（這場訪談讓我們深入了解那位藝術家的童年。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">5　landscape　[ˈlændˌskep]　n.　地景；風景；局勢</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>landscaper n. 造景師；landscaping n. 造景</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>natural landscape 自然地景；political landscape 政治局勢</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>a changing landscape 變動中的局勢；a vast landscape 廣闊景觀</span></div>
+          <div class="examples"><p>The beaver reflects Canada's connection to its natural landscape.</p><p>（海狸反映加拿大與自然地景的連結。）</p><p>High mountains shape Taiwan's beautiful landscape.</p><p>（高山塑造了台灣美麗的地景。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">6　era　[ˈɪrə]　n.　時代；年代；紀元</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>historic era n. 歷史時代；era-defining adj. 定義時代的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>in the modern era 在現代；during the fur trade era 在毛皮貿易時代</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>era 指具有特色的長時期；age 可指時代，也可指年齡。</span></div>
+          <div class="examples"><p>During the fur trade era, beaver furs were extremely valuable.</p><p>（在毛皮貿易時代，海狸皮毛極為珍貴。）</p><p>We live in an era of rapid technological change.</p><p>（我們生活在科技快速變化的時代。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">7　essentially　[ɪˈsɛnʃəlɪ]　adv.　本質上；基本上；大致上</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>essence n. 本質；essential adj. 必要的；essentiality n. 必要性</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>essentially the same 基本相同；essentially built 基本上建立</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>essentially 強調核心本質；basically 較口語，語氣較弱。</span></div>
+          <div class="examples"><p>Beaver furs essentially built the Canadian economy.</p><p>（海狸皮毛基本上建立了加拿大經濟。）</p><p>The two plans are essentially the same.</p><p>（這兩個計畫基本上相同。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">8　commerce　[ˈkɑmɝs]　n.　商業；貿易；商務</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>commercial adj. 商業的；commercialize v. 商業化；e-commerce n. 電子商務</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>international commerce 國際貿易；beyond commerce 超越商業</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>commerce 偏正式，指大規模商業活動；business 可指公司或生意。</span></div>
+          <div class="examples"><p>Beyond commerce, the beaver symbolizes perseverance.</p><p>（除了商業之外，海狸也象徵毅力。）</p><p>Online commerce has changed how people shop.</p><p>（線上商務改變了人們購物的方式。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">9　symbolize　[ˈsɪmbəˌlaɪz]　v.　象徵；代表</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>symbol n. 象徵；symbolic adj. 象徵性的；symbolism n. 象徵主義</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>symbolize courage 象徵勇氣；symbolize a commitment 象徵承諾</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>symbolize 著重象徵意義；mean 只是一般「意思是」。</span></div>
+          <div class="examples"><p>The beaver symbolizes industriousness and determination.</p><p>（海狸象徵勤奮與決心。）</p><p>A green light can symbolize hope and permission.</p><p>（綠燈可以象徵希望與允許。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">10　perseverance　[ˌpɝsəˈvɪrəns]　n.　毅力；堅持不懈</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>persevere v. 堅持；persevering adj. 堅毅的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>show perseverance 展現毅力；perseverance in learning 學習上的堅持</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>remarkable perseverance 非凡毅力；quiet perseverance 默默堅持</span></div>
+          <div class="examples"><p>The beaver symbolizes industriousness, perseverance, and determination.</p><p>（海狸象徵勤奮、毅力與決心。）</p><p>Her perseverance helped her pass the difficult exam.</p><p>（她的毅力幫助她通過困難的考試。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">11　associate　[əˈsoʃɪˌet]　v.　聯想；連結；交往</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>association n. 聯想；社團；associated adj. 相關的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>associate A with B 把A和B聯想在一起；be associated with 與……有關</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>associate with 是與某人交往或與某事連結；connect 較廣泛。</span></div>
+          <div class="examples"><p>Canadians associate these qualities with their national character.</p><p>（加拿大人把這些特質與其國民性連結。）</p><p>Many people associate tea with relaxation.</p><p>（許多人把茶和放鬆聯想在一起。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">12　unexpected　[ˌʌnɪkˈspɛktɪd]　adj.　意想不到的；突如其來的</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>expect v. 預期；expectation n. 期待；unexpectedly adv. 出乎意料地</span></div>
+          <div class="tag-line"><span class="tag-name p-root">字根</span><span>un- = 不；expect = 期待；unusual 不尋常的；unfair 不公平的</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>an unexpected result 意外結果；totally unexpected 完全出乎意料</span></div>
+          <div class="examples"><p>The Gallic rooster has an unexpected origin story.</p><p>（高盧公雞有一個意想不到的起源故事。）</p><p>The unexpected rain delayed the outdoor concert.</p><p>（突如其來的雨延誤了戶外音樂會。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">13　embrace　[ɪmˈbres]　v.　接受；擁抱；欣然採納 n. 擁抱</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>embracing adj. 接納的；embracement n. 接受</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>embrace change 接受改變；embrace A as B 接受A作為B</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>embrace 可指抽象的接受；hug 多指實際擁抱。</span></div>
+          <div class="examples"><p>They embraced the rooster as a symbol of courage.</p><p>（他們接受公雞作為勇氣的象徵。）</p><p>Good learners embrace mistakes as chances to improve.</p><p>（好的學習者把錯誤視為進步的機會。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">14　transform　[trænsˈfɔrm]　v.　轉變；改造；使改觀</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>transformation n. 轉變；transformative adj. 有改造力的</span></div>
+          <div class="tag-line"><span class="tag-name p-root">字根</span><span>trans- = 穿越、轉變；form = 形狀；transport 運輸；reform 改革</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>transform into 轉變成；transform A into B 把A轉變成B</span></div>
+          <div class="examples"><p>This nickname transformed into a source of national pride.</p><p>（這個綽號轉變成國家驕傲的泉源。）</p><p>Technology can transform the way students learn.</p><p>（科技能改變學生學習的方式。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">15　heritage　[ˈhɛrətɪdʒ]　n.　遺產；傳統；繼承物</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>inherit v. 繼承；inheritance n. 繼承；heir n. 繼承人</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>natural heritage 自然遺產；cultural heritage 文化遺產</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>a rich heritage 豐富遺產；shared heritage 共同傳統</span></div>
+          <div class="examples"><p>Both animals symbolize Australia's natural heritage.</p><p>（兩種動物象徵澳洲的自然遺產。）</p><p>Old temples are part of Taiwan's cultural heritage.</p><p>（古老寺廟是台灣文化遺產的一部分。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">16　conservation　[ˌkɑnsɚˈveʃən]　n.　保育；保存；保護</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>conserve v. 保存；conservative adj. 保守的；conservationist n. 保育人士</span></div>
+          <div class="tag-line"><span class="tag-name p-root">字根</span><span>con- = 共同；serv = 保存、服務；preserve 保存；reserve 保留</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>conservation program 保育計畫；conservation efforts 保育努力</span></div>
+          <div class="examples"><p>Some national animals thrive under conservation programs.</p><p>（有些國家動物在保育計畫下繁盛。）</p><p>Forest conservation is important for clean water.</p><p>（森林保育對乾淨水源很重要。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">17　extinction　[ɪkˈstɪŋkʃən]　n.　滅絕；消失</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>extinct adj. 滅絕的；extinguish v. 熄滅；extinction-level adj. 足以造成滅絕的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>to extinction 到滅絕程度；human-caused extinction 人為造成的滅絕</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>extinct 是形容詞「已滅絕的」；extinction 是名詞「滅絕」。</span></div>
+          <div class="examples"><p>The bison were hunted nearly to extinction.</p><p>（野牛幾乎被獵殺到滅絕。）</p><p>Pollution may push rare species toward extinction.</p><p>（污染可能把稀有物種推向滅絕。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">18　indigenous　[ɪnˈdɪdʒənəs]　adj.　原住民的；本土的；土生土長的</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>indigene n. 原住民；indigeneity n. 原住民身分</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>indigenous communities 原住民社群；indigenous culture 原住民文化</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>indigenous knowledge 原住民知識；locally indigenous 本地原生的</span></div>
+          <div class="examples"><p>The bison's disappearance harmed indigenous communities.</p><p>（野牛的消失傷害了原住民社群。）</p><p>Indigenous languages carry valuable cultural memory.</p><p>（原住民語言承載珍貴的文化記憶。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">19　negligence　[ˈnɛɡlɪdʒəns]　n.　疏忽；怠慢；失職</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>neglect v. 忽視；negligent adj. 疏忽的；negligently adv. 疏忽地</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>environmental negligence 環境疏忽；negligence in duty 失職</span></div>
+          <div class="tag-line"><span class="tag-name p-confuse">容易混淆</span><span>negligence 強調因疏忽造成責任問題；carelessness 只是一般粗心。</span></div>
+          <div class="examples"><p>The dodo became a symbol of environmental negligence.</p><p>（渡渡鳥成為環境疏忽的象徵。）</p><p>The accident was caused by negligence, not bad luck.</p><p>（那場意外是疏忽造成的，不是運氣不好。）</p></div>
+        </div>
+        <div class="word-card">
+          <div class="word-head">20　aspiration　[ˌæspəˈreʃən]　n.　抱負；渴望；志向</div>
+          <div class="tag-line"><span class="tag-name p-der">衍生詞</span><span>aspire v. 渴望；aspiring adj. 有抱負的；aspirational adj. 激勵人心的</span></div>
+          <div class="tag-line"><span class="tag-name p-phrase">片語</span><span>cultural aspiration 文化抱負；aspire to V 渴望做某事，to 是不定詞，非介系詞</span></div>
+          <div class="tag-line"><span class="tag-name p-idiom">慣用語</span><span>high aspirations 遠大抱負；shared aspirations 共同志向</span></div>
+          <div class="examples"><p>Some symbols speak volumes about a nation's cultural aspirations.</p><p>（有些象徵充分說明一個民族的文化抱負。）</p><p>Her aspiration is to become a doctor who serves rural towns.</p><p>（她的志向是成為服務偏鄉的醫生。）</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grammar">
+      <h2 class="section-title">文法解析</h2>
+      <div class="content">
+        <div class="grammar-card">
+          <h3>文法點一：關係子句修飾名詞</h3>
+          <p>【引句 Quote】<br><span class="quote">Every nation possesses unique symbols that reflect its history, values, and cultural identity.</span></p>
+          <p>【句型】<br><span class="pattern">S + V + N + that / which + V...</span></p>
+          <p>【核心說明】<br>關係子句用來補充說明前面的名詞，讓句子更精準。例句中的 that reflect... 修飾 symbols，說明這些 symbols 有什麼功能。</p>
+          <p>【使用規則】</p>
+          <ul><li>先行詞是事物時，可用 that 或 which。</li><li>關係代名詞在子句中可當主詞或受詞。</li><li>當關係代名詞當主詞時，動詞要和先行詞一致。</li><li>限定用法不用逗號，表示必要資訊。</li></ul>
+          <p>【主題例句】<br>The unicorn is a mythical animal that represents Scotland's ideals.<br>（獨角獸是代表蘇格蘭理想的神話動物。）</p>
+          <p>【學習提醒】<br>不要看到 that 就只翻成「那個」。在關係子句中，that 的功能是把後面的描述接到前面的名詞上。</p>
+          <p>【⚠️ 常見錯誤 / 🎯 精選試題】<br><span class="wrong">✗ The symbols that reflects history are important.</span><br><span class="right">✓ The symbols that reflect history are important.</span>（先行詞 symbols 是複數，所以用 reflect。）</p>
+          <ol><li>The animal ______ represents courage is the rooster. A. who B. that C. where</li><li>改錯：The values which shapes a nation can appear in symbols.</li></ol>
+        </div>
+        <div class="grammar-card">
+          <h3>文法點二：so... that... 結果副詞子句</h3>
+          <p>【引句 Quote】<br><span class="quote">Beaver furs were so valuable that they essentially built the Canadian economy.</span></p>
+          <p>【句型】<br><span class="pattern">S + V + so + Adj. / Adv. + that + S + V...</span></p>
+          <p>【核心說明】<br>so... that... 用來表示「如此……以至於……」。so 後面接形容詞或副詞，that 後面接結果，是作文中很好用的因果句型。</p>
+          <p>【使用規則】</p>
+          <ul><li>so 後面通常放形容詞或副詞。</li><li>that 子句要有完整主詞與動詞。</li><li>口語中 that 有時可省略，但正式寫作建議保留。</li><li>不要把 so... that... 和 such... that... 混用；such 後面接名詞片語。</li></ul>
+          <p>【主題例句】<br>The dodo was so defenseless that it quickly disappeared after humans arrived.<br>（渡渡鳥如此缺乏防衛能力，以至於在人類抵達後很快消失。）</p>
+          <p>【學習提醒】<br>so 後接形容詞，such 後接名詞片語。寫作時先判斷後面是 adjective 還是 noun phrase。</p>
+          <p>【⚠️ 常見錯誤 / 🎯 精選試題】<br><span class="wrong">✗ The story was so a powerful symbol that people remembered it.</span><br><span class="right">✓ The story was such a powerful symbol that people remembered it.</span>（a powerful symbol 是名詞片語，要用 such。）</p>
+          <ol><li>The beaver was ______ important that it became a national symbol. A. so B. such C. very</li><li>合併句：The plains were vast. Millions of bison lived there.</li></ol>
+        </div>
+        <div class="grammar-card">
+          <h3>文法點三：分詞構句補充說明</h3>
+          <p>【引句 Quote】<br><span class="quote">Among these, national animals hold a special place, serving as powerful symbols.</span></p>
+          <p>【句型】<br><span class="pattern">S + V..., V-ing...</span></p>
+          <p>【核心說明】<br>現在分詞構句可用來補充主句，表示同時發生、原因、結果或附加說明。例句中的 serving as... 補充說明 national animals 扮演的角色。</p>
+          <p>【使用規則】</p>
+          <ul><li>分詞構句的邏輯主詞通常要和主句主詞一致。</li><li>V-ing 常表示主動或同時發生。</li><li>過去分詞常表示被動或完成。</li><li>若主詞不同，需改成完整子句，避免語意不清。</li></ul>
+          <p>【主題例句】<br>The rooster became a proud symbol, turning an insult into national confidence.<br>（公雞成為令人驕傲的象徵，把侮辱轉化為民族自信。）</p>
+          <p>【學習提醒】<br>分詞構句不是把兩句硬接在一起。要確認分詞動作的執行者和主句主詞合理一致。</p>
+          <p>【⚠️ 常見錯誤 / 🎯 精選試題】<br><span class="wrong">✗ Walking through history, the symbol was understood by students.</span><br><span class="right">✓ Walking through history, students understood the symbol.</span>（walking 的主詞應是 students。）</p>
+          <ol><li>National animals tell stories, ______ cultural values clearly. A. reveals B. revealing C. revealed</li><li>改寫：The bison recovered gradually, and it became a conservation success story.</li></ol>
+        </div>
+      </div>
+    </section>
+
+    <details class="fold">
+      <summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+      <div class="content">
+        <p>ab-　離開、相反　—　abnormal（異常的）</p><p>ad-　向、加　—　advance（前進）</p><p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p><p>anti-　反對、抗　—　antibiotic（抗生素）</p><p>arch-　主要、首要　—　archenemy（死敵）</p><p>auto-　自動、自我　—　autograph（親筆簽名）</p><p>bene-　好的、善　—　benefit（好處）</p><p>bi-　二、雙　—　bilingual（雙語的）</p><p>circum-　環繞、周圍　—　circumstance（情況）</p><p>co-/con-/com-　一起、共同　—　cooperate（合作）</p><p>contra-　相反、對抗　—　contradict（反駁）</p><p>de-　去除、下降　—　decode（解碼）</p><p>dia-　穿過、透過　—　dialogue（對話）</p><p>dis-　否定、分離　—　disagree（不同意）</p><p>en-/em-　使成為　—　enable（使能夠）</p><p>epi-　在上、在外　—　epidemic（流行病）</p><p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p><p>extra-　額外、外部　—　extraordinary（非凡的）</p><p>hetero-　不同　—　heterogeneous（異質的）</p><p>homo-　相同　—　homogeneous（同質的）</p><p>hyper-　過度、超　—　hyperactive（過動的）</p><p>hypo-　低於、不足　—　hypodermic（皮下的）</p><p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p><p>inter-　在…之間　—　international（國際的）</p><p>iso-　相等、相同　—　isolate（隔離）</p><p>mal-　壞、不良　—　malfunction（故障）</p><p>micro-　微小　—　microscope（顯微鏡）</p><p>mis-　錯誤　—　misunderstand（誤解）</p><p>mono-　單一　—　monologue（獨白）</p><p>multi-　多　—　multicultural（多元文化的）</p><p>neo-　新的　—　neonatal（新生的）</p><p>non-　非、沒有　—　nonsense（無意義）</p><p>pan-　全部　—　pandemic（大流行病）</p><p>peri-　周圍　—　perimeter（周長）</p><p>poly-　多　—　polygon（多邊形）</p><p>post-　之後　—　postwar（戰後的）</p><p>pre-　之前　—　preview（預覽）</p><p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p><p>pseudo-　假的　—　pseudonym（筆名）</p><p>re-　再、回　—　review（複習）</p><p>semi-　一半、部分　—　semicircle（半圓）</p><p>sub-　在下、次級　—　subway（地鐵）</p><p>super-　超越、在上　—　superstar（超級明星）</p><p>syn-/sym-　一起、共同　—　synchronize（同步）</p><p>tele-　遠距　—　telephone（電話）</p><p>trans-　穿越、轉變　—　transport（運輸）</p><p>tri-　三　—　triangle（三角形）</p><p>un-　否定、不　—　unhappy（不快樂的）</p><p>vice-　副、代替　—　vice-president（副總統）</p>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+      <div class="content">
+        <h3>名詞字尾</h3><p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p><p>-ment　行為或結果　—　agreement（協議）、development（發展）</p><p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p><p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p><p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p><p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p><p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p><p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+        <h3>形容詞字尾</h3><p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p><p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p><p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p><p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p><p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+        <h3>動詞字尾</h3><p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p><p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p><p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p><p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+        <h3>副詞字尾</h3><p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p><p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p><p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+      <div class="content">
+        <p>1. nation [ˈneʃən] (n. 國家) — national animal（國家動物）</p><p>2. unique [juˈnik] (adj. 獨特的) — uniquely [juˈniklɪ] (adv. 獨特地)</p><p>3. symbol [ˈsɪmbəl] (n. 象徵) — symbolic [sɪmˈbɑlɪk] (adj. 象徵性的)</p><p>4. reflect [rɪˈflɛkt] (v. 反映) — reflection [rɪˈflɛkʃən] (n. 反映；倒影)</p><p>5. value [ˈvælju] (n. 價值) — valuable [ˈvæljuəbəl] (adj. 有價值的)</p><p>6. identity [aɪˈdɛntətɪ] (n. 身分) — identify [aɪˈdɛntəˌfaɪ] (v. 辨認)</p><p>7. creature [ˈkritʃɚ] (n. 生物) — living creature（生物）</p><p>8. wildlife [ˈwaɪldˌlaɪf] (n. 野生動物) — wild animal（野生動物）</p><p>9. insight [ˈɪnˌsaɪt] (n. 洞察) — insightful [ˈɪnˌsaɪtfəl] (adj. 有洞察力的)</p><p>10. landscape [ˈlændˌskep] (n. 地景) — natural landscape（自然地景）</p><p>11. economy [ɪˈkɑnəmɪ] (n. 經濟) — economic [ˌikəˈnɑmɪk] (adj. 經濟的)</p><p>12. wilderness [ˈwɪldɚnəs] (n. 荒野) — wild [waɪld] (adj. 野生的)</p><p>13. commerce [ˈkɑmɝs] (n. 商業) — commercial [kəˈmɝʃəl] (adj. 商業的)</p><p>14. perseverance [ˌpɝsəˈvɪrəns] (n. 毅力) — persevere [ˌpɝsəˈvɪr] (v. 堅持)</p><p>15. origin [ˈɔrədʒɪn] (n. 起源) — original [əˈrɪdʒənəl] (adj. 原本的)</p><p>16. courage [ˈkɝɪdʒ] (n. 勇氣) — courageous [kəˈredʒəs] (adj. 勇敢的)</p><p>17. remarkable [rɪˈmɑrkəbəl] (adj. 顯著的) — remarkably [rɪˈmɑrkəblɪ] (adv. 顯著地)</p><p>18. characteristic [ˌkærəktəˈrɪstɪk] (n. 特徵) — character [ˈkærəktɚ] (n. 性格；角色)</p><p>19. commitment [kəˈmɪtmənt] (n. 承諾) — commit [kəˈmɪt] (v. 投入；承諾)</p><p>20. heritage [ˈhɛrətɪdʒ] (n. 遺產) — cultural heritage（文化遺產）</p><p>21. conservation [ˌkɑnsɚˈveʃən] (n. 保育) — conserve [kənˈsɝv] (v. 保存)</p><p>22. profound [prəˈfaʊnd] (adj. 深遠的) — profoundly [prəˈfaʊndlɪ] (adv. 深深地)</p><p>23. mythology [mɪˈθɑlədʒɪ] (n. 神話) — mythical [ˈmɪθɪkəl] (adj. 神話的)</p><p>24. aspiration [ˌæspəˈreʃən] (n. 抱負) — aspire [əˈspaɪr] (v. 渴望)</p><p>25. magnificent [mæɡˈnɪfəsənt] (adj. 壯麗的) — magnificently [mæɡˈnɪfəsəntlɪ] (adv. 壯麗地)</p><p>26. extinction [ɪkˈstɪŋkʃən] (n. 滅絕) — extinct [ɪkˈstɪŋkt] (adj. 滅絕的)</p><p>27. indigenous [ɪnˈdɪdʒənəs] (adj. 原住民的) — indigenous culture（原住民文化）</p><p>28. encounter [ɪnˈkaʊntɚ] (v. 遭遇) — unexpected encounter（意外相遇）</p><p>29. predator [ˈprɛdətɚ] (n. 掠食者) — prey [pre] (n. 獵物)</p><p>30. transcend [trænˈsɛnd] (v. 超越) — transcend reality（超越現實）</p>
+        <h3>文章相關常用片語 5 個</h3>
+        <p>• hold a special place（占有特殊地位）</p><p>• be associated with（與……有關）</p><p>• regardless of（不論）</p><p>• move forward（向前邁進）</p><p>• speak volumes about（充分說明）</p>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary>練文筆食材<span class="arrow">⌄</span></summary>
+      <div class="content">
+        <p>① serving as + N（作為……）<br>→ 適用：補充說明某人事物的功能。<br>例：National animals serve as mirrors of cultural values.</p>
+        <p>② offer insights into + N（提供對……的深入理解）<br>→ 適用：介紹文章、研究或現象的意義。<br>例：The story offers insights into how people build identity.</p>
+        <p>③ so + adj. + that + S + V（如此……以至於……）<br>→ 適用：描述原因造成明顯結果。<br>例：The symbol was so powerful that it united the people.</p>
+        <p>④ Beyond + N, S + V（除了……之外）<br>→ 適用：擴展論點，補充更深層意義。<br>例：Beyond tourism, wildlife protection teaches responsibility.</p>
+        <p>⑤ refuse to V（拒絕做某事）<br>→ 適用：描寫立場、勇氣或抵抗。<br>例：The community refused to forget its traditions.</p>
+        <p>⑥ embrace A as B（接受A作為B）<br>→ 適用：說明重新詮釋負面事物。<br>例：They embraced the old nickname as a sign of pride.</p>
+        <p>⑦ regardless of + N（不論……）<br>→ 適用：強調不受條件限制。<br>例：Everyone deserves respect regardless of background.</p>
+        <p>⑧ neither + singular N + V（兩者皆不）<br>→ 適用：比較兩個對象的共同否定特徵。<br>例：Neither solution is perfect, but both are useful.</p>
+        <p>⑨ with + N + V-ing（伴隨……狀態）<br>→ 適用：描寫背景狀況或結果。<br>例：The species declined rapidly, with only a few hundred remaining.</p>
+        <p>⑩ a powerful reminder of + N（對……的強烈提醒）<br>→ 適用：寫歷史教訓或社會反思。<br>例：The disaster is a powerful reminder of climate risk.</p>
+        <p>⑪ be hunted nearly to extinction（幾乎被獵殺到滅絕）<br>→ 適用：環境、動物保育主題。<br>例：Several animals were hunted nearly to extinction for profit.</p>
+        <p>⑫ caused by + N / V-ing（由……造成）<br>→ 適用：解釋問題根源。<br>例：The damage was caused by careless development.</p>
+        <p>⑬ need not + V（不必……）<br>→ 適用：正式語氣，說明沒有必要。<br>例：A meaningful symbol need not be old or expensive.</p>
+        <p>⑭ transcend physical reality（超越物理現實）<br>→ 適用：討論理想、想像或文化意義。<br>例：Great stories can transcend physical reality and inspire action.</p>
+        <p>⑮ speak volumes about + N（充分說明……）<br>→ 適用：用具體例子推論抽象價值。<br>例：The choice of a national animal speaks volumes about a country's hopes.</p>
+      </div>
+    </details>
+
+    <nav class="course-links bottom" aria-label="七月課程與聯絡連結">
+      <div class="course-heading">七月課程與聯絡資訊</div>
+      <div class="link-grid">
+        <a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-desc">從錯題、回饋到重練，幫學生把英文弱點整理成可追蹤的進步路線。</span>
+          <span class="link-action">查看課程介紹</span>
+        </a>
+        <a class="link-card course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+          <span class="link-title">學生分析</span>
+          <span class="link-desc">用學習資料整理學生狀況，協助找出字彙、文法、閱讀與寫作的優先補強方向。</span>
+          <span class="link-action">查看學生分析</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <span class="link-title">林威老師 Line 帳號</span>
+          <span class="link-desc">課程詢問、教材討論與學習安排，可加入 Line：linwayet。</span>
+          <span class="link-action">加入 Line：linwayet</span>
+        </a>
+      </div>
+    </nav>
+  </main>
+</body>
+</html>
