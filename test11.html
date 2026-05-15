@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錯中學 ECHO 計劃 Day 1 — 蔡同學專屬</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFF8F0;
+  --text: #1A0F00;
+  --text2: #5a3e2b;
+  --h1: #C0392B;
+  --h2: #1565C0;
+  --h3: #2E7D32;
+  --orange: #E65100;
+  --purple: #6A1B9A;
+  --deepblue: #0D47A1;
+  --warm1: #ff8c42;
+  --warm2: #ffb347;
+  --warm5: #e05c4b;
+  --card: #fffcf8;
+  --shadow: 0 3px 16px rgba(255,140,66,0.13);
+
+  /* block colors */
+  --vocab-head: #1B5E20;
+  --vocab-border: #81C784;
+  --vocab-bg: #F1F8F2;
+  --gram-head: #4A148C;
+  --gram-border: #CE93D8;
+  --gram-bg: #F9F0FF;
+  --read-head: #BF360C;
+  --read-border: #FFAB91;
+  --read-bg: #FFF3EF;
+  --quiz-head: #0D47A1;
+  --quiz-border: #90CAF9;
+  --quiz-bg: #F3F8FF;
+  --fold-head: #4A3728;
+  --fold-border: #C4A06A;
+  --fold-bg: #FAF6F0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.85;
+}
+
+/* ===== TOP/BOTTOM NAV ===== */
+.links-bar {
+  background: linear-gradient(135deg, #e05c4b, #ff8c42, #ffb347);
+  padding: 14px 16px;
+  text-align: center;
+}
+.links-bar .bar-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.link-card {
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 12px;
+  padding: 9px 13px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+.link-card:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+.link-card .lc-icon { font-size: 20px; }
+.link-card .lc-name { font-weight: 700; font-size: 12px; text-align: center; }
+.link-card .lc-desc { font-size: 10px; opacity: 0.85; text-align: center; line-height: 1.3; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(160deg, #fff3e0 0%, #ffe0b2 100%);
+  padding: 28px 20px 22px;
+  text-align: center;
+  border-bottom: 4px solid var(--warm2);
+  position: relative; overflow: hidden;
+}
+.hero::before { content:'📚'; position:absolute; font-size:110px; opacity:0.05; top:-5px; right:-5px; }
+.hero-day {
+  display: inline-block;
+  background: var(--warm5);
+  color: white;
+  font-family: 'Baloo 2', cursive;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.hero-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--h1);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--h2);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.hero-sub2 { font-size: 13px; color: var(--text2); margin-bottom: 14px; }
+.hero-maker {
+  font-family: 'Baloo 2', cursive;
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #1565C0, #0D47A1, #1565C0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px;
+}
+.hero-badge {
+  background: white; border: 2px solid var(--warm2);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 12px; font-weight: 700; color: var(--warm5);
+}
+
+/* ===== MAIN ===== */
+.main { max-width: 860px; margin: 0 auto; padding: 20px 16px 36px; }
+
+/* ===== SECTION HEADERS ===== */
+.sec-header {
+  border-radius: 12px 12px 0 0;
+  padding: 13px 18px;
+  display: flex; align-items: center; gap: 10px;
+  color: white;
+  margin-top: 28px;
+}
+.sec-header h2 { font-size: 18px; font-weight: 700; line-height: 1.2; }
+.sec-header .sh-sub { font-size: 12px; opacity: 0.85; }
+.sec-body {
+  border: 2px solid;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 18px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  margin-bottom: 4px;
+}
+
+/* ===== DIVIDER ===== */
+.divider { height: 3px; background: linear-gradient(90deg,var(--warm1),var(--warm3,#ffd166),var(--warm1)); border-radius:3px; margin:20px 0; opacity:0.25; }
+
+/* ===== VOCAB CARDS ===== */
+.vocab-grid { display: flex; flex-direction: column; gap: 18px; }
+.vocab-card {
+  background: var(--vocab-bg);
+  border: 2px solid var(--vocab-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.vocab-card.highlight-error { border-color: #E57373; border-width: 3px; }
+.vc-head {
+  background: linear-gradient(90deg, #1B5E20, #2E7D32);
+  padding: 10px 16px;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.vc-head.highlight-error { background: linear-gradient(90deg, #b71c1c, #c62828); }
+.vc-num {
+  background: rgba(255,255,255,0.25);
+  color: white; border-radius: 50%;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; flex-shrink: 0;
+}
+.vc-word { color: white; font-size: 22px; font-weight: 700; }
+.vc-kk { color: rgba(255,255,255,0.82); font-size: 14px; }
+.vc-pos {
+  background: rgba(255,255,255,0.2);
+  color: white; border-radius: 10px;
+  padding: 1px 8px; font-size: 12px;
+}
+.vc-def { color: rgba(255,255,255,0.95); font-size: 14px; font-weight: 700; }
+.vc-error-tag {
+  background: #FFCDD2; color: #b71c1c;
+  border-radius: 10px; padding: 1px 8px;
+  font-size: 11px; font-weight: 700;
+}
+.vc-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+
+/* tags */
+.tag-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: flex-start; }
+.tag-label {
+  border-radius: 6px; padding: 3px 9px;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+}
+.tag-deriv { background:#FDEDEC; color:#C0392B; }
+.tag-root  { background:#EBF5FB; color:#1565C0; }
+.tag-phrase{ background:#EAFAF1; color:#2E7D32; }
+.tag-idiom { background:#FEF9E7; color:#D68910; }
+.tag-confuse{ background:#F5EEF8; color:#6A1B9A; }
+.tag-emph  { background:#FEF0E7; color:#E65100; }
+.tag-content { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+/* examples */
+.example-block { border-left: 3px solid var(--vocab-border); padding-left: 12px; margin-top: 4px; }
+.ex-en { font-size: 15px; color: var(--deepblue); font-weight: 700; line-height: 1.5; }
+.ex-zh { font-size: 13px; color: var(--text2); line-height: 1.5; }
+.ex-sep { height: 6px; }
+
+/* ===== GRAMMAR CARDS ===== */
+.gram-card {
+  background: var(--gram-bg);
+  border: 2px solid var(--gram-border);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.gc-head {
+  background: linear-gradient(90deg, #4A148C, #6A1B9A);
+  padding: 10px 16px;
+  color: white;
+}
+.gc-head h3 { font-size: 16px; font-weight: 700; }
+.gc-head .gc-type { font-size: 12px; opacity: 0.8; margin-top: 2px; }
+.gc-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.gc-quote {
+  background: #f0e6ff; border-left: 4px solid var(--purple);
+  padding: 8px 12px; border-radius: 0 8px 8px 0;
+  font-style: italic; font-size: 15px; color: var(--deepblue);
+  line-height: 1.6;
+}
+.gc-pattern {
+  background: #fff3e0; border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 14px; font-weight: 700; color: var(--orange);
+  font-style: italic;
+}
+.gc-label {
+  font-size: 13px; font-weight: 700; color: var(--gram-head);
+  border-bottom: 1.5px solid var(--gram-border);
+  padding-bottom: 3px; margin-bottom: 4px;
+}
+.gc-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+.gc-list { font-size: 14px; color: var(--text); line-height: 1.7; padding-left: 18px; }
+.gc-list li { margin-bottom: 4px; }
+.gc-wrong { background: #fdecea; border-radius: 6px; padding: 6px 10px; font-size: 14px; }
+.gc-right { background: #e8f5e9; border-radius: 6px; padding: 6px 10px; font-size: 14px; }
+.wr { color: #c62828; font-weight: 700; }
+.ok { color: #2e7d32; font-weight: 700; }
+
+/* ===== READING ===== */
+.read-article {
+  background: var(--read-bg);
+  border: 2px solid var(--read-border);
+  border-radius: 12px;
+  padding: 18px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.read-article p { margin-bottom: 14px; }
+.read-article p:last-child { margin-bottom: 0; }
+.key-word { color: var(--deepblue); font-weight: 700; }
+
+.read-q {
+  background: var(--card);
+  border: 2px solid var(--read-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.rq-num {
+  background: var(--read-head);
+  color: white; border-radius: 50%;
+  width: 26px; height: 26px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; margin-right: 6px; flex-shrink: 0;
+}
+.rq-text { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.5; display: inline; }
+.rq-options { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; padding-left: 8px; }
+.rq-opt { font-size: 14px; color: var(--text2); padding: 5px 8px; border-radius: 6px; }
+.read-ans-btn {
+  width: 100%;
+  background: linear-gradient(90deg, var(--read-head), #e64a19);
+  color: white; border: none; border-radius: 10px;
+  padding: 13px;
+  font-family: 'BIZ UDPGothic', sans-serif;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; margin-top: 6px;
+  transition: all 0.2s;
+}
+.read-ans-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ===== QUIZ ===== */
+.quiz-item {
+  background: var(--quiz-bg);
+  border: 2px solid var(--quiz-border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.qi-head {
+  background: linear-gradient(90deg, #0D47A1, #1565C0);
+  padding: 9px 14px;
+  color: white; font-size: 14px; font-weight: 700;
+}
+.qi-body { padding: 12px 14px; }
+.qi-sent { font-size: 16px; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+.qi-blank { border-bottom: 2.5px solid var(--deepblue); display: inline-block; min-width: 80px; }
+.qi-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.qi-opt {
+  background: white; border: 2px solid var(--quiz-border);
+  border-radius: 8px; padding: 8px 10px;
+  font-size: 14px; color: var(--text);
+  cursor: pointer; transition: all 0.15s;
+}
+.qi-opt:hover { border-color: var(--deepblue); background: #e8f0fe; }
+.qi-opt.selected-correct { border-color: #2e7d32; background: #e8f5e9; color: #1b5e20; font-weight: 700; }
+.qi-opt.selected-wrong { border-color: #c62828; background: #fdecea; color: #b71c1c; }
+
+/* ===== DETAILS FOLD ===== */
+.fold-section { margin-top: 20px; }
+details {
+  background: var(--fold-bg);
+  border: 2px solid var(--fold-border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+summary {
+  background: linear-gradient(90deg, #4A3728, #6D4C41);
+  padding: 13px 16px;
+  cursor: pointer;
+  font-size: 15px; font-weight: 700; color: white;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none; list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+.arrow { font-size: 14px; transition: transform 0.25s; display: inline-block; }
+details[open] .arrow { transform: rotate(180deg); }
+.fold-content { padding: 16px 18px; font-size: 14px; line-height: 1.8; }
+.fold-content .fc-row {
+  display: flex; gap: 6px; margin-bottom: 8px; align-items: flex-start;
+}
+.fc-bullet {
+  background: var(--warm5); color: white;
+  border-radius: 50%; width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.pfx-row { margin-bottom: 6px; font-size: 13px; }
+.pfx-tag {
+  background: #EBF5FB; color: #1565C0;
+  border-radius: 6px; padding: 2px 8px;
+  font-weight: 700; font-size: 12px; margin-right: 6px;
+}
+
+/* ===== ANSWER AREA (details-based) ===== */
+details.ans-details {
+  background: #e8f5e9;
+  border: 2px solid #81c784;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+details.ans-details summary {
+  background: linear-gradient(90deg, #2e7d32, #388e3c);
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.ans-body { padding: 12px 14px; }
+.ans-row { margin-bottom: 8px; font-size: 14px; line-height: 1.7; }
+.ans-correct { color: #1b5e20; font-weight: 700; }
+.ans-explain { color: var(--text2); }
+
+/* footer note */
+.footer-note { text-align: center; font-size: 11px; color: var(--text2); padding: 8px 16px 4px; opacity: 0.65; }
+
+@media (max-width: 480px) {
+  body { font-size: 18px; }
+  .hero-title { font-size: 24px; }
+  .vc-word { font-size: 20px; }
+  .qi-options { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<div class="links-bar">
+  <div class="bar-title">🍊 林威老師 · 七月課程與聯絡</div>
+  <div class="links-grid">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎯</span>
+      <span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月開課 · 精準補強</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">🔬</span>
+      <span class="lc-name">學生分析系統</span>
+      <span class="lc-desc">七月開課 · AI 個人化分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-name">LINE 林威老師</span>
+      <span class="lc-desc">ID: linwayet</span>
+    </a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-day">🔥 錯中學 ECHO 計劃 — DAY 1</div>
+  <div class="hero-title">蔡同學專屬學習教材</div>
+  <div class="hero-sub">主題：社會融入與人物奮鬥</div>
+  <div class="hero-sub2">段考錯誤針對強化版 · 10 個核心單字 · 3 個文法點 · 閱讀測驗 · 單字複習</div>
+  <div class="hero-maker">✦ 林威老師與 AI Agent 團隊製作 ✦</div>
+  <div class="hero-badges">
+    <span class="hero-badge">📅 Day 1 of 30</span>
+    <span class="hero-badge">🎯 30% 錯誤弱點字</span>
+    <span class="hero-badge">💪 70% 同等級加強字</span>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+<!-- ==================== PART 1: VOCABULARY ==================== -->
+<div class="sec-header" style="background: linear-gradient(90deg,#1B5E20,#2E7D32); border: 2px solid var(--vocab-border); border-bottom:none;">
+  <span style="font-size:22px;">📗</span>
+  <div>
+    <h2>Part 1 ｜ 今日單字本 10 個</h2>
+    <div class="sh-sub">🔴 紅框 = 蔡同學段考錯誤詞 · 同主題同等級補充</div>
+  </div>
+</div>
+<div class="sec-body" style="border-color:var(--vocab-border);">
+<div class="vocab-grid">
+
+<!-- 1. fit in ★ ERROR WORD -->
+<div class="vocab-card highlight-error">
+  <div class="vc-head highlight-error">
+    <div class="vc-num">1</div>
+    <span class="vc-word">fit in</span>
+    <span class="vc-kk">[fɪt ɪn]</span>
+    <span class="vc-pos">片語動詞</span>
+    <span class="vc-def">融入；被接受</span>
+    <span class="vc-error-tag">⚠ 段考錯題</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">fit in with sb/sth（與…融洽相處）／ fit into a group（融入群體）／ fit in somewhere（適合某地方）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-confuse">容易混淆</span>
+      <span class="tag-content"><strong>pop up</strong>（突然出現，無計劃地出現）；<strong>blend in</strong>（混入、不顯眼地融入）；<strong>stand out</strong>（突出、顯眼，與 fit in 相反）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-emph">重點</span>
+      <span class="tag-content">段考考點：Auggie 懷疑自己是否能在新學校「融入」——環境不友善 → 用 <strong>fit in</strong></span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">He doubted whether he would ever <strong>fit in</strong> at his new school.</div>
+      <div class="ex-zh">（他懷疑自己在新學校是否能融入。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">It took her a few weeks, but she finally <strong>fit in</strong> with the rest of the team.</div>
+      <div class="ex-zh">（她花了幾個禮拜，但終於和其他團隊成員融合在一起了。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. fuel ★ ERROR WORD -->
+<div class="vocab-card highlight-error">
+  <div class="vc-head highlight-error">
+    <div class="vc-num">2</div>
+    <span class="vc-word">fuel</span>
+    <span class="vc-kk">[fjuəl]</span>
+    <span class="vc-pos">v. / n.</span>
+    <span class="vc-def">（v.）助長；加劇 ／ （n.）燃料</span>
+    <span class="vc-error-tag">⚠ 段考錯題</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">fuel (n.) 燃料／fuel (v.) 助長、激化／fueled (adj.) 以…為動力的／fuel-efficient (adj.) 省油的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">fuel anxiety / fear / tension（助長焦慮／恐懼／緊張）；fuel a debate（激起辯論）；add fuel to the fire（火上加油）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-emph">重點</span>
+      <span class="tag-content">名詞轉動詞類型：fuel、fire、mirror、champion 等字，動詞義與名詞義完全不同，要特別記！</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">Rising housing prices continue to <strong>fuel</strong> young people's anxiety.</div>
+      <div class="ex-zh">（不斷上漲的房價持續加劇年輕人的焦慮。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">The media coverage only <strong>fueled</strong> the public's fear about the disease.</div>
+      <div class="ex-zh">（媒體的報導只是進一步助長了公眾對該疾病的恐懼。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. widen ★ ERROR WORD -->
+<div class="vocab-card highlight-error">
+  <div class="vc-head highlight-error">
+    <div class="vc-num">3</div>
+    <span class="vc-word">widen</span>
+    <span class="vc-kk">[ˈwaɪdən]</span>
+    <span class="vc-pos">v.</span>
+    <span class="vc-def">（使）擴大；（使）增寬</span>
+    <span class="vc-error-tag">⚠ 段考錯題</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">wide (adj.) 寬的／widely (adv.) 廣泛地／width (n.) 寬度／widen (v.) 使擴大／widespread (adj.) 廣泛的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">widen interest / influence / gap（擴大興趣/影響力/差距）；widen one's horizons（開拓視野）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-confuse">容易混淆</span>
+      <span class="tag-content"><strong>broaden</strong>（拓展，常搭配 horizons/knowledge）；<strong>expand</strong>（擴張，常搭配 business/market）；<strong>extend</strong>（延長/延伸，含時間/空間義）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">His success has <strong>widened</strong> worldwide interest in baseball.</div>
+      <div class="ex-zh">（他的成功拓展了全球對棒球的興趣。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">Traveling abroad can greatly <strong>widen</strong> your perspective on life.</div>
+      <div class="ex-zh">（出國旅行能大大拓展你的人生視野。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. establish ★ ERROR WORD -->
+<div class="vocab-card highlight-error">
+  <div class="vc-head highlight-error">
+    <div class="vc-num">4</div>
+    <span class="vc-word">establish</span>
+    <span class="vc-kk">[ɪˈstæblɪʃ]</span>
+    <span class="vc-pos">v.</span>
+    <span class="vc-def">創立；建立；確立</span>
+    <span class="vc-error-tag">⚠ 段考錯題</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">establishment (n.) 機構；建立／established (adj.) 已確立的；知名的／well-established (adj.) 久負盛名的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">establish an organization / company / record（創立組織/公司；創下紀錄）；establish a connection（建立聯繫）；establish one's reputation（確立聲望）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-confuse">容易混淆</span>
+      <span class="tag-content"><strong>adopt</strong>（採納想法/政策；收養小孩）—— 不能搭配「創立組織」；<strong>found</strong>（創辦，與 establish 近義但更正式）；<strong>set up</strong>（建立，口語較常用）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">He had <strong>established</strong> an organization to protect children's rights.</div>
+      <div class="ex-zh">（他創立了一個保護兒童權益的組織。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">She worked hard to <strong>establish</strong> herself as a leading scientist in the field.</div>
+      <div class="ex-zh">（她努力讓自己在該領域確立了頂尖科學家的地位。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. scatter — same exam, related -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">5</div>
+    <span class="vc-word">scatter</span>
+    <span class="vc-kk">[ˈskætɚ]</span>
+    <span class="vc-pos">v. / n.</span>
+    <span class="vc-def">（v.）散佈；驅散 ／ （n.）散亂</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">scattered (adj.) 分散的；零散的／scattering (n.) 散布／scatter-brained (adj.) 粗心健忘的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">scatter across / along（散布在…各處）；scatter in all directions（四散）；scattered showers（零星陣雨）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">Strong typhoon winds <strong>scattered</strong> plastic waste along Taiwan's beaches.</div>
+      <div class="ex-zh">（颱風強風將塑膠廢棄物散布在台灣海灘各處。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">The crowd <strong>scattered</strong> in all directions when the alarm went off.</div>
+      <div class="ex-zh">（警報響起時，人群四散而逃。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. temporary — same exam -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">6</div>
+    <span class="vc-word">temporary</span>
+    <span class="vc-kk">[ˈtɛmpəˌrɛrɪ]</span>
+    <span class="vc-pos">adj.</span>
+    <span class="vc-def">暫時的；臨時的</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">temporarily (adv.) 暫時地／temporariness (n.) 暫時性／temporary (adj.) 暫時的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-confuse">容易混淆</span>
+      <span class="tag-content"><strong>permanent</strong>（永久的，反義）；<strong>provisional</strong>（臨時的，正式書面用語）；<strong>interim</strong>（過渡期的，政治/行政用語）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-idiom">慣用語</span>
+      <span class="tag-content">a temporary solution（暫時的解決辦法）；temporary measures（臨時措施）；on a temporary basis（以臨時方式）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">Some countries made <strong>temporary</strong> changes to oil policies due to rising global prices.</div>
+      <div class="ex-zh">（由於全球油價上漲，部分國家對石油政策做了暫時性的調整。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">The pain from the injection is only <strong>temporary</strong> and will pass in minutes.</div>
+      <div class="ex-zh">（注射的疼痛只是暫時的，幾分鐘後就會消失。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. inferior — same exam -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">7</div>
+    <span class="vc-word">inferior</span>
+    <span class="vc-kk">[ɪnˈfɪrɪɚ]</span>
+    <span class="vc-pos">adj. / n.</span>
+    <span class="vc-def">（adj.）劣等的；低等的 ／ （n.）下屬</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">inferiority (n.) 劣等；自卑／inferior (adj.) 劣等的／superior (adj.) 優等的（反義）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">feel inferior to sb（感到不如某人）；inferior quality（品質低劣的）；inferiority complex（自卑感）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-root">字根</span>
+      <span class="tag-content"><strong>infer-</strong>（下方、較低）— inferior（較低的）/ infernal（地獄的）；<strong>-or</strong>（比較級字尾）— superior（更高的）/ interior（內部的）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">Some workers feel <strong>inferior</strong> in today's AI-driven workplace.</div>
+      <div class="ex-zh">（在當今由 AI 主導的職場中，有些員工感到自身能力不如他人。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">She refused to see herself as <strong>inferior</strong> to anyone in the company.</div>
+      <div class="ex-zh">（她拒絕認為自己在公司中不如任何人。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. marvelous — same exam -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">8</div>
+    <span class="vc-word">marvelous</span>
+    <span class="vc-kk">[ˈmɑrvələs]</span>
+    <span class="vc-pos">adj.</span>
+    <span class="vc-def">了不起的；令人驚歎的</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">marvel (n.) 奇蹟、令人驚歎的事物；(v.) 對…感到驚歎／marvelously (adv.) 了不起地／marvelous (adj.) 了不起的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">do a marvelous job（做得非常出色）；marvel at sth（對某事感到驚歎）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">The rescue team did a <strong>marvelous</strong> job saving people trapped after the earthquake.</div>
+      <div class="ex-zh">（救援隊在地震後拯救被困民眾，表現得非常出色。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">We stood in silence and <strong>marveled</strong> at the beauty of the northern lights.</div>
+      <div class="ex-zh">（我們靜靜站著，對北極光的美景嘆為觀止。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. liberty — same exam -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">9</div>
+    <span class="vc-word">liberty</span>
+    <span class="vc-kk">[ˈlɪbɚtɪ]</span>
+    <span class="vc-pos">n.</span>
+    <span class="vc-def">自由；自主權</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">liberate (v.) 解放／liberation (n.) 解放、自由／liberal (adj.) 自由的；開明的／liberalism (n.) 自由主義</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-root">字根</span>
+      <span class="tag-content"><strong>liber-</strong>（自由）— liberty（自由）/ liberate（解放）/ liberal（自由的）/ deliver（遞送；解脫）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-idiom">慣用語</span>
+      <span class="tag-content">at liberty to do sth（可以自由做某事）；take the liberty of doing（冒昧做…）；civil liberties（公民自由）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">Teenagers believe home rules limit their <strong>liberty</strong> to use smartphones freely.</div>
+      <div class="ex-zh">（青少年認為家規限制了他們自由使用智慧型手機的自主權。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">Iqbal fought to give bonded children the <strong>liberty</strong> they deserved.</div>
+      <div class="ex-zh">（Iqbal 為讓那些被束縛的孩子獲得應有的自由而奮鬥。）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. persuasive — reading level -->
+<div class="vocab-card">
+  <div class="vc-head">
+    <div class="vc-num">10</div>
+    <span class="vc-word">persuasive</span>
+    <span class="vc-kk">[pɚˈswesɪv]</span>
+    <span class="vc-pos">adj.</span>
+    <span class="vc-def">有說服力的；能使人信服的</span>
+  </div>
+  <div class="vc-body">
+    <div class="tag-row">
+      <span class="tag-label tag-deriv">衍生詞</span>
+      <span class="tag-content">persuade (v.) 說服／persuasion (n.) 說服；勸說／persuasively (adv.) 有說服力地／unpersuasive (adj.) 缺乏說服力的</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-phrase">片語</span>
+      <span class="tag-content">persuade sb to do sth（說服某人做…）；persuade sb of sth（說服某人相信…）；a persuasive argument（有說服力的論點）</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag-label tag-confuse">容易混淆</span>
+      <span class="tag-content"><strong>convince</strong>（使確信，著重「讓人改變想法」）；<strong>persuade</strong>（說服，著重「勸說使人採取行動」）</span>
+    </div>
+    <div class="example-block">
+      <div class="ex-en">His speeches were so <strong>persuasive</strong> that he was invited to speak in other countries.</div>
+      <div class="ex-zh">（他的演講極具說服力，因此受邀前往其他國家演講。）</div>
+      <div class="ex-sep"></div>
+      <div class="ex-en">She made a <strong>persuasive</strong> case for changing the company's environmental policy.</div>
+      <div class="ex-zh">（她為改變公司的環保政策提出了極具說服力的論據。）</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end vocab-grid -->
+</div><!-- end sec-body -->
+
+<div class="divider"></div>
+
+<!-- ==================== PART 2: GRAMMAR ==================== -->
+<div class="sec-header" style="background: linear-gradient(90deg,#4A148C,#6A1B9A); border:2px solid var(--gram-border); border-bottom:none;">
+  <span style="font-size:22px;">📐</span>
+  <div>
+    <h2>Part 2 ｜ 文法重點 3 個</h2>
+    <div class="sh-sub">蔡同學最容易進步的三個考點 · 關鍵字<strong>粗體</strong>標示</div>
+  </div>
+</div>
+<div class="sec-body" style="border-color:var(--gram-border);">
+
+<!-- GRAM 1: mind + V-ing -->
+<div class="gram-card">
+  <div class="gc-head">
+    <h3>文法點 1｜後接動名詞的動詞（V + V-ing）</h3>
+    <div class="gc-type">段考考點 (18)：No one minded __(18)__ near him anymore.</div>
+  </div>
+  <div class="gc-body">
+    <div class="gc-quote">「No one <strong>minded being</strong> near him anymore, and for the first time, he felt at ease.」</div>
+    <div class="gc-pattern">S + V（特定動詞）+ V-ing ...</div>
+
+    <div class="gc-label">核心說明</div>
+    <div class="gc-text">英文中有一群動詞，後面<strong>只能</strong>接動名詞（V-ing），不能接不定詞（to V）或原形動詞（bare V）。<strong>mind</strong> 就是其中之一，意思是「介意；反對做…」。記憶口訣：這些動詞多半與「已發生、持續中的動作」有關。</div>
+
+    <div class="gc-label">必背「只接 V-ing」動詞清單</div>
+    <ul class="gc-list">
+      <li><strong>mind</strong>（介意）— Do you mind <strong>waiting</strong>?</li>
+      <li><strong>enjoy</strong>（享受）— She enjoys <strong>reading</strong> novels.</li>
+      <li><strong>avoid</strong>（避免）— He avoided <strong>making</strong> eye contact.</li>
+      <li><strong>finish</strong>（完成）— They finished <strong>building</strong> the house.</li>
+      <li><strong>consider</strong>（考慮）— Are you considering <strong>applying</strong>?</li>
+      <li><strong>give up</strong>（放棄）— She gave up <strong>trying</strong>.</li>
+      <li><strong>keep</strong>（持續）— Keep <strong>practicing</strong> every day.</li>
+      <li><strong>suggest</strong>（建議）— He suggested <strong>going</strong> early.</li>
+    </ul>
+
+    <div class="gc-label">主題例句</div>
+    <div class="gc-text">
+      No one <strong>minded sitting</strong> next to Auggie anymore.<br>
+      （再也沒有人介意坐在 Auggie 旁邊了。）<br><br>
+      Iqbal <strong>avoided drawing</strong> attention to himself when he first escaped.<br>
+      （Iqbal 剛逃脫時，盡量避免引起別人注意。）
+    </div>
+
+    <div class="gc-label">學習提醒</div>
+    <div class="gc-text">注意：<strong>mind</strong> 後若接原形動詞（be）是常見錯誤！選項中若出現 be，通常是陷阱。另外，<strong>stop + V-ing</strong> 表示「停止做…」；<strong>stop + to V</strong> 表示「停下來去做另一件事」，兩者意思完全不同！</div>
+
+    <div class="gc-wrong">✗ No one minded <span class="wr">be</span> near him. （❌ 錯誤：mind 後不接原形）</div>
+    <div class="gc-right">✓ No one minded <span class="ok">being</span> near him. （✅ 正確：mind + V-ing）</div>
+  </div>
+</div>
+
+<!-- GRAM 2: the others vs others -->
+<div class="gram-card">
+  <div class="gc-head">
+    <h3>文法點 2｜other 的四種用法辨別</h3>
+    <div class="gc-type">段考考點 (20)：...and __(20)__ students were left in shock.</div>
+  </div>
+  <div class="gc-body">
+    <div class="gc-quote">「Malala fell to the ground, and <strong>the other</strong> students were left in shock.」</div>
+    <div class="gc-pattern">other + N ／ another ／ the other(s) ／ others</div>
+
+    <div class="gc-label">四種用法對比表</div>
+    <ul class="gc-list">
+      <li><strong>another</strong>（再一個）— 泛指，單數，可數。I'd like <strong>another</strong> cup of tea. （再來一杯）</li>
+      <li><strong>other + N</strong>（其他的…）— 泛指，後加複數名詞。<strong>Other</strong> students raised their hands. （其他學生…）</li>
+      <li><strong>others</strong>（其他人/事）— 泛指，複數代名詞，後不加名詞。Some passed; <strong>others</strong> failed. （有些人過了；其他人沒有）</li>
+      <li><strong>the other(s)</strong>（那些特定的其他人/事）— <strong>特指</strong>，範圍已確定。Of the two, one left; <strong>the other</strong> stayed. ／ All students on the bus: Malala was shot, and <strong>the other</strong> students were shocked.</li>
+    </ul>
+
+    <div class="gc-label">段考分析</div>
+    <div class="gc-text">車上有一群<strong>特定的學生</strong>，排除 Malala 之後，其餘都是「那些其他的學生」，範圍確定 → 用 <strong>the other students</strong>。若用 others students，文法錯誤（others 後不加名詞）；若用 other students，語意變成泛指「其他學生」，失去特指的邏輯。</div>
+
+    <div class="gc-wrong">✗ <span class="wr">Others</span> students were left in shock. （❌ others 後不接名詞）</div>
+    <div class="gc-right">✓ <span class="ok">The other</span> students were left in shock. （✅ 特指同一車廂裡的其他學生）</div>
+  </div>
+</div>
+
+<!-- GRAM 3: while vs until -->
+<div class="gram-card">
+  <div class="gc-head">
+    <h3>文法點 3｜連接詞語意辨別：while / when / until / as</h3>
+    <div class="gc-type">段考考點 (16)：Everything seemed fine __(16)__ a group suddenly appeared.</div>
+  </div>
+  <div class="gc-body">
+    <div class="gc-quote">「Everything seemed to be going well <strong>while</strong> a group of seventh-graders suddenly shone a flashlight into his face.」</div>
+    <div class="gc-pattern">主句 + while / when / until / as + 副詞子句</div>
+
+    <div class="gc-label">四個連接詞語意對比</div>
+    <ul class="gc-list">
+      <li><strong>while</strong>（當…的同時；突然…）— 強調「進行中被打斷」或「對比」。Everything was fine <strong>while</strong> chaos suddenly broke out. ✔</li>
+      <li><strong>when</strong>（當…時）— 某一時間點發生的動作，較中性。I was studying <strong>when</strong> she called. ✔</li>
+      <li><strong>until</strong>（直到…為止）— 表示動作持續到某時間點才停止。He waited <strong>until</strong> she arrived. ✔</li>
+      <li><strong>as</strong>（隨著；一邊…一邊）— 表示兩動作同時進行或漸進變化。Prices rose <strong>as</strong> demand increased. ✔</li>
+    </ul>
+
+    <div class="gc-label">段考分析</div>
+    <div class="gc-text">「一切順利 → 突然有人出現搗亂」，是<strong>進行中被打斷</strong>的情境。<strong>while</strong> 在這裡表達「正當一切順利進行時，突然發生了另一件事」，帶有強烈的轉折與突發感。<strong>until</strong> 的邏輯是「一直順利，直到某個時間點才停止」，缺少突發的語感，不適合。</div>
+
+    <div class="gc-wrong">✗ Everything went well <span class="wr">until</span> suddenly someone appeared. （❌ until 不能搭配 suddenly 的突發感）</div>
+    <div class="gc-right">✓ Everything went well <span class="ok">while</span> someone suddenly appeared. （✅ while 強調「進行中被打斷」）</div>
+  </div>
+</div>
+
+</div><!-- end sec-body -->
+
+<div class="divider"></div>
+
+<!-- ==================== PART 3: READING ==================== -->
+<div class="sec-header" style="background:linear-gradient(90deg,#BF360C,#e64a19); border:2px solid var(--read-border); border-bottom:none;">
+  <span style="font-size:22px;">📖</span>
+  <div>
+    <h2>Part 3 ｜ 閱讀測驗</h2>
+    <div class="sh-sub">學測長度 × 1/2 · 主題：社會融入與個人成長 · 5 題閱讀理解</div>
+  </div>
+</div>
+<div class="sec-body" style="border-color:var(--read-border);">
+
+<div class="read-article">
+  <p>Maya had always been the new kid. By the time she entered high school, she had moved five times, making it difficult to <strong class="key-word">fit in</strong> anywhere. At her new school in Tainan, she noticed that her classmates formed tight groups during lunch. Maya often sat alone, and she even doubted whether she would ever become part of the community.</p>
+
+  <p>However, Maya refused to give up. She <strong class="key-word">established</strong> a small English conversation club, hoping to connect with students who shared her interest in languages. At first, only two students joined. Yet, their early conversations were so <strong class="key-word">persuasive</strong> about the value of the club that word quickly spread. Within a month, more than thirty students had signed up.</p>
+
+  <p>The club's success not only helped Maya socially but also <strong class="key-word">widened</strong> her influence across the school. Teachers began inviting her to help with bilingual events. A local newspaper even wrote a short article about the club, calling it a "<strong class="key-word">marvelous</strong> example of student-led initiative."</p>
+
+  <p>Looking back, Maya believes that feelings of being <strong class="key-word">inferior</strong> to others are natural when entering a new environment. What matters is finding a way to contribute rather than simply trying to blend in. She now gives short talks at school, encouraging others: "You don't have to wait to be accepted. Create something, and the right people will find you."</p>
+</div>
+
+<!-- Q1 -->
+<div class="read-q">
+  <span class="rq-num">1</span>
+  <span class="rq-text">Why did Maya find it difficult to fit in when she entered high school?</span>
+  <div class="rq-options">
+    <div class="rq-opt">(A) She was not able to speak Chinese well enough.</div>
+    <div class="rq-opt">(B) She had moved so many times that building friendships was hard.</div>
+    <div class="rq-opt">(C) She did not enjoy spending time with other students.</div>
+    <div class="rq-opt">(D) Her school did not welcome students from other cities.</div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="read-q">
+  <span class="rq-num">2</span>
+  <span class="rq-text">What did Maya do in order to connect with her classmates?</span>
+  <div class="rq-options">
+    <div class="rq-opt">(A) She asked teachers to introduce her to popular students.</div>
+    <div class="rq-opt">(B) She started an English conversation club at her school.</div>
+    <div class="rq-opt">(C) She wrote a newspaper article about her experience.</div>
+    <div class="rq-opt">(D) She changed her behavior to match what others expected.</div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="read-q">
+  <span class="rq-num">3</span>
+  <span class="rq-text">The word "persuasive" in paragraph 2 is closest in meaning to ______.</span>
+  <div class="rq-options">
+    <div class="rq-opt">(A) confusing</div>
+    <div class="rq-opt">(B) convincing</div>
+    <div class="rq-opt">(C) temporary</div>
+    <div class="rq-opt">(D) scattered</div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="read-q">
+  <span class="rq-num">4</span>
+  <span class="rq-text">According to the passage, what happened after the club became popular?</span>
+  <div class="rq-options">
+    <div class="rq-opt">(A) Maya was asked to stop running the club.</div>
+    <div class="rq-opt">(B) Maya transferred to a larger school in Taipei.</div>
+    <div class="rq-opt">(C) Teachers invited Maya to help with bilingual events.</div>
+    <div class="rq-opt">(D) The club was shut down because it grew too large.</div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="read-q">
+  <span class="rq-num">5</span>
+  <span class="rq-text">What is the main message of this passage?</span>
+  <div class="rq-options">
+    <div class="rq-opt">(A) Moving to a new city is always a negative experience for students.</div>
+    <div class="rq-opt">(B) Creating something meaningful is a better way to belong than waiting to be accepted.</div>
+    <div class="rq-opt">(C) English clubs are the most effective way to make friends in school.</div>
+    <div class="rq-opt">(D) Students should focus only on academic performance to gain respect.</div>
+  </div>
+</div>
+
+<details class="ans-details">
+  <summary>📋 點此查看答案 &amp; 解析 &nbsp;<span class="arrow">▼</span></summary>
+  <div class="ans-body">
+    <div class="ans-row"><span class="ans-correct">第1題：(B)</span><br><span class="ans-explain">文章第一段說明 Maya 曾搬家五次（moved five times），導致她難以在任何地方融入（fit in anywhere）。選項(B)直接呼應此原因。</span></div>
+    <div class="ans-row"><span class="ans-correct">第2題：(B)</span><br><span class="ans-explain">第二段明確指出 Maya 創立了英文會話社（established a small English conversation club），選項(B)正確。</span></div>
+    <div class="ans-row"><span class="ans-correct">第3題：(B)</span><br><span class="ans-explain">persuasive 意為「有說服力的」，最接近 convincing（令人信服的）。temporary（暫時的）和 scattered（零散的）語意完全不符。</span></div>
+    <div class="ans-row"><span class="ans-correct">第4題：(C)</span><br><span class="ans-explain">第三段提到「Teachers began inviting her to help with bilingual events」，選項(C)直接對應。</span></div>
+    <div class="ans-row"><span class="ans-correct">第5題：(B)</span><br><span class="ans-explain">文章末段 Maya 的話點出主旨：「You don't have to wait to be accepted. Create something, and the right people will find you.」—— 主動創造比等待被接受更有效，對應選項(B)。</span></div>
+  </div>
+</details>
+
+</div><!-- end sec-body -->
+
+<div class="divider"></div>
+
+<!-- ==================== PART 4: QUIZ ==================== -->
+<div class="sec-header" style="background:linear-gradient(90deg,#0D47A1,#1565C0); border:2px solid var(--quiz-border); border-bottom:none;">
+  <span style="font-size:22px;">✏️</span>
+  <div>
+    <h2>Part 4 ｜ 單字單選複習 5 題</h2>
+    <div class="sh-sub">點選後查看答案 &amp; 解析 · 手機橫向顯示效果更佳</div>
+  </div>
+</div>
+<div class="sec-body" style="border-color:var(--quiz-border);">
+
+<!-- Q1 -->
+<div class="quiz-item">
+  <div class="qi-head">第 1 題</div>
+  <div class="qi-body">
+    <div class="qi-sent">The new student found it hard to <span class="qi-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> with the rest of the class because most friendships had already been formed.</div>
+    <div class="qi-options">
+      <div class="qi-opt">(A) pop up</div>
+      <div class="qi-opt">(B) fit in</div>
+      <div class="qi-opt">(C) stand out</div>
+      <div class="qi-opt">(D) break down</div>
+    </div>
+    <details class="ans-details" style="margin-top:10px;">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-body">
+        <div class="ans-row"><span class="ans-correct">答案：(B) fit in（融入）</span><br>
+        <span class="ans-explain">語境是新同學難以「融入」已有友誼的班級，fit in（融入環境、被群體接受）是唯一符合的答案。pop up（突然出現）、stand out（突出）、break down（崩潰；拋錨）均不符合語意。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="quiz-item">
+  <div class="qi-head">第 2 題</div>
+  <div class="qi-body">
+    <div class="qi-sent">The government's poor handling of the crisis only <span class="qi-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> public anger rather than reducing it.</div>
+    <div class="qi-options">
+      <div class="qi-opt">(A) pretended</div>
+      <div class="qi-opt">(B) marveled</div>
+      <div class="qi-opt">(C) fueled</div>
+      <div class="qi-opt">(D) scattered</div>
+    </div>
+    <details class="ans-details" style="margin-top:10px;">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-body">
+        <div class="ans-row"><span class="ans-correct">答案：(C) fueled（助長）</span><br>
+        <span class="ans-explain">fuel（v.）意指「助長、激化」，搭配 anger / tension / debate 非常自然。"rather than reducing it" 也提示需要一個「使憤怒增加」的動詞。pretended（假裝）、marveled（驚歎）、scattered（驅散）均不符。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="quiz-item">
+  <div class="qi-head">第 3 題</div>
+  <div class="qi-body">
+    <div class="qi-sent">The project team <span class="qi-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> a new system for tracking student progress, which later became a model for other schools.</div>
+    <div class="qi-options">
+      <div class="qi-opt">(A) adopted</div>
+      <div class="qi-opt">(B) established</div>
+      <div class="qi-opt">(C) considered</div>
+      <div class="qi-opt">(D) scattered</div>
+    </div>
+    <details class="ans-details" style="margin-top:10px;">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-body">
+        <div class="ans-row"><span class="ans-correct">答案：(B) established（建立、創立）</span><br>
+        <span class="ans-explain">establish a system（建立一套系統）是固定搭配。adopt（採納）也可搭配 system，但語意是「採用已有的系統」，而這裡強調的是「創立新系統」，因此 established 更精準。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="quiz-item">
+  <div class="qi-head">第 4 題</div>
+  <div class="qi-body">
+    <div class="qi-sent">The international exchange program has greatly <span class="qi-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> students' understanding of global cultures and issues.</div>
+    <div class="qi-options">
+      <div class="qi-opt">(A) punched</div>
+      <div class="qi-opt">(B) fueled</div>
+      <div class="qi-opt">(C) widened</div>
+      <div class="qi-opt">(D) pretended</div>
+    </div>
+    <details class="ans-details" style="margin-top:10px;">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-body">
+        <div class="ans-row"><span class="ans-correct">答案：(C) widened（擴大）</span><br>
+        <span class="ans-explain">widen + understanding / knowledge / perspective / gap 是固定搭配，表示「擴大理解的範圍」。punched（打）、fueled（助長，通常搭配負面情緒）、pretended（假裝）均不符語境。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="quiz-item">
+  <div class="qi-head">第 5 題</div>
+  <div class="qi-body">
+    <div class="qi-sent">No one <span class="qi-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> taking extra time to help the team, because everyone understood how important the project was.</div>
+    <div class="qi-options">
+      <div class="qi-opt">(A) minded taking</div>
+      <div class="qi-opt">(B) minded to take</div>
+      <div class="qi-opt">(C) minded take</div>
+      <div class="qi-opt">(D) mind taking</div>
+    </div>
+    <details class="ans-details" style="margin-top:10px;">
+      <summary>點此查看答案 &amp; 解析 <span class="arrow">▼</span></summary>
+      <div class="ans-body">
+        <div class="ans-row"><span class="ans-correct">答案：(A) minded taking（介意花時間…）</span><br>
+        <span class="ans-explain">mind 是「只接 V-ing」的動詞，不接 to V 或原形動詞。主詞是 No one（沒有人），動詞用過去式 minded（與前後文時態一致），因此 (A) minded taking 是唯一正確選項。(D) mind taking 時態錯誤。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+</div><!-- end sec-body -->
+
+<div class="divider"></div>
+
+<!-- ==================== FOLD: 字首 ==================== -->
+<div class="fold-section">
+<details>
+  <summary>📌 附錄一：常見字首整理（50 個）<span class="arrow">▼</span></summary>
+  <div class="fold-content">
+    <div class="pfx-row"><span class="pfx-tag">ab-</span>離開、相反 — abnormal（異常的）</div>
+    <div class="pfx-row"><span class="pfx-tag">ad-</span>向、加 — advance（前進）</div>
+    <div class="pfx-row"><span class="pfx-tag">ambi-</span>雙方、兩面 — ambiguous（模稜兩可的）</div>
+    <div class="pfx-row"><span class="pfx-tag">anti-</span>反對、抗 — antibiotic（抗生素）</div>
+    <div class="pfx-row"><span class="pfx-tag">arch-</span>主要、首要 — archenemy（死敵）</div>
+    <div class="pfx-row"><span class="pfx-tag">auto-</span>自動、自我 — autograph（親筆簽名）</div>
+    <div class="pfx-row"><span class="pfx-tag">bene-</span>好的、善 — benefit（好處）</div>
+    <div class="pfx-row"><span class="pfx-tag">bi-</span>二、雙 — bilingual（雙語的）</div>
+    <div class="pfx-row"><span class="pfx-tag">circum-</span>環繞、周圍 — circumstance（情況）</div>
+    <div class="pfx-row"><span class="pfx-tag">co-/con-/com-</span>一起、共同 — cooperate（合作）</div>
+    <div class="pfx-row"><span class="pfx-tag">contra-</span>相反、對抗 — contradict（反駁）</div>
+    <div class="pfx-row"><span class="pfx-tag">de-</span>去除、下降 — decode（解碼）</div>
+    <div class="pfx-row"><span class="pfx-tag">dia-</span>穿過、透過 — dialogue（對話）</div>
+    <div class="pfx-row"><span class="pfx-tag">dis-</span>否定、分離 — disagree（不同意）</div>
+    <div class="pfx-row"><span class="pfx-tag">en-/em-</span>使成為 — enable（使能夠）</div>
+    <div class="pfx-row"><span class="pfx-tag">epi-</span>在上、在外 — epidemic（流行病）</div>
+    <div class="pfx-row"><span class="pfx-tag">ex-</span>外、前任 — export（出口）；ex-president（前總統）</div>
+    <div class="pfx-row"><span class="pfx-tag">extra-</span>額外、外部 — extraordinary（非凡的）</div>
+    <div class="pfx-row"><span class="pfx-tag">hetero-</span>不同 — heterogeneous（異質的）</div>
+    <div class="pfx-row"><span class="pfx-tag">homo-</span>相同 — homogeneous（同質的）</div>
+    <div class="pfx-row"><span class="pfx-tag">hyper-</span>過度、超 — hyperactive（過動的）</div>
+    <div class="pfx-row"><span class="pfx-tag">hypo-</span>低於、不足 — hypodermic（皮下的）</div>
+    <div class="pfx-row"><span class="pfx-tag">in-/im-</span>否定、進入 — invisible（看不見的）；import（輸入）</div>
+    <div class="pfx-row"><span class="pfx-tag">inter-</span>在…之間 — international（國際的）</div>
+    <div class="pfx-row"><span class="pfx-tag">iso-</span>相等、相同 — isolate（隔離）</div>
+    <div class="pfx-row"><span class="pfx-tag">mal-</span>壞、不良 — malfunction（故障）</div>
+    <div class="pfx-row"><span class="pfx-tag">micro-</span>微小 — microscope（顯微鏡）</div>
+    <div class="pfx-row"><span class="pfx-tag">mis-</span>錯誤 — misunderstand（誤解）</div>
+    <div class="pfx-row"><span class="pfx-tag">mono-</span>單一 — monologue（獨白）</div>
+    <div class="pfx-row"><span class="pfx-tag">multi-</span>多 — multicultural（多元文化的）</div>
+    <div class="pfx-row"><span class="pfx-tag">neo-</span>新的 — neonatal（新生的）</div>
+    <div class="pfx-row"><span class="pfx-tag">non-</span>非、沒有 — nonsense（無意義）</div>
+    <div class="pfx-row"><span class="pfx-tag">pan-</span>全部 — pandemic（大流行病）</div>
+    <div class="pfx-row"><span class="pfx-tag">peri-</span>周圍 — perimeter（周長）</div>
+    <div class="pfx-row"><span class="pfx-tag">poly-</span>多 — polygon（多邊形）</div>
+    <div class="pfx-row"><span class="pfx-tag">post-</span>之後 — postwar（戰後的）</div>
+    <div class="pfx-row"><span class="pfx-tag">pre-</span>之前 — preview（預覽）</div>
+    <div class="pfx-row"><span class="pfx-tag">pro-</span>向前、支持 — progress（進步）；pro-democracy（支持民主的）</div>
+    <div class="pfx-row"><span class="pfx-tag">pseudo-</span>假的 — pseudonym（筆名）</div>
+    <div class="pfx-row"><span class="pfx-tag">re-</span>再、回 — review（複習）</div>
+    <div class="pfx-row"><span class="pfx-tag">semi-</span>一半、部分 — semicircle（半圓）</div>
+    <div class="pfx-row"><span class="pfx-tag">sub-</span>在下、次級 — subway（地鐵）</div>
+    <div class="pfx-row"><span class="pfx-tag">super-</span>超越、在上 — superstar（超級明星）</div>
+    <div class="pfx-row"><span class="pfx-tag">syn-/sym-</span>一起、共同 — synchronize（同步）</div>
+    <div class="pfx-row"><span class="pfx-tag">tele-</span>遠距 — telephone（電話）</div>
+    <div class="pfx-row"><span class="pfx-tag">trans-</span>穿越、轉變 — transport（運輸）</div>
+    <div class="pfx-row"><span class="pfx-tag">tri-</span>三 — triangle（三角形）</div>
+    <div class="pfx-row"><span class="pfx-tag">un-</span>否定、不 — unhappy（不快樂的）</div>
+    <div class="pfx-row"><span class="pfx-tag">vice-</span>副、代替 — vice-president（副總統）</div>
+  </div>
+</details>
+
+<details>
+  <summary>📌 附錄二：常見字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+  <div class="fold-content">
+    <div style="font-weight:700;color:var(--h3);margin-bottom:8px;">▌名詞字尾</div>
+    <div class="pfx-row"><span class="pfx-tag">-tion/-sion</span>動作、過程或結果 — education（教育）、decision（決定）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ment</span>行為或結果 — agreement（協議）、development（發展）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ness</span>狀態或性質 — happiness（快樂）、darkness（黑暗）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ity/-ty</span>抽象概念或狀態 — ability（能力）、cruelty（殘酷）</div>
+    <div class="pfx-row"><span class="pfx-tag">-er/-or</span>執行某動作的人或物 — teacher（老師）、actor（演員）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ist</span>信仰或專業的人 — artist（藝術家）、scientist（科學家）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ship</span>身分或關係 — friendship（友誼）、leadership（領導）</div>
+    <div class="pfx-row"><span class="pfx-tag">-hood</span>階段或狀態 — childhood（童年）、neighborhood（鄰里）</div>
+    <div style="font-weight:700;color:var(--h3);margin:10px 0 8px;">▌形容詞字尾</div>
+    <div class="pfx-row"><span class="pfx-tag">-able/-ible</span>能夠…的 — readable（可讀的）、credible（可信的）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ous</span>充滿…的 — dangerous（危險的）、famous（著名的）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ful</span>具有…的 — hopeful（充滿希望的）、beautiful（美麗的）</div>
+    <div class="pfx-row"><span class="pfx-tag">-less</span>缺乏…的 — hopeless（絕望的）、powerless（無力的）</div>
+    <div class="pfx-row"><span class="pfx-tag">-al/-ic</span>與…相關的 — natural（自然的）、poetic（詩意的）</div>
+    <div style="font-weight:700;color:var(--h3);margin:10px 0 8px;">▌動詞字尾</div>
+    <div class="pfx-row"><span class="pfx-tag">-ize/-ise</span>使成為… — realize（實現）、industrialize（工業化）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ify</span>使成為… — beautify（美化）、clarify（澄清）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ate</span>形成動詞 — dominate（支配）、activate（啟動）</div>
+    <div class="pfx-row"><span class="pfx-tag">-en</span>使變成… — strengthen（加強）、soften（使柔軟）</div>
+    <div style="font-weight:700;color:var(--h3);margin:10px 0 8px;">▌副詞字尾</div>
+    <div class="pfx-row"><span class="pfx-tag">-ly</span>形容詞轉副詞 — quickly（快速地）、carefully（仔細地）</div>
+    <div class="pfx-row"><span class="pfx-tag">-ward(s)</span>表示方向 — upwards（向上）、homeward（回家）</div>
+    <div class="pfx-row"><span class="pfx-tag">-wise</span>表示方式或角度 — clockwise（順時針方向）</div>
+  </div>
+</details>
+
+<details>
+  <summary>📌 附錄三：今日 10 個單字快速整理卡<span class="arrow">▼</span></summary>
+  <div class="fold-content">
+    <div class="fc-row"><div class="fc-bullet">1</div><div><strong>fit in</strong> [fɪt ɪn]（片語動詞・融入）— <em>fit in with</em>（與…相處融洽）</div></div>
+    <div class="fc-row"><div class="fc-bullet">2</div><div><strong>fuel</strong> [fjuəl]（v./n.・助長；燃料）— <em>fuel anxiety</em>（加劇焦慮）</div></div>
+    <div class="fc-row"><div class="fc-bullet">3</div><div><strong>widen</strong> [ˈwaɪdən]（v.・擴大）— <em>widen one's horizons</em>（開拓視野）</div></div>
+    <div class="fc-row"><div class="fc-bullet">4</div><div><strong>establish</strong> [ɪˈstæblɪʃ]（v.・創立）— <em>establishment</em>（n. 機構）</div></div>
+    <div class="fc-row"><div class="fc-bullet">5</div><div><strong>scatter</strong> [ˈskætɚ]（v.・散布）— <em>scattered showers</em>（零星陣雨）</div></div>
+    <div class="fc-row"><div class="fc-bullet">6</div><div><strong>temporary</strong> [ˈtɛmpəˌrɛrɪ]（adj.・暫時的）— <em>temporarily</em>（adv. 暫時地）</div></div>
+    <div class="fc-row"><div class="fc-bullet">7</div><div><strong>inferior</strong> [ɪnˈfɪrɪɚ]（adj.・劣等的）— <em>inferiority complex</em>（自卑感）</div></div>
+    <div class="fc-row"><div class="fc-bullet">8</div><div><strong>marvelous</strong> [ˈmɑrvələs]（adj.・了不起的）— <em>marvel at</em>（v. 驚歎於）</div></div>
+    <div class="fc-row"><div class="fc-bullet">9</div><div><strong>liberty</strong> [ˈlɪbɚtɪ]（n.・自由）— <em>liberate</em>（v. 解放）／<em>liberal</em>（adj. 自由的）</div></div>
+    <div class="fc-row"><div class="fc-bullet">10</div><div><strong>persuasive</strong> [pɚˈswesɪv]（adj.・有說服力的）— <em>persuade sb to V</em>（說服某人做…）</div></div>
+  </div>
+</details>
+
+<details>
+  <summary>📌 附錄四：練文筆食材 — 今日寫作句型<span class="arrow">▼</span></summary>
+  <div class="fold-content">
+    <div class="fc-row"><div class="fc-bullet">①</div><div>
+      <strong>doubt whether + S + V</strong>（懷疑是否…）<br>
+      → 適用：表達不確定、自我懷疑<br>
+      <em>She doubted whether she would ever fit in with the new team.</em><br>
+      （她懷疑自己是否能夠融入新團隊。）
+    </div></div>
+    <div class="fc-row"><div class="fc-bullet">②</div><div>
+      <strong>not only... but also...</strong>（不只…而且…）<br>
+      → 適用：強調雙重效果<br>
+      <em>The program not only widened her knowledge but also fueled her passion for learning.</em><br>
+      （這個計劃不只拓展了她的知識，也激發了她對學習的熱情。）
+    </div></div>
+    <div class="fc-row"><div class="fc-bullet">③</div><div>
+      <strong>instead of + V-ing</strong>（不是…而是…）<br>
+      → 適用：說明選擇了更好的做法<br>
+      <em>Instead of waiting to be accepted, she established a club of her own.</em><br>
+      （她沒有等待被接受，而是自己創立了一個社團。）
+    </div></div>
+    <div class="fc-row"><div class="fc-bullet">④</div><div>
+      <strong>within + 時間</strong>（在…時間之內）<br>
+      → 適用：強調速度快<br>
+      <em>Within a month, more than thirty students had joined the club.</em><br>
+      （在一個月內，超過三十名學生加入了社團。）
+    </div></div>
+    <div class="fc-row"><div class="fc-bullet">⑤</div><div>
+      <strong>S + V, calling it "..."</strong>（分詞構句，稱之為…）<br>
+      → 適用：引述他人評語<br>
+      <em>A local newspaper wrote an article about the club, calling it a marvelous example of student leadership.</em><br>
+      （當地報紙為該社團寫了一篇文章，稱之為學生領導力的絕佳範例。）
+    </div></div>
+  </div>
+</details>
+
+</div><!-- fold-section -->
+
+</div><!-- end main -->
+
+<!-- ===== FOOTER ===== -->
+<div class="footer-note">錯中學 ECHO 計劃 · Day 1 · 蔡同學專屬 · 林威老師製作</div>
+<div class="links-bar">
+  <div class="bar-title">🍊 林威老師 · 七月課程與聯絡</div>
+  <div class="links-grid">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎯</span>
+      <span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月開課 · 精準補強</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">🔬</span>
+      <span class="lc-name">學生分析系統</span>
+      <span class="lc-desc">七月開課 · AI 個人化分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-name">LINE 林威老師</span>
+      <span class="lc-desc">ID: linwayet</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

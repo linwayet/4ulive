@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔡同學段考分析報告 — 林威老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff8f0;
+    --warm1: #ff8c42;
+    --warm2: #ffb347;
+    --warm3: #ffd166;
+    --warm4: #f4845f;
+    --warm5: #e05c4b;
+    --cream: #fff3e0;
+    --card: #fffbf5;
+    --text: #3d2b1f;
+    --text2: #7a5c4a;
+    --green: #52b788;
+    --red: #e05c4b;
+    --blue: #4a90d9;
+    --purple: #9b72cf;
+    --shadow: 0 4px 20px rgba(255,140,66,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,179,71,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(255,140,66,0.10) 0%, transparent 50%);
+  }
+
+  /* ===== TOP/BOTTOM LINKS BAR ===== */
+  .links-bar {
+    background: linear-gradient(135deg, #e05c4b, #ff8c42, #ffb347);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .links-bar .bar-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: stretch;
+  }
+  .link-card {
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 12px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.25s;
+    min-width: 130px;
+    backdrop-filter: blur(4px);
+  }
+  .link-card:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .link-card .lc-icon { font-size: 22px; }
+  .link-card .lc-name {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .link-card .lc-desc {
+    font-size: 10px;
+    opacity: 0.85;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #fff3e0 0%, #ffe0b2 100%);
+    padding: 32px 20px 28px;
+    text-align: center;
+    border-bottom: 3px solid var(--warm2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '📝';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.05;
+    top: -10px; right: -10px;
+  }
+  .hero-school {
+    font-size: 12px;
+    color: var(--warm5);
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--warm5);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 16px;
+  }
+  .hero-meta {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .hero-badge {
+    background: white;
+    border: 2px solid var(--warm2);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--warm5);
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 16px 32px;
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 14px;
+  }
+  .section-title .st-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-title .st-sub {
+    font-size: 11px;
+    color: var(--text2);
+    font-weight: 400;
+  }
+
+  /* ===== SCORE SUMMARY CARDS ===== */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .score-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--warm2);
+    text-align: center;
+  }
+  .score-card.full { grid-column: 1 / -1; }
+  .score-card .sc-section { font-size: 11px; color: var(--text2); margin-bottom: 4px; font-weight: 600; letter-spacing: 0.5px; }
+  .score-card .sc-score { font-family: 'Baloo 2', cursive; font-size: 28px; font-weight: 800; line-height: 1; }
+  .score-card .sc-detail { font-size: 11px; color: var(--text2); margin-top: 4px; }
+  .score-card.green { border-top-color: var(--green); }
+  .score-card.green .sc-score { color: var(--green); }
+  .score-card.red { border-top-color: var(--red); }
+  .score-card.red .sc-score { color: var(--red); }
+  .score-card.orange { border-top-color: var(--warm1); }
+  .score-card.orange .sc-score { color: var(--warm1); }
+  .score-card.blue { border-top-color: var(--blue); }
+  .score-card.blue .sc-score { color: var(--blue); }
+  .score-card.purple { border-top-color: var(--purple); }
+  .score-card.purple .sc-score { color: var(--purple); }
+
+  /* ===== ANSWER TABLE ===== */
+  .table-wrap {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .table-wrap thead tr {
+    background: linear-gradient(90deg, var(--warm1), var(--warm2));
+    color: white;
+  }
+  .table-wrap thead th {
+    padding: 10px 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .table-wrap tbody tr:nth-child(even) { background: #fff8f2; }
+  .table-wrap tbody tr:nth-child(odd) { background: #fffcfa; }
+  .table-wrap tbody td {
+    padding: 9px 8px;
+    text-align: center;
+    border-bottom: 1px solid #ffe8d6;
+  }
+  .tag-correct {
+    display: inline-block;
+    background: #d8f3dc;
+    color: #1b7a3e;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .tag-wrong {
+    display: inline-block;
+    background: #fde8e8;
+    color: #c0392b;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .tag-student { font-weight: 700; color: var(--warm5); }
+  .tag-ans { font-weight: 700; color: #2d6a4f; }
+
+  /* ===== ERROR CARDS ===== */
+  .error-card {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-left: 5px solid var(--red);
+  }
+  .error-card .ec-header {
+    background: linear-gradient(90deg, #fde8e8, #fff3f3);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .error-card .ec-num {
+    background: var(--red);
+    color: white;
+    border-radius: 8px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .error-card .ec-title { font-weight: 700; font-size: 14px; color: var(--text); line-height: 1.3; }
+  .error-card .ec-sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+  .error-card .ec-body { padding: 14px; }
+  .ec-sentence {
+    background: #fff8f0;
+    border-left: 3px solid var(--warm2);
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .ec-answers {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .ec-ans-tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .ec-ans-tag.wrong-ans { background: #fde8e8; color: #c0392b; border: 1.5px solid #e07070; }
+  .ec-ans-tag.right-ans { background: #d8f3dc; color: #1b7a3e; border: 1.5px solid #52b788; }
+  .ec-points { margin-bottom: 8px; }
+  .ec-point {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .ec-point .ep-bullet {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--warm2);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ec-focus {
+    background: linear-gradient(90deg, #fff3cd, #fff8e1);
+    border: 1.5px dashed var(--warm3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #7a5c1a;
+    margin-top: 8px;
+  }
+  .ec-focus strong { color: var(--warm5); }
+
+  /* ===== WEAKNESS TABLES ===== */
+  .weakness-table {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .weakness-table .wt-header {
+    padding: 12px 14px;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .weakness-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .weakness-table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    background: rgba(0,0,0,0.05);
+    color: var(--text2);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  .weakness-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #ffe8d6;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .weakness-table tr:last-child td { border-bottom: none; }
+  .highlight-word {
+    background: #fff3cd;
+    border: 1.5px solid var(--warm3);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-weight: 700;
+    color: var(--warm5);
+    font-size: 13px;
+  }
+
+  /* ===== RECOMMENDATION CARDS ===== */
+  .rec-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .rec-card {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .rec-card .rc-header {
+    padding: 11px 14px;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rec-card .rc-body {
+    padding: 12px 14px;
+  }
+  .rec-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+  .rec-item:last-child { margin-bottom: 0; }
+  .rec-item .ri-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ===== OVERALL EVAL ===== */
+  .eval-box {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border: 2px solid var(--warm2);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+  .eval-box p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .eval-box p:last-child { margin-bottom: 0; }
+  .eval-highlight {
+    background: var(--warm2);
+    color: white;
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-weight: 700;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--warm1), var(--warm3), var(--warm1));
+    border-radius: 3px;
+    margin: 24px 0;
+    opacity: 0.3;
+  }
+
+  /* ===== FOOTER LINE ===== */
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text2);
+    padding: 10px 16px 6px;
+    opacity: 0.7;
+  }
+
+  /* mobile tweaks */
+  @media (max-width: 400px) {
+    .score-grid { grid-template-columns: 1fr 1fr; }
+    .hero-title { font-size: 22px; }
+    .link-card { min-width: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP LINKS BAR ===== -->
+<div class="links-bar">
+  <div class="bar-title">🍊 林威老師 · 課程與聯絡資訊</div>
+  <div class="links-grid">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎯</span>
+      <span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月開課 · 精準補強<br>英文弱點突破</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">🔬</span>
+      <span class="lc-name">學生分析系統</span>
+      <span class="lc-desc">七月開課 · AI驅動<br>個人化學習分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-name">LINE 林威老師</span>
+      <span class="lc-desc">ID: linwayet<br>點此加入好友</span>
+    </a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-school">臺北市立大直高中 · 114學年度第二學期</div>
+  <div class="hero-title">🏫 蔡同學段考分析報告</div>
+  <div class="hero-sub">高一第二次段考 英文科 · 全科目詳細錯誤分析</div>
+  <div class="hero-meta">
+    <span class="hero-badge">🎓 班級 10</span>
+    <span class="hero-badge">💺 座號 2</span>
+    <span class="hero-badge">✍️ 蔡高青平</span>
+    <span class="hero-badge">📅 114學年</span>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+  <!-- 成績概覽 -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fff3cd;">📊</div>
+    <div>
+      <h2>成績概覽</h2>
+      <div class="st-sub">各大題得分統計</div>
+    </div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card orange">
+      <div class="sc-section">I. 字彙 (3000)</div>
+      <div class="sc-score">8/10</div>
+      <div class="sc-detail">錯 (5)(9) 共2題</div>
+    </div>
+    <div class="score-card red">
+      <div class="sc-section">II. 綜合測驗</div>
+      <div class="sc-score">11/16</div>
+      <div class="sc-detail">錯 (12)(13)(16)(18)(20) 共5題</div>
+    </div>
+    <div class="score-card green">
+      <div class="sc-section">III. 文意選填</div>
+      <div class="sc-score">5/6</div>
+      <div class="sc-detail">錯 (29) 共1題</div>
+    </div>
+    <div class="score-card blue">
+      <div class="sc-section">IV. 篇章結構</div>
+      <div class="sc-score">10/10</div>
+      <div class="sc-detail">🎉 全對！</div>
+    </div>
+    <div class="score-card purple full">
+      <div class="sc-section">V. 閱讀測驗</div>
+      <div class="sc-score">6/6</div>
+      <div class="sc-detail">🎉 全對！</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 答題明細 I -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fff3cd;">📝</div>
+    <div>
+      <h2>I. 字彙題答題明細</h2>
+      <div class="st-sub">10% · 1題1分</div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>題號</th><th>學生答案</th><th>正確答案</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>(1)</td><td class="tag-student">C</td><td class="tag-ans">C</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(2)</td><td class="tag-student">D</td><td class="tag-ans">D</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(3)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(4)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(5)</td><td class="tag-student">A→C塗改</td><td class="tag-ans">C</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(6)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(7)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(8)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(9)</td><td class="tag-student">D</td><td class="tag-ans">C</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(10)</td><td class="tag-student">D</td><td class="tag-ans">D</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 答題明細 II -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fde8e8;">📝</div>
+    <div>
+      <h2>II. 綜合測驗答題明細</h2>
+      <div class="st-sub">16% · 1題1分</div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>題號</th><th>學生答案</th><th>正確答案</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>(11)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(12)</td><td class="tag-student">A</td><td class="tag-ans">D</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(13)</td><td class="tag-student">A→C塗改</td><td class="tag-ans">C</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(14)</td><td class="tag-student">C</td><td class="tag-ans">C</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(15)</td><td class="tag-student">B→C塗改</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(16)</td><td class="tag-student">D</td><td class="tag-ans">A</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(17)</td><td class="tag-student">D→B塗改</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(18)</td><td class="tag-student">D</td><td class="tag-ans">B</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(19)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(20)</td><td class="tag-student">A</td><td class="tag-ans">B</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(21)</td><td class="tag-student">B→A塗改</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(22)</td><td class="tag-student">A→B塗改</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(23)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(24)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(25)</td><td class="tag-student">D</td><td class="tag-ans">D</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(26)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 答題明細 III -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#d8f3dc;">📝</div>
+    <div>
+      <h2>III–V. 其他大題答題明細</h2>
+      <div class="st-sub">文意選填 · 篇章結構 · 閱讀測驗</div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>題號</th><th>學生答案</th><th>正確答案</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td>(27)</td><td class="tag-student">AB</td><td class="tag-ans">AB</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(28)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(29)</td><td class="tag-student">C</td><td class="tag-ans">D</td><td><span class="tag-wrong">❌ 錯誤</span></td></tr>
+        <tr><td>(30)</td><td class="tag-student">D</td><td class="tag-ans">D</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(31)</td><td class="tag-student">C→E塗改</td><td class="tag-ans">E</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(32)</td><td class="tag-student">AB</td><td class="tag-ans">AB</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(33)</td><td class="tag-student">E</td><td class="tag-ans">E</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(34)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(35)</td><td class="tag-student">D</td><td class="tag-ans">D</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(36)</td><td class="tag-student">A</td><td class="tag-ans">A</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(37)</td><td class="tag-student">C</td><td class="tag-ans">C</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(38)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(39)</td><td class="tag-student">C</td><td class="tag-ans">C</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+        <tr><td>(40)</td><td class="tag-student">B</td><td class="tag-ans">B</td><td><span class="tag-correct">✅ 正確</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 錯誤深度分析 -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fde8e8;">🔍</div>
+    <div>
+      <h2>錯誤題目深度分析</h2>
+      <div class="st-sub">共 8 題錯誤 · 逐題拆解</div>
+    </div>
+  </div>
+
+  <!-- ERROR (5) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(5)</div>
+      <div>
+        <div class="ec-title">字彙題 — 動詞一字多義</div>
+        <div class="ec-sub">Rising housing prices continue to ______ young people's anxiety</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"Rising housing prices continue to ______ young people's anxiety because many of them cannot afford to buy a home."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 A：pretend（假裝）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 C：fuel（助長）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div><span class="highlight-word">fuel</span> 作名詞是「燃料」，但作<strong>動詞</strong>時意思是「助長、加劇、激化」，是高頻學術動詞</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>pretend（假裝）語意完全不合，說明學生在語意判斷上不夠確定而猶豫塗改</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>「名詞轉動詞」類單字是常見考點：fuel / fire / mirror / champion 等</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>整理「一字多義動詞」字卡，特別標注動詞用法與例句</div>
+    </div>
+  </div>
+
+  <!-- ERROR (9) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(9)</div>
+      <div>
+        <div class="ec-title">字彙題 — 動詞語感不足</div>
+        <div class="ec-sub">The success of Shohei Ohtani has ______ worldwide interest in MLB</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"The success of Shohei Ohtani has ______ worldwide interest in MLB because fans from many countries follow his baseball games and achievements."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 D：punched（打擊）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 C：widened（擴大）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div><span class="highlight-word">widened</span>（擴大、拓展）搭配 interest 表示「讓興趣/關注範圍擴大」，是固定語感</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>punched 語意完全偏離，表示對「範圍擴大」類動詞群不熟悉</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>同義動詞群需一起學：widen / broaden / expand / extend interest/influence</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>背「範圍擴大」動詞組合，並特別練習 widen + 名詞搭配</div>
+    </div>
+  </div>
+
+  <!-- ERROR (12) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(12)</div>
+      <div>
+        <div class="ec-title">綜合測驗 — 片語動詞語意</div>
+        <div class="ec-sub">He doubted whether he would ever __(12)__ in such an environment.</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"He even doubted whether he would ever __(12)__ in such an environment. Fortunately, he was not entirely alone..."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 A：pop up（突然出現）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 D：fit in（融入）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div><span class="highlight-word">fit in</span> = 融入環境、被接受，是描述 Auggie 在新學校孤立處境的核心片語</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>上下文明確：孤單、不受歡迎 → 懷疑能否「融入」，語意邏輯鏈要抓住</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>pop up（突然出現）與情境完全無關，說明此片語不熟</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>建立「片語動詞小本本」，fit in / blend in / stand out / get along 等社交情境片語必背</div>
+    </div>
+  </div>
+
+  <!-- ERROR (16) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(16)</div>
+      <div>
+        <div class="ec-title">綜合測驗 — 連接詞邏輯辨別</div>
+        <div class="ec-sub">Everything seemed to go well __(16)__ a group suddenly shone a flashlight</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"Everything seemed to be going well __(16)__ a group of seventh-graders from another school suddenly shone a flashlight directly into his face..."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 D：until（直到）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 A：while（正當…時）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div><span class="highlight-word">while</span> 在此表達「進行中被突然打斷」的瞬間感，強調同時性 + 轉折</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>until 表「直到某時點為止」，語法結構是 everything went well until... 雖然似乎合理，但缺少「突然性」的語感</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>這是高中<strong>超高頻文法考點</strong>：while / when / as / until / once 的細微語意差異</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>製作連接詞語意對比表，特別練習 while vs when vs until 在敘事文中的用法</div>
+    </div>
+  </div>
+
+  <!-- ERROR (18) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(18)</div>
+      <div>
+        <div class="ec-title">綜合測驗 — 文法：mind + V-ing</div>
+        <div class="ec-sub">No one minded __(18)__ near him anymore.</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"He realized that no one minded __(18)__ near him anymore, and for the first time, he felt at ease having his picture taken."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 D：be（原形動詞）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 B：being（動名詞）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div>核心文法規則：<span class="highlight-word">mind + V-ing</span>（動名詞），不接原形動詞</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>相同規則的動詞群：enjoy / avoid / finish / consider / give up / keep + V-ing</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>選 be 表示對「特定動詞後必接 V-ing」的規則尚未鞏固</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>背「只接 V-ing 的動詞」完整清單，用口訣或歌謠記憶：mind / enjoy / avoid / finish…</div>
+    </div>
+  </div>
+
+  <!-- ERROR (20) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(20)</div>
+      <div>
+        <div class="ec-title">綜合測驗 — 代名詞：the others vs others</div>
+        <div class="ec-sub">Malala fell to the ground... and __(20)__ students were left in shock.</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"Malala Yousafzai fell to the ground, bleeding, and __(20)__ students were left in shock."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 A：others（泛指其他人）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 B：the others（特定的其他人）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div>車上的學生是<strong>特定一群人</strong>，排除 Malala 後剩下的就是 <span class="highlight-word">the others</span>（那些特定的其他人）</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>others 泛指「其他人」，無特定範圍，用法不同</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>四種 other 用法辨別是台灣高中超高頻考點，必須用表格整理清楚</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>製作 other / another / the other / others / the others 四格對比表，各附兩句例句</div>
+    </div>
+  </div>
+
+  <!-- ERROR (29) -->
+  <div class="error-card">
+    <div class="ec-header">
+      <div class="ec-num">(29)</div>
+      <div>
+        <div class="ec-title">文意選填 — 機構動詞語意</div>
+        <div class="ec-sub">A man who had __(29)__ an organization called the Bonded Labor Liberation Front.</div>
+      </div>
+    </div>
+    <div class="ec-body">
+      <div class="ec-sentence">"He met a man named Ehsan Ulla Khan, who had __(29)__ an organization called the Bonded Labor Liberation Front."</div>
+      <div class="ec-answers">
+        <span class="ec-ans-tag wrong-ans">✗ 學生選 C：adopted（採納/收養）</span>
+        <span class="ec-ans-tag right-ans">✓ 正確答案 D：established（創立）</span>
+      </div>
+      <div class="ec-points">
+        <div class="ec-point"><div class="ep-bullet">1</div><div><span class="highlight-word">established</span>（創立、成立）是與組織/機構搭配的標準動詞</div></div>
+        <div class="ec-point"><div class="ep-bullet">2</div><div>adopted（採納、收養）搭配 organization 語意不通</div></div>
+        <div class="ec-point"><div class="ep-bullet">3</div><div>同義動詞群：establish / found / set up / launch / create + an organization/company</div></div>
+      </div>
+      <div class="ec-focus">💡 <strong>補強方向：</strong>學習「機構/組織」相關動詞搭配，establish 是學測必考詞</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 弱點總整理 -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fde8e8;">⚠️</div>
+    <div>
+      <h2>弱點總整理</h2>
+      <div class="st-sub">單字弱點 + 文法弱點</div>
+    </div>
+  </div>
+
+  <div class="weakness-table">
+    <div class="wt-header" style="background: linear-gradient(90deg, #ff8c42, #ffb347);">
+      🔤 單字弱點
+    </div>
+    <table>
+      <thead><tr><th>弱點類型</th><th>具體單字</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>一字多義</td><td><span class="highlight-word">fuel (v.)</span></td><td>只知名詞「燃料」，不熟動詞「助長」</td></tr>
+        <tr><td>動詞語感</td><td><span class="highlight-word">widened</span></td><td>不熟「擴大影響範圍」的動詞群</td></tr>
+        <tr><td>機構動詞</td><td><span class="highlight-word">established</span></td><td>混淆 established / adopted 的語意</td></tr>
+        <tr><td>片語動詞</td><td><span class="highlight-word">fit in</span></td><td>不熟「融入環境」此片語</td></tr>
+        <tr><td>慣用語</td><td><span class="highlight-word">around the corner</span></td><td>與 on the way 使用時機混淆</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="weakness-table">
+    <div class="wt-header" style="background: linear-gradient(90deg, #e05c4b, #ff8c42);">
+      📐 文法弱點
+    </div>
+    <table>
+      <thead><tr><th>弱點類型</th><th>考點</th><th>錯誤題號</th></tr></thead>
+      <tbody>
+        <tr><td>動名詞規則</td><td>mind + V-ing（不可接原形）</td><td>(18)</td></tr>
+        <tr><td>代名詞辨別</td><td>the others vs others 的差異</td><td>(20)</td></tr>
+        <tr><td>連接詞邏輯</td><td>while vs until 的語意區別</td><td>(16)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 學習建議 -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#d8f3dc;">💡</div>
+    <div>
+      <h2>林威老師學習建議</h2>
+      <div class="st-sub">短期衝刺 + 中期補強 + 長期建構</div>
+    </div>
+  </div>
+
+  <div class="rec-cards">
+    <div class="rec-card">
+      <div class="rc-header" style="background: linear-gradient(90deg, #e05c4b, #ff8c42);">
+        🔥 短期（考前衝刺）
+      </div>
+      <div class="rc-body">
+        <div class="rec-item"><span class="ri-icon">📌</span><span>背 <strong>mind / enjoy / avoid / finish / consider / give up + V-ing</strong> 這組動詞，是每次考試必考文法點</span></div>
+        <div class="rec-item"><span class="ri-icon">📌</span><span>複習 <strong>other 的四種用法</strong>：other+N / others / the other / the others，用表格整理並各造一句</span></div>
+        <div class="rec-item"><span class="ri-icon">📌</span><span>整理<strong>連接詞語意對比表</strong>：while（同時/對比）/ when（當時）/ until（直到）/ as（隨著）</span></div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rc-header" style="background: linear-gradient(90deg, #ff8c42, #ffb347);">
+        📚 中期（單字補強）
+      </div>
+      <div class="rc-body">
+        <div class="rec-item"><span class="ri-icon">📖</span><span>把錯的單字做成字卡，重點標注<strong>動詞用法</strong>（fuel, widen, establish）</span></div>
+        <div class="rec-item"><span class="ri-icon">📖</span><span>建立「<strong>片語動詞小本本</strong>」：fit in / pop up / call for / turn into 等，每個附例句</span></div>
+        <div class="rec-item"><span class="ri-icon">📖</span><span>閱讀時特別注意<strong>慣用語</strong>：around the corner / out of the blue / on the way 等</span></div>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <div class="rc-header" style="background: linear-gradient(90deg, #52b788, #40916c);">
+        🌱 長期（能力建構）
+      </div>
+      <div class="rc-body">
+        <div class="rec-item"><span class="ri-icon">🌟</span><span>篇章結構（IV）和閱讀測驗（V）<strong>全對</strong>，顯示閱讀理解能力相當優秀！</span></div>
+        <div class="rec-item"><span class="ri-icon">🌟</span><span>主要失分集中在<strong>細節文法</strong>和<strong>片語/慣用語語感</strong>，不是理解能力問題</span></div>
+        <div class="rec-item"><span class="ri-icon">🌟</span><span>建議用 <strong>ECHO 錯中學計劃</strong>的方式，把這次的錯題反覆練習，重點是「為什麼錯」而非只是「記住答案」</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 總評 -->
+  <div class="section-title">
+    <div class="st-icon" style="background:#fff3cd;">🏅</div>
+    <div>
+      <h2>林威老師總評</h2>
+    </div>
+  </div>
+  <div class="eval-box">
+    <p>蔡同學整體表現<span class="eval-highlight">中上水準</span>，閱讀理解與邏輯判斷力相當強，篇章結構與閱讀測驗兩大題<span class="eval-highlight">全數滿分</span>，實力令人印象深刻。</p>
+    <p>主要失分集中在三個核心點：<span class="eval-highlight">片語動詞語感</span>（fit in）、<span class="eval-highlight">動名詞文法規則</span>（mind + V-ing）、以及<span class="eval-highlight">代名詞細節</span>（the others vs others）。</p>
+    <p>這些都不是理解能力的問題，而是<span class="eval-highlight">語感累積不足</span>。只要針對上述弱點集中補強 2–3 週，分數提升空間非常大，下次考試一定會有顯著進步！加油！💪</p>
+  </div>
+
+</div><!-- end main -->
+
+<!-- ===== BOTTOM LINKS BAR ===== -->
+<div class="footer-note">林威老師 · 臺北英文教學 · 錯中學 ECHO 計劃 · 114學年</div>
+<div class="links-bar">
+  <div class="bar-title">🍊 林威老師 · 課程與聯絡資訊</div>
+  <div class="links-grid">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🎯</span>
+      <span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月開課 · 精準補強<br>英文弱點突破</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">🔬</span>
+      <span class="lc-name">學生分析系統</span>
+      <span class="lc-desc">七月開課 · AI驅動<br>個人化學習分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span>
+      <span class="lc-name">LINE 林威老師</span>
+      <span class="lc-desc">ID: linwayet<br>點此加入好友</span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
