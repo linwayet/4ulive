@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>矽光子微課程 × 輝達 × 康寧 | 林威老師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF8EE;
+    --warm1: #FFF3DC;
+    --warm2: #FFE4B5;
+    --amber: #F5A623;
+    --amber-deep: #E8891A;
+    --orange: #FF7043;
+    --orange-soft: #FF8C69;
+    --coral: #FF6B6B;
+    --brown: #8B5E3C;
+    --brown-light: #C49A6C;
+    --text-dark: #3D2B1F;
+    --text-mid: #6B4226;
+    --text-light: #9E7B5A;
+    --green-ai: #27AE60;
+    --blue-tech: #2980B9;
+    --purple-nvda: #7B2FBE;
+    --teal-corning: #0F9E8A;
+    --shadow: rgba(139,94,60,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(245,166,35,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(255,112,67,0.08) 0%, transparent 50%);
+  }
+
+  /* ===== NAV LINKS TOP & BOTTOM ===== */
+  .nav-strip {
+    background: linear-gradient(135deg, #3D2B1F 0%, #6B3A2A 50%, #8B5E3C 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.02) 10px,
+      rgba(255,255,255,0.02) 20px
+    );
+  }
+  .nav-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .nav-label {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+  .nav-btn.echo {
+    background: linear-gradient(135deg, #FF7043, #FF5722);
+    color: white;
+  }
+  .nav-btn.student {
+    background: linear-gradient(135deg, #F5A623, #E8891A);
+    color: white;
+  }
+  .nav-btn.line {
+    background: linear-gradient(135deg, #06C755, #05A647);
+    color: white;
+  }
+  .nav-btn .icon { font-size: 16px; }
+  .nav-desc {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,220,180,0.75);
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 2px auto 0;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #3D2B1F 0%, #6B3A2A 40%, #8B5E3C 70%, #C49A6C 100%);
+    padding: 50px 20px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '光';
+    position: absolute;
+    font-size: 300px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    right: -40px;
+    top: -50px;
+    pointer-events: none;
+    font-family: 'Playfair Display', serif;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,166,35,0.25);
+    border: 1px solid rgba(245,166,35,0.5);
+    color: #FFD580;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: clamp(26px, 7vw, 42px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: #FFD580; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,230,190,0.85);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .stat-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+  }
+  .stat-chip strong { color: #FFD580; }
+
+  /* ===== MAIN CONTENT ===== */
+  .main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 16px 40px;
+  }
+
+  /* ===== INTRO CARD ===== */
+  .intro-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px var(--shadow);
+    border-left: 5px solid var(--amber);
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-card::after {
+    content: '📡';
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 36px;
+    opacity: 0.15;
+  }
+  .intro-card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 10px;
+  }
+  .intro-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-mid);
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    text-align: center;
+    margin: 10px 0 24px;
+  }
+  .section-title h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+  }
+  .section-title h2::after {
+    content: '';
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--amber), var(--orange));
+    margin-top: 6px;
+  }
+  .section-title p {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 8px;
+  }
+
+  /* ===== ROUND CARDS ===== */
+  .rounds-grid { display: flex; flex-direction: column; gap: 16px; }
+
+  .round-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+  }
+  .round-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px var(--shadow);
+  }
+
+  .round-header {
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .round-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  }
+  .round-meta { flex: 1; }
+  .round-meta h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .round-question {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .round-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    background: #FFF3DC;
+    color: var(--amber-deep);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-weight: 600;
+  }
+
+  .round-body {
+    padding: 0 20px 18px;
+    border-top: 1px solid #FFF3DC;
+    margin-top: 0;
+  }
+  .round-body ul {
+    list-style: none;
+    padding-top: 14px;
+  }
+  .round-body ul li {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    padding: 5px 0 5px 22px;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 1px dashed rgba(196,154,108,0.2);
+  }
+  .round-body ul li:last-child { border-bottom: none; }
+  .round-body ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 4px;
+    color: var(--amber);
+  }
+
+  /* Color themes per round */
+  .r1 .round-num { background: linear-gradient(135deg, #FF7043, #F4511E); }
+  .r1 .round-header { background: linear-gradient(135deg, #FFF8F5, #FFF0E8); }
+  .r2 .round-num { background: linear-gradient(135deg, #F5A623, #E8891A); }
+  .r2 .round-header { background: linear-gradient(135deg, #FFFAF0, #FFF5E0); }
+  .r3 .round-num { background: linear-gradient(135deg, #E67E22, #D35400); }
+  .r3 .round-header { background: linear-gradient(135deg, #FFF8F0, #FFF2E5); }
+  .r4 .round-num { background: linear-gradient(135deg, #76B900, #5A9100); }
+  .r4 .round-header { background: linear-gradient(135deg, #F5FFF0, #EFFFDF); }
+  .r5 .round-num { background: linear-gradient(135deg, #0F9E8A, #0A7A6A); }
+  .r5 .round-header { background: linear-gradient(135deg, #F0FFFD, #E0FFF8); }
+  .r6 .round-num { background: linear-gradient(135deg, #2980B9, #1A5F8A); }
+  .r6 .round-header { background: linear-gradient(135deg, #F0F8FF, #E5F3FF); }
+  .r7 .round-num { background: linear-gradient(135deg, #C0392B, #A93226); }
+  .r7 .round-header { background: linear-gradient(135deg, #FFF5F5, #FFE8E8); }
+  .r8 .round-num { background: linear-gradient(135deg, #7B2FBE, #6019A0); }
+  .r8 .round-header { background: linear-gradient(135deg, #FBF5FF, #F5EAFF); }
+
+  /* ===== TIMELINE BAR ===== */
+  .timeline-bar {
+    background: linear-gradient(135deg, #3D2B1F, #6B3A2A);
+    border-radius: 20px;
+    padding: 24px;
+    margin: 28px 0;
+    color: white;
+  }
+  .timeline-bar h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFD580;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tl-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tl-text { flex: 1; }
+  .tl-text .year {
+    font-size: 11px;
+    color: rgba(255,220,160,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .tl-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+  }
+
+  /* ===== KEY FIGURES ===== */
+  .key-section {
+    margin: 28px 0;
+  }
+  .key-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .key-card {
+    border-radius: 16px;
+    padding: 18px 16px;
+    text-align: center;
+    box-shadow: 0 3px 12px var(--shadow);
+    transition: transform 0.2s;
+  }
+  .key-card:hover { transform: scale(1.02); }
+  .key-card .num {
+    font-size: 26px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .key-card .label {
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .kc1 { background: linear-gradient(135deg, #FFF3DC, #FFE4B5); color: var(--brown); }
+  .kc1 .num { color: var(--amber-deep); }
+  .kc2 { background: linear-gradient(135deg, #E8F8FF, #D0EFFF); color: #1A5F8A; }
+  .kc2 .num { color: #2980B9; }
+  .kc3 { background: linear-gradient(135deg, #FFF0F0, #FFE0E0); color: #8B2222; }
+  .kc3 .num { color: #C0392B; }
+  .kc4 { background: linear-gradient(135deg, #F0FFF8, #D9FFE8); color: #1A6B3A; }
+  .kc4 .num { color: #27AE60; }
+
+  /* ===== PARTNERS SECTION ===== */
+  .partners-wrap {
+    background: white;
+    border-radius: 20px;
+    padding: 22px;
+    margin: 28px 0;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .partners-wrap h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--warm2);
+    text-align: center;
+  }
+  .partner-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .partner-tag {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  /* ===== CTA FOOTER ===== */
+  .cta-box {
+    background: linear-gradient(135deg, #FF7043 0%, #F5A623 100%);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    margin: 28px 0 10px;
+    box-shadow: 0 6px 24px rgba(255,112,67,0.35);
+  }
+  .cta-box h3 {
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .cta-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: #E8591A;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.25s;
+  }
+  .cta-btn:hover { transform: scale(1.05); }
+
+  /* ===== FOOTER ===== */
+  .footer-credit {
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+  .footer-credit strong { color: var(--amber-deep); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .key-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { gap: 6px; }
+    .nav-btn { font-size: 12px; padding: 8px 13px; }
+    .hero h1 { font-size: 24px; }
+    .round-meta h3 { font-size: 15px; }
+  }
+
+  /* ===== COLLAPSIBLE ===== */
+  .round-body { display: block; }
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: var(--amber-deep);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .toggle-arrow { transition: transform 0.3s; display: inline-block; }
+  .collapsed .toggle-arrow { transform: rotate(-90deg); }
+  .round-body.hidden { display: none; }
+
+  /* ===== ANIMATED ENTRANCE ===== */
+  .round-card {
+    animation: fadeUp 0.5s ease both;
+  }
+  .round-card:nth-child(1) { animation-delay: 0.05s; }
+  .round-card:nth-child(2) { animation-delay: 0.10s; }
+  .round-card:nth-child(3) { animation-delay: 0.15s; }
+  .round-card:nth-child(4) { animation-delay: 0.20s; }
+  .round-card:nth-child(5) { animation-delay: 0.25s; }
+  .round-card:nth-child(6) { animation-delay: 0.30s; }
+  .round-card:nth-child(7) { animation-delay: 0.35s; }
+  .round-card:nth-child(8) { animation-delay: 0.40s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<div class="nav-strip">
+  <div class="nav-inner">
+    <div class="nav-label">🌟 林威老師 七月開課 × 個人聯繫</div>
+    <div class="nav-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-btn echo">
+        <span class="icon">🎯</span> 錯中學 ECHO 計劃
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-btn student">
+        <span class="icon">📊</span> 學生分析工具
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" target="_blank" class="nav-btn line">
+        <span class="icon">💬</span> LINE：linwayet
+      </a>
+    </div>
+    <div class="nav-desc">
+      七月課程開放報名中｜錯中學讓你從每一次的錯誤中建立真正的英文實力｜學生分析輔助教師精準掌握學習狀況
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-badge">🔬 自學微課程 · 8 回合 · 共 80 分鐘</div>
+  <h1>矽光子革命<br><span>輝達 × 康寧 × AI 光速未來</span></h1>
+  <p class="hero-sub">從光子物理到千億投資大局，用 8 個 10 分鐘徹底讀懂矽光子時代。最新資訊更新至 2026 年 5 月。</p>
+  <div class="hero-stats">
+    <div class="stat-chip">⚡ 每回合 <strong>10 分鐘</strong></div>
+    <div class="stat-chip">📘 共 <strong>8 回合</strong></div>
+    <div class="stat-chip">🌐 市場規模 <strong>78 億美元</strong>（2030）</div>
+    <div class="stat-chip">💰 輝達投資康寧 <strong>32 億美元</strong></div>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+  <!-- Intro -->
+  <div class="intro-card">
+    <h2>📖 這套微課程是為誰設計的？</h2>
+    <p>無論你是科技愛好者、投資人、教師或學生，只要好奇「AI 時代為什麼突然都在講光？」，這套課程就是為你準備的。不需要任何物理或半導體背景，每一回合都有清楚的核心問題引導學習，並搭配真實的產業數據與最新新聞。</p>
+  </div>
+
+  <!-- Key Numbers -->
+  <div class="key-section">
+    <div class="section-title">
+      <h2>🔥 關鍵數字一眼看</h2>
+    </div>
+    <div class="key-grid">
+      <div class="key-card kc1">
+        <span class="num">400 Tb/s</span>
+        <span class="label">輝達 Spectrum-X 交換器總頻寬</span>
+      </div>
+      <div class="key-card kc2">
+        <span class="num">32 億$</span>
+        <span class="label">輝達投資康寧建設光纖工廠</span>
+      </div>
+      <div class="key-card kc3">
+        <span class="num">30W → 9W</span>
+        <span class="label">CPO 技術單埠功耗大幅下降</span>
+      </div>
+      <div class="key-card kc4">
+        <span class="num">25.7%</span>
+        <span class="label">矽光子市場年複合成長率 CAGR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Round Cards -->
+  <div class="section-title">
+    <h2>📚 八回合課程大綱</h2>
+    <p>點擊每張卡片可展開／收起課程細節</p>
+  </div>
+
+  <div class="rounds-grid">
+
+    <!-- Round 1 -->
+    <div class="round-card r1" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">01</div>
+        <div class="round-meta">
+          <h3>為什麼光子比電子快？</h3>
+          <div class="round-question">💡 銅線傳輸的瓶頸是什麼，光為什麼是解答？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>AI 資料中心的能耗危機：百萬台 GPU 的電費問題有多嚴重</li>
+          <li>銅線的三大極限：頻寬天花板、熱損耗、傳輸距離</li>
+          <li>光子 vs 電子：耗能少 5–20 倍的物理原理解析</li>
+          <li>黃仁勳為何說這是「一生一次的機會」？</li>
+          <li>直覺比喻：把高速公路換成光速列車軌道</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 2 -->
+    <div class="round-card r2" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">02</div>
+        <div class="round-meta">
+          <h3>矽光子是什麼？</h3>
+          <div class="round-question">💡 什麼叫「在矽晶片上刻出光路」？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>半導體製程 + 光學的歷史性融合</li>
+          <li>光子積體電路（PIC）與電子積體電路（EIC）的差異</li>
+          <li>三大核心元件：波導、調製器、光電偵測器（圖解）</li>
+          <li>矽光子 vs 傳統可插拔光收發器：哪裡不一樣？</li>
+          <li>為何只有矽適合做光子晶片？材料物理小故事</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 3 -->
+    <div class="round-card r3" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">03</div>
+        <div class="round-meta">
+          <h3>CPO 共封裝光學是什麼？</h3>
+          <div class="round-question">💡 為什麼要把光學元件「封裝進晶片旁邊」？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>可插拔式光模組的痛點：單個 30W、售價 1,000 美元</li>
+          <li>Co-Packaged Optics（CPO）設計理念與架構圖解</li>
+          <li>台積電 COUPE 緊湊型通用光子引擎解說</li>
+          <li>SoIC-X 3D 封裝：把 65nm EIC 與 PIC 整合在一起</li>
+          <li>功耗從 30W 降到 9W 的物理原理：訊號路徑縮短的魔法</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 4 -->
+    <div class="round-card r4" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">04</div>
+        <div class="round-meta">
+          <h3>輝達的矽光子策略</h3>
+          <div class="round-question">💡 黃仁勳為什麼要把光學整合進交換器？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>GTC 2025 震撼發表：Spectrum-X Photonics & Quantum-X Photonics</li>
+          <li>400 Tb/s 究竟有多快？（用 Netflix 全球流量來比喻）</li>
+          <li>能效提升 3.5 倍、訊號完整度提高 63 倍、韌性提升 10 倍</li>
+          <li>台灣供應鏈角色：台積電、鴻海、矽品、波若威一起出場</li>
+          <li>Quantum-X 2025 年底 → Spectrum-X 2026 年商業化時程</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 5 -->
+    <div class="round-card r5" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">05</div>
+        <div class="round-meta">
+          <h3>康寧：175 年玻璃老廠的 AI 逆襲</h3>
+          <div class="round-question">💡 做玻璃的公司怎麼變成 AI 基礎設施的關鍵角色？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>康寧歷史：從 19 世紀愛迪生到發明全球第一條低損耗光纖</li>
+          <li>微型玻璃光纖的技術特性：為何比銅纜更適合 AI 資料中心</li>
+          <li>FAU 光纖陣列單元 + GlassBridge 邊緣耦合器技術解說</li>
+          <li>傳輸光子所需耗能比電子低 5–20 倍的材料科學原理</li>
+          <li>Springboard 計畫：目標 2030 年達到 400 億美元年化營收</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 6 -->
+    <div class="round-card r6" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">06</div>
+        <div class="round-meta">
+          <h3>輝達 × 康寧：史上最大光學合作</h3>
+          <div class="round-question">💡 32 億美元投資 + 數十億預付款，買到了什麼？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>2026 年 5 月最新合作協議完整解析（最新消息）</li>
+          <li>美國北卡羅萊納州 + 德州 3 座新廠，3,000 個高薪職位</li>
+          <li>產能提升 10 倍、美國光纖增產 50% 的戰略意義</li>
+          <li>Meta 60 億 + NVIDIA 32 億：康寧如何成為 AI 必需品？</li>
+          <li>終極目標：取代 Vera Rubin 機櫃中 5,000 條銅纜</li>
+          <li>Coherent + Lumentum：輝達同步布局雷射光電生態系</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 7 -->
+    <div class="round-card r7" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">07</div>
+        <div class="round-meta">
+          <h3>台灣的矽光子機會</h3>
+          <div class="round-question">💡 台灣廠商在這場光子革命中扮演什麼角色？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>台積電 COUPE 全站式矽光子製程的全球領先地位</li>
+          <li>SEMI SiPhIA 矽光子產業聯盟：110+ 廠商共同出擊</li>
+          <li>2026 年關鍵年：800G 光模組放量預估 4,000 萬組</li>
+          <li>台灣概念股地圖：波若威、上詮、聯亞、光聖、前鼎…</li>
+          <li>格羅方德 × 康寧 GlassBridge：挑戰台積電的新威脅</li>
+          <li>台灣的優勢與挑戰：設備材料不足 vs. 封裝製程領先</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Round 8 -->
+    <div class="round-card r8" onclick="toggleRound(this)">
+      <div class="round-header">
+        <div class="round-num">08</div>
+        <div class="round-meta">
+          <h3>未來圖景與自學延伸</h3>
+          <div class="round-question">💡 矽光子革命的終點在哪裡？</div>
+          <button class="toggle-btn">展開課程內容 <span class="toggle-arrow">▼</span></button>
+        </div>
+        <div class="round-time">⏱ 10 分鐘</div>
+      </div>
+      <div class="round-body">
+        <ul>
+          <li>三步演進：CPO → Optical I/O → 全光網路（12.8 Tb/s 目標）</li>
+          <li>2030 年市場規模：78.6 億美元（SEMI 預估），CAGR 25.7%</li>
+          <li>跨領域突破：車用光達、醫療感測、衛星通訊新應用</li>
+          <li>Scale-Across：輝達喊出跨資料中心光連接新概念</li>
+          <li>個人知識地圖建議：如何持續追蹤矽光子產業動態</li>
+          <li>推薦延伸閱讀：台灣矽光子白皮書 + SEMI SiPhIA 資料庫</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /rounds-grid -->
+
+  <!-- Timeline -->
+  <div class="timeline-bar">
+    <h3>📅 矽光子大事記時間軸</h3>
+    <div class="timeline-items">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#F5A623;color:#3D2B1F;">24</div>
+        <div class="tl-text">
+          <div class="year">2024</div>
+          <p>SEMI SiPhIA 矽光子產業聯盟成立（110+ 家廠商），台積電北美技術論壇揭示 COUPE 進度</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#76B900;color:white;">25 Q1</div>
+        <div class="tl-text">
+          <div class="year">2025 年 3 月</div>
+          <p>NVIDIA GTC 2025：Spectrum-X Photonics & Quantum-X Photonics 震撼發表，400 Tb/s 網路交換器</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#2980B9;color:white;">25 H2</div>
+        <div class="tl-text">
+          <div class="year">2025 年下半</div>
+          <p>Quantum-X InfiniBand 交換器正式推出，矽光子產品進入驗證完成並開始放量</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#C0392B;color:white;">26</div>
+        <div class="tl-text">
+          <div class="year">2026 年 5 月</div>
+          <p>🔥 最新！NVIDIA × 康寧宣布最高 32 億美元合作，在美建設 3 座光學工廠，光纖產能提升 10 倍</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#7B2FBE;color:white;">30</div>
+        <div class="tl-text">
+          <div class="year">展望 2030</div>
+          <p>全球矽光子市場規模預估達 78.6 億美元，CPO + Optical I/O 成主流，全光網路初步成形</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Partners -->
+  <div class="partners-wrap">
+    <h3>🌐 輝達矽光子生態系合作夥伴</h3>
+    <div class="partner-list">
+      <span class="partner-tag" style="background:#E8F5FF;color:#1A5F8A;border:1px solid #B3D9F5;">🇹🇼 台積電 TSMC</span>
+      <span class="partner-tag" style="background:#FFF5E0;color:#8B5E3C;border:1px solid #FFD580;">🇹🇼 鴻海科技</span>
+      <span class="partner-tag" style="background:#FFF0E5;color:#8B3A1F;border:1px solid #FFB87A;">🇹🇼 矽品 SPIL</span>
+      <span class="partner-tag" style="background:#F5FFEE;color:#2A6B1F;border:1px solid #A3D97A;">🇹🇼 波若威</span>
+      <span class="partner-tag" style="background:#F5EEFF;color:#5A1F8B;border:1px solid #C8A3D9;">🇺🇸 康寧 Corning</span>
+      <span class="partner-tag" style="background:#E8FFF5;color:#1F6B4A;border:1px solid #7AD9B5;">🇺🇸 Coherent</span>
+      <span class="partner-tag" style="background:#FFF5F5;color:#8B1F1F;border:1px solid #F5AAAA;">🇺🇸 Lumentum</span>
+      <span class="partner-tag" style="background:#F0F8FF;color:#1A3F6B;border:1px solid #8AB3D9;">🇯🇵 住友電工</span>
+      <span class="partner-tag" style="background:#FFFAEE;color:#6B5A1F;border:1px solid #D9C87A;">🇯🇵 SENKO</span>
+      <span class="partner-tag" style="background:#FFF5EE;color:#6B3A1F;border:1px solid #D9A87A;">🇨🇳 天孚通信</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>🎯 七月開課，限量報名中！</h3>
+    <p>林威老師精心設計的「錯中學 ECHO 計劃」，讓你從每一次的英文錯誤中建立真正的語言直覺。結合 AI 分析工具，精準掌握每位學生的學習狀況。</p>
+    <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="cta-btn">立即了解課程詳情 →</a>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ===== BOTTOM NAV (重複) ===== -->
+<div class="nav-strip">
+  <div class="nav-inner">
+    <div class="nav-label">📚 七月課程 × 聯繫林威老師</div>
+    <div class="nav-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-btn echo">
+        <span class="icon">🎯</span> 錯中學 ECHO 計劃
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-btn student">
+        <span class="icon">📊</span> 學生分析工具
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" target="_blank" class="nav-btn line">
+        <span class="icon">💬</span> LINE：linwayet
+      </a>
+    </div>
+    <div class="nav-desc">
+      錯中學 ECHO 計劃 — 七月正式開課｜學生分析工具 — 教師必備精準教學利器｜加 LINE 洽詢：linwayet
+    </div>
+  </div>
+</div>
+
+<div class="footer-credit">
+  <strong>矽光子微課程</strong> · 林威老師製作 · 資訊更新至 2026 年 5 月 · 自學版 8 回合
+</div>
+
+<script>
+  function toggleRound(card) {
+    const body = card.querySelector('.round-body');
+    const btn = card.querySelector('.toggle-btn');
+    const arrow = card.querySelector('.toggle-arrow');
+    if (body.classList.contains('hidden')) {
+      body.classList.remove('hidden');
+      btn.innerHTML = '收起課程內容 <span class="toggle-arrow">▼</span>';
+    } else {
+      body.classList.add('hidden');
+      btn.innerHTML = '展開課程內容 <span class="toggle-arrow">▶</span>';
+    }
+  }
+
+  // Start all collapsed except first
+  document.querySelectorAll('.round-body').forEach((b, i) => {
+    if (i > 0) {
+      b.classList.add('hidden');
+      const btn = b.previousElementSibling?.querySelector('.toggle-btn');
+      if (btn) btn.innerHTML = '展開課程內容 <span class="toggle-arrow">▶</span>';
+    }
+  });
+</script>
+</body>
+</html>
