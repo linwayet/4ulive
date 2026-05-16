@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Amazing Life of Swifts</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0; --ink:#1A0F00; --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+  --orange:#E65100; --purple:#6A1B9A; --deep:#0D47A1;
+  --s1:#0D47A1; --s1b:#90CAF9; --s1in:#F3F8FF;
+  --s2:#BF360C; --s2b:#FFAB91; --s2in:#FFF3EF;
+  --s3:#1B5E20; --s3b:#81C784; --s3in:#F1F8F2;
+  --s4:#4A148C; --s4b:#CE93D8; --s4in:#F9F0FF;
+  --s5:#4A3728; --s5b:#C4A06A; --s5in:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFF2DF 0%,#FFF8F0 42%,#FFEFD8 100%);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:24px 14px 72px}
+.page{max-width:880px;margin:0 auto}
+.hero{text-align:center;margin:0 0 34px;padding:28px 18px 24px;border:5px solid #F4A261;border-radius:8px;background:#FFFDF9;box-shadow:0 8px 0 rgba(192,57,43,.18)}
+.link-panel{margin:0 auto 30px;padding:20px;border:4px solid #F4A261;border-radius:18px;background:linear-gradient(135deg,#FFF8E1 0%,#FFE0B2 45%,#FFD7C2 100%);box-shadow:0 14px 28px rgba(160,82,45,.16)}
+.link-panel.bottom{margin:38px auto 0}
+.link-title{margin:0 0 14px;color:#BF360C;font-size:1.65rem;font-weight:700;text-align:center}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.link-card{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:190px;padding:18px;border:3px solid rgba(191,54,12,.28);border-radius:14px;background:#FFFDF9;color:var(--ink);text-decoration:none;box-shadow:0 8px 0 rgba(230,81,0,.16);transition:transform .25s ease,box-shadow .25s ease}
+.link-card:hover{transform:translateY(-3px);box-shadow:0 12px 0 rgba(230,81,0,.2)}
+.link-card strong{display:block;color:#C0392B;font-size:1.25rem;line-height:1.35}
+.link-card span{font-size:1rem;line-height:1.6}
+.link-button{display:inline-flex;align-items:center;justify-content:center;min-height:72px;border-radius:999px;padding:10px 16px;color:#fff;font-weight:700;text-align:center}
+.echo .link-button{background:#E65100}.analysis-link .link-button{background:#2E7D32}.line-link .link-button{background:#1565C0}
+h1{margin:0 auto 14px;color:var(--h1);font-size:3.1rem;line-height:1.2;font-weight:700;border:4px solid var(--h1);border-radius:8px;padding:14px 16px;display:inline-block;background:#FFF4EC;text-shadow:2px 2px 0 #FFE0B2}
+.subtitle{margin:8px 0;color:var(--h2);font-size:2.25rem;line-height:1.25;font-weight:700}
+.credit{margin:8px 0 0;color:#0D47A1;font-size:1.6rem;font-weight:700;letter-spacing:.04em;text-shadow:1px 1px 0 #BBDEFB}
+h2{font-size:2.2rem;color:var(--h2);line-height:1.25;margin:38px 0 16px;font-weight:700}
+h3{font-size:1.65rem;color:var(--h3);line-height:1.35;margin:0 0 10px;font-weight:700}
+p{margin:12px 0}
+.card{border:3px solid;border-radius:8px;overflow:hidden;background:#FFFDF9;margin-bottom:28px}
+.head{min-height:72px;padding:16px 22px;color:#fff;font-size:1.55rem;font-weight:700;display:flex;align-items:center}
+.body{padding:24px}
+.original{border-color:var(--s1b)} .original .head{background:var(--s1)} .original .body{background:var(--s1in)}
+.reading{border-color:var(--s2b)} .reading .head{background:var(--s2)} .reading .body{background:var(--s2in)}
+.vocab{border-color:var(--s3b)} .vocab .head{background:var(--s3)} .vocab .body{background:var(--s3in)}
+.grammar{border-color:var(--s4b)} .grammar .head{background:var(--s4)} .grammar .body{background:var(--s4in)}
+.fold{border-color:var(--s5b)} .fold .head{background:var(--s5)} .fold .body{background:var(--s5in)}
+.kw{color:var(--deep);font-weight:700;text-decoration:none}
+.item{padding:20px 0;border-top:2px solid rgba(26,15,0,.14)}
+.item:first-child{padding-top:0;border-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:#E65100;color:#fff;font-weight:700;margin-right:10px}
+.quote{font-weight:700;color:#4A148C}
+.zh{color:#1B5E20;font-weight:700}
+.box{background:rgba(255,255,255,.72);border-left:8px solid #FFAB91;padding:14px 16px;border-radius:8px;margin:12px 0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pill{display:inline-flex;align-items:center;min-height:44px;border-radius:999px;padding:6px 14px;background:#FEF0E7;color:#E65100;font-weight:700}
+.vhead{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin-bottom:8px}
+.vnum{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#1565C0;color:#fff;font-weight:700}
+.word{font-size:1.65rem;color:#0D47A1;font-weight:700}
+.kk{color:#C0392B;font-weight:700}
+.tagrow{display:grid;grid-template-columns:132px 1fr;gap:10px;margin:10px 0;align-items:start}
+.tag{min-height:42px;border-radius:16px 0 0 16px;padding:4px 12px;font-weight:700;display:flex;align-items:center}
+.der{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.focus{background:#FEF0E7;color:#E65100}
+ul,ol{padding-left:1.4em;margin:10px 0}li{margin:8px 0}
+details{border:3px solid var(--s5b);border-radius:8px;margin:18px 0;background:var(--s5in);overflow:hidden}
+summary{list-style:none;cursor:pointer;min-height:72px;padding:16px 22px;background:var(--s5);color:#fff;font-weight:700;font-size:1.45rem;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:20px 24px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.mini{padding:8px 0;border-bottom:1px solid #C4A06A}
+@media(max-width:720px){body{font-size:21px;padding:16px 10px 48px}.body{padding:18px}h1{font-size:2.45rem}.subtitle{font-size:1.85rem}.credit{font-size:1.35rem}.grid2{grid-template-columns:1fr}.tagrow{grid-template-columns:1fr}.tag{border-radius:16px}.link-panel{padding:14px;border-radius:14px}.link-grid{grid-template-columns:1fr;gap:14px}.link-card{min-height:0}.link-title{font-size:1.4rem}.link-card strong{font-size:1.18rem}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="link-panel" aria-label="課程與聯絡連結">
+  <p class="link-title">七月開課與聯絡資訊</p>
+  <div class="link-grid">
+    <a class="link-card echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+      <span>從錯題回饋中建立英文閱讀、文法與寫作能力，適合暑假想系統整理弱點的學生。</span>
+      <span class="link-button">查看課程介紹</span>
+    </a>
+    <a class="link-card analysis-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <strong>學生分析</strong>
+      <span>用清楚的學習分析掌握目前程度、常見錯誤與下一步練習方向。</span>
+      <span class="link-button">進入學生分析</span>
+    </a>
+    <a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <strong>林威老師 Line 帳號</strong>
+      <span>Line ID：linwayet。可用於課程詢問、學習規劃與教材相關聯絡。</span>
+      <span class="link-button">加入 Line：linwayet</span>
+    </a>
+  </div>
+</section>
+<section class="hero">
+  <h1>The Amazing Life of Swifts</h1>
+  <p class="subtitle">雨燕不可思議的空中生活</p>
+  <p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+  <h2>英文文章原文</h2>
+  <div class="card original">
+    <div class="head">原文 Original Article</div>
+    <div class="body">
+      <p>The Amazing Life of Swifts Nature is full of <strong class="kw">incredible</strong> <strong class="kw">creatures</strong>, and the small dark birds known as swifts are certainly no <strong class="kw">exception</strong>. As a matter of fact, swifts are some of the best flyers in the animal world. Although they look similar to swallows, swifts <strong class="kw">actually</strong> <strong class="kw">belong</strong> to a different bird family and are more closely <strong class="kw">related</strong> to hummingbirds. While most birds spend a good part of their day standing on branches or walking on the ground, swifts have taken <strong class="kw">flight</strong> to a completely new level. Their long, narrow wings and <strong class="kw">streamlined</strong> bodies are perfectly shaped for a life in the air. In fact, these <strong class="kw">remarkable</strong> <strong class="kw">creatures</strong> have <strong class="kw">adapted</strong> almost every <strong class="kw">aspect</strong> of their lives to <strong class="kw">flight</strong>. There are around 100 swift <strong class="kw">species</strong> worldwide, but the common swift is one of the most studied. Scientists <strong class="kw">estimate</strong> that common swifts can stay <strong class="kw">airborne</strong> for up to 10 months <strong class="kw">continuously</strong>. They have a lot of wildlife in the air, and even mate on the wing. Because they have tiny feet and short legs, swifts cannot walk or perch like most birds. When they do land, they usually hold on to <strong class="kw">vertical</strong> surfaces such as cliffs or walls.</p>
+      <p>One of the most amazing things about common swifts is their speed and <strong class="kw">endurance</strong>. During its lifetime, a common swift may travel millions of kilometers, equal to several trips to the moon and back. Every year, these birds <strong class="kw">migrate</strong> from Europe and Asia to Africa and take advantage of strong winds along the way. These long-distance journeys are among nature's greatest wonders. Young common swifts are also full of surprises. When nesting, the parents may leave their chicks alone for days if the weather turns bad. The baby birds survive by entering a state called <strong class="kw">torpor</strong> that slows their heart rate and helps them save energy. When the chicks are ready to fly, they launch into the sky and begin their travels across different continents. Although swifts are common in many parts of the world, their numbers are decreasing in some regions because of <strong class="kw">habitat</strong> loss. Although swifts in Europe often nest are being replaced by modern ones without the small gaps they need. Thankfully, many people are now building special nest boxes to help them. With a little help from us, these wonderful birds can keep filling our skies.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>8句精讀</h2>
+  <div class="card reading">
+    <div class="head">八句精讀 8 Key Sentence Analyses</div>
+    <div class="body">
+      <div class="item"><h3><span class="num">①</span>複合句與同位概念</h3><p class="quote"><em>Although they look similar to swallows, swifts actually belong to a different bird family and are more closely related to hummingbirds.</em></p><p class="zh">雖然牠們看起來和燕子相似，雨燕其實屬於不同的鳥類家族，並且和蜂鳥的關係更接近。</p><div class="box">文法解析：Although 引導讓步副詞子句，表示「雖然……但是……」。主要子句有兩個並列動詞片語：belong to 與 are related to。英文中 although 不與 but 同時使用，中文翻譯可自然譯出轉折感。</div><div class="pills"><span class="pill">belong to 屬於</span><span class="pill">be related to 與……有關</span><span class="pill">similar to 與……相似</span></div></div>
+      <div class="item"><h3><span class="num">②</span>While 對比句</h3><p class="quote"><em>While most birds spend a good part of their day standing on branches or walking on the ground, swifts have taken flight to a completely new level.</em></p><p class="zh">大多數鳥類一天中有不少時間站在樹枝上或在地面行走，但雨燕已經把飛行提升到全新的境界。</p><div class="box">文法解析：While 在此不是「當……時」，而是表示對比，意思接近「然而」。standing 與 walking 是現在分詞，補充說明 spend time 的活動內容。take ... to a new level 是常見表達，表示把某事提升到新層次。</div><div class="pills"><span class="pill">take ... to a new level 提升到新層次</span><span class="pill">a good part of 大部分</span></div></div>
+      <div class="item"><h3><span class="num">③</span>被動與目的</h3><p class="quote"><em>Their long, narrow wings and streamlined bodies are perfectly shaped for a life in the air.</em></p><p class="zh">牠們細長的翅膀與流線型身體，完美地適合空中生活。</p><div class="box">文法解析：are shaped 是被動語態，表示「被塑造成……」。for a life in the air 是介系詞片語，說明設計或適應的目的。long, narrow 和 streamlined 都是形容詞，放在名詞前修飾身體特徵。</div><div class="pills"><span class="pill">streamlined 流線型的</span><span class="pill">be shaped for 為……而成形</span></div></div>
+      <div class="item"><h3><span class="num">④</span>名詞子句</h3><p class="quote"><em>Scientists estimate that common swifts can stay airborne for up to 10 months continuously.</em></p><p class="zh">科學家估計，普通雨燕可以連續在空中停留長達十個月。</p><div class="box">文法解析：that common swifts can stay airborne... 是名詞子句，作 estimate 的受詞。for up to 10 months 表示時間長度的上限。continuously 放在句尾，強調動作不中斷。</div><div class="pills"><span class="pill">estimate 估計</span><span class="pill">airborne 在空中的</span><span class="pill">up to 高達</span></div></div>
+      <div class="item"><h3><span class="num">⑤</span>原因副詞子句</h3><p class="quote"><em>Because they have tiny feet and short legs, swifts cannot walk or perch like most birds.</em></p><p class="zh">因為雨燕的腳很小、腿很短，所以牠們不能像多數鳥類那樣行走或棲息。</p><div class="box">文法解析：Because 引導原因副詞子句，說明主要子句的原因。cannot walk or perch 使用 or 連接兩個原形動詞。like most birds 中的 like 是介系詞，表示「像……一樣」。</div><div class="pills"><span class="pill">tiny 微小的</span><span class="pill">perch 棲息</span><span class="pill">like most birds 像多數鳥類</span></div></div>
+      <div class="item"><h3><span class="num">⑥</span>分詞構句</h3><p class="quote"><em>During its lifetime, a common swift may travel millions of kilometers, equal to several trips to the moon and back.</em></p><p class="zh">在一生中，一隻普通雨燕可能飛行數百萬公里，相當於好幾趟往返月球的距離。</p><div class="box">文法解析：During its lifetime 是時間介系詞片語。equal to several trips... 是形容詞片語，補充說明前面的距離。這類補充說明常放在逗號後，讓句子資訊更濃縮。</div><div class="pills"><span class="pill">during its lifetime 在牠一生中</span><span class="pill">equal to 等於</span></div></div>
+      <div class="item"><h3><span class="num">⑦</span>時間與條件</h3><p class="quote"><em>When nesting, the parents may leave their chicks alone for days if the weather turns bad.</em></p><p class="zh">築巢期間，如果天氣變糟，親鳥可能會把幼鳥單獨留下好幾天。</p><div class="box">文法解析：When nesting 是 When they are nesting 的化簡，屬於副詞子句化簡為分詞片語。if the weather turns bad 是條件副詞子句。may 表示可能性，不是一定會發生。</div><div class="pills"><span class="pill">when nesting 築巢時</span><span class="pill">turn bad 變糟</span><span class="pill">for days 好幾天</span></div></div>
+      <div class="item"><h3><span class="num">⑧</span>關係子句與因果</h3><p class="quote"><em>The baby birds survive by entering a state called torpor that slows their heart rate and helps them save energy.</em></p><p class="zh">幼鳥藉由進入一種叫作休眠的狀態存活下來；這種狀態會減慢牠們的心跳，並幫助牠們節省能量。</p><div class="box">文法解析：by entering... 表示方法，by 是介系詞，後面接 V-ing。called torpor 是過去分詞片語，修飾 state。that slows... and helps... 是形容詞子句，修飾 torpor 或 state 的內容。</div><div class="pills"><span class="pill">survive by V-ing 藉由……存活</span><span class="pill">torpor 休眠狀態</span><span class="pill">heart rate 心率</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>20個單字整理</h2>
+  <div class="card vocab">
+    <div class="head">單字表 Vocabulary List</div>
+    <div class="body">
+      <div class="item"><div class="vhead"><span class="vnum">1</span><span class="word">incredible</span><span class="kk">[ɪnˈkrɛdəbəl]</span><strong>adj. 難以置信的；驚人的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>incredibly (adv. 難以置信地)；credible (adj. 可信的)；credibility (n. 可信度)</span></div><div class="tagrow"><span class="tag root">字根</span><span>cred「相信」：credit 信用；creed 信條；credible 可信的</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>an incredibly fast bird 驚人快速的鳥；an incredible journey 不可思議的旅程</span></div><p>Nature is full of incredible creatures.<br>（大自然充滿不可思議的生物。）</p><p>The team's recovery after the storm was incredible.<br>（那個團隊在暴風雨後的恢復力令人難以置信。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">2</span><span class="word">creature</span><span class="kk">[ˈkritʃɚ]</span><strong>n. 生物；動物</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>create (v. 創造)；creation (n. 創造；作品)；creative (adj. 有創造力的)</span></div><div class="tagrow"><span class="tag root">字根</span><span>cre「產生、創造」：create 創造；increase 增加；recreate 再創造</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>marine creatures 海洋生物；living creatures 生物</span></div><p>These remarkable creatures have adapted almost every aspect of their lives to flight.<br>（這些非凡的生物幾乎把生活的每一面都適應成飛行生活。）</p><p>Every creature in the forest depends on clean water.<br>（森林中的每種生物都依賴乾淨的水。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">3</span><span class="word">exception</span><span class="kk">[ɪkˈsɛpʃən]</span><strong>n. 例外</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>except (prep./conj. 除了)；exceptional (adj. 例外的；優秀的)；exceptionally (adv. 格外地)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>no exception 也不例外；make an exception 破例</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>except 是「除了」；exception 是名詞「例外」。</span></div><p>The small dark birds known as swifts are certainly no exception.<br>（被稱為雨燕的小型深色鳥類當然也不例外。）</p><p>Everyone must follow the safety rules; no student is an exception.<br>（每個人都必須遵守安全規定；沒有學生例外。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">4</span><span class="word">actually</span><span class="kk">[ˈæktʃuəlɪ]</span><strong>adv. 其實；實際上</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>actual (adj. 實際的)；actuality (n. 實際情況)</span></div><div class="tagrow"><span class="tag root">字根</span><span>act「做、行動」：action 行動；active 活躍的；react 反應</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>actually belong to 其實屬於；what actually happened 實際發生的事</span></div><p>Swifts actually belong to a different bird family.<br>（雨燕其實屬於不同的鳥類家族。）</p><p>The problem looks simple, but it is actually quite difficult.<br>（這個問題看起來簡單，但其實相當困難。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">5</span><span class="word">belong</span><span class="kk">[bɪˈlɔŋ]</span><strong>v. 屬於；應在某處</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>belonging (n. 所有物；歸屬感)；belongings (n. 個人物品)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>belong to 屬於；a sense of belonging 歸屬感</span></div><div class="tagrow"><span class="tag focus">句型</span><span>belong to + N；to 是介係詞，後面接名詞或代名詞，不是不定詞。</span></div><p>Swifts actually belong to a different bird family.<br>（雨燕其實屬於不同的鳥類家族。）</p><p>This old photo belongs to my grandfather.<br>（這張舊照片屬於我的祖父。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">6</span><span class="word">related</span><span class="kk">[rɪˈletɪd]</span><strong>adj. 有關的；有親緣關係的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>relate (v. 使有關聯)；relation (n. 關係)；relationship (n. 關係)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>be related to 與……有關；closely related 關係密切的</span></div><p>Swifts are more closely related to hummingbirds.<br>（雨燕和蜂鳥的關係更接近。）</p><p>Good sleep is closely related to better learning.<br>（良好的睡眠和較佳的學習密切相關。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">7</span><span class="word">flight</span><span class="kk">[flaɪt]</span><strong>n. 飛行；航班</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>fly (v. 飛行)；flyer (n. 飛行者；傳單)；flying (adj. 飛行的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>take flight 起飛；in flight 在飛行中；flight path 飛行路線</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>flight 指「飛行」或「航班」；fly 是動詞「飛」。</span></div><p>Swifts have taken flight to a completely new level.<br>（雨燕已經把飛行提升到全新的境界。）</p><p>The pilot checked the weather before the flight.<br>（飛行員在航班起飛前查看了天氣。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">8</span><span class="word">streamlined</span><span class="kk">[ˈstrimˌlaɪnd]</span><strong>adj. 流線型的；精簡的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>streamline (v. 使成流線型；使精簡)；stream (n. 溪流；流動)</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a highly streamlined body 高度流線型的身體；streamlined process 精簡流程</span></div><p>Their long, narrow wings and streamlined bodies are perfectly shaped for a life in the air.<br>（牠們細長的翅膀與流線型身體，完美地適合空中生活。）</p><p>The company created a streamlined process to save time.<br>（公司建立了精簡流程來節省時間。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">9</span><span class="word">remarkable</span><span class="kk">[rɪˈmɑrkəbəl]</span><strong>adj. 非凡的；值得注意的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>remark (n./v. 評論)；remarkably (adv. 非凡地)</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a truly remarkable ability 真正非凡的能力；remarkable progress 顯著進步</span></div><p>These remarkable creatures have adapted almost every aspect of their lives to flight.<br>（這些非凡的生物幾乎把生活的每一面都適應成飛行生活。）</p><p>Her improvement in English this year is remarkable.<br>（她今年英文的進步相當顯著。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">10</span><span class="word">adapt</span><span class="kk">[əˈdæpt]</span><strong>v. 適應；改編</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>adaptation (n. 適應；改編)；adaptable (adj. 適應力強的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>adapt to 適應；adapt A for B 為 B 改編 A</span></div><div class="tagrow"><span class="tag focus">句型</span><span>adapt ... to + N；to 是介係詞，後面接名詞或 V-ing。</span></div><p>These remarkable creatures have adapted almost every aspect of their lives to flight.<br>（這些非凡的生物幾乎把生活的每一面都適應成飛行生活。）</p><p>Students must adapt to a new schedule after entering senior high school.<br>（學生進入高中後必須適應新的作息。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">11</span><span class="word">aspect</span><span class="kk">[ˈæspɛkt]</span><strong>n. 方面；層面</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>inspect (v. 檢查)；respect (n./v. 尊重)；perspective (n. 觀點)</span></div><div class="tagrow"><span class="tag root">字根</span><span>spect「看」：inspect 檢查；respect 尊重；prospect 前景</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>every aspect of 每一方面；an important aspect 重要層面</span></div><p>Swifts have adapted almost every aspect of their lives to flight.<br>（雨燕幾乎把生活的每一面都適應成飛行生活。）</p><p>Health is an important aspect of a happy life.<br>（健康是幸福生活的重要層面。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">12</span><span class="word">species</span><span class="kk">[ˈspiʃiz]</span><strong>n. 物種；種類</strong></div><div class="tagrow"><span class="tag phrase">片語</span><span>endangered species 瀕危物種；swift species 雨燕種類</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>species 單複數同形；one species 與 many species 都用 species。</span></div><p>There are around 100 swift species worldwide.<br>（全世界大約有一百種雨燕。）</p><p>Scientists found a new species of frog in the rainforest.<br>（科學家在雨林中發現一種新的青蛙物種。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">13</span><span class="word">estimate</span><span class="kk">[ˈɛstəˌmet]</span><strong>v. 估計；n. 估計</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>estimation (n. 估計)；estimated (adj. 估計的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>estimate that + S + V 估計……；an estimated number 估計數字</span></div><p>Scientists estimate that common swifts can stay airborne for up to 10 months continuously.<br>（科學家估計，普通雨燕可以連續在空中停留長達十個月。）</p><p>Experts estimate that the project will take six months.<br>（專家估計這項計畫將花六個月。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">14</span><span class="word">airborne</span><span class="kk">[ˈɛrˌbɔrn]</span><strong>adj. 在空中的；空運的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>air (n. 空氣)；bear (v. 承載)；born (adj. 出生的)</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>remain airborne 持續在空中；airborne disease 空氣傳播疾病</span></div><p>Common swifts can stay airborne for up to 10 months continuously.<br>（普通雨燕可以連續在空中停留長達十個月。）</p><p>The plane became airborne a few seconds after leaving the runway.<br>（飛機離開跑道幾秒後升空。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">15</span><span class="word">continuously</span><span class="kk">[kənˈtɪnjuəslɪ]</span><strong>adv. 連續地；不中斷地</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>continue (v. 繼續)；continuous (adj. 連續的)；continuity (n. 連續性)</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>continuous 強調不中斷；continual 常表示一再重複。</span></div><p>Common swifts can stay airborne for up to 10 months continuously.<br>（普通雨燕可以連續在空中停留長達十個月。）</p><p>The machine ran continuously for three days.<br>（這台機器連續運轉了三天。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">16</span><span class="word">vertical</span><span class="kk">[ˈvɝtɪkəl]</span><strong>adj. 垂直的；直立的</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>vertically (adv. 垂直地)；vertex (n. 頂點)</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a vertical surface 垂直表面；vertical line 垂直線</span></div><p>They usually hold on to vertical surfaces such as cliffs or walls.<br>（牠們通常抓住像懸崖或牆壁這樣的垂直表面。）</p><p>The climber moved slowly up the vertical wall.<br>（攀岩者沿著垂直牆面慢慢往上移動。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">17</span><span class="word">endurance</span><span class="kk">[ɪnˈdʊrəns]</span><strong>n. 耐力；持久力</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>endure (v. 忍受；持續)；enduring (adj. 持久的)</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>great endurance 極佳耐力；endurance training 耐力訓練</span></div><p>One of the most amazing things about common swifts is their speed and endurance.<br>（普通雨燕最驚人的特點之一是牠們的速度與耐力。）</p><p>Running a marathon requires both patience and endurance.<br>（跑馬拉松需要耐心與耐力。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">18</span><span class="word">migrate</span><span class="kk">[ˈmaɪˌɡret]</span><strong>v. 遷徙；移居</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>migration (n. 遷徙；移民)；migrant (n. 移民；候鳥)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>migrate from A to B 從 A 遷徙到 B；seasonal migration 季節性遷徙</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>migrate 可指動物遷徙；emigrate 強調移出本國；immigrate 強調移入他國。</span></div><p>Every year, these birds migrate from Europe and Asia to Africa.<br>（每年，這些鳥從歐洲與亞洲遷徙到非洲。）</p><p>Many birds migrate south when winter arrives.<br>（許多鳥類在冬天來臨時向南遷徙。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">19</span><span class="word">torpor</span><span class="kk">[ˈtɔrpɚ]</span><strong>n. 休眠狀態；遲鈍</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>torpid (adj. 遲鈍的；不活躍的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>enter a state of torpor 進入休眠狀態；temporary torpor 暫時休眠</span></div><p>The baby birds survive by entering a state called torpor.<br>（幼鳥藉由進入一種叫作休眠的狀態存活下來。）</p><p>Some animals use torpor to save energy during cold nights.<br>（有些動物在寒冷夜晚利用休眠狀態來節省能量。）</p></div>
+      <div class="item"><div class="vhead"><span class="vnum">20</span><span class="word">habitat</span><span class="kk">[ˈhæbəˌtæt]</span><strong>n. 棲地；生長環境</strong></div><div class="tagrow"><span class="tag der">衍生詞</span><span>inhabit (v. 居住於)；inhabitant (n. 居民)；habitation (n. 居住)</span></div><div class="tagrow"><span class="tag root">字根</span><span>habit/habitare「居住」：inhabit 居住於；habitation 居住地</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>habitat loss 棲地喪失；natural habitat 自然棲地</span></div><p>Their numbers are decreasing in some regions because of habitat loss.<br>（在某些地區，牠們的數量因棲地喪失而下降。）</p><p>Protecting wetlands can save the natural habitat of many birds.<br>（保護濕地可以拯救許多鳥類的自然棲地。）</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>文法解析</h2>
+  <div class="card grammar">
+    <div class="head">Grammar Focus</div>
+    <div class="body">
+      <div class="item"><h3>1. 讓步副詞子句：Although</h3><p><strong>【引句 Quote】</strong><br><em>Although they look similar to swallows, swifts actually belong to a different bird family.</em></p><p><strong>【句型】</strong><br><strong><em>Although + S + V, S + V...</em></strong></p><p><strong>【核心說明】</strong><br>Although 引導讓步副詞子句，用來表達「雖然 A，但是 B 仍然成立」。這種句型適合用來呈現外表與事實、期待與結果之間的落差。</p><p><strong>【使用規則】</strong></p><ul><li>Although 放句首時，子句後通常加逗號。</li><li>Although 不可和 but 同時連接同一組主從句。</li><li>Though 語氣較口語；although 較正式。</li><li>Even though 比 although 語氣更強。</li></ul><p><strong>【主題例句】</strong><br>Although swifts are small, they can travel across continents.<br>（雖然雨燕體型小，牠們卻能橫跨不同大洲旅行。）</p><p><strong>【學習提醒】</strong><br>中文常說「雖然……但是……」，但英文只需要 although 或 but 擇一使用。寫作時若句首已用 Although，主要子句不要再加 but。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br>✗ Although swifts are small, but they fly very far.<br>✓ Although swifts are small, they fly very far.（although 與 but 不並用）</p><ol><li>改錯：Although the weather was bad, but the chicks survived.</li><li>選擇：______ swifts look like swallows, they belong to a different bird family. (A) Although (B) Because</li></ol></div>
+      <div class="item"><h3>2. 名詞子句：that + S + V</h3><p><strong>【引句 Quote】</strong><br><em>Scientists estimate that common swifts can stay airborne for up to 10 months continuously.</em></p><p><strong>【句型】</strong><br><strong><em>S + V + that + S + V...</em></strong></p><p><strong>【核心說明】</strong><br>that 子句可作動詞的受詞，表示「……這件事」。在本文中，that 後面的完整句子是科學家估計的內容。</p><p><strong>【使用規則】</strong></p><ul><li>that 子句必須有主詞與動詞。</li><li>常搭配 think, believe, know, estimate, suggest 等動詞。</li><li>口語中 that 有時可省略，但正式寫作保留較清楚。</li><li>主句與子句時態要依語意判斷。</li></ul><p><strong>【主題例句】</strong><br>Researchers believe that swifts sleep while flying.<br>（研究人員相信雨燕會在飛行時睡覺。）</p><p><strong>【學習提醒】</strong><br>that 在名詞子句中只負責引出內容，不等於關係代名詞 that。判斷方法是看 that 後面是否是一個完整句子，且整個子句是否作前面動詞的受詞。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br>✗ Scientists estimate common swifts can stay airborne up to 10 months continuously in very formal writing.<br>✓ Scientists estimate that common swifts can stay airborne for up to 10 months continuously.（正式寫作保留 that，時間長度用 for）</p><ol><li>合併：Scientists believe. Swifts can remain in the air for months.</li><li>選擇：Experts suggest ______ habitat loss is a serious problem. (A) that (B) what</li></ol></div>
+      <div class="item"><h3>3. 分詞構句：When + V-ing</h3><p><strong>【引句 Quote】</strong><br><em>When nesting, the parents may leave their chicks alone for days if the weather turns bad.</em></p><p><strong>【句型】</strong><br><strong><em>When + V-ing, S + V...</em></strong></p><p><strong>【核心說明】</strong><br>When nesting 是 When they are nesting 的化簡。當副詞子句的主詞與主要子句主詞相同，且語意清楚時，可以刪除主詞並把動詞改成現在分詞。</p><p><strong>【使用規則】</strong></p><ul><li>化簡前後的主詞通常要一致。</li><li>主動語意用 V-ing；被動語意常用過去分詞。</li><li>when 可保留，讓時間關係更清楚。</li><li>若主詞不同，避免隨意化簡，以免語意錯亂。</li></ul><p><strong>【主題例句】</strong><br>When crossing continents, swifts depend on strong winds.<br>（橫跨大洲時，雨燕依賴強風。）</p><p><strong>【學習提醒】</strong><br>分詞構句不是單純把任何句子縮短。先確認主詞是否一致，再決定是否能化簡；否則讀者可能誤會動作是由主要子句主詞執行。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br>✗ When nesting, the weather may turn bad.（變成 weather 在築巢）<br>✓ When the swifts are nesting, the weather may turn bad.（主詞不同，不宜化簡）</p><ol><li>化簡：When they migrate to Africa, swifts use strong winds.</li><li>改錯：When flying at night, the moon guided the birds.</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>延伸整理</h2>
+  <details>
+    <summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+    <div class="detail-body grid2">
+      <div class="mini">ab-　離開、相反　—　abnormal（異常的）</div><div class="mini">ad-　向、加　—　advance（前進）</div><div class="mini">ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="mini">anti-　反對、抗　—　antibiotic（抗生素）</div><div class="mini">arch-　主要、首要　—　archenemy（死敵）</div><div class="mini">auto-　自動、自我　—　autograph（親筆簽名）</div><div class="mini">bene-　好的、善　—　benefit（好處）</div><div class="mini">bi-　二、雙　—　bilingual（雙語的）</div><div class="mini">circum-　環繞、周圍　—　circumstance（情況）</div><div class="mini">co-/con-/com-　一起、共同　—　cooperate（合作）</div><div class="mini">contra-　相反、對抗　—　contradict（反駁）</div><div class="mini">de-　去除、下降　—　decode（解碼）</div><div class="mini">dia-　穿過、透過　—　dialogue（對話）</div><div class="mini">dis-　否定、分離　—　disagree（不同意）</div><div class="mini">en-/em-　使成為　—　enable（使能夠）</div><div class="mini">epi-　在上、在外　—　epidemic（流行病）</div><div class="mini">ex-　外、前任　—　export（出口）；ex-president（前總統）</div><div class="mini">extra-　額外、外部　—　extraordinary（非凡的）</div><div class="mini">hetero-　不同　—　heterogeneous（異質的）</div><div class="mini">homo-　相同　—　homogeneous（同質的）</div><div class="mini">hyper-　過度、超　—　hyperactive（過動的）</div><div class="mini">hypo-　低於、不足　—　hypodermic（皮下的）</div><div class="mini">in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="mini">inter-　在…之間　—　international（國際的）</div><div class="mini">iso-　相等、相同　—　isolate（隔離）</div><div class="mini">mal-　壞、不良　—　malfunction（故障）</div><div class="mini">micro-　微小　—　microscope（顯微鏡）</div><div class="mini">mis-　錯誤　—　misunderstand（誤解）</div><div class="mini">mono-　單一　—　monologue（獨白）</div><div class="mini">multi-　多　—　multicultural（多元文化的）</div><div class="mini">neo-　新的　—　neonatal（新生的）</div><div class="mini">non-　非、沒有　—　nonsense（無意義）</div><div class="mini">pan-　全部　—　pandemic（大流行病）</div><div class="mini">peri-　周圍　—　perimeter（周長）</div><div class="mini">poly-　多　—　polygon（多邊形）</div><div class="mini">post-　之後　—　postwar（戰後的）</div><div class="mini">pre-　之前　—　preview（預覽）</div><div class="mini">pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="mini">pseudo-　假的　—　pseudonym（筆名）</div><div class="mini">re-　再、回　—　review（複習）</div><div class="mini">semi-　一半、部分　—　semicircle（半圓）</div><div class="mini">sub-　在下、次級　—　subway（地鐵）</div><div class="mini">super-　超越、在上　—　superstar（超級明星）</div><div class="mini">syn-/sym-　一起、共同　—　synchronize（同步）</div><div class="mini">tele-　遠距　—　telephone（電話）</div><div class="mini">trans-　穿越、轉變　—　transport（運輸）</div><div class="mini">tri-　三　—　triangle（三角形）</div><div class="mini">un-　否定、不　—　unhappy（不快樂的）</div><div class="mini">vice-　副、代替　—　vice-president（副總統）</div>
+    </div>
+  </details>
+  <details>
+    <summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+    <div class="detail-body">
+      <h3>名詞字尾</h3><p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p><p>-ment　行為或結果　—　agreement（協議）、development（發展）</p><p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p><p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p><p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p><p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p><p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p><p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+      <h3>形容詞字尾</h3><p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p><p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p><p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p><p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p><p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+      <h3>動詞字尾</h3><p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p><p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p><p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p><p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+      <h3>副詞字尾</h3><p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p><p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p><p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+    </div>
+  </details>
+  <details>
+    <summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+    <div class="detail-body">
+      <ol>
+        <li>swift [swɪft] (n. 雨燕；adj. 快速的) — swiftly [ˈswɪftlɪ] (adv. 快速地)</li><li>nature [ˈnetʃɚ] (n. 自然) — natural [ˈnætʃərəl] (adj. 自然的)</li><li>incredible [ɪnˈkrɛdəbəl] (adj. 驚人的) — incredibly [ɪnˈkrɛdəbəlɪ] (adv. 驚人地)</li><li>creature [ˈkritʃɚ] (n. 生物) — creative [kriˈetɪv] (adj. 有創造力的)</li><li>exception [ɪkˈsɛpʃən] (n. 例外) — exceptional [ɪkˈsɛpʃənəl] (adj. 優秀的；例外的)</li><li>swallow [ˈswɑlo] (n. 燕子) — swallow up (phr. 吞沒)</li><li>belong [bɪˈlɔŋ] (v. 屬於) — belonging [bɪˈlɔŋɪŋ] (n. 歸屬感)</li><li>related [rɪˈletɪd] (adj. 相關的) — relationship [rɪˈleʃənˌʃɪp] (n. 關係)</li><li>branch [bræntʃ] (n. 樹枝；分部) — branch out (phr. 擴展)</li><li>flight [flaɪt] (n. 飛行) — in flight (phr. 在飛行中)</li><li>narrow [ˈnæro] (adj. 狹窄的) — narrow down (phr. 縮小範圍)</li><li>streamlined [ˈstrimˌlaɪnd] (adj. 流線型的) — streamline [ˈstrimˌlaɪn] (v. 精簡)</li><li>remarkable [rɪˈmɑrkəbəl] (adj. 非凡的) — remarkably [rɪˈmɑrkəblɪ] (adv. 顯著地)</li><li>adapt [əˈdæpt] (v. 適應) — adaptation [ˌædæpˈteʃən] (n. 適應)</li><li>aspect [ˈæspɛkt] (n. 方面) — every aspect (phr. 每一方面)</li><li>species [ˈspiʃiz] (n. 物種) — endangered species (phr. 瀕危物種)</li><li>worldwide [ˈwɝldˌwaɪd] (adj./adv. 全世界的/地) — worldwide attention (phr. 全球關注)</li><li>estimate [ˈɛstəˌmet] (v. 估計) — estimation [ˌɛstəˈmeʃən] (n. 估計)</li><li>airborne [ˈɛrˌbɔrn] (adj. 在空中的) — remain airborne (phr. 保持在空中)</li><li>continuously [kənˈtɪnjuəslɪ] (adv. 連續地) — continuous [kənˈtɪnjuəs] (adj. 連續的)</li><li>mate [met] (v. 交配) — classmate [ˈklæsˌmet] (n. 同學)</li><li>perch [pɝtʃ] (v. 棲息) — bird perch (phr. 鳥棲木)</li><li>vertical [ˈvɝtɪkəl] (adj. 垂直的) — vertically [ˈvɝtɪkəlɪ] (adv. 垂直地)</li><li>surface [ˈsɝfəs] (n. 表面) — on the surface (phr. 表面上)</li><li>endurance [ɪnˈdʊrəns] (n. 耐力) — endure [ɪnˈdʊr] (v. 忍受)</li><li>migrate [ˈmaɪˌɡret] (v. 遷徙) — migration [maɪˈɡreʃən] (n. 遷徙)</li><li>advantage [ədˈvæntɪdʒ] (n. 優勢) — take advantage of (phr. 利用)</li><li>torpor [ˈtɔrpɚ] (n. 休眠狀態) — torpid [ˈtɔrpɪd] (adj. 遲鈍的)</li><li>continent [ˈkɑntənənt] (n. 大洲) — continental [ˌkɑntəˈnɛntəl] (adj. 大陸的)</li><li>habitat [ˈhæbəˌtæt] (n. 棲地) — inhabit [ɪnˈhæbɪt] (v. 居住於)</li>
+      </ol>
+      <h3>文章相關常用片語 5 個</h3>
+      <p>• as a matter of fact（事實上）</p><p>• belong to（屬於）</p><p>• take advantage of（利用）</p><p>• hold on to（抓住；堅持）</p><p>• up to（高達；最多）</p>
+    </div>
+  </details>
+  <details>
+    <summary>練文筆食材<span class="arrow">⌄</span></summary>
+    <div class="detail-body">
+      <p>① be full of + N（充滿……）<br>→ 適用：描述自然、城市、人生經驗。<br>例：Nature is full of lessons that humans can learn from.</p>
+      <p>② be known as + N（被稱為……）<br>→ 適用：介紹人物、動物或地方。<br>例：The bird is known as one of the best flyers in nature.</p>
+      <p>③ no exception（也不例外）<br>→ 適用：把主題接到前一句的通則。<br>例：Many animals face danger, and swifts are no exception.</p>
+      <p>④ Although + S + V, S + V（雖然……但是……）<br>→ 適用：表達外表與事實的反差。<br>例：Although the bird is small, it can travel across continents.</p>
+      <p>⑤ While + S + V, S + V（然而；相較之下）<br>→ 適用：比較兩種不同情況。<br>例：While most birds rest on branches, swifts spend much of life in the air.</p>
+      <p>⑥ be perfectly shaped for + N（非常適合……）<br>→ 適用：描述設計、身體構造或功能。<br>例：Their wings are perfectly shaped for long-distance flight.</p>
+      <p>⑦ adapt A to B（使 A 適應 B）<br>→ 適用：寫環境、生物或科技變化。<br>例：Many species adapt their behavior to a changing climate.</p>
+      <p>⑧ estimate that + S + V（估計……）<br>→ 適用：引用研究或數據。<br>例：Scientists estimate that the population is falling in some regions.</p>
+      <p>⑨ for up to + 時間/數量（長達；高達）<br>→ 適用：強調範圍上限。<br>例：Some swifts may remain airborne for up to ten months.</p>
+      <p>⑩ Because + S + V, S + V（因為……所以……）<br>→ 適用：清楚說明原因。<br>例：Because swifts have tiny feet, they rarely walk on the ground.</p>
+      <p>⑪ such as + N（例如……）<br>→ 適用：補充具體例子。<br>例：They hold on to vertical surfaces such as cliffs or walls.</p>
+      <p>⑫ take advantage of + N（利用……）<br>→ 適用：描述善用資源或條件。<br>例：Migrating birds take advantage of strong winds.</p>
+      <p>⑬ by + V-ing（藉由……）<br>→ 適用：說明方法。<br>例：The chicks save energy by entering a state of torpor.</p>
+      <p>⑭ because of + N（因為……）<br>→ 適用：用名詞片語表原因。<br>例：Their numbers are decreasing because of habitat loss.</p>
+      <p>⑮ With a little help from us, S + can + V（只要我們稍加幫助，……）<br>→ 適用：結尾提出希望或行動。<br>例：With a little help from us, wild birds can keep filling our skies.</p>
+    </div>
+  </details>
+</section>
+<section class="link-panel bottom" aria-label="課程與聯絡連結">
+  <p class="link-title">七月開課與聯絡資訊</p>
+  <div class="link-grid">
+    <a class="link-card echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+      <span>從錯題回饋中建立英文閱讀、文法與寫作能力，適合暑假想系統整理弱點的學生。</span>
+      <span class="link-button">查看課程介紹</span>
+    </a>
+    <a class="link-card analysis-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <strong>學生分析</strong>
+      <span>用清楚的學習分析掌握目前程度、常見錯誤與下一步練習方向。</span>
+      <span class="link-button">進入學生分析</span>
+    </a>
+    <a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <strong>林威老師 Line 帳號</strong>
+      <span>Line ID：linwayet。可用於課程詢問、學習規劃與教材相關聯絡。</span>
+      <span class="link-button">加入 Line：linwayet</span>
+    </a>
+  </div>
+</section>
+</main>
+</body>
+</html>
