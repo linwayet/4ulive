@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Games and Artificial Wombs</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8F0;--ink:#1A0F00;--red:#C0392B;--blue:#1565C0;--green:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--deep:#0D47A1;--brown:#4A3728;--line:#C4A06A}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFF1D9 0%,#FFF8F0 42%,#FFE9D1 100%);color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 14px 60px}
+.page{max-width:880px;margin:0 auto}
+.hero{text-align:center;margin-bottom:34px}
+h1{display:inline-block;margin:0 auto 16px;padding:18px 28px;border:5px solid var(--red);border-radius:8px;color:var(--red);background:#fff;font-size:3rem;line-height:1.18;font-weight:700;box-shadow:8px 8px 0 #F7C8BF}
+.subtitle{margin:0 0 8px;color:var(--blue);font-size:2.2rem;font-weight:700;line-height:1.3}
+.credit{margin:0;color:#0D47A1;font-family:'Lobster','BIZ UDPGothic',sans-serif;font-size:2rem;font-weight:400}
+h2{margin:40px 0 16px;color:var(--blue);font-size:2.2rem;line-height:1.25;font-weight:700}
+h3{margin:0 0 10px;color:var(--green);font-size:1.6rem;line-height:1.35;font-weight:700}
+.card{border-radius:8px;overflow:hidden;border:3px solid;background:#fff;margin-bottom:28px}
+.head{color:#fff;font-size:1.35rem;font-weight:700;padding:15px 20px}
+.body{padding:22px 24px}
+.original{border-color:#90CAF9}.original .head{background:#0D47A1}.original .body{background:#F3F8FF}
+.analysis{border-color:#FFAB91}.analysis .head{background:#BF360C}.analysis .body{background:#FFF3EF}
+.vocab{border-color:#81C784}.vocab .head{background:#1B5E20}.vocab .body{background:#F1F8F2}
+.grammar{border-color:#CE93D8}.grammar .head{background:#4A148C}.grammar .body{background:#F9F0FF}
+.article-title{font-weight:700;color:#0D47A1}
+.kw{color:#0D47A1;font-weight:700;text-decoration:none}
+.sentence,.word,.grammar-point{padding:20px 0;border-top:2px solid rgba(26,15,0,.14)}
+.sentence:first-child,.word:first-child,.grammar-point:first-child{border-top:0;padding-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#BF360C;color:#fff;font-weight:700;margin-right:10px}
+.quote{margin:12px 0;padding:14px 16px;background:#fff;border-left:8px solid #E65100;border-radius:6px;font-style:normal;font-weight:700}
+blockquote{margin:10px 0 16px;padding:14px 18px;background:#fff;border-left:8px solid #6A1B9A;border-radius:6px;font-style:normal}
+.pill{display:inline-block;margin:5px 8px 5px 0;padding:4px 12px;border-radius:999px;background:#FEF0E7;color:#E65100;font-weight:700}
+.vtop{font-size:1.35rem;font-weight:700;color:#1B5E20}
+.tagrow{display:grid;grid-template-columns:132px 1fr;gap:8px 12px;margin:10px 0;align-items:start}
+.tag{border-radius:16px 0 0 16px;padding:4px 12px;font-weight:700;text-align:center}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.focus{background:#FEF0E7;color:#E65100}
+ul{margin:8px 0 8px 28px;padding:0}li{margin:8px 0}
+details{margin:22px 0;border:3px solid var(--line);border-radius:8px;overflow:hidden;background:#FAF6F0}
+summary{min-height:72px;background:#4A3728;color:#fff;font-size:1.25rem;font-weight:700;padding:16px 20px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}.arrow{transition:transform .3s ease}details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:20px 24px}.mini{padding:6px 0;border-bottom:1px solid #D7C2A4}.mini:last-child{border-bottom:0}
+.link-panel{margin:0 auto 34px;padding:20px;border:3px solid #F0A64E;border-radius:16px;background:#FFF3DF;box-shadow:0 12px 24px rgba(154,83,20,.16)}
+.link-panel.bottom{margin:38px auto 0}
+.link-title{margin:0 0 14px;color:#BF360C;font-size:1.55rem;font-weight:700;text-align:center;line-height:1.35}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.link-card{display:flex;flex-direction:column;gap:8px;min-height:168px;padding:18px;border-radius:14px;text-decoration:none;color:#1A0F00;border:3px solid;background:#fff;box-shadow:0 7px 0 rgba(74,55,40,.16);transition:transform .2s ease,box-shadow .2s ease}
+.link-card:hover{transform:translateY(-3px);box-shadow:0 10px 0 rgba(74,55,40,.16)}
+.course-echo{border-color:#F57C00;background:#FFF7E8}.course-analysis{border-color:#2E7D32;background:#F1F8F2}.line-link{border-color:#1565C0;background:#EEF6FF}
+.link-badge{display:inline-block;width:max-content;max-width:100%;padding:2px 10px;border-radius:999px;color:#fff;font-size:.82rem;font-weight:700;line-height:1.6}
+.course-echo .link-badge{background:#E65100}.course-analysis .link-badge{background:#2E7D32}.line-link .link-badge{background:#1565C0}
+.link-name{color:#4A3728;font-size:1.18rem;font-weight:700;line-height:1.35}
+.link-desc{margin:0;font-size:.94rem;line-height:1.55;color:#4A3728}
+.link-url{margin-top:auto;color:#0D47A1;font-size:.82rem;font-weight:700;overflow-wrap:anywhere;line-height:1.35}
+@media(max-width:720px){body{font-size:22px;padding:18px 10px 44px}.page{max-width:100%}h1{font-size:2.35rem}.subtitle{font-size:1.75rem}.credit{font-size:1.55rem}.tagrow{grid-template-columns:1fr}.num{width:44px;height:44px}.link-panel{padding:14px;margin-bottom:24px}.link-grid{grid-template-columns:1fr}.link-card{min-height:0;padding:16px}.link-title{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="link-panel" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">錯中學 ECHO 計劃</span>
+<p class="link-desc">用錯題回饋整理學習盲點，幫助學生把常錯題型轉成穩定得分能力。</p>
+<span class="link-url">linwayet.github.io/4ulive</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">學生分析</span>
+<p class="link-desc">整理學生學習狀態與弱點分布，提供更清楚的複習方向與課程安排依據。</p>
+<span class="link-url">linwayet.github.io/popup</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-badge">Line 聯絡</span>
+<span class="link-name">林威老師 Line：linwayet</span>
+<p class="link-desc">課程詢問、教材需求與學習規劃可透過 Line 帳號聯繫。</p>
+<span class="link-url">line.me/ti/p/~linwayet</span>
+</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Video Games and Artificial Wombs</h1>
+<p class="subtitle">科技新發現：電玩大腦訓練與人工子宮爭議</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="card original">
+<div class="head">英文文章原文 Original Article</div>
+<div class="body">
+<p><span class="article-title">Newswatch, Study Finds Video Games May Benefit the Brain.</span></p>
+<p>For decades, parents have warned their children that video games would rot their brains. However, recent scientific studies suggest that <strong class="kw">moderate</strong> gaming may actually <strong class="kw">enhance</strong> <strong class="kw">cognitive</strong> <strong class="kw">abilities</strong> rather than harm them. Research <strong class="kw">conducted</strong> by the National Institutes of Health <strong class="kw">examined</strong> nearly 2,000 children and found that those who played video games regularly <strong class="kw">outperformed</strong> non-gamers on tests measuring attention, memory, and <strong class="kw">impulse</strong> control. Brain imaging further <strong class="kw">revealed</strong> increased activity in regions responsible for decision-making and information processing. Similarly, a University of Colorado Boulder study reported that adults who gamed for a few hours weekly <strong class="kw">demonstrated</strong> improved <strong class="kw">spatial</strong> reasoning and faster reaction times. Participants who played over five hours per week performed cognitively as though they were years younger. Nevertheless, researchers cautioned that these benefits apply only to <strong class="kw">moderate</strong> gaming. <strong class="kw">Excessive</strong> playtime can still lead to negative <strong class="kw">consequences</strong>, including sleep problems and reduced physical activity. In conclusion, while video games have long been viewed as harmful distractions, science now indicates that playing them wisely might provide our brains with a beneficial workout.</p>
+<p><span class="article-title">Artificial womb technology offers hope but sparks debate.</span></p>
+<p>Scientists are developing <strong class="kw">artificial</strong> womb technology that could <strong class="kw">revolutionize</strong> care for extremely <strong class="kw">premature</strong> babies. Known as Aqua Womb, this device is essentially a sealed bag filled with heated <strong class="kw">artificial</strong> amniotic fluid. Inside, the infant is connected to an <strong class="kw">artificial</strong> placenta that supplies oxygen and nutrients, <strong class="kw">mimicking</strong> the conditions within the mother's body. According to researchers at Radboud University in the Netherlands, babies born between 24 and 28 weeks often face life-threatening <strong class="kw">complications</strong>. By extending fetal development for just a few more weeks, their <strong class="kw">survival</strong> rates could improve dramatically. However, this revolutionary technology raises profound <strong class="kw">ethical</strong> concerns. Critics worry that it could blur the boundaries of when life begins and change traditional concepts of motherhood. Additionally, the high cost may limit access to wealthier families, potentially widening social inequality. Some also fear that commercialization could lead to misuse. While <strong class="kw">artificial</strong> wombs hold enormous promise, society must carefully weigh their benefits against these <strong class="kw">ethical</strong> challenges.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊二】8句精讀</h2>
+<div class="card analysis">
+<div class="head">八句精讀 8 Key Sentence Analyses</div>
+<div class="body">
+<div class="sentence"><h3><span class="num">①</span>句子一</h3><div class="quote">However, recent scientific studies suggest that moderate gaming may actually enhance cognitive abilities rather than harm them.</div><p>然而，近來的科學研究顯示，適度玩電玩實際上可能提升認知能力，而不是傷害它們。</p><p><strong>文法解析：</strong>這句是含有 that 名詞子句的複合句。主要動詞是 suggest，後面的 that 子句說明研究「顯示」的內容。rather than 連接 enhance 和 harm 兩個動詞，形成「不是……而是……」的對比。may 表示可能性，語氣比 will 保守，符合科學報導的寫法。</p><p><span class="pill">moderate：適度的</span><span class="pill">cognitive abilities：認知能力</span><span class="pill">rather than：而不是</span></p></div>
+<div class="sentence"><h3><span class="num">②</span>句子二</h3><div class="quote">Research conducted by the National Institutes of Health examined nearly 2,000 children and found that those who played video games regularly outperformed non-gamers on tests measuring attention, memory, and impulse control.</div><p>由美國國家衛生研究院進行的研究檢視了將近兩千名兒童，並發現經常玩電玩的孩子在測量注意力、記憶力和衝動控制的測驗中表現優於非玩家。</p><p><strong>文法解析：</strong>Research conducted by... 使用過去分詞 conducted 簡化形容詞子句，等於 research that was conducted by...。主要動詞有 examined 和 found，兩者由 and 連接。that those who played... outperformed... 是 found 的受詞子句，其中 who played video games regularly 是形容詞子句，修飾 those。measuring attention... 是現在分詞片語，修飾 tests。</p><p><span class="pill">conducted：進行的</span><span class="pill">outperformed：表現優於</span><span class="pill">impulse control：衝動控制</span></p></div>
+<div class="sentence"><h3><span class="num">③</span>句子三</h3><div class="quote">Brain imaging further revealed increased activity in regions responsible for decision-making and information processing.</div><p>大腦影像進一步顯示，負責決策與資訊處理的區域活動增加。</p><p><strong>文法解析：</strong>這句主詞是 Brain imaging，動詞是 revealed，受詞是 increased activity。responsible for... 是形容詞片語，放在 regions 後面修飾它。decision-making 和 information processing 都是動名詞形成的名詞片語，作為 for 的受詞。</p><p><span class="pill">revealed：顯示</span><span class="pill">regions：區域</span><span class="pill">information processing：資訊處理</span></p></div>
+<div class="sentence"><h3><span class="num">④</span>句子四</h3><div class="quote">Participants who played over five hours per week performed cognitively as though they were years younger.</div><p>每週玩超過五小時的參與者，在認知表現上好像年輕了好幾歲。</p><p><strong>文法解析：</strong>who played over five hours per week 是形容詞子句，修飾 Participants。as though 引導副詞子句，表示「彷彿、好像」。they were years younger 使用過去式，表達與現實不完全相同的假設語氣。cognitively 是副詞，修飾 performed。</p><p><span class="pill">participants：參與者</span><span class="pill">as though：彷彿</span><span class="pill">cognitively：在認知上</span></p></div>
+<div class="sentence"><h3><span class="num">⑤</span>句子五</h3><div class="quote">Excessive playtime can still lead to negative consequences, including sleep problems and reduced physical activity.</div><p>過度的遊玩時間仍可能導致負面後果，包括睡眠問題和身體活動減少。</p><p><strong>文法解析：</strong>can 表示可能性，still 強調即使前文提到好處，風險仍存在。lead to 是動詞片語，to 是介係詞，所以後面接名詞 negative consequences。including... 是介系詞片語，用來補充說明 consequences 的例子。reduced 是過去分詞作形容詞，表示「被減少的」。</p><p><span class="pill">excessive：過度的</span><span class="pill">lead to：導致</span><span class="pill">consequences：後果</span></p></div>
+<div class="sentence"><h3><span class="num">⑥</span>句子六</h3><div class="quote">Scientists are developing artificial womb technology that could revolutionize care for extremely premature babies.</div><p>科學家正在開發人工子宮科技，這項科技可能徹底改變極早產兒的照護方式。</p><p><strong>文法解析：</strong>are developing 是現在進行式，表示目前正在進行的研發。that could revolutionize... 是形容詞子句，修飾 artificial womb technology。could 表示可能性，也保留科技尚未完全成熟的語氣。care for... 中的 for 是介係詞，表示「對……的照護」。</p><p><span class="pill">artificial：人工的</span><span class="pill">revolutionize：徹底改變</span><span class="pill">premature babies：早產兒</span></p></div>
+<div class="sentence"><h3><span class="num">⑦</span>句子七</h3><div class="quote">Inside, the infant is connected to an artificial placenta that supplies oxygen and nutrients, mimicking the conditions within the mother's body.</div><p>在裡面，嬰兒會連接到一個供應氧氣和營養的人造胎盤，模擬母體內的環境。</p><p><strong>文法解析：</strong>is connected to 是被動語態，表示嬰兒「被連接到」人造胎盤。that supplies oxygen and nutrients 是形容詞子句，修飾 placenta。mimicking... 是現在分詞構句，補充說明前面整個裝置的功能。within the mother's body 是介系詞片語，表示位置。</p><p><span class="pill">infant：嬰兒</span><span class="pill">placenta：胎盤</span><span class="pill">mimicking：模擬</span></p></div>
+<div class="sentence"><h3><span class="num">⑧</span>句子八</h3><div class="quote">While artificial wombs hold enormous promise, society must carefully weigh their benefits against these ethical challenges.</div><p>雖然人工子宮前景非常可觀，社會仍必須謹慎權衡它們的好處與這些倫理挑戰。</p><p><strong>文法解析：</strong>While 在此引導讓步副詞子句，意思接近 although。主要子句是 society must carefully weigh...，must 表示強烈必要性。weigh A against B 是重要片語，表示「權衡 A 與 B」。carefully 是副詞，修飾 weigh，凸顯公共議題需要審慎判斷。</p><p><span class="pill">hold enormous promise：前景可觀</span><span class="pill">weigh...against...：權衡</span><span class="pill">ethical challenges：倫理挑戰</span></p></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊三】20個單字整理</h2>
+<div class="card vocab">
+<div class="head">單字整理 Vocabulary</div>
+<div class="body">
+<div class="word"><div class="vtop">1. moderate [ˈmɑdərɪt] adj. 適度的；中等的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>moderation (n. 適度；節制)；moderately (adv. 適度地)；moderate (v. 緩和)</span><span class="tag idiom">慣用語</span><span>moderate exercise 適度運動；moderate gaming 適度遊戲；a moderately difficult task 中等難度的任務</span><span class="tag confuse">容易混淆</span><span>moderate 強調不過量；medium 多指尺寸、程度或大小為中等。</span></div><ul><li>Recent scientific studies suggest that moderate gaming may actually enhance cognitive abilities.<br>（近來的科學研究顯示，適度玩電玩可能實際提升認知能力。）</li><li>Moderate exercise after school can help students reduce stress.<br>（放學後適度運動可以幫助學生減輕壓力。）</li></ul></div>
+<div class="word"><div class="vtop">2. enhance [ɪnˈhæns] v. 提升；增強</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>enhancement (n. 提升；增強)；enhanced (adj. 提升的)；enhancer (n. 增強物)</span><span class="tag root">字根</span><span>en-「使成為」：enable 使能夠；enrich 使豐富；enlarge 擴大。</span><span class="tag idiom">慣用語</span><span>enhance performance 提升表現；enhance learning 增進學習；greatly enhance 大幅提升</span></div><ul><li>Moderate gaming may actually enhance cognitive abilities rather than harm them.<br>（適度玩電玩可能實際提升認知能力，而不是傷害它們。）</li><li>Reading English news can enhance your vocabulary and writing skills.<br>（閱讀英文新聞可以增進你的字彙量與寫作能力。）</li></ul></div>
+<div class="word"><div class="vtop">3. cognitive [ˈkɑɡnətɪv] adj. 認知的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>cognition (n. 認知)；cognitively (adv. 在認知上)；recognize (v. 認出)</span><span class="tag root">字根</span><span>cogn「知道」：recognize 認出；cognition 認知；unknown 未知的。</span><span class="tag idiom">慣用語</span><span>cognitive ability 認知能力；cognitive development 認知發展；highly cognitive tasks 高度認知任務</span></div><ul><li>Recent scientific studies suggest that moderate gaming may actually enhance cognitive abilities.<br>（近來的科學研究顯示，適度玩電玩可能實際提升認知能力。）</li><li>Chess is a cognitive activity that requires memory and planning.<br>（西洋棋是一種需要記憶與規劃的認知活動。）</li></ul></div>
+<div class="word"><div class="vtop">4. ability [əˈbɪlətɪ] n. 能力；才能</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>able (adj. 能夠的)；enable (v. 使能夠)；disabled (adj. 身心障礙的)</span><span class="tag root">字根</span><span>able「能」：enable 使能夠；unable 不能的；capable 有能力的。</span><span class="tag idiom">慣用語</span><span>cognitive abilities 認知能力；a remarkable ability 驚人的能力；the ability to solve problems 解決問題的能力</span><span class="tag focus">句型</span><span>the ability to V 中的 to 是不定詞，表示「做某事的能力」。</span></div><ul><li>Moderate gaming may actually enhance cognitive abilities rather than harm them.<br>（適度玩電玩可能實際提升認知能力，而不是傷害它們。）</li><li>The ability to stay calm is useful during an important exam.<br>（在重要考試中保持冷靜的能力很有用。）</li></ul></div>
+<div class="word"><div class="vtop">5. conduct [kənˈdʌkt] v. 進行；執行；指揮</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>conductor (n. 指揮；導體)；conductive (adj. 導電的)；conduction (n. 傳導)</span><span class="tag root">字根</span><span>duct「引導」：produce 生產；introduce 介紹；reduce 減少；educate 教育。</span><span class="tag phrase">片語</span><span>conduct research 進行研究；conduct a survey 進行調查；conduct an experiment 進行實驗</span></div><ul><li>Research conducted by the National Institutes of Health examined nearly 2,000 children.<br>（由美國國家衛生研究院進行的研究檢視了將近兩千名兒童。）</li><li>Our class conducted a survey about students' phone habits.<br>（我們班進行了一項關於學生手機習慣的調查。）</li></ul></div>
+<div class="word"><div class="vtop">6. examine [ɪɡˈzæmɪn] v. 檢視；檢查；測驗</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>examination (n. 檢查；考試)；examiner (n. 主考官)；exam (n. 考試)</span><span class="tag phrase">片語</span><span>examine evidence 檢視證據；examine a patient 檢查病人；closely examine 仔細檢視</span><span class="tag confuse">容易混淆</span><span>examine 偏向仔細檢查；test 偏向測試能力或效果。</span></div><ul><li>The study examined nearly 2,000 children.<br>（這項研究檢視了將近兩千名兒童。）</li><li>The doctor examined the patient before giving any medicine.<br>（醫生在給藥前先檢查病人。）</li></ul></div>
+<div class="word"><div class="vtop">7. outperform [ˌaʊtpɚˈfɔrm] v. 表現優於；勝過</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>performance (n. 表現)；performer (n. 表演者；執行者)；perform (v. 表現；執行)</span><span class="tag root">字根</span><span>out-「超過、在外」：outgrow 長得太大而不適用；outnumber 數量超過；outweigh 勝過。</span><span class="tag idiom">慣用語</span><span>outperform competitors 表現勝過競爭者；outperform expectations 超越期待；consistently outperform 持續表現優於</span></div><ul><li>Children who played video games regularly outperformed non-gamers on tests.<br>（經常玩電玩的孩子在測驗中表現優於非玩家。）</li><li>The new debate team outperformed many older teams this year.<br>（新的辯論隊今年表現勝過許多資深隊伍。）</li></ul></div>
+<div class="word"><div class="vtop">8. impulse [ˈɪmpʌls] n. 衝動；一時念頭；脈衝</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>impulsive (adj. 衝動的)；impulsively (adv. 衝動地)；impulsiveness (n. 衝動)</span><span class="tag phrase">片語</span><span>impulse control 衝動控制；on impulse 一時衝動；an impulsive decision 衝動的決定</span><span class="tag confuse">容易混淆</span><span>impulse 是突然想做某事的衝動；instinct 是本能反應。</span></div><ul><li>The tests measured attention, memory, and impulse control.<br>（這些測驗測量注意力、記憶力和衝動控制。）</li><li>She bought the expensive shoes on impulse and regretted it later.<br>（她一時衝動買了昂貴的鞋，後來很後悔。）</li></ul></div>
+<div class="word"><div class="vtop">9. reveal [rɪˈvil] v. 顯示；揭露</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>revelation (n. 揭露；啟示)；revealing (adj. 發人深省的；暴露的)；revealed (adj. 被揭露的)</span><span class="tag phrase">片語</span><span>reveal the truth 揭露真相；reveal evidence 顯示證據；clearly reveal 清楚顯示</span><span class="tag confuse">容易混淆</span><span>reveal 可指揭露未知資訊；show 較中性，表示顯示或展示。</span></div><ul><li>Brain imaging further revealed increased activity in regions responsible for decision-making.<br>（大腦影像進一步顯示負責決策區域的活動增加。）</li><li>The survey revealed that many students sleep less than seven hours.<br>（這項調查顯示許多學生睡不到七小時。）</li></ul></div>
+<div class="word"><div class="vtop">10. demonstrate [ˈdɛmənˌstret] v. 顯示；證明；示範</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>demonstration (n. 示範；證明；遊行)；demonstrator (n. 示範者；抗議者)；demonstrative (adj. 清楚表達的)</span><span class="tag phrase">片語</span><span>demonstrate improvement 顯示進步；demonstrate a skill 示範技巧；clearly demonstrate 清楚證明</span></div><ul><li>Adults who gamed for a few hours weekly demonstrated improved spatial reasoning.<br>（每週玩幾小時電玩的成人展現了改善的空間推理能力。）</li><li>The experiment demonstrated how heat changes the shape of metal.<br>（這個實驗示範了熱如何改變金屬的形狀。）</li></ul></div>
+<div class="word"><div class="vtop">11. spatial [ˈspeʃəl] adj. 空間的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>space (n. 空間)；spatially (adv. 在空間上)；spacious (adj. 寬敞的)</span><span class="tag idiom">慣用語</span><span>spatial reasoning 空間推理；spatial awareness 空間感；strong spatial skills 強大的空間能力</span><span class="tag confuse">容易混淆</span><span>spatial 指空間關係；special 指特別的，發音相近但意義不同。</span></div><ul><li>Adults who gamed weekly demonstrated improved spatial reasoning and faster reaction times.<br>（每週玩電玩的成人展現了改善的空間推理與更快的反應時間。）</li><li>Building models can improve students' spatial skills.<br>（製作模型可以提升學生的空間能力。）</li></ul></div>
+<div class="word"><div class="vtop">12. excessive [ɪkˈsɛsɪv] adj. 過度的；過量的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>excess (n. 過量)；excessively (adv. 過度地)；exceed (v. 超過)</span><span class="tag root">字根</span><span>ex-「向外、超出」：export 出口；exceed 超過；extra 額外的。</span><span class="tag idiom">慣用語</span><span>excessive use 過度使用；excessive pressure 過大壓力；excessively strict 過度嚴格</span></div><ul><li>Excessive playtime can still lead to negative consequences.<br>（過度的遊玩時間仍可能導致負面後果。）</li><li>Excessive screen time may affect a teenager's sleep quality.<br>（過度的螢幕時間可能影響青少年的睡眠品質。）</li></ul></div>
+<div class="word"><div class="vtop">13. consequence [ˈkɑnsəˌkwɛns] n. 後果；結果；重要性</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>consequent (adj. 隨之發生的)；consequently (adv. 因此)；sequence (n. 順序)</span><span class="tag phrase">片語</span><span>negative consequences 負面後果；serious consequences 嚴重後果；face the consequences 承擔後果</span><span class="tag confuse">容易混淆</span><span>consequence 常指行為造成的後果；result 是較中性的結果。</span></div><ul><li>Excessive playtime can still lead to negative consequences.<br>（過度的遊玩時間仍可能導致負面後果。）</li><li>If we ignore the warning, we may face serious consequences.<br>（如果我們忽視警告，可能會面臨嚴重後果。）</li></ul></div>
+<div class="word"><div class="vtop">14. artificial [ˌɑrtəˈfɪʃəl] adj. 人工的；人造的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>artificially (adv. 人工地)；artifact (n. 人工製品)；artifice (n. 巧計)</span><span class="tag idiom">慣用語</span><span>artificial intelligence 人工智慧；artificial womb 人工子宮；artificial light 人造光</span><span class="tag confuse">容易混淆</span><span>artificial 強調非自然形成；fake 常含有欺騙或仿冒意味。</span></div><ul><li>Scientists are developing artificial womb technology.<br>（科學家正在開發人工子宮科技。）</li><li>Artificial light can help plants grow indoors.<br>（人造光可以幫助植物在室內生長。）</li></ul></div>
+<div class="word"><div class="vtop">15. revolutionize [ˌrɛvəˈluʃəˌnaɪz] v. 徹底改變；使革命化</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>revolution (n. 革命；重大變革)；revolutionary (adj. 革命性的)；revolutionized (adj. 被徹底改變的)</span><span class="tag phrase">片語</span><span>revolutionize care 徹底改變照護；revolutionize education 徹底改變教育；a revolutionary technology 革命性科技</span></div><ul><li>Artificial womb technology could revolutionize care for extremely premature babies.<br>（人工子宮科技可能徹底改變極早產兒的照護方式。）</li><li>The Internet has revolutionized the way people share information.<br>（網際網路已徹底改變人們分享資訊的方式。）</li></ul></div>
+<div class="word"><div class="vtop">16. premature [ˌpriməˈtjʊr] adj. 早產的；過早的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>prematurely (adv. 過早地)；mature (adj. 成熟的)；maturity (n. 成熟)</span><span class="tag root">字根</span><span>pre-「之前」：preview 預覽；predict 預測；prepare 準備。</span><span class="tag idiom">慣用語</span><span>premature babies 早產兒；a premature decision 過早的決定；premature aging 早衰</span></div><ul><li>The technology could revolutionize care for extremely premature babies.<br>（這項科技可能徹底改變極早產兒的照護方式。）</li><li>It is premature to judge the plan before we see the results.<br>（在看到結果之前判斷這個計畫還太早。）</li></ul></div>
+<div class="word"><div class="vtop">17. mimic [ˈmɪmɪk] v. 模仿；模擬</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>mimicry (n. 模仿)；mimetic (adj. 模仿的)；mimicked (adj. 被模仿的)</span><span class="tag phrase">片語</span><span>mimic conditions 模擬環境；mimic behavior 模仿行為；closely mimic 精準模擬</span><span class="tag confuse">容易混淆</span><span>mimic 可指生物、科技或行為的模擬；imitate 常指人刻意模仿他人。</span></div><ul><li>The artificial placenta supplies oxygen and nutrients, mimicking the conditions within the mother's body.<br>（人造胎盤供應氧氣與營養，模擬母體內的環境。）</li><li>The robot can mimic simple human movements.<br>（這台機器人可以模仿簡單的人類動作。）</li></ul></div>
+<div class="word"><div class="vtop">18. complication [ˌkɑmpləˈkeʃən] n. 併發症；複雜情況</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>complicate (v. 使複雜)；complicated (adj. 複雜的)；complicatedly (adv. 複雜地)</span><span class="tag root">字根</span><span>com-「一起」+ plic「摺疊」：complex 複雜的；multiply 增加；duplicate 複製。</span><span class="tag idiom">慣用語</span><span>life-threatening complications 危及生命的併發症；medical complications 醫療併發症；a complicated issue 複雜議題</span></div><ul><li>Babies born between 24 and 28 weeks often face life-threatening complications.<br>（24 到 28 週出生的嬰兒常面臨危及生命的併發症。）</li><li>The surgery was successful, but doctors still watched for complications.<br>（手術很成功，但醫師仍注意是否出現併發症。）</li></ul></div>
+<div class="word"><div class="vtop">19. survival [sɚˈvaɪvəl] n. 存活；生存</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>survive (v. 存活)；survivor (n. 倖存者)；surviving (adj. 尚存的)</span><span class="tag root">字根</span><span>viv「生命」：vivid 生動的；revive 使復甦；vital 重要的。</span><span class="tag idiom">慣用語</span><span>survival rates 存活率；survival skills 生存技能；a strong survival instinct 強烈求生本能</span></div><ul><li>Their survival rates could improve dramatically.<br>（他們的存活率可能大幅改善。）</li><li>Clean water is necessary for human survival.<br>（乾淨的水是人類生存所必需的。）</li></ul></div>
+<div class="word"><div class="vtop">20. ethical [ˈɛθɪkəl] adj. 倫理的；合乎道德的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>ethics (n. 倫理學；道德準則)；ethically (adv. 合乎倫理地)；unethical (adj. 不道德的)</span><span class="tag idiom">慣用語</span><span>ethical concerns 倫理疑慮；ethical challenges 倫理挑戰；highly ethical behavior 高度合乎道德的行為</span><span class="tag confuse">容易混淆</span><span>ethical 指倫理或職業道德；moral 較常指個人或社會的是非觀。</span></div><ul><li>This revolutionary technology raises profound ethical concerns.<br>（這項革命性科技引發深刻的倫理疑慮。）</li><li>Scientists must make ethical decisions when using new technology.<br>（科學家使用新科技時必須做出合乎倫理的決定。）</li></ul></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="card grammar">
+<div class="head">文法解析 Grammar Focus</div>
+<div class="body">
+<div class="grammar-point"><h3>【分詞簡化關係子句】Reduced Relative Clauses 分詞簡化關係子句</h3><p><strong>【引句 Quote】</strong></p><blockquote>Research conducted by the National Institutes of Health examined nearly 2,000 children.</blockquote><p><strong>【句型】</strong></p><p><strong><em>N + V-ed / V-ing + ... + V</em></strong></p><p><strong>【核心說明】</strong></p><p>分詞片語可以放在名詞後面，功能類似形容詞子句，使句子更精簡。若名詞與動作是被動關係，使用過去分詞；若是主動或正在進行的關係，使用現在分詞。</p><p><strong>【使用規則】</strong></p><ul><li>過去分詞表示「被……的」，如 research conducted by...。</li><li>現在分詞表示「正在……的」或「主動……的」，如 tests measuring attention。</li><li>化簡時通常刪除關係代名詞與 be 動詞。</li><li>分詞片語必須緊靠它修飾的名詞，避免修飾對象不清楚。</li></ul><p><strong>【主題例句】</strong></p><p>Children tested in the study showed different levels of attention.<br>（研究中接受測試的兒童展現不同程度的注意力。）</p><p><strong>【學習提醒】</strong></p><p>看到名詞後面直接接 V-ing 或 V-ed，不要急著把它當主要動詞；先判斷它是不是修飾前面名詞的分詞片語。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Research was conducted by the institute examined 2,000 children.</p><p>✓ Research conducted by the institute examined 2,000 children.（conducted 是分詞，不可再保留 was。）</p><p>試題：The device ________ by the team may help premature babies.<br>A. developing B. developed C. develops D. develop</p><p>答案：B。說明：device 與 develop 是被動關係，應用過去分詞 developed。</p></div>
+<div class="grammar-point"><h3>【形容詞子句】Relative Clauses 關係子句</h3><p><strong>【引句 Quote】</strong></p><blockquote>Scientists are developing artificial womb technology that could revolutionize care for extremely premature babies.</blockquote><p><strong>【句型】</strong></p><p><strong><em>N + who / which / that + V + ...</em></strong></p><p><strong>【核心說明】</strong></p><p>形容詞子句用來補充或限定前面的名詞，也就是先行詞。本文中的 that could revolutionize... 修飾 artificial womb technology，說明這種科技可能具有的影響。</p><p><strong>【使用規則】</strong></p><ul><li>who 通常修飾人，which 修飾事物或動物。</li><li>that 可修飾人或事物，但多用在限定子句。</li><li>逗號隔開的非限定子句通常不用 that。</li><li>關係子句中的動詞必須和其真正主詞一致。</li></ul><p><strong>【主題例句】</strong></p><p>The study that examined young gamers attracted public attention.<br>（那項檢視年輕玩家的研究引起大眾注意。）</p><p><strong>【學習提醒】</strong></p><p>關係子句不是獨立句子，它必須依附在名詞後面。寫作時要先確認先行詞，再選 who、which 或 that。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ The technology could help babies that was born too early.</p><p>✓ The technology could help babies who were born too early.（babies 是人且為複數，應用 who were。）</p><p>試題：Brain regions ________ process information may become more active.<br>A. who B. which C. where D. what</p><p>答案：B。說明：regions 是事物，且關係代名詞在子句中作主詞，應選 which。</p></div>
+<div class="grammar-point"><h3>【讓步副詞子句】Concessive Clauses 讓步子句</h3><p><strong>【引句 Quote】</strong></p><blockquote>While artificial wombs hold enormous promise, society must carefully weigh their benefits against these ethical challenges.</blockquote><p><strong>【句型】</strong></p><p><strong><em>Although / While + S + V, S + V</em></strong></p><p><strong>【核心說明】</strong></p><p>讓步副詞子句表示「雖然……但是……」，用來承認一個事實，同時提出主要觀點。本文用 While 承認人工子宮有巨大潛力，再指出社會仍需面對倫理挑戰。</p><p><strong>【使用規則】</strong></p><ul><li>although、though、while 都可表示讓步，正式寫作常用 although 或 while。</li><li>英文中 although 和 but 通常不要同時放在同一句的兩個子句前。</li><li>讓步子句放句首時，後面通常加逗號。</li><li>while 也可表示「然而」，需依上下文判斷。</li></ul><p><strong>【主題例句】</strong></p><p>Although video games may improve attention, excessive playtime can harm sleep.<br>（雖然電玩可能改善注意力，過度遊玩仍可能傷害睡眠。）</p><p><strong>【學習提醒】</strong></p><p>讓步句的重點通常在主要子句。寫作時可用它來呈現平衡觀點，特別適合討論科技、健康與社會議題。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Although artificial wombs are promising, but they raise ethical concerns.</p><p>✓ Although artificial wombs are promising, they raise ethical concerns.（although 已有「雖然」語意，不需再加 but。）</p><p>試題：______ the device may save lives, it also raises difficult questions.<br>A. Because B. While C. So D. Unless</p><p>答案：B。說明：前後語意形成讓步與轉折，應使用 While。</p></div>
+</div>
+</div>
+</section>
+
+<details><summary>折疊一：常見字首整理（50 個）<span class="arrow">⌄</span></summary><div class="detail-body">
+<div class="mini">ab-　離開、相反　—　abnormal（異常的）</div><div class="mini">ad-　向、加　—　advance（前進）</div><div class="mini">ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="mini">anti-　反對、抗　—　antibiotic（抗生素）</div><div class="mini">arch-　主要、首要　—　archenemy（死敵）</div><div class="mini">auto-　自動、自我　—　autograph（親筆簽名）</div><div class="mini">bene-　好的、善　—　benefit（好處）</div><div class="mini">bi-　二、雙　—　bilingual（雙語的）</div><div class="mini">circum-　環繞、周圍　—　circumstance（情況）</div><div class="mini">co-/con-/com-　一起、共同　—　cooperate（合作）</div><div class="mini">contra-　相反、對抗　—　contradict（反駁）</div><div class="mini">de-　去除、下降　—　decode（解碼）</div><div class="mini">dia-　穿過、透過　—　dialogue（對話）</div><div class="mini">dis-　否定、分離　—　disagree（不同意）</div><div class="mini">en-/em-　使成為　—　enable（使能夠）</div><div class="mini">epi-　在上、在外　—　epidemic（流行病）</div><div class="mini">ex-　外、前任　—　export（出口）；ex-president（前總統）</div><div class="mini">extra-　額外、外部　—　extraordinary（非凡的）</div><div class="mini">hetero-　不同　—　heterogeneous（異質的）</div><div class="mini">homo-　相同　—　homogeneous（同質的）</div><div class="mini">hyper-　過度、超　—　hyperactive（過動的）</div><div class="mini">hypo-　低於、不足　—　hypodermic（皮下的）</div><div class="mini">in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="mini">inter-　在…之間　—　international（國際的）</div><div class="mini">iso-　相等、相同　—　isolate（隔離）</div><div class="mini">mal-　壞、不良　—　malfunction（故障）</div><div class="mini">micro-　微小　—　microscope（顯微鏡）</div><div class="mini">mis-　錯誤　—　misunderstand（誤解）</div><div class="mini">mono-　單一　—　monologue（獨白）</div><div class="mini">multi-　多　—　multicultural（多元文化的）</div><div class="mini">neo-　新的　—　neonatal（新生的）</div><div class="mini">non-　非、沒有　—　nonsense（無意義）</div><div class="mini">pan-　全部　—　pandemic（大流行病）</div><div class="mini">peri-　周圍　—　perimeter（周長）</div><div class="mini">poly-　多　—　polygon（多邊形）</div><div class="mini">post-　之後　—　postwar（戰後的）</div><div class="mini">pre-　之前　—　preview（預覽）</div><div class="mini">pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="mini">pseudo-　假的　—　pseudonym（筆名）</div><div class="mini">re-　再、回　—　review（複習）</div><div class="mini">semi-　一半、部分　—　semicircle（半圓）</div><div class="mini">sub-　在下、次級　—　subway（地鐵）</div><div class="mini">super-　超越、在上　—　superstar（超級明星）</div><div class="mini">syn-/sym-　一起、共同　—　synchronize（同步）</div><div class="mini">tele-　遠距　—　telephone（電話）</div><div class="mini">trans-　穿越、轉變　—　transport（運輸）</div><div class="mini">tri-　三　—　triangle（三角形）</div><div class="mini">ultra-　超過、極端　—　ultraviolet（紫外線的）</div><div class="mini">un-　否定、不　—　unhappy（不快樂的）</div><div class="mini">vice-　副、代替　—　vice-president（副總統）</div>
+</div></details>
+
+<details><summary>折疊二：常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary><div class="detail-body">
+<h3>名詞字尾</h3><div class="mini">-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</div><div class="mini">-ment　行為或結果　—　agreement（協議）、development（發展）</div><div class="mini">-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div><div class="mini">-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div><div class="mini">-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</div><div class="mini">-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div><div class="mini">-ship　身分或關係　—　friendship（友誼）、leadership（領導）</div><div class="mini">-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div><div class="mini">-ance/-ence　狀態或性質　—　importance（重要性）、difference（差異）</div><div class="mini">-age　集合、費用或狀態　—　package（包裹）、shortage（短缺）</div><div class="mini">-ery/-ry　行為、場所或狀態　—　bakery（麵包店）、bravery（勇敢）</div><h3>形容詞字尾</h3><div class="mini">-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</div><div class="mini">-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</div><div class="mini">-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div><div class="mini">-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div><div class="mini">-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</div><div class="mini">-ive　具有…傾向的　—　active（活躍的）、creative（有創造力的）</div><div class="mini">-ary/-ory　與…有關的　—　ordinary（普通的）、advisory（顧問的）</div><div class="mini">-ant/-ent　具有…性質的　—　important（重要的）、different（不同的）</div><div class="mini">-y　充滿…的　—　healthy（健康的）、cloudy（多雲的）</div><h3>動詞字尾</h3><div class="mini">-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</div><div class="mini">-ify　使成為…　—　beautify（美化）、clarify（澄清）</div><div class="mini">-ate　形成動詞　—　dominate（支配）、activate（啟動）</div><div class="mini">-en　使變成…　—　strengthen（加強）、soften（使柔軟）</div><h3>副詞字尾</h3><div class="mini">-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div><div class="mini">-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</div><div class="mini">-wise　表示方式或角度　—　clockwise（順時針方向）</div>
+</div></details>
+
+<details><summary>折疊三：30個常用單字與衍生詞<span class="arrow">⌄</span></summary><div class="detail-body">
+<div class="mini">1. parent [ˈpɛrənt] (n. 父母之一) — parental guidance（父母指導）</div><div class="mini">2. warn [wɔrn] (v. 警告) — warning [ˈwɔrnɪŋ] (n. 警告)</div><div class="mini">3. scientific [ˌsaɪənˈtɪfɪk] (adj. 科學的) — science [ˈsaɪəns] (n. 科學)</div><div class="mini">4. study [ˈstʌdɪ] (n./v. 研究；學習) — research study（研究）</div><div class="mini">5. attention [əˈtɛnʃən] (n. 注意力) — pay attention to（注意）</div><div class="mini">6. memory [ˈmɛmərɪ] (n. 記憶力) — memorable [ˈmɛmərəbəl] (adj. 難忘的)</div><div class="mini">7. control [kənˈtrol] (n./v. 控制) — self-control（自制力）</div><div class="mini">8. region [ˈridʒən] (n. 區域) — regional [ˈridʒənəl] (adj. 區域的)</div><div class="mini">9. decision [dɪˈsɪʒən] (n. 決定) — decision-making（決策）</div><div class="mini">10. processing [ˈprɑsɛsɪŋ] (n. 處理) — process [ˈprɑsɛs] (v./n. 處理；過程)</div><div class="mini">11. participant [pɑrˈtɪsəpənt] (n. 參與者) — participate [pɑrˈtɪsəˌpet] (v. 參與)</div><div class="mini">12. reaction [riˈækʃən] (n. 反應) — react [riˈækt] (v. 反應)</div><div class="mini">13. benefit [ˈbɛnəfɪt] (n./v. 好處；受益) — beneficial [ˌbɛnəˈfɪʃəl] (adj. 有益的)</div><div class="mini">14. harmful [ˈhɑrmfəl] (adj. 有害的) — harm [hɑrm] (n./v. 傷害)</div><div class="mini">15. distraction [dɪˈstrækʃən] (n. 分心事物) — distract [dɪˈstrækt] (v. 使分心)</div><div class="mini">16. technology [tɛkˈnɑlədʒɪ] (n. 科技) — technological [ˌtɛknəˈlɑdʒɪkəl] (adj. 科技的)</div><div class="mini">17. device [dɪˈvaɪs] (n. 裝置) — electronic device（電子裝置）</div><div class="mini">18. sealed [sild] (adj. 密封的) — seal [sil] (v. 密封)</div><div class="mini">19. fluid [ˈfluɪd] (n. 液體) — body fluid（體液）</div><div class="mini">20. infant [ˈɪnfənt] (n. 嬰兒) — infancy [ˈɪnfənsɪ] (n. 嬰兒期)</div><div class="mini">21. placenta [pləˈsɛntə] (n. 胎盤) — artificial placenta（人造胎盤）</div><div class="mini">22. nutrient [ˈnutrɪənt] (n. 營養素) — nutrition [nuˈtrɪʃən] (n. 營養)</div><div class="mini">23. condition [kənˈdɪʃən] (n. 條件；狀況) — living conditions（生活條件）</div><div class="mini">24. development [dɪˈvɛləpmənt] (n. 發展) — develop [dɪˈvɛləp] (v. 發展)</div><div class="mini">25. dramatically [drəˈmætɪkəlɪ] (adv. 大幅地) — dramatic [drəˈmætɪk] (adj. 戲劇性的；大幅的)</div><div class="mini">26. profound [prəˈfaʊnd] (adj. 深刻的) — profound concern（深刻憂慮）</div><div class="mini">27. boundary [ˈbaʊndərɪ] (n. 界線) — blur boundaries（模糊界線）</div><div class="mini">28. access [ˈækˌsɛs] (n./v. 取得；使用權) — access to（取得……的機會）</div><div class="mini">29. inequality [ˌɪnɪˈkwɑlətɪ] (n. 不平等) — equal [ˈikwəl] (adj. 平等的)</div><div class="mini">30. commercialization [kəˌmɝʃələˈzeʃən] (n. 商業化) — commercialize [kəˈmɝʃəˌlaɪz] (v. 商業化)</div>
+<p><strong>文章相關常用片語 5 個：</strong></p><p>• rot their brains（使腦袋變笨）<br>• rather than（而不是）<br>• lead to（導致）<br>• life-threatening complications（危及生命的併發症）<br>• weigh their benefits against challenges（權衡好處與挑戰）</p>
+</div></details>
+
+<details><summary>折疊四：練文筆食材<span class="arrow">⌄</span></summary><div class="detail-body">
+<p>① rather than + V（而不是……）<br>→ 適用：對比兩種可能結果。<br>例：The policy should protect students rather than limit their choices.</p>
+<p>② those who + V（那些……的人）<br>→ 適用：指稱具有共同特徵的一群人。<br>例：Those who sleep well often perform better in class.</p>
+<p>③ be responsible for + N/V-ing（負責……；是……的原因）<br>→ 適用：說明功能或責任。<br>例：This part of the brain is responsible for memory.</p>
+<p>④ as though + S + V（彷彿……）<br>→ 適用：描述看似如此但不一定真實的情況。<br>例：He spoke as though he had already solved the problem.</p>
+<p>⑤ lead to + N/V-ing（導致……）<br>→ 適用：說明原因與結果。<br>例：Excessive stress can lead to poor sleep.</p>
+<p>⑥ while + S + V, S + V（雖然……，……）<br>→ 適用：呈現平衡觀點。<br>例：While technology is useful, it also raises new problems.</p>
+<p>⑦ be connected to + N（連接到……；與……有關）<br>→ 適用：描述裝置連結或概念關聯。<br>例：Good study habits are connected to long-term success.</p>
+<p>⑧ according to + N（根據……）<br>→ 適用：引用資料來源或研究說法。<br>例：According to the survey, many teenagers use phones before bed.</p>
+<p>⑨ by + V-ing（藉由……）<br>→ 適用：說明方法或手段。<br>例：By reviewing notes daily, students can remember more.</p>
+<p>⑩ potentially + V-ing（可能會……）<br>→ 適用：說明尚未確定但可能發生的影響。<br>例：The new rule could help students, potentially reducing exam stress.</p>
+<p>⑪ provide A with B（提供 A 某物）<br>→ 適用：說明供應或支援。<br>例：Libraries provide students with quiet places to study.</p>
+<p>⑫ weigh A against B（權衡 A 與 B）<br>→ 適用：討論利弊、風險與價值。<br>例：We must weigh convenience against privacy.</p>
+</div></details>
+<nav class="link-panel bottom" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">錯中學 ECHO 計劃</span>
+<p class="link-desc">用錯題回饋整理學習盲點，幫助學生把常錯題型轉成穩定得分能力。</p>
+<span class="link-url">linwayet.github.io/4ulive</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">學生分析</span>
+<p class="link-desc">整理學生學習狀態與弱點分布，提供更清楚的複習方向與課程安排依據。</p>
+<span class="link-url">linwayet.github.io/popup</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-badge">Line 聯絡</span>
+<span class="link-name">林威老師 Line：linwayet</span>
+<p class="link-desc">課程詢問、教材需求與學習規劃可透過 Line 帳號聯繫。</p>
+<span class="link-url">line.me/ti/p/~linwayet</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
