@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Round 1 — Why Photons Beat Electrons | Silicon Photonics</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:     #FDF6EC;
+  --warm0:     #FFF9F0;
+  --warm1:     #FEF0D3;
+  --warm2:     #FDDBA0;
+  --amber:     #E8970A;
+  --amber-l:   #F5B528;
+  --orange:    #D95F2B;
+  --orange-l:  #F07848;
+  --brown:     #7A4718;
+  --brown-m:   #A0612A;
+  --brown-l:   #C8895A;
+  --ink:       #2C1A0E;
+  --ink-m:     #5A3A22;
+  --ink-l:     #8B6040;
+  --teal:      #1A8C7A;
+  --teal-l:    #D0F5F0;
+  --blue:      #1E5FA8;
+  --blue-l:    #D0E8FF;
+  --red:       #B83030;
+  --red-l:     #FFE0E0;
+  --green:     #2E7D32;
+  --green-l:   #E0F5E0;
+  --shadow:    rgba(122,71,24,0.12);
+  --shadow-m:  rgba(122,71,24,0.22);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  line-height: 1.75;
+  background-image:
+    radial-gradient(ellipse at 5% 10%, rgba(232,151,10,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 95% 85%, rgba(217,95,43,0.06) 0%, transparent 45%);
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--brown);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 12px var(--shadow-m);
+}
+.progress-label {
+  color: var(--warm2);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.progress-bar-outer {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--amber-l), var(--orange-l));
+  border-radius: 3px;
+  transition: width 0.1s;
+}
+.progress-time {
+  color: rgba(255,220,160,0.7);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* ===== NAV ===== */
+.nav-strip {
+  background: linear-gradient(135deg, #2C1A0E 0%, #5A3A22 60%, #7A4718 100%);
+  padding: 14px 20px;
+}
+.nav-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.nav-label {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,220,160,0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.nav-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 50px;
+  text-decoration: none; font-size: 12px; font-weight: 700;
+  transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.nav-btn:hover { transform: translateY(-2px); }
+.nav-btn.echo  { background: linear-gradient(135deg,#D95F2B,#B84820); color:#fff; }
+.nav-btn.study { background: linear-gradient(135deg,#E8970A,#C07A08); color:#fff; }
+.nav-btn.line  { background: linear-gradient(135deg,#06C755,#04A040); color:#fff; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(155deg, #2C1A0E 0%, #7A4718 45%, #C8895A 80%, #E8C88A 100%);
+  padding: 52px 20px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'hν';
+  position: absolute;
+  font-family: 'Lora', serif;
+  font-size: 220px;
+  font-style: italic;
+  color: rgba(255,255,255,0.04);
+  right: -20px; top: -20px;
+  pointer-events: none;
+  line-height: 1;
+}
+.hero-round {
+  display: inline-block;
+  background: rgba(232,151,10,0.3);
+  border: 1px solid rgba(232,151,10,0.5);
+  color: #FFD580;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 18px; border-radius: 50px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(24px, 6vw, 40px);
+  font-weight: 700;
+  color: white;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.hero h1 em { color: #FFD580; font-style: italic; }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,230,190,0.85);
+  max-width: 560px; margin: 0 auto 28px;
+  line-height: 1.7;
+}
+.hero-chips {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.chip {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 7px 16px;
+  border-radius: 50px; font-size: 12px;
+  backdrop-filter: blur(4px);
+}
+.chip strong { color: #FFD580; }
+
+/* ===== LAYOUT ===== */
+.page { max-width: 820px; margin: 0 auto; padding: 36px 18px 60px; }
+
+/* ===== TOC ===== */
+.toc-box {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin-bottom: 36px;
+  box-shadow: 0 3px 18px var(--shadow);
+  border-left: 5px solid var(--amber);
+}
+.toc-box h3 {
+  font-size: 14px; font-weight: 700; color: var(--brown);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.toc-list { list-style: none; counter-reset: toc; }
+.toc-list li {
+  counter-increment: toc;
+  padding: 5px 0 5px 28px;
+  position: relative;
+  font-size: 13.5px; color: var(--ink-m);
+  border-bottom: 1px dashed rgba(200,137,90,0.2);
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-list li::before {
+  content: counter(toc, decimal-leading-zero);
+  position: absolute; left: 0;
+  color: var(--amber); font-weight: 700; font-size: 12px;
+}
+.toc-list a {
+  color: inherit; text-decoration: none;
+  transition: color 0.2s;
+}
+.toc-list a:hover { color: var(--orange); }
+
+/* ===== SECTIONS ===== */
+.section { margin-bottom: 48px; }
+.section-anchor { scroll-margin-top: 60px; }
+
+.section-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--warm1);
+}
+.section-num {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--amber), var(--orange));
+  color: white; font-weight: 700; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; box-shadow: 0 3px 10px rgba(217,95,43,0.3);
+}
+.section-head h2 {
+  font-family: 'Lora', serif;
+  font-size: clamp(18px, 4vw, 23px);
+  font-weight: 700; color: var(--brown);
+  line-height: 1.3;
+}
+
+/* ===== BODY TEXT ===== */
+.body-text p {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--ink-m);
+  margin-bottom: 18px;
+}
+.body-text p:last-child { margin-bottom: 0; }
+.body-text strong { color: var(--brown); font-weight: 700; }
+.body-text em { color: var(--orange); font-style: italic; }
+
+/* ===== CALLOUT BOXES ===== */
+.callout {
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 22px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.callout-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.callout-content { flex: 1; }
+.callout-content strong {
+  display: block; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.callout-content p {
+  font-size: 14px; line-height: 1.7; margin: 0;
+}
+.callout.insight  { background: #FFF8E8; border-left: 4px solid var(--amber); }
+.callout.insight .callout-content strong { color: var(--amber); }
+.callout.insight .callout-content p { color: var(--ink-m); }
+.callout.analogy  { background: #E8F8F5; border-left: 4px solid var(--teal); }
+.callout.analogy  .callout-content strong { color: var(--teal); }
+.callout.analogy  .callout-content p { color: #1A4A40; }
+.callout.warning  { background: #FFF0E5; border-left: 4px solid var(--orange); }
+.callout.warning  .callout-content strong { color: var(--orange); }
+.callout.warning  .callout-content p { color: #5A2A10; }
+.callout.data     { background: #E8F0FF; border-left: 4px solid var(--blue); }
+.callout.data     .callout-content strong { color: var(--blue); }
+.callout.data     .callout-content p { color: #1A2A50; }
+
+/* ===== SVG DIAGRAMS ===== */
+.diagram-wrap {
+  background: white;
+  border-radius: 18px;
+  padding: 24px 20px;
+  margin: 24px 0;
+  box-shadow: 0 4px 20px var(--shadow);
+  overflow: hidden;
+}
+.diagram-wrap h4 {
+  font-size: 13px; font-weight: 700; color: var(--brown);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 16px; text-align: center;
+}
+.diagram-wrap svg { display: block; width: 100%; height: auto; }
+.diagram-caption {
+  font-size: 12px; color: var(--ink-l); text-align: center;
+  margin-top: 12px; line-height: 1.5; font-style: italic;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  background: white; border-radius: 14px;
+  overflow: hidden; box-shadow: 0 4px 18px var(--shadow);
+  margin: 24px 0; font-size: 13.5px;
+}
+.compare-table thead tr {
+  background: linear-gradient(135deg, #7A4718, #C8895A);
+  color: white;
+}
+.compare-table thead th {
+  padding: 13px 16px; text-align: left;
+  font-weight: 700; font-size: 13px;
+}
+.compare-table tbody tr:nth-child(even) { background: var(--warm0); }
+.compare-table tbody tr:nth-child(odd)  { background: white; }
+.compare-table tbody tr:hover { background: var(--warm1); }
+.compare-table tbody td {
+  padding: 11px 16px; color: var(--ink-m);
+  vertical-align: top; line-height: 1.5;
+  border-bottom: 1px solid rgba(200,137,90,0.1);
+}
+.compare-table tbody td:first-child { font-weight: 600; color: var(--brown); }
+.badge-bad  { display:inline-block; background:var(--red-l);   color:var(--red);   border-radius:50px; padding:2px 10px; font-size:11px; font-weight:700; }
+.badge-good { display:inline-block; background:var(--green-l); color:var(--green); border-radius:50px; padding:2px 10px; font-size:11px; font-weight:700; }
+.badge-mid  { display:inline-block; background:var(--warm1);   color:var(--brown); border-radius:50px; padding:2px 10px; font-size:11px; font-weight:700; }
+
+/* ===== VOCAB CARDS ===== */
+.vocab-section { margin: 36px 0; }
+.vocab-section h3 {
+  font-family: 'Lora', serif;
+  font-size: 19px; font-weight: 700; color: var(--brown);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.vocab-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 3px 14px var(--shadow);
+  border-top: 4px solid var(--amber);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vocab-card:hover { transform: translateY(-3px); box-shadow: 0 7px 22px var(--shadow-m); }
+.vocab-term {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px; font-weight: 500;
+  color: var(--orange); margin-bottom: 4px;
+}
+.vocab-phonetic {
+  font-size: 12px; color: var(--ink-l);
+  font-style: italic; margin-bottom: 8px;
+}
+.vocab-def {
+  font-size: 13.5px; color: var(--ink-m); line-height: 1.6;
+  margin-bottom: 8px;
+}
+.vocab-formula {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; background: var(--warm1);
+  color: var(--brown); padding: 4px 10px;
+  border-radius: 6px; display: inline-block;
+  margin-bottom: 8px;
+}
+.vocab-example {
+  font-size: 12px; color: var(--ink-l);
+  border-left: 3px solid var(--warm2);
+  padding-left: 10px; line-height: 1.5;
+  font-style: italic;
+}
+
+/* ===== QUOTE ===== */
+.pull-quote {
+  border-left: 6px solid var(--amber);
+  padding: 16px 22px;
+  margin: 28px 0;
+  background: var(--warm0);
+  border-radius: 0 14px 14px 0;
+}
+.pull-quote blockquote {
+  font-family: 'Lora', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--brown); line-height: 1.7;
+  margin-bottom: 8px;
+}
+.pull-quote cite {
+  font-size: 12px; color: var(--ink-l);
+  font-style: normal; font-weight: 600;
+}
+
+/* ===== DATA BAR ===== */
+.data-bars { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+.db-row { display: flex; align-items: center; gap: 12px; }
+.db-label { width: 160px; font-size: 13px; color: var(--ink-m); flex-shrink: 0; font-weight: 500; }
+.db-bar-wrap { flex: 1; height: 22px; background: var(--warm1); border-radius: 11px; overflow: hidden; position: relative; }
+.db-bar { height: 100%; border-radius: 11px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; transition: width 1s ease; }
+.db-val { font-size: 11px; font-weight: 700; color: white; }
+
+/* ===== KNOWLEDGE CHECK ===== */
+.quiz-section {
+  background: linear-gradient(135deg, #2C1A0E, #5A3A22);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin: 40px 0 20px;
+  color: white;
+}
+.quiz-section h3 {
+  font-family: 'Lora', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--warm2);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.quiz-item { margin-bottom: 22px; }
+.quiz-item:last-child { margin-bottom: 0; }
+.quiz-q {
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,230,190,0.95);
+  margin-bottom: 10px; line-height: 1.5;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 7px; }
+.quiz-opt {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px; padding: 10px 16px;
+  font-size: 13px; color: rgba(255,230,190,0.85);
+  cursor: pointer; transition: all 0.2s;
+  text-align: left; width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+.quiz-opt:hover { background: rgba(255,200,100,0.15); border-color: rgba(255,200,100,0.4); }
+.quiz-opt.correct { background: rgba(46,125,50,0.3); border-color: #66BB6A; color: #A5D6A7; }
+.quiz-opt.wrong   { background: rgba(183,28,28,0.3); border-color: #EF5350; color: #FFCDD2; }
+.quiz-feedback {
+  margin-top: 10px; padding: 10px 14px;
+  border-radius: 10px; font-size: 13px;
+  display: none; line-height: 1.5;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.ok  { background: rgba(46,125,50,0.25); color: #A5D6A7; }
+.quiz-feedback.err { background: rgba(183,28,28,0.2);  color: #FFCDD2; }
+
+/* ===== SUMMARY BOX ===== */
+.summary-box {
+  background: linear-gradient(135deg, var(--warm1), var(--warm2));
+  border-radius: 18px;
+  padding: 26px 24px;
+  margin: 36px 0;
+  box-shadow: 0 4px 20px rgba(200,140,60,0.25);
+}
+.summary-box h3 {
+  font-family: 'Lora', serif;
+  font-size: 18px; font-weight: 700; color: var(--brown);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.summary-list { list-style: none; }
+.summary-list li {
+  font-size: 14px; color: var(--ink-m);
+  padding: 7px 0 7px 28px; position: relative;
+  border-bottom: 1px dashed rgba(160,97,42,0.2);
+  line-height: 1.6;
+}
+.summary-list li:last-child { border-bottom: none; }
+.summary-list li::before {
+  content: '✓';
+  position: absolute; left: 4px;
+  color: var(--amber); font-weight: 700;
+}
+
+/* ===== FOOTER / NEXT ===== */
+.next-card {
+  background: linear-gradient(135deg, var(--orange), var(--amber));
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(217,95,43,0.3);
+  margin-bottom: 16px;
+}
+.next-card h4 { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+.next-card p  { font-size: 18px; font-weight: 700; color: white; margin-bottom: 16px; font-family: 'Lora', serif; }
+.next-btn {
+  display: inline-block;
+  background: white; color: var(--orange);
+  font-weight: 800; font-size: 14px;
+  padding: 11px 26px; border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s;
+}
+.next-btn:hover { transform: scale(1.04); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  .vocab-grid { grid-template-columns: 1fr; }
+  .db-label { width: 130px; font-size: 12px; }
+  .compare-table { font-size: 12px; }
+  .compare-table thead th, .compare-table tbody td { padding: 9px 11px; }
+}
+
+/* ===== FADE IN ===== */
+.fade-in { animation: fi 0.5s ease both; }
+@keyframes fi { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.section { animation: fi 0.5s ease both; }
+.section:nth-child(1){animation-delay:.05s}
+.section:nth-child(2){animation-delay:.10s}
+.section:nth-child(3){animation-delay:.15s}
+.section:nth-child(4){animation-delay:.20s}
+.section:nth-child(5){animation-delay:.25s}
+.section:nth-child(6){animation-delay:.30s}
+</style>
+</head>
+<body>
+
+<!-- Reading progress -->
+<div class="progress-wrap">
+  <span class="progress-label">Round 1 / 8 &nbsp;·&nbsp; Why Photons Beat Electrons</span>
+  <div class="progress-bar-outer"><div class="progress-bar-inner" id="prog"></div></div>
+  <span class="progress-time" id="prog-time">~10 min</span>
+</div>
+
+<!-- Top nav -->
+<div class="nav-strip">
+  <div class="nav-inner">
+    <div class="nav-label">林威老師 · 七月開課 · 個人聯繫</div>
+    <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-btn echo">🎯 錯中學 ECHO 計劃</a>
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-btn study">📊 學生分析工具</a>
+    <a href="https://line.me/ti/p/~linwayet" target="_blank" class="nav-btn line">💬 LINE: linwayet</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-round">Round 01 · Silicon Photonics Micro-Course</div>
+  <h1>Why Photons Beat Electrons:<br><em>The Physics of the AI Energy Crisis</em></h1>
+  <p class="hero-sub">A ~3,500-word deep dive for EE &amp; ChemE seniors. No hand-waving — we go straight to the physics, thermodynamics, and engineering trade-offs that are reshaping data-center architecture.</p>
+  <div class="hero-chips">
+    <div class="chip">⏱ ~10 min read</div>
+    <div class="chip">🎯 Target: <strong>EE / ChemE Senior</strong></div>
+    <div class="chip">🔑 <strong>12</strong> key vocabulary terms</div>
+    <div class="chip">📊 <strong>4</strong> diagrams &amp; tables</div>
+  </div>
+</div>
+
+<!-- Page -->
+<div class="page">
+
+  <!-- TOC -->
+  <div class="toc-box fade-in">
+    <h3>📋 Contents</h3>
+    <ul class="toc-list">
+      <li><a href="#s1">The Scale Problem — Why Your GPU Cluster Is a Furnace</a></li>
+      <li><a href="#s2">The Copper Wall — Three Hard Limits of Electrical Interconnects</a></li>
+      <li><a href="#s3">Light to the Rescue — Photon Physics 101</a></li>
+      <li><a href="#s4">The Energy Math — 5× to 20× Less Power, Explained</a></li>
+      <li><a href="#s5">The Industry Moment — Jensen Huang's "Once-in-a-Lifetime" Bet</a></li>
+      <li><a href="#s6">Key Vocabulary (12 Terms)</a></li>
+      <li><a href="#s7">Knowledge Check</a></li>
+      <li><a href="#s8">Round 1 Summary</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== SECTION 1 ===== -->
+  <div class="section" id="s1">
+    <div class="section-anchor"></div>
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <h2>The Scale Problem — Why Your GPU Cluster Is a Furnace</h2>
+    </div>
+    <div class="body-text">
+      <p>Imagine a single NVIDIA H100 GPU. It draws approximately <strong>700 watts</strong> of power — roughly the same as a small household microwave running continuously, 24 hours a day, 7 days a week. Now imagine ten thousand of them packed into a data center. That's 7 megawatts for the GPUs alone, before counting cooling, networking, storage, or power delivery. Now imagine a million GPUs. The numbers stop feeling like engineering and start feeling like planetary infrastructure.</p>
+
+      <p>This is not a hypothetical. <strong>NVIDIA's roadmap for AI supercomputers</strong> — systems like Eos, Helios, and the forthcoming Rubin-class AI factories — explicitly calls for GPU clusters at the scale of hundreds of thousands to millions of chips. Meta's new AI training supercluster, as of early 2025, consists of approximately 600,000 H100 GPUs. OpenAI and Microsoft are planning facilities in the multi-gigawatt range. The <em>aggregate electrical demand of AI infrastructure</em> is becoming a significant fraction of some nations' grid capacity.</p>
+
+      <p>Here is a crucial insight that gets lost in the hype: <strong>only about 30–40% of the energy entering a modern GPU cluster goes toward actual computation</strong>. The rest is spent on two things: cooling, and <em>moving data between chips</em>. The second item — interconnect energy — is the central problem this course addresses. As model sizes scale and GPU count grows, interconnects become the dominant energy consumer, not the compute itself.</p>
+
+      <div class="callout insight">
+        <div class="callout-icon">💡</div>
+        <div class="callout-content">
+          <strong>Engineering Insight</strong>
+          <p>In a 2025-era AI training cluster, a conventional pluggable optical transceiver (QSFP-DD800) draws approximately <strong>30 watts per port</strong>. A single top-of-rack switch might have 64 such ports: 1,920 W just for the optical interfaces. In a rack of 8 switches, that's ~15 kW — before a single FLOP of computation is performed.</p>
+        </div>
+      </div>
+
+      <p>The energy crisis in AI is fundamentally a <strong>data movement crisis</strong>. Every time a tensor is passed from one GPU to another — across a PCB, through a cable, into a switch, and back — electromagnetic energy is dissipated as heat in resistive conductors, reactive parasitics, and analog front-end circuits. At small scale, this is acceptable. At the scale of modern AI infrastructure, it is the primary bottleneck to both performance and sustainability.</p>
+
+      <p>As electrical engineering seniors, you will immediately recognize the core problem: <strong>signal integrity degrades with distance and frequency</strong>. The faster and farther you push electrons through copper, the more energy you waste, and the harder it becomes to recover a clean signal at the receiver. This trade-off has driven interconnect engineering for decades — and it has now hit a wall.</p>
+    </div>
+
+    <!-- Diagram 1: Power breakdown -->
+    <div class="diagram-wrap">
+      <h4>Fig 1.1 — Estimated Power Breakdown in a 1,000-GPU AI Training Cluster</h4>
+      <div class="data-bars" id="db1">
+        <div class="db-row">
+          <div class="db-label">GPU Compute</div>
+          <div class="db-bar-wrap"><div class="db-bar" style="width:38%;background:linear-gradient(90deg,#D95F2B,#F07848)"><span class="db-val">38%</span></div></div>
+        </div>
+        <div class="db-row">
+          <div class="db-label">Cooling</div>
+          <div class="db-bar-wrap"><div class="db-bar" style="width:28%;background:linear-gradient(90deg,#E8970A,#F5B528)"><span class="db-val">28%</span></div></div>
+        </div>
+        <div class="db-row">
+          <div class="db-label">Networking (copper/opt.)</div>
+          <div class="db-bar-wrap"><div class="db-bar" style="width:20%;background:linear-gradient(90deg,#7A4718,#C8895A)"><span class="db-val">20%</span></div></div>
+        </div>
+        <div class="db-row">
+          <div class="db-label">Memory &amp; Storage</div>
+          <div class="db-bar-wrap"><div class="db-bar" style="width:9%;background:linear-gradient(90deg,#1A8C7A,#40BCA0)"><span class="db-val">9%</span></div></div>
+        </div>
+        <div class="db-row">
+          <div class="db-label">Power Delivery Loss</div>
+          <div class="db-bar-wrap"><div class="db-bar" style="width:5%;background:linear-gradient(90deg,#1E5FA8,#4A90D9)"><span class="db-val">5%</span></div></div>
+        </div>
+      </div>
+      <p class="diagram-caption">Source: Synthesized from NVIDIA, Google, and Meta infrastructure disclosures (2024–2025). Cooling includes both air-cooling and liquid-cooling overhead. Networking includes NIC cards, cables, and switch active power.</p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2 ===== -->
+  <div class="section" id="s2">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <h2>The Copper Wall — Three Hard Limits of Electrical Interconnects</h2>
+    </div>
+    <div class="body-text">
+      <p>Copper has been the backbone of electrical interconnects since Samuel Morse. It is abundant, machinable, solderable, and has electrical conductivity second only to silver among common metals (<em>σ ≈ 5.96 × 10⁷ S/m at 20°C</em>). For a century of electronics, copper worked magnificently. But three physical phenomena — <strong>skin effect</strong>, <strong>dielectric loss</strong>, and <strong>impedance discontinuities</strong> — combine at multi-gigabit data rates to create what engineers call "the copper wall."</p>
+
+      <p><strong>1. Skin Effect and Resistive Loss.</strong> At high frequencies, alternating current does not distribute uniformly across the cross-section of a conductor. Due to electromagnetic induction, current concentrates near the surface within a characteristic depth known as the <em>skin depth</em> (δ). For copper: <code>δ = √(2ρ / ωμ)</code>, where ρ is resistivity, ω is angular frequency, and μ is permeability. At 112 GHz (the SerDes lane rate in current 800G transceivers), δ ≈ 0.2 µm — a fraction of the conductor cross-section. Effective resistance rises as √f, making signal attenuation severe at high lane rates. A 1-meter copper trace at 112 Gbaud loses 20–30 dB of signal power.</p>
+
+      <p><strong>2. Dielectric Loss.</strong> The insulating material surrounding a copper trace is not a perfect vacuum. Even low-loss PCB laminates (e.g., Rogers 4350B, Dk ≈ 3.66, Df ≈ 0.0037) absorb electromagnetic energy as the alternating field drives dipole relaxation in the polymer matrix. Dielectric loss also scales approximately with frequency, compounding the skin-effect problem. Together, these losses limit practical copper channel lengths to <em>roughly 5–10 cm at 100 Gbaud</em> without the use of linear redriver or decision feedback equalization (DFE) circuits — which themselves consume power and add latency.</p>
+
+      <p><strong>3. Crosstalk and EMI.</strong> Packing copper traces at high density creates <strong>electromagnetic coupling</strong> between adjacent channels. Near-end crosstalk (NEXT) and far-end crosstalk (FEXT) impose constraints on trace spacing, effectively limiting the bandwidth-per-area (port density) achievable on a PCB or cable. In contrast, optical signals propagating in separate waveguides or fibers are immune to electromagnetic crosstalk — a critical advantage at scale.</p>
+    </div>
+
+    <!-- Diagram 2: Copper vs photon channel -->
+    <div class="diagram-wrap">
+      <h4>Fig 2.1 — Signal Attenuation: Copper Trace vs. Single-Mode Optical Fiber</h4>
+      <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif">
+        <!-- Background -->
+        <rect width="720" height="320" fill="#FFFCF5" rx="12"/>
+        <!-- Grid -->
+        <g stroke="#F0E8D8" stroke-width="1">
+          <line x1="80" y1="40" x2="680" y2="40"/>
+          <line x1="80" y1="100" x2="680" y2="100"/>
+          <line x1="80" y1="160" x2="680" y2="160"/>
+          <line x1="80" y1="220" x2="680" y2="220"/>
+          <line x1="80" y1="280" x2="680" y2="280"/>
+          <line x1="80" y1="40" x2="80" y2="280"/>
+          <line x1="228" y1="40" x2="228" y2="280"/>
+          <line x1="376" y1="40" x2="376" y2="280"/>
+          <line x1="524" y1="40" x2="524" y2="280"/>
+          <line x1="680" y1="40" x2="680" y2="280"/>
+        </g>
+        <!-- Y axis labels -->
+        <text x="72" y="44" text-anchor="end" font-size="11" fill="#A0612A">0</text>
+        <text x="72" y="104" text-anchor="end" font-size="11" fill="#A0612A">-5</text>
+        <text x="72" y="164" text-anchor="end" font-size="11" fill="#A0612A">-10</text>
+        <text x="72" y="224" text-anchor="end" font-size="11" fill="#A0612A">-15</text>
+        <text x="72" y="284" text-anchor="end" font-size="11" fill="#A0612A">-20</text>
+        <!-- X axis labels -->
+        <text x="80"  y="298" text-anchor="middle" font-size="11" fill="#A0612A">0</text>
+        <text x="228" y="298" text-anchor="middle" font-size="11" fill="#A0612A">2 cm</text>
+        <text x="376" y="298" text-anchor="middle" font-size="11" fill="#A0612A">5 cm</text>
+        <text x="524" y="298" text-anchor="middle" font-size="11" fill="#A0612A">10 cm</text>
+        <text x="680" y="298" text-anchor="middle" font-size="11" fill="#A0612A">20 cm</text>
+        <!-- Axis title -->
+        <text x="400" y="315" text-anchor="middle" font-size="12" fill="#7A4718" font-weight="600">Channel Length</text>
+        <text x="16" y="170" text-anchor="middle" font-size="12" fill="#7A4718" font-weight="600" transform="rotate(-90,16,170)">Loss (dB)</text>
+        <!-- Copper line (steep) -->
+        <polyline points="80,40 150,80 228,128 300,168 376,210 450,245 524,268 680,282"
+          stroke="#D95F2B" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Fiber line (nearly flat) -->
+        <polyline points="80,40 228,41 376,42 524,43 680,45"
+          stroke="#1A8C7A" stroke-width="3" fill="none" stroke-dasharray="6,3" stroke-linecap="round"/>
+        <!-- Labels -->
+        <rect x="490" y="56" width="175" height="60" rx="8" fill="white" stroke="#F0E8D8"/>
+        <line x1="500" y1="75" x2="520" y2="75" stroke="#D95F2B" stroke-width="2.5"/>
+        <text x="526" y="79" font-size="12" fill="#D95F2B" font-weight="600">Copper (112 Gbaud)</text>
+        <line x1="500" y1="98" x2="520" y2="98" stroke="#1A8C7A" stroke-width="2.5" stroke-dasharray="5,3"/>
+        <text x="526" y="102" font-size="12" fill="#1A8C7A" font-weight="600">Single-Mode Fiber</text>
+        <!-- Annotation -->
+        <text x="400" y="230" font-size="12" fill="#D95F2B" font-weight="600">⚠ −15 dB at 10 cm</text>
+        <text x="400" y="246" font-size="11" fill="#D95F2B">Requires equalization</text>
+        <text x="590" y="54" font-size="12" fill="#1A8C7A" font-weight="600">~0.2 dB/km</text>
+        <text x="590" y="68" font-size="11" fill="#1A8C7A">negligible loss</text>
+      </svg>
+      <p class="diagram-caption">Approximate signal attenuation comparison. Copper at 112 Gbaud loses ~15 dB over 10 cm, requiring power-hungry equalization circuits. Single-mode fiber (1310 nm) loses only ~0.35 dB/km — four orders of magnitude better over longer distances.</p>
+    </div>
+
+    <div class="body-text">
+      <p>These three physical limits define the <strong>copper wall</strong>: a hard boundary beyond which electrical interconnects can no longer reliably deliver the bandwidth density and energy efficiency required by next-generation AI systems. Engineers have stretched copper further with equalization, pre-emphasis, FEC (forward error correction), and PAM4 modulation. But each technique adds latency, silicon area, and power — <em>compounding rather than solving the energy problem</em>.</p>
+
+      <div class="callout warning">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-content">
+          <strong>The Hard Number</strong>
+          <p>A conventional pluggable 800G transceiver (QSFP-DD800) in a large AI cluster consumes roughly <strong>30 W per port</strong>. If you are building a system with 100,000 such ports (realistic for a frontier AI cluster), that's 3 gigawatts just for the optical interfaces — more than the total electricity consumption of many mid-sized cities. This is why Jensen Huang calls the old approach "unsustainable."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison table -->
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Copper Interconnect</th>
+          <th>Silicon Photonics (CPO)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Signal attenuation</td>
+          <td><span class="badge-bad">~15 dB / 10 cm @ 112G</span></td>
+          <td><span class="badge-good">~1 dB / cm in Si waveguide</span></td>
+        </tr>
+        <tr>
+          <td>Bandwidth per channel</td>
+          <td><span class="badge-mid">≤ 112 Gbaud practical</span></td>
+          <td><span class="badge-good">1.6 Tb/s per port (WDM)</span></td>
+        </tr>
+        <tr>
+          <td>Power per port</td>
+          <td><span class="badge-bad">~30 W (QSFP-DD800)</span></td>
+          <td><span class="badge-good">~9 W (CPO target)</span></td>
+        </tr>
+        <tr>
+          <td>EMI / Crosstalk</td>
+          <td><span class="badge-bad">Significant at high density</span></td>
+          <td><span class="badge-good">None (optical isolation)</span></td>
+        </tr>
+        <tr>
+          <td>Maximum reach</td>
+          <td><span class="badge-bad">~1–5 m (active cable)</span></td>
+          <td><span class="badge-good">Kilometers (SMF)</span></td>
+        </tr>
+        <tr>
+          <td>Integration density</td>
+          <td><span class="badge-mid">Limited by PCB trace rules</span></td>
+          <td><span class="badge-good">CMOS-compatible, sub-µm features</span></td>
+        </tr>
+        <tr>
+          <td>Operating temperature sensitivity</td>
+          <td><span class="badge-good">Low — copper σ changes ~0.4%/°C</span></td>
+          <td><span class="badge-mid">Moderate — refractive index thermal tuning needed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== SECTION 3 ===== -->
+  <div class="section" id="s3">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <h2>Light to the Rescue — Photon Physics 101</h2>
+    </div>
+    <div class="body-text">
+      <p>To understand why light outperforms copper for data transmission, we need to revisit some undergraduate photonics. Specifically, we need to understand <strong>three properties of photons</strong> that give them a decisive advantage: their carrier frequency, their propagation mechanics, and their interaction (or lack thereof) with matter at telecommunications wavelengths.</p>
+
+      <p><strong>Carrier Frequency and Information Capacity.</strong> Shannon's information-theoretic channel capacity is bounded by bandwidth: <code>C = B · log₂(1 + SNR)</code>. Copper transmission at SerDes rates operates in the electrical domain at frequencies up to ~100 GHz. Optical carriers in the telecommunications C-band (1530–1565 nm) oscillate at approximately <strong>193 THz</strong> — nearly 2,000× higher than electrical carriers. This enormous carrier frequency is why a single optical fiber can carry terabits per second using wavelength-division multiplexing (WDM), with dozens of channels each modulated at 800 Gbps and beyond.</p>
+
+      <p><strong>Propagation in Dielectric Waveguides.</strong> Optical fibers and on-chip silicon waveguides guide light through <em>total internal reflection</em>. The guided mode travels in a dielectric medium (glass or silicon) rather than on the surface of a conductor, and does not generate resistive heat. The primary loss mechanisms in silica fiber — Rayleigh scattering and material absorption — are astonishingly low: <strong>~0.2 dB/km</strong> at 1550 nm. Compare this to copper cable, which attenuates ~10 dB/cm at 112 GHz. For on-chip silicon waveguides, propagation loss is higher (~2–3 dB/cm) due to sidewall roughness, but the signal path is measured in millimeters or centimeters, making total insertion loss acceptable.</p>
+
+      <p><strong>No Resistive Dissipation.</strong> This is the key thermodynamic argument. In a copper interconnect, signal energy is dissipated as Joule heat <code>P = I²R</code> in the resistive bulk of the conductor and skin-limited surface. In an optical waveguide, the photon carries energy <code>E = hν</code> and interacts weakly with the dielectric medium — the primary loss is scattering, not ohmic dissipation. There is no current flow, no Joule heating, and no power proportional to bandwidth. This is why <strong>photon-based signaling is inherently more energy-efficient per bit at high data rates</strong>.</p>
+    </div>
+
+    <div class="callout analogy">
+      <div class="callout-icon">🚆</div>
+      <div class="callout-content">
+        <strong>Engineering Analogy</strong>
+        <p>Think of copper interconnects as a crowded urban highway: as you add more cars (bits), friction (resistance), congestion (crosstalk), and fuel consumption (power) all increase together. Photonic interconnects are more like a maglev rail system: the "vehicles" (photons) don't physically contact the track medium, multiple trains run simultaneously on different frequency "lanes" (WDM channels), and speed does not increase fuel consumption the way it does for wheeled vehicles. The infrastructure cost is in the terminal equipment — modulators and detectors — not in the transmission medium itself.</p>
+      </div>
+    </div>
+
+    <!-- Diagram 3: WDM concept -->
+    <div class="diagram-wrap">
+      <h4>Fig 3.1 — Wavelength Division Multiplexing (WDM): How One Fiber Carries Multiple Independent Data Streams</h4>
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif">
+        <rect width="720" height="260" fill="#FFFCF5" rx="12"/>
+        <!-- Labels left side -->
+        <text x="20" y="50" font-size="12" fill="#D95F2B" font-weight="600">λ₁ · 800G</text>
+        <text x="20" y="95" font-size="12" fill="#E8970A" font-weight="600">λ₂ · 800G</text>
+        <text x="20" y="140" font-size="12" fill="#1A8C7A" font-weight="600">λ₃ · 800G</text>
+        <text x="20" y="185" font-size="12" fill="#1E5FA8" font-weight="600">λ₄ · 800G</text>
+        <!-- Wavy lines representing signals -->
+        <path d="M 90 48 Q110,36 130,48 Q150,60 170,48 Q190,36 210,48 Q230,60 250,48" stroke="#D95F2B" stroke-width="2" fill="none"/>
+        <path d="M 90 93 Q110,81 130,93 Q150,105 170,93 Q190,81 210,93 Q230,105 250,93" stroke="#E8970A" stroke-width="2" fill="none"/>
+        <path d="M 90 138 Q110,126 130,138 Q150,150 170,138 Q190,126 210,138 Q230,150 250,138" stroke="#1A8C7A" stroke-width="2" fill="none"/>
+        <path d="M 90 183 Q110,171 130,183 Q150,195 170,183 Q190,171 210,183 Q230,195 250,183" stroke="#1E5FA8" stroke-width="2" fill="none"/>
+        <!-- MUX box -->
+        <rect x="260" y="25" width="70" height="185" rx="10" fill="#F5E8D0" stroke="#C8895A" stroke-width="2"/>
+        <text x="295" y="120" text-anchor="middle" font-size="13" fill="#7A4718" font-weight="700">MUX</text>
+        <!-- Combined fiber -->
+        <rect x="345" y="95" width="180" height="28" rx="14" fill="none" stroke="#7A4718" stroke-width="2.5" stroke-dasharray="8,4"/>
+        <path d="M 345 109 Q435,109 435,109" stroke="none"/>
+        <!-- Inside fiber: all colors -->
+        <path d="M 350 105 Q400,98 460,105 Q500,110 525,105" stroke="#D95F2B" stroke-width="1.5" fill="none" opacity="0.8"/>
+        <path d="M 350 109 Q400,103 460,109 Q500,114 525,109" stroke="#E8970A" stroke-width="1.5" fill="none" opacity="0.8"/>
+        <path d="M 350 113 Q400,108 460,113 Q500,118 525,113" stroke="#1A8C7A" stroke-width="1.5" fill="none" opacity="0.8"/>
+        <path d="M 350 117 Q400,112 460,117 Q500,122 525,117" stroke="#1E5FA8" stroke-width="1.5" fill="none" opacity="0.8"/>
+        <text x="435" y="88" text-anchor="middle" font-size="12" fill="#7A4718" font-weight="600">Single Fiber</text>
+        <text x="435" y="140" text-anchor="middle" font-size="11" fill="#7A4718">WDM: λ₁+λ₂+λ₃+λ₄</text>
+        <!-- DEMUX box -->
+        <rect x="530" y="25" width="70" height="185" rx="10" fill="#F5E8D0" stroke="#C8895A" stroke-width="2"/>
+        <text x="565" y="120" text-anchor="middle" font-size="13" fill="#7A4718" font-weight="700">DEMUX</text>
+        <!-- Output labels -->
+        <path d="M 600 48 Q650,48 665,48" stroke="#D95F2B" stroke-width="2"/>
+        <path d="M 600 93 Q650,93 665,93" stroke="#E8970A" stroke-width="2"/>
+        <path d="M 600 138 Q650,138 665,138" stroke="#1A8C7A" stroke-width="2"/>
+        <path d="M 600 183 Q650,183 665,183" stroke="#1E5FA8" stroke-width="2"/>
+        <text x="670" y="52" font-size="12" fill="#D95F2B" font-weight="600">λ₁ · 800G</text>
+        <text x="670" y="97" font-size="12" fill="#E8970A" font-weight="600">λ₂ · 800G</text>
+        <text x="670" y="142" font-size="12" fill="#1A8C7A" font-weight="600">λ₃ · 800G</text>
+        <text x="670" y="187" font-size="12" fill="#1E5FA8" font-weight="600">λ₄ · 800G</text>
+        <!-- Total label -->
+        <text x="435" y="230" text-anchor="middle" font-size="13" fill="#7A4718" font-weight="700">Total bandwidth: 4 × 800G = 3.2 Tb/s — on a single hair-thin fiber</text>
+      </svg>
+      <p class="diagram-caption">WDM allows multiple independent wavelengths (λ₁, λ₂, …) to co-propagate in a single optical fiber without interference. Each wavelength is a completely independent channel. NVIDIA's Spectrum-X Photonics switch uses this principle to achieve 1.6 Tb/s per port and 400 Tb/s total switch capacity.</p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 4 ===== -->
+  <div class="section" id="s4">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <h2>The Energy Math — 5× to 20× Less Power, Explained</h2>
+    </div>
+    <div class="body-text">
+      <p>The oft-cited claim that "photon transmission requires 5 to 20× less energy than electron transmission" is not marketing language — it is a thermodynamic statement with a specific physical basis. Let's work through the energy budget carefully.</p>
+
+      <p>In a conventional high-speed electrical link, <strong>energy per bit (E/bit)</strong> is determined primarily by the charge displacement required to swing the voltage across the capacitive load of the channel: <code>E/bit = C · V² / 2</code>, where C is the total line capacitance (pad + trace + receiver ESD) and V is the signal swing. At 112 Gbaud PAM4, with V ≈ 200 mV and a typical C ≈ 400 fF (for a 10 cm copper channel), E/bit ≈ 8 pJ/bit. Modern SerDes circuits achieve closer to 3–5 pJ/bit at short reach, but the channel capacitance dominates at longer distances.</p>
+
+      <p>In a silicon photonic link, <strong>E/bit is dominated by three components</strong>: the laser source, the electro-optic modulator, and the photodetector. A ring resonator modulator in a 65 nm silicon photonics process (as used in NVIDIA's CPO switch) has a switching energy of approximately <strong>10–50 fJ/bit</strong> — far below the pJ/bit regime of copper. The laser typically consumes ~1–3 mW per wavelength (continuous wave), and the photoreceiver adds another 0.5–1 mW. For a 100 Gbps channel, total optical link power is approximately 5–10 mW, yielding <strong>0.05–0.1 pJ/bit</strong>. This is 30× to 100× lower than copper at equivalent reach.</p>
+
+      <p>The full-system comparison is closer to <strong>5× to 20× advantage</strong> because the optical link requires laser bias power, thermal tuning of resonators, and driver amplifiers — all of which add overhead. But even with this overhead, the fundamental physics strongly favors photons: <em>no charge must be moved to represent a bit, only an optical phase or amplitude must be shifted</em>.</p>
+
+      <div class="callout data">
+        <div class="callout-icon">📐</div>
+        <div class="callout-content">
+          <strong>The ChemE Perspective — Thermodynamic Efficiency</strong>
+          <p>For chemical engineering students: think of this as a Carnot efficiency argument applied to information. Moving charge through a resistor is irreversible — the Joule heat is lost entropy. Encoding information in photon phase or amplitude is far closer to reversible at the physical limit, because the photon medium (glass, silicon waveguide) does not dissipate energy proportional to bit rate. The fundamental limit on E/bit is set by the Landauer bound (~kT·ln2 ≈ 3 × 10⁻²¹ J/bit at 300 K), which is more than 12 orders of magnitude below current optical links — enormous headroom for improvement.</p>
+        </div>
+      </div>
+
+      <p>Corning CEO Wendell Weeks articulated this clearly in his May 2026 interview with CNBC: <em>"Transmitting photons requires 5 to 20 times less energy than transmitting electrons."</em> This is not just a cost argument — it is a <strong>thermodynamic ceiling argument</strong>. At AI scale, if you don't switch to photons, the laws of physics prevent you from building larger systems. Copper interconnects are not merely inconvenient; they are thermodynamically prohibited at the scale of AI factories with millions of GPUs.</p>
+    </div>
+
+    <!-- Diagram 4: E/bit comparison -->
+    <div class="diagram-wrap">
+      <h4>Fig 4.1 — Energy per Bit Comparison: Copper SerDes vs. Silicon Photonic CPO Link</h4>
+      <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif">
+        <rect width="720" height="280" fill="#FFFCF5" rx="12"/>
+        <!-- Copper bar -->
+        <rect x="100" y="60" width="400" height="60" rx="10"
+          fill="url(#grad1)" opacity="0.9"/>
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#D95F2B"/>
+            <stop offset="100%" stop-color="#F07848"/>
+          </linearGradient>
+          <linearGradient id="grad2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1A8C7A"/>
+            <stop offset="100%" stop-color="#40BCA0"/>
+          </linearGradient>
+        </defs>
+        <text x="90" y="57" text-anchor="end" font-size="13" fill="#7A4718" font-weight="700">Copper SerDes</text>
+        <text x="90" y="72" text-anchor="end" font-size="11" fill="#A0612A">(112 Gbaud, 10 cm)</text>
+        <text x="510" y="97" font-size="14" fill="white" font-weight="700">3–8 pJ / bit</text>
+        <!-- Photonic bar (much smaller) -->
+        <rect x="100" y="160" width="50" height="60" rx="10"
+          fill="url(#grad2)" opacity="0.9"/>
+        <text x="90" y="157" text-anchor="end" font-size="13" fill="#1A5A4A" font-weight="700">Si Photonic CPO</text>
+        <text x="90" y="172" text-anchor="end" font-size="11" fill="#2A7A6A">(1.6 Tb/s, CPO)</text>
+        <text x="162" y="197" font-size="13" fill="white" font-weight="700">0.1–0.5 pJ</text>
+        <!-- Ratio annotation -->
+        <line x1="152" y1="120" x2="152" y2="160" stroke="#7A4718" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <rect x="155" y="132" width="95" height="22" rx="8" fill="#FFF0D0" stroke="#E8970A"/>
+        <text x="202" y="147" text-anchor="middle" font-size="12" fill="#7A4718" font-weight="700">≈ 10–30× less</text>
+        <!-- Scale note -->
+        <text x="400" y="255" text-anchor="middle" font-size="12" fill="#A0612A" font-style="italic">
+          Bar widths represent relative energy per bit (log-approximate scale for clarity)
+        </text>
+      </svg>
+      <p class="diagram-caption">At identical data rates, silicon photonic CPO links consume roughly 10–30× less energy per bit versus copper SerDes at 10 cm reach. The "5–20×" system-level figure accounts for laser biasing overhead, thermal control, and driver circuits not present in the pure-physics comparison.</p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5 ===== -->
+  <div class="section" id="s5">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <h2>The Industry Moment — Jensen Huang's "Once-in-a-Lifetime" Bet</h2>
+    </div>
+    <div class="body-text">
+      <p>Understanding the physics is necessary — but to fully appreciate the magnitude of what is happening in 2025–2026, you need to situate the technology in its industrial context. The silicon photonics revolution is not a gradual incremental upgrade. It is a <strong>discontinuous architectural shift</strong>, and the financial commitments being made are commensurate with that reality.</p>
+
+      <p>In March 2025 at GTC, NVIDIA unveiled its <strong>Spectrum-X Photonics</strong> and <strong>Quantum-X Photonics</strong> switch platforms — the first co-packaged optical (CPO) switch products at hyperscale. These systems achieve 400 Tb/s total bandwidth by integrating silicon photonic engines (built on TSMC's COUPE platform with SoIC-X packaging) directly adjacent to the switching ASIC, eliminating the PCB-to-transceiver signal path. The result: energy efficiency improves 3.5×, signal integrity improves 63×, and system resilience improves 10× versus pluggable solutions.</p>
+
+      <div class="pull-quote">
+        <blockquote>"AI factories are a whole new class of data center at enormous scale. The network infrastructure must be reinvented to keep up. NVIDIA has integrated silicon photonics directly into the switch, breaking through the constraints that have limited hyperscale and enterprise networking — and opening the door to AI factories with millions of GPUs."</blockquote>
+        <cite>— Jensen Huang, NVIDIA CEO, GTC 2025</cite>
+      </div>
+
+      <p>Two months later, in May 2026, NVIDIA announced a partnership with Corning — the 175-year-old glass science company that invented low-loss optical fiber in 1970 — that represents perhaps the largest single commitment to photonic infrastructure in history. <strong>NVIDIA will invest up to $3.2 billion (USD) in Corning equity</strong>, plus additional billions in prepaid supply agreements. Three new advanced manufacturing facilities are being built in North Carolina and Texas. The outcome: US optical manufacturing capacity increases 10×, US fiber production capacity increases >50%. An estimated 3,000 high-skill jobs are created.</p>
+
+      <p>The strategic logic is clear. NVIDIA is not merely buying a component supplier. It is <strong>vertically integrating the entire photonic supply chain</strong> — from laser components (Coherent, $4B investment, March 2025; Lumentum, concurrent), to switching ASICs (TSMC COUPE), to optical fiber and interconnect hardware (Corning). This mirrors what happened in DRAM, NAND flash, and advanced logic packaging: as a technology becomes strategic, hyperscalers and platform companies take supply-chain ownership.</p>
+
+      <p>For you, as engineers entering the workforce in this era: this is the <strong>defining infrastructure transition of your early career</strong>. Every company building AI infrastructure will face the silicon photonics decision within 3–5 years. The engineers who understand the physics — the skin effect, the WDM channel capacity, the CPO integration trade-offs — will be the ones who make those architectural decisions.</p>
+
+      <div class="callout insight">
+        <div class="callout-icon">🎯</div>
+        <div class="callout-content">
+          <strong>Why It Matters to EE &amp; ChemE Graduates</strong>
+          <p>EE graduates: Silicon photonics is the intersection of your RF/microwave knowledge (SerDes, signal integrity), photonics (waveguides, modulators), and semiconductor fabrication (CMOS-compatible processes). ChemE graduates: Corning's role is materials science at the core — ultra-low-loss silica glass composition, fiber drawing, specialty glass wafers for photonic integration. The supply chain demand will extend deep into specialty materials chemistry, glass fiber manufacturing process engineering, and photonic packaging materials. Both disciplines are essential to this transition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 6: VOCABULARY ===== -->
+  <div class="section" id="s6">
+    <div class="vocab-section">
+      <h3>🔑 Key Vocabulary — 12 Essential Terms</h3>
+      <div class="vocab-grid">
+
+        <div class="vocab-card">
+          <div class="vocab-term">Skin Effect</div>
+          <div class="vocab-phonetic">/skɪn ɪˈfɛkt/</div>
+          <div class="vocab-def">The tendency of alternating current to concentrate near the surface of a conductor, reducing effective cross-sectional area and increasing resistance at high frequencies.</div>
+          <div class="vocab-formula">δ = √(2ρ / ωμ)</div>
+          <div class="vocab-example">"At 112 GHz, the skin depth in copper is ~0.2 µm — current uses less than 0.01% of the conductor's cross-section."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">PAM4</div>
+          <div class="vocab-phonetic">/ˌpiː eɪ ˈɛm fɔːr/</div>
+          <div class="vocab-def">Pulse-Amplitude Modulation with 4 levels. Each symbol carries 2 bits by encoding information in one of four distinct voltage levels, doubling spectral efficiency at the cost of reduced noise margin.</div>
+          <div class="vocab-example">"NVIDIA's 112 Gbaud SerDes uses PAM4, achieving 224 Gbps per lane — but requires aggressive equalization to combat copper loss."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">CPO</div>
+          <div class="vocab-phonetic">/ˌsiː piː ˈoʊ/ — Co-Packaged Optics</div>
+          <div class="vocab-def">Integration of optical transceiver components directly adjacent to a switching ASIC within the same package, eliminating the PCB signal path and dramatically reducing interconnect power.</div>
+          <div class="vocab-example">"NVIDIA's Quantum-X Photonics switch uses CPO to cut per-port power from 30 W to ~9 W."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">WDM</div>
+          <div class="vocab-phonetic">/ˌdʌbəljuː diː ˈɛm/ — Wavelength Division Multiplexing</div>
+          <div class="vocab-def">A technique where multiple independent data streams, each at a different optical wavelength (color of light), are combined and transmitted simultaneously through a single optical fiber or waveguide.</div>
+          <div class="vocab-formula">C_total = Σ B_λᵢ (all channels)</div>
+          <div class="vocab-example">"Using 4-wavelength CWDM, a single fiber carries 4 × 800G = 3.2 Tb/s."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">Silicon Waveguide</div>
+          <div class="vocab-phonetic">/ˈsɪlɪkən ˈweɪvɡaɪd/</div>
+          <div class="vocab-def">A nanoscale optical channel formed by etching a high-refractive-index silicon core (n ≈ 3.48) surrounded by a lower-index cladding (SiO₂, n ≈ 1.44), guiding light by total internal reflection on a CMOS chip.</div>
+          <div class="vocab-example">"Silicon waveguides are ~450 nm wide — 100× thinner than a human hair — yet confine and guide light at telecom wavelengths."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">PIC / EIC</div>
+          <div class="vocab-phonetic">Photonic / Electronic Integrated Circuit</div>
+          <div class="vocab-def">A PIC integrates optical functions (waveguides, modulators, detectors) on a single substrate. An EIC integrates transistor-based functions. CPO stacks a PIC and EIC together using 3D packaging.</div>
+          <div class="vocab-example">"TSMC's COUPE platform bonds a 65 nm EIC to a silicon PIC using SoIC-X, enabling sub-millimeter optical-electrical interfaces."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">Ring Resonator Modulator</div>
+          <div class="vocab-phonetic">/rɪŋ ˈrɛzəneɪtər ˈmɒdjʊleɪtər/</div>
+          <div class="vocab-def">A microscale optical resonator (ring-shaped silicon waveguide, ~10 µm diameter) that couples to a bus waveguide. Applying a voltage shifts the resonance frequency via the plasma dispersion effect, encoding data onto the optical carrier.</div>
+          <div class="vocab-formula">E_switch ≈ 10–50 fJ/bit</div>
+          <div class="vocab-example">"Ring resonators achieve ~10–50 fJ/bit switching energy, orders of magnitude below copper SerDes."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">Insertion Loss</div>
+          <div class="vocab-phonetic">/ɪnˈsɜːʃən lɒs/</div>
+          <div class="vocab-def">The reduction in optical power caused by inserting a component (connector, modulator, waveguide) into an optical path, expressed in decibels: IL = 10 log(P_out / P_in).</div>
+          <div class="vocab-example">"Corning's FAU (Fiber Array Unit) achieves very low insertion loss through precision core alignment — critical for multi-channel CPO systems."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">SerDes</div>
+          <div class="vocab-phonetic">/ˈsɜːdɛz/ — Serializer/Deserializer</div>
+          <div class="vocab-def">A high-speed analog/mixed-signal circuit that serializes parallel data for electrical transmission and deserializes it at the receiver. The dominant electrical interconnect technology in current AI networking.</div>
+          <div class="vocab-example">"NVIDIA's Spectrum-X uses 200 Gbps SerDes lanes — but each lane still consumes ~2 pJ/bit in copper mode."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">FEC</div>
+          <div class="vocab-phonetic">/ˌɛf iː ˈsiː/ — Forward Error Correction</div>
+          <div class="vocab-def">An encoding technique that adds redundant bits to a data stream before transmission, allowing the receiver to detect and correct bit errors without retransmission. Used extensively in high-speed copper links to compensate for signal degradation.</div>
+          <div class="vocab-example">"25% overhead FEC adds latency and power — photonic links can often operate with lower FEC overhead due to superior SNR."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">Rayleigh Scattering</div>
+          <div class="vocab-phonetic">/ˈreɪli ˈskætərɪŋ/</div>
+          <div class="vocab-def">Elastic scattering of photons by sub-wavelength density fluctuations in the glass fiber. The dominant loss mechanism in silica fiber at telecom wavelengths, with loss ∝ λ⁻⁴. Sets the ~0.2 dB/km loss floor at 1550 nm.</div>
+          <div class="vocab-example">"The 1550 nm C-band is used precisely because Rayleigh scattering loss is minimized at longer wavelengths."</div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-term">COUPE</div>
+          <div class="vocab-phonetic">/kuːp/ — Compact Universal Photonic Engine</div>
+          <div class="vocab-def">TSMC's proprietary silicon photonics packaging platform that integrates a photonic integrated circuit (PIC) with an electronic driver IC (EIC) using SoIC-X 3D bonding at 65 nm node, enabling sub-mm optical-electronic co-integration.</div>
+          <div class="vocab-example">"NVIDIA's CPO switches are manufactured on TSMC's COUPE platform — currently the world's most advanced silicon photonics manufacturing process."</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 7: QUIZ ===== -->
+  <div class="section" id="s7">
+    <div class="quiz-section">
+      <h3>🧠 Knowledge Check</h3>
+
+      <div class="quiz-item">
+        <div class="quiz-q">Q1. At 112 GHz, current in a copper conductor is concentrated within approximately what depth of the surface?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,false,'Actually, skin depth δ = √(2ρ/ωμ) at 112 GHz gives δ ≈ 0.2 µm — sub-micron!')">A. ~20 µm</button>
+          <button class="quiz-opt" onclick="answer(this,true,'Correct! δ ≈ √(2 × 1.68×10⁻⁸ / (2π×112×10⁹ × 4π×10⁻⁷)) ≈ 0.2 µm. Only the outermost 200 nm of the conductor carries current, massively increasing effective resistance.')">B. ~0.2 µm</button>
+          <button class="quiz-opt" onclick="answer(this,false,'That would be at much lower frequencies (~50 MHz). Skin depth shrinks with √f.')">C. ~2 µm</button>
+          <button class="quiz-opt" onclick="answer(this,false,'Skin depth in copper at typical PCB signal frequencies is in the µm range, not nm at low f, not mm.')">D. ~200 µm</button>
+        </div>
+        <div class="quiz-feedback" id="fb0"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q">Q2. Why does WDM allow a single optical fiber to carry multiple terabits per second, while a copper wire carrying the same physical size cannot?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,false,'The speed of light is the same in both glass and copper (within the medium). This is not the key reason.')">A. Photons travel faster than electrons in the medium</button>
+          <button class="quiz-opt" onclick="answer(this,true,'Correct! Different wavelengths of light are orthogonal modes — they do not electromagnetically interfere with each other in a linear dielectric medium. In copper, you cannot run two signals at different "frequencies" in this way without extreme crosstalk at microwave frequencies.')">B. Different wavelengths of light can co-propagate without interfering, acting as independent channels</button>
+          <button class="quiz-opt" onclick="answer(this,false,'Optical fibers actually have lower bandwidth than copper per unit physical diameter in the strict electrical sense. The advantage is in loss characteristics and WDM capacity.')">C. Glass has higher electrical conductivity than copper</button>
+          <button class="quiz-opt" onclick="answer(this,false,'Fiber does have better temperature stability, but this is not why WDM works.')">D. Glass has lower thermal expansion than copper</button>
+        </div>
+        <div class="quiz-feedback" id="fb1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q">Q3. A ring resonator modulator in a silicon photonics process has a switching energy of ~30 fJ/bit. A copper SerDes link at 112 Gbaud consumes ~5 pJ/bit. By what factor is the optical modulator more energy efficient?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,false,'Close, but check the unit conversion: 5 pJ = 5,000 fJ. 5,000 / 30 ≈ 167×.')">A. ~10×</button>
+          <button class="quiz-opt" onclick="answer(this,false,'50× would be 5000/100. The numbers give a larger ratio.')">B. ~50×</button>
+          <button class="quiz-opt" onclick="answer(this,true,'Correct! 5 pJ/bit = 5,000 fJ/bit. 5,000 fJ / 30 fJ ≈ 167×. This is the raw physics advantage of optical modulation versus charge-based signaling at these data rates. System-level overhead (laser, thermal control) reduces this to 10–30×, but the fundamental physics advantage is enormous.')">C. ~167×</button>
+          <button class="quiz-opt" onclick="answer(this,false,'Not quite — verify the unit conversion. 1 pJ = 1,000 fJ.')">D. ~1,000×</button>
+        </div>
+        <div class="quiz-feedback" id="fb2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q">Q4. What does TSMC's "COUPE" platform do that makes it central to NVIDIA's CPO switch strategy?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,false,'COUPE is a packaging/integration platform, not a chip fabrication node for GPU logic.')">A. Manufactures NVIDIA's GPU compute die at 3 nm</button>
+          <button class="quiz-opt" onclick="answer(this,true,'Correct! COUPE (Compact Universal Photonic Engine) uses SoIC-X 3D bonding to stack a 65 nm Electronic IC (EIC — the driver/receiver circuits) directly on a Photonic IC (PIC — containing waveguides, modulators, and detectors) with sub-mm interface distances. This eliminates the PCB path and is the core of NVIDIA\'s CPO energy advantage.')">B. Bonds a photonic IC to an electronic driver IC using 3D packaging, co-integrating optical and electrical functions at sub-mm scale</button>
+          <button class="quiz-opt" onclick="answer(this,false,'Corning handles fiber drawing and glass composition — not TSMC.')">C. Draws ultra-low-loss silica fiber for long-haul transmission</button>
+          <button class="quiz-opt" onclick="answer(this,false,'WDM multiplexing is performed by separate mux/demux components, not COUPE itself.')">D. Provides WDM channel multiplexing for 400 Tb/s capacity</button>
+        </div>
+        <div class="quiz-feedback" id="fb3"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="section" id="s8">
+    <div class="summary-box">
+      <h3>✅ Round 1 — Key Takeaways</h3>
+      <ul class="summary-list">
+        <li>AI data centers at scale face a <strong>data movement energy crisis</strong>: up to 20% of total cluster power is consumed by copper electrical interconnects — not computation.</li>
+        <li>Copper faces three hard physical limits at multi-gigabit rates: <strong>skin effect</strong> (resistance ∝ √f), <strong>dielectric loss</strong> (loss ∝ f), and <strong>electromagnetic crosstalk</strong> limiting port density.</li>
+        <li>Photons propagate in dielectric waveguides with <strong>no Joule dissipation</strong>, no crosstalk between wavelengths, and an information capacity set by the THz-range carrier frequency — far exceeding copper.</li>
+        <li>Ring resonator modulators achieve ~<strong>10–50 fJ/bit</strong> switching energy, vs. ~3–8 pJ/bit for copper SerDes — a raw physics advantage of 60–500×, with system-level gain of 10–30×.</li>
+        <li>CPO (Co-Packaged Optics) eliminates the PCB signal path, reducing per-port power from ~30 W to ~9 W. TSMC's COUPE + SoIC-X platform makes this manufacturable at scale.</li>
+        <li>NVIDIA's $3.2B Corning investment (May 2026) + $4B Coherent/Lumentum investment (March 2025) signals that silicon photonics has crossed the <strong>commercialization threshold</strong> — this is infrastructure, not R&amp;D.</li>
+        <li>For EE graduates: master silicon photonic device physics (modulators, detectors, waveguides) and CPO packaging. For ChemE graduates: specialty glass composition, fiber drawing, and photonic packaging materials are high-demand skills for the next decade.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Next round teaser -->
+  <div class="next-card">
+    <h4>Coming Up Next →</h4>
+    <p>Round 2: What Is Silicon Photonics? — How to Etch an Optical Circuit onto a CMOS Chip</p>
+    <a href="#" class="next-btn">Preview Round 2 →</a>
+  </div>
+
+</div>
+
+<!-- Bottom nav -->
+<div class="nav-strip">
+  <div class="nav-inner">
+    <div class="nav-label">林威老師 · 七月開課 · 聯繫我</div>
+    <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-btn echo">🎯 錯中學 ECHO 計劃</a>
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-btn study">📊 學生分析工具</a>
+    <a href="https://line.me/ti/p/~linwayet" target="_blank" class="nav-btn line">💬 LINE: linwayet</a>
+  </div>
+</div>
+
+<script>
+// Reading progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('prog').style.width = pct + '%';
+  const remaining = Math.max(0, Math.round((1 - pct/100) * 10));
+  document.getElementById('prog-time').textContent = remaining > 0 ? `~${remaining} min left` : 'Done ✓';
+});
+
+// Quiz logic
+let answered = [false,false,false,false];
+function answer(btn, correct, explanation) {
+  const item = btn.closest('.quiz-item');
+  const opts = item.querySelectorAll('.quiz-opt');
+  const idx = [...document.querySelectorAll('.quiz-item')].indexOf(item);
+  if (answered[idx]) return;
+  answered[idx] = true;
+  opts.forEach(o => o.disabled = true);
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  const fb = document.getElementById('fb' + idx);
+  fb.textContent = (correct ? '✓ ' : '✗ ') + explanation;
+  fb.className = 'quiz-feedback show ' + (correct ? 'ok' : 'err');
+}
+</script>
+</body>
+</html>
