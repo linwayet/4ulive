@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Out of Their Shell, Conquering Land and Sea</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8F0;--ink:#1A0F00;--red:#C0392B;--blue:#1565C0;--green:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--deep:#0D47A1;--brown:#4A3728;--line:#C4A06A}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFF0D9 0%,#FFF8F0 48%,#FFECD5 100%);color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 14px 60px}
+.page{max-width:880px;margin:0 auto}
+.link-panel{margin:0 auto 30px;padding:20px;border:3px solid #F0A64E;border-radius:16px;background:#FFF4E0;box-shadow:0 12px 24px rgba(154,83,20,.16)}
+.link-panel.bottom{margin:36px auto 0}
+.link-title{margin:0 0 14px;color:#BF360C;font-size:1.5rem;font-weight:700;text-align:center;line-height:1.35}
+.link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.link-card{display:flex;flex-direction:column;gap:8px;min-height:168px;padding:18px;border-radius:14px;text-decoration:none;color:#1A0F00;border:3px solid;background:#fff;box-shadow:0 7px 0 rgba(74,55,40,.14);transition:transform .2s ease,box-shadow .2s ease}
+.link-card:hover{transform:translateY(-3px);box-shadow:0 10px 0 rgba(74,55,40,.14)}
+.course-echo{border-color:#F57C00;background:#FFF7E8}.course-analysis{border-color:#2E7D32;background:#F1F8F2}.line-link{border-color:#1565C0;background:#EEF6FF}
+.link-badge{display:inline-block;width:max-content;max-width:100%;padding:2px 10px;border-radius:999px;color:#fff;font-size:.82rem;font-weight:700;line-height:1.6}
+.course-echo .link-badge{background:#E65100}.course-analysis .link-badge{background:#2E7D32}.line-link .link-badge{background:#1565C0}
+.link-name{color:#4A3728;font-size:1.18rem;font-weight:700;line-height:1.35}
+.link-desc{margin:0;font-size:.94rem;line-height:1.55;color:#4A3728}
+.link-url{margin-top:auto;color:#0D47A1;font-size:.82rem;font-weight:700;overflow-wrap:anywhere;line-height:1.35}
+.hero{text-align:center;margin-bottom:34px}
+h1{display:inline-block;margin:0 auto 16px;padding:18px 28px;border:5px solid var(--red);border-radius:8px;color:var(--red);background:#fff;font-size:3rem;line-height:1.18;font-weight:700;box-shadow:8px 8px 0 #F7C8BF}
+.subtitle{margin:0 0 8px;color:var(--blue);font-size:2.2rem;font-weight:700;line-height:1.3}
+.credit{margin:0;color:#0D47A1;font-family:'Lobster','BIZ UDPGothic',sans-serif;font-size:2rem;font-weight:400}
+h2{margin:40px 0 16px;color:var(--blue);font-size:2.2rem;line-height:1.25;font-weight:700}
+h3{margin:0 0 10px;color:var(--green);font-size:1.6rem;line-height:1.35;font-weight:700}
+.card{border-radius:8px;overflow:hidden;border:3px solid;background:#fff;margin-bottom:28px}
+.head{color:#fff;font-size:1.35rem;font-weight:700;padding:15px 20px}
+.body{padding:22px 24px}
+.original{border-color:#90CAF9}.original .head{background:#0D47A1}.original .body{background:#F3F8FF}
+.analysis{border-color:#FFAB91}.analysis .head{background:#BF360C}.analysis .body{background:#FFF3EF}
+.vocab{border-color:#81C784}.vocab .head{background:#1B5E20}.vocab .body{background:#F1F8F2}
+.grammar{border-color:#CE93D8}.grammar .head{background:#4A148C}.grammar .body{background:#F9F0FF}
+.kw{color:#0D47A1;font-weight:700;text-decoration:none}
+.sentence,.word,.grammar-point{padding:20px 0;border-top:2px solid rgba(26,15,0,.14)}
+.sentence:first-child,.word:first-child,.grammar-point:first-child{border-top:0;padding-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#BF360C;color:#fff;font-weight:700;margin-right:10px}
+.quote{margin:12px 0;padding:14px 16px;background:#fff;border-left:8px solid #E65100;border-radius:6px;font-style:normal;font-weight:700}
+blockquote{margin:10px 0 16px;padding:14px 18px;background:#fff;border-left:8px solid #6A1B9A;border-radius:6px;font-style:normal}
+.pill{display:inline-block;margin:5px 8px 5px 0;padding:4px 12px;border-radius:999px;background:#FEF0E7;color:#E65100;font-weight:700}
+.vtop{font-size:1.35rem;font-weight:700;color:#1B5E20}
+.tagrow{display:grid;grid-template-columns:132px 1fr;gap:8px 12px;margin:10px 0;align-items:start}
+.tag{border-radius:16px 0 0 16px;padding:4px 12px;font-weight:700;text-align:center}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.focus{background:#FEF0E7;color:#E65100}
+ul{margin:8px 0 8px 28px;padding:0}li{margin:8px 0}
+details{margin:22px 0;border:3px solid var(--line);border-radius:8px;overflow:hidden;background:#FAF6F0}
+summary{min-height:72px;background:#4A3728;color:#fff;font-size:1.25rem;font-weight:700;padding:16px 20px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}.arrow{transition:transform .3s ease}details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:20px 24px}.mini{padding:6px 0;border-bottom:1px solid #D7C2A4}.mini:last-child{border-bottom:0}
+@media(max-width:720px){body{font-size:22px;padding:18px 10px 44px}.page{max-width:100%}h1{font-size:2.35rem}.subtitle{font-size:1.75rem}.credit{font-size:1.55rem}.tagrow{grid-template-columns:1fr}.num{width:44px;height:44px}.link-panel{padding:14px;margin-bottom:24px}.link-grid{grid-template-columns:1fr}.link-card{min-height:0;padding:16px}.link-title{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="link-panel" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">錯中學 ECHO 計劃</span>
+<p class="link-desc">從錯題整理學習盲點，幫助學生把常錯內容轉成穩定得分能力。</p>
+<span class="link-url">linwayet.github.io/4ulive</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">學生分析</span>
+<p class="link-desc">整理學生學習狀態與弱點分布，提供更清楚的複習方向與安排依據。</p>
+<span class="link-url">linwayet.github.io/popup</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-badge">Line 聯絡</span>
+<span class="link-name">我的 Line：linwayet</span>
+<p class="link-desc">課程詢問、教材需求與學習規劃可透過 Line 帳號聯繫。</p>
+<span class="link-url">line.me/ti/p/~linwayet</span>
+</a>
+</div>
+</nav>
+<section class="hero">
+<h1>Coming Out of Their Shell, Conquering Land and Sea</h1>
+<p class="subtitle">走出龜殼：征服陸地與海洋的烏龜</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="card original">
+<div class="head">英文文章原文 Original Article</div>
+<div class="body">
+<p>Coming out of their shell, conquering land and sea. If all turtles were alike, they would not be able to survive in deserts, ponds, and oceans at the same time. Yet they do. This ability to <strong class="kw">thrive</strong> in all these <strong class="kw">environments</strong> comes from the wide differences among turtle <strong class="kw">species</strong>. Based on their <strong class="kw">habitats</strong>, turtles are usually divided into three types. Land-dwelling tortoises, <strong class="kw">semi-aquatic</strong> freshwater turtles, and fully marine sea turtles.</p>
+<p>Tortoises are the best example of <strong class="kw">adaptation</strong> to life on land. <strong class="kw">Equipped</strong> with strong, stout legs that <strong class="kw">resemble</strong> small elephant feet, they can walk across rough <strong class="kw">terrain</strong> and dig <strong class="kw">burrows</strong> for shelter. Their shells are typically high and dome-shaped, which provides extra space for their limbs and protection from <strong class="kw">predators</strong>.</p>
+<p>Freshwater turtles are well-suited to life both on land and in water. Their webbed feet help them swim <strong class="kw">efficiently</strong>. While their flexible necks and bodies allow them to maintain <strong class="kw">stability</strong> in moving water. In addition, their flat, smooth shells help them cut through water with <strong class="kw">minimal</strong> <strong class="kw">drag</strong> and without being easily seen. Sea turtles are built for life in the ocean. Their legs have <strong class="kw">evolved</strong> into flat, paddle-shaped flippers that support long-distance swimming. <strong class="kw">Streamlined</strong> bodies and shells further reduce water <strong class="kw">resistance</strong>. Although sea turtles spend most of their lives underwater, they are reptiles and must breathe air through their lungs. They can hold their breath for a long time, especially while resting underwater, but they still need to surface to breathe. Another notable feature of sea turtles is that their sex is <strong class="kw">determined</strong> by the temperature of the sand where their eggs are buried. Warmer sand tends to produce females, while cooler sand often produces males.</p>
+<p>Coming out of their shell, conquering land and sea. Turtles are full of surprises that go beyond their slow and steady reputation. One of the most remarkable features of a turtle is its shell. Unlike the shells of crabs or snails, a turtle shell is part of its skeleton. Since nerves run through the shell, A turtle can actually feel when it is touched. So petting a turtle shell isn't like patting a hard, lifeless shield. Instead, it's more like touching part of its body.</p>
+<p>Turtles are also known for their <strong class="kw">longevity</strong>. However, not all turtles are cut from the same cloth. In general, land-dwelling tortoises tend to outlive sea turtles. As reptiles, most turtles have a slow metabolism, which means they burn energy slowly. Their tough shells also help them survive in the wild by reducing the risk of predation. Feeding mostly on plants or small insects, they are free from the physical stress that comes with hunting. With lower energy demands, fewer dangers, and a relatively calm lifestyle, turtles are well-equipped to live long lives.</p>
+<p>Since 2000, people around the globe have been celebrating World Turtle Day on May 23rd. This annual event reminds people to keep an eye out for the threats these creatures face, such as plastic pollution, climate change, and habitat loss. By reducing plastic waste, supporting conservation efforts, and protecting their homes, we can help ensure these amazing animals continue their long journey on Earth.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊二】8句精讀</h2>
+<div class="card analysis">
+<div class="head">八句精讀 8 Key Sentence Analyses</div>
+<div class="body">
+<div class="sentence"><h3><span class="num">①</span>句子一</h3><div class="quote">If all turtles were alike, they would not be able to survive in deserts, ponds, and oceans at the same time.</div><p>如果所有烏龜都一樣，牠們就無法同時在沙漠、池塘和海洋中生存。</p><p><strong>文法解析：</strong>這句是第二類條件句，句型為 If + S + 過去式, S + would + 原形動詞。were 並不是在說過去，而是用來表示與現在事實相反的假設。主要子句中的 would not be able to 表示「將無法……」，強調如果缺乏差異，生存範圍就會受限。</p><p><span class="pill">alike：相似的</span><span class="pill">survive：生存</span><span class="pill">at the same time：同時</span></p></div>
+<div class="sentence"><h3><span class="num">②</span>句子二</h3><div class="quote">This ability to thrive in all these environments comes from the wide differences among turtle species.</div><p>這種能在所有這些環境中茁壯生存的能力，來自烏龜物種之間的巨大差異。</p><p><strong>文法解析：</strong>This ability 是主詞，comes from 是主要動詞片語。to thrive in all these environments 是不定詞片語，修飾 ability，說明是哪一種能力；這裡的 to 是不定詞，不是介係詞。among turtle species 表示「在烏龜物種之間」，通常用 among 指三者以上的群體。</p><p><span class="pill">thrive：茁壯成長</span><span class="pill">environments：環境</span><span class="pill">species：物種</span></p></div>
+<div class="sentence"><h3><span class="num">③</span>句子三</h3><div class="quote">Equipped with strong, stout legs that resemble small elephant feet, they can walk across rough terrain and dig burrows for shelter.</div><p>牠們配備強壯、粗短且像小象腳的腿，因此能走過崎嶇地形並挖洞穴作為庇護。</p><p><strong>文法解析：</strong>Equipped with... 是過去分詞構句，補充說明主詞 they 的身體特徵。that resemble small elephant feet 是形容詞子句，修飾 legs。walk across rough terrain 與 dig burrows 是兩個並列動作，說明這些腿帶來的功能。</p><p><span class="pill">equipped with：配備有</span><span class="pill">resemble：像</span><span class="pill">burrows：洞穴</span></p></div>
+<div class="sentence"><h3><span class="num">④</span>句子四</h3><div class="quote">In addition, their flat, smooth shells help them cut through water with minimal drag and without being easily seen.</div><p>此外，牠們扁平光滑的殼能幫助牠們以最小阻力切開水流，且不容易被看見。</p><p><strong>文法解析：</strong>help + 受詞 + 原形動詞是常見句型，因此 help them cut 不需要加 to。with minimal drag 表示「以最小阻力」，without being easily seen 是介系詞 without 後接動名詞被動式。being seen 表示「被看見」，修飾牠們在水中的隱蔽效果。</p><p><span class="pill">minimal drag：最小阻力</span><span class="pill">cut through water：切開水流</span><span class="pill">without being seen：不被看見</span></p></div>
+<div class="sentence"><h3><span class="num">⑤</span>句子五</h3><div class="quote">Although sea turtles spend most of their lives underwater, they are reptiles and must breathe air through their lungs.</div><p>雖然海龜一生大多數時間都在水下度過，但牠們是爬蟲類，必須透過肺呼吸空氣。</p><p><strong>文法解析：</strong>Although 引導讓步副詞子句，表示「雖然……」。主要子句 they are reptiles and must breathe air through their lungs 才是句子的重點。must 表示生理上的必要性，through their lungs 則用 through 表示空氣通過肺部這個途徑。</p><p><span class="pill">although：雖然</span><span class="pill">reptiles：爬蟲類</span><span class="pill">through their lungs：透過肺部</span></p></div>
+<div class="sentence"><h3><span class="num">⑥</span>句子六</h3><div class="quote">Another notable feature of sea turtles is that their sex is determined by the temperature of the sand where their eggs are buried.</div><p>海龜另一個值得注意的特徵是，牠們的性別由卵被埋藏處沙子的溫度決定。</p><p><strong>文法解析：</strong>that their sex is determined... 是名詞子句，放在 be 動詞後作主詞補語，說明 feature 的內容。is determined by 是被動語態，表示「由……決定」。where their eggs are buried 是形容詞子句，修飾 sand，說明是哪裡的沙子。</p><p><span class="pill">notable feature：值得注意的特徵</span><span class="pill">is determined by：由……決定</span><span class="pill">where：在……的地方</span></p></div>
+<div class="sentence"><h3><span class="num">⑦</span>句子七</h3><div class="quote">Since nerves run through the shell, A turtle can actually feel when it is touched.</div><p>因為神經穿過龜殼，所以烏龜在殼被碰到時其實能感覺得到。</p><p><strong>文法解析：</strong>Since 在此表示原因，等於 because。run through the shell 中的 through 表示穿過或貫穿。when it is touched 是時間副詞子句，也含有被動語態 is touched，表示「當牠被碰觸時」。</p><p><span class="pill">nerves：神經</span><span class="pill">run through：貫穿</span><span class="pill">actually：實際上</span></p></div>
+<div class="sentence"><h3><span class="num">⑧</span>句子八</h3><div class="quote">Feeding mostly on plants or small insects, they are free from the physical stress that comes with hunting.</div><p>牠們主要以植物或小昆蟲為食，因此不用承受伴隨狩獵而來的身體壓力。</p><p><strong>文法解析：</strong>Feeding mostly on... 是現在分詞構句，表示原因或背景條件。be free from 表示「不受……影響；免於……」。that comes with hunting 是形容詞子句，修飾 physical stress，說明這種壓力來自狩獵活動。</p><p><span class="pill">feed on：以……為食</span><span class="pill">be free from：免於</span><span class="pill">physical stress：身體壓力</span></p></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊三】20個單字整理</h2>
+<div class="card vocab">
+<div class="head">單字整理 Vocabulary</div>
+<div class="body">
+<div class="word"><div class="vtop">1. thrive [θraɪv] v. 茁壯成長；興旺</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>thriving (adj. 繁榮的；茁壯的)；thriver (n. 能成功適應者)</span><span class="tag phrase">片語</span><span>thrive in harsh conditions 在嚴苛環境中茁壯；thrive on challenges 靠挑戰成長</span><span class="tag focus">句型</span><span>thrive in + 地方／環境；thrive on + 壓力、挑戰或條件。</span></div><ul><li>This ability to thrive in all these environments comes from the wide differences among turtle species.<br>（這種能在所有這些環境中茁壯生存的能力，來自烏龜物種之間的巨大差異。）</li><li>Some students thrive in a quiet classroom, while others learn better in groups.<br>（有些學生在安靜教室裡表現更好，而其他人則在小組中學得更好。）</li></ul></div>
+<div class="word"><div class="vtop">2. environment [ɪnˈvaɪrənmənt] n. 環境；周遭條件</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>environmental (adj. 環境的)；environmentalist (n. 環保人士)；environmentally (adv. 環境方面地)</span><span class="tag idiom">慣用語</span><span>a harsh environment 嚴苛環境；a learning environment 學習環境；protect the environment 保護環境</span></div><ul><li>This ability to thrive in all these environments comes from the wide differences among turtle species.<br>（這種能在所有這些環境中茁壯生存的能力，來自烏龜物種之間的巨大差異。）</li><li>A clean environment helps people stay healthy and focused.<br>（乾淨的環境有助於人們保持健康與專注。）</li></ul></div>
+<div class="word"><div class="vtop">3. species [ˈspiʃiz] n. 物種；種類</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>specify (v. 明確說明)；specific (adj. 特定的)；specifically (adv. 特別地)</span><span class="tag root">字根</span><span>spec「看；種類」：specific 特定的；specimen 標本；spectator 觀眾。</span><span class="tag idiom">慣用語</span><span>an endangered species 瀕危物種；a turtle species 烏龜物種；different species 不同物種</span></div><ul><li>The wide differences among turtle species help them live in many environments.<br>（烏龜物種之間的巨大差異幫助牠們生活在多種環境中。）</li><li>The island is home to many rare bird species.<br>（這座島是許多稀有鳥類物種的棲地。）</li></ul></div>
+<div class="word"><div class="vtop">4. habitat [ˈhæbəˌtæt] n. 棲地；生長環境</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>inhabit (v. 居住於)；inhabitant (n. 居民；棲息動物)；habitation (n. 居住)</span><span class="tag phrase">片語</span><span>natural habitat 自然棲地；habitat loss 棲地喪失；protect habitats 保護棲地</span></div><ul><li>Based on their habitats, turtles are usually divided into three types.<br>（根據牠們的棲地，烏龜通常被分成三種類型。）</li><li>Wetlands are an important habitat for many animals.<br>（濕地是許多動物的重要棲地。）</li></ul></div>
+<div class="word"><div class="vtop">5. adaptation [ˌædæpˈteʃən] n. 適應；改編</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>adapt (v. 適應；改編)；adaptable (adj. 適應力強的)；adaptive (adj. 適應性的)</span><span class="tag phrase">片語</span><span>adaptation to life on land 對陸地生活的適應；a film adaptation 電影改編；biological adaptation 生物適應</span><span class="tag focus">句型</span><span>adaptation to + N 表示「對……的適應」。</span></div><ul><li>Tortoises are the best example of adaptation to life on land.<br>（陸龜是適應陸地生活的最佳例子。）</li><li>Good time management is an important adaptation to high school life.<br>（良好的時間管理是適應高中生活的重要方式。）</li></ul></div>
+<div class="word"><div class="vtop">6. equipped [ɪˈkwɪpt] adj. 配備有；具備能力的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>equip (v. 配備；使具備)；equipment (n. 設備)；well-equipped (adj. 裝備完善的)</span><span class="tag phrase">片語</span><span>equipped with 配備有；well-equipped to V 有能力做某事；basic equipment 基本設備</span><span class="tag focus">句型</span><span>be equipped with + N；be well-equipped to + V，其中 to 是不定詞。</span></div><ul><li>Equipped with strong, stout legs, they can walk across rough terrain.<br>（配備強壯粗短的腿，牠們能走過崎嶇地形。）</li><li>The new classroom is equipped with a large screen and fast Wi-Fi.<br>（新教室配備大螢幕和高速 Wi-Fi。）</li></ul></div>
+<div class="word"><div class="vtop">7. resemble [rɪˈzɛmbəl] v. 像；與……相似</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>resemblance (n. 相似)；resembling (adj. 相似的)</span><span class="tag phrase">片語</span><span>closely resemble 非常相似；resemble small elephant feet 像小象腳；bear a resemblance to 與……相似</span><span class="tag confuse">容易混淆</span><span>resemble 是及物動詞，後面直接接受詞，不加 like。</span></div><ul><li>Their strong, stout legs resemble small elephant feet.<br>（牠們強壯粗短的腿像小象腳。）</li><li>The twins resemble each other, but their personalities are different.<br>（這對雙胞胎長得像，但個性不同。）</li></ul></div>
+<div class="word"><div class="vtop">8. terrain [təˈren] n. 地形；地勢</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>terrestrial (adj. 陸地的)；territory (n. 領土；領域)；terrace (n. 梯田；露台)</span><span class="tag root">字根</span><span>terr「土地」：territory 領土；terrestrial 陸地的；subterranean 地下的。</span><span class="tag idiom">慣用語</span><span>rough terrain 崎嶇地形；mountainous terrain 山地地形；cross difficult terrain 穿越困難地形</span></div><ul><li>They can walk across rough terrain and dig burrows for shelter.<br>（牠們能走過崎嶇地形並挖洞穴作為庇護。）</li><li>The hikers moved slowly across the rocky terrain.<br>（登山者緩慢地穿越岩石地形。）</li></ul></div>
+<div class="word"><div class="vtop">9. burrow [ˈbɝo] n. 洞穴；地洞 v. 挖洞</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>burrowing (adj. 挖洞的)；burrower (n. 挖洞動物)</span><span class="tag phrase">片語</span><span>dig burrows 挖洞穴；a deep burrow 深洞；burrow into the ground 鑽入地面</span></div><ul><li>They can walk across rough terrain and dig burrows for shelter.<br>（牠們能走過崎嶇地形並挖洞穴作為庇護。）</li><li>The small animal escaped the heat by hiding in a burrow.<br>（那隻小動物躲進洞穴裡避開高溫。）</li></ul></div>
+<div class="word"><div class="vtop">10. predator [ˈprɛdətɚ] n. 捕食者；掠食動物</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>predation (n. 捕食)；prey (n. 獵物)；predatory (adj. 掠食性的)</span><span class="tag phrase">片語</span><span>protection from predators 保護免於捕食者傷害；natural predator 天敵；risk of predation 被捕食的風險</span><span class="tag confuse">容易混淆</span><span>predator 是捕食者；prey 是被捕食的獵物。</span></div><ul><li>Their shells provide protection from predators.<br>（牠們的殼提供免於捕食者傷害的保護。）</li><li>A rabbit must stay alert because it has many predators.<br>（兔子必須保持警覺，因為牠有許多捕食者。）</li></ul></div>
+<div class="word"><div class="vtop">11. semi-aquatic [ˌsɛmi əˈkwætɪk] adj. 半水生的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>aquatic (adj. 水生的)；semi- (prefix 半；部分)；aquarium (n. 水族館)</span><span class="tag root">字根</span><span>aqua「水」：aquarium 水族館；aquatic 水生的；aqueduct 水道。</span><span class="tag idiom">慣用語</span><span>semi-aquatic freshwater turtles 半水生淡水龜；aquatic animals 水生動物；a semi-aquatic lifestyle 半水生生活型態</span></div><ul><li>Land-dwelling tortoises, semi-aquatic freshwater turtles, and fully marine sea turtles are three types.<br>（陸棲陸龜、半水生淡水龜，以及完全海生的海龜是三種類型。）</li><li>Frogs are semi-aquatic animals that live both in water and on land.<br>（青蛙是同時生活在水中與陸地上的半水生動物。）</li></ul></div>
+<div class="word"><div class="vtop">12. efficiently [ɪˈfɪʃəntlɪ] adv. 有效率地</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>efficient (adj. 有效率的)；efficiency (n. 效率)；inefficient (adj. 沒有效率的)</span><span class="tag idiom">慣用語</span><span>swim efficiently 有效率地游泳；work efficiently 有效率地工作；highly efficient 高效率的</span></div><ul><li>Their webbed feet help them swim efficiently.<br>（牠們的蹼足幫助牠們有效率地游泳。）</li><li>Planning your homework schedule helps you study efficiently.<br>（規劃作業時間表能幫助你有效率地讀書。）</li></ul></div>
+<div class="word"><div class="vtop">13. stability [stəˈbɪlətɪ] n. 穩定；穩定性</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>stable (adj. 穩定的)；stabilize (v. 使穩定)；unstable (adj. 不穩定的)</span><span class="tag idiom">慣用語</span><span>maintain stability 維持穩定；emotional stability 情緒穩定；political stability 政治穩定</span></div><ul><li>Their flexible necks and bodies allow them to maintain stability in moving water.<br>（牠們靈活的脖子和身體使牠們能在流動的水中保持穩定。）</li><li>A balanced diet helps maintain energy and emotional stability.<br>（均衡飲食有助於維持能量與情緒穩定。）</li></ul></div>
+<div class="word"><div class="vtop">14. minimal [ˈmɪnəməl] adj. 最少的；極小的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>minimum (n./adj. 最小量；最低的)；minimize (v. 使降到最低)；minimally (adv. 最小程度地)</span><span class="tag idiom">慣用語</span><span>minimal drag 最小阻力；minimal risk 最低風險；minimal effort 最少努力</span><span class="tag confuse">容易混淆</span><span>minimal 強調非常少；minimum 強調最低限度或最小值。</span></div><ul><li>Their flat, smooth shells help them cut through water with minimal drag.<br>（牠們扁平光滑的殼幫助牠們以最小阻力切開水流。）</li><li>The app uses minimal data, so it is useful when the signal is weak.<br>（這個應用程式使用極少數據，所以訊號弱時很有用。）</li></ul></div>
+<div class="word"><div class="vtop">15. drag [dræɡ] n. 阻力；拖曳 v. 拖；拉</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>draggy (adj. 拖沓的)；dragging (adj. 拖延的；拖曳的)</span><span class="tag phrase">片語</span><span>minimal drag 最小阻力；reduce drag 減少阻力；drag something across the floor 把某物拖過地板</span></div><ul><li>Their shells help them cut through water with minimal drag.<br>（牠們的殼幫助牠們以最小阻力切開水流。）</li><li>Racing bikes are designed to reduce drag and increase speed.<br>（競賽用腳踏車被設計來減少阻力並提高速度。）</li></ul></div>
+<div class="word"><div class="vtop">16. evolve [ɪˈvɑlv] v. 進化；逐漸發展</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>evolution (n. 進化；演變)；evolutionary (adj. 進化的)；evolved (adj. 進化而成的)</span><span class="tag root">字根</span><span>volv「轉」：revolve 旋轉；involve 涉及；revolution 革命。</span><span class="tag focus">句型</span><span>evolve into + N 表示「演變成……」。</span></div><ul><li>Their legs have evolved into flat, paddle-shaped flippers.<br>（牠們的腿已進化成扁平、槳狀的鰭足。）</li><li>Online learning has evolved into an important part of education.<br>（線上學習已發展成教育的重要部分。）</li></ul></div>
+<div class="word"><div class="vtop">17. streamlined [ˈstrimˌlaɪnd] adj. 流線型的；精簡的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>streamline (v. 使成流線型；精簡)；stream (n. 小溪；串流)；streamlining (n. 精簡)</span><span class="tag phrase">片語</span><span>streamlined bodies 流線型身體；streamline tasks 精簡任務；a streamlined process 精簡流程</span></div><ul><li>Streamlined bodies and shells further reduce water resistance.<br>（流線型的身體與殼進一步降低水中阻力。）</li><li>The school created a streamlined process for club registration.<br>（學校建立了精簡的社團登記流程。）</li></ul></div>
+<div class="word"><div class="vtop">18. resistance [rɪˈzɪstəns] n. 阻力；抵抗；抗性</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>resist (v. 抵抗)；resistant (adj. 有抵抗力的)；irresistible (adj. 無法抗拒的)</span><span class="tag phrase">片語</span><span>water resistance 水阻力；resistance to change 對改變的抗拒；disease resistance 抗病能力</span></div><ul><li>Streamlined bodies and shells further reduce water resistance.<br>（流線型的身體與殼進一步降低水中阻力。）</li><li>Many people feel resistance to change at first.<br>（許多人一開始會抗拒改變。）</li></ul></div>
+<div class="word"><div class="vtop">19. determined [dɪˈtɝmɪnd] adj. 被決定的；堅定的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>determine (v. 決定；判定)；determination (n. 決心；判定)；determinedly (adv. 堅定地)</span><span class="tag phrase">片語</span><span>be determined by 由……決定；a determined student 有決心的學生；determine the result 決定結果</span><span class="tag confuse">容易混淆</span><span>be determined by 是「由……決定」；be determined to V 是「下定決心做……」。</span></div><ul><li>Their sex is determined by the temperature of the sand where their eggs are buried.<br>（牠們的性別由卵被埋藏處沙子的溫度決定。）</li><li>She is determined to improve her English before the exam.<br>（她下定決心在考試前提升英文。）</li></ul></div>
+<div class="word"><div class="vtop">20. longevity [lɑnˈdʒɛvətɪ] n. 長壽；壽命長</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>long (adj. 長的)；length (n. 長度)；lengthen (v. 加長)</span><span class="tag root">字根</span><span>long「長」：length 長度；lengthy 冗長的；prolong 延長。</span><span class="tag idiom">慣用語</span><span>be known for longevity 以長壽聞名；human longevity 人類長壽；promote longevity 促進長壽</span></div><ul><li>Turtles are also known for their longevity.<br>（烏龜也以長壽聞名。）</li><li>Regular exercise and enough sleep may support longevity.<br>（規律運動與充足睡眠可能有助於長壽。）</li></ul></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="card grammar">
+<div class="head">文法解析 Grammar Focus</div>
+<div class="body">
+<div class="grammar-point"><h3>【第二類條件句】Second Conditional 與現在事實相反的假設</h3><p><strong>【引句 Quote】</strong></p><blockquote>If all turtles were alike, they would not be able to survive in deserts, ponds, and oceans at the same time.</blockquote><p><strong>【句型】</strong></p><p><strong><em>If + S + V-ed / were, S + would + V</em></strong></p><p><strong>【核心說明】</strong></p><p>第二類條件句用來描述與現在事實相反，或不太可能發生的假設。本文實際上要表達的是烏龜並不都一樣，因此牠們才能適應不同環境。</p><p><strong>【使用規則】</strong></p><ul><li>If 子句用過去式，但意思不一定是過去。</li><li>be 動詞常用 were，尤其在正式寫作中。</li><li>主要子句常用 would、could 或 might 加原形動詞。</li><li>否定句可用 would not / could not 表示假設結果不成立。</li></ul><p><strong>【主題例句】</strong></p><p>If tortoises had thin shells, they would be less protected from predators.<br>（如果陸龜的殼很薄，牠們就比較不受保護，容易遭捕食者攻擊。）</p><p><strong>【學習提醒】</strong></p><p>這種句型的重點不是時間，而是「假設性」。不要看到 were 就直接翻成過去，要根據 if 與 would 判斷語氣。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ If all turtles are alike, they would not survive in many places.</p><p>✓ If all turtles were alike, they would not survive in many places.（與現在事實相反的假設，if 子句要用過去式。）</p><p>試題：If sea turtles ________ lungs, they would not need to surface for air.<br>A. do not have B. did not have C. will not have D. are not having</p><p>答案：B。說明：這是與事實相反的假設，if 子句使用過去式 did not have。</p></div>
+<div class="grammar-point"><h3>【分詞構句】Participial Construction 分詞構句</h3><p><strong>【引句 Quote】</strong></p><blockquote>Equipped with strong, stout legs that resemble small elephant feet, they can walk across rough terrain and dig burrows for shelter.</blockquote><p><strong>【句型】</strong></p><p><strong><em>V-ing / V-ed + ..., S + V</em></strong></p><p><strong>【核心說明】</strong></p><p>分詞構句可以用來補充原因、背景、時間或附帶狀況，使句子更緊湊。Equipped with... 是過去分詞開頭，表示主詞 they 具有某種被賦予或配備的特徵。</p><p><strong>【使用規則】</strong></p><ul><li>主詞與動作是主動關係時，常用 V-ing。</li><li>主詞與動作是被動關係時，常用 V-ed。</li><li>分詞構句的邏輯主詞通常要和主要子句主詞一致。</li><li>分詞片語放句首時，後面通常加逗號。</li></ul><p><strong>【主題例句】</strong></p><p>Protected by a hard shell, the turtle can hide from many predators.<br>（受到堅硬外殼保護，烏龜能躲避許多捕食者。）</p><p><strong>【學習提醒】</strong></p><p>寫分詞構句時最常見的問題是主詞不一致。分詞片語描述的對象必須能清楚對應到主要子句的主詞。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Equipped with strong legs, rough terrain is easy for tortoises.</p><p>✓ Equipped with strong legs, tortoises can cross rough terrain.（配備強壯腿的是 tortoises，不是 terrain。）</p><p>試題：______ mostly on plants, tortoises avoid much of the stress of hunting.<br>A. Feed B. Feeding C. Fed D. To feed</p><p>答案：B。說明：主詞 tortoises 主動進食，句首用現在分詞 Feeding。</p></div>
+<div class="grammar-point"><h3>【讓步副詞子句】Concessive Clause although 讓步句</h3><p><strong>【引句 Quote】</strong></p><blockquote>Although sea turtles spend most of their lives underwater, they are reptiles and must breathe air through their lungs.</blockquote><p><strong>【句型】</strong></p><p><strong><em>Although + S + V, S + V</em></strong></p><p><strong>【核心說明】</strong></p><p>Although 引導讓步子句，表示「雖然……」，用來承認一個看似會影響結果的事實。本文承認海龜長時間在水下生活，但主要重點是牠們仍是爬蟲類，必須呼吸空氣。</p><p><strong>【使用規則】</strong></p><ul><li>Although 子句放句首時，後面通常加逗號。</li><li>Although 與 but 通常不在同一句中同時使用。</li><li>主要子句才是作者要強調的核心訊息。</li><li>though 比 although 較口語，也可放句尾。</li></ul><p><strong>【主題例句】</strong></p><p>Although turtles move slowly, they have survived on Earth for a very long time.<br>（雖然烏龜移動緩慢，牠們已在地球上生存很長一段時間。）</p><p><strong>【學習提醒】</strong></p><p>讓步句適合用在自然科學與社會議題寫作中，因為它能同時呈現表面現象與真正重點。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Although sea turtles live underwater, but they must breathe air.</p><p>✓ Although sea turtles live underwater, they must breathe air.（Although 已有「雖然」意思，不需再加 but。）</p><p>試題：______ tortoises live on land, they still belong to the larger turtle group.<br>A. Because B. Although C. So D. Unless</p><p>答案：B。說明：前後形成讓步對比，應選 Although。</p></div>
+</div>
+</div>
+</section>
+
+<details><summary>折疊一：常見字首整理（50 個）<span class="arrow">⌄</span></summary><div class="detail-body">
+<div class="mini">ab-　離開、相反　—　abnormal（異常的）</div><div class="mini">ad-　向、加　—　advance（前進）</div><div class="mini">ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="mini">anti-　反對、抗　—　antibiotic（抗生素）</div><div class="mini">arch-　主要、首要　—　archenemy（死敵）</div><div class="mini">auto-　自動、自我　—　autograph（親筆簽名）</div><div class="mini">bene-　好的、善　—　benefit（好處）</div><div class="mini">bi-　二、雙　—　bilingual（雙語的）</div><div class="mini">circum-　環繞、周圍　—　circumstance（情況）</div><div class="mini">co-/con-/com-　一起、共同　—　cooperate（合作）</div><div class="mini">contra-　相反、對抗　—　contradict（反駁）</div><div class="mini">de-　去除、下降　—　decode（解碼）</div><div class="mini">dia-　穿過、透過　—　dialogue（對話）</div><div class="mini">dis-　否定、分離　—　disagree（不同意）</div><div class="mini">en-/em-　使成為　—　enable（使能夠）</div><div class="mini">epi-　在上、在外　—　epidemic（流行病）</div><div class="mini">ex-　外、前任　—　export（出口）；ex-president（前總統）</div><div class="mini">extra-　額外、外部　—　extraordinary（非凡的）</div><div class="mini">hetero-　不同　—　heterogeneous（異質的）</div><div class="mini">homo-　相同　—　homogeneous（同質的）</div><div class="mini">hyper-　過度、超　—　hyperactive（過動的）</div><div class="mini">hypo-　低於、不足　—　hypodermic（皮下的）</div><div class="mini">in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="mini">inter-　在…之間　—　international（國際的）</div><div class="mini">iso-　相等、相同　—　isolate（隔離）</div><div class="mini">mal-　壞、不良　—　malfunction（故障）</div><div class="mini">micro-　微小　—　microscope（顯微鏡）</div><div class="mini">mis-　錯誤　—　misunderstand（誤解）</div><div class="mini">mono-　單一　—　monologue（獨白）</div><div class="mini">multi-　多　—　multicultural（多元文化的）</div><div class="mini">neo-　新的　—　neonatal（新生的）</div><div class="mini">non-　非、沒有　—　nonsense（無意義）</div><div class="mini">pan-　全部　—　pandemic（大流行病）</div><div class="mini">peri-　周圍　—　perimeter（周長）</div><div class="mini">poly-　多　—　polygon（多邊形）</div><div class="mini">post-　之後　—　postwar（戰後的）</div><div class="mini">pre-　之前　—　preview（預覽）</div><div class="mini">pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="mini">pseudo-　假的　—　pseudonym（筆名）</div><div class="mini">re-　再、回　—　review（複習）</div><div class="mini">semi-　一半、部分　—　semicircle（半圓）</div><div class="mini">sub-　在下、次級　—　subway（地鐵）</div><div class="mini">super-　超越、在上　—　superstar（超級明星）</div><div class="mini">syn-/sym-　一起、共同　—　synchronize（同步）</div><div class="mini">tele-　遠距　—　telephone（電話）</div><div class="mini">trans-　穿越、轉變　—　transport（運輸）</div><div class="mini">tri-　三　—　triangle（三角形）</div><div class="mini">ultra-　超過、極端　—　ultraviolet（紫外線的）</div><div class="mini">un-　否定、不　—　unhappy（不快樂的）</div><div class="mini">vice-　副、代替　—　vice-president（副總統）</div>
+</div></details>
+
+<details><summary>折疊二：常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary><div class="detail-body">
+<h3>名詞字尾</h3><div class="mini">-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</div><div class="mini">-ment　行為或結果　—　agreement（協議）、development（發展）</div><div class="mini">-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div><div class="mini">-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div><div class="mini">-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</div><div class="mini">-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div><div class="mini">-ship　身分或關係　—　friendship（友誼）、leadership（領導）</div><div class="mini">-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div><div class="mini">-ance/-ence　狀態或性質　—　importance（重要性）、difference（差異）</div><div class="mini">-age　集合、費用或狀態　—　package（包裹）、shortage（短缺）</div><div class="mini">-ery/-ry　行為、場所或狀態　—　bakery（麵包店）、bravery（勇敢）</div><h3>形容詞字尾</h3><div class="mini">-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</div><div class="mini">-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</div><div class="mini">-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div><div class="mini">-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div><div class="mini">-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</div><div class="mini">-ive　具有…傾向的　—　active（活躍的）、creative（有創造力的）</div><div class="mini">-ary/-ory　與…有關的　—　ordinary（普通的）、advisory（顧問的）</div><div class="mini">-ant/-ent　具有…性質的　—　important（重要的）、different（不同的）</div><div class="mini">-y　充滿…的　—　healthy（健康的）、cloudy（多雲的）</div><h3>動詞字尾</h3><div class="mini">-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</div><div class="mini">-ify　使成為…　—　beautify（美化）、clarify（澄清）</div><div class="mini">-ate　形成動詞　—　dominate（支配）、activate（啟動）</div><div class="mini">-en　使變成…　—　strengthen（加強）、soften（使柔軟）</div><h3>副詞字尾</h3><div class="mini">-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div><div class="mini">-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</div><div class="mini">-wise　表示方式或角度　—　clockwise（順時針方向）</div>
+</div></details>
+
+<details><summary>折疊三：30個常用單字與衍生詞<span class="arrow">⌄</span></summary><div class="detail-body">
+<div class="mini">1. turtle [ˈtɝtəl] (n. 烏龜；海龜) — turtle shell（龜殼）</div><div class="mini">2. tortoise [ˈtɔrtəs] (n. 陸龜) — land-dwelling tortoise（陸棲陸龜）</div><div class="mini">3. desert [ˈdɛzɚt] (n. 沙漠) — desert habitat（沙漠棲地）</div><div class="mini">4. pond [pɑnd] (n. 池塘) — freshwater pond（淡水池塘）</div><div class="mini">5. ocean [ˈoʃən] (n. 海洋) — ocean life（海洋生物）</div><div class="mini">6. marine [məˈrin] (adj. 海洋的) — marine animal（海洋動物）</div><div class="mini">7. freshwater [ˈfrɛʃˌwɔtɚ] (adj. 淡水的) — freshwater turtle（淡水龜）</div><div class="mini">8. shell [ʃɛl] (n. 殼) — protective shell（保護性外殼）</div><div class="mini">9. limb [lɪm] (n. 肢；手腳) — front limb（前肢）</div><div class="mini">10. protection [prəˈtɛkʃən] (n. 保護) — protect [prəˈtɛkt] (v. 保護)</div><div class="mini">11. flexible [ˈflɛksəbəl] (adj. 靈活的) — flexibility [ˌflɛksəˈbɪlətɪ] (n. 彈性)</div><div class="mini">12. flipper [ˈflɪpɚ] (n. 鰭足) — paddle-shaped flipper（槳狀鰭足）</div><div class="mini">13. underwater [ˈʌndɚˌwɔtɚ] (adv./adj. 在水下；水下的) — underwater life（水下生活）</div><div class="mini">14. reptile [ˈrɛptəl] (n. 爬蟲類) — reptilian [rɛpˈtɪlɪən] (adj. 爬蟲類的)</div><div class="mini">15. lung [lʌŋ] (n. 肺) — breathe through lungs（透過肺呼吸）</div><div class="mini">16. temperature [ˈtɛmprətʃɚ] (n. 溫度) — body temperature（體溫）</div><div class="mini">17. female [ˈfiˌmel] (n./adj. 雌性；女性的) — female turtle（雌龜）</div><div class="mini">18. male [mel] (n./adj. 雄性；男性的) — male turtle（雄龜）</div><div class="mini">19. reputation [ˌrɛpjəˈteʃən] (n. 名聲) — good reputation（好名聲）</div><div class="mini">20. remarkable [rɪˈmɑrkəbəl] (adj. 非凡的) — remarkably [rɪˈmɑrkəblɪ] (adv. 非凡地)</div><div class="mini">21. skeleton [ˈskɛlətn] (n. 骨骼) — skeletal [ˈskɛlətəl] (adj. 骨骼的)</div><div class="mini">22. nerve [nɝv] (n. 神經) — nervous system（神經系統）</div><div class="mini">23. lifeless [ˈlaɪfləs] (adj. 無生命的) — life [laɪf] (n. 生命)</div><div class="mini">24. metabolism [məˈtæbəˌlɪzəm] (n. 新陳代謝) — metabolize [məˈtæbəˌlaɪz] (v. 代謝)</div><div class="mini">25. predation [prɪˈdeʃən] (n. 捕食) — predator [ˈprɛdətɚ] (n. 捕食者)</div><div class="mini">26. relatively [ˈrɛlətɪvlɪ] (adv. 相對地) — relative [ˈrɛlətɪv] (adj. 相對的)</div><div class="mini">27. annual [ˈænjuəl] (adj. 每年的) — annually [ˈænjuəlɪ] (adv. 每年)</div><div class="mini">28. threat [θrɛt] (n. 威脅) — threaten [ˈθrɛtn] (v. 威脅)</div><div class="mini">29. pollution [pəˈluʃən] (n. 汙染) — plastic pollution（塑膠汙染）</div><div class="mini">30. conservation [ˌkɑnsɚˈveʃən] (n. 保育；保存) — conservation efforts（保育努力）</div>
+<p><strong>文章相關常用片語 5 個：</strong></p><p>• come out of one's shell（走出舒適圈；變得外向）<br>• be well-suited to（很適合……）<br>• cut through water（切開水流）<br>• keep an eye out for（留意；注意）<br>• be cut from the same cloth（本質相似；同一類型）</p>
+</div></details>
+
+<details><summary>折疊四：練文筆食材<span class="arrow">⌄</span></summary><div class="detail-body">
+<p>① If + S + were/V-ed, S + would + V（如果……就會……）<br>→ 適用：提出與事實相反的假設。<br>例：If all animals had the same body shape, they would not survive in different habitats.</p>
+<p>② This ability to + V comes from...（這種……的能力來自……）<br>→ 適用：說明能力或特徵的原因。<br>例：This ability to adapt comes from millions of years of evolution.</p>
+<p>③ Based on + N, S + V（根據……，……）<br>→ 適用：分類、分析或下結論。<br>例：Based on their habitats, animals can be divided into several groups.</p>
+<p>④ Equipped with + N, S + V（配備有……，……）<br>→ 適用：描述生物或工具的特徵與功能。<br>例：Equipped with sharp claws, the animal can climb trees easily.</p>
+<p>⑤ help + O + V（幫助某人／某物做……）<br>→ 適用：說明功能或效果。<br>例：Webbed feet help turtles swim efficiently.</p>
+<p>⑥ with minimal + N（以最少的……）<br>→ 適用：說明效率或阻力低。<br>例：The new design moves through air with minimal resistance.</p>
+<p>⑦ Although + S + V, S + V（雖然……，……）<br>→ 適用：呈現轉折或讓步。<br>例：Although sea turtles live underwater, they must breathe air.</p>
+<p>⑧ be determined by + N（由……決定）<br>→ 適用：說明因果或控制因素。<br>例：The result is determined by temperature and time.</p>
+<p>⑨ Unlike + N, S + V（不像……，……）<br>→ 適用：比較兩種事物的差異。<br>例：Unlike fish, turtles need to surface for air.</p>
+<p>⑩ Since + S + V, S + V（因為……，……）<br>→ 適用：說明原因。<br>例：Since nerves run through the shell, turtles can feel touch.</p>
+<p>⑪ be known for + N（以……聞名）<br>→ 適用：介紹特色或名聲。<br>例：Turtles are known for their longevity.</p>
+<p>⑫ Feeding mostly on + N, S + V（主要以……為食，……）<br>→ 適用：說明飲食習性與結果。<br>例：Feeding mostly on plants, the animal uses less energy than active hunters.</p>
+<p>⑬ be free from + N（免於……）<br>→ 適用：表示不受某事影響。<br>例：A calm lifestyle can keep animals free from unnecessary stress.</p>
+<p>⑭ By + V-ing, S + can + V（藉由……，……可以……）<br>→ 適用：提出解決方法。<br>例：By reducing plastic waste, we can protect marine animals.</p>
+</div></details>
+<nav class="link-panel bottom" aria-label="七月課程與聯絡方式">
+<p class="link-title">七月課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">錯中學 ECHO 計劃</span>
+<p class="link-desc">從錯題整理學習盲點，幫助學生把常錯內容轉成穩定得分能力。</p>
+<span class="link-url">linwayet.github.io/4ulive</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-badge">七月開課</span>
+<span class="link-name">學生分析</span>
+<p class="link-desc">整理學生學習狀態與弱點分布，提供更清楚的複習方向與安排依據。</p>
+<span class="link-url">linwayet.github.io/popup</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-badge">Line 聯絡</span>
+<span class="link-name">我的 Line：linwayet</span>
+<p class="link-desc">課程詢問、教材需求與學習規劃可透過 Line 帳號聯繫。</p>
+<span class="link-url">line.me/ti/p/~linwayet</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
