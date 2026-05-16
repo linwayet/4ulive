@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蘋果在中國 — 全書導讀</title>
+<style>
+  :root {
+    --warm-bg: #fff8f0;
+    --card-bg: #fffaf4;
+    --accent1: #e8654a;
+    --accent2: #f5a623;
+    --accent3: #d4693b;
+    --accent4: #e07b55;
+    --accent5: #c94f30;
+    --text-dark: #3a2110;
+    --text-mid: #5c3420;
+    --text-light: #8a5030;
+    --border: #f0d4b8;
+    --shadow: rgba(200, 120, 60, 0.12);
+    --link-bg: #fef3e2;
+    --link-border: #f5c87a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    background: var(--warm-bg);
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  /* ─── TOP / BOTTOM NAV BAR ─── */
+  .nav-bar {
+    background: linear-gradient(135deg, #e8654a 0%, #f5a623 100%);
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .nav-bar h1 {
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 4px rgba(0,0,0,.25);
+    margin-bottom: 6px;
+  }
+  .nav-bar p.sub {
+    color: #fef9f0;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+    opacity: .92;
+  }
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .link-card {
+    background: rgba(255,255,255,.92);
+    border-radius: 12px;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: var(--accent3);
+    font-weight: 700;
+    font-size: 0.88rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    transition: transform .15s, box-shadow .15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 260px;
+    text-align: center;
+  }
+  .link-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.18); }
+  .link-icon { font-size: 1.2rem; }
+  .link-label { font-size: .75rem; color: var(--text-light); font-weight: 400; display: block; }
+
+  /* ─── MAIN CONTAINER ─── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 16px 24px;
+  }
+
+  /* ─── INTRO SECTION ─── */
+  .book-intro {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    margin-bottom: 36px;
+    box-shadow: 0 4px 20px var(--shadow);
+    text-align: center;
+  }
+  .book-intro h2 {
+    font-size: 1.5rem;
+    color: var(--accent1);
+    margin-bottom: 10px;
+  }
+  .book-intro p {
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ─── SECTION HEADING ─── */
+  .section-heading {
+    text-align: center;
+    margin: 0 0 28px;
+    font-size: 1.25rem;
+    color: var(--accent3);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
+  .section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    border-radius: 2px;
+    margin: 8px auto 0;
+  }
+
+  /* ─── CHAPTER CARDS ─── */
+  .chapters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .chapter-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 3px 14px var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .chapter-card:hover { box-shadow: 0 6px 28px rgba(200,100,40,.18); }
+
+  /* coloured left accent */
+  .chapter-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent2));
+    border-radius: 16px 0 0 16px;
+  }
+  .chapter-card:nth-child(3n+2)::before { background: linear-gradient(180deg, #f5a623, #e8654a); }
+  .chapter-card:nth-child(3n+3)::before { background: linear-gradient(180deg, #c94f30, #f5a623); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .chapter-badge {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 4px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .chapter-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.35;
+  }
+
+  .summary {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  /* ─── BILINGUAL QUOTE BOX ─── */
+  .quote-box {
+    background: linear-gradient(135deg, #fff3e6, #fff8f0);
+    border-left: 4px solid var(--accent2);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 14px;
+  }
+  .quote-zh {
+    display: block;
+    font-size: 0.87rem;
+    font-style: italic;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+  .quote-zh::before { content: '❝ '; color: var(--accent2); font-style: normal; font-weight: 700; }
+  .quote-en {
+    display: block;
+    font-size: 0.80rem;
+    font-style: italic;
+    color: #b07850;
+    line-height: 1.6;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #f5c87a;
+    opacity: 0.88;
+  }
+  .quote-en::before { content: '🇺🇸 '; font-style: normal; }
+
+  /* ─── FOOTER NAV BAR ─── */
+  .footer-bar {
+    background: linear-gradient(135deg, #c94f30 0%, #e8654a 60%, #f5a623 100%);
+    padding: 24px 16px 28px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .footer-bar p {
+    color: #fef3e8;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+    opacity: .9;
+  }
+  .footer-bar .links-row { margin-bottom: 14px; }
+  .footer-copy {
+    color: rgba(255,255,255,.6);
+    font-size: .75rem;
+    margin-top: 12px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 480px) {
+    .chapter-card { padding: 18px 16px 14px; }
+    .links-row { flex-direction: column; align-items: center; }
+    .link-card { max-width: 100%; width: 90%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ TOP NAV ══════════════ -->
+<div class="nav-bar">
+  <h1>📱 蘋果在中國 — 全書章節導讀</h1>
+  <p class="sub">從 iPod 到 iPhone，從深圳到中南海，蘋果與中國糾纏三十年的商業史詩</p>
+  <div class="links-row">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="link-icon">🎓</span>
+      <span>
+        七月課程介紹
+        <span class="link-label">錯中學 ECHO 計劃</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="link-icon">📊</span>
+      <span>
+        學生分析
+        <span class="link-label">互動分析工具</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="link-icon">💬</span>
+      <span>
+        LINE 聯絡老師
+        <span class="link-label">@linwayet</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<div class="container">
+
+  <div class="book-intro">
+    <h2>《蘋果在中國》—— 關於這本書</h2>
+    <p>本書深入追蹤蘋果公司從1990年代瀕臨破產，到成為全球市值第一企業的歷程，並揭示中國在其中扮演的關鍵且複雜的角色。作者通過數百位內部人士訪談，呈現一段科技、商業、地緣政治與人性交織的真實史詩。</p>
+  </div>
+
+  <h2 class="section-heading">全書章節摘要 · 精選金句（中英對照）</h2>
+
+  <div class="chapters-grid">
+
+    <!-- 序 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">序章</span>
+        <span class="chapter-title">「無與倫比」的傲慢</span>
+      </div>
+      <p class="summary">2013年3月，習近平就任國家主席的隔天，中央電視台315消費者晚會點名批評蘋果的售後服務不公平對待中國消費者。《人民日報》隨即跟進，稱蘋果「無與倫比的傲慢」。此後兩週，庫克公開道歉。這一幕，揭示了蘋果在中國的真實處境：它是有史以來最成功的跨國企業，也是在最重要市場上最脆弱的企業。</p>
+      <div class="quote-box">
+        <span class="quote-zh">蘋果在中國成功的方式，幾乎保證了它在中國終將以失敗告終——因為兩者依賴的是同樣的力量。</span>
+        <span class="quote-en">The very forces that guaranteed Apple's success in China nearly guarantee its eventual failure there — for both rest on the same foundations.</span>
+      </div>
+    </div>
+
+    <!-- 第1章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 1 章</span>
+        <span class="chapter-title">瀕臨破產</span>
+      </div>
+      <p class="summary">1996年，蘋果面臨破產危機，庫存高達10億美元，創辦人之一沃茲尼克甚至出售股票換現金。為求生存，蘋果出售了科羅拉多州的製造工廠，代表著公司決定告別自製時代的關鍵轉折。新任執行長阿米里奧在一次採購高層失誤、生產崩潰的局面下，試圖穩住局勢。</p>
+      <div class="quote-box">
+        <span class="quote-zh">「我們唯一的選擇，就是讓公司繼續活下去。」——蘋果高層面對破產危機時的心聲</span>
+        <span class="quote-en">"Our only option was to keep the company alive." — Apple executives facing the bankruptcy crisis</span>
+      </div>
+    </div>
+
+    <!-- 第2章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 2 章</span>
+        <span class="chapter-title">外包歷險記——日本與台灣</span>
+      </div>
+      <p class="summary">1980年代，賈伯斯第一次在蘋果任職時，就已開始與日本企業合作生產LaserWriter印表機。後來Mac生產線轉移，蘋果逐漸發現台灣代工廠的優勢：彈性高、成本低、執行力強。PowerBook 100與英業達的合作，成為蘋果轉型外包的先聲。</p>
+      <div class="quote-box">
+        <span class="quote-zh">台灣代工廠能以更低成本生產出比蘋果原廠更高品質的產品——這讓蘋果意識到，外包不是妥協，而是優勢。</span>
+        <span class="quote-en">Taiwan's contract manufacturers could produce higher-quality products at lower cost than Apple's own factories — proving that outsourcing wasn't a compromise, but a competitive advantage.</span>
+      </div>
+    </div>
+
+    <!-- 第3章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 3 章</span>
+        <span class="chapter-title">天價的收購計畫</span>
+      </div>
+      <p class="summary">執行長阿米里奧接掌瀕死的蘋果，評估多個收購方案以取得新的作業系統。最終，蘋果以4億3千萬美元收購賈伯斯的NeXT公司，也讓賈伯斯以「顧問」身份重返。這筆看似天價的收購，換來的不只是技術，而是蘋果的靈魂。</p>
+      <div class="quote-box">
+        <span class="quote-zh">阿米里奧想到的唯一讓他感到興奮的選項，就是把賈伯斯帶回來。那是救蘋果的唯一機會。</span>
+        <span class="quote-en">The only option that truly excited Amelio was bringing Jobs back. That was Apple's only real chance for survival.</span>
+      </div>
+    </div>
+
+    <!-- 第4章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 4 章</span>
+        <span class="chapter-title">哥倫布——發現運算領域的新大陸</span>
+      </div>
+      <p class="summary">賈伯斯回歸後，偶然走進蘋果設計工作室，看見剛被任用的工業設計師強納森·艾夫所做的設計草稿，眼睛一亮。兩人的相遇，催生了「哥倫布計畫」——一台徹底顛覆個人電腦視覺語言的iMac。這是蘋果蛻變的起點。</p>
+      <div class="quote-box">
+        <span class="quote-zh">賈伯斯看著艾夫的設計，說：「好，這就是我想要的。」那一刻，iMac誕生了。</span>
+        <span class="quote-en">Jobs looked at Ive's designs and said: "Good. That's what I want." In that moment, the iMac was born.</span>
+      </div>
+    </div>
+
+    <!-- 第5章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 5 章</span>
+        <span class="chapter-title">「做不出來」—— iMac 誕生</span>
+      </div>
+      <p class="summary">艾夫的透明彩色塑膠殼設計美到令工程師絕望——這在當時根本無法量產。賈伯斯不接受「做不出來」這個答案，他推動團隊找模具商、調整設計、一次次克服技術難關。最終，那台Bondi Blue的iMac成為科技史上最具象徵意義的產品之一。</p>
+      <div class="quote-box">
+        <span class="quote-zh">「做不出來」這四個字，成了iMac工程師的戰鬥口號——他們的使命，就是把這句話變成謊言。</span>
+        <span class="quote-en">"It can't be done" became the iMac engineers' battle cry — their mission was to turn that statement into a lie.</span>
+      </div>
+    </div>
+
+    <!-- 第6章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 6 章</span>
+        <span class="chapter-title">走出亞洲金融風暴——韓國</span>
+      </div>
+      <p class="summary">iMac交由韓國LG集團在慶尚北道的工廠生產。1997年亞洲金融風暴衝擊韓國經濟，員工在工廠牆上掛起「活命」橫幅，士氣崩潰。然而，拿到蘋果訂單反而成了救命稻草，讓LG工廠在危機中得以存活。蘋果藉此學到如何善用夥伴的生死危機，壓低成本。</p>
+      <div class="quote-box">
+        <span class="quote-zh">韓國工人在工廠牆上掛著「活命」橫幅——而拿到蘋果的訂單，就是他們的活命繩索。</span>
+        <span class="quote-en">Korean workers hung banners reading "Survive" on factory walls — and winning Apple's orders was the lifeline they desperately needed.</span>
+      </div>
+    </div>
+
+    <!-- 第7章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 7 章</span>
+        <span class="chapter-title">LG 走向全球——威爾斯與墨西哥</span>
+      </div>
+      <p class="summary">LG試圖將iMac生產線擴展至威爾斯和墨西哥，但兩地均以失敗告終——語言、文化、技術人才與供應鏈的缺失，讓生產無法順利進行。就在蘋果苦無對策之際，郭台銘旗下的富士康出現了，毛遂自薦：「我可以搞定。」這句話改變了全球製造業的歷史。</p>
+      <div class="quote-box">
+        <span class="quote-zh">郭台銘說：「我可以搞定。」這四個字，成了改寫全球製造業版圖的宣言。</span>
+        <span class="quote-en">Terry Gou said: "I can fix it." Those four words became a declaration that rewrote the map of global manufacturing.</span>
+      </div>
+    </div>
+
+    <!-- 第8章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 8 章</span>
+        <span class="chapter-title">台商——進軍中國大陸的台灣人</span>
+      </div>
+      <p class="summary">1990年代，台灣製造業大舉西進中國，廣東成為「世界工廠」的雛形。這些台商帶去資金、技術與管理文化，培育出一整代工廠管理人才。本章揭示了郭台銘如何從一個普通塑膠工廠起家，憑藉軍事化的管理風格與龐大的資本槓桿，打造出富士康帝國的基礎。</p>
+      <div class="quote-box">
+        <span class="quote-zh">台商進軍中國不只是尋求廉價勞力，更是一場製造業革命——他們把台灣的技術帶進中國的土地，孕育出世界工廠的靈魂。</span>
+        <span class="quote-en">Taiwanese businesspeople entering China weren't just seeking cheap labor — they were launching a manufacturing revolution, bringing Taiwan's expertise into Chinese soil and nurturing the soul of the world's factory.</span>
+      </div>
+    </div>
+
+    <!-- 第9章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 9 章</span>
+        <span class="chapter-title">硬體的矽谷——「富士康這名字可不是叫假的」</span>
+      </div>
+      <p class="summary">深圳龍華的富士康園區如同一座城市：工廠、宿舍、醫院、電影院、甚至消防隊，全部一應俱全。本章細緻描繪郭台銘如何以近乎偏執的品質要求、強悍的議價能力、和龐大的垂直整合，讓富士康成為全球電子代工無法繞過的巨人。</p>
+      <div class="quote-box">
+        <span class="quote-zh">郭台銘：「技術是我的，訂單是我的，連客戶都是我的。我們不是代工，我們是製造的主人。」</span>
+        <span class="quote-en">Terry Gou: "The technology is mine, the orders are mine, even the customers are mine. We're not just contractors — we are the masters of manufacturing."</span>
+      </div>
+    </div>
+
+    <!-- 第10章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 10 章</span>
+        <span class="chapter-title">IBM 人才西進蘋果——庫克崛起</span>
+      </div>
+      <p class="summary">1998年，提姆·庫克從康柏電腦加入蘋果，接掌幾乎崩潰的供應鏈。他的第一個大動作：下令關閉超過兩個月庫存的倉庫，引入精實供應鏈哲學。庫克的到來，讓蘋果的運營從一場災難，逐漸蛻變為全球最有效率的供應鏈機器。</p>
+      <div class="quote-box">
+        <span class="quote-zh">庫克初抵蘋果，對員工說：「今晚我到這裡，只想說一件事：我要關閉倉庫。」——這是供應鏈革命的起點。</span>
+        <span class="quote-en">On Cook's first day at Apple, he told employees: "I'm here tonight to say one thing: I'm closing the warehouses." — That was the starting gun of a supply chain revolution.</span>
+      </div>
+    </div>
+
+    <!-- 第11章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 11 章</span>
+        <span class="chapter-title">富士康布局全球——中國、美國加州與捷克</span>
+      </div>
+      <p class="summary">郭台銘將富士康擴張至三大洲，在加州與捷克設廠，建立「樞紐模式」——一個以深圳為核心、連結全球製造基地的體系。然而，西方工廠的經驗讓郭台銘更確信：大規模製造的未來在中國。他的全球布局，本質上是一場對中國製造霸主地位的強化。</p>
+      <div class="quote-box">
+        <span class="quote-zh">沒有人能看到全貌——富士康這個生態系是有機生長的，每一步都是對客戶需求的即時回應，而非預先設計。</span>
+        <span class="quote-en">No one could see the full picture — Foxconn's ecosystem grew organically, with each step a real-time response to customer needs rather than a premeditated design.</span>
+      </div>
+    </div>
+
+    <!-- 第12章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 12 章</span>
+        <span class="chapter-title">告別自製時代</span>
+      </div>
+      <p class="summary">2001年網路泡沫破滅後，蘋果徹底放棄自行生產硬體的想法。這是一個看似被迫、實則深謀遠慮的決策：把製造外包，讓蘋果得以將所有資源集中在設計、軟體與行銷。本章記錄了蘋果如何從一家製造公司，蛻變成一家設計驅動的品牌公司。</p>
+      <div class="quote-box">
+        <span class="quote-zh">賈伯斯說：「我不在乎蘋果的股票短期是否下跌。把製造外包出去，長期來看是正確的決定。」</span>
+        <span class="quote-en">Jobs said: "I don't care if Apple's stock drops in the short term. Outsourcing manufacturing is the right decision for the long run."</span>
+      </div>
+    </div>
+
+    <!-- 第13章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 13 章</span>
+        <span class="chapter-title">一千首歌——在台灣製造 iPod</span>
+      </div>
+      <p class="summary">賈伯斯在2001年宣布iPod誕生，但背後的供應鏈談判同樣精彩。蘋果採購主管布萊文斯以強硬甚至令人不舒服的方式壓低英業達的代工利潤。這一章也揭示了iPod如何在不到一年的時間裡，從一個模糊的概念，成為台灣工廠生產線上大量出貨的消費電子革命。</p>
+      <div class="quote-box">
+        <span class="quote-zh">布萊文斯對英業達說：「你們必須用『中國的成本價』結算——這是你們搬去中國的代價。」</span>
+        <span class="quote-en">Blevins told Inventec: "You must settle at 'China cost prices' — that's the price you pay for moving production to China."</span>
+      </div>
+    </div>
+
+    <!-- 第14章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 14 章</span>
+        <span class="chapter-title">亞洲製造——打造極致酷炫的 iMac G4</span>
+      </div>
+      <p class="summary">iMac G4的「向日葵」設計是艾夫的藝術傑作：一顆球狀主機，加上一條可自由旋轉的金屬手臂，連接著平板螢幕。為了讓這個設計成真，蘋果的工程師奔走於六個國家、數十個工廠之間，解決無數材料、鑄造與組裝問題，最終催生出一台讓全世界驚嘆的電腦。</p>
+      <div class="quote-box">
+        <span class="quote-zh">六個國家的工廠、上千個零件、無數次失敗——只為了讓一台向日葵電腦能以完美的姿態站在你的桌上。</span>
+        <span class="quote-en">Factories in six countries, thousands of parts, countless failures — all so that a sunflower-shaped computer could stand perfectly on your desk.</span>
+      </div>
+    </div>
+
+    <!-- 第15章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 15 章</span>
+        <span class="chapter-title">「你們必須用『中國的成本價』結算」</span>
+      </div>
+      <p class="summary">工程師大衛·塔普曼在911事件後被緊急送往台灣，加入iPod量產攻堅。這章記錄iPod從早期「死機模式」缺陷、到低迷銷售、再到2003年底Windows版iTunes上線後爆炸性成長的全過程。英業達卻因需求暴增陷入困境，還被發現偷賣iPod，讓蘋果與英業達的關係走向終點。</p>
+      <div class="quote-box">
+        <span class="quote-zh">魔比說：「我可能要偷走你們的原型機。天啊，你們真該給設計師加薪！」——iPod的魔力，在那一刻顯現。</span>
+        <span class="quote-en">Moby said: "I might have to steal your prototype. My God, you really should give your designer a raise!" — In that moment, the magic of the iPod revealed itself.</span>
+      </div>
+    </div>
+
+    <!-- 第16章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 16 章</span>
+        <span class="chapter-title">復刻成功——拿到 iPod 訂單，在中國製造</span>
+      </div>
+      <p class="summary">富士康的工程師用「以身試法」的方式爭取iPod代工訂單——他們拆解並自製了一台幾乎完美的iPod複製品，帶去蘋果展示。這番驚人的逆向工程能力，讓蘋果決定將iPod mini的生產轉交富士康，也讓iPod的生產正式落地中國。</p>
+      <div class="quote-box">
+        <span class="quote-zh">富士康工程師把自製的iPod複製品放在賈伯斯面前，說：「我們不只能做，我們比你更了解這個產品。」</span>
+        <span class="quote-en">Foxconn engineers placed a homemade iPod replica before Jobs and said: "We don't just make it — we understand this product better than you do."</span>
+      </div>
+    </div>
+
+    <!-- 第17章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 17 章</span>
+        <span class="chapter-title">紫色計畫在亞洲</span>
+      </div>
+      <p class="summary">代號「紫色計畫」的iPhone研發在極度保密下啟動。蘋果工程師跑遍亞洲，尋找能生產高品質觸控螢幕的供應商，但多數廠商連蘋果想要什麼都搞不清楚。這一章揭示了iPhone誕生前，幕後供應鏈建構的艱辛過程，以及台積電、三星在晶片供應上的早期角力。</p>
+      <div class="quote-box">
+        <span class="quote-zh">「紫色計畫」是蘋果史上保密程度最高的研發任務——連參與其中的工程師，都不知道自己在做什麼。</span>
+        <span class="quote-en">"Project Purple" was Apple's most secretive R&amp;D mission in history — even the engineers involved didn't know what they were actually building.</span>
+      </div>
+    </div>
+
+    <!-- 第18章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 18 章</span>
+        <span class="chapter-title">那台裝置</span>
+      </div>
+      <p class="summary">2007年1月，iPhone在賈伯斯手中亮相。但在發表前幾週，出現了致命危機：塑膠螢幕在口袋中被鑰匙刮傷。賈伯斯要求換成玻璃，給康寧公司和富士康六週時間完成不可能的任務。富士康工廠連夜趕工，最終讓iPhone以完美狀態準時登台。</p>
+      <div class="quote-box">
+        <span class="quote-zh">賈伯斯在發表前六週說：「我要換成玻璃。」沒有人認為做得到——富士康的工人用夜班證明，做得到。</span>
+        <span class="quote-en">Six weeks before the launch, Jobs said: "I want glass." No one thought it was possible — Foxconn workers proved it was, through the night shift.</span>
+      </div>
+    </div>
+
+    <!-- 第19章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 19 章</span>
+        <span class="chapter-title">蘋果衝擊</span>
+      </div>
+      <p class="summary">蘋果的外包模式與其他公司截然不同：它不只是「下訂單、等貨」，而是把頂尖工程師長期派駐供應商工廠，深度介入製程改善。蘋果甚至在供應商的設備上貼「蘋果財產」標籤，清楚劃定所有權。這種深入控制，讓蘋果的品質標準得以精準複製，也讓供應商難以擺脫。</p>
+      <div class="quote-box">
+        <span class="quote-zh">蘋果對供應商說：「這台機器是蘋果的財產，不是你的。」——這句話，道出了蘋果外包模式的本質。</span>
+        <span class="quote-en">Apple told suppliers: "This machine is Apple's property, not yours." — That statement captures the true nature of Apple's outsourcing model.</span>
+      </div>
+    </div>
+
+    <!-- 第20章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 20 章</span>
+        <span class="chapter-title">傳教士</span>
+      </div>
+      <p class="summary">前摩門教傳教士約翰·福特被派往中國，任務是開設蘋果在北京三里屯的第一家直營店。他把在台灣傳教的經驗帶入商業談判，以充滿耐心、尊重文化差異的方式，一點一滴打通地方政府、商場業主與警方的關係，完成了一件「不可能的任務」。</p>
+      <div class="quote-box">
+        <span class="quote-zh">福特說：「蘋果不只是一個零售商——它是一場文化運動。你必須讓中國人理解這件事，才能真正打開市場。」</span>
+        <span class="quote-en">Ford said: "Apple isn't just a retailer — it's a cultural movement. You have to make Chinese people understand that before you can truly open the market."</span>
+      </div>
+    </div>
+
+    <!-- 第21章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 21 章</span>
+        <span class="chapter-title">縫紉機修理店</span>
+      </div>
+      <p class="summary">在中國開零售店，外資企業面臨法規迷宮：蘋果既不是合資公司，也沒有正式的本地合作夥伴，因此無法取得零售執照。福特的解決方案出人意料——找到一家擁有執照的縫紉機修理店，將其業務範圍擴充為「電子零售」，用這份小店執照，開出了代表品牌與夢想的旗艦門市。</p>
+      <div class="quote-box">
+        <span class="quote-zh">「我們找到了一家縫紉機修理店——那是我們在中國開設Apple Store的執照。」這就是中國式創意解方。</span>
+        <span class="quote-en">"We found a sewing machine repair shop — that was our license to open an Apple Store in China." This is the Chinese art of creative problem-solving.</span>
+      </div>
+    </div>
+
+    <!-- 第22章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 22 章</span>
+        <span class="chapter-title">水貨市場裡的黃牛</span>
+      </div>
+      <p class="summary">Apple Store在中國大排長龍，黃牛應運而生。他們以組織化的方式壟斷購買權，再以高價轉賣iPhone，形成一個龐大的灰色市場。這讓蘋果意識到，中國對iPhone的真實需求遠超官方預期，但同時也暴露出蘋果在通路管理上的嚴重漏洞。</p>
+      <div class="quote-box">
+        <span class="quote-zh">黃牛告訴蘋果：「要嘛跟我們合作，要嘛你們什麼都別想賣。」——這不是威脅，而是中國市場的殘酷現實。</span>
+        <span class="quote-en">The scalpers told Apple: "Either work with us, or you won't sell a thing." — That wasn't a threat. It was the brutal reality of the Chinese market.</span>
+      </div>
+    </div>
+
+    <!-- 第23章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 23 章</span>
+        <span class="chapter-title">「把那混蛋開除掉！」</span>
+      </div>
+      <p class="summary">iPad 2發表日，上海浦東Apple Store爆發混亂，黃牛、便衣警察、與憤怒的消費者三方混戰。店面玻璃門被震碎。約翰·福特在混亂中被便衣警察逮捕，差點引發外交事件。本章生動描繪了蘋果中國擴張過程中，最戲劇性的一個瞬間。</p>
+      <div class="quote-box">
+        <span class="quote-zh">福特在警車裡心想：「他媽的，我會坐牢了。」——然後他打出了人脈，換來了一場外交勝利。</span>
+        <span class="quote-en">Sitting in the police car, Ford thought: "I'm going to jail." Then he worked his connections — and turned it into a diplomatic victory.</span>
+      </div>
+    </div>
+
+    <!-- 第24章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 24 章</span>
+        <span class="chapter-title">雙重賭注——富士康與台積電</span>
+      </div>
+      <p class="summary">全球金融危機後，郭台銘押注庫克低估iPhone需求，承諾在鄭州與成都建設新工廠園區，換取蘋果所有訂單。此後iPhone年出貨量幾乎翻四倍。與此同時，蘋果透過台積電創辦人張忠謀的牽線，讓台積電取代三星成為晶片供應商，但這也讓蘋果的地緣政治風險加深。</p>
+      <div class="quote-box">
+        <span class="quote-zh">郭台銘對庫克說：「你的估算差太多了。富士康將承擔這筆投資——因為我深信需求必然湧現。」</span>
+        <span class="quote-en">Gou told Cook: "Your estimates are way off. Foxconn will shoulder this investment — because I firmly believe the demand will come."</span>
+      </div>
+    </div>
+
+    <!-- 第25章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 25 章</span>
+        <span class="chapter-title">「海豹部隊」</span>
+      </div>
+      <p class="summary">蘋果派出「快速應變小組」（海豹部隊）赴中國處理黃牛問題，卻因缺乏文化敏感度，採取強硬手段引發更大衝突，四名外籍保全甚至被中國警方拘留。福特批評庫比蒂諾不理解「大土豆、小土豆」的中國邏輯——蘋果在中國創造的就業機會，並未帶來籌碼，只是加深了弱點。</p>
+      <div class="quote-box">
+        <span class="quote-zh">福特說：「中國人稱之為『大土豆、小土豆』——蘋果創造了很多工作，但中國並不覺得欠你什麼。這就是你的處境。」</span>
+        <span class="quote-en">Ford said: "The Chinese call it 'big potato, small potato' — Apple created a lot of jobs, but China doesn't feel it owes you anything. That's your situation."</span>
+      </div>
+    </div>
+
+    <!-- 第26章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 26 章</span>
+        <span class="chapter-title">獨裁者</span>
+      </div>
+      <p class="summary">2012年11月，習近平接掌中共，外界對他的路線充滿未知。本章揭示，央視315晚會對蘋果的攻擊背後，其實隱藏著黃牛設計的換機詐騙，中國政府刻意將始作俑者的角色隱去。而蘋果最終公開道歉，讓全球看清：掌握主導權的，是北京，不是庫比蒂諾。</p>
+      <div class="quote-box">
+        <span class="quote-zh">習近平上台後的訊號很明確：「我們在監視你們——就像消費者權益日那天，只要我們想，就可以打擊你。」</span>
+        <span class="quote-en">The signal after Xi Jinping took power was unmistakable: "We are watching you — just like on Consumer Rights Day, whenever we choose, we can come after you."</span>
+      </div>
+    </div>
+
+    <!-- 第27章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 27 章</span>
+        <span class="chapter-title">八人幫</span>
+      </div>
+      <p class="summary">2013年起，蘋果秘密組建「八人幫」——八位分別負責營運、零售、政府事務和研究的核心高管，成為蘋果在中國的眼睛與耳朵。這支隊伍的首要任務：重新建構蘋果在北京眼中的形象，從一家傲慢的貿易公司，變成一個真正為中國做出貢獻的夥伴。</p>
+      <div class="quote-box">
+        <span class="quote-zh">葛思里說：「蘋果必須讓中國政府相信，我們不是一家普通的貿易公司——我們在中國的影響力遠遠超出任何人的想像。」</span>
+        <span class="quote-en">Guthrie said: "Apple had to convince the Chinese government that we're not an ordinary trading company — our influence in China far exceeds what anyone imagines."</span>
+      </div>
+    </div>
+
+    <!-- 第28章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 28 章</span>
+        <span class="chapter-title">中國通</span>
+      </div>
+      <p class="summary">道格·葛思里，一位有閱讀障礙與雙相情緒障礙的美國學者，因在台北與自行車隊的奇遇而走上研究中國的道路。他的核心洞見是：中國並非在走向民主，而是正在演化為一種前所未有的「套上三件式西裝的龍」——外表像資本主義，骨子裡仍是共產黨領導一切。</p>
+      <div class="quote-box">
+        <span class="quote-zh">葛思里說：「中國就像一條套上三件式西裝的龍——你以為它在學習你，但它其實從未打算變成你。」</span>
+        <span class="quote-en">Guthrie said: "China is like a dragon in a three-piece suit — you think it's learning to be like you, but it never intended to become you."</span>
+      </div>
+    </div>
+
+    <!-- 第29章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 29 章</span>
+        <span class="chapter-title">假自願，真強制</span>
+      </div>
+      <p class="summary">中國2014年頒布派遣工法規，限制企業派遣工比例不超過10%，讓蘋果供應鏈近乎無法合規。葛思里解釋，這不是要真正執行法律，而是一種談判工具：「你應該去問鄭州市長想要什麼。」這展示了北京如何用法規製造籌碼，逼迫外企讓步的「以法而治」邏輯。</p>
+      <div class="quote-box">
+        <span class="quote-zh">一位西方人一語點出中國的法規邏輯：「假自願，真強制——北京不明說你要付出什麼，但你最好搞清楚。」</span>
+        <span class="quote-en">A Westerner captured China's regulatory logic perfectly: "Voluntary in name, coerced in practice — Beijing won't tell you what it wants, but you'd better figure it out."</span>
+      </div>
+    </div>
+
+    <!-- 第30章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 30 章</span>
+        <span class="chapter-title">蘋果壓榨</span>
+      </div>
+      <p class="summary">蘋果以不到20%的市占率，拿走智慧手機市場80%以上的利潤。秘密在於「蘋果壓榨」——以頂尖工程師培訓供應商換取超低利潤，讓供應商在學到技術後，能以此承接其他客戶的高利潤訂單。意外的後果：蘋果一手孕育了整個中國智慧手機產業。</p>
+      <div class="quote-box">
+        <span class="quote-zh">蘋果前副總裁坦言：「我們可能在不知不覺中，給了供應商驚人的知識——驚人的專業技術與實務經驗。」</span>
+        <span class="quote-en">A former Apple VP admitted: "We may have unknowingly given suppliers remarkable knowledge — stunning expertise and real-world manufacturing experience."</span>
+      </div>
+    </div>
+
+    <!-- 第31章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 31 章</span>
+        <span class="chapter-title">中國的馬歇爾計畫</span>
+      </div>
+      <p class="summary">2016年5月，庫克、威廉斯與傑克森秘密前往中南海，向中國高層承諾未來五年在中國投資2,750億美元。這筆金額超過歷史上馬歇爾計畫的兩倍。蘋果第一次以「在地語言」向北京傳達：我們不是貿易公司，我們是中國最大的外資技術轉移者。北京稱這「簡直就是天籟之音。」</p>
+      <div class="quote-box">
+        <span class="quote-zh">一位熟悉談判的蘋果高層說：「對中國來說，那簡直就是天籟之音——他們一直在追求的技術轉移，蘋果正在主動給他們。」</span>
+        <span class="quote-en">An Apple executive familiar with the negotiations said: "To China, it was music to their ears — the technology transfer they had been pursuing, Apple was now offering freely."</span>
+      </div>
+    </div>
+
+    <!-- 第32章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 32 章</span>
+        <span class="chapter-title">官僚保護</span>
+      </div>
+      <p class="summary">蘋果對滴滴投資10億美元，拿下董事會席位。這筆投資被普遍解讀為政治表態，是蘋果爭取「官僚保護」的棋局——同時佈局自駕車數據與Apple Pay。蘋果還在中國設立四個研發中心，並說服聯合航空開通直飛成都、杭州的航班，深化在中國的根基。</p>
+      <div class="quote-box">
+        <span class="quote-zh">一位蘋果內部人士直白說：「那就像是公開行賄——你開一張10億美元的支票，換取政治善意。」</span>
+        <span class="quote-en">An Apple insider bluntly said: "It was like open bribery — you write a billion-dollar check in exchange for political goodwill."</span>
+      </div>
+    </div>
+
+    <!-- 第33章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 33 章</span>
+        <span class="chapter-title">認知失調——供應商責任</span>
+      </div>
+      <p class="summary">傑基·海恩斯回鍋蘋果，立志改善供應鏈勞工條件，建立月度工時報告制度。但蘋果的壓低成本邏輯與勞工保護目標根本互相衝突。當數據開始逆轉，報告悄悄被取消。海恩斯在2016年被邊緣化，最終離開蘋果。北京的鎮壓讓勞工倡議徹底失去空間。</p>
+      <div class="quote-box">
+        <span class="quote-zh">中國勞工觀察創辦人李強說：「蘋果，就是那個財主——它捐得起，卻選擇捐得不夠。」</span>
+        <span class="quote-en">Li Qiang, founder of China Labor Watch, said: "Apple is the wealthy patron — it can afford to give, yet it chooses to give too little."</span>
+      </div>
+    </div>
+
+    <!-- 第34章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 34 章</span>
+        <span class="chapter-title">傀儡人物——葛越</span>
+      </div>
+      <p class="summary">2017年，蘋果任命葛越擔任「大中華區董事總經理」，這是蘋果全球唯一的此類職位。但她實際上沒有指揮任何人，庫克的核心決策圈甚至未曾將她列入。她的角色是政治表態——讓北京看到一張中國面孔。在投資人訴訟的取證中，她的郵件甚至不被列為「相關文件」。</p>
+      <div class="quote-box">
+        <span class="quote-zh">葛越說：「我必須自己寫出一份工作手冊，因為蘋果在全球從未設過董事總經理的職位。」這句話，道出了這個職位的真相。</span>
+        <span class="quote-en">Isabel Ge Mahe said: "I had to write my own job manual, because Apple had never had a Managing Director position anywhere in the world." That statement reveals the truth of her role.</span>
+      </div>
+    </div>
+
+    <!-- 第35章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 35 章</span>
+        <span class="chapter-title">紅色供應鏈</span>
+      </div>
+      <p class="summary">立訊精密創辦人王來春用「免費代工AirPods換取庫克親訪工廠」的策略，讓立訊市值在三年內超越富士康。更大的趨勢是：中國本土供應商（立訊、比亞迪、歌爾）藉由政府補貼、收購台灣廠商、挖角人才，逐步取代台灣企業，形成「紅色供應鏈」，掌握iPhone生產的主動權。</p>
+      <div class="quote-box">
+        <span class="quote-zh">王來春的工廠牆上貼著：「物以類聚，人以群分。」這句話，也是她拿下蘋果訂單的策略核心。</span>
+        <span class="quote-en">On Wang Laichun's factory wall: "Like attracts like." That saying was also the strategic core of how she won Apple's contracts.</span>
+      </div>
+    </div>
+
+    <!-- 第36章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 36 章</span>
+        <span class="chapter-title">「五級火災警報」</span>
+      </div>
+      <p class="summary">2018年，iPhone XR銷售崩跌，內部郵件顯示庫比蒂諾高度恐慌，一位財務主管稱此為「五級火災警報」。庫克在財報電話會議上迴避了銷售崩盤的真相，也未提及最關鍵原因：中國消費者已轉向華為。這場財報危機，揭示了蘋果在中國市場面對本土競爭的脆弱。</p>
+      <div class="quote-box">
+        <span class="quote-zh">財務主管在郵件寫道：「五級火災警報！我們必須立刻切換到行動模式——找出棋盤式的對策！」</span>
+        <span class="quote-en">The finance executive wrote in an email: "Five-alarm fire! We must immediately switch to action mode — find a chess-board solution now!"</span>
+      </div>
+    </div>
+
+    <!-- 第37章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 37 章</span>
+        <span class="chapter-title">華為威脅</span>
+      </div>
+      <p class="summary">2019年，華為在全球出貨量超越蘋果，在中國高階市場的市占率從10%躍升至48%。諷刺的是，川普政府對華為的制裁，讓蘋果在一夕之間成為高階5G手機的唯一選擇，中國市占率幾乎翻倍。而庫克在德州的Mac Pro工廠秀，被揭露根本是靠富士康的中國工程師飛去救場。</p>
+      <div class="quote-box">
+        <span class="quote-zh">希爾曼說：「如果每天要出貨100萬台產品，地球上只有少數幾家公司能做到——除了在中國，世界上沒有任何地方能做到。」</span>
+        <span class="quote-en">Hillman said: "If you need to ship a million products per day, only a handful of companies on earth can do it — and outside of China, nowhere in the world can."</span>
+      </div>
+    </div>
+
+    <!-- 第38章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 38 章</span>
+        <span class="chapter-title">全球疫情</span>
+      </div>
+      <p class="summary">COVID-19讓武漢封城，一對蘋果工程師夫婦靠著計程車接力花三天逃出。疫情初期衝擊蘋果生產，但中國清零措施下工廠快速復工，加上華為被制裁，讓蘋果2020年耶誕季度大中華區銷售飆升57%。2022年1月，蘋果市值突破三兆美元，成為史上第一家達此門檻的企業。</p>
+      <div class="quote-box">
+        <span class="quote-zh">疫情讓庫比蒂諾意識到：多年來用飛機把工程師送去中國培訓的代價——如今，他們把中國工程師用飛機運來美國救場。</span>
+        <span class="quote-en">The pandemic made Cupertino realize the true cost of years spent flying engineers to China for training — now they were flying Chinese engineers to America to save the day.</span>
+      </div>
+    </div>
+
+    <!-- 第39章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 39 章</span>
+        <span class="chapter-title">「蘋果前所未有的惡夢」</span>
+      </div>
+      <p class="summary">2022年10月，鄭州「iPhone城」富士康工廠工人因封控逃亡，防暴警察用警棍驅散。這場事件暴露了蘋果製造業過度集中於單一國家的系統性風險。庫克被媒體堵截，被問到是否支持中國抗議工人時，默默低頭走開。他2017年自己說過的話迴響：「沉默就是最終的默許。」</p>
+      <div class="quote-box">
+        <span class="quote-zh">庫克曾說：「沉默就是最終的默許。當你看到不對的事情發生時，保持沉默，是最有力的同意方式。」</span>
+        <span class="quote-en">Cook once said: "Silence is the ultimate form of consent. When you see something wrong happening, staying silent is the most powerful way of agreeing with it."</span>
+      </div>
+    </div>
+
+    <!-- 第40章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 40 章</span>
+        <span class="chapter-title">B 計畫——印度製造？</span>
+      </div>
+      <p class="summary">上海封城成為轉捩點，蘋果啟動印度製造計畫。到2023年，「印度製造」的iPhone首次在同一天上市。但挑戰巨大：印度缺乏中國的勞動彈性、零組件供應鏈、自動化能力，與政府執行力。摩根士丹利估計，蘋果90%以上產能仍在中國；要真正脫鉤，需要數千億美元與數十年時間。</p>
+      <div class="quote-box">
+        <span class="quote-zh">供應鏈顧問說：「蘋果不能跑，也不能爬，只能走在剛剛好的速度——走太快，中國會生氣；走太慢，就會被困住。」</span>
+        <span class="quote-en">A supply chain consultant said: "Apple can't run, can't crawl — it can only move at exactly the right pace. Too fast, and China gets angry; too slow, and you're trapped."</span>
+      </div>
+    </div>
+
+    <!-- 第41章 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">第 41 章</span>
+        <span class="chapter-title">驚人的脆弱性——台積電</span>
+      </div>
+      <p class="summary">2020年蘋果全面轉向自研晶片Apple Silicon，全部交由台積電獨家代工。這意味著所有iPhone、iPad、Mac的核心晶片，都生產在同一個可能遭中國武力威脅的台灣小島上。台積電佔全球80%最先進晶片產量，一旦台海衝突，全球每年損失估計超過一兆美元。巴菲特因地緣政治風險大舉拋售蘋果持股。</p>
+      <div class="quote-box">
+        <span class="quote-zh">巴菲特拋售台積電持股後說：「我不喜歡它的地理位置，我重新評估過了。」——這句話，同樣適用於蘋果。</span>
+        <span class="quote-en">After selling his TSMC shares, Buffett said: "I don't like its geographic location; I've reassessed." — Those words apply just as well to Apple.</span>
+      </div>
+    </div>
+
+    <!-- 結論 -->
+    <div class="chapter-card">
+      <div class="card-header">
+        <span class="chapter-badge">結 論</span>
+        <span class="chapter-title">未竟的傳承</span>
+      </div>
+      <p class="summary">本書以五大未來風險作結：華為強勢回歸、中國消費者可能抵制、服務業務帶來的審查妥協、AI發展受制於中國、以及川普關稅戰的重來。庫克的時代創造了驚人的股東財富，但如同奇異公司的傑克·威爾許，其歷史評價或許在未來才能蓋棺論定。蘋果與中國的關係，「隨時可能爆發」。</p>
+      <div class="quote-box">
+        <span class="quote-zh">一位前蘋果高層說：「蘋果與中國的關係隨時可能爆發。他們根本不可能在未來五年內，以任何實質方式擺脫對中國的依賴。」</span>
+        <span class="quote-en">A former Apple executive said: "Apple's relationship with China can explode at any moment. There is simply no way they can meaningfully decouple from China within the next five years."</span>
+      </div>
+    </div>
+
+  </div><!-- /chapters-grid -->
+
+</div><!-- /container -->
+
+<!-- ══════════════ BOTTOM NAV ══════════════ -->
+<div class="footer-bar">
+  <p>📚 喜歡這份導讀嗎？歡迎加入課程，一起深度閱讀商業經典！</p>
+  <div class="links-row">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="link-icon">🎓</span>
+      <span>
+        七月課程介紹
+        <span class="link-label">錯中學 ECHO 計劃</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="link-icon">📊</span>
+      <span>
+        學生分析
+        <span class="link-label">互動分析工具</span>
+      </span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="link-icon">💬</span>
+      <span>
+        LINE 聯絡老師
+        <span class="link-label">@linwayet</span>
+      </span>
+    </a>
+  </div>
+  <p class="footer-copy">© 2025 林威老師 · 錯中學 ECHO 計劃 · 版權所有</p>
+</div>
+
+</body>
+</html>
