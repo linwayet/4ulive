@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林威英文句型分析 — Plastic Waste</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&display=swap');
+body { margin:0; padding:20px; background:#F5ECD7; font-family:'Caveat',cursive; }
+.svg-container { width:100%; overflow-x:auto; background:#FDF3E3; }
+</style>
+</head>
+<body>
+<div style="max-width:980px;margin:0 auto;background:#FDF3E3;border-radius:14px;padding:32px 36px 40px;">
+
+  <div style="text-align:center;font-size:32px;font-weight:700;color:#B84A00;letter-spacing:4px;margin-bottom:24px;font-family:'Noto Sans TC','PingFang TC',sans-serif;">林威英文句型分析</div>
+
+  <!-- ORIGINAL FULL SENTENCE BOX (HTML) -->
+  <div style="border:2.5px solid #B84A00;border-radius:12px;padding:20px 24px;margin-bottom:32px;background:#FFF8EE;position:relative;">
+    <div style="position:absolute;top:-12px;left:18px;background:#FDF3E3;padding:0 10px;font-size:14px;font-weight:700;color:#B84A00;font-family:'Noto Sans TC','PingFang TC',sans-serif;">📖 原文 Original Sentence</div>
+    <div style="font-size:22px;color:#2D2A26;line-height:2;font-family:'Caveat',cursive;font-weight:500;">
+      Plastic waste in the ocean has become a serious global issue. Tiny pieces called microplastics are now found in seafood, raising concerns about their long-term effects on human health.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- SENTENCE ANALYSIS — PURE SVG, 22px+ fonts, high contrast, spacious  -->
+  <!--                                                                     -->
+  <!-- Design tokens:                                                      -->
+  <!--   Main text font: Caveat 26px (was 22px) — clearer for seniors      -->
+  <!--   Labels (S./V.): Patrick Hand 18px                                 -->
+  <!--   Annotations:   Patrick Hand 16px                                  -->
+  <!--   Text colour:   #2D2A26 main / accent colours for grammar roles    -->
+  <!--   Underline thickness: 3.5px                                        -->
+  <!--   Line spacing:  Each sentence block ~250px tall                    -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+  <div class="svg-container">
+    <svg viewBox="0 0 980 780" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#FDF3E3;">
+      <defs>
+        <marker id="svg-arr-down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M2 2L5 9L8 2" fill="none" stroke="#2D2A26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- ═══════════════ SENTENCE 1 ═══════════════ -->
+      <text x="490" y="44" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="22" font-weight="700" fill="#C0392B">句子 ①</text>
+
+      <!--
+        Sentence 1 word centres (recalibrated for 26px font):
+          Plastic waste:           x=130  (text width ~150)
+          in the ocean:            x=300  (text width ~140)
+          has become:              x=470  (text width ~150)
+          a serious global issue:  x=680  (text width ~230)
+          .                        x=800
+      -->
+
+      <!-- Underlines (drawn first, sit below text baseline) -->
+      <line x1="55"  y1="142" x2="205" y2="142" stroke="#185FA5" stroke-width="3.5"/>     <!-- Plastic waste -->
+      <line x1="395" y1="142" x2="545" y2="142" stroke="#1D9E75" stroke-width="3.5"/>     <!-- has become -->
+      <line x1="565" y1="142" x2="795" y2="142" stroke="#534AB7" stroke-width="3.5"/>     <!-- a serious global issue -->
+
+      <!-- Coral rounded rect around "in the ocean" -->
+      <rect x="232" y="108" width="138" height="40" rx="20" ry="20" fill="none" stroke="#5DCAA5" stroke-width="3"/>
+
+      <!-- S./V./C. labels (above sentence) — 18px Patrick Hand -->
+      <text x="130" y="88" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" font-weight="700" fill="#185FA5">S.</text>
+      <text x="470" y="88" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="680" y="88" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" font-weight="700" fill="#534AB7">C.</text>
+
+      <!-- Sentence words — 26px Caveat -->
+      <text x="130" y="138" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#185FA5">Plastic waste</text>
+      <text x="301" y="138" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="600" fill="#0F6E56">in the ocean</text>
+      <text x="470" y="138" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#1D9E75">has become</text>
+      <text x="680" y="138" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#534AB7">a serious global issue</text>
+      <text x="800" y="138" font-family="'Caveat',cursive" font-size="26" fill="#2D2A26">.</text>
+
+      <!-- Annotations BELOW (centred under their target word) — 16px Patrick Hand -->
+      <text x="301" y="180" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#0F6E56">↑ 介系詞片語</text>
+      <text x="301" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#0F6E56">修飾主詞</text>
+
+      <text x="470" y="180" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#1D9E75">↑ 現在完成式</text>
+      <text x="470" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#1D9E75">has + V-pp</text>
+
+      <text x="680" y="180" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#534AB7">↑ 主詞補語</text>
+      <text x="680" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#534AB7">(Complement)</text>
+
+      <!-- Divider -->
+      <line x1="55" y1="248" x2="925" y2="248" stroke="#D4A96A" stroke-width="1.4" stroke-dasharray="5 4"/>
+
+      <!-- ═══════════════ SENTENCE 2 ═══════════════ -->
+      <text x="490" y="290" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="22" font-weight="700" fill="#C0392B">句子 ②</text>
+
+      <!--
+        LINE A: Tiny pieces called microplastics are now found in seafood,
+        Word centres:
+          Tiny pieces:           x=130  (width ~140)
+          called microplastics:  x=340  (width ~230)
+          are now found:         x=560  (width ~170)
+          in seafood,:           x=740
+      -->
+
+      <!-- Underlines -->
+      <line x1="55"  y1="384" x2="205" y2="384" stroke="#185FA5" stroke-width="3.5"/>                           <!-- Tiny pieces -->
+      <line x1="225" y1="384" x2="455" y2="384" stroke="#C0392B" stroke-width="3" stroke-dasharray="4 3"/>      <!-- called microplastics (dashed) -->
+      <line x1="475" y1="384" x2="645" y2="384" stroke="#1D9E75" stroke-width="3.5"/>                           <!-- are now found -->
+
+      <!-- Labels above -->
+      <text x="130" y="334" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" font-weight="700" fill="#185FA5">S.</text>
+      <text x="560" y="334" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="18" font-weight="700" fill="#1D9E75">V.（被動語態）</text>
+
+      <!-- Words — 26px Caveat -->
+      <text x="130" y="378" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#185FA5">Tiny pieces</text>
+      <text x="340" y="378" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" font-style="italic" fill="#C0392B">called microplastics</text>
+      <text x="560" y="378" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#1D9E75">are now found</text>
+      <text x="740" y="378" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" fill="#2D2A26">in seafood,</text>
+
+      <!-- Annotation under "called microplastics" -->
+      <text x="340" y="418" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#C0392B">↑ 過去分詞片語</text>
+      <text x="340" y="438" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="16" fill="#C0392B">(= which are called microplastics)</text>
+
+      <!--
+        LINE B: raising concerns about their long-term effects on human health.
+        Green rounded box (participle phrase)
+      -->
+      <rect x="55" y="498" width="870" height="48" rx="22" ry="22" fill="none" stroke="#1D9E75" stroke-width="2.5"/>
+      <text x="490" y="530" text-anchor="middle" font-family="'Caveat',cursive" font-size="26" font-weight="700" fill="#0F6E56">raising concerns about their long-term effects on human health</text>
+      <text x="930" y="530" font-family="'Caveat',cursive" font-size="26" fill="#2D2A26">.</text>
+
+      <!-- Label above the green box -->
+      <text x="68" y="486" font-family="'Patrick Hand',cursive" font-size="16" font-weight="700" fill="#1D9E75">↓ 現在分詞片語（結果分詞構句）</text>
+
+      <!-- Equivalent annotation below -->
+      <text x="68" y="582" font-family="'Patrick Hand',cursive" font-size="17" fill="#534AB7">＝ ..., and they raise concerns about their long-term effects...</text>
+      <text x="68" y="606" font-family="'Patrick Hand',cursive" font-size="15" fill="#888">（分詞構句還原為對等子句：表「結果」）</text>
+
+      <!-- Curved arrow from "are now found in seafood," down to the green box -->
+      <path d="M 820 396 C 820 442 100 442 100 494"
+        fill="none" stroke="#2D2A26" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 3"
+        marker-end="url(#svg-arr-down)"/>
+      <text x="490" y="466" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="15" fill="#2D2A26">主動含意（pieces 主動引發 concerns）→ 用 V-ing</text>
+
+      <!-- Footer note -->
+      <text x="490" y="660" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="14" fill="#A89070">— 林威英文句型分析 · SVG 向量版（可任意縮放不失真）—</text>
+
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- GRAMMAR PANEL (HTML)                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <div style="margin-top:32px;border:1.5px solid #D4A96A;border-radius:10px;padding:22px 24px;background:#FFF8EE;font-family:'Noto Sans TC','PingFang TC',sans-serif;">
+
+    <div style="font-size:18px;font-weight:700;color:#B84A00;margin-bottom:16px;border-bottom:1px solid #E8C98A;padding-bottom:8px;">📌 文法重點</div>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;font-size:16px;line-height:1.8;">
+      <span style="background:#185FA5;border-radius:4px;width:12px;height:12px;flex-shrink:0;margin-top:6px;"></span>
+      <div><span style="color:#185FA5;font-weight:700;">① 介系詞片語修飾主詞</span><span style="color:#5D4037;"> — Plastic waste <em>in the ocean</em>：in the ocean 限定「哪裡的塑膠廢料」</span><br><span style="color:#888;font-size:14px;">介系詞片語放在名詞後，等於形容詞子句的縮減：= Plastic waste that is in the ocean</span></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;font-size:16px;line-height:1.8;">
+      <span style="background:#1D9E75;border-radius:4px;width:12px;height:12px;flex-shrink:0;margin-top:6px;"></span>
+      <div><span style="color:#1D9E75;font-weight:700;">② 現在完成式 has become</span><span style="color:#5D4037;"> — 表示「從過去到現在」的累積結果，強調「至今已成為」</span><br><span style="color:#888;font-size:14px;">has + V-pp 結構，主詞 Plastic waste 為不可數名詞，視為單數，故用 has</span></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;font-size:16px;line-height:1.8;">
+      <span style="background:#C0392B;border-radius:4px;width:12px;height:12px;flex-shrink:0;margin-top:6px;"></span>
+      <div><span style="color:#C0392B;font-weight:700;">③ 過去分詞片語修飾名詞（被動含意）</span><span style="color:#5D4037;"> — Tiny pieces <em>called microplastics</em> = Tiny pieces that are called microplastics</span><br><span style="color:#888;font-size:14px;">用過去分詞 called（V-pp）是因為「微塑膠被人們這樣稱呼」，被動關係故用 V-pp 而非 V-ing</span></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:14px;font-size:16px;line-height:1.8;">
+      <span style="background:#534AB7;border-radius:4px;width:12px;height:12px;flex-shrink:0;margin-top:6px;"></span>
+      <div><span style="color:#534AB7;font-weight:700;">④ 被動語態 are now found</span><span style="color:#5D4037;"> — be + V-pp：「被發現」，因為動作的承受者（pieces）當主詞</span><br><span style="color:#888;font-size:14px;">原主動句為：People now find tiny pieces in seafood → 改被動後 tiny pieces are now found in seafood</span></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:22px;font-size:16px;line-height:1.8;">
+      <span style="background:#0F6E56;border-radius:4px;width:12px;height:12px;flex-shrink:0;margin-top:6px;"></span>
+      <div><span style="color:#0F6E56;font-weight:700;">⑤ 現在分詞片語作結果分詞構句</span><span style="color:#5D4037;"> — ..., raising concerns... 表示「結果」，等於 ..., and this raises concerns...</span><br><span style="color:#888;font-size:14px;">這是學測常考句型！主動含意（主詞「引發」關注）用 V-ing；若改為被動（被引發）才用 V-pp</span></div>
+    </div>
+
+    <!-- CHINESE TRANSLATION -->
+    <div style="background:#FEF0D8;border-radius:8px;padding:16px 18px;margin-bottom:22px;border-left:5px solid #D85A30;">
+      <div style="font-size:15px;color:#B84A00;font-weight:700;margin-bottom:8px;">📖 全句中文翻譯</div>
+      <div style="font-size:17px;color:#3D2B00;line-height:2;">海洋中的塑膠廢料已經成為一個嚴重的全球性議題。被稱為「微塑膠」的細小碎片如今已在海鮮中被發現，這引發了人們對其長期影響人類健康的擔憂。</div>
+    </div>
+
+    <!-- VOCABULARY — 5 WORDS -->
+    <div style="font-size:18px;font-weight:700;color:#B84A00;margin-bottom:16px;border-bottom:1px solid #E8C98A;padding-bottom:8px;">📚 高中必學單字（5個）</div>
+
+    <!-- 1: plastic -->
+    <div style="background:#F0F7FF;border-radius:8px;padding:16px 18px;margin-bottom:14px;border-left:5px solid #185FA5;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:22px;font-weight:700;color:#185FA5;font-family:'Caveat',cursive;">plastic</span>
+        <span style="font-size:15px;color:#534AB7;">/ ˈplæstɪk /</span>
+        <span style="font-size:15px;color:#888;">n./adj. 塑膠／塑膠製的</span>
+      </div>
+      <div style="font-size:14px;color:#0C447C;background:#E6F1FB;border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:10px;">衍生詞：<strong>plasticity</strong> / plæsˈtɪsətɪ / (n.) 可塑性、適應性</div>
+      <div style="font-size:16px;color:#3D2B00;line-height:2;">
+        Many countries are now banning single-use <strong>plastic</strong> bags to protect the environment.<br>
+        <span style="color:#666;">許多國家正禁用一次性塑膠袋以保護環境。</span><br>
+        The human brain shows great <strong>plasticity</strong>, allowing us to learn new skills at any age.<br>
+        <span style="color:#666;">人類大腦展現出極大的可塑性，讓我們能在任何年齡學習新技能。</span>
+      </div>
+    </div>
+
+    <!-- 2: serious -->
+    <div style="background:#F5FFF8;border-radius:8px;padding:16px 18px;margin-bottom:14px;border-left:5px solid #1D9E75;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:22px;font-weight:700;color:#1D9E75;font-family:'Caveat',cursive;">serious</span>
+        <span style="font-size:15px;color:#534AB7;">/ ˈsɪrɪəs /</span>
+        <span style="font-size:15px;color:#888;">adj. 嚴重的、認真的</span>
+      </div>
+      <div style="font-size:14px;color:#085041;background:#E1F5EE;border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:10px;">衍生詞：<strong>seriously</strong> / ˈsɪrɪəslɪ / (adv.) 嚴重地、認真地</div>
+      <div style="font-size:16px;color:#3D2B00;line-height:2;">
+        Air pollution has caused <strong>serious</strong> health problems for people living in big cities.<br>
+        <span style="color:#666;">空氣污染已對大城市居民造成嚴重的健康問題。</span><br>
+        He <strong>seriously</strong> considered moving abroad for better job opportunities.<br>
+        <span style="color:#666;">他認真考慮為了更好的工作機會搬到國外。</span>
+      </div>
+    </div>
+
+    <!-- 3: global -->
+    <div style="background:#FFF8F0;border-radius:8px;padding:16px 18px;margin-bottom:14px;border-left:5px solid #D85A30;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:22px;font-weight:700;color:#D85A30;font-family:'Caveat',cursive;">global</span>
+        <span style="font-size:15px;color:#534AB7;">/ ˈɡlobl /</span>
+        <span style="font-size:15px;color:#888;">adj. 全球的、全面的</span>
+      </div>
+      <div style="font-size:14px;color:#712B13;background:#FAECE7;border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:10px;">衍生詞：<strong>globalization</strong> / ˌɡlobələˈzeʃən / (n.) 全球化</div>
+      <div style="font-size:16px;color:#3D2B00;line-height:2;">
+        Climate change is a <strong>global</strong> challenge that no single country can solve alone.<br>
+        <span style="color:#666;">氣候變遷是一個沒有任何單一國家能獨自解決的全球性挑戰。</span><br>
+        <strong>Globalization</strong> has made it easier for people to share ideas across cultures.<br>
+        <span style="color:#666;">全球化讓人們更容易跨文化地分享想法。</span>
+      </div>
+    </div>
+
+    <!-- 4: microplastic -->
+    <div style="background:#F5F4FF;border-radius:8px;padding:16px 18px;margin-bottom:14px;border-left:5px solid #534AB7;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:22px;font-weight:700;color:#534AB7;font-family:'Caveat',cursive;">microplastic</span>
+        <span style="font-size:15px;color:#534AB7;">/ ˌmaɪkroˈplæstɪk /</span>
+        <span style="font-size:15px;color:#888;">n. 微塑膠（直徑小於 5mm 的塑膠碎片）</span>
+      </div>
+      <div style="font-size:14px;color:#3C3489;background:#EEEDFE;border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:10px;">衍生詞：<strong>microscopic</strong> / ˌmaɪkrəˈskɑpɪk / (adj.) 微小的、顯微鏡才能看見的</div>
+      <div style="font-size:16px;color:#3D2B00;line-height:2;">
+        Scientists have detected <strong>microplastics</strong> in bottled water, salt, and even the air we breathe.<br>
+        <span style="color:#666;">科學家在瓶裝水、食鹽，甚至我們呼吸的空氣中都偵測到了微塑膠。</span><br>
+        <strong>Microscopic</strong> bacteria can be found everywhere, including on your phone screen.<br>
+        <span style="color:#666;">微小的細菌無處不在，包括你的手機螢幕上。</span>
+      </div>
+    </div>
+
+    <!-- 5: concern -->
+    <div style="background:#F0FBF7;border-radius:8px;padding:16px 18px;margin-bottom:6px;border-left:5px solid #0F6E56;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
+        <span style="font-size:22px;font-weight:700;color:#0F6E56;font-family:'Caveat',cursive;">concern</span>
+        <span style="font-size:15px;color:#534AB7;">/ kənˈsɝn /</span>
+        <span style="font-size:15px;color:#888;">n./v. 擔憂、關注／使擔心</span>
+      </div>
+      <div style="font-size:14px;color:#085041;background:#E1F5EE;border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:10px;">衍生詞：<strong>concerned</strong> / kənˈsɝnd / (adj.) 擔心的、關切的</div>
+      <div style="font-size:16px;color:#3D2B00;line-height:2;">
+        Rising sea levels have raised <strong>concerns</strong> among scientists and policymakers worldwide.<br>
+        <span style="color:#666;">海平面上升已在全球科學家與政策制定者之間引發擔憂。</span><br>
+        Parents are <strong>concerned</strong> about how much screen time their children spend each day.<br>
+        <span style="color:#666;">家長們對於孩子每天花多少時間看螢幕感到擔心。</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
