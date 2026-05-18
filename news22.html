@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>偷竊主題長句句型分析 · 林威英文</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  min-height: 100vh;
+  color: #2D2A26;
+}
+
+/* LINE 警告 */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700;
+  margin-left: 8px; cursor: pointer;
+}
+
+/* 連結列 */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.link-card {
+  flex: 1 1 280px; background: rgba(255, 255, 255, 0.95); border-radius: 14px;
+  padding: 14px 18px; text-decoration: none; color: #2D2A26;
+  display: flex; align-items: center; gap: 12px;
+  -webkit-tap-highlight-color: rgba(184, 74, 0, 0.1);
+  cursor: pointer; transition: all 0.25s;
+}
+.link-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(184, 74, 0, 0.2); }
+.link-card .icon {
+  font-size: 28px; width: 50px; height: 50px;
+  border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.link-card.course1 .icon { background: linear-gradient(135deg, #FFE5D0, #FFB077); color: #B84A00; }
+.link-card.course2 .icon { background: linear-gradient(135deg, #D8EFE0, #7FCBA0); color: #0F6E56; }
+.link-card.line .icon { background: linear-gradient(135deg, #C6E8C6, #06C755); color: #fff; }
+.link-card .title { font-weight: 700; font-size: 15px; }
+.link-card .desc { font-size: 12px; color: #6F6A60; margin-top: 2px; }
+
+/* 主要區塊 */
+.main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 20px; }
+.page-title {
+  text-align: center;
+  font-family: 'Source Han Sans', 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-size: 34px; font-weight: 900; color: #B84A00;
+  letter-spacing: 4px; margin: 16px 0 6px;
+}
+.page-sub {
+  text-align: center; font-size: 16px; color: #D85A30;
+  letter-spacing: 2px; margin-bottom: 22px;
+}
+
+/* 原文框 */
+.original-box {
+  background: #fff; border-radius: 14px; padding: 20px 22px;
+  margin-bottom: 22px; border-left: 6px solid #D85A30;
+  box-shadow: 0 4px 16px rgba(184, 74, 0, 0.08);
+}
+.original-label { font-size: 14px; color: #B84A00; font-weight: 700; margin-bottom: 8px; }
+.original-text {
+  font-family: 'Caveat', cursive;
+  font-size: 22px; line-height: 1.55; color: #2D2A26;
+}
+
+/* SVG 區 */
+.svg-wrap {
+  background: #FFF8EE; border-radius: 16px; padding: 18px;
+  margin-bottom: 18px; box-shadow: 0 6px 22px rgba(184, 74, 0, 0.10);
+}
+
+/* 下載按鈕 */
+.download-area { text-align: center; margin: 18px 0 26px; }
+.download-btn {
+  background: linear-gradient(135deg, #B84A00, #D85A30);
+  color: #fff; border: none; padding: 14px 28px;
+  border-radius: 28px; font-size: 16px; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(184, 74, 0, 0.3);
+  transition: all 0.2s;
+}
+.download-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(184, 74, 0, 0.4); }
+.download-btn:disabled { opacity: 0.7; cursor: wait; }
+.download-hint { font-size: 12px; color: #6F6A60; margin-top: 10px; }
+
+/* 文法重點面板 */
+.grammar-panel {
+  background: #fff; border-radius: 14px; padding: 22px 24px;
+  margin-bottom: 22px; box-shadow: 0 4px 16px rgba(184, 74, 0, 0.08);
+}
+.grammar-panel h2 { margin: 0 0 16px 0; color: #B84A00; font-size: 20px; }
+.grammar-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px dashed #EFE5D2; font-size: 15px; line-height: 1.7; }
+.grammar-item:last-child { border-bottom: none; }
+.grammar-dot { width: 14px; height: 14px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.grammar-title { font-weight: 700; }
+.grammar-body { color: #2D2A26; }
+.grammar-sub { font-size: 13px; color: #6F6A60; }
+
+/* 翻譯框 */
+.translation-box {
+  background: linear-gradient(135deg, #FEF0D8 0%, #FCE6BD 100%);
+  border-radius: 10px; padding: 18px 20px;
+  border-left: 6px solid #D85A30; margin-bottom: 22px;
+}
+.translation-label { font-size: 14px; color: #B84A00; font-weight: 700; margin-bottom: 6px; }
+.translation-text { font-size: 16px; line-height: 1.75; color: #2D2A26; }
+
+/* 主題關聯區 */
+.theme-visual {
+  background: #FFF8EE; border-radius: 16px; padding: 24px 22px;
+  margin-bottom: 22px; box-shadow: 0 6px 22px rgba(184, 74, 0, 0.10);
+}
+.theme-title {
+  text-align: center; font-size: 20px; font-weight: 700;
+  color: #B84A00; margin-bottom: 8px;
+}
+.theme-desc { text-align: center; font-size: 13px; color: #6F6A60; margin-bottom: 18px; }
+.word-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 12px; margin-bottom: 16px;
+}
+.word-mini {
+  background: #fff; border-radius: 12px; padding: 12px 8px;
+  text-align: center; border: 2px solid;
+}
+.word-mini .emoji { font-size: 30px; line-height: 1.2; margin-bottom: 4px; }
+.word-mini .w {
+  font-family: 'Caveat', cursive;
+  font-size: 20px; font-weight: 700; line-height: 1.1;
+}
+.word-mini .role {
+  font-size: 10px; color: #fff;
+  padding: 2px 7px; border-radius: 10px;
+  margin-top: 4px; display: inline-block;
+}
+.mini-thief    { border-color: #C0392B; } .mini-thief    .w { color: #C0392B; } .mini-thief    .role { background: #C0392B; }
+.mini-steal    { border-color: #D85A30; } .mini-steal    .w { color: #D85A30; } .mini-steal    .role { background: #D85A30; }
+.mini-goods    { border-color: #B07A2B; } .mini-goods    .w { color: #B07A2B; } .mini-goods    .role { background: #B07A2B; }
+.mini-burglar  { border-color: #534AB7; } .mini-burglar  .w { color: #534AB7; } .mini-burglar  .role { background: #534AB7; }
+.mini-burglary { border-color: #7C3AED; } .mini-burglary .w { color: #7C3AED; } .mini-burglary .role { background: #7C3AED; }
+.mini-breakin  { border-color: #185FA5; } .mini-breakin  .w { color: #185FA5; } .mini-breakin  .role { background: #185FA5; }
+.mini-shop     { border-color: #1D9E75; } .mini-shop     .w { color: #1D9E75; } .mini-shop     .role { background: #1D9E75; }
+.mini-theft    { border-color: #E24B4A; } .mini-theft    .w { color: #E24B4A; } .mini-theft    .role { background: #E24B4A; }
+.mini-pick     { border-color: #BA7517; } .mini-pick     .w { color: #BA7517; } .mini-pick     .role { background: #BA7517; }
+.mini-phish    { border-color: #185FA5; } .mini-phish    .w { color: #185FA5; } .mini-phish    .role { background: #185FA5; }
+
+.relation-box {
+  background: linear-gradient(135deg, #FEF0D8, #FCE6BD);
+  border-left: 6px solid #D85A30; padding: 16px 20px;
+  border-radius: 10px;
+}
+.relation-box h3 { margin: 0 0 10px 0; color: #B84A00; font-size: 16px; }
+.relation-box ul { margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.85; }
+.relation-box code {
+  background: #fff; padding: 2px 7px; border-radius: 6px;
+  font-family: 'Caveat', cursive; font-size: 15px; font-weight: 700; color: #C0392B;
+}
+
+/* 單字卡 */
+.vocab-section {
+  background: #fff; border-radius: 16px; padding: 26px 22px;
+  margin-bottom: 22px; box-shadow: 0 4px 16px rgba(184, 74, 0, 0.08);
+}
+.vocab-section h2 { text-align: center; color: #B84A00; font-size: 22px; margin: 0 0 22px 0; letter-spacing: 2px; }
+.vocab-card {
+  border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+  border-left: 5px solid;
+}
+.vocab-head {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1.5px dashed rgba(0,0,0,0.12);
+}
+.vocab-word { font-family: 'Caveat', cursive; font-size: 28px; font-weight: 700; }
+.vocab-phon { font-family: 'Patrick Hand', cursive; font-size: 14px; color: #6F6A60; }
+.vocab-pos { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 8px; }
+.vocab-ch { font-size: 13.5px; color: #2D2A26; }
+.derivative-box {
+  background: rgba(255,255,255,0.7); border-radius: 8px;
+  padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #4A4640;
+}
+.derivative-box strong { color: #B84A00; }
+.vocab-examples {
+  margin: 6px 0 0;
+  font-size: 14px; line-height: 1.65;
+}
+.vocab-examples .ex {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 8px; padding: 8px 12px; margin: 6px 0;
+}
+.vocab-examples .en {
+  font-family: 'Caveat', cursive;
+  font-size: 20px; font-weight: 600; line-height: 1.35; margin-bottom: 3px;
+}
+.vocab-examples .zh { font-size: 12.5px; color: #4A4640; line-height: 1.55; }
+.vocab-examples .num {
+  display: inline-block; width: 20px; height: 20px;
+  border-radius: 50%; text-align: center;
+  font-size: 12px; font-weight: 700; color: #fff; line-height: 20px;
+  margin-right: 6px; vertical-align: middle;
+}
+
+.v-thief    { background: linear-gradient(135deg, #FFF5F2, #FCE8E3); border-color: #C0392B; }
+.v-thief    .vocab-word, .v-thief    .num { color: #C0392B; } .v-thief    .num { background: #C0392B; } .v-thief    .vocab-pos { background: #FAECE7; color: #C0392B; }
+.v-steal    { background: linear-gradient(135deg, #FFF8F0, #FCE6D2); border-color: #D85A30; }
+.v-steal    .vocab-word { color: #D85A30; } .v-steal    .num { background: #D85A30; } .v-steal    .vocab-pos { background: #FAECE7; color: #D85A30; }
+.v-goods    { background: linear-gradient(135deg, #FFF8E8, #FAE9C8); border-color: #B07A2B; }
+.v-goods    .vocab-word { color: #B07A2B; } .v-goods    .num { background: #B07A2B; } .v-goods    .vocab-pos { background: #FAEEDA; color: #854F0B; }
+.v-burglar  { background: linear-gradient(135deg, #F5F4FF, #E5E2FE); border-color: #534AB7; }
+.v-burglar  .vocab-word { color: #534AB7; } .v-burglar  .num { background: #534AB7; } .v-burglar  .vocab-pos { background: #EEEDFE; color: #534AB7; }
+.v-burglary { background: linear-gradient(135deg, #F8F5FF, #EDE4FF); border-color: #7C3AED; }
+.v-burglary .vocab-word { color: #7C3AED; } .v-burglary .num { background: #7C3AED; } .v-burglary .vocab-pos { background: #EEEDFE; color: #7C3AED; }
+.v-breakin  { background: linear-gradient(135deg, #F0F7FF, #E0EFFD); border-color: #185FA5; }
+.v-breakin  .vocab-word { color: #185FA5; } .v-breakin  .num { background: #185FA5; } .v-breakin  .vocab-pos { background: #E6F1FB; color: #185FA5; }
+.v-shop     { background: linear-gradient(135deg, #F5FFF8, #DDF5E6); border-color: #1D9E75; }
+.v-shop     .vocab-word { color: #1D9E75; } .v-shop     .num { background: #1D9E75; } .v-shop     .vocab-pos { background: #E1F5EE; color: #1D9E75; }
+.v-theft    { background: linear-gradient(135deg, #FFEFEF, #FBD7D7); border-color: #E24B4A; }
+.v-theft    .vocab-word { color: #E24B4A; } .v-theft    .num { background: #E24B4A; } .v-theft    .vocab-pos { background: #FCEBEB; color: #A32D2D; }
+.v-pick     { background: linear-gradient(135deg, #FFF5E0, #FAE3B0); border-color: #BA7517; }
+.v-pick     .vocab-word { color: #BA7517; } .v-pick     .num { background: #BA7517; } .v-pick     .vocab-pos { background: #FAEEDA; color: #854F0B; }
+.v-phish    { background: linear-gradient(135deg, #EFF5FF, #D6E5FA); border-color: #185FA5; }
+.v-phish    .vocab-word { color: #185FA5; } .v-phish    .num { background: #185FA5; } .v-phish    .vocab-pos { background: #E6F1FB; color: #0C447C; }
+
+/* iOS modal */
+.ios-modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92); z-index: 9999;
+  padding: 20px; overflow-y: auto;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close { text-align: right; margin-bottom: 10px; }
+.ios-modal .close button {
+  background: #fff; color: #B84A00; border: none;
+  padding: 8px 16px; border-radius: 20px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.ios-modal .hint { color: #FFB77A; font-size: 15px; text-align: center; margin-bottom: 12px; }
+.ios-modal img { width: 100%; height: auto; border-radius: 8px; display: block; }
+.ios-modal .footer-hint { color: #aaa; font-size: 12px; text-align: center; margin-top: 12px; }
+
+/* 響應式 */
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .original-text { font-size: 18px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 24px; }
+  .vocab-examples .en { font-size: 17px; }
+  .grammar-item { font-size: 14px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+  .word-grid { grid-template-columns: repeat(2, 1fr); }
+  .vocab-section, .theme-visual { padding: 18px 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE 警告 -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- 頂部連結列 -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <h1 class="page-title">林威英文句型分析</h1>
+  <div class="page-sub">偷竊主題長句拆解 · Theft Vocabulary &amp; Sentence Structure</div>
+
+  <!-- 原文 -->
+  <div class="original-box">
+    <div class="original-label">📄 原文 Original Sentence</div>
+    <div class="original-text">
+      Although the thief was first accused of shoplifting, the police later discovered that he was actually a burglar involved in several break-ins, a serious burglary case, theft, selling stolen goods, acting as a pickpocket, and even using phishing tricks to steal money.
+    </div>
+  </div>
+
+  <!-- SVG 句型圖 -->
+  <div class="svg-wrap">
+
+<svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+  style="width:100%;height:auto;display:block;background:#FFF8EE;">
+  <defs>
+    <marker id="svg-arr-down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M2 2L5 9L8 2" fill="none" stroke="#2D2A26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+    </marker>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF8EE"/>
+      <stop offset="100%" stop-color="#FEF0D8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+  <!-- 標題 -->
+  <text x="960" y="78" text-anchor="middle"
+    font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+    font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+  <text x="960" y="128" text-anchor="middle"
+    font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+    font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+  <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+  <!-- ═══════ 第一段：讓步副詞子句 ═══════ -->
+  <!-- 標籤 -->
+  <text x="280" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#7C3AED">Adv. Clause (讓步)</text>
+  <text x="500" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+  <text x="760" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.(被動)</text>
+
+  <!-- 第一段主文 -->
+  <text x="100" y="270" font-family="'Caveat',cursive" font-size="56" font-weight="700">
+    <tspan fill="#7C3AED">Although</tspan>
+    <tspan dx="20" fill="#185FA5">the thief</tspan>
+    <tspan dx="20" fill="#1D9E75">was accused of</tspan>
+    <tspan dx="20" fill="#5DCAA5">shoplifting</tspan>
+    <tspan dx="10" fill="#2D2A26">,</tspan>
+  </text>
+
+  <!-- 第一段底線 -->
+  <line x1="220" y1="282" x2="380" y2="282" stroke="#7C3AED" stroke-width="6" stroke-dasharray="10 5"/>
+  <line x1="404" y1="282" x2="596" y2="282" stroke="#185FA5" stroke-width="6"/>
+  <line x1="620" y1="282" x2="900" y2="282" stroke="#1D9E75" stroke-width="6"/>
+  <rect x="920" y="235" width="240" height="55" rx="27" ry="27" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+
+  <!-- 第一段標注 -->
+  <text x="300" y="328" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#7C3AED">↑ 讓步連接詞</text>
+  <text x="1040" y="328" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#0F6E56">↑ 介系詞 of 的受詞（動名詞）</text>
+
+  <!-- 區段分隔 -->
+  <line x1="60" y1="380" x2="1860" y2="380" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+  <!-- ═══════ 第二段：主要子句 主詞 + 動詞 + 名詞子句 ═══════ -->
+  <text x="200" y="430" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+  <text x="450" y="430" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+  <text x="700" y="430" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#534AB7">that-名詞子句 (O.)</text>
+
+  <text x="100" y="500" font-family="'Caveat',cursive" font-size="56" font-weight="700">
+    <tspan fill="#185FA5">the police</tspan>
+    <tspan dx="20" fill="#1D9E75">later discovered</tspan>
+    <tspan dx="20" fill="#534AB7">that</tspan>
+    <tspan dx="20" fill="#534AB7">he was actually a burglar</tspan>
+  </text>
+
+  <line x1="106" y1="512" x2="380" y2="512" stroke="#185FA5" stroke-width="6"/>
+  <line x1="404" y1="512" x2="710" y2="512" stroke="#1D9E75" stroke-width="6"/>
+  <line x1="734" y1="512" x2="800" y2="512" stroke="#534AB7" stroke-width="6"/>
+  <line x1="824" y1="512" x2="1340" y2="512" stroke="#534AB7" stroke-width="6"/>
+
+  <text x="245" y="558" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#185FA5">↑ 主要子句主詞</text>
+  <text x="558" y="558" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#0F6E56">↑ 主要動詞 (過去式)</text>
+  <text x="1080" y="558" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#534AB7">↑ that 引導名詞子句作 discovered 的受詞</text>
+
+  <!-- 區段分隔 -->
+  <line x1="60" y1="610" x2="1860" y2="610" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+  <!-- ═══════ 第三段：a burglar 後的過去分詞片語 ═══════ -->
+  <text x="960" y="660" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#C0392B">↓ 過去分詞片語修飾 a burglar (＝ who was involved in ...)</text>
+
+  <!-- 紅色虛線框 -->
+  <rect x="80" y="690" width="1760" height="130" rx="20" ry="20" fill="none" stroke="#C0392B" stroke-width="4" stroke-dasharray="12 6"/>
+
+  <text x="960" y="760" text-anchor="middle" font-family="'Caveat',cursive" font-size="48" font-weight="700" fill="#C0392B">
+    involved in several break-ins, a serious burglary case, theft,
+  </text>
+
+  <!-- ═══════ 第四段：六個並列的 of 受詞 (橘色框) ═══════ -->
+  <text x="960" y="870" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#D85A30">↓ 六個並列名詞片語 (對等連接 by commas + and)</text>
+
+  <!-- 六項並列盒子 -->
+  <g font-family="'Caveat',cursive" font-size="36" font-weight="700">
+    <!-- 1 break-ins -->
+    <rect x="80" y="900" width="270" height="62" rx="14" ry="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="3"/>
+    <text x="215" y="942" text-anchor="middle" fill="#185FA5">several break-ins</text>
+
+    <!-- 2 burglary case -->
+    <rect x="370" y="900" width="280" height="62" rx="14" ry="14" fill="#EEEDFE" stroke="#7C3AED" stroke-width="3"/>
+    <text x="510" y="942" text-anchor="middle" fill="#7C3AED">a burglary case</text>
+
+    <!-- 3 theft -->
+    <rect x="670" y="900" width="170" height="62" rx="14" ry="14" fill="#FCEBEB" stroke="#E24B4A" stroke-width="3"/>
+    <text x="755" y="942" text-anchor="middle" fill="#E24B4A">theft</text>
+
+    <!-- 4 selling stolen goods -->
+    <rect x="860" y="900" width="340" height="62" rx="14" ry="14" fill="#FAEEDA" stroke="#B07A2B" stroke-width="3"/>
+    <text x="1030" y="942" text-anchor="middle" fill="#B07A2B">selling stolen goods</text>
+
+    <!-- 5 acting as a pickpocket -->
+    <rect x="1220" y="900" width="370" height="62" rx="14" ry="14" fill="#FAEEDA" stroke="#BA7517" stroke-width="3"/>
+    <text x="1405" y="942" text-anchor="middle" fill="#BA7517">acting as a pickpocket</text>
+
+    <!-- 6 using phishing -->
+    <rect x="1610" y="900" width="230" height="62" rx="14" ry="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="3"/>
+    <text x="1725" y="942" text-anchor="middle" fill="#185FA5">using phishing</text>
+  </g>
+
+  <!-- 表示對等連接 + and 標注 -->
+  <text x="960" y="998" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#2D2A26">六者皆作 "involved in" 的受詞 ／ 最後一項由 "and even" 引導，後接 "to steal money"（不定詞表目的）</text>
+
+  <!-- Footer -->
+  <line x1="660" y1="1030" x2="1260" y2="1030" stroke="#D4A96A" stroke-width="1.8"/>
+  <text x="960" y="1066" text-anchor="middle"
+    font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+    font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+</svg>
+
+  </div>
+
+  <!-- 下載按鈕 -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- 文法重點 -->
+  <div class="grammar-panel">
+    <h2>📌 文法重點</h2>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① Although 引導讓步副詞子句</span>
+        <span class="grammar-body"> — Although + S. + V., 主句。讓步連接詞表「雖然⋯⋯但是」，後面不可再加 but。</span><br>
+        <span class="grammar-sub">例：Although the thief was first accused of shoplifting, the police later discovered ...</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② be accused of + Ving（被動語態 + 介系詞片語）</span>
+        <span class="grammar-body"> — 「被指控做某事」。of 是介系詞，後面必須接動名詞（Ving）或名詞。</span><br>
+        <span class="grammar-sub">be accused of <strong>shoplifting</strong>（被指控店面行竊）／ be involved in <strong>break-ins</strong>（涉及闖入案件）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">③ that 引導名詞子句作受詞</span>
+        <span class="grammar-body"> — discovered + <strong>that</strong>-clause。that 帶出完整子句，整個子句當作 discovered 的受詞。</span><br>
+        <span class="grammar-sub">discovered that he was actually a burglar ...（發現他其實是個入室竊賊⋯⋯）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">④ 過去分詞片語當形容詞，後位修飾名詞</span>
+        <span class="grammar-body"> — a burglar <strong>involved in</strong> ...（一個牽涉到⋯⋯的入室竊賊）＝ a burglar <strong>who was involved in</strong> ...，省略「關係代名詞 + be 動詞」。</span><br>
+        <span class="grammar-sub">凡是被動意義 + 修飾前面名詞 → 用「過去分詞片語」精簡關係子句</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#D85A30;"></span>
+      <div>
+        <span class="grammar-title" style="color:#D85A30;">⑤ 並列結構（A, B, C, D, E, and even F to V）</span>
+        <span class="grammar-body"> — involved in 後接<strong>六個並列名詞/動名詞</strong>，用逗號加 and 連接；最後一項 "using phishing tricks <strong>to steal money</strong>" 的 to V 是「不定詞表目的」。</span><br>
+        <span class="grammar-sub">並列規則：詞性一致（名詞與名詞、Ving 與 Ving），最後一項前加 and / and even（表強調）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 中文翻譯 -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">
+      雖然這名小偷一開始被指控的是商店行竊，警方後來卻發現他其實是個入室竊賊，牽涉到好幾起闖入案件、一件嚴重的入室盜竊案、單純的偷竊行為、銷贓、扒手活動，甚至還使用網路釣魚的手法去騙取錢財。
+    </div>
+  </div>
+
+  <!-- 主題視覺關聯 -->
+  <div class="theme-visual">
+    <div class="theme-title">🎨 十個偷竊相關單字 · 關係地圖</div>
+    <div class="theme-desc">先看角色，再看關係</div>
+
+    <div class="word-grid">
+      <div class="word-mini mini-thief"><div class="emoji">🦹</div><div class="w">thief</div><div class="role">👤 人(廣義)</div></div>
+      <div class="word-mini mini-burglar"><div class="emoji">🥷🏠</div><div class="w">burglar</div><div class="role">👤 人(入屋)</div></div>
+      <div class="word-mini mini-pick"><div class="emoji">👜✋</div><div class="w">pickpocket</div><div class="role">👤 人(扒手)</div></div>
+      <div class="word-mini mini-steal"><div class="emoji">🤲💰</div><div class="w">steal</div><div class="role">⚡ 動詞</div></div>
+      <div class="word-mini mini-goods"><div class="emoji">📦💎</div><div class="w">stolen goods</div><div class="role">🎁 物品</div></div>
+
+      <div class="word-mini mini-theft"><div class="emoji">⚖️</div><div class="w">theft</div><div class="role">⚖️ 罪名(廣義)</div></div>
+      <div class="word-mini mini-burglary"><div class="emoji">🏠🔓</div><div class="w">burglary</div><div class="role">⚖️ 罪名(入室)</div></div>
+      <div class="word-mini mini-breakin"><div class="emoji">🚪💥</div><div class="w">break-ins</div><div class="role">⚖️ 案件(複數)</div></div>
+      <div class="word-mini mini-shop"><div class="emoji">🛒👀</div><div class="w">shoplifting</div><div class="role">⚖️ 行為(店面)</div></div>
+      <div class="word-mini mini-phish"><div class="emoji">🎣💻</div><div class="w">phishing</div><div class="role">⚖️ 行為(網路)</div></div>
+    </div>
+
+    <div class="relation-box">
+      <h3>🔗 三大類解讀</h3>
+      <ul>
+        <li><strong>👤 三種「人」：</strong> <code>thief</code>（一般小偷）／ <code>burglar</code>（入屋竊賊）／ <code>pickpocket</code>（扒手，專偷口袋與包包）</li>
+        <li><strong>⚡ 動詞 vs 物品：</strong> <code>steal</code>（動詞「偷」） → 偷來的東西就是 <code>stolen goods</code>（贓物）</li>
+        <li><strong>⚖️ 五種「罪名/行為」：</strong> <code>theft</code> 是最廣義的「偷竊罪」；<code>burglary</code> 限定「入室」；<code>break-ins</code> 是闖入案件（常複數）；<code>shoplifting</code> 限定「商店」；<code>phishing</code> 是現代版「網路詐騙釣魚」</li>
+        <li><strong>🧠 記憶口訣：</strong> 「人 thief / burglar / pickpocket、動 steal、物 stolen goods、罪 theft / burglary / break-ins / shoplifting / phishing」</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 十個單字卡 -->
+  <div class="vocab-section">
+    <h2>📚 十個單字 · 每字兩句生活例句</h2>
+
+    <!-- 1 thief -->
+    <div class="vocab-card v-thief">
+      <div class="vocab-head">
+        <span class="vocab-word">thief</span>
+        <span class="vocab-phon">[θif]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">小偷、賊（廣義；複數 thieves）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>thieves (pl.)、thievery (n. 偷竊行為)、thievish (adj. 像賊的)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>The thief grabbed her handbag and ran into the crowded street.</div><div class="zh">小偷搶走她的手提包後逃進擁擠的街道。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>Police caught the thief trying to sell the stolen phone online.</div><div class="zh">警方逮到那個小偷正試圖在網路上賣掉偷來的手機。</div></div>
+      </div>
+    </div>
+
+    <!-- 2 steal -->
+    <div class="vocab-card v-steal">
+      <div class="vocab-head">
+        <span class="vocab-word">steal</span>
+        <span class="vocab-phon">[stil]</span>
+        <span class="vocab-pos">v.</span>
+        <span class="vocab-ch">偷竊（三態：steal / stole / stolen）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>stole (v. 過去式)、stolen (pp. / adj. 被偷的)、stealth (n. 偷偷摸摸)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>Someone tried to steal my bicycle from the school parking lot yesterday.</div><div class="zh">昨天有人企圖從學校停車場偷走我的腳踏車。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>It is wrong to steal, even if you are extremely hungry.</div><div class="zh">即使你非常飢餓，偷東西仍然是錯的。</div></div>
+      </div>
+    </div>
+
+    <!-- 3 stolen goods -->
+    <div class="vocab-card v-goods">
+      <div class="vocab-head">
+        <span class="vocab-word">stolen goods</span>
+        <span class="vocab-phon">[ˈstoʊlən ɡʊdz]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">贓物（被偷走的物品，常複數）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>stolen (adj. 被偷的)、goods (n. 商品/物品)、fence (n. 銷贓者)、receive stolen goods (片 收受贓物)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>The police found a large pile of stolen goods hidden in his garage.</div><div class="zh">警方在他的車庫裡發現一大堆藏匿的贓物。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>Buying stolen goods is also a crime, even if you didn't steal them yourself.</div><div class="zh">即使不是自己偷的，購買贓物同樣是犯罪行為。</div></div>
+      </div>
+    </div>
+
+    <!-- 4 burglar -->
+    <div class="vocab-card v-burglar">
+      <div class="vocab-head">
+        <span class="vocab-word">burglar</span>
+        <span class="vocab-phon">[ˈbɝɡlɚ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">入室竊賊（闖入建築物偷東西的人）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>burglary (n. 入室竊盜罪)、burgle (v. 入屋行竊)、burglar alarm (n. 防盜警報器)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>A burglar climbed through the open window while the family was asleep.</div><div class="zh">當這家人在睡覺時，一名竊賊從打開的窗戶爬了進來。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>The barking dog scared the burglar away before he could take anything.</div><div class="zh">那隻吠叫的狗在竊賊還沒拿走任何東西前就把他嚇跑了。</div></div>
+      </div>
+    </div>
+
+    <!-- 5 burglary -->
+    <div class="vocab-card v-burglary">
+      <div class="vocab-head">
+        <span class="vocab-word">burglary</span>
+        <span class="vocab-phon">[ˈbɝɡləri]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">入室竊盜罪（罪名／案件）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>burglar (n. 入室竊賊)、burgle (v. 入屋行竊)、commit burglary (片 犯下入室竊盜罪)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>He was sentenced to three years in prison for burglary.</div><div class="zh">他因入室竊盜罪被判處三年有期徒刑。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>Burglary rates have dropped sharply since the new security cameras were installed.</div><div class="zh">自從新監視器安裝後，入室竊盜案件率大幅下降。</div></div>
+      </div>
+    </div>
+
+    <!-- 6 break-ins -->
+    <div class="vocab-card v-breakin">
+      <div class="vocab-head">
+        <span class="vocab-word">break-ins</span>
+        <span class="vocab-phon">[ˈbrekˌɪnz]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">闖入案件（強行進入他人住處的事件，常複數）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>break in (v. 闖入)、break into + 處所 (片 闖入某處)、intruder (n. 闖入者)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>There have been several break-ins in our neighborhood this month.</div><div class="zh">這個月我們社區發生了好幾起闖入案件。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>Residents are installing alarm systems to prevent further break-ins.</div><div class="zh">居民們正在安裝警報系統，以防止更多闖入案件發生。</div></div>
+      </div>
+    </div>
+
+    <!-- 7 shoplifting -->
+    <div class="vocab-card v-shop">
+      <div class="vocab-head">
+        <span class="vocab-word">shoplifting</span>
+        <span class="vocab-phon">[ˈʃɑpˌlɪftɪŋ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">商店行竊、順手牽羊（在店內偷商品）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>shoplifter (n. 店面行竊者)、shoplift (v. 在店內行竊)、security tag (n. 防盜標籤)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>The teenager was caught shoplifting a bottle of perfume from the department store.</div><div class="zh">那名青少年在百貨公司順手牽羊偷一瓶香水時被當場抓到。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>Many stores use security tags and cameras to prevent shoplifting.</div><div class="zh">許多商店使用防盜標籤和監視器來防止店面行竊。</div></div>
+      </div>
+    </div>
+
+    <!-- 8 theft -->
+    <div class="vocab-card v-theft">
+      <div class="vocab-head">
+        <span class="vocab-word">theft</span>
+        <span class="vocab-phon">[θɛft]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">偷竊（行為／罪名，最廣義的偷竊）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>thief (n. 小偷)、thieves (pl.)、identity theft (n. 身分盜用)、auto theft (n. 汽車竊盜)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>Identity theft has become a serious problem in the digital age.</div><div class="zh">在數位時代，身分盜用已成為嚴重的問題。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>He reported the theft of his laptop to the campus security office.</div><div class="zh">他向校園安全室通報他的筆記型電腦遭竊。</div></div>
+      </div>
+    </div>
+
+    <!-- 9 pickpocket -->
+    <div class="vocab-card v-pick">
+      <div class="vocab-head">
+        <span class="vocab-word">pickpocket</span>
+        <span class="vocab-phon">[ˈpɪkˌpɑkɪt]</span>
+        <span class="vocab-pos">n. / v.</span>
+        <span class="vocab-ch">扒手（在公共場所扒口袋／包包的人）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>pickpocketing (n. 扒竊行為)、pick someone's pocket (片 扒某人的口袋)、pickpocket-prone area (n. 易遭扒竊區)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>Tourists should beware of pickpockets in crowded train stations.</div><div class="zh">遊客在擁擠的火車站要小心扒手。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>A skilled pickpocket can steal your wallet without you noticing anything.</div><div class="zh">熟練的扒手能在你完全沒察覺的情況下偷走錢包。</div></div>
+      </div>
+    </div>
+
+    <!-- 10 phishing -->
+    <div class="vocab-card v-phish">
+      <div class="vocab-head">
+        <span class="vocab-word">phishing</span>
+        <span class="vocab-phon">[ˈfɪʃɪŋ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-ch">網路釣魚（假冒合法網站騙取個資與金錢）</span>
+      </div>
+      <div class="derivative-box"><strong>衍生詞：</strong>phish (v. 進行網路釣魚)、phisher (n. 網釣詐騙者)、phishing email (n. 釣魚郵件)、phishing scam (n. 網釣詐騙)</div>
+      <div class="vocab-examples">
+        <div class="ex"><div class="en"><span class="num">1</span>Never click on suspicious links in emails to avoid phishing attacks.</div><div class="zh">絕對不要點擊郵件中的可疑連結，以避免遭受網路釣魚攻擊。</div></div>
+        <div class="ex"><div class="en"><span class="num">2</span>The bank warned customers about a new phishing scam pretending to be tax officials.</div><div class="zh">銀行警告客戶有一種新型網路釣魚詐騙，假冒為稅務人員。</div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 底部連結列 -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- iOS modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    const defs = svgClone.querySelector('defs');
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_偷竊長句_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
