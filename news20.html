@@ -66,7 +66,6 @@ body {
 .link-card.line .title { color: #06A046; }
 .link-card .desc { font-size: 12px; color: #666; line-height: 1.4; }
 
-/* LINE browser warning banner */
 .line-warning {
   display: none;
   background: #FFF4E5;
@@ -94,7 +93,6 @@ body {
   cursor: pointer;
 }
 
-/* ═══ MAIN ═══ */
 .main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
 .page-title {
   text-align:center; font-size:32px; font-weight:900;
@@ -140,9 +138,9 @@ body {
 }
 .download-btn:hover { transform: translateY(-2px); }
 .download-btn:active { transform: translateY(0); }
+.download-btn:disabled { opacity: 0.6; cursor: wait; }
 .download-hint { font-size: 13px; color: #888; margin-top: 10px; padding: 0 16px; }
 
-/* iOS image preview modal */
 .ios-modal {
   display: none;
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -181,7 +179,6 @@ body {
   font-family: 'Noto Sans TC','PingFang TC',sans-serif;
 }
 
-/* ═══ GRAMMAR PANEL ═══ */
 .grammar-panel {
   border: 2px solid #D4A96A; border-radius: 14px;
   padding: 24px 22px;
@@ -242,32 +239,29 @@ body {
 </head>
 <body>
 
-<!-- LINE in-app browser warning (auto-shown if detected) -->
 <div id="line-warning" class="line-warning">
-  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能（如下載 JPG、開啟外部連結）可能受限。
-  建議用瀏覽器開啟以獲得完整功能：
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
   <button onclick="openInBrowser()">在瀏覽器中開啟</button>
   <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
 </div>
 
-<!-- TOP LINK BAR -->
 <div class="link-bar">
   <div class="link-bar-inner">
-    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer" data-link="course1">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
       <div class="icon">📚</div>
       <div class="text">
         <div class="title">錯中學 ECHO 計劃</div>
         <div class="desc">七月開課 · AI 輔助學測 200 天</div>
       </div>
     </a>
-    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer" data-link="course2">
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
       <div class="icon">🎯</div>
       <div class="text">
         <div class="title">學生分析系統</div>
         <div class="desc">七月開課 · 個人化學習診斷</div>
       </div>
     </a>
-    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer" data-link="line">
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
       <div class="icon">💬</div>
       <div class="text">
         <div class="title">林威老師 LINE</div>
@@ -278,7 +272,6 @@ body {
 </div>
 
 <div class="main-wrap">
-
   <div class="page-title">林威英文句型分析</div>
 
   <div class="original-box">
@@ -369,7 +362,7 @@ body {
     </div>
 
     <div class="download-area">
-      <button class="download-btn" onclick="prepareAndDownloadJpg()">
+      <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
         📥 下載句型分析圖（JPG · 1920×1080）
       </button>
       <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
@@ -504,24 +497,23 @@ body {
   </div>
 </div>
 
-<!-- BOTTOM LINK BAR -->
 <div class="link-bar">
   <div class="link-bar-inner">
-    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer" data-link="course1">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
       <div class="icon">📚</div>
       <div class="text">
         <div class="title">錯中學 ECHO 計劃</div>
         <div class="desc">七月開課 · AI 輔助學測 200 天</div>
       </div>
     </a>
-    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer" data-link="course2">
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
       <div class="icon">🎯</div>
       <div class="text">
         <div class="title">學生分析系統</div>
         <div class="desc">七月開課 · 個人化學習診斷</div>
       </div>
     </a>
-    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer" data-link="line">
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
       <div class="icon">💬</div>
       <div class="text">
         <div class="title">林威老師 LINE</div>
@@ -531,7 +523,6 @@ body {
   </div>
 </div>
 
-<!-- iOS image modal -->
 <div id="ios-modal" class="ios-modal">
   <div class="close">
     <button onclick="closeIosModal()">✕ 關閉</button>
@@ -542,113 +533,219 @@ body {
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════════ */
-/* DETECT LINE IN-APP BROWSER + SHOW WARNING                */
-/* ═══════════════════════════════════════════════════════ */
 const ua = navigator.userAgent || '';
 const isLineBrowser = /Line\//i.test(ua);
 const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-const currentUrl = window.location.href;
 
 if (isLineBrowser) {
   document.getElementById('line-warning').classList.add('show');
 }
 
 function openInBrowser() {
-  // LINE supports openExternalBrowser=1 URL parameter
-  // This tells LINE to open in system browser instead of in-app webview
-  const separator = currentUrl.includes('?') ? '&' : '?';
-  const externalUrl = currentUrl + separator + 'openExternalBrowser=1';
-  window.location.href = externalUrl;
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
 }
 
-/* ═══════════════════════════════════════════════════════ */
-/* LINK CLICK HANDLING — workaround for LINE in-app browser */
-/* ═══════════════════════════════════════════════════════ */
 document.querySelectorAll('.link-card').forEach(card => {
   card.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
     if (!href) return;
-
-    // In LINE in-app browser, append openExternalBrowser=1 to force system browser
     if (isLineBrowser) {
       e.preventDefault();
-      const sep = href.includes('?') ? '&' : '?';
-      // For LINE URLs themselves, just use the original URL
       if (href.includes('line.me')) {
         window.location.href = href;
       } else {
+        const sep = href.includes('?') ? '&' : '?';
         window.location.href = href + sep + 'openExternalBrowser=1';
       }
     }
-    // Outside LINE, the default target="_blank" works normally
   });
 });
 
-/* ═══════════════════════════════════════════════════════ */
-/* JPG DOWNLOAD — iOS Safari popup-blocking workaround      */
-/*                                                          */
-/* Problem: window.open() inside async callback (toBlob)    */
-/*          gets blocked by Safari popup blocker because    */
-/*          it's not a "direct user gesture"                */
-/*                                                          */
-/* Solution: Use in-page modal instead of new tab/window.   */
-/*           Modal is shown via display:none → block,       */
-/*           which doesn't trigger popup blocker.           */
-/* ═══════════════════════════════════════════════════════ */
-function prepareAndDownloadJpg() {
-  const svg = document.getElementById('grammar-svg');
-  const svgData = new XMLSerializer().serializeToString(svg);
-  const width = 1920, height = 1080;
-  const canvas = document.createElement('canvas');
-  canvas.width = width; canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#FFF8EE';
-  ctx.fillRect(0, 0, width, height);
+/* ═══════════════════════════════════════════════════════════════════
+   FONT EMBEDDING FOR SVG → CANVAS RENDERING
+   ────────────────────────────────────────────────────────────────────
+   PROBLEM: When SVG is serialized into a Blob and drawn onto Canvas,
+   the rendering happens "offline" — Canvas cannot fetch Google Fonts
+   from network. Result: text falls back to system fonts (字型走樣).
+   
+   SOLUTION: Fetch the actual font files (.woff2), convert to base64,
+   and inline them as @font-face inside the SVG's <defs>/<style> block
+   BEFORE serializing. This way Canvas can render the text with the
+   correct fonts since they're embedded as data URIs.
+   ═══════════════════════════════════════════════════════════════════ */
 
-  const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(svgBlob);
-  const img = new Image();
+// Google Fonts CSS endpoints — gives us back .woff2 URLs
+const FONT_FACES = [
+  {
+    name: 'Caveat',
+    css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap'
+  },
+  {
+    name: 'Patrick Hand',
+    css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap'
+  },
+  {
+    name: 'Noto Sans TC',
+    css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap'
+  }
+];
 
-  img.onload = function() {
-    ctx.drawImage(img, 0, 0, width, height);
-    URL.revokeObjectURL(url);
+let embeddedFontCss = null; // cache after first build
 
-    canvas.toBlob(function(blob) {
-      if (!blob) {
-        alert('產生圖片失敗，請改用截圖方式儲存。');
-        return;
+/**
+ * Fetch a font file URL and return as base64 data URI string.
+ */
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result); // already a data URI
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+/**
+ * Fetch Google Fonts CSS, extract @font-face blocks,
+ * download each .woff2 file, convert to base64, and rebuild CSS
+ * with inline url(data:font/woff2;base64,...) instead of network URLs.
+ */
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+
+  const allCss = [];
+
+  for (const fontDef of FONT_FACES) {
+    try {
+      // Fetch Google Fonts CSS with a UA that returns woff2 (modern browsers)
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+
+      // Find all url(...) references inside @font-face blocks
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+
+      // Fetch each woff2 and replace url() in CSS with data URI
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          // Replace ALL occurrences of this URL (escape special regex chars)
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) {
+          console.warn('Failed to embed font URL:', url, err);
+        }
       }
-      const downloadUrl = URL.createObjectURL(blob);
-      const filename = '林威英文句型分析_' + new Date().toISOString().slice(0,10) + '.jpg';
 
-      if (isIOS || isLineBrowser) {
-        // iOS Safari and LINE in-app browser: show in-page modal
-        // No window.open() = no popup blocker issue
-        const modal = document.getElementById('ios-modal');
-        const modalImg = document.getElementById('ios-modal-img');
-        modalImg.src = downloadUrl;
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      } else {
-        // Android Chrome / Desktop: direct download
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
+      allCss.push(cssText);
+    } catch (err) {
+      console.warn('Failed to fetch font CSS for', fontDef.name, err);
+    }
+  }
 
-      // Cleanup after 5 minutes (give user time to long-press save)
-      setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
-    }, 'image/jpeg', 0.95);
-  };
-  img.onerror = function() {
-    alert('產生圖片失敗，請改用截圖方式儲存。');
-    URL.revokeObjectURL(url);
-  };
-  img.src = url;
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+/**
+ * Main download handler.
+ * 1. Build font-embedded CSS (cached after first run)
+ * 2. Clone SVG, inject <style> with embedded fonts into <defs>
+ * 3. Serialize → Blob → Image → Canvas → JPG
+ */
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    // Step 1: Build embedded font CSS
+    const fontCss = await buildEmbeddedFontCss();
+
+    // Step 2: Clone SVG and inject font styles
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+
+    // Ensure xmlns is set
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    // Inject a <style> element with embedded fonts at the top of <defs>
+    const defs = svgClone.querySelector('defs');
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    // Use CDATA to be safe with special characters
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    // Step 3: Serialize and render
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() {
+        URL.revokeObjectURL(url);
+        reject(new Error('Image load failed'));
+      };
+      img.src = url;
+    });
+
+    // Step 4: Canvas → Blob → present to user
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) {
+          reject(new Error('toBlob failed'));
+          return;
+        }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
 }
 
 function closeIosModal() {
