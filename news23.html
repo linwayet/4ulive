@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aroma Stones for Stress Relief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --text: #1A0F00;
+      --h1: #C0392B;
+      --h2: #1565C0;
+      --h3: #2E7D32;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --deep-blue: #0D47A1;
+      --read-bg: #FFF3EF;
+      --vocab-bg: #F1F8F2;
+      --grammar-bg: #F9F0FF;
+      --fold-bg: #FAF6F0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(246, 196, 83, 0.34), transparent 34%),
+        linear-gradient(180deg, #FFF3DF 0%, #FFF8F0 44%, #FFF1E0 100%);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+
+    .top {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .link-panel {
+      margin: 0 0 34px;
+      padding: 20px;
+      border: 4px solid #E65100;
+      border-radius: 8px;
+      background: #FFF0D8;
+      box-shadow: 0 8px 0 rgba(191, 54, 12, 0.16);
+    }
+
+    .link-panel.bottom {
+      margin: 42px 0 0;
+    }
+
+    .link-panel h2 {
+      margin: 0 0 16px;
+      color: #BF360C;
+      font-size: clamp(1.7rem, 4vw, 2.35rem);
+      text-align: center;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 150px;
+      padding: 16px;
+      border: 3px solid rgba(26, 15, 0, 0.14);
+      border-radius: 8px;
+      color: #1A0F00;
+      text-decoration: none;
+      background: #FFFDF8;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .link-card:focus,
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 rgba(191, 54, 12, 0.18);
+      outline: 4px solid #F6C453;
+      outline-offset: 3px;
+    }
+
+    .link-card.course-a {
+      background: #FFE0B2;
+      border-color: #F57C00;
+    }
+
+    .link-card.course-b {
+      background: #FFCCBC;
+      border-color: #D84315;
+    }
+
+    .link-card.line {
+      background: #F9E79F;
+      border-color: #D68910;
+    }
+
+    .link-title {
+      display: block;
+      margin-bottom: 8px;
+      color: #C0392B;
+      font-size: 1.18rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .link-text {
+      display: block;
+      color: #4A3728;
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    h1 {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 18px 24px;
+      color: var(--h1);
+      font-size: clamp(3rem, 7vw, 4.3rem);
+      line-height: 1.22;
+      border: 6px double #E65100;
+      border-radius: 8px;
+      background: #FFFDF8;
+      box-shadow: 0 8px 0 #F6C453;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 12px 0;
+      color: var(--h2);
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .credit {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 18px;
+      color: #0D47A1;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      border-bottom: 5px solid #42A5F5;
+      background: #F3F8FF;
+      border-radius: 8px;
+    }
+
+    section {
+      margin: 34px 0;
+    }
+
+    .section-title {
+      margin: 0;
+      padding: 16px 20px;
+      color: #FFFDF8;
+      font-size: 1.65rem;
+      line-height: 1.35;
+      border-radius: 8px 8px 0 0;
+      font-weight: 700;
+    }
+
+    .section-body {
+      padding: 22px;
+      border: 4px solid;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      background: #FFFDF8;
+    }
+
+    .article .section-title { background: #0D47A1; }
+    .article .section-body { border-color: #90CAF9; background: #F3F8FF; }
+    .reading .section-title { background: #BF360C; }
+    .reading .section-body { border-color: #FFAB91; background: #FFF3EF; }
+    .vocab .section-title { background: #1B5E20; }
+    .vocab .section-body { border-color: #81C784; background: #F1F8F2; }
+    .grammar .section-title { background: #4A148C; }
+    .grammar .section-body { border-color: #CE93D8; background: #F9F0FF; }
+
+    p { margin: 0 0 18px; }
+    p:last-child { margin-bottom: 0; }
+
+    strong.keyword {
+      color: var(--deep-blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .reading-item, .word-card, .grammar-card {
+      margin: 0 0 26px;
+      padding: 20px;
+      background: #FFFDF8;
+      border: 3px solid rgba(26, 15, 0, 0.18);
+      border-radius: 8px;
+    }
+
+    .reading-item:last-child, .word-card:last-child, .grammar-card:last-child { margin-bottom: 0; }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      min-height: 54px;
+      margin-right: 10px;
+      color: #FFFDF8;
+      background: #E65100;
+      border-radius: 50%;
+      font-size: 1.35rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    .quote {
+      color: #4A148C;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .zh {
+      color: #2E7D32;
+      font-weight: 700;
+    }
+
+    .analysis {
+      margin-top: 12px;
+      padding: 14px 16px;
+      background: #FFF8F0;
+      border-left: 8px solid #BF360C;
+      border-radius: 6px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      background: #FEF0E7;
+      color: #E65100;
+    }
+
+    .word-head {
+      margin-bottom: 14px;
+      color: #1B5E20;
+      font-size: 1.28rem;
+      font-weight: 700;
+    }
+
+    .tag-line {
+      display: grid;
+      grid-template-columns: minmax(118px, auto) 1fr;
+      gap: 12px;
+      align-items: start;
+      margin: 10px 0;
+    }
+
+    .tag {
+      min-height: 44px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .der { background: #FDEDEC; color: #C0392B; }
+    .root { background: #EBF5FB; color: #1565C0; }
+    .phrase { background: #EAFAF1; color: #2E7D32; }
+    .idiom { background: #FEF9E7; color: #D68910; }
+    .confuse { background: #F5EEF8; color: #6A1B9A; }
+    .focus { background: #FEF0E7; color: #E65100; }
+
+    .examples {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 2px dashed #81C784;
+    }
+
+    .grammar-card h3 {
+      margin: 0 0 14px;
+      color: var(--h3);
+      font-size: 1.6rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .grammar-card h4 {
+      margin: 18px 0 6px;
+      color: #6A1B9A;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    ul, ol {
+      margin-top: 8px;
+      padding-left: 1.4em;
+    }
+
+    li { margin: 8px 0; }
+
+    details {
+      margin: 20px 0;
+      border: 4px solid #C4A06A;
+      border-radius: 8px;
+      background: #FAF6F0;
+      overflow: hidden;
+    }
+
+    summary {
+      min-height: 72px;
+      padding: 16px 20px;
+      background: #4A3728;
+      color: #FFFDF8;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 250ms ease;
+      color: #F6C453;
+      font-size: 1.4rem;
+    }
+
+    details[open] .arrow { transform: rotate(180deg); }
+
+    .detail-body {
+      padding: 20px 22px;
+    }
+
+    .mini-list p {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 22px; }
+      .wrap { padding: 18px 14px 48px; }
+      .section-body, .reading-item, .word-card, .grammar-card { padding: 16px; }
+      .tag-line { grid-template-columns: 1fr; }
+      .tag { text-align: left; }
+      h1 { padding: 14px 16px; }
+      .link-panel { padding: 16px; }
+      .link-grid { grid-template-columns: 1fr; }
+      .link-card { min-height: 122px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="link-panel" aria-label="七月課程與聯絡資訊">
+      <h2>七月課程與聯絡資訊</h2>
+      <div class="link-grid">
+        <a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-text">用錯題回饋、訂正與反思建立英文學習循環，適合暑假加強閱讀、文法與寫作。</span>
+        </a>
+        <a class="link-card course-b" href="https://linwayet.github.io/popup/index">
+          <span class="link-title">學生分析</span>
+          <span class="link-text">整理學生學習狀況、弱點與補強方向，協助規劃七月課程前後的進步路線。</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet">
+          <span class="link-title">林威老師 LINE：linwayet</span>
+          <span class="link-text">課程詢問、學習規劃與教材使用問題，可透過個人 LINE 帳號聯絡。</span>
+        </a>
+      </div>
+    </nav>
+
+    <header class="top">
+      <h1>Aroma Stones for Stress Relief</h1>
+      <h2>用香氛石打造平靜生活</h2>
+      <div class="credit">林威老師與 AI agent 團隊製作</div>
+    </header>
+
+    <section class="article">
+      <h2 class="section-title">一、英文文章原文</h2>
+      <div class="section-body">
+        <p>Get solid stress <strong class="keyword">relief</strong> with aroma stones.</p>
+        <p>After a long day, who wouldn't want to walk into a room that smells calm and fresh? These days, many people <strong class="keyword">rely</strong> on <strong class="keyword">pleasant</strong> smells to relieve stress. Among a <strong class="keyword">variety</strong> of <strong class="keyword">scented</strong> products, aroma stones stand out as a <strong class="keyword">practical</strong> yet <strong class="keyword">trendy</strong> option. An aroma stone is a small <strong class="keyword">diffuser</strong>, made from <strong class="keyword">natural</strong> rock, plaster, <strong class="keyword">ceramic</strong> or diatomite. Inside the stone, there are <strong class="keyword">countless</strong> tiny holes <strong class="keyword">absorbing</strong> <strong class="keyword">essential</strong> oil. These <strong class="keyword">pores</strong> <strong class="keyword">gradually</strong> release the scent into the air through temperature or <strong class="keyword">humidity</strong> shifts. Depending on the stone's size and air <strong class="keyword">circulation</strong>, the scent may last from a few hours to several weeks. Unlike candles or electric <strong class="keyword">diffusers</strong>, an aroma stone needs no fire or power. What users do is drip a few drops of <strong class="keyword">essential</strong> oil onto the surface. The stone will <strong class="keyword">absorb</strong> the oil within minutes. You can <strong class="keyword">position</strong> it beside your bed, in your closets, or near your study area to help you stay calm. Aromostones provide <strong class="keyword">multiple</strong> benefits beyond <strong class="keyword">pleasant</strong> smells. They pose no fire risk, produce no smoke, and can be moved easily between spaces. They're also <strong class="keyword">reusable</strong>. When the scent fades, you just add more oil to refresh it. Many people even craft aromastones at home as gifts or decorations. If you feel stressed by deadlines or need a moment of calm, try using an aromastone to create your own peaceful moment.</p>
+      </div>
+    </section>
+
+    <section class="reading">
+      <h2 class="section-title">二、8 句精讀</h2>
+      <div class="section-body">
+        <div class="reading-item">
+          <p><span class="num">①</span><span class="quote">After a long day, who wouldn't want to walk into a room that smells calm and fresh?</span></p>
+          <p class="zh">漫長的一天後，誰不想走進一個聞起來平靜又清新的房間呢？</p>
+          <div class="analysis">文法解析：反問句 + 形容詞子句。句首 After a long day 是時間副詞片語，說明情境；who wouldn't want to...? 用反問方式加強語氣。that smells calm and fresh 修飾 a room，其中 smells 是連綴動詞，後面接形容詞補語。</div>
+          <div class="pill-row"><span class="pill">walk into 走進</span><span class="pill">calm and fresh 平靜清新</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">②</span><span class="quote">These days, many people rely on pleasant smells to relieve stress.</span></p>
+          <p class="zh">這些日子，許多人依靠宜人的氣味來舒緩壓力。</p>
+          <div class="analysis">文法解析：S + V + 介系詞片語 + 不定詞片語。rely on 表示「依靠」，後面接名詞 pleasant smells。to relieve stress 是不定詞片語，說明目的；這裡的 to 是不定詞標記，不是介系詞。</div>
+          <div class="pill-row"><span class="pill">rely on 依靠</span><span class="pill">relieve stress 舒緩壓力</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">③</span><span class="quote">Among a variety of scented products, aroma stones stand out as a practical yet trendy option.</span></p>
+          <p class="zh">在各式各樣的香氛產品中，香氛石以實用卻時髦的選項脫穎而出。</p>
+          <div class="analysis">文法解析：介系詞片語前置 + 對等形容詞。Among a variety of scented products 放在句首，凸顯比較範圍。stand out as 表示「以某種身分或特色突出」，而 practical yet trendy 用 yet 連接兩個看似不同但可並存的特質。</div>
+          <div class="pill-row"><span class="pill">a variety of 各式各樣</span><span class="pill">stand out 突出</span><span class="pill">yet 卻</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">④</span><span class="quote">An aroma stone is a small diffuser, made from natural rock, plaster, ceramic or diatomite.</span></p>
+          <p class="zh">香氛石是一種小型擴香器，由天然岩石、石膏、陶瓷或矽藻土製成。</p>
+          <div class="analysis">文法解析：同位補充 + 過去分詞片語。a small diffuser 是主詞 An aroma stone 的補語，說明其本質。made from... 是過去分詞片語，用來補充材料來源，意思接近 which is made from...。</div>
+          <div class="pill-row"><span class="pill">diffuser 擴香器</span><span class="pill">made from 由……製成</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">⑤</span><span class="quote">Inside the stone, there are countless tiny holes absorbing essential oil.</span></p>
+          <p class="zh">在石頭內部，有無數微小孔洞會吸收精油。</p>
+          <div class="analysis">文法解析：There be 句型 + 現在分詞片語。there are 用來引出新資訊，也就是 countless tiny holes。absorbing essential oil 是現在分詞片語，修飾 holes，表示這些孔洞正在發揮的功能。</div>
+          <div class="pill-row"><span class="pill">countless 無數的</span><span class="pill">essential oil 精油</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">⑥</span><span class="quote">Depending on the stone's size and air circulation, the scent may last from a few hours to several weeks.</span></p>
+          <p class="zh">根據石頭大小與空氣流通情況，香氣可能持續幾小時到數週。</p>
+          <div class="analysis">文法解析：分詞構句 + 情態助動詞。Depending on... 放在句首，表示條件或依據。may last 表示「可能持續」，語氣比 will last 更保守，適合描述會因環境而改變的結果。</div>
+          <div class="pill-row"><span class="pill">depending on 取決於</span><span class="pill">air circulation 空氣流通</span><span class="pill">from...to... 從……到……</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">⑦</span><span class="quote">What users do is drip a few drops of essential oil onto the surface.</span></p>
+          <p class="zh">使用者要做的，就是滴幾滴精油到表面上。</p>
+          <div class="analysis">文法解析：名詞子句當主詞。What users do 是名詞子句，整體當主詞，強調「使用者所做的事情」。is 後面的 drip 是省略 to 的原形動詞，用來說明具體動作。</div>
+          <div class="pill-row"><span class="pill">what users do 使用者所做的事</span><span class="pill">a few drops 幾滴</span></div>
+        </div>
+        <div class="reading-item">
+          <p><span class="num">⑧</span><span class="quote">If you feel stressed by deadlines or need a moment of calm, try using an aromastone to create your own peaceful moment.</span></p>
+          <p class="zh">如果你因截止期限而感到壓力，或需要片刻平靜，試著使用香氛石來創造屬於自己的安寧時刻。</p>
+          <div class="analysis">文法解析：If 條件副詞子句 + 祈使句。If you feel... or need... 提出條件，主句 try using... 則給出建議。to create your own peaceful moment 是不定詞片語，表示使用香氛石的目的；to 是不定詞標記。</div>
+          <div class="pill-row"><span class="pill">feel stressed 感到有壓力</span><span class="pill">deadline 截止期限</span><span class="pill">peaceful moment 平靜時刻</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vocab">
+      <h2 class="section-title">三、20 個單字整理</h2>
+      <div class="section-body">
+        <div class="word-card">
+          <div class="word-head">1　relief　[rɪˈlif]　n.　減輕；寬慰；救濟</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>relieve (v. 減輕、舒緩)；relieved (adj. 感到寬慰的)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>lev / liev = raise, lighten（減輕、舉起）：elevate（提升）、alleviate（緩和）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>stress relief（壓力舒緩）；a sense of relief（鬆一口氣的感覺）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>immediate relief（立即的舒緩）；great relief（極大的寬慰）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>relief 是名詞；relieve 是動詞，常用 relieve stress / pain。</span></div>
+          <div class="examples"><p>Aroma stones can offer simple stress relief after a long day.<br>（香氛石能在漫長的一天後提供簡單的壓力舒緩。）</p><p>To her relief, the final exam was easier than she had expected.<br>（令她鬆一口氣的是，期末考比她預期的容易。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">2　rely　[rɪˈlaɪ]　v.　依靠；信賴</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>reliable (adj. 可靠的)；reliability (n. 可靠性)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>rely on / upon（依靠、信賴）；rely heavily on（高度依賴）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a reliable source（可靠來源）；highly reliable data（高度可靠的資料）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>rely on 強調依賴；trust 強調心理上的信任。</span></div>
+          <div class="examples"><p>Many people rely on pleasant smells to relieve stress.<br>（許多人依靠宜人的氣味來舒緩壓力。）</p><p>Students should not rely entirely on translation apps.<br>（學生不應完全依賴翻譯軟體。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">3　pleasant　[ˈplɛzənt]　adj.　令人愉快的；宜人的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>please (v. 使高興)；pleasure (n. 樂趣)；pleasantly (adv. 愉快地)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>a pleasant smell（宜人的氣味）；a pleasant experience（愉快的經驗）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a pleasantly warm afternoon（令人愉快的溫暖午後）；pleasant memories（美好回憶）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>pleasant 形容事物令人舒服；pleased 形容人感到高興。</span></div>
+          <div class="examples"><p>Aroma stones provide benefits beyond pleasant smells.<br>（香氛石提供的不只是宜人的氣味。）</p><p>The teacher's pleasant voice made the lesson easier to follow.<br>（老師悅耳的聲音讓課程更容易跟上。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">4　variety　[vəˈraɪətɪ]　n.　多樣性；種類</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>vary (v. 變化)；various (adj. 各種的)；variation (n. 變化)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>vari = change（變化）：variable（變數；多變的）、various（各種的）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>a variety of（各式各樣的）；variety show（綜藝節目）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a wide variety of choices（多樣的選擇）；great variety（豐富多樣性）</span></div>
+          <div class="tag-line"><span class="tag focus">句型</span><span>A variety of + 複數名詞 + 複數動詞，表示「各種……」。</span></div>
+          <div class="examples"><p>Among a variety of scented products, aroma stones stand out.<br>（在各式各樣的香氛產品中，香氛石脫穎而出。）</p><p>A variety of online courses are available to senior high school students.<br>（高中生可以取得各式各樣的線上課程。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">5　scented　[ˈsɛntɪd]　adj.　有香味的；加香的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>scent (n. 氣味；香味)；scent (v. 聞到、察覺)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>scented candle（香氛蠟燭）；scented product（香氛產品）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>lightly scented lotion（淡淡香味的乳液）；freshly scented room（氣味清新的房間）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>scent 常指香味或氣味；smell 可指任何氣味，好壞皆可。</span></div>
+          <div class="examples"><p>Aroma stones are one option among scented products.<br>（香氛石是香氛產品中的一種選項。）</p><p>She placed a scented card in her drawer.<br>（她在抽屜裡放了一張香氛卡。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">6　practical　[ˈpræktɪkəl]　adj.　實用的；實際的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>practice (n./v. 練習；實行)；practically (adv. 實際上；幾乎)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>pract = do（做、實行）：practice（練習）、practitioner（從業者）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>practical use（實際用途）；practical solution（實用解方）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a highly practical tool（非常實用的工具）；practical advice（實際建議）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>practical 表示實用；practicable 表示可行，但較正式。</span></div>
+          <div class="examples"><p>Aroma stones stand out as a practical option.<br>（香氛石以實用的選項脫穎而出。）</p><p>Learning how to summarize is a practical skill for exams.<br>（學會摘要是考試中很實用的技能。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">7　trendy　[ˈtrɛndɪ]　adj.　時髦的；流行的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>trend (n. 趨勢；流行)；trendsetter (n. 引領潮流者)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>trendy option（時髦選項）；current trend（目前趨勢）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a surprisingly trendy design（出乎意料時髦的設計）；trendy decorations（流行裝飾）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>trendy 偏流行、時尚；popular 表示受歡迎，不一定時髦。</span></div>
+          <div class="examples"><p>Aroma stones are practical yet trendy.<br>（香氛石實用卻也時髦。）</p><p>This cafe became trendy because of its quiet study corners.<br>（這間咖啡店因安靜的讀書角落而變得流行。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">8　diffuser　[dɪˈfjuzɚ]　n.　擴香器；散布器</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>diffuse (v. 擴散；傳播)；diffusion (n. 擴散)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>fus = pour（流、倒）：confuse（混淆）、infuse（注入）、diffuse（擴散）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>electric diffuser（電動擴香器）；room diffuser（室內擴香器）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a compact diffuser（小巧的擴香器）；an energy-saving diffuser（節能擴香器）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>diffuser 是裝置；diffusion 是「擴散」這個過程或現象。</span></div>
+          <div class="examples"><p>An aroma stone is a small diffuser.<br>（香氛石是一種小型擴香器。）</p><p>The library uses a quiet diffuser near the entrance.<br>（圖書館在入口附近使用安靜的擴香器。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">9　natural　[ˈnætʃərəl]　adj.　天然的；自然的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>nature (n. 自然)；naturally (adv. 自然地)；naturalist (n. 自然學家)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>nat = born（出生）：native（本地的）、nation（國家）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>natural rock（天然岩石）；natural material（天然材料）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>purely natural ingredients（純天然成分）；natural beauty（自然美）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>natural 表示天然或自然；neutral 表示中立，拼字與意思都不同。</span></div>
+          <div class="examples"><p>Aroma stones may be made from natural rock.<br>（香氛石可能由天然岩石製成。）</p><p>Many families prefer natural light in the study room.<br>（許多家庭偏好書房裡有自然光。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">10　ceramic　[səˈræmɪk]　n./adj.　陶瓷；陶瓷的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>ceramics (n. 陶藝；陶瓷製品)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>ceramic cup（陶瓷杯）；ceramic material（陶瓷材料）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a handmade ceramic bowl（手工陶瓷碗）；durable ceramic products（耐用陶瓷產品）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>ceramic 可當名詞或形容詞；pottery 多指陶器或陶藝。</span></div>
+          <div class="examples"><p>An aroma stone can be made from ceramic or diatomite.<br>（香氛石可以由陶瓷或矽藻土製成。）</p><p>The museum displayed ceramic plates from different periods.<br>（博物館展示了不同時期的陶瓷盤。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">11　countless　[ˈkaʊntləs]　adj.　無數的；數不清的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>count (v. 數；計算)；countable (adj. 可數的)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>countless tiny holes（無數微小孔洞）；countless examples（無數例子）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>countless opportunities（無數機會）；almost countless details（幾乎數不清的細節）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>countless 強調數量非常多；numerous 也表示許多，但語氣較正式。</span></div>
+          <div class="examples"><p>Inside the stone, there are countless tiny holes.<br>（石頭內部有無數微小孔洞。）</p><p>The project required countless hours of careful research.<br>（這項計畫需要無數小時的細心研究。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">12　absorb　[əbˈzɔrb]　v.　吸收；吸引；理解</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>absorption (n. 吸收)；absorbent (adj. 吸收性的)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>sorb = suck in（吸入）：absorb（吸收）、absorbent（吸收性的）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>absorb oil（吸收油）；absorb information（吸收資訊）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>highly absorbent material（高吸收性的材料）；fully absorb the lesson（充分理解課程）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>absorb 強調吸收進去；adsorb 是化學用語，指吸附在表面。</span></div>
+          <div class="examples"><p>The stone will absorb the oil within minutes.<br>（石頭會在幾分鐘內吸收精油。）</p><p>It takes time to absorb a difficult grammar rule.<br>（理解一個困難的文法規則需要時間。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">13　essential　[ɪˈsɛnʃəl]　adj./n.　必要的；本質的；要點</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>essence (n. 本質；精華)；essentially (adv. 本質上)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>ess = be（存在、本質）：essence（本質）、essential（必要的）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>essential oil（精油）；essential skill（必要技能）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>absolutely essential preparation（絕對必要的準備）；an essential part（必要部分）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>essential 表示必要；important 表示重要，但不一定不可缺少。</span></div>
+          <div class="examples"><p>Users drip a few drops of essential oil onto the surface.<br>（使用者滴幾滴精油到表面上。）</p><p>Clear organization is essential for a good essay.<br>（清楚的組織對一篇好作文是必要的。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">14　pore　[pɔr]　n.　毛孔；細孔</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>porous (adj. 多孔的；可滲透的)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>tiny pores（微小細孔）；skin pores（皮膚毛孔）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>naturally porous stone（天然多孔石材）；visible pores（看得見的毛孔）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>pore 是細孔；pour 是倒液體，發音相同但拼字與意思不同。</span></div>
+          <div class="examples"><p>These pores gradually release the scent into the air.<br>（這些細孔逐漸把香氣釋放到空氣中。）</p><p>Some fabrics have tiny pores that allow air to pass through.<br>（有些布料有微小細孔，可讓空氣通過。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">15　gradually　[ˈɡrædʒʊəlɪ]　adv.　逐漸地</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>gradual (adj. 逐漸的)；grade (n. 等級；年級)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>grad = step（步伐、階段）：graduate（畢業）、upgrade（升級）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>gradually release（逐漸釋放）；gradually improve（逐漸改善）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>gradually stronger confidence（逐漸增強的信心）；a gradual change（逐步變化）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>gradually 表示慢慢發生；eventually 表示最後、終於。</span></div>
+          <div class="examples"><p>The pores gradually release the scent into the air.<br>（細孔逐漸把香氣釋放到空氣中。）</p><p>Her English writing gradually became clearer.<br>（她的英文寫作逐漸變得更清楚。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">16　humidity　[hjuˈmɪdətɪ]　n.　濕度；潮濕</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>humid (adj. 潮濕的)；humidifier (n. 加濕器)</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>humidity shift（濕度變化）；high humidity（高濕度）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>extremely humid weather（極度潮濕的天氣）；controlled humidity（受控制的濕度）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>humidity 是名詞；humid 是形容詞，用來描述天氣或空氣潮濕。</span></div>
+          <div class="examples"><p>The scent is released through temperature or humidity shifts.<br>（香氣會透過溫度或濕度變化釋放。）</p><p>High humidity can make a summer afternoon feel heavier.<br>（高濕度會讓夏日午後感覺更悶。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">17　circulation　[ˌsɝkjəˈleʃən]　n.　循環；流通；發行量</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>circulate (v. 循環；流傳)；circular (adj. 圓形的)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>circ / circum = circle（圓、環繞）：circumstance（情況）、circle（圓圈）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>air circulation（空氣流通）；blood circulation（血液循環）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>poor air circulation（不良空氣流通）；wide circulation（廣泛流傳）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>circulation 指循環或流通；circle 是圓形或圈子。</span></div>
+          <div class="examples"><p>The scent lasts differently depending on air circulation.<br>（香氣持續時間會因空氣流通而不同。）</p><p>Opening a window improves air circulation in the classroom.<br>（打開窗戶可改善教室裡的空氣流通。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">18　position　[pəˈzɪʃən]　v./n.　放置；位置；立場</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>positive (adj. 正面的)；positioning (n. 定位)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>pos / posit = put（放置）：compose（組成）、deposit（存放；押金）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>position it beside your bed（把它放在床邊）；take a position（採取立場）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>a carefully positioned lamp（擺放仔細的燈）；a strong position（堅定立場）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>position 當動詞是「放置」；place 也可作動詞，但語氣較普通。</span></div>
+          <div class="examples"><p>You can position it beside your bed or near your study area.<br>（你可以把它放在床邊或書桌附近。）</p><p>The speaker positioned the main idea at the end of the paragraph.<br>（講者把主要想法放在段落結尾。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">19　multiple　[ˈmʌltəpəl]　adj./n.　多個的；倍數</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>multiply (v. 乘；增加)；multiplication (n. 乘法；增加)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>multi = many（多）：multicultural（多元文化的）、multimedia（多媒體）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>multiple benefits（多重好處）；multiple choices（多個選項）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>multiple possible answers（多個可能答案）；multiple benefits beyond comfort（舒適之外的多重好處）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>multiple 強調不只一個；various 強調種類不同。</span></div>
+          <div class="examples"><p>Aromostones provide multiple benefits beyond pleasant smells.<br>（香氛石提供宜人香味之外的多重好處。）</p><p>The issue has multiple causes, so one solution is not enough.<br>（這個問題有多個原因，所以單一解方並不足夠。）</p></div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-head">20　reusable　[riˈjuzəbəl]　adj.　可重複使用的</div>
+          <div class="tag-line"><span class="tag der">衍生詞</span><span>reuse (v./n. 重複使用)；usable (adj. 可用的)</span></div>
+          <div class="tag-line"><span class="tag root">字根</span><span>re = again（再次）：review（複習）、rebuild（重建）</span></div>
+          <div class="tag-line"><span class="tag phrase">片語</span><span>reusable bottle（可重複使用的水瓶）；reusable product（可重複使用的產品）</span></div>
+          <div class="tag-line"><span class="tag idiom">慣用語</span><span>an environmentally friendly reusable bag（環保的可重複使用袋）；fully reusable design（完全可重複使用的設計）</span></div>
+          <div class="tag-line"><span class="tag confuse">容易混淆</span><span>reusable 表示可再次使用；recyclable 表示可回收再製。</span></div>
+          <div class="examples"><p>Aroma stones are also reusable.<br>（香氛石也是可重複使用的。）</p><p>Many students carry reusable bottles to reduce waste.<br>（許多學生攜帶可重複使用的水瓶以減少浪費。）</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grammar">
+      <h2 class="section-title">四、文法解析</h2>
+      <div class="section-body">
+        <div class="grammar-card">
+          <h3>1. 現在分詞片語修飾名詞</h3>
+          <h4>【引句 Quote】</h4>
+          <p><span class="quote">Inside the stone, there are countless tiny holes absorbing essential oil.</span></p>
+          <h4>【句型】</h4>
+          <p><strong><span class="quote">N + V-ing phrase</span></strong></p>
+          <h4>【核心說明】</h4>
+          <p>現在分詞片語可以放在名詞後面，補充說明該名詞正在做的動作或具有的功能。這種寫法常可改寫成形容詞子句，例如 holes absorbing essential oil 接近 holes that absorb essential oil。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>被修飾的名詞必須是動作的執行者。</li>
+            <li>V-ing 片語通常放在名詞後面，資訊比單一形容詞更完整。</li>
+            <li>若動作是被動關係，應使用過去分詞 V-ed。</li>
+            <li>考題常測試 V-ing 與 V-ed 的選擇。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>The pores releasing the scent make the stone useful for small rooms.<br>（釋放香氣的細孔讓這顆石頭適合小房間使用。）</p>
+          <h4>【學習提醒】</h4>
+          <p>看到名詞後面直接接 V-ing，不要立刻判斷句子有兩個動詞。V-ing 在這裡是修飾語，不是主要動詞；真正的主要動詞仍然要回到句子的主詞去找。</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ Inside the stone, there are holes absorb essential oil.<br>✓ Inside the stone, there are holes absorbing essential oil.（holes 後面需要分詞片語修飾。）</p>
+          <ol>
+            <li>The students ______ near the window could smell the aroma clearly. (A) sit (B) sitting (C) sat (D) are sitting</li>
+            <li>改錯：The bottle containing oil is place on the desk.</li>
+          </ol>
+        </div>
+
+        <div class="grammar-card">
+          <h3>2. 分詞構句表示依據或條件</h3>
+          <h4>【引句 Quote】</h4>
+          <p><span class="quote">Depending on the stone's size and air circulation, the scent may last from a few hours to several weeks.</span></p>
+          <h4>【句型】</h4>
+          <p><strong><span class="quote">V-ing phrase, S + V + ...</span></strong></p>
+          <h4>【核心說明】</h4>
+          <p>分詞構句可以把副詞子句濃縮成較精簡的開頭片語。Depending on... 表示「取決於……」，用來說明後面結果成立的條件或依據。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>分詞構句通常與主句主詞有邏輯關聯。</li>
+            <li>句首分詞片語後面常加逗號。</li>
+            <li>Depending on 是固定用法，後面接名詞或名詞片語。</li>
+            <li>主句若是不確定結果，可搭配 may / might。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>Depending on the room's humidity, the aroma may become stronger or weaker.<br>（依房間濕度而定，香氣可能變強或變弱。）</p>
+          <h4>【學習提醒】</h4>
+          <p>分詞構句不是隨便把連接詞刪掉就好。若前後主詞不同，或關係不清楚，句子容易變得不合邏輯；學測作文中應先求清楚，再求精簡。</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ Depend on the air circulation, the scent may last longer.<br>✓ Depending on the air circulation, the scent may last longer.（句首作分詞構句時用 V-ing。）</p>
+          <ol>
+            <li>______ the weather, we may study in the garden. (A) Depends on (B) Depending on (C) Depended on (D) To depend</li>
+            <li>改錯：Depending the size, the candle can burn for hours.</li>
+          </ol>
+        </div>
+
+        <div class="grammar-card">
+          <h3>3. What 名詞子句當主詞</h3>
+          <h4>【引句 Quote】</h4>
+          <p><span class="quote">What users do is drip a few drops of essential oil onto the surface.</span></p>
+          <h4>【句型】</h4>
+          <p><strong><span class="quote">What + S + V + is + V / to V...</span></strong></p>
+          <h4>【核心說明】</h4>
+          <p>What 引導的名詞子句可以當主詞，意思是「……的事情」。這種句型常用來強調行動或重點，讓句子比 Users drip... 更有焦點。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>What 子句整體視為單數概念時，後面常接 is。</li>
+            <li>is 後可接 to V，也可在口語或簡潔文體中接原形動詞。</li>
+            <li>What 不等於 that；that 只連接陳述內容，不含「事情」的意思。</li>
+            <li>此句型適合用於強調建議、問題核心或解決方法。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>What students need is to create a calm place for focused study.<br>（學生需要的是創造一個能專心讀書的平靜空間。）</p>
+          <h4>【學習提醒】</h4>
+          <p>使用 What 子句時，要確認它在句中真的扮演名詞角色。若只是要說「我知道那件事」，通常用 I know that...；若要說「我需要的是……」，才適合用 What I need is...</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ That users do is drip oil onto the surface.<br>✓ What users do is drip oil onto the surface.（需要「所做的事」時用 What。）</p>
+          <ol>
+            <li>______ we should remember is the importance of safety. (A) That (B) What (C) Which (D) It</li>
+            <li>改錯：What he wants are a quiet room.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <details>
+      <summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+      <div class="detail-body mini-list">
+        <p>ab-　離開、相反　—　abnormal（異常的）</p>
+        <p>ad-　向、加　—　advance（前進）</p>
+        <p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p>
+        <p>anti-　反對、抗　—　antibiotic（抗生素）</p>
+        <p>arch-　主要、首要　—　archenemy（死敵）</p>
+        <p>auto-　自動、自我　—　autograph（親筆簽名）</p>
+        <p>bene-　好的、善　—　benefit（好處）</p>
+        <p>bi-　二、雙　—　bilingual（雙語的）</p>
+        <p>circum-　環繞、周圍　—　circumstance（情況）</p>
+        <p>co-/con-/com-　一起、共同　—　cooperate（合作）</p>
+        <p>contra-　相反、對抗　—　contradict（反駁）</p>
+        <p>de-　去除、下降　—　decode（解碼）</p>
+        <p>dia-　穿過、透過　—　dialogue（對話）</p>
+        <p>dis-　否定、分離　—　disagree（不同意）</p>
+        <p>en-/em-　使成為　—　enable（使能夠）</p>
+        <p>epi-　在上、在外　—　epidemic（流行病）</p>
+        <p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p>
+        <p>extra-　額外、外部　—　extraordinary（非凡的）</p>
+        <p>hetero-　不同　—　heterogeneous（異質的）</p>
+        <p>homo-　相同　—　homogeneous（同質的）</p>
+        <p>hyper-　過度、超　—　hyperactive（過動的）</p>
+        <p>hypo-　低於、不足　—　hypodermic（皮下的）</p>
+        <p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p>
+        <p>inter-　在…之間　—　international（國際的）</p>
+        <p>iso-　相等、相同　—　isolate（隔離）</p>
+        <p>mal-　壞、不良　—　malfunction（故障）</p>
+        <p>micro-　微小　—　microscope（顯微鏡）</p>
+        <p>mis-　錯誤　—　misunderstand（誤解）</p>
+        <p>mono-　單一　—　monologue（獨白）</p>
+        <p>multi-　多　—　multicultural（多元文化的）</p>
+        <p>neo-　新的　—　neonatal（新生的）</p>
+        <p>non-　非、沒有　—　nonsense（無意義）</p>
+        <p>pan-　全部　—　pandemic（大流行病）</p>
+        <p>peri-　周圍　—　perimeter（周長）</p>
+        <p>poly-　多　—　polygon（多邊形）</p>
+        <p>post-　之後　—　postwar（戰後的）</p>
+        <p>pre-　之前　—　preview（預覽）</p>
+        <p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p>
+        <p>pseudo-　假的　—　pseudonym（筆名）</p>
+        <p>re-　再、回　—　review（複習）</p>
+        <p>semi-　一半、部分　—　semicircle（半圓）</p>
+        <p>sub-　在下、次級　—　subway（地鐵）</p>
+        <p>super-　超越、在上　—　superstar（超級明星）</p>
+        <p>syn-/sym-　一起、共同　—　synchronize（同步）</p>
+        <p>tele-　遠距　—　telephone（電話）</p>
+        <p>trans-　穿越、轉變　—　transport（運輸）</p>
+        <p>tri-　三　—　triangle（三角形）</p>
+        <p>un-　否定、不　—　unhappy（不快樂的）</p>
+        <p>vice-　副、代替　—　vice-president（副總統）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+      <div class="detail-body mini-list">
+        <p><strong>名詞字尾</strong></p>
+        <p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p>
+        <p>-ment　行為或結果　—　agreement（協議）、development（發展）</p>
+        <p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p>
+        <p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p>
+        <p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p>
+        <p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p>
+        <p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p>
+        <p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+        <p><strong>形容詞字尾</strong></p>
+        <p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p>
+        <p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p>
+        <p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p>
+        <p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p>
+        <p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+        <p><strong>動詞字尾</strong></p>
+        <p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p>
+        <p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p>
+        <p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p>
+        <p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+        <p><strong>副詞字尾</strong></p>
+        <p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p>
+        <p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p>
+        <p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>30 個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+      <div class="detail-body mini-list">
+        <p>1. stress [strɛs] (n. 壓力) — stressful [ˈstrɛsfəl] (adj. 有壓力的)</p>
+        <p>2. relief [rɪˈlif] (n. 舒緩) — relieve [rɪˈliv] (v. 減輕)</p>
+        <p>3. aroma [əˈromə] (n. 香氣) — aromatic [ˌærəˈmætɪk] (adj. 芳香的)</p>
+        <p>4. calm [kɑm] (adj. 平靜的) — calm down (phr. 冷靜下來)</p>
+        <p>5. fresh [frɛʃ] (adj. 清新的) — freshness [ˈfrɛʃnəs] (n. 清新)</p>
+        <p>6. rely [rɪˈlaɪ] (v. 依靠) — reliable [rɪˈlaɪəbəl] (adj. 可靠的)</p>
+        <p>7. pleasant [ˈplɛzənt] (adj. 宜人的) — pleasure [ˈplɛʒɚ] (n. 樂趣)</p>
+        <p>8. variety [vəˈraɪətɪ] (n. 多樣性) — various [ˈvɛrɪəs] (adj. 各種的)</p>
+        <p>9. scented [ˈsɛntɪd] (adj. 有香味的) — scent [sɛnt] (n. 香味)</p>
+        <p>10. product [ˈprɑdʌkt] (n. 產品) — produce [prəˈdus] (v. 生產)</p>
+        <p>11. practical [ˈpræktɪkəl] (adj. 實用的) — practice [ˈpræktɪs] (n./v. 練習)</p>
+        <p>12. trendy [ˈtrɛndɪ] (adj. 時髦的) — trend [trɛnd] (n. 趨勢)</p>
+        <p>13. option [ˈɑpʃən] (n. 選項) — optional [ˈɑpʃənəl] (adj. 可選擇的)</p>
+        <p>14. diffuser [dɪˈfjuzɚ] (n. 擴香器) — diffuse [dɪˈfjuz] (v. 擴散)</p>
+        <p>15. natural [ˈnætʃərəl] (adj. 天然的) — nature [ˈnetʃɚ] (n. 自然)</p>
+        <p>16. ceramic [səˈræmɪk] (n./adj. 陶瓷) — ceramics [səˈræmɪks] (n. 陶藝)</p>
+        <p>17. countless [ˈkaʊntləs] (adj. 無數的) — count [kaʊnt] (v. 數)</p>
+        <p>18. absorb [əbˈzɔrb] (v. 吸收) — absorption [əbˈzɔrpʃən] (n. 吸收)</p>
+        <p>19. essential [ɪˈsɛnʃəl] (adj. 必要的) — essence [ˈɛsəns] (n. 本質)</p>
+        <p>20. pore [pɔr] (n. 細孔) — porous [ˈpɔrəs] (adj. 多孔的)</p>
+        <p>21. gradually [ˈɡrædʒʊəlɪ] (adv. 逐漸地) — gradual [ˈɡrædʒʊəl] (adj. 逐漸的)</p>
+        <p>22. release [rɪˈlis] (v. 釋放) — release into (phr. 釋放到……中)</p>
+        <p>23. temperature [ˈtɛmprətʃɚ] (n. 溫度) — temperate [ˈtɛmpərət] (adj. 溫和的)</p>
+        <p>24. humidity [hjuˈmɪdətɪ] (n. 濕度) — humid [ˈhjumɪd] (adj. 潮濕的)</p>
+        <p>25. circulation [ˌsɝkjəˈleʃən] (n. 流通) — circulate [ˈsɝkjəˌlet] (v. 循環)</p>
+        <p>26. surface [ˈsɝfəs] (n. 表面) — surface area (phr. 表面積)</p>
+        <p>27. position [pəˈzɪʃən] (v./n. 放置；位置) — positioning [pəˈzɪʃənɪŋ] (n. 定位)</p>
+        <p>28. benefit [ˈbɛnəfɪt] (n. 好處) — beneficial [ˌbɛnəˈfɪʃəl] (adj. 有益的)</p>
+        <p>29. reusable [riˈjuzəbəl] (adj. 可重複使用的) — reuse [riˈjuz] (v. 重複使用)</p>
+        <p>30. decoration [ˌdɛkəˈreʃən] (n. 裝飾) — decorate [ˈdɛkəˌret] (v. 裝飾)</p>
+        <p><strong>文章相關常用片語 5 個：</strong></p>
+        <p>• rely on（依靠）</p>
+        <p>• stand out（突出；脫穎而出）</p>
+        <p>• be made from（由……製成）</p>
+        <p>• depend on（取決於）</p>
+        <p>• a moment of calm（片刻平靜）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>練文筆食材<span class="arrow">⌄</span></summary>
+      <div class="detail-body mini-list">
+        <p>① After a long day（漫長的一天後）<br>→ 適用：描寫日常情境或壓力來源時<br>例：After a long day, many students need a quiet place to relax.</p>
+        <p>② who wouldn't want to...?（誰不想要……呢？）<br>→ 適用：用反問句引起讀者共鳴<br>例：Who wouldn't want to study in a calm and comfortable room?</p>
+        <p>③ rely on + N（依靠……）<br>→ 適用：說明方法、資源或支持來源<br>例：Teenagers often rely on music to reduce pressure.</p>
+        <p>④ among a variety of + N（在各式各樣的……之中）<br>→ 適用：比較多種選項時<br>例：Among a variety of study methods, reviewing mistakes is especially useful.</p>
+        <p>⑤ stand out as + N（以……身分脫穎而出）<br>→ 適用：強調某事物的特色<br>例：This app stands out as a practical tool for language learners.</p>
+        <p>⑥ made from + 材料（由……製成）<br>→ 適用：介紹產品、物品或材料<br>例：The desk is made from recycled wood.</p>
+        <p>⑦ There are + N + V-ing（有……正在／會……）<br>→ 適用：描述物品內部結構或功能<br>例：There are tiny holes holding water inside the material.</p>
+        <p>⑧ release + N + into the air（把……釋放到空氣中）<br>→ 適用：描寫氣味、熱能或污染物擴散<br>例：Some plants release a fresh smell into the air.</p>
+        <p>⑨ depending on + N（取決於……）<br>→ 適用：說明結果因條件而異<br>例：Depending on your schedule, you can study for one or two hours.</p>
+        <p>⑩ unlike + N（不像……）<br>→ 適用：比較兩種事物的差異<br>例：Unlike phones, printed books do not need power.</p>
+        <p>⑪ What + S + V + is...（……所做／需要的是……）<br>→ 適用：強調核心行動或需求<br>例：What students need is a clear plan and enough sleep.</p>
+        <p>⑫ to help + O + V（為了幫助……）<br>→ 適用：說明目的與效果<br>例：The school opened a reading room to help students focus.</p>
+        <p>⑬ beyond + N（超越……；不只是……）<br>→ 適用：指出額外好處<br>例：Exercise brings benefits beyond physical health.</p>
+        <p>⑭ When + S + V, S + V（當……時，……）<br>→ 適用：描述使用步驟或情境反應<br>例：When motivation fades, a short break can refresh your mind.</p>
+        <p>⑮ If + S + V, try V-ing...（如果……，試著……）<br>→ 適用：提出建議<br>例：If you feel nervous before a test, try taking several deep breaths.</p>
+      </div>
+    </details>
+
+    <nav class="link-panel bottom" aria-label="七月課程與聯絡資訊">
+      <h2>七月課程與聯絡資訊</h2>
+      <div class="link-grid">
+        <a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-text">用錯題回饋、訂正與反思建立英文學習循環，適合暑假加強閱讀、文法與寫作。</span>
+        </a>
+        <a class="link-card course-b" href="https://linwayet.github.io/popup/index">
+          <span class="link-title">學生分析</span>
+          <span class="link-text">整理學生學習狀況、弱點與補強方向，協助規劃七月課程前後的進步路線。</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet">
+          <span class="link-title">林威老師 LINE：linwayet</span>
+          <span class="link-text">課程詢問、學習規劃與教材使用問題，可透過個人 LINE 帳號聯絡。</span>
+        </a>
+      </div>
+    </nav>
+  </main>
+</body>
+</html>
