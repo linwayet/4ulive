@@ -15,7 +15,7 @@ body {
   min-height:100vh;
 }
 
-/* ═══ LINK BAR (top & bottom) ═══ */
+/* ═══ LINK BAR ═══ */
 .link-bar {
   background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
   padding: 14px 16px;
@@ -28,11 +28,9 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  align-items: stretch;
 }
 .link-card {
   flex: 1 1 280px;
-  min-width: 0;
   background: rgba(255,255,255,0.95);
   border-radius: 14px;
   padding: 14px 18px;
@@ -44,22 +42,20 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   transition: all 0.25s;
   border: 2px solid transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
 }
-.link-card:hover {
+.link-card:hover, .link-card:active {
   transform: translateY(-2px);
   box-shadow: 0 5px 14px rgba(0,0,0,0.18);
   border-color: #FFF;
 }
 .link-card .icon {
   font-size: 28px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 50px; height: 50px;
   border-radius: 50%;
   flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
 .link-card.course1 .icon { background: linear-gradient(135deg, #FFE5D0, #FFB077); color: #B84A00; }
 .link-card.course2 .icon { background: linear-gradient(135deg, #D8EFE0, #7FCBA0); color: #0F6E56; }
@@ -70,176 +66,163 @@ body {
 .link-card.line .title { color: #06A046; }
 .link-card .desc { font-size: 12px; color: #666; line-height: 1.4; }
 
-/* ═══ MAIN CONTAINER ═══ */
-.main-wrap {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px 16px;
+/* LINE browser warning banner */
+.line-warning {
+  display: none;
+  background: #FFF4E5;
+  border: 2px solid #FF9500;
+  color: #B84A00;
+  padding: 12px 16px;
+  margin: 12px auto;
+  max-width: 960px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.line-warning.show { display: block; }
+.line-warning strong { color: #D85A30; }
+.line-warning button {
+  display: inline-block;
+  background: #B84A00;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 8px;
+  cursor: pointer;
 }
 
+/* ═══ MAIN ═══ */
+.main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 16px; }
 .page-title {
-  text-align:center;
-  font-size:32px;
-  font-weight:900;
-  color:#B84A00;
-  letter-spacing:4px;
-  margin: 8px 0 28px;
+  text-align:center; font-size:32px; font-weight:900;
+  color:#B84A00; letter-spacing:4px; margin: 8px 0 28px;
   font-family:'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 }
-
-/* ═══ ORIGINAL SENTENCE BOX ═══ */
 .original-box {
-  border: 3px solid #B84A00;
-  border-radius: 14px;
-  padding: 22px 24px;
-  margin-bottom: 28px;
+  border: 3px solid #B84A00; border-radius: 14px;
+  padding: 22px 24px; margin-bottom: 28px;
   background: linear-gradient(135deg, #FFF8EE 0%, #FEF0D8 100%);
-  position: relative;
-  box-shadow: 0 4px 12px rgba(184,74,0,0.1);
+  position: relative; box-shadow: 0 4px 12px rgba(184,74,0,0.1);
 }
 .original-label {
-  position: absolute;
-  top: -14px; left: 20px;
-  background: #FDF3E3;
-  padding: 2px 12px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #B84A00;
-  border-radius: 8px;
-  border: 2px solid #B84A00;
+  position: absolute; top: -14px; left: 20px;
+  background: #FDF3E3; padding: 2px 12px;
+  font-size: 14px; font-weight: 700; color: #B84A00;
+  border-radius: 8px; border: 2px solid #B84A00;
 }
 .original-text {
-  font-size: 22px;
-  color: #2D2A26;
-  line-height: 2;
-  font-family: 'Caveat', cursive;
-  font-weight: 500;
+  font-size: 22px; color: #2D2A26; line-height: 2;
+  font-family: 'Caveat', cursive; font-weight: 500;
 }
 
-/* ═══ SVG CONTAINER ═══ */
 .svg-section {
-  background: #FFF8EE;
-  border-radius: 14px;
-  padding: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  background: #FFF8EE; border-radius: 14px;
+  padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   margin-bottom: 20px;
 }
-.svg-container {
-  width: 100%;
-  overflow-x: auto;
-  border-radius: 10px;
-}
+.svg-container { width: 100%; overflow-x: auto; border-radius: 10px; }
 
-/* ═══ DOWNLOAD BUTTON ═══ */
-.download-area {
-  text-align: center;
-  padding: 8px 0 24px;
-}
+.download-area { text-align: center; padding: 8px 0 24px; }
 .download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  display: inline-flex; align-items: center; gap: 10px;
   padding: 14px 28px;
   background: linear-gradient(135deg, #B84A00 0%, #D85A30 100%);
   color: #fff;
   font-family: 'Noto Sans TC','PingFang TC',sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
+  font-size: 16px; font-weight: 700;
+  border: none; border-radius: 30px; cursor: pointer;
   box-shadow: 0 4px 14px rgba(184,74,0,0.4);
   transition: all 0.2s;
 }
-.download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(184,74,0,0.5); }
+.download-btn:hover { transform: translateY(-2px); }
 .download-btn:active { transform: translateY(0); }
-.download-hint {
-  font-size: 13px;
-  color: #888;
-  margin-top: 10px;
-  padding: 0 16px;
+.download-hint { font-size: 13px; color: #888; margin-top: 10px; padding: 0 16px; }
+
+/* iOS image preview modal */
+.ios-modal {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 16px;
+  text-align: center;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close {
+  position: sticky; top: 0;
+  text-align: right;
+  margin-bottom: 8px;
+}
+.ios-modal .close button {
+  background: #fff; color: #333;
+  border: none; border-radius: 20px;
+  padding: 8px 16px; font-size: 14px; font-weight: 700;
+  cursor: pointer;
+}
+.ios-modal .hint {
+  color: #fff; font-size: 15px;
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
+  margin: 12px 0;
+  font-weight: 500;
+}
+.ios-modal img {
+  max-width: 100%; height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.ios-modal .footer-hint {
+  color: #ccc; font-size: 12px;
+  margin-top: 12px;
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
 }
 
 /* ═══ GRAMMAR PANEL ═══ */
 .grammar-panel {
-  border: 2px solid #D4A96A;
-  border-radius: 14px;
+  border: 2px solid #D4A96A; border-radius: 14px;
   padding: 24px 22px;
   background: linear-gradient(135deg, #FFF8EE 0%, #FEF4DE 100%);
   box-shadow: 0 4px 12px rgba(212,169,106,0.15);
   margin-bottom: 24px;
 }
 .section-header {
-  font-size: 19px;
-  font-weight: 700;
-  color: #B84A00;
-  margin-bottom: 18px;
-  padding-bottom: 10px;
+  font-size: 19px; font-weight: 700; color: #B84A00;
+  margin-bottom: 18px; padding-bottom: 10px;
   border-bottom: 2px solid #E8C98A;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex; align-items: center; gap: 8px;
 }
-.grammar-item {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  line-height: 1.8;
-}
-.grammar-dot {
-  border-radius: 4px;
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-  margin-top: 7px;
-}
+.grammar-item { display: flex; gap: 12px; margin-bottom: 16px; font-size: 16px; line-height: 1.8; }
+.grammar-dot { border-radius: 4px; width: 12px; height: 12px; flex-shrink: 0; margin-top: 7px; }
 .grammar-title { font-weight: 700; }
 .grammar-body { color: #5D4037; }
 .grammar-sub { color: #888; font-size: 14px; }
 
-/* ═══ TRANSLATION BOX ═══ */
 .translation-box {
   background: linear-gradient(135deg, #FEF0D8 0%, #FCE6BD 100%);
-  border-radius: 10px;
-  padding: 18px 20px;
+  border-radius: 10px; padding: 18px 20px;
   margin-bottom: 22px;
   border-left: 6px solid #D85A30;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 .translation-label { font-size: 15px; color: #B84A00; font-weight: 700; margin-bottom: 8px; }
 .translation-text { font-size: 17px; color: #2D2A26; line-height: 2; }
 
-/* ═══ VOCAB CARDS ═══ */
 .vocab-card {
-  border-radius: 10px;
-  padding: 16px 18px;
-  margin-bottom: 14px;
-  border-left: 5px solid;
+  border-radius: 10px; padding: 16px 18px;
+  margin-bottom: 14px; border-left: 5px solid;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-.vocab-head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
+.vocab-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
 .vocab-word { font-size: 24px; font-weight: 700; font-family: 'Caveat', cursive; }
 .vocab-phon { font-size: 15px; color: #534AB7; }
 .vocab-pos { font-size: 14px; color: #888; }
-.vocab-deriv {
-  font-size: 14px;
-  border-radius: 6px;
-  padding: 6px 10px;
-  display: inline-block;
-  margin-bottom: 10px;
-}
+.vocab-deriv { font-size: 14px; border-radius: 6px; padding: 6px 10px; display: inline-block; margin-bottom: 10px; }
 .vocab-examples { font-size: 16px; color: #2D2A26; line-height: 2; }
 .vocab-examples .zh { color: #666; }
 
-/* ═══ RESPONSIVE: MOBILE ═══ */
 @media (max-width: 640px) {
   .page-title { font-size: 26px; letter-spacing: 2px; }
   .original-text { font-size: 19px; }
@@ -259,24 +242,32 @@ body {
 </head>
 <body>
 
-<!-- ═══════════════ TOP LINK BAR ═══════════════ -->
+<!-- LINE in-app browser warning (auto-shown if detected) -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能（如下載 JPG、開啟外部連結）可能受限。
+  建議用瀏覽器開啟以獲得完整功能：
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- TOP LINK BAR -->
 <div class="link-bar">
   <div class="link-bar-inner">
-    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer" data-link="course1">
       <div class="icon">📚</div>
       <div class="text">
         <div class="title">錯中學 ECHO 計劃</div>
         <div class="desc">七月開課 · AI 輔助學測 200 天</div>
       </div>
     </a>
-    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer" data-link="course2">
       <div class="icon">🎯</div>
       <div class="text">
         <div class="title">學生分析系統</div>
         <div class="desc">七月開課 · 個人化學習診斷</div>
       </div>
     </a>
-    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer" data-link="line">
       <div class="icon">💬</div>
       <div class="text">
         <div class="title">林威老師 LINE</div>
@@ -286,12 +277,10 @@ body {
   </div>
 </div>
 
-<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
 <div class="main-wrap">
 
   <div class="page-title">林威英文句型分析</div>
 
-  <!-- ORIGINAL SENTENCE -->
   <div class="original-box">
     <div class="original-label">📖 原文 Original Sentence</div>
     <div class="original-text">
@@ -299,7 +288,6 @@ body {
     </div>
   </div>
 
-  <!-- ═══ SVG SENTENCE ANALYSIS ═══ -->
   <div class="svg-section">
     <div class="svg-container">
       <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#FFF8EE;">
@@ -312,125 +300,82 @@ body {
             <stop offset="100%" stop-color="#FEF0D8"/>
           </linearGradient>
         </defs>
-
-        <!-- Background -->
         <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
 
-        <!-- ═══ HEADER (Source Han Sans, no English) ═══ -->
         <text x="960" y="80" text-anchor="middle"
           font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
           font-size="50" font-weight="900" fill="#B84A00" letter-spacing="6">林威英文句型分析</text>
         <text x="960" y="130" text-anchor="middle"
           font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
           font-size="26" font-weight="700" fill="#D85A30" letter-spacing="3">林威老師設計</text>
-
         <line x1="560" y1="160" x2="1360" y2="160" stroke="#D4A96A" stroke-width="2"/>
 
-        <!-- ═══════════════ SENTENCE 1 ═══════════════ -->
-        <!-- Word centres recalibrated for 1920px viewport
-             Plastic waste:           x=260   (width 220)
-             in the ocean:            x=550   (width 200)
-             has become:              x=850   (width 220)
-             a serious global issue:  x=1240  (width 360)
-        -->
-
-        <!-- Underlines -->
         <line x1="150"  y1="280" x2="380" y2="280" stroke="#185FA5" stroke-width="5"/>
         <line x1="730"  y1="280" x2="970" y2="280" stroke="#1D9E75" stroke-width="5"/>
         <line x1="1050" y1="280" x2="1430" y2="280" stroke="#534AB7" stroke-width="5"/>
-
-        <!-- Coral rounded rect around "in the ocean" -->
         <rect x="440" y="234" width="220" height="56" rx="28" ry="28" fill="none" stroke="#5DCAA5" stroke-width="4"/>
 
-        <!-- S./V./C. labels above -->
         <text x="260" y="218" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" font-weight="700" fill="#185FA5">S.</text>
         <text x="850" y="218" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" font-weight="700" fill="#1D9E75">V.</text>
         <text x="1240" y="218" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" font-weight="700" fill="#534AB7">C.</text>
 
-        <!-- Sentence words -->
         <text x="260" y="274" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#185FA5">Plastic waste</text>
         <text x="550" y="274" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="600" fill="#0F6E56">in the ocean</text>
         <text x="850" y="274" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#1D9E75">has become</text>
         <text x="1240" y="274" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#534AB7">a serious global issue</text>
         <text x="1432" y="274" font-family="'Caveat',cursive" font-size="40" fill="#2D2A26">.</text>
 
-        <!-- Annotations below each word -->
         <text x="550" y="330" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#0F6E56">↑ 介系詞片語</text>
         <text x="550" y="360" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#0F6E56">修飾主詞</text>
-
         <text x="850" y="330" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#1D9E75">↑ 現在完成式</text>
         <text x="850" y="360" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#1D9E75">has + V-pp</text>
-
         <text x="1240" y="330" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#534AB7">↑ 主詞補語</text>
         <text x="1240" y="360" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#534AB7">(Complement)</text>
 
-        <!-- Divider between sentences -->
         <line x1="150" y1="440" x2="1770" y2="440" stroke="#D4A96A" stroke-width="2" stroke-dasharray="8 6"/>
 
-        <!-- ═══════════════ SENTENCE 2 ═══════════════ -->
-        <!-- Word centres:
-             Tiny pieces:           x=240
-             called microplastics:  x=620
-             are now found:         x=1020
-             in seafood,:           x=1330
-        -->
-
-        <!-- Underlines -->
         <line x1="120"  y1="600" x2="360" y2="600" stroke="#185FA5" stroke-width="5"/>
         <line x1="390"  y1="600" x2="850" y2="600" stroke="#C0392B" stroke-width="4.5" stroke-dasharray="7 5"/>
         <line x1="880"  y1="600" x2="1160" y2="600" stroke="#1D9E75" stroke-width="5"/>
 
-        <!-- Labels -->
         <text x="240" y="540" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" font-weight="700" fill="#185FA5">S.</text>
         <text x="1020" y="540" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" font-weight="700" fill="#1D9E75">V.（被動語態）</text>
 
-        <!-- Words -->
         <text x="240" y="594" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#185FA5">Tiny pieces</text>
         <text x="620" y="594" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" font-style="italic" fill="#C0392B">called microplastics</text>
         <text x="1020" y="594" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#1D9E75">are now found</text>
         <text x="1330" y="594" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" fill="#2D2A26">in seafood,</text>
 
-        <!-- Annotation under "called microplastics" -->
         <text x="620" y="650" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#C0392B">↑ 過去分詞片語</text>
         <text x="620" y="680" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="24" fill="#C0392B">(= which are called microplastics)</text>
 
-        <!-- LINE B: Green rounded box for participle phrase -->
         <rect x="120" y="780" width="1680" height="80" rx="38" ry="38" fill="none" stroke="#1D9E75" stroke-width="4"/>
         <text x="960" y="836" text-anchor="middle" font-family="'Caveat',cursive" font-size="40" font-weight="700" fill="#0F6E56">raising concerns about their long-term effects on human health</text>
         <text x="1810" y="836" font-family="'Caveat',cursive" font-size="40" fill="#2D2A26">.</text>
-
-        <!-- Label above the green box -->
         <text x="140" y="762" font-family="'Patrick Hand',cursive" font-size="26" font-weight="700" fill="#1D9E75">↓ 現在分詞片語（結果分詞構句）</text>
-
-        <!-- Equivalent annotation -->
         <text x="140" y="918" font-family="'Patrick Hand',cursive" font-size="26" fill="#534AB7">＝ ..., and they raise concerns about their long-term effects...</text>
         <text x="140" y="952" font-family="'Patrick Hand',cursive" font-size="22" fill="#888">（分詞構句還原為對等子句：表「結果」）</text>
 
-        <!-- Curved arrow from "are now found in seafood," down to the green box -->
         <path d="M 1500 614 C 1500 700 200 700 200 776"
           fill="none" stroke="#2D2A26" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 4"
           marker-end="url(#svg-arr-down)"/>
         <text x="960" y="730" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="22" fill="#2D2A26">主動含意（pieces 主動引發 concerns）→ 用 V-ing</text>
 
-        <!-- Bottom signature -->
         <line x1="660" y1="1000" x2="1260" y2="1000" stroke="#D4A96A" stroke-width="1.5"/>
         <text x="960" y="1040" text-anchor="middle"
           font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
           font-size="20" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
-
       </svg>
     </div>
 
-    <!-- DOWNLOAD BUTTON -->
     <div class="download-area">
-      <button class="download-btn" onclick="downloadSvgAsJpg()">
+      <button class="download-btn" onclick="prepareAndDownloadJpg()">
         📥 下載句型分析圖（JPG · 1920×1080）
       </button>
-      <div class="download-hint">📱 手機長按圖片儲存到相簿 · 💻 電腦自動下載</div>
+      <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
     </div>
   </div>
 
-  <!-- ═══════════════ GRAMMAR PANEL ═══════════════ -->
   <div class="grammar-panel">
     <div class="section-header">📌 文法重點</div>
 
@@ -442,7 +387,6 @@ body {
         <span class="grammar-sub">介系詞片語放在名詞後，等於形容詞子句的縮減：= Plastic waste that is in the ocean</span>
       </div>
     </div>
-
     <div class="grammar-item">
       <span class="grammar-dot" style="background:#1D9E75;"></span>
       <div>
@@ -451,7 +395,6 @@ body {
         <span class="grammar-sub">has + V-pp 結構，主詞 Plastic waste 為不可數名詞，視為單數，故用 has</span>
       </div>
     </div>
-
     <div class="grammar-item">
       <span class="grammar-dot" style="background:#C0392B;"></span>
       <div>
@@ -460,7 +403,6 @@ body {
         <span class="grammar-sub">用過去分詞 called（V-pp）是因為「微塑膠被人們這樣稱呼」，被動關係故用 V-pp 而非 V-ing</span>
       </div>
     </div>
-
     <div class="grammar-item">
       <span class="grammar-dot" style="background:#534AB7;"></span>
       <div>
@@ -469,7 +411,6 @@ body {
         <span class="grammar-sub">原主動句為：People now find tiny pieces in seafood → 改被動後 tiny pieces are now found in seafood</span>
       </div>
     </div>
-
     <div class="grammar-item" style="margin-bottom:24px;">
       <span class="grammar-dot" style="background:#0F6E56;"></span>
       <div>
@@ -479,13 +420,11 @@ body {
       </div>
     </div>
 
-    <!-- TRANSLATION -->
     <div class="translation-box">
       <div class="translation-label">📖 全句中文翻譯</div>
       <div class="translation-text">海洋中的塑膠廢料已經成為一個嚴重的全球性議題。被稱為「微塑膠」的細小碎片如今已在海鮮中被發現，這引發了人們對其長期影響人類健康的擔憂。</div>
     </div>
 
-    <!-- VOCABULARY -->
     <div class="section-header" style="margin-top:8px;">📚 高中必學單字（5個）</div>
 
     <div class="vocab-card" style="background:linear-gradient(135deg,#F0F7FF,#E0EFFD);border-left-color:#185FA5;">
@@ -565,24 +504,24 @@ body {
   </div>
 </div>
 
-<!-- ═══════════════ BOTTOM LINK BAR ═══════════════ -->
+<!-- BOTTOM LINK BAR -->
 <div class="link-bar">
   <div class="link-bar-inner">
-    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer" data-link="course1">
       <div class="icon">📚</div>
       <div class="text">
         <div class="title">錯中學 ECHO 計劃</div>
         <div class="desc">七月開課 · AI 輔助學測 200 天</div>
       </div>
     </a>
-    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer" data-link="course2">
       <div class="icon">🎯</div>
       <div class="text">
         <div class="title">學生分析系統</div>
         <div class="desc">七月開課 · 個人化學習診斷</div>
       </div>
     </a>
-    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer" data-link="line">
       <div class="icon">💬</div>
       <div class="text">
         <div class="title">林威老師 LINE</div>
@@ -592,52 +531,107 @@ body {
   </div>
 </div>
 
+<!-- iOS image modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close">
+    <button onclick="closeIosModal()">✕ 關閉</button>
+  </div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
 <script>
-function downloadSvgAsJpg() {
+/* ═══════════════════════════════════════════════════════ */
+/* DETECT LINE IN-APP BROWSER + SHOW WARNING                */
+/* ═══════════════════════════════════════════════════════ */
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+const currentUrl = window.location.href;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  // LINE supports openExternalBrowser=1 URL parameter
+  // This tells LINE to open in system browser instead of in-app webview
+  const separator = currentUrl.includes('?') ? '&' : '?';
+  const externalUrl = currentUrl + separator + 'openExternalBrowser=1';
+  window.location.href = externalUrl;
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* LINK CLICK HANDLING — workaround for LINE in-app browser */
+/* ═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+
+    // In LINE in-app browser, append openExternalBrowser=1 to force system browser
+    if (isLineBrowser) {
+      e.preventDefault();
+      const sep = href.includes('?') ? '&' : '?';
+      // For LINE URLs themselves, just use the original URL
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+    // Outside LINE, the default target="_blank" works normally
+  });
+});
+
+/* ═══════════════════════════════════════════════════════ */
+/* JPG DOWNLOAD — iOS Safari popup-blocking workaround      */
+/*                                                          */
+/* Problem: window.open() inside async callback (toBlob)    */
+/*          gets blocked by Safari popup blocker because    */
+/*          it's not a "direct user gesture"                */
+/*                                                          */
+/* Solution: Use in-page modal instead of new tab/window.   */
+/*           Modal is shown via display:none → block,       */
+/*           which doesn't trigger popup blocker.           */
+/* ═══════════════════════════════════════════════════════ */
+function prepareAndDownloadJpg() {
   const svg = document.getElementById('grammar-svg');
   const svgData = new XMLSerializer().serializeToString(svg);
-
-  // Force 1920×1080 (16:9 landscape, full HD)
-  const width = 1920;
-  const height = 1080;
-
+  const width = 1920, height = 1080;
   const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
+  canvas.width = width; canvas.height = height;
   const ctx = canvas.getContext('2d');
-
-  // Fill warm cream background
   ctx.fillStyle = '#FFF8EE';
   ctx.fillRect(0, 0, width, height);
 
   const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
   const url = URL.createObjectURL(svgBlob);
-
   const img = new Image();
+
   img.onload = function() {
     ctx.drawImage(img, 0, 0, width, height);
     URL.revokeObjectURL(url);
 
     canvas.toBlob(function(blob) {
+      if (!blob) {
+        alert('產生圖片失敗，請改用截圖方式儲存。');
+        return;
+      }
       const downloadUrl = URL.createObjectURL(blob);
       const filename = '林威英文句型分析_' + new Date().toISOString().slice(0,10) + '.jpg';
 
-      // iOS: open in new tab for long-press save
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        const newTab = window.open();
-        if (newTab) {
-          newTab.document.write(
-            '<html><head><title>林威英文句型分析</title><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
-            '<body style="margin:0;padding:16px;background:#222;text-align:center;color:#fff;font-family:sans-serif;">' +
-            '<p style="font-size:16px;margin:12px 0;">📱 長按下方圖片儲存到相簿</p>' +
-            '<img src="' + downloadUrl + '" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.4);">' +
-            '<p style="font-size:13px;margin-top:12px;color:#aaa;">林威英文句型分析 · 1920×1080 JPG</p>' +
-            '</body></html>'
-          );
-        } else {
-          alert('請允許瀏覽器開啟新分頁以儲存圖片');
-        }
+      if (isIOS || isLineBrowser) {
+        // iOS Safari and LINE in-app browser: show in-page modal
+        // No window.open() = no popup blocker issue
+        const modal = document.getElementById('ios-modal');
+        const modalImg = document.getElementById('ios-modal-img');
+        modalImg.src = downloadUrl;
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
       } else {
+        // Android Chrome / Desktop: direct download
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.download = filename;
@@ -646,14 +640,20 @@ function downloadSvgAsJpg() {
         document.body.removeChild(link);
       }
 
-      setTimeout(() => URL.revokeObjectURL(downloadUrl), 60000);
+      // Cleanup after 5 minutes (give user time to long-press save)
+      setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
     }, 'image/jpeg', 0.95);
   };
   img.onerror = function() {
-    alert('下載失敗，請改用截圖方式儲存。');
+    alert('產生圖片失敗，請改用截圖方式儲存。');
     URL.revokeObjectURL(url);
   };
   img.src = url;
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
 }
 </script>
 </body>
