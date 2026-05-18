@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>115-Intel 高二英文單字本 三回合</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'BIZ UDPGothic',sans-serif;background:#FFF7EE;color:#2D2A26;font-size:22px;line-height:1.7}
+.hero{background:linear-gradient(135deg,#C05010 0%,#E07020 50%,#F0A030 100%);color:#fff;text-align:center;padding:48px 24px 36px}
+.hero h1{font-size:32px;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.hero p{font-size:20px;opacity:.92;margin-bottom:6px}
+.round-nav{display:flex;gap:12px;justify-content:center;padding:24px 16px;flex-wrap:wrap}
+.round-nav a{text-decoration:none;padding:12px 28px;border-radius:30px;font-weight:700;font-size:18px;transition:all .2s}
+.nav-r1{background:#E07020;color:#fff}.nav-r1:hover{background:#C05010}
+.nav-r2{background:#C0391B;color:#fff}.nav-r2:hover{background:#9A2A10}
+.nav-r3{background:#C09400;color:#fff}.nav-r3:hover{background:#9A7200}
+.round-section{padding:32px 16px;max-width:1100px;margin:0 auto}
+.round-header{border-radius:16px;padding:28px 24px;margin-bottom:32px;color:#fff;text-align:center}
+.r1-header{background:linear-gradient(135deg,#E07020,#E88030)}
+.r2-header{background:linear-gradient(135deg,#C0391B,#D04428)}
+.r3-header{background:linear-gradient(135deg,#C09400,#D0A810)}
+.round-header h2{font-size:28px;font-weight:700;margin-bottom:8px}
+.round-header p{font-size:18px;opacity:.9}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.vocab-card{background:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(0,0,0,.1);overflow:hidden}
+.card-head{padding:16px 18px 12px;color:#fff}
+.r1 .card-head{background:#E07020}
+.r2 .card-head{background:#C0391B}
+.r3 .card-head{background:#C09400}
+.card-word{font-size:24px;font-weight:700;margin-bottom:2px}
+.card-pos{font-size:16px;opacity:.9;margin-bottom:2px}
+.card-def{font-size:18px;opacity:.95}
+.card-body{padding:14px 18px}
+.deriv-block{margin-bottom:10px}
+.deriv-label{font-size:15px;font-weight:700;color:#8B5E3C;margin-bottom:4px}
+.deriv-list{font-size:16px;color:#4A3728;line-height:1.6}
+.root-block{background:#FFF0DC;border-left:4px solid #D4A574;padding:8px 12px;border-radius:0 8px 8px 0;margin-bottom:10px;font-size:16px;color:#6B4020}
+.examples-label{font-size:15px;font-weight:700;color:#8B5E3C;margin-bottom:6px}
+.example-item{border-bottom:1px solid #F0E4D4;padding:6px 0;font-size:16px;line-height:1.6}
+.example-item:last-child{border-bottom:none}
+.example-en{color:#2D2A26;font-weight:500}
+.example-zh{color:#6B4020;font-style:italic}
+.section-title{font-size:24px;font-weight:700;margin:32px 0 16px;padding-bottom:8px;border-bottom:3px solid}
+.r1 .section-title{color:#E07020;border-color:#E07020}
+.r2 .section-title{color:#C0391B;border-color:#C0391B}
+.r3 .section-title{color:#C09400;border-color:#C09400}
+.grammar-block{background:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(0,0,0,.1);margin-bottom:20px;overflow:hidden}
+.grammar-head{padding:14px 18px;font-size:18px;font-weight:700;color:#fff}
+.r1 .grammar-head{background:#E07020}
+.r2 .grammar-head{background:#C0391B}
+.r3 .grammar-head{background:#C09400}
+.grammar-body{padding:16px 18px;font-size:18px;line-height:1.8}
+.grammar-body b{font-weight:700}
+.reading-block{background:#fff;border-radius:14px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.1);margin-bottom:32px;font-size:18px;line-height:1.9}
+.reading-block p{margin-bottom:12px}
+.mcq-block{background:#fff;border-radius:14px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.1);margin-bottom:48px}
+.mcq-q{font-size:18px;font-weight:600;margin-bottom:10px;margin-top:20px;color:#2D2A26}
+.mcq-q:first-child{margin-top:0}
+.mcq-opts{display:flex;flex-direction:column;gap:6px;padding-left:8px}
+.mcq-opt{font-size:17px;color:#4A3728}
+details summary{cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::marker{display:none}
+.ans-summary{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;font-size:16px;font-weight:700;color:#fff;margin-top:10px}
+.r1 .ans-summary{background:#E07020}
+.r2 .ans-summary{background:#C0391B}
+.r3 .ans-summary{background:#C09400}
+.arrow{display:inline-block;transition:transform .25s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.ans-content{padding:10px 16px;font-size:17px;color:#6B4020;line-height:1.7}
+.divider{height:3px;background:linear-gradient(to right,#E07020,#F0A030,#E07020);border:none;margin:40px 0;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>115-Intel 高二英文單字本</h1>
+  <p>三回合主題單字精讀手冊</p>
+  <p>林威老師與 AI agent 團隊</p>
+</div>
+<div class="round-nav">
+  <a href="#round1" class="nav-r1">回合一：職場與學習成就</a>
+  <a href="#round2" class="nav-r2">回合二：情感、人格與社會關係</a>
+  <a href="#round3" class="nav-r3">回合三：科技、環境與生活方式</a>
+</div>
+
+<!-- ===== ROUND 1 ===== -->
+<section class="round-section r1" id="round1">
+<div class="round-header r1-header">
+  <h2>回合一：職場與學習成就</h2>
+  <p>Career, Learning &amp; Achievement — 20 個核心單字</p>
+</div>
+<div class="vocab-grid">
+
+<!-- 1. prosper -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">prosper</div><div class="card-pos">v. 繁榮；興旺</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">prosperous adj. 繁榮的；富裕的<br>prosperity n. 繁榮；富足</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Small businesses began to <b>prosper</b> after the new policy was introduced.</div><div class="example-zh">新政策推行後，小企業開始蓬勃發展。</div></div>
+<div class="example-item"><div class="example-en">A <b>prosperous</b> economy benefits every citizen in the country.</div><div class="example-zh">繁榮的經濟使國內每位公民受益。</div></div>
+<div class="example-item"><div class="example-en">The region has enjoyed decades of <b>prosperity</b> thanks to tourism.</div><div class="example-zh">該地區因觀光業而享有數十年的繁榮。</div></div>
+</div></div>
+
+<!-- 2. elaborate -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">elaborate</div><div class="card-pos">adj. 精心製作的；v. 詳盡說明</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">elaboration n. 詳細說明；精心製作<br>elaborately adv. 精心地</div></div>
+<div class="root-block">字根 <b>labor</b>「工作」→ collaborate 合作、laboratory 實驗室</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The artist created an <b>elaborate</b> mural covering the entire wall.</div><div class="example-zh">藝術家創作了一幅覆蓋整面牆的精心壁畫。</div></div>
+<div class="example-item"><div class="example-en">Could you <b>elaborate</b> on your plan for improving student performance?</div><div class="example-zh">你能詳細說明改善學生表現的計劃嗎？</div></div>
+<div class="example-item"><div class="example-en">Her <b>elaboration</b> of the theory impressed all the professors in the room.</div><div class="example-zh">她對該理論的詳細闡述讓在場所有教授印象深刻。</div></div>
+</div></div>
+
+<!-- 3. merit -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">merit</div><div class="card-pos">n. 優點；功績；v. 值得</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">demerit n. 缺點；過失<br>meritocracy n. 精英制度<br>meritorious adj. 有功績的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The proposal has great <b>merit</b> and deserves serious consideration.</div><div class="example-zh">這個提案有很大的優點，值得認真考慮。</div></div>
+<div class="example-item"><div class="example-en">Her hard work and talent truly <b>merit</b> the award she received.</div><div class="example-zh">她的努力和才華確實值得她所獲得的獎項。</div></div>
+<div class="example-item"><div class="example-en">A <b>meritocracy</b> rewards people based on ability rather than background.</div><div class="example-zh">精英制度根據能力而非背景來獎勵人才。</div></div>
+</div></div>
+
+<!-- 4. dedicate -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">dedicate</div><div class="card-pos">v. 獻出；奉獻</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">dedication n. 奉獻；獻詞<br>dedicated adj. 專注的；忠誠的<br>be dedicated to = be committed to = be devoted to 致力於</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">She <b>dedicated</b> her life to helping underprivileged children get an education.</div><div class="example-zh">她將一生奉獻給幫助弱勢兒童接受教育。</div></div>
+<div class="example-item"><div class="example-en">His <b>dedication</b> to the project is evident in every detail of the work.</div><div class="example-zh">他對這個計畫的奉獻在工作的每個細節中都顯而易見。</div></div>
+<div class="example-item"><div class="example-en">The team is <b>dedicated</b> to finding a solution before the deadline.</div><div class="example-zh">這個團隊致力於在截止日期前找到解決方案。</div></div>
+</div></div>
+
+<!-- 5. recruit -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">recruit</div><div class="card-pos">v. 招募；n. 新成員</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">recruitment n. 招募；招聘<br>recruitment drive 招募活動<br>recruiter n. 招聘人員</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The company plans to <b>recruit</b> fifty new engineers this year.</div><div class="example-zh">公司計劃今年招募五十名新工程師。</div></div>
+<div class="example-item"><div class="example-en">The army launched a <b>recruitment</b> drive to attract young volunteers.</div><div class="example-zh">軍隊發起一次招募活動，吸引年輕志願者。</div></div>
+<div class="example-item"><div class="example-en">As a new <b>recruit</b>, she was eager to prove her abilities to the team.</div><div class="example-zh">身為新成員，她迫切想向團隊證明自己的能力。</div></div>
+</div></div>
+
+<!-- 6. flawless -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">flawless</div><div class="card-pos">adj. 完美無缺的；無瑕的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">flaw n. 瑕疵；缺陷<br>flawed adj. 有缺陷的<br>flawlessly adv. 完美地</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The gymnast delivered a <b>flawless</b> performance that earned a perfect score.</div><div class="example-zh">這位體操選手呈現了完美無缺的表演，獲得滿分。</div></div>
+<div class="example-item"><div class="example-en">Even the most experienced professionals make mistakes — no one is <b>flawless</b>.</div><div class="example-zh">即使是最有經驗的專業人士也會犯錯——沒有人是完美的。</div></div>
+<div class="example-item"><div class="example-en">The design had a critical <b>flaw</b> that engineers failed to notice in time.</div><div class="example-zh">設計有一個工程師未能及時發現的重大缺陷。</div></div>
+</div></div>
+
+<!-- 7. appeal -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">appeal</div><div class="card-pos">v./n. 吸引；呼籲；上訴</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">appealing adj. 吸引人的；令人喜愛的<br>appeal to + N 吸引…；向…呼籲；向…上訴<br>appeal court n. 上訴法院</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The colorful design of the app <b>appeals</b> to young users around the world.</div><div class="example-zh">這款應用程式的繽紛設計吸引了全球年輕用戶。</div></div>
+<div class="example-item"><div class="example-en">The charity made an <b>appeal</b> for donations to rebuild the disaster area.</div><div class="example-zh">這家慈善機構發出呼籲，募款重建災區。</div></div>
+<div class="example-item"><div class="example-en">Working from home is <b>appealing</b> because it saves both time and money.</div><div class="example-zh">在家工作很吸引人，因為它既省時又省錢。</div></div>
+</div></div>
+
+<!-- 8. proceed -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">proceed</div><div class="card-pos">v. 繼續進行；前往</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">process n. 過程；程序；v. 處理<br>procedure n. 程序；步驟<br>procession n. 行列；隊伍<br>proceedings n. 訴訟程序；會議記錄<br>proceeds n. 收益；所得款項</div></div>
+<div class="root-block">字根 <b>ceed/cede</b>「移動；前進」→ exceed 超過、succeed 成功</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">After the safety check, the team was told to <b>proceed</b> with the experiment.</div><div class="example-zh">安全檢查後，團隊被告知繼續進行實驗。</div></div>
+<div class="example-item"><div class="example-en">Please follow the standard <b>procedure</b> when filing a complaint with the office.</div><div class="example-zh">向辦公室提出投訴時，請遵循標準程序。</div></div>
+<div class="example-item"><div class="example-en">The <b>proceeds</b> from the concert will go to supporting local arts education.</div><div class="example-zh">音樂會的收益將用於支持當地藝術教育。</div></div>
+</div></div>
+
+<!-- 9. triumph -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">triumph</div><div class="card-pos">n./v. 勝利；凱旋</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">triumphant adj. 勝利的；得意洋洋的<br>triumph over = overcome = conquer 克服；戰勝</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Winning the championship was the greatest <b>triumph</b> of her athletic career.</div><div class="example-zh">贏得冠軍是她運動生涯中最偉大的勝利。</div></div>
+<div class="example-item"><div class="example-en">The team <b>triumphed over</b> all difficulties to finish the project on time.</div><div class="example-zh">團隊克服了所有困難，按時完成了這個計畫。</div></div>
+<div class="example-item"><div class="example-en">She felt <b>triumphant</b> when she finally solved the long-standing math problem.</div><div class="example-zh">當她終於解決了那道久未解開的數學題時，她感到欣喜若狂。</div></div>
+</div></div>
+
+<!-- 10. recognition -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">recognition</div><div class="card-pos">n. 認可；認識；承認</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">recognize v. 認出；承認；表揚<br>recognize A as B 承認A是B<br>beyond recognition 面目全非；難以辨認<br>cognitive adj. 認知的<br>cognition n. 認知</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Her outstanding research finally earned international <b>recognition</b> last year.</div><div class="example-zh">她傑出的研究去年終於獲得了國際認可。</div></div>
+<div class="example-item"><div class="example-en">The old neighborhood had changed <b>beyond recognition</b> after the renovation.</div><div class="example-zh">翻新後，這個舊社區已面目全非。</div></div>
+<div class="example-item"><div class="example-en">Scientists <b>recognize</b> climate change as one of the biggest threats to humanity.</div><div class="example-zh">科學家承認氣候變化是人類面臨的最大威脅之一。</div></div>
+</div></div>
+
+<!-- 11. initial -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">initial</div><div class="card-pos">adj. 最初的；起初的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">initially adv. 最初；起初<br>initiate v. 發起；使…加入<br>initiative n. 主動性；倡議<br>take the initiative 採取主動</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The <b>initial</b> response to the new product was overwhelmingly positive.</div><div class="example-zh">新產品最初獲得的反應極為正面。</div></div>
+<div class="example-item"><div class="example-en">She took the <b>initiative</b> to organize the school fundraiser without being asked.</div><div class="example-zh">她主動組織了學校的募款活動，無需他人要求。</div></div>
+<div class="example-item"><div class="example-en"><b>Initially</b>, the team was unsure how to tackle the complex problem.</div><div class="example-zh">起初，團隊不確定如何解決這個複雜的問題。</div></div>
+</div></div>
+
+<!-- 12. illustrate -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">illustrate</div><div class="card-pos">v. 說明；舉例；繪製插圖</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">illustration n. 插圖；說明；例證<br>illustrator n. 插畫家<br>illustrious adj. 著名的；傑出的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The teacher used real-life examples to <b>illustrate</b> the concept of inflation.</div><div class="example-zh">老師用現實生活中的例子來說明通貨膨脹的概念。</div></div>
+<div class="example-item"><div class="example-en">The book is full of beautiful <b>illustrations</b> that bring the story to life.</div><div class="example-zh">這本書充滿了精美的插圖，讓故事生動起來。</div></div>
+<div class="example-item"><div class="example-en">An <b>illustrious</b> career in medicine earned him respect across the nation.</div><div class="example-zh">傑出的醫學生涯為他贏得了全國的尊重。</div></div>
+</div></div>
+
+<!-- 13. replace -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">replace</div><div class="card-pos">v. 取代；替換；放回</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">replacement n. 取代；替代品<br>replace B with A 用A取代B<br>supersede v. 取代（較正式）<br>supplant v. 取代（通常指不公平地）<br>substitute v. 代替；n. 替代品</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Many factories have <b>replaced</b> human workers with automated machines.</div><div class="example-zh">許多工廠已用自動化機器取代了人工。</div></div>
+<div class="example-item"><div class="example-en">The manager found a suitable <b>replacement</b> for the employee who resigned.</div><div class="example-zh">經理為辭職的員工找到了合適的替代人選。</div></div>
+<div class="example-item"><div class="example-en">Digital cameras have largely <b>superseded</b> traditional film cameras in daily use.</div><div class="example-zh">數位相機在日常使用中已在很大程度上取代了傳統底片相機。</div></div>
+</div></div>
+
+<!-- 14. tendency -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">tendency</div><div class="card-pos">n. 傾向；趨勢</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">tend to + V 傾向於做某事<br>tend + V-ing 照料；看護（另義）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">There is a growing <b>tendency</b> among young people to work from home.</div><div class="example-zh">年輕人之間有越來越多在家工作的趨勢。</div></div>
+<div class="example-item"><div class="example-en">He has a <b>tendency</b> to procrastinate when faced with difficult assignments.</div><div class="example-zh">他面對困難作業時有拖延的傾向。</div></div>
+<div class="example-item"><div class="example-en">Students who read widely <b>tend to</b> have stronger writing and critical thinking skills.</div><div class="example-zh">廣泛閱讀的學生往往擁有更強的寫作和批判性思維能力。</div></div>
+</div></div>
+
+<!-- 15. impact -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">impact</div><div class="card-pos">n. 影響；衝擊；v. 影響</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">have an impact/effect/influence on 對…有影響<br>impactful adj. 有重大影響的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Social media has a significant <b>impact</b> on how teenagers view their self-image.</div><div class="example-zh">社群媒體對青少年看待自我形象的方式有重大影響。</div></div>
+<div class="example-item"><div class="example-en">The new law will greatly <b>impact</b> small businesses across the country.</div><div class="example-zh">這項新法律將對全國各地的小企業產生重大影響。</div></div>
+<div class="example-item"><div class="example-en">Exercise has a positive <b>influence on</b> both physical health and mental well-being.</div><div class="example-zh">運動對身體健康和心理健康都有正面影響。</div></div>
+</div></div>
+
+<!-- 16. colleague -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">colleague</div><div class="card-pos">n. 同事；同僚</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">colleague ≠ college（注意拼字）<br>associate n. 合夥人；同事<br>league n. 聯盟；同夥<br>be in league with 與…勾結</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">She discussed the project proposal with her <b>colleagues</b> before the meeting.</div><div class="example-zh">她在會議前與同事討論了計畫提案。</div></div>
+<div class="example-item"><div class="example-en">A good relationship with your <b>colleagues</b> can improve workplace productivity.</div><div class="example-zh">與同事保持良好關係可以提升職場生產力。</div></div>
+<div class="example-item"><div class="example-en">He was surprised to find that two <b>colleagues</b> had applied for the same promotion.</div><div class="example-zh">他很驚訝地發現有兩位同事申請了同一個升遷職位。</div></div>
+</div></div>
+
+<!-- 17. commute -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">commute</div><div class="card-pos">v. 通勤；n. 通勤路程</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">commuter n. 通勤者<br>commute by + 交通工具 搭乘…通勤</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Many people <b>commute</b> over an hour each day to reach their workplace.</div><div class="example-zh">許多人每天需要通勤超過一個小時才能到達工作地點。</div></div>
+<div class="example-item"><div class="example-en">The busy <b>commuters</b> filled the subway station during the morning rush hour.</div><div class="example-zh">早上尖峰時刻，忙碌的通勤者擠滿了地鐵站。</div></div>
+<div class="example-item"><div class="example-en">Working from home has eliminated the need for a daily <b>commute</b> for many workers.</div><div class="example-zh">在家工作讓許多員工不再需要每天通勤。</div></div>
+</div></div>
+
+<!-- 18. accuracy -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">accuracy</div><div class="card-pos">n. 準確性；精確度</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">accurate adj. 準確的；精確的<br>accurately adv. 準確地<br>inaccurate adj. 不準確的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The surgeon's <b>accuracy</b> during the procedure was critical to the patient's recovery.</div><div class="example-zh">外科醫生在手術中的精確度對病患的康復至關重要。</div></div>
+<div class="example-item"><div class="example-en">Always double-check your data to ensure the <b>accuracy</b> of your report.</div><div class="example-zh">務必仔細核對數據，以確保報告的準確性。</div></div>
+<div class="example-item"><div class="example-en">The weather forecast was <b>accurate</b> enough to help farmers plan their harvest.</div><div class="example-zh">天氣預報的準確度足以幫助農民規劃收成。</div></div>
+</div></div>
+
+<!-- 19. observation -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">observation</div><div class="card-pos">n. 觀察；觀測；評論</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">observe v. 觀察；遵守；評論<br>observer n. 觀察者<br>observatory n. 天文台；氣象站<br>observance n. 遵守（法律/習俗）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The scientist's careful <b>observation</b> led to a groundbreaking discovery in biology.</div><div class="example-zh">科學家仔細的觀察促成了生物學領域的突破性發現。</div></div>
+<div class="example-item"><div class="example-en">We visited the <b>observatory</b> to watch the stars through powerful telescopes.</div><div class="example-zh">我們參觀了天文台，透過強力望遠鏡觀看星星。</div></div>
+<div class="example-item"><div class="example-en">The teacher made an important <b>observation</b> about the student's learning style.</div><div class="example-zh">老師對這位學生的學習風格提出了重要的看法。</div></div>
+</div></div>
+
+<!-- 20. periodically -->
+<div class="vocab-card">
+<div class="card-head r1"><div class="card-word">periodically</div><div class="card-pos">adv. 定期地；週期性地</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">periodic adj. 定期的；週期性的<br>period n. 時期；句號；週期<br>periodical n. 期刊；雜誌</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">You should <b>periodically</b> back up your files to avoid losing important data.</div><div class="example-zh">你應該定期備份文件，以免遺失重要資料。</div></div>
+<div class="example-item"><div class="example-en">The factory undergoes <b>periodic</b> inspections to ensure it meets safety standards.</div><div class="example-zh">工廠定期接受檢查，以確保符合安全標準。</div></div>
+<div class="example-item"><div class="example-en">The doctor recommended <b>periodical</b> check-ups to monitor her blood pressure.</div><div class="example-zh">醫生建議定期檢查以監測她的血壓。</div></div>
+</div></div>
+
+</div><!-- end vocab-grid -->
+
+<!-- Round 1 Grammar -->
+<div class="section-title r1">文法重點</div>
+
+<div class="grammar-block">
+<div class="grammar-head r1">重點一：hard / hardly 和 late / lately 的易混淆用法</div>
+<div class="grammar-body">
+<p><b>hard</b> 作副詞時表示「努力地；用力地」，<b>hardly</b> 則表示「幾乎不」，兩者意義截然不同。同樣，<b>late</b> 當副詞表示「晚；遲」，而 <b>lately</b> 表示「最近；近來」。</p>
+<p>She worked <b>hard</b> to pass the exam. 她努力用功以通過考試。<br>
+He <b>hardly</b> studied, so he failed. 他幾乎沒念書，所以不及格。</p>
+<p>The train arrived <b>late</b> again today. 火車今天又晚到了。<br>
+<b>Lately</b>, the weather has been unusually cold. 最近天氣異常寒冷。</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r1">重點二：No sooner...than 的倒裝句型</div>
+<div class="grammar-body">
+<p><b>No sooner + had + S + p.p. + than + S + V(過去式)</b>，表示「一…就…」。<b>No sooner</b> 置於句首時，主詞與助動詞需倒裝。此句型強調兩件事發生的時間極為接近。</p>
+<p><b>No sooner had</b> she sat down <b>than</b> the phone rang. 她一坐下，電話就響了。<br>
+（正常語序：She had no sooner sat down than the phone rang.）</p>
+<p>類似句型：<b>Hardly/Scarcely had</b> S + p.p. <b>when/before</b> S + V（過去式）<br>
+<b>Hardly had</b> he left the house <b>when</b> it started to rain. 他一離開家就開始下雨了。</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r1">重點三：非限定關係子句 (Non-restrictive Relative Clause) 的使用</div>
+<div class="grammar-body">
+<p>非限定關係子句以<b>逗點 + which/who/whom</b> 引導，補充說明先行詞，去掉此子句不影響主句意思。注意：非限定子句不能用 <b>that</b> 替代 which。</p>
+<p>Mount Jade is the highest peak in Taiwan, <b>which</b> attracts many hikers each year.<br>
+玉山是台灣最高的山峰，每年吸引許多登山者。（補充說明玉山）</p>
+<p>He donated all his savings to charity, <b>which</b> surprised everyone around him.<br>
+他把所有積蓄捐給慈善機構，這讓周圍的人都感到驚訝。（which 代指前整件事）</p>
+</div></div>
+
+<!-- Round 1 Reading -->
+<div class="section-title r1">閱讀測驗</div>
+<div class="reading-block">
+<p>In today's fast-changing job market, the ability to adapt and grow has become just as important as technical skills. Many employers now look beyond academic <b>merit</b> when making hiring decisions. They seek candidates who show <b>dedication</b> to continuous learning and who can <b>proceed</b> through challenges without giving up.</p>
+<p>When companies <b>recruit</b> new staff, they often value qualities such as creativity, communication, and a positive attitude. A <b>flawless</b> academic record may catch attention, but it is rarely enough on its own. An <b>appealing</b> candidate is one who has real-world experience and can demonstrate an <b>initial</b> understanding of the company's goals and culture.</p>
+<p>Research shows that workers who <b>commute</b> long distances often report lower job satisfaction. As a result, more organizations are allowing employees to work remotely. This shift has had a significant <b>impact</b> on productivity and employee well-being. Companies that <b>periodically</b> review their work policies and adapt to employee needs tend to <b>prosper</b> in the long run.</p>
+<p>There is also a growing <b>tendency</b> among professionals to switch careers in pursuit of greater fulfillment. When a person's skills are no longer valued, they may be <b>replaced</b> or asked to take on new roles. The key to lasting success is the willingness to learn, to <b>illustrate</b> one's value through action, and to earn <b>recognition</b> through consistent hard work. Those who <b>triumph</b> in their careers are often those who combine talent with a strong work ethic and an eye for <b>accuracy</b> in everything they do.</p>
+</div>
+
+<!-- Round 1 MCQ -->
+<div class="section-title r1">單字選擇題複習（5 題）</div>
+<div class="mcq-block r1">
+
+<div class="mcq-q">1. After years of working hard, the young entrepreneur finally saw her business begin to _____ in the competitive market.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) recruit</div>
+<div class="mcq-opt">(B) prosper</div>
+<div class="mcq-opt">(C) commute</div>
+<div class="mcq-opt">(D) replace</div>
+</div>
+<details><summary class="ans-summary r1"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) prosper — 在競爭市場中「繁榮、興旺」，符合語境。</div></details>
+
+<div class="mcq-q">2. The company decided to _____ its old software system with a more efficient, cloud-based solution.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) illustrate</div>
+<div class="mcq-opt">(B) proceed</div>
+<div class="mcq-opt">(C) replace</div>
+<div class="mcq-opt">(D) elaborate</div>
+</div>
+<details><summary class="ans-summary r1"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) replace — replace B with A，用新系統取代舊系統。</div></details>
+
+<div class="mcq-q">3. The professor asked the student to _____ on her research findings in more detail during the presentation.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) triumph</div>
+<div class="mcq-opt">(B) elaborate</div>
+<div class="mcq-opt">(C) appeal</div>
+<div class="mcq-opt">(D) dedicate</div>
+</div>
+<details><summary class="ans-summary r1"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) elaborate — elaborate on sth. 表示「詳細說明某事」。</div></details>
+
+<div class="mcq-q">4. The scientist's detailed _____ of animal behavior in the wild led to a groundbreaking new theory.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) accuracy</div>
+<div class="mcq-opt">(B) tendency</div>
+<div class="mcq-opt">(C) observation</div>
+<div class="mcq-opt">(D) recognition</div>
+</div>
+<details><summary class="ans-summary r1"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) observation — 「觀察」野外動物行為，符合科學語境。</div></details>
+
+<div class="mcq-q">5. After completing all safety checks, the construction team received permission to _____ with the building project.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) recruit</div>
+<div class="mcq-opt">(B) illustrate</div>
+<div class="mcq-opt">(C) impact</div>
+<div class="mcq-opt">(D) proceed</div>
+</div>
+<details><summary class="ans-summary r1"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(D) proceed — proceed with 表示「繼續進行某事」。</div></details>
+
+</div><!-- end mcq-block -->
+</section><!-- end round 1 -->
+
+<hr class="divider">
+
+<!-- ===== ROUND 2 ===== -->
+<section class="round-section r2" id="round2">
+<div class="round-header r2-header">
+  <h2>回合二：情感、人格與社會關係</h2>
+  <p>Emotions, Character &amp; Social Relations — 20 個核心單字</p>
+</div>
+<div class="vocab-grid">
+
+<!-- 1. compassion -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">compassion</div><div class="card-pos">n. 同情心；憐憫</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">compassionate adj. 有同情心的；慈悲的<br>compassionately adv. 同情地<br>compassion = sympathy（近義）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The nurse treated every patient with great <b>compassion</b> and patience.</div><div class="example-zh">護士以極大的同情心和耐心對待每一位病患。</div></div>
+<div class="example-item"><div class="example-en">A <b>compassionate</b> leader listens to the needs of their team before making decisions.</div><div class="example-zh">一位有同情心的領導者在做決策前會傾聽團隊的需求。</div></div>
+<div class="example-item"><div class="example-en">She showed <b>compassion</b> for the homeless by volunteering at the shelter every weekend.</div><div class="example-zh">她每週末在收容所當義工，對無家可歸的人表達同情。</div></div>
+</div></div>
+
+<!-- 2. smuggle -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">smuggle</div><div class="card-pos">v. 走私；偷運</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">smuggler n. 走私者<br>smuggling n. 走私（活動）<br>smuggle sth. into/out of a place 將某物偷運進/出某地</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The customs officers arrested a man who tried to <b>smuggle</b> diamonds across the border.</div><div class="example-zh">海關人員逮捕了一名試圖走私鑽石越境的男子。</div></div>
+<div class="example-item"><div class="example-en">The police broke up a <b>smuggling</b> ring that operated across three countries.</div><div class="example-zh">警方搗破了一個跨越三個國家運作的走私集團。</div></div>
+<div class="example-item"><div class="example-en">In the novel, the spy <b>smuggled</b> secret documents out of the embassy under cover of night.</div><div class="example-zh">在小說中，間諜趁著夜色將機密文件偷運出大使館。</div></div>
+</div></div>
+
+<!-- 3. seize -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">seize</div><div class="card-pos">v. 抓住；查扣；奪取</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">seizure n. 扣押；發作（醫）<br>seize the day 把握當下（= carpe diem）<br>seize the opportunity 把握機會</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">You should <b>seize</b> every opportunity to practice speaking English with native speakers.</div><div class="example-zh">你應該把握每個機會和母語者練習說英文。</div></div>
+<div class="example-item"><div class="example-en">The police <b>seized</b> a large amount of counterfeit goods from the warehouse.</div><div class="example-zh">警方從倉庫查扣了大量仿冒商品。</div></div>
+<div class="example-item"><div class="example-en">"<b>Seize</b> the day," said the coach, reminding his players not to waste any moment on the field.</div><div class="example-zh">教練說「把握當下」，提醒球員不要在場上浪費任何時刻。</div></div>
+</div></div>
+
+<!-- 4. peculiar -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">peculiar</div><div class="card-pos">adj. 奇怪的；特有的；特別的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">peculiarly adv. 奇特地；特別地<br>peculiarity n. 特性；怪癖<br>peculiar to 為…所特有（某事物獨有的特徵）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">There was a <b>peculiar</b> smell coming from the old laboratory that no one could identify.</div><div class="example-zh">舊實驗室裡傳來一種沒有人能辨別的奇怪氣味。</div></div>
+<div class="example-item"><div class="example-en">This bird species is <b>peculiar to</b> the tropical rainforests of South America.</div><div class="example-zh">這種鳥類是南美洲熱帶雨林所特有的。</div></div>
+<div class="example-item"><div class="example-en">His <b>peculiar</b> habit of humming while reading made it hard for others to concentrate.</div><div class="example-zh">他閱讀時哼歌的奇特習慣讓別人難以專注。</div></div>
+</div></div>
+
+<!-- 5. spoil -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">spoil</div><div class="card-pos">v. 破壞；寵壞；腐壞；n. 戰利品</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">spoils n. 戰利品；不義之財（常用複數）<br>spoiled/spoilt adj. 被寵壞的；變質的<br>spoilsport n. 掃興的人</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The sudden rainstorm <b>spoiled</b> the outdoor wedding ceremony they had planned for months.</div><div class="example-zh">突如其來的暴雨破壞了他們籌劃數月的戶外婚禮。</div></div>
+<div class="example-item"><div class="example-en">Leaving milk out in the heat for too long will cause it to <b>spoil</b> quickly.</div><div class="example-zh">將牛奶在高溫下放置太久會導致它很快變質。</div></div>
+<div class="example-item"><div class="example-en">Parents who give children everything they want may end up raising a <b>spoiled</b> child.</div><div class="example-zh">什麼都給孩子的父母可能最終養出一個被寵壞的孩子。</div></div>
+</div></div>
+
+<!-- 6. consequence -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">consequence</div><div class="card-pos">n. 後果；結果；重要性</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">consequently adv. 因此；結果<br>suffer the consequences 承擔後果<br>as a consequence (of) 由於…的結果</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Ignoring warnings about climate change will have serious <b>consequences</b> for future generations.</div><div class="example-zh">忽視氣候變化的警告將對未來世代造成嚴重後果。</div></div>
+<div class="example-item"><div class="example-en">He drove recklessly and had to <b>suffer the consequences</b> when he was caught by the police.</div><div class="example-zh">他魯莽駕駛，被警察逮捕後不得不承擔後果。</div></div>
+<div class="example-item"><div class="example-en">The factory was shut down; <b>consequently</b>, hundreds of workers lost their jobs.</div><div class="example-zh">工廠關閉，因此數百名工人失業了。</div></div>
+</div></div>
+
+<!-- 7. inhabit -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">inhabit</div><div class="card-pos">v. 居住於；棲息於</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">inhabitant n. 居民；棲居動物<br>habitat n. 棲息地；自然環境<br>uninhabited adj. 無人居住的<br>habitation n. 居住（狀態）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Polar bears <b>inhabit</b> the icy regions of the Arctic, where few other animals survive.</div><div class="example-zh">北極熊棲息在北極的冰雪地帶，那裡幾乎沒有其他動物能存活。</div></div>
+<div class="example-item"><div class="example-en">The <b>inhabitants</b> of the small village had lived there for generations without change.</div><div class="example-zh">這個小村莊的居民世世代代居住於此，從未改變。</div></div>
+<div class="example-item"><div class="example-en">Deforestation destroys the natural <b>habitat</b> of countless species of plants and animals.</div><div class="example-zh">森林砍伐破壞了無數動植物的自然棲息地。</div></div>
+</div></div>
+
+<!-- 8. stationary -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">stationary</div><div class="card-pos">adj. 靜止的；不動的；固定的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">stationary ≠ stationery（注意！）<br>stationery n. 文具；信紙<br>station n. 車站；崗位</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The car remained <b>stationary</b> for over an hour due to the heavy traffic jam.</div><div class="example-zh">由於嚴重塞車，那輛車靜止不動了超過一個小時。</div></div>
+<div class="example-item"><div class="example-en">During the earthquake drill, students were told to stay <b>stationary</b> under their desks.</div><div class="example-zh">地震演練時，學生被告知要靜止不動地待在桌子下方。</div></div>
+<div class="example-item"><div class="example-en">Don't confuse <b>stationary</b> (not moving) with <b>stationery</b> (pens and paper).</div><div class="example-zh">不要混淆 stationary（靜止的）和 stationery（文具）。</div></div>
+</div></div>
+
+<!-- 9. behavior -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">behavior</div><div class="card-pos">n. 行為；舉止；表現</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">behave v. 行為；表現；舉止得體<br>misbehave v. 行為不端；搗亂<br>behavioral adj. 行為上的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The child's disruptive <b>behavior</b> in class made it difficult for others to learn.</div><div class="example-zh">孩子在課堂上的干擾行為讓其他人難以學習。</div></div>
+<div class="example-item"><div class="example-en">Researchers study animal <b>behavior</b> to better understand how different species interact.</div><div class="example-zh">研究人員研究動物行為，以更好地了解不同物種如何互動。</div></div>
+<div class="example-item"><div class="example-en">Parents should model good <b>behavior</b> because children often imitate what they observe.</div><div class="example-zh">父母應該以良好行為作為榜樣，因為孩子常常模仿所觀察到的事物。</div></div>
+</div></div>
+
+<!-- 10. faithful -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">faithful</div><div class="card-pos">adj. 忠誠的；忠實的；精確的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">faith n. 信念；信仰；忠誠<br>faithfully adv. 忠誠地；忠實地<br>be faithful to = be loyal to = be devoted/dedicated to 對…忠誠</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The dog was extremely <b>faithful</b> to its owner, waiting at the door every evening.</div><div class="example-zh">這條狗對主人極為忠誠，每天傍晚都在門口等候。</div></div>
+<div class="example-item"><div class="example-en">The translator produced a <b>faithful</b> version of the original poem that preserved its meaning.</div><div class="example-zh">譯者翻譯出了一個忠於原詩意義的版本。</div></div>
+<div class="example-item"><div class="example-en">She has remained <b>faithful to</b> her principles despite pressure from others to compromise.</div><div class="example-zh">儘管他人施壓要她妥協，她仍然堅守自己的原則。</div></div>
+</div></div>
+
+<!-- 11. sympathy -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">sympathy</div><div class="card-pos">n. 同情；體諒；贊同</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">sympathetic adj. 同情的；理解的<br>sympathize v. 同情；體諒<br>apathy n. 冷漠；漠不關心（反義）</div></div>
+<div class="root-block">字根 <b>path</b>「感情」→ empathy 同理心、apathy 冷漠、sympathy 同情</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">She expressed deep <b>sympathy</b> for the victims of the earthquake and donated generously.</div><div class="example-zh">她對地震受難者表達深切同情，並慷慨捐款。</div></div>
+<div class="example-item"><div class="example-en">His <b>sympathetic</b> response made the grieving family feel less alone in their sorrow.</div><div class="example-zh">他充滿同情的回應讓傷心的家庭在悲痛中感到不那麼孤單。</div></div>
+<div class="example-item"><div class="example-en">Public <b>apathy</b> toward environmental issues makes it harder to pass green legislation.</div><div class="example-zh">公眾對環保議題的冷漠使得通過綠色立法更加困難。</div></div>
+</div></div>
+
+<!-- 12. empathy -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">empathy</div><div class="card-pos">n. 同理心；設身處地的理解</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">empathetic / empathic adj. 有同理心的<br>empathize v. 感同身受；產生共鳴<br>sympathy vs. empathy：sympathy 是「同情」（旁觀者角度）；empathy 是「同理」（身歷其境地理解）</div></div>
+<div class="root-block">字根 <b>path</b>「感情」→ sympathy、empathy、apathy、pathetic</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Good teachers show <b>empathy</b> toward students who struggle with learning difficulties.</div><div class="example-zh">好老師對有學習困難的學生展現同理心。</div></div>
+<div class="example-item"><div class="example-en"><b>Empathy</b> is the ability to understand and share the feelings of another person.</div><div class="example-zh">同理心是理解並感受他人情感的能力。</div></div>
+<div class="example-item"><div class="example-en">She could <b>empathize</b> with the immigrant's homesickness, having lived abroad herself.</div><div class="example-zh">由於她自己也曾旅居海外，她能夠感同身受地理解那位移民的鄉愁。</div></div>
+</div></div>
+
+<!-- 13. aggressive -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">aggressive</div><div class="card-pos">adj. 侵略性的；好鬥的；積極進取的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">aggression n. 侵略；攻擊性行為<br>aggressor n. 侵略者<br>aggressively adv. 侵略性地；積極地</div></div>
+<div class="root-block">字根 <b>gress</b>「前進；走」→ progress 進步、congress 國會、aggressive 攻進</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The salesperson's <b>aggressive</b> approach made many customers feel uncomfortable.</div><div class="example-zh">那位銷售員積極進取的推銷方式讓許多客戶感到不自在。</div></div>
+<div class="example-item"><div class="example-en">Act of <b>aggression</b> between nations can quickly escalate into armed conflict.</div><div class="example-zh">國家之間的侵略行為可能迅速升級為武裝衝突。</div></div>
+<div class="example-item"><div class="example-item"><div class="example-en">The team pursued an <b>aggressive</b> marketing strategy to capture a larger market share.</div><div class="example-zh">該團隊採取積極進取的行銷策略，以佔據更大的市場份額。</div></div>
+</div></div></div>
+
+<!-- 14. overcome -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">overcome</div><div class="card-pos">v. 克服；戰勝；壓倒</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">overcome = triumph over = conquer 克服；戰勝<br>be overcome by/with 被（情緒）淹沒/壓倒</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">She worked hard to <b>overcome</b> her fear of public speaking and became a confident presenter.</div><div class="example-zh">她努力克服對公開演講的恐懼，成為一位自信的演講者。</div></div>
+<div class="example-item"><div class="example-en">He was <b>overcome with</b> emotion when he heard that he had won the scholarship.</div><div class="example-zh">當他聽說自己獲得了獎學金時，情緒激動得難以自持。</div></div>
+<div class="example-item"><div class="example-en">Great leaders inspire their teams to <b>overcome</b> even the most challenging obstacles.</div><div class="example-zh">偉大的領導者激勵團隊克服即使是最艱難的障礙。</div></div>
+</div></div>
+
+<!-- 15. loyal -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">loyal</div><div class="card-pos">adj. 忠誠的；忠實的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">loyalty n. 忠誠；忠心<br>loyal to 對…忠誠<br>loyal = faithful = devoted 忠誠的（同義詞）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">A truly <b>loyal</b> friend will support you even when others turn their backs on you.</div><div class="example-zh">一個真正忠誠的朋友會在別人背棄你時仍然支持你。</div></div>
+<div class="example-item"><div class="example-en">The brand built a large base of <b>loyal</b> customers through excellent service and quality products.</div><div class="example-zh">這個品牌透過卓越的服務和優質的產品建立了龐大的忠實顧客群。</div></div>
+<div class="example-item"><div class="example-en">His <b>loyalty</b> to the company was rewarded with a promotion after fifteen years of service.</div><div class="example-zh">在服務十五年後，他對公司的忠誠獲得了晉升的獎勵。</div></div>
+</div></div>
+
+<!-- 16. sacrifice -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">sacrifice</div><div class="card-pos">v./n. 犧牲；獻祭</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">at the expense/cost/sacrifice of 以犧牲…為代價<br>make a sacrifice 做出犧牲<br>sacrificial adj. 犧牲的；祭祀的</div></div>
+<div class="root-block">字根 <b>sa/sacr</b>「神聖」→ sacred 神聖的、sanctuary 聖所</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Parents often <b>sacrifice</b> their personal time and comfort to provide for their children.</div><div class="example-zh">父母常常犧牲個人時間和舒適，來為孩子提供所需。</div></div>
+<div class="example-item"><div class="example-en">He achieved fame at the <b>sacrifice</b> of his health and family relationships.</div><div class="example-zh">他以犧牲健康和家庭關係為代價獲得了名聲。</div></div>
+<div class="example-item"><div class="example-en">Many soldiers made the ultimate <b>sacrifice</b> to protect their country's freedom.</div><div class="example-zh">許多士兵為保衛國家自由而做出了最終的犧牲。</div></div>
+</div></div>
+
+<!-- 17. generous -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">generous</div><div class="card-pos">adj. 慷慨的；大方的；豐盛的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">generosity n. 慷慨；大方<br>generously adv. 慷慨地<br>generous with 在…方面大方</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">She was <b>generous</b> with her time, always willing to help classmates with their studies.</div><div class="example-zh">她在時間上非常大方，總是願意幫助同學學習。</div></div>
+<div class="example-item"><div class="example-en">The billionaire's <b>generosity</b> funded new schools in three underdeveloped regions.</div><div class="example-zh">這位億萬富翁的慷慨捐助為三個欠發達地區建立了新學校。</div></div>
+<div class="example-item"><div class="example-en">The restaurant is known for its <b>generous</b> portions and friendly staff.</div><div class="example-zh">這家餐廳以份量豐盛和友善的員工而聞名。</div></div>
+</div></div>
+
+<!-- 18. isolate -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">isolate</div><div class="card-pos">v. 使孤立；隔離；分離</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">isolation n. 孤立；隔離；隔絕<br>isolated adj. 孤立的；偏遠的；孤僻的<br>in isolation 單獨地；孤立地</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">During the pandemic, many people were required to <b>isolate</b> at home to prevent the spread of disease.</div><div class="example-zh">疫情期間，許多人被要求在家隔離以防止疾病傳播。</div></div>
+<div class="example-item"><div class="example-en">Living alone in an <b>isolated</b> mountain cabin can lead to feelings of loneliness and depression.</div><div class="example-zh">獨自住在偏遠山區木屋可能導致孤獨感和憂鬱情緒。</div></div>
+<div class="example-item"><div class="example-en">Bullying often works by <b>isolating</b> the victim from their friends and support network.</div><div class="example-zh">霸凌通常透過使受害者與朋友和支持網絡隔離來發揮作用。</div></div>
+</div></div>
+
+<!-- 19. innocent -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">innocent</div><div class="card-pos">adj. 無辜的；天真的；清白的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">innocence n. 無辜；天真<br>innocently adv. 天真地；無辜地<br>innocent of 對…不知情；在…方面無罪</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The jury found the defendant <b>innocent</b> of all charges after a three-week trial.</div><div class="example-zh">陪審團在三週審判後裁定被告對所有指控無罪。</div></div>
+<div class="example-item"><div class="example-en">Children often ask <b>innocent</b> questions that adults find difficult to answer honestly.</div><div class="example-zh">孩子常常提出天真的問題，讓大人難以誠實回答。</div></div>
+<div class="example-item"><div class="example-en">She maintained her <b>innocence</b> throughout the investigation and was eventually cleared.</div><div class="example-zh">她在整個調查過程中堅稱自己清白，最終獲得洗清。</div></div>
+</div></div>
+
+<!-- 20. violate -->
+<div class="vocab-card">
+<div class="card-head r2"><div class="card-word">violate</div><div class="card-pos">v. 違反；侵犯；褻瀆</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">violation n. 違反；侵犯<br>violator n. 違規者<br>in violation of 違反…</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Using someone's personal data without consent <b>violates</b> their right to privacy.</div><div class="example-zh">未經同意使用他人個人資料侵犯了其隱私權。</div></div>
+<div class="example-item"><div class="example-en">The company was fined for <b>violating</b> environmental regulations for three consecutive years.</div><div class="example-zh">該公司因連續三年違反環保法規而被罰款。</div></div>
+<div class="example-item"><div class="example-en">Parking in a no-parking zone is a clear <b>violation</b> of traffic rules.</div><div class="example-zh">在禁止停車區域停車是明顯違反交通規則。</div></div>
+</div></div>
+
+</div><!-- end vocab-grid -->
+
+<!-- Round 2 Grammar -->
+<div class="section-title r2">文法重點</div>
+
+<div class="grammar-block">
+<div class="grammar-head r2">重點一：despite / without / in spite of 後接名詞或動名詞</div>
+<div class="grammar-body">
+<p><b>despite</b> 和 <b>in spite of</b> 意思相同，均表示「儘管；雖然」，後面必須接<b>名詞、代名詞或動名詞（V-ing）</b>，不可直接接子句。若後接子句，應改用 <b>although / even though</b>。</p>
+<p><b>Despite</b> the rain, they continued the outdoor event. 儘管下雨，他們還是繼續戶外活動。<br>
+<b>In spite of</b> being tired, she finished the report. 儘管疲憊，她還是完成了報告。<br>
+<b>Without</b> proper sleep, you cannot focus well. 沒有充足的睡眠，你無法好好專注。</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r2">重點二：分詞片語（Participial Phrase）的用法</div>
+<div class="grammar-body">
+<p>分詞片語由<b>現在分詞（V-ing）</b>或<b>過去分詞（p.p.）</b>引導，修飾主要子句的主詞。分詞片語的主詞必須與主要子句的主詞一致，否則稱為「懸垂分詞」（dangling participle）。</p>
+<p><b>Feeling nervous</b>, she took a deep breath before walking on stage. （她感到緊張，）她上台前深吸了一口氣。<br>
+<b>Exhausted by the long journey</b>, the travelers fell asleep immediately. （被長途旅程搞得精疲力竭，）旅者們立刻睡著了。<br>
+<b>Written in simple language</b>, the book appeals to young readers. 這本書以簡單的語言寫成，吸引年輕讀者。</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r2">重點三：複合形容詞（Compound Adjectives）的構成與連字號</div>
+<div class="grammar-body">
+<p>複合形容詞通常由兩個或多個詞以<b>連字號（hyphen）</b>連接，用於名詞前修飾。常見構成方式：<b>數字 + 名詞</b>、<b>形容詞 + 名詞 + ed</b>、<b>形容詞/副詞 + 分詞</b>。</p>
+<p>a <b>five-year-old</b> child 一個五歲的孩子（數字 + 單位 + old）<br>
+a <b>kind-hearted</b> volunteer 一位善心的義工（形容詞 + 名詞 + ed）<br>
+a <b>well-known</b> scientist 一位知名科學家（副詞 + 過去分詞）<br>
+a <b>heart-wrenching</b> story 一個令人心碎的故事（名詞 + 現在分詞）</p>
+</div></div>
+
+<!-- Round 2 Reading -->
+<div class="section-title r2">閱讀測驗</div>
+<div class="reading-block">
+<p>Human beings are social creatures by nature. The way we relate to one another — through <b>compassion</b>, <b>empathy</b>, and <b>loyalty</b> — shapes who we are and how we live together. Psychologists have found that people who show greater <b>sympathy</b> and genuine care for others tend to lead happier and more fulfilling lives.</p>
+<p>However, not all social <b>behavior</b> is positive. <b>Aggressive</b> individuals, who prioritize winning over cooperation, can create toxic environments both at home and in the workplace. When people feel <b>isolated</b> from their peers, their mental health can suffer greatly. The <b>consequences</b> of chronic loneliness are as damaging as smoking or physical inactivity, according to recent research.</p>
+<p>Communities also face broader challenges. In some regions, smugglers continue to <b>violate</b> national laws by trafficking illegal goods and people across borders. These criminals exploit <b>innocent</b> victims, who are often powerless to resist. It is the responsibility of governments to <b>seize</b> every opportunity to strengthen law enforcement and protect vulnerable populations.</p>
+<p>On a more personal level, being <b>faithful</b> to one's values even under pressure is a sign of strong moral character. A <b>generous</b> spirit and the willingness to <b>sacrifice</b> short-term convenience for long-term good are qualities that <b>loyal</b> friends and admirable leaders share. Life is not <b>stationary</b> — it asks us to <b>overcome</b> fears, embrace change, and care for the world around us with open hearts.</p>
+</div>
+
+<!-- Round 2 MCQ -->
+<div class="section-title r2">單字選擇題複習（5 題）</div>
+<div class="mcq-block r2">
+
+<div class="mcq-q">1. The documentary showed how poachers _____ rare animals out of protected national parks to sell them illegally.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) isolate</div>
+<div class="mcq-opt">(B) overcome</div>
+<div class="mcq-opt">(C) smuggle</div>
+<div class="mcq-opt">(D) inhabit</div>
+</div>
+<details><summary class="ans-summary r2"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) smuggle — 偷運珍稀動物出國家公園，符合「走私」語意。</div></details>
+
+<div class="mcq-q">2. The earthquake left thousands of people homeless, and relief workers responded with great _____ by providing food and shelter immediately.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) aggression</div>
+<div class="mcq-opt">(B) violation</div>
+<div class="mcq-opt">(C) isolation</div>
+<div class="mcq-opt">(D) compassion</div>
+</div>
+<details><summary class="ans-summary r2"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(D) compassion — 救援工作者以「同情心」回應受災者。</div></details>
+
+<div class="mcq-q">3. The new law strictly prohibits companies from collecting personal data without user consent; any _____ will result in heavy fines.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) sacrifice</div>
+<div class="mcq-opt">(B) violation</div>
+<div class="mcq-opt">(C) sympathy</div>
+<div class="mcq-opt">(D) consequence</div>
+</div>
+<details><summary class="ans-summary r2"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) violation — 違反規定稱為 violation，in violation of 表示「違反…」。</div></details>
+
+<div class="mcq-q">4. The explorer had to _____ many hardships, including extreme cold and lack of food, before reaching the South Pole.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) spoil</div>
+<div class="mcq-opt">(B) seize</div>
+<div class="mcq-opt">(C) overcome</div>
+<div class="mcq-opt">(D) isolate</div>
+</div>
+<details><summary class="ans-summary r2"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) overcome — 克服重重困難（极寒和缺糧）才到達南極。</div></details>
+
+<div class="mcq-q">5. Many wild pandas once lived in a large region of China, but habitat destruction has forced them into _____ mountain areas.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) faithful</div>
+<div class="mcq-opt">(B) isolated</div>
+<div class="mcq-opt">(C) stationary</div>
+<div class="mcq-opt">(D) peculiar</div>
+</div>
+<details><summary class="ans-summary r2"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) isolated — 棲息地遭破壞，大熊貓被迫移往「孤立偏遠」的山區。</div></details>
+
+</div><!-- end mcq-block -->
+</section><!-- end round 2 -->
+
+<hr class="divider">
+
+<!-- ===== ROUND 3 ===== -->
+<section class="round-section r3" id="round3">
+<div class="round-header r3-header">
+  <h2>回合三：科技、環境與生活方式</h2>
+  <p>Technology, Environment &amp; Lifestyle — 20 個核心單字</p>
+</div>
+<div class="vocab-grid">
+
+<!-- 1. rigid -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">rigid</div><div class="card-pos">adj. 嚴格的；僵硬的；死板的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">rigidly adv. 嚴格地；僵硬地<br>rigidity n. 嚴格；僵硬；不靈活<br>rigid diet 嚴格的飲食計劃（A rigid diet will make you slimmer.）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">A <b>rigid</b> diet plan requires careful tracking of every meal and calorie intake.</div><div class="example-zh">嚴格的飲食計劃需要仔細追蹤每餐和卡路里攝入量。</div></div>
+<div class="example-item"><div class="example-en">The company's <b>rigid</b> rules about punctuality made it difficult to retain talented employees.</div><div class="example-zh">公司對守時的嚴格規定使得留住有才華的員工變得困難。</div></div>
+<div class="example-item"><div class="example-en">Steel beams provide the <b>rigidity</b> needed to keep tall buildings stable during earthquakes.</div><div class="example-zh">鋼樑提供了使高樓在地震中保持穩定所需的剛性。</div></div>
+</div></div>
+
+<!-- 2. absorb -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">absorb</div><div class="card-pos">v. 吸收；全神貫注；消化（知識）</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">absorption n. 吸收；全神貫注<br>be absorbed in 全神貫注於…<br>absorbent adj. 能吸收的；吸水的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Plants <b>absorb</b> carbon dioxide from the air and release oxygen through photosynthesis.</div><div class="example-zh">植物透過光合作用從空氣中吸收二氧化碳並釋放氧氣。</div></div>
+<div class="example-item"><div class="example-en">She was so <b>absorbed in</b> reading her novel that she didn't hear the doorbell ring.</div><div class="example-zh">她全神貫注地看小說，完全沒聽到門鈴響。</div></div>
+<div class="example-item"><div class="example-en">New employees need time to <b>absorb</b> the company's culture and working procedures.</div><div class="example-zh">新員工需要時間來消化吸收公司的文化和工作程序。</div></div>
+</div></div>
+
+<!-- 3. massive -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">massive</div><div class="card-pos">adj. 巨大的；大量的；嚴重的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">mass n. 大量；質量；群眾<br>the masses n. 大眾；民眾<br>amass v. 積累；大量收集<br>massively adv. 大規模地；大量地</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The typhoon caused <b>massive</b> damage to coastal areas, destroying hundreds of homes.</div><div class="example-zh">颱風對沿海地區造成了巨大破壞，摧毀了數百棟房屋。</div></div>
+<div class="example-item"><div class="example-en">The entrepreneur managed to <b>amass</b> a fortune by investing wisely in technology stocks.</div><div class="example-zh">這位創業家透過明智地投資科技股積累了一筆財富。</div></div>
+<div class="example-item"><div class="example-en">Social media platforms have achieved <b>massive</b> user growth in developing countries.</div><div class="example-zh">社群媒體平台在發展中國家實現了大規模的用戶增長。</div></div>
+</div></div>
+
+<!-- 4. tactics -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">tactics</div><div class="card-pos">n. 戰術；策略（常用複數）</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">tactic n. 戰術；手段（單數）<br>tactics = strategy 策略；戰略<br>tactical adj. 戰術的；策略性的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The basketball coach changed her <b>tactics</b> at halftime to stop the opponent's fast breaks.</div><div class="example-zh">籃球教練在中場休息時改變戰術，以阻止對手的快攻。</div></div>
+<div class="example-item"><div class="example-en">Aggressive marketing <b>tactics</b> may bring short-term gains but can damage brand reputation.</div><div class="example-zh">激進的行銷策略可能帶來短期收益，但可能損害品牌聲譽。</div></div>
+<div class="example-item"><div class="example-en">The environmental group used creative <b>tactics</b> to draw public attention to ocean pollution.</div><div class="example-zh">這個環保團體採用創意策略，吸引公眾關注海洋污染問題。</div></div>
+</div></div>
+
+<!-- 5. embassy -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">embassy</div><div class="card-pos">n. 大使館</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">ambassador n. 大使；代表<br>consulate n. 領事館（較小規模）<br>consul n. 領事</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Citizens traveling abroad should register with their country's <b>embassy</b> in case of emergencies.</div><div class="example-zh">在國外旅行的公民應向其國家大使館登記，以備緊急情況。</div></div>
+<div class="example-item"><div class="example-en">The <b>ambassador</b> held a reception at the <b>embassy</b> to welcome the visiting foreign minister.</div><div class="example-zh">大使在大使館舉辦了一場接待會，歡迎來訪的外國部長。</div></div>
+<div class="example-item"><div class="example-en">If you lose your passport overseas, visit the nearest <b>consulate</b> or <b>embassy</b> for assistance.</div><div class="example-zh">如果你在海外遺失護照，請前往最近的領事館或大使館尋求協助。</div></div>
+</div></div>
+
+<!-- 6. admit -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">admit</div><div class="card-pos">v. 承認；允許進入；錄取</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">admission n. 入場；承認；錄取<br>admittance n. 准許進入（較正式）<br>deny v. 否認（反義）<br>admit to + V-ing 承認做了某事</div></div>
+<div class="root-block">字根 <b>mit/miss</b>「送；發」→ submit 提交、permit 許可、commit 承諾</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">He finally <b>admitted</b> to making a serious error in the financial report.</div><div class="example-zh">他最終承認在財務報告中犯了嚴重錯誤。</div></div>
+<div class="example-item"><div class="example-en">Only ticket holders will be <b>admitted</b> to the concert hall on the night of the performance.</div><div class="example-zh">演出當晚只有持票者才能進入音樂廳。</div></div>
+<div class="example-item"><div class="example-en">Her <b>admission</b> to the top university surprised no one who had seen her academic record.</div><div class="example-zh">她被頂尖大學錄取並不讓任何看過她學業成績的人感到驚訝。</div></div>
+</div></div>
+
+<!-- 7. shift -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">shift</div><div class="card-pos">v./n. 轉移；改變；輪班</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">shift in/of 在…方面的轉變<br>work shifts 輪班工作<br>shift work n. 輪班制工作</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">There has been a significant <b>shift</b> in consumer preferences toward eco-friendly products.</div><div class="example-zh">消費者對環保產品的偏好已發生了顯著轉變。</div></div>
+<div class="example-item"><div class="example-en">The nurse works the night <b>shift</b> three times a week, which disrupts her sleep schedule.</div><div class="example-zh">這位護士每週上三次夜班，這打亂了她的睡眠規律。</div></div>
+<div class="example-item"><div class="example-en">The earthquake <b>shifted</b> the ground level by nearly two meters in some coastal areas.</div><div class="example-zh">地震使部分沿海地區的地面高度移動了將近兩公尺。</div></div>
+</div></div>
+
+<!-- 8. transform -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">transform</div><div class="card-pos">v. 改變；轉化；使變形</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">transformation n. 轉變；改造<br>transform A into B 將A轉化為B<br>transformative adj. 變革性的；有深遠影響的</div></div>
+<div class="root-block">字根 <b>form</b>「形狀」→ reform 改革、inform 通知、conform 遵從、uniform 制服</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Technology has the power to <b>transform</b> entire industries within a very short time.</div><div class="example-zh">科技有能力在很短的時間內改變整個行業。</div></div>
+<div class="example-item"><div class="example-en">The city underwent a dramatic <b>transformation</b> after the construction of the new metro system.</div><div class="example-zh">新地鐵系統建成後，這座城市發生了戲劇性的轉變。</div></div>
+<div class="example-item"><div class="example-en">Solar panels can <b>transform</b> sunlight into electrical energy efficiently and cleanly.</div><div class="example-zh">太陽能板能夠有效且清潔地將陽光轉化為電能。</div></div>
+</div></div>
+
+<!-- 9. innovation -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">innovation</div><div class="card-pos">n. 創新；革新；新發明</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">innovative adj. 創新的；革新的<br>innovate v. 革新；創新<br>renovate v. 翻新；整修<br>novel adj. 新奇的；n. 小說</div></div>
+<div class="root-block">字根 <b>nov</b>「新」→ novel 新奇的、renovate 翻新、innovation 創新</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Silicon Valley is known worldwide as a hub of technological <b>innovation</b> and entrepreneurship.</div><div class="example-zh">矽谷在全球以科技創新和創業精神聞名。</div></div>
+<div class="example-item"><div class="example-en">The company's <b>innovative</b> approach to packaging reduced plastic waste by forty percent.</div><div class="example-zh">該公司在包裝方面的創新做法使塑料廢棄物減少了百分之四十。</div></div>
+<div class="example-item"><div class="example-en">Schools should encourage students to think creatively and embrace <b>innovation</b> from an early age.</div><div class="example-zh">學校應鼓勵學生從小就創意思考，並擁抱創新。</div></div>
+</div></div>
+
+<!-- 10. efficient -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">efficient</div><div class="card-pos">adj. 有效率的；效能高的</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">efficiency n. 效率；效能<br>efficiently adv. 有效率地<br>efficacy n. 功效；效力（多指藥物/方法）<br>inefficient adj. 低效率的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">LED bulbs are much more <b>efficient</b> than traditional incandescent bulbs, using less electricity.</div><div class="example-zh">LED燈泡比傳統白熾燈泡更有效率，耗電量更少。</div></div>
+<div class="example-item"><div class="example-en">Good time management helps students complete their assignments more <b>efficiently</b>.</div><div class="example-zh">良好的時間管理幫助學生更有效率地完成作業。</div></div>
+<div class="example-item"><div class="example-en">The new software improved the team's <b>efficiency</b> by automating repetitive tasks.</div><div class="example-zh">新軟體透過自動化重複性任務提升了團隊的效率。</div></div>
+</div></div>
+
+<!-- 11. produce -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">produce</div><div class="card-pos">v. 生產；產生；出示；n. 農產品</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">product n. 產品；結果<br>production n. 生產；製作<br>productive adj. 多產的；有成效的<br>productivity n. 生產力<br>mass production 大量生產</div></div>
+<div class="root-block">字根 <b>duce/duct</b>「引導；帶」→ reduce 減少、introduce 介紹、conduct 指揮</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Taiwan <b>produces</b> a wide variety of tropical fruits that are popular in Asian markets.</div><div class="example-zh">台灣生產多種深受亞洲市場歡迎的熱帶水果。</div></div>
+<div class="example-item"><div class="example-en">The factory switched to <b>mass production</b> to meet the increasing global demand for the product.</div><div class="example-zh">工廠轉向大量生產，以滿足全球日益增長的產品需求。</div></div>
+<div class="example-item"><div class="example-en">Fresh <b>produce</b> from local farms is sold every Saturday at the neighborhood market.</div><div class="example-zh">來自當地農場的新鮮農產品每週六在社區市場出售。</div></div>
+</div></div>
+
+<!-- 12. sustain -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">sustain</div><div class="card-pos">v. 維持；支撐；承受；sustain = maintain</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">sustainable adj. 可持續的；可維持的<br>sustainability n. 可持續性<br>sustenance n. 食物；滋養；維持生命之物</div></div>
+<div class="root-block">字根 <b>tain</b>「抓住；持有」→ contain 包含、maintain 維持、obtain 獲得、retain 保留、entertain 娛樂、detain 拘留</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en"><b>Sustainable</b> farming practices help protect soil quality for future generations of farmers.</div><div class="example-zh">可持續的農業做法有助於為未來世代的農民保護土壤品質。</div></div>
+<div class="example-item"><div class="example-en">The hiker carried enough food and water to <b>sustain</b> himself through the three-day journey.</div><div class="example-zh">這位健行者攜帶了足夠的食物和水，以支撐自己完成三天的旅程。</div></div>
+<div class="example-item"><div class="example-en">Companies must balance profitability with <b>sustainability</b> to succeed in the long term.</div><div class="example-zh">企業必須在盈利能力和可持續性之間取得平衡，才能長期成功。</div></div>
+</div></div>
+
+<!-- 13. maintain -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">maintain</div><div class="card-pos">v. 維持；保養；堅稱</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">maintenance n. 維護；保養；撫養費<br>maintain = sustain = keep up 維持<br>maintain a healthy lifestyle 維持健康的生活方式</div></div>
+<div class="root-block">字根 <b>tain</b>「抓住；持有」→ 同 sustain 字根組</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Regular exercise helps people <b>maintain</b> a healthy weight and reduce the risk of disease.</div><div class="example-zh">定期運動幫助人們維持健康體重並降低疾病風險。</div></div>
+<div class="example-item"><div class="example-en">The city spends millions each year on road <b>maintenance</b> to ensure safe driving conditions.</div><div class="example-zh">該市每年花費數百萬在道路維護上，以確保安全的行車條件。</div></div>
+<div class="example-item"><div class="example-en">Despite the evidence against him, the suspect continued to <b>maintain</b> his innocence.</div><div class="example-zh">儘管有不利於他的證據，這位嫌疑人仍堅稱自己無罪。</div></div>
+</div></div>
+
+<!-- 14. launch -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">launch</div><div class="card-pos">v. 發射；推出；發動；n. 發射；推出</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">launch a product 推出產品<br>launch a campaign 發起活動<br>launch a rocket/satellite 發射火箭/衛星<br>launcher n. 發射器；啟動程式</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The space agency plans to <b>launch</b> a new satellite to improve weather forecasting accuracy.</div><div class="example-zh">航太機構計劃發射一顆新衛星，以提高天氣預報的準確性。</div></div>
+<div class="example-item"><div class="example-en">The company will <b>launch</b> its new smartphone model in Taiwan next month.</div><div class="example-zh">這家公司下個月將在台灣推出其新款智慧型手機。</div></div>
+<div class="example-item"><div class="example-en">The government <b>launched</b> a nationwide campaign to promote recycling and reduce waste.</div><div class="example-zh">政府發起了一項全國性活動，推廣回收利用並減少廢棄物。</div></div>
+</div></div>
+
+<!-- 15. enhance -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">enhance</div><div class="card-pos">v. 提升；增強；改善</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">enhancement n. 提升；增進<br>enhance = improve = boost = strengthen 提升（近義）</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Regular reading can significantly <b>enhance</b> your vocabulary and writing skills over time.</div><div class="example-zh">定期閱讀可以隨時間顯著提升你的詞彙量和寫作技能。</div></div>
+<div class="example-item"><div class="example-en">The new lighting design greatly <b>enhanced</b> the atmosphere of the restaurant.</div><div class="example-zh">新的燈光設計大大提升了餐廳的氛圍。</div></div>
+<div class="example-item"><div class="example-en">Vitamin D supplements may <b>enhance</b> the immune system's ability to fight infections.</div><div class="example-zh">維生素D補充劑可能增強免疫系統對抗感染的能力。</div></div>
+</div></div>
+
+<!-- 16. distribute -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">distribute</div><div class="card-pos">v. 分發；分配；分銷</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">distribution n. 分配；分銷；分布<br>distributor n. 經銷商；分銷商<br>redistribute v. 重新分配</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Volunteers <b>distributed</b> food packages to hundreds of families affected by the flood.</div><div class="example-zh">義工向數百個受洪水影響的家庭分發食物包。</div></div>
+<div class="example-item"><div class="example-en">The government is working to improve the <b>distribution</b> of medical resources in rural areas.</div><div class="example-zh">政府正在努力改善農村地區醫療資源的分配。</div></div>
+<div class="example-item"><div class="example-en">The company relies on a network of local <b>distributors</b> to sell its products across Asia.</div><div class="example-zh">這家公司依賴當地經銷商網絡在全亞洲銷售其產品。</div></div>
+</div></div>
+
+<!-- 17. obstacle -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">obstacle</div><div class="card-pos">n. 障礙；阻礙；困難</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">obstacle to 對…的障礙<br>obstruct v. 阻塞；妨礙<br>obstruction n. 阻礙；障礙物</div></div>
+<div class="root-block">字根 <b>struct</b>「建設；構建」→ construct 建造、instruct 教導、destroy 破壞</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Lack of funding remains the biggest <b>obstacle</b> to developing clean energy technology.</div><div class="example-zh">資金不足仍然是發展清潔能源技術的最大障礙。</div></div>
+<div class="example-item"><div class="example-en">She viewed every <b>obstacle</b> as an opportunity to learn rather than a reason to give up.</div><div class="example-zh">她把每一個障礙都視為學習的機會，而非放棄的理由。</div></div>
+<div class="example-item"><div class="example-en">A fallen tree was <b>obstructing</b> the road and blocking traffic for several hours.</div><div class="example-zh">一棵倒下的樹阻塞了道路，堵塞交通達數小時。</div></div>
+</div></div>
+
+<!-- 18. exceed -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">exceed</div><div class="card-pos">v. 超過；超越；勝過</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">excess n. 過量；超額；adj. 額外的<br>excessive adj. 過度的；過分的<br>exceedingly adv. 極度地；非常</div></div>
+<div class="root-block">字根 <b>ceed/cede</b>「移動；前進」→ proceed 繼續、succeed 成功、concede 讓步</div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">The actual cost of the project <b>exceeded</b> the original budget by nearly thirty percent.</div><div class="example-zh">這個計畫的實際費用超出了原始預算近百分之三十。</div></div>
+<div class="example-item"><div class="example-en"><b>Excessive</b> use of screens before bedtime can negatively affect sleep quality in teenagers.</div><div class="example-zh">睡前過度使用螢幕可能對青少年的睡眠品質產生負面影響。</div></div>
+<div class="example-item"><div class="example-en">Her performance in the finals <b>exceeded</b> everyone's expectations and earned a standing ovation.</div><div class="example-zh">她在決賽中的表現超出了所有人的預期，贏得了全場起立鼓掌。</div></div>
+</div></div>
+
+<!-- 19. detect -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">detect</div><div class="card-pos">v. 察覺；偵測；發現</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">detection n. 偵測；發現<br>detective n. 偵探；adj. 偵探的<br>detector n. 偵測器；探測儀<br>undetected adj. 未被發現的</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Doctors used advanced imaging technology to <b>detect</b> the tumor at an early stage.</div><div class="example-zh">醫生使用先進的成像技術在早期階段發現了腫瘤。</div></div>
+<div class="example-item"><div class="example-en">The smoke <b>detector</b> sounded an alarm before the fire could spread to other rooms.</div><div class="example-zh">煙霧偵測器在火勢蔓延至其他房間之前發出了警報。</div></div>
+<div class="example-item"><div class="example-en">The hacker managed to bypass the security system and remain <b>undetected</b> for weeks.</div><div class="example-zh">這名駭客成功繞過了安全系統，數週未被發現。</div></div>
+</div></div>
+
+<!-- 20. identify -->
+<div class="vocab-card">
+<div class="card-head r3"><div class="card-word">identify</div><div class="card-pos">v. 辨識；識別；認同</div></div>
+<div class="card-body">
+<div class="deriv-block"><div class="deriv-label">衍生詞</div>
+<div class="deriv-list">identification n. 身份確認；辨識；ID<br>identity n. 身份；個性；認同感<br>identical adj. 完全相同的<br>identify A as B 確認A是B</div></div>
+<div class="examples-label">例句</div>
+<div class="example-item"><div class="example-en">Scientists were able to <b>identify</b> the new species of insect found in the Amazon rainforest.</div><div class="example-zh">科學家能夠辨識出在亞馬遜雨林中發現的新昆蟲物種。</div></div>
+<div class="example-item"><div class="example-en">A strong sense of <b>identity</b> helps young people make confident decisions about their future.</div><div class="example-zh">強烈的身份認同感幫助年輕人對未來做出自信的決定。</div></div>
+<div class="example-item"><div class="example-en">The two bags were <b>identical</b> in appearance, so she used a name tag to tell them apart.</div><div class="example-zh">這兩個包包外觀完全相同，所以她用名牌來區分它們。</div></div>
+</div></div>
+
+</div><!-- end vocab-grid -->
+
+<!-- Round 3 Grammar -->
+<div class="section-title r3">文法重點</div>
+
+<div class="grammar-block">
+<div class="grammar-head r3">重點一：代名詞 one 和 it 的區別</div>
+<div class="grammar-body">
+<p><b>it</b> 指代前面提到的<b>特定、同一個</b>事物；<b>one</b> 指代同類中的<b>任一個（不特定）</b>事物。簡單說，it = 那一個；one = 某一個。</p>
+<p>I lost my pen. I need to buy a new <b>one</b>. 我弄丟了我的筆，我需要再買一支。（不特定的一支）<br>
+I found a wallet, and I gave <b>it</b> to the police. 我找到了一個錢包，我把它交給了警察。（同一個錢包）<br>
+This laptop is too heavy. I want a lighter <b>one</b>. 這台筆電太重了，我想要一台比較輕的。（另一台，不特定）</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r3">重點二：比較級句型 the + 比較級...the + 比較級</div>
+<div class="grammar-body">
+<p><b>The + 比較級 + S + V, the + 比較級 + S + V</b> 表示「越…就越…」，兩個子句中的比較級形容詞/副詞必須同步，主詞不可省略（除非是慣用語）。</p>
+<p><b>The harder</b> you study, <b>the better</b> your results will be. 你越用功讀書，成績就越好。<br>
+<b>The more efficient</b> the system is, <b>the less</b> energy it consumes. 系統越有效率，消耗的能源就越少。<br>
+<b>The more</b> innovations we embrace, <b>the faster</b> society will progress. 我們越擁抱創新，社會進步就越快。</p>
+</div></div>
+
+<div class="grammar-block">
+<div class="grammar-head r3">重點三：量詞與不可數名詞的搭配</div>
+<div class="grammar-body">
+<p>不可數名詞（如 water、information、advice、equipment）不能直接加 a/an 或加複數 -s，需要透過<b>量詞片語</b>來表示數量。常見量詞：<b>a piece of、a bit of、an amount of、a great deal of</b>（用於不可數名詞）。</p>
+<p>a <b>piece of</b> advice 一個建議；a <b>piece of</b> equipment 一件設備<br>
+a <b>great deal of</b> information 大量資訊；a <b>bit of</b> luck 一點運氣<br>
+注意：不說 ~~an advice~~、~~informations~~、~~equipments~~</p>
+<p>She gave me a very useful <b>piece of</b> advice that changed my perspective completely.<br>
+她給了我一個非常有用的建議，完全改變了我的看法。</p>
+</div></div>
+
+<!-- Round 3 Reading -->
+<div class="section-title r3">閱讀測驗</div>
+<div class="reading-block">
+<p>The rise of artificial intelligence and green technology is <b>transforming</b> the way we live and work. From smart home devices that <b>enhance</b> energy efficiency to AI systems that can <b>detect</b> diseases at early stages, <b>innovation</b> is reshaping everyday life at an unprecedented pace. These developments have had a <b>massive</b> impact on industries ranging from healthcare to transportation.</p>
+<p>One of the most pressing issues of our time is <b>sustainability</b>. Governments and companies alike are looking for ways to <b>produce</b> goods and services while <b>maintaining</b> environmental balance. Many nations are shifting toward renewable energy sources, recognizing that dependence on fossil fuels is an <b>obstacle</b> to a clean future. <b>Sustainable</b> practices, such as reducing waste and recycling, are no longer optional — they are necessary to <b>sustain</b> life on our planet.</p>
+<p>However, progress is not without challenges. Technological growth can create <b>excessive</b> pressure on natural resources if not properly managed. It is essential that we <b>identify</b> these risks early and develop <b>tactics</b> to address them before they <b>exceed</b> our ability to respond. Policymakers must not <b>admit</b> defeat in the face of complexity; instead, they should <b>distribute</b> resources wisely and work together to <b>launch</b> effective solutions.</p>
+<p>In this rapidly changing world, individuals also play a key role. By choosing <b>efficient</b> appliances, reducing unnecessary travel, and <b>absorbing</b> information about environmental issues, each person can contribute to a meaningful <b>shift</b> toward a better future. The path forward requires both <b>rigid</b> commitment to environmental standards and the flexibility to adapt as new challenges arise.</p>
+</div>
+
+<!-- Round 3 MCQ -->
+<div class="section-title r3">單字選擇題複習（5 題）</div>
+<div class="mcq-block r3">
+
+<div class="mcq-q">1. The new solar farm will _____ enough clean electricity to power over 50,000 homes across the region.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) detect</div>
+<div class="mcq-opt">(B) absorb</div>
+<div class="mcq-opt">(C) produce</div>
+<div class="mcq-opt">(D) exceed</div>
+</div>
+<details><summary class="ans-summary r3"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) produce — 太陽能農場「生產」足夠的電力供應家庭用電。</div></details>
+
+<div class="mcq-q">2. Scientists developed a new sensor that can _____ tiny amounts of pollutants in drinking water that were previously invisible.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) identify</div>
+<div class="mcq-opt">(B) detect</div>
+<div class="mcq-opt">(C) distribute</div>
+<div class="mcq-opt">(D) transform</div>
+</div>
+<details><summary class="ans-summary r3"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) detect — 偵測器「偵測到」以往看不見的污染物微量。</div></details>
+
+<div class="mcq-q">3. The country's rapid industrial growth _____ its carbon emission targets, forcing the government to revise its climate policy.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) enhanced</div>
+<div class="mcq-opt">(B) launched</div>
+<div class="mcq-opt">(C) exceeded</div>
+<div class="mcq-opt">(D) maintained</div>
+</div>
+<details><summary class="ans-summary r3"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(C) exceeded — 工業增長「超過」了碳排放目標，exceed 表示超越預定限度。</div></details>
+
+<div class="mcq-q">4. Digital tools have _____ the learning experience by allowing students to access materials anytime and anywhere.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) sustained</div>
+<div class="mcq-opt">(B) enhanced</div>
+<div class="mcq-opt">(C) isolated</div>
+<div class="mcq-opt">(D) absorbed</div>
+</div>
+<details><summary class="ans-summary r3"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(B) enhanced — 數位工具「提升了」學習體驗，enhance 表示使某事物更好。</div></details>
+
+<div class="mcq-q">5. Aid workers _____ emergency supplies to disaster victims within 24 hours of the earthquake striking the region.</div>
+<div class="mcq-opts">
+<div class="mcq-opt">(A) identified</div>
+<div class="mcq-opt">(B) transformed</div>
+<div class="mcq-opt">(C) maintained</div>
+<div class="mcq-opt">(D) distributed</div>
+</div>
+<details><summary class="ans-summary r3"><span>答案</span><span class="arrow">▼</span></summary>
+<div class="ans-content">(D) distributed — 救援人員「分發」緊急物資給災難受難者。</div></details>
+
+</div><!-- end mcq-block -->
+</section><!-- end round 3 -->
+
+<div style="text-align:center;padding:32px 16px;color:#8B5E3C;font-size:16px;border-top:2px solid #D4A574;margin-top:40px;">
+  林威老師與 AI agent 團隊 製作 · 115-Intel 高二英文 · 2026
+</div>
+
+</body>
+</html>
