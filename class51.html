@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grace｜七月英文自學 30 天計劃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(160deg,#fff8ee,#ffecd2,#ffd9b3);color:#3d2007;min-height:100vh;line-height:1.75}
+
+/* LINK BAR */
+.link-bar{background:linear-gradient(135deg,#ff7043,#e64a19,#bf360c);padding:14px 16px;text-align:center}
+.bar-title{color:#ffe0b2;font-size:.78em;letter-spacing:2px;margin-bottom:10px;font-weight:700}
+.link-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.link-card{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.35);border-radius:14px;padding:10px 16px;text-decoration:none;color:#fff;font-size:.88em;font-weight:700;min-width:130px;max-width:220px;display:flex;flex-direction:column;align-items:center;gap:3px;transition:background .2s,transform .15s;-webkit-tap-highlight-color:transparent}
+.link-card:hover,.link-card:active{background:rgba(255,255,255,.28);transform:translateY(-2px)}
+.lc-icon{font-size:1.4em}.lc-name{font-size:.92em;font-weight:900}.lc-desc{font-size:.72em;opacity:.88;text-align:center}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#ff8f00,#f4511e,#c62828);color:#fff;text-align:center;padding:36px 20px 30px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:.8em;margin-bottom:10px;position:relative;z-index:1}
+.hero h1{font-size:clamp(1.5em,5vw,2.2em);font-weight:900;margin-bottom:6px;position:relative;z-index:1}
+.hero p{font-size:.95em;opacity:.92;position:relative;z-index:1}
+.hero-tags{margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:relative;z-index:1}
+.hero-tag2{background:rgba(255,255,255,.2);border-radius:30px;padding:4px 12px;font-size:.82em;font-weight:700}
+
+/* LAYOUT */
+.layout{display:flex;align-items:flex-start}
+.left-nav{width:220px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:#fff3e0;border-right:3px solid #ff8f00;z-index:50;scrollbar-width:thin;scrollbar-color:#ffcc80 #fff3e0}
+.left-nav::-webkit-scrollbar{width:5px}.left-nav::-webkit-scrollbar-track{background:#fff3e0}.left-nav::-webkit-scrollbar-thumb{background:#ffcc80;border-radius:10px}
+.right-content{flex:1;min-width:0;padding:20px 16px;max-width:820px}
+@media(max-width:768px){
+  .layout{flex-direction:column}
+  .left-nav{width:100%;height:auto;position:static;border-right:none;border-bottom:3px solid #ff8f00}
+  .right-content{padding:16px 12px;width:100%}
+}
+
+/* LEFT NAV */
+.nav-wrap{padding:14px 12px}
+.nav-label{font-size:.78em;font-weight:700;color:#bf360c;margin-bottom:10px;text-align:center;letter-spacing:1px;padding:8px 0 6px;border-bottom:2px solid #ffcc80}
+.week-nav{margin-bottom:10px}
+.week-nav-label{font-size:.7em;font-weight:700;color:#e65100;margin-bottom:5px;line-height:1.4}
+.day-btns{display:flex;flex-wrap:wrap;gap:5px}
+.day-btn{width:34px;height:34px;border:none;border-radius:8px;font-size:.82em;font-weight:700;cursor:pointer;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+.day-btn:hover{transform:scale(1.08)}
+.day-btn.w1{background:#ffe0b2;color:#bf360c}.day-btn.w1.active,.day-btn.w1:hover{background:linear-gradient(135deg,#ff7043,#e64a19);color:#fff}
+.day-btn.w2{background:#e1f5fe;color:#01579b}.day-btn.w2.active,.day-btn.w2:hover{background:linear-gradient(135deg,#0288d1,#0277bd);color:#fff}
+.day-btn.w3{background:#e8f5e9;color:#1b5e20}.day-btn.w3.active,.day-btn.w3:hover{background:linear-gradient(135deg,#43a047,#2e7d32);color:#fff}
+.day-btn.w4{background:#f3e5f5;color:#4a148c}.day-btn.w4.active,.day-btn.w4:hover{background:linear-gradient(135deg,#8e24aa,#6a1b9a);color:#fff}
+.day-btn.sp{background:#fce4ec;color:#880e4f}.day-btn.sp.active,.day-btn.sp:hover{background:linear-gradient(135deg,#e91e63,#c2185b);color:#fff}
+
+/* DAY SECTIONS */
+.day-section{display:none}
+.day-section.active{display:block}
+
+/* DAY CARD */
+.day-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 18px rgba(200,80,20,.1);margin-bottom:16px}
+.day-header{padding:18px 20px 14px;display:flex;align-items:center;gap:12px}
+.day-header.w1{background:linear-gradient(135deg,#ff8f00,#ff6f00)}
+.day-header.w2{background:linear-gradient(135deg,#0288d1,#0277bd)}
+.day-header.w3{background:linear-gradient(135deg,#43a047,#2e7d32)}
+.day-header.w4{background:linear-gradient(135deg,#8e24aa,#6a1b9a)}
+.day-header.sp{background:linear-gradient(135deg,#e91e63,#c2185b)}
+.day-num{background:rgba(255,255,255,.25);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:1.2em;font-weight:900;color:#fff;flex-shrink:0}
+.day-info{flex:1}
+.day-type-label{font-size:1em;font-weight:900;color:#fff}
+.day-meta{font-size:.78em;color:rgba(255,255,255,.85);margin-top:2px}
+.day-body{padding:18px 18px 20px}
+
+/* VOCAB */
+.vocab-grid{display:flex;flex-direction:column;gap:10px}
+.vocab-item{background:linear-gradient(135deg,#fff8e1,#fff3e0);border-radius:12px;padding:12px 14px;border-left:4px solid #ff8f00}
+.vocab-item.b{border-left-color:#0288d1;background:linear-gradient(135deg,#e1f5fe,#b3e5fc)}
+.vocab-item.g{border-left-color:#43a047;background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.vocab-item.p{border-left-color:#8e24aa;background:linear-gradient(135deg,#f3e5f5,#e1bee7)}
+.vocab-word{font-size:1.05em;font-weight:900;color:#bf360c}
+.vocab-item.b .vocab-word{color:#01579b}
+.vocab-item.g .vocab-word{color:#1b5e20}
+.vocab-item.p .vocab-word{color:#4a148c}
+.vocab-pron{font-size:.8em;color:#888;font-style:italic;margin:0 6px}
+.vocab-pos{font-size:.75em;background:#ff8f00;color:#fff;border-radius:6px;padding:1px 6px}
+.vocab-item.b .vocab-pos{background:#0288d1}
+.vocab-item.g .vocab-pos{background:#43a047}
+.vocab-item.p .vocab-pos{background:#8e24aa}
+.vocab-cn{font-size:.9em;color:#555;margin-top:4px;font-weight:700}
+.vocab-ex{font-size:.87em;color:#666;margin-top:4px;font-style:italic}
+
+/* PASSAGE */
+.passage{background:#fffde7;border-radius:12px;padding:14px 16px;font-size:.9em;line-height:1.9;border-left:4px solid #f9a825;margin-bottom:14px;white-space:pre-wrap}
+.passage-label{font-size:.78em;font-weight:700;color:#f57f17;margin-bottom:8px;letter-spacing:1px}
+
+/* QUESTIONS */
+.q-block{margin-bottom:14px}
+.q-text{font-weight:700;color:#3d2007;margin-bottom:8px;font-size:.92em}
+.options{list-style:none;display:flex;flex-direction:column;gap:6px}
+.options li{background:#fff9f0;border-radius:10px;padding:8px 12px;font-size:.88em;border:1.5px solid #ffe0b2}
+
+/* ANSWER */
+details.ans{margin-top:10px}
+details.ans summary{cursor:pointer;background:linear-gradient(135deg,#ff7043,#e64a19);color:#fff;border-radius:10px;padding:8px 14px;font-size:.85em;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans summary .arrow{display:inline-block;transition:transform .25s ease}
+details.ans[open] summary .arrow{transform:rotate(180deg)}
+details.ans.b summary{background:linear-gradient(135deg,#0288d1,#0277bd)}
+details.ans.g summary{background:linear-gradient(135deg,#43a047,#2e7d32)}
+details.ans.p summary{background:linear-gradient(135deg,#8e24aa,#6a1b9a)}
+.ans-body{background:#f1f8e9;border-radius:0 0 10px 10px;padding:12px 14px;font-size:.88em;line-height:1.8;border:1.5px solid #c5e1a5;border-top:none}
+details.ans.b .ans-body{background:#e1f5fe;border-color:#b3e5fc}
+details.ans.p .ans-body{background:#f3e5f5;border-color:#ce93d8}
+.ans-key{font-weight:900;color:#2e7d32;font-size:1em}
+details.ans.b .ans-key{color:#01579b}
+details.ans.p .ans-key{color:#4a148c}
+
+/* GRAMMAR */
+.gram-list{display:flex;flex-direction:column;gap:10px}
+.gram-item{background:#fff9f0;border-radius:12px;padding:12px 14px;border-left:4px solid #ff8f00;font-size:.9em}
+.gram-q{color:#555;margin-bottom:4px}
+.pattern-box{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-radius:12px;padding:14px 16px;border-left:5px solid #ff8f00;margin-top:14px}
+.pattern-title{font-size:.8em;font-weight:700;color:#e65100;letter-spacing:1px;margin-bottom:8px}
+.pattern-main{font-size:1em;font-weight:900;color:#bf360c;margin-bottom:6px}
+.pattern-ex{font-size:.87em;color:#666;font-style:italic;margin-top:4px}
+
+/* REVIEW */
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.review-item{background:#fff9f0;border-radius:10px;padding:10px 12px;border-left:3px solid #ff8f00;display:flex;justify-content:space-between;align-items:center;font-size:.88em}
+.review-cn{color:#555;font-weight:700}
+.review-blank{background:#ffe0b2;border-radius:6px;padding:2px 10px;color:#ccc;font-size:.85em}
+
+/* TRANSLATION */
+.trans-list{display:flex;flex-direction:column;gap:12px}
+.trans-item{background:#fff9f0;border-radius:12px;padding:14px 16px;border-left:4px solid #8e24aa}
+.trans-cn{font-size:.92em;font-weight:700;color:#3d2007;margin-bottom:8px}
+
+/* SECTION TITLE */
+.sec-title{font-size:.82em;font-weight:700;color:#888;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.sec-title::after{content:"";flex:1;height:1px;background:#ffe0b2}
+
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,#fff8e1,#ffe0b2);border-radius:12px;padding:12px 14px;border-left:4px solid #ff8f00;font-size:.88em;margin-top:12px}
+.highlight strong{color:#bf360c}
+
+/* WEEK HEADER */
+.week-header{background:linear-gradient(135deg,rgba(255,143,0,.15),rgba(255,111,0,.1));border-radius:16px;padding:14px 18px;margin-bottom:16px;border-left:5px solid #ff8f00;display:flex;align-items:center;gap:12px}
+.wh-icon{font-size:2em}
+.wh-title{font-size:1.1em;font-weight:900;color:#bf360c}
+.wh-desc{font-size:.83em;color:#7a4f1a;margin-top:2px}
+
+/* FOOTER NOTE */
+.footer-note{text-align:center;font-size:.78em;color:#ffe0b2;opacity:.88;padding:10px 0 4px}
+
+@media(max-width:480px){
+  .review-grid{grid-template-columns:1fr}
+  .day-header{padding:14px 16px}
+  .day-body{padding:14px 14px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP LINK BAR -->
+<div class="link-bar">
+  <div class="bar-title">📚 林威老師 2026 暑期課程</div>
+  <div class="link-cards">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🔥</span><span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月正式開課，從錯誤中精準提升</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">📊</span><span class="lc-name">學生學習分析</span>
+      <span class="lc-desc">個人化成績診斷與弱點分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span><span class="lc-name">加 LINE 聯絡</span>
+      <span class="lc-desc">ID：linwayet　有問題問老師</span>
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">🌞 2026 暑假 · 七月特訓</div>
+  <h1>Grace 英文自學 30 天計劃</h1>
+  <p>林威老師與 AI agent 團隊 × 個人化每日練習</p>
+  <div class="hero-tags">
+    <span class="hero-tag2">每天 10–15 分鐘</span>
+    <span class="hero-tag2">30 天完整內容</span>
+    <span class="hero-tag2">單字 × 多選 × 閱讀 × 翻譯</span>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+<!-- LEFT NAV -->
+<div class="left-nav">
+<div class="nav-wrap">
+  <div class="nav-label">👆 點選天數</div>
+  <div class="week-nav">
+    <div class="week-nav-label">🟠 Week 1 心理情緒 (1–7)</div>
+    <div class="day-btns">
+      <button class="day-btn w1 active" onclick="showDay(1)" id="btn1">1</button>
+      <button class="day-btn w1" onclick="showDay(2)" id="btn2">2</button>
+      <button class="day-btn w1" onclick="showDay(3)" id="btn3">3</button>
+      <button class="day-btn w1" onclick="showDay(4)" id="btn4">4</button>
+      <button class="day-btn w1" onclick="showDay(5)" id="btn5">5</button>
+      <button class="day-btn w1" onclick="showDay(6)" id="btn6">6</button>
+      <button class="day-btn w1" onclick="showDay(7)" id="btn7">7</button>
+    </div>
+  </div>
+  <div class="week-nav">
+    <div class="week-nav-label">🔵 Week 2 學術科技 (8–14)</div>
+    <div class="day-btns">
+      <button class="day-btn w2" onclick="showDay(8)" id="btn8">8</button>
+      <button class="day-btn w2" onclick="showDay(9)" id="btn9">9</button>
+      <button class="day-btn w2" onclick="showDay(10)" id="btn10">10</button>
+      <button class="day-btn w2" onclick="showDay(11)" id="btn11">11</button>
+      <button class="day-btn w2" onclick="showDay(12)" id="btn12">12</button>
+      <button class="day-btn w2" onclick="showDay(13)" id="btn13">13</button>
+      <button class="day-btn w2" onclick="showDay(14)" id="btn14">14</button>
+    </div>
+  </div>
+  <div class="week-nav">
+    <div class="week-nav-label">🟢 Week 3 環境保育 (15–21)</div>
+    <div class="day-btns">
+      <button class="day-btn w3" onclick="showDay(15)" id="btn15">15</button>
+      <button class="day-btn w3" onclick="showDay(16)" id="btn16">16</button>
+      <button class="day-btn w3" onclick="showDay(17)" id="btn17">17</button>
+      <button class="day-btn w3" onclick="showDay(18)" id="btn18">18</button>
+      <button class="day-btn w3" onclick="showDay(19)" id="btn19">19</button>
+      <button class="day-btn w3" onclick="showDay(20)" id="btn20">20</button>
+      <button class="day-btn w3" onclick="showDay(21)" id="btn21">21</button>
+    </div>
+  </div>
+  <div class="week-nav">
+    <div class="week-nav-label">🟣 Week 4 社會經濟 (22–28)</div>
+    <div class="day-btns">
+      <button class="day-btn w4" onclick="showDay(22)" id="btn22">22</button>
+      <button class="day-btn w4" onclick="showDay(23)" id="btn23">23</button>
+      <button class="day-btn w4" onclick="showDay(24)" id="btn24">24</button>
+      <button class="day-btn w4" onclick="showDay(25)" id="btn25">25</button>
+      <button class="day-btn w4" onclick="showDay(26)" id="btn26">26</button>
+      <button class="day-btn w4" onclick="showDay(27)" id="btn27">27</button>
+      <button class="day-btn w4" onclick="showDay(28)" id="btn28">28</button>
+    </div>
+  </div>
+  <div class="week-nav">
+    <div class="week-nav-label">🌟 Special (29–30)</div>
+    <div class="day-btns">
+      <button class="day-btn sp" onclick="showDay(29)" id="btn29">29</button>
+      <button class="day-btn sp" onclick="showDay(30)" id="btn30">30</button>
+    </div>
+  </div>
+</div>
+</div><!-- /left-nav -->
+
+<!-- RIGHT CONTENT -->
+<div class="right-content">
+<!-- DAY 1 -->
+<div class="day-section active" id="day1">
+  <div class="week-header"><span class="wh-icon">🧠</span><div><div class="wh-title">Week 1 — 心理情緒類</div><div class="wh-desc">aggression / trauma / prone / evoke / irritability … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">1</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 1 · 心理情緒類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📖 今日 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-word">aggression</span><span class="vocab-pron">/əˈɡrɛʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">攻擊性；侵略行為</div><div class="vocab-ex">His aggression toward others made it hard for them to feel safe around him.</div></div>
+        <div class="vocab-item"><span class="vocab-word">trauma</span><span class="vocab-pron">/ˈtrɔːmə/</span><span class="vocab-pos">n.</span><div class="vocab-cn">心理創傷；外傷</div><div class="vocab-ex">The accident caused emotional trauma that stayed with her for many years.</div></div>
+        <div class="vocab-item"><span class="vocab-word">prone</span><span class="vocab-pron">/proʊn/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">容易…的；傾向於（後接 to）</div><div class="vocab-ex">Children are prone to catching colds when the weather changes suddenly.</div></div>
+        <div class="vocab-item"><span class="vocab-word">evoke</span><span class="vocab-pron">/ɪˈvoʊk/</span><span class="vocab-pos">v.</span><div class="vocab-cn">喚起（情感或記憶）</div><div class="vocab-ex">The old photograph evoked strong memories of her childhood in the countryside.</div></div>
+        <div class="vocab-item"><span class="vocab-word">irritability</span><span class="vocab-pron">/ˌɪrɪtəˈbɪlɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">易怒；煩躁</div><div class="vocab-ex">Lack of sleep often leads to increased irritability and difficulty concentrating.</div></div>
+      </div>
+      <div class="highlight" style="margin-top:14px"><strong>📌 小提示：</strong>prone 後面一定接 <strong>to + N / V-ing</strong>，例：prone to anxiety / prone to making errors</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-section" id="day2">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">2</div><div class="day-info"><div class="day-type-label">✅ 多選題日</div><div class="day-meta">Week 1 · 心理情緒類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📝 多選題策略：先找「一定對」，再刪「一定錯」</div>
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Emotional regulation refers to the ability to manage one's feelings in response to different situations. People who struggle with emotional regulation may show signs of aggression or irritability. Research indicates that childhood trauma often makes individuals more prone to emotional outbursts in later life. Fortunately, techniques such as deep breathing, journaling, and speaking with a counselor can help people process their feelings. These methods allow emotions to be expressed in a healthy way, reducing the risk of harmful behavior over time.</div>
+      <div class="q-block">
+        <div class="q-text">🔍 判斷以下敘述，哪幾項符合文章內容？（多選）</div>
+        <ul class="options">
+          <li><strong>(A)</strong> 情緒調節指的是在不同情境下管理自己感受的能力。</li>
+          <li><strong>(B)</strong> 有攻擊性的人必定有過嚴重的童年創傷。</li>
+          <li><strong>(C)</strong> 童年創傷可能讓人長大後更容易情緒失控。</li>
+          <li><strong>(D)</strong> 寫日記是幫助人們處理情緒的方法之一。</li>
+          <li><strong>(E)</strong> 文章認為情緒表達只有在諮商室中才是安全的。</li>
+        </ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ 正確答案：ACD</div>(A) ✓ 文章第一句直接定義情緒調節。<br>(B) ✗ 文章說 trauma「often makes prone to」，是「容易」，不是「必定」。<br>(C) ✓ "childhood trauma often makes individuals more prone to emotional outbursts"<br>(D) ✓ journaling（寫日記）明確列出。<br>(E) ✗ 文章說「allow emotions to be expressed in a healthy way」，不限諮商室。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day-section" id="day3">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">3</div><div class="day-info"><div class="day-type-label">📝 句型改錯日</div><div class="day-meta">Week 1 · 心理情緒類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔧 找出錯誤並改正（各句只有一處錯誤）</div>
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. She is very prone <u>of</u> making mistakes under pressure.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">of → to</div>prone to + V-ing，固定搭配。✏️ She is very prone <strong>to</strong> making mistakes under pressure.</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. The music <u>evoked me</u> some childhood memories.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">evoked me → evoked</div>evoke 不以人為受詞，直接接事物。✏️ The music evoked <strong>some childhood memories</strong> in me.</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. His aggression was <u>trigger</u> by the unfair treatment.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">trigger → triggered</div>被動語態需要過去分詞。✏️ His aggression was <strong>triggered</strong> by the unfair treatment.</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. The two students have <u>contradicted</u> opinions about the issue.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">contradicted → contradictory</div>修飾名詞要用形容詞。✏️ The two students have <strong>contradictory</strong> opinions about the issue.</div></details></div>
+      </div>
+      <div class="pattern-box"><div class="pattern-title">🌟 本日句型重點</div><div class="pattern-main">be prone to + N / V-ing（容易…）</div><div class="pattern-ex">He is prone to <strong>anxiety</strong> when facing difficult situations.</div><div class="pattern-ex">Teenagers are prone to <strong>being influenced</strong> by their peers.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 4 -->
+<div class="day-section" id="day4">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">4</div><div class="day-info"><div class="day-type-label">🔄 單字複習 + 新字</div><div class="day-meta">Week 1 · 心理情緒類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 1 五個單字（看中文寫英文）</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">攻擊性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">心理創傷</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">容易…的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">喚起</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">易怒</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans" style="margin-top:10px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">aggression / trauma / prone / evoke / irritability</div></details>
+      <div class="sec-title" style="margin-top:18px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-word">triggered</span><span class="vocab-pron">/ˈtrɪɡərd/</span><span class="vocab-pos">v./adj.</span><div class="vocab-cn">（被）觸發；引發</div><div class="vocab-ex">Her fear of failure was triggered by a harsh comment from her teacher.</div></div>
+        <div class="vocab-item"><span class="vocab-word">residual</span><span class="vocab-pron">/rɪˈzɪdjʊəl/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">殘留的；剩餘的</div><div class="vocab-ex">There is still residual anger between them from last week's argument.</div></div>
+        <div class="vocab-item"><span class="vocab-word">reservation</span><span class="vocab-pron">/ˌrɛzəˈveɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">保留意見；預約</div><div class="vocab-ex">She had reservations about accepting the offer without reading the contract first.</div></div>
+        <div class="vocab-item"><span class="vocab-word">trait</span><span class="vocab-pron">/treɪt/</span><span class="vocab-pos">n.</span><div class="vocab-cn">（性格）特質；特徵</div><div class="vocab-ex">Perseverance and curiosity are two traits that lead to academic success.</div></div>
+        <div class="vocab-item"><span class="vocab-word">philosophy</span><span class="vocab-pron">/fɪˈlɒsəfi/</span><span class="vocab-pos">n.</span><div class="vocab-cn">哲學；人生觀</div><div class="vocab-ex">Her personal philosophy is to learn something new from every failure.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="day-section" id="day5">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">5</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 1 · 心理情緒類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文（約 160 字）</div>Music has long been recognized as a powerful tool for emotional healing. Research shows that listening to music can evoke deep emotions and even help reduce the residual effects of stress and trauma. When we hear a familiar song, certain memories or feelings are often brought to the surface.
+
+Scientists have found that music therapy is especially effective for individuals who are prone to anxiety or depression. It provides a safe space for emotions to be expressed without triggering aggression or outbursts. Unlike some medical treatments, music therapy has very few side effects and can be practiced daily at home.
+
+In schools across Taiwan, teachers have begun introducing short music sessions to help students manage irritability during exam periods. The goal is not to eliminate negative feelings, but to teach healthy emotional regulation—a skill that is valuable throughout one's entire life.</div>
+      <div class="q-block">
+        <div class="q-text">Q1. 多選：以下哪些敘述符合文章？</div>
+        <ul class="options">
+          <li>(A) 音樂治療對容易焦慮的人特別有效。</li>
+          <li>(B) 音樂治療可以完全消除負面情緒。</li>
+          <li>(C) 台灣的老師在考試期間引入音樂幫助學生。</li>
+          <li>(D) 聆聽音樂可以喚起情感與記憶。</li>
+          <li>(E) 音樂治療的副作用和藥物治療相同。</li>
+        </ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ACD</div>(A) ✓ "especially effective for individuals who are prone to anxiety"<br>(B) ✗ "goal is not to eliminate negative feelings"<br>(C) ✓ 台灣老師引入音樂課程直接提到。<br>(D) ✓ "evoke deep emotions…certain memories or feelings are brought to the surface"<br>(E) ✗ "very few side effects"，與藥物無關。</div></details>
+      </div>
+      <div class="q-block">
+        <div class="q-text">Q2. 單字題：文中 "evoke" 意思最接近？</div>
+        <ul class="options">
+          <li>(A) to create something completely new</li>
+          <li>(B) to bring out a feeling or memory</li>
+          <li>(C) to forget something painful</li>
+          <li>(D) to reduce stress through exercise</li>
+        </ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>evoke = 喚起情感或記憶，答案為 B。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="day-section" id="day6">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">6</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 1 · 心理情緒類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">✍️ 中譯英（先自己寫，再查看參考答案）</div>
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 過去的創傷可能會讓一個人更容易感到易怒和焦慮。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Past trauma may make a person more <strong>prone to</strong> irritability and anxiety.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵用詞：prone to / irritability / trauma</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 我們應該學習如何在壓力下調節自己的情緒，而不是壓抑它們。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">We should learn how to regulate our emotions under pressure <strong>rather than</strong> suppressing them.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵句型：rather than + V-ing（而不是）</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 7 -->
+<div class="day-section" id="day7">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">7</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 1 · 全週複習 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 1 全部 10 個單字（看中文→想英文）</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">攻擊性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">心理創傷</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">容易…的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">喚起</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">易怒</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">被觸發</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">殘留的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">保留意見</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">性格特質</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">人生哲學</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans" style="margin-top:10px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">aggression / trauma / prone / evoke / irritability / triggered / residual / reservation / trait / philosophy</div></details>
+      <div class="highlight" style="margin-top:14px"><strong>🌟 挑戰題：</strong>任選 3 個單字，各造一個完整的英文句子，寫在筆記本上！</div>
+    </div>
+  </div>
+</div>
+<!-- DAY 8 -->
+<div class="day-section" id="day8">
+  <div class="week-header" style="border-left-color:#0288d1;background:linear-gradient(135deg,rgba(2,136,209,.12),rgba(1,87,155,.08))"><span class="wh-icon">🔬</span><div><div class="wh-title" style="color:#01579b">Week 2 — 學術科技類</div><div class="wh-desc">scope / insights / facilitated / subsequent / disrupted … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">8</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 2 · 學術科技類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📖 今日 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item b"><span class="vocab-word">scope</span><span class="vocab-pron">/skoʊp/</span><span class="vocab-pos">n.</span><div class="vocab-cn">範圍；視野</div><div class="vocab-ex">The scope of this research project includes participants from three different age groups.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">insights</span><span class="vocab-pron">/ˈɪnsaɪts/</span><span class="vocab-pos">n.</span><div class="vocab-cn">洞察力；深刻見解</div><div class="vocab-ex">The book provides valuable insights into how the human brain processes language.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">facilitated</span><span class="vocab-pron">/fəˈsɪlɪteɪtɪd/</span><span class="vocab-pos">v.</span><div class="vocab-cn">促進；使便利</div><div class="vocab-ex">The internet has facilitated communication between people across the entire world.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">subsequent</span><span class="vocab-pron">/ˈsʌbsɪkwənt/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">隨後的；後來的</div><div class="vocab-ex">The first experiment failed, but subsequent tests produced far better results.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">disrupted</span><span class="vocab-pron">/dɪsˈrʌptɪd/</span><span class="vocab-pos">v./adj.</span><div class="vocab-cn">打亂；中斷；顛覆</div><div class="vocab-ex">The typhoon disrupted all transportation across the island for three days.</div></div>
+      </div>
+      <div class="highlight" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1;margin-top:14px"><strong style="color:#01579b">📌 小提示：</strong>subsequent 的反義詞是 previous（之前的）。考試常見搭配：in subsequent years</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 9 -->
+<div class="day-section" id="day9">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">9</div><div class="day-info"><div class="day-type-label">✅ 多選題日</div><div class="day-meta">Week 2 · 學術科技類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>The rapid rise of artificial intelligence has disrupted many traditional industries, from manufacturing to healthcare. While AI has facilitated processes—making tasks faster and more accurate—it has also raised concerns about job loss. The scope of AI's influence extends beyond what most people imagined, touching fields from medical diagnosis to creative writing. Subsequent studies have shown that workers who adapt to new technology tend to succeed, while those who resist change often fall behind. Gaining insights into how AI works can help people make smarter decisions in a rapidly changing world.</div>
+      <div class="q-block">
+        <div class="q-text">🔍 判斷以下敘述，哪幾項符合文章？（多選）</div>
+        <ul class="options">
+          <li>(A) AI 的影響範圍超越了大多數人原先的想像。</li>
+          <li>(B) AI 對製造業和醫療業都產生了影響。</li>
+          <li>(C) 能適應新科技的工作者通常能夠成功。</li>
+          <li>(D) 文章認為 AI 讓所有工作任務都變得更便宜。</li>
+          <li>(E) 了解 AI 有助於做出更聰明的決定。</li>
+        </ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABCE</div>(A) ✓ "beyond what most people imagined"<br>(B) ✓ "from manufacturing to healthcare"<br>(C) ✓ "workers who adapt…tend to succeed"<br>(D) ✗ 說 "faster and more accurate"，沒說更便宜。<br>(E) ✓ "help people make smarter decisions"</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 10 -->
+<div class="day-section" id="day10">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">10</div><div class="day-info"><div class="day-type-label">📝 句型改錯日</div><div class="day-meta">Week 2 · 學術科技類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. The scope of the project is wider <u>as</u> expected.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">as → than</div>比較級用 than，不用 as。✏️ The scope of the project is wider <strong>than</strong> expected.</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Technology has facilitated <u>us to connect</u> with people worldwide.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">us to connect → communication</div>facilitate 後接事物，不接「人 + to V」。✏️ Technology has facilitated <strong>communication</strong> between people worldwide.</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. The disruption caused <u>from</u> the earthquake affected thousands of families.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">from → by</div>被動語態用 caused by。✏️ The disruption caused <strong>by</strong> the earthquake…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. His subsequent actions showed that he had learned from his mistakes. ✓ or ✗？</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ 這句正確！</div>subsequent 用法正確，時態 had learned（過去完成式）也對。</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1"><div class="pattern-title" style="color:#01579b">🌟 本日句型重點</div><div class="pattern-main" style="color:#01579b">Not only…but also…（不只…也…）</div><div class="pattern-ex">AI has not only <strong>disrupted</strong> old industries <strong>but also</strong> created entirely new ones.</div><div class="pattern-ex">She is not only hardworking <strong>but also</strong> extremely creative.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 11 -->
+<div class="day-section" id="day11">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">11</div><div class="day-info"><div class="day-type-label">🔄 單字複習 + 新字</div><div class="day-meta">Week 2 · 學術科技類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 8 五個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">範圍</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">洞察力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">促進</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">隨後的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">打亂/顛覆</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans b" style="margin-top:10px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">scope / insights / facilitated / subsequent / disrupted</div></details>
+      <div class="sec-title" style="margin-top:18px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item b"><span class="vocab-word">emphasized</span><span class="vocab-pron">/ˈɛmfəsaɪzd/</span><span class="vocab-pos">v.</span><div class="vocab-cn">強調</div><div class="vocab-ex">The teacher emphasized that reading every day is key to improving English.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">microscope</span><span class="vocab-pron">/ˈmaɪkrəskoʊp/</span><span class="vocab-pos">n.</span><div class="vocab-cn">顯微鏡</div><div class="vocab-ex">Scientists used a microscope to examine the structure of the virus.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">preventive</span><span class="vocab-pron">/prɪˈvɛntɪv/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">預防性的</div><div class="vocab-ex">Regular exercise is one of the most effective preventive measures against heart disease.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">periodically</span><span class="vocab-pron">/ˌpɪərɪˈɒdɪkli/</span><span class="vocab-pos">adv.</span><div class="vocab-cn">定期地；週期性地</div><div class="vocab-ex">The equipment needs to be checked periodically to ensure it is working properly.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">circulate</span><span class="vocab-pron">/ˈsɜːrkjʊleɪt/</span><span class="vocab-pos">v.</span><div class="vocab-cn">循環；流通；傳播</div><div class="vocab-ex">Blood circulates through the body continuously to deliver oxygen to organs.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 12 -->
+<div class="day-section" id="day12">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">12</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 2 · 學術科技類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文（約 150 字）</div>Modern science has dramatically changed how we understand the human body. With the invention of the microscope in the 17th century, scientists could observe cells and microorganisms invisible to the naked eye. This discovery facilitated a revolution in medicine, leading to preventive treatments for countless diseases.
+
+Today, research is conducted periodically to update our understanding of biology, genetics, and nanotechnology. The scope of modern science now extends into artificial intelligence, which has disrupted traditional medical practices and opened new possibilities. Blood tests and X-rays once took days to analyze; AI can now process the same data in minutes.
+
+Researchers emphasize that continued investment in science education is essential. The insights gained from scientific studies do not circulate freely on their own—they must be shared, taught, and applied to make a real difference in people's lives.</div>
+      <div class="q-block">
+        <div class="q-text">Q1. 多選：以下哪些敘述符合文章？</div>
+        <ul class="options">
+          <li>(A) 顯微鏡的發明促進了醫學革命。</li>
+          <li>(B) AI 可以比傳統方式更快速分析醫療數據。</li>
+          <li>(C) 現代科學的範圍已延伸至 AI 領域。</li>
+          <li>(D) 科學知識會自動傳播，不需要人為推廣。</li>
+          <li>(E) 研究人員強調科學教育的持續投資很重要。</li>
+        </ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABCE</div>(D) ✗ "do not circulate freely on their own—they must be shared, taught, and applied"</div></details>
+      </div>
+      <div class="q-block">
+        <div class="q-text">Q2. "periodically" 意思最接近？</div>
+        <ul class="options">
+          <li>(A) randomly（隨機地）</li>
+          <li>(B) at regular intervals（定期地）</li>
+          <li>(C) only once（只有一次）</li>
+          <li>(D) very quickly（非常快速地）</li>
+        </ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>periodically = at regular intervals = 定期地</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 13 -->
+<div class="day-section" id="day13">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">13</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 2 · 學術科技類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 科技不只促進了溝通，也打亂了許多傳統行業的運作方式。</div><details class="ans b"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Technology has <strong>not only</strong> facilitated communication <strong>but also</strong> disrupted the way many traditional industries operate.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：not only…but also… / facilitated / disrupted</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 定期閱讀英文文章是提升閱讀能力最有效的預防性方法之一。</div><details class="ans b"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Reading English articles <strong>periodically</strong> is one of the most effective <strong>preventive</strong> strategies for improving reading ability.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：periodically / preventive / one of the most + adj.</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 14 -->
+<div class="day-section" id="day14">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">14</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 2 · 全週複習 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 2 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">範圍</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">洞察力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">促進</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">隨後的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">打亂</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">強調</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">顯微鏡</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">預防性的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">定期地</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">循環/傳播</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans b" style="margin-top:10px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">scope / insights / facilitated / subsequent / disrupted / emphasized / microscope / preventive / periodically / circulate</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1;margin-top:14px"><strong style="color:#01579b">🌟 挑戰：</strong>用 "not only…but also…" 造一個包含本週單字的句子！</div>
+    </div>
+  </div>
+</div>
+<!-- DAY 15 -->
+<div class="day-section" id="day15">
+  <div class="week-header" style="border-left-color:#43a047;background:linear-gradient(135deg,rgba(67,160,71,.12),rgba(46,125,50,.08))"><span class="wh-icon">🌿</span><div><div class="wh-title" style="color:#1b5e20">Week 3 — 環境保育類</div><div class="wh-desc">conservation / extinction / captivity / fostering / captive-bred … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">15</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 3 · 環境保育類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item g"><span class="vocab-word">conservation</span><span class="vocab-pron">/ˌkɒnsəˈveɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">保育；保存；節約</div><div class="vocab-ex">Wildlife conservation is essential for protecting the biodiversity of our planet.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">extinction</span><span class="vocab-pron">/ɪkˈstɪŋkʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">滅絕；消失</div><div class="vocab-ex">Several species of birds face extinction due to the destruction of their natural habitats.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">captivity</span><span class="vocab-pron">/kæpˈtɪvɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">囚禁；人工飼養（狀態）</div><div class="vocab-ex">Animals born in captivity may find it difficult to survive on their own in the wild.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">fostering</span><span class="vocab-pron">/ˈfɒstərɪŋ/</span><span class="vocab-pos">v./n.</span><div class="vocab-cn">培育；促進；鼓勵發展</div><div class="vocab-ex">The program focuses on fostering public awareness about the importance of recycling.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">captive-bred</span><span class="vocab-pron">/ˈkæptɪv brɛd/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">人工繁殖的</div><div class="vocab-ex">Captive-bred giant pandas have been successfully reintroduced into nature reserves in China.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 16 -->
+<div class="day-section" id="day16">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">16</div><div class="day-info"><div class="day-type-label">✅ 多選題日</div><div class="day-meta">Week 3 · 環境保育類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Zoos have long been debated as both conservation centers and places of captivity. Supporters argue that modern zoos play a vital role in fostering public awareness about endangered species and fund conservation efforts worldwide. Captive-bred animals, such as giant pandas, have been successfully reintroduced into their natural habitats. Critics, however, contend that keeping animals in artificial environments is inherently cruel and that zoos rarely succeed in preventing extinction. The debate reflects a broader question: can human intervention truly save species on the edge of disappearing forever?</div>
+      <div class="q-block">
+        <div class="q-text">🔍 哪幾項敘述符合文章？（多選）</div>
+        <ul class="options">
+          <li>(A) 支持者認為現代動物園有助於提高大眾對瀕危物種的認識。</li>
+          <li>(B) 人工繁殖動物從未成功回歸自然棲地。</li>
+          <li>(C) 批評者認為讓動物待在人工環境本質上是殘忍的。</li>
+          <li>(D) 文章作者明確主張動物園應該全部關閉。</li>
+          <li>(E) 此議題反映了人類干預是否能拯救物種的更深層問題。</li>
+        </ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ACE</div>(B) ✗ 大貓熊成功重回自然，與此矛盾。<br>(D) ✗ 文章呈現正反兩方，作者未表明立場。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 17 -->
+<div class="day-section" id="day17">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">17</div><div class="day-info"><div class="day-type-label">📝 句型改錯日</div><div class="day-meta">Week 3 · 環境保育類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. The panda was <u>successful</u> reintroduced into the wild.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">successful → successfully</div>修飾動詞需用副詞。✏️ The panda was <strong>successfully</strong> reintroduced into the wild.</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Conservation of wildlife <u>are</u> important for future generations.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>主詞是 Conservation（不可數名詞），動詞用單數。✏️ Conservation of wildlife <strong>is</strong> important…</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. Animals that <u>raised</u> in captivity often develop different behaviors.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">raised → are raised</div>被動語態需有 be 動詞。✏️ Animals that <strong>are raised</strong> in captivity…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. The zoo focus on fostering a love of nature in young visitors.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">focus → focuses</div>第三人稱單數現在式。✏️ The zoo <strong>focuses</strong> on fostering…</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left-color:#43a047"><div class="pattern-title" style="color:#1b5e20">🌟 本日句型重點</div><div class="pattern-main" style="color:#1b5e20">It is + adj + that + S + V（強調重要性）</div><div class="pattern-ex">It is <strong>essential</strong> that we take action to prevent the extinction of endangered species.</div><div class="pattern-ex">It is <strong>important</strong> that conservation efforts be continued.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 18 -->
+<div class="day-section" id="day18">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">18</div><div class="day-info"><div class="day-type-label">🔄 單字複習 + 新字</div><div class="day-meta">Week 3 · 環境保育類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 15 五個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">保育</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">滅絕</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">人工飼養</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">培育/促進</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">人工繁殖的</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans g" style="margin-top:10px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">conservation / extinction / captivity / fostering / captive-bred</div></details>
+      <div class="sec-title" style="margin-top:18px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item g"><span class="vocab-word">confine</span><span class="vocab-pron">/kənˈfaɪn/</span><span class="vocab-pos">v.</span><div class="vocab-cn">限制；關押；侷限</div><div class="vocab-ex">The injured bird was confined to a small cage for treatment before being released.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">inevitability</span><span class="vocab-pron">/ɪnˌɛvɪtəˈbɪlɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">不可避免性</div><div class="vocab-ex">Scientists warn about the inevitability of climate-related disasters if action is not taken now.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">outweighs</span><span class="vocab-pron">/ˌaʊtˈweɪz/</span><span class="vocab-pos">v.</span><div class="vocab-cn">超過；比…重要或嚴重</div><div class="vocab-ex">The benefits of this conservation project far outweigh the costs involved.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">wholesome</span><span class="vocab-pron">/ˈhoʊlsəm/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">有益健康的；健全的</div><div class="vocab-ex">Children need a wholesome environment in which to grow, play, and develop.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">forum</span><span class="vocab-pron">/ˈfɔːrəm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">論壇；公開討論的場合</div><div class="vocab-ex">The international forum brought together scientists and policymakers to discuss climate change.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 19 -->
+<div class="day-section" id="day19">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">19</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 3 · 環境保育類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文（約 160 字）</div>Climate change poses one of the greatest threats to biodiversity on Earth. Scientists warn of the inevitability of mass extinctions if global temperatures continue to rise. Coral reefs, which provide a wholesome habitat for thousands of marine species, are disappearing at an alarming rate. Conservation organizations are working hard to confine the damage by protecting key ecosystems and reducing carbon emissions.
+
+Last year, an international forum brought together scientists, policymakers, and activists to discuss strategies for slowing the rate of species loss. Experts agreed that the benefits of aggressive conservation action far outweigh the economic costs. Fostering cooperation between governments and communities, they argued, is the only way to ensure a future where both humans and wildlife can thrive. Every individual has a role to play—even small actions like reducing waste or supporting conservation charities can make a meaningful difference.</div>
+      <div class="q-block">
+        <div class="q-text">Q1. 多選：以下哪些敘述符合文章？</div>
+        <ul class="options">
+          <li>(A) 珊瑚礁是許多海洋生物的重要棲息地。</li>
+          <li>(B) 科學家警告氣候變遷可能導致大規模物種滅絕。</li>
+          <li>(C) 國際論壇僅邀請科學家參與，不包含政策制定者。</li>
+          <li>(D) 專家認為積極保育的好處超過其經濟成本。</li>
+          <li>(E) 文章提到個人行動也能對保育有所貢獻。</li>
+        </ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABDE</div>(C) ✗ "scientists, policymakers, and activists" 三方都有。</div></details>
+      </div>
+      <div class="q-block">
+        <div class="q-text">Q2. "outweigh" 意思最接近？</div>
+        <ul class="options">
+          <li>(A) to be heavier in weight</li>
+          <li>(B) to be more important or significant（更重要）</li>
+          <li>(C) to make up for a mistake</li>
+          <li>(D) to reduce the overall effect</li>
+        </ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>outweigh = 在重要性或嚴重程度上超越</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 20 -->
+<div class="day-section" id="day20">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">20</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 3 · 環境保育類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 人工飼養動物重回野外雖然困難，但其帶來的益處遠超過風險。</div><details class="ans g"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Reintroducing captive animals to the wild is difficult, but the benefits far <strong>outweigh</strong> the risks.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：outweigh / captive / reintroduce</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 政府應該舉辦更多論壇，讓各方共同討論如何避免更多物種走向滅絕。</div><details class="ans g"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Governments should hold more <strong>forums</strong> for all parties to discuss how to prevent more species from facing <strong>extinction</strong>.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：forum / extinction / prevent…from…</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 21 -->
+<div class="day-section" id="day21">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">21</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 3 · 全週複習 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 3 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">保育</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">滅絕</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">人工飼養</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">培育/促進</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">人工繁殖的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">限制/關押</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">不可避免性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">超過/更重要</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">有益健康的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">論壇</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans g" style="margin-top:10px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">conservation / extinction / captivity / fostering / captive-bred / confine / inevitability / outweighs / wholesome / forum</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left-color:#43a047;margin-top:14px"><strong style="color:#1b5e20">🌟 挑戰：</strong>用 "It is essential that…" 造一個關於環境保育的句子！</div>
+    </div>
+  </div>
+</div>
+<!-- DAY 22 -->
+<div class="day-section" id="day22">
+  <div class="week-header" style="border-left-color:#8e24aa;background:linear-gradient(135deg,rgba(142,36,170,.12),rgba(106,27,154,.08))"><span class="wh-icon">💰</span><div><div class="wh-title" style="color:#4a148c">Week 4 — 社會經濟類</div><div class="wh-desc">monopoly / revenues / inclination / contradictory / indulge … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">22</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 4 · 社會經濟類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item p"><span class="vocab-word">monopoly</span><span class="vocab-pron">/məˈnɒpəli/</span><span class="vocab-pos">n.</span><div class="vocab-cn">壟斷；獨佔</div><div class="vocab-ex">The company holds a monopoly over the local water supply, giving it unlimited control over prices.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">revenues</span><span class="vocab-pron">/ˈrɛvənuːz/</span><span class="vocab-pos">n.</span><div class="vocab-cn">收益；財政收入（常用複數）</div><div class="vocab-ex">The government's revenues from taxation increased significantly last year.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">inclination</span><span class="vocab-pron">/ˌɪnklɪˈneɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">傾向；意願；偏好</div><div class="vocab-ex">She has a strong inclination toward creative writing and literature rather than science.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">contradictory</span><span class="vocab-pron">/ˌkɒntrəˈdɪktəri/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">矛盾的；相反的</div><div class="vocab-ex">The two witnesses gave contradictory accounts of what happened at the scene.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">indulge</span><span class="vocab-pron">/ɪnˈdʌldʒ/</span><span class="vocab-pos">v.</span><div class="vocab-cn">縱容；沉溺於（後接 in）</div><div class="vocab-ex">It is perfectly fine to indulge in your favorite dessert once in a while.</div></div>
+      </div>
+      <div class="highlight" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa;margin-top:14px"><strong style="color:#4a148c">📌 小提示：</strong>inclination 常與 toward 搭配。indulge 後接 <strong>in + N/V-ing</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 23 -->
+<div class="day-section" id="day23">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">23</div><div class="day-info"><div class="day-type-label">✅ 多選題日</div><div class="day-meta">Week 4 · 社會經濟類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>In many modern economies, a small number of large corporations dominate entire sectors, creating what economists call monopolies. These arrangements can have contradictory effects: while they may drive innovation in some cases, they often suppress competition, raise prices, and limit consumer choice. Government revenues can also be affected, as powerful companies find ways to minimize their tax obligations. Critics argue that unchecked corporate power encourages an indulgence in self-interest at the expense of the public. Regulators worldwide are increasingly showing an inclination to step in and enforce stricter rules to protect fair competition.</div>
+      <div class="q-block">
+        <div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options">
+          <li>(A) 壟斷在某些情況下可能促進創新。</li>
+          <li>(B) 壟斷通常會增加消費者的選擇。</li>
+          <li>(C) 強大的企業有時設法減少應繳稅款，影響政府收入。</li>
+          <li>(D) 各國監管機構越來越傾向對大型企業實施更嚴格規定。</li>
+          <li>(E) 文章認為所有大型企業都具有危害公眾的意圖。</li>
+        </ul>
+        <details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ACD</div>(B) ✗ "limit consumer choice"，相反。<br>(E) ✗ 文章說 "can have contradictory effects"，並非所有企業都有害。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 24 -->
+<div class="day-section" id="day24">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">24</div><div class="day-info"><div class="day-type-label">📝 句型改錯日</div><div class="day-meta">Week 4 · 社會經濟類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. The two statements are contradictory to <u>each others</u>.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">each others → each other</div>each other 是固定片語，不加 s。</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. She has an inclination for <u>spend</u> time alone.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">spend → spending</div>介系詞 for 後面接動名詞。✏️ …inclination for <strong>spending</strong> time alone.</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. Government revenues have been <u>rise</u> steadily over the past decade.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">rise → rising</div>have been + V-ing = 現在完成進行式。✏️ Government revenues have been <strong>rising</strong> steadily…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. The company indulged in self-interest at the expense of its customers. ✓ or ✗？</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ 這句正確！</div>indulge in = 沉溺於，用法正確。</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa"><div class="pattern-title" style="color:#4a148c">🌟 本日句型重點</div><div class="pattern-main" style="color:#4a148c">While + S + V, S + V（對比句型）</div><div class="pattern-ex">While monopolies can drive innovation, <strong>they often harm consumers</strong>.</div><div class="pattern-ex">While she enjoys reading fiction, <strong>her brother prefers non-fiction</strong>.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 25 -->
+<div class="day-section" id="day25">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">25</div><div class="day-info"><div class="day-type-label">🔄 單字複習 + 新字</div><div class="day-meta">Week 4 · 社會經濟類 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 22 五個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">壟斷</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">收益</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">傾向/意願</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">矛盾的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">縱容/沉溺</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans p" style="margin-top:10px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">monopoly / revenues / inclination / contradictory / indulge</div></details>
+      <div class="sec-title" style="margin-top:18px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item p"><span class="vocab-word">treasury</span><span class="vocab-pron">/ˈtrɛʒəri/</span><span class="vocab-pos">n.</span><div class="vocab-cn">國庫；財政部</div><div class="vocab-ex">The national treasury was depleted by years of excessive government spending.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">legitimately</span><span class="vocab-pron">/lɪˈdʒɪtɪmɪtli/</span><span class="vocab-pos">adv.</span><div class="vocab-cn">合法地；正當地</div><div class="vocab-ex">The company legitimately earned its position as the market leader through years of hard work.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">depicted</span><span class="vocab-pron">/dɪˈpɪktɪd/</span><span class="vocab-pos">v.</span><div class="vocab-cn">描繪；描述；呈現</div><div class="vocab-ex">The documentary depicted the harsh realities of poverty in rural communities.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">citizens</span><span class="vocab-pron">/ˈsɪtɪzənz/</span><span class="vocab-pos">n.</span><div class="vocab-cn">公民；市民</div><div class="vocab-ex">In a democracy, citizens have both the right to vote and the responsibility to stay informed.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">sued</span><span class="vocab-pron">/suːd/</span><span class="vocab-pos">v.</span><div class="vocab-cn">（被）起訴；控告</div><div class="vocab-ex">The customer sued the company for selling a defective product that caused serious injury.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 26 -->
+<div class="day-section" id="day26">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">26</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 4 · 社會經濟類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文（約 160 字）</div>The relationship between governments and large corporations is one of the most debated topics in modern economics. On one hand, successful businesses generate revenues that flow into the national treasury through taxation, funding public services like education and healthcare. On the other hand, when corporations gain a monopoly over essential goods, citizens may find themselves at the mercy of profit-driven decisions.
+
+History has depicted many cases where unchecked corporate power led to exploitation of ordinary people. In response, governments have legitimately used antitrust laws to break up monopolies and protect fair competition. Critics, however, argue that these contradictory approaches—encouraging business growth while simultaneously restraining it—create economic instability. The challenge is to balance freedom and fairness in a way that benefits all citizens, not just those who have the inclination and resources to indulge in wealth accumulation.</div>
+      <div class="q-block">
+        <div class="q-text">Q1. 多選：以下哪些符合文章？</div>
+        <ul class="options">
+          <li>(A) 企業透過納稅為國家財政做出貢獻。</li>
+          <li>(B) 當企業壟斷必需品時，消費者可能受損。</li>
+          <li>(C) 文章認為政府所有的干預都是無效的。</li>
+          <li>(D) 反壟斷法是政府合法使用的手段之一。</li>
+          <li>(E) 批評者認為鼓勵企業成長與同時限制企業的做法相互矛盾。</li>
+        </ul>
+        <details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABDE</div>(C) ✗ 文章說政府「legitimately used antitrust laws」，肯定了某些干預的正當性。</div></details>
+      </div>
+      <div class="q-block">
+        <div class="q-text">Q2. "at the mercy of" 最接近的意思是？</div>
+        <ul class="options">
+          <li>(A) grateful to（感謝）</li>
+          <li>(B) protected by（受到保護）</li>
+          <li>(C) completely dependent on, with no control（完全受制於）</li>
+          <li>(D) in competition with（與…競爭）</li>
+        </ul>
+        <details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (C)</div>at the mercy of = 任由…擺布，毫無抵抗能力</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 27 -->
+<div class="day-section" id="day27">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">27</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 4 · 社會經濟類 · 12 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 當一家公司在市場上形成壟斷，消費者往往會失去自由選擇的權利。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">When a company forms a <strong>monopoly</strong> in the market, <strong>citizens</strong> often lose the freedom to choose freely.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：monopoly / citizens / freedom to choose</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 公民有責任合法地參與社會事務，並對不公正的行為提出質疑。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Citizens have a responsibility to <strong>legitimately</strong> participate in social affairs and to question unjust practices.<br><br><span style="font-size:.85em;color:#555">🔑 關鍵：legitimately / citizens / question（v. 質疑）</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 28 -->
+<div class="day-section" id="day28">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">28</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 4 · 全週複習 · 10 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 4 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">壟斷</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">收益</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">傾向/意願</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">矛盾的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">縱容/沉溺</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">國庫</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">合法地</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">描繪/描述</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">公民</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">控告/起訴</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans p" style="margin-top:10px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">monopoly / revenues / inclination / contradictory / indulge / treasury / legitimately / depicted / citizens / sued</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa;margin-top:14px"><strong style="color:#4a148c">🌟 挑戰：</strong>用 "While…, …" 對比句型，造一個關於社會或經濟的句子！</div>
+    </div>
+  </div>
+</div>
+<!-- DAY 29 -->
+<div class="day-section" id="day29">
+  <div class="week-header" style="border-left-color:#e91e63;background:linear-gradient(135deg,rgba(233,30,99,.12),rgba(194,24,91,.08))"><span class="wh-icon">🌟</span><div><div class="wh-title" style="color:#880e4f">Special Days — 綜合挑戰</div><div class="wh-desc">跨越四週主題，整合詞彙與閱讀能力</div></div></div>
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">29</div><div class="day-info"><div class="day-type-label">🏆 四週綜合多選挑戰</div><div class="day-meta">Special · 跨主題整合 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 綜合閱讀短文（融合四週主題）</div>Human progress has always come with both benefits and contradictory consequences. The development of modern technology has facilitated communication and scientific discovery, but it has also disrupted traditional ways of life, sometimes triggering anxiety and irritability in those who struggle to adapt. Research with insights from psychology suggests that people prone to stress are more vulnerable to emotional trauma during rapid social change.
+
+At the same time, economic growth has expanded government revenues and improved living standards for many citizens. However, when a single company gains a monopoly over essential resources, it can confine consumer choice and outweigh public benefit with private profit. History has depicted many such cases. Conservation of both natural environments and human well-being, experts argue, should outweigh the pursuit of endless economic growth. Fostering a balance between progress and sustainability is not just desirable—it is an inevitability if future generations are to thrive.</div>
+      <div class="q-block">
+        <div class="q-text">🔍 綜合多選：哪幾項符合文章？（多選）</div>
+        <ul class="options">
+          <li>(A) 容易有壓力的人，在快速社會變遷中可能更容易受到情緒創傷。</li>
+          <li>(B) 科技的發展讓傳統生活方式更加穩定。</li>
+          <li>(C) 當一家公司壟斷重要資源，消費者的選擇可能受到限制。</li>
+          <li>(D) 文章主張，對自然環境和人類福祉的保育，其重要性應超過無止盡的經濟追求。</li>
+          <li>(E) 文章認為科技進步完全沒有負面影響。</li>
+        </ul>
+        <details class="ans" style="margin-top:10px"><summary style="background:linear-gradient(135deg,#e91e63,#c2185b)">查看答案 <span class="arrow">▼</span></summary><div class="ans-body" style="background:#fce4ec;border-color:#f48fb1"><div class="ans-key" style="color:#880e4f">✅ ACD</div>(B) ✗ "disrupted traditional ways of life"，科技顛覆了傳統生活，並非更穩定。<br>(E) ✗ 文章說科技帶來好處但也有矛盾後果。</div></details>
+      </div>
+      <div class="q-block">
+        <div class="q-text">🔤 單字測驗：選出正確答案</div>
+        <ul class="options">
+          <li>The new policy triggered widespread ________ among the public.<br>(A) insights　(B) irritability　(C) revenues　(D) conservation</li>
+        </ul>
+        <details class="ans" style="margin-top:8px"><summary style="background:linear-gradient(135deg,#e91e63,#c2185b)">查看答案 <span class="arrow">▼</span></summary><div class="ans-body" style="background:#fce4ec;border-color:#f48fb1"><div class="ans-key" style="color:#880e4f">✅ (B) irritability</div>trigger irritability = 引發易怒情緒，語境最合適。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 30 -->
+<div class="day-section" id="day30">
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">30</div><div class="day-info"><div class="day-type-label">✍️ 寫作句型收尾日</div><div class="day-meta">Special · 30 天完結 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📚 30 天學過的 6 大句型整理</div>
+      <div class="vocab-grid">
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">① be prone to + N/V-ing</span><div class="vocab-ex">Students are prone to <strong>feeling anxious</strong> before major exams.</div></div>
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">② Not only…but also…</span><div class="vocab-ex">Technology has <strong>not only</strong> improved our lives <strong>but also</strong> created new challenges.</div></div>
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">③ It is + adj + that + S + V</span><div class="vocab-ex">It is <strong>essential</strong> that we make conservation a national priority.</div></div>
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">④ While + S + V, S + V（對比）</span><div class="vocab-ex"><strong>While</strong> monopolies can drive innovation, they often harm consumers.</div></div>
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">⑤ A rather than B（而不是）</span><div class="vocab-ex">We should regulate our emotions <strong>rather than</strong> suppressing them completely.</div></div>
+        <div class="vocab-item" style="border-left-color:#e91e63;background:linear-gradient(135deg,#fce4ec,#f8bbd0)"><span class="vocab-word" style="color:#880e4f">⑥ The benefits outweigh the costs</span><div class="vocab-ex">The long-term benefits of investing in education <strong>far outweigh</strong> the short-term costs.</div></div>
+      </div>
+      <div class="sec-title" style="margin-top:20px">✍️ 最終挑戰：任選以下一個主題，用 3–5 句話寫一小段</div>
+      <div style="background:#fff9f0;border-radius:12px;padding:14px 16px;font-size:.9em;line-height:2;border:1.5px solid #ffe0b2">
+        <strong>主題選項：</strong><br>
+        A. 科技對人類生活的影響（正面與負面）<br>
+        B. 為什麼保育環境比追求經濟成長更重要<br>
+        C. 面對壓力時，情緒管理為什麼很重要<br><br>
+        📝 <strong>要求：</strong>至少用到 2 個以上今天整理的句型，以及至少 3 個這 30 天學過的單字。
+      </div>
+      <details class="ans" style="margin-top:14px"><summary style="background:linear-gradient(135deg,#e91e63,#c2185b)">查看範例答案（主題 A）<span class="arrow">▼</span></summary>
+        <div class="ans-body" style="background:#fce4ec;border-color:#f48fb1">Technology has <strong>not only</strong> facilitated global communication <strong>but also</strong> disrupted many traditional industries. <strong>While</strong> it has improved people's lives in many ways, it has also triggered anxiety and irritability in those who struggle to keep up with rapid change. It is essential that governments and citizens work together to ensure that the scope of technological development remains <strong>wholesome</strong> and beneficial to all. The long-term benefits of responsible innovation far <strong>outweigh</strong> the short-term costs of careful regulation.<br><br>
+        <span style="font-size:.85em;color:#880e4f">🔑 使用句型：not only…but also / while / it is essential that / outweigh<br>使用單字：facilitated, disrupted, triggered, irritability, scope, wholesome</span></div>
+      </details>
+      <div class="highlight" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-left-color:#e91e63;margin-top:16px">
+        <strong style="color:#880e4f">🎉 恭喜！</strong>Grace，你完成了 30 天自學計劃！共學習了 <strong>40 個核心單字</strong>、完成 <strong>4 篇閱讀理解</strong>、練習了 <strong>16 個文法改錯</strong>，以及 <strong>8 句翻譯</strong>。繼續保持，8 月見！💪
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /right-content -->
+</div><!-- /layout -->
+
+<!-- BOTTOM LINK BAR -->
+<div class="link-bar" style="margin-top:8px">
+  <div class="bar-title">📚 林威老師 2026 暑期課程</div>
+  <div class="link-cards">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <span class="lc-icon">🔥</span><span class="lc-name">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">七月正式開課，從錯誤中精準提升</span>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <span class="lc-icon">📊</span><span class="lc-name">學生學習分析</span>
+      <span class="lc-desc">個人化成績診斷與弱點分析</span>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <span class="lc-icon">💬</span><span class="lc-name">加 LINE 聯絡</span>
+      <span class="lc-desc">ID：linwayet　有問題問老師</span>
+    </a>
+  </div>
+  <div class="footer-note">林威老師與 AI agent 團隊 · 2026</div>
+</div>
+
+<script>
+function showDay(n){
+  document.querySelectorAll('.day-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('active'));
+  var sec=document.getElementById('day'+n);
+  var btn=document.getElementById('btn'+n);
+  if(sec) sec.classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(window.innerWidth<=768){
+    var rc=document.querySelector('.right-content');
+    if(rc) rc.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+</script>
+</body>
+</html>
