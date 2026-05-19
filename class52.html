@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renee｜暑假英文衝刺 60 天計劃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(160deg,#fff8ee,#ffecd2,#ffd9b3);color:#3d2007;min-height:100vh;line-height:1.75}
+.link-bar{background:linear-gradient(135deg,#ff7043,#e64a19,#bf360c);padding:14px 16px;text-align:center}
+.bar-title{color:#ffe0b2;font-size:.78em;letter-spacing:2px;margin-bottom:10px;font-weight:700}
+.link-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.link-card{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.35);border-radius:14px;padding:10px 16px;text-decoration:none;color:#fff;font-size:.88em;font-weight:700;min-width:130px;max-width:220px;display:flex;flex-direction:column;align-items:center;gap:3px;transition:background .2s,transform .15s;-webkit-tap-highlight-color:transparent}
+.link-card:hover,.link-card:active{background:rgba(255,255,255,.28);transform:translateY(-2px)}
+.lc-icon{font-size:1.4em}.lc-name{font-size:.92em;font-weight:900}.lc-desc{font-size:.72em;opacity:.88;text-align:center}
+.hero{background:linear-gradient(135deg,#ff8f00,#f4511e,#c62828);color:#fff;text-align:center;padding:30px 20px 24px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);border-radius:50%}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:.8em;margin-bottom:8px;position:relative;z-index:1}
+.hero h1{font-size:clamp(1.4em,5vw,2em);font-weight:900;margin-bottom:4px;position:relative;z-index:1}
+.hero p{font-size:.9em;opacity:.92;position:relative;z-index:1}
+.hero-tags{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:relative;z-index:1}
+.hero-tag2{background:rgba(255,255,255,.2);border-radius:30px;padding:4px 12px;font-size:.8em;font-weight:700}
+/* LAYOUT */
+.layout{display:flex;align-items:flex-start}
+.left-nav{width:210px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:#fff3e0;border-right:3px solid #ff8f00;z-index:50;scrollbar-width:thin;scrollbar-color:#ffcc80 #fff3e0}
+.left-nav::-webkit-scrollbar{width:5px}.left-nav::-webkit-scrollbar-track{background:#fff3e0}.left-nav::-webkit-scrollbar-thumb{background:#ffcc80;border-radius:10px}
+.right-content{flex:1;min-width:0;padding:18px 16px}
+@media(max-width:768px){.layout{flex-direction:column}.left-nav{width:100%;height:auto;position:static;border-right:none;border-bottom:3px solid #ff8f00}.right-content{padding:14px 12px}}
+/* NAV */
+.nav-wrap{padding:12px 10px}
+.nav-label{font-size:.75em;font-weight:700;color:#bf360c;margin-bottom:8px;text-align:center;letter-spacing:1px;padding:6px 0 5px;border-bottom:2px solid #ffcc80}
+.week-nav{margin-bottom:9px}
+.week-nav-label{font-size:.68em;font-weight:700;color:#e65100;margin-bottom:4px;line-height:1.4}
+.day-btns{display:flex;flex-wrap:wrap;gap:4px}
+.day-btn{width:32px;height:32px;border:none;border-radius:8px;font-size:.78em;font-weight:700;cursor:pointer;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+.day-btn:hover{transform:scale(1.08)}
+.day-btn.w1{background:#ffe0b2;color:#bf360c}.day-btn.w1.active,.day-btn.w1:hover{background:linear-gradient(135deg,#ff7043,#e64a19);color:#fff}
+.day-btn.w2{background:#e1f5fe;color:#01579b}.day-btn.w2.active,.day-btn.w2:hover{background:linear-gradient(135deg,#0288d1,#0277bd);color:#fff}
+.day-btn.w3{background:#e8f5e9;color:#1b5e20}.day-btn.w3.active,.day-btn.w3:hover{background:linear-gradient(135deg,#43a047,#2e7d32);color:#fff}
+.day-btn.w4{background:#f3e5f5;color:#4a148c}.day-btn.w4.active,.day-btn.w4:hover{background:linear-gradient(135deg,#8e24aa,#6a1b9a);color:#fff}
+.day-btn.w5{background:#e0f2f1;color:#004d40}.day-btn.w5.active,.day-btn.w5:hover{background:linear-gradient(135deg,#00897b,#00695c);color:#fff}
+.day-btn.w6{background:#ffebee;color:#b71c1c}.day-btn.w6.active,.day-btn.w6:hover{background:linear-gradient(135deg,#e53935,#c62828);color:#fff}
+.day-btn.w7{background:#fff3e0;color:#bf360c}.day-btn.w7.active,.day-btn.w7:hover{background:linear-gradient(135deg,#ef6c00,#e65100);color:#fff}
+.day-btn.w8{background:#e8eaf6;color:#1a237e}.day-btn.w8.active,.day-btn.w8:hover{background:linear-gradient(135deg,#3949ab,#283593);color:#fff}
+.day-btn.sp{background:#fce4ec;color:#880e4f}.day-btn.sp.active,.day-btn.sp:hover{background:linear-gradient(135deg,#e91e63,#c2185b);color:#fff}
+/* CONTENT */
+.day-section{display:none}.day-section.active{display:block}
+.day-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(200,80,20,.1);margin-bottom:14px}
+.day-header{padding:16px 18px 12px;display:flex;align-items:center;gap:10px}
+.day-header.w1{background:linear-gradient(135deg,#ff8f00,#ff6f00)}
+.day-header.w2{background:linear-gradient(135deg,#0288d1,#0277bd)}
+.day-header.w3{background:linear-gradient(135deg,#43a047,#2e7d32)}
+.day-header.w4{background:linear-gradient(135deg,#8e24aa,#6a1b9a)}
+.day-header.w5{background:linear-gradient(135deg,#00897b,#00695c)}
+.day-header.w6{background:linear-gradient(135deg,#e53935,#c62828)}
+.day-header.w7{background:linear-gradient(135deg,#ef6c00,#e65100)}
+.day-header.w8{background:linear-gradient(135deg,#3949ab,#283593)}
+.day-header.sp{background:linear-gradient(135deg,#e91e63,#c2185b)}
+.day-num{background:rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.1em;font-weight:900;color:#fff;flex-shrink:0}
+.day-info{flex:1}
+.day-type-label{font-size:.95em;font-weight:900;color:#fff}
+.day-meta{font-size:.76em;color:rgba(255,255,255,.85);margin-top:2px}
+.day-body{padding:16px 16px 18px}
+.vocab-grid{display:flex;flex-direction:column;gap:9px}
+.vocab-item{background:linear-gradient(135deg,#fff8e1,#fff3e0);border-radius:11px;padding:10px 13px;border-left:4px solid #ff8f00}
+.vocab-item.b{border-left-color:#0288d1;background:linear-gradient(135deg,#e1f5fe,#b3e5fc)}
+.vocab-item.g{border-left-color:#43a047;background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.vocab-item.p{border-left-color:#8e24aa;background:linear-gradient(135deg,#f3e5f5,#e1bee7)}
+.vocab-item.t{border-left-color:#00897b;background:linear-gradient(135deg,#e0f2f1,#b2dfdb)}
+.vocab-item.r{border-left-color:#e53935;background:linear-gradient(135deg,#ffebee,#ffcdd2)}
+.vocab-item.o{border-left-color:#ef6c00;background:linear-gradient(135deg,#fff3e0,#ffe0b2)}
+.vocab-item.i{border-left-color:#3949ab;background:linear-gradient(135deg,#e8eaf6,#c5cae9)}
+.vocab-word{font-size:1em;font-weight:900;color:#bf360c}
+.vocab-item.b .vocab-word{color:#01579b}.vocab-item.g .vocab-word{color:#1b5e20}.vocab-item.p .vocab-word{color:#4a148c}
+.vocab-item.t .vocab-word{color:#004d40}.vocab-item.r .vocab-word{color:#b71c1c}.vocab-item.o .vocab-word{color:#bf360c}.vocab-item.i .vocab-word{color:#1a237e}
+.vocab-pron{font-size:.78em;color:#888;font-style:italic;margin:0 5px}
+.vocab-pos{font-size:.73em;background:#ff8f00;color:#fff;border-radius:5px;padding:1px 6px}
+.vocab-item.b .vocab-pos{background:#0288d1}.vocab-item.g .vocab-pos{background:#43a047}.vocab-item.p .vocab-pos{background:#8e24aa}
+.vocab-item.t .vocab-pos{background:#00897b}.vocab-item.r .vocab-pos{background:#e53935}.vocab-item.o .vocab-pos{background:#ef6c00}.vocab-item.i .vocab-pos{background:#3949ab}
+.vocab-cn{font-size:.88em;color:#555;margin-top:3px;font-weight:700}
+.vocab-ex{font-size:.84em;color:#666;margin-top:3px;font-style:italic}
+.passage{background:#fffde7;border-radius:11px;padding:12px 14px;font-size:.88em;line-height:1.85;border-left:4px solid #f9a825;margin-bottom:12px;white-space:pre-wrap}
+.passage-label{font-size:.76em;font-weight:700;color:#f57f17;margin-bottom:6px;letter-spacing:1px}
+.q-block{margin-bottom:12px}
+.q-text{font-weight:700;color:#3d2007;margin-bottom:7px;font-size:.9em}
+.options{list-style:none;display:flex;flex-direction:column;gap:5px}
+.options li{background:#fff9f0;border-radius:9px;padding:7px 11px;font-size:.86em;border:1.5px solid #ffe0b2}
+details.ans{margin-top:9px}
+details.ans summary{cursor:pointer;background:linear-gradient(135deg,#ff7043,#e64a19);color:#fff;border-radius:9px;padding:7px 13px;font-size:.84em;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans summary .arrow{display:inline-block;transition:transform .25s}
+details.ans[open] summary .arrow{transform:rotate(180deg)}
+details.ans.b summary{background:linear-gradient(135deg,#0288d1,#0277bd)}
+details.ans.g summary{background:linear-gradient(135deg,#43a047,#2e7d32)}
+details.ans.p summary{background:linear-gradient(135deg,#8e24aa,#6a1b9a)}
+details.ans.t summary{background:linear-gradient(135deg,#00897b,#00695c)}
+details.ans.r summary{background:linear-gradient(135deg,#e53935,#c62828)}
+details.ans.o summary{background:linear-gradient(135deg,#ef6c00,#e65100)}
+details.ans.i summary{background:linear-gradient(135deg,#3949ab,#283593)}
+.ans-body{background:#f1f8e9;border-radius:0 0 9px 9px;padding:11px 13px;font-size:.86em;line-height:1.8;border:1.5px solid #c5e1a5;border-top:none}
+details.ans.b .ans-body{background:#e1f5fe;border-color:#b3e5fc}
+details.ans.p .ans-body{background:#f3e5f5;border-color:#ce93d8}
+details.ans.t .ans-body{background:#e0f2f1;border-color:#b2dfdb}
+details.ans.r .ans-body{background:#ffebee;border-color:#ffcdd2}
+details.ans.o .ans-body{background:#fff3e0;border-color:#ffe0b2}
+details.ans.i .ans-body{background:#e8eaf6;border-color:#c5cae9}
+.ans-key{font-weight:900;color:#2e7d32;font-size:.95em}
+details.ans.b .ans-key{color:#01579b}.details.ans.p .ans-key{color:#4a148c}
+details.ans.t .ans-key{color:#004d40}.details.ans.r .ans-key{color:#b71c1c}.details.ans.i .ans-key{color:#1a237e}
+.gram-list{display:flex;flex-direction:column;gap:9px}
+.gram-item{background:#fff9f0;border-radius:11px;padding:11px 13px;border-left:4px solid #ff8f00;font-size:.88em}
+.gram-q{color:#555;margin-bottom:4px}
+.pattern-box{border-radius:11px;padding:13px 15px;border-left:5px solid #ff8f00;margin-top:12px;background:linear-gradient(135deg,#fff3e0,#ffe0b2)}
+.pattern-title{font-size:.78em;font-weight:700;color:#e65100;letter-spacing:1px;margin-bottom:7px}
+.pattern-main{font-size:.95em;font-weight:900;color:#bf360c;margin-bottom:5px}
+.pattern-ex{font-size:.84em;color:#666;font-style:italic;margin-top:3px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.review-item{background:#fff9f0;border-radius:9px;padding:9px 11px;border-left:3px solid #ff8f00;display:flex;justify-content:space-between;align-items:center;font-size:.86em}
+.review-cn{color:#555;font-weight:700}
+.review-blank{background:#ffe0b2;border-radius:5px;padding:2px 9px;color:#bbb;font-size:.83em}
+.trans-list{display:flex;flex-direction:column;gap:11px}
+.trans-item{background:#fff9f0;border-radius:11px;padding:13px 14px;border-left:4px solid #8e24aa}
+.trans-cn{font-size:.9em;font-weight:700;color:#3d2007;margin-bottom:7px}
+.sec-title{font-size:.8em;font-weight:700;color:#888;letter-spacing:1.5px;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.sec-title::after{content:"";flex:1;height:1px;background:#ffe0b2}
+.highlight{border-radius:11px;padding:11px 13px;border-left:4px solid #ff8f00;font-size:.86em;margin-top:11px;background:linear-gradient(135deg,#fff8e1,#ffe0b2)}
+.highlight strong{color:#bf360c}
+.week-header{border-radius:15px;padding:13px 16px;margin-bottom:14px;border-left:5px solid #ff8f00;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(255,143,0,.15),rgba(255,111,0,.1))}
+.wh-icon{font-size:1.8em}.wh-title{font-size:1.05em;font-weight:900;color:#bf360c}.wh-desc{font-size:.8em;color:#7a4f1a;margin-top:2px}
+.footer-note{text-align:center;font-size:.76em;color:#ffe0b2;opacity:.88;padding:10px 0 4px}
+@media(max-width:480px){.review-grid{grid-template-columns:1fr}.day-header{padding:12px 14px}.day-body{padding:12px 12px 14px}}
+</style>
+</head>
+<body>
+<div class="link-bar">
+  <div class="bar-title">📚 林威老師 2026 暑期課程</div>
+  <div class="link-cards">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank"><span class="lc-icon">🔥</span><span class="lc-name">錯中學 ECHO 計劃</span><span class="lc-desc">七月正式開課，從錯誤中精準提升</span></a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank"><span class="lc-icon">📊</span><span class="lc-name">學生學習分析</span><span class="lc-desc">個人化成績診斷與弱點分析</span></a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank"><span class="lc-icon">💬</span><span class="lc-name">加 LINE 聯絡</span><span class="lc-desc">ID：linwayet　有問題問老師</span></a>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-tag">☀️ 2026 暑假衝刺 · 高一升高二</div>
+  <h1>Renee 英文暑假 60 天計劃</h1>
+  <p>林威老師 × AI agent 團隊 · 每天 15–20 分鐘，兩個月穩紮穩打</p>
+  <div class="hero-tags">
+    <span class="hero-tag2">8 大主題</span>
+    <span class="hero-tag2">80 個核心單字</span>
+    <span class="hero-tag2">單字×閱讀×文法×翻譯</span>
+    <span class="hero-tag2">衝刺學測均標→頂標</span>
+  </div>
+</div>
+<div class="layout">
+<div class="left-nav"><div class="nav-wrap">
+  <div class="nav-label">👆 點選天數</div>
+  <div class="week-nav"><div class="week-nav-label">🟠 W1 日常生活 (1–7)</div><div class="day-btns">
+    <button class="day-btn w1 active" onclick="showDay(1)" id="btn1">1</button><button class="day-btn w1" onclick="showDay(2)" id="btn2">2</button><button class="day-btn w1" onclick="showDay(3)" id="btn3">3</button><button class="day-btn w1" onclick="showDay(4)" id="btn4">4</button><button class="day-btn w1" onclick="showDay(5)" id="btn5">5</button><button class="day-btn w1" onclick="showDay(6)" id="btn6">6</button><button class="day-btn w1" onclick="showDay(7)" id="btn7">7</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🔵 W2 校園學習 (8–14)</div><div class="day-btns">
+    <button class="day-btn w2" onclick="showDay(8)" id="btn8">8</button><button class="day-btn w2" onclick="showDay(9)" id="btn9">9</button><button class="day-btn w2" onclick="showDay(10)" id="btn10">10</button><button class="day-btn w2" onclick="showDay(11)" id="btn11">11</button><button class="day-btn w2" onclick="showDay(12)" id="btn12">12</button><button class="day-btn w2" onclick="showDay(13)" id="btn13">13</button><button class="day-btn w2" onclick="showDay(14)" id="btn14">14</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🟢 W3 健康飲食 (15–21)</div><div class="day-btns">
+    <button class="day-btn w3" onclick="showDay(15)" id="btn15">15</button><button class="day-btn w3" onclick="showDay(16)" id="btn16">16</button><button class="day-btn w3" onclick="showDay(17)" id="btn17">17</button><button class="day-btn w3" onclick="showDay(18)" id="btn18">18</button><button class="day-btn w3" onclick="showDay(19)" id="btn19">19</button><button class="day-btn w3" onclick="showDay(20)" id="btn20">20</button><button class="day-btn w3" onclick="showDay(21)" id="btn21">21</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🟣 W4 科技媒體 (22–28)</div><div class="day-btns">
+    <button class="day-btn w4" onclick="showDay(22)" id="btn22">22</button><button class="day-btn w4" onclick="showDay(23)" id="btn23">23</button><button class="day-btn w4" onclick="showDay(24)" id="btn24">24</button><button class="day-btn w4" onclick="showDay(25)" id="btn25">25</button><button class="day-btn w4" onclick="showDay(26)" id="btn26">26</button><button class="day-btn w4" onclick="showDay(27)" id="btn27">27</button><button class="day-btn w4" onclick="showDay(28)" id="btn28">28</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🩵 W5 環境自然 (29–35)</div><div class="day-btns">
+    <button class="day-btn w5" onclick="showDay(29)" id="btn29">29</button><button class="day-btn w5" onclick="showDay(30)" id="btn30">30</button><button class="day-btn w5" onclick="showDay(31)" id="btn31">31</button><button class="day-btn w5" onclick="showDay(32)" id="btn32">32</button><button class="day-btn w5" onclick="showDay(33)" id="btn33">33</button><button class="day-btn w5" onclick="showDay(34)" id="btn34">34</button><button class="day-btn w5" onclick="showDay(35)" id="btn35">35</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🔴 W6 社會文化 (36–42)</div><div class="day-btns">
+    <button class="day-btn w6" onclick="showDay(36)" id="btn36">36</button><button class="day-btn w6" onclick="showDay(37)" id="btn37">37</button><button class="day-btn w6" onclick="showDay(38)" id="btn38">38</button><button class="day-btn w6" onclick="showDay(39)" id="btn39">39</button><button class="day-btn w6" onclick="showDay(40)" id="btn40">40</button><button class="day-btn w6" onclick="showDay(41)" id="btn41">41</button><button class="day-btn w6" onclick="showDay(42)" id="btn42">42</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🟤 W7 運動休閒 (43–49)</div><div class="day-btns">
+    <button class="day-btn w7" onclick="showDay(43)" id="btn43">43</button><button class="day-btn w7" onclick="showDay(44)" id="btn44">44</button><button class="day-btn w7" onclick="showDay(45)" id="btn45">45</button><button class="day-btn w7" onclick="showDay(46)" id="btn46">46</button><button class="day-btn w7" onclick="showDay(47)" id="btn47">47</button><button class="day-btn w7" onclick="showDay(48)" id="btn48">48</button><button class="day-btn w7" onclick="showDay(49)" id="btn49">49</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">🔷 W8 心理成長 (50–56)</div><div class="day-btns">
+    <button class="day-btn w8" onclick="showDay(50)" id="btn50">50</button><button class="day-btn w8" onclick="showDay(51)" id="btn51">51</button><button class="day-btn w8" onclick="showDay(52)" id="btn52">52</button><button class="day-btn w8" onclick="showDay(53)" id="btn53">53</button><button class="day-btn w8" onclick="showDay(54)" id="btn54">54</button><button class="day-btn w8" onclick="showDay(55)" id="btn55">55</button><button class="day-btn w8" onclick="showDay(56)" id="btn56">56</button>
+  </div></div>
+  <div class="week-nav"><div class="week-nav-label">⭐ 綜合挑戰 (57–60)</div><div class="day-btns">
+    <button class="day-btn sp" onclick="showDay(57)" id="btn57">57</button><button class="day-btn sp" onclick="showDay(58)" id="btn58">58</button><button class="day-btn sp" onclick="showDay(59)" id="btn59">59</button><button class="day-btn sp" onclick="showDay(60)" id="btn60">60</button>
+  </div></div>
+</div></div>
+<div class="right-content">
+<!-- WEEK 1: 日常生活類 -->
+<div class="day-section active" id="day1">
+  <div class="week-header"><span class="wh-icon">🏠</span><div><div class="wh-title">Week 1 — 日常生活類</div><div class="wh-desc">routine / chores / convenience / budget / efficient … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">1</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 1 · 日常生活類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📖 今日 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-word">routine</span><span class="vocab-pron">/ruːˈtiːn/</span><span class="vocab-pos">n./adj.</span><div class="vocab-cn">日常慣例；例行的</div><div class="vocab-ex">She follows a strict morning routine every day before school.</div></div>
+        <div class="vocab-item"><span class="vocab-word">chores</span><span class="vocab-pron">/tʃɔːrz/</span><span class="vocab-pos">n.</span><div class="vocab-cn">家務事；雜務</div><div class="vocab-ex">Doing household chores teaches children responsibility and teamwork.</div></div>
+        <div class="vocab-item"><span class="vocab-word">convenience</span><span class="vocab-pron">/kənˈviːniəns/</span><span class="vocab-pos">n.</span><div class="vocab-cn">便利；方便</div><div class="vocab-ex">The convenience of online shopping has changed the way people buy things.</div></div>
+        <div class="vocab-item"><span class="vocab-word">budget</span><span class="vocab-pron">/ˈbʌdʒɪt/</span><span class="vocab-pos">n./v.</span><div class="vocab-cn">預算；擬訂預算</div><div class="vocab-ex">She set a monthly budget to avoid overspending on unnecessary items.</div></div>
+        <div class="vocab-item"><span class="vocab-word">efficient</span><span class="vocab-pron">/ɪˈfɪʃənt/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">有效率的；效能高的</div><div class="vocab-ex">An efficient study plan helps students make the most of their time.</div></div>
+      </div>
+      <div class="highlight"><strong>📌 小提示：</strong>efficient（有效率）vs effective（有效果）— efficient 強調節省時間/資源，effective 強調達成目標。</div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day2">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">2</div><div class="day-info"><div class="day-type-label">✅ 多選閱讀日</div><div class="day-meta">Week 1 · 日常生活類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Many students struggle with time management. A good daily routine helps you complete chores, study efficiently, and still have time for leisure. Setting a budget for your time—deciding how many hours to spend on each task—is just as important as a financial budget. By making study a priority and scheduling regular breaks, students can avoid burnout and enjoy a more balanced life.</div>
+      <div class="q-block"><div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options"><li>(A) 良好的日常作息可幫助學生兼顧讀書和家事。</li><li>(B) 時間預算和金錢預算同樣重要。</li><li>(C) 文章建議學生不應該休息，要全天讀書。</li><li>(D) 將讀書列為優先事項可以避免精力耗盡。</li><li>(E) 文章認為家務事會嚴重妨礙讀書效率。</li></ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABD</div>(C) ✗ 文章說要「scheduling regular breaks」。<br>(E) ✗ 文章並未提及家務妨礙讀書。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day3">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">3</div><div class="day-info"><div class="day-type-label">📝 文法改錯日</div><div class="day-meta">Week 1 · 日常生活類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. She has a daily routine of <u>wake</u> up at 6 a.m.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">wake → waking</div>介系詞 of 後接動名詞。✏️ …a daily routine of <strong>waking</strong> up at 6 a.m.</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Doing house chores <u>are</u> tiring but necessary.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>動名詞片語作主詞，動詞用單數。✏️ Doing house chores <strong>is</strong> tiring…</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. It is <u>importants</u> to set priorities before starting work.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">importants → important</div>形容詞不加 -s。✏️ It is <strong>important</strong> to set priorities…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. She scheduled time to <u>discuss</u> the budget <u>of</u> next month.</div><details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ 這句正確！</div>discuss 為及物動詞，不需 about；budget of next month 用法正確。</div></details></div>
+      </div>
+      <div class="pattern-box"><div class="pattern-title">🌟 本日句型重點</div><div class="pattern-main">make + N + a priority（把…列為優先事項）</div><div class="pattern-ex">Make <strong>sleep</strong> a priority if you want to stay healthy and focused.</div><div class="pattern-ex">She made <strong>exercise</strong> a daily priority during summer vacation.</div></div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day4">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">4</div><div class="day-info"><div class="day-type-label">🔄 複習 + 新字</div><div class="day-meta">Week 1 · 日常生活類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 1（看中文寫英文）</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">日常慣例</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">家務事</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">便利</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">預算</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">有效率的</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">routine / chores / convenience / budget / efficient</div></details>
+      <div class="sec-title" style="margin-top:16px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-word">commute</span><span class="vocab-pron">/kəˈmjuːt/</span><span class="vocab-pos">v./n.</span><div class="vocab-cn">通勤；上下班</div><div class="vocab-ex">Many workers commute to the city by train every morning.</div></div>
+        <div class="vocab-item"><span class="vocab-word">schedule</span><span class="vocab-pron">/ˈʃɛdjuːl/</span><span class="vocab-pos">n./v.</span><div class="vocab-cn">時間表；排定</div><div class="vocab-ex">She scheduled her study time carefully to balance school and exercise.</div></div>
+        <div class="vocab-item"><span class="vocab-word">leisure</span><span class="vocab-pron">/ˈlɛʒər/</span><span class="vocab-pos">n.</span><div class="vocab-cn">閒暇；休閒</div><div class="vocab-ex">Reading is one of the best leisure activities for developing vocabulary.</div></div>
+        <div class="vocab-item"><span class="vocab-word">priority</span><span class="vocab-pron">/praɪˈɒrɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">優先事項；重要性</div><div class="vocab-ex">Making time for sleep should be a top priority for students.</div></div>
+        <div class="vocab-item"><span class="vocab-word">simplify</span><span class="vocab-pron">/ˈsɪmplɪfaɪ/</span><span class="vocab-pos">v.</span><div class="vocab-cn">簡化；使容易</div><div class="vocab-ex">Using a planner can help simplify daily tasks and save time.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day5">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">5</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 1 · 日常生活類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Time management is one of the most valuable skills a student can develop. Students who follow a regular schedule tend to feel less stressed and perform better on exams. One key strategy is to identify your priorities first—decide which tasks are most important and complete them early.
+
+Another helpful habit is to simplify your routine. Instead of spending time deciding what to do next, prepare a simple daily plan the night before. This reduces wasted time and makes your mornings more efficient. Even setting aside just 20 minutes for leisure, such as walking or reading, can improve focus and overall well-being.</div>
+      <div class="q-block"><div class="q-text">Q1. 多選：哪些敘述符合文章？</div>
+        <ul class="options"><li>(A) 有規律作息的學生通常壓力較小、成績較好。</li><li>(B) 文章建議先完成最重要的任務。</li><li>(C) 文章認為休閒活動是浪費時間。</li><li>(D) 提前規劃隔天行程可以減少時間浪費。</li><li>(E) 文章認為學生不需要任何休息時間。</li></ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABD</div>(C)(E) ✗ 文章說休閒可以「improve focus and overall well-being」。</div></details>
+      </div>
+      <div class="q-block"><div class="q-text">Q2. "simplify" 意思最接近？</div>
+        <ul class="options"><li>(A) to make something more difficult</li><li>(B) to make something easier or less complicated ✓</li><li>(C) to forget something on purpose</li><li>(D) to repeat something many times</li></ul>
+        <details class="ans"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>simplify = 簡化，讓某事更簡單易做。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day6">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">6</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 1 · 日常生活類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 養成良好的日常作息是提升讀書效率最簡單的方法之一。</div><details class="ans"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Developing a good daily <strong>routine</strong> is one of the easiest ways to improve study <strong>efficiency</strong>.<br><br><span style="font-size:.85em;color:#555">🔑 routine / efficiency / one of the + adj. + ways to V</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 在開始任何任務之前，先列出你的優先事項，這樣才能有效管理時間。</div><details class="ans"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Before starting any task, list your <strong>priorities</strong> so that you can manage your time <strong>efficiently</strong>.<br><br><span style="font-size:.85em;color:#555">🔑 priority / efficiently / so that（結果子句）</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day7">
+  <div class="day-card">
+    <div class="day-header w1"><div class="day-num">7</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 1 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 1 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">日常慣例</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">家務事</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">便利</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">預算</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">有效率的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">通勤</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">時間表</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">閒暇</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">優先事項</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">簡化</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">routine / chores / convenience / budget / efficient / commute / schedule / leisure / priority / simplify</div></details>
+      <div class="highlight" style="margin-top:12px"><strong>🌟 挑戰：</strong>任選 3 個單字，各造一個跟你生活有關的英文句子，寫在筆記本上！</div>
+    </div>
+  </div>
+</div>
+<!-- WEEK 2: 校園學習類 -->
+<div class="day-section" id="day8">
+  <div class="week-header" style="border-left-color:#0288d1;background:linear-gradient(135deg,rgba(2,136,209,.12),rgba(1,87,155,.08))"><span class="wh-icon">📚</span><div><div class="wh-title" style="color:#01579b">Week 2 — 校園學習類</div><div class="wh-desc">curriculum / concentrate / academic / collaborate / evaluate … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">8</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 2 · 校園學習類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item b"><span class="vocab-word">curriculum</span><span class="vocab-pron">/kəˈrɪkjʊləm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">課程（綱要）</div><div class="vocab-ex">The school updated its curriculum to include more technology-related subjects.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">concentrate</span><span class="vocab-pron">/ˈkɒnsəntreɪt/</span><span class="vocab-pos">v.</span><div class="vocab-cn">專注；集中（後接 on）</div><div class="vocab-ex">It is hard to concentrate on studying when there is too much noise around you.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">academic</span><span class="vocab-pron">/ˌækəˈdɛmɪk/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">學術的；課業的</div><div class="vocab-ex">She improved her academic performance by developing better study habits.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">collaborate</span><span class="vocab-pron">/kəˈlæbəreɪt/</span><span class="vocab-pos">v.</span><div class="vocab-cn">合作；協作（後接 with/on）</div><div class="vocab-ex">Students collaborate better when they feel respected and included.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">evaluate</span><span class="vocab-pron">/ɪˈvæljʊeɪt/</span><span class="vocab-pos">v.</span><div class="vocab-cn">評估；評量</div><div class="vocab-ex">Teachers evaluate students through both tests and class participation.</div></div>
+      </div>
+      <div class="highlight" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1"><strong style="color:#01579b">📌 小提示：</strong>concentrate on、collaborate with、evaluate + N，這三個動詞搭配的介系詞很常考！</div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day9">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">9</div><div class="day-info"><div class="day-type-label">✅ 多選閱讀日</div><div class="day-meta">Week 2 · 校園學習類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Modern schools are changing their curriculum to better prepare students for the future. Teachers now encourage students to collaborate on projects rather than work alone. This approach helps develop communication skills and the ability to evaluate different ideas. Students who are consistent in their academic efforts tend to achieve better results than those who only study before exams.</div>
+      <div class="q-block"><div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options"><li>(A) 現代學校正在更新課程以準備學生面對未來。</li><li>(B) 老師鼓勵學生合作而非單獨完成作業。</li><li>(C) 評估不同想法是合作學習的好處之一。</li><li>(D) 只在考前讀書的學生成績通常比持續用功的學生好。</li><li>(E) 文章認為溝通技巧對學生很重要。</li></ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABCE</div>(D) ✗ 文章說持續努力的學生「tend to achieve better results」。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day10">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">10</div><div class="day-info"><div class="day-type-label">📝 文法改錯日</div><div class="day-meta">Week 2 · 校園學習類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. She concentrates <u>in</u> her studies every evening.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">in → on</div>concentrate on = 專注於。✏️ She concentrates <strong>on</strong> her studies…</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. They collaborated <u>each other</u> on the science project.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">each other → with each other</div>collaborate with = 與…合作。✏️ They collaborated <strong>with each other</strong>…</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. The teacher <u>evaluated</u> the students' work careful.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">careful → carefully</div>修飾動詞需用副詞。✏️ …evaluated the students' work <strong>carefully</strong>.</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. Academic performance are important for getting into a good university.</div><details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>Academic performance 為不可數名詞，動詞用單數。</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1"><div class="pattern-title" style="color:#01579b">🌟 本日句型重點</div><div class="pattern-main" style="color:#01579b">rather than + V-ing（而不是…）</div><div class="pattern-ex">Students should collaborate <strong>rather than</strong> competing against each other.</div><div class="pattern-ex">She chose to evaluate the options carefully <strong>rather than</strong> rushing into a decision.</div></div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day11">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">11</div><div class="day-info"><div class="day-type-label">🔄 複習 + 新字</div><div class="day-meta">Week 2 · 校園學習類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 8</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">課程綱要</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">專注（v.）</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">學術的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">合作</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">評估</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans b" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">curriculum / concentrate / academic / collaborate / evaluate</div></details>
+      <div class="sec-title" style="margin-top:16px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item b"><span class="vocab-word">memorize</span><span class="vocab-pron">/ˈmɛməraɪz/</span><span class="vocab-pos">v.</span><div class="vocab-cn">記憶；背誦</div><div class="vocab-ex">The best way to memorize vocabulary is to use the words in real sentences.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">consistent</span><span class="vocab-pron">/kənˈsɪstənt/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">一致的；持續穩定的</div><div class="vocab-ex">Consistent daily practice is more effective than studying all night before a test.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">discipline</span><span class="vocab-pron">/ˈdɪsɪplɪn/</span><span class="vocab-pos">n.</span><div class="vocab-cn">紀律；自律</div><div class="vocab-ex">Self-discipline is the key to achieving long-term academic goals.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">analyze</span><span class="vocab-pron">/ˈænəlaɪz/</span><span class="vocab-pos">v.</span><div class="vocab-cn">分析；解析</div><div class="vocab-ex">Reading questions carefully helps you analyze what the passage is really asking.</div></div>
+        <div class="vocab-item b"><span class="vocab-word">comprehension</span><span class="vocab-pron">/ˌkɒmprɪˈhɛnʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">理解力；理解</div><div class="vocab-ex">Improving reading comprehension requires both vocabulary knowledge and practice.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day12">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">12</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 2 · 校園學習類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Strong reading comprehension is one of the most important academic skills in Taiwan's college entrance exam. Students who analyze passages carefully—looking for main ideas, supporting details, and the author's purpose—perform much better on multiple-choice questions.
+
+To improve comprehension, experts recommend reading a variety of texts every day. It is also helpful to memorize vocabulary in context rather than as isolated words. Discipline and consistent practice are the real keys to improvement. Even fifteen minutes of focused reading each day can make a significant difference over two months.</div>
+      <div class="q-block"><div class="q-text">Q1. 多選：哪些符合文章？</div>
+        <ul class="options"><li>(A) 仔細分析文章有助於回答多選題。</li><li>(B) 專家建議只讀課本，不要讀其他類型的文章。</li><li>(C) 在上下文中記憶單字比單獨背誦更有幫助。</li><li>(D) 紀律和持續練習是進步的關鍵。</li><li>(E) 每天只需十五分鐘的閱讀就可以有顯著效果。</li></ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ACDE</div>(B) ✗ 文章說 "a variety of texts"，不限課本。</div></details>
+      </div>
+      <div class="q-block"><div class="q-text">Q2. "consistent" 意思最接近？</div>
+        <ul class="options"><li>(A) 偶爾的（occasional）</li><li>(B) 持續穩定的、一致的 ✓</li><li>(C) 令人驚訝的（surprising）</li><li>(D) 困難的（challenging）</li></ul>
+        <details class="ans b"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>consistent = 一致的、持續穩定不間斷的。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day13">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">13</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 2 · 校園學習類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 持續每天練習比考前熬夜讀書更有效。</div><details class="ans b"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body"><strong>Consistent</strong> daily practice is more effective than staying up all night before the exam.<br><br><span style="font-size:.85em;color:#555">🔑 consistent / effective / rather than / staying up</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 培養分析文章的能力，才能在學測英文閱讀測驗中有好的表現。</div><details class="ans b"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Developing the ability to <strong>analyze</strong> passages is essential to performing well on the English reading section of the 學測.<br><br><span style="font-size:.85em;color:#555">🔑 analyze / essential to / performing well on</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day14">
+  <div class="day-card">
+    <div class="day-header w2"><div class="day-num">14</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 2 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 2 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">課程綱要</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">專注</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">學術的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">合作</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">評估</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">背誦</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">持續穩定的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">紀律</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">分析</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">理解力</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans b" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">curriculum / concentrate / academic / collaborate / evaluate / memorize / consistent / discipline / analyze / comprehension</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e1f5fe,#b3e5fc);border-left-color:#0288d1;margin-top:12px"><strong style="color:#01579b">🌟 挑戰：</strong>用 "rather than" 造一個關於讀書方法的句子！</div>
+    </div>
+  </div>
+</div>
+<!-- WEEK 3: 健康飲食類 -->
+<div class="day-section" id="day15">
+  <div class="week-header" style="border-left-color:#43a047;background:linear-gradient(135deg,rgba(67,160,71,.12),rgba(46,125,50,.08))"><span class="wh-icon">🥗</span><div><div class="wh-title" style="color:#1b5e20">Week 3 — 健康飲食類</div><div class="wh-desc">nutrition / supplement / obesity / moderate / balanced … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">15</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 3 · 健康飲食類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item g"><span class="vocab-word">nutrition</span><span class="vocab-pron">/njuːˈtrɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">營養；營養學</div><div class="vocab-ex">Good nutrition is essential for both physical health and academic performance.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">supplement</span><span class="vocab-pron">/ˈsʌplɪmənt/</span><span class="vocab-pos">n./v.</span><div class="vocab-cn">補充品；補充</div><div class="vocab-ex">Some students take vitamin supplements to stay healthy during exam season.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">obesity</span><span class="vocab-pron">/oʊˈbiːsɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">肥胖症</div><div class="vocab-ex">Obesity has become a growing public health concern in many countries.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">moderate</span><span class="vocab-pron">/ˈmɒdərɪt/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">適度的；節制的</div><div class="vocab-ex">Eating a moderate amount of sugar is acceptable, but excess is harmful.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">balanced</span><span class="vocab-pron">/ˈbælənst/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">均衡的；平衡的</div><div class="vocab-ex">A balanced diet includes a variety of fruits, vegetables, proteins, and grains.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day16">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">16</div><div class="day-info"><div class="day-type-label">✅ 多選閱讀日</div><div class="day-meta">Week 3 · 健康飲食類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Poor eating habits are a major cause of health problems among teenagers. Many students skip breakfast to save time, not realizing that nutrition plays a key role in concentration and energy levels. A balanced diet—rich in vegetables, fruits, and protein—provides the nutrients the body needs. Experts warn that relying on fast food or processed snacks may contribute to obesity over time. Moderate exercise combined with good nutrition is the best way to stay healthy.</div>
+      <div class="q-block"><div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options"><li>(A) 許多學生因節省時間而跳過早餐。</li><li>(B) 均衡飲食有助於集中注意力和維持體力。</li><li>(C) 快餐和加工食品可能導致肥胖。</li><li>(D) 文章建議學生應完全避免吃零食。</li><li>(E) 適度運動加上良好飲食是維持健康的最佳方式。</li></ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABCE</div>(D) ✗ 文章說「moderate」，適度即可，並非完全避免。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day17">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">17</div><div class="day-info"><div class="day-type-label">📝 文法改錯日</div><div class="day-meta">Week 3 · 健康飲食類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. She eats <u>moderate</u> every day to stay healthy.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">moderate → moderately</div>修飾動詞 eats 需用副詞。✏️ She eats <strong>moderately</strong> every day…</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Drink enough water <u>are</u> essential for good health.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>動名詞 Drinking 作主詞，動詞用單數。✏️ Drinking enough water <strong>is</strong> essential…</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. Obesity is <u>chronic</u> disease that affects millions of people.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">chronic → a chronic</div>單數可數名詞前需加冠詞。✏️ Obesity is <strong>a chronic</strong> disease…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. Prevention is more better than cure.</div><details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">more better → better</div>比較級不可再加 more。✏️ Prevention is <strong>better</strong> than cure.</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left-color:#43a047"><div class="pattern-title" style="color:#1b5e20">🌟 本日句型重點</div><div class="pattern-main" style="color:#1b5e20">not only…but also…（不只…也…）</div><div class="pattern-ex">A balanced diet <strong>not only</strong> improves your health <strong>but also</strong> boosts your energy and focus.</div></div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day18">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">18</div><div class="day-info"><div class="day-type-label">🔄 複習 + 新字</div><div class="day-meta">Week 3 · 健康飲食類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 15</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">營養</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">補充品</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">肥胖症</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">適度的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">均衡的</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans g" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">nutrition / supplement / obesity / moderate / balanced</div></details>
+      <div class="sec-title" style="margin-top:16px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item g"><span class="vocab-word">vigorous</span><span class="vocab-pron">/ˈvɪɡərəs/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">激烈的；充沛活力的</div><div class="vocab-ex">Vigorous exercise at least three times a week improves cardiovascular health.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">metabolism</span><span class="vocab-pron">/mɪˈtæbəlɪzəm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">新陳代謝</div><div class="vocab-ex">A high metabolism allows the body to burn calories more quickly.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">chronic</span><span class="vocab-pron">/ˈkrɒnɪk/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">慢性的；長期的</div><div class="vocab-ex">Chronic stress can lead to serious health problems if not addressed early.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">prevention</span><span class="vocab-pron">/prɪˈvɛnʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">預防</div><div class="vocab-ex">Prevention is better than cure when it comes to maintaining good health.</div></div>
+        <div class="vocab-item g"><span class="vocab-word">essential</span><span class="vocab-pron">/ɪˈsɛnʃəl/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">必要的；不可缺少的</div><div class="vocab-ex">Sleep is essential for the body to recover and the brain to process information.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day19">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">19</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 3 · 健康飲食類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>The connection between diet and mental health is becoming an important research area. Scientists have found that what we eat can affect our mood, energy, and ability to concentrate. Foods rich in essential nutrients—such as vitamins and omega-3 fatty acids—support brain function and help prevent chronic conditions.
+
+Many teenagers experience stress, which can lead to poor food choices. When under pressure, people tend to reach for high-sugar snacks, which may temporarily boost energy but lead to crashes afterward. Nutrition experts recommend a balanced diet with moderate amounts of all food groups, supplemented by regular vigorous exercise, to maintain both physical and mental well-being.</div>
+      <div class="q-block"><div class="q-text">Q1. 多選：哪些符合文章？</div>
+        <ul class="options"><li>(A) 飲食對情緒、體力和集中力都有影響。</li><li>(B) 壓力下人們傾向選擇高糖食物。</li><li>(C) 文章認為所有零食都對健康有害。</li><li>(D) 高糖食物短暫提升體力後可能造成疲憊。</li><li>(E) 定期激烈運動有助於維持身心健康。</li></ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABDE</div>(C) ✗ 文章說的是「moderate」，適量即可，並非完全禁止。</div></details>
+      </div>
+      <div class="q-block"><div class="q-text">Q2. "essential" 意思最接近？</div>
+        <ul class="options"><li>(A) 無用的（useless）</li><li>(B) 必要的、不可缺少的 ✓</li><li>(C) 少見的（rare）</li><li>(D) 昂貴的（expensive）</li></ul>
+        <details class="ans g"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ (B)</div>essential = 必要的，沒有它就無法正常運作或維持健康。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day20">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">20</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 3 · 健康飲食類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 均衡的飲食和規律的運動對維持健康而言是必不可少的。</div><details class="ans g"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">A <strong>balanced</strong> diet and regular exercise are <strong>essential</strong> for maintaining good health.<br><br><span style="font-size:.85em;color:#555">🔑 balanced / essential for / maintaining</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 預防勝於治療，這正是為什麼我們要養成良好的飲食習慣。</div><details class="ans g"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body"><strong>Prevention</strong> is better than cure, which is why we should develop good eating habits.<br><br><span style="font-size:.85em;color:#555">🔑 prevention / which is why / develop habits</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day21">
+  <div class="day-card">
+    <div class="day-header w3"><div class="day-num">21</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 3 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 3 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">營養</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">補充品</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">肥胖症</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">適度的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">均衡的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">激烈的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">新陳代謝</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">慢性的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">預防</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">必要的</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans g" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">nutrition / supplement / obesity / moderate / balanced / vigorous / metabolism / chronic / prevention / essential</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left-color:#43a047;margin-top:12px"><strong style="color:#1b5e20">🌟 挑戰：</strong>用 "not only…but also…" 描述健康飲食的兩個好處！</div>
+    </div>
+  </div>
+</div>
+<!-- WEEK 4: 科技媒體類 -->
+<div class="day-section" id="day22">
+  <div class="week-header" style="border-left-color:#8e24aa;background:linear-gradient(135deg,rgba(142,36,170,.12),rgba(106,27,154,.08))"><span class="wh-icon">📱</span><div><div class="wh-title" style="color:#4a148c">Week 4 — 科技媒體類</div><div class="wh-desc">algorithm / platform / viral / digital / privacy … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">22</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 4 · 科技媒體類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item p"><span class="vocab-word">algorithm</span><span class="vocab-pron">/ˈælɡərɪðəm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">演算法</div><div class="vocab-ex">Social media platforms use algorithms to decide what content users see.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">platform</span><span class="vocab-pron">/ˈplætfɔːrm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">平台；站台</div><div class="vocab-ex">YouTube is one of the most popular platforms for online learning.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">viral</span><span class="vocab-pron">/ˈvaɪərəl/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">病毒式擴散的；爆紅的</div><div class="vocab-ex">The video went viral overnight and received millions of views.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">digital</span><span class="vocab-pron">/ˈdɪdʒɪtəl/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">數位的；數字的</div><div class="vocab-ex">Digital tools have transformed the way students access information.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">privacy</span><span class="vocab-pron">/ˈprɪvəsi/</span><span class="vocab-pos">n.</span><div class="vocab-cn">隱私；私密性</div><div class="vocab-ex">Sharing personal information online can put your privacy at risk.</div></div>
+      </div>
+      <div class="highlight" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa"><strong style="color:#4a148c">📌 小提示：</strong>"go viral" 是固定片語，表示「爆紅、病毒式傳播」；digital 可以是形容詞（數位的）也可以是名詞（數位技術）。</div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day23">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">23</div><div class="day-info"><div class="day-type-label">✅ 多選閱讀日</div><div class="day-meta">Week 4 · 科技媒體類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Social media platforms use complex algorithms to show users content that matches their interests. While this can be convenient, it creates a "filter bubble" where people only see information they already agree with. The viral spread of false information online has become a serious concern. Protecting your privacy online and being aware of how digital platforms influence your thinking are essential skills in the modern world.</div>
+      <div class="q-block"><div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options"><li>(A) 演算法會根據使用者的興趣顯示內容。</li><li>(B) 「過濾泡泡」讓人接觸到更多不同觀點。</li><li>(C) 假訊息的病毒式傳播是值得關注的問題。</li><li>(D) 保護個人隱私是現代的重要技能。</li><li>(E) 文章認為所有社群媒體都對人有害。</li></ul>
+        <details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ACD</div>(B) ✗「filter bubble」是讓人只看到同溫層內容，並非更多不同觀點。<br>(E) ✗ 文章提出問題，但沒說全部有害。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day24">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">24</div><div class="day-info"><div class="day-type-label">📝 文法改錯日</div><div class="day-meta">Week 4 · 科技媒體類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. The video went viral and got <u>view</u> by millions of people.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">view → viewed</div>被動語態需用過去分詞。✏️ …got <strong>viewed</strong> by millions of people.</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Technology has a strong influence <u>in</u> our daily decisions.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">in → on</div>have an influence on = 對…有影響。✏️ …influence <strong>on</strong> our daily decisions.</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. Screen dependency <u>are</u> growing among teenagers.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>Screen dependency 為單數名詞。✏️ Screen dependency <strong>is</strong> growing…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. The new app transformed <u>how do students</u> learn.</div><details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">how do students → how students</div>間接疑問句不需倒裝。✏️ …transformed <strong>how students</strong> learn.</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa"><div class="pattern-title" style="color:#4a148c">🌟 本日句型重點</div><div class="pattern-main" style="color:#4a148c">transform A into B（將 A 轉變為 B）</div><div class="pattern-ex">Technology has <strong>transformed</strong> traditional classrooms <strong>into</strong> interactive learning spaces.</div><div class="pattern-ex">Consistent practice can <strong>transform</strong> a weak student <strong>into</strong> a confident one.</div></div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day25">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">25</div><div class="day-info"><div class="day-type-label">🔄 複習 + 新字</div><div class="day-meta">Week 4 · 科技媒體類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 22</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">演算法</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">平台</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">爆紅的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">數位的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">隱私</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans p" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">algorithm / platform / viral / digital / privacy</div></details>
+      <div class="sec-title" style="margin-top:16px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item p"><span class="vocab-word">innovation</span><span class="vocab-pron">/ˌɪnəˈveɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">創新；革新</div><div class="vocab-ex">Technological innovation has changed nearly every aspect of modern life.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">interface</span><span class="vocab-pron">/ˈɪntərfeɪs/</span><span class="vocab-pos">n.</span><div class="vocab-cn">介面；接觸面</div><div class="vocab-ex">A user-friendly interface makes apps easier to navigate and enjoy.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">influence</span><span class="vocab-pron">/ˈɪnfluəns/</span><span class="vocab-pos">n./v.</span><div class="vocab-cn">影響；影響力</div><div class="vocab-ex">Social media has a powerful influence on teenagers' opinions and choices.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">dependency</span><span class="vocab-pron">/dɪˈpɛndənsi/</span><span class="vocab-pos">n.</span><div class="vocab-cn">依賴；依存</div><div class="vocab-ex">Screen dependency is becoming a serious issue among young people.</div></div>
+        <div class="vocab-item p"><span class="vocab-word">transform</span><span class="vocab-pron">/trænsˈfɔːrm/</span><span class="vocab-pos">v.</span><div class="vocab-cn">轉變；改造</div><div class="vocab-ex">Technology can transform traditional classrooms into interactive learning spaces.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day26">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">26</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 4 · 科技媒體類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>The rapid pace of technological innovation has brought both opportunities and challenges. Digital tools allow students to access vast knowledge from anywhere in the world. However, increasing dependency on screens has raised concerns about mental health and attention spans.
+
+Research shows that excessive social media use can influence self-esteem and increase anxiety. Platforms using sophisticated algorithms keep users engaged for hours, making it hard to unplug. Privacy issues are also a growing concern, as personal data is collected without users' full understanding.
+
+Experts argue that digital literacy—the ability to use technology wisely—is just as important as reading and writing in today's world.</div>
+      <div class="q-block"><div class="q-text">Q1. 多選：哪些符合文章？</div>
+        <ul class="options"><li>(A) 數位工具讓學生可以從任何地方獲取知識。</li><li>(B) 大量使用社群媒體可能影響自尊心和增加焦慮。</li><li>(C) 所有演算法設計的目的都是為了幫助使用者節省時間。</li><li>(D) 個人資料被收集是隱私問題的一部分。</li><li>(E) 數位素養是現代學生的重要技能。</li></ul>
+        <details class="ans p"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABDE</div>(C) ✗ 文章說演算法讓人「engaged for hours」，是為平台利益，不是幫使用者省時。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day27">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">27</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 4 · 科技媒體類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 社群媒體對青少年的意見和選擇有著強大的影響力。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Social media has a powerful <strong>influence on</strong> teenagers' opinions and choices.<br><br><span style="font-size:.85em;color:#555">🔑 influence on / teenagers / powerful</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 學習批判性地評估網路資訊，是數位時代中不可或缺的技能。</div><details class="ans p"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Learning to critically evaluate information online is an <strong>essential</strong> skill in the <strong>digital</strong> age.<br><br><span style="font-size:.85em;color:#555">🔑 critically evaluate / essential / digital age</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day28">
+  <div class="day-card">
+    <div class="day-header w4"><div class="day-num">28</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 4 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 4 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">演算法</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">平台</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">爆紅的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">數位的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">隱私</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">創新</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">介面</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">影響力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">依賴</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">轉變（v.）</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans p" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">algorithm / platform / viral / digital / privacy / innovation / interface / influence / dependency / transform</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border-left-color:#8e24aa;margin-top:12px"><strong style="color:#4a148c">🌟 挑戰：</strong>用 "transform A into B" 描述科技如何改變了你的生活！</div>
+    </div>
+  </div>
+</div>
+<!-- WEEK 5: 環境自然類 -->
+<div class="day-section" id="day29">
+  <div class="week-header" style="border-left-color:#00897b;background:linear-gradient(135deg,rgba(0,137,123,.12),rgba(0,105,92,.08))"><span class="wh-icon">🌍</span><div><div class="wh-title" style="color:#004d40">Week 5 — 環境自然類</div><div class="wh-desc">sustainability / emission / biodiversity / renewable / habitat … 共 10 個核心詞彙</div></div></div>
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">29</div><div class="day-info"><div class="day-type-label">🔤 單字日</div><div class="day-meta">Week 5 · 環境自然類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="vocab-grid">
+        <div class="vocab-item t"><span class="vocab-word">sustainability</span><span class="vocab-pron">/səˌsteɪnəˈbɪlɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">永續性；可持續性</div><div class="vocab-ex">Sustainability has become a key goal for businesses and governments worldwide.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">emission</span><span class="vocab-pron">/ɪˈmɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">排放（物）；發出</div><div class="vocab-ex">Reducing carbon emissions is essential to slowing down climate change.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">biodiversity</span><span class="vocab-pron">/ˌbaɪoʊdaɪˈvɜːrsɪti/</span><span class="vocab-pos">n.</span><div class="vocab-cn">生物多樣性</div><div class="vocab-ex">The destruction of forests threatens biodiversity and harms countless species.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">renewable</span><span class="vocab-pron">/rɪˈnjuːəbəl/</span><span class="vocab-pos">adj.</span><div class="vocab-cn">可再生的；可更新的</div><div class="vocab-ex">Solar and wind are examples of renewable energy sources that do not pollute.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">habitat</span><span class="vocab-pron">/ˈhæbɪtæt/</span><span class="vocab-pos">n.</span><div class="vocab-cn">棲息地；自然環境</div><div class="vocab-ex">Rapid urban development has destroyed the natural habitat of many animals.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day30">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">30</div><div class="day-info"><div class="day-type-label">✅ 多選閱讀日</div><div class="day-meta">Week 5 · 環境自然類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Climate change is one of the greatest threats to biodiversity on Earth. Rising temperatures destroy natural habitats and push many species toward extinction. Scientists argue that switching to renewable energy sources is the most effective way to reduce harmful emissions and achieve long-term sustainability. Without immediate action, the damage to the planet's ecosystems may become irreversible.</div>
+      <div class="q-block"><div class="q-text">🔍 哪幾項符合文章？（多選）</div>
+        <ul class="options"><li>(A) 氣候變遷是生物多樣性的重大威脅。</li><li>(B) 氣溫上升會破壞自然棲息地。</li><li>(C) 文章認為可再生能源是減少排放的最有效方式。</li><li>(D) 文章認為地球的問題已完全無法解決。</li><li>(E) 若不立即採取行動，生態系統的破壞可能無法挽回。</li></ul>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABCE</div>(D) ✗ 文章說的是 "may become irreversible"（可能），並非已確定無法解決。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day31">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">31</div><div class="day-info"><div class="day-type-label">📝 文法改錯日</div><div class="day-meta">Week 5 · 環境自然類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="gram-list">
+        <div class="gram-item"><div class="gram-q">1. The animal was force out of its natural habitat by humans.</div><details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">force → forced</div>被動語態 was + 過去分詞。✏️ The animal was <strong>forced</strong> out of its natural habitat…</div></details></div>
+        <div class="gram-item"><div class="gram-q">2. Renewable energy are becoming more affordable every year.</div><details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">are → is</div>Renewable energy 為不可數名詞。✏️ Renewable energy <strong>is</strong> becoming…</div></details></div>
+        <div class="gram-item"><div class="gram-q">3. We must reduce our carbon emission to slow down climate change.</div><details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">emission → emissions</div>排放物通常用複數 emissions。✏️ …reduce our carbon <strong>emissions</strong>…</div></details></div>
+        <div class="gram-item"><div class="gram-q">4. Biodiversity is important for the sustainability of the planet. ✓ or ✗？</div><details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ 這句正確！</div>主詞、動詞、修飾語用法均正確。</div></details></div>
+      </div>
+      <div class="pattern-box" style="background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-left-color:#00897b"><div class="pattern-title" style="color:#004d40">🌟 本日句型重點</div><div class="pattern-main" style="color:#004d40">Without + N/V-ing, S + would/could/might…（若無…則…）</div><div class="pattern-ex"><strong>Without</strong> immediate action, the damage to ecosystems may become irreversible.</div><div class="pattern-ex"><strong>Without</strong> clean water and air, human beings could not survive.</div></div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day32">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">32</div><div class="day-info"><div class="day-type-label">🔄 複習 + 新字</div><div class="day-meta">Week 5 · 環境自然類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 複習 Day 29</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">永續性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">排放物</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">生物多樣性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">可再生的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">棲息地</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">sustainability / emission / biodiversity / renewable / habitat</div></details>
+      <div class="sec-title" style="margin-top:16px">📖 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-item t"><span class="vocab-word">deforestation</span><span class="vocab-pron">/diːˌfɒrɪˈsteɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">濫伐森林；砍伐樹木</div><div class="vocab-ex">Deforestation in the Amazon destroys millions of acres of rainforest every year.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">conservation</span><span class="vocab-pron">/ˌkɒnsəˈveɪʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">保育；保存；節約</div><div class="vocab-ex">Wildlife conservation is essential for protecting the biodiversity of our planet.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">pollution</span><span class="vocab-pron">/pəˈluːʃən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">污染</div><div class="vocab-ex">Air pollution in large cities causes serious health problems for residents.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">ecosystem</span><span class="vocab-pron">/ˈiːkoʊˌsɪstəm/</span><span class="vocab-pos">n.</span><div class="vocab-cn">生態系統</div><div class="vocab-ex">The destruction of one species can disrupt the balance of an entire ecosystem.</div></div>
+        <div class="vocab-item t"><span class="vocab-word">carbon</span><span class="vocab-pron">/ˈkɑːrbən/</span><span class="vocab-pos">n.</span><div class="vocab-cn">碳；碳元素</div><div class="vocab-ex">Burning fossil fuels releases large amounts of carbon dioxide into the atmosphere.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day33">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">33</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 5 · 環境自然類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="passage"><div class="passage-label">📖 閱讀短文</div>Deforestation is one of the leading causes of environmental destruction worldwide. When forests are cut down, the carbon stored in trees is released into the atmosphere, contributing to climate change. Forests also serve as critical ecosystems for thousands of species—their destruction leads to loss of habitat and reduces biodiversity.
+
+Conservation organizations around the world are working to protect remaining forests and restore damaged ecosystems. Replacing fossil fuels with renewable energy sources is another key strategy for reducing pollution and carbon emissions. Experts stress that sustainability must be at the center of all future development plans if we hope to preserve the planet for future generations.</div>
+      <div class="q-block"><div class="q-text">Q1. 多選：哪些符合文章？</div>
+        <ul class="options"><li>(A) 森林砍伐是環境破壞的主要原因之一。</li><li>(B) 樹木被砍伐後，儲存在其中的碳會釋放到大氣中。</li><li>(C) 文章認為永續發展已不再重要。</li><li>(D) 用可再生能源取代化石燃料有助於減少污染。</li><li>(E) 保育組織正在努力保護剩餘的森林。</li></ul>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body"><div class="ans-key">✅ ABDE</div>(C) ✗ 文章說永續性「must be at the center of all future development plans」，正好相反。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day34">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">34</div><div class="day-info"><div class="day-type-label">🌏 翻譯練習日</div><div class="day-meta">Week 5 · 環境自然類 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="trans-list">
+        <div class="trans-item"><div class="trans-cn">1. 保育野生動物棲息地對維護生物多樣性而言是必不可少的。</div><details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Protecting wildlife <strong>habitats</strong> is essential for maintaining <strong>biodiversity</strong>.<br><br><span style="font-size:.85em;color:#555">🔑 habitat / biodiversity / essential for</span></div></details></div>
+        <div class="trans-item"><div class="trans-cn">2. 若不減少碳排放，地球生態系統可能面臨無法挽回的破壞。</div><details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body"><strong>Without</strong> reducing carbon <strong>emissions</strong>, the Earth's <strong>ecosystems</strong> may suffer irreversible damage.<br><br><span style="font-size:.85em;color:#555">🔑 without / carbon emissions / ecosystem / irreversible</span></div></details></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="day-section" id="day35">
+  <div class="day-card">
+    <div class="day-header w5"><div class="day-num">35</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 5 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 5 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">永續性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">排放物</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">生物多樣性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">可再生的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">棲息地</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">森林砍伐</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">保育</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">污染</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">生態系統</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">碳</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">sustainability / emission / biodiversity / renewable / habitat / deforestation / conservation / pollution / ecosystem / carbon</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-left-color:#00897b;margin-top:12px"><strong style="color:#004d40">🌟 挑戰：</strong>用 "Without…, …" 造一個關於環境保護的句子！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WEEK 6: 社會文化類 Days 36-42 ===== -->
+<div class="day-section" id="day36">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">36</div><div class="day-info"><div class="day-type-label">📚 單字日</div><div class="day-meta">Week 6 · 社會文化類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🌍 本週主題：社會文化</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">diversity</div><div class="vocab-pos">n.</div><div class="vocab-cn">多元性；多樣性</div><div class="vocab-sent">Diversity makes our society stronger.</div><div class="vocab-sent-cn">多元性使我們的社會更強大。</div></div>
+        <div class="vocab-card"><div class="vocab-en">equality</div><div class="vocab-pos">n.</div><div class="vocab-cn">平等</div><div class="vocab-sent">Everyone deserves equality in education.</div><div class="vocab-sent-cn">每個人都應得到教育上的平等。</div></div>
+        <div class="vocab-card"><div class="vocab-en">tradition</div><div class="vocab-pos">n.</div><div class="vocab-cn">傳統</div><div class="vocab-sent">This festival is an important cultural tradition.</div><div class="vocab-sent-cn">這個節慶是重要的文化傳統。</div></div>
+        <div class="vocab-card"><div class="vocab-en">stereotype</div><div class="vocab-pos">n./v.</div><div class="vocab-cn">刻板印象；以偏概全</div><div class="vocab-sent">We should avoid making stereotypes about others.</div><div class="vocab-sent-cn">我們應避免對他人有刻板印象。</div></div>
+        <div class="vocab-card"><div class="vocab-en">prejudice</div><div class="vocab-pos">n.</div><div class="vocab-cn">偏見；歧視</div><div class="vocab-sent">Prejudice often comes from a lack of understanding.</div><div class="vocab-sent-cn">偏見常源於缺乏理解。</div></div>
+      </div>
+      <div class="highlight"><strong>💡 記憶小技巧：</strong>prejudice = pre（事先）+ judge（判斷），事先就做出判斷 = 偏見！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day37">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">37</div><div class="day-info"><div class="day-type-label">📖 多選閱讀日</div><div class="day-meta">Week 6 · 社會文化閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">In many modern cities, people from different cultural backgrounds live and work side by side. While this <em>diversity</em> brings richness and creativity, it also requires a spirit of <em>tolerance</em> and open communication. Learning about other cultures helps reduce <em>prejudice</em> and break down harmful <em>stereotypes</em>. Communities that embrace <em>equality</em> and respect for all traditions tend to be more peaceful and united.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 多選題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> 根據文章，多元文化社會的好處是？（選兩項）</p>
+        <div class="options"><div class="option">(A) 造成更多衝突</div><div class="option">(B) 帶來豐富性與創意</div><div class="option">(C) 促進開放溝通</div><div class="option">(D) 減少城市人口</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ B, C — 文章明確提到 richness and creativity 以及 open communication。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> 文章認為哪些做法有助於減少偏見？（選兩項）</p>
+        <div class="options"><div class="option">(A) 避免接觸其他文化</div><div class="option">(B) 學習其他文化</div><div class="option">(C) 尊重所有傳統</div><div class="option">(D) 維持刻板印象</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ B, C — "Learning about other cultures" 和 "respect for all traditions" 是文章提到的方法。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day38">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">38</div><div class="day-info"><div class="day-type-label">✏️ 文法改錯日</div><div class="day-meta">Week 6 · 被動語態 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔧 文法重點：被動語態 (Passive Voice)</div>
+      <div class="grammar-box">
+        <strong>主動：</strong> People celebrate this tradition every year.<br>
+        <strong>被動：</strong> This tradition <u>is celebrated</u> every year.<br><br>
+        <strong>結構：</strong> be動詞 + 過去分詞 (V-ed/p.p.)<br>
+        <strong>表示時間：</strong> 現在式用 is/are，過去式用 was/were
+      </div>
+      <div class="sec-title" style="margin-top:12px">🔍 找出並改正錯誤</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> Equality should promotes in every school.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Equality should <u>be promoted</u> in every school. （情態動詞後用 be + p.p.）</div></details>
+        <p><strong>2.</strong> Prejudice are often caused by misunderstanding.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Prejudice <u>is</u> often caused by misunderstanding. （prejudice 是單數不可數名詞，用 is）</div></details>
+        <p><strong>3.</strong> The tradition was celebrate for hundreds of years.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ The tradition was <u>celebrated</u> for hundreds of years. （be + 過去分詞，不是原形）</div></details>
+        <p><strong>4.</strong> Stereotypes should be avoid at all costs.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Stereotypes should be <u>avoided</u> at all costs. （過去分詞形式）</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day39">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">39</div><div class="day-info"><div class="day-type-label">🔄 複習＋新字日</div><div class="day-meta">Week 6 · 複習前5字＋新5字 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 快速複習 Day 36 單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">多元性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">平等</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">傳統</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">刻板印象</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">偏見</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">diversity / equality / tradition / stereotype / prejudice</div></details>
+      <div class="sec-title" style="margin-top:14px">✨ 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">tolerance</div><div class="vocab-pos">n.</div><div class="vocab-cn">包容；寬容</div><div class="vocab-sent">Tolerance is key to a peaceful society.</div><div class="vocab-sent-cn">包容是和平社會的關鍵。</div></div>
+        <div class="vocab-card"><div class="vocab-en">identity</div><div class="vocab-pos">n.</div><div class="vocab-cn">身分；認同</div><div class="vocab-sent">Cultural identity shapes who we are.</div><div class="vocab-sent-cn">文化認同塑造了我們的樣子。</div></div>
+        <div class="vocab-card"><div class="vocab-en">community</div><div class="vocab-pos">n.</div><div class="vocab-cn">社群；社區</div><div class="vocab-sent">The local community organized a festival.</div><div class="vocab-sent-cn">當地社區舉辦了一場節慶活動。</div></div>
+        <div class="vocab-card"><div class="vocab-en">perspective</div><div class="vocab-pos">n.</div><div class="vocab-cn">觀點；角度</div><div class="vocab-sent">Try to see things from a different perspective.</div><div class="vocab-sent-cn">試著從不同的角度看事情。</div></div>
+        <div class="vocab-card"><div class="vocab-en">awareness</div><div class="vocab-pos">n.</div><div class="vocab-cn">意識；覺察</div><div class="vocab-sent">Raising awareness is the first step to change.</div><div class="vocab-sent-cn">提升意識是改變的第一步。</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day40">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">40</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 6 · 社會閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">Building a strong <em>community</em> requires more than just sharing space — it requires a shared <em>identity</em> and mutual respect. People with different <em>perspectives</em> can still work together when there is <em>tolerance</em> and a willingness to listen. Public <em>awareness</em> campaigns have helped many societies address issues of inequality and discrimination, proving that small actions can lead to big changes.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 閱讀理解題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> What does "building a strong community" require according to the text?</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ A shared identity and mutual respect — 文章說需要的不只是共享空間，還要有共同認同和相互尊重。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> "Small actions can lead to big changes" 這句話在文章中呼應了什麼？</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ 公眾意識活動（awareness campaigns）—— 即使是提升意識的小行動，也能解決不平等與歧視問題。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day41">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">41</div><div class="day-info"><div class="day-type-label">✍️ 翻譯練習日</div><div class="day-meta">Week 6 · 中翻英練習 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🖊️ 學測翻譯練習</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> 在這個多元的社會裡，包容與尊重是非常重要的。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">In this diverse society, tolerance and respect are very important.</div></details>
+        <p><strong>2.</strong> 每個人都應該有機會表達自己的觀點，不受偏見影響。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Everyone should have the chance to express their perspective without being affected by prejudice.</div></details>
+        <p><strong>3.</strong> 提升大眾對文化多元性的意識，有助於建立更和諧的社區。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Raising public awareness of cultural diversity helps build a more harmonious community.</div></details>
+      </div>
+      <div class="highlight"><strong>📝 翻譯小提醒：</strong>"raise awareness" 是固定搭配，不說 "increase awareness" 也可，但 "raise" 更常見於學測。</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day42">
+  <div class="day-card">
+    <div class="day-header w6"><div class="day-num">42</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 6 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 6 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">多元性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">平等</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">傳統</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">刻板印象</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">偏見</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">包容</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">身分認同</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">社區</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">觀點</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">意識</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">diversity / equality / tradition / stereotype / prejudice / tolerance / identity / community / perspective / awareness</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#ffebee,#ffcdd2);border-left-color:#e53935;margin-top:12px"><strong style="color:#b71c1c">🌟 挑戰：</strong>用 "Without tolerance, …" 造一個關於社會文化的句子！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WEEK 7: 運動休閒類 Days 43-49 ===== -->
+<div class="day-section" id="day43">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">43</div><div class="day-info"><div class="day-type-label">📚 單字日</div><div class="day-meta">Week 7 · 運動休閒類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🏃 本週主題：運動與休閒</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">endurance</div><div class="vocab-pos">n.</div><div class="vocab-cn">耐力；持久力</div><div class="vocab-sent">Long-distance running builds endurance.</div><div class="vocab-sent-cn">長距離跑步能培養耐力。</div></div>
+        <div class="vocab-card"><div class="vocab-en">competitive</div><div class="vocab-pos">adj.</div><div class="vocab-cn">競爭的；好勝的</div><div class="vocab-sent">She has a competitive spirit in every sport.</div><div class="vocab-sent-cn">她在每項運動中都有競爭精神。</div></div>
+        <div class="vocab-card"><div class="vocab-en">coordination</div><div class="vocab-pos">n.</div><div class="vocab-cn">協調能力</div><div class="vocab-sent">Good coordination is essential for gymnastics.</div><div class="vocab-sent-cn">良好的協調能力對體操至關重要。</div></div>
+        <div class="vocab-card"><div class="vocab-en">motivation</div><div class="vocab-pos">n.</div><div class="vocab-cn">動力；激勵</div><div class="vocab-sent">Winning a medal gave her strong motivation.</div><div class="vocab-sent-cn">贏得獎牌給了她強烈的動力。</div></div>
+        <div class="vocab-card"><div class="vocab-en">perseverance</div><div class="vocab-pos">n.</div><div class="vocab-cn">堅持不懈；毅力</div><div class="vocab-sent">Success in sports requires perseverance.</div><div class="vocab-sent-cn">體育上的成功需要堅持不懈。</div></div>
+      </div>
+      <div class="highlight"><strong>💡 記憶小技巧：</strong>perseverance 可拆成 persevere（堅持）+ ance（名詞後綴），記住動詞 persevere 就能推出名詞！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day44">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">44</div><div class="day-info"><div class="day-type-label">📖 多選閱讀日</div><div class="day-meta">Week 7 · 運動閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">Sports are more than just games — they are lessons in life. Athletes must develop <em>endurance</em> to push through pain, and <em>perseverance</em> to keep going after failure. A <em>competitive</em> mindset drives people to improve, while good <em>coordination</em> between teammates ensures success. Above all, <em>motivation</em> is the engine that keeps athletes training day after day, even when progress seems slow.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 多選題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> 文章認為運動員需要哪些特質？（選三項）</p>
+        <div class="options"><div class="option">(A) 耐力</div><div class="option">(B) 毅力</div><div class="option">(C) 財富</div><div class="option">(D) 動力</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ A, B, D — 文章提到 endurance, perseverance, motivation 三個特質。財富未提及。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> 文章中 "the engine that keeps athletes training" 比喻的是什麼？</p>
+        <div class="options"><div class="option">(A) coordination</div><div class="option">(B) perseverance</div><div class="option">(C) motivation</div><div class="option">(D) endurance</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ C — motivation 被比喻為驅動運動員不斷訓練的「引擎」。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day45">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">45</div><div class="day-info"><div class="day-type-label">✏️ 文法改錯日</div><div class="day-meta">Week 7 · 比較級與最高級 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔧 文法重點：比較級與最高級</div>
+      <div class="grammar-box">
+        <strong>比較級：</strong> adj. + -er / more + adj. → She runs <u>faster</u> than me.<br>
+        <strong>最高級：</strong> the + adj. + -est / the most + adj. → He is <u>the most competitive</u> player.<br><br>
+        <strong>注意：</strong>兩音節以上的形容詞通常用 more/most（如 competitive, motivated）
+      </div>
+      <div class="sec-title" style="margin-top:12px">🔍 找出並改正錯誤</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> She is more taller than her sister.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ She is <u>taller</u> than her sister. （不能同時用 more 和 -er）</div></details>
+        <p><strong>2.</strong> He is the most fast runner on the team.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ He is the <u>fastest</u> runner on the team. （fast 是單音節，用 -est）</div></details>
+        <p><strong>3.</strong> This exercise requires more coordination as that one.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ This exercise requires more coordination <u>than</u> that one. （比較級後用 than，不用 as）</div></details>
+        <p><strong>4.</strong> Her endurance is the most strong of all athletes.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Her endurance is the <u>strongest</u> of all athletes. （strong 是單音節形容詞，用 -est）</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day46">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">46</div><div class="day-info"><div class="day-type-label">🔄 複習＋新字日</div><div class="day-meta">Week 7 · 複習前5字＋新5字 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 快速複習 Day 43 單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">耐力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">競爭的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">協調能力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">動力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">堅持不懈</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">endurance / competitive / coordination / motivation / perseverance</div></details>
+      <div class="sec-title" style="margin-top:14px">✨ 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">recreation</div><div class="vocab-pos">n.</div><div class="vocab-cn">休閒活動；娛樂</div><div class="vocab-sent">Hiking is a popular form of recreation.</div><div class="vocab-sent-cn">健行是一種受歡迎的休閒活動。</div></div>
+        <div class="vocab-card"><div class="vocab-en">dedication</div><div class="vocab-pos">n.</div><div class="vocab-cn">奉獻；投入</div><div class="vocab-sent">Her dedication to training paid off.</div><div class="vocab-sent-cn">她對訓練的投入終於有了回報。</div></div>
+        <div class="vocab-card"><div class="vocab-en">amateur</div><div class="vocab-pos">n./adj.</div><div class="vocab-cn">業餘（選手）</div><div class="vocab-sent">He started as an amateur but became a professional.</div><div class="vocab-sent-cn">他從業餘選手開始，後來成為職業選手。</div></div>
+        <div class="vocab-card"><div class="vocab-en">achievement</div><div class="vocab-pos">n.</div><div class="vocab-cn">成就；達成</div><div class="vocab-sent">Winning the championship was her greatest achievement.</div><div class="vocab-sent-cn">贏得冠軍是她最大的成就。</div></div>
+        <div class="vocab-card"><div class="vocab-en">strategy</div><div class="vocab-pos">n.</div><div class="vocab-cn">策略；戰略</div><div class="vocab-sent">The coach explained the strategy before the game.</div><div class="vocab-sent-cn">教練在比賽前說明了策略。</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day47">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">47</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 7 · 運動休閒閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">Whether you are a professional athlete or an <em>amateur</em>, sport offers something valuable for everyone. <em>Recreation</em> through sport improves both physical and mental health. Behind every great <em>achievement</em> lies months of <em>dedication</em> and careful <em>strategy</em>. Athletes who lose a match are often the ones who learn the most — because setbacks teach lessons that victories cannot.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 閱讀理解題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> According to the passage, what does sport offer for everyone?</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Something valuable — 文章說無論是職業選手還是業餘者，運動都能帶來有價值的東西。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> 為什麼文章認為「輸球的選手往往學到最多」？</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ 因為挫折所帶來的教訓，是勝利無法給予的（setbacks teach lessons that victories cannot）。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day48">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">48</div><div class="day-info"><div class="day-type-label">✍️ 翻譯練習日</div><div class="day-meta">Week 7 · 中翻英練習 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🖊️ 學測翻譯練習</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> 運動需要策略、耐力和團隊合作。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Sports require strategy, endurance, and teamwork.</div></details>
+        <p><strong>2.</strong> 她對籃球的奉獻精神幫助她克服了許多困難。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Her dedication to basketball helped her overcome many difficulties.</div></details>
+        <p><strong>3.</strong> 即使是業餘運動員，也能透過持之以恆達到驚人的成就。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Even amateur athletes can achieve remarkable achievements through perseverance.</div></details>
+      </div>
+      <div class="highlight"><strong>📝 翻譯小提醒：</strong>"overcome" 是及物動詞，直接接受詞，不需要加 "with" 或 "from"（overcome difficulties ✅ / overcome with difficulties ❌）。</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day49">
+  <div class="day-card">
+    <div class="day-header w7"><div class="day-num">49</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 7 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 7 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">耐力</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">競爭的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">協調能力</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">動力</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">堅持不懈</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">休閒活動</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">奉獻</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">業餘的</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">成就</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">策略</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">endurance / competitive / coordination / motivation / perseverance / recreation / dedication / amateur / achievement / strategy</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-left-color:#ef6c00;margin-top:12px"><strong style="color:#bf360c">🌟 挑戰：</strong>用 "Through dedication and…, …" 造一個關於運動成就的句子！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WEEK 8: 心理成長類 Days 50-56 ===== -->
+<div class="day-section" id="day50">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">50</div><div class="day-info"><div class="day-type-label">📚 單字日</div><div class="day-meta">Week 8 · 心理成長類 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🧠 本週主題：心理與成長</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">resilience</div><div class="vocab-pos">n.</div><div class="vocab-cn">韌性；恢復力</div><div class="vocab-sent">Resilience helps us bounce back from failure.</div><div class="vocab-sent-cn">韌性幫助我們從失敗中恢復。</div></div>
+        <div class="vocab-card"><div class="vocab-en">confidence</div><div class="vocab-pos">n.</div><div class="vocab-cn">自信；信心</div><div class="vocab-sent">Practice builds confidence over time.</div><div class="vocab-sent-cn">練習能隨時間培養自信。</div></div>
+        <div class="vocab-card"><div class="vocab-en">anxiety</div><div class="vocab-pos">n.</div><div class="vocab-cn">焦慮；憂慮</div><div class="vocab-sent">Many students feel anxiety before exams.</div><div class="vocab-sent-cn">許多學生在考試前感到焦慮。</div></div>
+        <div class="vocab-card"><div class="vocab-en">mindset</div><div class="vocab-pos">n.</div><div class="vocab-cn">心態；思維方式</div><div class="vocab-sent">A growth mindset leads to greater success.</div><div class="vocab-sent-cn">成長型心態能帶來更大的成功。</div></div>
+        <div class="vocab-card"><div class="vocab-en">overcome</div><div class="vocab-pos">v.</div><div class="vocab-cn">克服；戰勝</div><div class="vocab-sent">She worked hard to overcome her fear of speaking.</div><div class="vocab-sent-cn">她努力克服了對公開演講的恐懼。</div></div>
+      </div>
+      <div class="highlight"><strong>💡 記憶小技巧：</strong>resilience = resilient（adj. 有韌性的）+ ce，記住形容詞 resilient 就能延伸出名詞！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day51">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">51</div><div class="day-info"><div class="day-type-label">📖 多選閱讀日</div><div class="day-meta">Week 8 · 心理成長閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">Growing up is never easy. Many young people experience <em>anxiety</em> when facing challenges, but the key lies in developing <em>resilience</em> — the ability to recover and move forward. A positive <em>mindset</em> allows us to see setbacks as opportunities to learn rather than reasons to give up. With enough practice and support, even the shyest person can build <em>confidence</em> and <em>overcome</em> their greatest fears.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 多選題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> 文章提到哪些有助於成長的特質？（選兩項）</p>
+        <div class="options"><div class="option">(A) 焦慮</div><div class="option">(B) 韌性</div><div class="option">(C) 積極心態</div><div class="option">(D) 逃避問題</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ B, C — resilience 和 positive mindset 是文章認為有助於成長的特質。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> "See setbacks as opportunities to learn" 這句話的意思是？</p>
+        <div class="options"><div class="option">(A) 把挫折當作放棄的理由</div><div class="option">(B) 把挫折當作學習機會</div><div class="option">(C) 忽視所有挫折</div><div class="option">(D) 與他人比較</div></div>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ B — setback（挫折）被正向看待為學習的機會，而非放棄的理由。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day52">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">52</div><div class="day-info"><div class="day-type-label">✏️ 文法改錯日</div><div class="day-meta">Week 8 · 連接詞與轉折語 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔧 文法重點：連接詞與轉折語</div>
+      <div class="grammar-box">
+        <strong>對比：</strong> although / even though / however / despite<br>
+        <strong>例：</strong> Although she felt anxious, she gave the speech bravely.<br>
+        <strong>注意：</strong> despite 後接名詞/V-ing，不接子句（despite the fact that... ✅）<br>
+        <strong>例：</strong> Despite her anxiety, she performed well. ✅<br>
+        <strong>錯誤：</strong> Despite she was anxious, she performed well. ❌
+      </div>
+      <div class="sec-title" style="margin-top:12px">🔍 找出並改正錯誤</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> Despite she felt nervous, she overcame her fear.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ <u>Although/Even though</u> she felt nervous, she overcame her fear. （despite 後不接子句）</div></details>
+        <p><strong>2.</strong> He has a good mindset, however he still struggles with anxiety.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ He has a good mindset<u>; however,</u> he still struggles with anxiety. （however 連接兩個獨立句，前面要用分號或句號）</div></details>
+        <p><strong>3.</strong> Although building resilience is hard, but it is worth it.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ Although building resilience is hard, it is worth it. （although 和 but 不能同時使用，去掉 but）</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day53">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">53</div><div class="day-info"><div class="day-type-label">🔄 複習＋新字日</div><div class="day-meta">Week 8 · 複習前5字＋新5字 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 快速複習 Day 50 單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">韌性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">自信</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">焦慮</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">心態</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">克服</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">resilience / confidence / anxiety / mindset / overcome</div></details>
+      <div class="sec-title" style="margin-top:14px">✨ 新增 5 個單字</div>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-en">challenge</div><div class="vocab-pos">n./v.</div><div class="vocab-cn">挑戰；質疑</div><div class="vocab-sent">Every challenge is a chance to grow stronger.</div><div class="vocab-sent-cn">每個挑戰都是變得更強的機會。</div></div>
+        <div class="vocab-card"><div class="vocab-en">perspective</div><div class="vocab-pos">n.</div><div class="vocab-cn">觀點；視角</div><div class="vocab-sent">Changing your perspective can change your life.</div><div class="vocab-sent-cn">改變你的觀點可以改變你的人生。</div></div>
+        <div class="vocab-card"><div class="vocab-en">growth</div><div class="vocab-pos">n.</div><div class="vocab-cn">成長；成長過程</div><div class="vocab-sent">Personal growth often comes from difficult experiences.</div><div class="vocab-sent-cn">個人成長往往來自困難的經歷。</div></div>
+        <div class="vocab-card"><div class="vocab-en">setback</div><div class="vocab-pos">n.</div><div class="vocab-cn">挫折；倒退</div><div class="vocab-sent">A setback is not the end — it is a new beginning.</div><div class="vocab-sent-cn">挫折不是終點，而是新的開始。</div></div>
+        <div class="vocab-card"><div class="vocab-en">inspiration</div><div class="vocab-pos">n.</div><div class="vocab-cn">靈感；激勵</div><div class="vocab-sent">Her story was an inspiration to everyone.</div><div class="vocab-sent-cn">她的故事激勵了所有人。</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day54">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">54</div><div class="day-info"><div class="day-type-label">📖 短文閱讀日</div><div class="day-meta">Week 8 · 成長閱讀 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">📰 閱讀短文</div>
+      <div class="reading-block">Every person faces <em>setbacks</em> at some point in life. What matters is not the failure itself, but the <em>growth</em> that comes from facing it. A person who draws <em>inspiration</em> from their struggles often develops a stronger sense of self. By shifting your <em>perspective</em> and viewing difficulties as <em>challenges</em> to conquer, you transform obstacles into stepping stones toward a better version of yourself.</div>
+      <div class="sec-title" style="margin-top:14px">❓ 閱讀理解題</div>
+      <div class="quiz-block">
+        <p><strong>Q1.</strong> According to the passage, what matters most when facing failure?</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ The growth that comes from facing it — 重點不在於失敗本身，而是面對失敗後帶來的成長。</div></details>
+        <p style="margin-top:10px"><strong>Q2.</strong> "Transform obstacles into stepping stones" 這個比喻想表達什麼？</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ 將阻礙（obstacles）轉化為前進的墊腳石（stepping stones）——意思是把困難化為成功的助力，而非障礙。</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day55">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">55</div><div class="day-info"><div class="day-type-label">✍️ 翻譯練習日</div><div class="day-meta">Week 8 · 中翻英練習 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🖊️ 學測翻譯練習</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> 培養韌性能幫助我們在面對挫折時不輕易放棄。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Developing resilience helps us not give up easily when facing setbacks.</div></details>
+        <p><strong>2.</strong> 擁有成長型心態的人，往往把挑戰視為學習的機會。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">People with a growth mindset tend to view challenges as opportunities to learn.</div></details>
+        <p><strong>3.</strong> 她克服了焦慮，成為班上最有自信的演講者。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">She overcame her anxiety and became the most confident speaker in her class.</div></details>
+      </div>
+      <div class="highlight"><strong>📝 翻譯小提醒：</strong>"tend to + V" 表「傾向於做某事」，是學測高頻表達，比 "usually" 更正式且更有分量！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day56">
+  <div class="day-card">
+    <div class="day-header w8"><div class="day-num">56</div><div class="day-info"><div class="day-type-label">🌿 輕鬆複習日</div><div class="day-meta">Week 8 · 全週複習 · 15 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🔁 Week 8 全部 10 個單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">韌性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">自信</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">焦慮</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">心態</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">克服</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">挑戰</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">觀點</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">成長</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">挫折</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">靈感</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看全部答案 <span class="arrow">▼</span></summary><div class="ans-body">resilience / confidence / anxiety / mindset / overcome / challenge / perspective / growth / setback / inspiration</div></details>
+      <div class="highlight" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-left-color:#3949ab;margin-top:12px"><strong style="color:#1a237e">🌟 挑戰：</strong>用 "Although I faced many setbacks, …" 造一個展現成長的句子！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SPECIAL DAYS 57-60 ===== -->
+<div class="day-section" id="day57">
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">57</div><div class="day-info"><div class="day-type-label">⭐ 第一個月總複習</div><div class="day-meta">Special Day · Days 1–28 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🗓️ 第一個月大回顧（Week 1–4）</div>
+      <div class="highlight" style="background:linear-gradient(135deg,#fff9c4,#fff176);border-left-color:#f9a825;margin-bottom:14px"><strong style="color:#f57f17">📋 複習範圍：</strong>Week 1 日常生活 · Week 2 校園學習 · Week 3 健康飲食 · Week 4 科技媒體</div>
+      <div class="sec-title">🔁 主題單字快速測驗</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">行程表</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">課程</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">肥胖</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">演算法</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">優先順序</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">專注</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">代謝</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">隱私</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">效率高的</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">紀律</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">schedule / curriculum / obesity / algorithm / priority / concentrate / metabolism / privacy / efficient / discipline</div></details>
+      <div class="sec-title" style="margin-top:14px">📝 重點文法回顧</div>
+      <div class="grammar-box">
+        ✅ <strong>現在完成式</strong>：have/has + p.p.（表示過去影響現在）<br>
+        ✅ <strong>名詞子句</strong>：I believe that… / It is clear that…<br>
+        ✅ <strong>分詞構句</strong>：Having studied hard, she passed the exam.<br>
+        ✅ <strong>被動語態</strong>：be + p.p.（情態動詞後：modal + be + p.p.）
+      </div>
+      <div class="highlight"><strong>🎯 今天目標：</strong>把這四週的單字表翻出來，每個主題各挑 3 個最不確定的單字，重複造句練習！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day58">
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">58</div><div class="day-info"><div class="day-type-label">⭐ 第二個月總複習</div><div class="day-meta">Special Day · Days 29–56 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🗓️ 第二個月大回顧（Week 5–8）</div>
+      <div class="highlight" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-left-color:#388e3c;margin-bottom:14px"><strong style="color:#1b5e20">📋 複習範圍：</strong>Week 5 環境自然 · Week 6 社會文化 · Week 7 運動休閒 · Week 8 心理成長</div>
+      <div class="sec-title">🔁 主題單字快速測驗</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">永續性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">多元性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">耐力</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">韌性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">生物多樣性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">包容</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">堅持不懈</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">心態</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">生態系統</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">靈感</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">sustainability / diversity / endurance / resilience / biodiversity / tolerance / perseverance / mindset / ecosystem / inspiration</div></details>
+      <div class="sec-title" style="margin-top:14px">📝 重點文法回顧</div>
+      <div class="grammar-box">
+        ✅ <strong>條件句</strong>：If + 現在式，will + V（第一類假設）<br>
+        ✅ <strong>比較級最高級</strong>：-er / more…than；the -est / the most…<br>
+        ✅ <strong>對比連接詞</strong>：although…（不接 but）；despite + N/V-ing<br>
+        ✅ <strong>however</strong> 接兩個獨立句時，前面用分號（；however,）
+      </div>
+      <div class="highlight"><strong>🎯 今天目標：</strong>把第 5–8 週所有翻譯題重新做一遍，看看有沒有進步！</div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day59">
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">59</div><div class="day-info"><div class="day-type-label">🏆 模擬挑戰日</div><div class="day-meta">Special Day · 全科模擬練習 · 20 分鐘</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🎯 綜合模擬練習</div>
+      <div class="highlight" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-left-color:#c2185b;margin-bottom:14px"><strong style="color:#880e4f">⚠️ 挑戰規則：</strong>今天計時作答，每題控制在 2 分鐘內，模擬學測節奏！</div>
+
+      <div class="sec-title">Part A：字彙選擇</div>
+      <div class="quiz-block">
+        <p><strong>1.</strong> The government launched a campaign to raise public ________ about climate change.<br>(A) strategy &nbsp; (B) awareness &nbsp; (C) endurance &nbsp; (D) stereotype</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ (B) awareness — raise awareness（提升意識）是固定搭配。</div></details>
+        <p><strong>2.</strong> Her ________ allowed her to recover quickly after the injury.<br>(A) prejudice &nbsp; (B) algorithm &nbsp; (C) resilience &nbsp; (D) emission</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ (C) resilience — 韌性/恢復力，符合「受傷後快速恢復」的語境。</div></details>
+      </div>
+
+      <div class="sec-title" style="margin-top:14px">Part B：文法改錯</div>
+      <div class="quiz-block">
+        <p><strong>3.</strong> Despite the team worked hard, they lost the game.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ <u>Although/Even though</u> the team worked hard, they lost the game. （despite 後不接子句）</div></details>
+        <p><strong>4.</strong> She is more smarter than her classmates in math.</p>
+        <details class="ans t"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">✅ She is <u>smarter</u> than her classmates in math. （smart 是單音節，不用 more）</div></details>
+      </div>
+
+      <div class="sec-title" style="margin-top:14px">Part C：翻譯挑戰</div>
+      <div class="quiz-block">
+        <p><strong>5.</strong> 透過堅持不懈和正確的學習策略，她在學測中取得了優異的成績。</p>
+        <details class="ans t"><summary>查看參考答案 <span class="arrow">▼</span></summary><div class="ans-body">Through perseverance and the right learning strategy, she achieved excellent results on the college entrance exam.</div></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-section" id="day60">
+  <div class="day-card">
+    <div class="day-header sp"><div class="day-num">60</div><div class="day-info"><div class="day-type-label">🎉 暑假結業日</div><div class="day-meta">Special Day · 完成暑假計劃 · 輕鬆回顧</div></div></div>
+    <div class="day-body">
+      <div class="sec-title">🌟 恭喜你完成了 60 天的英文學習之旅！</div>
+      <div class="highlight" style="background:linear-gradient(135deg,#fff9c4,#ffe57f);border-left-color:#fdd835;font-size:1.05em;text-align:center;padding:18px">
+        🎊 <strong>你這個暑假學習了：</strong><br><br>
+        📖 <strong>80個主題單字</strong>（8大主題，每週10個）<br>
+        ✏️ <strong>8種文法重點</strong>（從完成式到連接詞）<br>
+        📰 <strong>16篇閱讀短文</strong>（涵蓋多選與理解題）<br>
+        🖊️ <strong>24句中翻英練習</strong>（學測翻譯實戰）
+      </div>
+      <div class="sec-title" style="margin-top:14px">💌 給 Renee 的話</div>
+      <div class="highlight" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-left-color:#e91e63;font-size:1em">
+        你願意在暑假花時間練習英文，這本身就已經超越了很多同學。<br><br>
+        英文的進步不是一夜之間發生的，但每天 15–20 分鐘的累積，會在你意想不到的時候爆發出來。<br><br>
+        帶著這個暑假練就的字彙和語感，高二的英文課你一定會更有自信！<br><br>
+        <strong>✨ 記得：resilience（韌性）+ perseverance（毅力）= 你的秘密武器！</strong>
+      </div>
+      <div class="sec-title" style="margin-top:14px">🔁 最後 10 個最重要的學測單字</div>
+      <div class="review-grid">
+        <div class="review-item"><span class="review-cn">克服</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">堅持不懈</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">韌性</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">永續性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">意識</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">偏見</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">演算法</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">生物多樣性</span><span class="review-blank">___?___</span></div>
+        <div class="review-item"><span class="review-cn">觀點</span><span class="review-blank">___?___</span></div><div class="review-item"><span class="review-cn">成就</span><span class="review-blank">___?___</span></div>
+      </div>
+      <details class="ans t" style="margin-top:9px"><summary>查看答案 <span class="arrow">▼</span></summary><div class="ans-body">overcome / perseverance / resilience / sustainability / awareness / prejudice / algorithm / biodiversity / perspective / achievement</div></details>
+    </div>
+  </div>
+</div>
+
+    </div><!-- end right-content -->
+  </div><!-- end layout -->
+
+  <!-- ===== BOTTOM LINK BAR ===== -->
+  <div class="link-bar">
+    <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <div class="link-icon">🎓</div>
+      <div class="link-label">錯中學 ECHO 計劃</div>
+      <div class="link-desc">七月英文課程開始報名</div>
+    </a>
+    <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+      <div class="link-icon">📊</div>
+      <div class="link-label">學生分析</div>
+      <div class="link-desc">了解你的英文學習狀況</div>
+    </a>
+    <a class="link-card" href="https://line.me/ti/p/linwayet" target="_blank">
+      <div class="link-icon">💬</div>
+      <div class="link-label">LINE：linwayet</div>
+      <div class="link-desc">有問題直接找老師</div>
+    </a>
+  </div>
+
+  <div style="text-align:center;padding:18px 0 32px;color:#bf8060;font-size:0.85em">
+    © 2025 林威英文 · Renee 的 60 天暑假英文計劃 · 加油！💪
+  </div>
+
+</div><!-- end wrapper -->
+
+<script>
+function showDay(n) {
+  document.querySelectorAll('.day-section').forEach(function(s) {
+    s.classList.remove('active');
+  });
+  document.querySelectorAll('.day-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  var target = document.getElementById('day' + n);
+  if (target) {
+    target.classList.add('active');
+  }
+  var btn = document.querySelector('.day-btn[onclick="showDay(' + n + ')"]');
+  if (btn) {
+    btn.classList.add('active');
+  }
+  if (window.innerWidth <= 768) {
+    var rc = document.querySelector('.right-content');
+    if (rc) rc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+// Show Day 1 on load
+showDay(1);
+</script>
+</body>
+</html>
