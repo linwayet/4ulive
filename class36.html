@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林威英文｜國三升高一暑期銜接 12 週課程</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "BIZ UDPGothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #fff8ef 0%, #ffeed6 50%, #ffe0c2 100%);
+    color: #4a3520;
+    line-height: 1.75;
+    padding: 12px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fffaf2;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(180, 100, 50, 0.12);
+    overflow: hidden;
+  }
+
+  /* ===== 連結卡區 ===== */
+  .link-section {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe5c4 100%);
+    padding: 18px 14px;
+    border-bottom: 3px solid #e8b885;
+  }
+
+  .link-section.bottom {
+    border-bottom: none;
+    border-top: 3px solid #e8b885;
+  }
+
+  .link-section-title {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #8b4513;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  .link-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .link-card {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(180, 100, 50, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 72px;
+  }
+
+  .link-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(180, 100, 50, 0.15);
+  }
+
+  .link-card.course1 {
+    background: linear-gradient(135deg, #ff9558 0%, #ff7733 100%);
+  }
+
+  .link-card.course2 {
+    background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+  }
+
+  .link-card.line {
+    background: linear-gradient(135deg, #06c755 0%, #00b14f 100%);
+  }
+
+  .link-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .link-card-desc {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    line-height: 1.4;
+  }
+
+  /* ===== 主標題 ===== */
+  .main-header {
+    background: linear-gradient(135deg, #d4691a 0%, #b8541e 100%);
+    color: #fff;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .brand {
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    opacity: 0.95;
+  }
+
+  .main-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  /* ===== 基本資訊區 ===== */
+  .info-section {
+    padding: 20px 16px;
+    background: #fffaf2;
+  }
+
+  .info-section h2 {
+    color: #b8541e;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #ffcb8e;
+  }
+
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .info-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0d8b8;
+    vertical-align: top;
+  }
+
+  .info-table td:first-child {
+    color: #8b4513;
+    font-weight: 600;
+    width: 35%;
+    background: #fff3e0;
+  }
+
+  /* ===== 策略框 ===== */
+  .strategy-box {
+    margin: 20px 16px;
+    padding: 18px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe8d0 100%);
+    border-left: 5px solid #d4691a;
+    border-radius: 12px;
+  }
+
+  .strategy-box h3 {
+    color: #b8541e;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .strategy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .strategy-table th, .strategy-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #f4d8b0;
+  }
+
+  .strategy-table th {
+    background: #d4691a;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ===== 30 分鐘結構 ===== */
+  .schedule-structure {
+    margin: 20px 16px;
+    padding: 18px;
+    background: #fff8ed;
+    border-radius: 12px;
+    border: 2px solid #ffcb8e;
+  }
+
+  .schedule-structure h3 {
+    color: #b8541e;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .structure-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(180, 100, 50, 0.08);
+  }
+
+  .structure-time {
+    background: linear-gradient(135deg, #ff9558 0%, #ff7733 100%);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 75px;
+    text-align: center;
+    margin-right: 12px;
+  }
+
+  .structure-content {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+
+  /* ===== 階段區塊 ===== */
+  .stage {
+    margin: 24px 0;
+    padding: 0;
+  }
+
+  .stage-header {
+    padding: 20px 18px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .stage-1 .stage-header {
+    background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+  }
+
+  .stage-2 .stage-header {
+    background: linear-gradient(135deg, #e8845a 0%, #c75d3a 100%);
+  }
+
+  .stage-3 .stage-header {
+    background: linear-gradient(135deg, #d4691a 0%, #a04510 100%);
+  }
+
+  .stage-emoji {
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+
+  .stage-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .stage-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.95;
+  }
+
+  .stage-goal {
+    background: #fff3e0;
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6a3a1a;
+    border-bottom: 2px dashed #e8b885;
+    font-style: italic;
+  }
+
+  /* ===== 週次區塊 ===== */
+  .week {
+    margin: 14px 14px 20px;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(180, 100, 50, 0.1);
+  }
+
+  .week-header {
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #ffcb8e 0%, #ffb574 100%);
+    color: #6a3a1a;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  /* ===== 課堂卡片 ===== */
+  .lesson {
+    padding: 14px 16px;
+    border-bottom: 1px solid #ffeed6;
+  }
+
+  .lesson:last-child {
+    border-bottom: none;
+  }
+
+  .lesson-title {
+    color: #b8541e;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px dotted #ffcb8e;
+  }
+
+  .lesson-item {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 8px;
+    border-left: 3px solid #ffcb8e;
+    padding: 6px 0 6px 10px;
+  }
+
+  .lesson-label {
+    color: #d4691a;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .lesson-item.highlight {
+    background: #fff3e0;
+    border-left-color: #d4691a;
+    border-radius: 0 6px 6px 0;
+    padding: 8px 10px;
+  }
+
+  /* ===== 段考卡片 ===== */
+  .exam-card {
+    background: linear-gradient(135deg, #fff0d4 0%, #ffe0a8 100%);
+    border-left: 5px solid #d4691a !important;
+    margin: 14px 16px !important;
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  .exam-card .lesson-title {
+    color: #a04510;
+    border-bottom-color: #e8b885;
+  }
+
+  /* ===== 結算表格 ===== */
+  .summary-section {
+    margin: 24px 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe5c4 100%);
+    border-radius: 16px;
+    border: 3px solid #ffcb8e;
+  }
+
+  .summary-section h2 {
+    color: #b8541e;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .summary-table th {
+    background: #d4691a;
+    color: #fff;
+    padding: 10px 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .summary-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #ffeed6;
+    text-align: center;
+  }
+
+  .summary-table td:first-child {
+    text-align: left;
+    color: #8b4513;
+    font-weight: 600;
+  }
+
+  .summary-table tr:last-child td {
+    background: #fff3e0;
+    font-weight: 700;
+    color: #b8541e;
+  }
+
+  /* ===== 教材對照表 ===== */
+  .material-section {
+    margin: 20px 16px;
+    padding: 18px;
+    background: #fff;
+    border-radius: 12px;
+    border: 2px solid #ffcb8e;
+  }
+
+  .material-section h2 {
+    color: #b8541e;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .material-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .material-table th, .material-table td {
+    padding: 9px 6px;
+    border-bottom: 1px solid #ffeed6;
+    text-align: left;
+  }
+
+  .material-table th {
+    background: #ffcb8e;
+    color: #6a3a1a;
+  }
+
+  /* ===== 結語 ===== */
+  .footer-note {
+    margin: 24px 16px 16px;
+    padding: 18px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe5c4 100%);
+    border-radius: 12px;
+    text-align: center;
+    color: #6a3a1a;
+    font-size: 0.95rem;
+    border: 2px dashed #d4691a;
+  }
+
+  .footer-note strong {
+    color: #b8541e;
+    font-size: 1.05rem;
+  }
+
+  /* ===== 響應式：平板以上 ===== */
+  @media (min-width: 600px) {
+    .link-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .main-title {
+      font-size: 2rem;
+    }
+    body {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ========== 頂部連結區 ========== -->
+  <div class="link-section top">
+    <div class="link-section-title">📌 林威老師七月課程 & 聯絡方式</div>
+    <div class="link-cards">
+      <a href="https://linwayet.github.io/4ulive/index.html" class="link-card course1" target="_blank">
+        <div class="link-card-title">🎯 七月｜錯中學 ECHO 計劃</div>
+        <div class="link-card-desc">系統化錯題整理＋反覆精修，讓每一次錯誤都成為前進的階梯</div>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" class="link-card course2" target="_blank">
+        <div class="link-card-title">📊 七月｜學生分析課程</div>
+        <div class="link-card-desc">個人化學習診斷，為每位學生量身打造最適合的進步路徑</div>
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" class="link-card line" target="_blank">
+        <div class="link-card-title">💬 加 LINE 直接聯絡</div>
+        <div class="link-card-desc">LINE ID：linwayet　歡迎家長與學生諮詢</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== 主標題 ========== -->
+  <div class="main-header">
+    <div class="brand">林 威 英 文</div>
+    <h1 class="main-title">國三升高一暑期銜接<br>12 週完整課程規劃</h1>
+    <div class="subtitle">會考 A 級生精修版｜每週 3 次 × 30 分鐘</div>
+  </div>
+
+  <!-- ========== 基本資訊 ========== -->
+  <div class="info-section">
+    <h2>📋 課程基本資訊</h2>
+    <table class="info-table">
+      <tr><td>學生</td><td>一位女生（國三剛考完會考）</td></tr>
+      <tr><td>期間</td><td>6 月底 ~ 9 月初（約 12 週）</td></tr>
+      <tr><td>頻率</td><td>每週 3 次，每次 30 分鐘</td></tr>
+      <tr><td>總時數</td><td>約 <strong>36 堂課 / 18 小時</strong></td></tr>
+      <tr><td>學生程度</td><td>會考 A（基礎扎實，搶先預習高一）</td></tr>
+      <tr><td>四大目標</td><td>銜接高一英文 ＋ 字根字首字尾 ＋ 閱讀素養 ＋ 會考補強</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== 核心策略 ========== -->
+  <div class="strategy-box">
+    <h3>🎯 A 級生專屬策略調整</h3>
+    <table class="strategy-table">
+      <tr><th>項目</th><th>A 級生升級配置</th></tr>
+      <tr><td>單字量</td><td>每堂 <strong>10 字</strong>＋衍生詞 4 個（總量 1,800 字）</td></tr>
+      <tr><td>閱讀篇幅</td><td>第一階段 150 字 → 第三階段 300 字</td></tr>
+      <tr><td>文法深度</td><td>會考精修＋直接加入高一新觀念</td></tr>
+      <tr><td>字根系統</td><td>累積 <strong>24 組</strong>字根字首字尾</td></tr>
+      <tr><td>錯中學</td><td>每週固定回顧會考錯題＋衍生變化</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== 30 分鐘黃金結構 ========== -->
+  <div class="schedule-structure">
+    <h3>⏱️ 30 分鐘黃金結構（A 級生密集版）</h3>
+    <div class="structure-item">
+      <div class="structure-time">0-3 分</div>
+      <div class="structure-content">📌 暖身：上堂單字快速抽考 6 字</div>
+    </div>
+    <div class="structure-item">
+      <div class="structure-time">3-10 分</div>
+      <div class="structure-content">🔑 主菜 A：字根／文法／閱讀策略擇一</div>
+    </div>
+    <div class="structure-item">
+      <div class="structure-time">10-18 分</div>
+      <div class="structure-content">📖 主菜 B：今日 10 個新單字＋衍生詞</div>
+    </div>
+    <div class="structure-item">
+      <div class="structure-time">18-25 分</div>
+      <div class="structure-content">✏️ 練習：5 題單字 + 1 篇短閱讀（3 題）</div>
+    </div>
+    <div class="structure-item">
+      <div class="structure-time">25-30 分</div>
+      <div class="structure-content">🎯 收尾：當日重點地圖＋回家作業</div>
+    </div>
+  </div>
+
+  <!-- ========== 第一階段 ========== -->
+  <div class="stage stage-1">
+    <div class="stage-header">
+      <div class="stage-emoji">🌱</div>
+      <div class="stage-title">第一階段：字根打底＋會考精修期</div>
+      <div class="stage-subtitle">第 1-4 週 ｜ 共 12 堂</div>
+    </div>
+    <div class="stage-goal">A 級生策略：不只回顧會考錯題，更要把每個錯題「立體化」成 5 題衍生變化。同時建立 8 組字根系統。</div>
+
+    <!-- 第 1 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 1 週｜拉丁字根入門 × 會考錯題精修</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 1 堂｜字根 port-（攜帶、運送）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>port, import, export, transport, support, report, portable, airport, deport, opportunity</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>port, transport, support, report, portable, deliver, package, freight, shipment, cargo</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>support → supporter / supportive / supportable / unsupported</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>複習會考第 11 題關係子句＋進階：受格關代省略</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 120 字短閱讀（運輸主題）</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>grammar-processor 製作關係子句句型分析圖</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 2 堂｜字根 dict-（說、宣告）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>dictionary, predict, contradict, dictate, dictator, prediction, verdict, indicate</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>dictionary, predict, prediction, dictate, dictator, indicate, indication, contradict, addict, addiction</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>predict → prediction / predictable / unpredictable / predictably</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>複習會考第 16 題過去進行式＋進階：過去完成式 had + p.p.</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 120 字短閱讀（科技預測主題）</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🔹 第 3 堂｜第 1 週小測＋會考錯題回顧</div>
+        <div class="lesson-item"><span class="lesson-label">小測：</span>20 題（單字 12 + 文法 6 + 短閱讀 1 篇 2 題）</div>
+        <div class="lesson-item"><span class="lesson-label">錯題回顧：</span>會考第 8、11、16 題的 5 題衍生變化</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>客製版互動測驗頁（自動計分）</div>
+      </div>
+    </div>
+
+    <!-- 第 2 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 2 週｜感官字根 × 名詞子句強化</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 4 堂｜字根 vis- / vid-（看見）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>vision, visible, visual, visit, visitor, video, evidence, evident, supervise, revise</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>vision, visible, invisible, visual, evidence, supervise, supervisor, revise, revision, advise</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>vision → visionary / visualize / visualization / envision</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>複習會考第 10 題名詞子句＋進階：whether vs if 用法差異</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 130 字短閱讀（視覺藝術主題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 5 堂｜字根 aud- / son-（聽、聲音）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>audio, audience, audition, auditor, sonic, sound, resonance, unison</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>audio, audience, audition, auditorium, sonic, sound, resonate, unison, deafen, echo</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>audience → audible / inaudible / auditory / audibly</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>間接問句 wh-/whether/if + 主詞 + 動詞</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 130 字短閱讀（音樂會主題）</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🔹 第 6 堂｜第 2 週小測＋字根綜合應用</div>
+        <div class="lesson-item"><span class="lesson-label">小測：</span>20 題（含 vis- / aud- 字根應用題）</div>
+        <div class="lesson-item"><span class="lesson-label">加碼：</span>拆字題型練習（看到陌生字能否拆解推測字義）</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>字根樹狀圖互動頁</div>
+      </div>
+    </div>
+
+    <!-- 第 3 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 3 週｜方向字根 × 附加問句強化</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 7 堂｜字首 pre- / pro-（前方、向前）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>preview, predict, prepare, prevent, prefer, professional, progress, project, produce, promote</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>preview, prevent, prevention, prefer, preference, professional, progress, promote, promotion, produce</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>produce → product / production / producer / productive / productivity</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>複習會考第 8 題附加問句＋進階：動名詞主詞、命令句的附加問句</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 140 字短閱讀（職業選擇主題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 8 堂｜字首 re- / retro-（向後、再次）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>return, review, repeat, recycle, remember, remind, replace, retrospect, retreat</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>return, review, recycle, recyclable, remind, reminder, replace, replacement, retrieve, restore</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>recycle → recyclable / recycling / unrecyclable</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>副詞 already / yet / just / ever / never 與完成式搭配</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 140 字短閱讀（環保回收主題）</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🔹 第 9 堂｜第 3 週小測＋克漏字入門</div>
+        <div class="lesson-item"><span class="lesson-label">小測：</span>20 題</div>
+        <div class="lesson-item"><span class="lesson-label">新題型：</span>1 篇克漏字（5 格）—— A 級生開始接觸高一題型</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>克漏字策略導圖</div>
+      </div>
+    </div>
+
+    <!-- 第 4 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 4 週｜否定字首 × 第一階段總驗收</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 10 堂｜字首 un- / in- / im- / dis-（否定）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>unable, unhappy, unlock, incorrect, impossible, impolite, dislike, disagree, dishonest, disappear</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>unable, unlock, unlucky, incorrect, impossible, impatient, dislike, disagree, dishonest, disappear</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>possible → impossible / possibility / impossibility / possibly</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>倍數比較級 twice / three times as...as / X times more...than（高一新觀念）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 150 字短閱讀（人物描寫主題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 11 堂｜字尾 -tion / -sion / -ment（名詞化）</div>
+        <div class="lesson-item"><span class="lesson-label">字根系列：</span>education, decision, discussion, attention, government, movement, development, achievement</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>education, decision, discussion, attention, government, movement, development, achievement, agreement, statement</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>develop → development / developer / developed / developing / underdeveloped</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>動詞名詞化規則大整理（A 級生最該掌握的轉換能力）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 150 字短閱讀（教育議題）</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🏆 第 12 堂｜第一階段段考（50 分鐘濃縮版）</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>單字 15 題（含字根應用）／文法 10 題（含會考精修＋高一新觀念）／克漏字 1 篇 5 格／短閱讀 2 篇（共 6 題）</div>
+        <div class="lesson-item"><span class="lesson-label">補充：</span>詳解＋弱點分析 10 分鐘</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>完整段考 HTML 卷 + 自動批改回饋頁</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 第二階段 ========== -->
+  <div class="stage stage-2">
+    <div class="stage-header">
+      <div class="stage-emoji">🌳</div>
+      <div class="stage-title">第二階段：閱讀素養＋高一暖身期</div>
+      <div class="stage-subtitle">第 5-8 週 ｜ 共 12 堂</div>
+    </div>
+    <div class="stage-goal">A 級生策略：閱讀篇幅拉到 180-220 字，題型涵蓋主旨、細節、推論、字義、態度五大類。同時開始接觸高一前兩冊的主題單字群。</div>
+
+    <!-- 第 5 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 5 週｜高一暖身 ×「人格與情緒」主題</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 13 堂｜人格特質單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>confident, generous, ambitious, optimistic, pessimistic, sensitive, sensible, reliable, responsible, considerate</div>
+        <div class="lesson-item"><span class="lesson-label">字根串聯：</span>con+fid「信任」/ re+ly「依靠」/ re+spons「回應」</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>confident → confidence / confidential / confidently / overconfident</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>情緒形容詞 -ed vs -ing 完整辨析（高一段考必考）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 180 字人物描寫閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 14 堂｜情緒情感單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>embarrassed, frustrated, depressed, satisfied, disappointed, amazed, annoyed, grateful, anxious, thrilled</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>satisfy → satisfied / satisfying / satisfaction / unsatisfactory</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>感官動詞 see/hear/feel/watch + O + V / Ving / V-pp</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 180 字心情日記閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 15 堂｜第 5 週閱讀策略訓練（主旨題）</div>
+        <div class="lesson-item"><span class="lesson-label">教學重點：</span>找主題句的 5 種位置（首段、首句、轉折後、結論、隱藏式）</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>main idea, topic, theme, gist, point, focus, central, primary, key, essence</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>3 篇短閱讀（各 150 字），全部專練主旨題</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>主旨題策略互動頁</div>
+      </div>
+    </div>
+
+    <!-- 第 6 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 6 週｜高一暖身 ×「時間與學習」主題</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 16 堂｜時間管理單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>schedule, deadline, postpone, delay, prompt, efficient, productive, balance, prioritize, procrastinate</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>efficient → efficiency / efficiently / inefficient / inefficiency</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>時間連接詞完整整理（when / while / as / since / until / as soon as / by the time）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 190 字時間管理閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 17 堂｜學習生活單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>semester, lecture, assignment, examination, scholarship, graduate, freshman, sophomore, syllabus, curriculum</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>graduate → graduation / graduated / undergraduate / postgraduate</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>被動語態完整整理（時態 × 被動的 12 種變化）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 190 字校園生活閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 18 堂｜第 6 週閱讀策略訓練（推論題）</div>
+        <div class="lesson-item"><span class="lesson-label">教學重點：</span>字裡行間推論（implied meaning）、作者態度判斷</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>infer, imply, suggest, indicate, attitude, tone, perspective, viewpoint, stance, position</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>3 篇短閱讀，專練推論題＋態度題</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>推論題思考流程圖</div>
+      </div>
+    </div>
+
+    <!-- 第 7 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 7 週｜高一暖身 ×「科技與環境」主題</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 19 堂｜科技網路單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>technology, device, application, software, browse, download, upload, virtual, digital, artificial</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>technology → technological / technologically / technician</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>使役動詞 make / let / have / get + O + ?（A 級生必懂的細微差別）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 200 字科技新聞閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 20 堂｜環境保育單字群</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>environment, pollution, recycle, reduce, reuse, endangered, species, climate, ecosystem, sustainable</div>
+        <div class="lesson-item"><span class="lesson-label">衍生詞：</span>environment → environmental / environmentally / environmentalist</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>分詞構句入門（V-ing / V-pp 開頭的句子，A 級生第一次接觸）</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 篇 200 字環保議題閱讀（4 題）</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 21 堂｜第 7 週閱讀策略訓練（字義猜測題）</div>
+        <div class="lesson-item"><span class="lesson-label">教學重點：</span>從上下文（context clues）＋字根輔助猜字義</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>3 篇短閱讀，每篇挖出 3 個生字練習猜字義</div>
+        <div class="lesson-item"><span class="lesson-label">HTML 教材：</span>猜字義五大線索互動頁</div>
+      </div>
+    </div>
+
+    <!-- 第 8 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 8 週｜第二階段總驗收</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 22 堂｜文法綜合複習</div>
+        <div class="lesson-item"><span class="lesson-label">複習：</span>時態、附加問句、名詞子句、關係子句、被動、感官動詞、使役動詞、分詞構句、間接問句</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>30 題文法選擇 + 5 題改錯 + 3 題翻譯</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 23 堂｜單字綜合複習</div>
+        <div class="lesson-item"><span class="lesson-label">複習：</span>12 組字根字首字尾 + 6 大主題單字</div>
+        <div class="lesson-item"><span class="lesson-label">特訓：</span>衍生詞變化測驗 40 題（給原形寫出 4 種變化）</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🏆 第 24 堂｜第二階段段考（仿高一段考形式）</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>單字 15 + 文法 10 + 克漏字 1 篇 5 格 + 閱讀 2 篇共 8 題</div>
+        <div class="lesson-item"><span class="lesson-label">時間：</span>30 分鐘完整段考</div>
+        <div class="lesson-item"><span class="lesson-label">檢討：</span>找出第三階段加強重點</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 第三階段 ========== -->
+  <div class="stage stage-3">
+    <div class="stage-header">
+      <div class="stage-emoji">🌲</div>
+      <div class="stage-title">第三階段：高一課文預習＋段考實戰期</div>
+      <div class="stage-subtitle">第 9-12 週 ｜ 共 12 堂</div>
+    </div>
+    <div class="stage-goal">A 級生策略：直接預習高一上 L1-L3 的主題與文法，每課搭配一篇仿課文長閱讀（250-300 字）。</div>
+
+    <!-- 第 9 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 9 週｜高一 L1 預習（依版本調整）</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 25 堂｜高一 L1 主題單字深度教學</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 12 字：</span>依教科書版本（龍騰／三民／遠東／南一）擷取 L1 核心字</div>
+        <div class="lesson-item"><span class="lesson-label">每字標配：</span>KK 音標 / 詞性 / 中譯 / 4 個衍生詞 / 3 個搭配詞 / 2 句生活例句</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 段仿課文短閱讀</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 26 堂｜高一 L1 文法深度教學</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>對應 L1 文法重點（多數版本為「時態整合：簡單式 vs 完成式 vs 進行式」）</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>L1 延伸字</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>15 題文法 + 5 題翻譯</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 27 堂｜高一 L1 閱讀實戰</div>
+        <div class="lesson-item"><span class="lesson-label">閱讀：</span>仿課文 250 字長閱讀（含生字註解）</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>主旨 1 + 細節 2 + 推論 1 + 字義 1 + 態度 1 = 6 題</div>
+        <div class="lesson-item"><span class="lesson-label">單字：</span>從文章中挑 10 個重點字進行衍生詞擴展</div>
+      </div>
+    </div>
+
+    <!-- 第 10 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 10 週｜高一 L2 預習</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 28 堂｜高一 L2 主題單字深度教學</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 12 字：</span>L2 核心字</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 段仿課文短閱讀</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 29 堂｜高一 L2 文法深度教學</div>
+        <div class="lesson-item highlight"><span class="lesson-label">📌 文法主軸：</span>對應 L2 文法（多數版本為「假設語氣與條件句」）</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 10 字：</span>L2 延伸字</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>15 題文法 + 5 題翻譯</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 30 堂｜高一 L2 閱讀實戰</div>
+        <div class="lesson-item"><span class="lesson-label">閱讀：</span>仿課文 270 字長閱讀</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>完整 6 題閱讀測驗</div>
+      </div>
+    </div>
+
+    <!-- 第 11 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 11 週｜高一 L3 預習＋綜合訓練</div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 31 堂｜高一 L3 主題單字深度教學</div>
+        <div class="lesson-item"><span class="lesson-label">核心單字 12 字：</span>L3 核心字</div>
+        <div class="lesson-item"><span class="lesson-label">練習：</span>5 題單字 + 1 段仿課文短閱讀</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 32 堂｜混合閱讀訓練 1（書信／日記體）</div>
+        <div class="lesson-item"><span class="lesson-label">閱讀：</span>1 篇 280 字長閱讀</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>6 題完整閱讀測驗</div>
+        <div class="lesson-item"><span class="lesson-label">單字：</span>從文章中挑 10 個生字延伸</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 33 堂｜混合閱讀訓練 2（報導／說明文體）</div>
+        <div class="lesson-item"><span class="lesson-label">閱讀：</span>1 篇 300 字長閱讀</div>
+        <div class="lesson-item"><span class="lesson-label">題型：</span>6 題完整閱讀測驗</div>
+        <div class="lesson-item"><span class="lesson-label">單字：</span>從文章中挑 10 個生字延伸</div>
+      </div>
+    </div>
+
+    <!-- 第 12 週 -->
+    <div class="week">
+      <div class="week-header">📅 第 12 週｜總驗收＋開學前最後叮嚀</div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🏆 第 34 堂｜高一段考模擬考 1（前測）</div>
+        <div class="lesson-item"><span class="lesson-label">時間：</span>30 分鐘完整段考</div>
+        <div class="lesson-item"><span class="lesson-label">題數：</span>單字 15 + 文法 10 + 克漏字 5 + 閱讀 10 = 40 題</div>
+        <div class="lesson-item"><span class="lesson-label">策略：</span>不檢討，先收卷</div>
+      </div>
+      <div class="lesson">
+        <div class="lesson-title">🔹 第 35 堂｜模擬段考檢討＋弱點補強</div>
+        <div class="lesson-item"><span class="lesson-label">內容：</span>逐題訂正＋同類型加強練習</div>
+      </div>
+      <div class="lesson exam-card">
+        <div class="lesson-title">🏆 第 36 堂｜高一段考模擬考 2＋開學前叮嚀</div>
+        <div class="lesson-item"><span class="lesson-label">時間：</span>30 分鐘完整段考（全新題目）</div>
+        <div class="lesson-item"><span class="lesson-label">目標：</span>相較第 34 堂進步 5 分以上</div>
+        <div class="lesson-item"><span class="lesson-label">開學叮嚀：</span>高一學習方法、單字背誦計畫（300 days 學習計畫導入）、筆記策略</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 整體成果累計 ========== -->
+  <div class="summary-section">
+    <h2>📊 整體成果累計表</h2>
+    <table class="summary-table">
+      <tr>
+        <th>項目</th>
+        <th>累計總量</th>
+      </tr>
+      <tr><td>字根字首字尾</td><td><strong>24 組</strong></td></tr>
+      <tr><td>主軸單字</td><td>約 360 個</td></tr>
+      <tr><td>衍生詞</td><td>約 1,440 個（每字 × 4 變化）</td></tr>
+      <tr><td>文法主題</td><td>20 個系統性單元</td></tr>
+      <tr><td>閱讀篇數</td><td>約 40 篇（120 字 → 300 字）</td></tr>
+      <tr><td>段考模擬</td><td>5 次</td></tr>
+      <tr><td><strong>總單字暴露量</strong></td><td><strong>約 1,800 字</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- ========== 教材對照表 ========== -->
+  <div class="material-section">
+    <h2>🛠️ 教材生產對照表</h2>
+    <table class="material-table">
+      <tr>
+        <th>教材類型</th>
+        <th>對應技能</th>
+        <th>頻率</th>
+      </tr>
+      <tr><td>單字 10 字卡片</td><td>kid-processor 進階版</td><td>36 堂</td></tr>
+      <tr><td>文法句型分析</td><td>grammar-processor v3.1</td><td>36 堂</td></tr>
+      <tr><td>短閱讀</td><td>article-processor 精簡版</td><td>第 1-24 堂</td></tr>
+      <tr><td>高一長閱讀</td><td>article-processor 完整版</td><td>第 25-36 堂</td></tr>
+      <tr><td>段考 HTML 卷</td><td>客製互動測驗頁</td><td>5 次</td></tr>
+    </table>
+  </div>
+
+  <!-- ========== 結語 ========== -->
+  <div class="footer-note">
+    <strong>📌 林威老師暖心叮嚀</strong><br><br>
+    12 週後，這位 A 級生將擁有：<br>
+    <strong>24 組字根系統 × 1,800 字暴露量 × 20 個文法主題 × 40 篇閱讀經驗</strong><br><br>
+    這份藍圖讓會考的「扎實基礎」<br>升級成高一段考的「絕對優勢」。<br><br>
+    <em>讓每一堂 30 分鐘<br>都成為孩子未來三年的養分。</em>
+  </div>
+
+  <!-- ========== 底部連結區（與頂部相同） ========== -->
+  <div class="link-section bottom">
+    <div class="link-section-title">📌 林威老師七月課程 & 聯絡方式</div>
+    <div class="link-cards">
+      <a href="https://linwayet.github.io/4ulive/index.html" class="link-card course1" target="_blank">
+        <div class="link-card-title">🎯 七月｜錯中學 ECHO 計劃</div>
+        <div class="link-card-desc">系統化錯題整理＋反覆精修，讓每一次錯誤都成為前進的階梯</div>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" class="link-card course2" target="_blank">
+        <div class="link-card-title">📊 七月｜學生分析課程</div>
+        <div class="link-card-desc">個人化學習診斷，為每位學生量身打造最適合的進步路徑</div>
+      </a>
+      <a href="https://line.me/ti/p/~linwayet" class="link-card line" target="_blank">
+        <div class="link-card-title">💬 加 LINE 直接聯絡</div>
+        <div class="link-card-desc">LINE ID：linwayet　歡迎家長與學生諮詢</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
