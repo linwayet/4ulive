@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多組學 Multiomics｜主題式自學講義</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-color:#F8F4ED;
+  --text-color:#2D2A26;
+  --primary-color:#8B5E3C;
+  --secondary-color:#D4A574;
+  --accent-light:#E8D5C4;
+  --accent-lighter:#F2E8DD;
+  --green:#5E7B53;
+  --rust:#B5654A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+  background:linear-gradient(135deg,var(--bg-color) 0%,#FAF7F2 100%);
+  color:var(--text-color);
+  line-height:1.85;
+  font-size:17px;
+}
+
+/* ===== 頂部導航 ===== */
+.header-nav{
+  background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);
+  color:#fff;padding:18px 20px;position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 12px rgba(139,94,60,.15);
+}
+.nav-container{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+.nav-title{font-size:17px;font-weight:700;text-align:center;}
+.nav-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.nav-link{
+  background:rgba(255,255,255,.15);padding:12px 14px;border-radius:8px;text-align:center;
+  text-decoration:none;color:#fff;font-size:13px;font-weight:600;
+  transition:all .3s ease;border:1px solid rgba(255,255,255,.2);
+}
+.nav-link:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);}
+.nav-link.line-link{background:linear-gradient(135deg,#06C755 0%,#04A940 100%);}
+.nav-link-subtitle{display:block;font-size:11px;margin-top:4px;}
+
+/* ===== 主容器 ===== */
+.container{max-width:1100px;margin:0 auto;padding:36px 20px;}
+
+/* ===== Hero ===== */
+.hero{
+  text-align:center;margin-bottom:32px;padding:44px 24px;
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,var(--accent-light) 100%);
+  border-radius:16px;border-left:6px solid var(--primary-color);
+  box-shadow:0 8px 24px rgba(139,94,60,.08);
+}
+.hero h1{font-size:44px;color:var(--primary-color);margin-bottom:10px;line-height:1.3;}
+.hero .sub-en{font-size:20px;color:var(--rust);font-weight:700;letter-spacing:1px;margin-bottom:14px;}
+.hero p{font-size:16px;margin-bottom:8px;}
+.hero-credit{font-size:14px;color:var(--primary-color);margin-top:18px;font-weight:700;}
+
+/* ===== 學習地圖 ===== */
+.toc{
+  background:#fff;border-radius:12px;padding:26px 24px;margin-bottom:34px;
+  box-shadow:0 4px 12px rgba(139,94,60,.1);border-left:5px solid var(--secondary-color);
+}
+.toc h2{font-size:21px;color:var(--primary-color);margin-bottom:6px;}
+.toc .toc-note{font-size:14px;color:#7a7065;margin-bottom:16px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.toc-item{
+  display:block;text-decoration:none;color:var(--text-color);
+  background:var(--accent-lighter);padding:12px 14px;border-radius:8px;
+  font-size:15px;font-weight:600;transition:all .25s ease;border:1px solid var(--accent-light);
+}
+.toc-item:hover{background:var(--accent-light);transform:translateX(3px);}
+.toc-item .num{color:var(--rust);font-weight:700;margin-right:8px;}
+
+/* ===== 主題卡片 ===== */
+.idea-card{
+  background:#fff;margin-bottom:28px;border-radius:12px;overflow:hidden;
+  box-shadow:0 4px 12px rgba(139,94,60,.1);border-left:5px solid var(--secondary-color);
+  scroll-margin-top:90px;
+}
+.idea-header{
+  background:linear-gradient(135deg,var(--secondary-color) 0%,#C99163 100%);
+  color:#fff;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;
+  user-select:none;
+}
+.idea-header:hover{background:linear-gradient(135deg,#C99163 0%,#B87D52 100%);}
+.idea-icon{font-size:30px;}
+.idea-title-section{flex:1;}
+.idea-number{font-size:13px;opacity:.92;letter-spacing:1px;}
+.idea-title{font-size:23px;font-weight:700;margin:3px 0;}
+.idea-title-cn{font-size:17px;opacity:.95;}
+.arrow{font-size:18px;transition:transform .3s ease;}
+details[open] .arrow{transform:rotate(180deg);}
+details summary{outline:none;list-style:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+details summary::-webkit-details-marker{display:none;}
+details summary::marker{display:none;}
+.idea-content{padding:30px 28px;}
+
+/* ===== 內文元件 ===== */
+.idea-content p{margin-bottom:14px;}
+.sub-h{
+  font-size:19px;font-weight:700;color:var(--primary-color);
+  margin:26px 0 12px;padding-left:12px;border-left:4px solid var(--secondary-color);
+}
+.sub-h:first-child{margin-top:0;}
+.idea-content ul,.idea-content ol{margin:6px 0 16px 24px;}
+.idea-content li{margin-bottom:8px;}
+
+/* 英文關鍵字 */
+.en{
+  color:var(--rust);font-weight:700;font-style:italic;
+  background:#F5EEE6;padding:1px 6px;border-radius:4px;
+  white-space:nowrap;
+}
+
+/* 比喻框 */
+.analogy{
+  background:linear-gradient(135deg,#EEF3E9 0%,#F4F7EF 100%);
+  border-left:4px solid var(--green);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.analogy .box-title{font-weight:700;color:var(--green);margin-bottom:6px;font-size:15px;}
+
+/* 重點框 */
+.keypoint{
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,#FFFBF6 100%);
+  border-left:4px solid var(--primary-color);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.keypoint .box-title{font-weight:700;color:var(--primary-color);margin-bottom:6px;font-size:15px;}
+
+/* 注意 / 挑戰框 */
+.warn{
+  background:linear-gradient(135deg,#F8EAE4 0%,#FCF2EE 100%);
+  border-left:4px solid var(--rust);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.warn .box-title{font-weight:700;color:var(--rust);margin-bottom:6px;font-size:15px;}
+
+/* 表格 */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table.dt{border-collapse:collapse;width:100%;font-size:15px;min-width:520px;}
+table.dt th{
+  background:var(--primary-color);color:#fff;padding:11px 12px;text-align:left;
+  font-weight:700;border:1px solid var(--primary-color);
+}
+table.dt td{padding:10px 12px;border:1px solid var(--accent-light);vertical-align:top;}
+table.dt tr:nth-child(even) td{background:var(--accent-lighter);}
+table.dt tr:nth-child(odd) td{background:#fff;}
+
+/* 自我檢測 */
+.qa{
+  border:1px solid var(--accent-light);border-radius:8px;
+  margin:12px 0;overflow:hidden;
+}
+.qa>summary{
+  background:var(--accent-lighter);padding:14px 16px;cursor:pointer;
+  font-weight:700;color:var(--primary-color);display:flex;
+  justify-content:space-between;gap:12px;align-items:center;font-size:15.5px;
+}
+.qa>summary:hover{background:var(--accent-light);}
+.qa .answer{padding:14px 16px;background:#fff;font-size:15.5px;}
+.qa .answer .tag{
+  display:inline-block;background:var(--green);color:#fff;font-size:12px;
+  font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:6px;
+}
+
+/* glossary */
+.glossary-card .idea-header{background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);}
+.glossary-cat{
+  font-size:16px;font-weight:700;color:var(--rust);
+  margin:22px 0 8px;padding-bottom:4px;border-bottom:2px dotted var(--secondary-color);
+}
+.glossary-cat:first-child{margin-top:0;}
+table.gl{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px;}
+table.gl th{background:var(--secondary-color);color:#fff;padding:9px 11px;text-align:left;font-weight:700;}
+table.gl td{padding:9px 11px;border:1px solid var(--accent-light);vertical-align:top;}
+table.gl td.term-en{font-weight:700;color:var(--rust);white-space:nowrap;}
+table.gl td.term-cn{font-weight:600;white-space:nowrap;}
+table.gl tr:nth-child(even) td{background:var(--accent-lighter);}
+
+/* 結語 */
+.closing{
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,var(--accent-light) 100%);
+  border-radius:12px;padding:26px 24px;margin-top:8px;text-align:center;
+  border-left:5px solid var(--primary-color);
+}
+.closing h2{color:var(--primary-color);font-size:20px;margin-bottom:10px;}
+
+/* ===== 底部導航 ===== */
+.footer-nav{
+  background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);
+  color:#fff;padding:24px 20px;margin-top:40px;
+}
+.footer-nav-container{max-width:1100px;margin:0 auto;}
+.footer-title{font-size:16px;font-weight:700;text-align:center;margin-bottom:16px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.footer-link{
+  background:rgba(255,255,255,.15);padding:12px 16px;border-radius:8px;text-align:center;
+  text-decoration:none;color:#fff;font-size:13px;font-weight:600;transition:all .3s ease;
+}
+.footer-link:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);}
+.footer-link.line-link{background:linear-gradient(135deg,#06C755 0%,#04A940 100%);}
+
+/* ===== 響應式 ===== */
+@media (max-width:768px){
+  body{font-size:16px;}
+  .idea-header{flex-direction:column;text-align:center;}
+  .idea-title{font-size:20px;}
+  .idea-content{padding:24px 18px;}
+  .nav-links,.footer-links,.toc-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:30px;}
+  .hero .sub-en{font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- 頂部導航 -->
+<div class="header-nav">
+  <div class="nav-container">
+    <div class="nav-title">🚀 課程報名 &amp; 聯絡</div>
+    <div class="nav-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-link">
+        📚 錯中學ECHO計劃<span class="nav-link-subtitle">七月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-link">
+        📊 學生分析<span class="nav-link-subtitle">七月開課</span>
+      </a>
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="nav-link line-link">
+        💬 Line 聯絡<span class="nav-link-subtitle">@linwayet</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>🧬 多組學</h1>
+    <div class="sub-en">MULTIOMICS</div>
+    <p><strong>主題式自學講義｜ARK Big Ideas 2026 · Big Idea 08</strong></p>
+    <p>從 DNA 到蛋白質，看懂生物學如何走進「數據時代」</p>
+    <div class="hero-credit">林威老師與 AI agent 團隊</div>
+  </div>
+
+  <!-- 學習地圖 -->
+  <div class="toc">
+    <h2>🗺️ 學習地圖</h2>
+    <div class="toc-note">本講義共九個主題，建議從上到下依序閱讀；點下方項目可直接跳到該主題。每個主題都「中文為主、關鍵字附英文」，最後附完整單字表。</div>
+    <div class="toc-grid">
+      <a class="toc-item" href="#t1"><span class="num">01</span>什麼是多組學？</a>
+      <a class="toc-item" href="#t2"><span class="num">02</span>先備知識：細胞、DNA 與中心法則</a>
+      <a class="toc-item" href="#t3"><span class="num">03</span>六大組學完整介紹</a>
+      <a class="toc-item" href="#t4"><span class="num">04</span>為什麼一定要「整合」？</a>
+      <a class="toc-item" href="#t5"><span class="num">05</span>背後的關鍵技術</a>
+      <a class="toc-item" href="#t6"><span class="num">06</span>多組學的實際應用</a>
+      <a class="toc-item" href="#t7"><span class="num">07</span>產業與市場：ARK 的觀點</a>
+      <a class="toc-item" href="#t8"><span class="num">08</span>挑戰、風險與倫理</a>
+      <a class="toc-item" href="#t9"><span class="num">09</span>自我檢測與重點總整理</a>
+      <a class="toc-item" href="#glossary"><span class="num">📖</span>主題單字整理 Glossary</a>
+    </div>
+  </div>
+
+  <!-- ===== 主題 01 ===== -->
+  <details class="idea-card" id="t1" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🧭</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 01 · TOPIC 01</div>
+        <div class="idea-title">什麼是多組學？</div>
+        <div class="idea-title-cn">What Is Multiomics?</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <div class="sub-h">一句話定義</div>
+      <p><strong>多組學（<span class="en">Multiomics</span>，也寫成 multi-omics）</strong>指的是：把一個生物體內<strong>多種不同層次的分子資料「同時」蒐集起來、再整合分析</strong>，藉此得到一張比單一資料更完整的「生命全貌圖」。</p>
+      <p>這裡的「組學（<span class="en">-omics</span>）」是一個字尾，意思是「對某一類分子做<strong>全面、大規模</strong>的研究」。例如研究「全部的基因」就叫基因組學（<span class="en">genomics</span>），研究「全部的蛋白質」就叫蛋白質組學（<span class="en">proteomics</span>）。把這些「組學」全部加在一起，就是「多組學」。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 生活化比喻：Google 地圖的圖層</div>
+        打開 Google 地圖時，你可以一次只看「道路圖層」，也可以疊上「即時路況」「衛星空照」「大眾運輸」。只看一個圖層，你只知道部分資訊；把所有圖層疊在一起，你才真正看懂這座城市怎麼運作。<br>
+        多組學就是把生命科學的「不同圖層」——基因、RNA、蛋白質、代謝物⋯⋯——疊在同一個人身上一起看。
+      </div>
+
+      <div class="sub-h">為什麼「多組學」是一個大概念（Big Idea）？</div>
+      <p>傳統生物醫學研究多半「一次只看一種資料」。例如只看基因，可以知道一個人「可能」會得什麼病；但基因相同的同卵雙胞胎，最後健康狀況卻常常差很多。原因是：<strong>基因只是「劇本」，真正演出來的「結果」還受到 RNA、蛋白質、代謝、環境、生活習慣層層影響。</strong></p>
+      <p>多組學的核心主張是：<strong>單看一層永遠不夠，要把多層資料合起來，才能真正理解、預測與介入一個生命體的健康與疾病。</strong>這也是為什麼投資研究機構方舟投資（<span class="en">ARK Invest</span>）把它列為 2026 年十三大顛覆性主題之一——它被視為讓「生物學正式進入數據驅動時代（<span class="en">data-driven era</span>）」的關鍵轉折。</p>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        ① 「組學 -omics」＝對某一類分子做<strong>全面性</strong>研究。<br>
+        ② 「多組學 multiomics」＝把<strong>多種組學資料整合</strong>在一起分析。<br>
+        ③ 核心精神：<strong>單一資料看不懂生命，整合才看得懂。</strong>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 02 ===== -->
+  <details class="idea-card" id="t2" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🔬</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 02 · TOPIC 02</div>
+        <div class="idea-title">先備知識：細胞、DNA 與中心法則</div>
+        <div class="idea-title-cn">Cells, DNA &amp; the Central Dogma</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>要理解多組學，得先把幾個基礎名詞弄清楚。這一段是「地基」，後面所有主題都建立在這裡，請放慢速度讀。</p>
+
+      <div class="sub-h">1. 細胞、基因與基因組</div>
+      <p>我們的身體由大約三十七兆個<strong>細胞（<span class="en">cell</span>）</strong>組成。每個細胞裡都有一套完整的<strong>去氧核醣核酸（<span class="en">DNA</span>，deoxyribonucleic acid）</strong>，它像一本「使用說明書」，用 A、T、C、G 四種<strong>鹼基（<span class="en">base</span>）</strong>寫成。</p>
+      <p>說明書裡的「一個段落」、負責某項功能的單位，就是<strong>基因（<span class="en">gene</span>）</strong>。而一個生物體<strong>全部 DNA 的總和</strong>，就叫<strong>基因組（<span class="en">genome</span>）</strong>。人類基因組大約有 30 億個鹼基對、約 2 萬個基因。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 生活化比喻：一本食譜書</div>
+        把<strong>基因組</strong>想成「一整本食譜書」；<strong>一個基因</strong>就是書裡的「一道食譜」；<strong>鹼基 A／T／C／G</strong> 則是組成文字的「字母」。每個細胞都帶著一模一樣的這本食譜書。
+      </div>
+
+      <div class="sub-h">2. 中心法則：DNA → RNA → 蛋白質</div>
+      <p>細胞要「執行」食譜時，會經過兩個步驟，這就是生物學最重要的觀念之一——<strong>中心法則（<span class="en">Central Dogma</span>）</strong>：</p>
+      <ul>
+        <li><strong>轉錄（<span class="en">transcription</span>）：</strong>把 DNA 上某個基因「抄寫」成一段<strong>核醣核酸（<span class="en">RNA</span>，ribonucleic acid）</strong>。這段 RNA 像是「從食譜書上抄到便利貼上的那道菜」。</li>
+        <li><strong>轉譯（<span class="en">translation</span>）：</strong>細胞依照 RNA 的內容，組裝出<strong>蛋白質（<span class="en">protein</span>）</strong>。蛋白質才是真正「做事」的分子——它能當酵素、結構材料、訊號傳遞者。</li>
+      </ul>
+      <p>簡單記成一條流水線：<strong>DNA（藍圖）→ RNA（施工指令）→ 蛋白質（實際成品）</strong>。</p>
+
+      <div class="sub-h">3. 「組學 -omics」這個字怎麼來的？</div>
+      <p>科學家把研究「全部 DNA」的學問叫 <span class="en">genome</span> ＋ <span class="en">-ics</span> ＝ <strong><span class="en">genomics</span>（基因組學）</strong>。後來這個造字方式被套用到每一層分子上：研究全部 RNA ＝ <span class="en">transcriptomics</span>、研究全部蛋白質 ＝ <span class="en">proteomics</span>⋯⋯。</p>
+
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>中文</th><th>英文</th><th>白話意思</th></tr>
+          <tr><td>細胞</td><td>cell</td><td>生命的基本單位</td></tr>
+          <tr><td>基因</td><td>gene</td><td>說明書裡負責某功能的一段</td></tr>
+          <tr><td>基因組</td><td>genome</td><td>一個生物體全部 DNA 的總和</td></tr>
+          <tr><td>鹼基</td><td>base（A/T/C/G）</td><td>組成 DNA 的「字母」</td></tr>
+          <tr><td>轉錄</td><td>transcription</td><td>DNA 抄寫成 RNA</td></tr>
+          <tr><td>轉譯</td><td>translation</td><td>RNA 組裝成蛋白質</td></tr>
+          <tr><td>中心法則</td><td>Central Dogma</td><td>DNA → RNA → 蛋白質的資訊流向</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        記住這條流水線：<strong>DNA → RNA → 蛋白質</strong>。多組學的「不同組學」，其實就是分別在這條流水線的<strong>不同站點</strong>架攝影機，看清楚每一站發生了什麼事。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 03 ===== -->
+  <details class="idea-card" id="t3" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🧪</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 03 · TOPIC 03</div>
+        <div class="idea-title">六大組學完整介紹</div>
+        <div class="idea-title-cn">The Six Layers of Omics</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>「多組學」中的「多」，指的就是下面這幾種主要的組學。我們沿著中心法則的流水線，一站一站介紹。每一種組學都會說明：<strong>研究什麼、回答什麼問題、用什麼比喻理解</strong>。</p>
+
+      <div class="sub-h">① 基因組學 Genomics（基因層）</div>
+      <p><strong>研究對象：</strong>一個生物體<strong>全部的 DNA</strong>。</p>
+      <p><strong>回答的問題：</strong>「這個人天生帶著什麼樣的基因藍圖？哪裡有變異？」基因組學會找出<strong>基因變異（<span class="en">genetic variant</span>）</strong>，例如單一鹼基的差異——<strong>單核苷酸多型性（<span class="en">SNP</span>，single-nucleotide polymorphism）</strong>，或是與遺傳疾病、癌症相關的<strong>突變（<span class="en">mutation</span>）</strong>。</p>
+      <p><strong>特性：</strong>基因組相對「穩定」——你一出生就大致固定，幾乎每個細胞都一樣。它告訴你的是<strong>「可能性」與「風險傾向」</strong>，而不是「現在的狀態」。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        基因組學＝讀「<strong>完整的食譜書</strong>」。它告訴你這間廚房「理論上能做出哪些菜」、哪幾頁印錯了字（變異），但不保證今天真的會端出那道菜。
+      </div>
+
+      <div class="sub-h">② 表觀基因組學 Epigenomics（基因「開關」層）</div>
+      <p><strong>研究對象：</strong>不改變 DNA 序列本身，卻能<strong>調控基因「開或關」</strong>的化學標記，例如 <strong>DNA 甲基化（<span class="en">DNA methylation</span>）</strong>。這些標記合稱<strong>表觀基因組（<span class="en">epigenome</span>）</strong>。</p>
+      <p><strong>回答的問題：</strong>「同一套基因，為什麼皮膚細胞和神經細胞長得完全不同？」「為什麼壓力、飲食、年齡會改變身體運作？」答案常常在表觀遺傳<strong>（<span class="en">epigenetics</span>）</strong>。</p>
+      <p><strong>特性：</strong>它<strong>會隨環境與時間改變</strong>，是「先天基因」與「後天環境」之間的橋樑。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        如果基因是食譜書，表觀基因組就是書頁上的<strong>便利貼與書籤</strong>：「這頁這週要做」「這頁先別碰」。書本內容沒變，但「要不要用、什麼時候用」被標記控制了。
+      </div>
+
+      <div class="sub-h">③ 轉錄組學 Transcriptomics（RNA 層）</div>
+      <p><strong>研究對象：</strong>細胞在某個時間點<strong>正在製造的全部 RNA</strong>，合稱<strong>轉錄組（<span class="en">transcriptome</span>）</strong>。</p>
+      <p><strong>回答的問題：</strong>「此時此刻，哪些基因正在被『讀取使用』？」這就是<strong>基因表現（<span class="en">gene expression</span>）</strong>。例如腫瘤細胞會「過度表現」某些基因。</p>
+      <p><strong>特性：</strong>非常<strong>動態</strong>——同一個人、同一個細胞，早上和晚上、生病和健康，轉錄組都不一樣。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        轉錄組學＝看廚房此刻「<strong>抄在便利貼上、正準備要做的那幾道菜</strong>」。它反映的是「現在進行式」。
+      </div>
+
+      <div class="sub-h">④ 蛋白質組學 Proteomics（蛋白質層）</div>
+      <p><strong>研究對象：</strong>細胞或體液中<strong>全部的蛋白質</strong>，合稱<strong>蛋白質組（<span class="en">proteome</span>）</strong>。</p>
+      <p><strong>回答的問題：</strong>「真正在做事的分子，現在有哪些、各有多少？」因為蛋白質是實際執行功能的角色，蛋白質組學最接近「<strong>身體真正的運作狀態</strong>」。</p>
+      <p><strong>特性：</strong>比 RNA 更難測量——蛋白質數量極多、會被修飾、無法像 DNA 那樣輕易「複製放大」。許多藥物的<strong>標的（<span class="en">drug target</span>）</strong>就是蛋白質。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        蛋白質組學＝直接看「<strong>已經端上桌的菜</strong>」。不是計畫、不是指令，而是真正做出來的成品。
+      </div>
+
+      <div class="sub-h">⑤ 代謝組學 Metabolomics（代謝物層）</div>
+      <p><strong>研究對象：</strong>身體運作後產生的小分子化學物質，例如血糖、胺基酸、脂質、乳酸等，合稱<strong>代謝組（<span class="en">metabolome</span>）</strong>。</p>
+      <p><strong>回答的問題：</strong>「身體這台機器運轉之後，實際的『化學成績單』長怎樣？」代謝物最貼近「<strong>當下的生理結果</strong>」，也最容易受飲食、運動、藥物影響。</p>
+      <p><strong>特性：</strong>反應最快、最即時，是「表現型（<span class="en">phenotype</span>）」的直接訊號。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        代謝組學＝看「<strong>這頓飯吃完後桌上的狀況</strong>」：吃了多少、剩下什麼、產生了哪些味道。它是整條流水線的「最終結果」。
+      </div>
+
+      <div class="sub-h">⑥ 微生物組學 Microbiomics（體內微生物層）</div>
+      <p><strong>研究對象：</strong>住在我們身體（尤其腸道）裡的<strong>數兆個微生物</strong>，以及它們的全部基因，合稱<strong>微生物組（<span class="en">microbiome</span>）</strong>。研究它們全部基因的方法又叫<strong>總體基因體學（<span class="en">metagenomics</span>）</strong>。</p>
+      <p><strong>回答的問題：</strong>「住在我體內的『室友』有哪些？它們對我的免疫、消化、情緒有什麼影響？」</p>
+      <p><strong>特性：</strong>它是「<strong>第二套基因組</strong>」——不是你自己的，卻深深影響你的健康。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻</div>
+        微生物組學＝盤點「<strong>跟你合住的所有室友</strong>」：他們是誰、人數多少、會不會幫你做家事或製造麻煩。
+      </div>
+
+      <div class="sub-h">六大組學一覽表</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>組學</th><th>英文</th><th>研究對象</th><th>回答的問題</th><th>變動性</th></tr>
+          <tr><td>基因組學</td><td>Genomics</td><td>全部 DNA</td><td>天生藍圖、風險傾向</td><td>幾乎不變</td></tr>
+          <tr><td>表觀基因組學</td><td>Epigenomics</td><td>DNA 上的化學標記</td><td>基因何時開／關</td><td>會隨環境變</td></tr>
+          <tr><td>轉錄組學</td><td>Transcriptomics</td><td>全部 RNA</td><td>現在哪些基因在用</td><td>高度動態</td></tr>
+          <tr><td>蛋白質組學</td><td>Proteomics</td><td>全部蛋白質</td><td>真正在做事的分子</td><td>動態</td></tr>
+          <tr><td>代謝組學</td><td>Metabolomics</td><td>代謝小分子</td><td>當下的生理結果</td><td>變動最快</td></tr>
+          <tr><td>微生物組學</td><td>Microbiomics</td><td>體內微生物群</td><td>「第二套基因組」的影響</td><td>會隨飲食變</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        把六大組學排在中心法則上：<strong>基因組（藍圖）→ 表觀基因組（開關）→ 轉錄組（指令）→ 蛋白質組（成品）→ 代謝組（結果）</strong>，再加上<strong>微生物組（體內室友）</strong>。越往下游，越接近「身體現在真實的樣子」；越往上游，越接近「天生的可能性」。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 04 ===== -->
+  <details class="idea-card" id="t4" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🧩</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 04 · TOPIC 04</div>
+        <div class="idea-title">為什麼一定要「整合」？</div>
+        <div class="idea-title-cn">Why Data Integration Matters</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>多組學的關鍵字不是「多」，而是<strong>「整合（<span class="en">integration</span>）」</strong>。如果只是各做各的、把六張報告分開看，那只是「很多種組學」，還不算「多組學」。真正的多組學，是把這些資料<strong>對在同一個人、同一個時間點上一起分析</strong>。</p>
+
+      <div class="sub-h">1. 單一組學的根本限制</div>
+      <p>每一種組學單獨看，都只是「故事的一段」：</p>
+      <ul>
+        <li>只看<strong>基因組</strong>：知道風險，卻不知道風險有沒有「真的發生」。</li>
+        <li>只看<strong>轉錄組</strong>：知道哪些基因在用，卻不知道蛋白質有沒有真的做出來。</li>
+        <li>只看<strong>代謝組</strong>：看到異常結果，卻不知道原因出在哪一層。</li>
+      </ul>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻：盲人摸象</div>
+        每一種組學都是一位「摸大象的盲人」：摸到耳朵說像扇子、摸到腿說像柱子。每個人都沒說錯，但都不完整。<strong>多組學整合</strong>就是把所有人的描述拼起來，第一次看見「整頭大象」。
+      </div>
+
+      <div class="sub-h">2. 基因型 vs 表現型：整合補上的那一塊</div>
+      <p>生物學有一組重要對照：</p>
+      <ul>
+        <li><strong>基因型（<span class="en">genotype</span>）：</strong>你天生帶著的基因設定（≈ 基因組學看的東西）。</li>
+        <li><strong>表現型（<span class="en">phenotype</span>）：</strong>實際表現出來的特徵與健康狀態（≈ 蛋白質組、代謝組看的東西）。</li>
+      </ul>
+      <p>過去研究最大的難題，就是「<strong>從基因型到表現型，中間到底發生了什麼？</strong>」多組學把中間每一層（表觀、轉錄、蛋白質）都補上資料，等於把這條因果鏈<strong>從頭到尾連起來</strong>，讓科學家能追問：到底是哪一層、哪個環節讓一個人生病。</p>
+
+      <div class="sub-h">3. 整合後能做到的三件事</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>能力</th><th>說明</th><th>舉例</th></tr>
+          <tr><td>更準的診斷</td><td>多層證據互相佐證，減少誤判</td><td>同時用基因突變＋蛋白質訊號判斷腫瘤性質</td></tr>
+          <tr><td>找出生物標記</td><td>找到能預警疾病的<span class="en">biomarker</span>（生物標記）</td><td>血液中某組分子升高 → 早期癌症訊號</td></tr>
+          <tr><td>個人化決策</td><td>針對「這一個人」量身選療法</td><td>依個人組學資料挑最有效、副作用最低的藥</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        多組學的價值＝<strong>1＋1＞2</strong>。單層資料是「點」，整合後變成「網」，才能回答「為什麼」與「怎麼辦」，而不只是「是什麼」。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 05 ===== -->
+  <details class="idea-card" id="t5" open>
+    <summary class="idea-header">
+      <div class="idea-icon">⚙️</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 05 · TOPIC 05</div>
+        <div class="idea-title">背後的關鍵技術</div>
+        <div class="idea-title-cn">The Enabling Technologies</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>多組學在二十年前幾乎不可能做到——因為「測量分子」太貴、太慢。它能成為今天的 Big Idea，是因為背後有四項技術同時成熟。</p>
+
+      <div class="sub-h">1. 次世代定序 NGS：把「讀 DNA」變便宜</div>
+      <p><strong>次世代定序（<span class="en">NGS</span>，next-generation sequencing）</strong>是一種能<strong>同時、大量、平行</strong>讀取 DNA／RNA 序列的技術。它最驚人的是「成本崩跌」：</p>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>年份</th><th>定序一個人類基因組的成本（約略）</th></tr>
+          <tr><td>2001 年</td><td>約 1 億美元</td></tr>
+          <tr><td>2007 年</td><td>約 1,000 萬美元</td></tr>
+          <tr><td>2015 年</td><td>約 1,500 美元</td></tr>
+          <tr><td>2022 年</td><td>約 1,000 美元（「千元基因組」）</td></tr>
+          <tr><td>2024–2025 年</td><td>約 200 美元，「百元基因組（<span class="en">$100 genome</span>）」近在眼前</td></tr>
+        </table>
+      </div>
+      <p>二十多年內成本下降<strong>超過五十萬倍</strong>，比同期電腦晶片的進步速度還快。成本越低，越多人能負擔，多組學就越可能從實驗室走進一般醫療。</p>
+
+      <div class="sub-h">2. 質譜分析 Mass Spectrometry：測量蛋白質與代謝物</div>
+      <p>DNA／RNA 可以用 NGS 讀，但蛋白質與代謝物不行。它們主要靠<strong>質譜分析（<span class="en">mass spectrometry</span>，簡稱 MS）</strong>——一種依據分子「質量」來辨認與計量分子的儀器。質譜技術讓蛋白質組學、代謝組學得以大規模進行。</p>
+
+      <div class="sub-h">3. 單細胞技術 Single-cell：從「一鍋平均」到「一個個看」</div>
+      <p>過去分析常把一大塊組織打碎、測「平均值」，等於把全班成績平均成一個數字。<strong>單細胞定序（<span class="en">single-cell sequencing</span>）</strong>能<strong>逐一細胞</strong>分析，看出同一塊腫瘤裡其實藏著很多種不同的細胞——這對了解癌症、免疫極為關鍵。</p>
+
+      <div class="sub-h">4. 人工智慧 AI：把海量資料變成洞見</div>
+      <p>多組學會產生<strong>天文數字般的資料</strong>：一個人的基因組就有 30 億鹼基，再加上 RNA、蛋白質、代謝物⋯⋯人腦根本看不完。<strong>人工智慧（<span class="en">AI</span>）與機器學習（<span class="en">machine learning</span>）</strong>負責在這片資料海裡找出規律與關聯。</p>
+      <div class="keypoint">
+        <div class="box-title">📌 關鍵互動：AI 與多組學「互相強化」</div>
+        ARK 在報告中特別指出：<strong>AI 與多組學會彼此加乘</strong>。多組學<strong>餵給</strong> AI 大量高品質的生物資料，AI 變得更聰明；更聰明的 AI 又能<strong>從多組學資料中挖出</strong>人類看不到的洞見。兩者形成正向循環（<span class="en">virtuous cycle</span>），讓生物醫學發現的速度加快。
+      </div>
+
+      <div class="sub-h">技術總覽</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>技術</th><th>英文</th><th>主要負責</th></tr>
+          <tr><td>次世代定序</td><td>NGS</td><td>大量、低成本讀取 DNA／RNA</td></tr>
+          <tr><td>質譜分析</td><td>Mass Spectrometry</td><td>測量蛋白質與代謝物</td></tr>
+          <tr><td>單細胞定序</td><td>Single-cell Sequencing</td><td>逐一細胞精細分析</td></tr>
+          <tr><td>人工智慧</td><td>AI / Machine Learning</td><td>整合海量資料、找出規律</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 06 ===== -->
+  <details class="idea-card" id="t6" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🏥</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 06 · TOPIC 06</div>
+        <div class="idea-title">多組學的實際應用</div>
+        <div class="idea-title-cn">Real-World Applications</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>講完原理，來看多組學「實際上能做什麼」。以下四個領域，是目前最被看好的應用。</p>
+
+      <div class="sub-h">1. 精準醫療 Precision Medicine</div>
+      <p><strong>精準醫療（<span class="en">precision medicine</span>，也稱個人化醫療 <span class="en">personalized medicine</span>）</strong>的核心是：<strong>不再「一種病用一種藥」，而是依「這一個人」的分子資料量身決定。</strong></p>
+      <p>傳統醫療像「均碼衣服」，多組學讓醫療變成「量身訂做」。例如同樣是乳癌，靠多組學可分出不同亞型，分別對應不同的最佳療法，避免無效治療與不必要的副作用。</p>
+
+      <div class="sub-h">2. 癌症早期篩檢與液態切片</div>
+      <p>癌症「早期發現」存活率遠高於晚期，但傳統篩檢往往要等到腫瘤夠大才看得到。多組學帶來新的解法：</p>
+      <ul>
+        <li><strong>液態切片（<span class="en">liquid biopsy</span>）：</strong>只抽一管血，就能偵測血液中腫瘤釋放出的微量 DNA（<strong>循環腫瘤 DNA，<span class="en">ctDNA</span></strong>）與其他分子訊號，不必動刀取組織。</li>
+        <li><strong>泛癌種早期偵測（<span class="en">multi-cancer early detection</span>，MCED）：</strong>ARK 在報告中強調的方向之一——用<strong>一次血液檢測同時篩多種癌症</strong>。這正是多組學「整合多層訊號」的威力。</li>
+      </ul>
+
+      <div class="sub-h">3. 藥物開發 Drug Discovery</div>
+      <p>開發一款新藥傳統上要花<strong>十年以上、數十億美元</strong>，而且大多數失敗。多組學能在早期就找出更可靠的<strong>藥物標的（<span class="en">drug target</span>）</strong>，並預測哪些病人會有效，降低失敗率。</p>
+      <p>ARK 進一步描繪：當豐富的多組學資料餵給 AI，再結合「可程式化生物學（<span class="en">programmable biology</span>）」與能自己做實驗的<strong>自主實驗室（<span class="en">autonomous lab</span>）</strong>，新藥發現與試驗的成本有機會大幅下降。</p>
+
+      <div class="sub-h">4. 其他領域</div>
+      <ul>
+        <li><strong>農業：</strong>用組學技術培育更抗旱、抗病、營養更高的作物。</li>
+        <li><strong>營養與健康管理：</strong>結合代謝組與微生物組，給出「適合你個人」的飲食建議。</li>
+        <li><strong>罕見疾病診斷：</strong>許多查不出病因的罕病，靠多組學終於找到答案。</li>
+      </ul>
+
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>應用領域</th><th>解決的問題</th><th>關鍵英文詞</th></tr>
+          <tr><td>精準醫療</td><td>用藥不再一體適用，量身訂做</td><td>precision medicine</td></tr>
+          <tr><td>癌症早篩</td><td>抽血就能早期、多癌種偵測</td><td>liquid biopsy / MCED</td></tr>
+          <tr><td>藥物開發</td><td>降低新藥的時間與失敗成本</td><td>drug discovery / drug target</td></tr>
+          <tr><td>農業與營養</td><td>育種改良、個人化飲食</td><td>agriculture / nutrition</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        多組學把醫療的方向從「<strong>生病後才治療</strong>」推向「<strong>提早偵測、提早預防、精準介入</strong>」。最具代表性的畫面就是：<strong>抽一管血，同時看出多種疾病的風險。</strong>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 07 ===== -->
+  <details class="idea-card" id="t7" open>
+    <summary class="idea-header">
+      <div class="idea-icon">📈</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 07 · TOPIC 07</div>
+        <div class="idea-title">產業與市場：ARK 的觀點</div>
+        <div class="idea-title-cn">Industry &amp; Market: The ARK View</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>這個主題從「科學」切換到「產業」視角，看懂為什麼投資機構會把多組學當成重要趨勢。</p>
+
+      <div class="sub-h">1. ARK 與「Big Ideas」報告</div>
+      <p><strong>方舟投資（<span class="en">ARK Invest</span>）</strong>是一家專注「顛覆式創新（<span class="en">disruptive innovation</span>）」的投資公司。它每年發表的《Big Ideas》報告，會挑出未來最可能改變經濟的科技主題。在 2026 年版中，<strong>多組學是十三大 Big Ideas 中的第 8 項</strong>。</p>
+
+      <div class="sub-h">2. 「大加速」：多組學是五大平台之一</div>
+      <p>ARK 用「<strong>大加速（<span class="en">The Great Acceleration</span>）</strong>」來形容當前——多項指數型科技同時成熟、彼此匯聚。多組學被列為其中<strong>五大創新平台之一</strong>。ARK 認為，對這些顛覆式平台的投資，可能為這個十年的實質 GDP 年增率多貢獻約 1.9 個百分點。</p>
+
+      <div class="sub-h">3. 產業邏輯：成本崩跌帶動需求爆發</div>
+      <p>產業分析常有一個規律：<strong>當一項技術的成本快速下降，市場規模就會跟著爆發。</strong>多組學正是這樣——定序成本二十多年掉了超過五十萬倍（見主題 05）。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 類比：智慧型手機</div>
+        運算與螢幕成本下降後，智慧型手機從昂貴玩具變成人手一支。ARK 的論點是：當多組學檢測便宜到像例行抽血，它也會從「研究工具」變成「日常醫療」，需求隨之放大。
+      </div>
+
+      <div class="sub-h">4. ARK 看好的兩個轉變</div>
+      <ul>
+        <li><strong>癌症照護的重塑：</strong>泛癌種血液檢測（MCED）與分子診斷（<span class="en">molecular diagnostics</span>）逐步普及，把癌症偵測提前。</li>
+        <li><strong>藥物開發的重塑：</strong>多組學資料 ＋ AI ＋ 自主實驗室，有機會壓低長期停滯的新藥研發成本，改變整個產業的報酬結構。</li>
+      </ul>
+
+      <div class="warn">
+        <div class="box-title">⚠️ 自學者請注意：投資觀點 ≠ 保證</div>
+        ARK 的報告是「<strong>對未來的研究預測</strong>」，不是事實，也不是投資建議。預測可能過於樂觀、也可能落空。閱讀這類報告時，重點是學習它「<strong>背後的推理邏輯</strong>」（成本下降 → 普及 → 市場擴大），而不是把任何數字當成必然會發生的結果。本講義不構成任何投資建議。
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        產業視角的一句話總結：<strong>科學上「能做到」＋ 成本上「負擔得起」＋ AI 讓它「規模化」</strong>，三者同時成立，才讓多組學從實驗室走向龐大市場。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 08 ===== -->
+  <details class="idea-card" id="t8" open>
+    <summary class="idea-header">
+      <div class="idea-icon">⚖️</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 08 · TOPIC 08</div>
+        <div class="idea-title">挑戰、風險與倫理</div>
+        <div class="idea-title-cn">Challenges, Risks &amp; Ethics</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>多組學前景很大，但<strong>不是沒有問題</strong>。一份成熟的自學講義，必須同時看見它的限制。以下是四個主要挑戰。</p>
+
+      <div class="sub-h">1. 資料太多、太複雜：整合很難</div>
+      <p>多組學產生的是<strong>巨量資料（<span class="en">big data</span>）</strong>。不同組學的資料格式、單位、雜訊都不一樣，要「對齊整合」在技術上非常困難，需要強大的<strong>生物資訊學（<span class="en">bioinformatics</span>）</strong>與運算能力。資料品質不佳時，AI 也可能學到錯誤結論（<span class="en">garbage in, garbage out</span>）。</p>
+
+      <div class="sub-h">2. 隱私與基因歧視</div>
+      <p>基因資料是<strong>最敏感的個人資訊</strong>之一——它不只關於你，也關於你的家人。若外洩或被濫用，可能造成<strong>基因歧視（<span class="en">genetic discrimination</span>）</strong>：例如保險公司或雇主因為某人「帶有疾病風險基因」而拒保或不錄用。如何保護<strong>資料隱私（<span class="en">data privacy</span>）</strong>與<strong>知情同意（<span class="en">informed consent</span>）</strong>，是重大課題。</p>
+
+      <div class="sub-h">3. 偽陽性與過度診斷</div>
+      <p>篩檢不是越多越好。檢測可能出現<strong>偽陽性（<span class="en">false positive</span>）</strong>——明明沒病卻被判為有風險，造成不必要的恐慌、追蹤檢查與醫療花費。也可能出現<strong>過度診斷（<span class="en">overdiagnosis</span>）</strong>：找到一些「其實一輩子不會造成傷害」的異常，反而導致過度治療。</p>
+
+      <div class="sub-h">4. 可近性與健康不平等</div>
+      <p>就算成本下降，先進的多組學檢測仍可能<strong>先嘉惠富裕族群或國家</strong>，擴大<strong>健康不平等（<span class="en">health inequality</span>）</strong>。如何讓技術「人人用得到」，是科學以外的社會問題。</p>
+
+      <div class="warn">
+        <div class="box-title">⚠️ 挑戰一覽</div>
+        ① 資料整合難（big data／bioinformatics）<br>
+        ② 隱私與基因歧視（privacy／genetic discrimination）<br>
+        ③ 偽陽性與過度診斷（false positive／overdiagnosis）<br>
+        ④ 可近性與健康不平等（access／health inequality）
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        評估一項新科技，要同時問兩個問題：「<strong>它能帶來什麼好處？</strong>」與「<strong>它可能帶來什麼代價與風險？</strong>」多組學的真正成熟，需要科學、法律、倫理三方面一起跟上。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 09 ===== -->
+  <details class="idea-card" id="t9" open>
+    <summary class="idea-header">
+      <div class="idea-icon">✅</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 09 · TOPIC 09</div>
+        <div class="idea-title">自我檢測與重點總整理</div>
+        <div class="idea-title-cn">Self-check &amp; Recap</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <div class="sub-h">A. 全篇重點總整理</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>主題</th><th>一句話帶走</th></tr>
+          <tr><td>01 什麼是多組學</td><td>把多種分子層次的資料整合起來，看見「生命全貌」。</td></tr>
+          <tr><td>02 先備知識</td><td>中心法則：DNA → RNA → 蛋白質。</td></tr>
+          <tr><td>03 六大組學</td><td>基因組／表觀／轉錄／蛋白質／代謝／微生物，分別看流水線不同站點。</td></tr>
+          <tr><td>04 為何整合</td><td>單層是「點」，整合成「網」，才能回答為什麼與怎麼辦。</td></tr>
+          <tr><td>05 關鍵技術</td><td>NGS、質譜、單細胞、AI——成本崩跌讓它可行。</td></tr>
+          <tr><td>06 實際應用</td><td>精準醫療、癌症早篩、藥物開發。</td></tr>
+          <tr><td>07 產業與市場</td><td>能做到＋負擔得起＋可規模化＝走向大市場。</td></tr>
+          <tr><td>08 挑戰與倫理</td><td>資料整合難、隱私、偽陽性、健康不平等。</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-h">B. 自我檢測（先想答案，再點開核對）</div>
+      <p>下列問題請先自己回答，再點開看參考解答。這是檢驗自己「真的懂了」最有效的方法。</p>
+
+      <details class="qa">
+        <summary><span>Q1：用一句話解釋「多組學 multiomics」。</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>把一個生物體內<strong>多種不同層次的分子資料（基因、RNA、蛋白質、代謝物等）同時蒐集並整合分析</strong>，以得到比單一資料更完整的生命全貌。關鍵在「整合（integration）」，不只是「很多種」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q2：中心法則（Central Dogma）的資訊流向是什麼？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p><strong>DNA →（轉錄 transcription）→ RNA →（轉譯 translation）→ 蛋白質 protein。</strong>DNA 是藍圖、RNA 是施工指令、蛋白質是實際成品。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q3：基因組學和轉錄組學最大的差別在哪？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>基因組學看「<strong>全部 DNA</strong>」，幾乎不隨時間變動，反映「天生的可能性」；轉錄組學看「<strong>此刻正在製造的 RNA</strong>」，高度動態，反映「現在哪些基因正在被使用」。一個是「劇本」，一個是「正在演的這一幕」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q4：為什麼說「只看單一組學像盲人摸象」？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>因為每種組學只描述生命的「一段」：基因組知道風險卻不知是否發生、轉錄組知道指令卻不知成品、代謝組看到結果卻不知原因。各自都沒錯但都不完整，必須整合才能看見「整頭大象」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q5：是什麼技術讓多組學從「不可能」變「可行」？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>主要是四項：<strong>次世代定序（NGS）</strong>讓讀 DNA／RNA 大幅變便宜、<strong>質譜分析</strong>能測蛋白質與代謝物、<strong>單細胞定序</strong>能逐一細胞分析、<strong>人工智慧（AI）</strong>能整合海量資料。其中定序成本二十多年下降超過五十萬倍是關鍵。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q6：液態切片（liquid biopsy）為什麼重要？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>它<strong>只需抽一管血</strong>，就能偵測血中腫瘤釋放的微量 DNA（ctDNA）等訊號，不必動刀取組織。配合泛癌種早期偵測（MCED），有機會用一次抽血同時、提早篩出多種癌症，提高存活率。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q7：多組學有哪些風險或倫理問題？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>至少四項：資料整合困難（big data）、隱私外洩與<strong>基因歧視</strong>、檢測的<strong>偽陽性與過度診斷</strong>、以及技術不普及造成的<strong>健康不平等</strong>。</p>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <!-- ===== Glossary ===== -->
+  <details class="idea-card glossary-card" id="glossary" open>
+    <summary class="idea-header">
+      <div class="idea-icon">📖</div>
+      <div class="idea-title-section">
+        <div class="idea-number">附錄 · APPENDIX</div>
+        <div class="idea-title">主題單字整理 Glossary</div>
+        <div class="idea-title-cn">Multiomics Key Vocabulary</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>以下整理本講義出現的所有關鍵字，依主題分類，方便複習與查找。建議搭配各主題對照閱讀。</p>
+
+      <div class="glossary-cat">一、基礎生物學 Basic Biology</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">cell</td><td class="term-cn">細胞</td><td>生命的基本構造與功能單位。</td></tr>
+          <tr><td class="term-en">DNA</td><td class="term-cn">去氧核醣核酸</td><td>儲存遺傳資訊的分子，由 A／T／C／G 鹼基組成。</td></tr>
+          <tr><td class="term-en">RNA</td><td class="term-cn">核醣核酸</td><td>由 DNA 轉錄而來的「施工指令」分子。</td></tr>
+          <tr><td class="term-en">protein</td><td class="term-cn">蛋白質</td><td>實際執行細胞功能的分子（酵素、結構、訊號等）。</td></tr>
+          <tr><td class="term-en">gene</td><td class="term-cn">基因</td><td>DNA 上負責某項功能的一段。</td></tr>
+          <tr><td class="term-en">genome</td><td class="term-cn">基因組</td><td>一個生物體全部 DNA 的總和。</td></tr>
+          <tr><td class="term-en">base</td><td class="term-cn">鹼基</td><td>組成 DNA 的「字母」：A、T、C、G。</td></tr>
+          <tr><td class="term-en">transcription</td><td class="term-cn">轉錄</td><td>把 DNA 抄寫成 RNA 的過程。</td></tr>
+          <tr><td class="term-en">translation</td><td class="term-cn">轉譯</td><td>依 RNA 內容組裝出蛋白質的過程。</td></tr>
+          <tr><td class="term-en">Central Dogma</td><td class="term-cn">中心法則</td><td>資訊流向：DNA → RNA → 蛋白質。</td></tr>
+          <tr><td class="term-en">gene expression</td><td class="term-cn">基因表現</td><td>基因被「讀取使用」、製造出 RNA／蛋白質。</td></tr>
+          <tr><td class="term-en">genotype</td><td class="term-cn">基因型</td><td>個體天生帶有的基因設定。</td></tr>
+          <tr><td class="term-en">phenotype</td><td class="term-cn">表現型</td><td>實際表現出來的特徵與健康狀態。</td></tr>
+          <tr><td class="term-en">mutation</td><td class="term-cn">突變</td><td>DNA 序列發生的改變。</td></tr>
+          <tr><td class="term-en">genetic variant</td><td class="term-cn">基因變異</td><td>個體之間 DNA 序列的差異。</td></tr>
+          <tr><td class="term-en">SNP</td><td class="term-cn">單核苷酸多型性</td><td>單一鹼基位置的常見差異。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">二、核心概念與六大組學 Multiomics &amp; the Omics Layers</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">multiomics</td><td class="term-cn">多組學</td><td>整合多種分子層次資料的研究方法。</td></tr>
+          <tr><td class="term-en">-omics</td><td class="term-cn">組學</td><td>字尾，指對某類分子做全面、大規模研究。</td></tr>
+          <tr><td class="term-en">integration</td><td class="term-cn">整合</td><td>把不同組學資料對齊、合併分析；多組學的核心。</td></tr>
+          <tr><td class="term-en">genomics</td><td class="term-cn">基因組學</td><td>研究全部 DNA。</td></tr>
+          <tr><td class="term-en">epigenomics</td><td class="term-cn">表觀基因組學</td><td>研究調控基因開關的化學標記。</td></tr>
+          <tr><td class="term-en">epigenetics</td><td class="term-cn">表觀遺傳學</td><td>不改變序列卻影響基因表現的機制。</td></tr>
+          <tr><td class="term-en">DNA methylation</td><td class="term-cn">DNA 甲基化</td><td>常見的表觀遺傳標記之一。</td></tr>
+          <tr><td class="term-en">transcriptomics</td><td class="term-cn">轉錄組學</td><td>研究全部 RNA。</td></tr>
+          <tr><td class="term-en">transcriptome</td><td class="term-cn">轉錄組</td><td>某時間點細胞內全部 RNA 的總和。</td></tr>
+          <tr><td class="term-en">proteomics</td><td class="term-cn">蛋白質組學</td><td>研究全部蛋白質。</td></tr>
+          <tr><td class="term-en">proteome</td><td class="term-cn">蛋白質組</td><td>細胞或體液中全部蛋白質的總和。</td></tr>
+          <tr><td class="term-en">metabolomics</td><td class="term-cn">代謝組學</td><td>研究身體運作產生的小分子代謝物。</td></tr>
+          <tr><td class="term-en">metabolome</td><td class="term-cn">代謝組</td><td>全部代謝小分子的總和。</td></tr>
+          <tr><td class="term-en">microbiomics</td><td class="term-cn">微生物組學</td><td>研究體內微生物群（尤其腸道）。</td></tr>
+          <tr><td class="term-en">microbiome</td><td class="term-cn">微生物組</td><td>住在體內的微生物群總和，「第二套基因組」。</td></tr>
+          <tr><td class="term-en">metagenomics</td><td class="term-cn">總體基因體學</td><td>研究一群微生物全部基因的方法。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">三、關鍵技術 Enabling Technologies</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">NGS<br>(next-generation sequencing)</td><td class="term-cn">次世代定序</td><td>大量、平行、低成本讀取 DNA／RNA 的技術。</td></tr>
+          <tr><td class="term-en">sequencing</td><td class="term-cn">定序</td><td>讀出 DNA 或 RNA 上鹼基的排列順序。</td></tr>
+          <tr><td class="term-en">mass spectrometry</td><td class="term-cn">質譜分析</td><td>依分子質量辨認與計量分子；用於蛋白質、代謝物。</td></tr>
+          <tr><td class="term-en">single-cell sequencing</td><td class="term-cn">單細胞定序</td><td>逐一細胞分析，而非測整塊組織的平均。</td></tr>
+          <tr><td class="term-en">AI / artificial intelligence</td><td class="term-cn">人工智慧</td><td>整合並分析海量多組學資料、找出規律。</td></tr>
+          <tr><td class="term-en">machine learning</td><td class="term-cn">機器學習</td><td>AI 的一支，從資料中自動學出模型。</td></tr>
+          <tr><td class="term-en">bioinformatics</td><td class="term-cn">生物資訊學</td><td>用運算方法處理與分析生物資料的學門。</td></tr>
+          <tr><td class="term-en">big data</td><td class="term-cn">巨量資料</td><td>規模龐大、複雜的資料集。</td></tr>
+          <tr><td class="term-en">$100 genome</td><td class="term-cn">百元基因組</td><td>定序一個人類基因組降至約 100 美元的里程碑。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">四、應用與醫療 Applications &amp; Medicine</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">precision medicine</td><td class="term-cn">精準醫療</td><td>依個人分子資料量身決定治療。</td></tr>
+          <tr><td class="term-en">personalized medicine</td><td class="term-cn">個人化醫療</td><td>精準醫療的同義說法。</td></tr>
+          <tr><td class="term-en">biomarker</td><td class="term-cn">生物標記</td><td>能指示疾病或生理狀態的可測量分子。</td></tr>
+          <tr><td class="term-en">liquid biopsy</td><td class="term-cn">液態切片</td><td>抽血偵測疾病訊號，不必動刀取組織。</td></tr>
+          <tr><td class="term-en">ctDNA</td><td class="term-cn">循環腫瘤 DNA</td><td>腫瘤釋放到血液中的微量 DNA。</td></tr>
+          <tr><td class="term-en">multi-cancer early detection (MCED)</td><td class="term-cn">泛癌種早期偵測</td><td>用一次血液檢測同時篩多種癌症。</td></tr>
+          <tr><td class="term-en">molecular diagnostics</td><td class="term-cn">分子診斷</td><td>以分子層次資訊診斷疾病。</td></tr>
+          <tr><td class="term-en">drug discovery</td><td class="term-cn">藥物開發</td><td>找出並開發新藥的過程。</td></tr>
+          <tr><td class="term-en">drug target</td><td class="term-cn">藥物標的</td><td>藥物作用的對象，常是特定蛋白質。</td></tr>
+          <tr><td class="term-en">programmable biology</td><td class="term-cn">可程式化生物學</td><td>像寫程式一樣設計、改造生物系統。</td></tr>
+          <tr><td class="term-en">autonomous lab</td><td class="term-cn">自主實驗室</td><td>由 AI 自動設計與執行實驗的實驗室。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">五、產業、挑戰與倫理 Industry, Challenges &amp; Ethics</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">ARK Invest</td><td class="term-cn">方舟投資</td><td>專注顛覆式創新的投資公司，發表《Big Ideas》。</td></tr>
+          <tr><td class="term-en">disruptive innovation</td><td class="term-cn">顛覆式創新</td><td>從根本改變產業或市場的創新。</td></tr>
+          <tr><td class="term-en">The Great Acceleration</td><td class="term-cn">大加速</td><td>多項指數型科技同時成熟、匯聚的時期。</td></tr>
+          <tr><td class="term-en">data-driven era</td><td class="term-cn">數據驅動時代</td><td>生物學以大量資料推動發現的階段。</td></tr>
+          <tr><td class="term-en">virtuous cycle</td><td class="term-cn">正向循環</td><td>兩件事互相促進、越滾越強的關係。</td></tr>
+          <tr><td class="term-en">data privacy</td><td class="term-cn">資料隱私</td><td>保護個人資料不被外洩或濫用。</td></tr>
+          <tr><td class="term-en">informed consent</td><td class="term-cn">知情同意</td><td>當事人充分了解後同意使用其資料／受檢。</td></tr>
+          <tr><td class="term-en">genetic discrimination</td><td class="term-cn">基因歧視</td><td>因基因風險而受到不公平對待。</td></tr>
+          <tr><td class="term-en">false positive</td><td class="term-cn">偽陽性</td><td>沒有疾病卻被檢測判定為陽性。</td></tr>
+          <tr><td class="term-en">overdiagnosis</td><td class="term-cn">過度診斷</td><td>找到一輩子不會造成傷害的「異常」，導致過度治療。</td></tr>
+          <tr><td class="term-en">health inequality</td><td class="term-cn">健康不平等</td><td>不同族群在健康與醫療資源上的落差。</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- 結語 -->
+  <div class="closing">
+    <h2>🎓 學習結語</h2>
+    <p>恭喜你讀完整份多組學講義！把握一條主線就不會忘記：<strong>沿著「DNA → RNA → 蛋白質 → 代謝物」這條流水線，每一站架一台攝影機，再用 AI 把所有畫面整合成一部完整的電影</strong>——這就是多組學。它正把生物醫學帶進「整合、精準、預防」的新時代，也同時帶來隱私與公平的新課題。</p>
+    <p style="margin-top:12px;font-size:14px;color:#7a7065;">建議複習方式：先用「學習地圖」自問每個主題能不能用一句話講出來，再回到「自我檢測」核對，最後用 Glossary 確認英文關鍵字。</p>
+  </div>
+
+</div>
+
+<!-- 底部導航 -->
+<div class="footer-nav">
+  <div class="footer-nav-container">
+    <div class="footer-title">🚀 課程報名 &amp; 聯絡</div>
+    <div class="footer-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="footer-link">
+        📚 錯中學ECHO計劃<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">七月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="footer-link">
+        📊 學生分析<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">七月開課</span>
+      </a>
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="footer-link line-link">
+        💬 Line 聯絡<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">@linwayet</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

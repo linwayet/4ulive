@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 消費操作系統 The AI Consumer Operating System｜主題式自學講義</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-color:#F8F4ED;
+  --text-color:#2D2A26;
+  --primary-color:#8B5E3C;
+  --secondary-color:#D4A574;
+  --accent-light:#E8D5C4;
+  --accent-lighter:#F2E8DD;
+  --green:#5E7B53;
+  --rust:#B5654A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+  background:linear-gradient(135deg,var(--bg-color) 0%,#FAF7F2 100%);
+  color:var(--text-color);
+  line-height:1.85;
+  font-size:17px;
+}
+
+/* ===== 頂部導航 ===== */
+.header-nav{
+  background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);
+  color:#fff;padding:18px 20px;position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 12px rgba(139,94,60,.15);
+}
+.nav-container{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+.nav-title{font-size:17px;font-weight:700;text-align:center;}
+.nav-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.nav-link{
+  background:rgba(255,255,255,.15);padding:12px 14px;border-radius:8px;text-align:center;
+  text-decoration:none;color:#fff;font-size:13px;font-weight:600;
+  transition:all .3s ease;border:1px solid rgba(255,255,255,.2);
+}
+.nav-link:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);}
+.nav-link.line-link{background:linear-gradient(135deg,#06C755 0%,#04A940 100%);}
+.nav-link-subtitle{display:block;font-size:11px;margin-top:4px;}
+
+/* ===== 主容器 ===== */
+.container{max-width:1100px;margin:0 auto;padding:36px 20px;}
+
+/* ===== Hero ===== */
+.hero{
+  text-align:center;margin-bottom:32px;padding:44px 24px;
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,var(--accent-light) 100%);
+  border-radius:16px;border-left:6px solid var(--primary-color);
+  box-shadow:0 8px 24px rgba(139,94,60,.08);
+}
+.hero h1{font-size:44px;color:var(--primary-color);margin-bottom:10px;line-height:1.3;}
+.hero .sub-en{font-size:18px;color:var(--rust);font-weight:700;letter-spacing:1px;margin-bottom:14px;}
+.hero p{font-size:16px;margin-bottom:8px;}
+.hero-credit{font-size:14px;color:var(--primary-color);margin-top:18px;font-weight:700;}
+
+/* ===== 學習地圖 ===== */
+.toc{
+  background:#fff;border-radius:12px;padding:26px 24px;margin-bottom:34px;
+  box-shadow:0 4px 12px rgba(139,94,60,.1);border-left:5px solid var(--secondary-color);
+}
+.toc h2{font-size:21px;color:var(--primary-color);margin-bottom:6px;}
+.toc .toc-note{font-size:14px;color:#7a7065;margin-bottom:16px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.toc-item{
+  display:block;text-decoration:none;color:var(--text-color);
+  background:var(--accent-lighter);padding:12px 14px;border-radius:8px;
+  font-size:15px;font-weight:600;transition:all .25s ease;border:1px solid var(--accent-light);
+}
+.toc-item:hover{background:var(--accent-light);transform:translateX(3px);}
+.toc-item .num{color:var(--rust);font-weight:700;margin-right:8px;}
+
+/* ===== 主題卡片 ===== */
+.idea-card{
+  background:#fff;margin-bottom:28px;border-radius:12px;overflow:hidden;
+  box-shadow:0 4px 12px rgba(139,94,60,.1);border-left:5px solid var(--secondary-color);
+  scroll-margin-top:90px;
+}
+.idea-header{
+  background:linear-gradient(135deg,var(--secondary-color) 0%,#C99163 100%);
+  color:#fff;padding:22px 24px;cursor:pointer;display:flex;align-items:center;gap:16px;
+  user-select:none;
+}
+.idea-header:hover{background:linear-gradient(135deg,#C99163 0%,#B87D52 100%);}
+.idea-icon{font-size:30px;}
+.idea-title-section{flex:1;}
+.idea-number{font-size:13px;opacity:.92;letter-spacing:1px;}
+.idea-title{font-size:23px;font-weight:700;margin:3px 0;}
+.idea-title-cn{font-size:17px;opacity:.95;}
+.arrow{font-size:18px;transition:transform .3s ease;}
+details[open] .arrow{transform:rotate(180deg);}
+details summary{outline:none;list-style:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+details summary::-webkit-details-marker{display:none;}
+details summary::marker{display:none;}
+.idea-content{padding:30px 28px;}
+
+/* ===== 內文元件 ===== */
+.idea-content p{margin-bottom:14px;}
+.sub-h{
+  font-size:19px;font-weight:700;color:var(--primary-color);
+  margin:26px 0 12px;padding-left:12px;border-left:4px solid var(--secondary-color);
+}
+.sub-h:first-child{margin-top:0;}
+.idea-content ul,.idea-content ol{margin:6px 0 16px 24px;}
+.idea-content li{margin-bottom:8px;}
+
+/* 英文關鍵字 */
+.en{
+  color:var(--rust);font-weight:700;font-style:italic;
+  background:#F5EEE6;padding:1px 6px;border-radius:4px;
+  white-space:nowrap;
+}
+
+/* 比喻框 */
+.analogy{
+  background:linear-gradient(135deg,#EEF3E9 0%,#F4F7EF 100%);
+  border-left:4px solid var(--green);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.analogy .box-title{font-weight:700;color:var(--green);margin-bottom:6px;font-size:15px;}
+
+/* 重點框 */
+.keypoint{
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,#FFFBF6 100%);
+  border-left:4px solid var(--primary-color);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.keypoint .box-title{font-weight:700;color:var(--primary-color);margin-bottom:6px;font-size:15px;}
+
+/* 注意 / 挑戰框 */
+.warn{
+  background:linear-gradient(135deg,#F8EAE4 0%,#FCF2EE 100%);
+  border-left:4px solid var(--rust);border-radius:8px;
+  padding:16px 18px;margin:16px 0;
+}
+.warn .box-title{font-weight:700;color:var(--rust);margin-bottom:6px;font-size:15px;}
+
+/* 表格 */
+.table-wrap{overflow-x:auto;margin:16px 0;}
+table.dt{border-collapse:collapse;width:100%;font-size:15px;min-width:520px;}
+table.dt th{
+  background:var(--primary-color);color:#fff;padding:11px 12px;text-align:left;
+  font-weight:700;border:1px solid var(--primary-color);
+}
+table.dt td{padding:10px 12px;border:1px solid var(--accent-light);vertical-align:top;}
+table.dt tr:nth-child(even) td{background:var(--accent-lighter);}
+table.dt tr:nth-child(odd) td{background:#fff;}
+
+/* 自我檢測 */
+.qa{
+  border:1px solid var(--accent-light);border-radius:8px;
+  margin:12px 0;overflow:hidden;
+}
+.qa>summary{
+  background:var(--accent-lighter);padding:14px 16px;cursor:pointer;
+  font-weight:700;color:var(--primary-color);display:flex;
+  justify-content:space-between;gap:12px;align-items:center;font-size:15.5px;
+}
+.qa>summary:hover{background:var(--accent-light);}
+.qa .answer{padding:14px 16px;background:#fff;font-size:15.5px;}
+.qa .answer .tag{
+  display:inline-block;background:var(--green);color:#fff;font-size:12px;
+  font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:6px;
+}
+
+/* glossary */
+.glossary-card .idea-header{background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);}
+.glossary-cat{
+  font-size:16px;font-weight:700;color:var(--rust);
+  margin:22px 0 8px;padding-bottom:4px;border-bottom:2px dotted var(--secondary-color);
+}
+.glossary-cat:first-child{margin-top:0;}
+table.gl{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px;}
+table.gl th{background:var(--secondary-color);color:#fff;padding:9px 11px;text-align:left;font-weight:700;}
+table.gl td{padding:9px 11px;border:1px solid var(--accent-light);vertical-align:top;}
+table.gl td.term-en{font-weight:700;color:var(--rust);white-space:nowrap;}
+table.gl td.term-cn{font-weight:600;white-space:nowrap;}
+table.gl tr:nth-child(even) td{background:var(--accent-lighter);}
+
+/* 結語 */
+.closing{
+  background:linear-gradient(135deg,var(--accent-lighter) 0%,var(--accent-light) 100%);
+  border-radius:12px;padding:26px 24px;margin-top:8px;text-align:center;
+  border-left:5px solid var(--primary-color);
+}
+.closing h2{color:var(--primary-color);font-size:20px;margin-bottom:10px;}
+
+/* ===== 底部導航 ===== */
+.footer-nav{
+  background:linear-gradient(135deg,var(--primary-color) 0%,#9D6F52 100%);
+  color:#fff;padding:24px 20px;margin-top:40px;
+}
+.footer-nav-container{max-width:1100px;margin:0 auto;}
+.footer-title{font-size:16px;font-weight:700;text-align:center;margin-bottom:16px;}
+.footer-links{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.footer-link{
+  background:rgba(255,255,255,.15);padding:12px 16px;border-radius:8px;text-align:center;
+  text-decoration:none;color:#fff;font-size:13px;font-weight:600;transition:all .3s ease;
+}
+.footer-link:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);}
+.footer-link.line-link{background:linear-gradient(135deg,#06C755 0%,#04A940 100%);}
+
+/* ===== 響應式 ===== */
+@media (max-width:768px){
+  body{font-size:16px;}
+  .idea-header{flex-direction:column;text-align:center;}
+  .idea-title{font-size:20px;}
+  .idea-content{padding:24px 18px;}
+  .nav-links,.footer-links,.toc-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:30px;}
+  .hero .sub-en{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- 頂部導航 -->
+<div class="header-nav">
+  <div class="nav-container">
+    <div class="nav-title">🚀 課程報名 &amp; 聯絡</div>
+    <div class="nav-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-link">
+        📚 錯中學ECHO計劃<span class="nav-link-subtitle">七月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-link">
+        📊 學生分析<span class="nav-link-subtitle">七月開課</span>
+      </a>
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="nav-link line-link">
+        💬 Line 聯絡<span class="nav-link-subtitle">@linwayet</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>🤖 AI 消費操作系統</h1>
+    <div class="sub-en">THE AI CONSUMER OPERATING SYSTEM</div>
+    <p><strong>主題式自學講義｜ARK Big Ideas 2026 · Big Idea 03</strong></p>
+    <p>當 AI 變成你和所有裝置、服務之間的新「介面」</p>
+    <div class="hero-credit">林威老師與 AI agent 團隊</div>
+  </div>
+
+  <!-- 學習地圖 -->
+  <div class="toc">
+    <h2>🗺️ 學習地圖</h2>
+    <div class="toc-note">本講義共九個主題，建議從上到下依序閱讀；點下方項目可直接跳到該主題。每個主題都「中文為主、關鍵字附英文」，最後附完整單字表。</div>
+    <div class="toc-grid">
+      <a class="toc-item" href="#t1"><span class="num">01</span>什麼是 AI 消費操作系統？</a>
+      <a class="toc-item" href="#t2"><span class="num">02</span>先備知識：OS 與人機介面演進</a>
+      <a class="toc-item" href="#t3"><span class="num">03</span>五大核心特徵</a>
+      <a class="toc-item" href="#t4"><span class="num">04</span>背後的關鍵技術</a>
+      <a class="toc-item" href="#t5"><span class="num">05</span>互動方式的根本轉變</a>
+      <a class="toc-item" href="#t6"><span class="num">06</span>實際應用場景</a>
+      <a class="toc-item" href="#t7"><span class="num">07</span>產業與市場：ARK 的觀點</a>
+      <a class="toc-item" href="#t8"><span class="num">08</span>挑戰、風險與倫理</a>
+      <a class="toc-item" href="#t9"><span class="num">09</span>自我檢測與重點總整理</a>
+      <a class="toc-item" href="#glossary"><span class="num">📖</span>主題單字整理 Glossary</a>
+    </div>
+  </div>
+
+  <!-- ===== 主題 01 ===== -->
+  <details class="idea-card" id="t1" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🧭</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 01 · TOPIC 01</div>
+        <div class="idea-title">什麼是 AI 消費操作系統？</div>
+        <div class="idea-title-cn">What Is the AI Consumer OS?</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <div class="sub-h">一句話定義</div>
+      <p><strong>AI 消費操作系統（<span class="en">AI Consumer Operating System</span>）</strong>指的是：人工智慧正在成為一個<strong>新的「中介層」</strong>——以後我們不再直接點開一個個 App 自己操作，而是<strong>用自然的語言告訴 AI 我們想做什麼，由 AI 幫我們完成</strong>。AI 變成我們和所有裝置、服務之間的「總管家」。</p>
+      <p>注意：這裡的「操作系統（<span class="en">operating system</span>，簡稱 OS）」不是指 Windows、iOS 那種傳統系統，而是一個<strong>比喻</strong>——AI 扮演的角色，就像當年的作業系統一樣，成為我們使用數位世界時「最先碰到、樣樣都要經過」的那一層。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 生活化比喻：從「自助點餐機」到「專屬管家」</div>
+        過去用手機，像走進一家自助餐廳：你得自己看懂每一台點餐機（每個 App）、自己一步步操作。<br>
+        AI 消費操作系統像是請了一位<strong>專屬管家</strong>：你只要說「我想吃清爽一點、預算 200 元」，管家就幫你比較、下單、付款、追蹤外送。你說「目標」，它處理「過程」。
+      </div>
+
+      <div class="sub-h">為什麼這是一個「大概念（Big Idea）」？</div>
+      <p>方舟投資（<span class="en">ARK Invest</span>）在 2026 年的《Big Ideas》報告中，把它列為十三大顛覆性主題的第 3 項。ARK 的核心主張是：<strong>生成式 AI 正在引發「人機互動」的下一次劃時代轉變（<span class="en">epochal shift</span>）</strong>，並重新塑造人們<strong>「發現、決定、交易」（discover, decide, transact）</strong>的方式。</p>
+      <p>換句話說，過去三十年我們學會「人去適應機器」（學會用滑鼠、學會用 App）；AI 消費操作系統的願景則相反——<strong>讓「機器來適應人」</strong>，用人類最自然的方式（說話）就能完成事情。</p>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        ① AI 消費操作系統＝AI 成為人與數位世界之間的<strong>新中介層</strong>。<br>
+        ② 互動模式從「自己操作 App」變成「<strong>告訴 AI 目標、由它完成</strong>」。<br>
+        ③ 核心精神：<strong>從「人適應機器」翻轉為「機器適應人」。</strong>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 02 ===== -->
+  <details class="idea-card" id="t2" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🖥️</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 02 · TOPIC 02</div>
+        <div class="idea-title">先備知識：OS 與人機介面演進</div>
+        <div class="idea-title-cn">Operating Systems &amp; the Evolution of HCI</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>要理解「AI 為什麼能當操作系統」，得先弄懂兩個基礎：什麼是操作系統、以及人類「操作機器的方式」是怎麼一路演變的。</p>
+
+      <div class="sub-h">1. 什麼是操作系統（OS）？</div>
+      <p><strong>操作系統（<span class="en">operating system</span>）</strong>是電腦或手機裡最核心的軟體，例如 Windows、macOS、<span class="en">iOS</span>、Android。它的工作是：站在<strong>「人」與「硬體」之間</strong>，把複雜的機器運作「包裝」成我們看得懂、用得來的樣子。</p>
+      <p>OS 還決定了一個重要的東西——<strong>平台（<span class="en">platform</span>）</strong>。所有 App 開發者都必須「在 OS 上面」開發，而 OS 的擁有者（如蘋果、Google）因此掌握巨大的<strong>市場力量（<span class="en">market power</span>）</strong>。記住這一點，主題 07 會用到。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 比喻：OS 是「翻譯兼總機」</div>
+        硬體只懂 0 與 1，人類只懂中文與點按。OS 就像中間的翻譯兼總機，把你的指令翻給機器、把機器的結果翻給你。沒有它，你得直接跟一堆電路溝通。
+      </div>
+
+      <div class="sub-h">2. 人機介面的演進史</div>
+      <p><strong>人機互動（<span class="en">HCI</span>，human-computer interaction）</strong>指的是「人類用什麼方式操作機器」。它的歷史，可以看成一條「<strong>越來越貼近人類本能</strong>」的路線：</p>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>世代</th><th>互動方式</th><th>使用者要付出什麼</th></tr>
+          <tr><td>命令列介面<br><span class="en">Command Line</span></td><td>打字輸入專門指令</td><td>必須背指令、像學一種語言</td></tr>
+          <tr><td>圖形使用者介面<br><span class="en">GUI</span></td><td>滑鼠、視窗、圖示</td><td>要學會點按、拖曳、找選單</td></tr>
+          <tr><td>觸控介面<br><span class="en">Touch Interface</span></td><td>手指點、滑、縮放</td><td>較直覺，但仍要學會每個 App</td></tr>
+          <tr><td>自然語言介面<br><span class="en">Natural Language Interface</span></td><td>直接用講話／打字「說人話」</td><td>幾乎不用學，會說話就會用</td></tr>
+        </table>
+      </div>
+      <p>看出規律了嗎？每一個世代，<strong>「人類要遷就機器」的程度都在下降</strong>。AI 消費操作系統就是這條路線的最新一站：把介面變成「<strong>人類最原始、最自然的溝通方式——語言</strong>」。</p>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        OS ＝ 人與硬體之間的中介層；人機介面則一路朝「越來越自然」演進：<strong>命令列 → 圖形介面 → 觸控 → 自然語言</strong>。AI 消費操作系統，就是用 AI 把「自然語言」變成新的主介面。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 03 ===== -->
+  <details class="idea-card" id="t3" open>
+    <summary class="idea-header">
+      <div class="idea-icon">✨</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 03 · TOPIC 03</div>
+        <div class="idea-title">五大核心特徵</div>
+        <div class="idea-title-cn">Five Core Features</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>一個系統要稱得上「AI 消費操作系統」，通常具備以下五個特徵。把這五點記熟，就掌握了它和傳統手機系統的差別。</p>
+
+      <div class="sub-h">① 自然語言介面 Natural Language Interface</div>
+      <p>你不必學任何指令或選單，<strong>直接用日常語言「說人話」</strong>就能下達需求。例如「幫我訂明天早上去台中的高鐵，靠窗」。這是它最根本的特徵。</p>
+
+      <div class="sub-h">② 多模態 Multimodal</div>
+      <p><strong>多模態（<span class="en">multimodal</span>）</strong>指系統能同時理解與產生<strong>多種形式</strong>的資訊：文字、語音、圖片、影片。你可以「拍一張冰箱照片」問它能煮什麼，也可以「念一段話」請它整理成筆記。輸入與輸出都不再限於打字。</p>
+
+      <div class="sub-h">③ 代理式 / 主動執行 Agentic</div>
+      <p>這是與舊系統最大的不同。傳統 App 只會「等你一步步點」；AI 消費操作系統具備<strong>AI 代理（<span class="en">AI agent</span>）</strong>能力——你給一個<strong>目標</strong>，它能自己<strong>拆解步驟、跨多個服務執行、完成任務</strong>。例如「規劃週末兩天一夜小旅行」，它會自己查交通、找住宿、排行程。</p>
+
+      <div class="sub-h">④ 情境感知與個人化 Context-aware &amp; Personalized</div>
+      <p>它會記得你的<strong>偏好、習慣與當下情境（<span class="en">context</span>）</strong>，並隨使用持續調整。同樣一句「找間餐廳」，它會考慮你不吃辣、預算、現在位置與時間，給出「為你」量身的答案，而不是一份通用清單。</p>
+
+      <div class="sub-h">⑤ 主動式 Proactive</div>
+      <p>傳統系統是「被動的」——你不點它就不動。AI 消費操作系統可以<strong>主動（<span class="en">proactive</span>）</strong>提醒與建議：例如偵測到班機延誤，主動幫你改接駁、通知對方。它從「工具」變成會替你著想的「助理」。</p>
+
+      <div class="sub-h">五大特徵 vs 傳統手機系統</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>面向</th><th>傳統 App 系統</th><th>AI 消費操作系統</th></tr>
+          <tr><td>怎麼下指令</td><td>點按、滑動、找選單</td><td>說人話（自然語言）</td></tr>
+          <tr><td>輸入形式</td><td>以打字、觸控為主</td><td>文字＋語音＋圖片＋影片（多模態）</td></tr>
+          <tr><td>誰做事</td><td>你自己一步步操作</td><td>AI 代理替你完成（代理式）</td></tr>
+          <tr><td>懂不懂你</td><td>大多一視同仁</td><td>記得偏好、依情境調整（個人化）</td></tr>
+          <tr><td>主動性</td><td>被動，等你開啟</td><td>會主動提醒與建議（主動式）</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        五大特徵口訣：<strong>說人話、多模態、會代理、懂個人、能主動</strong>。其中「代理式」最關鍵——它讓系統從「你操作的工具」變成「替你做事的助理」。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 04 ===== -->
+  <details class="idea-card" id="t4" open>
+    <summary class="idea-header">
+      <div class="idea-icon">⚙️</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 04 · TOPIC 04</div>
+        <div class="idea-title">背後的關鍵技術</div>
+        <div class="idea-title-cn">The Enabling Technologies</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>AI 消費操作系統不是單一發明，而是由幾項技術疊在一起才成立。以下逐一說明。</p>
+
+      <div class="sub-h">1. 大型語言模型 LLM：系統的「大腦」</div>
+      <p><strong>大型語言模型（<span class="en">LLM</span>，large language model）</strong>是一種用海量文字訓練出來的 AI，能理解語言、回答問題、推理與生成內容。它是<strong>生成式 AI（<span class="en">generative AI</span>）</strong>的核心，也是整個系統的「大腦」——之所以能「聽懂人話」，靠的就是它。</p>
+
+      <div class="sub-h">2. 自然語言處理 NLP：聽懂與回應</div>
+      <p><strong>自然語言處理（<span class="en">NLP</span>，natural language processing）</strong>是讓電腦「理解並生成人類語言」的技術領域。它負責把你說的話轉成 AI 能處理的意思，再把 AI 的結論轉回流暢的人話。</p>
+
+      <div class="sub-h">3. 語音技術：讓你「用講的」</div>
+      <p>包含<strong>語音辨識（<span class="en">speech recognition</span>，把聲音轉文字）</strong>與<strong>語音合成（<span class="en">text-to-speech</span>，把文字轉聲音）</strong>。兩者讓<strong>語音助手（<span class="en">voice assistant</span>）</strong>能與你自然對話，不必動手打字。</p>
+
+      <div class="sub-h">4. 多模態 AI：看得懂圖、聽得懂聲</div>
+      <p><strong>多模態 AI（<span class="en">multimodal AI</span>）</strong>讓系統能同時處理文字、影像、聲音。你拍照、錄音、打字都能被理解，這是「五大特徵」中多模態能力的技術基礎。</p>
+
+      <div class="sub-h">5. AI 代理：會「動手做事」的關鍵</div>
+      <p><strong>AI 代理（<span class="en">AI agent</span>）</strong>是能<strong>理解目標、自己規劃步驟、跨服務執行任務</strong>的 AI 程式。LLM 讓 AI「會想會說」，AI 代理則讓 AI「會做」——它能呼叫地圖、訂位系統、付款服務，把任務真正完成。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 比喻：一支完整的團隊</div>
+        把整套技術想成一個團隊：<strong>LLM</strong> 是會思考的大腦、<strong>NLP 與語音技術</strong>是耳朵和嘴巴、<strong>多模態 AI</strong> 是眼睛、<strong>AI 代理</strong>則是雙手。少了任何一個，系統都不完整。
+      </div>
+
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>技術</th><th>英文</th><th>負責什麼</th></tr>
+          <tr><td>大型語言模型</td><td>LLM</td><td>理解、推理、生成內容（大腦）</td></tr>
+          <tr><td>自然語言處理</td><td>NLP</td><td>聽懂人話、把結論說成人話</td></tr>
+          <tr><td>語音技術</td><td>Speech Recognition / TTS</td><td>聲音與文字互轉（耳朵與嘴巴）</td></tr>
+          <tr><td>多模態 AI</td><td>Multimodal AI</td><td>同時處理文字、圖片、聲音（眼睛）</td></tr>
+          <tr><td>AI 代理</td><td>AI Agent</td><td>規劃步驟、跨服務執行任務（雙手）</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        記住分工：<strong>LLM 負責「想」、AI 代理負責「做」</strong>。生成式 AI 的快速進步，是讓這一切在這幾年突然「可行」的關鍵推力。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 05 ===== -->
+  <details class="idea-card" id="t5" open>
+    <summary class="idea-header">
+      <div class="idea-icon">🔄</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 05 · TOPIC 05</div>
+        <div class="idea-title">互動方式的根本轉變</div>
+        <div class="idea-title-cn">From Apps to Agents</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>這個主題是整份講義的核心。AI 消費操作系統帶來的最大改變，不是「多了一個聊天功能」，而是<strong>我們使用數位世界的整套邏輯被改寫了</strong>。</p>
+
+      <div class="sub-h">1. 從「App 導向」到「Agent 導向」</div>
+      <p>過去的模式是 <strong>App 導向（<span class="en">app-based</span>）</strong>：想叫車打開叫車 App、想訂餐打開外送 App、想比價自己開三個購物 App。<strong>你必須知道「用哪個 App、怎麼操作」，並親自完成每一步。</strong></p>
+      <p>新的模式是 <strong>Agent 導向（<span class="en">agent-based</span>）</strong>：你只需要對 AI 說出<strong>目標</strong>，由 AI 代理在背後決定該用哪些服務、並一步步把它做完。App 沒有消失，但它們<strong>退到幕後</strong>，變成 AI 呼叫的「工具」，而不是你直接面對的東西。</p>
+
+      <div class="analogy">
+        <div class="box-title">🔍 比喻：自己開車 vs 叫計程車</div>
+        App 導向像「自己開車」：你得認得路、自己轉每個彎。Agent 導向像「搭計程車」：你只說目的地，怎麼走交給司機。AI 消費操作系統，就是把你從「駕駛」變成「乘客」。
+      </div>
+
+      <div class="sub-h">2. ARK 的關鍵詞：發現、決定、交易</div>
+      <p>ARK 用三個動詞描述被改寫的環節——<strong>發現（discover）、決定（decide）、交易（transact）</strong>：</p>
+      <ul>
+        <li><strong>發現：</strong>過去你自己用搜尋引擎一頁頁找；現在 AI 直接幫你篩選、整理。</li>
+        <li><strong>決定：</strong>過去你自己比較規格與評價；現在 AI 依你的偏好給出建議。</li>
+        <li><strong>交易：</strong>過去你自己填表、結帳；現在 AI 代理可代為下單付款。</li>
+      </ul>
+
+      <div class="sub-h">3. 代理式商務：買賣關係翻轉</div>
+      <p>當「交易」這一步交給 AI，就出現了<strong>代理式商務（<span class="en">agentic commerce</span>）</strong>。ARK 指出一個關鍵翻轉：</p>
+      <div class="warn">
+        <div class="box-title">🔁 方向反過來了</div>
+        <strong>過去：</strong>消費者「主動去逛」商家的網站與系統，自己找東西。<br>
+        <strong>未來：</strong>變成商家的系統「來對接」消費者的 AI 代理——是<strong>商家來爭取你的 AI</strong>，而不是你去逛商家。<br>
+        其深層影響是大幅<strong>降低消費者與商家之間的溝通摩擦（<span class="en">communication friction</span>）</strong>，可能重新洗牌整個市場。
+      </div>
+
+      <div class="sub-h">4. 一張表看懂轉變</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>環節</th><th>App 導向（過去）</th><th>Agent 導向（未來）</th></tr>
+          <tr><td>起點</td><td>你想「用哪個 App」</td><td>你想「達成什麼目標」</td></tr>
+          <tr><td>過程</td><td>自己一步步操作</td><td>AI 代理拆解並執行</td></tr>
+          <tr><td>App 的角色</td><td>你直接面對的主角</td><td>退到幕後，被 AI 呼叫的工具</td></tr>
+          <tr><td>你的角色</td><td>駕駛（事事自己來）</td><td>乘客（給目標、做決策）</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        最核心的一句話：<strong>從「App 導向」走向「Agent 導向」</strong>。你的角色從「操作者」變成「下指令、做最終決定的人」，而 App 從「主角」變成 AI 背後的「工具」。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 06 ===== -->
+  <details class="idea-card" id="t6" open>
+    <summary class="idea-header">
+      <div class="idea-icon">📱</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 06 · TOPIC 06</div>
+        <div class="idea-title">實際應用場景</div>
+        <div class="idea-title-cn">Real-World Use Cases</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>講完原理，來看 AI 消費操作系統「實際上會出現在哪裡」。以下六個場景，最能感受到它帶來的改變。</p>
+
+      <div class="sub-h">1. 購物與消費</div>
+      <p>這是 ARK 最看重的場景。你說「想買一雙適合下雨天、預算 2000 元的通勤鞋」，AI 代理就會跨多家商店<strong>搜尋、比較、甚至比價與下單</strong>。這正是代理式商務的核心舞台。</p>
+
+      <div class="sub-h">2. 搜尋與獲取資訊</div>
+      <p>傳統搜尋給你「一串連結」，要你自己讀。AI 消費操作系統直接給你<strong>整理好的答案</strong>，還能追問、要它換個說法、要它做成表格。資訊「發現」的方式被徹底改變。</p>
+
+      <div class="sub-h">3. 個人生產力與工作</div>
+      <p>整理會議紀錄、寫信、做摘要、安排行程、規劃專案——這些都能用一句話交辦。AI 成為隨身的「個人助理」。</p>
+
+      <div class="sub-h">4. 智慧家庭</div>
+      <p>用一句「我要睡了」，系統就關燈、降空調、設鬧鐘、鎖門。各種<strong>智慧裝置（<span class="en">smart device</span>）</strong>不再需要你逐一操作，而是統一由 AI 協調。</p>
+
+      <div class="sub-h">5. 客戶服務</div>
+      <p>企業用 AI 提供 24 小時、能理解情境的客服。你不必在語音選單裡按「1、2、3」，直接說出問題即可。</p>
+
+      <div class="sub-h">6. 學習與教育</div>
+      <p>AI 能依你的程度與步調，扮演「<strong>個人化家教</strong>」：你不懂的地方反覆換方式講解，並出練習題檢驗——這也是你正在讀這份講義的延伸應用。</p>
+
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>場景</th><th>帶來的改變</th><th>關鍵英文詞</th></tr>
+          <tr><td>購物與消費</td><td>AI 代理替你搜尋、比價、下單</td><td>agentic commerce</td></tr>
+          <tr><td>搜尋資訊</td><td>從「一串連結」到「整理好的答案」</td><td>AI search</td></tr>
+          <tr><td>生產力與工作</td><td>用一句話交辦事務</td><td>productivity / AI assistant</td></tr>
+          <tr><td>智慧家庭</td><td>一句話協調所有裝置</td><td>smart home</td></tr>
+          <tr><td>客戶服務</td><td>能理解情境的全天候客服</td><td>customer service</td></tr>
+          <tr><td>學習教育</td><td>個人化、可追問的家教</td><td>personalized learning</td></tr>
+        </table>
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        共同模式都是：<strong>你說目標 → AI 處理過程 → 你做最終確認</strong>。其中「購物與消費」被視為最快、影響最大的戰場。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 07 ===== -->
+  <details class="idea-card" id="t7" open>
+    <summary class="idea-header">
+      <div class="idea-icon">📈</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 07 · TOPIC 07</div>
+        <div class="idea-title">產業與市場：ARK 的觀點</div>
+        <div class="idea-title-cn">Industry &amp; Market: The ARK View</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>這個主題從「科技」切換到「產業」視角，看懂為什麼投資機構會把 AI 消費操作系統視為兵家必爭之地。</p>
+
+      <div class="sub-h">1. ARK 與「Big Ideas」報告</div>
+      <p><strong>方舟投資（<span class="en">ARK Invest</span>）</strong>是一家專注「顛覆式創新（<span class="en">disruptive innovation</span>）」的投資公司。它每年發表《Big Ideas》報告，挑出最可能改變經濟的科技主題。在 2026 年版中，<strong>AI 消費操作系統是十三大 Big Ideas 中的第 3 項</strong>。</p>
+
+      <div class="sub-h">2. 核心論點：人機互動的「劃時代轉變」</div>
+      <p>ARK 主張，生成式 AI 正<strong>加速數位應用的普及</strong>，並帶來人機互動的下一次<strong>劃時代轉變（<span class="en">epochal shift</span>）</strong>。AI 正在「收斂」人們發現、決定、交易的方式——當這三件事都由 AI 中介，影響的就不只是體驗，而是整個商業版圖。</p>
+
+      <div class="sub-h">3. 為什麼「OS 那一層」這麼值錢？</div>
+      <p>回想主題 02 提過的——<strong>誰掌握 OS，誰就掌握平台與市場力量</strong>。手機時代，iOS 與 Android 兩家掌握了 OS，所有 App 都得從它們的商店上架、付它們抽成。</p>
+      <div class="analogy">
+        <div class="box-title">🔍 比喻：誰收「過路費」</div>
+        OS 就像一座橋。所有想做生意的人都得過這座橋，橋的主人就能收「過路費」。AI 消費操作系統的競爭，本質上是在搶<strong>「下一座橋」的主導權</strong>——這就是為什麼科技巨頭都全力投入。
+      </div>
+
+      <div class="sub-h">4. ARK 看見的產業影響</div>
+      <ul>
+        <li><strong>採用速度（adoption）：</strong>當操作變得像說話一樣簡單，更多人、更頻繁地使用數位服務。</li>
+        <li><strong>營收模式（revenue）：</strong>當 AI 代理替你決定買什麼，傳統「廣告」與「App 商店抽成」的商業模式可能被撼動，須重新設計。</li>
+        <li><strong>市場版圖（market power）：</strong>掌握 AI 消費操作系統入口的公司，可能取得新一輪的龐大優勢。</li>
+      </ul>
+
+      <div class="warn">
+        <div class="box-title">⚠️ 自學者請注意：投資觀點 ≠ 保證</div>
+        ARK 的報告是「<strong>對未來的研究預測</strong>」，不是事實，也不是投資建議。預測可能過於樂觀，也可能落空。閱讀這類報告時，重點是學它<strong>背後的推理邏輯</strong>（互動變簡單 → 採用變多 → 入口變值錢），而不是把任何結論當成必然。本講義不構成任何投資建議。
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        產業視角一句話：<strong>掌握 AI 消費操作系統這一層，就掌握下一個世代的「平台與入口」。</strong>這也是它被視為兵家必爭之地、並可能改寫廣告與電商商業模式的原因。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 08 ===== -->
+  <details class="idea-card" id="t8" open>
+    <summary class="idea-header">
+      <div class="idea-icon">⚖️</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 08 · TOPIC 08</div>
+        <div class="idea-title">挑戰、風險與倫理</div>
+        <div class="idea-title-cn">Challenges, Risks &amp; Ethics</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>AI 消費操作系統前景很大，但<strong>不是沒有疑慮</strong>。一份成熟的自學講義，必須同時看見它的風險。以下是五個主要挑戰。</p>
+
+      <div class="sub-h">1. 隱私：AI 幾乎知道你的一切</div>
+      <p>要替你做事，AI 必須知道你的行程、喜好、對話、消費、位置。這代表它握有極大量的<strong>個人資料</strong>。一旦<strong>資料隱私（<span class="en">data privacy</span>）</strong>外洩或被濫用，後果遠比單一 App 外洩嚴重。</p>
+
+      <div class="sub-h">2. 信任與「幻覺」</div>
+      <p>AI 有時會<strong>一本正經地給出錯誤資訊，這稱為「幻覺」（<span class="en">hallucination</span>）</strong>。當 AI 代替你決定、甚至代替你下單付款，一個錯誤可能造成實際損失。「<strong>能不能信任它</strong>」是普及的最大關卡。</p>
+
+      <div class="sub-h">3. 黑箱與透明度</div>
+      <p>AI 推薦這家餐廳、選這款商品，背後的理由你往往看不到。這就是<strong>黑箱問題（<span class="en">black box</span>）</strong>。它可能<strong>偏向付錢給它的商家</strong>，使用者卻難以察覺，因此<strong>透明度（<span class="en">transparency</span>）</strong>非常重要。</p>
+
+      <div class="sub-h">4. 平台壟斷與鎖定</div>
+      <p>如同主題 07 所說，OS 那一層擁有巨大權力。若少數幾家公司掌握所有人的 AI 入口，可能形成<strong>壟斷（<span class="en">monopoly</span>）</strong>；而你的習慣、資料都存在某個系統裡，會產生難以轉換的<strong>鎖定效應（<span class="en">lock-in</span>）</strong>。</p>
+
+      <div class="sub-h">5. 工作衝擊與數位落差</div>
+      <p>部分工作（如基礎客服、行政庶務）可能被取代，帶來<strong>就業衝擊（<span class="en">job displacement</span>）</strong>。同時，懂得善用 AI 的人與不懂的人之間，可能擴大<strong>數位落差（<span class="en">digital divide</span>）</strong>。</p>
+
+      <div class="warn">
+        <div class="box-title">⚠️ 挑戰一覽</div>
+        ① 隱私風險（data privacy）<br>
+        ② 信任與幻覺（trust／hallucination）<br>
+        ③ 黑箱與透明度（black box／transparency）<br>
+        ④ 壟斷與鎖定（monopoly／lock-in）<br>
+        ⑤ 工作衝擊與數位落差（job displacement／digital divide）
+      </div>
+
+      <div class="keypoint">
+        <div class="box-title">📌 本主題重點</div>
+        評估任何新科技，都要同時問：「<strong>它帶來什麼好處？</strong>」與「<strong>它可能帶來什麼代價？</strong>」AI 消費操作系統的真正成熟，需要科技、法律、倫理三方面一起跟上。
+      </div>
+
+    </div>
+  </details>
+
+  <!-- ===== 主題 09 ===== -->
+  <details class="idea-card" id="t9" open>
+    <summary class="idea-header">
+      <div class="idea-icon">✅</div>
+      <div class="idea-title-section">
+        <div class="idea-number">主題 09 · TOPIC 09</div>
+        <div class="idea-title">自我檢測與重點總整理</div>
+        <div class="idea-title-cn">Self-check &amp; Recap</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <div class="sub-h">A. 全篇重點總整理</div>
+      <div class="table-wrap">
+        <table class="dt">
+          <tr><th>主題</th><th>一句話帶走</th></tr>
+          <tr><td>01 核心定義</td><td>AI 成為人與數位世界之間的新中介層。</td></tr>
+          <tr><td>02 先備知識</td><td>OS 是人與硬體的中介；介面一路朝「自然語言」演進。</td></tr>
+          <tr><td>03 五大特徵</td><td>說人話、多模態、會代理、懂個人、能主動。</td></tr>
+          <tr><td>04 關鍵技術</td><td>LLM 負責「想」、AI 代理負責「做」。</td></tr>
+          <tr><td>05 互動轉變</td><td>從「App 導向」走向「Agent 導向」。</td></tr>
+          <tr><td>06 應用場景</td><td>購物、搜尋、生產力、智慧家庭、客服、教育。</td></tr>
+          <tr><td>07 產業與市場</td><td>掌握 OS 那一層＝掌握下一個世代的入口。</td></tr>
+          <tr><td>08 挑戰與倫理</td><td>隱私、幻覺、黑箱、壟斷、工作衝擊。</td></tr>
+        </table>
+      </div>
+
+      <div class="sub-h">B. 自我檢測（先想答案，再點開核對）</div>
+      <p>下列問題請先自己回答，再點開看參考解答。這是檢驗自己「真的懂了」最有效的方法。</p>
+
+      <details class="qa">
+        <summary><span>Q1：用一句話解釋「AI 消費操作系統」。</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>它指 AI 成為人與所有數位裝置、服務之間的<strong>新中介層</strong>：使用者用自然語言說出目標，由 AI 代為完成。互動模式從「自己操作 App」變成「告訴 AI 目標、由它執行」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q2：人機介面演進有哪四個世代？規律是什麼？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>命令列介面 → 圖形使用者介面（GUI）→ 觸控介面 → 自然語言介面。規律是：<strong>每一代「人類遷就機器」的程度都下降，越來越貼近人類本能的溝通方式。</strong></p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q3：AI 消費操作系統的五大核心特徵是什麼？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>① 自然語言介面（說人話）② 多模態（文字／語音／圖片／影片）③ 代理式（給目標、AI 執行）④ 情境感知與個人化（懂你的偏好）⑤ 主動式（主動提醒建議）。口訣：<strong>說人話、多模態、會代理、懂個人、能主動。</strong></p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q4：LLM 和 AI 代理（AI agent）的分工有什麼不同？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p><strong>LLM 負責「想」</strong>——理解語言、推理、生成內容，是系統的大腦；<strong>AI 代理負責「做」</strong>——理解目標、規劃步驟、跨服務執行任務，是系統的雙手。兩者合作，系統才能既「會說」又「會做」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q5：「從 App 導向到 Agent 導向」是什麼意思？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>App 導向：你必須知道用哪個 App、自己一步步操作。Agent 導向：你只說出目標，AI 代理在背後決定用哪些服務並完成任務。App 沒消失，但<strong>退到幕後變成 AI 呼叫的工具</strong>；你的角色從「駕駛」變成「乘客」。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q6：為什麼「掌握 OS 那一層」對企業這麼重要？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>OS 是所有服務都必須經過的「平台」與「入口」，像一座所有人都得過的橋，橋主能收「過路費」、掌握巨大的市場力量。誰掌握 AI 消費操作系統這一層，就可能掌握下一個世代的入口，因此成為兵家必爭之地。</p>
+        </div>
+      </details>
+
+      <details class="qa">
+        <summary><span>Q7：AI 消費操作系統有哪些風險或倫理問題？</span><span class="arrow">▼</span></summary>
+        <div class="answer">
+          <span class="tag">參考解答</span>
+          <p>至少五項：① 隱私風險（AI 握有大量個人資料）② 信任與幻覺（AI 可能給出錯誤資訊）③ 黑箱與透明度（看不到推薦理由）④ 壟斷與鎖定效應 ⑤ 工作衝擊與數位落差。</p>
+        </div>
+      </details>
+
+    </div>
+  </details>
+
+  <!-- ===== Glossary ===== -->
+  <details class="idea-card glossary-card" id="glossary" open>
+    <summary class="idea-header">
+      <div class="idea-icon">📖</div>
+      <div class="idea-title-section">
+        <div class="idea-number">附錄 · APPENDIX</div>
+        <div class="idea-title">主題單字整理 Glossary</div>
+        <div class="idea-title-cn">AI Consumer OS Key Vocabulary</div>
+      </div>
+      <div class="arrow">▼</div>
+    </summary>
+    <div class="idea-content">
+
+      <p>以下整理本講義出現的所有關鍵字，依主題分類，方便複習與查找。建議搭配各主題對照閱讀。</p>
+
+      <div class="glossary-cat">一、核心概念 Core Concepts</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">AI Consumer Operating System</td><td class="term-cn">AI 消費操作系統</td><td>AI 成為人與數位世界之間的新中介層。</td></tr>
+          <tr><td class="term-en">operating system (OS)</td><td class="term-cn">操作系統</td><td>站在人與硬體之間的核心軟體。</td></tr>
+          <tr><td class="term-en">platform</td><td class="term-cn">平台</td><td>其他服務必須在其上運作的基礎層。</td></tr>
+          <tr><td class="term-en">human-computer interaction (HCI)</td><td class="term-cn">人機互動</td><td>人類操作機器的方式與設計。</td></tr>
+          <tr><td class="term-en">epochal shift</td><td class="term-cn">劃時代轉變</td><td>足以開啟新時代的根本性改變。</td></tr>
+          <tr><td class="term-en">interface</td><td class="term-cn">介面</td><td>人與系統溝通的接觸點。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">二、五大核心特徵 Core Features</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">natural language interface</td><td class="term-cn">自然語言介面</td><td>用日常語言「說人話」就能操作。</td></tr>
+          <tr><td class="term-en">multimodal</td><td class="term-cn">多模態</td><td>能處理文字、語音、圖片、影片等多種形式。</td></tr>
+          <tr><td class="term-en">agentic</td><td class="term-cn">代理式</td><td>給目標、由 AI 自行規劃並執行。</td></tr>
+          <tr><td class="term-en">context-aware</td><td class="term-cn">情境感知</td><td>能依當下情境（時間、地點、狀態）調整。</td></tr>
+          <tr><td class="term-en">personalized</td><td class="term-cn">個人化</td><td>依個人偏好量身提供結果。</td></tr>
+          <tr><td class="term-en">proactive</td><td class="term-cn">主動式</td><td>不必等你開啟，會主動提醒與建議。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">三、關鍵技術 Enabling Technologies</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">generative AI</td><td class="term-cn">生成式 AI</td><td>能生成文字、圖像等新內容的 AI。</td></tr>
+          <tr><td class="term-en">large language model (LLM)</td><td class="term-cn">大型語言模型</td><td>用海量文字訓練、能理解與生成語言的 AI（大腦）。</td></tr>
+          <tr><td class="term-en">natural language processing (NLP)</td><td class="term-cn">自然語言處理</td><td>讓電腦理解與生成人類語言的技術。</td></tr>
+          <tr><td class="term-en">AI agent</td><td class="term-cn">AI 代理</td><td>能理解目標、規劃步驟、執行任務的 AI（雙手）。</td></tr>
+          <tr><td class="term-en">multimodal AI</td><td class="term-cn">多模態 AI</td><td>能同時處理文字、影像、聲音的 AI。</td></tr>
+          <tr><td class="term-en">voice assistant</td><td class="term-cn">語音助手</td><td>用語音與你對話、執行任務的助理。</td></tr>
+          <tr><td class="term-en">speech recognition</td><td class="term-cn">語音辨識</td><td>把聲音轉成文字的技術。</td></tr>
+          <tr><td class="term-en">text-to-speech (TTS)</td><td class="term-cn">語音合成</td><td>把文字轉成聲音的技術。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">四、互動轉變與應用 Interaction Shift &amp; Applications</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">app-based</td><td class="term-cn">App 導向</td><td>使用者自己選 App、逐步操作的舊模式。</td></tr>
+          <tr><td class="term-en">agent-based</td><td class="term-cn">Agent 導向</td><td>使用者給目標、由 AI 代理完成的新模式。</td></tr>
+          <tr><td class="term-en">agentic commerce</td><td class="term-cn">代理式商務</td><td>由 AI 代理替消費者搜尋、比較、下單的商務形態。</td></tr>
+          <tr><td class="term-en">communication friction</td><td class="term-cn">溝通摩擦</td><td>消費者與商家之間溝通的成本與阻力。</td></tr>
+          <tr><td class="term-en">smart device</td><td class="term-cn">智慧裝置</td><td>可連網、可被統一協調的家電與裝置。</td></tr>
+          <tr><td class="term-en">smart home</td><td class="term-cn">智慧家庭</td><td>由系統統一協調家中裝置的居家環境。</td></tr>
+        </table>
+      </div>
+
+      <div class="glossary-cat">五、產業、挑戰與倫理 Industry, Challenges &amp; Ethics</div>
+      <div class="table-wrap">
+        <table class="gl">
+          <tr><th>English</th><th>中文</th><th>簡短說明</th></tr>
+          <tr><td class="term-en">ARK Invest</td><td class="term-cn">方舟投資</td><td>專注顛覆式創新的投資公司，發表《Big Ideas》。</td></tr>
+          <tr><td class="term-en">disruptive innovation</td><td class="term-cn">顛覆式創新</td><td>從根本改變產業或市場的創新。</td></tr>
+          <tr><td class="term-en">market power</td><td class="term-cn">市場力量</td><td>企業左右市場、訂定規則的影響力。</td></tr>
+          <tr><td class="term-en">data privacy</td><td class="term-cn">資料隱私</td><td>保護個人資料不被外洩或濫用。</td></tr>
+          <tr><td class="term-en">hallucination</td><td class="term-cn">幻覺</td><td>AI 一本正經地給出錯誤資訊的現象。</td></tr>
+          <tr><td class="term-en">black box</td><td class="term-cn">黑箱</td><td>AI 的決策過程不透明、難以解釋。</td></tr>
+          <tr><td class="term-en">transparency</td><td class="term-cn">透明度</td><td>讓使用者看得到 AI 為何如此決定。</td></tr>
+          <tr><td class="term-en">monopoly</td><td class="term-cn">壟斷</td><td>少數企業掌控市場、缺乏競爭。</td></tr>
+          <tr><td class="term-en">lock-in</td><td class="term-cn">鎖定效應</td><td>習慣與資料綁在某系統、難以轉換。</td></tr>
+          <tr><td class="term-en">job displacement</td><td class="term-cn">就業衝擊</td><td>部分工作被自動化取代。</td></tr>
+          <tr><td class="term-en">digital divide</td><td class="term-cn">數位落差</td><td>能否善用數位科技造成的差距。</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </details>
+
+  <!-- 結語 -->
+  <div class="closing">
+    <h2>🎓 學習結語</h2>
+    <p>恭喜你讀完整份 AI 消費操作系統講義！把握一條主線就不會忘記：<strong>過去三十年是「人去適應機器」，AI 消費操作系統要把它翻轉成「機器來適應人」</strong>——你只要用最自然的語言說出目標，剩下的交給 AI 代理。互動模式從「App 導向」走向「Agent 導向」，這既帶來方便，也帶來隱私、信任與壟斷的新課題。</p>
+    <p style="margin-top:12px;font-size:14px;color:#7a7065;">建議複習方式：先用「學習地圖」自問每個主題能不能用一句話講出來，再回到「自我檢測」核對，最後用 Glossary 確認英文關鍵字。</p>
+  </div>
+
+
+
+</div>
+
+<!-- 底部導航 -->
+<div class="footer-nav">
+  <div class="footer-nav-container">
+    <div class="footer-title">🚀 課程報名 &amp; 聯絡</div>
+    <div class="footer-links">
+      <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="footer-link">
+        📚 錯中學ECHO計劃<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">七月開課</span>
+      </a>
+      <a href="https://linwayet.github.io/popup/index" target="_blank" class="footer-link">
+        📊 學生分析<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">七月開課</span>
+      </a>
+      <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="footer-link line-link">
+        💬 Line 聯絡<span class="nav-link-subtitle" style="color:rgba(255,255,255,.8)">@linwayet</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
