@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARK Big Ideas 2026 - 分類整理版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F4ED;
+            --text-color: #2D2A26;
+            --primary-color: #8B5E3C;
+            --secondary-color: #D4A574;
+            --accent-light: #E8D5C4;
+            --accent-lighter: #F2E8DD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color) 0%, #FAF7F2 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        /* 頂部導航 */
+        .header-nav {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #9D6F52 100%);
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(139, 94, 60, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .nav-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .nav-link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.line-link {
+            background: linear-gradient(135deg, #06C755 0%, #04A940 100%);
+        }
+
+        .nav-link-subtitle {
+            display: block;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--accent-lighter) 0%, var(--accent-light) 100%);
+            border-radius: 16px;
+            border-left: 6px solid var(--primary-color);
+            box-shadow: 0 8px 24px rgba(139, 94, 60, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .hero-credit {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Big Idea 卡片 */
+        .idea-card {
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(139, 94, 60, 0.1);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .idea-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #C99163 100%);
+            color: white;
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            user-select: none;
+        }
+
+        .idea-header:hover {
+            background: linear-gradient(135deg, #C99163 0%, #B87D52 100%);
+        }
+
+        .idea-icon {
+            font-size: 32px;
+        }
+
+        .idea-title-section {
+            flex: 1;
+        }
+
+        .idea-number {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .idea-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 4px 0;
+        }
+
+        .idea-title-cn {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] .arrow {
+            transform: rotate(180deg);
+        }
+
+        details summary {
+            outline: none;
+            list-style: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary::marker {
+            display: none;
+        }
+
+        .idea-content {
+            padding: 32px;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, var(--accent-lighter) 0%, transparent 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .intro-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .content-section {
+            margin-bottom: 32px;
+        }
+
+        .page-block {
+            margin-bottom: 32px;
+            border: 1px solid #E8D5C4;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .page-image {
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .text-content {
+            padding: 20px;
+        }
+
+        .english-title {
+            font-size: 14px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .english-text {
+            background: #F5F1EB;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--secondary-color);
+            font-size: 15px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: var(--text-color);
+        }
+
+        .chinese-title {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 16px 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chinese-text {
+            background: #FFFBF7;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .page-label {
+            font-size: 12px;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* 底部導航 */
+        .footer-nav {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #9D6F52 100%);
+            color: white;
+            padding: 24px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .footer-link {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .footer-link.line-link {
+            background: linear-gradient(135deg, #06C755 0%, #04A940 100%);
+        }
+
+        /* 響應式 */
+        @media (max-width: 768px) {
+            .idea-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .idea-title {
+                font-size: 20px;
+            }
+
+            .nav-links, .footer-links {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頂部導航 -->
+    <div class="header-nav">
+        <div class="nav-container">
+            <div class="nav-title">🚀 課程報名 & 聯絡</div>
+            <div class="nav-links">
+                <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="nav-link">
+                    📚 錯中學ECHO計劃
+                    <span class="nav-link-subtitle">七月開課</span>
+                </a>
+                <a href="https://linwayet.github.io/popup/index" target="_blank" class="nav-link">
+                    📊 學生分析
+                    <span class="nav-link-subtitle">七月開課</span>
+                </a>
+                <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="nav-link line-link">
+                    💬 Line 聯絡
+                    <span class="nav-link-subtitle">@linwayet</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>📊 ARK Big Ideas 2026</h1>
+            <p><strong>分類整理版 + 中文翻譯 + PDF 原文圖片</strong></p>
+            <p>✨ 探索 13 大顛覆性科技：AI、機器人、電動車、能源、區塊鏈、太空等</p>
+            <p style="font-size: 14px; margin-top: 16px;">📄 完整 111 頁 PDF 內容 | 🌐 英文原文 + 中文翻譯 | 📸 所有頁面圖片</p>
+            <div class="hero-credit">由 林威老師與 AI agent 團隊 製作</div>
+        </div>
+
+        <!-- Big Idea 01: The Great Acceleration -->
+        <details class="idea-card" open>
+            <summary class="idea-header">
+                <div class="idea-icon">📈</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 01</div>
+                    <div class="idea-title">The Great Acceleration</div>
+                    <div class="idea-title-cn">【大加速】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">
+                        第 10 個年度版本的 ARK Big Ideas 報告，旨在識別和背景化正在重塑全球經濟的技術。指數型技術正在匯聚，市場正在轉變，全新的機會正在出現。大加速代表著多個顛覆性技術同時成熟並開始大規模應用的時期。
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <!-- Page 4 -->
+                    <div class="page-block">
+                        <div class="text-content">
+                            <div class="page-label">📄 頁碼 4-5</div>
+                            <div class="english-title">English Text</div>
+                            <div class="english-text">Big Ideas 2026 marks the 10th annual edition of ARK Invest's flagship research report, designed to identify and contextualize the technologies reshaping the global economy. Each year, we sift through short-term noise to find signal and focus on long-term innovation platforms, as exponential technologies are converging, markets are transforming, and entirely new opportunities are emerging.
+
+Big Ideas is not a forecast of incremental change. It is a framework for understanding step-function changes in growth. In this year's report, we explore 13 Big Ideas spanning artificial intelligence, robotics, energy, blockchain, space, and biology.</div>
+
+                            <div class="chinese-title">中文翻譯</div>
+                            <div class="chinese-text">
+                                2026 年的 Big Ideas 標誌著 ARK Invest 旗艦研究報告的第 10 個年度版本，旨在識別和背景化正在重塑全球經濟的技術。每年，我們都會過濾短期噪音來尋找信號，並專注於長期創新平台，因為指數型技術正在匯聚，市場正在轉變，全新的機會正在出現。
+
+Big Ideas 不是增量變化的預測。這是一個框架，用於理解全球經濟增長中的階段性變化。在今年的報告中，我們探索了 13 個 Big Ideas，涵蓋人工智能、機器人、能源、區塊鏈、太空和生物技術。
+                            </div>
+                        </div>
+                        <img src="ark_images/page_004.png" alt="Page 4" class="page-image" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Big Idea 10: Robotics -->
+        <details class="idea-card" open>
+            <summary class="idea-header">
+                <div class="idea-icon">🦾</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 10</div>
+                    <div class="idea-title">Robotics</div>
+                    <div class="idea-title-cn">【機器人 - 重點探討】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">
+                        🦾 機器人正在從工廠進入家庭和服務領域，驅動勞動力的根本性轉變。與 AI 結合，機器人變得更聰明、更靈活和更能適應複雜環境。
+
+                        應用領域包括：
+                        • 工業自動化升級 - 提高製造效率
+                        • 服務機器人普及 - 清潔、配送、服侍等
+                        • 物流與倉儲自動化 - 加速電商和供應鏈
+                        • 醫療與照護機器人 - 解決老齡化社會的照護需求
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="page-block">
+                        <div class="text-content">
+                            <div class="page-label">📄 機器人部分 - 頁碼 83-89</div>
+                            <div class="english-title">English Text - Robotics Transformation</div>
+                            <div class="english-text">Robotics is expanding beyond manufacturing into service sectors. Advances in artificial intelligence, computer vision, and dexterity are enabling robots to perform increasingly complex tasks. Robots are becoming more autonomous, collaborative, and capable of adapting to changing environments.
+
+The convergence of AI and robotics is creating new opportunities across multiple industries: logistics and warehousing, healthcare, agriculture, construction, and retail. Mobile robots, autonomous vehicles, and humanoid robots represent the future of automation, potentially reshaping labor markets and economic productivity.</div>
+
+                            <div class="chinese-title">中文翻譯 - 機器人轉變</div>
+                            <div class="chinese-text">
+                                機器人正在超越製造業，進入服務領域。人工智能、計算機視覺和靈活性方面的進步使機器人能夠執行越來越複雜的任務。機器人變得更加自主、協作，並能夠適應不斷變化的環境。
+
+AI 和機器人的融合正在為多個行業創造新機會：物流和倉儲、醫療、農業、建築和零售。移動機器人、自主車輛和類人機器人代表自動化的未來，可能會重塑勞動力市場和經濟生產率。
+                            </div>
+                        </div>
+                        <img src="ark_images/page_083.png" alt="Page 83 - Robotics" class="page-image" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Big Idea 11: Distributed Energy -->
+        <details class="idea-card" open>
+            <summary class="idea-header">
+                <div class="idea-icon">⚡</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 11</div>
+                    <div class="idea-title">Distributed Energy</div>
+                    <div class="idea-title-cn">【分佈式能源 & 電動車 - 重點探討】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">
+                        ⚡ 太陽能、風能和儲能技術的進步正在將能源生成從集中式發電廠轉移到分佈式家庭和社區。
+
+                        🚗 電動汽車充電基礎設施的發展是分佈式能源的重要應用，推動能源和交通的融合發展：
+                        • 家庭太陽能 + 儲能系統 - 實現能源自給自足
+                        • 電動車充電網絡 - 與可再生能源結合
+                        • 智能微電網 - 優化分佈式能源利用
+                        • 電動車成為移動儲能裝置 - 支撐電網穩定
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="page-block">
+                        <div class="text-content">
+                            <div class="page-label">📄 分佈式能源與電動車部分 - 頁碼 90-111</div>
+                            <div class="english-title">English Text - Energy Distribution & Electric Vehicles</div>
+                            <div class="english-text">Distributed energy systems powered by renewables are transforming electricity generation and consumption. Solar, wind, and battery storage costs have declined dramatically, enabling households and communities to generate their own power. This shift is disrupting traditional utility business models and creating new opportunities in energy management, storage, and grid modernization.
+
+Electric vehicles (EVs) are becoming central to distributed energy ecosystems. As EV adoption accelerates, charging infrastructure becomes critical. Vehicle-to-grid (V2G) technology enables EVs to serve as mobile storage units, stabilizing grids and reducing peak demand. The convergence of distributed solar, battery storage, and electric mobility is creating an integrated energy ecosystem that enhances resilience and reduces carbon emissions.</div>
+
+                            <div class="chinese-title">中文翻譯 - 能源分佈與電動車</div>
+                            <div class="chinese-text">
+                                由可再生能源驅動的分佈式能源系統正在改變電力生成和消費。太陽能、風能和電池儲存成本已大幅下降，使家庭和社區能夠生成自己的電力。這種轉變正在破壞傳統公用事業商業模式，並在能源管理、儲存和電網現代化方面創造新機會。
+
+電動汽車 (EV) 正在成為分佈式能源生態系統的中心。隨著電動汽車采用的加速，充電基礎設施變得至關重要。車輛到電網 (V2G) 技術使電動汽車能夠充當移動儲存單元，穩定電網並降低峰值需求。分佈式太陽能、電池儲存和電動出行的融合正在創造一個綜合能源生態系統，增強韌性並減少碳排放。
+                            </div>
+                        </div>
+                        <img src="ark_images/page_090.png" alt="Page 90 - Distributed Energy" class="page-image" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Big Idea 02: AI Infrastructure -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">🤖</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 02</div>
+                    <div class="idea-title">AI Infrastructure</div>
+                    <div class="idea-title-cn">【AI 基礎設施】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">人工智能基礎設施是支撐所有 AI 應用的底層技術。隨著大型語言模型和生成式 AI 的爆炸性增長，對高性能計算的需求急劇增加。包括高性能芯片、數據中心、算力網絡等關鍵組件。</div>
+                </div>
+                <img src="ark_images/page_019.png" alt="Page 19 - AI Infrastructure" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 03: AI Consumer OS -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">💻</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 03</div>
+                    <div class="idea-title">The AI Consumer Operating System</div>
+                    <div class="idea-title-cn">【AI 消費操作系統】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">AI 消費操作系統代表著人機交互方式的根本性轉變。語音助手、多模態 AI 和自然語言界面正在重新定義我們與設備和服務的交互方式。</div>
+                </div>
+                <img src="ark_images/page_025.png" alt="Page 25 - AI Consumer OS" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 04: AI Productivity -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">⚡</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 04</div>
+                    <div class="idea-title">AI Productivity</div>
+                    <div class="idea-title-cn">【AI 生產力】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">AI 正在顯著提升人類的生產力，這是經濟增長的關鍵驅動力。從內容創作、代碼編寫到數據分析，AI 正在加速知識工作的自動化。</div>
+                </div>
+                <img src="ark_images/page_032.png" alt="Page 32 - AI Productivity" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 05: Bitcoin -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">₿</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 05</div>
+                    <div class="idea-title">Bitcoin</div>
+                    <div class="idea-title-cn">【比特幣】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">比特幣作為去中心化數字貨幣，代表了對傳統金融體系的挑戰。機構採用、監管清晰化和公司資產負債表配置都在推動比特幣的主流接納。</div>
+                </div>
+                <img src="ark_images/page_038.png" alt="Page 38 - Bitcoin" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 06: Tokenized Assets -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">🪙</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 06</div>
+                    <div class="idea-title">Tokenized Assets</div>
+                    <div class="idea-title-cn">【代幣化資產】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">區塊鏈技術使傳統資產能夠被代幣化，從而實現更廣泛的可訪問性和流動性。房地產、股票、藝術品等實物資產都可以被分割並在全球交易。</div>
+                </div>
+                <img src="ark_images/page_045.png" alt="Page 45 - Tokenized Assets" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 07: DeFi -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">🏦</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 07</div>
+                    <div class="idea-title">Decentralized Finance Applications</div>
+                    <div class="idea-title-cn">【去中心化金融應用】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">去中心化金融（DeFi）消除了對中介機構的需求，使用智能合約實現金融服務。借貸、交易、衍生品和保險等金融服務現在可以以完全去中心化的方式提供。</div>
+                </div>
+                <img src="ark_images/page_052.png" alt="Page 52 - DeFi" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 08: Multiomics -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">🧬</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 08</div>
+                    <div class="idea-title">Multiomics</div>
+                    <div class="idea-title-cn">【多組學】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">多組學整合了基因組學、蛋白質組學、代謝組學等多種生物數據，創造完整的生物圖景。這使得更精準的診斷、個性化治療和藥物開發成為可能。</div>
+                </div>
+                <img src="ark_images/page_058.png" alt="Page 58 - Multiomics" class="page-image" loading="lazy">
+            </div>
+        </details>
+
+        <!-- Big Idea 09: Reusable Rockets -->
+        <details class="idea-card">
+            <summary class="idea-header">
+                <div class="idea-icon">🚀</div>
+                <div class="idea-title-section">
+                    <div class="idea-number">Big Idea 09</div>
+                    <div class="idea-title">Reusable Rockets</div>
+                    <div class="idea-title-cn">【可重複使用火箭】</div>
+                </div>
+                <div class="arrow">▼</div>
+            </summary>
+
+            <div class="idea-content">
+                <div class="intro-section">
+                    <div class="intro-title">💡 核心概念</div>
+                    <div class="intro-text">可重複使用火箭技術大幅降低了太空進入的成本，正在開啟太空經濟時代。衛星網絡、太空製造和太空旅遊都變得越來越經濟可行。</div>
+                </div>
+                <img src="ark_images/page_078.png" alt="Page 78 - Reusable Rockets" class="page-image" loading="lazy">
+            </div>
+        </details>
+    </div>
+
+    <!-- 底部導航 -->
+    <div class="footer-nav">
+        <div class="footer-nav-container">
+            <div class="footer-title">🚀 課程報名 & 聯絡</div>
+            <div class="footer-links">
+                <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="footer-link">
+                    📚 錯中學ECHO計劃
+                    <span class="nav-link-subtitle" style="color: rgba(255,255,255,0.8)">七月開課</span>
+                </a>
+                <a href="https://linwayet.github.io/popup/index" target="_blank" class="footer-link">
+                    📊 學生分析
+                    <span class="nav-link-subtitle" style="color: rgba(255,255,255,0.8)">七月開課</span>
+                </a>
+                <a href="https://line.me/R/ti/p/linwayet" target="_blank" class="footer-link line-link">
+                    💬 Line 聯絡
+                    <span class="nav-link-subtitle" style="color: rgba(255,255,255,0.8)">@linwayet</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
