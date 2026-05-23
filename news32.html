@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Round 2 — What Is Silicon Photonics? | How to Etch an Optical Circuit</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+            font-size: 22px;
+            line-height: 1.85;
+            color: #2D2A26;
+            background: #F8F4ED;
+            padding: 20px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.4em;
+            line-height: 1.35;
+            margin: 1.2em 0 0.6em 0;
+            color: #8B5E3C;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            line-height: 1.4;
+            margin: 1.8em 0 0.8em 0;
+            color: #8B5E3C;
+            font-weight: 700;
+            border-left: 6px solid #D4A574;
+            padding-left: 18px;
+        }
+        
+        h3 {
+            font-size: 1.35em;
+            line-height: 1.5;
+            margin: 1.5em 0 0.7em 0;
+            color: #6B4E3D;
+            font-weight: 700;
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 1.3em 0 0.6em 0;
+            color: #6B4E3D;
+            font-weight: 700;
+        }
+        
+        p {
+            margin: 1.2em 0;
+        }
+        
+        strong {
+            font-weight: 700;
+            color: #6B4E3D;
+        }
+        
+        em {
+            font-style: normal;
+            color: #A0826D;
+            font-weight: 700;
+        }
+        
+        a {
+            color: #8B5E3C;
+            text-decoration: none;
+            border-bottom: 2px solid #D4A574;
+            transition: all 0.2s;
+            padding-bottom: 2px;
+        }
+        
+        a:hover {
+            color: #D4A574;
+            border-bottom-color: #8B5E3C;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            background: #EBE3D5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.92em;
+            color: #6B4E3D;
+        }
+        
+        .header-meta {
+            font-size: 0.85em;
+            color: #8B5E3C;
+            margin: 1.5em 0;
+            line-height: 1.9;
+        }
+        
+        .header-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 2em 0;
+        }
+        
+        .header-links a {
+            padding: 12px 24px;
+            background: #8B5E3C;
+            color: #F8F4ED;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.85em;
+            font-weight: 700;
+            transition: all 0.3s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-links a:hover {
+            background: #D4A574;
+            color: #2D2A26;
+            transform: translateY(-2px);
+        }
+        
+        .section-num {
+            display: inline-block;
+            background: #D4A574;
+            color: #2D2A26;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-bottom: 1em;
+        }
+        
+        .callout {
+            background: #EBE3D5;
+            border-left: 6px solid #8B5E3C;
+            padding: 24px;
+            margin: 2em 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .callout-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #8B5E3C;
+            margin-bottom: 0.8em;
+        }
+        
+        .callout p:first-of-type {
+            margin-top: 0;
+        }
+        
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .figure {
+            margin: 2.5em 0;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(139, 94, 60, 0.08);
+        }
+        
+        .figure-title {
+            font-size: 0.9em;
+            color: #6B4E3D;
+            font-weight: 700;
+            margin-bottom: 1.2em;
+            text-align: center;
+        }
+        
+        .figure svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2em 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(139, 94, 60, 0.08);
+        }
+        
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #EBE3D5;
+        }
+        
+        th {
+            background: #8B5E3C;
+            color: #F8F4ED;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F4ED;
+        }
+        
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin: 2em 0;
+        }
+        
+        .vocab-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 6px solid #D4A574;
+            box-shadow: 0 2px 8px rgba(139, 94, 60, 0.06);
+        }
+        
+        .vocab-term {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #8B5E3C;
+            margin-bottom: 0.3em;
+        }
+        
+        .vocab-pronunciation {
+            font-size: 0.85em;
+            color: #A0826D;
+            margin-bottom: 1em;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .vocab-definition {
+            margin-bottom: 1em;
+            line-height: 1.75;
+        }
+        
+        .vocab-example {
+            font-size: 0.92em;
+            color: #6B4E3D;
+            font-style: normal;
+            background: #F8F4ED;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 0.8em;
+        }
+        
+        .quiz-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 3em 0;
+            box-shadow: 0 2px 12px rgba(139, 94, 60, 0.08);
+        }
+        
+        .quiz-question {
+            margin: 2.5em 0;
+        }
+        
+        .quiz-question-text {
+            font-weight: 700;
+            color: #6B4E3D;
+            margin-bottom: 1em;
+        }
+        
+        .quiz-options {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .quiz-options li {
+            padding: 12px 16px;
+            margin: 8px 0;
+            background: #F8F4ED;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-options li:hover {
+            background: #EBE3D5;
+            transform: translateX(4px);
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #8B5E3C 0%, #A0826D 100%);
+            color: #F8F4ED;
+            padding: 32px;
+            border-radius: 12px;
+            margin: 3em 0;
+        }
+        
+        .summary-box h3 {
+            color: #F8F4ED;
+            margin-top: 0;
+        }
+        
+        .summary-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .summary-box li {
+            padding-left: 1.5em;
+            position: relative;
+            margin: 1em 0;
+            line-height: 1.75;
+        }
+        
+        .summary-box li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #D4A574;
+            font-weight: 700;
+        }
+        
+        .toc {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 2em 0;
+            box-shadow: 0 2px 8px rgba(139, 94, 60, 0.06);
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin: 0.8em 0;
+        }
+        
+        .toc a {
+            color: #6B4E3D;
+            border-bottom: 1px solid #D4A574;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                font-size: 20px;
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 1.9em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .header-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .figure, .quiz-section, .summary-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-meta">
+    Round 2 / 8 · What Is Silicon Photonics?<br>
+    ~12 min<br>
+    林威老師 · 七月開課 · 個人聯繫
+</div>
+
+<div class="header-links">
+    <a href="https://linwayet.github.io/4ulive/index.html">🎯 錯中學 ECHO 計劃</a>
+    <a href="https://linwayet.github.io/popup/index">📊 學生分析工具</a>
+    <a href="https://line.me/ti/p/~linwayet">💬 LINE: linwayet</a>
+</div>
+
+<h2 style="border: none; padding: 0; font-size: 0.85em; color: #A0826D; margin-top: 2em;">Round 02 · Silicon Photonics Micro-Course</h2>
+
+<h1>What Is Silicon Photonics?<br><em style="font-size: 0.75em;">How to Etch an Optical Circuit onto a CMOS Chip</em></h1>
+
+<p>A ~4,000-word technical deep dive for EE & ChemE seniors. We move from "why photons" (Round 1) to "how silicon" — the material science, fabrication process, and device physics that turn crystalline silicon into a photonic platform. Expect CMOS fabrication vocabulary, refractive index engineering, and the thermodynamic constraints that make this technology manufacturable at TSMC scale.</p>
+
+<p><strong>⏱ ~12 min read</strong></p>
+<p><strong>🎯 Target: EE / ChemE Senior</strong></p>
+<p><strong>🔑 12 key vocabulary terms</strong></p>
+<p><strong>📊 5 diagrams & tables</strong></p>
+
+<div class="toc">
+    <h3 style="margin-top: 0;">📋 Contents</h3>
+    <ul>
+        <li><a href="#s1">The Core Idea — Photonics Meets CMOS</a></li>
+        <li><a href="#s2">Why Silicon? — Material Properties & Refractive Index Engineering</a></li>
+        <li><a href="#s3">The Stack — Silicon-on-Insulator (SOI) Wafer Architecture</a></li>
+        <li><a href="#s4">How We Make It — Fabrication Process Flow</a></li>
+        <li><a href="#s5">The Key Devices — Modulators, Detectors, and Couplers</a></li>
+        <li><a href="#s6">Key Vocabulary (12 Terms)</a></li>
+        <li><a href="#s7">Knowledge Check</a></li>
+        <li><a href="#s8">Round 2 Summary</a></li>
+    </ul>
+</div>
+
+<span class="section-num" id="s1">01</span>
+<h2>The Core Idea — Photonics Meets CMOS</h2>
+
+<p>In Round 1, we established <strong>why</strong> light beats electrons for data transmission at AI scale: photons propagate without Joule dissipation, support terahertz carrier frequencies for WDM, and consume 10–30× less energy per bit. But we deferred a harder question: <strong>how do you build an optical circuit on a silicon chip?</strong></p>
+
+<p>Silicon — the elemental semiconductor that underpins all modern electronics — has a peculiar dual identity. As an <em>electronic material</em>, silicon's moderate bandgap (E<sub>g</sub> ≈ 1.12 eV at 300 K) and well-understood doping chemistry make it the substrate of choice for CMOS transistors. As a <em>photonic material</em>, silicon's high refractive index (n ≈ 3.48 at 1550 nm) and transparency in the near-infrared create the conditions for <strong>on-chip optical waveguides</strong> — nanoscale structures that confine and route light the same way copper traces route electrons.</p>
+
+<p>Silicon photonics exploits this duality. By fabricating <strong>optical devices and electronic devices on the same silicon substrate using CMOS-compatible processes</strong>, we achieve something unprecedented: a single chip that generates electrical signals (transistors), modulates those signals onto optical carriers (ring resonators, Mach-Zehnder modulators), transmits them through on-chip waveguides, and detects them back into the electrical domain (germanium photodetectors) — all within a few square millimeters of die area.</p>
+
+<p>This is not a hybrid assembly where optical components are glued onto an electronic chip. This is <strong>monolithic co-integration</strong>: photonic structures patterned directly into the silicon device layer during wafer fabrication, using the same 193 nm deep-UV lithography, reactive-ion etching, and thin-film deposition tools that produce your laptop's CPU. The manufacturing infrastructure is shared. The process flow is (mostly) compatible. The cost structure scales with Moore's Law economics.</p>
+
+<div class="callout">
+    <div class="callout-title">🔬 Engineering Insight</div>
+    <p>The key breakthrough was not inventing silicon waveguides — photonic researchers had demonstrated those in university labs since the 1980s. The breakthrough was <strong>making silicon photonics CMOS-compatible</strong> so it could be manufactured in TSMC, GlobalFoundries, and Intel fabs at million-wafer-per-year scale. This required solving two decades of materials integration challenges: silicon-on-insulator (SOI) wafer availability, germanium epitaxy for detectors, low-loss SiO₂ cladding, and thermal budget constraints to avoid damaging pre-existing CMOS transistors.</p>
+    <p>TSMC's COUPE (Compact Universal Photonic Engine) platform — the manufacturing process behind NVIDIA's Spectrum-X CPO switch — is the culmination of this 20-year effort. It is a <strong>65 nm CMOS node with an integrated silicon photonics module</strong>, bonded using SoIC-X 3D packaging to an advanced logic die. The photonic layer uses 220 nm silicon-on-insulator (SOI) wafers, with waveguide widths down to 450 nm — well within the resolution limit of mature 193 nm ArF immersion lithography.</p>
+</div>
+
+<p>For chemical engineering students: silicon photonics is materials science at its most constrained. You are not free to choose any optical material — you must work within the <strong>thermal budget, chemical compatibility, and deposition thickness limits of CMOS backend processing</strong>. Every thin film must survive 400–800°C anneals. Every etchant must be selective. Every dopant diffusion profile must be controlled to nanometer precision. The elegance of silicon photonics is that it <em>respects these constraints</em> while still delivering world-class optical performance.</p>
+
+<span class="section-num" id="s2">02</span>
+<h2>Why Silicon? — Material Properties & Refractive Index Engineering</h2>
+
+<p>To understand why silicon works as a photonic material, we need to revisit the physics of light propagation in dielectrics. When an electromagnetic wave (photon) encounters an interface between two materials with different refractive indices, part of the wave is reflected and part is transmitted. The angle of refraction is governed by <strong>Snell's law</strong>:</p>
+
+<p style="text-align: center;"><code>n₁ sin(θ₁) = n₂ sin(θ₂)</code></p>
+
+<p>If light travels from a high-index material (n₁) into a low-index material (n₂) at a sufficiently steep angle, the refracted angle θ₂ reaches 90° — the light cannot escape and is <strong>totally internally reflected</strong> back into the high-index medium. This is the physical basis of optical fibers (glass core, n ≈ 1.46; air cladding, n ≈ 1.00) and silicon waveguides.</p>
+
+<p>Silicon's refractive index at telecommunications wavelengths (1310 nm, 1550 nm) is <strong>n<sub>Si</sub> ≈ 3.48</strong> — extraordinarily high compared to the thermal oxide cladding (n<sub>SiO₂</sub> ≈ 1.44). This large index contrast (Δn ≈ 2.04) enables <strong>tight optical confinement</strong> in waveguides as narrow as 400–500 nm. By comparison, silica fiber has Δn ≈ 0.01, requiring core diameters of ~8–10 µm to maintain single-mode propagation. Silicon waveguides achieve single-mode behavior at 1/20th the cross-sectional area — enabling ultra-compact photonic circuits.</p>
+
+<h3>Transparency Window and Bandgap Engineering</h3>
+
+<p>Silicon is <strong>indirect-bandgap</strong> with E<sub>g</sub> = 1.12 eV (λ<sub>cutoff</sub> ≈ 1100 nm). Photons with energy below the bandgap (λ > 1100 nm) cannot excite electron-hole pairs via direct band-to-band transitions — silicon is <em>transparent</em> at telecom wavelengths. This is critical: a waveguide material that absorbs its own guided light is useless.</p>
+
+<p>However, silicon's indirect bandgap also means it is a <strong>terrible light emitter</strong> — electron-hole recombination requires a phonon to conserve momentum, making radiative efficiency abysmal (~10<sup>-6</sup>). This is why silicon photonics uses <strong>external laser sources</strong> (typically III-V semiconductors like InP, bonded heterogeneously) rather than on-chip silicon lasers. Germanium, with E<sub>g</sub> = 0.66 eV, is used for photodetectors because it <em>does</em> absorb 1310–1550 nm light efficiently.</p>
+
+<div class="figure">
+    <div class="figure-title">Fig 2.1 — Refractive Index Contrast: The Foundation of Silicon Waveguides</div>
+    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="800" height="400" fill="#FEFDFB"/>
+        
+        <!-- SiO2 cladding (bottom) -->
+        <rect x="100" y="250" width="600" height="120" fill="#E8DCC8" stroke="#A0826D" stroke-width="2"/>
+        <text x="400" y="315" font-family="BIZ UDPGothic" font-size="16" fill="#6B4E3D" text-anchor="middle" font-weight="700">SiO₂ Cladding (n ≈ 1.44)</text>
+        
+        <!-- Silicon waveguide core -->
+        <rect x="300" y="180" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="3"/>
+        <text x="400" y="220" font-family="BIZ UDPGothic" font-size="16" fill="#F8F4ED" text-anchor="middle" font-weight="700">Silicon Core</text>
+        <text x="400" y="240" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle">(n ≈ 3.48)</text>
+        
+        <!-- SiO2 cladding (top) -->
+        <rect x="100" y="60" width="600" height="120" fill="#E8DCC8" stroke="#A0826D" stroke-width="2"/>
+        <text x="400" y="125" font-family="BIZ UDPGothic" font-size="16" fill="#6B4E3D" text-anchor="middle" font-weight="700">SiO₂ Cladding (n ≈ 1.44)</text>
+        
+        <!-- Light rays showing total internal reflection -->
+        <g stroke="#D4A574" stroke-width="3" fill="none">
+            <path d="M 200 215 L 280 195" stroke-dasharray="none" marker-end="url(#arrowhead)"/>
+            <path d="M 280 195 L 320 215" stroke-dasharray="none"/>
+            <path d="M 320 215 L 400 195" stroke-dasharray="none"/>
+            <path d="M 400 195 L 480 215" stroke-dasharray="none"/>
+            <path d="M 480 215 L 520 195" stroke-dasharray="none"/>
+            <path d="M 520 195 L 600 215" stroke-dasharray="none" marker-end="url(#arrowhead)"/>
+        </g>
+        
+        <!-- Arrow marker -->
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="#D4A574"/>
+            </marker>
+        </defs>
+        
+        <!-- Dimension annotations -->
+        <text x="550" y="215" font-family="BIZ UDPGothic" font-size="13" fill="#8B5E3C" font-weight="700">Width: ~450 nm</text>
+        <text x="550" y="235" font-family="BIZ UDPGothic" font-size="13" fill="#8B5E3C" font-weight="700">Height: ~220 nm</text>
+        
+        <!-- Index contrast annotation -->
+        <text x="50" y="30" font-family="BIZ UDPGothic" font-size="15" fill="#6B4E3D" font-weight="700">Δn = 3.48 − 1.44 ≈ 2.04</text>
+        <text x="50" y="50" font-family="BIZ UDPGothic" font-size="13" fill="#A0826D">→ Enables tight confinement</text>
+    </svg>
+</div>
+
+<p>The table below summarizes why silicon — despite being an <em>electronic</em> semiconductor — became the dominant <em>photonic</em> platform:</p>
+
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Silicon (1550 nm)</th>
+        <th>Why It Matters</th>
+    </tr>
+    <tr>
+        <td>Refractive Index</td>
+        <td>n ≈ 3.48</td>
+        <td>High index contrast with SiO₂ → tight waveguide confinement, compact bends (R ~ 5 µm)</td>
+    </tr>
+    <tr>
+        <td>Transparency Range</td>
+        <td>1100 nm – 7000 nm</td>
+        <td>Covers all telecom bands (O, E, S, C, L) — no intrinsic absorption loss</td>
+    </tr>
+    <tr>
+        <td>CMOS Compatibility</td>
+        <td>Native substrate</td>
+        <td>Leverage $500B of existing fab infrastructure, mature lithography, established supply chain</td>
+    </tr>
+    <tr>
+        <td>Thermal Stability</td>
+        <td>Melting point 1414°C</td>
+        <td>Survives backend processing (400–800°C anneals) without degradation</td>
+    </tr>
+    <tr>
+        <td>Plasma Dispersion Effect</td>
+        <td>Δn/ΔN ≈ 10<sup>-20</sup> cm³</td>
+        <td>Carrier injection/depletion shifts refractive index → enables high-speed modulators</td>
+    </tr>
+    <tr>
+        <td>Third-Order Nonlinearity</td>
+        <td>n₂ ≈ 6×10<sup>-18</sup> m²/W</td>
+        <td>Enables four-wave mixing, supercontinuum generation, nonlinear optics on-chip</td>
+    </tr>
+</table>
+
+<div class="callout">
+    <div class="callout-title">💡 ChemE Perspective — Material Selection Constraints</div>
+    <p>In process engineering, you learn that <strong>the best material is not the one with the best individual property — it is the one that satisfies the most constraints simultaneously</strong>. Silicon photonics is a textbook example. InP has better light emission. GaAs has higher electron mobility. LiNbO₃ has stronger electro-optic effect. But <em>none of these can be processed in a CMOS fab</em>. Silicon is "good enough" optically while being "excellent" manufacturably — and that combination wins.</p>
+    <p>The refractive index n<sub>Si</sub> = 3.48 is not a design choice — it is a <strong>thermodynamic fact</strong> arising from silicon's crystal structure and electronic polarizability. What <em>is</em> a design choice is the cladding material (SiO₂, Si₃N₄, air), waveguide geometry (strip, rib, slot), and doping profile — these are the degrees of freedom you have to engineer optical mode confinement, loss, dispersion, and thermal sensitivity.</p>
+</div>
+
+<span class="section-num" id="s3">03</span>
+<h2>The Stack — Silicon-on-Insulator (SOI) Wafer Architecture</h2>
+
+<p>Silicon photonics does not use bulk silicon wafers. It uses <strong>silicon-on-insulator (SOI)</strong> — a specialized wafer structure where a thin crystalline silicon layer (the "device layer") sits atop a thick buried oxide (BOX) layer, which in turn rests on a silicon handle wafer. This three-layer sandwich is the substrate for all commercial silicon photonics processes.</p>
+
+<p>The canonical SOI stack for photonics:</p>
+
+<ul style="line-height: 1.9;">
+    <li><strong>Top Silicon Layer (Device Layer):</strong> 220 nm thick, single-crystal, lightly p-doped (~10<sup>15</sup> cm<sup>-3</sup>). This is where waveguides, modulators, and passive structures are etched.</li>
+    <li><strong>Buried Oxide (BOX):</strong> 2–3 µm thick SiO₂. Acts as the <em>bottom cladding</em>, preventing optical mode leakage into the handle wafer.</li>
+    <li><strong>Handle Wafer:</strong> 725 µm thick bulk silicon. Provides mechanical support; optically inactive.</li>
+</ul>
+
+<p>The BOX layer is critical. Without it, the guided optical mode would "see" the semi-infinite silicon substrate below and leak power into it — catastrophic loss. The 2–3 µm BOX thickness ensures the evanescent tail of the optical mode decays to negligible amplitude before reaching the handle wafer. This is a <strong>design trade-off</strong>: thicker BOX improves optical isolation but increases wafer cost and complicates thermal management (SiO₂ has low thermal conductivity, ~1.4 W/m·K).</p>
+
+<div class="figure">
+    <div class="figure-title">Fig 3.1 — Silicon-on-Insulator (SOI) Wafer Structure for Photonics</div>
+    <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="800" height="450" fill="#FEFDFB"/>
+        
+        <!-- Handle wafer (bottom, thick) -->
+        <rect x="100" y="320" width="600" height="100" fill="#C4B5A0" stroke="#6B4E3D" stroke-width="2"/>
+        <text x="400" y="360" font-family="BIZ UDPGothic" font-size="16" fill="#2D2A26" text-anchor="middle" font-weight="700">Handle Wafer (Si substrate, ~725 µm)</text>
+        <text x="400" y="385" font-family="BIZ UDPGothic" font-size="13" fill="#6B4E3D" text-anchor="middle">Mechanical support only — optically inactive</text>
+        
+        <!-- BOX layer (middle) -->
+        <rect x="100" y="260" width="600" height="60" fill="#E8DCC8" stroke="#A0826D" stroke-width="2"/>
+        <text x="400" y="285" font-family="BIZ UDPGothic" font-size="16" fill="#6B4E3D" text-anchor="middle" font-weight="700">Buried Oxide (BOX, SiO₂, ~2 µm)</text>
+        <text x="400" y="305" font-family="BIZ UDPGothic" font-size="13" fill="#8B5E3C" text-anchor="middle">Bottom cladding — prevents mode leakage</text>
+        
+        <!-- Device layer (top, thin) -->
+        <rect x="100" y="220" width="600" height="40" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="3"/>
+        <text x="400" y="245" font-family="BIZ UDPGothic" font-size="16" fill="#F8F4ED" text-anchor="middle" font-weight="700">Device Layer (Si, 220 nm) — Waveguides etched here</text>
+        
+        <!-- Top cladding (deposited later) -->
+        <rect x="100" y="150" width="600" height="70" fill="#F0E8D8" stroke="#D4A574" stroke-width="2" stroke-dasharray="5,5"/>
+        <text x="400" y="182" font-family="BIZ UDPGothic" font-size="16" fill="#6B4E3D" text-anchor="middle" font-weight="700">Top Cladding (SiO₂, deposited)</text>
+        <text x="400" y="202" font-family="BIZ UDPGothic" font-size="13" fill="#A0826D" text-anchor="middle" font-style="italic">Added after waveguide etch</text>
+        
+        <!-- Waveguide structure detail (zoomed inset) -->
+        <rect x="520" y="30" width="250" height="110" fill="white" stroke="#8B5E3C" stroke-width="2" rx="8"/>
+        <text x="645" y="55" font-family="BIZ UDPGothic" font-size="14" fill="#6B4E3D" text-anchor="middle" font-weight="700">Device Layer (220 nm)</text>
+        <rect x="570" y="70" width="150" height="35" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2"/>
+        <text x="645" y="92" font-family="BIZ UDPGothic" font-size="12" fill="#F8F4ED" text-anchor="middle">Etched Waveguide</text>
+        <text x="645" y="125" font-family="BIZ UDPGothic" font-size="11" fill="#A0826D" text-anchor="middle">Width ~450 nm, Height ~220 nm</text>
+        
+        <!-- Dimension annotations -->
+        <g stroke="#D4A574" stroke-width="1.5" fill="none">
+            <path d="M 90 220 L 90 260"/>
+            <path d="M 85 220 L 95 220"/>
+            <path d="M 85 260 L 95 260"/>
+        </g>
+        <text x="55" y="245" font-family="BIZ UDPGothic" font-size="12" fill="#8B5E3C" font-weight="700">220 nm</text>
+        
+        <g stroke="#D4A574" stroke-width="1.5" fill="none">
+            <path d="M 90 260 L 90 320"/>
+            <path d="M 85 260 L 95 260"/>
+            <path d="M 85 320 L 95 320"/>
+        </g>
+        <text x="50" y="295" font-family="BIZ UDPGothic" font-size="12" fill="#8B5E3C" font-weight="700">~2 µm</text>
+    </svg>
+</div>
+
+<p>SOI wafers are manufactured via two primary methods:</p>
+
+<ol style="line-height: 1.9;">
+    <li><strong>SIMOX (Separation by IMplantation of OXygen):</strong> Oxygen ions are implanted into a bulk Si wafer at high dose (~10<sup>18</sup> cm<sup>-2</sup>) and energy, then annealed at 1300°C to form a buried oxide layer. The top silicon layer thickness is controlled by implant depth. This method is mature but limited to BOX thickness &lt;400 nm for cost reasons.</li>
+    <li><strong>Smart Cut (Wafer Bonding):</strong> Two oxidized Si wafers are bonded face-to-face. One wafer is then cleaved along a pre-implanted hydrogen plane, leaving a thin Si layer atop the bonded oxide. The top layer is polished to precise thickness (±5 nm). This is the dominant method for 220 nm device layer SOI used in photonics. Soitec (France) and Shin-Etsu (Japan) are the primary suppliers.</li>
+</ol>
+
+<div class="callout">
+    <div class="callout-title">⚙️ Manufacturing Reality Check</div>
+    <p>As of 2025, <strong>220 nm SOI wafers cost approximately 8–12× more than bulk silicon wafers</strong> of the same diameter. A 300 mm bulk Si wafer costs ~$100–150. A 300 mm SOI wafer for photonics costs ~$1,000–1,500. This is one reason silicon photonics remained a niche technology until TSMC and Intel committed to high-volume manufacturing — economies of scale are <em>essential</em> to making the technology cost-competitive with pluggable optics.</p>
+    <p>TSMC's COUPE platform processes tens of thousands of SOI wafers per year, amortizing the wafer cost over millions of photonic channels. At that scale, SOI premium becomes acceptable — especially when the alternative is $30/port pluggable transceivers consuming 3 GW across a million-GPU cluster.</p>
+</div>
+
+<span class="section-num" id="s4">04</span>
+<h2>How We Make It — Fabrication Process Flow</h2>
+
+<p>Now we reach the core question: <strong>how do you turn a featureless SOI wafer into a functional photonic integrated circuit?</strong> The answer is a sequence of lithography, etch, deposition, doping, and annealing steps — essentially a <em>subset</em> of the CMOS backend-of-line (BEOL) process, adapted for optical structures.</p>
+
+<p>Below is a simplified process flow for a typical silicon photonic device with passive waveguides, active modulators, and germanium photodetectors. This is representative of TSMC's COUPE and Intel's Silicon Photonics platforms.</p>
+
+<h3>Step 1: Waveguide Definition (Lithography + Dry Etch)</h3>
+
+<p>The 220 nm silicon device layer is patterned using <strong>193 nm ArF immersion lithography</strong> — the same tool used for 65 nm logic nodes. Photoresist is spun, exposed, and developed to create a mask defining waveguide geometries: strip waveguides (450 nm wide), rib waveguides (1–2 µm wide with partial etch), grating couplers (period ~600 nm), and ring resonators (radius 5–10 µm).</p>
+
+<p>The silicon is then etched using <strong>inductively coupled plasma reactive-ion etching (ICP-RIE)</strong> with a fluorine-based chemistry (SF₆ or CF₄ + O₂). The etch is <em>anisotropic</em> — it proceeds vertically with minimal lateral undercut, preserving the nanoscale feature fidelity defined by lithography. For full-etch waveguides, the entire 220 nm is removed. For rib waveguides, only ~100 nm is etched, leaving a 120 nm slab beneath.</p>
+
+<p><strong>Critical challenge:</strong> Sidewall roughness. Even 1–2 nm of surface roughness on the waveguide sidewall scatters light, contributing 2–3 dB/cm propagation loss. Modern ICP-RIE processes achieve sidewall roughness &lt;1 nm RMS by optimizing plasma chemistry, bias voltage, and post-etch smoothing (H₂ annealing at 1000°C).</p>
+
+<h3>Step 2: Germanium Epitaxy (Selective Area Growth)</h3>
+
+<p>Silicon cannot detect 1310–1550 nm light (bandgap too large). <strong>Germanium</strong> (E<sub>g</sub> = 0.66 eV) is grown selectively in predefined regions to form photodetectors. Using <strong>low-pressure chemical vapor deposition (LPCVD)</strong> or molecular beam epitaxy (MBE), Ge is deposited at 400–600°C onto exposed silicon regions. The growth is <em>epitaxial</em> — Ge atoms align with the underlying Si crystal lattice despite 4.2% lattice mismatch.</p>
+
+<p>The lattice mismatch creates <strong>threading dislocations</strong> that degrade photodetector dark current. To mitigate this, a thin (~50 nm) graded Si<sub>1-x</sub>Ge<sub>x</sub> buffer layer is grown first, gradually increasing Ge fraction from 0% to 100% to relax strain. The final Ge layer is typically 500 nm – 1 µm thick.</p>
+
+<h3>Step 3: Doping for Modulators (Ion Implantation)</h3>
+
+<p>Silicon modulators (ring resonators, Mach-Zehnder interferometers) work by <strong>shifting the refractive index via the plasma dispersion effect</strong>: injecting or depleting free carriers (electrons, holes) changes n and k (extinction coefficient) of silicon. To create p-n junctions or p-i-n diodes in the waveguide, <strong>boron (p-type)</strong> and <strong>phosphorus or arsenic (n-type)</strong> are implanted at doses of 10<sup>13</sup>–10<sup>15</sup> cm<sup>-2</sup>.</p>
+
+<p>After implantation, a <strong>rapid thermal anneal (RTA)</strong> at 800–1000°C for 10–60 seconds activates the dopants (moves them from interstitial to substitutional lattice sites) and repairs implant damage. The anneal temperature is constrained by the <em>thermal budget</em> — if this were a monolithic integration with pre-existing CMOS transistors, temperatures above 800°C would cause dopant diffusion in the transistor channel, degrading device performance. This is why advanced platforms use 3D bonding (TSMC's SoIC-X): photonics and electronics are fabricated separately, then bonded, relaxing thermal constraints.</p>
+
+<h3>Step 4: Metallization & Contacts</h3>
+
+<p>Aluminum or tungsten contacts are deposited and patterned to connect doped regions to external driver circuits. For modulators, this provides the RF signal path. For photodetectors, this extracts photocurrent. The metal deposition uses <strong>physical vapor deposition (PVD)</strong> — sputtering — followed by CMP (chemical-mechanical polishing) to planarize.</p>
+
+<h3>Step 5: Cladding Deposition</h3>
+
+<p>A thick (~2 µm) layer of <strong>SiO₂</strong> or low-temperature oxide (LTO) is deposited via <strong>plasma-enhanced chemical vapor deposition (PECVD)</strong> to form the top cladding. This encapsulates the waveguides, protects them from contamination, and provides a symmetric refractive index environment (SiO₂ above and below). The cladding also serves as an interlayer dielectric (ILD) for metal routing.</p>
+
+<h3>Step 6: Optical I/O (Grating Couplers or Edge Coupling)</h3>
+
+<p>Light must be coupled into and out of the chip. Two methods dominate:</p>
+
+<ul style="line-height: 1.9;">
+    <li><strong>Grating Couplers:</strong> Periodic structures (period ~600 nm) etched into the waveguide surface diffract light at ~10° angle, coupling to a vertical optical fiber. Insertion loss: 3–5 dB per coupler. Wavelength-sensitive (±20 nm bandwidth). Easy to test (wafer-level probe cards).</li>
+    <li><strong>Edge Couplers:</strong> Waveguides terminate at the chip edge with a mode-matching taper. A fiber array (FAU, Fiber Array Unit) is aligned and bonded to the edge. Insertion loss: &lt;1 dB per channel. Broadband. Used in CPO because it scales to 64–128 channels per edge.</li>
+</ul>
+
+<div class="figure">
+    <div class="figure-title">Fig 4.1 — Simplified Silicon Photonics Process Flow</div>
+    <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="800" height="520" fill="#FEFDFB"/>
+        
+        <!-- Process steps as blocks -->
+        <g id="step1">
+            <rect x="50" y="30" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="150" y="58" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 1</text>
+            <text x="150" y="78" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Waveguide Etch</text>
+            <text x="150" y="95" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(193nm litho + ICP-RIE)</text>
+        </g>
+        
+        <g id="step2">
+            <rect x="300" y="30" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="400" y="58" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 2</text>
+            <text x="400" y="78" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Ge Epitaxy</text>
+            <text x="400" y="95" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(LPCVD, 400–600°C)</text>
+        </g>
+        
+        <g id="step3">
+            <rect x="550" y="30" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="650" y="58" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 3</text>
+            <text x="650" y="78" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Doping (Implant)</text>
+            <text x="650" y="95" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(B, P, As + RTA anneal)</text>
+        </g>
+        
+        <g id="step4">
+            <rect x="50" y="140" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="150" y="168" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 4</text>
+            <text x="150" y="188" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Metallization</text>
+            <text x="150" y="205" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(Al/W contacts, PVD)</text>
+        </g>
+        
+        <g id="step5">
+            <rect x="300" y="140" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="400" y="168" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 5</text>
+            <text x="400" y="188" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Cladding (SiO₂)</text>
+            <text x="400" y="205" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(PECVD, 2 µm thick)</text>
+        </g>
+        
+        <g id="step6">
+            <rect x="550" y="140" width="200" height="70" fill="#8B5E3C" stroke="#6B4E3D" stroke-width="2" rx="8"/>
+            <text x="650" y="168" font-family="BIZ UDPGothic" font-size="14" fill="#F8F4ED" text-anchor="middle" font-weight="700">Step 6</text>
+            <text x="650" y="188" font-family="BIZ UDPGothic" font-size="13" fill="#F8F4ED" text-anchor="middle">Optical I/O</text>
+            <text x="650" y="205" font-family="BIZ UDPGothic" font-size="11" fill="#D4A574" text-anchor="middle">(Edge coupler / Grating)</text>
+        </g>
+        
+        <!-- Flow arrows -->
+        <g stroke="#D4A574" stroke-width="3" fill="none" marker-end="url(#arrow)">
+            <path d="M 150 100 L 150 125 L 400 125 L 400 30" stroke-dasharray="none"/>
+            <path d="M 400 100 L 400 115 L 650 115 L 650 30" stroke-dasharray="none"/>
+            <path d="M 650 100 L 650 260 L 150 260 L 150 210" stroke-dasharray="none"/>
+            <path d="M 250 175 L 300 175" stroke-dasharray="none"/>
+            <path d="M 500 175 L 550 175" stroke-dasharray="none"/>
+        </g>
+        
+        <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="#D4A574"/>
+            </marker>
+        </defs>
+        
+        <!-- Final chip illustration -->
+        <rect x="200" y="320" width="400" height="160" fill="white" stroke="#8B5E3C" stroke-width="3" rx="12"/>
+        <text x="400" y="350" font-family="BIZ UDPGothic" font-size="16" fill="#6B4E3D" text-anchor="middle" font-weight="700">Completed Silicon Photonic Chip</text>
+        
+        <!-- Waveguide schematic -->
+        <line x1="250" y1="400" x2="550" y2="400" stroke="#D4A574" stroke-width="4"/>
+        <circle cx="350" cy="400" r="25" fill="none" stroke="#8B5E3C" stroke-width="3"/>
+        <text x="350" y="445" font-family="BIZ UDPGothic" font-size="11" fill="#A0826D" text-anchor="middle">Ring modulator</text>
+        
+        <rect x="480" y="385" width="40" height="30" fill="#6B4E3D"/>
+        <text x="500" y="445" font-family="BIZ UDPGothic" font-size="11" fill="#A0826D" text-anchor="middle">Ge detector</text>
+    </svg>
+</div>
+
+<div class="callout">
+    <div class="callout-title">🏭 EE + ChemE Integration Point</div>
+    <p><strong>For EE students:</strong> This process flow mirrors standard CMOS BEOL — lithography resolution, etch selectivity, metal deposition — but with tighter optical loss budgets. A 0.5 dB/cm waveguide loss sounds small until you realize a 1 cm spiral delay line loses 10% of signal power. Minimizing scattering loss (sidewall roughness, interface quality) is the obsession.</p>
+    <p><strong>For ChemE students:</strong> Every deposition, etch, and anneal step is a unit operation with kinetics, thermodynamics, and mass transfer. LPCVD Ge growth at 450°C with GeH₄ precursor — what's the sticking coefficient? How does temperature affect grain size? PECVD SiO₂ at 300°C — what's the H content? How does that affect refractive index and loss? The "black box" process steps here are entire courses in semiconductor process engineering.</p>
+</div>
+
+<span class="section-num" id="s5">05</span>
+<h2>The Key Devices — Modulators, Detectors, and Couplers</h2>
+
+<p>A silicon photonic chip contains three functional device classes: <strong>(1) passive components</strong> that route light without active control; <strong>(2) active modulators</strong> that encode electrical data onto optical carriers; and <strong>(3) photodetectors</strong> that convert optical signals back to electrical. Let's examine the physics of each.</p>
+
+<h3>1. Passive Waveguides — The "Wires" of Photonics</h3>
+
+<p>A silicon waveguide is a high-index (n = 3.48) core surrounded by low-index (n = 1.44) cladding. Light propagates via <strong>total internal reflection</strong> as long as the incidence angle exceeds the critical angle θ<sub>c</sub> = arcsin(n<sub>clad</sub>/n<sub>core</sub>) ≈ 25°. For a 450 nm × 220 nm rectangular waveguide, only the fundamental TE₀₀ mode (transverse electric, electric field parallel to substrate) is guided at 1550 nm — higher-order modes are cut off.</p>
+
+<p>Waveguides can be shaped into functional structures:</p>
+
+<ul style="line-height: 1.9;">
+    <li><strong>Straight waveguides:</strong> Low-loss transmission lines (~1–2 dB/cm).</li>
+    <li><strong>Bends:</strong> Tight 5 µm radius 90° bends with &lt;0.01 dB loss — enabled by high Δn. Copper PCB traces cannot bend this tightly without severe impedance mismatch.</li>
+    <li><strong>Y-splitters / MMIs (multimode interferometers):</strong> Power dividers with 50/50 or custom ratios, &lt;0.1 dB excess loss.</li>
+    <li><strong>Ring resonators:</strong> Wavelength-selective filters. A 10 µm radius ring has free spectral range (FSR) ~10 nm and Q-factor ~10,000 (linewidth ~0.15 nm). Used as add/drop filters in WDM and as tunable modulators.</li>
+</ul>
+
+<h3>2. Modulators — Encoding Data onto Light</h3>
+
+<p>Silicon is <em>centrosymmetric</em> (inversion-symmetric crystal), so it exhibits no linear electro-optic effect (Pockels effect). Instead, modulators exploit the <strong>plasma dispersion effect</strong>: changing the free carrier concentration (electrons, holes) in silicon shifts both the real and imaginary parts of the refractive index:</p>
+
+<p style="text-align: center;"><code>Δn = −8.8×10⁻²² ΔN<sub>e</sub> − 8.5×10⁻¹⁸ (ΔN<sub>h</sub>)<sup>0.8</sup></code></p>
+
+<p>where ΔN<sub>e</sub> and ΔN<sub>h</sub> are changes in electron and hole concentrations (cm<sup>-3</sup>). Injecting 10<sup>18</sup> cm<sup>-3</sup> carriers shifts n by ~10<sup>-3</sup> — small, but sufficient to shift the resonance of a ring resonator by one linewidth, turning it from transparent to absorbing (on/off keying).</p>
+
+<p>Two modulator architectures dominate:</p>
+
+<ul style="line-height: 1.9;">
+    <li><strong>Ring resonator modulator:</strong> A p-n or p-i-n junction is embedded in the ring. Forward bias injects carriers → blue-shifts resonance → transmission drops. Reverse bias depletes carriers → red-shifts resonance → transmission rises. Modulation bandwidth: 25–50 GHz. Switching energy: 10–50 fJ/bit. Compact (10 µm diameter).</li>
+    <li><strong>Mach-Zehnder modulator (MZM):</strong> Two waveguide arms with phase shifters. Carrier injection in one arm shifts its phase by π, causing destructive interference at the output. Broader optical bandwidth than rings (>100 nm), but larger footprint (~500 µm) and higher switching energy (~200 fJ/bit).</li>
+</ul>
+
+<h3>3. Germanium Photodetectors — Light to Current</h3>
+
+<p>Ge has a direct bandgap at 0.8 eV (indirect at 0.66 eV), making it an efficient absorber of 1310 nm and 1550 nm photons. A Ge p-i-n photodiode is formed by growing intrinsic Ge on silicon, then implanting p and n regions. When a photon is absorbed, it generates an electron-hole pair. Under reverse bias (−1 to −3 V), carriers are swept out by the built-in electric field, producing photocurrent:</p>
+
+<p style="text-align: center;"><code>I<sub>photo</sub> = R × P<sub>opt</sub></code></p>
+
+<p>where R is responsivity (~0.8–1.0 A/W at 1550 nm). A well-designed Ge detector achieves &gt;40 GHz bandwidth and dark current &lt;10 nA — critical for high-speed links.</p>
+
+<div class="callout">
+    <div class="callout-title">⚡ Bandwidth Bottleneck — RC Time Constant</div>
+    <p>The detector bandwidth is limited by <strong>RC time constant</strong>: f<sub>3dB</sub> ≈ 1/(2πRC). Junction capacitance C ≈ 20 fF for a 10 µm × 30 µm Ge detector. Series resistance R ≈ 50 Ω (contact resistance + Ge bulk). This gives f<sub>3dB</sub> ≈ 160 GHz — far exceeding 100 Gbps data rates. In practice, packaging parasitics (bond wire inductance, pad capacitance) reduce this to ~50 GHz, still sufficient for 200G PAM4.</p>
+</div>
+
+<table>
+    <tr>
+        <th>Device Type</th>
+        <th>Function</th>
+        <th>Key Metric</th>
+        <th>Physics Basis</th>
+    </tr>
+    <tr>
+        <td>Strip Waveguide</td>
+        <td>Transmit light, low loss</td>
+        <td>1–2 dB/cm loss</td>
+        <td>Total internal reflection, confined mode</td>
+    </tr>
+    <tr>
+        <td>Ring Resonator</td>
+        <td>Wavelength filter, modulator</td>
+        <td>Q ~ 10,000 (linewidth 0.15 nm)</td>
+        <td>Constructive interference at resonance λ = m·L/n<sub>eff</sub></td>
+    </tr>
+    <tr>
+        <td>Ring Modulator</td>
+        <td>Encode data (OOK, PAM)</td>
+        <td>25–50 GHz, 10–50 fJ/bit</td>
+        <td>Plasma dispersion effect (carrier injection)</td>
+    </tr>
+    <tr>
+        <td>MZM (Mach-Zehnder)</td>
+        <td>Broadband intensity mod.</td>
+        <td>50 GHz, ~200 fJ/bit</td>
+        <td>Interferometric phase-to-amplitude</td>
+    </tr>
+    <tr>
+        <td>Ge Photodetector</td>
+        <td>Optical → electrical</td>
+        <td>0.8–1.0 A/W, &gt;40 GHz</td>
+        <td>Direct bandgap absorption, p-i-n junction</td>
+    </tr>
+    <tr>
+        <td>Grating Coupler</td>
+        <td>Couple fiber to chip (vertical)</td>
+        <td>3–5 dB insertion loss</td>
+        <td>Bragg diffraction, period ≈ λ/(n<sub>eff</sub> − n<sub>fiber</sub>)</td>
+    </tr>
+    <tr>
+        <td>Edge Coupler</td>
+        <td>Couple fiber to chip (edge)</td>
+        <td>&lt;1 dB insertion loss</td>
+        <td>Adiabatic mode matching, tapered waveguide</td>
+    </tr>
+</table>
+
+<p>With these three device classes — passive routing, active modulation, and detection — a complete <strong>optical transceiver</strong> can be built on-chip. Add a flip-chip bonded III-V laser die (InP, GaAs) or an external fiber-coupled laser, and you have a functional CPO module: electrical bits in → optical bits transmitted → optical bits received → electrical bits out.</p>
+
+<span class="section-num" id="s6">06</span>
+<h2 id="s6">🔑 Key Vocabulary — 12 Essential Terms</h2>
+
+<div class="vocab-grid">
+
+<div class="vocab-card">
+    <div class="vocab-term">Silicon-on-Insulator (SOI)</div>
+    <div class="vocab-pronunciation">/ˈsɪlɪkən ɑn ˌɪnsjʊˈleɪtər/</div>
+    <div class="vocab-definition">A wafer structure where a thin single-crystal silicon layer (device layer, ~220 nm) sits atop a buried oxide (BOX, ~2 µm SiO₂) on a silicon handle wafer. The BOX prevents optical mode leakage into the substrate. SOI is the universal substrate for silicon photonics.</div>
+    <div class="vocab-example">"TSMC's COUPE platform uses 220 nm SOI wafers from Soitec with 2 µm BOX — the industry-standard stack for high-density photonic integration."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Total Internal Reflection (TIR)</div>
+    <div class="vocab-pronunciation">/ˈtoʊtəl ɪnˈtɜːnəl rɪˈflɛkʃən/</div>
+    <div class="vocab-definition">The complete reflection of light at a boundary between a high-index and low-index medium when the angle of incidence exceeds the critical angle θ<sub>c</sub> = arcsin(n₂/n₁). The physical mechanism confining light in silicon waveguides.</div>
+    <div class="vocab-example">"At the Si/SiO₂ interface, θ<sub>c</sub> ≈ 25° — any ray steeper than this is totally reflected, trapping light in the waveguide core."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Plasma Dispersion Effect</div>
+    <div class="vocab-pronunciation">/ˈplæzmə dɪˈspɜːʃən ɪˈfɛkt/</div>
+    <div class="vocab-definition">The change in refractive index (Δn) and absorption (Δα) of a semiconductor when free carrier concentration changes. In silicon: Δn ∝ −ΔN<sub>e</sub> − (ΔN<sub>h</sub>)<sup>0.8</sup>. Exploited in modulators to shift optical phase or resonance by injecting/depleting carriers via p-i-n junctions.</div>
+    <div class="vocab-example">"Ring modulators inject 10<sup>18</sup> cm<sup>-3</sup> carriers to shift the ring resonance by 0.15 nm — enough to switch from on to off state in &lt;50 ps."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Ring Resonator</div>
+    <div class="vocab-pronunciation">/rɪŋ ˈrɛzəneɪtər/</div>
+    <div class="vocab-definition">A closed-loop waveguide (typically circular, radius 5–10 µm) that supports resonant modes at wavelengths satisfying 2πR·n<sub>eff</sub> = m·λ (m = integer). Used as wavelength filters, sensors, and ultra-compact modulators. Quality factor Q = λ/Δλ quantifies sharpness.</div>
+    <div class="vocab-example">"A 10 µm radius silicon ring has Q ~ 10,000 at 1550 nm, with a resonance linewidth of 0.15 nm — enabling wavelength-selective modulation."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Germanium (Ge) Photodetector</div>
+    <div class="vocab-pronunciation">/dʒɜːrˈmeɪniəm ˌfoʊtoʊdɪˈtɛktər/</div>
+    <div class="vocab-definition">A p-i-n junction photodiode where the intrinsic absorption layer is epitaxial germanium (E<sub>g</sub> = 0.66 eV), grown on silicon. Ge absorbs 1310–1550 nm photons efficiently (α > 10⁴ cm<sup>-1</sup>), converting them to photocurrent with responsivity ~0.8–1.0 A/W and bandwidth >40 GHz.</div>
+    <div class="vocab-example">"NVIDIA's CPO switch uses Ge detectors with 50 GHz bandwidth to receive 200 Gbps PAM4 optical signals and convert them to electrical for the switching ASIC."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">ICP-RIE (Inductively Coupled Plasma Reactive-Ion Etching)</div>
+    <div class="vocab-pronunciation">/ˌaɪ siː piː ˌɑr aɪ ˈiː/</div>
+    <div class="vocab-definition">An anisotropic dry etch process using high-density fluorine-based plasma (SF₆, CF₄) to etch silicon with near-vertical sidewalls and minimal undercut. Critical for defining sub-500 nm waveguide features with &lt;1 nm sidewall roughness to minimize scattering loss.</div>
+    <div class="vocab-example">"After 193 nm lithography, ICP-RIE etches the 220 nm silicon device layer in 60 seconds, achieving &lt;0.8 nm RMS sidewall roughness for waveguides with 1.5 dB/cm loss."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Grating Coupler</div>
+    <div class="vocab-pronunciation">/ˈɡreɪtɪŋ ˈkʌplər/</div>
+    <div class="vocab-definition">A periodic nanostructure (period ~600 nm) etched into the waveguide surface that diffracts in-plane guided light into a vertical direction (or vice versa), coupling to an optical fiber positioned above the chip. Insertion loss: 3–5 dB/coupler. Wavelength-selective (±20 nm bandwidth).</div>
+    <div class="vocab-example">"Grating couplers enable wafer-scale testing — automated fiber probe cards align to gratings and measure transmission without dicing the wafer."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Edge Coupler</div>
+    <div class="vocab-pronunciation">/ɛdʒ ˈkʌplər/</div>
+    <div class="vocab-definition">A mode-matching structure where the on-chip waveguide tapers from the narrow guided mode (~450 nm) to a wider mode (~3 µm) at the chip edge, matching the mode size of an external single-mode fiber. Insertion loss: &lt;1 dB. Broadband (&gt;100 nm). Requires precision cleaving and fiber array alignment.</div>
+    <div class="vocab-example">"NVIDIA's CPO switch uses edge couplers bonded to Corning's FAU (Fiber Array Unit) to couple 64 wavelength channels simultaneously with &lt;0.5 dB loss per channel."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">LPCVD (Low-Pressure Chemical Vapor Deposition)</div>
+    <div class="vocab-pronunciation">/ˌɛl piː siː viː ˈdiː/</div>
+    <div class="vocab-definition">A thin-film deposition technique operating at reduced pressure (0.1–1 Torr) and elevated temperature (400–800°C). Used to grow epitaxial germanium on silicon for photodetectors. The low pressure enhances uniformity and conformality; the high temperature enables epitaxial crystal growth despite 4.2% lattice mismatch.</div>
+    <div class="vocab-example">"Ge is grown via LPCVD at 450°C using GeH₄ (germane) precursor, with a graded Si<sub>1-x</sub>Ge<sub>x</sub> buffer to minimize threading dislocations."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">COUPE (Compact Universal Photonic Engine)</div>
+    <div class="vocab-pronunciation">/kuːp/</div>
+    <div class="vocab-definition">TSMC's proprietary silicon photonics process platform that integrates a photonic IC (PIC) fabricated on 220 nm SOI with an electronic driver IC (EIC) at 65 nm CMOS node, bonded using SoIC-X 3D chip-stacking technology. Enables co-packaged optics (CPO) with sub-millimeter photonic-electronic integration.</div>
+    <div class="vocab-example">"NVIDIA's Spectrum-X Photonics switch is manufactured on TSMC's COUPE platform — the only volume production process capable of 1.6 Tb/s per-port photonic integration."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">SoIC-X (System-on-Integrated-Chips, eXtended)</div>
+    <div class="vocab-pronunciation">/ˌɛs oʊ aɪ siː ɛks/</div>
+    <div class="vocab-definition">TSMC's advanced 3D chip-stacking technology using hybrid bonding: Cu-Cu interconnects + SiO₂-SiO₂ dielectric bonding at &lt;10 µm pitch, enabling high-density vertical electrical connections without microbumps. Used to bond photonic PICs to logic EICs in CPO modules, achieving &gt;10,000 interconnects/mm².</div>
+    <div class="vocab-example">"SoIC-X bonds the 65 nm photonic driver die to the 220 nm SOI PIC with 5 µm pitch Cu pillars, providing low-inductance connections for 50 GHz modulator drive signals."</div>
+</div>
+
+<div class="vocab-card">
+    <div class="vocab-term">Free Spectral Range (FSR)</div>
+    <div class="vocab-pronunciation">/friː ˈspɛktrəl reɪndʒ/</div>
+    <div class="vocab-definition">The wavelength spacing between adjacent resonant modes of a ring resonator: FSR = λ²/(2πR·n<sub>g</sub>), where n<sub>g</sub> is the group index. For a 10 µm radius silicon ring at 1550 nm, FSR ≈ 10 nm. Determines the usable wavelength range before the next resonance appears.</div>
+    <div class="vocab-example">"WDM systems using ring-based filters must space channels by at least FSR/2 to avoid crosstalk — for a 10 µm ring, channels must be ≥5 nm apart."</div>
+</div>
+
+</div>
+
+<span class="section-num" id="s7">07</span>
+<h2 id="s7">🧠 Knowledge Check</h2>
+
+<div class="quiz-section">
+
+<div class="quiz-question">
+    <div class="quiz-question-text">Q1. What is the primary reason silicon-on-insulator (SOI) wafers are used instead of bulk silicon for photonics?</div>
+    <ul class="quiz-options">
+        <li>A. SOI has higher electrical conductivity than bulk Si</li>
+        <li>B. The buried oxide (BOX) layer prevents optical mode leakage into the handle wafer</li>
+        <li>C. SOI wafers are cheaper to manufacture than bulk silicon</li>
+        <li>D. SOI eliminates the need for germanium photodetectors</li>
+    </ul>
+</div>
+
+<div class="quiz-question">
+    <div class="quiz-question-text">Q2. Silicon's refractive index at 1550 nm is n ≈ 3.48, while SiO₂ cladding is n ≈ 1.44. What is the approximate critical angle for total internal reflection at the Si/SiO₂ interface?</div>
+    <ul class="quiz-options">
+        <li>A. ~10°</li>
+        <li>B. ~25°</li>
+        <li>C. ~45°</li>
+        <li>D. ~60°</li>
+    </ul>
+</div>
+
+<div class="quiz-question">
+    <div class="quiz-question-text">Q3. Why is germanium (Ge) used for photodetectors in silicon photonics instead of silicon itself?</div>
+    <ul class="quiz-options">
+        <li>A. Germanium has higher thermal conductivity than silicon</li>
+        <li>B. Germanium's bandgap (0.66 eV) allows it to absorb 1310–1550 nm photons, while silicon is transparent at these wavelengths</li>
+        <li>C. Germanium is cheaper and easier to etch than silicon</li>
+        <li>D. Germanium prevents crosstalk between waveguides</li>
+    </ul>
+</div>
+
+<div class="quiz-question">
+    <div class="quiz-question-text">Q4. A ring resonator modulator uses which physical effect to shift the refractive index and modulate light?</div>
+    <ul class="quiz-options">
+        <li>A. Pockels effect (linear electro-optic effect)</li>
+        <li>B. Plasma dispersion effect (carrier injection/depletion)</li>
+        <li>C. Faraday rotation (magneto-optic effect)</li>
+        <li>D. Kerr effect (intensity-dependent refractive index)</li>
+    </ul>
+</div>
+
+</div>
+
+<span class="section-num" id="s8">08</span>
+<h2 id="s8">✅ Round 2 — Key Takeaways</h2>
+
+<div class="summary-box">
+    <h3>Round 2 Summary</h3>
+    <ul>
+        <li><strong>Silicon photonics = CMOS-compatible optical circuits.</strong> Photonic devices (waveguides, modulators, detectors) are fabricated on the same silicon substrate as electronics using lithography, etching, and deposition processes adapted from the semiconductor industry. This enables million-wafer-per-year scale manufacturing.</li>
+        
+        <li><strong>Why silicon works:</strong> High refractive index (n ≈ 3.48) creates tight optical confinement with SiO₂ cladding (n ≈ 1.44). Transparency at 1310–1550 nm (below the 1.12 eV bandgap). Thermal stability through 400–800°C processing. Established CMOS fab infrastructure. These properties combine to make silicon "good enough" optically while being "excellent" manufacturably.</li>
+        
+        <li><strong>SOI substrate is mandatory.</strong> A 220 nm silicon device layer on 2 µm buried oxide (BOX) on a handle wafer. The BOX prevents mode leakage. The 220 nm thickness supports single-mode waveguides at telecom wavelengths. TSMC's COUPE and Intel's platforms all use 220 nm SOI from Soitec or Shin-Etsu.</li>
+        
+        <li><strong>Process flow mirrors CMOS backend.</strong> 193 nm lithography → ICP-RIE etch (SF₆/CF₄) → Ge epitaxy (LPCVD, 450°C) → ion implantation doping (B, P, As) → RTA anneal (800–1000°C) → metallization (Al/W) → SiO₂ cladding (PECVD). Each step is constrained by thermal budget, chemical compatibility, and optical loss targets (&lt;2 dB/cm).</li>
+        
+        <li><strong>Three key device types:</strong> (1) Passive waveguides route light with 1–2 dB/cm loss via total internal reflection. (2) Ring resonator modulators encode data by shifting resonance via plasma dispersion (10–50 fJ/bit, 25–50 GHz). (3) Ge p-i-n photodetectors convert 1550 nm photons to current with 0.8–1.0 A/W responsivity and &gt;40 GHz bandwidth.</li>
+        
+        <li><strong>Edge couplers beat grating couplers for CPO.</strong> Gratings: 3–5 dB loss, ±20 nm bandwidth, good for testing. Edge couplers: &lt;1 dB loss, &gt;100 nm bandwidth, scalable to 64+ channels per chip edge via fiber array units (FAUs). NVIDIA's CPO uses edge coupling for this reason.</li>
+        
+        <li><strong>Germanium integration is the hard part.</strong> 4.2% lattice mismatch between Ge and Si creates threading dislocations. Mitigated by graded Si<sub>1-x</sub>Ge<sub>x</sub> buffer layers. LPCVD growth at 450°C balances epitaxy quality with thermal budget constraints. Dark current &lt;10 nA requires defect-free Ge — an ongoing materials science challenge.</li>
+        
+        <li><strong>TSMC's COUPE = volume production milestone.</strong> First platform to co-integrate 220 nm photonics (PIC) with 65 nm electronics (EIC) using SoIC-X 3D bonding at &lt;10 µm pitch. Achieves sub-millimeter photonic-electronic integration with &gt;10,000 vertical interconnects/mm². This is why NVIDIA could ship 400 Tb/s CPO switches in 2025 — the manufacturing infrastructure finally exists.</li>
+    </ul>
+</div>
+
+<div style="background: white; padding: 32px; border-radius: 12px; margin: 3em 0; text-align: center; box-shadow: 0 2px 12px rgba(139, 94, 60, 0.08);">
+    <h3 style="color: #8B5E3C; margin-top: 0;">Coming Up Next →</h3>
+    <p style="font-size: 1.1em; color: #6B4E3D; margin: 1.5em 0;"><strong>Round 3: Co-Packaged Optics (CPO)</strong><br>How NVIDIA Put a Photonic Engine Inside a Switch — 3D Packaging, Thermal Management, and the 9 W Power Target</p>
+    <p style="font-size: 0.95em; color: #A0826D; margin-top: 1em;">We've covered the "why" (energy crisis) and the "what" (silicon photonics devices). Round 3 tackles the "how do you integrate this into a real product" — the packaging, thermal, and reliability challenges that took silicon photonics from lab demos to NVIDIA's data center.</p>
+</div>
+
+<div style="margin: 4em 0; padding: 2em; background: linear-gradient(135deg, #8B5E3C 0%, #A0826D 100%); color: #F8F4ED; border-radius: 12px; text-align: center;">
+    <p style="font-size: 1.1em; font-weight: 700; margin-bottom: 1em;">林威老師 · 七月開課 · 聯繫我</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://linwayet.github.io/4ulive/index.html" style="color: #F8F4ED; border-bottom: 2px solid #D4A574; padding-bottom: 4px;">🎯 錯中學 ECHO 計劃</a>
+        <a href="https://linwayet.github.io/popup/index" style="color: #F8F4ED; border-bottom: 2px solid #D4A574; padding-bottom: 4px;">📊 學生分析工具</a>
+        <a href="https://line.me/ti/p/~linwayet" style="color: #F8F4ED; border-bottom: 2px solid #D4A574; padding-bottom: 4px;">💬 LINE: linwayet</a>
+    </div>
+</div>
+
+</body>
+</html>
