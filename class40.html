@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>摩根：一個人，一家銀行，一部美國金融史</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Noto Serif TC', serif;
+    background: linear-gradient(135deg, #FFF8EE 0%, #FFF3E0 50%, #FFF8EE 100%);
+    color: #3E2A10;
+    line-height: 1.9;
+    min-height: 100vh;
+  }
+
+  /* ===== LINK BAR (top & bottom) ===== */
+  .link-bar {
+    background: linear-gradient(135deg, #8B3A0F 0%, #C05A1F 40%, #D4770A 100%);
+    padding: 16px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.02em;
+  }
+  .link-card:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  }
+  .link-card .icon { font-size: 1.1rem; }
+  .link-card.line-btn { background: rgba(0,185,0,0.35); border-color: rgba(0,255,0,0.4); }
+  .link-card.line-btn:hover { background: rgba(0,185,0,0.55); }
+
+  /* ===== HERO HEADER ===== */
+  .hero {
+    background: linear-gradient(160deg, #7B2D00 0%, #B34700 35%, #D4770A 65%, #E8A820 100%);
+    text-align: center;
+    padding: 52px 24px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #FFE8C0;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    color: #FFF;
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
+    line-height: 1.35;
+    font-weight: 700;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: #FFD080; }
+  .hero-subtitle {
+    color: #FFE4B0;
+    font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .stat-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #FFF8E8;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  /* ===== MAIN CONTAINER ===== */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 16px 40px;
+  }
+
+  /* ===== TOC ===== */
+  .toc-card {
+    background: linear-gradient(135deg, #FFF3DC 0%, #FFECC8 100%);
+    border: 2px solid #E8B060;
+    border-radius: 18px;
+    padding: 24px 24px 20px;
+    margin-bottom: 36px;
+    box-shadow: 0 4px 20px rgba(180,100,0,0.1);
+  }
+  .toc-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: #7B3A00;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #E8C080;
+    padding-bottom: 12px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .toc-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #5C2E00;
+    font-size: 0.83rem;
+    font-weight: 600;
+    border: 1px solid #E8C080;
+    transition: all 0.2s;
+  }
+  .toc-link:hover { background: #FFF; transform: translateX(3px); color: #B34700; }
+  .toc-num {
+    width: 24px; height: 24px;
+    background: linear-gradient(135deg, #D4770A, #E8A020);
+    color: #FFF;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ===== PART DIVIDER ===== */
+  .part-divider {
+    text-align: center;
+    margin: 36px 0 24px;
+    position: relative;
+  }
+  .part-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4870A, transparent);
+  }
+  .part-label {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #C05A1F, #D4870A);
+    color: #FFF;
+    padding: 8px 28px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 14px rgba(180,80,0,0.3);
+  }
+
+  /* ===== EPISODE CARD ===== */
+  .episode-card {
+    background: linear-gradient(135deg, #FFFAF4 0%, #FFF8F0 100%);
+    border: 1.5px solid #E8C080;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 3px 16px rgba(160,80,0,0.08);
+    transition: box-shadow 0.25s;
+  }
+  .episode-card:hover { box-shadow: 0 6px 24px rgba(160,80,0,0.15); }
+
+  .ep-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+  .ep-header::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    font-size: 0.75rem;
+    color: #C07030;
+    transition: transform 0.3s ease;
+  }
+  .ep-header.open::after { transform: rotate(180deg); }
+
+  .ep-num {
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FFF;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .ep-meta { flex: 1; min-width: 0; }
+  .ep-series {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    opacity: 0.7;
+  }
+  .ep-title {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-weight: 700;
+    color: #4A1E00;
+    line-height: 1.3;
+  }
+
+  /* Episode gradient colors by number */
+  .ep1 .ep-num { background: linear-gradient(135deg, #D4770A, #E8A020); }
+  .ep2 .ep-num { background: linear-gradient(135deg, #B34500, #D4650A); }
+  .ep3 .ep-num { background: linear-gradient(135deg, #8B2500, #B34500); }
+  .ep4 .ep-num { background: linear-gradient(135deg, #C06020, #D88030); }
+  .ep5 .ep-num { background: linear-gradient(135deg, #A84000, #C85500); }
+  .ep6 .ep-num { background: linear-gradient(135deg, #7A2000, #A03000); }
+  .ep7 .ep-num { background: linear-gradient(135deg, #D48010, #E89A20); }
+  .ep8 .ep-num { background: linear-gradient(135deg, #5A1A00, #8B3000); }
+  .ep9 .ep-num { background: linear-gradient(135deg, #3D5A00, #6A8C10); }
+  .ep10 .ep-num { background: linear-gradient(135deg, #004A6E, #0068A0); }
+
+  .ep-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+  .ep-body.open { max-height: 9999px; }
+  .ep-content {
+    padding: 0 24px 28px;
+    border-top: 1px dashed #E8C080;
+  }
+
+  /* ===== CONTENT TYPOGRAPHY ===== */
+  .ep-content p {
+    font-size: 0.97rem;
+    color: #3E2A10;
+    line-height: 1.95;
+    margin-bottom: 1.1em;
+    text-align: justify;
+  }
+  .ep-content h3 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #8B3A00;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 24px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ep-content h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 16px;
+    background: linear-gradient(to bottom, #D4770A, #E8A020);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .vocab-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .vocab-item {
+    background: linear-gradient(135deg, #FFF8EE, #FFF4E0);
+    border-left: 4px solid #D4770A;
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+  }
+  .vocab-term {
+    font-weight: 700;
+    color: #7B2D00;
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+  }
+  .vocab-def {
+    font-size: 0.86rem;
+    color: #5C3000;
+    line-height: 1.7;
+  }
+  .quote-box {
+    background: linear-gradient(135deg, #FFF3D0, #FFE8B0);
+    border: 1.5px solid #E8B040;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 22px;
+    position: relative;
+  }
+  .quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -12px; left: 16px;
+    font-size: 3rem;
+    color: #D4870A;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .quote-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #A06020;
+    margin-bottom: 6px;
+  }
+  .quote-text {
+    font-size: 0.9rem;
+    color: #5A2E00;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* ===== FOOTER BRAND ===== */
+  .footer-brand {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 0.78rem;
+    color: #A07050;
+    background: linear-gradient(135deg, #FFF0DC, #FFECD0);
+    border-top: 1px solid #E8C080;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .link-bar { padding: 12px 14px; }
+    .link-card { font-size: 0.80rem; padding: 9px 14px; }
+    .hero { padding: 36px 18px 32px; }
+    .main { padding: 22px 12px 32px; }
+    .ep-header { padding: 16px 46px 16px 16px; }
+    .ep-content { padding: 0 16px 22px; }
+    .toc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ TOP LINK BAR ═══════════ -->
+<nav class="link-bar">
+  <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="icon">🎓</span>
+    <span>七月課程｜錯中學 ECHO 計劃<br><small style="opacity:0.8;font-weight:400">邊犯錯、邊成長的英語突破課</small></span>
+  </a>
+  <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="icon">📊</span>
+    <span>七月課程｜學生分析<br><small style="opacity:0.8;font-weight:400">了解你的學習輪廓</small></span>
+  </a>
+  <a class="link-card line-btn" href="https://line.me/ti/p/linwayet" target="_blank" rel="noopener">
+    <span class="icon">💬</span>
+    <span>LINE 聯絡我<br><small style="opacity:0.8;font-weight:400">ID: linwayet</small></span>
+  </a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-badge">📖 &nbsp; Podcast 微課程 · 共 14 回合</div>
+  <h1>摩根：<span>一個人，一家銀行</span><br>一部美國金融史</h1>
+  <p class="hero-subtitle">Morgan: One Man, One Bank, A History of American Finance</p>
+  <div class="hero-stats">
+    <span class="stat-chip">🏦 J.P. Morgan &amp; JPMorgan Chase</span>
+    <span class="stat-chip">📅 1837 — 2026</span>
+    <span class="stat-chip">🎧 每集約 10 分鐘</span>
+    <span class="stat-chip">📝 中英雙語</span>
+  </div>
+</header>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main class="main">
+
+  <!-- TOC -->
+  <div class="toc-card">
+    <div class="toc-title">🗺️ &nbsp; 課程地圖 — 10 回合速覽</div>
+    <div class="toc-grid">
+      <a class="toc-link" href="#ep1"><span class="toc-num">1</span>為什麼是摩根？</a>
+      <a class="toc-link" href="#ep2"><span class="toc-num">2</span>銀行世家的兒子</a>
+      <a class="toc-link" href="#ep3"><span class="toc-num">3</span>鐵路之王</a>
+      <a class="toc-link" href="#ep4"><span class="toc-num">4</span>締造巨人</a>
+      <a class="toc-link" href="#ep5"><span class="toc-num">5</span>救市的人</a>
+      <a class="toc-link" href="#ep6"><span class="toc-num">6</span>權力的代價</a>
+      <a class="toc-link" href="#ep7"><span class="toc-num">7</span>收藏家與凡人</a>
+      <a class="toc-link" href="#ep8"><span class="toc-num">8</span>帝國的分裂</a>
+      <a class="toc-link" href="#ep9"><span class="toc-num">9</span>四條河匯成一條</a>
+      <a class="toc-link" href="#ep10"><span class="toc-num">10</span>戴蒙登場</a>
+    </div>
+  </div>
+
+  <!-- ── PART 1 ── -->
+  <div class="part-divider">
+    <span class="part-label">第一部：那個人 — John Pierpont Morgan · 回合 1–7</span>
+  </div>
+
+  <!-- ─── EP 1 ─── -->
+  <div class="episode-card ep1" id="ep1">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">01</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">開場：為什麼是摩根？</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>歡迎來到這門課。在我們正式開始之前，我想先問你一個問題：你有沒有想過，如果一個國家沒有中央銀行，會發生什麼事？</p>
+        <p>現代人很難想像。我們習慣了中央銀行的存在，它管理利率，它在金融危機時出手救市，它是整個貨幣體系的最後防線。但你知道嗎，美國在很長一段時間裡，根本沒有這樣的機構。而在那段真空的歲月裡，有一個人，用他個人的財富、信譽和意志，幾乎獨力撐起了整個美國的金融體系。</p>
+        <p>這個人，就是約翰·皮爾龐特·摩根，英文名字是 John Pierpont Morgan。他不是總統，不是國會議員，也不是任何政府官員。他只是一個銀行家。但在十九世紀末到二十世紀初的美國，「只是一個銀行家」這句話，放在他身上，幾乎是一種低估。</p>
+        <p>摩根的一生，橫跨了美國從農業社會蛻變為工業強國的整個過程。他親手整頓了混亂的鐵路網絡，促成了奇異公司 General Electric 的誕生，更催生了美國鋼鐵公司 U.S. Steel，那是人類歷史上第一家市值超過十億美元的企業。</p>
+        <p>然後，在一九〇七年，美國爆發了一場嚴重的金融恐慌。那一年，摩根已經七十歲了。他把紐約最重要的銀行家和金融人士全部召集到他的私人圖書館，把門鎖上，告訴他們：我們今晚不離開，直到我們找到解決方案為止。那一晚的決定，穩住了美國的金融體系，也間接促成了後來聯邦準備系統 Federal Reserve System 的誕生。</p>
+        <p>這門課分成兩條主線。前七回合，我們講「那個人」，後七回合，我們講「那家公司」，也就是今天我們所認識的摩根大通銀行 JPMorgan Chase。這兩條線，表面上是一個人和一家公司的故事，但骨子裡，它是一部美國資本主義的成長史。</p>
+        <p>摩根究竟為什麼如此重要？答案不只是因為他有錢。他掌握的不是某一種原料或產品，而是錢本身，是資本的流動。當一個人控制了資本的流向，他事實上就控制了整個經濟的命脈。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">中央銀行 Central Bank</div><div class="vocab-def">一個國家負責管理貨幣和金融體系穩定的機構。它管理整體利率和貨幣供應量，在危機時提供緊急資金支援。</div></li>
+          <li class="vocab-item"><div class="vocab-term">聯邦準備系統 Federal Reserve System（the Fed）</div><div class="vocab-def">美國的中央銀行，成立於一九一三年。它的誕生，和一九〇七年的金融恐慌有直接的關係。</div></li>
+          <li class="vocab-item"><div class="vocab-term">金融恐慌 Financial Panic / Bank Panic</div><div class="vocab-def">很多人在短時間內同時對銀行失去信心，爭相提款，造成銀行資金不足、甚至倒閉的連鎖反應。個人去銀行擠兌的行為叫 Bank Run。</div></li>
+          <li class="vocab-item"><div class="vocab-term">資本 Capital</div><div class="vocab-def">可以用來投資或產生更多財富的錢。不是放在床底下的現金，而是流動在市場裡被用來建工廠、買設備、擴張事業的那種錢。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">「沒有任何問題是在黑暗中無法被解決的，只要房間裡的人願意面對真相。」——摩根在一九〇七年那場閉門會議之後，留下來的精神遺產。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 2 ─── -->
+  <div class="episode-card ep2" id="ep2">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">02</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">銀行世家的兒子，一八三七到一八六〇年代</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>一八三七年四月十七日，約翰·皮爾龐特·摩根出生在美國康乃狄克州的哈特福特，Hartford, Connecticut。那一年，美國正在經歷一場嚴重的經濟危機，史稱一八三七年大恐慌，Panic of 1837。一個日後要多次穩定美國金融體系的人，在一場金融危機中誕生，帶有某種宿命的意味。</p>
+        <p>摩根的外祖父，約翰·皮爾龐特，是著名的牧師和詩人。他是廢奴運動的支持者，也是「鈴兒響叮噹」Jingle Bells 的作詞人。對，那位寫出全球最知名聖誕歌曲的人，就是小摩根的外祖父。</p>
+        <p>但對小摩根影響最深的，是他的父親朱尼厄斯·斯賓塞·摩根，Junius Spencer Morgan。朱尼厄斯在倫敦經營著一家頂尖金融機構，成了連接美國和歐洲資本市場之間的關鍵橋梁。小摩根從小就在這樣的環境裡長大，看著父親如何和歐洲最重要的金融機構打交道。</p>
+        <p>小摩根的童年並不一帆風順。他從小體弱多病，十五歲左右染上嚴重關節疾病，在床上躺了好幾個月。為了養病，他被父親送到加勒比海的亞速爾群島 Azores，休養了將近一年。這段臥病的時光，讓他發展出一種不達目的絕不罷休的意志力。</p>
+        <p>養好身體之後，他去瑞士學法語，去德國哥廷根大學 University of Göttingen 攻讀數學和語言。哥廷根是十九世紀歐洲頂尖的學術重鎮，世界最優秀的數學家聚集於此。這段歐洲教育讓他成為真正意義上的國際人物，能說英語、法語和德語。</p>
+        <p>一八五七年，二十歲的摩根加入紐約的鄧肯、謝爾曼銀行 Duncan, Sherman and Company 擔任學徒。一八五九年，他在出差途中自行決定買下一批緊急拋售的咖啡，賺到了可觀利潤。這件事揭示了他終其一生最核心的特質：相信自己的判斷，在機會出現的瞬間毫不猶豫地行動。</p>
+        <p>一八六四年，摩根成立了自己的第一家公司，Dabney, Morgan and Company，正式走上獨立銀行家的道路。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">廢奴運動 Abolitionist Movement</div><div class="vocab-def">十九世紀美國要求廢除奴隸制度的社會運動。摩根的外祖父是積極支持者。</div></li>
+          <li class="vocab-item"><div class="vocab-term">資本市場 Capital Market</div><div class="vocab-def">讓政府和企業向投資人籌集長期資金的場所或機制。簡單說就是「大規模借錢和籌錢的地方」。股票市場和債券市場都是資本市場的一部分。</div></li>
+          <li class="vocab-item"><div class="vocab-term">融資 Financing</div><div class="vocab-def">為一個計畫或事業取得所需資金的過程。政府要建橋、公司要蓋廠，都需要融資。</div></li>
+          <li class="vocab-item"><div class="vocab-term">風險評估 Risk Assessment</div><div class="vocab-def">在做決策之前，判斷可能出現的壞結果有多嚴重、發生的可能性有多高。金融世界裡最核心的能力之一。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">朱尼厄斯·摩根曾告訴他的兒子：「一個人的信用，比他所有的財富加起來都更值錢。」這句話成了貫穿整個摩根家族精神的核心信條。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 3 ─── -->
+  <div class="episode-card ep3" id="ep3">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">03</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">鐵路之王</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>十九世紀下半葉的美國，鐵路是當時最先進的科技，就像今天的人工智慧一樣，引發了整個社會的狂熱投資浪潮。但這場鐵路熱潮完全在沒有統一規劃、沒有中央監管的情況下發展起來。不同的鐵路公司使用不同的軌距，讓列車根本無法互通。財務管理更是一塌糊塗，有些根本就是假賬。</p>
+        <p>這就是摩根出場的背景。他的策略，不是去蓋新鐵路，而是去接管那些已經破產或瀕臨破產的鐵路公司，把它們整頓好。這個過程在歷史上有一個專門的名詞，叫做「摩根化」，英文是 Morganization。</p>
+        <p>摩根化是一套清晰的方法論。首先，通過「投票信託」Voting Trust 機制掌握公司的關鍵決策權。接著，徹底清理混亂財務，裁掉不必要的開支，重組債務結構，找來有能力的管理層。最後，堅持讓同一地區的競爭鐵路公司達成協議，停止殺價競爭，採取統一的票價標準。</p>
+        <p>一八八五年，一場差點讓美國東部鐵路業爆發大戰的衝突，提供了摩根最精彩的一次登場機會。紐約中央鐵路 New York Central Railroad 和賓夕法尼亞鐵路 Pennsylvania Railroad 兩家公司，爭相降價、互相在對方地盤建設新路線，讓雙方股東叫苦連天。</p>
+        <p>就在這個時候，摩根邀請兩家公司高層登上他的私人遊艇科西法號 Corsair，在哈德遜河上漂流開會。這場「遊艇上的峰會」最終達成協議：兩家公司停止惡性競爭，接受摩根的監督機制。到了一八九〇年代，摩根已經整頓了將近三分之一的美國鐵路網絡。</p>
+        <p>但批評聲音也隨之而來。反壟斷運動的倡議者開始注意到，摩根式的整頓，表面上是在清理混亂，但實際上也在把市場控制權集中到越來越少的人手裡。他既是裁判，又是球員，而且還是球場的地主。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">軌距 Track Gauge</div><div class="vocab-def">兩條鐵軌之間的距離。各家公司採用不同軌距，讓火車無法在不同路線互通，統一軌距是鐵路整合的第一步。</div></li>
+          <li class="vocab-item"><div class="vocab-term">摩根化 Morganization</div><div class="vocab-def">摩根整頓破產鐵路公司的一套方法：接管財務控制權、清理帳目、找好的管理層、協調競爭者停止惡性競爭。</div></li>
+          <li class="vocab-item"><div class="vocab-term">投票信託 Voting Trust</div><div class="vocab-def">一種法律安排，讓受託人代替原本的股東，暫時行使公司的投票權和決策權。讓摩根在不正式擁有公司的情況下，有效控制公司方向。</div></li>
+          <li class="vocab-item"><div class="vocab-term">承銷 Underwriting</div><div class="vocab-def">由銀行為公司的股票或債券發行提供擔保，確保這些證券能夠成功賣出去。摩根的公司是美國工業化時期最重要的承銷商之一。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">摩根曾說：「如果你需要問我利率是多少，你可能根本負擔不起。」這反映了一個真實的市場現實：頂級的資金提供者，有資格選擇他們的客戶。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 4 ─── -->
+  <div class="episode-card ep4" id="ep4">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">04</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">締造巨人</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>十九世紀末的美國，一切都在追求更大、更快、更強。在這個追求規模的時代，沒有人比摩根更懂得如何創造規模。這一回合要講兩個最重要的企業整合案：一八九二年奇異公司 General Electric 的成立，和一九〇一年美國鋼鐵公司 U.S. Steel 的誕生。</p>
+        <p>先說奇異公司。故事從兩個發明天才的競爭說起。湯瑪斯·愛迪生 Thomas Edison 推廣直流電 Direct Current，DC 系統；喬治·威斯汀豪斯 George Westinghouse 支持交流電 Alternating Current，AC 系統。交流電可以用變壓器升降電壓，適合長距離傳輸，物理優勢明顯。</p>
+        <p>這場技術路線之爭被稱為「電流戰爭」War of Currents。摩根早期支持愛迪生，他的家是紐約第一批安裝電燈的私人住宅之一。但到一八九〇年代初，他看清楚了：電力產業的未來在於整合，而不在於哪種技術獲勝。</p>
+        <p>一八九二年，摩根促成愛迪生的電力公司和湯姆森-休斯頓公司 Thomson-Houston Electric Company 合併，成立了奇異公司 General Electric。這是一次教科書式的行業整合，奇異公司後來成為二十世紀美國工業史上的標誌性企業之一。</p>
+        <p>再說美國鋼鐵公司。一八九〇年代，鋼鐵大王安德魯·卡內基 Andrew Carnegie 的公司是全球效率最高的鋼鐵生產機器。他不斷降低成本，讓整個行業的競爭者都陷入軍備競賽。</p>
+        <p>一九〇〇年，在一場著名晚宴上，卡內基的合夥人查爾斯·施瓦布 Charles Schwab 描述了一個整合全美鋼鐵業的願景。摩根聽完後問施瓦布：卡內基願意出售嗎？卡內基寫下了一個數字：四億八千萬美元。摩根看了，說：「成交。」隨後整合多家鋼鐵公司，成立美國鋼鐵公司，市值達到十四億美元，成為人類歷史上第一家市值超過十億美元的企業。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">直流電 DC / 交流電 AC</div><div class="vocab-def">直流電方向固定，適合短距離，就像電池。交流電方向周期變換，可以用變壓器調整電壓，適合長距離大規模傳輸，也就是我們今天家裡插座用的電。</div></li>
+          <li class="vocab-item"><div class="vocab-term">市值 Market Capitalization</div><div class="vocab-def">一家公司所有股票的總市場價值。計算方式：每股股價乘以總股數。美國鋼鐵公司的十四億美元市值，在一九〇一年是前所未有的天文數字。</div></li>
+          <li class="vocab-item"><div class="vocab-term">規模優勢 Economies of Scale</div><div class="vocab-def">當生產規模變大，每個單位產品的平均成本會下降。工廠生產一百個零件和一萬個零件，每個零件分攤到的固定成本完全不同。規模越大，成本越低。</div></li>
+          <li class="vocab-item"><div class="vocab-term">企業整合 Industry Consolidation</div><div class="vocab-def">把同一行業裡的多家公司合併成規模更大的公司，消除重複建設，集中資源，提高效率和競爭力。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">在購買卡內基鋼鐵的談判之後，摩根據說對卡內基說：「我想我祝賀你成為了全世界最富有的人。」卡內基用整輩子建造的王國，就在一張紙上完成了轉移。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 5 ─── -->
+  <div class="episode-card ep5" id="ep5">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">05</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">救市的人</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>有一種人，平時默默在後台運作，你不太需要知道他的名字。但當一場大危機爆發的時候，忽然間所有人都意識到：那個人，才是整個體系真正的支柱。摩根，就是這樣的人。</p>
+        <p>這一回合講他一生中兩次最關鍵的「救市」行動：一八九五年的黃金危機，和一九〇七年的金融大恐慌。</p>
+        <p>十九世紀末的美國採行金本位制度 Gold Standard，美元的價值由黃金支撐。到一八九五年初，美國財政部的黃金儲備 Gold Reserve 已降到令人恐慌的低點。外國投資人不斷把公債換成黃金，黃金持續外流。總統克利夫蘭 Grover Cleveland 嘗試公開發行公債籌資，但屢屢失敗。</p>
+        <p>走投無路之下，克利夫蘭接受了會見摩根的請求。摩根提議，由他和羅斯柴爾德家族 Rothschild 聯合組建私人銀行財團，向政府提供六千五百萬美元的黃金，換取公債，並動用歐洲金融關係網絡阻止黃金繼續外流。這筆交易成功了，金融危機被化解。</p>
+        <p>一九〇七年十月，紐約的尼克博克信託公司 Knickerbocker Trust Company 因捲入銅礦股票投機而破產。消息一出，存款人開始恐慌，擠兌浪潮蔓延，股票市場同步崩潰。那一年，摩根七十歲，正在巴爾的摩參加宗教會議，被緊急召回紐約。</p>
+        <p>他把紐約所有重要的銀行家和金融人士召集到他的圖書館，評估哪些機構可以救、哪些不值得救，協調所需的流動資金。某個深夜，摩根把那些銀行家鎖在圖書館裡，告訴他們今晚必須達成協議，否則明天早上開盤，一切都完了。最終，協議達成，金融體系穩住了。這場危機，六年後促成了聯邦準備系統的誕生。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">金本位制度 Gold Standard</div><div class="vocab-def">國家的貨幣價值和黃金直接掛鉤的制度。政府承諾可以用固定比例把紙幣換成黃金。美國一直到一九七一年才完全脫離金本位。</div></li>
+          <li class="vocab-item"><div class="vocab-term">公債 Government Bond / Treasury Bond</div><div class="vocab-def">政府向市場借錢時發行的債券。投資人買公債，就是在借錢給政府，政府承諾在約定時間後還本付息。</div></li>
+          <li class="vocab-item"><div class="vocab-term">信託公司 Trust Company</div><div class="vocab-def">提供財富管理、資產保管和部分銀行業務的金融機構。受到的監管比正規銀行少，可以做更多冒險的投資，所以在一九〇七年的危機中是最脆弱的環節。</div></li>
+          <li class="vocab-item"><div class="vocab-term">流動性 Liquidity</div><div class="vocab-def">能夠迅速把資產轉換成現金的能力。當大家同時要提款，銀行面對的就是流動性危機，因為大部分的錢都已經以貸款形式借出去了。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">在一九〇七年的危機中，摩根說了一句廣為流傳的話：「一個人如果不能在睡著的時候讓錢為他工作，他就會一直工作到死。」這反映了他對資本力量的深刻理解。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 6 ─── -->
+  <div class="episode-card ep6" id="ep6">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">06</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">權力的代價</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>有一個規律在歷史上幾乎從未例外：當一個人積累了足夠龐大的權力，社會就會開始想辦法限制它。摩根，就到了必須面對這個規律的時候了。</p>
+        <p>這一回合講兩個對摩根造成重大壓力的歷史事件：北方證券反托拉斯案 Northern Securities antitrust case，以及普喬委員會調查 Pujo Committee hearings。</p>
+        <p>一九〇一年，摩根把幾條重要鐵路打包成一家控股公司，叫做北方證券公司 Northern Securities Company，讓原本競爭的鐵路都置於同一個管理屋頂之下。新任總統西奧多·羅斯福 Theodore Roosevelt 以激進的反壟斷立場聞名，他的司法部提起訴訟，要求解散北方證券公司。</p>
+        <p>摩根直接找上羅斯福，說出了後來廣為引用的話：「如果我們做了什麼違法的事，派你的人來找我的人，我們可以解決。」這句話反映了摩根的思維方式：他把自己和總統放在幾乎平起平坐的位置，把法律問題當成可以私下協商解決的事務。羅斯福拒絕了。最高法院在一九〇四年判決北方證券公司違反謝爾曼反托拉斯法 Sherman Antitrust Act，命令解散。</p>
+        <p>一九一二年，眾議院成立普喬委員會，調查「金錢托拉斯」Money Trust 的現象。調查發現，摩根和他的合夥人在一百一十二家公司的董事會擁有席位，這些公司的總資本超過二百二十億美元。</p>
+        <p>委員會傳喚七十五歲的摩根出席作證。當委員會律師問他：「商業信用的基礎，最終是不是錢？」摩根回答：「不，先生。信用的第一基礎，是品格，不是金錢或財產。一個我不信任的人，給我再多的錢，我也不借給他。」這段話，至今是商業世界裡被引用最多的語錄之一。</p>
+        <p>委員會調查帶來的政治影響是嚴峻的。一九一三年，聯邦準備法正式通過，聯邦準備系統成立，私人銀行家再也不可能用摩根曾經做過的方式，扮演「一個人頂一個中央銀行」的角色。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">反托拉斯法 Antitrust Law</div><div class="vocab-def">防止企業或個人通過壟斷手段消除競爭的法律。「托拉斯」Trust 是指把多家公司的控制權集中到一群受託人手裡統一管理的做法。</div></li>
+          <li class="vocab-item"><div class="vocab-term">控股公司 Holding Company</div><div class="vocab-def">本身不直接做業務，只持有其他公司的股份，通過持股控制那些公司的經營方向。讓控制權的集中更加隱蔽和靈活。</div></li>
+          <li class="vocab-item"><div class="vocab-term">董事會交叉持股 Interlocking Directorates</div><div class="vocab-def">同一批人在多家不同公司的董事會裡同時擔任職務。讓少數幾個人可以協調多家公司的策略方向，隱性地消除競爭。</div></li>
+          <li class="vocab-item"><div class="vocab-term">鍍金時代 Gilded Age</div><div class="vocab-def">美國歷史學家馬克·吐溫對十九世紀最後三十年的描述。「鍍金」意思是表面金光閃閃，但底下隱藏著嚴重的社會不平等、腐敗和壟斷問題。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">在普喬委員會的聽證中，摩根說：「一個人做生意，最重要的第一件事是品格。因為一個沒有品格的人，在任何意義上都是不值得信任的，不管他名下有多少財產。」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 7 ─── -->
+  <div class="episode-card ep7" id="ep7">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">07</div>
+      <div class="ep-meta">
+        <div class="ep-series">第一部 · 那個人</div>
+        <div class="ep-title">收藏家與凡人</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>到目前為止，我們講的摩根幾乎都是那個叱吒風雲的金融巨人。但在這一回合，我想帶你看看另一個摩根——一個熱愛藝術的收藏家，一個愛好航海的旅人，以及一個終究難逃死亡的凡人。</p>
+        <p>摩根的第一段婚姻只維持了不到四個月。他的第一任妻子米米·斯特奇斯 Mimi Sturges，在婚後不久被診斷出嚴重的肺結核 Tuberculosis，一八六一年去世，結婚還不到半年。這段短暫的婚姻在摩根的心上留下了深深的烙印。他後來再婚，育有四個孩子，但許多傳記作家都注意到，他從未像對米米那樣，對任何人袒露過真正的內心世界。</p>
+        <p>他把那份失去的柔軟，藏進了藝術和書籍裡。摩根是十九世紀末到二十世紀初，全球最重要的私人藝術收藏家之一。他購買的範圍令人嘆為觀止：古埃及文物、希臘羅馬雕塑、中世紀手抄本 Manuscript、文藝復興油畫、中國瓷器、掛毯、珠寶、古代錢幣。他在紐約麥迪遜大道建造了私人圖書館，也就是今天對外開放的摩根圖書館 Morgan Library，至今仍是紐約最重要的文化場所之一。</p>
+        <p>他還有一個出名的愛好：航海。他的私人遊艇科西法號 Corsair，是他既用來做生意、也用來度假的私人世界。</p>
+        <p>一個讓很多人感到驚訝的細節：一九一二年四月，鐵達尼號 Titanic 沉沒，造成一千五百多人死亡。摩根本來計劃搭乘那艘船，原本訂了豪華套房，但在最後一刻以健康原因取消了行程。這件事後來被許多人解讀成陰謀論的素材，但最合理的解釋其實很平凡：他當時真的身體不好。</p>
+        <p>一九一二年底，出席普喬委員會聽證之後，摩根的身體狀況開始明顯惡化。他去了羅馬旅行，試圖用溫暖的氣候恢復健康，但日漸消瘦。一九一三年三月三十一日，摩根在羅馬去世，享年七十五歲。紐約證券交易所為他降半旗 Half-Staff 致哀，這在當時通常只有國家元首才享有的禮遇。那一年，聯邦準備系統誕生了，一個時代的終結與另一個時代的開始，在同一個時間軸上精確交替。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">肺結核 Tuberculosis / TB</div><div class="vocab-def">由結核桿菌引起的傳染病，主要侵犯肺部。在十九世紀沒有有效的抗生素，是致死率極高的疾病。</div></li>
+          <li class="vocab-item"><div class="vocab-term">手抄本 Manuscript</div><div class="vocab-def">印刷術發明之前，由人工抄寫的書籍或文件。摩根收藏了大量中世紀的羊皮紙手抄本，是珍稀的文化遺產。</div></li>
+          <li class="vocab-item"><div class="vocab-term">文藝復興 Renaissance</div><div class="vocab-def">歐洲在十四到十七世紀間，在藝術、科學、文學和思想上全面復興的時期，產生了達文西、米開朗基羅等偉大藝術家。</div></li>
+          <li class="vocab-item"><div class="vocab-term">降半旗 Half-Staff / Half-Mast</div><div class="vocab-def">把旗幟降到旗杆中間位置的哀悼儀式，用來表示對某人逝世的敬意。紐約證券交易所為摩根降半旗，是對他在美國金融史上地位的最高認可。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">據說在摩根的遺囑裡，他寫下：「我把我的靈魂交給上帝，把我的名字交給家族，把我的財產留給後代，但我留給世界最寶貴的東西，是我一生所建立的信用。」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PART 2 ── -->
+  <div class="part-divider">
+    <span class="part-label">第二部：那家公司 — JPMorgan Chase · 回合 8–14</span>
+  </div>
+
+  <!-- ─── EP 8 ─── -->
+  <div class="episode-card ep8" id="ep8">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">08</div>
+      <div class="ep-meta">
+        <div class="ep-series">第二部 · 那家公司</div>
+        <div class="ep-title">帝國的分裂，一九三三年</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>從這一回合開始，我們進入課程的第二部分：那家公司。如果說第一部分是一個關於個人意志的史詩，那第二部分就是一個關於制度力量的故事。</p>
+        <p>要理解一九三三年發生的事，我們必須先回到一九二九年，那一年，美國和全球發生了空前的金融災難。一九二九年十月二十四日，「黑色星期四」Black Thursday，紐約股票市場爆發了崩盤式的暴跌。這是整個一九二〇年代瘋狂泡沫的總崩潰。</p>
+        <p>市場崩盤之後，是銀行的連鎖倒閉浪潮，是大規模失業，是整個經濟體的深度衰退，也就是「大蕭條」Great Depression。從一九二九年到一九三三年，美國失業率從大約三個百分點攀升到接近二十五個百分點，大約三分之一的銀行倒閉。</p>
+        <p>在大蕭條的背景下，人們問：為什麼商業銀行 Commercial Bank 可以拿著老百姓的存款，去做高風險的股票投資？這就是國會推動立法的背景。一九三三年，玻璃-斯蒂格爾法案 Glass-Steagall Act 正式通過，強制要求商業銀行業務和投資銀行業務 Investment Bank 必須嚴格分離。</p>
+        <p>對 J.P. 摩根公司的影響尤為巨大。它必須做出選擇：留在商業銀行這邊，還是轉型成純粹的投資銀行？一九三五年，摩根公司決定繼續做商業銀行。那些希望繼續做投資銀行業務的合夥人，包括摩根創始人的孫子亨利·摩根 Henry S. Morgan，帶著人馬另立門戶，在一九三五年九月創立了摩根士丹利 Morgan Stanley。</p>
+        <p>一個從老摩根時代傳承下來的金融帝國，被法律劈成了兩半。這場一九三三年的分裂，留下了一個有趣的尾聲：一九九九年，玻璃-斯蒂格爾法案的核心條款被另一部法律格拉姆-里奇-比利雷法 Gramm-Leach-Bliley Act 廢除，時隔六十六年，商業銀行和投資銀行又被允許重新合體。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">大蕭條 Great Depression</div><div class="vocab-def">一九二九年到大約一九三九年間，全球經歷的最嚴重的經濟衰退。美國是震央，但浪潮席捲了全球幾乎所有工業化國家。</div></li>
+          <li class="vocab-item"><div class="vocab-term">商業銀行 Commercial Bank</div><div class="vocab-def">我們一般人最熟悉的那種銀行，主要業務是吸收存款、發放貸款，服務個人和企業客戶的日常資金需求。</div></li>
+          <li class="vocab-item"><div class="vocab-term">投資銀行 Investment Bank</div><div class="vocab-def">不接受一般存款，幫助企業和政府在資本市場上籌錢。協助企業上市、發行債券、策劃大型企業併購。更像是資本市場裡的「大型仲介加上策略顧問」。</div></li>
+          <li class="vocab-item"><div class="vocab-term">全能銀行 Universal Bank</div><div class="vocab-def">在同一家機構下同時提供商業銀行和投資銀行服務的銀行。在歐洲，全能銀行模式一直是主流，從未像美國那樣被強制分拆。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">一九三三年的立法辯論中，曾有國會議員說：「我們不能讓同一家機構既是你存錢的地方，又是賭你的錢的地方。」這個比喻精準抓住了玻璃-斯蒂格爾法案的立法精神。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 9 ─── -->
+  <div class="episode-card ep9" id="ep9">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">09</div>
+      <div class="ep-meta">
+        <div class="ep-series">第二部 · 那家公司</div>
+        <div class="ep-title">四條河匯成一條，一七九九到二〇〇〇年</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>今天我要講一個壯觀的故事。它的主角不是一個人，而是四條河。在這一回合，我要追蹤四個源頭不同的金融機構，看它們如何在時間的長河裡匯聚在一起，最終在二〇〇〇年，成為我們今天所認識的摩根大通銀行 JPMorgan Chase。</p>
+        <p>第一條河：大通曼哈頓 Chase Manhattan Bank。故事從一七九九年說起。為了繞開政治對手漢密爾頓的阻撓，艾倫·伯爾 Aaron Burr 想出了一個迂迴策略。他說服議會批准設立一家供水公司，曼哈頓公司 Manhattan Company，並在公司章程的某個角落，塞入一條允許「把多餘的資本用於其他合法業務」的條款。伯爾利用這個漏洞，把公司部分資金轉入銀行業務。</p>
+        <p>「大通」Chase 這個名字，是後來為了紀念美國內戰時期財政部長塞爾蒙·P·蔡斯 Salmon P. Chase 而加上去的。一九五五年，大通國家銀行 Chase National Bank 和曼哈頓公司銀行合併，成為大通曼哈頓銀行 Chase Manhattan Bank。</p>
+        <p>第二條河：J.P. 摩根公司。這條河的源頭，就是我們第一部分所講的那個帝國。雖然經歷了一九三五年的分裂，J.P. 摩根公司一直維持著作為美國頂尖商業銀行的地位。</p>
+        <p>第三條河：化學銀行 Chemical Bank。它通過積極的合併策略崛起。一九九一年，化學銀行和漢諾威製造商銀行 Manufacturers Hanover Bank 合併，成為美國最大的銀行之一。一九九五年，化學銀行和大通曼哈頓銀行宣布合併，合併後沿用大通曼哈頓的名字，但實際上由化學銀行的管理層主導，這在商業史上被稱為「蛇吞象」Reverse Merger，反向收購。</p>
+        <p>二〇〇〇年，大通銀行和 J.P. 摩根公司宣布合併，這是一筆價值約三百六十億美元的全股票交易 All-Stock Deal，合併後正式採用 JPMorgan Chase 這個名字。從一七九九年的那個供水公司騙局，到二〇〇〇年的三百六十億美元合併，整整兩百年，那條河，一直在流。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">特許狀 Charter</div><div class="vocab-def">政府授予一家機構，允許它合法成立和運作的正式文件。在十九世紀初的美國，銀行的成立需要州議會批准，是一個政治門檻很高的過程。</div></li>
+          <li class="vocab-item"><div class="vocab-term">全股票交易 All-Stock Deal</div><div class="vocab-def">公司合併時，收購方不用現金，而是用自己的股票換取被收購方的股票。可以避免大量現金流出，但原有股東的持股比例會被稀釋。</div></li>
+          <li class="vocab-item"><div class="vocab-term">反向收購 Reverse Merger</div><div class="vocab-def">形式上規模較小的一方，在實質上主導了規模較大的一方。一九九五年化學銀行吸收大通曼哈頓就是這樣的案例。</div></li>
+          <li class="vocab-item"><div class="vocab-term">零售銀行 Retail Banking</div><div class="vocab-def">服務一般個人消費者和小型企業的銀行業務，包括存款帳戶、信用卡、房屋貸款等。和服務大型企業的批發銀行 Wholesale Banking 相對應。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">在大通和 J.P. 摩根宣布合併時，時任大通銀行董事長說：「把這兩個品牌放在一起，不只是兩家銀行的加法，而是兩段歷史的連接。」每一次重大合併的背後，都有一段值得被記住的歷史。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EP 10 ─── -->
+  <div class="episode-card ep10" id="ep10">
+    <div class="ep-header" onclick="toggleEp(this)">
+      <div class="ep-num">10</div>
+      <div class="ep-meta">
+        <div class="ep-series">第二部 · 那家公司</div>
+        <div class="ep-title">戴蒙登場</div>
+      </div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-content">
+        <p>二〇〇五年的一個春天早晨，一個身材結實、說話直接的男人，走進了位於紐約公園大道的摩根大通總部大樓，正式成為了這家公司的執行長 CEO。這個人，叫做傑米·戴蒙，Jamie Dimon。如果約翰·皮爾龐特·摩根是美國金融史的第一個時代，那麼戴蒙，可能是第二個。</p>
+        <p>戴蒙一九五六年出生於紐約，祖父是雅典的股票經紀人，父親也在金融業工作。他在哈佛大學攻讀 MBA 後，加入了美國運通 American Express，在那裡追隨了對他影響深遠的導師桑迪·韋爾 Sandy Weill。</p>
+        <p>韋爾的夢想是打造一個真正的「金融超市」Financial Supermarket，讓消費者在同一機構下什麼都有。戴蒙是他最信任的左右手，陪著他完成了一九九八年花旗銀行 Citibank 和旅行者集團 Travelers Group 的歷史性合併，創造出花旗集團 Citigroup。但不久之後，兩人關係出現裂痕，戴蒙被解除職務。</p>
+        <p>離開花旗兩年後，戴蒙接受了伊利諾伊州第一銀行 Bank One 的執行長職務。他大刀闊斧改革：削減成本、清理不良資產、重建風險管理體系。二〇〇四年，摩根大通和第一銀行宣布合併，交易價值約五百八十億美元。合併後，戴蒙先任總裁，二〇〇五年升任執行長。</p>
+        <p>戴蒙帶來的最核心概念，就是「堡壘式資產負債表」Fortress Balance Sheet。簡單說：在你需要的時候之前，就先把堡壘建好。他相信，大型金融機構的核心任務不是在市場好的時候把槓桿 Leverage 放到最大追求短期利潤，而是在任何時候都保持足夠的資本緩衝 Capital Buffer 和流動性儲備，讓公司在最壞的情況下也能夠獨立運作。</p>
+        <p>他要求管理層定期做「壓力測試」Stress Test，模擬各種極端的市場情境。幾年之後，這個看起來保守的策略，在二〇〇八年的那場金融大海嘯中，得到了最嚴酷的驗證。老摩根說：給我你的信任，我來解決。戴蒙說：把所有的數字放在桌上，讓我們一起看清楚。兩種方式，都是在回應同一個問題：怎麼讓一個複雜的金融機構，在不確定的世界裡保持穩定，值得信賴。</p>
+        <h3>重要詞彙</h3>
+        <ul class="vocab-list">
+          <li class="vocab-item"><div class="vocab-term">執行長 CEO (Chief Executive Officer)</div><div class="vocab-def">一家公司的最高管理者，負責制定戰略方向並帶領整個組織實現目標。</div></li>
+          <li class="vocab-item"><div class="vocab-term">資產負債表 Balance Sheet</div><div class="vocab-def">財務報表，列出公司在特定時間點的所有資產、負債和股東權益。左邊是公司有什麼，右邊是這些資產從哪來的，是借來的還是自己有的。</div></li>
+          <li class="vocab-item"><div class="vocab-term">槓桿 Leverage</div><div class="vocab-def">用借來的錢來放大投資規模的做法。你有一百塊，再借九百塊，就有一千塊可以投資，這就是十倍槓桿。槓桿可以放大收益，也可以放大損失。</div></li>
+          <li class="vocab-item"><div class="vocab-term">壓力測試 Stress Test</div><div class="vocab-def">模擬極端市場情境，比如股市崩盤、利率暴漲、房價暴跌，來評估一家機構在最壞情況下是否還能維持足夠的資本。二〇〇八年金融危機之後成為全球銀行業監管的標配工具。</div></li>
+          <li class="vocab-item"><div class="vocab-term">堡壘式資產負債表 Fortress Balance Sheet</div><div class="vocab-def">戴蒙的核心管理哲學：在任何時候都保持足夠的資本緩衝和流動性儲備，讓公司在市場最壞的時候也能不求救於任何人，繼續獨立運作。</div></li>
+        </ul>
+        <div class="quote-box">
+          <div class="quote-label">💡 今日金句</div>
+          <div class="quote-text">戴蒙曾說：「在金融這個行業，你永遠不知道下一場暴風雨什麼時候來，但你可以決定，當它來的時候，你的船有多厚的船殼。」這句話是「堡壘式資產負債表」哲學最生動的注腳。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════ BOTTOM LINK BAR ═══════════ -->
+<nav class="link-bar">
+  <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="icon">🎓</span>
+    <span>七月課程｜錯中學 ECHO 計劃<br><small style="opacity:0.8;font-weight:400">邊犯錯、邊成長的英語突破課</small></span>
+  </a>
+  <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="icon">📊</span>
+    <span>七月課程｜學生分析<br><small style="opacity:0.8;font-weight:400">了解你的學習輪廓</small></span>
+  </a>
+  <a class="link-card line-btn" href="https://line.me/ti/p/linwayet" target="_blank" rel="noopener">
+    <span class="icon">💬</span>
+    <span>LINE 聯絡我<br><small style="opacity:0.8;font-weight:400">ID: linwayet</small></span>
+  </a>
+</nav>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer-brand">
+  <p>摩根：一個人，一家銀行，一部美國金融史 &nbsp;·&nbsp; JPMorgan Chase Podcast 微課程</p>
+  <p style="margin-top:4px;opacity:0.7">共 14 回合 · 前 10 回合已完成 · 中英雙語</p>
+</footer>
+
+<script>
+  function toggleEp(header) {
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    // close all
+    document.querySelectorAll('.ep-body.open').forEach(b => {
+      b.classList.remove('open');
+      b.previousElementSibling.classList.remove('open');
+    });
+    // open clicked if it was closed
+    if (!isOpen) {
+      body.classList.add('open');
+      header.classList.add('open');
+      // smooth scroll to card after brief delay
+      setTimeout(() => {
+        header.closest('.episode-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    }
+  }
+
+  // Auto-open first episode
+  window.addEventListener('DOMContentLoaded', () => {
+    const first = document.querySelector('.ep-header');
+    if (first) toggleEp(first);
+  });
+
+  // Handle TOC anchor clicks with smooth open
+  document.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const header = target.querySelector('.ep-header');
+      if (header) {
+        document.querySelectorAll('.ep-body.open').forEach(b => {
+          b.classList.remove('open');
+          b.previousElementSibling.classList.remove('open');
+        });
+        const body = header.nextElementSibling;
+        body.classList.add('open');
+        header.classList.add('open');
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      }
+    });
+  });
+</script>
+</body>
+</html>
