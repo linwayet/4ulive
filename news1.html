@@ -1,331 +1,719 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Timmy the Stranded Whale Rescued After Weekslong Effort</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FFF8F0;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--kw:#0D47A1;--s1:#0D47A1;--s1b:#90CAF9;--s1in:#F3F8FF;--s2:#BF360C;--s2b:#FFAB91;--s2in:#FFF3EF;--s3:#1B5E20;--s3b:#81C784;--s3in:#F1F8F2;--s4:#4A148C;--s4b:#CE93D8;--s4in:#F9F0FF;--fold:#4A3728;--foldb:#C4A06A;--foldin:#FAF6F0}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 16px 56px}
-.page{max-width:880px;margin:0 auto}
-.link-strip{margin:0 0 24px;padding:18px;background:#FFE4C7;border:3px solid #F4A261;border-radius:14px;box-shadow:0 8px 0 rgba(230,81,0,.18)}
-.link-strip.bottom{margin:36px 0 0}
-.link-strip h2{margin:0 0 14px;color:#BF360C;font-size:1.65rem;text-align:center}
-.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.link-card{display:flex;flex-direction:column;justify-content:space-between;min-height:172px;padding:18px;border-radius:12px;text-decoration:none;color:#1A0F00;border:3px solid;background:#fff;font-weight:700;transition:transform .25s ease,box-shadow .25s ease}
-.link-card:hover,.link-card:focus{transform:translateY(-3px);box-shadow:0 8px 0 rgba(26,15,0,.14);outline:3px solid #FFD54F;outline-offset:3px}
-.link-card strong{font-size:1.25rem;line-height:1.35;margin-bottom:8px}.link-card span{font-size:1rem;line-height:1.55;font-weight:400}
-.course-a{border-color:#E65100;background:#FFF3E0}.course-a strong{color:#E65100}
-.course-b{border-color:#C0392B;background:#FDEDEC}.course-b strong{color:#C0392B}
-.line-card{border-color:#2E7D32;background:#EAFAF1}.line-card strong{color:#2E7D32}
-.hero{padding:28px 18px 22px;text-align:center}
-h1{display:inline-block;margin:0 auto 16px;padding:18px 26px;border:5px solid var(--h1);border-radius:8px;color:var(--h1);font-size:3.15rem;line-height:1.18;font-weight:700;background:#fffdf8;box-shadow:8px 8px 0 #F7C6BD}
-.subtitle{margin:0 0 12px;color:var(--h2);font-size:2.25rem;line-height:1.28;font-weight:700}
-.credit{margin:0;color:#0D47A1;font-size:1.5rem;font-weight:700;letter-spacing:.04em;text-shadow:1px 1px 0 #BBDEFB}
-h2{margin:42px 0 16px;color:var(--h2);font-size:2.2rem;line-height:1.25;font-weight:700}
-h3{margin:22px 0 12px;color:var(--h3);font-size:1.6rem;line-height:1.35;font-weight:700}
-h4{margin:22px 0 8px;color:var(--purple);font-size:1.28rem;line-height:1.4;font-weight:700}
-p{margin:12px 0}
-.panel{border:3px solid;border-radius:8px;overflow:hidden;background:#fff}
-.head{padding:16px 20px;color:#fff;font-size:1.35rem;font-weight:700}
-.body{padding:22px 24px}
-.article{border-color:var(--s1b)}.article .head{background:var(--s1)}.article .body{background:var(--s1in)}
-.reading{border-color:var(--s2b)}.reading .head{background:var(--s2)}.reading .body{background:var(--s2in)}
-.vocabulary{border-color:var(--s3b)}.vocabulary .head{background:var(--s3)}.vocabulary .body{background:var(--s3in)}
-.grammar{border-color:var(--s4b)}.grammar .head{background:var(--s4)}.grammar .body{background:var(--s4in)}
-strong.kw{color:var(--kw);font-weight:700;text-decoration:none}
-.sentence-card,.vocab-card,.grammar-card{border-top:2px solid rgba(26,15,0,.18);padding-top:22px;margin-top:24px}
-.sentence-card:first-child,.vocab-card:first-child,.grammar-card:first-child{border-top:0;padding-top:0;margin-top:0}
-.badge{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--s2);color:#fff;font-weight:700;margin-right:12px;vertical-align:middle}
-.quote{font-weight:700;color:#3A1F00}
-.quote em{font-style:normal}
-.translation{background:#fffaf6;border-left:8px solid var(--orange);padding:12px 16px;border-radius:6px}
-.analysis{background:#ffffff;border:2px solid #FFD0BD;padding:14px 16px;border-radius:8px}
-.pill{display:inline-block;margin:6px 8px 6px 0;padding:8px 14px;border-radius:999px;background:#FEF9E7;color:#8B5A00;border:2px solid #F1C36D;font-weight:700}
-.vocab-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--s3);color:#fff;font-size:1rem;margin-right:10px}
-.kk{color:#C0392B;font-size:1.05rem}.pos{color:#1565C0;font-weight:700}
-.tag-row{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:stretch;margin:10px 0}
-.tag{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:18px 0 0 18px;padding:8px 12px;font-size:1rem;font-weight:700}
-.tag-text{display:flex;align-items:center;background:#fff;padding:8px 14px;border-radius:0 8px 8px 0;border:2px solid rgba(26,15,0,.1)}
-.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
-.examples{background:#fff;border:2px solid #B7E0B9;border-radius:8px;padding:12px 16px;margin-top:12px}.examples span{color:#3B2B18}
-ul{margin:8px 0 12px 1.25em;padding:0}li{margin:8px 0}
-.formula{font-weight:700;font-style:normal;color:#4A148C;background:#fff;padding:10px 14px;border-radius:6px;display:inline-block}
-.wrong{color:#C0392B;font-weight:700}.right{color:#1B5E20;font-weight:700}
-details{margin:22px 0;border:3px solid var(--foldb);border-radius:8px;overflow:hidden;background:var(--foldin)}
-summary{min-height:72px;padding:16px 20px;background:var(--fold);color:#fff;font-size:1.35rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
-summary::-webkit-details-marker{display:none}.arrow{transition:transform .3s ease;font-size:1.4rem}details[open] .arrow{transform:rotate(180deg)}
-.detail-body{padding:20px 24px;background:var(--foldin)}
-.mini-row{padding:8px 0;border-bottom:1px solid #D8B983}.mini-row:last-child{border-bottom:0}.term{font-weight:700;color:#7A3B00}
-.compact-list li{padding-bottom:6px}.writing-item{margin:18px 0;padding:14px 16px;background:#fff;border-left:8px solid var(--purple);border-radius:6px}
-@media(max-width:720px){body{font-size:22px;padding:20px 10px 44px}.page{max-width:100%}.link-grid{grid-template-columns:1fr}.link-card{min-height:132px}.link-strip{padding:14px}h1{font-size:3rem;padding:14px}.subtitle{font-size:2.2rem}.body,.detail-body{padding:18px 16px}.tag-row{grid-template-columns:1fr}.tag,.tag-text{border-radius:8px;justify-content:flex-start}.badge{width:44px;height:44px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荷莫茲海峽封鎖與韓國庶民經濟危機</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #FFF8F0;
+            --warm-beige: #F5E6D3;
+            --warm-peach: #FFD4A3;
+            --warm-orange: #FF9B71;
+            --warm-brown: #8B5A3C;
+            --deep-brown: #4A2C1A;
+            --text-primary: #2D1B0E;
+            --text-secondary: #6B4423;
+            --accent-gold: #D4A574;
+            --shadow-warm: rgba(139, 90, 60, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--warm-cream) 0%, var(--warm-beige) 100%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .link-section {
+            background: linear-gradient(135deg, var(--warm-orange) 0%, var(--warm-peach) 100%);
+            padding: 24px 16px;
+            box-shadow: 0 4px 12px var(--shadow-warm);
+        }
+
+        .link-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid var(--warm-peach);
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-color: var(--warm-orange);
+        }
+
+        .link-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--warm-brown);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .link-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .link-card.line-card {
+            background: linear-gradient(135deg, #06C755 0%, #00B900 100%);
+            color: white;
+        }
+
+        .link-card.line-card h3,
+        .link-card.line-card p {
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 20px;
+            background: white;
+            box-shadow: 0 8px 32px var(--shadow-warm);
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            color: var(--warm-brown);
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid var(--warm-orange);
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.6rem;
+            color: var(--warm-brown);
+            margin: 48px 0 24px 0;
+            padding-left: 16px;
+            border-left: 6px solid var(--warm-orange);
+            line-height: 1.5;
+        }
+
+        h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--deep-brown);
+            margin: 32px 0 16px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        h4 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin: 24px 0 12px 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, var(--warm-peach) 0%, var(--warm-beige) 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            border-left: 6px solid var(--warm-orange);
+            box-shadow: 0 4px 12px var(--shadow-warm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px var(--shadow-warm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--warm-brown) 0%, var(--deep-brown) 100%);
+            color: white;
+        }
+
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--warm-beige);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--warm-cream);
+        }
+
+        tbody tr:hover {
+            background: var(--warm-peach);
+            transition: background 0.3s ease;
+        }
+
+        strong {
+            color: var(--warm-brown);
+            font-weight: 700;
+        }
+
+        .story-box {
+            background: var(--warm-cream);
+            border: 2px solid var(--warm-peach);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            box-shadow: 0 4px 12px var(--shadow-warm);
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, var(--warm-peach) 100%);
+            padding: 28px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 3px solid var(--warm-orange);
+            box-shadow: 0 6px 16px var(--shadow-warm);
+        }
+
+        ul {
+            margin: 20px 0 20px 24px;
+        }
+
+        li {
+            margin-bottom: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--warm-peach) 0%, transparent 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 10px 8px;
+            }
+
+            .link-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 8px 6px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-<main class="page">
-<section class="link-strip">
-<h2>七月課程與聯絡方式</h2>
-<div class="link-grid">
-<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html"><strong>七月課程介紹：錯中學 ECHO 計劃</strong><span>用錯誤回饋建立英文實力，適合想把弱點變成進步路線的高中生。</span></a>
-<a class="link-card course-b" href="https://linwayet.github.io/popup/index"><strong>學生分析</strong><span>透過學習分析看見學生目前狀態，協助安排更精準的複習方向。</span></a>
-<a class="link-card line-card" href="https://line.me/ti/p/~linwayet"><strong>林威老師 Line：linwayet</strong><span>想詢問課程、教材或學習規劃，可以加入 Line 直接聯絡。</span></a>
-</div>
-</section>
-<section class="hero">
-<h1>Timmy the Stranded Whale Rescued After Weekslong Effort</h1>
-<p class="subtitle">受困鯨魚 Timmy 歷經數週救援後重返大海</p>
-<p class="credit">林威老師與 AI agent 團隊製作</p>
-</section>
+    <!-- Top Link Section -->
+    <div class="link-section">
+        <div class="link-container">
+            <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank">
+                <h3>📚 七月課程：錯中學ECHO計劃</h3>
+                <p>2025年7月最新課程，透過錯誤學習英文，建立扎實英語實力</p>
+            </a>
+            <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank">
+                <h3>📊 學生分析系統</h3>
+                <p>深入了解學習進度與成效，精準掌握每位學生的學習狀態</p>
+            </a>
+            <a href="https://line.me/ti/p/linwayet" class="link-card line-card" target="_blank">
+                <h3>💬 LINE 聯絡林威老師</h3>
+                <p>ID: linwayet<br>歡迎加入，隨時諮詢課程與學習問題</p>
+            </a>
+        </div>
+    </div>
 
-<section>
-<h2>英文文章原文</h2>
-<div class="panel article">
-<div class="head">Original Article</div>
-<div class="body">
-<p>Timmy is a young <strong class="kw">humpback</strong> whale that became famous around the world after getting stuck for several weeks in <strong class="kw">shallow</strong> waters near Germany’s Baltic Sea coast. He was first seen there in early March, far from his usual home in the Atlantic Ocean, and videos of the lonely whale quickly spread online. Many whale lovers worried he would die, and experts said his health was getting worse as he stayed in the wrong <strong class="kw">habitat</strong> for so long.</p>
-<p>Rescuers tried several times to guide Timmy back to deeper water, but the first four <strong class="kw">attempts</strong> all failed. Finally, two wealthy German <strong class="kw">entrepreneurs</strong> paid for a special <strong class="kw">solution</strong>: a huge <strong class="kw">barge</strong> filled with seawater, about half the length of a football field, was prepared to carry him safely. After carefully moving Timmy into the <strong class="kw">barge</strong>, tugboats slowly <strong class="kw">transported</strong> him around the top of Denmark and into the North Sea, where rescuers opened the gate and watched him swim out, <strong class="kw">spouting</strong> a “great fountain” from his <strong class="kw">blowhole</strong>.</p>
-<p>Many people <strong class="kw">celebrated</strong> online when they saw Timmy swimming freely again, and social media was filled with hopeful messages wishing him a long life. However, scientists warned that the <strong class="kw">rescue</strong> is only the beginning of his <strong class="kw">recovery</strong>, not the end of the story. They say success will depend on whether he can swim strongly, <strong class="kw">overcome</strong> the <strong class="kw">effects</strong> of being <strong class="kw">stranded</strong> for weeks, find his way back to a healthy <strong class="kw">habitat</strong>, and start feeding <strong class="kw">normally</strong> again. Timmy’s story shows both the power of human kindness and the serious <strong class="kw">challenges</strong> wild animals face when they are trapped in the wrong <strong class="kw">environment</strong>.</p>
-</div>
-</div>
-</section>
+    <!-- Main Content -->
+    <div class="container fade-in">
+        <h1>荷莫茲海峽封鎖與韓國庶民經濟危機：十五個微觀生活場景的深度衝擊與地殼變動報告</h1>
 
-<section>
-<h2>8句精讀</h2>
-<div class="panel reading">
-<div class="head">Key Sentence Analysis</div>
-<div class="body">
-<article class="sentence-card"><h3><span class="badge">①</span>關係子句與時間副詞片語</h3><p class="quote"><em>Timmy is a young humpback whale that became famous around the world after getting stuck for several weeks in shallow waters near Germany's Baltic Sea coast.</em></p><p class="translation">Timmy 是一隻年輕的座頭鯨，在德國波羅的海海岸附近的淺水區受困數週後，牠聞名全球。</p><p class="analysis">文法解析：這句主幹是 Timmy is a young humpback whale。that became famous around the world 是形容詞子句，修飾 whale。after getting stuck... 是 after + V-ing 的時間片語，說明「在受困之後」；getting stuck 表示「陷入受困狀態」。</p><p><span class="pill">humpback whale 座頭鯨</span><span class="pill">get stuck 受困</span><span class="pill">shallow waters 淺水區</span></p></article>
-<article class="sentence-card"><h3><span class="badge">②</span>分詞片語補充說明</h3><p class="quote"><em>He was first seen there in early March, far from his usual home in the Atlantic Ocean, and videos of the lonely whale quickly spread online.</em></p><p class="translation">牠最早在三月初於那裡被看見，遠離牠在大西洋的平常住處，而這隻孤獨鯨魚的影片也迅速在網路上傳開。</p><p class="analysis">文法解析：He was first seen 是被動語態，表示「牠被看見」。far from his usual home... 是插入的補充片語，說明牠出現的位置很不尋常。and 連接兩個主要子句，使句子同時呈現發現地點與網路傳播結果。</p><p><span class="pill">be seen 被看見</span><span class="pill">far from 遠離</span><span class="pill">spread online 在網路上傳開</span></p></article>
-<article class="sentence-card"><h3><span class="badge">③</span>as 引導原因子句</h3><p class="quote"><em>Many whale lovers worried he would die, and experts said his health was getting worse as he stayed in the wrong habitat for so long.</em></p><p class="translation">許多愛鯨人士擔心牠會死亡，而專家表示，由於牠在錯誤棲地停留太久，健康狀況正在惡化。</p><p class="analysis">文法解析：worried 後面省略 that，接 he would die 作受詞子句。experts said 後面也接名詞子句 his health was getting worse。as 在這裡表示原因，意思接近 because，用來說明健康惡化的原因。</p><p><span class="pill">would die 可能會死亡</span><span class="pill">get worse 惡化</span><span class="pill">wrong habitat 錯誤棲地</span></p></article>
-<article class="sentence-card"><h3><span class="badge">④</span>but 連接對比結果</h3><p class="quote"><em>Rescuers tried several times to guide Timmy back to deeper water, but the first four attempts all failed.</em></p><p class="translation">救援人員多次試著引導 Timmy 回到較深的水域，但前四次嘗試都失敗了。</p><p class="analysis">文法解析：tried several times to guide... 中的 to guide 是不定詞，說明嘗試做的事情。back to deeper water 表示方向與目標位置。but 連接前後對比：前半句是努力，後半句是失敗結果。</p><p><span class="pill">try to V 試著做...</span><span class="pill">guide A back 引導 A 回去</span><span class="pill">attempt 嘗試</span></p></article>
-<article class="sentence-card"><h3><span class="badge">⑤</span>同位語與被動語態</h3><p class="quote"><em>Finally, two wealthy German entrepreneurs paid for a special solution: a huge barge filled with seawater, about half the length of a football field, was prepared to carry him safely.</em></p><p class="translation">最後，兩位富有的德國企業家出資提供一個特別解方：一艘裝滿海水、約半個足球場長的巨大駁船被準備好安全運送牠。</p><p class="analysis">文法解析：冒號後面的 a huge barge... 是 special solution 的具體說明，功能接近同位語。filled with seawater 是過去分詞片語，修飾 barge。was prepared 是被動語態；to carry him safely 是不定詞表目的，to 是不定詞，不是介係詞。</p><p><span class="pill">pay for 出資</span><span class="pill">filled with 裝滿</span><span class="pill">to carry 表目的</span></p></article>
-<article class="sentence-card"><h3><span class="badge">⑥</span>where 引導地點關係子句</h3><p class="quote"><em>After carefully moving Timmy into the barge, tugboats slowly transported him around the top of Denmark and into the North Sea, where rescuers opened the gate and watched him swim out, spouting a "great fountain" from his blowhole.</em></p><p class="translation">在小心翼翼把 Timmy 移入駁船後，拖船慢慢將牠繞過丹麥頂端並送入北海；在那裡，救援人員打開閘門，看著牠游出去，從氣孔噴出「壯觀水柱」。</p><p class="analysis">文法解析：After carefully moving... 是時間片語，主詞與主要子句相同，因此可用 V-ing。where rescuers opened... 是地點關係子句，修飾 the North Sea。watched him swim out 使用感官動詞 watch + 受詞 + 原形動詞；spouting... 是分詞構句，補充牠游出時的動作。</p><p><span class="pill">transport A into B 把 A 運進 B</span><span class="pill">watch O V 看著某人做...</span><span class="pill">blowhole 氣孔</span></p></article>
-<article class="sentence-card"><h3><span class="badge">⑦</span>when 時間副詞子句</h3><p class="quote"><em>Many people celebrated online when they saw Timmy swimming freely again, and social media was filled with hopeful messages wishing him a long life.</em></p><p class="translation">當許多人看到 Timmy 再次自由游泳時，他們在網路上慶祝，而社群媒體上也充滿了祝牠長壽的希望訊息。</p><p class="analysis">文法解析：when they saw... 是時間副詞子句，說明大家慶祝的時間點。saw Timmy swimming 使用感官動詞 see + 受詞 + V-ing，強調看見動作正在進行。wishing him a long life 是現在分詞片語，修飾 hopeful messages。</p><p><span class="pill">celebrate online 線上慶祝</span><span class="pill">swim freely 自由游泳</span><span class="pill">be filled with 充滿</span></p></article>
-<article class="sentence-card"><h3><span class="badge">⑧</span>whether 名詞子句與並列動詞</h3><p class="quote"><em>They say success will depend on whether he can swim strongly, overcome the effects of being stranded for weeks, find his way back to a healthy habitat, and start feeding normally again.</em></p><p class="translation">他們說，成功將取決於牠是否能有力地游泳、克服受困數週的影響、找到回到健康棲地的路，並再次開始正常進食。</p><p class="analysis">文法解析：depend on 後面接 whether 名詞子句，表示「取決於是否...」。whether 子句中有四個並列動詞：swim, overcome, find, start。of being stranded 中的 being stranded 是動名詞被動式，因為 of 是介係詞，後面要接名詞或 V-ing。</p><p><span class="pill">depend on 取決於</span><span class="pill">whether 是否</span><span class="pill">feed normally 正常進食</span></p></article>
-</div>
-</div>
-</section>
+        <div class="intro">
+            <p>地緣政治衝突導致全球最重要的能源咽喉——<span class="highlight">荷莫茲海峽（Strait of Hormuz）</span>遭到全面封鎖，對高度依賴能源與原物料進口的韓國社會造成了極具破壞性的衝擊。荷莫茲海峽承載了全球約 <strong>20% 的原油運量</strong>及 <strong>25% 的液化天然氣（LNG）運量</strong>。對韓國而言，高達 <strong>70% 的進口原油</strong>及 <strong>20% 的液化天然氣</strong>必須通過此狹窄水道。當此航道遭到封鎖，國際油價瞬間自危機前的每桶 63 至 70 美元左右暴漲，最壞情況下將飆升至<strong>每桶 150 至 160 美元</strong>。</p>
+            
+            <p>這種宏觀經濟的劇烈震盪，正透過複雜的產業鏈與價值鏈，轉嫁至韓國普通百姓的日常生活。在生產者物價指數（PPI）創下自 1998 年亞洲金融風暴（IMF 危機）以來、近 <strong>28 年最大單月增幅（2.5%）</strong>的背景下，民生物資與服務價格全面失控。</p>
+        </div>
 
-<section>
-<h2>18-20個單字整理</h2>
-<div class="panel vocabulary">
-<div class="head">Vocabulary Focus</div>
-<div class="body">
-<article class="vocab-card">
-<h3><span class="vocab-num">1</span>stranded <span class="kk">[ˈstrændɪd]</span> <span class="pos">adj.</span> 擱淺的；受困的</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">strand (v. 使擱淺；使受困)；stranding (n. 擱淺事件)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">be stranded in/on/near... 受困於...；a stranded whale 擱淺的鯨魚</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a seriously stranded animal 嚴重受困的動物；stranded travelers 受困旅客</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">stranded 強調被困在某處無法離開；trapped 多指被困在封閉或危險空間。</span></p>
-<div class="examples"><p>Timmy became famous after getting stuck for several weeks in shallow waters.<br><span>（Timmy 在淺水區受困數週後變得知名。）</span></p><p>The typhoon left many travelers stranded at the airport.<br><span>（颱風讓許多旅客受困在機場。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">2</span>rescue <span class="kk">[ˈrɛskju]</span> <span class="pos">v./n.</span> 救援；營救</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">rescuer (n. 救援者)；rescued (adj. 獲救的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">rescue A from B 從 B 中救出 A；a rescue effort 救援行動</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a difficult rescue 困難的救援；rescue workers 救援人員</span></p>
-<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">rescue + 受詞 + from + 危險來源，from 是介係詞，後接名詞或 V-ing。</span></p>
-<div class="examples"><p>Scientists warned that the rescue was only the beginning of Timmy's recovery.<br><span>（科學家警告，這次救援只是 Timmy 復原的開始。）</span></p><p>The team worked through the night to rescue people from the flood.<br><span>（團隊徹夜工作，從洪水中救出人們。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">3</span>effort <span class="kk">[ˈɛfɚt]</span> <span class="pos">n.</span> 努力；費力的嘗試</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">effortless (adj. 不費力的)；effortlessly (adv. 輕鬆地)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make an effort 努力；a weekslong effort 持續數週的努力</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a joint effort 共同努力；serious effort 認真的努力</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">effort 指付出的力氣；attempt 指一次嘗試，可能成功也可能失敗。</span></p>
-<div class="examples"><p>Timmy was rescued after a weekslong effort.<br><span>（Timmy 在持續數週的努力後獲救。）</span></p><p>Learning vocabulary well requires daily effort.<br><span>（學好單字需要每天努力。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">4</span>humpback <span class="kk">[ˈhʌmpˌbæk]</span> <span class="pos">n./adj.</span> 座頭鯨；背部隆起的</h3>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">humpback whale 座頭鯨；a young humpback whale 年輕座頭鯨</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a protected humpback whale 受保護的座頭鯨</span></p>
-<div class="examples"><p>Timmy is a young humpback whale.<br><span>（Timmy 是一隻年輕的座頭鯨。）</span></p><p>A humpback whale can travel great distances across the ocean.<br><span>（座頭鯨能跨越海洋長距離遷徙。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">5</span>shallow <span class="kk">[ˈʃælo]</span> <span class="pos">adj.</span> 淺的；膚淺的</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">shallowness (n. 淺；膚淺)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">shallow waters 淺水區；a shallow river 淺河</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">dangerously shallow water 危險的淺水；a shallow understanding 膚淺的理解</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">shallow 指水、容器或理解很淺；low 指高度、數量或程度低。</span></p>
-<div class="examples"><p>Timmy got stuck in shallow waters near Germany's Baltic Sea coast.<br><span>（Timmy 卡在德國波羅的海海岸附近的淺水區。）</span></p><p>Children should not dive into a shallow pool.<br><span>（孩子不應跳入淺水池。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">6</span>habitat <span class="kk">[ˈhæbəˌtæt]</span> <span class="pos">n.</span> 棲地；生長環境</h3>
-<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">habit/hab「居住、持有」：inhabit（居住於）、habitant（居民）、habitation（住所）</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">natural habitat 自然棲地；healthy habitat 健康棲地</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a suitable habitat 合適的棲地；destroy a habitat 破壞棲地</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">habitat 是動植物自然生活環境；environment 可泛指任何周遭環境。</span></p>
-<div class="examples"><p>Experts said Timmy's health was getting worse in the wrong habitat.<br><span>（專家說，Timmy 在錯誤棲地中健康惡化。）</span></p><p>Wetlands provide an important habitat for many birds.<br><span>（濕地為許多鳥類提供重要棲地。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">7</span>attempt <span class="kk">[əˈtɛmpt]</span> <span class="pos">n./v.</span> 嘗試；試圖</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">attempted (adj. 未遂的；企圖的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make an attempt to V 嘗試做...；a failed attempt 失敗的嘗試</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a serious attempt 認真的嘗試；several rescue attempts 幾次救援嘗試</span></p>
-<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">attempt to V 中的 to 是不定詞，表示「試圖做某事」，不是介係詞。</span></p>
-<div class="examples"><p>The first four attempts to guide Timmy back to deeper water all failed.<br><span>（前四次引導 Timmy 回到深水的嘗試都失敗了。）</span></p><p>She made an attempt to explain the difficult idea in simple English.<br><span>（她嘗試用簡單英文解釋這個困難概念。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">8</span>entrepreneur <span class="kk">[ˌɑntrəprəˈnɝ]</span> <span class="pos">n.</span> 企業家；創業者</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">entrepreneurial (adj. 企業家的；創業的)；entrepreneurship (n. 創業精神)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">a successful entrepreneur 成功企業家；local entrepreneurs 在地創業者</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a wealthy entrepreneur 富有的企業家；entrepreneurial spirit 創業精神</span></p>
-<div class="examples"><p>Two wealthy German entrepreneurs paid for a special solution.<br><span>（兩位富有的德國企業家出資提供特別解方。）</span></p><p>A good entrepreneur must understand both risk and opportunity.<br><span>（好的企業家必須理解風險與機會。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">9</span>solution <span class="kk">[səˈluʃən]</span> <span class="pos">n.</span> 解決辦法；溶液</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">solve (v. 解決)；solvable (adj. 可解決的)</span></p>
-<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">solv/solu「鬆開、解決」：solve（解決）、resolve（解決）、dissolve（溶解）</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">find a solution 找到解方；a practical solution 實際的解決辦法</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a creative solution 有創意的解方；a long-term solution 長期解方</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">solution 是問題的解方；answer 多指題目的答案。</span></p>
-<div class="examples"><p>The entrepreneurs paid for a special solution: a huge barge filled with seawater.<br><span>（企業家出資提供特別解方：一艘裝滿海水的巨大駁船。）</span></p><p>Education is not a quick solution to every social problem.<br><span>（教育不是每個社會問題的快速解方。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">10</span>barge <span class="kk">[bɑrdʒ]</span> <span class="pos">n.</span> 駁船；大型平底船</h3>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">a huge barge 巨大駁船；a barge filled with seawater 裝滿海水的駁船</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a transport barge 運輸駁船；a rescue barge 救援駁船</span></p>
-<div class="examples"><p>A huge barge filled with seawater was prepared to carry Timmy safely.<br><span>（一艘裝滿海水的巨大駁船被準備好安全運送 Timmy。）</span></p><p>Workers used a barge to move heavy equipment across the river.<br><span>（工人用駁船把重型設備運過河。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">11</span>transport <span class="kk">[trænsˈpɔrt]</span> <span class="pos">v./n.</span> 運送；交通運輸</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">transportation (n. 交通；運輸)；transportable (adj. 可運送的)</span></p>
-<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">trans「穿越、轉移」+ port「搬運」：portable（可攜帶的）、export（出口）、import（進口）</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">transport A to B 把 A 運送到 B；public transport 大眾運輸</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">safely transport 安全運送；transport system 運輸系統</span></p>
-<div class="examples"><p>Tugboats slowly transported Timmy around Denmark and into the North Sea.<br><span>（拖船慢慢將 Timmy 繞過丹麥並運進北海。）</span></p><p>The MRT transports thousands of students every morning.<br><span>（捷運每天早上運送數以千計的學生。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">12</span>spout <span class="kk">[spaʊt]</span> <span class="pos">v./n.</span> 噴出；噴口</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">spouting (n./adj. 噴出；噴出的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">spout water 噴水；a whale's spout 鯨魚噴出的水柱</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a great spout of water 一大股水柱；spout from a blowhole 從氣孔噴出</span></p>
-<div class="examples"><p>Rescuers watched Timmy swim out, spouting a great fountain from his blowhole.<br><span>（救援人員看著 Timmy 游出去，從氣孔噴出壯觀水柱。）</span></p><p>The fountain spouted water high into the air.<br><span>（噴泉把水高高噴向空中。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">13</span>blowhole <span class="kk">[ˈbloˌhol]</span> <span class="pos">n.</span> 鯨豚氣孔；噴水孔</h3>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">from its blowhole 從牠的氣孔；a whale's blowhole 鯨魚的氣孔</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a visible blowhole 清楚可見的氣孔</span></p>
-<div class="examples"><p>Timmy spouted a great fountain from his blowhole.<br><span>（Timmy 從氣孔噴出壯觀水柱。）</span></p><p>A whale breathes through a blowhole on top of its head.<br><span>（鯨魚透過頭頂的氣孔呼吸。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">14</span>celebrate <span class="kk">[ˈsɛləˌbret]</span> <span class="pos">v.</span> 慶祝；讚揚</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">celebration (n. 慶祝)；celebrated (adj. 著名的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">celebrate online 在網路上慶祝；celebrate success 慶祝成功</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">widely celebrated 廣受讚揚的；a public celebration 公開慶祝活動</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">celebrate 是主動慶祝；congratulate 是向某人道賀，常用 congratulate A on B。</span></p>
-<div class="examples"><p>Many people celebrated online when they saw Timmy swimming freely again.<br><span>（許多人看到 Timmy 再次自由游泳時在網路上慶祝。）</span></p><p>The class celebrated its success with a small party.<br><span>（全班用小派對慶祝成功。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">15</span>recovery <span class="kk">[rɪˈkʌvərɪ]</span> <span class="pos">n.</span> 復原；恢復</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">recover (v. 復原；找回)；recoverable (adj. 可恢復的)</span></p>
-<p class="tag-row"><span class="tag root">字根</span><span class="tag-text">cover/cov「覆蓋、取回」：discover（發現）、uncover（揭露）、recover（恢復）</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">make a recovery 復原；the beginning of recovery 復原的開始</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a slow recovery 緩慢復原；full recovery 完全康復</span></p>
-<div class="examples"><p>Scientists warned that the rescue is only the beginning of his recovery.<br><span>（科學家警告，救援只是牠復原的開始。）</span></p><p>After weeks of rest, the athlete made a full recovery.<br><span>（休息數週後，這位運動員完全康復。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">16</span>overcome <span class="kk">[ˌovɚˈkʌm]</span> <span class="pos">v.</span> 克服；戰勝</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">overcoming (n./adj. 克服；克服中的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">overcome difficulties 克服困難；overcome the effects of... 克服...的影響</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">successfully overcome 成功克服；overcome fear 克服恐懼</span></p>
-<p class="tag-row"><span class="tag pattern">句型</span><span class="tag-text">overcome + 名詞，後面若接動作可用 overcome the difficulty of V-ing。</span></p>
-<div class="examples"><p>Timmy must overcome the effects of being stranded for weeks.<br><span>（Timmy 必須克服受困數週造成的影響。）</span></p><p>Students can overcome anxiety by practicing step by step.<br><span>（學生可以透過一步步練習克服焦慮。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">17</span>effect <span class="kk">[ɪˈfɛkt]</span> <span class="pos">n.</span> 影響；效果；結果</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">effective (adj. 有效的)；effectively (adv. 有效地)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">the effects of... ...的影響；have an effect on... 對...有影響</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a lasting effect 長久影響；positive effects 正面效果</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">effect 是名詞「影響」；affect 是動詞「影響」。</span></p>
-<div class="examples"><p>Success depends on whether Timmy can overcome the effects of being stranded.<br><span>（成功取決於 Timmy 是否能克服受困的影響。）</span></p><p>Sleep has a strong effect on memory and learning.<br><span>（睡眠對記憶與學習有強烈影響。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">18</span>normally <span class="kk">[ˈnɔrməlɪ]</span> <span class="pos">adv.</span> 正常地；通常</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">normal (adj. 正常的)；normalize (v. 使正常化)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">feed normally 正常進食；function normally 正常運作</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">perfectly normal 完全正常的；return to normal 恢復正常</span></p>
-<div class="examples"><p>Scientists hope Timmy can start feeding normally again.<br><span>（科學家希望 Timmy 能再次開始正常進食。）</span></p><p>The computer worked normally after it was restarted.<br><span>（電腦重新啟動後正常運作。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">19</span>environment <span class="kk">[ɪnˈvaɪrənmənt]</span> <span class="pos">n.</span> 環境；周遭情況</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">environmental (adj. 環境的)；environmentally (adv. 在環境方面)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">the wrong environment 錯誤環境；protect the environment 保護環境</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a healthy environment 健康環境；learning environment 學習環境</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">environment 泛指周遭環境；habitat 特別指動植物自然棲地。</span></p>
-<div class="examples"><p>Wild animals face serious challenges when trapped in the wrong environment.<br><span>（野生動物受困在錯誤環境時會面臨嚴重挑戰。）</span></p><p>A quiet environment helps many students focus better.<br><span>（安靜的環境能幫助許多學生更專心。）</span></p></div>
-</article>
-<article class="vocab-card">
-<h3><span class="vocab-num">20</span>challenge <span class="kk">[ˈtʃælɪndʒ]</span> <span class="pos">n./v.</span> 挑戰；質疑</h3>
-<p class="tag-row"><span class="tag deriv">衍生詞</span><span class="tag-text">challenging (adj. 具挑戰性的)</span></p>
-<p class="tag-row"><span class="tag phrase">片語</span><span class="tag-text">face a challenge 面對挑戰；serious challenges 嚴重挑戰</span></p>
-<p class="tag-row"><span class="tag idiom">慣用語</span><span class="tag-text">a major challenge 重大挑戰；a challenging task 具挑戰性的任務</span></p>
-<p class="tag-row"><span class="tag confuse">容易混淆</span><span class="tag-text">challenge 作名詞是挑戰；difficulty 是困難本身，語氣較中性。</span></p>
-<div class="examples"><p>Timmy's story shows the serious challenges wild animals face.<br><span>（Timmy 的故事顯示野生動物面臨的嚴重挑戰。）</span></p><p>Preparing for a big exam is a challenge, but a clear plan helps.<br><span>（準備大考是挑戰，但清楚計畫會有幫助。）</span></p></div>
-</article>
-</div>
-</div>
-</section>
+        <h2>荷莫茲海峽封鎖後韓國關鍵經濟指標劇烈變動</h2>
 
-<section>
-<h2>文法解析</h2>
-<div class="panel grammar">
-<div class="head">Grammar Focus</div>
-<div class="body">
-<article class="grammar-card"><h3>一、關係代名詞 that 引導形容詞子句</h3><h4>【引句 Quote】</h4><p class="quote"><em>Timmy is a young humpback whale that became famous around the world.</em></p><h4>【句型】</h4><p><span class="formula">S + V + N + that + V...</span></p><h4>【核心說明】</h4><p>that 引導的形容詞子句用來修飾前面的名詞，讓讀者知道這個名詞是哪一個、具備什麼特徵。此句中的 that became famous around the world 修飾 a young humpback whale。</p><p>形容詞子句能把兩句話合併成一句，使文章資訊更緊密，也常見於學測與分科測驗閱讀測驗。</p><h4>【使用規則】</h4><ul><li>that 可代替人或物，但在非限定用法中通常不用 that。</li><li>that 在子句中若作主詞，後面直接接動詞。</li><li>先行詞是特定名詞時，形容詞子句能補充必要資訊。</li><li>不要把 that 子句誤判成名詞子句；先看它是否修飾前面的名詞。</li></ul><h4>【主題例句】</h4><p>The whale that stayed in shallow waters needed immediate help.<br>（那隻待在淺水區的鯨魚需要立即協助。）</p><h4>【學習提醒】</h4><p>看到 that 時，不要只背「那個」。請先判斷 that 後面是否有完整子句，以及它是否回頭修飾前面的名詞。若是修飾名詞，就是形容詞子句。</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ Timmy is a whale became famous.</span><br><span class="right">✓ Timmy is a whale that became famous.</span>（修飾 whale 時需要關係代名詞 that。）</p><p>選擇：The animal ___ was trapped near the coast became famous online. (A) who (B) that (C) what<br>答案：B。animal 是物或動物，that 可作主詞引導形容詞子句。</p></article>
-<article class="grammar-card"><h3>二、whether 引導名詞子句</h3><h4>【引句 Quote】</h4><p class="quote"><em>Success will depend on whether he can swim strongly.</em></p><h4>【句型】</h4><p><span class="formula">S + V + prep. + whether + S + V...</span></p><h4>【核心說明】</h4><p>whether 表示「是否」，可引導名詞子句。這個名詞子句可以當主詞、受詞或介係詞的受詞；本文中 whether he can swim strongly 是 depend on 的受詞。</p><p>depend on whether... 常用來表達「結果取決於某條件是否成立」，很適合描述救援、計畫、政策或研究結果。</p><h4>【使用規則】</h4><ul><li>whether 後面接完整句子，不用倒裝。</li><li>介係詞後面通常用 whether，不用 if。</li><li>whether 可和 or not 搭配，但不一定每次都要出現。</li><li>depend on 中 on 是介係詞，後面可接名詞或名詞子句。</li></ul><h4>【主題例句】</h4><p>The whale's recovery depends on whether it can find enough food.<br>（這隻鯨魚的復原取決於牠是否能找到足夠食物。）</p><h4>【學習提醒】</h4><p>中文的「是否」很容易讓人寫成疑問句語序，但英文名詞子句要用直述句語序：whether + S + V，不寫 whether can he...</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ The result depends on whether can Timmy survive.</span><br><span class="right">✓ The result depends on whether Timmy can survive.</span>（whether 名詞子句使用直述句語序。）</p><p>改錯：Scientists wondered whether could the whale feed normally again.<br>答案：Scientists wondered whether the whale could feed normally again.</p></article>
-<article class="grammar-card"><h3>三、分詞構句補充結果或伴隨動作</h3><h4>【引句 Quote】</h4><p class="quote"><em>Rescuers watched him swim out, spouting a "great fountain" from his blowhole.</em></p><h4>【句型】</h4><p><span class="formula">S + V..., V-ing...</span></p><h4>【核心說明】</h4><p>現在分詞 V-ing 可放在主要子句後面，補充同一主詞或前面情境所伴隨的動作、結果或狀態。本文中 spouting... 描述 Timmy 游出時同時發生的動作。</p><p>分詞構句能讓句子更精簡，也能增加畫面感。它常用於新聞、敘事與說明文中，尤其適合描寫一個事件連帶產生的結果。</p><h4>【使用規則】</h4><ul><li>分詞構句的邏輯主詞通常要和主要子句主詞或受詞清楚連結。</li><li>主動關係用 V-ing；被動關係常用 V-ed。</li><li>放在句尾時，常表示伴隨動作或自然結果。</li><li>不要讓分詞的主詞不明，否則句意會混亂。</li></ul><h4>【主題例句】</h4><p>Timmy moved toward deeper water, leaving the shallow coast behind.<br>（Timmy 游向較深水域，把淺水海岸留在身後。）</p><h4>【學習提醒】</h4><p>分詞構句不是單純把 and 刪掉。改寫前要確認兩個動作的主詞關係合理，且時間或因果關係清楚。</p><h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4><p><span class="wrong">✗ Opening the gate, Timmy swam out by the rescuers.</span><br><span class="right">✓ After the rescuers opened the gate, Timmy swam out.</span>（開閘門的是 rescuers，不是 Timmy，不能造成主詞錯置。）</p><p>選擇：The whale swam away, ___ water from its blowhole. (A) spouted (B) spouting (C) to spouted<br>答案：B。句尾用現在分詞表示伴隨動作。</p></article>
-</div>
-</div>
-</section>
+        <table>
+            <thead>
+                <tr>
+                    <th>宏觀經濟與民生指標</th>
+                    <th>危機前基準線</th>
+                    <th>封鎖危機期現狀</th>
+                    <th>對庶民生活之直接傳導效應</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>國際原油價格</strong></td>
+                    <td>基準約 $63 - $70 / 桶</td>
+                    <td>暴漲至 $150 - $160 / 桶</td>
+                    <td>國內加油站油價暴漲，汽油突破每公升 1,940 韓元</td>
+                </tr>
+                <tr>
+                    <td><strong>中東原油進口比重</strong></td>
+                    <td>約 70% - 73%</td>
+                    <td>驟降至 53.1%（被迫尋求替代進口源）</td>
+                    <td>美、澳、加等替代原油精煉效率低下，成本加速轉嫁</td>
+                </tr>
+                <tr>
+                    <td><strong>生產者物價指數 (PPI)</strong></td>
+                    <td>波動穩定</td>
+                    <td>月增率 2.5%（創 28 年最大升幅）</td>
+                    <td>石油化學製品、溶劑、柴油價格暴漲，百業生產成本失控</td>
+                </tr>
+                <tr>
+                    <td><strong>國內供應物價指數</strong></td>
+                    <td>趨勢平緩</td>
+                    <td>原物料指數暴增 28.5%（1980年以來新高）</td>
+                    <td>終端消費品、民生服務、電力瓦斯費用被迫全面調漲</td>
+                </tr>
+                <tr>
+                    <td><strong>農業尿素進口結構</strong></td>
+                    <td>中東進口為主，供應鏈穩定</td>
+                    <td>38% 中東供應線斷裂，東南亞替代要素暴漲 63.6%</td>
+                    <td>肥料價格飆漲，農業生產成本激增，引發終端食品價格暴動</td>
+                </tr>
+                <tr>
+                    <td><strong>外匯與金融市場</strong></td>
+                    <td>匯率約 1,470 韓元，股市穩定</td>
+                    <td>匯率逼近 1,500 韓元，KOSPI 跌破 6000 點</td>
+                    <td>本幣大幅貶值加劇輸入型通膨，股市暴跌重創庶民資產</td>
+                </tr>
+            </tbody>
+        </table>
 
-<section>
-<h2>底部折疊區塊</h2>
-<details>
-<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
-<div class="detail-body"><div class="mini-row"><span class="term">ab-</span>　離開、相反　—　abnormal（異常的）</div><div class="mini-row"><span class="term">ad-</span>　向、加　—　advance（前進）</div><div class="mini-row"><span class="term">ambi-</span>　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="mini-row"><span class="term">anti-</span>　反對、抗　—　antibiotic（抗生素）</div><div class="mini-row"><span class="term">arch-</span>　主要、首要　—　archenemy（死敵）</div><div class="mini-row"><span class="term">auto-</span>　自動、自我　—　autograph（親筆簽名）</div><div class="mini-row"><span class="term">bene-</span>　好的、善　—　benefit（好處）</div><div class="mini-row"><span class="term">bi-</span>　二、雙　—　bilingual（雙語的）</div><div class="mini-row"><span class="term">circum-</span>　環繞、周圍　—　circumstance（情況）</div><div class="mini-row"><span class="term">co-/con-/com-</span>　一起、共同　—　cooperate（合作）</div><div class="mini-row"><span class="term">contra-</span>　相反、對抗　—　contradict（反駁）</div><div class="mini-row"><span class="term">de-</span>　去除、下降　—　decode（解碼）</div><div class="mini-row"><span class="term">dia-</span>　穿過、透過　—　dialogue（對話）</div><div class="mini-row"><span class="term">dis-</span>　否定、分離　—　disagree（不同意）</div><div class="mini-row"><span class="term">en-/em-</span>　使成為　—　enable（使能夠）</div><div class="mini-row"><span class="term">epi-</span>　在上、在外　—　epidemic（流行病）</div><div class="mini-row"><span class="term">ex-</span>　外、前任　—　export（出口）；ex-president（前總統）</div><div class="mini-row"><span class="term">extra-</span>　額外、外部　—　extraordinary（非凡的）</div><div class="mini-row"><span class="term">hetero-</span>　不同　—　heterogeneous（異質的）</div><div class="mini-row"><span class="term">homo-</span>　相同　—　homogeneous（同質的）</div><div class="mini-row"><span class="term">hyper-</span>　過度、超　—　hyperactive（過動的）</div><div class="mini-row"><span class="term">hypo-</span>　低於、不足　—　hypodermic（皮下的）</div><div class="mini-row"><span class="term">in-/im-</span>　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="mini-row"><span class="term">inter-</span>　在...之間　—　international（國際的）</div><div class="mini-row"><span class="term">iso-</span>　相等、相同　—　isolate（隔離）</div><div class="mini-row"><span class="term">mal-</span>　壞、不良　—　malfunction（故障）</div><div class="mini-row"><span class="term">micro-</span>　微小　—　microscope（顯微鏡）</div><div class="mini-row"><span class="term">mis-</span>　錯誤　—　misunderstand（誤解）</div><div class="mini-row"><span class="term">mono-</span>　單一　—　monologue（獨白）</div><div class="mini-row"><span class="term">multi-</span>　多　—　multicultural（多元文化的）</div><div class="mini-row"><span class="term">neo-</span>　新的　—　neonatal（新生的）</div><div class="mini-row"><span class="term">non-</span>　非、沒有　—　nonsense（無意義）</div><div class="mini-row"><span class="term">pan-</span>　全部　—　pandemic（大流行病）</div><div class="mini-row"><span class="term">peri-</span>　周圍　—　perimeter（周長）</div><div class="mini-row"><span class="term">poly-</span>　多　—　polygon（多邊形）</div><div class="mini-row"><span class="term">post-</span>　之後　—　postwar（戰後的）</div><div class="mini-row"><span class="term">pre-</span>　之前　—　preview（預覽）</div><div class="mini-row"><span class="term">pro-</span>　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="mini-row"><span class="term">pseudo-</span>　假的　—　pseudonym（筆名）</div><div class="mini-row"><span class="term">re-</span>　再、回　—　review（複習）</div><div class="mini-row"><span class="term">semi-</span>　一半、部分　—　semicircle（半圓）</div><div class="mini-row"><span class="term">sub-</span>　在下、次級　—　subway（地鐵）</div><div class="mini-row"><span class="term">super-</span>　超越、在上　—　superstar（超級明星）</div><div class="mini-row"><span class="term">syn-/sym-</span>　一起、共同　—　synchronize（同步）</div><div class="mini-row"><span class="term">tele-</span>　遠距　—　telephone（電話）</div><div class="mini-row"><span class="term">trans-</span>　穿越、轉變　—　transport（運輸）</div><div class="mini-row"><span class="term">tri-</span>　三　—　triangle（三角形）</div><div class="mini-row"><span class="term">un-</span>　否定、不　—　unhappy（不快樂的）</div><div class="mini-row"><span class="term">vice-</span>　副、代替　—　vice-president（副總統）</div></div>
-</details>
-<details>
-<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
-<div class="detail-body"><div class="mini-row"><span class="term">-tion/-sion/-ation</span>　名詞：動作、過程或結果　—　education（教育）、decision（決定）</div><div class="mini-row"><span class="term">-ment</span>　名詞：行為或結果　—　agreement（協議）、development（發展）</div><div class="mini-row"><span class="term">-ness</span>　名詞：狀態或性質　—　happiness（快樂）、darkness（黑暗）</div><div class="mini-row"><span class="term">-ity/-ty</span>　名詞：抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div><div class="mini-row"><span class="term">-er/-or</span>　名詞：執行某動作的人或物　—　teacher（老師）、actor（演員）</div><div class="mini-row"><span class="term">-ist</span>　名詞：信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div><div class="mini-row"><span class="term">-ship</span>　名詞：身分或關係　—　friendship（友誼）、leadership（領導）</div><div class="mini-row"><span class="term">-hood</span>　名詞：階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div><div class="mini-row"><span class="term">-ence/-ance</span>　名詞：狀態或行為　—　difference（差異）、performance（表現）</div><div class="mini-row"><span class="term">-al</span>　名詞：行為或結果　—　arrival（抵達）、refusal（拒絕）</div><div class="mini-row"><span class="term">-able/-ible</span>　形容詞：能夠...的　—　readable（可讀的）、credible（可信的）</div><div class="mini-row"><span class="term">-ous</span>　形容詞：充滿...的　—　dangerous（危險的）、famous（著名的）</div><div class="mini-row"><span class="term">-ful</span>　形容詞：具有...的　—　hopeful（充滿希望的）、beautiful（美麗的）</div><div class="mini-row"><span class="term">-less</span>　形容詞：缺乏...的　—　hopeless（絕望的）、powerless（無力的）</div><div class="mini-row"><span class="term">-al/-ic</span>　形容詞：與...相關的　—　natural（自然的）、poetic（詩意的）</div><div class="mini-row"><span class="term">-ive</span>　形容詞：有...傾向的　—　creative（有創造力的）、active（活躍的）</div><div class="mini-row"><span class="term">-ary</span>　形容詞：與...有關的　—　ordinary（普通的）、temporary（暫時的）</div><div class="mini-row"><span class="term">-ize/-ise</span>　動詞：使成為...　—　realize（實現）、industrialize（工業化）</div><div class="mini-row"><span class="term">-ify</span>　動詞：使成為...　—　beautify（美化）、clarify（澄清）</div><div class="mini-row"><span class="term">-ate</span>　動詞：形成動詞　—　dominate（支配）、activate（啟動）</div><div class="mini-row"><span class="term">-en</span>　動詞：使變成...　—　strengthen（加強）、soften（使柔軟）</div><div class="mini-row"><span class="term">-ly</span>　副詞：形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div><div class="mini-row"><span class="term">-ward(s)</span>　副詞：表示方向　—　upwards（向上）、homeward（回家）</div><div class="mini-row"><span class="term">-wise</span>　副詞：表示方式或角度　—　clockwise（順時針方向）</div></div>
-</details>
-<details>
-<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
-<div class="detail-body"><ol class="compact-list"><li>Timmy [ˈtɪmɪ] (n. 人名：提米) — a young whale（一隻年輕鯨魚）</li><li>stranded [ˈstrændɪd] (adj. 擱淺的；受困的) — strand (v. 使受困)</li><li>whale [hwel] (n. 鯨魚) — whale lover（愛鯨人士）</li><li>rescue [ˈrɛskju] (v./n. 救援) — rescuer (n. 救援者)</li><li>effort [ˈɛfɚt] (n. 努力) — joint effort（共同努力）</li><li>humpback [ˈhʌmpˌbæk] (n. 座頭鯨) — humpback whale（座頭鯨）</li><li>famous [ˈfeməs] (adj. 著名的) — fame (n. 名聲)</li><li>shallow [ˈʃælo] (adj. 淺的) — shallow waters（淺水區）</li><li>coast [kost] (n. 海岸) — coastal (adj. 沿海的)</li><li>Atlantic [ətˈlæntɪk] (adj./n. 大西洋的；大西洋) — Atlantic Ocean（大西洋）</li><li>habitat [ˈhæbəˌtæt] (n. 棲地) — natural habitat（自然棲地）</li><li>rescuer [ˈrɛskjuɚ] (n. 救援者) — rescue effort（救援行動）</li><li>attempt [əˈtɛmpt] (n./v. 嘗試) — make an attempt（嘗試）</li><li>wealthy [ˈwɛlθɪ] (adj. 富有的) — wealth (n. 財富)</li><li>entrepreneur [ˌɑntrəprəˈnɝ] (n. 企業家) — entrepreneurship (n. 創業精神)</li><li>solution [səˈluʃən] (n. 解決辦法) — solve (v. 解決)</li><li>barge [bɑrdʒ] (n. 駁船) — transport barge（運輸駁船）</li><li>seawater [ˈsiˌwɔtɚ] (n. 海水) — sea level（海平面）</li><li>transport [trænsˈpɔrt] (v. 運送) — transportation (n. 交通運輸)</li><li>spout [spaʊt] (v. 噴出) — spout water（噴水）</li><li>blowhole [ˈbloˌhol] (n. 鯨豚氣孔) — from its blowhole（從牠的氣孔）</li><li>celebrate [ˈsɛləˌbret] (v. 慶祝) — celebration (n. 慶祝)</li><li>freely [ˈfrilɪ] (adv. 自由地) — free (adj. 自由的)</li><li>scientist [ˈsaɪəntɪst] (n. 科學家) — scientific (adj. 科學的)</li><li>recovery [rɪˈkʌvərɪ] (n. 復原) — recover (v. 復原)</li><li>depend [dɪˈpɛnd] (v. 取決於；依賴) — depend on（取決於）</li><li>overcome [ˌovɚˈkʌm] (v. 克服) — overcome difficulty（克服困難）</li><li>effect [ɪˈfɛkt] (n. 影響) — effective (adj. 有效的)</li><li>normally [ˈnɔrməlɪ] (adv. 正常地) — normal (adj. 正常的)</li><li>environment [ɪnˈvaɪrənmənt] (n. 環境) — environmental (adj. 環境的)</li></ol><h3>文章相關常用片語 5 個</h3><p>• get stuck（受困）</p><p>• guide A back to B（引導 A 回到 B）</p><p>• pay for a solution（出資提供解方）</p><p>• depend on whether...（取決於是否...）</p><p>• be trapped in the wrong environment（受困在錯誤環境）</p></div>
-</details>
-<details>
-<summary>練文筆食材<span class="arrow">⌄</span></summary>
-<div class="detail-body">
-<div class="writing-item">① after + V-ing（在...之後）<br>→ 適用：描寫事件發生的時間順序<br>例：After staying in shallow waters for weeks, the whale needed help.</div>
-<div class="writing-item">② far from + N（遠離...）<br>→ 適用：強調位置或情況不尋常<br>例：The animal was found far from its natural habitat.</div>
-<div class="writing-item">③ as + S + V（因為；隨著）<br>→ 適用：說明原因或變化背景<br>例：The whale grew weaker as it remained in the wrong environment.</div>
-<div class="writing-item">④ try several times to V（多次嘗試做...）<br>→ 適用：描述持續努力<br>例：The team tried several times to guide the whale back.</div>
-<div class="writing-item">⑤ be prepared to V（被準備好用來...）<br>→ 適用：說明工具或計畫的目的<br>例：A special boat was prepared to carry the animal safely.</div>
-<div class="writing-item">⑥ where + S + V（在那裡...）<br>→ 適用：補充地點資訊<br>例：The whale reached the sea, where rescuers opened the gate.</div>
-<div class="writing-item">⑦ watch + O + V/V-ing（看著某人做/正在做...）<br>→ 適用：描寫觀察到的動作<br>例：People watched the whale swim away.</div>
-<div class="writing-item">⑧ be filled with + N（充滿...）<br>→ 適用：描述情緒、訊息或空間<br>例：Social media was filled with hopeful messages.</div>
-<div class="writing-item">⑨ not A but B（不是 A，而是 B）<br>→ 適用：修正讀者可能的誤解<br>例：The rescue was not the end, but the beginning of recovery.</div>
-<div class="writing-item">⑩ depend on whether + S + V（取決於是否...）<br>→ 適用：分析成功條件<br>例：The plan depends on whether the animal can feed normally.</div>
-<div class="writing-item">⑪ the effects of + N/V-ing（...的影響）<br>→ 適用：討論事件後果<br>例：The whale had to overcome the effects of being stranded.</div>
-<div class="writing-item">⑫ both A and B（A 和 B 兩者都）<br>→ 適用：強調雙重面向<br>例：The story shows both kindness and responsibility.</div>
-<div class="writing-item">⑬ when + S + V（當...時）<br>→ 適用：連接事件與反應<br>例：People celebrated when they saw the whale swimming freely.</div>
-<div class="writing-item">⑭ find one's way back to + N（找到回到...的路）<br>→ 適用：描寫恢復方向或返程<br>例：The whale needed to find its way back to a healthy habitat.</div>
-<div class="writing-item">⑮ face serious challenges（面臨嚴重挑戰）<br>→ 適用：議論野生動物、環境或社會問題<br>例：Wild animals face serious challenges when humans change their environment.</div>
-</div>
-</details>
-</section>
-<section class="link-strip bottom">
-<h2>七月課程與聯絡方式</h2>
-<div class="link-grid">
-<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html"><strong>七月課程介紹：錯中學 ECHO 計劃</strong><span>用錯誤回饋建立英文實力，適合想把弱點變成進步路線的高中生。</span></a>
-<a class="link-card course-b" href="https://linwayet.github.io/popup/index"><strong>學生分析</strong><span>透過學習分析看見學生目前狀態，協助安排更精準的複習方向。</span></a>
-<a class="link-card line-card" href="https://line.me/ti/p/~linwayet"><strong>林威老師 Line：linwayet</strong><span>想詢問課程、教材或學習規劃，可以加入 Line 直接聯絡。</span></a>
-</div>
-</section>
-</main>
+        <h2>荷莫茲海峽封鎖的宏觀經濟衝擊與傳導機制</h2>
+
+        <p>當荷莫茲海峽這一地緣政治爆發點關閉，韓國作為一個將近 <strong>90% 以上能源與原物料仰賴進口</strong>的經濟體，隨即暴露在極端的系統性風險中。由於缺乏可以直接替代的中轉航道，封鎖不僅引發了國際油價的恐慌性暴漲，更直接導致能源供應總量的實質性縮減。</p>
+
+        <p>根據韓國開發研究院（KDI）的總體經濟數據模擬，中東原油供應中斷導致的杜拜（Dubai）原油價格每上漲 10%，將會拉動韓國消費者物價指數（CPI）上升 <strong>0.2 個百分點</strong>，而排除能源與食品波動的核心物價（Core Inflation）也將承受 <strong>0.1 個百分點</strong>的上升壓力。在極端高油價長期化的情境下，能源價格上漲對韓國消費者物價指數的貢獻度，在 2026 年預估將達到 <strong>1.6 個百分點</strong>，至 2027 年則進一步擴大至 <strong>1.8 個百分點</strong>。這意味著高通膨現象將呈現長周期化，非能源品項與服務費用將面臨全方位的價格轉嫁壓力。</p>
+
+        <p>為了緩衝第一波衝擊，政府雖然動用了合共約 <strong>200 天份額的戰略儲備油</strong>（其中政府公營儲備 90 天，民營企業儲備 110 天），但市場恐慌依然透過匯率與資本市場迅速發酵。韓元兌美元匯率在油價攀升的推動下急劇貶值，自 1,470 韓元區間迅速飆升，盤中一度創下 <strong>1,530 韓元的歷史性低點</strong>，最終維持在 1,495.4 韓元的高位。伴隨而來的是金融市場的劇烈失血，KOSPI 指數在開盤大跌 1.26% 後一路狂瀉，不僅在交易時間內跌破了 6000 點整數關卡，更一度下探至 <strong>5,731 點</strong>，迫使大量散戶投資人轉向黃金等避險資產，推動金價暴漲至每盎司 <strong>5,300 美元</strong>。</p>
+
+        <h2>能源供應鏈重構與進口結構的劇烈變遷</h2>
+
+        <p>面對中東航線的實質性中斷，韓國能源與貿易部門被迫啟動緊急採購方案，試圖進行歷史性的「去中東化」能源轉型。然而，這種結構性的倉促轉變，在實務層面上面臨著極高的經濟代價與操作失衡。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>原油進口來源國/地區</th>
+                    <th>危機前進口比重</th>
+                    <th>封鎖期進口比重與變化</th>
+                    <th>運輸路徑與精煉效率衝擊</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>中東地區整體</strong></td>
+                    <td>73.0%</td>
+                    <td>53.1% (驟降 19.9%p)</td>
+                    <td>航線全面受阻，卡達原油進口實質中斷</td>
+                </tr>
+                <tr>
+                    <td><strong>沙烏地阿拉伯</strong></td>
+                    <td>最大進口來源國</td>
+                    <td>進口量 214.6 萬噸 (大跌 37.6%)</td>
+                    <td>傳統中東航道受阻，部分船舶嘗試繞道</td>
+                </tr>
+                <tr>
+                    <td><strong>美國</strong></td>
+                    <td>第二大進口來源國</td>
+                    <td>進口量 214.5 萬噸 (大幅增長 13.4%)</td>
+                    <td>進口量已與沙國平起平坐，但輕質油精煉效率低</td>
+                </tr>
+                <tr>
+                    <td><strong>阿拉伯聯合大公國 (UAE)</strong></td>
+                    <td>輔助進口國</td>
+                    <td>進口量 140.0 萬噸 (暴增 81.6%)</td>
+                    <td>透過政府特使外交緊急追加採購</td>
+                </tr>
+                <tr>
+                    <td><strong>加拿大</strong></td>
+                    <td>微量進口國</td>
+                    <td>進口量 24.0 萬噸 (激增 205.5%)</td>
+                    <td>北美跨洋航線，物流成本昂貴</td>
+                </tr>
+                <tr>
+                    <td><strong>澳洲 (大洋洲)</strong></td>
+                    <td>微量進口國</td>
+                    <td>進口量 44.0 萬噸 (大增 89.0%)</td>
+                    <td>非中東替代航線，溢價偏高</td>
+                </tr>
+                <tr>
+                    <td><strong>非洲地區 (剛果、奈及利亞等)</strong></td>
+                    <td>極微量進口國</td>
+                    <td>進口量由 6 萬噸暴增至 40 萬噸 (激增 572.5%)</td>
+                    <td>遠洋航程漫長，運費成本高企</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>儘管多元化採購在數據上填補了中東原油減少的缺口，但國內精煉產業隨即陷入了嚴重的技術與效率錯配。韓國國內多數大型精煉廠的裂解與脫硫裝置，在建廠之初皆是針對中東產的「<strong>高硫重質原油（Middle East Heavy Sour Crude）</strong>」進行最優化配置。相比之下，自美國等非中東地區進口的「<strong>低硫輕質原油（Light Sweet Crude）</strong>」雖然含硫量低，但在現有精煉裝置中提煉高附加價值產品（如航空燃油、柴油、石腦油等）的轉化效率大打折扣。精煉過程中的低效率與高成本，直接推高了石油化學中間體的出廠價格，並迅速向民生消費端傳導。</p>
+
+        <p>此外，為了維持原油供應的實質運轉，韓國航運商被迫採取極端避險措施，例如利用紅海（Red Sea）或阿曼（Oman）港口進行高風險與高成本的迂迴運輸。截至 5 月下旬，已有第五艘載有進口原油的韓國籍油輪，在海事部門 24 小時即時監控與導航支持下，艱難避開荷莫茲海峽、通過紅海航線安全返抵國內。然而，這種迂迴繞航極大地拉長了航行週期，推升了海運運費與保險費率，對韓國進出口貿易與國際收支造成了沉重的二次打擊。</p>
+
+        <h2>生產者物價指數飆升對百業成本的連鎖效應</h2>
+
+        <p>隨著輸入型能源危機在韓國產業鏈中游全面爆發，2026 年 4 月的生產者物價指數（PPI）出現了極具破壞性的飆升，月增率達 <strong>2.5%</strong>，創下自 1998 年 2 月外匯危機以來的單月最大增幅，並連續 8 個月維持上升趨勢。這一驚人的漲幅主要由公產製品中的石油與煤炭製品（月增 31.9%，年增 73.9%）直接拉動。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>產業類別與核心產品</th>
+                    <th>生產者價格單月漲幅 (MoM)</th>
+                    <th>生產者價格年度漲幅 (YoY)</th>
+                    <th>核心原物料與產業鏈受衝擊機制</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>化學溶劑 (Solvent)</strong></td>
+                    <td>+94.8%</td>
+                    <td>極度暴漲</td>
+                    <td>石腦油裂解成本倍增，化學清洗及稀釋劑成本失控</td>
+                </tr>
+                <tr>
+                    <td><strong>石油與煤炭製品</strong></td>
+                    <td>+31.9%</td>
+                    <td>+73.9%</td>
+                    <td>粗原油採購成本直接轉嫁，精煉溢價攀升</td>
+                </tr>
+                <tr>
+                    <td><strong>車用柴油 (Diesel)</strong></td>
+                    <td>+20.7%</td>
+                    <td>持續高企</td>
+                    <td>輕質原油精煉效率受限，供應缺口拉大</td>
+                </tr>
+                <tr>
+                    <td><strong>化學製品整體</strong></td>
+                    <td>+6.3%</td>
+                    <td>持續攀升</td>
+                    <td>基礎石化原料（乙烯、丙烯）價格全線上揚</td>
+                </tr>
+                <tr>
+                    <td><strong>半導體 D-RAM</strong></td>
+                    <td>+13.9%</td>
+                    <td>+396.0%</td>
+                    <td>晶片製造製程高能耗與特種氣體（氦）供應受阻</td>
+                </tr>
+                <tr>
+                    <td><strong>電腦記憶裝置</strong></td>
+                    <td>穩步上揚</td>
+                    <td>+180.4%</td>
+                    <td>電子級石化材料與製程氣體採購成本攀升</td>
+                </tr>
+                <tr>
+                    <td><strong>運輸服務費</strong></td>
+                    <td>+1.6%</td>
+                    <td>穩步走高</td>
+                    <td>航空燃油與車用柴油價格直接反映於運價</td>
+                </tr>
+                <tr>
+                    <td><strong>國內供應物價指數</strong></td>
+                    <td>+5.2%</td>
+                    <td>2008年以來新高</td>
+                    <td>包含進口原物料，其中基礎原物料月增達 28.5%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>在原物料出廠價格以 <strong>28.5%</strong> 的歷史性速度狂飆的同時，企業的生產成本迅速向中間材（月增 4.3%）與最終消費財（月增 0.5%）擴散。這表明，儘管當月農林水產食品受季節性因素影響小幅下跌 1.0%，但由工業製成品、交通物流與公用事業費領銜的系統性通貨膨脹，已通過生產端不可逆地向下游民生消費領域蔓延。</p>
+
+        <h2>十五個微觀庶民生存故事深度剖析</h2>
+
+        <p>為了解構這場由宏觀地緣政治危機引發的民生災難，本部分通過十五個涵蓋「食、衣、住、行、育樂、投資」的具體庶民生活個案，深入剖析危機如何切實改變韓國普通老百姓的日常命運。</p>
+
+        <h3>農業與餐飲的民生危機</h3>
+
+        <div class="story-box">
+            <h4>故事一：全羅南道羅州市稻農金昌植的「尿素荒」與耕作成本夾擊</h4>
+            <p>現年六十二歲的羅州市老稻農金昌植，正站在自己的稻田旁看著新一季的化肥帳單發愁。由於中東航路受阻，韓國高達 <strong>38% 的進口農業尿素</strong>（主要來自中東）供應鏈瞬間崩潰。政府與農協被迫緊急轉向東南亞尋求替代進口源，導致替代尿素化肥的到岸價格在短期內比起封鎖前暴漲了 <strong>63.6%</strong>。在政府未能及時發放無機肥料價格補助的狀況下，全國農民整體的營農成本負擔劇增了 <strong>1,081 億韓元</strong>。對於金昌植而言，每公頃稻田的肥料與基礎農藥採購成本幾乎翻倍，加上用於運轉農用曳引機與灌溉泵浦的免稅柴油價格跟隨生產者物價暴漲了 20.7%，使他不得不決定縮減秋季的耕作面積，這直接預示了韓國國產稻米與根莖類蔬菜即將面臨新一輪的產能縮減與價格暴漲。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事二：首爾麻浦區平壤冷麵老字號老闆朴泰榮的瓦斯費惡夢</h4>
+            <p>在首爾麻浦區經營平壤冷麵店長達二十年的朴泰榮，無奈地在店門口貼出了價格調整告示：店內招牌平壤冷麵的單價，自即日起由 <strong>15,000 韓元調漲至 16,000 韓元</strong>，這已是其一年內的第二次調價。朴泰榮的決定實屬無奈之舉：冷麵專用的蕎麥麵條批發價上漲了 30%，用以熬製牛肉湯底的食材價格也飆升了 16%。然而，最致命的致命傷在於公用事業費用的暴漲。熬製傳統冷麵高湯需要數十個小時不間斷的強火燉煮，在進口液化天然氣（LNG）價格飆升、工業用與商業用城市瓦斯（City Gas）費用調高的夾擊下，店內上個月的瓦斯費帳單暴增了將近 <strong>90 萬韓元</strong>。對於朴泰榮而言，這碗原本屬於庶民的夏日消暑冷麵，如今正在高昂的能源代價下，逐漸變成普通老百姓難以企及的奢侈消費。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事三：京畿道城南市社區超市店主李美蘭的進貨利潤保衛戰</h4>
+            <p>在京畿道城南市壽井區經營一家中小型社區超市的李美蘭，每天開門營業的第一件事就是核對供貨商送來的出貨單。隨著 4 月份國內供應物價指數中的原物料價格暴增 <strong>28.5%</strong>，創下自 1980 年有統計數據以來的最高歷史升幅，大型食品製造商與物流批發商已經連續第三次調高大包裝食用油、豆腐、拉麵和罐頭的批發價。與此同時，由於卡車燃油成本急劇攀升，物流配送費用也同步上漲了 1.6%。李美蘭深知，社區居民多為中低收入家庭，對價格極度敏感；如果將批發價的漲幅完全轉嫁給社區熟客，勢必引發顧客流失，但如果選擇自行吸收，超市僅剩的微薄毛利將會被完全蠶食。這種進退兩難的窘境，正是韓國數十萬社區零售商所面臨的生存縮影。</p>
+        </div>
+
+        <h3>紡織與基礎民生化學的產業困境</h3>
+
+        <div class="story-box">
+            <h4>故事四：首爾東大門平價服飾批發商崔敏豪的石化纖維斷鏈危機</h4>
+            <p>在東大門設計廣場（DDP）旁從事平價平織服飾批發的崔敏豪，正面臨著嚴重的原材料短缺。原油作為化學工業的源頭，其價格飆升直接導致石腦油、乙烯、丙烯等中間體成本水漲船高，進而使化學纖維（聚酯、尼龍）的採購單價在短期內翻倍。崔敏豪固定合作的幾家大邱紡織廠因為電費、燃料與原材料成本失控，紛紛減少了平價化纖布料的產量。全球買家原本預計向他採購大批秋季成衣，卻因為合成纖維價格暴漲以及海運運費高企，紛紛轉向其他東南亞供應商。崔敏豪在訂單銳減與成本飆升的雙重夾擊下，只能被迫縮減下一季的新款開發計劃，甚至開始考慮關閉東大門的部分檔口以求自保。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事五：首爾汝矣島社區乾洗店老闆張大成的化學溶劑成本暴風</h4>
+            <p>在首爾汝矣島傳統公寓區經營「新首爾洗衣店」的張大成，最近遭遇了創業以來最怪異的成本衝擊。對他而言，這次高油價危機最直接的威脅不是店內蒸汽熨斗的耗電量，而是乾洗衣服時必備的「化學溶劑（Solvent）」價格。根據韓國銀行發布的生產者物價細項統計，由於石化原材料成本失控，化學溶劑價格在短短一個月內瘋狂暴漲了 <strong>94.8%</strong>。張大成固定採購的一桶 200 公升裝化學乾洗溶劑，進貨成本在一個月內幾乎翻了一倍。再加上店內大型電乾洗機與烘乾機所消耗的電量與蒸汽瓦斯費上漲，迫使他不得不將西裝和大衣的乾洗報價一口氣調高 20%。這項調價隨即引發了連鎖反應，許多為了省錢的上班族紛紛減少送洗次數，改為在家自行手洗，導致洗衣店的單月營業額驟降了 30% 以上。</p>
+        </div>
+
+        <h3>住宅租賃與公用事業的成本侵蝕</h3>
+
+        <div class="story-box">
+            <h4>故事六：新林洞準備九級公務員考試的學子韓智宇的「能源管理費」</h4>
+            <p>租住在首爾冠岳區新林洞一間僅有兩坪大小考試合（Goshiwon）的準備公務員考試學生韓智宇，收到了一張令人震驚的額外收費通知。這類廉價考試合通常標榜「一票包乾」，即每月房租包含所有水電、公設與暖氣費用。然而，隨著電力與城市瓦斯費用的持續大幅調漲，考試合的房東面臨著無法承受的能源帳單。房東為此在公共廚房貼出告示，要求每位租客自本月起必須額外繳納 <strong>5 萬韓元的「能源管理追加費」</strong>，並警告若不配合將予以退租。對於每個月僅靠父母補貼 60 萬韓元生活費的韓智宇而言，這筆額外支出相當於他一整個星期的伙食預算。他被迫在炎熱的夏季高溫中減少使用房間內微型冷氣的時間，忍受著悶熱的環境看書，其日常生活品質被徹底摧毀。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事七：麻浦區套房（One-Room）獨身女白領鄭秀珍的孤獨能源帳單</h4>
+            <p>在首爾弘大附近租住 8 坪單人套房（One-Room）的二十八歲白領鄭秀珍，每個月收到水電瓦斯合併帳單時都會陷入深深的財務焦慮。雖然她極度自律,白天幾乎都在公司上班，回家後也盡量不開大燈與冷暖氣，但上個月的能源帳單依然高達 <strong>15 萬韓元</strong>。根據韓國電力公社與城市瓦斯公社的歷史數據統計，在單人家庭中，儘管居住人數僅為 4 人家庭的四分之一，但其平均分攤的電費與瓦斯費支出卻高達 4 人家庭的 <strong>70% 左右</strong>。這是因為不論居住人數多寡，大樓基礎的公設照明、管線維護能耗以及基礎暖氣循環的固定成本並不會按比例減少。這項數據生動地反映在鄭秀珍的開銷中——這筆高昂的能源帳單已佔去她每月可支配淨所得的近 8%，讓在大都市孤軍奮戰的年輕一代感受到了更深的經濟孤立感。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事八：京畿道坡州市小型金屬加熱加工廠主趙萬吉的瓦斯總量管制危機</h4>
+            <p>在京畿道坡州市經營一家中小型金屬熱處理與淬火工廠的趙萬吉，正為工廠的產能調度感到心力交瘁。該工廠的熱處理高溫爐完全依賴產業用城市瓦斯運作。隨著國際液化天然氣進口中斷，現貨天然氣採購成本暴漲，政府為了優先保障民生用氣，開始對產業用城市瓦斯實施高達 <strong>30% 的價格調漲</strong>與嚴格的「總量額度管制」。趙萬吉的工廠由於單月瓦斯用量超標，面臨著高額的懲罰性附加費，迫使他不得不將加熱爐的每日運轉時間縮短四個小時。這導致工廠無法按時交付汽車零件客戶的訂單，不僅面臨違約罰款，更導致工廠內十多位按日計酬、按件計酬的派遣工人和高齡技工無班可上，直接重創了這些底層勞工家庭的生計。</p>
+        </div>
+
+        <h3>通勤、外送與公共交通管理的制度考驗</h3>
+
+        <div class="story-box">
+            <h4>故事九：江南區全職外送摩托車手金永浩的「油資焦慮」</h4>
+            <p>在首爾江南區奔波的全職快遞與外送騎手金永浩，每天看著摩托車儀表板上的油箱刻度都感到無比焦慮。由於海峽封鎖導致的成品油價格暴漲，首爾地區的平均汽油零售價格已飆升至<strong>每公升 1,942 韓元</strong>的高位。金永浩為了維持每日的工作量，摩托車每天需要消耗約 8 至 10 公升的汽油，這意味著他每月的燃油費支出從原先的 30 萬韓元暴增至將近 <strong>46 萬韓元</strong>。在他的收入結構中，燃油費佔其總月收入的比重已從原本的 6% 驟增至 <strong>8% 以上</strong>。由於外送平台因市場激烈競爭，不敢輕易調高向消費者收取的外送服務費，高油價的上漲成本被完全轉嫁給了像金永浩這樣的底層自僱勞動者，迫使他每天必須多跑 2 個小時、工作至深夜，才能維持與過去相同的家庭淨利潤。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事十：江原道原州市外送騎手姜泰賢的地方政府「10萬韓元補貼」救生圈</h4>
+            <p>與首爾的同業相比，在江原道原州市工作的外送騎手姜泰賢，在這個寒冬中感受到了一絲政策的溫暖。隨著高油價持續發酵，地方餐飲業與物流業面臨嚴重的連鎖衰退威脅，外送平台紛紛醞釀調高基本配送費以安撫騎手，卻引發了社區商家的集體抵制。為了解決這一結構性死結，江原道政府與原州市協同，由地方民生應急財政出資，針對當地登記在案的全職快遞與外送從業者，推出了每人每月 <strong>10 萬韓元的臨時「緊急燃油特別補貼」</strong>。地方政府希望透過這項補貼政策直接斬斷「高油價 → 物流成本上漲 → 終端物價暴漲 → 消費急劇萎縮」的惡性傳導鏈，這筆及時雨般的補貼成為姜泰賢在油價風暴中勉強維持家庭收支平衡的救生圈。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事十一：國營企劃機構通勤公務員李健宇面對「車輛五部制」的錯愕</h4>
+            <p>家住京畿道一山新市鎮、每日開車前往首爾市中心某國營企劃機構上班的李健宇，在 3 月 25 日早晨遭遇了通勤路上的大麻煩。為了解決荷莫茲海峽封鎖引發的國家一級原油供需危机，政府宣布在全國所有公共機關與地方政府強制實施「<strong>公共部門車輛五部制（星期制）</strong>」。與以往出於環保目的、享有免除限制特權的政策不同，這次為了極限壓縮石油消耗量，連李健宇所駕駛的、原本免受限制的「輕型車（Compact Car）」與「混合動力車（Hybrid）」也被毫無例外地強制納入了限制範圍。這意味著，每逢週四（因其車牌末尾數字為 4），李健宇就絕對無法開車進入單位的停車場。他被迫在限制日改擠極度擁擠的首都圈地鐵 3 號線，通勤時間因此拉長了一倍，日常生活的節奏被徹底打亂。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事十二：首爾松坡區雙車家庭權五成的「車牌末碼相同」變更申請</h4>
+            <p>居住在首爾市松坡區的權五成夫婦，由於工作和接送小孩的需要，家裡登記了兩部乘用車。然而，在首爾市宣布針對市轄 <strong>108 個公營停車場</strong>強制實施「公營停車場乘用車五部制」後，權五成驚覺，兩部車的車牌號碼末尾數字竟然都是「7」。這意味著，每逢週二，夫妻倆的兩部車會同時面臨無法駛入首爾市內主要公營停車場的窘境，這給他們的客戶拜訪與日常採購帶來了極大困擾。權五成急忙翻閱交通法規，發現根據國土交通部制定的《汽車登記規則》第 29 條第 2 項第 2 款之規定，若同一地址下登記有兩部以上車輛且其車牌尾數限制日期重疊，允許向當地政府申請變更其中一部車的尾號。他特地請假一天前往松坡區廳排隊辦理變更登記，只為了在嚴苛的五部制限制下求得一絲日常出行的便利。</p>
+        </div>
+
+        <h3>高科技、金融與育樂休閒的生活擠壓</h3>
+
+        <div class="story-box">
+            <h4>故事十三：半導體龍頭大廠精煉製程工程師崔宇鎮的卡達「氦氣」斷絕危機</h4>
+            <p>在京畿道平澤市某半導體龍頭大廠擔任精煉製程工程師的崔宇鎮，每天在無塵室內都面臨著高度的緊繃感。這不是因為產品良率問題，而是因為製程中不可或缺的超純度「<strong>氦氣（Helium）</strong>」供應鏈已處於斷絕邊緣。韓國高達 <strong>65% 的工業氦氣</strong>進口完全依賴卡達（Qatar），且由於氦氣分子極小、儲存極難，在半導體曝光與高低溫冷卻製程中具有不可替代性。荷莫茲海峽的封鎖導致卡達的氦氣貨櫃實質中斷，同時 Middle East 地區多個機場與領空關閉，導致原本仰賴航空貨運的精密電子級氣體物流通道全數凍結。崔宇鎮的團隊每天都在精準計算剩餘的氦氣存量，一旦庫存耗盡而替代氣體精煉效率不達標，價值數十億美元的半導體晶圓生產線將面臨全面停工的災難。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事十四：汝矣島散戶投資人裴俊英在股市暴跌中的「委託手續費」重擔</h4>
+            <p>平日喜歡邊工作邊用手機下單、自詡為「東學螞蟻」的汝矣島基層上班族裴俊英，看著自己的證券帳戶資產淨值在大跌中縮水，心情無比沉重。在中東危機引發的全球金融恐慌中，KOSPI 跌破 6000 點、KOSDAQ 狂瀉至 <strong>1076 點</strong>，韓元大幅貶值，引發了散戶投資人的集體恐慌性避險操作。裴俊英為了保護僅存的本金，在頻繁的買賣中不斷調度資產，卻驚覺上個月的交易成本急劇攀升。根據 4 月份生產者物價統計，受股市極端震盪與交易量爆發推動，金融業的委託買賣手續費（위탁매매 수수료）比去年同期暴增了 <strong>119.0%</strong>，創下自 1999 年以來的最高升幅。這筆原本不起眼的手續費在頻繁操作下，變成了蠶食裴俊英剩餘投資本金的隱形抽水機。</p>
+        </div>
+
+        <div class="story-box">
+            <h4>故事十五：京畿道獨立加油站業主申載旭的「最高價格制」逆利差勒死</h4>
+            <p>在京畿道外圍道路旁經營一家非連鎖獨立加油站的申載旭，正陷入嚴重的破產危机。為了應對高油價引發的社會輿論風暴，政府在時隔 <strong>29 年</strong>後首次重啟了「石油最高價格制」，強制限制了加油站對外的汽柴油最高零售限價，並每兩週重新設定一次。然而，申載旭向民營石化廠採購成品油的批發成本，卻因為進口多元化帶來的提煉效率低下以及海運運費上漲而居高不下。這導致他的加油站出現了買進批發價高於政府規定賣出零售限價的「<strong>逆向利差（Negative Margin）</strong>」現象，宛如當年俄烏戰爭期間韓國電力公社（KEPCO）所經歷的「逆差出售」泥淖。雖然政府編列了 <strong>4.2 兆韓元的預備金</strong>試圖補償業者的利潤損失，但極其繁瑣的申請流程與緩慢的撥款速度，根本無法解救他因資金斷鏈而即將倒閉的現實。</p>
+        </div>
+
+        <h2>危機應對政策的矛盾與市場扭曲效應</h2>
+
+        <p>在荷莫茲海峽封鎖危機的籠罩下，韓國政府雖然迅速出台了一系列非常規的民生干預政策，然而在具體實施過程中，這些政策在維持短期社會穩定的同時，卻也伴隨著嚴重的市場扭曲與次級財政負擔。</p>
+
+        <h3>石油最高價格制（석유 최고가격제）的結構性死結</h3>
+
+        <p>政府於 2026 年春季緊急啟動了自 1997 年油價自由化以來、時隔 29 年的首度直接物價干預手段。該制度的初衷是限制精煉大廠與終端加油站的零售溢價，以保護深受通膨折磨的普通消費者。然而，由於國際原油採購成本與物流保險費屬外部性硬成本，當政府強行將終端售價與國際漲幅脫鉤時，其成本缺口並非憑空消失，而是轉化為精煉大廠與獨立加油站的巨額虧損。</p>
+
+        <p>為了解決這一行政干預帶來的連鎖反應，政府在追加預算中編列了高達 <strong>4 兆 2,000 億韓元</strong>的龐大預備金，用以補償相關業者的「逆向利差」損失。這種做法的本質是「將民間的燃油帳單轉化為全體國民的財政負擔」。在高油價長期化的趨勢下，財政貼補政策將會迅速消耗韓國原本就因危機應對而吃緊的財政空間，甚至可能引發主權債務與本幣匯率的進一步貶值。同時，人為壓低的價格信號也向大眾傳遞了錯誤的資源稀缺信息，導致燃油消耗未能按預期縮減，延長了韓國應對能源短缺的戰略防禦期。</p>
+
+        <h3>公共部門乘用車五部制的「邊際效用遞減」</h3>
+
+        <p>與此同時，政府重啟了自 1991 年海灣戰爭以來、時隔 <strong>35 年</strong>的「車輛五部制」強制令。儘管政策宣稱每日可為公共部門節省約 3,000 桶的原油消耗，但在具體執行層面，將「輕型車」與「混合動力車」等高效能環保車型強制納入限制的做法，引發了激烈的社會爭議。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>五部制強制執行對象</th>
+                    <th>五部制法定豁免車型</th>
+                    <th>政策設計漏洞與對庶民生活之實際衝擊</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>一般乘用汽柴油車</strong> (全口徑)</td>
+                    <td><strong>純電動車 (EV)</strong> 與 <strong>氫能車</strong></td>
+                    <td>迫使無力購買純電車的中低收入公務員轉乘極度擁擠的公共交通</td>
+                </tr>
+                <tr>
+                    <td><strong>輕型乘用車 (Compact Car)</strong></td>
+                    <td><strong>身心障礙者專用車</strong> (持有黃白識別證者)</td>
+                    <td>抹殺了庶民階級購買省油輕型車的政策激勵</td>
+                </tr>
+                <tr>
+                    <td><strong>混合動力乘用車 (Hybrid)</strong></td>
+                    <td><strong>懷孕婦女及攜帶未滿學齡幼童同乘車</strong></td>
+                    <td>一刀切的限制措施忽視了油電混合車的實質節能效率</td>
+                </tr>
+                <tr>
+                    <td><strong>租賃用車 (Rental) 與融資租賃乘用車</strong></td>
+                    <td><strong>11人座以上之大中型客車/巴士</strong> (車牌開頭為7)</td>
+                    <td>限制了靈活租車族與企業外勤車輛的日常調度彈性</td>
+                </tr>
+                <tr>
+                    <td><strong>公共機關公務乘用與所有員工自用小客車</strong></td>
+                    <td><strong>貨運卡車、救護消防等特種目的車輛</strong></td>
+                    <td>強制性行政命令導致基層外勤公務效率大幅滑坡</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>從能源轉型的長遠角度來看，將混合動力車等過渡型節能工具與傳統高污染汽柴油車同等對待，實質上削弱了消費者購買節能車型的長期積極性。而在大眾運輸系統並未同步進行容量擴充的狀況下，將數十萬通勤族強行推向地鐵與公車系統，也急劇拉長了庶民階級的通勤時間成本，對都市整體的勞動生產力造成了隱性的系統性傷害。</p>
+
+        <div class="conclusion">
+            <h2>結論與結構性改革政策建言</h2>
+
+            <p>荷莫茲海峽封鎖危機，將韓國「<strong>高輸入型依賴、低能源防禦力</strong>」的結構性軟肋暴露無遺。這場危機表明，在全球供應鏈深度交織的今天，任何外部的地緣政治斷裂，都會在極短的時間內转化为韓國基層社會「食、衣、住、行、育樂、金融」的全方位生活危機。</p>
+
+            <p>為了防範未來可能再度發生的外部能源與關鍵要素衝擊，決策層應當跳脫「行政物價管制」與「財政貼補」的應急思維，著手進行以下三大結構性改革：</p>
+
+            <ul>
+                <li>
+                    <strong>推動精煉產業設備升級與「輕重質原油」彈性互換技術：</strong>目前精煉廠對於美國等非中東地區輕質原油精煉效率低下的問題，是推高國內成品油中間材價格的關鍵技術瓶頸。政府應引導並貼補石化精煉大廠，針對現有原油蒸餾裝置（CDU）與加氫裂解裝置進行技術改造，建立「輕重質原油彈性互換」的生產線。這能確保在面臨極端中東原油斷絕危機時，進口替代原油可以第一時間轉化為高效的高附加價值成品油，徹底免除對單一油種的技術性依賴。
+                </li>
+                <li>
+                    <strong>建立「多層級農業與核心工業要素」國家戰備儲備機制：</strong>針對本次危機中造成農業成本重創的農業尿素，以及威脅半導體命脈的卡達氦氣，韓國必須建立超越「原油儲備」概念的「全要素戰略儲備體系」。政府應設立專項基金，聯合農協與關鍵半導體材料協會，在國內建立不低於 120 天份額的農業尿素與電子級特種氣體實體庫存，並與非中東地區（如東南亞、北美）的化工巨頭簽署優先供應備忘錄，從源頭上切斷「要素荒」向終端食品與高科技產業傳導的機會。
+                </li>
+                <li>
+                    <strong>優化能源危機應對機制，避免一刀切的行政管制與市場扭曲：</strong>未來在面臨同等規模的能源安全警報時，應以「精準定向補貼」替代「石油最高價格制」等可能造成精煉商逆向利差、甚至引發系統性倒閉風險的全面價格干預手段。同時，針對車輛五部制等需求側管理工具，應依據車輛的實際能耗與排放標準建立動態豁免清單，保留混合動力車與超輕型車的出行特權。這不僅能維持民間對綠色交通工具的政策信心，也能最大程度保障大都市通勤族的日常勞動生產力，避免行政干預對庶民經濟運轉造成二次傷害。
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bottom Link Section -->
+    <div class="link-section" style="margin-top: 40px;">
+        <div class="link-container">
+            <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank">
+                <h3>📚 七月課程：錯中學ECHO計劃</h3>
+                <p>2025年7月最新課程，透過錯誤學習英文，建立扎實英語實力</p>
+            </a>
+            <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank">
+                <h3>📊 學生分析系統</h3>
+                <p>深入了解學習進度與成效，精準掌握每位學生的學習狀態</p>
+            </a>
+            <a href="https://line.me/ti/p/linwayet" class="link-card line-card" target="_blank">
+                <h3>💬 LINE 聯絡林威老師</h3>
+                <p>ID: linwayet<br>歡迎加入，隨時諮詢課程與學習問題</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.story-box, table, h2, h3').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
