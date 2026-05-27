@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1929 美國經濟大恐慌 微課程設計｜林威老師</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Playfair+Display:wght@700;900&family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4ED;
+  --bg-soft:#F1E9DA;
+  --bg-warm:#EFE0C7;
+  --ink:#2D2A26;
+  --ink-soft:#5A4F44;
+  --line:#D8C7AA;
+
+  --c1:#C84B31; /* 朱紅 1929 */
+  --c2:#E6A23C; /* 金黃 二〇年代 */
+  --c3:#B8860B; /* 黃銅 */
+  --c4:#6B8E4E; /* 草綠 */
+  --c5:#3F6E8C; /* 藍 河岸 */
+  --c6:#8B5E3C; /* 焦糖 */
+  --c7:#A0522D; /* 赭土 */
+  --c8:#7B4F38; /* 深棕 */
+  --c9:#5D7A8C; /* 灰藍 */
+  --c10:#704214; /* 棕黑 沙塵 */
+
+  --accent:#D4A574;
+  --gold:#C9A04C;
+
+  --shadow-sm:0 2px 8px rgba(45,42,38,.08);
+  --shadow-md:0 6px 22px rgba(45,42,38,.12);
+  --shadow-lg:0 14px 40px rgba(45,42,38,.18);
+
+  --r-sm:10px;
+  --r-md:18px;
+  --r-lg:24px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:"BIZ UDPGothic","Noto Serif TC",-apple-system,system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 700px at 90% -100px, #F7E6C8 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, #F0DFC2 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.85;
+  letter-spacing:.02em;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* 紙紋雜訊 */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.35;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.6  0 0 0 0 0.45  0 0 0 0 0.25  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.container{
+  max-width:880px;
+  margin:0 auto;
+  padding:0 18px;
+  position:relative;
+  z-index:2;
+}
+
+/* ===== 頂部 / 底部 連結列 ===== */
+.linkbar{
+  background:linear-gradient(180deg,#FBF4E4 0%,#F4E8CF 100%);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 14px;
+  position:relative;
+  overflow:hidden;
+}
+.linkbar::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(200,75,49,.08), transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(107,142,78,.08), transparent 40%);
+  pointer-events:none;
+}
+.linkbar-inner{
+  max-width:880px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  position:relative;
+}
+.link-card{
+  display:flex;flex-direction:column;
+  padding:16px 18px;
+  border-radius:var(--r-md);
+  text-decoration:none;
+  color:#fff;
+  min-height:64px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s ease,box-shadow .2s ease;
+  position:relative;overflow:hidden;
+}
+.link-card:active{transform:scale(.98)}
+.link-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.link-card .lc-tag{
+  font-size:12px;letter-spacing:.18em;
+  opacity:.9;font-weight:700;
+  margin-bottom:4px;
+}
+.link-card .lc-title{
+  font-size:18px;font-weight:700;line-height:1.4;
+  font-family:"Noto Serif TC",serif;
+}
+.link-card .lc-desc{
+  font-size:13px;opacity:.92;margin-top:6px;line-height:1.55;
+}
+
+.lc-echo{background:linear-gradient(135deg,#C84B31 0%,#A0522D 100%)}
+.lc-popup{background:linear-gradient(135deg,#6B8E4E 0%,#4F6E3A 100%)}
+.lc-line{background:linear-gradient(135deg,#06C755 0%,#04A347 100%)}
+.lc-line .lc-tag{font-family:monospace}
+
+/* ===== Hero ===== */
+.hero{
+  padding:60px 0 50px;
+  text-align:center;
+  position:relative;
+}
+.hero-kicker{
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:.5em;
+  color:var(--c1);
+  font-weight:700;
+  padding:6px 18px;
+  border:1px solid var(--c1);
+  border-radius:99px;
+  background:rgba(200,75,49,.05);
+  margin-bottom:24px;
+}
+.hero-year{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(72px,18vw,140px);
+  font-weight:900;
+  line-height:1;
+  color:var(--c1);
+  margin:0;
+  letter-spacing:-.03em;
+  text-shadow:3px 3px 0 rgba(200,75,49,.12);
+}
+.hero-title{
+  font-family:"Noto Serif TC",serif;
+  font-size:clamp(28px,7vw,40px);
+  font-weight:900;
+  margin:20px 0 12px;
+  letter-spacing:.05em;
+  color:var(--ink);
+}
+.hero-sub{
+  font-size:15px;
+  color:var(--ink-soft);
+  letter-spacing:.1em;
+  margin:0;
+}
+.hero-divider{
+  width:60px;height:3px;
+  background:var(--c1);
+  margin:30px auto 0;
+  position:relative;
+}
+.hero-divider::before,.hero-divider::after{
+  content:"";position:absolute;top:50%;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--c1);transform:translateY(-50%);
+}
+.hero-divider::before{left:-20px}
+.hero-divider::after{right:-20px}
+
+/* ===== 課程資訊卡 ===== */
+.meta-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:36px 0 50px;
+}
+.meta-card{
+  background:#fff;
+  border-radius:var(--r-md);
+  padding:18px 16px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  text-align:center;
+}
+.meta-card .mc-icon{font-size:24px;margin-bottom:6px;display:block}
+.meta-card .mc-label{
+  font-size:11px;letter-spacing:.25em;
+  color:var(--ink-soft);font-weight:700;
+  margin-bottom:4px;
+}
+.meta-card .mc-value{
+  font-size:18px;font-weight:700;
+  color:var(--c1);
+  font-family:"Noto Serif TC",serif;
+}
+
+/* ===== Section 標題 ===== */
+.section{margin:60px 0}
+.section-head{
+  margin-bottom:30px;
+  position:relative;
+  padding-left:20px;
+}
+.section-head::before{
+  content:"";
+  position:absolute;left:0;top:8px;bottom:8px;
+  width:6px;background:linear-gradient(180deg,var(--c1),var(--c2));
+  border-radius:3px;
+}
+.section-num{
+  font-family:"Playfair Display",serif;
+  font-size:14px;font-weight:700;
+  color:var(--c1);letter-spacing:.3em;
+  display:block;margin-bottom:4px;
+}
+.section-title{
+  font-family:"Noto Serif TC",serif;
+  font-size:26px;font-weight:900;
+  margin:0;line-height:1.4;
+  color:var(--ink);
+}
+.section-subtitle{
+  font-size:14px;color:var(--ink-soft);
+  margin:6px 0 0;letter-spacing:.05em;
+}
+
+/* ===== 設計理念 ===== */
+.philosophy{
+  background:linear-gradient(135deg,#FFF8EA 0%,#FBEFD6 100%);
+  border-radius:var(--r-lg);
+  padding:28px 22px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-md);
+  position:relative;
+}
+.philosophy::before{
+  content:"「";
+  position:absolute;top:-20px;left:14px;
+  font-family:"Noto Serif TC",serif;
+  font-size:80px;color:var(--c1);
+  opacity:.25;line-height:1;font-weight:900;
+}
+.philosophy p{
+  margin:0 0 14px;
+  font-size:16px;line-height:1.9;
+  color:var(--ink);
+}
+.philosophy p:last-child{margin-bottom:0}
+.philosophy .signature{
+  text-align:right;
+  font-size:13px;
+  color:var(--c1);
+  font-weight:700;
+  letter-spacing:.15em;
+  margin-top:20px;
+}
+
+/* ===== 十回章節卡 ===== */
+.episodes{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.ep-card{
+  background:#fff;
+  border-radius:var(--r-md);
+  padding:22px 20px 20px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.ep-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+}
+.ep-card::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;
+  height:6px;
+  background:var(--ep-color,var(--c1));
+}
+.ep-header{
+  display:flex;align-items:flex-start;
+  gap:14px;margin-bottom:12px;
+}
+.ep-num{
+  font-family:"Playfair Display",serif;
+  font-size:42px;font-weight:900;
+  line-height:1;color:var(--ep-color,var(--c1));
+  flex-shrink:0;
+  min-width:54px;
+}
+.ep-titlebox{flex:1;padding-top:4px}
+.ep-tag{
+  display:inline-block;
+  font-size:10px;letter-spacing:.25em;
+  color:#fff;background:var(--ep-color,var(--c1));
+  padding:3px 10px;border-radius:99px;
+  font-weight:700;margin-bottom:8px;
+}
+.ep-title{
+  font-family:"Noto Serif TC",serif;
+  font-size:19px;font-weight:900;
+  margin:0;line-height:1.45;
+  color:var(--ink);
+}
+.ep-en{
+  font-family:"Playfair Display",serif;
+  font-size:13px;font-style:italic;
+  color:var(--ink-soft);
+  margin:4px 0 0;
+  letter-spacing:.02em;
+}
+.ep-body{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px dashed var(--line);
+}
+.ep-points{
+  margin:0;padding:0;
+  list-style:none;
+  display:grid;gap:8px;
+}
+.ep-points li{
+  font-size:14.5px;
+  line-height:1.7;
+  color:var(--ink-soft);
+  padding-left:20px;
+  position:relative;
+}
+.ep-points li::before{
+  content:"";
+  position:absolute;left:0;top:.7em;
+  width:8px;height:8px;
+  background:var(--ep-color,var(--c1));
+  border-radius:50%;
+  opacity:.7;
+}
+.ep-meta{
+  display:flex;flex-wrap:wrap;gap:6px;
+  margin-top:14px;
+}
+.ep-chip{
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:99px;
+  background:rgba(0,0,0,.04);
+  color:var(--ink-soft);
+  font-weight:700;
+  letter-spacing:.05em;
+}
+.ep-keyterm{
+  margin-top:14px;
+  padding:12px 14px;
+  background:rgba(255,250,235,.7);
+  border-left:3px solid var(--ep-color,var(--c1));
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.65;
+}
+.ep-keyterm strong{color:var(--ink);font-weight:700}
+
+/* 每集顏色 */
+.ep-1{--ep-color:var(--c2)}
+.ep-2{--ep-color:var(--c1)}
+.ep-3{--ep-color:var(--c5)}
+.ep-4{--ep-color:var(--c4)}
+.ep-5{--ep-color:var(--c6)}
+.ep-6{--ep-color:var(--c10)}
+.ep-7{--ep-color:var(--c9)}
+.ep-8{--ep-color:var(--c3)}
+.ep-9{--ep-color:var(--c7)}
+.ep-10{--ep-color:var(--c8)}
+
+/* ===== 教學特色 ===== */
+.features{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.feat-card{
+  background:#fff;
+  border-radius:var(--r-md);
+  padding:20px 18px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  display:flex;align-items:flex-start;gap:14px;
+}
+.feat-icon{
+  font-size:32px;
+  flex-shrink:0;
+  width:54px;height:54px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--feat-color,var(--c2));
+  color:#fff;
+  border-radius:var(--r-sm);
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.feat-body h4{
+  margin:0 0 6px;
+  font-size:17px;font-weight:900;
+  font-family:"Noto Serif TC",serif;
+  color:var(--ink);
+}
+.feat-body p{
+  margin:0;
+  font-size:14px;line-height:1.7;
+  color:var(--ink-soft);
+}
+.f1{--feat-color:var(--c1)}
+.f2{--feat-color:var(--c2)}
+.f3{--feat-color:var(--c4)}
+.f4{--feat-color:var(--c5)}
+.f5{--feat-color:var(--c6)}
+.f6{--feat-color:var(--c7)}
+
+/* ===== 學習成果 ===== */
+.outcomes{
+  background:linear-gradient(135deg,#FAF1DE 0%,#F2E1BD 100%);
+  border-radius:var(--r-lg);
+  padding:26px 22px;
+  border:1px solid var(--line);
+}
+.outcomes-list{
+  margin:0;padding:0;
+  list-style:none;
+  display:grid;gap:14px;
+}
+.outcomes-list li{
+  display:flex;gap:14px;
+  align-items:flex-start;
+  font-size:15px;line-height:1.7;
+}
+.outcome-num{
+  flex-shrink:0;
+  width:32px;height:32px;
+  background:var(--c1);
+  color:#fff;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Playfair Display",serif;
+  font-size:16px;font-weight:900;
+  box-shadow:0 3px 8px rgba(200,75,49,.3);
+}
+.outcomes-list li:nth-child(2) .outcome-num{background:var(--c4)}
+.outcomes-list li:nth-child(3) .outcome-num{background:var(--c5)}
+.outcomes-list li:nth-child(4) .outcome-num{background:var(--c6)}
+.outcomes-list li:nth-child(5) .outcome-num{background:var(--c2)}
+
+/* ===== 適合對象 ===== */
+.audience{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.aud-card{
+  background:#fff;
+  border-radius:var(--r-md);
+  padding:18px 14px;
+  border:1px solid var(--line);
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+}
+.aud-emoji{font-size:36px;display:block;margin-bottom:8px}
+.aud-card h5{
+  margin:0 0 6px;
+  font-size:14px;font-weight:900;
+  color:var(--ink);
+  font-family:"Noto Serif TC",serif;
+}
+.aud-card p{
+  margin:0;font-size:12px;line-height:1.6;
+  color:var(--ink-soft);
+}
+
+/* ===== 結語 ===== */
+.closing{
+  text-align:center;
+  padding:40px 20px;
+  margin:50px 0 30px;
+  background:linear-gradient(135deg,#FFF8EA 0%,#F8E8C5 100%);
+  border-radius:var(--r-lg);
+  border:1px solid var(--line);
+}
+.closing-mark{
+  font-family:"Playfair Display",serif;
+  font-size:42px;font-weight:900;
+  color:var(--c1);
+  line-height:1;
+}
+.closing-quote{
+  font-family:"Noto Serif TC",serif;
+  font-size:18px;font-weight:700;
+  margin:14px 0;
+  line-height:1.8;
+  color:var(--ink);
+}
+.closing-quote-en{
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  font-size:14px;
+  color:var(--ink-soft);
+  margin:0;
+  letter-spacing:.02em;
+}
+.closing-sign{
+  margin-top:24px;
+  font-size:13px;
+  letter-spacing:.3em;
+  color:var(--c1);
+  font-weight:700;
+}
+
+/* ===== Footer 簡介 ===== */
+.foot-intro{
+  text-align:center;
+  padding:20px 16px;
+  font-size:13px;
+  color:var(--ink-soft);
+  line-height:1.8;
+}
+.foot-intro strong{color:var(--c1);font-weight:700}
+
+/* ===== Mobile 微調 ===== */
+@media (min-width:640px){
+  .linkbar-inner{grid-template-columns:1fr 1fr 1fr}
+  .meta-grid{grid-template-columns:repeat(4,1fr)}
+  .audience{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:480px){
+  body{font-size:16px}
+  .container{padding:0 14px}
+  .ep-num{font-size:36px;min-width:48px}
+  .ep-title{font-size:17px}
+  .section-title{font-size:22px}
+  .hero{padding:40px 0 30px}
+}
+
+/* ===== 入場動畫 ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.ep-card,.feat-card,.aud-card,.meta-card{
+  animation:fadeUp .6s ease both;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 頂部連結列 ===== -->
+<nav class="linkbar" aria-label="主要連結 頂部">
+  <div class="linkbar-inner">
+    <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <span class="lc-tag">JULY COURSE｜七月開課</span>
+      <span class="lc-title">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">林威老師七月課程，從錯誤中學習，每一題都是進步的起點。</span>
+    </a>
+    <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <span class="lc-tag">JULY COURSE｜七月開課</span>
+      <span class="lc-title">學生分析 Popup</span>
+      <span class="lc-desc">個人化學測模考分析，逐題剖析學生答題行為與弱點地圖。</span>
+    </a>
+    <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <span class="lc-tag">LINE ID</span>
+      <span class="lc-title">加我的 LINE：linwayet</span>
+      <span class="lc-desc">課程諮詢、教材索取、家長提問，歡迎來訊。</span>
+    </a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <span class="hero-kicker">MICRO COURSE DESIGN</span>
+    <h1 class="hero-year">1929</h1>
+    <h2 class="hero-title">美國經濟大恐慌</h2>
+    <p class="hero-sub">十回微課程．百年回音．財經素養養成計劃</p>
+    <div class="hero-divider"></div>
+
+    <div class="meta-grid">
+      <div class="meta-card">
+        <span class="mc-icon">🎙️</span>
+        <div class="mc-label">EPISODES</div>
+        <div class="mc-value">10 回</div>
+      </div>
+      <div class="meta-card">
+        <span class="mc-icon">⏱️</span>
+        <div class="mc-label">DURATION</div>
+        <div class="mc-value">10 分／回</div>
+      </div>
+      <div class="meta-card">
+        <span class="mc-icon">🌐</span>
+        <div class="mc-label">LANGUAGE</div>
+        <div class="mc-value">中英雙語</div>
+      </div>
+      <div class="meta-card">
+        <span class="mc-icon">📖</span>
+        <div class="mc-label">FORMAT</div>
+        <div class="mc-value">Podcast 朗讀</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 設計理念 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">OVERVIEW · 設計理念</span>
+      <h3 class="section-title">為什麼要學 1929 大恐慌？</h3>
+      <p class="section-subtitle">這不只是歷史課，是現代人必修的財經素養課。</p>
+    </div>
+    <div class="philosophy">
+      <p>1929 年的華爾街崩盤，距今將近一百年。許多人以為這是塵封的歷史，跟自己沒有關係。但事實上，2008 年的金融海嘯、2020 年的疫情封鎖、2022 年的高通膨，背後都看得見 1929 的影子。</p>
+      <p>這套微課程從說故事出發，把冰冷的經濟學數字變成有血有肉的人物與場景：咆哮的二〇年代、黑色星期四的恐慌、胡佛村的麵包隊伍、沙塵暴中逃難的奧基人、羅斯福爐邊談話的溫暖嗓音。十回課程，每一回 1200 字以上的完整敘事，搭配中英雙語、白話術語、好記比喻。</p>
+      <p>聽完這十回，學生不只是知道一段歷史，更掌握了一套理解世界經濟運作的思維工具——這才是真正能帶得走的能力。</p>
+      <p class="signature">—— 林威老師．錯中學 ECHO 計劃</p>
+    </div>
+  </section>
+
+  <!-- ===== 十回章節 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">CURRICULUM · 十回課程</span>
+      <h3 class="section-title">十回完整章節地圖</h3>
+      <p class="section-subtitle">從繁榮幻象 → 崩盤 → 全球擴散 → 新政重建 → 百年回音</p>
+    </div>
+
+    <div class="episodes">
+
+      <article class="ep-card ep-1">
+        <div class="ep-header">
+          <div class="ep-num">01</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">PROLOGUE｜序曲</span>
+            <h4 class="ep-title">咆哮的二〇年代，盛世的假象</h4>
+            <p class="ep-en">The Roaring Twenties — Illusion of Prosperity</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>一戰後美國躍升為全球最大債權國，黃金大量流入</li>
+            <li>汽車、收音機、電燈、爵士樂與飛來波女郎</li>
+            <li>保證金交易讓擦鞋童都瘋狂買股票</li>
+            <li>表象繁榮下的所得不均、農業蕭條、消費信貸泡沫</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Roaring Twenties</span>
+            <span class="ep-chip">Margin Trading</span>
+            <span class="ep-chip">Speculative Bubble</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>派對通宵，香檳免費，瓦斯外洩卻沒人聞到——這就是 1920 年代。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-2">
+        <div class="ep-header">
+          <div class="ep-num">02</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">CRASH｜崩盤</span>
+            <h4 class="ep-title">華爾街崩盤，黑色星期四到黑色星期二</h4>
+            <p class="ep-en">The Wall Street Crash — Black Thursday to Black Tuesday</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>1929 年 10 月 24 日，賣單像瀑布湧入</li>
+            <li>摩根銀行緊急介入只擋住一天</li>
+            <li>10 月 29 日黑色星期二，1640 萬股紀錄保持 40 年</li>
+            <li>三週蒸發 300 億美元，等於美國 10 年聯邦預算</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Black Thursday</span>
+            <span class="ep-chip">Dow Jones</span>
+            <span class="ep-chip">Panic Selling</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>電影院喊一聲失火，所有人衝向同一個出口——這就是股市崩盤的本質。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-3">
+        <div class="ep-header">
+          <div class="ep-num">03</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">CONTAGION｜傳染</span>
+            <h4 class="ep-title">銀行擠兌與骨牌效應</h4>
+            <p class="ep-en">Bank Runs and the Domino Effect</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>部分準備金制度：銀行只留 10% 現金</li>
+            <li>1929–1933，全美兩萬五千家銀行倒了一萬一千家</li>
+            <li>貨幣供給縮水三分之一，引爆死亡螺旋</li>
+            <li>柏南奇 2002 年的歷史性道歉：我們做的，我們很抱歉</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Bank Run</span>
+            <span class="ep-chip">Money Supply</span>
+            <span class="ep-chip">Federal Reserve</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>金融體系是摩天大樓，一樓垮了二樓守不住，二樓垮了三樓也守不住。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-4">
+        <div class="ep-header">
+          <div class="ep-num">04</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">ANALYSIS｜分析</span>
+            <h4 class="ep-title">大恐慌的五大成因</h4>
+            <p class="ep-en">The Five Major Causes of the Great Depression</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>凱因斯派：需求不足，所得分配不均</li>
+            <li>貨幣派：聯準會犯下歷史性錯誤</li>
+            <li>結構派：產業早已失衡，繁榮只是假象</li>
+            <li>國際派：金本位+關稅戰雙重打擊</li>
+            <li>行為派：信心崩潰是看不見的殺手</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Keynesian</span>
+            <span class="ep-chip">Monetarism</span>
+            <span class="ep-chip">Animal Spirits</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>老房子失火：木頭乾、沒滅火器、消防隊不來、鄰居封死通道、屋主自己亂燒貴重物品——五個因素一起燒光房子。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-5">
+        <div class="ep-header">
+          <div class="ep-num">05</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">HUMAN｜眾生相</span>
+            <h4 class="ep-title">胡佛村與麵包隊伍</h4>
+            <p class="ep-en">Hoovervilles and Bread Lines</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>失業率 24.9%，1280 萬人沒工作</li>
+            <li>全美 500 多個胡佛村，胡佛毯子＝舊報紙</li>
+            <li>艾爾卡彭也開施粥所，每天 3000 份免費餐</li>
+            <li>20 萬個流浪兒童，跳上火車尋找未來</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Hooverville</span>
+            <span class="ep-chip">Bread Line</span>
+            <span class="ep-chip">Greatest Generation</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>數字是冰冷的，每一個百分點背後都是有血有肉的家庭故事。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-6">
+        <div class="ep-header">
+          <div class="ep-num">06</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">DISASTER｜天災</span>
+            <h4 class="ep-title">沙塵暴，天災加人禍</h4>
+            <p class="ep-en">The Dust Bowl</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>過度開墾＋十年大乾旱，土地變成沙塵</li>
+            <li>1935 年黑色星期天，沙塵牆 4000 公尺高</li>
+            <li>塵肺炎奪去無數老人小孩的生命</li>
+            <li>250 萬人沿著 66 號公路西遷，奧基人的悲歌</li>
+            <li>史坦貝克《憤怒的葡萄》成為時代寫照</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Dust Bowl</span>
+            <span class="ep-chip">Okie</span>
+            <span class="ep-chip">Route 66</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>草根是大地的鬍鬚。鬍鬚被刮光，皮膚就脫落成沙塵到處飄。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-7">
+        <div class="ep-header">
+          <div class="ep-num">07</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">GLOBAL｜全球</span>
+            <h4 class="ep-title">全球連鎖，大恐慌如何席捲世界</h4>
+            <p class="ep-en">The Global Chain Reaction</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>金本位＋國際貿易＋信心崩潰，三路傳染</li>
+            <li>德國失業率 30%，希特勒在絕望中崛起</li>
+            <li>日本生絲出口暴跌，軍方主張對外擴張</li>
+            <li>世界貿易三年內萎縮三分之二</li>
+            <li>從金融危機到第二次世界大戰，只花了十年</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Globalization</span>
+            <span class="ep-chip">War Reparations</span>
+            <span class="ep-chip">Tariff War</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>1929 年的全球經濟是一張蜘蛛網，美國是中心。德國是最脆弱的那根絲。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-8">
+        <div class="ep-header">
+          <div class="ep-num">08</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">NEW DEAL I｜新政上</span>
+            <h4 class="ep-title">羅斯福新政上集：百日維新與救濟</h4>
+            <p class="ep-en">The New Deal Part One — Hundred Days</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>我們唯一該恐懼的就是恐懼本身</li>
+            <li>百日內通過 15 個法案，速度史無前例</li>
+            <li>銀行假期 4 天，重啟後民眾主動回存</li>
+            <li>爐邊談話：總統像長輩在你客廳跟你說話</li>
+            <li>CCC 種了 30 億棵樹，TVA 帶電進入南方鄉村</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">New Deal</span>
+            <span class="ep-chip">Fireside Chat</span>
+            <span class="ep-chip">Alphabet Agencies</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>救濟 Relief、復甦 Recovery、改革 Reform——三 R 同時進行，才把卡車重新發動。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-9">
+        <div class="ep-header">
+          <div class="ep-num">09</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">NEW DEAL II｜新政下</span>
+            <h4 class="ep-title">羅斯福新政下集：第二新政與社會安全網</h4>
+            <p class="ep-en">The New Deal Part Two — Social Safety Net</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>社會安全法：老年退休金、失業保險、身障補助</li>
+            <li>WPA 雇用 850 萬人，蓋路蓋橋蓋醫院</li>
+            <li>Wagner Act 保護工人組工會的權利</li>
+            <li>FDIC 終結銀行擠兌的歷史</li>
+            <li>SEC 監管股市，防止 1929 重演</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Social Security</span>
+            <span class="ep-chip">WPA</span>
+            <span class="ep-chip">FDIC</span>
+            <span class="ep-chip">SEC</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>第一新政是急救，第二新政是長期保健——讓病人不只活下來，更不會再生重病。
+          </div>
+        </div>
+      </article>
+
+      <article class="ep-card ep-10">
+        <div class="ep-header">
+          <div class="ep-num">10</div>
+          <div class="ep-titlebox">
+            <span class="ep-tag">FINALE｜終曲</span>
+            <h4 class="ep-title">歷史的回音，從 1929 到 2008 到 2020</h4>
+            <p class="ep-en">Echoes of History — From 1929 to 2008 to 2020</p>
+          </div>
+        </div>
+        <div class="ep-body">
+          <ul class="ep-points">
+            <li>2008 雷曼破產：柏南奇做了 1929 沒做的所有事</li>
+            <li>2020 疫情封鎖：2 兆美元紓困，速度規模空前</li>
+            <li>五大歷史教訓：央行、政府、安全網、合作、警覺</li>
+            <li>歷史不會重複，但是會押韻——馬克吐溫</li>
+            <li>理解過去，才能準備未來</li>
+          </ul>
+          <div class="ep-meta">
+            <span class="ep-chip">Subprime</span>
+            <span class="ep-chip">QE</span>
+            <span class="ep-chip">Fiscal Stimulus</span>
+          </div>
+          <div class="ep-keyterm">
+            <strong>記法．</strong>1929 是人類經濟史上第一次嚴重的心臟病發作。學會了急救、預防、健康生活方式，才有今天。
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== 教學特色 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">FEATURES · 教學特色</span>
+      <h3 class="section-title">六大設計亮點</h3>
+      <p class="section-subtitle">不只說故事，更要讓學生帶走真正的能力</p>
+    </div>
+    <div class="features">
+      <div class="feat-card f1">
+        <div class="feat-icon">🎧</div>
+        <div class="feat-body">
+          <h4>Podcast 朗讀腳本</h4>
+          <p>每集 1200 字以上，特殊符號全部清除，數字以拼讀方式呈現，完全 TTS 朗讀安全，學生可以邊走邊聽。</p>
+        </div>
+      </div>
+      <div class="feat-card f2">
+        <div class="feat-icon">🇨🇳</div>
+        <div class="feat-body">
+          <h4>中英雙語對照</h4>
+          <p>中文版繁體中文台灣標準，英文版簡明美式英文。同一個概念兩種語言講一次，雙效學習。</p>
+        </div>
+      </div>
+      <div class="feat-card f3">
+        <div class="feat-icon">💡</div>
+        <div class="feat-body">
+          <h4>白話術語解釋</h4>
+          <p>每集結尾整理 6 個重要術語，拆解英文字根，搭配生活化記法，把專有名詞變成生活智慧。</p>
+        </div>
+      </div>
+      <div class="feat-card f4">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-body">
+          <h4>好記比喻系統</h4>
+          <p>派對通宵的瓦斯外洩、電影院的踩踏事件、摩天大樓的骨牌效應——讓抽象概念變成畫面。</p>
+        </div>
+      </div>
+      <div class="feat-card f5">
+        <div class="feat-icon">📚</div>
+        <div class="feat-body">
+          <h4>跨領域知識整合</h4>
+          <p>結合歷史、經濟、政治、心理、文學，培養學生宏觀的思維框架，不只是背誦零碎知識。</p>
+        </div>
+      </div>
+      <div class="feat-card f6">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-body">
+          <h4>連結當代議題</h4>
+          <p>從 1929 看 2008 金融海嘯、2020 疫情、2022 通膨——讓百年前的教訓變成今天的決策智慧。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 學習成果 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">OUTCOMES · 學習成果</span>
+      <h3 class="section-title">學完這十回，學生能帶走什麼</h3>
+    </div>
+    <div class="outcomes">
+      <ol class="outcomes-list">
+        <li>
+          <span class="outcome-num">1</span>
+          <span><strong>歷史敘事力．</strong>能用 5 分鐘把 1929 大恐慌的來龍去脈說清楚，包括人物、時間、地點、後果。</span>
+        </li>
+        <li>
+          <span class="outcome-num">2</span>
+          <span><strong>經濟思維框架．</strong>掌握供需、貨幣供給、信貸循環、財政與貨幣政策等核心概念。</span>
+        </li>
+        <li>
+          <span class="outcome-num">3</span>
+          <span><strong>雙語詞彙力．</strong>學會 60+ 個跨領域英文關鍵詞，從 speculative bubble 到 quantitative easing。</span>
+        </li>
+        <li>
+          <span class="outcome-num">4</span>
+          <span><strong>批判分析力．</strong>能比較五大學派對同一事件的不同解釋，培養多元觀點。</span>
+        </li>
+        <li>
+          <span class="outcome-num">5</span>
+          <span><strong>當代決策力．</strong>面對新聞的金融事件、政府政策、投資選擇，能用歷史框架做判斷。</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== 適合對象 ===== -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">AUDIENCE · 適合對象</span>
+      <h3 class="section-title">誰需要這套課程？</h3>
+    </div>
+    <div class="audience">
+      <div class="aud-card">
+        <span class="aud-emoji">🎓</span>
+        <h5>高中學測生</h5>
+        <p>歷史社會科必備背景，學測作文素材庫</p>
+      </div>
+      <div class="aud-card">
+        <span class="aud-emoji">🏫</span>
+        <h5>大學新鮮人</h5>
+        <p>通識教育、財金入門、英文聽力訓練</p>
+      </div>
+      <div class="aud-card">
+        <span class="aud-emoji">💼</span>
+        <h5>社會人士</h5>
+        <p>投資人、理財顧問、政策研究者必聽</p>
+      </div>
+      <div class="aud-card">
+        <span class="aud-emoji">📖</span>
+        <h5>終身學習者</h5>
+        <p>對歷史經濟有興趣的所有人</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 結語 ===== -->
+  <section class="closing">
+    <div class="closing-mark">"</div>
+    <p class="closing-quote">歷史不會重複，但是會押韻。</p>
+    <p class="closing-quote-en">History does not repeat itself, but it often rhymes.</p>
+    <div class="closing-sign">—— MARK TWAIN</div>
+    <div class="closing-sign" style="margin-top:8px;color:var(--ink-soft)">林威老師．錯中學 ECHO 計劃</div>
+  </section>
+
+  <!-- ===== 簡介 ===== -->
+  <div class="foot-intro">
+    本課程設計屬於 <strong>錯中學 ECHO 計劃</strong> 系列之一<br>
+    台灣高中英語教學．34 年教學經驗．Claude MAX 俱樂部成員
+  </div>
+
+</main>
+
+<!-- ===== 底部連結列 ===== -->
+<nav class="linkbar" aria-label="主要連結 底部" style="margin-top:20px">
+  <div class="linkbar-inner">
+    <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+      <span class="lc-tag">JULY COURSE｜七月開課</span>
+      <span class="lc-title">錯中學 ECHO 計劃</span>
+      <span class="lc-desc">林威老師七月課程，從錯誤中學習，每一題都是進步的起點。</span>
+    </a>
+    <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+      <span class="lc-tag">JULY COURSE｜七月開課</span>
+      <span class="lc-title">學生分析 Popup</span>
+      <span class="lc-desc">個人化學測模考分析，逐題剖析學生答題行為與弱點地圖。</span>
+    </a>
+    <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+      <span class="lc-tag">LINE ID</span>
+      <span class="lc-title">加我的 LINE：linwayet</span>
+      <span class="lc-desc">課程諮詢、教材索取、家長提問，歡迎來訊。</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>

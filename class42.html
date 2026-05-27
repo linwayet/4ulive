@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>鹽巴用途微課程 · 林威老師</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=BIZ+UDPMincho&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #FBF3E4;
+    --bg-warm: #F8EBD0;
+    --bg-cream: #F4E4C1;
+    --bg-paper: #FFFAF0;
+    --bg-deep: #F0D9A8;
+
+    --ink-darkest: #2D1B0E;
+    --ink-dark: #4A2F1A;
+    --ink-mid: #6B4423;
+    --ink-soft: #8B5E3C;
+    --ink-faded: #B08862;
+
+    --accent-rust: #C2410C;
+    --accent-amber: #D97706;
+    --accent-gold: #E8A33D;
+    --accent-honey: #F4A742;
+    --accent-paprika: #B45309;
+    --accent-cinnamon: #92400E;
+    --accent-rose: #C0392B;
+    --accent-olive: #7A8450;
+
+    --shadow-warm-sm: 0 2px 8px rgba(139, 94, 60, 0.12);
+    --shadow-warm-md: 0 6px 20px rgba(139, 94, 60, 0.18);
+    --shadow-warm-lg: 0 12px 40px rgba(139, 94, 60, 0.22);
+    --shadow-warm-xl: 0 20px 60px rgba(139, 94, 60, 0.28);
+
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
+    --radius-xl: 40px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif TC', 'BIZ UDPMincho', serif;
+    background: var(--bg-base);
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(244, 167, 66, 0.15) 0%, transparent 35%),
+      radial-gradient(circle at 88% 28%, rgba(194, 65, 12, 0.10) 0%, transparent 40%),
+      radial-gradient(circle at 50% 75%, rgba(232, 163, 61, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 90%, rgba(180, 83, 9, 0.08) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--ink-darkest);
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* === Subtle grain texture overlay === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.37 0 0 0 0 0.18 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    text-align: center;
+    padding: 60px 16px 40px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent-cinnamon);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    padding: 6px 18px;
+    border: 1px solid var(--ink-faded);
+    border-radius: 100px;
+    background: rgba(255, 250, 240, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(36px, 9vw, 64px);
+    line-height: 1.1;
+    color: var(--ink-darkest);
+    margin: 12px 0 8px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 0 rgba(244, 228, 193, 0.8);
+  }
+
+  .hero-title .salt-mark {
+    background: linear-gradient(135deg, var(--accent-rust) 0%, var(--accent-honey) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 4vw, 24px);
+    color: var(--ink-mid);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .hero-meta {
+    font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    margin-top: 18px;
+  }
+
+  .hero-meta strong {
+    color: var(--accent-rust);
+    font-weight: 700;
+  }
+
+  .hero-decoration {
+    font-size: 28px;
+    margin: 20px auto 0;
+    color: var(--accent-amber);
+    letter-spacing: 1em;
+    text-align: center;
+  }
+
+  /* ============ LINK CARDS ============ */
+  .links-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0 40px;
+    padding: 20px;
+    background: linear-gradient(140deg,
+      rgba(255, 250, 240, 0.95) 0%,
+      rgba(248, 235, 208, 0.85) 100%);
+    border: 2px solid rgba(180, 83, 9, 0.15);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-warm-md);
+    backdrop-filter: blur(8px);
+    position: relative;
+  }
+
+  .links-bar::before {
+    content: '✦ 課程資訊 · 學習資源 · 聯絡老師 ✦';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-base);
+    padding: 0 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent-cinnamon);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--ink-darkest);
+    background: var(--bg-paper);
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: linear-gradient(135deg,
+      rgba(244, 167, 66, 0.08) 0%,
+      rgba(194, 65, 12, 0.04) 100%);
+    pointer-events: none;
+  }
+
+  .link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-warm-lg);
+    border-color: var(--accent-honey);
+  }
+  .link-card:hover::after { opacity: 1; }
+  .link-card:active { transform: translateY(-1px); }
+
+  .link-card.course { border-color: rgba(217, 119, 6, 0.25); }
+  .link-card.analysis { border-color: rgba(122, 132, 80, 0.30); }
+  .link-card.line { border-color: rgba(6, 199, 85, 0.30); }
+
+  .link-emoji {
+    font-size: 32px;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-warm);
+    border-radius: 14px;
+    box-shadow: inset 0 2px 4px rgba(139, 94, 60, 0.1);
+  }
+
+  .link-card.line .link-emoji {
+    background: linear-gradient(135deg, #06C755 0%, #04a849 100%);
+    color: white;
+  }
+
+  .link-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .link-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink-darkest);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .link-sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .link-arrow {
+    font-size: 22px;
+    color: var(--accent-amber);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .link-card:hover .link-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ============ TABLE OF CONTENTS ============ */
+  .toc {
+    margin: 50px 0;
+    padding: 30px 20px;
+    background:
+      linear-gradient(135deg, rgba(255, 250, 240, 0.9) 0%, rgba(248, 235, 208, 0.85) 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-warm-md);
+    border: 1px solid rgba(180, 83, 9, 0.15);
+  }
+
+  .toc-heading {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .toc-heading-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--ink-darkest);
+    letter-spacing: 0.05em;
+  }
+
+  .toc-heading-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent-cinnamon);
+    margin-top: 4px;
+    letter-spacing: 0.15em;
+  }
+
+  .toc-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-paper);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--ink-dark);
+    border: 1px solid rgba(180, 136, 98, 0.20);
+    transition: all 0.25s;
+    min-height: 64px;
+  }
+
+  .toc-item:hover {
+    background: var(--bg-warm);
+    border-color: var(--accent-honey);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-warm-sm);
+  }
+
+  .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--accent-rust);
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .toc-emoji {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .toc-title {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .toc-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink-darkest);
+    line-height: 1.3;
+  }
+
+  .toc-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.3;
+  }
+
+  /* ============ CHAPTERS ============ */
+  .chapter {
+    margin: 80px 0 100px;
+    padding: 40px 24px 50px;
+    background:
+      linear-gradient(180deg, rgba(255, 250, 240, 0.92) 0%, rgba(248, 235, 208, 0.85) 100%);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-warm-lg);
+    border: 1px solid rgba(180, 83, 9, 0.12);
+    position: relative;
+  }
+
+  .chapter-head {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed rgba(180, 83, 9, 0.25);
+  }
+
+  .chapter-num {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.25em;
+    color: var(--accent-cinnamon);
+    background: var(--bg-warm);
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(180, 83, 9, 0.2);
+  }
+
+  .chapter-emoji {
+    font-size: 56px;
+    margin: 12px 0;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(180, 83, 9, 0.2));
+  }
+
+  .chapter-title-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(26px, 6vw, 36px);
+    color: var(--ink-darkest);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+
+  .chapter-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(15px, 3.5vw, 19px);
+    color: var(--accent-cinnamon);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    padding: 0 8px;
+  }
+
+  .chapter-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .chapter-divider span {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-amber);
+    border-radius: 50%;
+  }
+
+  .chapter-divider span:nth-child(2) {
+    width: 10px;
+    height: 10px;
+    background: var(--accent-rust);
+  }
+
+  /* ============ TABS ============ */
+  .tab-bar {
+    display: flex;
+    gap: 6px;
+    margin: 24px auto 0;
+    max-width: 360px;
+    padding: 4px;
+    background: var(--bg-deep);
+    border-radius: 100px;
+    box-shadow: inset 0 2px 6px rgba(139, 94, 60, 0.18);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    color: var(--ink-mid);
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 44px;
+    letter-spacing: 0.02em;
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--accent-rust) 0%, var(--accent-amber) 100%);
+    color: var(--bg-paper);
+    box-shadow: 0 3px 10px rgba(194, 65, 12, 0.35);
+  }
+
+  .tab-content {
+    margin-top: 28px;
+  }
+
+  .tab-panel {
+    display: none;
+    animation: fadeIn 0.45s ease;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ SCRIPT CONTENT ============ */
+  .script {
+    background: var(--bg-paper);
+    padding: 26px 22px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(180, 136, 98, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .script p {
+    margin-bottom: 1.2em;
+    text-indent: 2em;
+    color: var(--ink-darkest);
+    font-size: 17px;
+    line-height: 1.95;
+    letter-spacing: 0.01em;
+  }
+
+  .script p:last-child { margin-bottom: 0; }
+
+  .zh-script p:first-child {
+    text-indent: 0;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--accent-cinnamon);
+    border-left: 4px solid var(--accent-amber);
+    padding: 10px 0 10px 16px;
+    background: linear-gradient(90deg, var(--bg-warm) 0%, transparent 100%);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.5em;
+    line-height: 1.5;
+  }
+
+  .en-script {
+    font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+  }
+
+  .en-script p {
+    text-indent: 0;
+    margin-bottom: 1.25em;
+    font-size: 17.5px;
+    line-height: 1.85;
+    color: var(--ink-dark);
+  }
+
+  .en-script p:first-child {
+    font-weight: 600;
+    font-size: 21px;
+    color: var(--accent-cinnamon);
+    font-style: italic;
+    border-left: 4px solid var(--accent-amber);
+    padding: 10px 0 10px 16px;
+    background: linear-gradient(90deg, var(--bg-warm) 0%, transparent 100%);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.5em;
+    line-height: 1.4;
+  }
+
+  /* ============ BACK TO TOP ============ */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-rust) 0%, var(--accent-honey) 100%);
+    color: white;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: var(--shadow-warm-lg);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .back-to-top.visible { display: flex; }
+  .back-to-top:hover { transform: translateY(-3px) scale(1.05); }
+  .back-to-top:active { transform: translateY(0) scale(0.95); }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    text-align: center;
+    padding: 40px 16px 60px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+
+  .site-footer .footer-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--accent-cinnamon);
+    margin-bottom: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .site-footer .footer-by {
+    color: var(--accent-rust);
+    font-weight: 700;
+  }
+
+  /* ============ FONT-SIZE CONTROLS ============ */
+  .text-size-controls {
+    position: sticky;
+    top: 12px;
+    z-index: 50;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    pointer-events: none;
+  }
+  .text-size-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: rgba(255, 250, 240, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(180, 83, 9, 0.2);
+    border-radius: 100px;
+    box-shadow: var(--shadow-warm-md);
+    pointer-events: auto;
+  }
+  .text-size-inner button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-warm);
+    color: var(--ink-dark);
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .text-size-inner button:hover { background: var(--accent-honey); color: white; }
+  .text-size-inner button:active { transform: scale(0.92); }
+  .text-size-inner .ts-small { font-size: 14px; }
+  .text-size-inner .ts-large { font-size: 20px; }
+  .text-size-inner .ts-label {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 0 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (min-width: 640px) {
+    .container { padding: 0 24px; }
+    .links-bar { padding: 28px; }
+    .toc-list { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .chapter { padding: 50px 36px 60px; }
+    .script { padding: 32px 30px; }
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .hero { padding: 40px 12px 30px; }
+    .links-bar { padding: 24px 14px; }
+    .link-card { padding: 14px 14px; gap: 12px; min-height: 64px; }
+    .link-emoji { width: 46px; height: 46px; font-size: 26px; }
+    .link-title { font-size: 15px; }
+    .link-sub { font-size: 12px; }
+    .chapter { padding: 32px 18px 40px; margin: 60px 0 80px; }
+    .script { padding: 22px 18px; }
+    .script p { font-size: 16px; line-height: 1.85; text-indent: 1.8em; }
+    .en-script p { font-size: 16px; }
+    .tab-btn { font-size: 14px; padding: 10px 8px; }
+    .toc { padding: 24px 14px; }
+    .toc-item { padding: 12px 12px; gap: 10px; }
+    .toc-zh { font-size: 15px; }
+    .toc-en { font-size: 12px; }
+  }
+
+  /* ============ FONT SIZE SCALING (set via JS) ============ */
+  html[data-text-size="sm"] .script p { font-size: 15px; }
+  html[data-text-size="md"] .script p { font-size: 17px; }
+  html[data-text-size="lg"] .script p { font-size: 19px; }
+  html[data-text-size="xl"] .script p { font-size: 21px; line-height: 2.05; }
+
+  /* ============ PRINT ============ */
+  @media print {
+    body { background: white; color: black; }
+    body::before { display: none; }
+    .links-bar, .back-to-top, .tab-bar, .text-size-controls { display: none; }
+    .tab-panel { display: block !important; page-break-inside: avoid; }
+    .chapter { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ==== HERO ==== -->
+  <header class="hero">
+    <div class="hero-eyebrow">a ten chapter mini-course</div>
+    <h1 class="hero-title">鹽巴用途<br><span class="salt-mark">微課程</span></h1>
+    <p class="hero-subtitle">The Salt Chronicles · Ten Episodes</p>
+    <div class="hero-decoration">✦ · ✦</div>
+    <div class="hero-meta">
+      <strong>10 回完整</strong> · 中英對照 · TTS 安全朗讀稿
+    </div>
+  </header>
+
+  <!-- ==== TOP LINKS ==== -->
+  
+<section class="links-bar" aria-label="課程與聯絡資訊">
+  <a class="link-card course" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <div class="link-emoji">📚</div>
+    <div class="link-text">
+      <div class="link-title">七月課程 · 錯中學 ECHO 計劃</div>
+      <div class="link-sub">從錯誤中學習,系統化的英文進步方法</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+  <a class="link-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <div class="link-emoji">📊</div>
+    <div class="link-text">
+      <div class="link-title">學生分析 · 個別化學習報告</div>
+      <div class="link-sub">深入了解每位學生的學習軌跡</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+  <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <div class="link-emoji">💬</div>
+    <div class="link-text">
+      <div class="link-title">林威老師 LINE · linwayet</div>
+      <div class="link-sub">課程諮詢、學習問題歡迎來訊</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+</section>
+
+
+  <!-- ==== TEXT SIZE CONTROLS ==== -->
+  <div class="text-size-controls">
+    <div class="text-size-inner">
+      <span class="ts-label">字級</span>
+      <button class="ts-small" data-size="sm" title="小字">A</button>
+      <button data-size="md" title="標準">A</button>
+      <button data-size="lg" title="大字">A</button>
+      <button class="ts-large" data-size="xl" title="特大">A</button>
+    </div>
+  </div>
+
+  <!-- ==== TABLE OF CONTENTS ==== -->
+  <section class="toc">
+    <div class="toc-heading">
+      <div class="toc-heading-zh">課程目錄</div>
+      <div class="toc-heading-en">TABLE OF CONTENTS</div>
+    </div>
+    <div class="toc-list">
+      
+        <a class="toc-item" href="#ch01">
+          <span class="toc-num">01</span>
+          <span class="toc-emoji">🧂</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴的身世之謎</span>
+            <span class="toc-en">The Story of Salt</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch02">
+          <span class="toc-num">02</span>
+          <span class="toc-emoji">🏛️</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽與文明的興衰</span>
+            <span class="toc-en">Salt and the Rise and Fall of Civilizations</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch03">
+          <span class="toc-num">03</span>
+          <span class="toc-emoji">🍳</span>
+          <span class="toc-title">
+            <span class="toc-zh">廚房裡的鹽</span>
+            <span class="toc-en">Salt in the Kitchen</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch04">
+          <span class="toc-num">04</span>
+          <span class="toc-emoji">🥓</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴與食物保存</span>
+            <span class="toc-en">Salt and Food Preservation</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch05">
+          <span class="toc-num">05</span>
+          <span class="toc-emoji">🌍</span>
+          <span class="toc-title">
+            <span class="toc-zh">全球鹽巴大圖鑑</span>
+            <span class="toc-en">A World Atlas of Salt</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch06">
+          <span class="toc-num">06</span>
+          <span class="toc-emoji">🧽</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴的居家妙用·清潔篇</span>
+            <span class="toc-en">Salt at Home Part One Cleaning</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch07">
+          <span class="toc-num">07</span>
+          <span class="toc-emoji">🏡</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴的居家妙用·生活篇</span>
+            <span class="toc-en">Salt at Home Part Two Life</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch08">
+          <span class="toc-num">08</span>
+          <span class="toc-emoji">💪</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴與身體健康</span>
+            <span class="toc-en">Salt and Health</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch09">
+          <span class="toc-num">09</span>
+          <span class="toc-emoji">⛩️</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴的靈性與文化</span>
+            <span class="toc-en">The Spirit and Culture of Salt</span>
+          </span>
+        </a>
+
+        <a class="toc-item" href="#ch10">
+          <span class="toc-num">10</span>
+          <span class="toc-emoji">🚀</span>
+          <span class="toc-title">
+            <span class="toc-zh">鹽巴的現代與未來</span>
+            <span class="toc-en">The Modern and Future Life of Salt</span>
+          </span>
+        </a>
+    </div>
+  </section>
+
+  <!-- ==== CHAPTERS ==== -->
+  <main>
+    
+<article class="chapter" id="ch01">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 01</div>
+    <div class="chapter-emoji">🧂</div>
+    <h2 class="chapter-title-zh">鹽巴的身世之謎</h2>
+    <h3 class="chapter-title-en">The Story of Salt</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-01" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-01" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-01" role="tabpanel">
+      <div class="script zh-script">
+        <p>第一回，鹽巴的身世之謎，從海洋走向人類餐桌的一萬兩千年旅程。</p>
+        <p>大家好，歡迎收聽鹽巴微課程的第一回。今天我們要從一個最簡單的問題開始。鹽巴到底是什麼？這個看起來毫不起眼的白色小顆粒，為什麼會在人類歷史上扮演那麼重要的角色？甚至，曾經有人為了它打仗、為了它建立帝國、為了它穿越沙漠走上幾千公里的路。今天我們就一起來認識，這位餐桌上的老朋友，到底有什麼了不起。</p>
+        <p>首先，鹽巴的化學名字叫做氯化鈉，英文是 sodium chloride，化學式寫成 NaCl。它是由兩種離子組成的，一個是鈉離子，另一個是氯離子。這兩個離子在自然界裡，本來都是非常活潑的元素。鈉是一種會跟水劇烈反應、甚至會起火的金屬。氯則是一種有毒的黃綠色氣體，第一次世界大戰的時候還被當成化學武器使用。可是當這兩個危險的元素牽起手來，變成氯化鈉的時候，卻搖身一變，成了我們每天都離不開的調味料。這就是化學最迷人的地方，兩個壞蛋加在一起，居然變成好朋友。</p>
+        <p>我們的身體其實非常需要鹽。人的血液、汗水、眼淚，嚐起來都是鹹的，這就是因為裡面含有鈉和氯。沒有鈉，我們的神經沒辦法傳遞訊號，肌肉沒辦法收縮，心臟也跳不動。所以從生物學的角度來看，地球上所有的動物，包括我們人類，都是離不開鹽的。這也是為什麼，野生動物會千里迢迢跑去舔鹽岩，牧場主人會放鹽塊讓牛羊舔。鹽，是生命的必需品。</p>
+        <p>那麼，人類是從什麼時候開始使用鹽的呢？根據考古學家的研究，人類用鹽的歷史，至少已經有一萬兩千年了。目前已知最早的製鹽遺址，是在現在的羅馬尼亞，大約是西元前六千年。當時的人們把鹽水煮乾，取出裡面的鹽結晶。差不多同一個時期，中國也已經開始在山西運城一帶生產鹽了。所以你可以想像，當人類還住在洞穴、剛剛學會種田的時候，就已經知道鹽的重要性了。</p>
+        <p>那為什麼鹽會這麼珍貴呢？這要從一個很實際的問題講起。在沒有冰箱的古代，食物非常容易腐壞。一隻豬殺了，不可能一次吃完，剩下的肉如果不處理，很快就會發臭長蛆。而鹽巴，就是古代人類發明的第一台冰箱。把鹽抹在肉上，鹽會把肉裡面的水分吸出來，讓細菌沒辦法生存。這樣一來，肉就可以保存好幾個月，甚至好幾年。火腿、培根、鹹魚、香腸，這些都是鹽幫我們留下來的美味。</p>
+        <p>所以在古代，鹽不只是調味料，它根本就是戰略物資。誰掌握了鹽，誰就掌握了食物的保存權，也就掌握了人民的生存。古羅馬時代，士兵的薪水甚至是用鹽來支付的。英文裡的 salary，也就是薪水這個字，就是從拉丁文的 salarium 來的，意思就是買鹽的錢。所以下次當你聽到別人說 worth his salt，意思是這個人值得他的薪水、是個能幹的人，你就知道這個說法的典故了。</p>
+        <p>在中國，鹽的地位也是非常崇高的。從春秋戰國開始，齊國管仲推行鹽鐵專營，國家壟斷鹽的生產與銷售，從此以後，鹽稅成了歷代王朝最重要的財政收入之一。漢朝的桑弘羊，唐朝的劉晏，宋朝的范祥，這些有名的理財大臣，幾乎都跟鹽政有關係。到了清朝，揚州的鹽商富可敵國，他們的奢華生活，連皇帝都聽說過。</p>
+        <p>在非洲，撒哈拉沙漠以南的地區，因為內陸取得鹽很困難，鹽的價值高到驚人。從七世紀到十四世紀之間，西非的商人會用同樣重量的鹽，去交換同樣重量的黃金。沒錯，是一比一交換。今天我們可能會覺得這簡直是瘋了，但對當時的人來說，沒有鹽，肉會壞掉，人會生病，鹽真的就是黃金。</p>
+        <p>好，今天的第一回，我們認識了鹽的化學本質、它對生命的重要性、人類使用鹽的歷史，還有為什麼它在古代會被當成跟黃金一樣珍貴的東西。</p>
+        <p>接下來，幫大家整理一下今天提到的重要單字和術語。</p>
+        <p>第一個，sodium chloride，氯化鈉，這就是鹽的化學名稱。記憶方法很簡單，sodium 的化學符號是 Na，來自拉丁文 natrium。chloride 是氯離子。</p>
+        <p>第二個，salt，鹽，這個字本身就是英文最古老的字之一，幾乎所有歐洲語言的鹽，都跟它有關係。</p>
+        <p>第三個，salarium，薪水的拉丁文原型，字面意思就是買鹽的錢。所以 salary 跟 salt 其實是親戚。</p>
+        <p>第四個，preservation，保存。這個字的字根 serv 就是保護的意思，前面加上 pre，事先保護，就是保存的意思。</p>
+        <p>第五個，brining，鹽水浸泡。這是一種用鹽水醃製食物的方法，跟乾醃不一樣。</p>
+        <p>最後一個有趣的說法是 worth his salt，值得他的薪水，引申為一個人能幹、稱職。這個片語就是從古羅馬士兵領鹽當薪水演變而來的。下次想稱讚別人能幹，可以說 He is really worth his salt。</p>
+        <p>下一回，我們要繼續講鹽與人類文明的故事，包括奧地利的薩爾茲堡這座以鹽命名的城市、橫跨撒哈拉的鹽路、還有揚州鹽商的傳奇人生。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-01" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter One. The Story of Salt. A twelve thousand year journey from the ocean to the human table.</p>
+        <p>Hello everyone, and welcome to the first chapter of our salt mini course. Today, we are going to start with a very simple question. What exactly is salt? This humble little white crystal seems so ordinary, yet it has played one of the most important roles in human history. People have fought wars over it, built empires because of it, and crossed thousands of miles of desert to trade it. Today, let us get to know this old friend on our dining table, and find out what makes it so remarkable.</p>
+        <p>First, let us look at the chemistry. Salt has a scientific name. It is called sodium chloride, and its formula is written as N a C l. Salt is made of two ions, one is the sodium ion, and the other is the chloride ion. In their pure form, these two elements are actually quite dangerous. Sodium is a metal that reacts violently with water and can even catch fire. Chlorine is a poisonous yellow green gas that was used as a chemical weapon in the First World War. But when these two dangerous elements join hands and become sodium chloride, they transform into the gentle seasoning we cannot live without. This is the magic of chemistry. Two villains hold hands, and they become a hero.</p>
+        <p>Our bodies actually need salt very much. Our blood, our sweat, and our tears all taste salty, because they all contain sodium and chloride. Without sodium, our nerves cannot send signals, our muscles cannot contract, and our heart cannot beat. From a biological point of view, every animal on Earth, including us humans, depends on salt to survive. That is why wild animals will travel long distances to lick salt rocks, and why farmers leave salt blocks for their cows and sheep. Salt is a necessity of life.</p>
+        <p>So when did humans first start using salt? According to archaeologists, humans have been using salt for at least twelve thousand years. The earliest known salt production site was in what is now Romania, dating back to about six thousand years before the common era. People back then boiled salty spring water and collected the salt crystals that were left behind. Around the same time, China also began producing salt in the Yuncheng area of Shanxi province. So you can imagine, when humans were still living in caves and just learning how to farm, they already understood how important salt was.</p>
+        <p>But why was salt so precious? This comes from a very practical problem. In ancient times, before refrigerators existed, food spoiled very quickly. If you killed a pig, you could not eat it all in one meal. The leftover meat would rot and attract flies within days. Salt became the first refrigerator that humans ever invented. When you rub salt on meat, the salt draws water out of the meat, and bacteria can no longer survive in such a dry environment. This way, meat could be stored for months, or even years. Ham, bacon, salted fish, and sausages are all delicious foods that salt has preserved for us.</p>
+        <p>In ancient times, salt was not just a seasoning. It was a strategic resource. Whoever controlled salt controlled food preservation, and therefore controlled the survival of the people. In ancient Rome, soldiers were sometimes paid with salt. The English word salary comes from the Latin word salarium, which literally means money for buying salt. So next time you hear someone described as worth his salt, meaning a capable person who earns his pay, you will know exactly where that phrase comes from.</p>
+        <p>In China, salt had an equally important status. From the Spring and Autumn period, the famous statesman Guan Zhong of the state of Qi introduced the government monopoly on salt and iron. From then on, salt tax became one of the most important sources of revenue for every Chinese dynasty. Sang Hongyang of the Han dynasty, Liu Yan of the Tang dynasty, and Fan Xiang of the Song dynasty, all these famous finance ministers had careers built around salt policy. By the Qing dynasty, the salt merchants of Yangzhou were so wealthy that even the emperor had heard of their luxurious lifestyles.</p>
+        <p>In sub Saharan Africa, where it was very difficult to obtain salt inland, salt was worth an unbelievable amount. From the seventh to the fourteenth century, merchants in West Africa would trade salt for gold, weight for weight. Yes, you heard that right, one to one. Today, this might sound crazy, but for people back then, without salt, meat would spoil, people would get sick, and salt really was as valuable as gold.</p>
+        <p>Alright, in this first chapter, we have learned about the chemistry of salt, why it is essential for life, the long history of salt in human civilization, and why it was once treated as precious as gold.</p>
+        <p>Now let me review the important vocabulary and terms we mentioned today.</p>
+        <p>First, sodium chloride. This is the chemical name for salt. An easy way to remember it. Sodium has the symbol N a, which comes from the Latin word natrium. Chloride is the ion form of chlorine.</p>
+        <p>Second, salt. This word itself is one of the oldest words in English. In almost every European language, the word for salt is related to it.</p>
+        <p>Third, salarium. This is the Latin origin of the word salary. Its literal meaning is money for buying salt. So salary and salt are actually cousins.</p>
+        <p>Fourth, preservation. The root of this word is serv, which means to protect. When you add pre at the front, it means to protect in advance, which is exactly what preservation means.</p>
+        <p>Fifth, brining. This means soaking food in salt water. It is different from dry curing, which uses dry salt directly.</p>
+        <p>And finally, a fun expression, worth his salt. It literally means worth his salary, but it is used to describe someone who is capable or competent. The phrase comes from those ancient Roman soldiers who were paid with salt. Next time you want to praise someone, you can say, He is really worth his salt.</p>
+        <p>In our next chapter, we will continue the story of salt and human civilization. We will visit Salzburg, the city named after salt. We will travel along the salt roads across the Sahara, and meet the legendary salt merchants of Yangzhou. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch02">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 02</div>
+    <div class="chapter-emoji">🏛️</div>
+    <h2 class="chapter-title-zh">鹽與文明的興衰</h2>
+    <h3 class="chapter-title-en">Salt and the Rise and Fall of Civilizations</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-02" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-02" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-02" role="tabpanel">
+      <div class="script zh-script">
+        <p>第二回，鹽與文明的興衰，從薩爾茲堡到揚州鹽商的傳奇。</p>
+        <p>歡迎回到鹽巴微課程。上一回我們認識了鹽的化學本質，還有人類使用鹽的悠久歷史。今天我們要更深入一點，看看鹽是怎麼樣推動人類文明，又怎麼樣引發了戰爭、塑造了城市、養出了富可敵國的商人。聽完這一回你會發現，全世界很多重要的城市，背後都跟鹽有關。</p>
+        <p>我們先從歐洲講起。在奧地利，有一座非常有名的城市，叫做薩爾茲堡，英文是 Salzburg。這個名字直接翻譯就是鹽堡，或者鹽的城堡。為什麼一座城市要用鹽來命名呢？因為這個地區在好幾千年前，就有非常豐富的岩鹽礦藏。從西元前八世紀開始，當地的凱爾特人就已經在開採鹽礦了。到了中世紀，薩爾茲堡靠著鹽的貿易，變成了中歐最富有的城市之一。我們熟悉的音樂家莫札特，就出生在這座因鹽而富有的城市。所以下次你聽到莫札特的音樂，可以想想，這位天才的故鄉，其實是建立在鹽巴上面的。</p>
+        <p>德國也有好幾個跟鹽有關的城市。比如說呂內堡，這座城市的名字也跟鹽有關。呂內堡的鹽，從中世紀開始就供應整個北德和波羅的海地區。當時的漢薩同盟，那個橫跨北歐的貿易聯盟，很大一部分的財富，就來自於鹽和鹹魚的貿易。德國北部捕到的鯡魚，用呂內堡的鹽醃製之後，可以運到歐洲各地。沒有鹽，就沒有鹹魚，沒有鹹魚，漢薩同盟也撐不起來。</p>
+        <p>我們把鏡頭轉到非洲。撒哈拉沙漠在很多人的印象中，是一片死寂的沙海，但其實這片沙漠裡，曾經有非常熱鬧的商隊。這些駱駝商隊，從北非的摩洛哥出發，穿越沙漠，南下到迦納、馬利、廷布克圖這些地方。他們帶去的最重要的貨物，就是鹽。沙漠中部有一個地方叫做塔加扎，是一座完全用鹽磚蓋起來的城市。當地的房子、清真寺，全都是用鹽塊砌成的。為什麼？因為這裡的鹽多到不行，反而木頭跟石頭很難取得。</p>
+        <p>這些鹽從塔加扎被運到南方之後，會換成黃金、奴隸、象牙。在十四世紀的時候，馬利帝國的國王曼薩穆薩，據說是當時全世界最有錢的人，他的財富很大一部分就來自鹽和黃金的貿易。他去麥加朝聖的時候，沿路灑黃金，把埃及的金價搞到崩盤。這就是鹽帶來的力量。</p>
+        <p>接下來我們講中國。中國的鹽政，可以說是世界上最早、最完善的國家專營制度。早在春秋時代，齊國的管仲就推行了官山海政策，把山林和海洋的資源，包括鹽，全部收歸國有。這套制度讓齊國變成了當時的超級大國。漢武帝的時候，桑弘羊把鹽鐵專營推到了極致，國家透過鹽稅，籌到了打匈奴的戰費。可以說，沒有鹽稅，就沒有漢朝的強盛。</p>
+        <p>到了唐宋，鹽政更加精密。劉晏改革鹽法，採用官收商運的方式，國家收鹽、商人賣鹽，這套制度讓唐朝中後期的財政，有一半以上的收入來自鹽稅。明清時期，揚州因為靠近長江和大運河，成了全國鹽運的中心。那些拿到鹽引、也就是鹽的販賣許可證的商人，發財到不可思議。揚州的鹽商不只蓋豪宅、養戲班、藏古董，他們還資助學者、收藏書畫，影響了整個清代的文化發展。我們今天說的揚州瘦西湖、個園、何園這些名園，背後幾乎都有鹽商的身影。</p>
+        <p>法國也有一段跟鹽有關的黑暗歷史。十四世紀開始，法國國王開徵了一種叫做 gabelle 的鹽稅。這種稅非常重，而且強迫每個人每年都要買一定數量的官鹽。如果你被抓到走私便宜的鹽，會被處以重刑。這個鹽稅讓法國人民痛恨了好幾百年，最後成了法國大革命的重要導火線之一。一七九零年，鹽稅被廢除。所以可以說，鹽不只養活了王朝，鹽也推翻了王朝。</p>
+        <p>英國的情況也很有趣。十七、十八世紀的英國，靠著海上霸權，掌握了全球的鹽貿易。英國人在印度殖民的時候，禁止印度人自己製鹽，強迫他們高價購買英國進口的鹽。這對住在海邊的印度人來說，簡直是侮辱，因為他們明明腳邊就是海。一九三零年，甘地發動了著名的食鹽長征，帶著群眾走到海邊，自己用海水製鹽，公開違抗英國的鹽法。這場非暴力抗爭，震撼了全世界，最後也成了印度獨立運動的關鍵一步。</p>
+        <p>從薩爾茲堡到塔加扎，從揚州到孟買，鹽在每一個地方，都留下了深深的痕跡。它讓城市興起、讓商人發財、讓國家強盛，但也引爆了起義、推翻了王朝、解放了殖民地。鹽，真的是改變人類歷史最關鍵的物質之一。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，Salzburg，薩爾茲堡。Salz 在德文裡就是鹽，burg 是城堡。連起來就是鹽的城堡。</p>
+        <p>第二個，caravan，駱駝商隊。這個字也可以指房車、車隊。在沙漠的脈絡裡，特別指一長串的駱駝隊伍。</p>
+        <p>第三個，monopoly，壟斷或專營。字根 mono 是單一，poly 是賣。一個賣家獨佔市場，就是壟斷。</p>
+        <p>第四個，gabelle，法國的鹽稅。這是一個歷史專有名詞，記不起來沒關係，但要知道法國大革命跟它有關。</p>
+        <p>第五個，Salt March，食鹽長征。這是甘地一九三零年帶領印度人民走到海邊製鹽的著名抗爭事件。</p>
+        <p>第六個有趣的說法，take something with a grain of salt，字面是配著一點鹽吃，引申為對某件事保持懷疑、不要全信。這個說法源自於古羅馬，當時人們相信，吃一點鹽可以解毒，所以聽到可疑的話，就配著一點鹽，比較不會中毒。下次聽到不太可靠的消息，你可以說 I take it with a grain of salt。</p>
+        <p>下一回，我們要走進廚房，談談鹽為什麼能讓食物變好吃，還有為什麼專業廚師加鹽的時機跟份量，跟我們在家裡完全不一樣。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-02" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Two. Salt and the Rise and Fall of Civilizations. From Salzburg to the Legendary Salt Merchants of Yangzhou.</p>
+        <p>Welcome back to our salt mini course. In the last chapter, we got to know the chemistry of salt and the long history of human salt use. Today, we are going to go deeper and see how salt actually shaped human civilization. How it sparked wars, built cities, and created merchants richer than kings. By the end of this chapter, you will realize that many important cities around the world have a hidden connection with salt.</p>
+        <p>Let us start in Europe. In Austria, there is a very famous city called Salzburg. The name translates directly as Salt Castle, or the Castle of Salt. Why would a city be named after salt? Because this region has been rich in rock salt deposits for thousands of years. As early as the eighth century before the common era, the Celtic people in the area were already mining salt. By the Middle Ages, Salzburg had become one of the wealthiest cities in central Europe, all thanks to the salt trade. The famous composer Mozart was born in this city built on salt. So next time you listen to a Mozart symphony, remember that the hometown of this musical genius was literally founded on a mountain of salt.</p>
+        <p>Germany also has several cities with salt in their names. For example, Lüneburg, whose name is also related to salt. The salt from Lüneburg supplied northern Germany and the Baltic region throughout the Middle Ages. The famous Hanseatic League, that great trading alliance of northern Europe, drew much of its wealth from the trade in salt and salted fish. Herring caught in the North Sea, preserved with Lüneburg salt, could be shipped all across Europe. Without salt, there would be no salted fish. Without salted fish, there would be no Hanseatic League.</p>
+        <p>Now let us travel to Africa. The Sahara Desert may seem like a dead sea of sand, but in fact, busy caravans once traveled across it. These camel caravans set out from Morocco in North Africa, crossed the desert, and went south to places like Ghana, Mali, and Timbuktu. The most precious cargo they carried was salt. In the middle of the desert, there was a town called Taghaza, which was literally built out of salt bricks. The houses and even the mosque were made of blocks of salt. Why? Because there was so much salt in this place that wood and stone were actually harder to find.</p>
+        <p>The salt was transported south and exchanged for gold, slaves, and ivory. In the fourteenth century, the king of the Mali Empire, Mansa Musa, was said to be the richest man in the world at that time. Much of his wealth came from the salt and gold trade. When he made his pilgrimage to Mecca, he gave away so much gold along the way that the price of gold in Egypt crashed for years. That is the power of the salt trade.</p>
+        <p>Now let us turn to China. The Chinese system of salt administration is perhaps the oldest and most sophisticated state monopoly in the world. As early as the Spring and Autumn period, the statesman Guan Zhong of the state of Qi introduced a policy of state control over mountain and sea resources, including salt. This system turned Qi into a superpower of its time. During the Han dynasty, Sang Hongyang took the salt and iron monopoly to its peak, using salt taxes to fund the wars against the Xiongnu. Without the salt tax, the strength of the Han dynasty would not have been possible.</p>
+        <p>By the Tang and Song dynasties, the salt administration became even more refined. The minister Liu Yan reformed the salt laws, introducing a system where the government collected salt and licensed merchants distributed it. Under this system, more than half of the government revenue in the late Tang dynasty came from salt taxes. During the Ming and Qing dynasties, the city of Yangzhou, located near the Yangtze River and the Grand Canal, became the center of the national salt trade. The merchants who held the salt licenses became unimaginably rich. The Yangzhou salt merchants built grand mansions, kept opera troupes, collected antiques, and also sponsored scholars, art, and literature. The beautiful gardens of Yangzhou, like the Slender West Lake, the Ge Garden, and the He Garden, all bear the cultural fingerprints of these salt merchants.</p>
+        <p>France has a darker chapter in its salt history. From the fourteenth century, the French kings imposed a heavy salt tax called the gabelle. This tax was extremely burdensome, and every person was forced to buy a certain amount of government salt each year. If you were caught smuggling cheap salt, you faced severe punishment. This salt tax angered the French people for centuries and became one of the major causes of the French Revolution. The gabelle was finally abolished in 1790. So we can say that salt not only built dynasties, but salt also brought dynasties down.</p>
+        <p>The story in England is also fascinating. In the seventeenth and eighteenth centuries, Britain ruled the seas and dominated the global salt trade. When the British colonized India, they forbade Indians from making their own salt and forced them to buy expensive imported British salt. For Indians living right by the sea, this was a humiliating insult. In 1930, Mahatma Gandhi led the famous Salt March, walking with thousands of followers to the coast to make their own salt from sea water, in open defiance of British salt law. This nonviolent protest shocked the world and became a key step in the Indian independence movement.</p>
+        <p>From Salzburg to Taghaza, from Yangzhou to Mumbai, salt has left deep marks everywhere. It built cities, made merchants rich, and strengthened nations. But it also sparked revolts, toppled kings, and helped free colonies. Salt is truly one of the most important substances in shaping human history.</p>
+        <p>Now let me go through the key vocabulary and terms for today.</p>
+        <p>First, Salzburg. In German, Salz means salt and burg means castle. Put together, it literally means the Castle of Salt.</p>
+        <p>Second, caravan. This word means a long line of travelers, often camels in a desert. It can also refer to a recreational vehicle today, but in our context it means a desert trading group.</p>
+        <p>Third, monopoly. This means exclusive control over a market. The root mono means one, and poly comes from a Greek word for selling. One seller controls everything, that is a monopoly.</p>
+        <p>Fourth, gabelle. This is the historical name of the French salt tax. You do not need to memorize the spelling, just remember it helped trigger the French Revolution.</p>
+        <p>Fifth, Salt March. This refers to Gandhi&#x27;s famous 1930 protest, when he led people to the sea to make their own salt against British law.</p>
+        <p>And finally, a fun expression, take something with a grain of salt. The literal meaning is to take something along with a small amount of salt. The real meaning is to be skeptical, to not fully believe what you hear. This phrase comes from ancient Rome, where people believed that a little salt could counteract poison. So if you heard something suspicious, you took it with a grain of salt, just to be safe. Next time you hear unreliable news, you can say, I take it with a grain of salt.</p>
+        <p>In our next chapter, we will step into the kitchen. We will explore why salt makes food taste so good, and why professional chefs add salt very differently from how we do it at home. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch03">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 03</div>
+    <div class="chapter-emoji">🍳</div>
+    <h2 class="chapter-title-zh">廚房裡的鹽</h2>
+    <h3 class="chapter-title-en">Salt in the Kitchen</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-03" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-03" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-03" role="tabpanel">
+      <div class="script zh-script">
+        <p>第三回，廚房裡的鹽，調味的科學與藝術。</p>
+        <p>歡迎回到鹽巴微課程。前兩回我們講了鹽的歷史和它對文明的影響，今天我們要把場景拉回到最熟悉的地方，廚房。為什麼鹽能讓食物變好吃？為什麼有些菜不加鹽就是少一味？為什麼專業廚師加鹽的方式跟我們在家裡完全不一樣？這一回我們就來揭開調味的科學。</p>
+        <p>首先，我們要認識一個重要的概念。鹽不只是讓食物變鹹，它真正的功能，是放大食物本身的風味。聽起來很神奇對不對？但這是有科學根據的。我們的舌頭上有五種基本味覺，分別是甜、酸、苦、鹹、鮮。其中，鹹味本身就是一種獨立的味覺，但更厲害的是，鹹味會跟其他味覺互動，讓食物的層次變得更豐富。</p>
+        <p>舉個例子，西瓜本來就甜，但是如果你撒一點鹽在西瓜上，你會發現西瓜變得更甜了。這不是錯覺，這是因為鹽會抑制我們對苦味的感受，讓甜味相對突出。一塊巧克力，撒一點海鹽，會變得更香、更滑、更迷人。這就是為什麼海鹽焦糖、海鹽巧克力會這麼受歡迎。鹽就像音樂裡的低音，你不一定聽得到，但是少了它，整首歌就少了厚度。</p>
+        <p>另外一個有趣的現象，是鹽會增強鮮味，也就是日本人說的 umami。umami 這個字現在已經是國際通用詞，它指的是肉類、海鮮、蘑菇、起司、醬油這些食物裡的鮮甜滋味。鹽會跟鮮味產生協同效應，讓鮮味變得更強烈。這就是為什麼一碗清湯只要加一點鹽，整個味道就立刻活過來。</p>
+        <p>那麼，鹽到底是怎麼讓食物變好吃的？這要從分子層面講起。當鹽溶解在水裡的時候，鈉離子和氯離子會分開，這些離子非常活潑，會跟食物裡的蛋白質、澱粉、脂肪互動。它們會破壞蛋白質的結構，讓肉變嫩。它們會幫助蔬菜釋放水分，讓泡菜變得清脆。它們會改變麵糰裡麵筋的形成，讓麵包有更好的彈性。所以鹽的角色，遠遠不只是調味而已，它是一個全方位的食物改造者。</p>
+        <p>接下來我們講一個很多人不知道的事情，那就是加鹽的時機。專業廚師非常重視加鹽的時機，因為不同的時機，會產生完全不同的效果。如果你想要肉的表面有一層脆皮，你應該在下鍋前先在肉上抹鹽，靜置至少四十分鐘，甚至幾個小時。這個過程叫做乾醃，英文是 dry brining。鹽會把肉表面的水分吸出來，然後又會重新被吸回去，過程中蛋白質會被打散，肉會變得更嫩、更多汁、更入味。</p>
+        <p>如果你煮義大利麵，水滾了之後一定要加大量的鹽，鹽要多到讓水嚐起來像海水。這聽起來很可怕，但其實大部分的鹽會留在水裡，被你倒掉，真正進到麵裡的鹽只有一小部分。但這一小部分，會從裡到外幫麵條調味，這是事後再加鹽絕對做不到的。很多人煮麵不加鹽，難怪做出來的義大利麵總是少一味。</p>
+        <p>如果你炒青菜，鹽應該在快起鍋的時候加，因為鹽會逼出蔬菜的水分，太早加會讓青菜變得軟塌、出水。如果你燉湯，鹽可以分兩次加，一次在中段，一次在最後調整。</p>
+        <p>接下來講一個很實用的概念，叫做 seasoning in layers，分層調味。一道好菜，不是最後撒一把鹽就好，而是每一個步驟都要適度調味。爆香的時候加一點，加食材的時候加一點，加水的時候加一點，最後嚐味道再調整。這樣每一層風味都被打開，整道菜才會有深度。很多家庭做菜不好吃，問題就是只在最後加鹽，結果鹽味浮在表面，內部的食材卻沒有味道。</p>
+        <p>我們再講一個誤區。很多人以為鹽加越多越鹹，越鹹越好吃。其實不是。鹽加得適量，會放大食物的風味，但是鹽加過頭，食物的風味反而會被鹽味蓋過去，變成只有鹹味，沒有層次。專業廚師的目標，是讓你吃不出鹽的存在，但你會覺得這道菜特別好吃。這就是調味的最高境界，叫做 seasoning is invisible，調味是看不見的。</p>
+        <p>說到這裡，我們順便講一下不同的鹽，在烹飪上的差別。一般的精製食鹽，顆粒細小，溶解快，適合烘焙和調味湯水。海鹽顆粒比較粗，礦物質豐富，適合最後撒在菜上提味。猶太鹽，英文叫做 kosher salt，顆粒中等，沒有添加碘，是美國專業廚房的最愛，因為它好抓、好控制、不會死鹹。法國的鹽之花，英文是 fleur de sel，是手工採收的頂級鹽，貴得嚇人，通常只用在最後點綴。下一回我們會更詳細介紹這些不同的鹽。</p>
+        <p>最後分享一個小技巧。如果你煮菜不小心放太多鹽，怎麼辦？有幾個方法可以試試看。第一，加馬鈴薯一起煮，馬鈴薯會吸收一部分鹽分。第二，加糖或加醋，可以平衡鹹味。第三，加水或加奶油稀釋。第四，多做一份不加鹽的，混在一起。當然，最好的方法還是少量多次地加鹽，慢慢嚐味道。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，seasoning，調味，動詞是 season。記憶方法，季節是 season，調味就像幫食物換上不同的季節風味。</p>
+        <p>第二個，umami，鮮味。這個字是日文，全世界通用，指的是蛋白質分解後產生的那種深沉、令人滿足的滋味。</p>
+        <p>第三個，dry brining，乾醃。brine 本來是鹽水的意思，dry brining 是把鹽直接抹在食物上，不加水。</p>
+        <p>第四個，seasoning in layers，分層調味。意思是每個烹飪步驟都要適度加鹽，不要等到最後才一次加完。</p>
+        <p>第五個，kosher salt，猶太鹽。這個名字來自於猶太教的潔淨飲食規定，這種鹽顆粒大，方便撒在肉上吸血。</p>
+        <p>第六個，fleur de sel，法文，鹽之花。指的是鹽田表面形成的薄薄一層結晶，手工採收，最頂級的鹽。</p>
+        <p>最後一個有趣的英文片語，salt of the earth，地上的鹽。這句話出自聖經，耶穌用來稱讚他的門徒。現在用來形容一個人樸實、可靠、值得信賴。下次想稱讚一個老實的好人，可以說 He is the salt of the earth。</p>
+        <p>下一回，我們要走進歷史，看看在沒有冰箱的時代，古人是怎麼靠鹽巴，保存食物撐過漫長的冬天。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-03" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Three. Salt in the Kitchen. The Science and Art of Seasoning.</p>
+        <p>Welcome back to our salt mini course. In the first two chapters, we talked about the history of salt and how it shaped civilizations. Today, we are going to bring the topic back to the most familiar place of all, the kitchen. Why does salt make food taste so good? Why do some dishes feel like something is missing when there is no salt? And why do professional chefs add salt so differently from how we do it at home? In this chapter, we are going to uncover the science of seasoning.</p>
+        <p>First, we need to understand one important concept. Salt does not just make food salty. Its real magic is that it amplifies the natural flavors already inside the food. Sounds amazing, right? But there is real science behind this. Our tongue can detect five basic tastes. Sweet, sour, bitter, salty, and umami. Salt is one of these tastes, but more importantly, salt interacts with the other tastes and brings out their layers.</p>
+        <p>Let me give you an example. A watermelon is naturally sweet. But if you sprinkle a little salt on it, you will notice that it actually tastes even sweeter. This is not your imagination. Salt suppresses our perception of bitterness, which makes the sweetness pop out more. A piece of chocolate with a little sea salt becomes richer, smoother, and more irresistible. That is exactly why salted caramel and sea salt chocolate have become so popular. Salt is like the bass line in music. You may not notice it directly, but without it, the whole song loses its depth.</p>
+        <p>Another fascinating thing is that salt enhances umami, that savory taste found in meat, seafood, mushrooms, cheese, and soy sauce. The word umami is Japanese and it is now used all over the world. Salt and umami have a special partnership. When they come together, the savory flavor becomes much stronger. That is why a bowl of plain broth instantly comes alive with just a pinch of salt.</p>
+        <p>So how does salt actually make food taste better? Let us go down to the molecular level. When salt dissolves in water, the sodium and chloride ions separate and become very active. They interact with proteins, starches, and fats in the food. They break down protein structures and make meat tender. They draw water out of vegetables and make pickles crisp. They change how gluten forms in dough and give bread better elasticity. So salt is far more than just a seasoning. It is a full spectrum food transformer.</p>
+        <p>Now let us talk about something many people do not realize. The timing of when you add salt matters a lot. Professional chefs care deeply about timing, because different timings create completely different results. If you want crispy skin on your meat, you should rub salt on it before cooking and let it rest for at least forty minutes, or even several hours. This technique is called dry brining. The salt first pulls moisture out of the meat surface, and then the moisture is reabsorbed back in. During this process, the proteins are broken down, and the meat becomes more tender, juicy, and flavorful from the inside out.</p>
+        <p>If you are cooking pasta, you must add a generous amount of salt to the boiling water. The water should taste almost like the sea. This sounds scary, but most of the salt stays in the water that you drain away. Only a small portion enters the pasta itself, but that small portion seasons the pasta from the inside, which is something you can never achieve by adding salt afterward. Many people cook pasta without salt, and no wonder it always tastes flat.</p>
+        <p>If you are stir frying vegetables, salt should be added near the end of cooking. Salt draws water out of vegetables, so adding it too early will make them go soft and watery. If you are making a soup, you can salt in two stages. Once in the middle, and once at the end for final adjustment.</p>
+        <p>This brings us to a very useful concept called seasoning in layers. A great dish is not made by dumping a handful of salt at the end. Instead, you season a little at every stage. A pinch when you sauté the aromatics, a pinch when you add the main ingredients, a pinch when you add the liquid, and a final taste at the end. This opens up flavor at every layer and gives the dish real depth. The reason home cooking often tastes flat is that people only salt at the end, so the salt sits on the surface while the inside of the food remains bland.</p>
+        <p>Let me also clear up a common misunderstanding. Many people think that more salt means saltier, and saltier means better. That is not true. The right amount of salt amplifies flavor, but too much salt covers the flavor and leaves only a one note saltiness. The goal of a professional chef is to make you unable to detect the salt itself, but to feel that the dish is somehow incredibly delicious. There is a saying in professional kitchens, seasoning is invisible. That is the highest level of the art.</p>
+        <p>While we are here, let us briefly talk about how different types of salt behave differently in cooking. Regular table salt has fine grains, dissolves quickly, and is great for baking and seasoning liquids. Sea salt has bigger grains and contains trace minerals, so it is wonderful for finishing dishes. Kosher salt has medium grains, no added iodine, and is the favorite of American professional kitchens because it is easy to pinch and control, and never tastes harshly salty. Fleur de sel, which is French for flower of salt, is a hand harvested premium salt, expensive, and usually used as a final touch. We will go deeper into these different salts in the next chapter.</p>
+        <p>Finally, a useful tip. What if you accidentally add too much salt to your dish? There are a few rescue methods. First, add a potato and cook it together. The potato will absorb some of the salt. Second, add sugar or vinegar to balance the saltiness. Third, dilute with water or cream. Fourth, make another batch without salt and mix them together. Of course, the best method is always to add salt little by little and keep tasting along the way.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, seasoning, which means to add salt or other flavors to food. An easy memory tip. The word season also means a time of year, so seasoning is like dressing food in different flavors of the season.</p>
+        <p>Second, umami. This Japanese word describes that deep, satisfying savory taste from proteins. It is now part of international culinary vocabulary.</p>
+        <p>Third, dry brining. Brine usually means salt water, but dry brining means rubbing salt directly on food without water.</p>
+        <p>Fourth, seasoning in layers. This means adding salt gradually at every stage of cooking, not all at the end.</p>
+        <p>Fifth, kosher salt. The name comes from Jewish dietary laws. This salt has larger grains and is great for koshering meat by drawing out blood.</p>
+        <p>Sixth, fleur de sel. French for flower of salt. It refers to the thin crystal layer that forms on the surface of salt ponds, harvested by hand, and considered the highest grade of salt.</p>
+        <p>And finally, a fun English idiom, salt of the earth. This phrase comes from the Bible, where Jesus used it to praise his disciples. Today, it describes a person who is humble, honest, and reliable. Next time you want to praise someone trustworthy, you can say, He is the salt of the earth.</p>
+        <p>In our next chapter, we will travel back in time and explore how, in a world without refrigerators, our ancestors used salt to preserve food and survive the long winters. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch04">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 04</div>
+    <div class="chapter-emoji">🥓</div>
+    <h2 class="chapter-title-zh">鹽巴與食物保存</h2>
+    <h3 class="chapter-title-en">Salt and Food Preservation</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-04" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-04" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-04" role="tabpanel">
+      <div class="script zh-script">
+        <p>第四回，鹽巴與食物保存，古人的第一台冰箱。</p>
+        <p>歡迎回到鹽巴微課程。前面我們聊了鹽的歷史、鹽對文明的影響、還有鹽在廚房裡的調味魔法。今天我們要講一個更古老的功能，那就是鹽巴的保存術。在沒有冰箱、沒有冷凍庫、沒有真空包裝的年代，人類是怎麼讓食物撐過漫長的冬天？答案就是鹽。可以說，鹽巴是人類發明的第一台冰箱，而且這台冰箱不用插電、不會壞、用了好幾千年。</p>
+        <p>我們先來解釋一個基本原理。食物為什麼會壞掉？因為食物裡面有水分，水分養活了細菌、黴菌、酵母菌這些微生物。這些微生物以食物為食，邊吃邊繁殖，邊繁殖邊排出酸、氣體、毒素，讓食物變質、變臭、甚至產生危險的毒素。要阻止食物腐壞，最直接的方法就是讓微生物沒辦法活下去。鹽巴正好就是微生物的剋星。</p>
+        <p>鹽巴怎麼殺死微生物呢？這要講到一個現象，叫做滲透壓。當你把鹽抹在肉上，鹽會在肉的表面形成高濃度的環境。微生物細胞裡面的水分，會被這個高濃度環境吸出來。細胞失水之後，會脫水、皺縮、最後死亡。同樣的道理，鹽也會把肉裡面的水分吸出來。肉一旦變乾，剩下的微生物也沒辦法繁殖了。這就是鹽保存食物的基本原理，把食物和細菌都脫水。</p>
+        <p>人類用鹽保存食物的歷史，至少有六千年。古埃及人是最早把這項技術發展到極致的民族。他們不只用鹽保存食物，他們還用鹽保存人。沒錯，就是著名的木乃伊。製作木乃伊的時候，會用一種叫做泡鹼的鹽類混合物，覆蓋在屍體上，吸乾所有的水分。這樣處理過的屍體，可以在乾燥的環境中保存好幾千年不腐壞。我們今天在博物館看到的法老木乃伊，都是鹽的傑作。</p>
+        <p>回到食物的話題。在歐洲，鹽漬肉是中世紀飲食的主角。每年秋天，農民會宰殺豬、牛、羊，因為冬天沒有飼料養活這麼多牲口。宰殺之後，大部分的肉會用鹽醃製，做成火腿、培根、香腸、鹹肉。這些鹹肉可以撐過整個冬天，是農民全家的蛋白質來源。義大利的帕瑪火腿、西班牙的伊比利火腿、德國的黑森林火腿，這些今天賣得很貴的美食，本來都是農民求生存的智慧。</p>
+        <p>魚也是鹽漬保存的重要對象。北歐的鯡魚、葡萄牙的鱈魚、日本的鮭魚，都會用鹽醃製之後，運到內陸或更遠的地方。葡萄牙人特別愛吃一種叫做 bacalhau 的鹹鱈魚，據說可以做出三百六十五種料理，一年三百六十五天吃不重複。這背後的歷史是，葡萄牙是航海大國，水手在船上長時間航行，新鮮食物沒辦法保存，鹹鱈魚就成了他們最重要的蛋白質來源。一吃就吃了五百年，吃成了民族美食。</p>
+        <p>接下來我們講一個更精緻的技術，叫做鹽水浸泡，英文是 brining。剛剛說的鹽漬，是用乾鹽直接抹在食物上。brining 則是把食物泡在鹽水裡，通常還會加糖、香料、月桂葉。這種方法的好處是，鹽分會均勻地滲透到食物每個角落，而且因為有水，食物不會被脫得太乾，反而會變得多汁。感恩節烤的火雞，很多人會先用鹽水泡一整晚，這樣烤出來的肉就不會柴。</p>
+        <p>還有一種神奇的方法，叫做發酵保存。聽起來矛盾，發酵不是會讓食物變壞嗎？其實不會。在鹽的控制下，有害的細菌被抑制，但有益的乳酸菌可以活下來。這些乳酸菌會把食物裡的糖分解成乳酸，乳酸讓環境變酸，進一步抑制其他細菌。德國酸菜、韓國泡菜、日本醬菜、中國酸豆角，都是這個原理。鹽不只是保存劑，鹽還是發酵的指揮家，它決定誰可以活、誰必須死。</p>
+        <p>談到鹽漬食物，我們不能不講硝石。硝石的化學名稱是硝酸鉀，古代人發現，在鹽裡面加一點硝石，醃出來的肉會變成漂亮的粉紅色，而且更不容易壞。這是因為硝石會抑制肉毒桿菌，這是一種非常致命的細菌。今天我們吃的香腸、培根、火腿，那種誘人的粉紅色，就是硝石的功勞。當然，硝石用太多對身體不好，所以現代的食品法規都有嚴格的限量。</p>
+        <p>說到這裡，我們稍微跳一下，講講大航海時代的水手怎麼活下來的。十六、十七世紀，歐洲船隊出海航行，一趟可能要幾個月、甚至幾年。船上沒有冰箱、沒有蔬菜、沒有新鮮肉。水手吃什麼？吃鹹肉、鹹魚、硬餅乾。一份標準的水手餐，可能就是一塊像石頭一樣硬的鹹豬肉，配上長蟲的餅乾，再喝一口摻水的蘭姆酒。這種飲食讓水手嚴重缺乏維生素 C，導致一種可怕的疾病，叫做壞血病。牙齦出血、牙齒脫落、傷口不癒合，很多水手就是這樣死在海上的。後來英國人發現，每天吃一個檸檬或萊姆就可以預防，這也是為什麼英國水手被稱為 limey，萊姆人。</p>
+        <p>到了十九世紀末，冷凍技術慢慢普及，鹽作為食物保存劑的地位就下降了。但是直到今天，鹽還是現代加工食品最重要的添加劑之一。你去超市看那些洋芋片、罐頭、火腿、起司，鈉含量都高得驚人。這背後的原因，一部分是為了風味，一部分還是為了保存，讓食品可以在貨架上放好幾年不壞。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，preservation，保存。動詞是 preserve，名詞是 preservation。preserve 也可以當名詞，指果醬。</p>
+        <p>第二個，osmosis，滲透。這是水分從低濃度往高濃度流動的現象，是鹽保存食物的關鍵。記憶方法，os 像「往」這邊滲。</p>
+        <p>第三個，curing，醃製。這個字也有治療的意思，因為古人覺得，鹽醃過的肉就像被治療過、變健康了。</p>
+        <p>第四個，brining，鹽水浸泡。brine 是鹽水。</p>
+        <p>第五個，fermentation，發酵。字根 ferment 也有躁動、騷動的意思，發酵就是微生物在食物裡騷動的過程。</p>
+        <p>第六個，botulism，肉毒桿菌中毒。這個字記不起來沒關係，重點是知道硝石可以預防它。</p>
+        <p>第七個，scurvy，壞血病。維生素 C 缺乏症。</p>
+        <p>最後一個英文片語，rub salt into the wound，在傷口上撒鹽。這個說法源自於古代用鹽消毒傷口，但鹽會讓傷口非常痛。現在引申為，在別人已經難過的時候，再說讓他更難過的話。下次有人雪上加霜，你可以說 Don&#x27;t rub salt into the wound。</p>
+        <p>下一回，我們要進入鹽巴的大千世界，認識喜馬拉雅粉紅鹽、法國鹽之花、夏威夷黑鹽、印度黑鹽這些風味獨特的特色鹽。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-04" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Four. Salt and Food Preservation. The First Refrigerator Ever Invented.</p>
+        <p>Welcome back to our salt mini course. In the previous chapters, we talked about the history of salt, how it shaped civilizations, and its magical role in seasoning food. Today, we are going to explore an even older function of salt, which is preservation. In an age without refrigerators, freezers, or vacuum packaging, how did humans manage to keep food through the long winter? The answer is salt. Salt was the first refrigerator humans ever invented. And this refrigerator runs without electricity, never breaks down, and has been working for thousands of years.</p>
+        <p>Let us start with the basic principle. Why does food spoil? Because food contains water, and water supports tiny living things called microorganisms. These include bacteria, molds, and yeasts. These microorganisms feed on the food, multiply quickly, and release acids, gases, and toxins along the way. That is what makes food go bad, smell terrible, or even become dangerous. The most direct way to stop food from spoiling is to make these microorganisms unable to live. And salt happens to be their natural enemy.</p>
+        <p>So how does salt kill microorganisms? This brings us to a process called osmosis. When you rub salt on a piece of meat, the salt creates a high concentration environment on the surface. The water inside the microbial cells is then pulled out toward this high concentration zone. Once the cells lose their water, they shrivel up and die. By the same logic, salt also pulls water out of the meat itself. Once the meat becomes dry, surviving microbes have no chance to multiply. That is the basic principle of salt preservation. You dehydrate the food and the bacteria at the same time.</p>
+        <p>Humans have been preserving food with salt for at least six thousand years. The ancient Egyptians took this technology to the highest level. They did not just use salt to preserve food. They also used salt to preserve people. Yes, I am talking about the famous mummies. To make a mummy, the Egyptians used a special salt mixture called natron, which was packed around the body to draw out every drop of moisture. A body treated this way could last for thousands of years in the dry desert air without rotting. Those pharaoh mummies you see in museums today are all the work of salt.</p>
+        <p>Now back to food. In Europe, salted meat was the star of the medieval diet. Every autumn, farmers slaughtered pigs, cattle, and sheep, because there was no way to feed all the animals through the winter. After slaughter, most of the meat was preserved with salt to make ham, bacon, sausage, and salted pork. These salted meats carried the family through the entire winter and provided their main source of protein. Italian Parma ham, Spanish Iberico ham, German Black Forest ham, all these expensive delicacies we enjoy today started as peasant survival food.</p>
+        <p>Fish was also commonly preserved with salt. Herring from northern Europe, cod from Portugal, salmon from Japan, all were salted and shipped inland or to far away places. The Portuguese love a salted cod dish called bacalhau, and they say there are three hundred and sixty five ways to cook it, one for every day of the year. The reason behind this comes from history. Portugal was a great seafaring nation, and sailors needed protein that could last for long voyages. Salted cod became their main source. After five hundred years of eating it, salted cod became part of their national identity.</p>
+        <p>Now let us look at a more refined technique called brining. The salting we just talked about is dry curing, where you apply dry salt directly. Brining means soaking the food in salt water, often with sugar, herbs, and spices added. The advantage of brining is that the salt spreads evenly into every corner of the food, and because there is water in the mix, the food stays juicy rather than getting too dry. Many people brine their Thanksgiving turkey overnight, which keeps the meat tender and moist after roasting.</p>
+        <p>There is also a magical method called fermentation. This sounds contradictory at first. Does not fermentation cause food to spoil? Actually, no. Under the control of salt, harmful bacteria are suppressed, but helpful lactic acid bacteria can survive. These good bacteria turn the sugars in the food into lactic acid, which makes the environment acidic, and further blocks other bacteria. German sauerkraut, Korean kimchi, Japanese tsukemono, Chinese pickled long beans, all work on this same principle. Salt is not just a preservative. Salt is the conductor of the fermentation orchestra, deciding which microbes get to live and which must die.</p>
+        <p>When we talk about cured meats, we should mention saltpeter. The chemical name of saltpeter is potassium nitrate. Ancient people discovered that when a little saltpeter was added to salt, the cured meat would turn a beautiful pink color and would last even longer. This is because saltpeter blocks the growth of botulism bacteria, which can be deadly. The pinkish color of sausages, bacon, and ham that we eat today comes from this very compound. Of course, too much saltpeter is bad for health, so modern food safety regulations strictly limit how much can be used.</p>
+        <p>Let us take a small detour and talk about how sailors survived during the Age of Discovery. In the sixteenth and seventeenth centuries, European ships went on voyages that lasted months or even years. There were no refrigerators on board, no vegetables, and no fresh meat. So what did the sailors eat? Salted meat, salted fish, and hardtack biscuits. A standard sailor meal might be a chunk of pork as hard as a rock, a worm filled biscuit, and a cup of watered down rum. This diet caused a severe lack of vitamin C, leading to a terrible disease called scurvy. Bleeding gums, falling teeth, wounds that would not heal, many sailors died this way at sea. Later, the British discovered that eating a lemon or lime every day could prevent it. That is why British sailors got the nickname limey.</p>
+        <p>By the late nineteenth century, refrigeration technology became widespread, and salt slowly lost its role as the main food preservative. But even today, salt remains one of the most important additives in modern processed food. Walk through any supermarket and look at the chips, canned food, ham, and cheese. The sodium content is shockingly high. Partly for flavor, partly still for preservation, so the food can sit on shelves for years without spoiling.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, preservation. The verb is preserve, the noun is preservation. The word preserve can also be a noun referring to fruit jam.</p>
+        <p>Second, osmosis. This is the movement of water from a low concentration to a high concentration area, the key mechanism in salt preservation.</p>
+        <p>Third, curing. This word also means to heal, because ancient people believed that salted meat was treated and healed, making it safe to eat.</p>
+        <p>Fourth, brining. Brine simply means salt water.</p>
+        <p>Fifth, fermentation. The root ferment also carries the meaning of stirring up or being agitated. Fermentation is the process of microbes stirring up the food in a controlled way.</p>
+        <p>Sixth, botulism. You do not need to memorize the spelling. Just remember that saltpeter can prevent it.</p>
+        <p>Seventh, scurvy. The disease caused by vitamin C deficiency.</p>
+        <p>And finally, a fun English idiom, rub salt into the wound. This phrase comes from the ancient practice of using salt to disinfect wounds, which was extremely painful. Today, it means making someone feel even worse when they are already hurting. Next time you see someone making a bad situation worse, you can say, Do not rub salt into the wound.</p>
+        <p>In our next chapter, we are going to enter the colorful world of specialty salts. We will meet Himalayan pink salt, French flower of salt, Hawaiian black salt, and Indian black salt, each with its own unique flavor and story. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch05">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 05</div>
+    <div class="chapter-emoji">🌍</div>
+    <h2 class="chapter-title-zh">全球鹽巴大圖鑑</h2>
+    <h3 class="chapter-title-en">A World Atlas of Salt</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-05" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-05" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-05" role="tabpanel">
+      <div class="script zh-script">
+        <p>第五回，全球鹽巴大圖鑑，從喜馬拉雅粉鹽到法國鹽之花。</p>
+        <p>歡迎回到鹽巴微課程。前面我們講了鹽的歷史、文明、調味、保存，今天我們要進入一個五彩繽紛的世界，全球的特色鹽。你可能以為鹽就是白白的、鹹鹹的，但其實鹽的家族非常龐大，有粉紅色的、灰色的、黑色的、紅色的，每一種都有自己的風味、產地、文化背景。今天我們就來一趟世界鹽巴之旅。</p>
+        <p>我們先從最基本的開始。一般我們在超市買的食鹽，英文叫做 table salt，是經過高度精製的純氯化鈉，純度通常超過百分之九十九。這種鹽顆粒細小、溶解快、價格便宜，是現代廚房的主力。為了預防甲狀腺腫大，很多國家的食鹽會加碘，這叫做碘鹽，英文是 iodized salt。台灣自從一九六七年開始強制食鹽加碘以後，俗稱的大脖子病就幾乎絕跡了。這是公共衛生的一大勝利。</p>
+        <p>接下來是海鹽，英文叫做 sea salt。海鹽是把海水引到鹽田，靠陽光把水分蒸發掉，留下的鹽結晶。海鹽的顆粒比較大，礦物質比較豐富，吃起來有一種比較複雜、比較有層次的鹹味。台灣著名的鹽田，像是台南七股、嘉義布袋，都是海鹽的產地。台灣的鹽業曾經非常興盛，鹽田一片白茫茫，工人推著小推車收鹽的畫面，是很多老一輩台灣人的共同記憶。可惜後來因為進口鹽更便宜，台灣的鹽田大多停產了，現在主要保留作為觀光景點。</p>
+        <p>接下來介紹一種非常有名的鹽，喜馬拉雅粉紅鹽，英文是 Himalayan pink salt。這種鹽其實不是來自喜馬拉雅山，而是來自巴基斯坦旁遮普省的克烏拉鹽礦。這座鹽礦是世界第二大的鹽礦，藏量驚人。喜馬拉雅粉紅鹽的歷史，要追溯到大約兩億五千萬年前，那時候這個地方還是一片海。後來海水蒸發，鹽被埋在地下，加上一些礦物質，特別是氧化鐵，也就是鐵鏽，讓鹽變成了漂亮的粉紅色。</p>
+        <p>喜馬拉雅粉紅鹽這幾年在全球非常紅，被很多人吹捧成最健康的鹽。但是要老實說，從營養學的角度，它含的微量礦物質太少，對健康的幫助微乎其微。它的真正魅力，在於漂亮的顏色和獨特的礦物風味，所以很適合用來做最後的點綴。喜馬拉雅鹽磚還有一個有趣的用法，就是把整塊鹽切成方形，加熱之後直接在上面煎肉、烤蔬菜，鹽磚會慢慢釋放鹹味到食物裡，是一種非常炫的烹飪方式。</p>
+        <p>接下來是法國的鹽之花，英文是 fleur de sel，這個字直接翻譯就是鹽的花朵。鹽之花是手工採收的頂級海鹽，產地主要在法國西部的布列塔尼地區，特別是蓋朗德這個地方。當海水在鹽田裡蒸發的時候，會在水面形成一層薄薄的、像花朵一樣的結晶，這就是鹽之花。採鹽工人必須在特定的天氣下，用一種扁平的工具，輕輕地把這層結晶撈起來，動作要快、要輕，因為一不小心就會沉到水底。所以鹽之花產量很少，價格非常貴，一磅可以賣到三十美元以上，被稱為鹽中之鑽。鹽之花口感清脆，鹹味溫和，通常是在菜上桌前才撒一點，享受那種在嘴裡迸裂的感覺。</p>
+        <p>法國還有另一種鹽，叫做凱爾特海鹽，或灰鹽，英文是 sel gris 或 Celtic salt。這種鹽是從鹽田底部採收的，因為混了一些灰色的黏土，顏色帶灰，水分也比較多。灰鹽的礦物質豐富，鹹味比較柔和，很適合用來煮湯、燉肉。</p>
+        <p>接下來我們飛到夏威夷。夏威夷有一種非常特別的黑鹽，英文是 Hawaiian black salt 或 black lava salt。這種鹽是把海鹽跟活性碳混合而成的，活性碳來自夏威夷的火山岩。黑鹽看起來像小石頭，有一種微微的礦物香氣，撒在白色的料理上特別漂亮。夏威夷還有一種紅鹽，叫做 alaea salt，是混了當地紅色火山土，顏色帶磚紅，有獨特的鐵鏽香氣，傳統上用在夏威夷的祭祀儀式中。</p>
+        <p>印度的黑鹽是另外一種完全不同的東西，英文是 kala namak，或 black salt，但其實顏色是粉紅紫色，磨成粉之後才變灰色。這種鹽是在窯裡用炭、香料、種子一起加熱製成的，過程中產生了硫化合物，所以聞起來有一種類似溫泉蛋、甚至有點像臭雞蛋的氣味。聽起來很恐怖對不對，但是這種味道在印度料理裡非常重要，特別是素食料理，用一點黑鹽，可以讓豆腐、馬鈴薯、鷹嘴豆嚐起來有蛋的香氣。素食版的歐姆蛋，就是靠這種鹽做出蛋味的。</p>
+        <p>接下來介紹兩種職人鹽。第一種是片鹽，英文是 flake salt 或 flaky salt。最有名的是英國的馬爾頓鹽，呈金字塔形的薄片結晶，口感酥脆，是高級料理最後點綴的首選。第二種是煙燻鹽，英文是 smoked salt。把海鹽用木頭煙燻過，鹽會吸收木頭的香氣，撒在烤肉、烤蔬菜、甚至雞尾酒上，都有畫龍點睛的效果。</p>
+        <p>最後我們講一種非常特別的東西，韓國的竹鹽。韓國人把粗海鹽裝進竹筒裡，用黃土封口，然後在松木火裡燒到攝氏一千度以上，反覆燒九次。這個過程叫做九蒸九烤。最後的成品是一種帶有礦物香氣、價格驚人的高級鹽，被認為有藥用價值。一罐好的竹鹽，可以賣到幾百美元。</p>
+        <p>聽到這裡你可能會問，這些鹽真的差很多嗎？老實說，從化學成分看，差別都在百分之一以下。所有的鹽，主成分都是氯化鈉。但是從風味、口感、文化、歷史的角度看，每一種鹽都有自己的個性。對廚師來說，選對鹽，就像選對音樂家，可以讓整道菜的層次完全不一樣。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，table salt，食鹽。直譯是餐桌上的鹽。</p>
+        <p>第二個，iodized salt，碘鹽。iodize 是動詞，加碘的意思。</p>
+        <p>第三個，sea salt，海鹽。</p>
+        <p>第四個，Himalayan pink salt，喜馬拉雅粉紅鹽。記憶方法，粉紅色是因為含有 iron oxide，氧化鐵，也就是鐵鏽。</p>
+        <p>第五個，fleur de sel，鹽之花。fleur 在法文是花，sel 是鹽。</p>
+        <p>第六個，kala namak，印度黑鹽。記憶方法，這個鹽有蛋味，是素食者的好朋友。</p>
+        <p>第七個，flake salt，片鹽。flake 就是薄片、雪花。</p>
+        <p>最後，一個有趣的英文片語，below the salt，坐在鹽巴下面。中世紀的歐洲餐桌上，鹽巴是一種貴重的東西，會放在桌子中央，主人和貴賓坐在鹽巴的上方，地位低的人坐在鹽巴的下方。所以 below the salt 就引申為地位低、不受重視的意思。雖然這個說法現在用得不多，但是知道典故，可以加深對中世紀文化的理解。</p>
+        <p>下一回，我們要走出廚房，看看鹽巴在我們的居家生活中，有哪些意想不到的妙用，從清潔到除鏽，從保鮮花到防螞蟻，一片小小的鹽巴可以做的事情，超出你的想像。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-05" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Five. A World Atlas of Salt. From Himalayan Pink to French Flower of Salt.</p>
+        <p>Welcome back to our salt mini course. We have already covered the history, the civilizations, the seasoning science, and the food preservation of salt. Today, we are going to enter a colorful world, the global family of specialty salts. You may think that salt is just white and salty, but actually the salt family is enormous. There are pink ones, gray ones, black ones, red ones, each with its own flavor, origin, and cultural background. Today, let us take a journey around the world of salt.</p>
+        <p>Let us start with the basics. The salt you buy in the supermarket is called table salt. It is highly refined pure sodium chloride, usually more than ninety nine percent pure. This salt has fine grains, dissolves quickly, and is cheap. It is the workhorse of the modern kitchen. To prevent goiter, many countries add iodine to their table salt. This is called iodized salt. In Taiwan, since 1967, iodine has been required by law in table salt, and the so called big neck disease has almost disappeared. This is a great victory for public health.</p>
+        <p>Next is sea salt. Sea salt is made by channeling seawater into salt pans and letting the sun evaporate the water, leaving salt crystals behind. Sea salt has larger grains, contains more trace minerals, and offers a more complex and layered saltiness. Taiwan has famous salt fields in places like Cigu in Tainan and Budai in Chiayi. The Taiwanese salt industry once thrived, with white salt fields stretching to the horizon and workers pushing carts to collect the crystals. That image is a shared memory for the older generation in Taiwan. Unfortunately, imported salt became cheaper, and most Taiwanese salt fields closed down. Today they are mainly preserved as tourist attractions.</p>
+        <p>Now let us meet a very famous salt, Himalayan pink salt. Despite its name, this salt does not actually come from the Himalayan mountains. It comes from the Khewra salt mine in the Punjab region of Pakistan. This is the second largest salt mine in the world. The story of Himalayan pink salt goes back about two hundred and fifty million years, when this area was covered by a sea. After the sea dried up, the salt was buried underground. Mixed in with some minerals, especially iron oxide, which is basically rust, the salt took on a beautiful pink color.</p>
+        <p>Himalayan pink salt has become extremely popular in recent years, often promoted as the healthiest salt. To be honest, from a nutritional standpoint, the trace minerals it contains are far too small to have any real health benefit. Its true charm lies in its beautiful color and unique mineral flavor, which makes it perfect for finishing dishes. There is also a fun way to use Himalayan salt. You can cut a large salt block into a square slab, heat it in the oven, and cook meat or vegetables directly on top. The salt slowly releases its flavor into the food, a very impressive and dramatic way to cook.</p>
+        <p>Next is the French flower of salt, fleur de sel. The phrase literally means flower of salt. Fleur de sel is a hand harvested premium sea salt, mainly produced in the Brittany region of western France, especially in Guérande. When seawater evaporates in the salt pans, a thin layer of crystals forms on the surface, looking just like flowers floating on water. The salt workers must wait for the perfect weather, then carefully scoop up the surface layer with a flat tool. The work must be quick and gentle, because the crystals sink easily. Production is small, prices are sky high, sometimes thirty US dollars per pound or more. People call it the diamond of salts. Fleur de sel has a crisp texture and a mild saltiness, usually sprinkled on dishes right before serving, so you can enjoy that delightful crunch in your mouth.</p>
+        <p>France also has another type, called Celtic sea salt or sel gris, which means gray salt. This salt is harvested from the bottom of the salt pans, where it mixes with a bit of gray clay, giving it a grayish color and a moist texture. Gray salt is rich in minerals, has a softer salty taste, and works wonderfully in soups and stews.</p>
+        <p>Now let us fly to Hawaii. Hawaii has a very special black salt, called Hawaiian black salt, or black lava salt. This salt is made by mixing sea salt with activated charcoal that comes from Hawaiian volcanic rock. The salt looks like little black pebbles, has a subtle mineral aroma, and looks absolutely stunning sprinkled on light colored dishes. Hawaii also has a red salt called alaea salt, which is mixed with local red volcanic clay. It has a brick red color and a distinct iron rich aroma, and was traditionally used in Hawaiian ceremonial rituals.</p>
+        <p>Indian black salt is something completely different. It is called kala namak in Hindi. Despite the name, it is actually pinkish purple, only turning grayish when ground. This salt is made by heating raw salt in a kiln with charcoal, herbs, and seeds. During this process, sulfur compounds are formed, which give the salt an aroma similar to a hot spring egg, or some people would say, a slightly rotten egg smell. Sounds terrifying, right? But this flavor is incredibly important in Indian cooking, especially in vegetarian dishes. A pinch of black salt can make tofu, potatoes, or chickpeas taste like eggs. That is the secret of vegan omelets.</p>
+        <p>Let us also introduce two artisan salts. The first is flake salt, also called flaky salt. The most famous brand is Maldon salt from England, with pyramid shaped thin crystals, a crunchy texture, and is the top choice for finishing high end dishes. The second is smoked salt. Sea salt is smoked over wood, and absorbs the smoky aroma. Sprinkle it on grilled meat, roasted vegetables, or even cocktails, and you get a wonderful finishing touch.</p>
+        <p>Finally, let us look at a very special salt from Korea, bamboo salt. The Koreans pack coarse sea salt into bamboo tubes, seal them with yellow clay, and fire them in pine wood at over one thousand degrees Celsius. This process is repeated nine times, and it is called nine times steaming and roasting. The final product is a salt with a strong mineral aroma, shocking prices, and a reputation for medicinal value. A jar of good bamboo salt can sell for hundreds of US dollars.</p>
+        <p>You might be wondering, do these salts really taste that different? Honestly, the difference in chemical composition is less than one percent. All salt is mostly sodium chloride. But from the perspective of flavor, texture, culture, and history, each salt has its own personality. For a chef, choosing the right salt is like choosing the right musician. It can completely change the depth of a dish.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, table salt. The salt commonly found on the dining table.</p>
+        <p>Second, iodized salt. The verb iodize means to add iodine.</p>
+        <p>Third, sea salt. Salt harvested from evaporated seawater.</p>
+        <p>Fourth, Himalayan pink salt. Memory tip. The pink color comes from iron oxide, basically rust.</p>
+        <p>Fifth, fleur de sel. The French phrase means flower of salt.</p>
+        <p>Sixth, kala namak. Indian black salt with an eggy aroma, a vegan favorite.</p>
+        <p>Seventh, flake salt. Flake means a thin piece, like a snowflake.</p>
+        <p>And finally, a fun English idiom, below the salt. In medieval Europe, salt was very precious and was placed in the middle of the dining table. The host and important guests sat above the salt, while lower status people sat below the salt. So below the salt came to mean of low status or unimportant. The phrase is rarely used today, but knowing its origin gives a nice glimpse into medieval culture.</p>
+        <p>In our next chapter, we will step out of the kitchen and explore the surprising household uses of salt, from cleaning to removing rust, from preserving flowers to repelling ants. The tiny salt crystal can do far more than you imagine. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch06">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 06</div>
+    <div class="chapter-emoji">🧽</div>
+    <h2 class="chapter-title-zh">鹽巴的居家妙用·清潔篇</h2>
+    <h3 class="chapter-title-en">Salt at Home Part One Cleaning</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-06" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-06" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-06" role="tabpanel">
+      <div class="script zh-script">
+        <p>第六回，鹽巴的居家妙用，清潔篇。</p>
+        <p>歡迎回到鹽巴微課程。前面五回我們講了鹽的歷史、文化、調味、保存、種類，今天我們要把鹽帶出廚房，看看它在我們的家裡，還有哪些令人驚訝的妙用。你可能不知道，那一罐放在櫥櫃裡的鹽巴，其實是天然、便宜、又環保的萬能清潔劑。今天這一回，我們專門講清潔，下一回我們講其他的生活妙用。</p>
+        <p>我們先講一個原理。為什麼鹽巴可以清潔？它沒有泡沫，沒有香味，看起來那麼平凡。其實鹽巴有三個很厲害的特性。第一，它是天然的研磨劑。鹽的顆粒有稜有角，可以輕輕地磨掉污垢，又不會傷害大部分的表面。第二，它有吸水的能力。鹽會把液態的污漬吸出來，特別適合處理新鮮的污漬。第三，它跟其他材料搭配的時候，比如醋、檸檬、小蘇打，會產生加乘的清潔效果。掌握了這三個特性，鹽巴就變成你家裡最便宜、最環保的清潔武器。</p>
+        <p>接下來，我們一個一個來看實際的應用。</p>
+        <p>第一個，紅酒漬。這是很多人最頭痛的污漬。如果你不小心把紅酒灑在地毯、桌布、或衣服上，不要慌張，動作要快。先用乾淨的布把多餘的酒吸掉，但不要用力擦，否則會擴大污漬範圍。然後在污漬上倒一層厚厚的鹽，讓鹽把酒吸出來。等鹽變成粉紅色或紅色之後，再用吸塵器吸掉，或是用清水沖洗。這個方法對新鮮的污漬最有效，乾掉的就比較難處理了。</p>
+        <p>第二個，鐵鏽。家裡的剪刀、菜刀、鑄鐵鍋生鏽了怎麼辦？拿一顆檸檬切半，沾上粗鹽，直接在生鏽的地方搓。檸檬的酸會跟鐵鏽反應，把它溶解，鹽則扮演研磨劑的角色，把鬆動的鏽磨掉。搓完之後用清水沖乾淨，再擦乾。這個方法對輕微的鏽很有效，重度的鏽可能要用鋼絲球加鹽水浸泡。</p>
+        <p>第三個，銅器和黃銅。家裡有銅製的水龍頭、把手、裝飾品嗎？時間久了會變得黯淡、發黑。混合等量的麵粉、白醋、鹽，調成糊狀，塗在銅器上，靜置一個小時，然後用軟布擦拭、清水沖洗、擦乾。你會發現銅器亮得像新的一樣。這是因為醋的酸跟銅的氧化物反應，鹽幫助研磨，麵粉讓糊狀物附著在銅器上不滴落。</p>
+        <p>第四個，玻璃杯。葡萄酒杯、香檳杯上面有水漬、霧霧的不透明嗎？把鹽倒進杯子裡，加一點點水，做成鹽糊，用手指在杯子裡面輕輕轉動，鹽會把水垢磨掉。然後用清水沖乾淨。如果是長頸的杯子手伸不進去，可以用筷子綁一塊布來代替手指。</p>
+        <p>第五個，砧板。木製砧板用久了，容易卡食物殘渣、留下味道。先把砧板灑滿粗鹽，再用半顆檸檬當刷子，在砧板上搓，鹽會清出細縫裡的殘渣，檸檬的酸會殺菌、去味。最後用清水沖乾淨，立起來陰乾。這個方法每週做一次，砧板可以用很久。</p>
+        <p>第六個，海綿。廚房的菜瓜布、海綿用久了會有異味，又黏又滑。把海綿泡在熱鹽水裡幾個小時，最好是過夜。鹽水會殺死細菌、溶解油脂、去除異味，海綿就像復活了一樣。一杯熱水加四分之一杯鹽，就是基本的比例。這個方法可以讓海綿多用好幾週，不用一直丟掉新的。</p>
+        <p>第七個，水管異味。廚房的水槽下水道有怪味嗎？這通常是油脂跟食物殘渣卡在管子裡發酵的味道。倒一杯鹽，再倒一杯小蘇打，最後沖下半壺熱水。鹽跟小蘇打會去除黏液，熱水會沖走油脂。每兩週做一次，水管就能保持清新。</p>
+        <p>第八個，焦黑的鍋底。鑄鐵鍋、不鏽鋼鍋燒焦了，刷不掉怎麼辦？鍋底先撒一層鹽，再倒一點水，煮到沸騰，靜置幾個小時。焦黑的部分會浮起來，用木鏟一刮就掉了。如果還是頑強，可以加一點白醋一起煮。</p>
+        <p>第九個，熨斗。熨斗用久了，底盤會卡上一層棕色的污垢，熨衣服還會勾到布。拿一張白紙，撒一層細鹽，把熨斗開到中溫，在紙上來回燙幾次，鹽會把污垢吸附到紙上。記得熨斗要事先拔掉電源、冷卻之後，再用乾淨的布擦乾淨。</p>
+        <p>第十個，假花。家裡擺很久的塑膠花、絹花、上面積了一層灰塵和小蜘蛛網。把花放進一個紙袋或厚塑膠袋，加兩到三大匙的鹽，把袋口封好，搖一搖。鹽會像細砂一樣把灰塵震下來，花就煥然一新。這個方法不會弄濕花，不會破壞顏色，比一根一根擦快很多。</p>
+        <p>最後一個進階技巧，鹽加醋的萬用清潔液。把一杯白醋、半杯水、兩大匙鹽混合，裝進噴瓶。這個噴霧可以清水槽、清流理台、清浴室磁磚、清馬桶、清水龍頭的水垢。醋酸去油去垢，鹽去鈣化物，幾乎家裡硬表面都可以用。唯一要注意的是，這個噴霧不要用在天然石材上，比如大理石、花崗岩，因為酸會傷害石頭。</p>
+        <p>聽完這些是不是很驚訝？一罐幾十塊台幣的食鹽，居然可以取代家裡大半的清潔劑。而且鹽是天然的，不會有化學殘留，對小孩、寵物都很安全，用完沖到水溝裡也不會污染環境。難怪我們的祖母輩，那個還沒有化學清潔劑的年代，每個家庭都把鹽當寶。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，abrasive，研磨劑。a 是強調，brasive 來自拉丁文的擦、磨。</p>
+        <p>第二個，stain，污漬。stainless 是不會留下污漬的，所以 stainless steel 就是不鏽鋼。</p>
+        <p>第三個，rust，鐵鏽。動詞是 rusty。記憶方法，rust 跟英文的 ruin 毀壞同源，鐵鏽就是慢慢毀壞金屬。</p>
+        <p>第四個，scrub，用力刷洗。</p>
+        <p>第五個，tarnish，金屬失去光澤。tarnished silver 就是發黑的銀器。</p>
+        <p>第六個，descaler，去水垢劑。scale 在這裡是水垢，de 是去除的字首。</p>
+        <p>第七個，sponge，海綿。</p>
+        <p>最後，一個有趣的英文表達，rub salt on the wound 我們上一回講過，今天介紹另一個相關的，salt away，把東西像鹽一樣藏起來。古代人把貴重的食物用鹽醃起來收藏，所以 salt away 引申為儲蓄、存錢的意思。He has salted away a fortune，意思是他存了一大筆錢。</p>
+        <p>下一回，我們繼續看鹽巴在居家生活的其他妙用，包括防螞蟻、保鮮花、撲滅小火、融化冰雪，還有讓你更舒服的鹽水漱口和泡腳。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-06" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Six. Salt at Home, Part One. The Cleaning Edition.</p>
+        <p>Welcome back to our salt mini course. In the past five chapters, we have covered the history, culture, seasoning, preservation, and types of salt. Today, we are going to take salt out of the kitchen and explore its surprising uses around the home. You may not realize this, but that humble jar of salt in your cupboard is actually one of the most natural, affordable, and eco friendly cleaning agents you can find. This chapter is all about cleaning, and in the next chapter, we will look at other household uses.</p>
+        <p>Let us start with the principle. Why can salt clean things? It has no foam, no fragrance, and looks so ordinary. Actually, salt has three powerful properties. First, it is a natural abrasive. The grains have sharp edges, gentle enough to scrub away dirt without scratching most surfaces. Second, it has the power to absorb water. Salt pulls liquids out of stains, especially fresh ones. Third, when combined with other ingredients like vinegar, lemon, or baking soda, it produces a multiplied cleaning effect. Master these three properties, and salt becomes the cheapest and greenest cleaning weapon in your home.</p>
+        <p>Now let us look at the actual applications one by one.</p>
+        <p>First, red wine stains. This is one of the toughest stains for many people. If you spill red wine on a carpet, tablecloth, or shirt, do not panic, but act quickly. First, blot up the excess wine with a clean cloth, but do not rub, or the stain will spread. Then pour a thick layer of salt on the stain and let it absorb the wine. When the salt turns pink or red, vacuum it up or rinse with cold water. This method works best on fresh stains. Dried stains are much harder to deal with.</p>
+        <p>Second, rust. What if your scissors, kitchen knives, or cast iron pan get rusty? Cut a lemon in half, dip it in coarse salt, and scrub the rusty area directly. The acid in the lemon reacts with the rust and dissolves it, while the salt acts as an abrasive to scrape off the loosened rust. Rinse with water and dry. This method works on light rust. Heavy rust may require soaking with steel wool and salt water.</p>
+        <p>Third, copper and brass. Do you have copper faucets, handles, or decorations at home? Over time, they become dull and dark. Mix equal parts flour, white vinegar, and salt into a paste. Apply it to the copper, leave it for one hour, then wipe with a soft cloth, rinse, and dry. The copper will shine like new. The acid in the vinegar reacts with the copper oxides, the salt provides the scrubbing power, and the flour helps the paste stick to the surface without dripping.</p>
+        <p>Fourth, glassware. Do your wine glasses or champagne flutes have water marks or look foggy? Pour some salt into the glass, add a little water to make a paste, and use your finger to gently swirl it around the inside. The salt will scrub away the mineral deposits. Then rinse with water. If the glass has a long neck and your finger cannot reach inside, tie a small cloth onto a chopstick and use that instead.</p>
+        <p>Fifth, cutting boards. Wooden cutting boards collect food bits and odors over time. Sprinkle the surface with coarse salt, then use half a lemon as a brush, scrubbing it across the board. The salt cleans out the cracks, and the lemon disinfects and removes smells. Rinse with water and stand the board up to air dry. Doing this once a week keeps a wooden board in great shape for years.</p>
+        <p>Sixth, sponges. Kitchen sponges get smelly, slimy, and gross over time. Soak the sponge in hot salt water for a few hours, ideally overnight. The salt water kills bacteria, dissolves grease, and removes odors. The sponge feels almost brand new. A simple ratio is one cup of hot water with one quarter cup of salt. This trick lets you keep using a sponge for several more weeks instead of throwing it out.</p>
+        <p>Seventh, drain odors. Does the kitchen drain smell weird? It is usually grease and food bits fermenting in the pipe. Pour in one cup of salt, then one cup of baking soda, followed by half a kettle of hot water. The salt and baking soda break down the slime, and the hot water flushes out the grease. Do this every two weeks and your drain stays fresh.</p>
+        <p>Eighth, burnt pans. If your cast iron or stainless steel pan has a burnt black layer that just will not come off, sprinkle a layer of salt on the bottom, add a little water, bring it to a boil, and let it sit for a few hours. The burnt bits lift up and a wooden spatula scrapes them off easily. For stubborn burns, add a little white vinegar to the boil.</p>
+        <p>Ninth, irons. After many uses, an iron develops a brown sticky layer on the plate, which then catches on fabric. Take a sheet of plain white paper, sprinkle a layer of fine salt on it, set the iron to medium heat, and run it back and forth over the paper a few times. The salt picks up the dirt onto the paper. Remember to unplug the iron and let it cool first, then wipe the plate with a clean cloth.</p>
+        <p>Tenth, artificial flowers. Plastic or silk flowers that have been on display for a long time collect dust and even tiny spider webs. Put the flowers in a paper bag or thick plastic bag, add two or three tablespoons of salt, seal the bag, and shake it. The salt acts like fine sand and shakes the dust off. The flowers come out looking refreshed. This method does not get them wet and does not damage the colors, much faster than wiping each petal.</p>
+        <p>Finally, an advanced trick, an all purpose cleaner made of salt and vinegar. Mix one cup of white vinegar, half a cup of water, and two tablespoons of salt in a spray bottle. This spray cleans sinks, countertops, bathroom tiles, toilets, and faucets with hard water deposits. The acid cuts grease, the salt removes calcium buildup, and the spray works on almost every hard surface at home. The only warning is, do not use this spray on natural stone like marble or granite, because the acid will damage the stone.</p>
+        <p>Sounds amazing, right? A jar of salt that costs just a few dollars can replace half the cleaning products in your home. Salt is natural, leaves no chemical residue, is safe for kids and pets, and does not pollute the environment when it goes down the drain. No wonder our grandmothers, back in the days before chemical cleaners, treated salt like a treasure in every household.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, abrasive. A substance that scrubs and polishes surfaces. The a stresses the action, brasive comes from a Latin root meaning to scrape.</p>
+        <p>Second, stain. A mark left on something. Stainless means no stains form, so stainless steel means rust resistant steel.</p>
+        <p>Third, rust. The reddish brown coating that forms on iron. Memory tip. Rust comes from the same root as ruin, because it slowly ruins metal.</p>
+        <p>Fourth, scrub. To clean by rubbing hard.</p>
+        <p>Fifth, tarnish. When metal loses its shine and turns dark. Tarnished silver is silverware that has turned black.</p>
+        <p>Sixth, descaler. A product that removes scale, the chalky deposit from hard water. The prefix de means to remove.</p>
+        <p>Seventh, sponge. The familiar kitchen cleaning tool.</p>
+        <p>And finally, an interesting English expression, salt away. To save something carefully, like ancient people salted away meat for the future. Today it means to save money. He has salted away a fortune means he has saved a lot of money.</p>
+        <p>In our next chapter, we will continue with more household uses of salt. We will talk about repelling ants, preserving flowers, putting out small fires, melting ice and snow, and using salt for gargling and foot soaks. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch07">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 07</div>
+    <div class="chapter-emoji">🏡</div>
+    <h2 class="chapter-title-zh">鹽巴的居家妙用·生活篇</h2>
+    <h3 class="chapter-title-en">Salt at Home Part Two Life</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-07" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-07" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-07" role="tabpanel">
+      <div class="script zh-script">
+        <p>第七回，鹽巴的居家妙用，生活篇。</p>
+        <p>歡迎回到鹽巴微課程。上一回我們講了鹽巴在清潔上的妙用，今天我們繼續探索它在生活的其他面向，怎麼幫我們解決一些小麻煩。從花園、廚房、安全防護到個人保養，鹽巴幾乎可以說是家裡的萬用救星。聽完這一回，你可能會想，以前怎麼沒有早一點知道這些。</p>
+        <p>第一個，防螞蟻。夏天最討厭的就是螞蟻成群進屋。鹽是天然的螞蟻驅蟲劑，因為螞蟻不喜歡鹽，會避開有鹽的地方。把鹽撒在窗台、門縫、水管出口、流理台邊，這些螞蟻常出沒的地方，可以形成一道隱形的防線。如果你已經發現螞蟻的行進路線，沿著路線撒一條鹽巴，螞蟻就會放棄那條路。這個方法對小孩、寵物都安全，不會像殺蟲劑那樣有毒。</p>
+        <p>第二個，撲滅小火。廚房如果不小心起小火，特別是油鍋著火，千萬不要用水。水碰到熱油會爆炸，火會更大。這時候應該關掉爐火，蓋上鍋蓋，或是大量倒鹽。鹽可以隔絕氧氣，把火悶熄。當然，這只適合小規模的火，火勢一旦失控，還是要趕快用滅火器或打火警電話。家裡的瓦斯爐旁邊，放一罐鹽是很好的安全準備。</p>
+        <p>第三個，融化冰雪。台灣比較不需要這個技巧，但是住在比較冷的地方，比如山上的朋友，可能會用得到。鹽撒在結冰的路面、台階、車道上，可以快速融化冰塊。原理很簡單，鹽水的冰點比純水低，所以鹽會把冰融化。歐美國家冬天用大量的鹽融雪，叫做 road salt，路面用鹽，通常是比較便宜、未精製的工業鹽。台灣高山地區冬天結冰的時候，可以撒粗鹽防滑。</p>
+        <p>第四個，保鮮花。剪下來的花插在花瓶裡，常常兩三天就垂頭喪氣。在花瓶的水裡加一小撮鹽，可以抑制細菌生長，延長花的壽命。一公升的水加四分之一茶匙的鹽就夠了，太多反而會傷花。當然，記得每兩三天換一次水，加新的鹽，效果更好。</p>
+        <p>第五個，蛋的測試。家裡的雞蛋不知道新不新鮮怎麼辦？準備一杯水，加一茶匙鹽，攪拌融化，然後把蛋放進去。如果蛋沉到底，平躺著，是新鮮的。如果蛋立起來，但是底部還在水底，是中等新鮮。如果蛋浮起來，請立刻丟掉。這個原理是因為蛋會隨著時間，內部水分蒸發、空氣進入，密度變小，所以越老的蛋越會浮。鹽水可以放大這個差異，更容易判斷。</p>
+        <p>第六個，清水管。我們上一回講了用鹽加小蘇打清水管異味，這裡再講一個進階版。如果水管已經有點塞住，可以倒一杯鹽，再倒一杯小蘇打，接著倒一杯白醋。會產生大量泡泡和氣體，這些氣體會推動水管裡的污垢。等十五分鐘，再用大量熱水沖。這個方法可以省下找水電工的錢，當然，如果是嚴重的堵塞還是要找專業人士。</p>
+        <p>第七個，去除衣服汗漬。白色襯衫腋下的黃色汗漬非常難看。把鹽溶解在熱水裡，泡衣服一個小時，然後正常清洗。鹽會分解汗漬裡的蛋白質和油脂。對於頑固的汗漬，可以鹽加白醋加水做成糊狀，塗在汗漬上靜置三十分鐘，再洗。</p>
+        <p>第八個，鹹水漱口。喉嚨痛、感冒、口腔潰瘍的時候，用溫鹽水漱口是非常古老、也非常有效的方法。一杯溫水加半茶匙鹽，攪拌融化，含在嘴裡漱口幾十秒，再吐掉，每天三到四次。鹽水可以殺菌、消炎、減少喉嚨的腫脹。這是醫生都會推薦的家庭療法，副作用幾乎是零。</p>
+        <p>第九個，鹽水泡腳。工作一整天，腳又痠又腫怎麼辦？準備一盆溫水，加兩到三大匙的鹽，最好是粗鹽或瀉鹽，泡腳二十分鐘。鹽水可以促進血液循環、放鬆肌肉、減輕水腫。如果再加幾滴薰衣草精油，效果更棒。這是日本人很重視的「足湯」文化，簡單又療癒。</p>
+        <p>第十個，瀉鹽的特別用途。我們順便講一下瀉鹽，英文是 Epsom salt。瀉鹽其實不是我們吃的鹽，它是硫酸鎂，但因為長得像鹽，所以才叫鹽。瀉鹽最有名的用途是泡澡。在浴缸裡加一杯到兩杯瀉鹽，泡二十分鐘，可以舒緩肌肉痠痛、放鬆神經、改善睡眠。運動員特別愛這個方法。瀉鹽還可以當植物的肥料，特別是番茄、辣椒、玫瑰，因為它們需要鎂。</p>
+        <p>第十一個，去除冰箱異味。冰箱裡有奇怪的味道嗎？在一個小碗裡放滿鹽，再加幾滴香草精或檸檬汁，放進冰箱角落，鹽會吸附異味，香草會留下淡淡的香氣。每兩週換一次新的，比小蘇打還好用。</p>
+        <p>第十二個，磨咖啡機。家用磨豆機用久了，會有咖啡渣卡在刀片之間，影響味道。每個月一次，倒一把粗鹽進去磨豆機，啟動三十秒，鹽會把卡住的咖啡渣磨出來，順便清潔刀片。磨完之後倒掉鹽，再磨一些咖啡豆把鹽味帶走就可以了。</p>
+        <p>第十三個，水果保鮮。切開的蘋果、梨子、香蕉，馬上就會變黑。把切片放進淡鹽水裡浸泡幾分鐘，再撈出來瀝乾，可以延緩氧化，保持白色。鹽水濃度大約是一公升的水加半茶匙的鹽，不會讓水果變鹹。</p>
+        <p>第十四個，去除指尖的食物味道。切完洋蔥、大蒜、生魚之後，手上的味道怎麼洗都洗不掉嗎？把鹽倒在手心，加一點水搓成糊，搓手三十秒，再用肥皂洗一次，味道幾乎都會消失。這個原理是鹽會吸附帶有味道的分子。</p>
+        <p>聽完這些是不是覺得鹽巴真的太神奇了？從廚房到浴室、從花園到藥箱、從食物到清潔，鹽幾乎無所不能。這也是為什麼，世界各地的傳統智慧，都把鹽當成家裡必備的好東西。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，repel，驅趕、排斥。repellent 是名詞，驅蟲劑。</p>
+        <p>第二個，extinguish，撲滅。fire extinguisher 就是滅火器。</p>
+        <p>第三個，de ice，除冰。de 是去除的字首，加在動詞或名詞前面，表示反向動作。</p>
+        <p>第四個，gargle，漱口。注意這個是漱喉嚨那種咕嚕咕嚕的漱口，不是 rinse 那種只有口腔的漱。</p>
+        <p>第五個，Epsom salt，瀉鹽。Epsom 是英國的一個地名，最早發現這種鹽的地方。</p>
+        <p>第六個，oxidation，氧化。蘋果切開變黑就是氧化。</p>
+        <p>第七個，odor，氣味，特別是難聞的味道。中性的味道用 smell。</p>
+        <p>最後，一個有趣的英文片語，salt and pepper，鹽巴和胡椒。這個片語本來指調味料，但是現在也常用來形容人的頭髮，黑白相間。He has salt and pepper hair，就是說他的頭髮黑白夾雜，看起來成熟有魅力。下次描述一位有氣質的中年男士，你可以這樣說。</p>
+        <p>下一回，我們要聊鹽巴跟身體健康的關係。鈉到底是身體的好朋友，還是隱形殺手？吃多少剛剛好？運動後到底要不要補鹽？我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-07" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Seven. Salt at Home, Part Two. The Life Edition.</p>
+        <p>Welcome back to our salt mini course. In the last chapter, we covered how salt helps with household cleaning. Today, we continue our exploration of salt&#x27;s other roles in daily life, how it solves all kinds of small problems. From the garden to the kitchen, from safety to self care, salt is almost like a universal rescue agent. After this chapter, you might be saying, why did nobody tell me about this earlier.</p>
+        <p>First, repelling ants. Summer is the worst season for ant invasions. Salt is a natural ant repellent because ants do not like crossing salt and will avoid areas where it is sprinkled. Sprinkle salt along windowsills, door cracks, the openings of water pipes, and the edges of countertops, wherever ants tend to enter. This creates an invisible barrier. If you have already spotted the ant trail, sprinkle a line of salt across the path, and the ants will give up that route. This method is safe for children and pets, unlike toxic pesticides.</p>
+        <p>Second, putting out small fires. If a small fire breaks out in the kitchen, especially an oil pan fire, never use water. Water hitting hot oil will explode and the fire will grow even larger. Instead, turn off the stove, cover the pan with a lid, or dump a lot of salt on the fire. Salt smothers the flames by blocking oxygen. Of course, this only works for small fires. Once the fire is out of control, grab the fire extinguisher or call the fire department immediately. Keeping a jar of salt next to your gas stove is a smart safety habit.</p>
+        <p>Third, melting ice and snow. This may not be very useful in Taiwan, but for friends living in colder places, like mountain areas, it can come in handy. Sprinkling salt on icy roads, steps, or driveways quickly melts the ice. The reason is simple. Salt water has a lower freezing point than pure water, so salt dissolves the ice. Western countries use enormous amounts of road salt to clear snow in winter, usually a cheaper, unrefined industrial grade salt. When the mountains of Taiwan freeze in winter, sprinkling coarse salt helps prevent slipping.</p>
+        <p>Fourth, preserving cut flowers. Flowers in a vase often droop after just two or three days. Adding a small pinch of salt to the water slows bacterial growth and extends the life of the flowers. About one quarter teaspoon of salt per liter of water is enough. Too much will hurt the flowers. Remember to change the water every two or three days and add fresh salt each time for the best result.</p>
+        <p>Fifth, the egg freshness test. Not sure if the eggs in your fridge are still fresh? Prepare a glass of water, add one teaspoon of salt, stir until dissolved, and gently drop the egg in. If the egg sinks and lies flat at the bottom, it is fresh. If the egg stands upright but the bottom still touches the bottom, it is okay but aging. If the egg floats to the top, throw it out right away. Eggs lose moisture and gain air over time, so they become less dense and float more. The salt water makes this difference easier to see.</p>
+        <p>Sixth, clearing drains. We mentioned salt and baking soda for drain odors in the last chapter. Here is an advanced version for a partly clogged drain. Pour in one cup of salt, then one cup of baking soda, then one cup of white vinegar. The mixture will bubble and foam, pushing the gunk out of the pipe. Wait fifteen minutes and flush with plenty of hot water. This can save you a plumber&#x27;s bill, although serious clogs still need a professional.</p>
+        <p>Seventh, removing sweat stains from clothes. Yellow underarm stains on white shirts are ugly and stubborn. Dissolve salt in hot water and soak the shirt for an hour before washing as usual. The salt breaks down the proteins and oils in the sweat stain. For tough stains, make a paste of salt, white vinegar, and water, apply to the stain for thirty minutes, then wash.</p>
+        <p>Eighth, salt water gargling. When you have a sore throat, a cold, or a mouth ulcer, gargling with warm salt water is a very old and very effective home remedy. Stir half a teaspoon of salt into a cup of warm water, gargle in your mouth for thirty seconds, then spit it out. Do this three or four times a day. Salt water kills bacteria, reduces inflammation, and shrinks throat swelling. Doctors often recommend this with almost zero side effects.</p>
+        <p>Ninth, salt water foot soaks. After a long day, are your feet sore and swollen? Fill a basin with warm water, add two or three tablespoons of salt, ideally coarse or Epsom salt, and soak your feet for twenty minutes. The salt water improves blood circulation, relaxes muscles, and reduces swelling. Add a few drops of lavender essential oil for an even better experience. This is part of the Japanese ashiyu, or foot bath culture. Simple and deeply soothing.</p>
+        <p>Tenth, the special uses of Epsom salt. By the way, Epsom salt is not table salt at all. It is magnesium sulfate, but because it looks like salt, it got the name. The most famous use of Epsom salt is bathing. Add one or two cups to a bathtub of warm water and soak for twenty minutes to ease muscle aches, calm the nerves, and improve sleep. Athletes love this method. Epsom salt also works as a plant fertilizer, especially for tomatoes, peppers, and roses, which need magnesium.</p>
+        <p>Eleventh, removing fridge odors. Does your refrigerator smell off? Put a small bowl of salt with a few drops of vanilla extract or lemon juice in a corner of the fridge. The salt absorbs the smell and the vanilla leaves a subtle pleasant scent. Replace it every two weeks. Many people find this works even better than baking soda.</p>
+        <p>Twelfth, cleaning a coffee grinder. Home coffee grinders collect old grounds stuck between the blades over time, affecting the taste. Once a month, pour a handful of coarse salt into the grinder and run it for thirty seconds. The salt scrubs out the stuck grounds and cleans the blades. Discard the salt, then grind some coffee beans to clear out any salty residue.</p>
+        <p>Thirteenth, preserving cut fruit. Sliced apples, pears, and bananas turn brown very quickly. Soak the slices in lightly salted water for a few minutes, then drain. The salt slows oxidation and keeps the fruit looking fresh and white. The ratio is about half a teaspoon of salt per liter of water, which is too mild to make the fruit taste salty.</p>
+        <p>Fourteenth, removing food smells from your fingers. After cutting onions, garlic, or raw fish, the smell on your hands just will not wash off. Pour some salt onto your palm, add a little water to make a paste, and rub your hands for thirty seconds. Wash again with soap and the smell almost completely disappears. The salt absorbs the molecules that carry the smell.</p>
+        <p>After hearing all this, do you feel that salt is truly amazing? From kitchen to bathroom, from garden to medicine cabinet, from food to cleaning, salt can do almost everything. That is why traditional wisdom around the world has always treated salt as one of the most essential things in the home.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, repel. To drive away or push back. Repellent is the noun form, often used for insect repellent.</p>
+        <p>Second, extinguish. To put out a fire. Fire extinguisher is the device used to put out fires.</p>
+        <p>Third, de ice. To remove ice. The prefix de means to take away or reverse.</p>
+        <p>Fourth, gargle. To rinse the throat by holding liquid in the mouth and bubbling it. Different from rinse, which only cleans the inside of the mouth.</p>
+        <p>Fifth, Epsom salt. Named after Epsom, a town in England where this salt was first discovered.</p>
+        <p>Sixth, oxidation. The chemical process of reacting with oxygen, like an apple turning brown after being cut.</p>
+        <p>Seventh, odor. A smell, often an unpleasant one. For a neutral smell, we usually say smell.</p>
+        <p>And finally, a fun English idiom, salt and pepper. The phrase originally refers to the two basic seasonings, but it is also used to describe hair that is mixed gray and black. He has salt and pepper hair means his hair is graying in a distinguished way. Next time you describe a charming middle aged man, you can use this expression.</p>
+        <p>In our next chapter, we will talk about salt and health. Is sodium a friend or a hidden enemy of the body? How much is enough? Do we really need to replace salt after exercise? See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch08">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 08</div>
+    <div class="chapter-emoji">💪</div>
+    <h2 class="chapter-title-zh">鹽巴與身體健康</h2>
+    <h3 class="chapter-title-en">Salt and Health</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-08" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-08" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-08" role="tabpanel">
+      <div class="script zh-script">
+        <p>第八回，鹽巴與身體健康，鈉的兩面刃。</p>
+        <p>歡迎回到鹽巴微課程。我們已經一路聊了鹽的歷史、文明、調味、保存、種類，還有居家妙用。今天要進入一個更切身的主題，鹽巴跟我們身體的關係。鈉對身體到底是好還是壞？為什麼醫生常常叫我們少吃鹽？運動完真的要補鹽嗎？低鈉鹽是不是真的比較健康？這一回我們就用最簡單的方式，把這些常見的問題搞清楚。</p>
+        <p>我們先從一個基本事實開始。鈉是人體不可缺少的礦物質。我們的細胞、血液、神經、肌肉，每一個都需要鈉才能正常運作。鈉的主要功能有四個。第一，維持體液的平衡。我們的身體大約有百分之六十是水，這些水分布在細胞內外，靠鈉跟鉀來調節。第二，傳遞神經訊號。當你想動一根手指，大腦發出的訊號，是透過鈉離子在神經細胞之間流動傳遞的。第三，幫助肌肉收縮。包括最重要的心臟肌肉。第四，幫助營養素的吸收，特別是葡萄糖跟氨基酸。沒有鈉，這些功能都會崩潰。</p>
+        <p>所以如果一個人完全不吃鹽，會發生什麼事？會出現一種叫做低鈉血症的狀況，英文是 hyponatremia。症狀包括頭痛、噁心、肌肉抽筋、混亂、昏迷，嚴重的話會死亡。這在馬拉松選手身上偶爾會發生，因為他們流了大量的汗，又喝了大量的水，但是沒有補充電解質，鈉被稀釋得太低，反而出事。所以鈉，真的不能完全不吃。</p>
+        <p>那麼，吃多少剛剛好？根據世界衛生組織的建議，成年人每天的鈉攝取量，應該少於兩千毫克，換算成鹽大約是五公克，差不多就是一茶匙的量。聽起來不多對不對？但問題是，大部分人吃進去的鹽，遠遠超過這個數字。台灣人平均一天吃進去的鈉，大概是三千五到四千毫克，幾乎是建議量的兩倍。美國人更誇張，平均一天吃到三千四百毫克以上。</p>
+        <p>那麼吃太多鹽會怎樣？最有名的後果就是高血壓。鈉吃太多，身體會留住更多的水分來稀釋鈉，血液量增加，血管壓力就上升，這就是高血壓。長期高血壓會傷害血管，導致中風、心肌梗塞、腎臟病。這也是為什麼，醫生一直叫我們少吃鹽。除了高血壓，過多的鈉還跟胃癌、骨質疏鬆、腎結石、水腫有關。</p>
+        <p>但是這裡有個重點，很多人以為少吃鹽就是煮菜少放鹽，其實不對。研究發現，現代人吃進去的鹽，大約有百分之七十到八十，來自加工食品，不是來自廚房的鹽罐。洋芋片、泡麵、罐頭、火腿、香腸、起司、餅乾、麵包、調味料，這些東西的鈉含量都非常高。一碗泡麵的鈉，可能就超過一千八百毫克，差不多是一天建議量的全部了。所以真正要減鹽，重點是少吃加工食品，而不是煮菜不放鹽。</p>
+        <p>接下來我們講碘鹽的故事。碘是人體合成甲狀腺素必需的元素，缺碘會導致甲狀腺腫大，俗稱大脖子病。嚴重缺碘的孕婦，生下來的小孩會智力受損，叫做克汀症。二十世紀初，全世界有很多地區缺碘嚴重，特別是內陸山區。一九二零年代開始，瑞士跟美國率先在食鹽裡加碘，結果這些疾病急速下降。台灣從一九六七年開始強制食鹽加碘，效果非常顯著。所以說，碘鹽是公共衛生史上最便宜、最成功的政策之一。一公斤的鹽多加幾毛錢的碘，就可以拯救一個世代的孩子。</p>
+        <p>但是這幾年，有些人迷信天然海鹽、岩鹽，反而沒有加碘，結果碘缺乏的問題又開始回來了。日本、韓國因為吃很多海帶、海藻，碘攝取沒問題。但是台灣現代人吃飯越來越精緻，海帶吃得少，如果又改用沒加碘的進口鹽，長期下來可能會缺碘。所以如果你選擇高級鹽，記得均衡攝取海帶、海苔、紫菜、蛋黃、牛奶，補充碘。</p>
+        <p>接下來講運動跟鹽的關係。流汗的時候，身體會流失鈉，所以運動後補鹽是有道理的。但是，這要看運動的強度跟時間。如果你只是慢跑三十分鐘、流一點汗，喝白開水就夠了，不需要刻意補鹽。但是如果你跑馬拉松、打了兩小時的籃球、在大太陽下工作、或是健身房做了很重的訓練，這時候單純喝水反而會稀釋血液裡的鈉，產生低鈉血症。這時候應該喝運動飲料，或是水裡加一點鹽。一公升的水加四分之一茶匙的鹽，加一點糖跟檸檬，就是自製的電解質飲料。</p>
+        <p>接下來談低鈉鹽。市面上有一種低鈉鹽，把一半的氯化鈉換成氯化鉀，鈉含量減少一半。這對需要控制血壓的人是好東西，因為鉀有助於降血壓，剛好跟鈉相反。但是要注意，腎臟功能不好的人不能用，因為腎臟排不掉多餘的鉀，會引起心律不整。所以低鈉鹽不是萬靈丹，要先確認自己的腎臟健康。</p>
+        <p>最後分享幾個生活減鹽的小撇步。第一，少吃加工食品，多吃原型食物。第二，看食品標示，注意每份的鈉含量，一份超過六百毫克就算高鈉。第三，用香料、香草、檸檬、蒜、薑、辣椒來增加風味，減少依賴鹽。第四，外食的時候，不要把湯喝光，因為湯裡的鈉非常多。第五，慢慢減鹽，讓味蕾適應，大概一到兩個月，你會發現以前覺得剛好的鹹度，現在覺得太鹹了。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，sodium，鈉。化學符號 Na，來自拉丁文 natrium。</p>
+        <p>第二個，hypertension，高血壓。hyper 是過多，tension 是壓力。</p>
+        <p>第三個，hyponatremia，低鈉血症。hypo 是過少，natrium 是鈉，emia 是血液。所以三個字根加起來就是血液裡鈉太少。</p>
+        <p>第四個，iodine，碘。iodized salt 就是加碘鹽。</p>
+        <p>第五個，goiter，甲狀腺腫，俗稱大脖子病。</p>
+        <p>第六個，electrolyte，電解質。在水裡會分解成離子的物質，鈉、鉀、鈣、鎂、氯都是電解質。</p>
+        <p>第七個，processed food，加工食品。process 是加工、處理。</p>
+        <p>最後，一個跟健康有關的英文表達，take it with a grain of salt 我們前面講過，今天再介紹另一個鹽的片語，pour salt on it，加把勁、再來一點。這個說法源自於做菜時加鹽提味，引申為讓事情變得更精采。比如說，The story is good, but if you add some humor, it will really pour salt on it。</p>
+        <p>下一回，我們要進入鹽巴的精神世界，談談為什麼日本相撲選手要撒鹽、為什麼神道教用鹽淨化空間、為什麼基督教把鹽當成神聖的象徵，還有達文西畫的最後晚餐裡，那打翻的鹽到底有什麼含意。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-08" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Eight. Salt and Health. The Double Edged Sword of Sodium.</p>
+        <p>Welcome back to our salt mini course. We have already covered the history, civilizations, seasoning, preservation, types, and household uses of salt. Today we are stepping into a more personal topic, the relationship between salt and our bodies. Is sodium a friend or an enemy of health? Why do doctors keep telling us to eat less salt? Do we really need to replace salt after exercise? Is low sodium salt actually healthier? In this chapter, we will sort out these common questions in the simplest way possible.</p>
+        <p>Let us begin with a basic fact. Sodium is an essential mineral for the human body. Our cells, blood, nerves, and muscles all need sodium to function properly. Sodium has four main jobs. First, it maintains fluid balance. About sixty percent of our body is water, distributed inside and outside cells, and the balance is controlled by sodium and potassium. Second, it transmits nerve signals. When you want to move a finger, the signal sent from your brain travels between nerve cells through the flow of sodium ions. Third, it helps muscles contract, including the most important one, your heart. Fourth, it assists in the absorption of nutrients, especially glucose and amino acids. Without sodium, all these functions would collapse.</p>
+        <p>So what happens if a person eats no salt at all? They can develop a condition called hyponatremia, or low blood sodium. Symptoms include headache, nausea, muscle cramps, confusion, coma, and in serious cases, death. This sometimes happens to marathon runners who sweat heavily and drink large amounts of water but fail to replace electrolytes. The sodium gets diluted, and they get in serious trouble. So sodium really is something you cannot live without.</p>
+        <p>So how much is the right amount? According to the World Health Organization, adults should consume less than two thousand milligrams of sodium per day. That is about five grams of salt, roughly one teaspoon. Sounds like very little, right? But the problem is, most people eat far more than this. The average Taiwanese eats around three thousand five hundred to four thousand milligrams of sodium per day, almost twice the recommended amount. Americans are even worse, often exceeding three thousand four hundred milligrams.</p>
+        <p>So what happens if you eat too much salt? The most famous result is high blood pressure. When you eat too much sodium, the body holds on to more water to dilute it. Blood volume rises, and so does the pressure on the blood vessels. That is high blood pressure, also called hypertension. Long term high blood pressure damages blood vessels and leads to stroke, heart attack, and kidney disease. That is why doctors keep telling us to reduce salt. Besides high blood pressure, too much sodium is also linked to stomach cancer, weak bones, kidney stones, and water retention.</p>
+        <p>But here is the key point. Many people think that reducing salt means using less salt when cooking. That is actually wrong. Research shows that about seventy to eighty percent of the salt modern people eat comes from processed food, not from the kitchen salt shaker. Chips, instant noodles, canned food, ham, sausages, cheese, crackers, bread, and sauces all contain shockingly high amounts of sodium. A single bowl of instant noodles may have over one thousand eight hundred milligrams of sodium, which is nearly a full day&#x27;s recommended amount. So to really cut back on salt, the focus should be on eating less processed food, not skipping salt in your home cooking.</p>
+        <p>Now let us talk about the story of iodized salt. Iodine is essential for the body to make thyroid hormones. Without iodine, the thyroid gland swells up, creating the condition known as goiter, sometimes called big neck disease. Severe iodine deficiency in pregnant women can lead to intellectual disability in their babies, a condition called cretinism. In the early twentieth century, many regions of the world, especially inland mountains, suffered serious iodine deficiency. In the 1920s, Switzerland and the United States were the first to add iodine to table salt. The results were dramatic, and these diseases dropped quickly. Taiwan started mandatory iodization in 1967 with great success. Iodized salt is one of the cheapest and most successful public health policies in history. Adding just a few cents of iodine to a kilogram of salt has saved a generation of children.</p>
+        <p>However, in recent years, some people have turned to natural sea salt or rock salt, which usually do not contain added iodine. As a result, iodine deficiency is making a quiet comeback. Japan and Korea get plenty of iodine from seaweed, so they are fine. But in Taiwan, modern diets are becoming more refined, with less seaweed. If you switch to imported salts without iodine, over time you may risk deficiency. So if you choose premium salts, remember to balance with foods like kelp, nori, eggs, and dairy to maintain your iodine intake.</p>
+        <p>Next, let us talk about salt and exercise. When you sweat, you lose sodium. So replacing salt after exercise has some real basis. But it depends on the intensity and duration. If you just jog for thirty minutes and sweat lightly, plain water is enough. There is no need to deliberately add salt. But if you run a marathon, play basketball for two hours, work in hot sun, or do a heavy session at the gym, drinking only water can actually dilute your blood sodium and cause hyponatremia. In this case, you should drink sports drinks or add a pinch of salt to your water. One liter of water with a quarter teaspoon of salt, a little sugar, and some lemon juice makes a homemade electrolyte drink.</p>
+        <p>Now about low sodium salt. There is a product on the market that replaces half the sodium chloride with potassium chloride, cutting sodium content in half. This is great for people who need to control their blood pressure, because potassium actually helps lower blood pressure, doing the opposite of sodium. However, people with kidney problems should not use it, because their kidneys cannot remove excess potassium, which can cause dangerous irregular heart beats. So low sodium salt is not a miracle. Always check your kidney health first.</p>
+        <p>Finally, let me share some practical tips to reduce salt in daily life. First, eat less processed food and more whole foods. Second, read nutrition labels and check the sodium per serving. Anything over six hundred milligrams per serving counts as high sodium. Third, use spices, herbs, lemon, garlic, ginger, and chili to add flavor instead of relying on salt. Fourth, when eating out, do not drink all the soup, because soup contains lots of sodium. Fifth, reduce salt gradually so your taste buds adapt. After one or two months, you will notice that what used to taste right now feels too salty.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, sodium. The element symbol is N a, from the Latin word natrium.</p>
+        <p>Second, hypertension. Hyper means too much, tension means pressure. So hypertension is high blood pressure.</p>
+        <p>Third, hyponatremia. Hypo means too little, natrium is sodium, and emia means in the blood. Put together, it means too little sodium in the blood.</p>
+        <p>Fourth, iodine. Iodized salt is salt with added iodine.</p>
+        <p>Fifth, goiter. The enlarged thyroid condition, also called big neck disease in everyday talk.</p>
+        <p>Sixth, electrolyte. A substance that breaks into ions in water. Sodium, potassium, calcium, magnesium, and chloride are all electrolytes.</p>
+        <p>Seventh, processed food. Process means to prepare or treat. Processed food is anything that has been industrially altered from its natural state.</p>
+        <p>And finally, a fun English expression about salt, pour salt on it. This phrase comes from cooking, where adding salt brings out the flavor. In a metaphorical sense, it can mean to make something more exciting. For example, the story is good, but if you add some humor, it will really pour salt on it.</p>
+        <p>In our next chapter, we will step into the spiritual world of salt. Why do Japanese sumo wrestlers throw salt? Why does Shinto use salt for purification? Why does Christianity treat salt as a sacred symbol? And what is the meaning of the spilled salt in Leonardo da Vinci&#x27;s Last Supper? See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch09">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 09</div>
+    <div class="chapter-emoji">⛩️</div>
+    <h2 class="chapter-title-zh">鹽巴的靈性與文化</h2>
+    <h3 class="chapter-title-en">The Spirit and Culture of Salt</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-09" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-09" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-09" role="tabpanel">
+      <div class="script zh-script">
+        <p>第九回，鹽巴的靈性與文化，從相撲撒鹽到最後晚餐。</p>
+        <p>歡迎回到鹽巴微課程。前面我們聊了鹽的物質面，今天要進入它的精神面。一個看起來那麼平凡的白色小顆粒，為什麼在世界各大宗教裡，都被當成神聖的東西？日本相撲選手為什麼要把整把鹽撒到台上？神道教為什麼用鹽淨化空間？基督教為什麼把鹽當成神聖的象徵？這一回我們就走進世界各地的鹽巴信仰，看看人類對這顆小白晶，到底有多麼深的敬畏。</p>
+        <p>我們先從日本開始。如果你看過相撲比賽，你一定會注意到一個畫面。兩個體型巨大的力士走進土俵，那個圓形的競技場，他們在搏鬥之前，會抓起一大把鹽，用力撒到場上。有些力士甚至會撒出戲劇化的弧度，把鹽撒到天花板上。這個動作叫做撒鹽，日文是 shiomaki。為什麼要這樣做？因為在日本神道教的傳統裡，鹽是神聖的淨化物，撒鹽可以驅趕邪靈、淨化場地、也祈求自己在比賽中不要受傷。土俵被視為神聖的場所，所以每一場比賽前，都要先淨化。</p>
+        <p>神道教對鹽的重視，遠遠不只在相撲場。在日本，你走進很多餐廳、商店、傳統建築，會發現門口的兩邊，各擺著一小堆鹽，整齊地堆成小山的形狀。這叫做盛鹽。盛鹽有兩個功能。第一，淨化空間，把不好的氣場擋在門外。第二，招攬客人。這個習俗的起源有好幾個說法。一個比較浪漫的版本是，古代中國有一個皇帝，後宮三千佳麗，他每天晚上坐牛車去找其中一位。其中一個聰明的妃子，在自己房前撒鹽，皇帝的牛喜歡舔鹽，停下來不走，於是皇帝就常常去她那裡了。這個故事傳到日本，就變成了用鹽招客的習俗。</p>
+        <p>日本的喪禮文化也跟鹽密不可分。如果你參加完日本的喪禮，主人會發給你一小包鹽，叫做清鹽。回家之前，你要在自己家門口先把鹽撒在身上，這樣才能把跟著你的靈魂趕走，不會把不好的氣帶進家裡。有些家庭甚至會在門口準備一桶鹽水，讓人從喪禮回來時清洗手腳。這個習俗到今天還在很多地方保留著。</p>
+        <p>我們再看新娘出嫁的習俗。在日本傳統婚禮中，新娘離開父母家的時候，會在門口撒鹽，淨化空間，也象徵告別過去。婚禮現場的入口也會撒鹽，讓賓客在純淨的環境中見證新人的結合。鹽，在這裡是新生活的開端，也是神聖時刻的見證。</p>
+        <p>接下來我們轉到中東和歐洲。在猶太教的傳統中，鹽是神聖盟約的象徵。古代猶太人獻給上帝的所有祭品，都必須加鹽。聖經利未記裡明確記載，所有的素祭都要用鹽調和，這叫做鹽約，象徵神跟人之間永不毀壞的盟約。為什麼是鹽？因為鹽可以保存食物，永不腐壞，正好象徵約定的永恆。今天的猶太人，安息日的麵包還是要沾鹽，這個傳統已經延續了三千多年。</p>
+        <p>基督教繼承了這個傳統。耶穌在山上寶訓中對他的門徒說，你們是地上的鹽。這句話的意思是，門徒應該像鹽一樣，保持自己的純淨，同時為這個世界提供風味和保存，不要讓世界腐壞。鹽是調味，也是防腐，這個比喻非常精妙。一直到今天，salt of the earth 這個英文片語，還是用來稱讚一個人樸實、可靠、有價值。</p>
+        <p>天主教在洗禮儀式中，曾經有一個傳統，神父會在嬰兒的嘴唇上點一點鹽，象徵賜給嬰兒智慧、純淨、跟神聖的保護。這個習俗在第二次梵諦岡會議之後，已經不常見了，但是仍然有少數教會保留。</p>
+        <p>說到鹽跟基督教，我們一定要講達文西的名畫，最後晚餐。仔細看那幅畫，你會發現一個細節，猶大那個出賣耶穌的門徒，他面前的桌上，有一個倒掉的鹽罐，鹽撒了一桌。這個畫面不是偶然的，達文西是故意這樣畫的。在中世紀的歐洲，打翻鹽被視為非常不吉利的事情，象徵背叛、災難、邪靈。達文西用打翻的鹽，暗示猶大即將背叛耶穌的命運。直到今天，西方還有一個迷信，如果你不小心打翻鹽，要抓一小撮鹽，往左肩後面撒，因為傳說邪靈會躲在你的左肩，撒鹽可以把它嚇跑。</p>
+        <p>在伊斯蘭教中，鹽也有特殊地位。伊斯蘭的傳統中，主人在客人吃飯之前會先請他嚐一口鹽，象徵接受了主人的款待，建立了賓主關係。共食之鹽是一種神聖的承諾，意思是接受了你的鹽，我就不會背叛你。在阿拉伯傳統中，跟某人吃過鹽，是一個非常嚴肅的盟約。</p>
+        <p>我們轉到印度教。印度教徒在進行宗教儀式的時候，會用鹽水淨化神像和場地。生病、被詛咒、家裡不平靜的時候，傳統上會在床下放一碗鹽水，第二天倒掉，象徵把惡氣吸走。印度的婚禮和節日，也會用鹽來祝福。</p>
+        <p>最後我們看一下中國民俗。中國雖然沒有把鹽神聖化到日本那個程度，但是民間信仰中，鹽也是淨化跟避邪的東西。新房入住、搬家之前，老一輩會用粗鹽撒在屋子四角，去除晦氣。台灣傳統的喪禮，也有撒鹽米的習俗，當靈柩離開家門之後，要在門口撒鹽米，避免靈魂跟回來。生病、惡夢之後，老人家會用鹽水擦身、洗臉，認為可以驅邪。閩南話講「鹽水洗身軀」，就是這個意思。</p>
+        <p>聽完這些是不是覺得很有趣？從日本相撲到耶穌的門徒，從打翻的鹽罐到台灣的喪禮，全世界的人類，都不約而同地把鹽當成神聖的東西。為什麼會這樣？我覺得有兩個原因。第一，鹽可以保存食物，象徵永恆，所以代表約定、純潔、不腐。第二，鹽在古代非常珍貴，被視為神給人類的禮物，自然成了神聖的象徵。一個小小的白色顆粒，承載了人類幾千年的信仰、敬畏、跟智慧。</p>
+        <p>好，今天的重點單字和術語整理。</p>
+        <p>第一個，purification，淨化。動詞是 purify，純淨。purification 是動作的名詞。</p>
+        <p>第二個，sacred，神聖的。記憶方法，sacred 跟 sacrifice 犧牲是同源，神聖之物常常跟祭祀有關。</p>
+        <p>第三個，covenant，盟約。比 contract 契約更嚴重，通常用在宗教或神聖的承諾。</p>
+        <p>第四個，shiomaki，撒鹽，日文。shio 是鹽，maki 是撒。</p>
+        <p>第五個，morijio，盛鹽，日文。mori 是堆，jio 跟 shio 同源。</p>
+        <p>第六個，superstition，迷信。super 是超越，stition 來自站立，超出理性站立的東西，就是迷信。</p>
+        <p>第七個，ritual，儀式。重複進行的、有宗教或文化意義的行為。</p>
+        <p>最後，我們重溫一下兩個重要的英文片語。第一，salt of the earth，地上的鹽，形容樸實可靠的好人。第二，throw salt over your shoulder，把鹽撒到肩膀後面，迷信用來避邪的動作，引申為遇到不順時的一種儀式性安慰。</p>
+        <p>最後一回，我們要看看現代世界裡，鹽巴的角色發生了什麼變化。從化學工業到融雪劑，從減鹽運動到台灣的鹽田觀光，我們要為這趟鹽巴之旅，畫下完美的句點。我們下回見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-09" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Nine. The Spirit and Culture of Salt. From Sumo Wrestling to the Last Supper.</p>
+        <p>Welcome back to our salt mini course. In the previous chapters, we focused on the physical side of salt. Today, we are entering its spiritual side. Why is this humble little white crystal considered sacred in every major religion in the world? Why do Japanese sumo wrestlers throw handfuls of salt onto the ring? Why does Shinto use salt to purify spaces? Why does Christianity treat salt as a holy symbol? In this chapter, we will explore the salt beliefs of different cultures and discover how deep human reverence for this little white crystal really goes.</p>
+        <p>Let us begin with Japan. If you have ever watched a sumo match, you must have noticed a particular scene. Two enormous wrestlers step into the dohyo, the circular ring, and before the fight begins, they grab a big handful of salt and throw it into the ring. Some wrestlers throw the salt so dramatically that it almost reaches the ceiling. This action is called shiomaki. Why do they do it? In the Shinto tradition of Japan, salt is a sacred purifier. Throwing salt drives away evil spirits, purifies the ring, and prays for the wrestler&#x27;s safety during the match. The dohyo is considered a sacred space, so every match begins with purification.</p>
+        <p>Shinto reverence for salt goes far beyond the sumo ring. Walking past traditional Japanese restaurants, shops, or buildings, you may notice two small piles of salt placed at the entrance, neatly shaped like little mountains. This is called morijio, which means piled salt. It has two purposes. First, to purify the space and block bad energy from entering. Second, to attract customers. The origin of this custom has several versions. The most romantic story comes from ancient China, where an emperor had three thousand concubines. He visited a different one each night by ox cart. A clever concubine sprinkled salt outside her door, knowing the oxen would stop to lick it. The cart would not move, so the emperor stayed with her. The story spread to Japan and became the tradition of using salt to attract customers.</p>
+        <p>Japanese funeral culture is also deeply tied to salt. If you attend a Japanese funeral, the host will give you a small packet of salt called kiyomejio, or cleansing salt. Before entering your home, you sprinkle the salt on yourself to ward off any spirits that may have followed you, so you do not carry bad energy inside. Some families even keep a bucket of salt water at the door for you to wash your hands and feet after returning from a funeral. This tradition is still widely practiced today.</p>
+        <p>Salt also appears in Japanese weddings. When the bride leaves her parents&#x27; home, salt is sprinkled at the doorway to purify the space and symbolize a farewell to the past. Salt is also sprinkled at the wedding venue entrance, so the guests witness the union in a pure environment. Here, salt represents the beginning of a new life and the witness of a sacred moment.</p>
+        <p>Now let us turn to the Middle East and Europe. In Judaism, salt is a symbol of a sacred covenant. Ancient Jews were required to add salt to every offering made to God. The Book of Leviticus clearly says, all grain offerings must be seasoned with salt. This is called the salt covenant, symbolizing the eternal, unbreakable bond between God and his people. Why salt? Because salt preserves food and never spoils, the perfect symbol of an everlasting promise. To this day, Jewish people still dip the Sabbath bread in salt, a tradition that has lasted for more than three thousand years.</p>
+        <p>Christianity inherited this tradition. In the Sermon on the Mount, Jesus told his disciples, you are the salt of the earth. What he meant was that his followers should remain pure like salt, while bringing flavor and preservation to the world, preventing it from going rotten. Salt is both seasoning and preserver, a powerful metaphor. Even today, the English idiom salt of the earth is still used to praise someone who is humble, reliable, and valuable.</p>
+        <p>In the Catholic Church, there was once a tradition where the priest placed a small grain of salt on a baby&#x27;s lips during baptism, symbolizing wisdom, purity, and divine protection. This practice became less common after the Second Vatican Council, but a few churches still keep it.</p>
+        <p>Speaking of salt and Christianity, we must talk about Leonardo da Vinci&#x27;s famous painting, The Last Supper. Look closely at the painting and you will see a small detail. In front of Judas, the disciple who would betray Jesus, there is an overturned salt cellar with salt spilled across the table. This was not an accident. Da Vinci painted it on purpose. In medieval Europe, spilling salt was considered very unlucky, a sign of betrayal, disaster, or evil spirits. By painting the spilled salt, Da Vinci hinted at Judas&#x27;s coming betrayal of Jesus. Even today, there is a Western superstition that if you accidentally spill salt, you should pick up a small pinch and throw it over your left shoulder, because evil spirits are said to hide behind your left side, and the salt scares them away.</p>
+        <p>In Islam, salt also holds a special place. In Islamic tradition, the host offers the guest a taste of salt before a meal, symbolizing the acceptance of hospitality and the establishment of a host guest bond. Eating salt together is a sacred promise, meaning that having tasted your salt, I will never betray you. In Arab culture, sharing salt with someone is a very serious commitment.</p>
+        <p>Now let us move to Hinduism. Hindus use salt water to purify deities and ritual spaces. When someone is sick, cursed, or experiencing trouble at home, a bowl of salt water is placed under the bed overnight and discarded the next day, symbolically absorbing the bad energy. Indian weddings and festivals also use salt to bestow blessings.</p>
+        <p>Finally, let us look at Chinese folk traditions. While China did not elevate salt to the sacred level of Japan, salt is still considered a purifying and protective substance in folk belief. Before moving into a new home, older generations sprinkle coarse salt in the four corners to remove bad luck. In traditional Taiwanese funerals, when the coffin leaves the home, family members sprinkle salt and rice at the doorway to prevent the spirit from following them back. After illness or nightmares, elders wipe the body with salt water, believing it drives away evil. The Taiwanese phrase, washing your body with salt water, comes from this tradition.</p>
+        <p>Isn&#x27;t it fascinating? From Japanese sumo to the disciples of Jesus, from the overturned salt cellar to Taiwanese funeral rites, people all over the world have independently come to see salt as sacred. Why? I think there are two reasons. First, salt preserves food and represents eternity, so it became a symbol of covenant, purity, and incorruptibility. Second, in ancient times salt was extremely precious, considered a gift from the gods, and naturally became a sacred symbol. A small white crystal carrying thousands of years of human faith, reverence, and wisdom.</p>
+        <p>Now let me summarize the key vocabulary and terms for today.</p>
+        <p>First, purification. The verb is purify, meaning to make pure. Purification is the noun form of the action.</p>
+        <p>Second, sacred. Memory tip. Sacred shares its root with sacrifice, because sacred things are often related to ritual offerings.</p>
+        <p>Third, covenant. A binding promise, more serious than a contract, usually religious or sacred.</p>
+        <p>Fourth, shiomaki. Japanese for throwing salt. Shio means salt, maki means to scatter.</p>
+        <p>Fifth, morijio. Japanese for piled salt. Mori means heap, jio comes from the same root as shio.</p>
+        <p>Sixth, superstition. Super means beyond, stition comes from standing. A belief that stands beyond reason is superstition.</p>
+        <p>Seventh, ritual. A repeated action with religious or cultural meaning.</p>
+        <p>And finally, let us review two important English idioms. First, salt of the earth, used to describe a humble and reliable person. Second, throw salt over your shoulder, a superstitious gesture to ward off bad luck, now also used as a comforting ritual when things go wrong.</p>
+        <p>In our final chapter, we will look at the role of salt in the modern world. From the chemical industry to road de icing, from the global low salt movement to Taiwanese salt field tourism, we will bring this journey through salt to a perfect close. See you next time.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<article class="chapter" id="ch10">
+  <header class="chapter-head">
+    <div class="chapter-num">Episode 10</div>
+    <div class="chapter-emoji">🚀</div>
+    <h2 class="chapter-title-zh">鹽巴的現代與未來</h2>
+    <h3 class="chapter-title-en">The Modern and Future Life of Salt</h3>
+    <div class="chapter-divider"><span></span><span></span><span></span></div>
+  </header>
+
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="zh-10" role="tab" aria-selected="true">中文稿</button>
+    <button class="tab-btn" data-tab="en-10" role="tab" aria-selected="false">English Script</button>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-panel active" id="zh-10" role="tabpanel">
+      <div class="script zh-script">
+        <p>第十回，鹽巴的現代與未來，從化學工業到永續鹽田。</p>
+        <p>歡迎回到鹽巴微課程，這是我們的最後一回。經過前面九次的旅程，我們認識了鹽的歷史、文明、調味、保存、種類、居家妙用、健康、跟靈性文化。今天我們要把目光放到現在跟未來，看看在二十一世紀，鹽巴在我們的世界裡，扮演什麼樣的角色。你可能會驚訝，全球每年生產的鹽，居然大部分都不是給人吃的。鹽，正以一種你想不到的方式，撐起現代文明。</p>
+        <p>我們先從一個數字開始。全球每年生產的鹽，大約是三億公噸。其中，給人類食用的鹽，只佔大約百分之六。沒錯，只有百分之六。其他的鹽都跑到哪裡去了？答案是工業。鹽是現代化學工業最重要的原料之一，很多你每天用到的東西，背後都跟鹽有關。</p>
+        <p>最大宗的用途，是化學工業的氯鹼工業。把鹽水電解，可以得到三樣重要的東西，氫氣、氯氣、跟氫氧化鈉。氫氧化鈉就是俗稱的燒鹼或苛性鈉，是肥皂、紙、紡織、染料、清潔劑的原料。氯氣可以做成塑膠 PVC、消毒劑、漂白劑、農藥。沒有氯鹼工業，現代生活幾乎不可能運作。你家的塑膠水管、飲水的消毒、衣服的染色、書本的紙張，背後全部都用到鹽。</p>
+        <p>第二大宗的用途，是融雪劑，英文是 road salt 或 de icing salt。在北美、北歐、日本北部，冬天會降下大量的雪和冰。為了讓路面不結冰，政府每年要灑下數千萬公噸的鹽。美國一年用在融雪上的鹽，就超過兩千萬公噸。原理我們前面講過，鹽水的冰點比純水低，所以鹽會把冰融化。這種融雪用的鹽，通常是岩鹽，不是經過精製的食鹽，便宜又有效。</p>
+        <p>但是融雪劑也帶來了環境問題。大量的鹽流到土壤、河流、湖泊裡，會破壞水生生態。鹽會殺死路邊的植物，腐蝕汽車跟橋樑的金屬，污染地下水。北美有些湖泊，鹽的濃度已經比五十年前高了好幾倍。所以現在很多國家在研究新的環保替代方案，比如甜菜根汁、起司鹽水、太陽能加熱路面，雖然還沒辦法完全取代鹽，但是大家正在努力減少使用量。</p>
+        <p>第三大宗的用途是食品加工。我們在第八回講過，現代人吃的鹽，七到八成來自加工食品，這背後就是龐大的食品鹽市場。麵包、起司、火腿、罐頭、洋芋片、調味料、冷凍食品，全都需要鹽。鹽不只調味，還有保存、增加水分結合、改善口感的功能。所以雖然有減鹽運動，但是食品工業對鹽的需求還在持續成長。</p>
+        <p>接下來我們講減鹽運動。全世界因為高血壓、心臟病、中風死亡的人，每年超過一千萬人，其中很大一部分跟過量的鹽有關。世界衛生組織從二零一三年開始推動全球減鹽計畫，目標是到二零二五年，全球的鹽攝取量減少百分之三十。許多國家也在採取行動。英國政府要求食品業者逐步降低加工食品的鹽含量，過去十年成功減少了百分之十五。芬蘭推動了標示制度，鈉含量高的食品要強制警告。智利、墨西哥、阿根廷也都跟進。台灣的衛福部也在積極推動少鹽飲食教育，特別是在學校跟醫院。</p>
+        <p>接下來我們看一個非常美的議題，鹽田觀光。雖然台灣的鹽業已經停產，但是過去那些壯觀的鹽田，被保留下來變成了觀光景點和文化資產。台南北門的井仔腳瓦盤鹽田，是台灣最古老、現存最完整的鹽田，已經有兩百多年的歷史。瓦盤鹽田這種獨特的造鹽方式，把瓦片鋪在地上，鹽結晶在瓦片上比較容易採收，是台灣鹽工的智慧結晶。今天遊客可以親自體驗推鹽車、收鹽、做鹽雕。</p>
+        <p>七股鹽山是另一個著名的景點，那一座白色的鹽山高達二十公尺，是從前累積下來的鹽。爬上鹽山的頂端，可以遠眺一片白茫茫的鹽田跟海岸線，非常壯觀。布袋的鹽場、安平的鹽田，都是值得拜訪的地方。這些鹽田除了觀光價值，也在做生態復育，因為鹽田濕地是黑面琵鷺、各種候鳥的棲息地。鹽，從生產轉型到保育，是一個動人的故事。</p>
+        <p>接下來談談永續鹽業。傳統的海鹽生產，是用太陽蒸發海水，這是非常環保的方法，幾乎不消耗化石能源。但是這種方法產量小、看天吃飯。現代工業化的鹽，多半是用機械化的方式生產，效率高但是能源消耗大。如何在效率跟永續之間找到平衡，是鹽業未來的挑戰。法國的蓋朗德、葡萄牙的阿威羅、克羅埃西亞的派格島，這些地方都還保留了傳統的鹽田，並且發展出產地認證跟文化觀光，是傳統技藝現代化的好範例。</p>
+        <p>未來的鹽，會走向哪裡？我們可以看到三個趨勢。第一，分眾化。一般家庭用的鹽會持續精簡，但是高級料理會使用各種特色鹽，產地、風味、製作方式都成了賣點。第二，健康化。低鈉鹽、加礦物質鹽、減鹽食品，會越來越多。第三，工業創新。鹽電池、鹽儲能、新型化學工業，都還有很多潛力可以開發。鹽，這個人類用了一萬兩千年的東西，未來還會繼續改變我們的世界。</p>
+        <p>最後我想分享一個感想。我們做這個十回的微課程，從一顆小小的鹽結晶開始，走過歷史、地理、化學、料理、宗教、健康、產業，幾乎涵蓋了人類文明的每一個面向。這就是知識的迷人之處，越平凡的東西，往往藏著越深的故事。下次當你在餐桌上撒一點鹽到食物上，希望你會想起，這小小的一撮，承載了一萬兩千年的人類智慧，連結了世界各地的文化跟信仰。</p>
+        <p>謝謝你陪我走過這十回的鹽巴之旅。如果有任何一回讓你覺得有趣，請跟身邊的朋友分享。下次再見。</p>
+        <p>好，今天的最後一次重點單字和術語整理。</p>
+        <p>第一個，chlor alkali industry，氯鹼工業。chlor 是氯，alkali 是鹼。電解鹽水得到氯跟鹼的工業。</p>
+        <p>第二個，electrolysis，電解。electro 是電，lysis 是分解。用電把東西分解。</p>
+        <p>第三個，sodium hydroxide，氫氧化鈉，俗稱燒鹼。</p>
+        <p>第四個，PVC，聚氯乙烯。polyvinyl chloride 的縮寫，是最常見的塑膠之一。</p>
+        <p>第五個，de icing，除冰。de 是去除，ice 是冰。</p>
+        <p>第六個，sustainability，永續。sustain 是維持，ability 是能力。能持續維持下去的能力。</p>
+        <p>第七個，conservation，保育、保存。跟 preservation 很像，但是 conservation 多用在自然、生態、文化的保護。</p>
+        <p>第八個，wetland，濕地。wet 是濕，land 是地。</p>
+        <p>最後，一個總結性的英文表達，go through fire and salt，經歷過火與鹽。這個說法源自於古代煉金術，火跟鹽都是淨化的元素，go through fire and salt 引申為經歷重大考驗、被磨練成更好的人。希望各位聽眾朋友，未來在人生的道路上，都能像鹽巴一樣，看似平凡，卻無所不能，看似柔弱，卻能讓世界保存得更久、更有風味。</p>
+        <p>鹽巴微課程，全劇終。我們下次節目再見。</p>
+      </div>
+    </div>
+    <div class="tab-panel" id="en-10" role="tabpanel">
+      <div class="script en-script">
+        <p>Chapter Ten. The Modern and Future Life of Salt. From the Chemical Industry to Sustainable Salt Fields.</p>
+        <p>Welcome back to our salt mini course. This is our final chapter. After our journey through the past nine episodes, we have explored the history, civilizations, seasoning, preservation, types, household uses, health, and cultural meaning of salt. Today, we are turning our eyes to the present and the future. What role does salt play in the twenty first century? You may be surprised to learn that most of the salt produced in the world today is not even used for eating. Salt is quietly supporting modern civilization in ways you have probably never imagined.</p>
+        <p>Let us start with a number. The world produces about three hundred million tons of salt every year. Of this, only about six percent is used as food. That is right, only six percent. So where does the rest go? The answer is industry. Salt is one of the most important raw materials in the modern chemical industry, and many things you use every day depend on salt behind the scenes.</p>
+        <p>The biggest use is the chlor alkali industry. By passing electricity through salt water, three important substances are produced, hydrogen, chlorine, and sodium hydroxide. Sodium hydroxide, also known as caustic soda, is a raw material for soap, paper, textiles, dyes, and cleaning products. Chlorine is used to make plastics like PVC, disinfectants, bleach, and pesticides. Without the chlor alkali industry, modern life would barely function. Your plastic pipes, your tap water disinfection, your clothes dyeing, the paper in your books, all of them rely on salt.</p>
+        <p>The second largest use is road salt, also called de icing salt. In North America, Northern Europe, and northern Japan, winters bring heavy snow and ice. To keep the roads passable, governments spread tens of millions of tons of salt every year. The United States alone uses over twenty million tons of road salt per winter. As we mentioned earlier, salt water has a lower freezing point than pure water, so salt melts ice. The salt used for this is usually unrefined rock salt, cheap and effective.</p>
+        <p>However, road salt also brings environmental problems. Huge amounts of salt drain into the soil, rivers, and lakes, harming aquatic life. Salt kills roadside plants, corrodes the metal of cars and bridges, and contaminates groundwater. Some lakes in North America are now several times saltier than they were fifty years ago. Many countries are researching greener alternatives, like beet juice, cheese brine, and solar heated pavement. None of these can fully replace salt yet, but the search to reduce usage is on.</p>
+        <p>The third largest use is in food processing. As we mentioned in chapter eight, seventy to eighty percent of the salt modern people eat comes from processed food, and this represents a huge market. Bread, cheese, ham, canned goods, chips, sauces, and frozen meals all need salt. Salt does more than just season. It preserves, binds moisture, and improves texture. So despite the global push to reduce salt, the food industry&#x27;s demand for salt continues to grow.</p>
+        <p>Now let us talk about the global low salt movement. Every year, more than ten million people around the world die from high blood pressure, heart disease, and stroke, with a large share linked to excess salt intake. The World Health Organization launched a global salt reduction plan in 2013, aiming to cut salt intake by thirty percent worldwide by 2025. Many countries are taking action. The UK government required the food industry to gradually lower salt content in processed foods, and in the past ten years, it successfully reduced average intake by about fifteen percent. Finland introduced labeling rules that require warnings on high sodium foods. Chile, Mexico, and Argentina have followed similar approaches. In Taiwan, the Ministry of Health and Welfare is actively promoting low salt eating, especially in schools and hospitals.</p>
+        <p>Now let us look at a very beautiful topic, salt field tourism. Although Taiwan&#x27;s commercial salt industry has shut down, those magnificent salt fields of the past have been preserved as tourist attractions and cultural heritage sites. The Jingzaijiao Tile Paved Salt Field in Beimen, Tainan, is the oldest and best preserved salt field in Taiwan, with over two hundred years of history. The tile paved technique places ceramic tiles on the ground, on which salt crystals form, making them easier to collect. This was the ingenuity of Taiwanese salt workers. Today, visitors can push the salt cart, harvest salt, and even make salt sculptures.</p>
+        <p>The Qigu Salt Mountain is another famous spot, a twenty meter high white mountain of accumulated salt. Climbing to the top, you can see the vast white salt fields and coastline stretching to the horizon, a truly spectacular view. The Budai salt yard and the Anping salt fields are also worth visiting. Beyond tourism, these fields now serve as ecological reserves, because salt field wetlands are crucial habitats for the black faced spoonbill and many migratory birds. Salt has transformed from production to conservation, a moving story of change.</p>
+        <p>Now about sustainable salt production. Traditional sea salt is made by evaporating seawater with sunlight, a very environmentally friendly method that consumes almost no fossil energy. But this method has low yield and depends entirely on weather. Modern industrial salt is mostly produced mechanically, which is efficient but energy intensive. Finding the balance between efficiency and sustainability is the future challenge of the salt industry. Guérande in France, Aveiro in Portugal, and Pag Island in Croatia have preserved their traditional salt fields and developed regional certification and cultural tourism. They are good examples of how ancient skills can be modernized.</p>
+        <p>Where will salt go in the future? Three trends are emerging. First, segmentation. Everyday household salt will become more streamlined, while high end cuisine will increasingly use specialty salts, with origin, flavor, and craft becoming selling points. Second, health focus. Low sodium salts, mineral enriched salts, and reduced salt foods will continue to grow. Third, industrial innovation. Salt batteries, salt based energy storage, and new chemical applications still have great potential. Salt, this thing humans have used for twelve thousand years, will continue to shape our world.</p>
+        <p>Finally, I want to share a thought. We made this ten chapter mini course starting from a single tiny salt crystal, traveling through history, geography, chemistry, cooking, religion, health, and industry, covering almost every aspect of human civilization. That is the magic of knowledge. The more ordinary something looks, the deeper the story behind it. The next time you sprinkle a pinch of salt on your food, I hope you will remember that this tiny pinch carries twelve thousand years of human wisdom and connects cultures and beliefs from all over the world.</p>
+        <p>Thank you for joining me on this ten chapter salt journey. If any chapter caught your interest, please share it with your friends. Until next time.</p>
+        <p>Now let me give you our final round of vocabulary and terms.</p>
+        <p>First, chlor alkali industry. Chlor means chlorine, alkali means base or lye. The industry of electrolyzing salt water to produce chlorine and alkali.</p>
+        <p>Second, electrolysis. Electro means electricity, lysis means to split. To split something using electricity.</p>
+        <p>Third, sodium hydroxide. The chemical name for caustic soda or lye.</p>
+        <p>Fourth, PVC. Short for polyvinyl chloride. One of the most common plastics in modern life.</p>
+        <p>Fifth, de icing. To remove ice. The prefix de means to take away.</p>
+        <p>Sixth, sustainability. Sustain means to maintain, ability means the capacity. The capacity to keep things going long term.</p>
+        <p>Seventh, conservation. Similar to preservation, but conservation is more often used for nature, ecology, and culture.</p>
+        <p>Eighth, wetland. Wet plus land. A land area that is saturated with water.</p>
+        <p>And finally, an inspiring English expression, to go through fire and salt. This phrase comes from ancient alchemy, where fire and salt were both elements of purification. To go through fire and salt means to be tested by great trials and to come out a better person. I hope all of you, on your future journey through life, can be like salt itself. It looks ordinary, yet it can do almost anything. It seems gentle, yet it preserves the world and gives it deeper flavor.</p>
+        <p>This concludes our salt mini course. See you in the next program.</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+  </main>
+
+  <!-- ==== BOTTOM LINKS ==== -->
+  
+<section class="links-bar" aria-label="課程與聯絡資訊">
+  <a class="link-card course" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <div class="link-emoji">📚</div>
+    <div class="link-text">
+      <div class="link-title">七月課程 · 錯中學 ECHO 計劃</div>
+      <div class="link-sub">從錯誤中學習,系統化的英文進步方法</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+  <a class="link-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <div class="link-emoji">📊</div>
+    <div class="link-text">
+      <div class="link-title">學生分析 · 個別化學習報告</div>
+      <div class="link-sub">深入了解每位學生的學習軌跡</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+  <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <div class="link-emoji">💬</div>
+    <div class="link-text">
+      <div class="link-title">林威老師 LINE · linwayet</div>
+      <div class="link-sub">課程諮詢、學習問題歡迎來訊</div>
+    </div>
+    <div class="link-arrow">→</div>
+  </a>
+</section>
+
+
+  <!-- ==== FOOTER ==== -->
+  <footer class="site-footer">
+    <div class="footer-mark">✦ Fin ✦</div>
+    <div>鹽巴用途微課程 · 全 10 回完整收錄</div>
+    <div style="margin-top: 6px;">made for <span class="footer-by">林威老師</span> · 錯中學 ECHO 計劃</div>
+  </footer>
+
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="回到頂部">↑</button>
+
+<script>
+  // ============ TAB SWITCHING ============
+  document.querySelectorAll('.chapter').forEach(chapter => {
+    const buttons = chapter.querySelectorAll('.tab-btn');
+    const panels = chapter.querySelectorAll('.tab-panel');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        chapter.querySelector('#' + target).classList.add('active');
+      });
+    });
+  });
+
+  // ============ BACK TO TOP ============
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============ TEXT SIZE CONTROLS ============
+  const sizeButtons = document.querySelectorAll('.text-size-inner button');
+  const savedSize = localStorage.getItem('salt-text-size') || 'md';
+  document.documentElement.setAttribute('data-text-size', savedSize);
+
+  sizeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const size = btn.dataset.size;
+      document.documentElement.setAttribute('data-text-size', size);
+      localStorage.setItem('salt-text-size', size);
+    });
+  });
+</script>
+
+</body>
+</html>
