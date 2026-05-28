@@ -3,784 +3,706 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>區塊鏈英文50大術語 · Blockchain English Idioms</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>Dotcom Bubble 微課程 · 八回合自學課程表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0f1a;
-    --surface: #1a1a2e;
-    --card: #16213e;
-    --card2: #1a2744;
-    --accent: #7c3aed;
-    --accent2: #06b6d4;
-    --accent3: #10b981;
-    --accent4: #f59e0b;
-    --accent5: #ef4444;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border: rgba(124,58,237,0.3);
-    --tag-bg: rgba(124,58,237,0.15);
+    --cream:     #FDF6EC;
+    --warm1:     #FAF0DC;
+    --warm2:     #F5E6C8;
+    --amber:     #E8A020;
+    --amber-lt:  #FDE8B0;
+    --amber-dk:  #B8720A;
+    --coral:     #E06040;
+    --coral-lt:  #FBD8CC;
+    --coral-dk:  #A03820;
+    --teal:      #2E8B7A;
+    --teal-lt:   #C8EDE6;
+    --teal-dk:   #1A5C50;
+    --plum:      #7B4F8A;
+    --plum-lt:   #EDD8F5;
+    --plum-dk:   #52306A;
+    --blue:      #3A72B0;
+    --blue-lt:   #D0E4F8;
+    --blue-dk:   #1E4878;
+    --green:     #4A8C50;
+    --green-lt:  #D4EED6;
+    --green-dk:  #2A5C30;
+    --text:      #3A2A18;
+    --text-mid:  #6B4E30;
+    --text-lt:   #9B7A50;
+    --border:    #E8D4B0;
+    --shadow:    rgba(120,80,20,0.12);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--bg);
+    background: var(--cream);
+    font-family: 'Noto Sans TC', sans-serif;
     color: var(--text);
-    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    line-height: 1.75;
     min-height: 100vh;
-    padding-bottom: 60px;
+  }
+
+  /* ── LINK BAR ── */
+  .link-bar {
+    background: linear-gradient(135deg, #B8720A 0%, #E8A020 50%, #C88030 100%);
+    padding: 0;
+  }
+
+  .link-bar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link-bar-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #FDE8B0;
+    text-transform: uppercase;
+  }
+
+  .link-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .link-card {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+    flex: 1;
+    min-width: 180px;
+    transition: background 0.2s;
+  }
+  .link-card:hover { background: rgba(255,255,255,0.3); }
+
+  .link-card-emoji { font-size: 20px; margin-bottom: 3px; display: block; }
+  .link-card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFF8E8;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .link-card-desc {
+    font-size: 11px;
+    color: #FDE8B0;
+    display: block;
+  }
+
+  .line-card {
+    background: rgba(0,180,80,0.25);
+    border: 1px solid rgba(0,200,100,0.45);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+  }
+  .line-card:hover { background: rgba(0,200,100,0.35); }
+  .line-icon {
+    width: 36px; height: 36px;
+    background: #06C755;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+  .line-card-text {}
+  .line-card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFF8E8;
+    display: block;
+  }
+  .line-card-id {
+    font-size: 11px;
+    color: #D0F8E0;
+    display: block;
   }
 
   /* ── HERO ── */
   .hero {
-    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 50%, #0f1a2e 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 48px 24px 40px;
+    background: linear-gradient(160deg, #FAF0DC 0%, #F5E6C8 40%, #FBD8CC 100%);
+    border-bottom: 2px solid var(--border);
+    padding: 40px 16px 36px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
   }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15) 0%, transparent 70%);
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    color: #a78bfa;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--amber-dk);
     text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 99px;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 12px;
-    position: relative;
-  }
-  .hero h1 span { color: #a78bfa; }
-  .hero p {
-    color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.7;
-    max-width: 560px;
-    margin: 0 auto 28px;
-    font-family: 'Noto Sans TC', sans-serif;
-  }
-  .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  .stat { text-align: center; }
-  .stat-num { font-size: 28px; font-weight: 700; color: #a78bfa; }
-  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-  /* ── SEARCH & FILTER ── */
-  .controls {
-    max-width: 960px;
-    margin: 32px auto 0;
-    padding: 0 20px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .search-box {
-    flex: 1;
-    min-width: 200px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .search-box:focus { border-color: var(--accent); }
-  .search-box::placeholder { color: var(--text-muted); }
-
-  .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-  .filter-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 99px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Noto Sans TC', sans-serif;
-  }
-  .filter-btn:hover { border-color: var(--accent); color: #a78bfa; }
-  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-  /* ── CARDS GRID ── */
-  .grid {
-    max-width: 960px;
-    margin: 28px auto 0;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
-  }
-
-  .card {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 22px 20px 18px;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    border-radius: 16px 16px 0 0;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-    border-color: rgba(124,58,237,0.4);
-  }
-  .card[data-cat="基礎概念"]::before { background: var(--accent); }
-  .card[data-cat="密碼學"]::before { background: var(--accent2); }
-  .card[data-cat="共識機制"]::before { background: var(--accent3); }
-  .card[data-cat="DeFi金融"]::before { background: var(--accent4); }
-  .card[data-cat="NFT與資產"]::before { background: var(--accent5); }
-
-  .card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .card-num {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-  .cat-tag {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 99px;
-    letter-spacing: 0.02em;
-    flex-shrink: 0;
-    font-family: 'Noto Sans TC', sans-serif;
-  }
-  .card[data-cat="基礎概念"] .cat-tag { background: rgba(124,58,237,0.2); color: #a78bfa; }
-  .card[data-cat="密碼學"] .cat-tag { background: rgba(6,182,212,0.2); color: #67e8f9; }
-  .card[data-cat="共識機制"] .cat-tag { background: rgba(16,185,129,0.2); color: #6ee7b7; }
-  .card[data-cat="DeFi金融"] .cat-tag { background: rgba(245,158,11,0.2); color: #fcd34d; }
-  .card[data-cat="NFT與資產"] .cat-tag { background: rgba(239,68,68,0.2); color: #fca5a5; }
-
-  .en-term {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 17px;
-    font-weight: 600;
-    color: #e2e8f0;
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-  .zh-term {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #a78bfa;
-    margin-bottom: 12px;
-  }
-
-  .divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 12px; }
-
-  .en-def {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.6;
     margin-bottom: 10px;
   }
-  .en-def strong { color: var(--text); }
 
-  .zh-def {
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 13px;
-    color: #cbd5e1;
-    line-height: 1.7;
-    background: rgba(255,255,255,0.04);
-    border-left: 3px solid rgba(124,58,237,0.5);
-    padding: 8px 12px;
-    border-radius: 0 8px 8px 0;
+  .hero h1 {
+    font-family: 'Playfair Display', 'Noto Serif TC', serif;
+    font-size: clamp(26px, 7vw, 42px);
+    font-weight: 700;
+    color: var(--coral-dk);
+    line-height: 1.2;
+    margin-bottom: 8px;
   }
 
-  .example {
-    margin-top: 10px;
+  .hero h1 span { color: var(--amber-dk); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .pill {
     font-size: 12px;
-    color: var(--text-muted);
-    font-style: italic;
-    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
   }
-  .example span { color: #7dd3fc; font-style: normal; }
+  .pill-amber { background: var(--amber-lt); color: var(--amber-dk); border: 1px solid #E8C060; }
+  .pill-coral { background: var(--coral-lt); color: var(--coral-dk); border: 1px solid #E8A090; }
+  .pill-teal  { background: var(--teal-lt);  color: var(--teal-dk);  border: 1px solid #90D0C0; }
 
-  .speak-btn {
+  /* ── MAIN ── */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+  }
+
+  /* ── PHASE HEADER ── */
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px 0 14px;
+  }
+  .phase-line { flex: 1; height: 1.5px; }
+  .phase-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 14px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .ph-intro  { background: var(--blue-lt);  color: var(--blue-dk);  border: 1px solid #90B8E0; }
+  .ph-boom   { background: var(--green-lt); color: var(--green-dk); border: 1px solid #90C898; }
+  .ph-bust   { background: var(--coral-lt); color: var(--coral-dk); border: 1px solid #E8A090; }
+  .ph-after  { background: var(--plum-lt);  color: var(--plum-dk);  border: 1px solid #C090D8; }
+
+  .line-intro  { background: var(--blue-lt);  }
+  .line-boom   { background: var(--green-lt); }
+  .line-bust   { background: var(--coral-lt); }
+  .line-after  { background: var(--plum-lt);  }
+
+  /* ── EPISODE CARD ── */
+  .ep-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
+    padding: 20px 20px 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .ep-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow);
+  }
+
+  .ep-card::before {
+    content: '';
     position: absolute;
-    bottom: 14px;
-    right: 14px;
-    background: rgba(124,58,237,0.15);
-    border: 1px solid rgba(124,58,237,0.3);
-    color: #a78bfa;
-    border-radius: 8px;
-    width: 34px; height: 34px;
+    top: 0; left: 0;
+    width: 5px;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+  }
+  .ep-card.c-intro::before  { background: var(--blue); }
+  .ep-card.c-boom::before   { background: var(--green); }
+  .ep-card.c-bust::before   { background: var(--coral); }
+  .ep-card.c-after::before  { background: var(--plum); }
+
+  .ep-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .ep-num {
+    width: 40px; height: 40px;
+    border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.2s;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
   }
-  .speak-btn:hover { background: rgba(124,58,237,0.3); transform: scale(1.1); }
+  .ep-card.c-intro .ep-num  { background: var(--blue-lt);  color: var(--blue-dk); }
+  .ep-card.c-boom  .ep-num  { background: var(--green-lt); color: var(--green-dk); }
+  .ep-card.c-bust  .ep-num  { background: var(--coral-lt); color: var(--coral-dk); }
+  .ep-card.c-after .ep-num  { background: var(--plum-lt);  color: var(--plum-dk); }
 
-  .no-results {
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-    font-family: 'Noto Sans TC', sans-serif;
+  .ep-head {}
+  .ep-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-lt);
+    text-transform: uppercase;
+    margin-bottom: 3px;
   }
-  .no-results .emoji { font-size: 40px; display: block; margin-bottom: 12px; }
+  .ep-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    font-family: 'Noto Serif TC', serif;
+  }
 
-  /* ── FOOTER ── */
-  footer {
+  .ep-desc {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    margin-bottom: 12px;
+    padding-left: 52px;
+  }
+
+  .kw-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-left: 52px;
+  }
+
+  .kw {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .ep-card.c-intro .kw  { background: var(--blue-lt);  color: var(--blue-dk); }
+  .ep-card.c-boom  .kw  { background: var(--green-lt); color: var(--green-dk); }
+  .ep-card.c-bust  .kw  { background: var(--coral-lt); color: var(--coral-dk); }
+  .ep-card.c-after .kw  { background: var(--plum-lt);  color: var(--plum-dk); }
+
+  .ep-time {
+    position: absolute;
+    top: 18px; right: 18px;
+    font-size: 11px;
+    color: var(--text-lt);
+    background: var(--warm2);
+    padding: 3px 9px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── TIMELINE BAR ── */
+  .timeline {
+    display: flex;
+    gap: 0;
+    margin: 36px 0 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .tl-seg {
+    flex: 1;
+    padding: 10px 8px;
     text-align: center;
-    padding: 40px 20px 20px;
-    color: var(--text-muted);
+  }
+  .tl-seg-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .tl-seg-range {
+    font-size: 11px;
+    display: block;
+  }
+  .tl-intro { background: var(--blue-lt); }
+  .tl-intro .tl-seg-label { color: var(--blue-dk); }
+  .tl-intro .tl-seg-range { color: var(--blue); }
+  .tl-boom  { background: var(--green-lt); }
+  .tl-boom  .tl-seg-label { color: var(--green-dk); }
+  .tl-boom  .tl-seg-range { color: var(--green); }
+  .tl-bust  { background: var(--coral-lt); }
+  .tl-bust  .tl-seg-label { color: var(--coral-dk); }
+  .tl-bust  .tl-seg-range { color: var(--coral); }
+  .tl-after { background: var(--plum-lt); }
+  .tl-after .tl-seg-label { color: var(--plum-dk); }
+  .tl-after .tl-seg-range { color: var(--plum); }
+
+  /* ── STAT ROW ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0 0 36px;
+  }
+  .stat-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-lt);
+  }
+  .s1 .stat-num { color: var(--coral-dk); }
+  .s2 .stat-num { color: var(--amber-dk); }
+  .s3 .stat-num { color: var(--teal-dk); }
+
+  /* ── FOOTER NOTE ── */
+  .footnote {
+    background: var(--warm2);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
     font-size: 13px;
-    font-family: 'Noto Sans TC', sans-serif;
+    color: var(--text-mid);
+    margin-bottom: 0;
+    text-align: center;
   }
+  .footnote strong { color: var(--amber-dk); font-weight: 700; }
 
-  @media (max-width: 600px) {
-    .hero { padding: 36px 16px 32px; }
-    .grid { grid-template-columns: 1fr; }
+  @media (max-width: 480px) {
+    .ep-desc, .kw-row { padding-left: 0; }
+    .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-num { font-size: 20px; }
+    .link-cards { flex-direction: column; }
+    .tl-seg-range { display: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-badge">⛓️ University English Learning</div>
-  <h1>區塊鏈英文 <span>50大慣用語</span></h1>
-  <p>專為大學生設計・英文解釋 × 中文對照<br>從零開始掌握 Blockchain 的核心英文詞彙</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">50</div><div class="stat-label">術語 Terms</div></div>
-    <div class="stat"><div class="stat-num">5</div><div class="stat-label">分類 Categories</div></div>
-    <div class="stat"><div class="stat-num">雙語</div><div class="stat-label">英中對照</div></div>
-  </div>
-</div>
-
-<div class="controls">
-  <input class="search-box" type="text" id="searchInput" placeholder="🔍 搜尋術語 (英文或中文)…" oninput="filterCards()">
-  <div class="filter-btns">
-    <button class="filter-btn active" onclick="setFilter('全部', this)">全部</button>
-    <button class="filter-btn" onclick="setFilter('基礎概念', this)">基礎概念</button>
-    <button class="filter-btn" onclick="setFilter('密碼學', this)">密碼學</button>
-    <button class="filter-btn" onclick="setFilter('共識機制', this)">共識機制</button>
-    <button class="filter-btn" onclick="setFilter('DeFi金融', this)">DeFi金融</button>
-    <button class="filter-btn" onclick="setFilter('NFT與資產', this)">NFT與資產</button>
-  </div>
-</div>
-
-<div class="grid" id="cardGrid"></div>
-
-<footer>
-  林威英文教學資源 · 區塊鏈入門英語 · 點擊 🔊 可朗讀英文術語
-</footer>
-
-<script>
-const terms = [
-  // ── 基礎概念 (1–14) ──
-  {
-    num: 1, cat: "基礎概念",
-    en: "Blockchain",
-    zh: "區塊鏈",
-    enDef: "A <strong>chain of blocks</strong>, where each block stores a group of transaction records. Once data is written, it <strong>cannot be changed</strong>.",
-    zhDef: "由一個個「區塊」串成的鏈，每個區塊記錄一批交易資料。資料一旦寫入，就無法篡改，像一本永久保存的帳本。",
-    ex: "Bitcoin uses a <span>blockchain</span> to record every transaction."
-  },
-  {
-    num: 2, cat: "基礎概念",
-    en: "Block",
-    zh: "區塊",
-    enDef: "A <strong>container</strong> that holds a set of transaction data, a timestamp, and a link to the previous block.",
-    zhDef: "儲存交易資料的容器，就像帳本的一頁，包含多筆交易紀錄、時間戳記，以及指向前一個區塊的連結。",
-    ex: "Each <span>block</span> can hold thousands of transactions."
-  },
-  {
-    num: 3, cat: "基礎概念",
-    en: "Decentralization",
-    zh: "去中心化",
-    enDef: "No single authority controls the system. Control is <strong>spread across many participants</strong> (nodes) worldwide.",
-    zhDef: "沒有單一機構掌控整個系統，控制權分散在世界各地的眾多節點手中，不需要銀行或政府作中間人。",
-    ex: "<span>Decentralization</span> means no single company controls Bitcoin."
-  },
-  {
-    num: 4, cat: "基礎概念",
-    en: "Node",
-    zh: "節點",
-    enDef: "Any <strong>computer or device</strong> that participates in the blockchain network by storing a copy of the ledger.",
-    zhDef: "加入區塊鏈網路的任何電腦裝置，負責儲存帳本副本並驗證交易，就像整個網路中的一員。",
-    ex: "Thousands of <span>nodes</span> store a copy of the Bitcoin blockchain."
-  },
-  {
-    num: 5, cat: "基礎概念",
-    en: "Distributed Ledger",
-    zh: "分散式帳本",
-    enDef: "A <strong>shared database</strong> that is synchronized across many locations. No one person owns or controls it.",
-    zhDef: "同步分散在許多電腦上的共享帳本，不像傳統銀行的帳本只存在一個地方，任何人都無法單獨控制它。",
-    ex: "A <span>distributed ledger</span> eliminates the need for a central bank."
-  },
-  {
-    num: 6, cat: "基礎概念",
-    en: "Transaction",
-    zh: "交易",
-    enDef: "Any <strong>exchange of data or value</strong> recorded on the blockchain, such as sending cryptocurrency from one address to another.",
-    zhDef: "在區塊鏈上記錄的任何資料或價值的交換行為，例如從一個錢包地址把加密貨幣轉給另一個人。",
-    ex: "The <span>transaction</span> was confirmed after 10 minutes."
-  },
-  {
-    num: 7, cat: "基礎概念",
-    en: "Immutability",
-    zh: "不可篡改性",
-    enDef: "Once data is recorded on the blockchain, it <strong>cannot be altered or deleted</strong>. This makes it trustworthy.",
-    zhDef: "一旦資料寫入區塊鏈，就無法被修改或刪除。這個特性讓區塊鏈的紀錄值得信賴，防止偽造。",
-    ex: "<span>Immutability</span> is what makes blockchain records so secure."
-  },
-  {
-    num: 8, cat: "基礎概念",
-    en: "Transparency",
-    zh: "透明性",
-    enDef: "All transactions on a public blockchain are <strong>visible to anyone</strong>, so anyone can verify the records.",
-    zhDef: "公開區塊鏈上的所有交易，任何人都可以查看和驗證，就像一本公開的帳本，資訊對所有人公開。",
-    ex: "<span>Transparency</span> allows anyone to audit blockchain transactions."
-  },
-  {
-    num: 9, cat: "基礎概念",
-    en: "Public Blockchain",
-    zh: "公鏈 / 公開區塊鏈",
-    enDef: "A blockchain that is <strong>open to everyone</strong>. Anyone can join, read, and submit transactions.",
-    zhDef: "完全對外開放的區塊鏈，任何人都能加入、查閱資料、提交交易，例如比特幣和以太坊都是公鏈。",
-    ex: "Bitcoin is a <span>public blockchain</span> anyone can access."
-  },
-  {
-    num: 10, cat: "基礎概念",
-    en: "Private Blockchain",
-    zh: "私鏈 / 私有區塊鏈",
-    enDef: "A blockchain where access is <strong>restricted to invited members</strong>, often used by companies.",
-    zhDef: "只有受邀成員才能加入的區塊鏈，通常由企業或機構使用，速度較快但較不去中心化。",
-    ex: "The bank created a <span>private blockchain</span> for internal records."
-  },
-  {
-    num: 11, cat: "基礎概念",
-    en: "Genesis Block",
-    zh: "創世區塊",
-    enDef: "The <strong>very first block</strong> in a blockchain. Every chain starts here — it has no previous block.",
-    zhDef: "區塊鏈的第一個區塊，整條鏈的起點。它沒有「前一個區塊」，是所有後續區塊的祖先。",
-    ex: "Satoshi mined the <span>genesis block</span> of Bitcoin in 2009."
-  },
-  {
-    num: 12, cat: "基礎概念",
-    en: "Hash",
-    zh: "雜湊值 / 哈希",
-    enDef: "A unique <strong>digital fingerprint</strong> generated from data. Even a tiny change in the data produces a completely different hash.",
-    zhDef: "由資料計算出來的唯一數位指紋，就像人的指紋一樣。資料只要改動一點，產生的雜湊值就完全不同。",
-    ex: "Each block's <span>hash</span> is linked to the previous block's hash."
-  },
-  {
-    num: 13, cat: "基礎概念",
-    en: "Smart Contract",
-    zh: "智能合約",
-    enDef: "A <strong>self-executing program</strong> stored on the blockchain that automatically carries out the terms of an agreement.",
-    zhDef: "儲存在區塊鏈上的自動執行程式。當預設條件達成，合約就自動執行，不需要中間人，就像自動販賣機。",
-    ex: "A <span>smart contract</span> releases payment automatically when goods are delivered."
-  },
-  {
-    num: 14, cat: "基礎概念",
-    en: "Fork",
-    zh: "分叉",
-    enDef: "A change to the blockchain protocol that creates a <strong>split in the chain</strong>. Can be a 'soft fork' (backward compatible) or 'hard fork' (not compatible).",
-    zhDef: "區塊鏈規則改變導致鏈分裂成兩條。軟分叉向下相容（舊版仍可用），硬分叉則完全分裂成兩條獨立的鏈。",
-    ex: "Bitcoin Cash was created through a <span>hard fork</span> of Bitcoin in 2017."
-  },
-
-  // ── 密碼學 (15–24) ──
-  {
-    num: 15, cat: "密碼學",
-    en: "Cryptography",
-    zh: "密碼學",
-    enDef: "The science of <strong>securing information</strong> using mathematical techniques, so only intended recipients can read it.",
-    zhDef: "利用數學技術保護資訊的科學，讓只有特定人員才能讀取資料。區塊鏈的安全性完全依賴密碼學。",
-    ex: "<span>Cryptography</span> protects your blockchain wallet from hackers."
-  },
-  {
-    num: 16, cat: "密碼學",
-    en: "Private Key",
-    zh: "私鑰",
-    enDef: "A secret code that gives you <strong>full control</strong> over your blockchain account. <strong>Never share it</strong> with anyone.",
-    zhDef: "你的加密貨幣帳戶的秘密密碼，就像保險箱的鑰匙。擁有私鑰就等於擁有帳戶，千萬不能外洩。",
-    ex: "If you lose your <span>private key</span>, you lose access to your funds forever."
-  },
-  {
-    num: 17, cat: "密碼學",
-    en: "Public Key",
-    zh: "公鑰",
-    enDef: "A code derived from your private key that you can <strong>share publicly</strong>. Others use it to send you cryptocurrency.",
-    zhDef: "從私鑰衍生出來的公開代碼，可以安全地公開分享，就像你的銀行帳號，別人用它把錢匯給你。",
-    ex: "Share your <span>public key</span> to receive cryptocurrency payments."
-  },
-  {
-    num: 18, cat: "密碼學",
-    en: "Digital Signature",
-    zh: "數位簽章",
-    enDef: "A cryptographic proof that a transaction was <strong>authorized by the account owner</strong>, using the private key.",
-    zhDef: "用私鑰產生的數學證明，確認交易確實由帳戶擁有者授權，就像在文件上親筆簽名，但更難偽造。",
-    ex: "A <span>digital signature</span> proves you authorized the transaction."
-  },
-  {
-    num: 19, cat: "密碼學",
-    en: "Encryption",
-    zh: "加密",
-    enDef: "The process of <strong>converting readable data into a coded format</strong> that only authorized parties can decode.",
-    zhDef: "將可讀資料轉換成只有特定人員才能解讀的編碼格式，就像把訊息鎖進密碼箱，保護資料不被竊取。",
-    ex: "<span>Encryption</span> ensures that your wallet data stays private."
-  },
-  {
-    num: 20, cat: "密碼學",
-    en: "Seed Phrase",
-    zh: "助記詞",
-    enDef: "A list of <strong>12 or 24 random words</strong> that can recover your crypto wallet. Extremely important to keep safe.",
-    zhDef: "通常是12或24個英文單字組成的密語，用來還原你的加密貨幣錢包。這比私鑰更重要，必須安全保管。",
-    ex: "Write your <span>seed phrase</span> on paper and store it somewhere safe."
-  },
-  {
-    num: 21, cat: "密碼學",
-    en: "Wallet Address",
-    zh: "錢包地址",
-    enDef: "A unique string of letters and numbers that works like a <strong>bank account number</strong> on the blockchain.",
-    zhDef: "由字母和數字組成的唯一識別碼，就像你的加密貨幣銀行帳號，別人匯幣給你時需要用到這個地址。",
-    ex: "Send the payment to my <span>wallet address</span>: 0x1a2b3c…"
-  },
-  {
-    num: 22, cat: "密碼學",
-    en: "Zero-Knowledge Proof",
-    zh: "零知識證明",
-    enDef: "A method to prove you <strong>know something without revealing</strong> the actual information itself.",
-    zhDef: "一種神奇的密碼學技術：可以向對方證明你知道某個答案，但完全不透露答案的內容，保護隱私。",
-    ex: "A <span>zero-knowledge proof</span> can verify your age without revealing your birthday."
-  },
-  {
-    num: 23, cat: "密碼學",
-    en: "Merkle Tree",
-    zh: "梅克爾樹",
-    enDef: "A <strong>tree-shaped data structure</strong> used to efficiently verify large sets of transaction data using hashes.",
-    zhDef: "一種樹狀的資料結構，用雜湊值有效率地驗證大量交易資料。讓系統能快速確認某筆交易是否在區塊內。",
-    ex: "The <span>Merkle tree</span> lets you verify a single transaction without downloading the whole blockchain."
-  },
-  {
-    num: 24, cat: "密碼學",
-    en: "Cold Wallet",
-    zh: "冷錢包",
-    enDef: "A crypto wallet that is <strong>completely offline</strong>, stored on a physical device. Much safer from hackers.",
-    zhDef: "完全離線的加密貨幣錢包，儲存在實體硬體裝置中，不連接網路，是保管大量加密貨幣最安全的方式。",
-    ex: "Store large amounts of crypto in a <span>cold wallet</span> for maximum security."
-  },
-
-  // ── 共識機制 (25–34) ──
-  {
-    num: 25, cat: "共識機制",
-    en: "Consensus Mechanism",
-    zh: "共識機制",
-    enDef: "The rules that all nodes in a network use to <strong>agree on which transactions are valid</strong> and should be added to the blockchain.",
-    zhDef: "讓網路上所有節點能夠達成共識、一致同意哪些交易合法的規則系統，是區塊鏈能夠運作的核心機制。",
-    ex: "Bitcoin's <span>consensus mechanism</span> ensures everyone agrees on the same transaction history."
-  },
-  {
-    num: 26, cat: "共識機制",
-    en: "Proof of Work (PoW)",
-    zh: "工作量證明",
-    enDef: "A consensus method where participants (<strong>miners</strong>) solve complex math puzzles to earn the right to add new blocks. Requires lots of computing power.",
-    zhDef: "讓礦工用電腦解複雜數學題來競爭記帳權的機制。解題需要大量算力和電力，解出者才能新增區塊並獲得獎勵。",
-    ex: "Bitcoin uses <span>Proof of Work</span> to secure its network."
-  },
-  {
-    num: 27, cat: "共識機制",
-    en: "Proof of Stake (PoS)",
-    zh: "權益證明",
-    enDef: "A consensus method where participants are chosen to add blocks based on how much cryptocurrency they <strong>lock up (stake)</strong> as collateral.",
-    zhDef: "依據持有並抵押多少加密貨幣來決定記帳權的機制，比工作量證明省電得多，以太坊在2022年轉換為此機制。",
-    ex: "Ethereum switched to <span>Proof of Stake</span> to reduce energy consumption."
-  },
-  {
-    num: 28, cat: "共識機制",
-    en: "Mining",
-    zh: "挖礦",
-    enDef: "The process of using computing power to solve PoW puzzles, <strong>validate transactions</strong>, and earn cryptocurrency rewards.",
-    zhDef: "礦工用電腦算力解數學題、驗證交易並新增區塊的過程，成功挖出新區塊就能獲得加密貨幣獎勵。",
-    ex: "Bitcoin <span>mining</span> requires expensive hardware and electricity."
-  },
-  {
-    num: 29, cat: "共識機制",
-    en: "Miner",
-    zh: "礦工",
-    enDef: "A participant who uses computing power to validate transactions and <strong>create new blocks</strong> on a PoW blockchain.",
-    zhDef: "在工作量證明區塊鏈上，負責用電腦算力驗證交易、打包成區塊的參與者，成功後獲得加密貨幣作為報酬。",
-    ex: "A <span>miner</span> in China earned 6.25 Bitcoin for adding a new block."
-  },
-  {
-    num: 30, cat: "共識機制",
-    en: "Validator",
-    zh: "驗證者",
-    enDef: "A participant in a PoS blockchain who is chosen to <strong>verify and add new blocks</strong> based on their staked tokens.",
-    zhDef: "在權益證明區塊鏈中，抵押代幣後被選中負責驗證交易、新增區塊的參與者，相當於PoS機制中的礦工。",
-    ex: "Ethereum <span>validators</span> must stake 32 ETH to participate."
-  },
-  {
-    num: 31, cat: "共識機制",
-    en: "Block Reward",
-    zh: "區塊獎勵",
-    enDef: "The <strong>cryptocurrency given to miners or validators</strong> as a reward for successfully adding a new block to the chain.",
-    zhDef: "成功新增一個區塊到鏈上的礦工或驗證者所獲得的加密貨幣獎勵，是激勵大家參與維護網路的機制。",
-    ex: "The Bitcoin <span>block reward</span> is currently 3.125 BTC."
-  },
-  {
-    num: 32, cat: "共識機制",
-    en: "Halving",
-    zh: "減半",
-    enDef: "An event that <strong>cuts the block reward in half</strong>, happening roughly every 4 years for Bitcoin. It controls the supply of new coins.",
-    zhDef: "比特幣大約每四年發生一次，將礦工的區塊獎勵削減一半的事件，目的是控制比特幣的發行速度和總量。",
-    ex: "After the 2024 <span>halving</span>, Bitcoin's block reward dropped to 3.125 BTC."
-  },
-  {
-    num: 33, cat: "共識機制",
-    en: "51% Attack",
-    zh: "51%攻擊",
-    enDef: "When a single entity controls <strong>more than half</strong> of the network's computing power, allowing them to manipulate the blockchain.",
-    zhDef: "當某個人或組織控制了超過全網一半的算力或質押量，就能操控交易記錄、雙重花費，是區塊鏈的主要威脅之一。",
-    ex: "A <span>51% attack</span> on Bitcoin would cost billions of dollars."
-  },
-  {
-    num: 34, cat: "共識機制",
-    en: "Staking",
-    zh: "質押 / 抵押",
-    enDef: "Locking up your cryptocurrency to <strong>support a PoS network</strong> and earn rewards, similar to earning interest in a bank.",
-    zhDef: "在權益證明系統中，將加密貨幣鎖定抵押以支援網路運作，並賺取獎勵的行為，有點像把錢存進銀行賺利息。",
-    ex: "By <span>staking</span> ETH, you earn around 4% annual rewards."
-  },
-
-  // ── DeFi金融 (35–44) ──
-  {
-    num: 35, cat: "DeFi金融",
-    en: "DeFi (Decentralized Finance)",
-    zh: "去中心化金融",
-    enDef: "Financial services like <strong>lending, borrowing, and trading</strong> built on blockchain — no banks or intermediaries needed.",
-    zhDef: "建立在區塊鏈上的金融服務，包括借貸、交易等，完全不需要銀行或金融機構作中間人，任何人都可使用。",
-    ex: "<span>DeFi</span> lets you earn interest on crypto without using a bank."
-  },
-  {
-    num: 36, cat: "DeFi金融",
-    en: "Cryptocurrency",
-    zh: "加密貨幣",
-    enDef: "A <strong>digital currency</strong> secured by cryptography and recorded on a blockchain. Examples include Bitcoin and Ethereum.",
-    zhDef: "由密碼學技術保護、記錄在區塊鏈上的數位貨幣。比特幣（BTC）和以太幣（ETH）是最知名的兩種。",
-    ex: "<span>Cryptocurrency</span> can be sent anywhere in the world within minutes."
-  },
-  {
-    num: 37, cat: "DeFi金融",
-    en: "Token",
-    zh: "代幣",
-    enDef: "A digital asset created on an existing blockchain. It can represent <strong>currency, ownership, or access rights</strong>.",
-    zhDef: "在現有區塊鏈上發行的數位資產，可以代表貨幣、所有權或使用權。與加密貨幣不同，代幣依附在其他鏈上。",
-    ex: "The company issued 1 million <span>tokens</span> to fund their project."
-  },
-  {
-    num: 38, cat: "DeFi金融",
-    en: "Gas Fee",
-    zh: "Gas費 / 手續費",
-    enDef: "A fee paid to the network for <strong>processing your transaction</strong>. Fees rise when the network is congested.",
-    zhDef: "向區塊鏈網路支付的交易處理費，就像快遞費。網路越繁忙，Gas費就越高；交易越複雜，費用也越多。",
-    ex: "The <span>gas fee</span> on Ethereum was $50 during peak hours."
-  },
-  {
-    num: 39, cat: "DeFi金融",
-    en: "DEX (Decentralized Exchange)",
-    zh: "去中心化交易所",
-    enDef: "A <strong>peer-to-peer trading platform</strong> on the blockchain. No company owns it; trades happen via smart contracts.",
-    zhDef: "在區塊鏈上透過智能合約直接進行點對點加密貨幣交易的平台，不需要公司或機構管理，任何人都能使用。",
-    ex: "Uniswap is the most popular <span>DEX</span> on Ethereum."
-  },
-  {
-    num: 40, cat: "DeFi金融",
-    en: "Liquidity Pool",
-    zh: "流動性池",
-    enDef: "A <strong>pool of tokens locked in a smart contract</strong> that enables trading on a DEX. Users who provide tokens earn fees.",
-    zhDef: "鎖定在智能合約中的代幣池，為去中心化交易所提供交易流動性。提供代幣的用戶可以賺取交易手續費。",
-    ex: "Add your tokens to a <span>liquidity pool</span> to earn passive income."
-  },
-  {
-    num: 41, cat: "DeFi金融",
-    en: "Yield Farming",
-    zh: "收益農耕 / 流動性挖礦",
-    enDef: "Earning rewards by <strong>providing liquidity</strong> to DeFi protocols, similar to earning interest but often with higher risk.",
-    zhDef: "將加密貨幣提供給DeFi平台以賺取利息和獎勵的行為，報酬通常比傳統銀行高，但風險也相對較大。",
-    ex: "<span>Yield farming</span> can offer 20–100% annual returns, but carries high risk."
-  },
-  {
-    num: 42, cat: "DeFi金融",
-    en: "Stablecoin",
-    zh: "穩定幣",
-    enDef: "A cryptocurrency designed to <strong>maintain a stable price</strong>, usually pegged to a real currency like the US dollar.",
-    zhDef: "設計用來保持穩定價格的加密貨幣，通常與美元等法定貨幣1:1掛鉤，例如USDT、USDC，方便日常使用。",
-    ex: "USDT is a <span>stablecoin</span> pegged 1:1 to the US dollar."
-  },
-  {
-    num: 43, cat: "DeFi金融",
-    en: "Airdrop",
-    zh: "空投",
-    enDef: "Free tokens <strong>distributed to wallet holders</strong> as a marketing strategy or reward for early users.",
-    zhDef: "加密貨幣項目免費發放代幣給特定錢包持有者的行為，通常用於行銷推廣或獎勵早期支持者，就像天上掉餡餅。",
-    ex: "Uniswap gave 400 UNI tokens to early users as an <span>airdrop</span>."
-  },
-  {
-    num: 44, cat: "DeFi金融",
-    en: "HODL",
-    zh: "長期持有（不賣）",
-    enDef: "Crypto slang meaning to <strong>hold onto cryptocurrency</strong> for the long term instead of selling, regardless of market conditions.",
-    zhDef: "源自一個拼錯「hold」的網路用語，意思是長期持有加密貨幣不賣出，相信未來會漲，是加密貨幣社群的流行語。",
-    ex: "Even during the crash, he decided to <span>HODL</span> his Bitcoin."
-  },
-
-  // ── NFT與資產 (45–50) ──
-  {
-    num: 45, cat: "NFT與資產",
-    en: "NFT (Non-Fungible Token)",
-    zh: "非同質化代幣",
-    enDef: "A <strong>unique digital token</strong> that proves ownership of a specific item (art, music, video). Each NFT is one-of-a-kind.",
-    zhDef: "代表特定數位資產唯一所有權的代幣，每個NFT都是獨一無二的，就像數位世界的真跡畫作或收藏品。",
-    ex: "He sold his digital artwork as an <span>NFT</span> for $5,000."
-  },
-  {
-    num: 46, cat: "NFT與資產",
-    en: "Fungible",
-    zh: "同質化的 / 可替換的",
-    enDef: "Something is fungible when one unit is <strong>identical and interchangeable</strong> with another. A dollar bill is fungible; a painting is not.",
-    zhDef: "可以與相同物品互相替換的特性。一張百元鈔票可以換另一張百元鈔票（同質化），但一幅名畫無法替換（非同質化）。",
-    ex: "Money is <span>fungible</span>; your $10 bill is the same as any other $10 bill."
-  },
-  {
-    num: 47, cat: "NFT與資產",
-    en: "Mint",
-    zh: "鑄造（NFT）",
-    enDef: "The process of <strong>creating a new NFT</strong> by recording it on the blockchain for the first time.",
-    zhDef: "將數位資產第一次記錄到區塊鏈上、創建NFT的過程，就像把圖片或音樂「鑄造」成一個有所有權紀錄的數位資產。",
-    ex: "She <span>minted</span> her artwork as an NFT on OpenSea."
-  },
-  {
-    num: 48, cat: "NFT與資產",
-    en: "Metaverse",
-    zh: "元宇宙",
-    enDef: "A shared <strong>virtual online world</strong> where people can interact, work, and play, often using blockchain-based assets.",
-    zhDef: "一個人們可以用虛擬化身互動、工作、玩樂的共享虛擬世界，區塊鏈技術讓其中的數位資產擁有真實所有權。",
-    ex: "In the <span>metaverse</span>, you can buy virtual land with cryptocurrency."
-  },
-  {
-    num: 49, cat: "NFT與資產",
-    en: "Web3",
-    zh: "Web3（去中心化網路）",
-    enDef: "The next evolution of the internet where users <strong>own their data and assets</strong>, powered by blockchain technology.",
-    zhDef: "網際網路的下一個階段，讓用戶真正擁有自己的數據和資產，不再由少數大公司掌控，建立在區塊鏈技術之上。",
-    ex: "<span>Web3</span> promises an internet where you own your digital identity."
-  },
-  {
-    num: 50, cat: "NFT與資產",
-    en: "DAO (Decentralized Autonomous Organization)",
-    zh: "去中心化自治組織",
-    enDef: "An organization <strong>governed by its members</strong> through token voting, with rules encoded in smart contracts — no CEO needed.",
-    zhDef: "由成員持有代幣投票共同治理的組織，規則寫在智能合約中自動執行，不需要執行長或董事會，成員共同決策。",
-    ex: "The <span>DAO</span> voted to donate $1 million to open-source developers."
-  }
-];
-
-let currentFilter = '全部';
-let currentSearch = '';
-
-function setFilter(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderCards();
-}
-
-function filterCards() {
-  currentSearch = document.getElementById('searchInput').value.toLowerCase();
-  renderCards();
-}
-
-function renderCards() {
-  const grid = document.getElementById('cardGrid');
-  const filtered = terms.filter(t => {
-    const catMatch = currentFilter === '全部' || t.cat === currentFilter;
-    const q = currentSearch;
-    const searchMatch = !q || t.en.toLowerCase().includes(q) || t.zh.includes(q) || t.zhDef.includes(q);
-    return catMatch && searchMatch;
-  });
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="no-results"><span class="emoji">🔍</span>找不到符合的術語，請換個關鍵字試試！</div>';
-    return;
-  }
-
-  grid.innerHTML = filtered.map(t => `
-    <div class="card" data-cat="${t.cat}">
-      <div class="card-header">
-        <span class="card-num">#${String(t.num).padStart(2,'0')}</span>
-        <span class="cat-tag">${t.cat}</span>
-      </div>
-      <div class="en-term">${t.en}</div>
-      <div class="zh-term">${t.zh}</div>
-      <div class="divider"></div>
-      <div class="en-def">${t.enDef}</div>
-      <div class="zh-def">${t.zhDef}</div>
-      ${t.ex ? `<div class="example">💡 <span>${t.ex}</span></div>` : ''}
-      <button class="speak-btn" onclick="speak('${t.en.replace(/['"]/g, ' ')}', this)" title="朗讀英文術語">🔊</button>
+<!-- ═══════════════ TOP LINK BAR ═══════════════ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <div class="link-bar-title">🍊 七月開課 · 林威老師課程資訊</div>
+    <div class="link-cards">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <span class="link-card-emoji">🎓</span>
+        <span class="link-card-name">錯中學 ECHO 計劃</span>
+        <span class="link-card-desc">七月新課｜從錯誤中學習英文</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <span class="link-card-emoji">📊</span>
+        <span class="link-card-name">學生學習分析</span>
+        <span class="link-card-desc">七月課程｜個人化學習數據</span>
+      </a>
     </div>
-  `).join('');
-}
+    <a class="line-card" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <div class="line-icon">💬</div>
+      <div class="line-card-text">
+        <span class="line-card-name">LINE 聯絡林威老師</span>
+        <span class="line-card-id">ID：linwayet｜有問題歡迎直接私訊</span>
+      </div>
+    </a>
+  </div>
+</div>
 
-function speak(text, btn) {
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US';
-  u.rate = 0.85;
-  u.pitch = 1.0;
-  btn.textContent = '🔉';
-  u.onend = () => btn.textContent = '🔊';
-  speechSynthesis.speak(u);
-}
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">📚 自學微課程 · 八回合系列</div>
+  <h1>Dotcom <span>Bubble</span></h1>
+  <p class="hero-sub">1995–2002 年間那場改變世界的網路狂熱與崩盤，每集約 10 分鐘，帶你看懂歷史上最戲劇性的金融泡沫</p>
+  <div class="hero-pills">
+    <span class="pill pill-amber">⏱ 每集 10 分鐘</span>
+    <span class="pill pill-coral">📡 共 8 回合</span>
+    <span class="pill pill-teal">🌐 自學友善</span>
+  </div>
+</div>
 
-renderCards();
-</script>
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="main">
+
+  <!-- NASDAQ 時間軸 -->
+  <div class="timeline">
+    <div class="tl-seg tl-intro">
+      <span class="tl-seg-label">時代背景</span>
+      <span class="tl-seg-range">第 1–2 集</span>
+    </div>
+    <div class="tl-seg tl-boom">
+      <span class="tl-seg-label">狂飆年代</span>
+      <span class="tl-seg-range">第 3–4 集</span>
+    </div>
+    <div class="tl-seg tl-bust">
+      <span class="tl-seg-label">崩盤</span>
+      <span class="tl-seg-range">第 5–6 集</span>
+    </div>
+    <div class="tl-seg tl-after">
+      <span class="tl-seg-label">反思</span>
+      <span class="tl-seg-range">第 7–8 集</span>
+    </div>
+  </div>
+
+  <!-- 數字卡 -->
+  <div class="stats">
+    <div class="stat-card s1">
+      <div class="stat-num">−78%</div>
+      <div class="stat-label">NASDAQ 跌幅<br>2000–2002</div>
+    </div>
+    <div class="stat-card s2">
+      <div class="stat-num">$5兆</div>
+      <div class="stat-label">市值蒸發<br>美元</div>
+    </div>
+    <div class="stat-card s3">
+      <div class="stat-num">5048</div>
+      <div class="stat-label">NASDAQ 高點<br>2000.3.10</div>
+    </div>
+  </div>
+
+  <!-- ── PART 1 ── -->
+  <div class="phase-header">
+    <div class="phase-line line-intro"></div>
+    <span class="phase-badge ph-intro">第一部分 · 時代背景</span>
+    <div class="phase-line line-intro"></div>
+  </div>
+
+  <div class="ep-card c-intro">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">1</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 01 · The Setup</div>
+        <div class="ep-title">網際網路改變世界</div>
+      </div>
+    </div>
+    <div class="ep-desc">WWW 誕生、家用電腦普及、1990 年代的美國夢——一切是如何開始的？</div>
+    <div class="kw-row">
+      <span class="kw">World Wide Web</span>
+      <span class="kw">Tim Berners-Lee</span>
+      <span class="kw">Mosaic 瀏覽器</span>
+      <span class="kw">電子商務起源</span>
+    </div>
+  </div>
+
+  <div class="ep-card c-intro">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">2</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 02 · Fundamentals</div>
+        <div class="ep-title">什麼是泡沫？資產泡沫入門</div>
+      </div>
+    </div>
+    <div class="ep-desc">歷史上的泡沫、鬱金香狂熱、Greater Fool Theory——泡沫是怎麼形成的？</div>
+    <div class="kw-row">
+      <span class="kw">asset bubble</span>
+      <span class="kw">speculation</span>
+      <span class="kw">greater fool theory</span>
+      <span class="kw">tulip mania</span>
+    </div>
+  </div>
+
+  <!-- ── PART 2 ── -->
+  <div class="phase-header">
+    <div class="phase-line line-boom"></div>
+    <span class="phase-badge ph-boom">第二部分 · 狂飆年代</span>
+    <div class="phase-line line-boom"></div>
+  </div>
+
+  <div class="ep-card c-boom">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">3</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 03 · The Boom</div>
+        <div class="ep-title">NASDAQ 飆上 5000！錢從哪來？</div>
+      </div>
+    </div>
+    <div class="ep-desc">創投瘋狂灌錢、IPO 浪潮、加個 .com 後綴股票就翻倍——那個時代有多瘋狂？</div>
+    <div class="kw-row">
+      <span class="kw">NASDAQ</span>
+      <span class="kw">venture capital</span>
+      <span class="kw">IPO 熱潮</span>
+      <span class="kw">burn rate</span>
+    </div>
+  </div>
+
+  <div class="ep-card c-boom">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">4</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 04 · Irrational Exuberance</div>
+        <div class="ep-title">非理性繁榮：Pets.com 與瘋狂的 1990s</div>
+      </div>
+    </div>
+    <div class="ep-desc">超級盃廣告搶版面、燒錢商業模式、Alan Greenspan 的「非理性繁榮」警告沒人聽。</div>
+    <div class="kw-row">
+      <span class="kw">Pets.com</span>
+      <span class="kw">irrational exuberance</span>
+      <span class="kw">Super Bowl ads</span>
+      <span class="kw">Alan Greenspan</span>
+    </div>
+  </div>
+
+  <!-- ── PART 3 ── -->
+  <div class="phase-header">
+    <div class="phase-line line-bust"></div>
+    <span class="phase-badge ph-bust">第三部分 · 崩盤</span>
+    <div class="phase-line line-bust"></div>
+  </div>
+
+  <div class="ep-card c-bust">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">5</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 05 · The Crash</div>
+        <div class="ep-title">2000 年 3 月 10 日：泡沫正式破裂</div>
+      </div>
+    </div>
+    <div class="ep-desc">崩盤完整時間軸、Fed 升息如何戳破泡沫、恐慌性拋售讓市值在兩年內蒸發 5 兆美元。</div>
+    <div class="kw-row">
+      <span class="kw">March 10, 2000</span>
+      <span class="kw">Fed 升息</span>
+      <span class="kw">market crash</span>
+      <span class="kw">panic selling</span>
+    </div>
+  </div>
+
+  <div class="ep-card c-bust">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">6</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 06 · Winners & Losers</div>
+        <div class="ep-title">誰死誰活？倖存者與殞落者</div>
+      </div>
+    </div>
+    <div class="ep-desc">Webvan 燒光 8 億美元宣告破產、Amazon 掙扎求生轉型、Google 在廢墟中悄悄崛起。</div>
+    <div class="kw-row">
+      <span class="kw">Webvan 破產</span>
+      <span class="kw">Amazon 轉型</span>
+      <span class="kw">eToys</span>
+      <span class="kw">Boo.com</span>
+      <span class="kw">Google 崛起</span>
+    </div>
+  </div>
+
+  <!-- ── PART 4 ── -->
+  <div class="phase-header">
+    <div class="phase-line line-after"></div>
+    <span class="phase-badge ph-after">第四部分 · 反思與現在</span>
+    <div class="phase-line line-after"></div>
+  </div>
+
+  <div class="ep-card c-after">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">7</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 07 · Aftermath</div>
+        <div class="ep-title">崩盤之後：911、Enron 與科技業的療傷</div>
+      </div>
+    </div>
+    <div class="ep-desc">連鎖效應如何加深衰退、企業醜聞重創信心、矽谷如何花了五年重建自己。</div>
+    <div class="kw-row">
+      <span class="kw">9/11 衝擊</span>
+      <span class="kw">Enron 醜聞</span>
+      <span class="kw">WorldCom</span>
+      <span class="kw">Web 2.0 復甦</span>
+    </div>
+  </div>
+
+  <div class="ep-card c-after">
+    <span class="ep-time">⏱ 10 min</span>
+    <div class="ep-top">
+      <div class="ep-num">8</div>
+      <div class="ep-head">
+        <div class="ep-label">Episode 08 · Lessons & Legacy</div>
+        <div class="ep-title">歷史重演？AI 泡沫 vs Dotcom 泡沫</div>
+      </div>
+    </div>
+    <div class="ep-desc">給投資人的 5 堂課、今日 AI 熱潮與 Dotcom 時代的對照——歷史真的會重演嗎？</div>
+    <div class="kw-row">
+      <span class="kw">AI bubble</span>
+      <span class="kw">fundamental value</span>
+      <span class="kw">FOMO</span>
+      <span class="kw">business model</span>
+      <span class="kw">歷史教訓</span>
+    </div>
+  </div>
+
+  <div class="footnote" style="margin-top:32px;">
+    <strong>林威老師</strong> 製作｜34 年教學經驗 · 台灣高中英文 · 錯中學 ECHO 計劃<br>
+    自學使用，版權所有，歡迎分享連結 🍊
+  </div>
+
+</div><!-- /main -->
+
+<!-- ═══════════════ BOTTOM LINK BAR ═══════════════ -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <div class="link-bar-title">🍊 七月開課 · 林威老師課程資訊</div>
+    <div class="link-cards">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <span class="link-card-emoji">🎓</span>
+        <span class="link-card-name">錯中學 ECHO 計劃</span>
+        <span class="link-card-desc">七月新課｜從錯誤中學習英文</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <span class="link-card-emoji">📊</span>
+        <span class="link-card-name">學生學習分析</span>
+        <span class="link-card-desc">七月課程｜個人化學習數據</span>
+      </a>
+    </div>
+    <a class="line-card" href="https://line.me/ti/p/~linwayet" target="_blank">
+      <div class="line-icon">💬</div>
+      <div class="line-card-text">
+        <span class="line-card-name">LINE 聯絡林威老師</span>
+        <span class="line-card-id">ID：linwayet｜有問題歡迎直接私訊</span>
+      </div>
+    </a>
+  </div>
+</div>
+
 </body>
 </html>
