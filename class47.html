@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boom, Bubbles and the End of Stagnation</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDF6EC;
+    --bg2: #FFF1DE;
+    --amber: #D4821A;
+    --amber-dark: #A85C10;
+    --rust: #B5451B;
+    --brown: #5D3A1A;
+    --gold: #E8A020;
+    --cream: #FAF0E0;
+    --text: #3C2410;
+    --text-light: #7A5230;
+    --border: #E8C89A;
+    --shadow: rgba(90,50,10,0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lato', 'Noto Serif TC', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: linear-gradient(135deg, #7B3F00 0%, #B5451B 40%, #D4821A 70%, #E8A020 100%);
+    color: white;
+    text-align: center;
+    padding: 48px 20px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+  .header-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .book-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: #FFE0B2;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 6vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    color: #FFE0B2;
+    font-style: italic;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+  .header-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    margin: 0 auto 0;
+    line-height: 1.6;
+  }
+
+  /* ===== NAV LINKS ===== */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+  .nav-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1.5px solid;
+  }
+  .nav-card:active { transform: scale(0.97); }
+  .nav-card.echo {
+    background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+    border-color: #FFB300;
+    box-shadow: 0 3px 12px rgba(255,179,0,0.25);
+  }
+  .nav-card.popup {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    border-color: #FF8F00;
+    box-shadow: 0 3px 12px rgba(255,143,0,0.2);
+  }
+  .nav-card.line {
+    background: linear-gradient(135deg, #F1F8E9, #DCEDC8);
+    border-color: #4CAF50;
+    box-shadow: 0 3px 12px rgba(76,175,80,0.2);
+  }
+  .nav-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 44px;
+    text-align: center;
+  }
+  .nav-card strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 2px;
+  }
+  .nav-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ===== NAV DIVIDER ===== */
+  .nav-divider {
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    height: 2px;
+    max-width: 760px;
+    margin: 4px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ===== BOOK INFO ===== */
+  .book-intro {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 20px;
+    text-align: center;
+  }
+  .book-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 4vw, 26px);
+    color: var(--amber-dark);
+    margin-bottom: 12px;
+  }
+  .book-intro p {
+    font-size: 15px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ===== TABLE OF CONTENTS ===== */
+  .toc-section {
+    max-width: 760px;
+    margin: 0 auto 24px;
+    padding: 0 16px;
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber-dark);
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .toc-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s, transform 0.15s;
+    font-size: 13px;
+  }
+  .toc-link:active { transform: scale(0.97); background: #FFE0B2; }
+  .toc-num {
+    font-weight: 700;
+    color: var(--amber);
+    flex-shrink: 0;
+    font-size: 12px;
+    min-width: 36px;
+  }
+  .toc-text { line-height: 1.4; }
+  .toc-text small { color: var(--text-light); font-size: 11px; }
+
+  /* ===== CHAPTERS ===== */
+  .chapters-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+  }
+
+  .chapter-card {
+    background: var(--card-light, #FFF8F0);
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--card-color, #D4821A);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .chapter-card:hover { box-shadow: 0 6px 24px rgba(90,50,10,0.18); }
+
+  .chapter-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .ch-emoji {
+    font-size: 32px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ch-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--card-color, var(--amber));
+    display: block;
+    margin-bottom: 4px;
+  }
+  .ch-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 3.5vw, 20px);
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .ch-title-zh {
+    font-size: 14px;
+    color: var(--text-light);
+    font-family: 'Noto Serif TC', serif;
+    margin: 0;
+  }
+
+  .chapter-body {
+    padding: 18px 20px 0;
+    position: relative;
+    max-height: 220px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  .chapter-body.expanded {
+    max-height: 9999px;
+  }
+  .chapter-body p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .chapter-body .section-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--card-color, var(--amber-dark));
+    margin: 18px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .fade-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--card-light, #FFF8F0));
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .chapter-body.expanded .fade-overlay {
+    opacity: 0;
+  }
+
+  .expand-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border);
+    color: var(--card-color, var(--amber));
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.15s;
+    font-family: 'Noto Serif TC', serif;
+  }
+  .expand-btn:hover { background: rgba(0,0,0,0.04); }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: linear-gradient(135deg, #5D3A1A 0%, #8B4513 50%, #A85C10 100%);
+    color: rgba(255,255,255,0.9);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .footer-inner { max-width: 760px; margin: 0 auto; }
+  .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #FFD54F;
+    margin-bottom: 16px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 20px;
+  }
+
+  /* ===== SCROLL TO TOP ===== */
+  .back-top {
+    position: fixed;
+    bottom: 24px; right: 20px;
+    width: 46px; height: 46px;
+    background: var(--amber);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+    z-index: 999;
+  }
+  .back-top:active { transform: scale(0.9); }
+
+  @media (min-width: 600px) {
+    .nav-links { flex-direction: row; }
+    .nav-card { flex: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="book-badge">📚 Reading Notes · 讀書筆記</div>
+    <h1 class="header-title">Boom, Bubbles<br>and the End of Stagnation</h1>
+    <p class="header-subtitle">泡沫、繁榮與停滯的終結</p>
+    <p class="header-desc">Why innovation accelerates through speculative bubbles — and how the world's greatest technological leaps were fueled by irrational exuberance, definite optimism, and radical risk-taking.</p>
+  </div>
+</header>
+
+<!-- ===== TOP NAV LINKS ===== -->
+
+<div class="nav-links">
+  <a href="https://linwayet.github.io/4ulive/index.html" class="nav-card echo" target="_blank">
+    <span class="nav-icon">🔄</span>
+    <div>
+      <strong>錯中學 ECHO 計劃</strong>
+      <p>七月課程 · 從錯誤中學習的智慧英文訓練系統</p>
+    </div>
+  </a>
+  <a href="https://linwayet.github.io/popup/index" class="nav-card popup" target="_blank">
+    <span class="nav-icon">📊</span>
+    <div>
+      <strong>學生分析系統</strong>
+      <p>七月課程 · 深度學習數據分析平台</p>
+    </div>
+  </a>
+  <a href="https://line.me/ti/p/linwayet" class="nav-card line" target="_blank">
+    <span class="nav-icon">💬</span>
+    <div>
+      <strong>加入 LINE 聯絡林威老師</strong>
+      <p>帳號：linwayet · 歡迎諮詢課程</p>
+    </div>
+  </a>
+</div>
+
+<div class="nav-divider"></div>
+
+<!-- ===== BOOK INTRO ===== -->
+<div class="book-intro">
+  <h2>全書十章概覽</h2>
+  <p>本書探討為何人類最偉大的科技突破——從曼哈頓計畫、阿波羅登月、摩爾定律到比特幣——都誕生於泡沫之中。作者主張「泡沫」並非單純的災難，而是加速創新的強大引擎。</p>
+</div>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<nav class="toc-section">
+  <div class="toc-title">📖 章節目錄</div>
+  <div class="toc-grid">
+    <a href="#ch1" class="toc-link"><span class="toc-num">Ch.1</span><span class="toc-text">停滯的意識形態<br><small>The Ideology of Stasis</small></span></a>
+<a href="#ch2" class="toc-link"><span class="toc-num">Ch.2</span><span class="toc-text">泡沫作為創新加速器<br><small>Bubbles as Innovation Accelerators</small></span></a>
+<a href="#ch3" class="toc-link"><span class="toc-num">Ch.3</span><span class="toc-text">曼哈頓計畫<br><small>The Manhattan Project</small></span></a>
+<a href="#ch4" class="toc-link"><span class="toc-num">Ch.4</span><span class="toc-text">阿波羅計畫<br><small>The Apollo Program</small></span></a>
+<a href="#ch5" class="toc-link"><span class="toc-num">Ch.5</span><span class="toc-text">摩爾定律<br><small>Moore's Law</small></span></a>
+<a href="#ch6" class="toc-link"><span class="toc-num">Ch.6</span><span class="toc-text">企業研發的黃金時代<br><small>The Golden Age of Corporate R&D</small></span></a>
+<a href="#ch7" class="toc-link"><span class="toc-num">Ch.7</span><span class="toc-text">水力壓裂<br><small>Fracking</small></span></a>
+<a href="#ch8" class="toc-link"><span class="toc-num">Ch.8</span><span class="toc-text">比特幣<br><small>Bitcoin</small></span></a>
+<a href="#ch9" class="toc-link"><span class="toc-num">Ch.9</span><span class="toc-text">進步的形上學<br><small>The Metaphysics of Progress</small></span></a>
+<a href="#ch10" class="toc-link"><span class="toc-num">Ch.10</span><span class="toc-text">釋放普羅米修斯<br><small>Unleashing Prometheus</small></span></a>
+
+  </div>
+</nav>
+
+<!-- ===== CHAPTERS ===== -->
+<main class="chapters-container">
+
+<section class="chapter-card" id="ch1" style="--card-color:#8B4513;--card-light:#FFF3E0">
+  <div class="chapter-header">
+    <span class="ch-emoji">🌑</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 1</span>
+      <h3 class="ch-title-en">The Ideology of Stasis</h3>
+      <p class="ch-title-zh">停滯的意識形態</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>What happened to the future? Capitalism, it seems, is haunted by the specter of stagnation. While it may appear that technological innovation continues to accelerate, this is merely an illusion, sustained by and mediated to a large extent through our smartphones. In reality, we have entered an age of deceleration and decline. As one noted tech investor summed it up, “We wanted flying cars, instead we got characters.”</p>
+<p>The symptoms of technological, economic, and cultural stagnation can be detected everywhere. Some of the evidence is hard to quantify, but it can perhaps best be summarized by a simple thought experiment: Will children born today experience as much change as children born a century ago—a time when cars, electrical appliances, synthetic materials, and telephones were still in their infancy? Futurists and science-fiction authors once prophesied an era of abundant energy due to nuclear fission, the arrival of full automation, the colonization of the solar system, the end of poverty, and the attainment of immortality. In contrast, futurists today ask questions about how soon and how catastrophically civilization will collapse.</p>
+<p>Quantitative evidence indicates stagnation across various domains, including median wage growth, income concentration and inequality, rates of debt and leverage, political polarization, new business formation, and geographic mobility. Even the numbers that look good aren’t as good as they look: There’s more academic publishing than ever, but the impact of the median publication is rapidly declining. We’ve also seen deceleration in technological progress as captured by an important metric: total factor productivity. A variable calculated from economic models, total factor productivity indicates the extent to which growth is a result of technological improvements as opposed to investments in labor and capital. You can try to estimate economic growth by tallying increases in hours worked and capital invested, but these estimates will inevitably have unaccounted remainders. This leftover econometric dark matter must be due to technology of one kind or another, which makes it possible to do more with less either by building new products from old materials or by organizing people more effectively. Growth in US total factor productivity, which averaged almost percent per year from 1920 to 1970, has averaged less than percent per year since then. Based strictly on this measure, the pace of technological improvement has been cut in half.</p>
+<p>The West has also become more nihilistic. Based on an analysis of the Google Books Ngram corpus, the use of terms related to progress and the future has decreased by about percent since the 1960s, while those related to threats, risks, and worries have become several times more common. Culturally, too, there is a persistent feeling of exhaustion and repetition. How many Star Wars, Transformers, or Spider-Man movies do we need? Science fiction, meanwhile, no longer seems capable of optimism. Dystopian and nihilistic themes dominate. Even 2015’s The Martian, a paean to human ingenuity, spends a fair amount of time on NASA’s bureaucracy and internal politics. Machine-learning algorithms, trained on what we’ve watched before, determine what we see; pop music is stuck in an endless loop of repetition and nostalgia; and art and architecture are dominated by an aesthetic of generic conformity.</p>
+<p>But while we can tolerate another uninspiring superhero movie reboot, we can’t accept stagnation in science—which, along with technology, constitutes one of the pillars of Western civilization. Despite increased funding and the efforts of a growing population of researchers to churn out more papers than ever before, science is suffering from diminishing returns. Hyper-specialization and bureaucratization are slowing down scientific progress such that instead of scientific breakthroughs, we get more grant proposals and press releases. Science and technology advances both in leaps and steady increments, but right now, we’re getting too much refinement and not enough revolution.</p>
+<p>Of course, there are still pockets of innovation. Computers are getting faster, at least in terms of hardware. Artificial intelligence performs unprecedented feats, albeit within the narrow domains for which it was constructed. Venture capital is flowing into AI at an unprecedented rate, and startups that work on fission and fusion reactor designs and supersonic jets are getting funded. Materials science continues to advance, biohacking has gone from fantasy to hobby, energy entrepreneurs have reversed the decades-long decline in American oil output, and Bitcoin is reengineering the civilizational substrate of money. Yet the rate of progress is much slower than it was in the mid-20th century. What happened?</p>
+<h4 class="section-head">Sources of the Great Stagnation</h4>
+<p>Dominant accounts of techno-economic stagnation focus on a single overarching explanation: The low-hanging fruit has already been picked. In his 2011 book The Great Stagnation, economist Tyler Cowen identifies three pivotal developments that accelerated technological progress: the cultivation of land, the exploitation of 18th- and 19th-century scientific breakthroughs, and the increasing value of education. In his 2016 work The Rise and Fall of American Growth, economist Robert Gordon argues that the technological innovations that fueled economic growth from 1870 to 1970, such as electricity, sanitation, medical inventions, the internal combustion engine, and the telephone, are unrepeatable one-offs. In other words, the singularity has already happened—the fundamental transformations of the 19th and 20th centuries that unlocked nature’s secrets through scientific breakthroughs in physics, engineering, biology, and chemistry and enabled one-off productivity boosts were outliers. According to this view, the rate of progress is now slowing down and mean-reverting to historical norms. We can call this the natural theory of stagnation.</p>
+<p>Breaking Cowen’s and Gordon’s arguments down, we detect four structural impediments to innovation. First is the dynamics of demographics: A combination of aging and low birth rates tends to result in slowed growth, since older people usually spend less than younger people and are less productive. Families with kids also spend more, whereas younger people without children contribute less to economic activity. Furthermore, older people have high health care costs and pension liabilities. A higher-order effect of these trends, as we’ll detail later in this chapter, is a rising societal aversion to risk and a culture that is increasingly cautious and complacent.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch2" style="--card-color:#B5451B;--card-light:#FFF8E1">
+  <div class="chapter-header">
+    <span class="ch-emoji">💥</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 2</span>
+      <h3 class="ch-title-en">From Bust to Boom: Bubbles as Innovation Accelerators</h3>
+      <p class="ch-title-zh">從崩盤到繁榮：泡沫作為創新加速器</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>If our age is defined by stagnation and stasis, which results from a generalized form of risk intolerance that permeates all of society, how can we break free and reach escape velocity for accelerated technological and scientific progress? In a word: bubbles. This might seem counterintuitive at first, since bubbles have funded all kinds of gadgets, fads, and technologies that faded into irrelevance after they burst. But bubbles are among the most powerful mechanisms we have to boost risk tolerance. They foster precisely the kinds of futuristic and optimistic visions we need in order to arrest and reverse stasis and decline. Under the right conditions, they are ideal exit ramps from the Great Stagnation.</p>
+<p>Historically, bubbles are recurrent phenomena. From tulips to Bitcoin, they’ve formed in a multitude of markets. Yet this familiarity has gained them little favor. Bubbles, and their subsequent busts, are often described as destabilizing, inefficient, and socially destructive. And it’s easy to see why. Almost $6 trillion evaporated after the dot-com collapse in the early 2000s, and the global economic system crashed when the housing bubble burst in 2008.</p>
+<p>The standard view in economics and finance holds that speculative financial bubbles form when unrealistic expectations about future cash flows decouple prices temporarily from fundamental valuations. In this view, popularized by a 19th-century study on crowd psychology, bubbles are the result of “popular delusions,” the “madness of crowds,” or “irrational exuberance.” Fueled by self-reinforcing feedback loops of imitation and herding behavior, prices rise until a crash drives them back to the underlying fundamentals.</p>
+<p>Yet not all bubbles destroy wealth and value. Some can be understood as important catalysts for techno-scientific progress. Most novel technology doesn’t just appear ex nihilo, entering the world fully formed and all at once. Rather, it builds on previous false starts, failures, iterations, and historical path dependencies. Bubbles create opportunities to deploy the capital necessary to fund and speed up such large-scale experimentation—which includes lots of trial and error done in parallel—thereby accelerating the rate of potentially disruptive technologies and breakthroughs.</p>
+<p>By generating positive feedback cycles of enthusiasm and investment, bubbles can be net beneficial. Optimism can be a self-fulfilling prophecy. Speculation provides the massive financing needed to fund highly risky and exploratory projects; what appears in the short term to be excessive enthusiasm or just bad investing turns out to be essential for bootstrapping social and technological innovations. If we examine how progress has unfolded over the course of the past century, we find that in both hardware and software, from the Apollo program to Bitcoin, some of our greatest technological achievements are the product of bubbles.</p>
+<p>At the core of an innovation-accelerating bubble is a definite vision of the future that drives extreme commitment from investors and other participants. A bubble can be a collective delusion, but it can also be an expression of collective vision. That vision becomes a site of coordination for people and capital and for the parallelization of innovation. Instead of happening over time, bursts of progress happen simultaneously across different domains. And with mounting enthusiasm—which, as in the case of Bitcoin, can border on a fanatic belief in the potential of a bubble’s underlying technology—comes increased risk tolerance and strong network effects. The fear of missing out, or FOMO, attracts even more participants, entrepreneurs, and speculators, further reinforcing this positive feedback loop. Like bubbles, FOMO tends to have a bad reputation, but it’s sometimes a healthy instinct. After all, none of us wants to miss out on a once-in-a-lifetime chance to build the future.</p>
+<p>This is, admittedly, a counterintuitive way of thinking. After all, “bubble” is a pejorative term. In many cases, it is a term of resentment—investors describe anything that gains value but which they don’t own as some sort of bubble. And bubbles, both famous and infamous, have left a trail of value destruction and financial catastrophe in their wake. But there’s a place for bubble revisionism. In his 2007 book Pop, Daniel Gross runs through a list of historical bubbles, including telegraphs, railroads, dot-coms, and housing, that had undeniable upsides. Even if the earliest investors in transatlantic cable lost their shirts, cables did get laid, and the world grew more connected. Thanks to overbuilding, a quarter of the entire US railroad system was in bankruptcy by 1894, but the tracks were still there, and cheap transportation remained available. To this day, the US has some of the world’s best freight rail infrastructure thanks to what in the 19th century was excess capacity. And since trains are the most cost-effective way to move many goods over land, US consumers and companies continue to benefit from lower prices. Meanwhile, this cheap capacity led to some of the first national brands, and when globalization started accelerating in the 1970s, dominant American brands evolved into dominant global ones. All of this was made possible by a bubble.</p>
+<p>The case of railroads points to another potential benefit: Bubbles often have positive spillover effects. Enthusiasm for the economic and moral consequences of colonialism was misguided, to say the least, but colonialism led to the development of longitude, which made travel and trade more efficient. Railway bubbles made time more granular, since a railroad’s timetable only works if people can show up at the station at a precise time. The Manhattan Project gave us nuclear power and a good reason to develop better rockets. And the Apollo program subsidized the early stages of the transistor, arguably leading to the modern computer revolution. What’s especially powerful about these bubbles is that they literally change how we see the world. The concept of something happening “eight minutes past the hour” was pointless in a pre-railroad world but was essential for coordinating train transfers. The digital revolution is defined by even more fine-grained slices of time. Clock cycles now coordinate a computer’s internal calculations at a much smaller scale. Bitcoin has its own independent clock through “block time,” creating a decentralized (approximate) timekeeping mechanism independent of any central authority. Bubbles literally add new dimensions to the way we view the world, and lead to more precise measurements within those dimensions.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch3" style="--card-color:#7B3F00;--card-light:#FFF3E0">
+  <div class="chapter-header">
+    <span class="ch-emoji">☢️</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 3</span>
+      <h3 class="ch-title-en">The Manhattan Project</h3>
+      <p class="ch-title-zh">曼哈頓計畫</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>Imagine a group of physicists exploring a new body of theoretical knowledge, which they suspect might enable the development of weapons possessing unprecedented power. The scientists don’t know if it will work. They don’t even know if their goal is physically achievable. Just attempting it will require a $250 billion investment.</p>
+<p>That’s roughly the decision the US government faced in 1939 when confronted with the $2 billion price tag for the Manhattan Project. True, the government today routinely spends far more on Medicare, but that’s a relatively sure thing—we know what we’re getting. The same was not true of the atomic bomb. Building it required an immense investment in untested, specialized physical infrastructure, and the request for that investment came in the middle of an economic depression and a world war.</p>
+<p>The Manhattan Project ends up looking like a bubble: Physicists convinced one another that it was possible, then convinced politicians it was worth attempting. Substantial resources had to be marshaled in order to build the physical infrastructure necessary to construct a bomb, and this had to happen in parallel with the bomb’s design. All of this required new methods and scarce inputs—someone puzzling over atomic reactions couldn’t devote that time and brainpower to more pragmatic and measurably rewarding tasks like designing conventional weapons, and every pound of steel used for an isotope separation facility was a pound that wasn’t going into a battleship or tank.</p>
+<p>Designing the bomb meant sequestering a few hundred of the world’s smartest physicists, mathematicians, and engineers in the remote New Mexico town of Los Alamos. It also required systems whose exclusive purpose was enriching uranium, a major sacrifice of industrial capacity during wartime. The scientists needed a new computer—a hybrid of machine and human operators (who were, in fact, called “computers”)—to approximate diffusion rates under conditions different from those in the theoretical models. This simulation, which was used to calculate the physical and chemical chain reactions following a thermonuclear detonation, was the most ambitious mathematical project ever undertaken. It was, according to Stanislaw Ulam, a key actor in the Manhattan Project, “vastly larger… than any astronomical calculation done to that date on hand computers.” The team leading the physical tests had to build two different detonators, test only one of them, and hope that a successful test indicated a reliable device and not a lucky break.</p>
+<p>There were some things the scientists could and did do to address the intrinsically risky nature of the work. Those endless calculations were necessary to differentiate between the three states of a bomb: inert materials, the intended explosion, or an uncontrolled reaction that would fizzle out before full detonation. But some parts of the process were untested because they were untestable. Calculating how a bomb would behave during detonation started with theory but ended up being hypothetical, since such a reaction hadn’t been attempted before and there was no real-world experiment that could replicate those conditions.</p>
+<p>That risk was magnified by the nature of the Manhattan Project’s participants. The single most important secret in the United States was left in the hands of people whom the national elite were not particularly inclined to trust: academics who had flirted with the far left, assorted European refugees whose allegiances were unclear, and pure oddballs who thumbed their noses at authority, a trait that was tolerated at MIT and Berkeley but not exactly celebrated by the US Army.</p>
+<p>How did it all happen? How did the Manhattan Project succeed? The answer lies in two themes we have already emphasized: risk tolerance and bubbles. The Manhattan Project was structured like a financial bubble, in which vast amounts of resources are poured into a single project to accomplish a specific goal within a short time frame. These resources included an immense amount of money, but also human elements: scientific knowledge and talent, and what might be called investor confidence.</p>
+<p>The scientific knowledge and talent were products of academic migration, both metaphorical and literal. The field of atomic physics accelerated quickly in the years prior to the Manhattan Project, with the rapid-fire discoveries of the photoelectric effect (1905), the nucleus (1911), the neutron (1932), and fission (1938). In the 1930s, large numbers of European academics packed their bags and fled, escaping both fascism and communism. Many ended up in the US. When they arrived, they found themselves in a rising technocracy, which was able to deploy massive funding toward a state-directed goal. From the perspective of the 19th century or earlier, the 1930s was the decade of technocratic government operating at an unprecedented scale. Communism, fascism, and the New Deal obviously differed radically in their policy prescriptions and goals, but what they had in common compared to older systems was their ability and willingness to mobilize vast resources in service of the state’s goals. (If Presidents Harding and Coolidge had been excited by the prospect of nuclear weapons, what would they have done? Cut budgets more slowly? Put a tariff on centrifuges to protect American manufacturers?) Franklin Roosevelt and his brain trust were self-confident enough to think they could evaluate the state of theoretical physics through state-directed research. In this case, they turned out to be right.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch4" style="--card-color:#8D6E63;--card-light:#FFFDE7">
+  <div class="chapter-header">
+    <span class="ch-emoji">🚀</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 4</span>
+      <h3 class="ch-title-en">The Apollo Program</h3>
+      <p class="ch-title-zh">阿波羅計畫</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>In 1969, Neil Armstrong became the first human to set foot on the Moon. In 1972, two members of the Apollo crew became the last. Despite many promises to return, no one has been to the Moon in five decades. In fact, with the final space shuttle flight in 2011, the US is no longer capable of sending humans into space using its own spacecraft.</p>
+<p>What happened? Was the Apollo program just a historical anomaly? How did it succeed so spectacularly, and what can we learn from this hyper-ambitious effort—quite possibly the greatest national project ever completed?</p>
+<p>When President John F. Kennedy declared in May 1961 that “this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the Moon,” no one knew how to do it. Rockets, launchpads, space suits, hardware, software, zero-gravity food—they didn’t exist, and there were no experts in these domains. As we’ve already seen with the Manhattan Project, arbitrary deadlines are a powerful way to turn an approximate but extreme ambition into a specific goal.</p>
+<p>It wasn’t just that the space program lacked what was necessary to get to the Moon—scientists weren’t even sure it was possible. Engineering for space travel has obvious complexities, like getting a vehicle to the appropriate speed without threatening the safety of the crew. But there were non-obvious limitations, too: The tolerance for error is roughly zero, and the equipment and environment available on departure define the exact limits of what will be available until return. The scientists even worried that, if we did make it there, we might find chemically reactive Moon dust that would explode upon touchdown. Keep in mind that Kennedy made his announcement only four years after the first living creature was sent into space—Laika, a stray dog found on the streets of Moscow. And it was only in 1960 that the first living beings—this time two dogs, plus some mice, rats, and plants—were safely returned from space to Earth.</p>
+<p>The success of Apollo speaks to what Peter Thiel has called “definite optimism,” or the belief that the future will be better than the present for specific, concrete reasons—as contrasted with “indefinite optimism,” the view that GDP will grow and standards of living will improve without the help of any specific change. From an indefinite optimist perspective, it’s hard to envision the steps necessary to achieve actual improvements. A definite vision of the future gives us a project to undertake in the here and now, which provides a roadmap for how we can create a better future, rather than simply waiting for its arrival and hoping for the best. An indefinite optimist makes no tangible plans: “He expects to profit from the future but sees no reason to design it concretely,” Thiel writes. By contrast, a definite optimist is an architect of the future—it is the optimism of the startup founder rather than the index fund investor.</p>
+<p>The Manhattan Project succeeded because definite optimists were powered along by bubble dynamics. The same could be said of Apollo. Yet the Apollo program was even larger than the Manhattan Project, with a price tag about times higher. Some of this was because of the natural scale of the project, and some was because it was, from the beginning, meant to be a public demonstration of American scientific and engineering prowess rather than a secretive one to be unveiled at an opportune time. Between May 1961 and July 1969, over 400,000 scientists, engineers, mathematicians, astronauts, managers, construction workers, and laborers—supported by more than 20,000 industrial firms and several research universities—made it happen. Compelled by the exigencies of the Cold War, they coalesced around the gigantic problem of lunar exploration, producing a bubble driven by a collective obsession with a high-risk endeavor that has never been equaled.</p>
+<h4 class="section-head">Apollo’s enemies, at home and abroad</h4>
+<p>Apollo was America’s signature Space Race project during the Cold War. In August 1949, the Soviets proved they could also build a functioning nuclear weapon. The US responded by ramping up its bomb building and testing capabilities. From 1951 to 1958, it tested nuclear weapons, an average of atom bombs per year.</p>
+<p>The Soviets took a different approach. Rather than frantically show off their bombs, they developed a better way to deliver them. In 1957 they revealed the intercontinental ballistic missile (ICBM), a rocket that could be launched from Soviet territory and, traveling at 15,000 miles per hour, arrive at a target halfway around the globe in minutes. That prompted the Americans to begin testing their first ICBM, Atlas. But the first Atlas test blew up, as did the next five.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch5" style="--card-color:#795548;--card-light:#FFF8E1">
+  <div class="chapter-header">
+    <span class="ch-emoji">💾</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 5</span>
+      <h3 class="ch-title-en">Moore’s Law</h3>
+      <p class="ch-title-zh">摩爾定律</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>In 1965, an engineer named Gordon Moore made a prosaic observation and a shocking prediction. He observed that since the late 1950s, the number of transistors on a single integrated circuit had roughly doubled every months, reaching at the time he was writing. Based on this observation and his knowledge of the industry, he predicted the trend would continue into the foreseeable future.</p>
+<p>When Moore made this claim, transistor-based products were hardly ubiquitous. Although transistor radios were getting more popular, TVs and radios mostly used vacuum tubes. Moore’s employer, Fairchild Semiconductor, mostly sold its transistors to the US government. Today, Apple’s M1 chip features no fewer than billion transistors—a slight shortfall from Moore’s projection, but an astounding increase nonetheless. Over that period, chip fabrication has become intensely specialized. A single fabrication plant takes years to build and costs upward of $15 billion, more than an aircraft carrier or a nuclear power plant. This colossal expenditure is required to build a facility that manipulates machines whose components are a few dozen atoms wide and whose performance is increasingly limited not by mechanical accuracy but by obscure quantum effects and extreme precision manufacturing.</p>
+<p>Moore’s law is an observation without a stated cause. There is nothing inevitable about chips becoming more efficient over time at a certain rate, nor did Moore suggest as much. He merely noted the rate at which improvement had been happening and observed that it showed no signs of slowing down. His observation became a reality because of the push and pull between scientific research, which enabled greater efficiency, and increasingly elaborate applications for chips, which required it. Moore’s law is perhaps the most compelling and enduring example of a two-sided bubble, wherein the expectation of progress in one domain spurs progress in another, which then propels growth in the first. Moore’s law was made possible by the technical ability to cram more transistors onto each chip. It became a reality because software makers responded by building products that assumed further drops in hardware costs. At the peak of the PC deployment period, Intel’s product roadmap determined Microsoft’s, and vice versa. Meanwhile, each new iteration increased the number of possible use cases for chips. That’s a striking example of a bubble driving innovation. Moore’s law was a retrospective observation when it was made, but because of the power of bubbles to coordinate behavior, it became a self-fulfilling prophecy that guided the actions of both chip designers and their customers. From providing navigation for rockets to adding computation to basically any physical object with moving parts and a power source, the chip’s ubiquity has steadily grown over time. It will only continue to do so. Cars, for example, use an increasing number of sensors for safety and fuel efficiency, to the point that electronics already comprise percent of a new vehicle’s cost (up from percent in 2000).</p>
+<p>In this chapter, we examine the different phases of chip development that enabled this two-sided bubble. What began as an industry created through government subsidies in the 1950s and ’60s gave way to a rough-and-tumble free market from the ’70s to the early 2000s. Today, the chip industry has returned to its roots somewhat, with leading technology companies hoarding competitive advantage and chips playing an increasingly important role in the competition between geopolitical rivals. Throughout this process, the industry has exhibited the classic bubble behavior in which predictions about the future—particularly bold and nearly indefensible ones—end up driving behaviors that make those predictions come true.</p>
+<h4 class="section-head">Humble beginnings</h4>
+<p>In June 1948, Bell Labs held a press event to announce the development of a new product, which it spelled out to its audience: “T-R-A-N-S-I-S-T-O-R.” The product, it allowed, can “do just about everything a vacuum tube can do, and some unique things which a vacuum tube cannot do.” This descriptor is in the running for understatement of the century. The transistor would end up operating the Apollo guidance computer, calculating pi to trillion digits, and defeating the best human player at chess (1997), Rubik’s Cube (2011), and Go (2016), to say nothing of its role in changing the nature of our work and social lives.</p>
+<p>Bell Labs could be forgiven for underestimating the impact of its new gadget. Few could have predicted the multi-decade, self-fulfilling cycle its invention set in motion, in which more efficient hardware encouraged more demanding software and, in parallel, new generations of software increased the demand for better hardware. Many recursive processes—even highly successful ones—do not last nearly so long or generate such profound improvements. Cheaper cars justified greater investments in roads and encouraged the creation of drive-through restaurants and motels, but neither the car industry nor car-dependent service companies maintained the relentless pace of improvement. As Intel CEO Brian Krzanich noted in 2015, if cars had improved as fast as chips since 1971, we would be able to travel “300,000 miles per hour. You would get two million miles per gallon of gas, and all that for the mere cost of four cents.”</p>
+<p>It’s hard to evaluate exactly why this worked as well as it did. What was unique about transistors that enabled almost indefinite miniaturization and cost reductions? But chip designers really only needed to believe that they could finish the next generation or two on their roadmap. Then, having done this a few times, they’d develop a sense that this process would continue. Look four or five generations out, and keeping Moore’s law going seems like an impossible task; look one generation out, and it’s a worthy challenge, not an impossible one. (This dynamic may be familiar to anyone who has flipped to the middle of a new math textbook, seen an impenetrable blizzard of obscure symbols and notations, and then, once they actually reach that section, found that it’s a perfectly straightforward step from the material that came before.)</p>
+<p>The origin of the transistor significantly predates Bell Labs’ understated press conference. In the late 19th and early 20th centuries, the race to unlock the secrets of the atom led to the discovery, in quick sequence, of the electron (1897), the proton (1920), and the neutron (1932). The rapid pace of advancement in physics is hard to comprehend today. Walter Brattain, one of the co-discoverers of the transistor, recalls that when he was in graduate school at the University of Minnesota, “quantum mechanics was changing so fast that every student audited [physicist and mathematician John Hasbrouck] Van Vleck’s course every year.” Similarly, when Brattain’s manager, William Shockley, attended Caltech, Shockley’s professors were learning new theories with each round of textbooks, which they would immediately teach to their students. A diligent student who read a chapter or two ahead of the curriculum would know more about the cutting edge of science than the professor.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch6" style="--card-color:#6D4C41;--card-light:#FFF3E0">
+  <div class="chapter-header">
+    <span class="ch-emoji">🔬</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 6</span>
+      <h3 class="ch-title-en">The Golden Age of Corporate R&D</h3>
+      <p class="ch-title-zh">企業研發的黃金時代</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>More than half a century before we started to worry about the exhaustion of Moore’s law, a global silicon arms race, and the prospect of artificial general intelligence that the construction of ever-larger chip clusters might summon, the period from the 1930s through the 1970s marked an unprecedented era of invention in the United States. As new technologies were pioneered, older ones were perfected and widely deployed. While no single factor can explain America’s mid-century growth, one key driver was the proliferation of the corporate research and development laboratory. From AT&T’s Bell Labs to Lockheed’s Skunk Works to Xerox PARC, the corporate R &D lab fostered innovation by creating bubbles dispersed across space and time.</p>
+<p>Corporate research long predated this period, of course. In the late 19th century, a chemist at Carnegie Steel testing ores and other inputs discovered that steelmakers’ folk wisdom about the optimal ingredient mix and process did not match metallurgical facts—knowledge that enabled Carnegie to save money by buying cheaper, better iron ore. Edison Electric famously placed research at the core of its business; Thomas Edison had 1,084 patents, setting a record that wouldn’t be broken until the late 20th century. And Ford Motor continuously experimented with new designs in its early days, before settling on a few models it could mass-produce at unprecedented scale. But it was only in the 1930s that the corporate R&D lab was formalized and emerged as an important part of major corporations’ strategies. The result was an astonishing output of technological innovation from the biggest firms in the country. Du Pont created compounds like nylon, cellophane, and Teflon, which changed everything from the way food was sold to what people wore to what they walked on. (From 1951 to 1968, the amount of carpeting sold annually in the US rose 60-fold.) Lockheed Corporation’s Skunk Works R&D program built a high-altitude spy aircraft, which gave the US unparalleled intelligence during the Cold War (not to mention the occasional international incident). The program also created a stealth aircraft that rendered Russia’s main air defense system nearly obsolete. AT&T developed the transistor and, perhaps more importantly, licensed it freely to other companies, which would go on to embed it in everything from cars and planes to phones and satellites. Xerox’s PARC group developed the computer mouse, graphical user interfaces, the metaphor of the “desktop” computer, the “what you see is what you get” (WYSIWYG) word processor, and Ethernet.</p>
+<p>Each of these innovative environments possessed elements of speculative and filter bubbles, enabling them to transform a vague vision of corporate destiny into a specific vision of the future. All of these R&D labs benefited from abundant funding. The scientists and engineers they employed were empowered to pursue their ideas without excessive meddling from executives and corporate bureaucrats. The promise of being able to work on theoretical and applied research, with a large budget and the knowledge that the work would be put into practice at enormous scale, was enough to attract some of the best researchers. This talent clustering made subsequent recruiting even easier. And, as with other bubbles, the R&D investment bubble was inflated thanks to competitive pressure—from other firms and from the Soviets.</p>
+<p>The R&D investment boom was also a product of wider industrial developments. One key predicate was the widespread deployment of general-purpose technologies like railroads, the internal combustion engine, mass production, and electricity. These technologies made further inventions possible and more valuable. For instance, a rail network created a national market for goods, which firms were able to supply through mass production. Since a business with more customers can afford higher fixed costs, it can spend more on research. Meanwhile, geopolitics not only made national security a powerful motivator for creating specific technologies—from radar systems and ballistic missiles to duct tape, Tor, and digital photography—but military competition also provided the necessary funding. The government directly subsidized a great deal of research; it also indirectly subsidized innovation by buying up products that were useful but cost-ineffective in most contexts, as we saw in the early days of transistors. If a new technology provided a lighter or more durable replacement for something the Department of Defense needed, there was a ready market for it. Finally, policy drove R&D by making innovation investment a kind of tax haven. During the Great Depression, corporate taxes shot up and the US government imposed an undistributed-profits tax. Both policy changes discouraged companies from retaining earnings and reinvesting them. But since research expenses were a cost in accounting terms, businesses could invest their money there, untaxed. This became a way for corporations to “bank” their profits, converting today’s highly taxable gains into future profits that would, executives hoped, be realized at a lower tax rate.</p>
+<p>Today, the huge benefits of the mid-century R&D bubble aren’t mentioned in many business books. When R&D case studies do appear in the literature, they often take the form of cautionary tales. A central reason for this is that the biggest successes were not captured by the companies themselves. Major AT&T and Xerox inventions indirectly created trillions of dollars in market value, but they didn’t generate outsize rewards for their shareholders. Another factor is that some of the influential work done by corporations during this period was shrouded in Cold War secrecy—by the time one could read about why Lockheed Martin was so successful, its glory days had long since passed. Finally, much of the research was buried inside large, blue-chip companies—the sorts of companies that merit a business book only when they make a major misstep.</p>
+<p>That said, there are glimmers of hope for the revival of corporate R&D. A few contemporary tech giants have taken up the mantle of their predecessors. This is critical, because large corporations have the scale to create bubbles that influence social progress. What was unique about the middle of the 20th century was not that people invented new things but that so many large institutions devoted significant financial resources to that effort. In doing so, they generated both transformative products and knowledge that changed the course of the future.</p>
+<h4 class="section-head">Du Pont: Revolutionizing matter</h4>
+<p>In the early 20th century, executives at Du Pont had a problem. The company had a near-monopoly on gunpowder, which was immensely profitable during wartime but was otherwise a slow business. What’s more, Du Pont was left with an unwanted reputation as a “merchant of death.” The company might have reduced its reliance on gunpowder by acquiring businesses in other sectors, but that was a tough proposition during the presidencies of Theodore Roosevelt and William Howard Taft, who were only too willing to break up trusts and undo mergers.</p>
+<p>Du Pont’s best option was to invent something new and try to sell it. In 1903, Du Pont opened its first R&D lab, the Experimental Station. In the decades to come, the Experimental Station and the company’s other labs created novel substances with seemingly magical traits. The whole universe of useful materials was transformed as a result. Before the advent of plastics and synthetic fibers, humanity primarily obtained materials by digging them out of the ground or manipulating animal and plant products. Those materials were more or less unchanged as end products. A wool sweater is still recognizable as the processed fleece of a sheep; polyester, by contrast, starts with crude oil, air, and water, but looks nothing like any of them.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch7" style="--card-color:#5D4037;--card-light:#FFFDE7">
+  <div class="chapter-header">
+    <span class="ch-emoji">⛽</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 7</span>
+      <h3 class="ch-title-en">Fracking</h3>
+      <p class="ch-title-zh">水力壓裂</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>Every technology we’ve covered so far relied on one crucial input. From the detonation of the atomic bomb and the liftoff of the Saturn rockets to the development of polyester and the manufacturing of semiconductors (not to mention the large data centers they’re housed in), all of these technologies were powered by oil.</p>
+<p>For the past or so years, oil has been the most important commodity in the world. Cars burn oil and drive over it, since asphalt is a hydrocarbon. Fabrics created from oil keep us warm in the winter and cool in the summer. Oil-based lubricants keep machinery working, while oil-based cleaning products keep our homes pristine. Oil is an ingredient in plastic, perhaps the most ubiquitous synthetic material in modern life.</p>
+<p>On one level, it’s an almost magical substance, the product of inert materials buried deep under the Earth for millions of years, brought to the surface to power our world. But the task of unearthing it has been a story of science, engineering, and financial and physical risk-taking. Since 1859, when a down-on-his-luck railroad worker first decided to drill for oil in Titusville, Pennsylvania, the oil and gas industry has continually reinvented itself to increase production. While total oil production has grown slowly compared to other industries—about percent per year since 1980—this increase has occurred against a backdrop of steady depletion, estimated at around percent annually. In other words, maintaining the current oil consumption trend requires gross production to increase at about twice the growth rate of real GDP to offset natural declines. Moreover, the first sites to be drilled were low-hanging fruit in terms of discovery and extraction. Each year, we use roughly billion of the most accessible barrels of oil; the following year, we start on the next best sites. Holding technology constant, production should relentlessly decline. And yet, it hasn’t.</p>
+<p>How have we been able to not just maintain the pace of but increase oil production? Fracking plays a central role. Like every bubble we’ve documented so far, fracking reveals how the risk-taking and ingenuity of a small group of speculators, engineers, and entrepreneurs can radically alter an industry’s entire trajectory.</p>
+<p>One critical difference, of course, is that fracking and its environmental impacts remain a live political issue. There’s a strong case to be made that fracking illustrates the downsides of bubbles, not because some investors lost their money but because of how the winners made it: by extracting more oil and gas, leading to more carbon dioxide and methane emissions. The question of whether fracking has been net positive for humanity is beyond the scope of this book (although, as we’ll detail later, its legacy is more nuanced than environmental impact alone), but we’ll take it as a given that many consumers want to buy gasoline, heat their homes, and use plastics; that energy companies want to sell the raw materials that make this possible; and that regulators are tasked with setting rules that carefully balance the costs and benefits of doing this. But before we turn to the story of the fracking bubble, we have to take a brief detour into the history of oil production.</p>
+<h4 class="section-head">Hydrocarbons in context</h4>
+<p>In nature, oil rarely exists in a convenient form. It’s buried far underground, generally under a layer of particularly thick rock, against which it has accumulated for tens of millions of years. Oil formation requires both luck and time. First, organic matter needs to be pushed underground where it won’t decay. From there, the organic matter requires continuous exposure to both heat and pressure, which breaks down complex molecules into simpler ones. Those simpler molecules must remain trapped in place. If the new compounds gradually drift upward, as oil and especially natural gas are inclined to do, they’ll eventually reach the Earth’s surface and evaporate. These conditions all but guarantee that oil and gas reserves will be found in inconvenient places—typically a little over a mile, but in some cases as deep as almost six.</p>
+<p>The race to discover and exploit new sources of oil was perhaps the last gasp of the Victorian colonial adventure story. Small teams of geologists and explorers trekked across desert wastelands, dense jungles, and other difficult terrain, cutting deals with tribal chiefs, kings, and tsars. One explorer in what is now Iran realized that the best places to look for oil were in locations where locals worshiped fire, as a spiritually significant eternal flame might indicate a geologically significant deposit of natural gas. Oil exploration also involved a healthy dose of luck. In one early instance, the British company backing an oil project in present-day Iran demanded that its exploration team stop drilling because no oil had been found. The project’s manager ignored the initial letters, which took over a month to travel from London to the remote mountain where the team was camped. A final letter ordering the project to wind down and return all equipment to England arrived three weeks after two gushers were struck.</p>
+<p>These early days were characterized by extreme boom and bust cycles. Oil went for $16 a barrel in 1859, under 50¢ in 1861, and $8 in 1864. Fortunes were made and lost in months. Meanwhile, as oil exploration moved further afield, costs rose relentlessly. Deeper drilling and exploration in more hostile climates bore higher costs. In the very early days before internal combustion engines were in widespread use, transporting drilling equipment to a desert meant loading up horses and mules with supplies. But the extreme effort proved worth it. Once refined into kerosene and burned in lamps, oil became one of the most important natural resources in the world.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch8" style="--card-color:#BF360C;--card-light:#FFF8E1">
+  <div class="chapter-header">
+    <span class="ch-emoji">₿</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 8</span>
+      <h3 class="ch-title-en">Bitcoin</h3>
+      <p class="ch-title-zh">比特幣</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>In 2021, the hashtag #LaserRayUntil100k started trending on Twitter. The platform was suddenly full of laser eyes as users, including celebrities such as Paris Hilton and Elon Musk, started to use laser-eyed profile photos. The effort was intended to increase Bitcoin’s price to $100,000, but it was also a form of collective ritual. The laser-eyes meme was an expression of Bitcoin’s idiosyncratic online culture, which includes unique terminology like “hyperbitcoinization,” referring to a Bitcoin-induced demonetization of all other assets; “hodl,” signifying the the refusal to convert bitcoins to fiat currency; and “no coiner,” referencing people who don’t hold bitcoins, as well as emphasis on quasi-religious or even cult-like practices, such as adopting unusual diets.</p>
+<p>These rituals may seem bizarre or childish, but they shouldn’t be dismissed outright. If last chapter’s case study on fracking demonstrates how bubble dynamics can arise and be productive in an industry bounded by fixed capital investments, enormous legacy companies, geopolitics, and raw geology, Bitcoin is the opposite—one of the purest examples of bubble-driven technological development, adoption, and diffusion. Bitcoin’s online community is a key factor in the bubble’s inflation. And if we want to understand Bitcoin and its growth—the digital currency’s market value went from zero to more than $1 trillion in just a decade, as its user base expanded from drug dealers and anarchists to day traders and hedge fund managers to life insurance companies and nation-states—then we have to recognize its quasi-religious dimension. This aspect of Bitcoin reveals itself not only in the Twitter/X memes but also in the writings and code of some of the cryptocurrency’s most committed supporters.</p>
+<p>On October 31, 2008, a developer going by the name of Satoshi Nakamoto announced a new project on a cryptography mailing list. His message read: “I’ve been working on a new electronic cash system that’s fully peer-to-peer, with no trusted third party.” The document, a nine-page white paper, is a conceptual blueprint for Bitcoin, the code for which Nakamoto released a few months later on the P2P Foundation website. “I’ve developed a new open source P2P e-cash system called Bitcoin,” Nakamoto wrote at the time. “It’s completely decentralized, with no central server or trusted parties, because everything is based on crypto proof instead of trust.”</p>
+<p>Initially, not much happened. A few commenters gave feedback; some downloaded Bitcoin software and started to mine bitcoins on their laptops. At first, bitcoins could be obtained for free; the earliest transaction was just a test, with Nakamoto transmitting a few bitcoins to fellow technologist Hal Finney. Today, bitcoins are far from free, and the network has scaled from one node—Nakamoto himself—to an estimated 20,000 nodes. It’s no longer possible to mine bitcoins on laptops; instead, you need an industrial-scale mining operation strategically placed near a power plant in order to marshal the computing power necessary to compete with other miners. Bitcoin is now big enough that policymakers must reckon with it. In China, bitcoin mining is banned. Elsewhere, the process has been proposed as a sink for excess electricity, which could make renewable energy more economical.</p>
+<p>How could a bit of code released on obscure online platforms by a pseudonymous developer who later completely disappeared disrupt the nature of money? How could a decentralized alternative to both the Bretton Woods and fiat systems emerge from an open-source protocol with no outside investments, no corporate headquarters, no legal structure, and no roadmap?</p>
+<p>Answers can be found in Bitcoin’s bubble-like nature. When we say “bubble-like,” we’re not just referring to Bitcoin’s trajectory, the sort of developmental path that introduces and diffuses transformative technologies. That’s not the whole story. Bitcoin is a complex, multi-layered, and self-referential bubble. At the heart of the platform, in the code itself, the technology is a bubble machine. Its algorithm is structured to provide greater value, greater security, and greater network effects as adoption increases, so that adoption drives further adoption and commitment drives further commitment. Yes, speculation will lead to waves of price increases and crashes—this has always happened and will continue to happen. But with each correction, the technological utility of Bitcoin as a trusted keeper of value, and its effectiveness as an inflater of social bubbles, only increases. And while its USD-denominated price can drop in the short term, Bitcoin’s value has, when measured over its existence, not only increased, but every crash that Bitcoin survives is a testament to the network and the cryptocurrency’s robustness. In this way, it is like the currencies it seeks to replace. Bitcoin is a trust feedback loop that gains value as it accumulates trust and becomes increasingly trustworthy the more it is valued. As a consequence, the extended crypto ecosystem—including exchanges, decentralized financial platforms, startups, media outlets, and celebrities—continues to collectively bet that building infrastructure today will pay off in a more Bitcoin-friendly future.</p>
+<p>The mechanics of these bubbles operate on several levels. There’s a spiritual and social dimension, in that Bitcoin’s early adopters describe having something resembling a conversion experience. The typical story goes like this: They heard a bit about Bitcoin and then spent hours (or days, or weeks) reading everything they could about how the technology works. They opted into a Bitcoin-centric media diet and started making crypto-curious friends. In other words, they formed a social bubble. Then there’s the economic dimension: Bitcoin’s scarce supply, and the difficulty of coming up with a way to value it, leads to price spikes and crashes. These dimensions are intertwined, as each bubble converts more users into believers, and—as has been the case over the past decade—after each crash, the user base of committed believers is larger than before the preceding bubbles. (The quasi-religious zeal of Bitcoin “hodlers” can be cryptographically verified by the number of bitcoin that haven’t moved after a market crash, which is etched into the blockchain—but we’re getting ahead of ourselves.) It’s the rare asset that has been called too expensive at $1 and too cheap at $65,000 without significant changes in its fundamentals.</p>
+<h4 class="section-head">Bitcoin: From zero to one</h4>
+<p>Bitcoin combines various preexisting technical components, such as peer-to-peer network technology, asymmetric public-key cryptography, and proof of work algorithms. It’s not the first attempt at a virtual currency, but it is the first virtual currency to achieve widespread adoption. DigiCash, one of the earliest and most prominent digital money firms, debuted in 1989. Founded by computer scientist David Chaum, DigiCash applied public-key cryptography to the specific problem of monetary transactions, attempting to create cryptographically secure digital cash that emulated the properties of physical money. DigiCash’s untraceable digital currency, eCash, attracted interest from banks and from Microsoft, which at one point considered integrating the currency into Windows. But with little adoption by merchants or users, DigiCash declared bankruptcy in 1998. A subsequent wave of digital payments startups—CyberGold, CyberCash, PayPal, E-Gold—tried to do what DigiCash couldn’t. All of them failed. (PayPal, of course, succeeded in other ventures. After it abandoned the idea of enabling cryptographic digital currency payments, it took up the more lucrative business of enabling online credit and debit card purchases.) In many cases, companies discovered that the most popular use case for digital currencies was money laundering.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch9" style="--card-color:#8B4513;--card-light:#FFF3E0">
+  <div class="chapter-header">
+    <span class="ch-emoji">🔭</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 9</span>
+      <h3 class="ch-title-en">The Metaphysics of Progress</h3>
+      <p class="ch-title-zh">進步的形上學</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>As the preceding chapters have shown, innovation-accelerating bubbles are characterized by definite optimism and the relentless lowering of the collective risk intolerance of those involved. This results in extreme commitment and almost delusional belief, which coordinates an often small group of high-agency founders, researchers, and early adopters. By stimulating irrational risk-taking, which results in excessive investment and experimentation, bubbles massively parallelize innovation in economic clusters that occur in time rather than space. Until the bubble bursts, these self-fulfilling dynamics are constantly reinforced. Participants discard traditional risk-benefit analyses and valuation models because the risks of not participating in the bubble are perceived as greater than the bubble’s identifiable risks. Whether they form in technology, in markets, or in scientific megaprojects, bubbles channel our thymotic energies, ambitious visions, irrational exuberance, and economic desires toward the realization of a future that is radically different from the present.</p>
+<p>But what exactly is this enigmatic quality that drives bubbles? Next-generation models in quantitative finance and behavioral economics have started to incorporate herding and imitation behaviors into their analyses of financial bubbles. But while such cutting-edge research can illuminate the origins of market crashes by modeling these dynamics quantitatively, the nature of the imitation remains elusive. What is the source of FOMO and YOLO, these fleeting feelings that move entire markets?</p>
+<p>To answer this question, we need to take a deeper look at the irrational exuberance that fuels technological progress. And for this, we must turn to the metaphysics of markets, bubbles, and technology more broadly. Beneath the spectacular boom and bust sequences and the emergence of category-defining and world-changing technologies, behind the utilitarian talk of “productivity growth” and “general-purpose technologies,” beyond the impersonal GDP and population statistics, bubbles reveal a far deeper spiritual and religious dimension.</p>
+<h4 class="section-head">Mimesis and manias: Violence, the sacred, and the economics of desire</h4>
+<p>The French anthropologist and philosopher René Girard offers a powerful model of imitative contagion, which he suggests infects all domains of human existence. One of Girard’s core insights is that our desire is mediated by the desire of others. (As an example, consider the rise of innumerable TikTok investor influencers.) Mimetic desire, he explains in his 1972 book Violence and the Sacred, is deeply antagonistic in nature and operates as the engine of social rivalry and conflict. In contrast to mere imitation, which refers to the positive effects of copying someone else’s behavior (which facilitates learning, for example), mimetic desire—desiring the other’s desire—opens up a deeply violent dimension.</p>
+<p>Exploring anthropology, religious history, myth, and works from Shakespeare and 19th-century literature, Girard shows that the same pattern repeats itself over and over again. Mimetic desire accumulates under the social surface until the tension is violently discharged in a sacrificial event. In ancient religions, this violence was collectively released through the scapegoating of a victim who was expelled by the community. After the sacrificial event, the victim, who is often preserved in myth, eases the mimetic tensions and reconciles the threat of violence. Girard argues that this communal sacrifice—an act of all-against-one violence meant to prevent all-against-all violence—is the origin of the sacred. In other words, the sacred, which is culturally encoded in social rules, systems of prohibitions, and obligations, represents a social mechanism through which violence is self-exteriorized. It channels socially subversive and destabilizing violent forces so that violence can more efficiently be contained. (See Figure 3.)</p>
+<p>Figure 3. The mimetic cycle, according to Girard.</p>
+<p>In an archaic religious cult, this scapegoating is rather straightforward: You sacrifice an animal or human to a god. Since time immemorial, God, or some other externalized authority, has acted as the universal regulator of social behavior. But what sacrifice does one perform in a modern, desacralized society? The assumption is that we’ve moved past the old rituals, but Girardians view this development as a regression. Instead of eliminating the need for ritual, we’ve re-created the primitive, ad-hoc practice of scapegoating from which these rituals evolved. Think of online cancellation or the symbolic scapegoating of CEOs and politicians. The frenetic build-up of bubbles and their economically and psychologically violent collapse provide some of the purest examples of the virulent mimetic process, crystallizing fear, hope, hype, overconfidence, and underconfidence. Markets—and, by extension, bubbles—“channel the competitive spirit into constructive efforts instead of exacerbating it to the point of physical violence.” Instead of achieving order through violent and ritualistic sacrifice, a more peaceful, albeit similarly ritualistic, “spontaneous order” (to use economist Friedrich Hayek’s phrase) emerges.</p>
+<p>Markets perform a similar function to religions in another, more literal sense. The translation of future cash flows into a present asset price is just another way of reconciling the demands of the eternal future with the here and now. Therefore, markets—these sublime machines that synthesize beliefs and aggregate them into prices—instantiate a secularized version of the sacred.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+<section class="chapter-card" id="ch10" style="--card-color:#B71C1C;--card-light:#FFF8E1">
+  <div class="chapter-header">
+    <span class="ch-emoji">🔥</span>
+    <div class="ch-titles">
+      <span class="ch-num">Chapter 10</span>
+      <h3 class="ch-title-en">Unleashing Prometheus: Technology as Salvation</h3>
+      <p class="ch-title-zh">釋放普羅米修斯：科技作為救贖</p>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <p>In Part II of this book, we offered both empirical and theoretical support for the idea that the combination of high-agency individuals and the capital, talent, and attention unlocked by bubbles accelerates innovation and enables world-changing technological advancements. If we’ve succeeded in convincing you of this point, the question naturally arises: What are the radically transformative technologies, projects, or ideas of today? Or, in more futuristic (apocalyptic, even) terms: How can we identify those technologies and bubbles through which the future breaks into the present?</p>
+<p>One approach is to hunt for them at the germination stage. There are obvious advantages to getting in on a bubble as early as possible, and many of the ideas that eventually created immense amounts of wealth for their participants were those that caught people’s attention in the pre-commercial stage. Members of the Cypherpunks mailing list that gave rise to Bitcoin were interested in using cryptography to change the world, not necessarily in getting rich, and many of them had well-paying day jobs at tech companies doing work unrelated to cryptography. But identifying ideas at this stage can prove quite challenging. One hack is to make a habit of reading academic papers at the forefront of various fields. This is a high-variance approach, however, since some topics that end up with a devoted following never really take off. Anarchism, the metaverse, widespread consumer adoption of Linux—some things are perennially on the cusp of greatness, at least according to their fans, without ever getting there.</p>
+<p>An alternative approach is to get involved when a bubble seems to be taking off. Here, it’s worth noting that a bubble can continue to grow long after the first point at which people deem it a bubble. There were plenty of observers who thought the Netscape IPO in 1995 represented not the start of a half-decade boom in the technology industry but an obvious peak that couldn’t possibly be surpassed. The stock, originally priced at $14 per share, was doubled at the last minute to $28 and reached $75 on the first day of trading. Few could have imagined that within the next five years AOL would buy Time Warner, which gives you a sense of just how difficult it is to differentiate a single overhyped news event from the underhyped trend of which it’s a part.</p>
+<p>If you think you’ve identified a bubble, what should you do? One possibility is to participate in purely financial terms. It’s not hard to find examples of people who have profited from doing this. The legendary trader George Soros has said, “When I see a bubble forming, I rush in to buy, adding fuel to the fire.” But most people have neither the resources nor the stomach to try to copy Soros. Nor should they; Soros is generational talent, and even excellent investors have remarked that he has a strangely good sense of market timing. Instead, most of us are implicitly betting our time. What we choose to study in school, what career paths we pursue, what we work on outside of work, and what companies we start are all bets about the future.</p>
+<p>Betting time rather than money on a bubble feels higher risk, and in some senses it is—if you buy a stock and it starts to go down, you can always sell, but if you move across the country for a new job or spend six months intensively learning a new skill, it will be harder to recover if that turns out to be the wrong decision. But developing relevant skills comes with an added information advantage: Even if you aren’t a champion market timer, you can at least determine firsthand whether the company you’re working for is making strategic decisions and designing its product roadmap around what advances the state of the art and is good for customers, or making poor choices that are only temporarily rewarded by market hype. In other words, it’s by participating in the hype that you can position yourself to know what’s overhyped. This information can be especially valuable because achieving synthesis between sound strategy and herding behavior only gets harder as a bubble becomes more intense. At the peak of speculative intensity, traders have the most confidence in the future, but that’s also the point at which prices are the most self-referential.</p>
+<p>While calling bubbles is a tricky business—it’s entirely possible that most projects in the areas we’ll mention here won’t live up to expectations—it’s important to keep in mind that bubbles have a skewed risk-reward structure. The upside from being right and early is multiples of the cost of being wrong. Moreover, there’s a psychic benefit to trying to build something unique alongside a team of true believers, even if it ends up failing. Investments can vaporize in an instant, but the memory of being part of a tiny band of people trying to change the world, and feeling for a time like it’s succeeding, is timeless.</p>
+<h4 class="section-head">Defining a bubble</h4>
+<p>Having probed the metaphysical depths of technological progress in Chapter 9, and in anticipation of naming a few sites of potential future bubbles, we’ll now return to our analysis of the key features of the technologies and scientific megaprojects we explored in Part II. By extracting the defining characteristics of innovation-accelerating bubbles, we’ve identified five overarching traits shared by all of the technologies and megaprojects we’ve covered:</p>
+<h4 class="section-head">Definite optimism and constrained vision</h4>
+<p>Innovation-accelerating bubbles are driven by and organized around a sense of definite optimism or a constrained vision that motivates participants. Crucially, that vision involves a concrete and actionable plan to transition from the present to the future. Strong social interactions between committed, overenthusiastic believers in a technological, scientific, or engineering project or idea are critical for a bubble in its formative stage. From the atomic bomb and the Apollo program to fracking and AI, many transformative technologies generate intense backlash. The legacy of the Manhattan Project is highly debated, and more than half a century after Apollo, manned space missions are met with controversy not only about social costs and economic benefits but also around their inherent colonial impulse. The conflictual nature of bubbles can perhaps be best understood as a clash between the constrained and unconstrained visions of proponents and deniers, all of which involve different trade-offs and ideological priors. This dialectic itself proves energizing—participants are not merely proving themselves right but also proving their critics wrong.</p>
+
+    <div class="fade-overlay"></div>
+  </div>
+  <button class="expand-btn" onclick="toggleChapter(this)" data-open="false">
+    展開全文 ▼
+  </button>
+</section>
+
+</main>
+
+<!-- ===== BOTTOM NAV LINKS ===== -->
+<div class="nav-divider"></div>
+
+<div class="nav-links">
+  <a href="https://linwayet.github.io/4ulive/index.html" class="nav-card echo" target="_blank">
+    <span class="nav-icon">🔄</span>
+    <div>
+      <strong>錯中學 ECHO 計劃</strong>
+      <p>七月課程 · 從錯誤中學習的智慧英文訓練系統</p>
+    </div>
+  </a>
+  <a href="https://linwayet.github.io/popup/index" class="nav-card popup" target="_blank">
+    <span class="nav-icon">📊</span>
+    <div>
+      <strong>學生分析系統</strong>
+      <p>七月課程 · 深度學習數據分析平台</p>
+    </div>
+  </a>
+  <a href="https://line.me/ti/p/linwayet" class="nav-card line" target="_blank">
+    <span class="nav-icon">💬</span>
+    <div>
+      <strong>加入 LINE 聯絡林威老師</strong>
+      <p>帳號：linwayet · 歡迎諮詢課程</p>
+    </div>
+  </a>
+</div>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-title">林威英文 · 七月課程開放報名中</div>
+    
+<div class="nav-links" style="padding:0;margin:0 auto 8px;">
+  <a href="https://linwayet.github.io/4ulive/index.html" class="nav-card echo" target="_blank">
+    <span class="nav-icon">🔄</span>
+    <div>
+      <strong>錯中學 ECHO 計劃</strong>
+      <p>七月課程 · 從錯誤中學習的智慧英文訓練系統</p>
+    </div>
+  </a>
+  <a href="https://linwayet.github.io/popup/index" class="nav-card popup" target="_blank">
+    <span class="nav-icon">📊</span>
+    <div>
+      <strong>學生分析系統</strong>
+      <p>七月課程 · 深度學習數據分析平台</p>
+    </div>
+  </a>
+  <a href="https://line.me/ti/p/linwayet" class="nav-card line" target="_blank">
+    <span class="nav-icon">💬</span>
+    <div>
+      <strong>加入 LINE 聯絡林威老師</strong>
+      <p>帳號：linwayet · 歡迎諮詢課程</p>
+    </div>
+  </a>
+</div>
+
+    <p class="footer-copy">© 林威英文 Lin Wei English · 本頁內容整理自 <em>Boom, Bubbles and the End of Stagnation</em> · 僅供學術研究與教學參考使用</p>
+  </div>
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggleChapter(btn) {
+  const body = btn.previousElementSibling;
+  const isOpen = btn.dataset.open === 'true';
+  if (isOpen) {
+    body.classList.remove('expanded');
+    btn.textContent = '展開全文 ▼';
+    btn.dataset.open = 'false';
+    // Scroll back to card top
+    btn.closest('.chapter-card').scrollIntoView({behavior:'smooth', block:'start'});
+  } else {
+    body.classList.add('expanded');
+    btn.textContent = '收合 ▲';
+    btn.dataset.open = 'true';
+  }
+}
+</script>
+</body>
+</html>
