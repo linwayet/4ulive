@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Californium (Cf) — Element 98 | 林威英文 One-Shot Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F2EB;
+  --surface: #FDFAF5;
+  --text: #1E1612;
+  --mid: #5C4A38;
+  --muted: #8C7B6A;
+  --border: #DDD0BE;
+
+  --gold: #B8860B;
+  --gold-light: #D4A82A;
+  --gold-pale: #FBF0D0;
+  --gold-pale2: #F5E5B0;
+
+  --teal: #0E6E6A;
+  --teal-light: #1A9C96;
+  --teal-pale: #D4F0EE;
+
+  --rust: #A83220;
+  --rust-pale: #F7E0DB;
+
+  --violet: #5C3A8A;
+  --violet-pale: #EEE6F8;
+
+  --slate: #2A3A50;
+  --slate-pale: #E2E8F0;
+
+  --green: #2D6A4F;
+  --green-pale: #D8F0E5;
+
+  --nuclear: #1A1A2E;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--nuclear);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+.hero-glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(184,134,11,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(26,156,150,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 85%, rgba(92,58,138,0.12) 0%, transparent 45%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 44px 56px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(184,134,11,0.2);
+  border: 1px solid rgba(184,134,11,0.45);
+  color: #D4A82A;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.hero h1 .cf { color: #D4A82A; }
+.hero h1 .sub {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.65);
+  margin-top: 8px;
+}
+.hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+}
+.hero-meta span strong { color: rgba(255,255,255,0.85); }
+
+/* Element card */
+.element-card {
+  flex-shrink: 0;
+  width: 130px; height: 140px;
+  background: linear-gradient(145deg, #2A1A00, #1A1A2E);
+  border: 2px solid rgba(184,134,11,0.5);
+  border-radius: 16px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  box-shadow: 0 0 40px rgba(184,134,11,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.el-num { font-size: 13px; color: rgba(212,168,42,0.7); font-weight: 500; margin-bottom: 2px; }
+.el-sym {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #D4A82A;
+  line-height: 1;
+}
+.el-name { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; letter-spacing: 1px; }
+.el-mass { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+@media(max-width:620px){
+  .hero-inner { grid-template-columns: 1fr; }
+  .element-card { width: 100px; height: 110px; }
+  .el-sym { font-size: 3.5rem; }
+}
+
+/* ── NAV ── */
+.course-map {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 22px 44px;
+}
+.course-map-inner { max-width: 900px; margin: 0 auto; }
+.map-label {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+}
+.map-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.map-pill {
+  background: var(--gold-pale);
+  border: 1px solid #D4B870;
+  color: var(--gold);
+  font-size: 12px; font-weight: 500;
+  padding: 5px 14px; border-radius: 20px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.map-pill:hover { background: var(--gold); color: #fff; }
+
+/* ── MAIN ── */
+.main { max-width: 900px; margin: 0 auto; padding: 0 44px 80px; }
+
+/* ── SECTION ── */
+.section { margin-top: 60px; scroll-margin-top: 80px; }
+
+.section-header {
+  display: flex; align-items: flex-start; gap: 20px;
+  margin-bottom: 30px; padding-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+}
+.part-badge {
+  flex-shrink: 0;
+  width: 56px; height: 56px; border-radius: 16px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.5px; line-height: 1.2;
+}
+.part-badge .n { font-size: 22px; font-weight: 700; letter-spacing: 0; }
+.bg-gold   { background: var(--gold-pale); color: var(--gold); border: 1.5px solid #D4B870; }
+.bg-teal   { background: var(--teal-pale); color: var(--teal); border: 1.5px solid #7ACAC6; }
+.bg-rust   { background: var(--rust-pale); color: var(--rust); border: 1.5px solid #E09080; }
+.bg-violet { background: var(--violet-pale); color: var(--violet); border: 1.5px solid #B09AD4; }
+.bg-green  { background: var(--green-pale); color: var(--green); border: 1.5px solid #80C8A8; }
+.bg-slate  { background: var(--slate-pale); color: var(--slate); border: 1.5px solid #98AABE; }
+
+.s-time { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.s-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem; font-weight: 700;
+  color: var(--text); line-height: 1.2;
+}
+.s-sub { font-size: 13.5px; color: var(--mid); margin-top: 5px; }
+
+/* ── READ GUIDE ── */
+.rg {
+  background: var(--gold-pale);
+  border: 1px solid #D4B870;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px; color: var(--mid);
+  margin-bottom: 20px;
+}
+.rg strong { color: var(--gold); }
+
+/* ── BODY TEXT ── */
+p { margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+.lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-style: italic;
+  color: var(--mid); margin-bottom: 20px;
+  line-height: 1.6;
+}
+strong { font-weight: 600; }
+
+/* ── ZH BOX ── */
+.zh {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin: 24px 0;
+  font-size: 14.5px; color: var(--text);
+  line-height: 1.75;
+}
+.zh .label {
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 22px 0;
+}
+.callout-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+.callout p { font-size: 15px; margin-bottom: 10px; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ── STAT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px; margin: 24px 0;
+}
+.stat-card {
+  background: var(--nuclear);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+  border: 1px solid rgba(184,134,11,0.2);
+}
+.stat-v {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700;
+  color: #D4A82A; line-height: 1;
+}
+.stat-u { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+.stat-l { font-size: 11.5px; color: rgba(255,255,255,0.8); margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; }
+
+/* ── VOCAB GRID ── */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; margin: 22px 0;
+}
+@media(max-width:580px){ .vocab-grid { grid-template-columns: 1fr; } }
+.vc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px;
+}
+.vc-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15.5px; font-weight: 600; color: var(--teal);
+}
+.vc-pos { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.vc-zh { font-size: 13.5px; color: var(--mid); margin-top: 3px; }
+.vc-def { font-size: 13.5px; color: var(--text); margin-top: 5px; line-height: 1.5; }
+
+/* ── BULLET LIST ── */
+.blist { list-style: none; margin: 16px 0 20px; padding: 0; }
+.blist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 15.5px;
+}
+.blist li:last-child { border-bottom: none; }
+.blist li::before {
+  content: '◆';
+  color: var(--gold); font-size: 9px;
+  flex-shrink: 0; margin-top: 6px;
+}
+
+/* ── TIMELINE ── */
+.timeline { margin: 26px 0; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0; margin-bottom: 0;
+}
+.tl-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--gold); text-align: right;
+  padding-right: 20px; padding-top: 14px;
+  position: relative;
+}
+.tl-year::after {
+  content: '';
+  position: absolute; right: -1px; top: 20px;
+  width: 8px; height: 8px;
+  background: var(--gold); border-radius: 50%;
+  transform: translateX(50%);
+}
+.tl-line {
+  position: absolute; right: -1px; top: 28px; bottom: -14px;
+  width: 2px; background: var(--border);
+}
+.tl-content {
+  border-left: 2px solid var(--border);
+  padding: 14px 0 14px 20px;
+}
+.tl-item:last-child .tl-content { border-left-color: transparent; }
+.tl-head { font-weight: 600; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.tl-body { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+/* ── ISOTOPE CARDS ── */
+.isotope-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px; margin: 22px 0;
+}
+.iso-card {
+  border-radius: 12px;
+  padding: 18px 18px;
+  border: 1.5px solid;
+}
+.iso-gold { background: var(--gold-pale); border-color: #D4B870; }
+.iso-teal { background: var(--teal-pale); border-color: #7ACAC6; }
+.iso-violet { background: var(--violet-pale); border-color: #B09AD4; }
+.iso-green { background: var(--green-pale); border-color: #80C8A8; }
+.iso-sym {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 700;
+  line-height: 1; margin-bottom: 6px;
+}
+.iso-hl { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.iso-desc { font-size: 13px; color: var(--mid); line-height: 1.5; }
+
+/* ── PRICE BOX ── */
+.price-box {
+  background: var(--nuclear);
+  border: 2px solid rgba(184,134,11,0.4);
+  border-radius: 16px;
+  padding: 30px 34px;
+  margin: 24px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.price-box::before {
+  content: '$$';
+  position: absolute; right: 20px; top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; color: rgba(184,134,11,0.07);
+  font-weight: 700;
+}
+.price-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 700;
+  color: #D4A82A; line-height: 1;
+}
+.price-label { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 6px; }
+.price-compare {
+  display: flex; gap: 30px; justify-content: center;
+  margin-top: 20px; flex-wrap: wrap;
+}
+.pc-item { text-align: center; }
+.pc-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+.pc-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* ── USES GRID ── */
+.uses-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px; margin: 22px 0;
+}
+@media(max-width:580px){ .uses-grid { grid-template-columns: 1fr; } }
+.use-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 20px;
+}
+.use-icon { font-size: 26px; margin-bottom: 10px; }
+.use-title { font-weight: 600; font-size: 15px; margin-bottom: 7px; }
+.use-body { font-size: 13.5px; color: var(--mid); line-height: 1.6; }
+
+/* ── QUOTE ── */
+.blockquote {
+  border-left: 5px solid var(--teal);
+  background: var(--teal-pale);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 22px;
+  margin: 24px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--text); line-height: 1.65;
+}
+.blockquote cite {
+  display: block; font-style: normal;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px; color: var(--teal);
+  margin-top: 8px; letter-spacing: 0.5px;
+}
+
+/* ── COMPARISON TABLE ── */
+.comp-wrap { overflow-x: auto; margin: 22px 0; }
+.comp-table {
+  width: 100%;
+  border-collapse: separate; border-spacing: 0;
+  border-radius: 12px; overflow: hidden;
+  border: 1.5px solid var(--border);
+  font-size: 13.5px;
+}
+.comp-table thead { background: var(--nuclear); color: #fff; }
+.comp-table thead th { padding: 13px 16px; text-align: center; font-weight: 500; }
+.comp-table thead th:first-child { text-align: left; }
+.comp-table tbody tr:nth-child(even) { background: var(--surface); }
+.comp-table tbody tr:nth-child(odd)  { background: var(--bg); }
+.comp-table td { padding: 11px 16px; text-align: center; border-bottom: 1px solid var(--border); }
+.comp-table td:first-child { text-align: left; font-weight: 500; }
+.yes { color: var(--green); font-size: 17px; }
+.no  { color: #CCC; font-size: 17px; }
+.cf-col { background: rgba(184,134,11,0.07) !important; }
+.cf-head { background: #8A6000 !important; }
+
+/* ── HAZARD BOX ── */
+.hazard {
+  background: var(--rust-pale);
+  border: 1.5px solid #E09080;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 22px 0;
+}
+.hazard-title {
+  font-weight: 600; font-size: 15px;
+  color: var(--rust); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── QUIZ ── */
+.quiz-wrap {
+  background: var(--nuclear);
+  border-radius: 18px;
+  padding: 38px 40px;
+  margin-top: 60px;
+}
+.quiz-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem; font-weight: 700;
+  color: #D4A82A; margin-bottom: 6px;
+}
+.quiz-sub {
+  font-size: 13.5px; color: rgba(255,255,255,0.5);
+  margin-bottom: 34px;
+}
+.q-block { margin-bottom: 30px; }
+.q-num { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+.q-text { font-size: 15.5px; color: #fff; margin-bottom: 12px; line-height: 1.5; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.13);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px; padding: 11px 16px;
+  text-align: left; cursor: pointer;
+  transition: all 0.18s;
+}
+.opt:hover { background: rgba(184,134,11,0.18); border-color: rgba(184,134,11,0.5); }
+.opt.correct { background: rgba(45,106,79,0.4); border-color: #6EC99A; color: #A8F0C8; }
+.opt.wrong   { background: rgba(168,50,32,0.4); border-color: #E09080; color: #FABBAB; }
+.opt.disabled { pointer-events: none; cursor: default; }
+.fb {
+  margin-top: 10px; padding: 10px 14px;
+  border-radius: 7px; font-size: 13.5px; line-height: 1.55;
+  display: none;
+}
+.fb.show { display: block; }
+.fb.ok   { background: rgba(45,106,79,0.2); color: #A8F0C8; }
+.fb.no   { background: rgba(168,50,32,0.2); color: #FABBAB; }
+.score-box {
+  background: rgba(184,134,11,0.15);
+  border: 1.5px solid rgba(184,134,11,0.4);
+  border-radius: 10px; padding: 18px 22px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; color: #D4A82A;
+  margin-top: 26px; display: none;
+}
+
+/* ── DISCUSSION ── */
+.disc-wrap {
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 14px; padding: 30px 34px;
+  margin-top: 28px;
+}
+.disc-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--text); margin-bottom: 6px;
+}
+.disc-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+.disc-q { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+.disc-n {
+  flex-shrink: 0; width: 30px; height: 30px;
+  background: var(--gold); color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+}
+.disc-t { font-size: 15px; color: var(--text); padding-top: 3px; line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--nuclear);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 26px;
+  font-size: 12.5px; letter-spacing: 0.5px;
+  margin-top: 60px;
+}
+footer strong { color: #D4A82A; }
+
+hr.div {
+  border: none; border-top: 1px dashed var(--border);
+  margin: 50px 0 0;
+}
+
+/* neutron animation in hero */
+@keyframes pulse {
+  0%,100%{ opacity:0.15; transform: scale(1); }
+  50%    { opacity:0.35; transform: scale(1.08); }
+}
+.hero-neutron {
+  position: absolute; right: 44px; bottom: 30px;
+  width: 120px; height: 120px;
+  border: 1.5px solid rgba(184,134,11,0.3);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-neutron::after {
+  content: 'n';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; color: rgba(212,168,42,0.4);
+}
+@media(max-width:620px){ .hero-neutron { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">林威英文 · One-Shot Course · 2025</div>
+      <h1>
+        <span class="cf">Californium</span> — Element <span class="cf">98</span>
+        <span class="sub">The most expensive metal on Earth that almost nobody knows</span>
+      </h1>
+      <p class="hero-desc">A synthetic radioactive element worth $27 million per gram — used in cancer treatment, oil exploration, nuclear reactors, and landmine detection.</p>
+      <div class="hero-meta">
+        <span>⏱ <strong>60 min</strong> · Single session</span>
+        <span>🎓 <strong>University seniors</strong> · EE + Materials</span>
+        <span>⚛ <strong>8 Parts</strong> · English-led</span>
+        <span>🏛 <strong>Discovered 1950</strong> · UC Berkeley</span>
+      </div>
+    </div>
+    <div class="element-card">
+      <div class="el-num">98</div>
+      <div class="el-sym">Cf</div>
+      <div class="el-name">CALIFORNIUM</div>
+      <div class="el-mass">[251]</div>
+    </div>
+  </div>
+  <div class="hero-neutron"></div>
+</header>
+
+<!-- ── NAV ── -->
+<nav class="course-map">
+  <div class="course-map-inner">
+    <div class="map-label">Jump to section</div>
+    <div class="map-pills">
+      <a class="map-pill" href="#p1">① Hook</a>
+      <a class="map-pill" href="#p2">② Discovery</a>
+      <a class="map-pill" href="#p3">③ Properties</a>
+      <a class="map-pill" href="#p4">④ Isotopes</a>
+      <a class="map-pill" href="#p5">⑤ Price & Production</a>
+      <a class="map-pill" href="#p6">⑥ Applications</a>
+      <a class="map-pill" href="#p7">⑦ Hazards & Safety</a>
+      <a class="map-pill" href="#p8">⑧ Future</a>
+      <a class="map-pill" href="#quiz">✅ Quiz</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════
+     PART 1 — HOOK
+══════════════════════════════════════════ -->
+<section class="section" id="p1">
+  <div class="section-header">
+    <div class="part-badge bg-gold"><span class="n">1</span>Hook</div>
+    <div>
+      <div class="s-time">⏱ ~5 min</div>
+      <div class="s-title">"More Expensive Than Gold. More Powerful Than You Think."</div>
+      <div class="s-sub">What is the most expensive substance you can actually buy?</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Teacher reads aloud with students.</strong> Pause at each bold term. Ask: "Have you ever heard of this element?"</div>
+
+  <p class="lead">Gold costs about $60 per gram. Diamonds around $55,000. But there is a silvery-white metal that costs $27,000,000 per gram — and most people have never heard its name.</p>
+
+  <p>That element is <strong>californium</strong> — specifically the isotope <strong>Californium-252 (Cf-252)</strong>. It does not glitter. It cannot be worn as jewelry. You cannot hold it in your bare hand — not even for a second. Yet it is considered one of the most <em>strategically valuable</em> substances on the planet.</p>
+
+  <p>Californium is entirely <strong>synthetic</strong> — it does not exist in nature. It must be manufactured in special nuclear reactors over years of painstaking work, and the total global annual production is measured not in kilograms, but in <strong>micrograms</strong>. The entire world produces only a few grams per year.</p>
+
+  <div class="callout">
+    <span class="callout-icon">💡</span>
+    <p>Despite its price and rarity, californium is used in <strong>real hospitals</strong> to treat cancer, in the <strong>oil industry</strong> to locate underground deposits, in <strong>nuclear power plants</strong> to start chain reactions, and even in <strong>landmine detectors</strong>.</p>
+    <p>Today we are going to learn exactly what it is, how it was made for the first time, why it emits so many neutrons, and what those neutrons can do.</p>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲（Californium，元素符號 Cf，原子序 98）是世界上最貴的合成元素，每克售價約 2,700 萬美元，是黃金的 40 萬倍。它完全不存在於自然界，只能在核子反應爐中人工製造，全球每年產量僅數克。儘管如此，它被用於癌症治療、石油探勘、核電廠啟動和地雷探測。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 2 — DISCOVERY
+══════════════════════════════════════════ -->
+<section class="section" id="p2">
+  <div class="section-header">
+    <div class="part-badge bg-teal"><span class="n">2</span>History</div>
+    <div>
+      <div class="s-time">⏱ ~8 min</div>
+      <div class="s-title">Discovery — A New Element Born in a Cyclotron</div>
+      <div class="s-sub">Berkeley, 1950: the Cold War, the Radiation Lab, and a 60-inch machine</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read the timeline. Ask: "What is a cyclotron?" (a circular particle accelerator)</strong></div>
+
+  <p>After World War II, the United States had a powerful combination: government funding, brilliant physicists, and the world's best particle accelerators at UC Berkeley. The scientists who had helped build the atomic bomb now turned to a new challenge — <em>creating elements that had never existed on Earth</em>.</p>
+
+  <div class="blockquote">
+    "A century after the Gold Rush, this was a different kind of elemental quest. In some ways, the scientists were looking for substances more precious than gold — atoms predicted to exist, but never observed."
+    <cite>— C&amp;EN (Chemical &amp; Engineering News), American Chemical Society</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">1944</div>
+      <div class="tl-content">
+        <div class="tl-head">Glenn Seaborg's team synthesizes curium (element 96)</div>
+        <div class="tl-body">At UC Berkeley's Radiation Laboratory, Seaborg and colleagues discover curium by bombarding plutonium with neutrons. Curium will later become the starting material for californium.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1949</div>
+      <div class="tl-content">
+        <div class="tl-head">Three years of collecting curium-242</div>
+        <div class="tl-body">The team — Stanley Thompson, Kenneth Street Jr., Albert Ghiorso, and Glenn Seaborg — spends years producing enough curium-242 to use as a target. Only micrograms are available.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1950</div>
+      <div class="tl-content">
+        <div class="tl-head">Californium is born — only 5,000 atoms</div>
+        <div class="tl-body">The team fires <strong>alpha particles</strong> (helium nuclei) at curium-242 using a <strong>60-inch cyclotron</strong>. The nuclear reaction produces californium-245 and a free neutron. The first batch: roughly <strong>5,000 atoms</strong> — not grams, not milligrams, but 5,000 individual atoms.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1950</div>
+      <div class="tl-content">
+        <div class="tl-head">Named after California and UC Berkeley</div>
+        <div class="tl-body">The team names the element after both the state of California and the University of California where it was discovered — following the tradition of naming elements after places (like berkelium, element 97, discovered the year before).</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1951</div>
+      <div class="tl-content">
+        <div class="tl-head">Glenn Seaborg wins the Nobel Prize in Chemistry</div>
+        <div class="tl-body">Seaborg receives the Nobel Prize for his work on transuranium elements — elements beyond uranium (atomic number 92). He is the only person to have an element named after him while still alive: <em>seaborgium</em>, element 106.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1974</div>
+      <div class="tl-content">
+        <div class="tl-head">First metallic californium isolated</div>
+        <div class="tl-body">R.G. Haire and R.D. Baybarz first isolate pure metallic californium. Physical properties can now be properly measured for the first time.</div>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>Key Vocabulary:</strong></p>
+  <div class="vocab-grid">
+    <div class="vc">
+      <div class="vc-en">cyclotron</div>
+      <div class="vc-pos">noun</div>
+      <div class="vc-zh">迴旋加速器</div>
+      <div class="vc-def">A circular particle accelerator that uses magnetic fields to spin charged particles to very high speeds before collision.</div>
+    </div>
+    <div class="vc">
+      <div class="vc-en">alpha particle</div>
+      <div class="vc-pos">noun phrase</div>
+      <div class="vc-zh">阿法粒子（氦核）</div>
+      <div class="vc-def">A particle consisting of 2 protons + 2 neutrons, identical to a helium-4 nucleus. Used as a "bullet" to bombard target atoms.</div>
+    </div>
+    <div class="vc">
+      <div class="vc-en">transuranium element</div>
+      <div class="vc-pos">noun phrase</div>
+      <div class="vc-zh">超鈾元素</div>
+      <div class="vc-def">Any synthetic element with atomic number greater than 92 (uranium). All are radioactive and do not occur naturally.</div>
+    </div>
+    <div class="vc">
+      <div class="vc-en">actinide series</div>
+      <div class="vc-pos">noun phrase</div>
+      <div class="vc-zh">錒系元素</div>
+      <div class="vc-def">The row of 15 elements at the bottom of the periodic table (atomic numbers 89–103), all radioactive. Californium is element 98 in this series.</div>
+    </div>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲由 Glenn Seaborg 等四位科學家於 1950 年在加州大學柏克萊分校用迴旋加速器發現。他們以阿法粒子轟擊鋦（Curium），產生僅約 5,000 個鉲原子。這是人類第六個合成超鈾元素，以加州命名。Seaborg 隔年獲頒諾貝爾化學獎，也是唯一一位在世時就有元素以自己命名的科學家（鑪=Seaborgium，元素 106）。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 3 — PROPERTIES
+══════════════════════════════════════════ -->
+<section class="section" id="p3">
+  <div class="section-header">
+    <div class="part-badge bg-rust"><span class="n">3</span>Properties</div>
+    <div>
+      <div class="s-time">⏱ ~8 min</div>
+      <div class="s-title">Physical &amp; Chemical Properties</div>
+      <div class="s-sub">A silvery-white metal you can cut with a knife — but must never touch</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read the stat strip aloud. Engineering students: which properties are connected to its electronic structure [Rn] 5f¹⁰ 7s²?</strong></div>
+
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="stat-v">98</div>
+      <div class="stat-u">protons</div>
+      <div class="stat-l">Atomic Number</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-v">251</div>
+      <div class="stat-u">amu</div>
+      <div class="stat-l">Atomic Mass</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-v">900°C</div>
+      <div class="stat-u">approx.</div>
+      <div class="stat-l">Melting Point</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-v">+3</div>
+      <div class="stat-u">main</div>
+      <div class="stat-l">Oxidation State</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-v">f-block</div>
+      <div class="stat-u">Period 7</div>
+      <div class="stat-l">Position</div>
+    </div>
+  </div>
+
+  <ul class="blist">
+    <li><strong>Appearance:</strong> Silvery-white, soft metal — can be cut with a stainless steel knife at room temperature. It slowly tarnishes (oxidizes) in air, faster in moist conditions.</li>
+    <li><strong>Electron configuration:</strong> [Rn] 5f¹⁰ 7s² — the 5f subshell holds most of the outer electrons. This is why californium behaves similarly to the lanthanide element dysprosium chemically.</li>
+    <li><strong>Radioactivity:</strong> All 20 known isotopes are radioactive — no stable isotopes exist. Californium constantly emits <strong>alpha particles</strong> and, crucially, <strong>neutrons</strong> via spontaneous fission.</li>
+    <li><strong>No natural occurrence:</strong> Californium does not exist anywhere in nature. It must be manufactured. Trace amounts may briefly appear in uranium ores exposed to intense neutron flux, but this is negligible.</li>
+    <li><strong>Chemical behavior:</strong> Similar to other actinides and lanthanides. Dissolves in acids; reacts with oxygen, steam, and hydrogen. Most chemistry is performed in solution, not in the pure metal form.</li>
+    <li><strong>Density:</strong> Approximately 15.1 g/cm³ — denser than lead (11.3 g/cm³) and comparable to uranium (19 g/cm³).</li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout-icon">⚙️</span>
+    <p><strong>For our engineers:</strong> Californium's 5f electrons give it a complex electronic structure. The 5f orbitals in actinides are not deeply buried like the 4f orbitals in lanthanides — they participate more in bonding, which is why actinides show more variable oxidation states (+2, +3, +4) than lanthanides. Californium predominantly shows +3, but +2 is accessible under certain conditions.</p>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲是銀白色軟金屬，可用刀切割，熔點約 900°C，密度約 15.1 g/cm³（比鉛重）。電子組態為 [Rn] 5f¹⁰ 7s²，屬 f 區塊第 7 週期。所有 20 種已知同位素全部具有放射性，不存在穩定同位素。自然界中完全找不到鉲，只能人工製造。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 4 — ISOTOPES
+══════════════════════════════════════════ -->
+<section class="section" id="p4">
+  <div class="section-header">
+    <div class="part-badge bg-violet"><span class="n">4</span>Isotopes</div>
+    <div>
+      <div class="s-time">⏱ ~7 min</div>
+      <div class="s-title">The Isotopes — Why Cf-252 Is the Star</div>
+      <div class="s-sub">20 known isotopes; one that changed nuclear science forever</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read each isotope card. Focus on Cf-252. Ask: "What is a half-life?" (the time for half the atoms to decay)</strong></div>
+
+  <p>Californium has <strong>20 known isotopes</strong> with mass numbers ranging from 237 to 256. All are radioactive. Here are the four most important ones:</p>
+
+  <div class="isotope-row">
+    <div class="iso-card iso-teal">
+      <div class="iso-sym" style="color:var(--teal);">Cf-251</div>
+      <div class="iso-hl" style="color:var(--teal);">Half-life: ~898 years</div>
+      <div class="iso-desc">The most stable isotope. Long enough half-life to be stored, but not used as a neutron source since it decays slowly. Primarily used in research.</div>
+    </div>
+    <div class="iso-card iso-gold">
+      <div class="iso-sym" style="color:var(--gold);">Cf-252 ★</div>
+      <div class="iso-hl" style="color:var(--gold);">Half-life: ~2.65 years</div>
+      <div class="iso-desc"><strong>The most important isotope.</strong> Emits ~2.3 × 10¹² neutrons per second per gram via spontaneous fission. The foundation of virtually all californium applications.</div>
+    </div>
+    <div class="iso-card iso-violet">
+      <div class="iso-sym" style="color:var(--violet);">Cf-249</div>
+      <div class="iso-hl" style="color:var(--violet);">Half-life: ~351 years</div>
+      <div class="iso-desc">Produced in nuclear reactors. Used in some research applications. Longer half-life than Cf-252 makes it more stable for storage, but less intense as a neutron source.</div>
+    </div>
+    <div class="iso-card iso-green">
+      <div class="iso-sym" style="color:var(--green);">Cf-245</div>
+      <div class="iso-hl" style="color:var(--green);">Half-life: ~45 min</div>
+      <div class="iso-desc">The first isotope ever produced, in the 1950 discovery experiment. Its short half-life means it decays rapidly — mostly of historical significance.</div>
+    </div>
+  </div>
+
+  <p><strong>Why is Cf-252 so special?</strong> Most radioactive isotopes decay by emitting alpha, beta, or gamma radiation. Californium-252 is exceptional because it undergoes <strong>spontaneous fission</strong> — the nucleus splits on its own, releasing a burst of neutrons each time. Approximately 3% of Cf-252 decays happen this way, producing an extraordinarily high neutron flux.</p>
+
+  <div class="callout">
+    <span class="callout-icon">🔢</span>
+    <p><strong>The numbers:</strong> One microgram (0.000001 gram) of Cf-252 emits about <strong>2.3 million neutrons per second</strong>. One milligram emits 2.3 <em>billion</em> neutrons per second. This makes it the most intense portable neutron source available in the world — no reactor required.</p>
+    <p>However, the short 2.65-year half-life means a source loses half its intensity in under 3 years. This is why californium sources must be regularly replaced or "refreshed."</p>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲共有 20 種已知同位素，最重要的是 <strong>Cf-252</strong>（半衰期 2.65 年），因為它能透過「自發裂變」釋放大量中子——每克每秒約放出 2.3 × 10¹² 個中子。這使它成為世界上最強大的可攜式中子源，也是所有主要應用的基礎。但也因為半衰期短，需定期更換。最穩定的同位素是 Cf-251，半衰期約 898 年。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 5 — PRICE & PRODUCTION
+══════════════════════════════════════════ -->
+<section class="section" id="p5">
+  <div class="section-header">
+    <div class="part-badge bg-gold"><span class="n">5</span>Price</div>
+    <div>
+      <div class="s-time">⏱ ~7 min</div>
+      <div class="s-title">$27,000,000 per Gram — Why So Expensive?</div>
+      <div class="s-sub">The economics and production chain of the world's priciest substance</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read the price box aloud. Ask students: "Can you think of anything else that costs $27 million per gram?"</strong></div>
+
+  <div class="price-box">
+    <div class="price-num">$27,000,000</div>
+    <div class="price-label">per gram · Californium-252 · 2025 estimate</div>
+    <div class="price-compare">
+      <div class="pc-item">
+        <div class="pc-val">$60</div>
+        <div class="pc-label">Gold / gram</div>
+      </div>
+      <div class="pc-item">
+        <div class="pc-val">$55,000</div>
+        <div class="pc-label">Diamond / gram</div>
+      </div>
+      <div class="pc-item">
+        <div class="pc-val">$27M</div>
+        <div class="pc-label">Cf-252 / gram</div>
+      </div>
+      <div class="pc-item">
+        <div class="pc-val">450,000×</div>
+        <div class="pc-label">More than gold</div>
+      </div>
+    </div>
+  </div>
+
+  <p><strong>Why does it cost so much?</strong></p>
+
+  <ul class="blist">
+    <li><strong>Years of reactor time:</strong> Producing californium requires bombarding curium or plutonium targets with neutrons inside a <strong>high-flux isotope reactor</strong> for years. The Oak Ridge National Laboratory (ORNL) in Tennessee is the primary US producer. Each production campaign takes 1–2 years of continuous reactor operation.</li>
+    <li><strong>Tiny yields:</strong> After years of irradiation, targets yield only milligram quantities of californium. Chemical separation to obtain pure Cf-252 requires sophisticated solvent extraction and ion exchange processes in specialized hot cells.</li>
+    <li><strong>Only two main producers:</strong> The world's californium supply comes essentially from two facilities — <strong>Oak Ridge National Laboratory</strong> (USA) and <strong>RIAR</strong> (Russia's Research Institute of Atomic Reactors in Dimitrovgrad). International buyers obtain milligram quantities through government agreements.</li>
+    <li><strong>Handling and transport costs:</strong> Every gram must be encapsulated in metal shielding, shipped in certified radiation-proof containers, transported under armed guard with strict security protocols. Insurance and compliance costs are enormous.</li>
+    <li><strong>Short shelf life:</strong> With a half-life of 2.65 years, Cf-252 loses intensity quickly. A source purchased today will be half as active in less than three years — meaning customers must regularly buy fresh material.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout-icon">🏭</span>
+    <p>The total global annual production of Cf-252 is estimated at only <strong>a few hundred milligrams</strong> — far less than a gram. At $27 million per gram, the entire world supply of californium per year represents perhaps $5–10 million in total value. This is not a market of volume; it is a market of extreme precision and specialized need.</p>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲-252 每克售價約 2,700 萬美元，是黃金的 45 萬倍，原因在於：需要在高通量核子反應爐中轟擊數年才能產出毫克級數量；全世界只有美國橡樹嶺國家實驗室（ORNL）和俄羅斯 RIAR 能生產；運輸需重型防護和武裝護衛；加上半衰期短，客戶必須定期補購。全球年產量僅數百毫克。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 6 — APPLICATIONS
+══════════════════════════════════════════ -->
+<section class="section" id="p6">
+  <div class="section-header">
+    <div class="part-badge bg-green"><span class="n">6</span>Uses</div>
+    <div>
+      <div class="s-time">⏱ ~8 min</div>
+      <div class="s-title">What Can $27 Million Worth of Metal Actually Do?</div>
+      <div class="s-sub">Six real-world applications — from cancer wards to oil fields to airport scanners</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read each application card. Ask: "Which application do you find most surprising?"</strong></div>
+
+  <div class="uses-grid">
+    <div class="use-card">
+      <div class="use-icon">🏥</div>
+      <div class="use-title">Cancer Treatment — Neutron Brachytherapy</div>
+      <div class="use-body">A tiny sealed Cf-252 source is placed close to or inside a tumor. High-energy neutrons damage cancer DNA far more effectively than X-rays — especially for tumors that are resistant to conventional radiation therapy. Used for cervical cancer, brain tumors, and head/neck cancers. Clinical studies show promising results in stages IB–IVB cervical cancer.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">⚛️</div>
+      <div class="use-title">Nuclear Reactor Start-Up</div>
+      <div class="use-body">When a nuclear reactor is first started ("going critical"), it needs an initial neutron source to begin the chain reaction. Californium-252, placed near the fuel rods, provides the first neutrons to kick off the reaction. Without a reliable neutron source, achieving criticality safely is extremely difficult.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">🛢️</div>
+      <div class="use-title">Oil &amp; Mineral Well Logging</div>
+      <div class="use-body">A Cf-252 source is lowered into a borehole. The neutrons it emits interact differently with different geological layers — oil-bearing rock, water-bearing rock, and dry rock all respond differently. By measuring the returning radiation, engineers can map exactly what lies underground without drilling multiple exploratory wells.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">🔍</div>
+      <div class="use-title">Neutron Activation Analysis</div>
+      <div class="use-body">Bombarding a sample with neutrons makes its atoms temporarily radioactive — each element produces a unique gamma-ray "fingerprint." This allows scientists to identify trace amounts of gold, silver, or rare earth elements in ores; detect pollutants in soil; and verify the composition of industrial materials — all non-destructively.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">✈️</div>
+      <div class="use-title">Neutron Radiography</div>
+      <div class="use-body">Like X-ray imaging but using neutrons. Cf-252 is used in aircraft maintenance to detect hidden moisture, bad welds, and corrosion inside aluminum structures — neutrons pass through metal easily but are strongly scattered by hydrogen in water or organic compounds. Used in aerospace, military equipment inspection, and pipeline testing.</div>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">💣</div>
+      <div class="use-title">Landmine &amp; Explosive Detection</div>
+      <div class="use-body">A small portable device using Cf-252 can detect buried landmines by scanning for the hydrogen signature of explosive compounds. Pacific Northwest National Laboratory developed a prototype Timed Neutron Detector that uses a tiny californium source. NASA has also tested Cf-252 for analyzing the surface chemistry of other planets.</div>
+    </div>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲-252 的六大應用：①癌症治療（中子近接放射治療，尤其用於子宮頸癌）②核子反應爐啟動中子源③石油井下地層探測④中子活化分析（鑑定礦石成分）⑤中子放射照相（航空器焊縫與腐蝕檢測）⑥地雷和爆炸物偵測。每一項應用都依賴其超強的中子放射能力。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 7 — HAZARDS
+══════════════════════════════════════════ -->
+<section class="section" id="p7">
+  <div class="section-header">
+    <div class="part-badge bg-rust"><span class="n">7</span>Hazards</div>
+    <div>
+      <div class="s-time">⏱ ~5 min</div>
+      <div class="s-title">Hazards &amp; Safety — Handle With Extreme Caution</div>
+      <div class="s-sub">Why californium is one of the most heavily monitored substances on Earth</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read the hazard box. Ask: "What are the three types of nuclear radiation?"</strong></div>
+
+  <div class="hazard">
+    <div class="hazard-title">⚠️ Radiation Hazards</div>
+    <ul class="blist" style="margin:0;">
+      <li><strong>Alpha emission:</strong> Alpha particles from californium cannot penetrate skin — but if inhaled, ingested, or absorbed through a wound, they cause severe internal radiation damage directly to cells and DNA.</li>
+      <li><strong>Neutron emission:</strong> Neutrons are far more penetrating than alpha particles. They pass through the body and can cause radiation sickness. Workers must stay behind thick concrete, water, or polyethylene shielding (not lead — neutrons pass right through lead).</li>
+      <li><strong>Carcinogenic:</strong> Even low doses increase cancer risk. Californium accumulates in bone tissue, delivering long-term radiation to bone marrow.</li>
+      <li><strong>External contamination:</strong> Any direct contact with californium requires immediate decontamination. All handling is done remotely inside <strong>hot cells</strong> — lead-glass-windowed rooms where robotic arms manipulate the material.</li>
+    </ul>
+  </div>
+
+  <p><strong>Security considerations:</strong> Because californium can potentially be used as a neutron initiator in certain weapon designs, it is subject to strict <strong>nuclear non-proliferation controls</strong>. Sales are government-to-government only. Every gram produced is tracked, and international transport requires multiple layers of authorization and armed escort.</p>
+
+  <div class="callout">
+    <span class="callout-icon">🛡️</span>
+    <p><strong>Safe use in medicine:</strong> In clinical neutron brachytherapy, the californium source is sealed inside a metal capsule with no direct patient contact. The dose is highly localized to the tumor. Radiation oncologists use precise calculations to minimize exposure to surrounding healthy tissue — the same principles as any form of targeted radiation therapy.</p>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    鉲具有強烈放射性：放出的阿法粒子若進入人體可造成嚴重傷害；中子穿透力強，能穿越人體，需用水或聚乙烯（而非鉛）防護；長期低劑量暴露亦有致癌風險。所有操作必須在「熱室」中以遙控機械臂完成。由於具有潛在武器用途，每克鉲都受到核不擴散條約嚴格管控，買賣僅限政府對政府層級。
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══════════════════════════════════════════
+     PART 8 — FUTURE
+══════════════════════════════════════════ -->
+<section class="section" id="p8">
+  <div class="section-header">
+    <div class="part-badge bg-slate"><span class="n">8</span>Future</div>
+    <div>
+      <div class="s-time">⏱ ~5 min</div>
+      <div class="s-title">The Road Ahead — More Efficient, More Accessible?</div>
+      <div class="s-sub">What researchers are working on right now</div>
+    </div>
+  </div>
+
+  <div class="rg">🔊 <strong>Read and discuss: "If you were working at ORNL, which improvement would you focus on first?"</strong></div>
+
+  <ul class="blist">
+    <li><strong>More efficient production:</strong> Researchers at Oak Ridge and RIAR are studying how to extract more Cf-252 from each irradiation campaign — optimizing neutron flux targeting and chemical separation yields to squeeze more usable atoms from each reactor run.</li>
+    <li><strong>Advanced cancer therapy — BNCT:</strong> Boron Neutron Capture Therapy (BNCT) uses neutrons to trigger a nuclear reaction specifically inside cancer cells loaded with boron compounds. Californium-252 as a compact neutron source could bring BNCT to hospitals that cannot access large reactors.</li>
+    <li><strong>Planetary exploration:</strong> NASA has tested Cf-252-based instruments for analyzing the surface chemistry of asteroids and planets. A compact neutron source aboard a spacecraft or rover could identify water, carbon, and mineral content non-destructively.</li>
+    <li><strong>Portable nuclear security:</strong> Border control and port security agencies are developing handheld neutron interrogation devices using Cf-252 to scan cargo containers for smuggled nuclear materials and explosives — far faster than current chemical detection methods.</li>
+    <li><strong>Miniaturized HDR brachytherapy:</strong> Current californium brachytherapy sources are relatively large. Research is ongoing into miniaturized High Dose Rate (HDR) Cf-252 sources that could treat smaller, more anatomically difficult tumors with greater precision.</li>
+    <li><strong>Synthesis of new elements:</strong> Californium is used as a target material to synthesize even heavier elements. Oganesson (element 118, the heaviest known element) was partly created using californium-249 as a target bombarded with calcium ions at JINR (Russia, 2006).</li>
+  </ul>
+
+  <div class="blockquote">
+    "Californium is a reminder that the world's most valuable materials are not always gemstones in a shop window — they are atoms engineered to serve human needs that nothing else on the periodic table can fulfill."
+    <cite>— Adapted from multiple science commentary sources, 2025–2026</cite>
+  </div>
+
+  <div class="zh">
+    <div class="label">📝 中文摘要</div>
+    未來研究方向：①提升核子反應爐的產量效率②硼中子捕獲治療（BNCT）癌症療法③NASA 行星表面化學探測④港口和邊境核物料掃描⑤微型化高劑量率近接治療源⑥利用鉲-249 撞擊合成更重元素（如第 118 號元素氣）。鉲的故事遠未結束。
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     QUIZ
+══════════════════════════════════════════ -->
+<section class="quiz-wrap" id="quiz">
+  <div class="quiz-h">✅ Check Your Understanding</div>
+  <div class="quiz-sub">5 questions · Choose the best answer · Discuss together after each one</div>
+
+  <!-- Q1 -->
+  <div class="q-block" id="q1">
+    <div class="q-num">Question 01</div>
+    <div class="q-text">In 1950, how did Seaborg's team first synthesize californium at UC Berkeley?</div>
+    <div class="opts">
+      <button class="opt" onclick="ans(this,'q1',false)">A. By bombarding plutonium with neutrons in a nuclear reactor.</button>
+      <button class="opt" onclick="ans(this,'q1',true)">B. By firing alpha particles (helium nuclei) at curium-242 in a 60-inch cyclotron.</button>
+      <button class="opt" onclick="ans(this,'q1',false)">C. By chemically separating californium from uranium ore.</button>
+      <button class="opt" onclick="ans(this,'q1',false)">D. By fusing two lighter nuclei in a particle collider.</button>
+    </div>
+    <div class="fb" id="q1-fb"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-block" id="q2">
+    <div class="q-num">Question 02</div>
+    <div class="q-text">Why is Californium-252 so much more useful than other isotopes of californium?</div>
+    <div class="opts">
+      <button class="opt" onclick="ans(this,'q2',false)">A. It has the longest half-life of all californium isotopes, lasting thousands of years.</button>
+      <button class="opt" onclick="ans(this,'q2',false)">B. It emits only gamma rays, which are easy to control in medical settings.</button>
+      <button class="opt" onclick="ans(this,'q2',true)">C. It undergoes spontaneous fission, releasing an extraordinarily high number of neutrons — about 2.3 × 10¹² per second per gram.</button>
+      <button class="opt" onclick="ans(this,'q2',false)">D. It is the only californium isotope that is not radioactive.</button>
+    </div>
+    <div class="fb" id="q2-fb"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-block" id="q3">
+    <div class="q-num">Question 03</div>
+    <div class="q-text">When shielding workers from californium-252, which material is most effective against neutrons?</div>
+    <div class="opts">
+      <button class="opt" onclick="ans(this,'q3',false)">A. Lead, because it is dense and blocks all types of radiation.</button>
+      <button class="opt" onclick="ans(this,'q3',true)">B. Water or polyethylene, because hydrogen-rich materials scatter and slow neutrons effectively.</button>
+      <button class="opt" onclick="ans(this,'q3',false)">C. Steel, because its high atomic number absorbs neutron energy.</button>
+      <button class="opt" onclick="ans(this,'q3',false)">D. Aluminum foil, because neutrons cannot penetrate thin metallic layers.</button>
+    </div>
+    <div class="fb" id="q3-fb"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-block" id="q4">
+    <div class="q-num">Question 04</div>
+    <div class="q-text">Two of the following are real applications of californium-252. Which pair is correct?</div>
+    <div class="opts">
+      <button class="opt" onclick="ans(this,'q4',false)">A. Powering submarines and producing drinking water from seawater.</button>
+      <button class="opt" onclick="ans(this,'q4',true)">B. Starting nuclear reactor chain reactions and detecting underground oil deposits in well logging.</button>
+      <button class="opt" onclick="ans(this,'q4',false)">C. Manufacturing semiconductors and hardening aircraft engine blades.</button>
+      <button class="opt" onclick="ans(this,'q4',false)">D. Generating solar energy and neutralizing chemical warfare agents.</button>
+    </div>
+    <div class="fb" id="q4-fb"></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-block" id="q5">
+    <div class="q-num">Question 05</div>
+    <div class="q-text">Californium-252 costs approximately $27 million per gram. Which of the following best explains this extraordinary price?</div>
+    <div class="opts">
+      <button class="opt" onclick="ans(this,'q5',false)">A. It requires mining from extremely rare ore deposits found only in California.</button>
+      <button class="opt" onclick="ans(this,'q5',false)">B. Its production is banned in most countries, so only a black market exists.</button>
+      <button class="opt" onclick="ans(this,'q5',true)">C. It must be manufactured in high-flux nuclear reactors over years, global production is only a few hundred milligrams annually, and handling and transport require specialized security infrastructure.</button>
+      <button class="opt" onclick="ans(this,'q5',false)">D. Each atom must be hand-assembled from subatomic particles in a laboratory, requiring millions of hours of labor.</button>
+    </div>
+    <div class="fb" id="q5-fb"></div>
+  </div>
+
+  <div class="score-box" id="score-box"></div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     DISCUSSION
+══════════════════════════════════════════ -->
+<div class="disc-wrap">
+  <div class="disc-h">💬 Open Discussion</div>
+  <div class="disc-sub">Two questions to explore together — no single right answer (5 minutes)</div>
+
+  <div class="disc-q">
+    <div class="disc-n">1</div>
+    <div class="disc-t"><strong>Engineering perspective:</strong> Californium-252 has a half-life of only 2.65 years, meaning a hospital that purchases a neutron brachytherapy source must replace it regularly at enormous cost. As a materials engineer or electrical engineer, what approach might you take to either: (a) extend the effective life of a californium source, or (b) develop an alternative compact neutron source that could replace it?</div>
+  </div>
+
+  <div class="disc-q">
+    <div class="disc-n">2</div>
+    <div class="disc-t"><strong>Big picture:</strong> Californium is both a life-saving medical tool and a potential component in radiological weapons ("dirty bombs"). Currently, its production and sale is strictly controlled through government agreements. Do you think this level of control is sufficient? What additional safeguards might you suggest — and how would you balance security against enabling legitimate medical and scientific access?</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>林威英文</strong> · One-Shot University Course · Californium (Cf) — Element 98<br>
+  Sources: Nature Electronics · Oak Ridge National Laboratory · C&amp;EN (ACS) · imec · Live Science · 2025–2026
+</footer>
+
+<script>
+const F = {
+  q1:{
+    ok:"Correct! The key details: alpha particles (helium-4 nuclei) bombarding curium-242, in a 60-inch cyclotron at UC Berkeley, producing californium-245. The team spent three years collecting enough curium-242 to use as a target.",
+    no:"Review Part 2. The method was: alpha particle bombardment (not neutrons), target was curium-242 (not plutonium), and the machine was a cyclotron (a circular particle accelerator) — not a nuclear reactor."
+  },
+  q2:{
+    ok:"Exactly right! Spontaneous fission — where the nucleus splits on its own without being hit — releases multiple neutrons per event. About 3% of Cf-252 decays happen this way, creating an extraordinarily powerful and compact neutron source.",
+    no:"Re-read Part 4. The key is spontaneous fission — Cf-252 splits on its own, releasing neutrons. Its half-life is actually quite short (2.65 years), not long. And it emits neutrons, not gamma rays primarily."
+  },
+  q3:{
+    ok:"Correct! Neutrons are best absorbed and slowed by hydrogen-rich materials. Hydrogen nuclei (protons) have almost the same mass as neutrons — so collisions transfer maximum energy, quickly slowing the neutrons. Lead is excellent for gamma rays but largely ineffective against neutrons.",
+    no:"This is a key nuclear physics point: lead stops gamma rays (high Z, high density), but neutrons are best stopped by hydrogen-rich materials. Water and polyethylene both contain large amounts of hydrogen."
+  },
+  q4:{
+    ok:"Well done! Both are real and important uses: Cf-252 provides the neutron 'spark' to start nuclear reactor chain reactions, and in oil well logging it maps underground geology by measuring how different rock layers scatter neutrons.",
+    no:"Check Part 6. The six real applications are: cancer therapy, reactor start-up, oil well logging, neutron activation analysis, neutron radiography, and landmine detection. None involve submarines, semiconductors, or solar energy."
+  },
+  q5:{
+    ok:"Correct — and comprehensive! All three factors drive the price: extreme manufacturing difficulty (years in a reactor), tiny global supply (a few hundred milligrams per year from only two facilities), and enormous handling/security costs at every step from production to the customer.",
+    no:"Californium does not occur in nature at all — there is no mining. It is not technically banned, but tightly government-controlled. The answer is all about the complex manufacturing process, tiny yields, and security costs."
+  }
+};
+
+let answered={}, score=0;
+
+function ans(btn, qid, correct){
+  if(answered[qid]) return;
+  answered[qid]=true;
+  score += correct ? 1 : 0;
+
+  const block = document.getElementById(qid);
+  block.querySelectorAll('.opt').forEach(b => b.classList.add('disabled'));
+  btn.classList.add(correct ? 'correct' : 'wrong');
+  if(!correct){
+    block.querySelectorAll('.opt').forEach(b=>{
+      if(b.onclick.toString().includes('true')) b.classList.add('correct');
+    });
+  }
+
+  const fb = document.getElementById(qid+'-fb');
+  fb.textContent = F[qid][correct?'ok':'no'];
+  fb.className = 'fb show ' + (correct?'ok':'no');
+
+  if(Object.keys(answered).length === 5){
+    const msgs = [
+      'Keep reviewing — revisit all 8 parts!',
+      'Good start — review the sections you missed.',
+      'Decent effort — a few key concepts to revisit.',
+      'Solid understanding! Review your two misses.',
+      'Excellent work — nearly perfect!',
+      '🎉 Perfect score! Outstanding grasp of californium.'
+    ];
+    const sb = document.getElementById('score-box');
+    sb.textContent = `Your score: ${score} / 5 — ${msgs[score]}`;
+    sb.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
