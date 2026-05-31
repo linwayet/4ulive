@@ -3,782 +3,438 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shark-Skin-Inspired Swimwear</title>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<title>全方位新聞分析｜馬來西亞土著特權制度</title>
 <style>
-:root{
-  --bg:#FFF8F0;
-  --ink:#1A0F00;
-  --red:#C0392B;
-  --blue:#1565C0;
-  --green:#2E7D32;
-  --orange:#E65100;
-  --purple:#6A1B9A;
-  --deep-blue:#0D47A1;
-  --sec1:#F3F8FF;
-  --sec2:#FFF3EF;
-  --sec3:#F1F8F2;
-  --sec4:#F9F0FF;
-  --fold:#FAF6F0;
-  --line:#C4A06A;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'BIZ UDPGothic',system-ui,sans-serif;
-  font-size:23px;
-  line-height:1.85;
-  font-weight:400;
-  padding:28px 16px 64px;
-}
-.page{max-width:880px;margin:0 auto}
-.ad-links{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin:0 0 34px;
-}
-.bottom-ad{margin:34px 0 0}
-.ad-card{
-  display:block;
-  min-height:118px;
-  padding:18px 18px 20px;
-  border-radius:14px;
-  color:#fff;
-  text-decoration:none;
-  border:3px solid rgba(255,255,255,.68);
-  box-shadow:0 12px 24px rgba(74,55,40,.18);
-}
-.ad-card strong{
-  display:block;
-  font-size:1.18rem;
-  line-height:1.35;
-  margin-bottom:6px;
-}
-.ad-card span{
-  display:block;
-  font-size:.95rem;
-  line-height:1.55;
-}
-.ad-echo{background:linear-gradient(135deg,#C0392B,#E65100,#F7B733)}
-.ad-analysis{background:linear-gradient(135deg,#BF360C,#2E7D32)}
-.ad-line{background:linear-gradient(135deg,#06C755,#168A43)}
-.ad-title{
-  margin:0 0 12px;
-  color:#4A3728;
-  font-size:1.35rem;
-  font-weight:700;
-  text-align:center;
-}
-.top-title{
-  text-align:center;
-  margin:0 auto 34px;
-  padding:24px 18px 28px;
-  border:5px solid var(--red);
-  border-radius:8px;
-  background:#FFFDF8;
-  box-shadow:0 8px 0 rgba(192,57,43,.18);
-}
-h1{
-  margin:0 0 18px;
-  color:var(--red);
-  font-size:3rem;
-  line-height:1.22;
-  font-weight:700;
-  letter-spacing:0;
-}
-.subtitle{
-  margin:0 0 14px;
-  color:var(--blue);
-  font-size:2.2rem;
-  line-height:1.3;
-  font-weight:700;
-}
-.credit{
-  margin:0;
-  color:#0D47A1;
-  font-family:'Pacifico','BIZ UDPGothic',sans-serif;
-  font-size:1.8rem;
-  line-height:1.45;
-}
-section{margin:34px 0}
-h2{
-  margin:0;
-  padding:18px 22px;
-  color:#fff;
-  font-size:1.75rem;
-  line-height:1.35;
-  font-weight:700;
-  border-radius:8px 8px 0 0;
-}
-h3{
-  margin:0 0 12px;
-  color:var(--green);
-  font-size:1.6rem;
-  line-height:1.4;
-  font-weight:700;
-}
-p{margin:12px 0}
-.card{
-  border:3px solid;
-  border-top:0;
-  border-radius:0 0 8px 8px;
-  padding:24px;
-}
-.original h2{background:#0D47A1}.original .card{background:var(--sec1);border-color:#90CAF9}
-.reading h2{background:#BF360C}.reading .card{background:var(--sec2);border-color:#FFAB91}
-.vocab h2{background:#1B5E20}.vocab .card{background:var(--sec3);border-color:#81C784}
-.grammar h2{background:#4A148C}.grammar .card{background:var(--sec4);border-color:#CE93D8}
-.article-title{font-size:1.45rem;font-weight:700;color:var(--deep-blue);line-height:1.45}
-.article-text p{margin:18px 0}
-.key{
-  color:var(--deep-blue);
-  font-weight:700;
-  text-decoration:none;
-}
-.analysis,.vocab-item,.grammar-point{
-  background:#FFFDF8;
-  border:2px solid rgba(26,15,0,.16);
-  border-radius:8px;
-  padding:20px;
-  margin:22px 0;
-}
-.circle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  background:#BF360C;
-  color:#fff;
-  font-weight:700;
-  margin-right:12px;
-}
-.quote{
-  font-style:italic;
-  font-weight:700;
-  color:#4A3728;
-}
-.pill{
-  display:inline-block;
-  padding:4px 12px;
-  margin:4px 6px 4px 0;
-  border-radius:999px;
-  color:#fff;
-  background:var(--purple);
-  font-size:1rem;
-  font-weight:700;
-}
-.vocab-head{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:baseline;
-  gap:10px;
-  margin-bottom:10px;
-}
-.vocab-num{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:44px;
-  height:44px;
-  border-radius:50%;
-  background:#1B5E20;
-  color:#fff;
-  font-weight:700;
-}
-.word{font-size:1.55rem;color:#1B5E20;font-weight:700}
-.kk{color:#C0392B;font-weight:700}
-.tag-row{
-  display:grid;
-  grid-template-columns:136px 1fr;
-  gap:0;
-  margin:10px 0;
-  border:1px solid rgba(26,15,0,.16);
-  border-radius:8px;
-  overflow:hidden;
-  background:#fff;
-}
-.tag-label{
-  padding:10px 12px;
-  font-weight:700;
-  min-height:56px;
-}
-.tag-content{padding:10px 14px;min-height:56px}
-.deriv{background:#FDEDEC;color:#C0392B}
-.root{background:#EBF5FB;color:#1565C0}
-.phrase{background:#EAFAF1;color:#2E7D32}
-.idiom{background:#FEF9E7;color:#D68910}
-.confuse{background:#F5EEF8;color:#6A1B9A}
-.pattern{background:#FEF0E7;color:#E65100}
-.examples{margin:12px 0 0 0;padding-left:26px}
-.examples li{margin:10px 0}
-blockquote{
-  margin:12px 0;
-  padding:14px 18px;
-  border-left:8px solid #4A148C;
-  background:#FFFDF8;
-  font-style:italic;
-}
-ul{margin:8px 0 12px 28px;padding:0}
-li{margin:7px 0}
-details{
-  margin:24px 0;
-  border:3px solid var(--line);
-  border-radius:8px;
-  overflow:hidden;
-  background:var(--fold);
-}
-summary{
-  min-height:72px;
-  padding:16px 22px;
-  background:#4A3728;
-  color:#fff;
-  cursor:pointer;
-  list-style:none;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  font-weight:700;
-  font-size:1.35rem;
-}
-summary::-webkit-details-marker{display:none}
-.arrow{transition:transform .3s ease}
-details[open] .arrow{transform:rotate(180deg)}
-.detail-body{padding:22px;background:var(--fold)}
-.prefix-item,.suffix-item,.mini-word,.writer-item{padding:8px 0;border-bottom:1px solid rgba(74,55,40,.24)}
-.prefix-item:last-child,.suffix-item:last-child,.mini-word:last-child,.writer-item:last-child{border-bottom:0}
-.pf{color:#4A3728;font-weight:700}
-@media(max-width:720px){
-  body{font-size:21px;padding:18px 10px 44px}
-  h1{font-size:2.3rem}
-  .subtitle{font-size:1.75rem}
-  .credit{font-size:1.45rem}
-  h2{font-size:1.45rem}
-  .card{padding:18px 14px}
-  .tag-row{grid-template-columns:1fr}
-  .tag-label,.tag-content{min-height:auto}
-  .ad-links{grid-template-columns:1fr;gap:12px}
-  .ad-card{min-height:104px}
-}
+  :root{
+    --bg:#F8F4ED;
+    --ink:#2D2A26;
+    --card:#FFFDF8;
+    --line:#E3D9C8;
+    --c1:#B0563A; /* 事實查核·磚紅 */
+    --c2:#C28A1E; /* 缺漏·芥末黃 */
+    --c3:#6E7B3D; /* 多角度·橄欖綠 */
+    --c4:#A86A4F; /* 水平·陶土 */
+    --c5:#7A5230; /* 垂直·深棕 */
+    --c6:#8A7B6A; /* 不確定·灰褐 */
+    --c7:#4F6B4A; /* 總結·墨綠 */
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px;
+    line-height:1.8;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:24px 18px 80px;}
+  header.top{
+    text-align:center;
+    padding:28px 20px;
+    border-bottom:3px solid var(--c5);
+    margin-bottom:8px;
+  }
+  header.top h1{font-size:30px;line-height:1.5;margin:0 0 10px;color:var(--c5);}
+  header.top .meta{font-size:18px;color:#6b6256;line-height:1.7;}
+  .tag-warn{
+    display:inline-block;background:#F3E2D2;color:#9A3F22;
+    border:2px solid var(--c1);border-radius:14px;
+    padding:8px 16px;margin-top:14px;font-size:18px;font-weight:bold;
+  }
+
+  /* 頂部摘要卡 = 第七層 bottom line */
+  .summary{
+    background:var(--card);
+    border:3px solid var(--c7);
+    border-radius:18px;
+    padding:22px 22px 8px;
+    margin:22px 0 30px;
+    box-shadow:0 4px 14px rgba(79,107,74,.12);
+  }
+  .summary h2{
+    margin:0 0 6px;font-size:24px;color:var(--c7);
+    display:flex;align-items:center;gap:10px;
+  }
+  .summary .oneliner{
+    background:#EAF0E5;border-left:8px solid var(--c7);
+    padding:14px 16px;border-radius:10px;margin:14px 0 18px;
+    font-weight:bold;font-size:21px;
+  }
+  .summary ul{margin:6px 0 16px;padding-left:0;list-style:none;}
+  .summary li{
+    padding:12px 14px;margin:10px 0;background:#F6F2E9;
+    border-radius:10px;border:1px solid var(--line);
+  }
+  .summary li b{color:var(--c7);}
+
+  /* 折疊層面 */
+  details{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:16px;
+    margin:18px 0;
+    overflow:hidden;
+  }
+  summary{
+    list-style:none;cursor:pointer;
+    min-height:72px;
+    display:flex;align-items:center;gap:14px;
+    padding:18px 20px;
+    font-size:23px;font-weight:bold;color:#fff;
+    user-select:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  .arrow{
+    margin-left:auto;width:16px;height:16px;
+    border-right:4px solid #fff;border-bottom:4px solid #fff;
+    transform:rotate(45deg);transition:transform .25s ease;
+    flex:none;
+  }
+  details[open] .arrow{transform:rotate(225deg);}
+  .num{
+    background:rgba(255,255,255,.22);
+    border-radius:50%;width:42px;height:42px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;
+  }
+  .body{padding:18px 20px 24px;}
+  .body p{margin:12px 0;}
+  .body ul{margin:12px 0;padding-left:24px;}
+  .body li{margin:9px 0;}
+
+  /* 七層配色標頭 */
+  details.l1 summary{background:var(--c1);}
+  details.l2 summary{background:var(--c2);}
+  details.l3 summary{background:var(--c3);}
+  details.l4 summary{background:var(--c4);}
+  details.l5 summary{background:var(--c5);}
+  details.l6 summary{background:var(--c6);}
+  details.l7 summary{background:var(--c7);}
+  details.l1{border-color:var(--c1);}
+  details.l2{border-color:var(--c2);}
+  details.l3{border-color:var(--c3);}
+  details.l4{border-color:var(--c4);}
+  details.l5{border-color:var(--c5);}
+  details.l6{border-color:var(--c6);}
+  details.l7{border-color:var(--c7);}
+
+  /* 事實標籤 */
+  .fact{border-left:8px solid #2E7D32;background:#EAF3EA;}
+  .infer{border-left:8px solid #C28A1E;background:#F8F0DC;}
+  .opin{border-left:8px solid #7A5230;background:#F0E7DA;}
+  .err{border-left:8px solid var(--c1);background:#F6E4DB;}
+  .factrow{padding:14px 16px;border-radius:10px;margin:12px 0;}
+  .factrow .lab{font-weight:bold;display:block;margin-bottom:4px;}
+
+  .callout{
+    background:#FBF3DF;border:2px dashed var(--c2);
+    border-radius:14px;padding:18px 20px;margin:18px 0;
+  }
+  .callout h3{margin:0 0 8px;color:#9A6B0E;font-size:21px;}
+
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+  .vs .col{background:#F6F2E9;border:1px solid var(--line);border-radius:12px;padding:14px;}
+  .vs .col h4{margin:0 0 8px;font-size:19px;}
+  @media(max-width:620px){.vs{grid-template-columns:1fr;}}
+
+  .src{
+    margin-top:36px;padding:20px;background:#F1 EBDF;
+    background:#F1EBDF;border-radius:14px;font-size:17px;line-height:1.7;color:#5d5446;
+  }
+  .src h3{margin:0 0 10px;color:var(--c5);font-size:19px;}
+  .src ol{margin:0;padding-left:22px;}
+  .src li{margin:6px 0;}
+  mark{background:#F6E4DB;padding:0 4px;border-radius:4px;}
+  .footer-note{text-align:center;font-size:16px;color:#8a8071;margin-top:30px;line-height:1.7;}
 </style>
 </head>
 <body>
-<main class="page">
-<p class="ad-title">七月課程與聯絡資訊</p>
-<nav class="ad-links" aria-label="頂部課程與聯絡連結">
-<a class="ad-card ad-echo" href="https://linwayet.github.io/4ulive/index.html">
-<strong>七月課程：錯中學 ECHO 計劃</strong>
-<span>從錯誤中學英文，整理閱讀、文法與寫作盲點。</span>
-</a>
-<a class="ad-card ad-analysis" href="https://linwayet.github.io/popup/index">
-<strong>學生分析</strong>
-<span>先了解學習狀況，再安排更精準的課程與練習。</span>
-</a>
-<a class="ad-card ad-line" href="https://line.me/ti/p/~linwayet">
-<strong>林威老師 LINE</strong>
-<span>LINE ID：linwayet。可詢問課程與程度評估。</span>
-</a>
-</nav>
+<div class="wrap">
 
-<header class="top-title">
-<h1>Shark-Skin-Inspired Swimwear</h1>
-<p class="subtitle">仿鯊魚皮泳衣：仿生學與材料科學如何降低水中阻力</p>
-<p class="credit">林威老師與 AI agent 團隊製作</p>
-</header>
+  <header class="top">
+    <h1>全方位新聞分析<br>馬來西亞為何跨不過發達國家門檻？</h1>
+    <div class="meta">
+      📺 來源性質：YouTube 中文自媒體「解說／論述型」影片逐字稿<br>
+      🏷️ 主題：國際政治經濟・馬來西亞土著特權（Bumiputera）制度<br>
+      📅 分析日期：2026年5月31日｜分析語言：繁體中文（台灣）
+    </div>
+    <div class="tag-warn">⚠️ 這不是新聞報導，而是帶有強烈說服框架的論述影片</div>
+  </header>
 
-<section class="original">
-<h2>區塊一：英文文章原文</h2>
-<div class="card article-text">
-<p class="article-title">Shark-Skin-Inspired Swimwear: How <strong class="key">Bionics</strong> and <strong class="key">Materials</strong> Science Work Together to Reduce Water <strong class="key">Resistance</strong> in <strong class="key">Competitive</strong> Swimming</p>
-<p>Shark-skin-inspired swimwear is a famous example of <strong class="key">bionics</strong> in sports <strong class="key">materials</strong>. Engineers study how shark skin helps the animal swim <strong class="key">efficiently</strong> and then copy these ideas when they design <strong class="key">high-tech</strong> <strong class="key">competitive</strong> swimsuits.</p>
-<p>Shark skin is not smooth; it is covered with millions of tiny, tooth-like <strong class="key">structures</strong> called <strong class="key">dermal</strong> <strong class="key">denticles</strong>. These <strong class="key">denticles</strong> form a special <strong class="key">microstructure</strong> of <strong class="key">ridges</strong>, or “<strong class="key">riblets</strong>,” that guide water to flow in straight lines along the shark’s body, which reduces <strong class="key">turbulence</strong> and <strong class="key">drag</strong>. Because of this design, sharks can move faster while using less energy, giving them an <strong class="key">advantage</strong> when they hunt or escape from danger.</p>
-<p>Materials scientists and sports companies use this <strong class="key">biological</strong> idea to create new <strong class="key">fabrics</strong>. For example, Speedo’s Fastskin suits use textured <strong class="key">synthetic</strong> <strong class="key">materials</strong> like polyurethane or specially treated polyester to <strong class="key">imitate</strong> <strong class="key">denticles</strong> and <strong class="key">riblets</strong> on the fabric surface, lowering water <strong class="key">resistance</strong> by changing how water flows around the swimmer’s body. This bionic design shows how biology and <strong class="key">materials</strong> science work together: scientists first understand the shark’s <strong class="key">microstructure</strong>, then engineers “translate” it into human-made surfaces for swimwear, boats, or even airplane wings to reduce <strong class="key">drag</strong> in <strong class="key">fluids</strong>.</p>
-</div>
-</section>
+  <!-- 頂部摘要卡：第七層精華 -->
+  <section class="summary">
+    <h2>🎯 一分鐘看懂（Bottom Line）</h2>
+    <div class="oneliner">
+      這是一支「核心論點大致站得住，但用聳動框架 ＋ 部分錯置／誇大的數字包裝」的論述影片——
+      適合當作「問題意識的起點」，但不適合當成「事實依據」直接引用。
+    </div>
+    <ul>
+      <li><b>① 真問題：</b>土著特權長期化、食利階層、人才外流，是有真實根據的結構性困境，連世界銀行 2026 年報告都認定為「結構性」問題。</li>
+      <li><b>② 真毛病：</b>影片選擇性只講失敗面、用詞高度情緒化、把最新數字往前安插製造張力、部分數字無來源——這些手法會誤導觀眾。</li>
+      <li><b>③ 真洞見：</b>「一個國家的天花板，從來不是資源，而是規則。」這句判斷值得保留，也是全片最有價值的部分。</li>
+    </ul>
+  </section>
 
-<section class="reading">
-<h2>區塊二：8句精讀</h2>
-<div class="card">
-<div class="analysis">
-<h3><span class="circle">①</span>Shark-skin-inspired swimwear is a famous example of bionics in sports materials.</h3>
-<p class="quote">Shark-skin-inspired swimwear is a famous example of bionics in sports materials.</p>
-<p>仿鯊魚皮泳衣是運動材料中仿生學的一個著名例子。</p>
-<p><strong>文法解析：</strong>這句是 S + be + C 的主詞補語句型，主詞是 Shark-skin-inspired swimwear，補語是 a famous example。shark-skin-inspired 是複合形容詞，放在名詞 swimwear 前面，用來濃縮「受到鯊魚皮啟發的」意思。of bionics 和 in sports materials 都是介系詞片語，分別補充「例子的類型」與「應用領域」。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">bionics 仿生學</span><span class="pill">sports materials 運動材料</span><span class="pill">shark-skin-inspired 受鯊魚皮啟發的</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">②</span>Engineers study how shark skin helps the animal swim efficiently and then copy these ideas when they design high-tech competitive swimsuits.</h3>
-<p class="quote">Engineers study how shark skin helps the animal swim efficiently and then copy these ideas when they design high-tech competitive swimsuits.</p>
-<p>工程師研究鯊魚皮如何幫助這種動物有效率地游泳，然後在設計高科技競賽泳衣時複製這些概念。</p>
-<p><strong>文法解析：</strong>study 後面接 how 引導的名詞子句，作為動詞 study 的受詞。helps the animal swim efficiently 使用 help + O + 原形動詞，表示「幫助某人或某物做某事」。when they design ... 是時間副詞子句，說明工程師複製概念的時間情境。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">efficiently 有效率地</span><span class="pill">high-tech 高科技的</span><span class="pill">competitive swimsuits 競賽泳衣</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">③</span>Shark skin is not smooth; it is covered with millions of tiny, tooth-like structures called dermal denticles.</h3>
-<p class="quote">Shark skin is not smooth; it is covered with millions of tiny, tooth-like structures called dermal denticles.</p>
-<p>鯊魚皮並不光滑；它覆蓋著數百萬個微小、像牙齒一樣的構造，稱為真皮齒。</p>
-<p><strong>文法解析：</strong>分號連接兩個語意密切的獨立子句，前句提出反差，後句解釋原因。is covered with 是被動語態搭配介系詞 with，表示「被……覆蓋」。called dermal denticles 是過去分詞片語，修飾前面的 structures，等於 which are called dermal denticles。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">be covered with 被……覆蓋</span><span class="pill">tooth-like 像牙齒的</span><span class="pill">dermal denticles 真皮齒</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">④</span>These denticles form a special microstructure of ridges, or “riblets,” that guide water to flow in straight lines along the shark’s body, which reduces turbulence and drag.</h3>
-<p class="quote">These denticles form a special microstructure of ridges, or “riblets,” that guide water to flow in straight lines along the shark’s body, which reduces turbulence and drag.</p>
-<p>這些真皮齒形成一種由脊狀突起，也就是「細肋」構成的特殊微結構，引導水沿著鯊魚身體呈直線流動，進而減少亂流與阻力。</p>
-<p><strong>文法解析：</strong>that guide water ... 是限定用法的形容詞子句，修飾 ridges / riblets。guide + O + to V 表示「引導某物去做某事」，其中 to 是不定詞符號，不是介系詞。which reduces turbulence and drag 是非限定形容詞子句，補充說明前面整個水流設計造成的結果。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">microstructure 微結構</span><span class="pill">turbulence 亂流</span><span class="pill">drag 阻力</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">⑤</span>Because of this design, sharks can move faster while using less energy, giving them an advantage when they hunt or escape from danger.</h3>
-<p class="quote">Because of this design, sharks can move faster while using less energy, giving them an advantage when they hunt or escape from danger.</p>
-<p>由於這種設計，鯊魚能在使用較少能量的情況下游得更快，這讓牠們在捕獵或逃離危險時具有優勢。</p>
-<p><strong>文法解析：</strong>Because of + 名詞片語表示原因，後面不能直接接完整子句。while using less energy 是副詞子句 while they are using less energy 的簡化形式。giving them an advantage 是分詞構句，補充主要子句造成的結果。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">because of 由於</span><span class="pill">advantage 優勢</span><span class="pill">escape from danger 逃離危險</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">⑥</span>Materials scientists and sports companies use this biological idea to create new fabrics.</h3>
-<p class="quote">Materials scientists and sports companies use this biological idea to create new fabrics.</p>
-<p>材料科學家與運動用品公司運用這個生物概念來創造新的布料。</p>
-<p><strong>文法解析：</strong>這句是 S + V + O + to V 的目的句型。to create new fabrics 說明 use this biological idea 的目的，因此 to 是不定詞符號，不是介系詞。Materials scientists and sports companies 是複合主詞，兩個主詞共同搭配動詞 use。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">biological idea 生物概念</span><span class="pill">fabrics 布料</span><span class="pill">materials scientists 材料科學家</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">⑦</span>For example, Speedo’s Fastskin suits use textured synthetic materials like polyurethane or specially treated polyester to imitate denticles and riblets on the fabric surface, lowering water resistance by changing how water flows around the swimmer’s body.</h3>
-<p class="quote">For example, Speedo’s Fastskin suits use textured synthetic materials like polyurethane or specially treated polyester to imitate denticles and riblets on the fabric surface, lowering water resistance by changing how water flows around the swimmer’s body.</p>
-<p>例如，Speedo 的 Fastskin 泳衣使用像聚氨酯或經特殊處理的聚酯等有紋理的合成材料，來模仿布料表面的真皮齒與細肋，並透過改變水在游泳選手身體周圍的流動方式來降低水阻。</p>
-<p><strong>文法解析：</strong>to imitate ... 是不定詞表目的，說明使用合成材料的目標。lowering water resistance 是現在分詞片語，補充前面設計造成的結果。by changing how water flows ... 中，by + V-ing 表示方法，而 how water flows ... 是名詞子句，作 changing 的受詞。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">synthetic materials 合成材料</span><span class="pill">imitate 模仿</span><span class="pill">water resistance 水阻</span></p>
-</div>
-<div class="analysis">
-<h3><span class="circle">⑧</span>This bionic design shows how biology and materials science work together: scientists first understand the shark’s microstructure, then engineers “translate” it into human-made surfaces for swimwear, boats, or even airplane wings to reduce drag in fluids.</h3>
-<p class="quote">This bionic design shows how biology and materials science work together: scientists first understand the shark’s microstructure, then engineers “translate” it into human-made surfaces for swimwear, boats, or even airplane wings to reduce drag in fluids.</p>
-<p>這種仿生設計展現了生物學與材料科學如何合作：科學家先理解鯊魚的微結構，接著工程師把它「轉化」成人造表面，用於泳衣、船隻，甚至飛機機翼，以減少流體中的阻力。</p>
-<p><strong>文法解析：</strong>shows 後面接 how 引導的名詞子句，說明這項設計展現的內容。冒號後面以 scientists first ... then engineers ... 呈現步驟順序，使科學理解與工程應用的流程更清楚。to reduce drag in fluids 是不定詞表目的，說明人造表面的用途。</p>
-<p><strong>亮點詞彙：</strong><span class="pill">work together 合作</span><span class="pill">translate A into B 將 A 轉化為 B</span><span class="pill">fluids 流體</span></p>
-</div>
-</div>
-</section>
+  <!-- 一、事實查核 -->
+  <details class="l1" open>
+    <summary><span class="num">1</span>事實查核（真實性）<span class="arrow"></span></summary>
+    <div class="body">
+      <p>影片最大的問題不在「說錯」，而在「真假混雜」——把扎實的事實、過時的數字、無源的傳言、價值判斷，全部用同一種斬釘截鐵的語氣講出來。逐項拆解如下：</p>
 
-<section class="vocab">
-<h2>區塊三：20個單字整理</h2>
-<div class="card">
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">1</span><span class="word">bionics</span><span class="kk">[baɪˈɑnɪks]</span><span>n. 仿生學</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">bionic (adj. 仿生的)；biology (n. 生物學)；biological (adj. 生物的)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">bio「生命」：biography 傳記；biologist 生物學家；biodegradable 可生物分解的</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">an example of bionics 仿生學的例子；bionics in sports materials 運動材料中的仿生學</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">modern bionics 現代仿生學；practical bionics 實用仿生學；advanced bionics 進階仿生學</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">bionics 指模仿生物特徵的科技應用；biology 則是研究生物本身的學科。</div></div>
-<ol class="examples"><li>Shark-skin-inspired swimwear is a famous example of bionics in sports materials.<br>（仿鯊魚皮泳衣是運動材料中仿生學的一個著名例子。）</li><li>Bionics helps engineers turn ideas from nature into useful technology.<br>（仿生學幫助工程師把自然界的想法轉變成有用的科技。）</li></ol>
-</div>
+      <div class="factrow fact">
+        <span class="lab">✅ 事實（可查證、無誤）</span>
+        馬六甲海峽區位、油氣／橡膠／棕櫚油資源、1957 年獨立、族群經濟分工（華商掌流通、印裔握專業、馬來人多務農）、1913／1914 年的「馬來保留地（Malay Reserve Land）」、瑪拉工藝大學（UiTM）明文僅限土著報考——這些都屬實。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">2</span><span class="word">material</span><span class="kk">[məˈtɪrɪəl]</span><span>n. 材料；素材 adj. 物質的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">materials (n. 材料，複數)；materialize (v. 成形；實現)；materialistic (adj. 物質主義的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">sports materials 運動材料；synthetic materials 合成材料；raw materials 原材料</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">innovative materials 創新材料；durable materials 耐用材料；lightweight materials 輕量材料</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">material 偏向可製造物品的「材料」；substance 偏向化學或物理上的「物質」。</div></div>
-<ol class="examples"><li>Speedo’s Fastskin suits use textured synthetic materials like polyurethane.<br>（Speedo 的 Fastskin 泳衣使用像聚氨酯這類有紋理的合成材料。）</li><li>The company chose lightweight materials to make the bicycle faster.<br>（那家公司選擇輕量材料讓腳踏車速度更快。）</li></ol>
-</div>
+      <div class="factrow fact">
+        <span class="lab">✅ 事實：寶騰（Proton）案例核心無誤</span>
+        1983 年由政府創立；長期保護下市佔曾居高位，私有化後跌至約 <b>12%</b>（影片說 11%，差距極小）；2017 年中國吉利（Geely）入股 <b>49.9%</b>，帶入技術與管理後轉虧為盈。<br>
+        <em>小提醒：吉利是「入股 49.9%」而非「完全收購」，但「外來夥伴帶來市場化競爭、扭轉國企病」的論點成立。</em>
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">3</span><span class="word">efficiently</span><span class="kk">[ɪˈfɪʃəntlɪ]</span><span>adv. 有效率地</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">efficient (adj. 有效率的)；efficiency (n. 效率)；inefficient (adj. 沒有效率的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">work efficiently 有效率地工作；swim efficiently 有效率地游泳；use energy efficiently 有效率地使用能源</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">highly efficient 高效率的；energy-efficient 節能的；surprisingly efficient 出乎意料有效率的</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">efficiently 強調「不浪費資源」；effectively 強調「能達成目標」。</div></div>
-<ol class="examples"><li>Engineers study how shark skin helps the animal swim efficiently.<br>（工程師研究鯊魚皮如何幫助這種動物有效率地游泳。）</li><li>A good study plan helps students use their time efficiently.<br>（好的讀書計畫幫助學生有效率地運用時間。）</li></ol>
-</div>
+      <div class="factrow err">
+        <span class="lab">❗ 真數字，但時間被錯置（重要）</span>
+        「衛生部招 5,000 名實習醫生、只到 529 人、報到率約 11%」——這個數字<b>是真的</b>，但它是 <mark>2026 年 1 月</mark>的梯次，不是影片講的「2023 年」。<br>
+        對照官方數據：實習醫生人數 2019 年高峰約 6,136 人，2022 年約 3,245 人，2023 年約 3,271 人。影片把「最新、最聳動」的數字往前安插到 2023，是製造戲劇張力的常見手法。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">4</span><span class="word">high-tech</span><span class="kk">[ˌhaɪˈtɛk]</span><span>adj. 高科技的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">technology (n. 科技)；technological (adj. 科技的)；technician (n. 技術人員)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">techn「技術」：technique 技巧；technology 科技；technical 技術性的</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">high-tech equipment 高科技設備；high-tech industry 高科技產業；high-tech competitive swimsuits 高科技競賽泳衣</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a highly advanced device 高度先進的裝置；cutting-edge technology 尖端科技；smart technology 智慧科技</div></div>
-<ol class="examples"><li>Engineers copy these ideas when they design high-tech competitive swimsuits.<br>（工程師在設計高科技競賽泳衣時複製這些概念。）</li><li>The hospital uses high-tech equipment to check patients more accurately.<br>（那家醫院使用高科技設備更精準地檢查病人。）</li></ol>
-</div>
+      <div class="factrow err">
+        <span class="lab">❗ 「全國一律 60% 土著配額」是錯的</span>
+        房市部分：土著折扣 <b>7%～15%</b> 屬實、由建商吸收成本並轉嫁給非土著買家屬實、富人也能買多套享折扣屬實（政策因此沒能精準幫到窮人）。<br>
+        但「所有新建樓盤硬性預留 60%」<b>不正確</b>——配額由各州自訂：吉隆坡 30%、馬六甲才是 60%、森美蘭 50%，<b>中位數約 30%</b>。影片把特例（馬六甲）說成全國通則。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">5</span><span class="word">competitive</span><span class="kk">[kəmˈpɛtətɪv]</span><span>adj. 競爭的；競賽用的；有競爭力的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">compete (v. 競爭)；competition (n. 競賽；競爭)；competitor (n. 競爭者)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">pet「追求」：compete 競爭；petition 請願；appetite 食慾</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">competitive swimming 競技游泳；competitive advantage 競爭優勢；a competitive price 有競爭力的價格</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">highly competitive 高度競爭的；a competitive athlete 競技選手；competitive sports 競技運動</div></div>
-<ol class="examples"><li>Engineers design high-tech competitive swimsuits.<br>（工程師設計高科技競賽泳衣。）</li><li>English skills can give students a competitive advantage in the future.<br>（英語能力能在未來給學生競爭優勢。）</li></ol>
-</div>
+      <div class="factrow infer">
+        <span class="lab">❓ 數字方向對、精確值待商榷</span>
+        女性勞動參與率「卡 55%」大致正確（官方 2023 約 <b>56.2%</b>）；但「提升到 65% → GDP 直接暴漲 2~3%」是一種<b>經濟學估算</b>，不是已發生的事實。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">6</span><span class="word">structure</span><span class="kk">[ˈstrʌktʃɚ]</span><span>n. 結構；構造；建築物</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">structural (adj. 結構的)；construct (v. 建造)；construction (n. 建造；結構)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">struct「建造」：infrastructure 基礎建設；destruction 破壞；instruction 指示</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">tooth-like structures 像牙齒的構造；sentence structure 句子結構；social structure 社會結構</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a complex structure 複雜結構；a stable structure 穩定結構；tiny structures 微小構造</div></div>
-<ol class="examples"><li>Shark skin is covered with millions of tiny, tooth-like structures called dermal denticles.<br>（鯊魚皮覆蓋著數百萬個微小、像牙齒一樣的構造，稱為真皮齒。）</li><li>The bridge has a strong structure that can survive heavy rain.<br>（這座橋有堅固的結構，能承受大雨。）</li></ol>
-</div>
+      <div class="factrow infer">
+        <span class="lab">❓ 無確切來源的數字（人才外流）</span>
+        「每年 8 萬名 30–45 歲精英外流、七成本科以上」——這組數字<b>查不到可靠出處</b>。<br>
+        但更權威的數據反而更驚人：約 <b>186 萬</b>馬來西亞人旅居海外，其中約 <b>113 萬（占外流的 60%）在新加坡</b>；世界銀行 2026 年 4 月報告把腦力外流定義為「<b>結構性問題</b>」——不是單純薪水誘因，而是國內缺乏高價值職缺留不住人。所以「外流嚴重」的結論成立，只是影片用的數字不對。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">7</span><span class="word">dermal</span><span class="kk">[ˈdɝməl]</span><span>adj. 皮膚的；真皮的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">dermis (n. 真皮)；dermatology (n. 皮膚科學)；dermatologist (n. 皮膚科醫師)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">derm「皮膚」：epidermis 表皮；dermatitis 皮膚炎；hypodermic 皮下的</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">dermal denticles 真皮齒；dermal layer 真皮層；dermal tissue 皮膚組織</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">protective dermal structures 具保護作用的皮膚構造；tiny dermal scales 微小皮膚鱗片</div></div>
-<ol class="examples"><li>The tiny, tooth-like structures are called dermal denticles.<br>（這些微小、像牙齒一樣的構造稱為真皮齒。）</li><li>The scientist studied dermal cells to understand how skin repairs itself.<br>（科學家研究真皮細胞，以了解皮膚如何自我修復。）</li></ol>
-</div>
+      <div class="factrow infer">
+        <span class="lab">❓ 待查：新加坡醫生薪資</span>
+        「新加坡給大馬醫生起薪 40 萬馬幣」——查無可靠來源，存疑。新加坡薪資與制度透明度確實明顯高於馬國（這是腦力外流主因之一），但「40 萬馬幣起薪」這個精確數字無法佐證。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">8</span><span class="word">denticle</span><span class="kk">[ˈdɛntɪkəl]</span><span>n. 小齒狀構造；齒狀突起</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">dental (adj. 牙齒的)；dentist (n. 牙醫)；dentistry (n. 牙醫學)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">dent「牙齒」：dental 牙齒的；dentist 牙醫；indent 縮排；咬出凹痕</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">dermal denticles 真皮齒；imitate denticles 模仿真皮齒；tiny denticles 微小齒狀構造</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">tooth-like denticles 像牙齒的齒狀突起；protective denticles 具保護作用的小齒狀構造</div></div>
-<ol class="examples"><li>These denticles form a special microstructure of ridges.<br>（這些真皮齒形成一種由脊狀突起構成的特殊微結構。）</li><li>Under the microscope, the fish scales looked like tiny denticles.<br>（在顯微鏡下，魚鱗看起來像微小齒狀構造。）</li></ol>
-</div>
+      <div class="factrow opin">
+        <span class="lab">💬 意見／價值判斷（被包裝成「事實」）</span>
+        「縱觀人類歷史，沒有任何臨時特權會主動消失」「一個國家最危險的是全民共識——努力毫無意義」——這些是強而有力的修辭與價值判斷，<b>不是可被驗證的命題</b>。聽起來像鐵律，其實是作者的論點。
+      </div>
+    </div>
+  </details>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">9</span><span class="word">microstructure</span><span class="kk">[ˈmaɪkroˌstrʌktʃɚ]</span><span>n. 微結構</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">microstructural (adj. 微結構的)；microscope (n. 顯微鏡)；microscopic (adj. 微小的；顯微鏡下的)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">micro「微小」+ struct「建造」：microchip 微晶片；structure 結構；construct 建造</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">a special microstructure 特殊微結構；the shark’s microstructure 鯊魚的微結構；study microstructure 研究微結構</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a complex microstructure 複雜微結構；a natural microstructure 自然微結構</div></div>
-<ol class="examples"><li>Scientists first understand the shark’s microstructure.<br>（科學家先理解鯊魚的微結構。）</li><li>The metal’s microstructure affects how strong it is.<br>（金屬的微結構會影響它的強度。）</li></ol>
-</div>
+  <!-- 二、缺漏分析 -->
+  <details class="l2">
+    <summary><span class="num">2</span>缺漏分析（沒探討到的地方）<span class="arrow"></span></summary>
+    <div class="body">
+      <p>判斷一支影片是否公允，常常要看它「<b>沒講什麼</b>」。這支影片最大的沉默，是完全不提這套制度的<b>成效面</b>，以及困境的<b>其他成因</b>。以下逐一補齊。</p>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">10</span><span class="word">ridge</span><span class="kk">[rɪdʒ]</span><span>n. 脊狀突起；山脊</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">ridged (adj. 有脊狀紋路的)；ridge-like (adj. 像脊狀的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">a microstructure of ridges 由脊狀突起構成的微結構；mountain ridge 山脊；ridged surface 有脊狀紋路的表面</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">tiny ridges 微小脊狀突起；parallel ridges 平行脊狀突起；sharp ridges 銳利脊狀突起</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">ridge 是凸起的長條紋路；edge 是邊緣；line 只是線條，不一定凸起。</div></div>
-<ol class="examples"><li>These denticles form a special microstructure of ridges.<br>（這些真皮齒形成一種由脊狀突起構成的特殊微結構。）</li><li>The shoe bottom has small ridges to stop people from slipping.<br>（鞋底有小脊狀紋路以防止人們滑倒。）</li></ol>
-</div>
+      <!-- 缺漏一：NEP 成效 -->
+      <h3 style="color:var(--c2);font-size:23px;margin:22px 0 6px;">缺漏一　影片完全不提的另一半：NEP 確實成功的部分</h3>
+      <p>馬來西亞 1969 年族群衝突後，1970／71 年推出「新經濟政策（NEP）」，目標有兩條腿：<b>「不分種族消除貧窮」</b> ＋ <b>「重組社會、讓種族不再與經濟功能綁定」</b>。這兩條腿都有可量化的成績：</p>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">11</span><span class="word">riblet</span><span class="kk">[ˈrɪblɪt]</span><span>n. 細肋；小肋狀紋</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">rib (n. 肋骨；肋條)；ribbed (adj. 有肋狀紋的)；ribbing (n. 肋狀紋理)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">denticles and riblets 真皮齒與細肋；riblets on the fabric surface 布料表面的細肋；tiny riblets 微小細肋</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">shark-like riblets 仿鯊魚的細肋；parallel riblets 平行細肋；engineered riblets 工程設計的細肋</div></div>
-<ol class="examples"><li>The ridges, or “riblets,” guide water to flow in straight lines.<br>（這些脊狀突起，也就是「細肋」，引導水呈直線流動。）</li><li>Engineers added small riblets to the surface to control airflow.<br>（工程師在表面加入小細肋來控制氣流。）</li></ol>
-</div>
+      <div class="callout">
+        <h3>📊 成效 ①：扶貧——這是無可爭辯的成功</h3>
+        <ul>
+          <li>全國絕對貧窮率：從 <b>49.3%（1970）→ 16.5%（1990）→ 近年官方數字一度低於 5%</b>（後因 2019 重訂貧窮線而回升到 5.6%，屬技術調整）。</li>
+          <li>土著貧窮率：從約 <b>65%（1970）→ 0.8%（2014）</b>——數百萬人實質脫貧。</li>
+          <li>手段是「教育翻身」：大量資源投入鄉村寄宿學校、預科班、本地大學配額與海外獎學金，把貧農子弟一路送進大學。</li>
+        </ul>
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">12</span><span class="word">turbulence</span><span class="kk">[ˈtɝbjələns]</span><span>n. 亂流；動盪</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">turbulent (adj. 亂流的；動盪的)；turbulently (adv. 動盪地)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">reduce turbulence 減少亂流；air turbulence 氣流亂流；water turbulence 水中亂流</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">strong turbulence 強烈亂流；political turbulence 政治動盪；unexpected turbulence 意外亂流</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">turbulence 指流體不穩定的擾動；drag 指物體移動時受到的阻力。</div></div>
-<ol class="examples"><li>The riblets reduce turbulence and drag.<br>（細肋能減少亂流與阻力。）</li><li>The plane shook because of strong turbulence above the mountains.<br>（飛機因山區上方的強烈亂流而搖晃。）</li></ol>
-</div>
+      <div class="callout">
+        <h3>📊 成效 ②：重組股權——部分成功，但沒達標（這裡最能看出「功過並存」）</h3>
+        NEP 設了一個著名的量化目標：把 1970 年「土著 2.4%／其他大馬人 33%／外資 63%」的股權結構，在 1990 年前重整為 <b>「30：40：30」</b>。實際結果是：
+        <ul>
+          <li>土著企業股權從 <b>2.4%（1970）</b>大幅拉高，<b>2008 年高峰約 22%</b>，但 <b>2019 年回落到約 17.2%</b>——<b>始終沒摸到 30% 的目標</b>。</li>
+          <li>所以這是「<b>進步很大、目標未達</b>」：說它「完全失敗」不準確，說它「成功了」也不準確。</li>
+          <li>更關鍵的批評是：當整個政策被簡化成「衝一個 30% 的數字」，就<b>給了政治分贓與走捷徑的空間</b>——學者直言它變成「a numbers game（數字遊戲）」。這正好接上影片講的「食利階層」，只是影片沒講它的<b>政策根源</b>。</li>
+        </ul>
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">13</span><span class="word">drag</span><span class="kk">[dræg]</span><span>n. 阻力 v. 拖；拉</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">dragging (adj. 拖延的；緩慢的)；drag reduction (n. 減阻)；draggy (adj. 有阻力的，非正式)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">reduce drag 減少阻力；water drag 水阻；air drag 空氣阻力</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a major drag 重大阻力；low-drag design 低阻力設計；drag in fluids 流體中的阻力</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">drag 在科學語境是「阻力」；resistance 可泛指抗力、抵抗或阻礙，範圍較廣。</div></div>
-<ol class="examples"><li>Engineers translate the microstructure into surfaces to reduce drag in fluids.<br>（工程師把微結構轉化成表面設計，以減少流體中的阻力。）</li><li>A smooth helmet can reduce drag when a cyclist rides fast.<br>（平滑的安全帽能在騎士高速騎乘時減少阻力。）</li></ol>
-</div>
+      <div class="callout">
+        <h3>⚖️ 學界主流定論：「功過並存」</h3>
+        <div class="vs">
+          <div class="col">
+            <h4 style="color:var(--c7)">✅ 功（影片丟掉的一半）</h4>
+            扶貧成功、種族間（馬／華）差距縮小、催生土著中產與專業／管理階層、社會大致和諧穩定。
+          </div>
+          <div class="col">
+            <h4 style="color:var(--c1)">⚠️ 過（影片放大的一半）</h4>
+            尋租與裙帶（cronyism）、政策紅利集中於權貴、<b>土著「種族內部」貧富差距擴大</b>、優秀非馬來人才被排擠而出走、私人投資長期低迷。
+          </div>
+        </div>
+        一句話：影片把「過」說成全部，把「功」整段刪掉。真實的歷史是兩者同時成立。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">14</span><span class="word">advantage</span><span class="kk">[ədˈvæntɪdʒ]</span><span>n. 優勢；好處</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">advantageous (adj. 有利的)；disadvantage (n. 劣勢；缺點)；disadvantaged (adj. 弱勢的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">give them an advantage 給牠們優勢；take advantage of 利用；have an advantage over 比……有優勢</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a clear advantage 明顯優勢；a competitive advantage 競爭優勢；a natural advantage 天然優勢</div></div>
-<div class="tag-row"><div class="tag-label pattern">句型</div><div class="tag-content">give + O + an advantage 表示「給某人或某物一項優勢」。</div></div>
-<ol class="examples"><li>Using less energy gives sharks an advantage when they hunt or escape from danger.<br>（使用較少能量讓鯊魚在捕獵或逃離危險時具有優勢。）</li><li>Good teamwork gives our class an advantage in the competition.<br>（良好的團隊合作讓我們班在比賽中具有優勢。）</li></ol>
-</div>
+      <!-- 缺漏二：其他成因 -->
+      <h3 style="color:var(--c2);font-size:23px;margin:26px 0 6px;">缺漏二　把困境「全部」歸給族群制度——其實是多因交織</h3>
+      <p>影片的單因敘事（「困住馬國的就是這套制度」）很有力，但經濟學界對「馬來西亞為何卡在中等收入陷阱」的解釋，<b>族群制度只是其中一條線</b>。其他同樣關鍵、影片卻幾乎沒提的成因：</p>
+      <ul>
+        <li><b>外資依賴、缺自主產業：</b>馬國製造業出口（尤其電子）長期<b>由外資企業主導</b>，本土工業家與品牌薄弱。一旦工廠外移，價值鏈留不下來。</li>
+        <li><b>升不上去、又被追上：</b>1997 亞洲金融風暴後，馬國在<b>勞力密集組裝</b>上漸漸<b>輸給中國、越南</b>（更低工資），卻又<b>沒能升級到高技術製造</b>——兩頭落空，這是「中等收入陷阱」的教科書定義。</li>
+        <li><b>生產力（TFP）成長太慢：</b>1970–2010 年，南韓、台灣的全要素生產率年均成長約 <b>1.8%</b>，馬來西亞只有約 <b>0.8%</b>。靠投入堆出來的成長，終究會放緩。</li>
+        <li><b>研發與創新不足：</b>R&D 投入偏低、中小企業導入新技術慢，缺乏「全球競爭力的本土企業」這把鑰匙。</li>
+        <li><b>大宗商品依賴的後遺症：</b>油氣、棕櫚油等資源財，反而讓升級壓力被「資源紅利」一再延後（資源詛咒／荷蘭病的味道）。</li>
+        <li><b>私人投資長期偏低：</b>1997 之後，外資與本地私人投資都未真正回到高點。</li>
+      </ul>
+      <div class="callout">
+        <h3>🧠 公允的說法（影片該有、卻沒有的那句）</h3>
+        亞洲開發銀行等研究確實指出：馬國的不少問題，<b>部分</b>確實源於 NEP 設計與執行造成的扭曲——<b>所以影片的方向不全錯</b>。但「族群制度」與「外資依賴／生產力停滯／區域競爭」是<b>交織</b>的多重成因。影片把多因講成單因，雖然好懂、好傳播，卻會讓人誤以為「只要廢掉特權就會起飛」——這是過度簡化。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">15</span><span class="word">biological</span><span class="kk">[ˌbaɪəˈlɑdʒɪkəl]</span><span>adj. 生物的；生物學的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">biology (n. 生物學)；biologist (n. 生物學家)；biologically (adv. 在生物學上)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">bio「生命」+ logy「學科」：ecology 生態學；geology 地質學；psychology 心理學</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">biological idea 生物概念；biological system 生物系統；biological process 生物過程</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a biological explanation 生物學解釋；biological research 生物研究；biological design 生物設計</div></div>
-<ol class="examples"><li>Materials scientists and sports companies use this biological idea to create new fabrics.<br>（材料科學家與運動用品公司運用這個生物概念來創造新的布料。）</li><li>Sleep is a biological need that affects memory and learning.<br>（睡眠是一種會影響記憶與學習的生物需求。）</li></ol>
-</div>
+      <!-- 缺漏三：新加坡對照不對等 -->
+      <h3 style="color:var(--c2);font-size:23px;margin:26px 0 6px;">缺漏三　拿新加坡當標準答案——但條件並不對等</h3>
+      <p>影片反覆用新加坡反襯馬來西亞（「同樣多元族群，新加坡卻能力至上」）。這個對照<b>有啟發性，但隱藏了關鍵的不對稱</b>：</p>
+      <ul>
+        <li><b>身世不同：</b>新加坡 1965 年正是<b>從馬來西亞分出去</b>的；它選擇了「能力至上、不設族群配額」的路，馬國選了相反的路——這本來就是兩條分岔。</li>
+        <li><b>規模與結構不同：</b>新加坡是人口約 6 百萬的<b>城市國家</b>，<b>沒有廣大的貧困鄉村腹地</b>要扶持；馬來西亞約 3,400 萬人、城鄉差距大、鄉村馬來人口龐大——扶貧的政治負擔完全不同。</li>
+        <li><b>治理模式不同：</b>新加坡是高度集權、長期一黨主導的菁英技術官僚體制，能推「短期痛、長期賺」的政策；馬國是政黨林立、政府易倒的選舉政治，誰敢動福利誰先垮。</li>
+        <li><b>外資角色不同：</b>新加坡、香港這類靠外資衝到高所得的，是<b>小型轉口貿易中心</b>（外資占 GDP 常達 20–30%），馬國這種較大、城鄉並存的經濟體無法照抄同一招。</li>
+      </ul>
+      <p>換句話說，「新加坡能、馬國不能」<b>不只是規則好壞</b>，還疊加了規模、結構與政治體制的差異。影片把它簡化成純粹的「規則對錯」，少了這層脈絡。</p>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">16</span><span class="word">fabric</span><span class="kk">[ˈfæbrɪk]</span><span>n. 布料；織物；結構</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">fabricate (v. 製造；編造)；fabrication (n. 製造；捏造)；fabricated (adj. 製造的；捏造的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">new fabrics 新布料；fabric surface 布料表面；waterproof fabric 防水布料</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">breathable fabric 透氣布料；durable fabric 耐用布料；textured fabric 有紋理的布料</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">fabric 指布料或織物；fiber 指纖維，是組成布料的細絲。</div></div>
-<ol class="examples"><li>Companies use this biological idea to create new fabrics.<br>（公司運用這個生物概念來創造新的布料。）</li><li>This jacket is made from a light but durable fabric.<br>（這件外套由輕薄但耐用的布料製成。）</li></ol>
-</div>
+      <!-- 缺漏四：方法面 -->
+      <h3 style="color:var(--c2);font-size:23px;margin:26px 0 6px;">缺漏四　報導方法上的兩個沉默</h3>
+      <ul>
+        <li><b>缺受益方／當事人的聲音：</b>全片只給「逃離者／受限者」視角，沒有任何馬來鄉村民眾、政策設計者、正面學者出場為制度辯護或說明。<b>只訪一方</b>，結論自然一面倒。</li>
+        <li><b>缺數據的年份與出處：</b>多數震撼數字沒有年份、沒有來源——這正是它能把<b>2026 年的醫生數據說成 2023 年</b>、把馬六甲的 60% 配額說成全國通則而不被當場拆穿的原因。沒有出處的數字，讀者根本無從查證。</li>
+      </ul>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">17</span><span class="word">synthetic</span><span class="kk">[sɪnˈθɛtɪk]</span><span>adj. 合成的；人造的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">synthesize (v. 合成；綜合)；synthesis (n. 合成；綜合)；synthetically (adv. 以合成方式)</div></div>
-<div class="tag-row"><div class="tag-label root">字根</div><div class="tag-content">syn「一起」+ thesis「放置」：synthesis 合成；photosynthesis 光合作用；synthetic 合成的</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">synthetic materials 合成材料；synthetic fiber 合成纖維；synthetic rubber 合成橡膠</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">advanced synthetic materials 先進合成材料；a synthetic fabric 合成布料；synthetic chemicals 合成化學品</div></div>
-<ol class="examples"><li>Fastskin suits use textured synthetic materials like polyurethane.<br>（Fastskin 泳衣使用像聚氨酯這類有紋理的合成材料。）</li><li>Many sports shirts are made with synthetic fibers that dry quickly.<br>（許多運動衫使用快乾的合成纖維製成。）</li></ol>
-</div>
+      <div class="callout">
+        <h3>🔑 補齊後，結論會變嗎？</h3>
+        會「修正」，但不會「翻盤」。補上這四塊缺漏後，比較持平的判斷是：<b>「土著特權制度確實是馬國升級的重大障礙之一，但不是唯一障礙；它有真實的扶貧功勞，也有真實的尋租惡果；單靠廢除特權並不足以保證起飛。」</b>——這比影片的「全是制度的錯、改不了就完了」更接近事實，也更有建設性。
+      </div>
+    </div>
+  </details>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">18</span><span class="word">imitate</span><span class="kk">[ˈɪməˌtet]</span><span>v. 模仿；仿效</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">imitation (n. 模仿；仿製品)；imitative (adj. 模仿的)；imitator (n. 模仿者)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">imitate denticles 模仿真皮齒；imitate nature 模仿自然；imitate someone’s style 模仿某人的風格</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">closely imitate 仔細模仿；successfully imitate 成功模仿；imitate natural designs 模仿自然設計</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">imitate 偏向模仿外型或做法；copy 較口語，可指直接複製；emulate 則含有「效法並追上」的意思。</div></div>
-<ol class="examples"><li>Fastskin suits use synthetic materials to imitate denticles and riblets.<br>（Fastskin 泳衣使用合成材料來模仿真皮齒與細肋。）</li><li>Young athletes often imitate the training habits of top players.<br>（年輕運動員常模仿頂尖選手的訓練習慣。）</li></ol>
-</div>
+  <!-- 三、多角度檢視 -->
+  <details class="l3">
+    <summary><span class="num">3</span>多角度檢視（立場與框架）<span class="arrow"></span></summary>
+    <div class="body">
+      <p><b>誰在這件事裡有利害關係？</b>非土著（華裔／印度裔）、土著權貴（食利層）、底層馬來鄉村選民、安華政府、鄰國新加坡、外資——各有立場。影片主要替「非土著精英＋外部觀察者」的挫折感發聲。</p>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">19</span><span class="word">resistance</span><span class="kk">[rɪˈzɪstəns]</span><span>n. 阻力；抵抗；抗性</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">resist (v. 抵抗；抗拒)；resistant (adj. 有抵抗力的)；irresistible (adj. 無法抗拒的)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">water resistance 水阻；air resistance 空氣阻力；resistance to change 對改變的抗拒</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">strong resistance 強烈抵抗；low resistance 低阻力；natural resistance 天然抗性</div></div>
-<div class="tag-row"><div class="tag-label pattern">句型</div><div class="tag-content">resistance to + N/V-ing 表示「對……的抵抗或阻力」，to 是介系詞，後面若接動詞要用 V-ing。</div></div>
-<ol class="examples"><li>The suits lower water resistance by changing how water flows around the swimmer’s body.<br>（這些泳衣透過改變水在游泳選手身體周圍的流動方式來降低水阻。）</li><li>Good tires reduce resistance and help a bicycle move smoothly.<br>（好的輪胎能減少阻力，幫助腳踏車順暢前進。）</li></ol>
-</div>
+      <div class="callout">
+        <h3>🔍 框架偏見：用「具體字詞」舉證</h3>
+        分析偏見不能空泛指控，要看用字。影片大量使用情緒化、戰鬥性詞彙：
+        <p style="margin:8px 0;">「<b>吸血</b>」「<b>毒瘤</b>」「<b>腐爛</b>」「<b>躺平膚淺</b>」「<b>打了十八掌</b>」「<b>明目張膽的制度收割</b>」「<b>溫水煮青蛙</b>」。</p>
+        這是<b>說服（persuasion）</b>的語言，不是<b>分析（analysis）</b>的語言。好的分析會讓你「自己得出結論」；說服型內容會「替你下好結論」。
+      </div>
 
-<div class="vocab-item">
-<div class="vocab-head"><span class="vocab-num">20</span><span class="word">fluid</span><span class="kk">[ˈfluɪd]</span><span>n. 流體；液體 adj. 流動的；不固定的</span></div>
-<div class="tag-row"><div class="tag-label deriv">衍生詞</div><div class="tag-content">fluidity (n. 流動性)；fluidly (adv. 流暢地)；fluid mechanics (n. 流體力學)</div></div>
-<div class="tag-row"><div class="tag-label phrase">片語</div><div class="tag-content">drag in fluids 流體中的阻力；body fluids 體液；fluid movement 流體運動</div></div>
-<div class="tag-row"><div class="tag-label idiom">慣用語</div><div class="tag-content">a fluid situation 變動中的情況；smooth fluid motion 順暢的流體運動；fluid communication 流暢溝通</div></div>
-<div class="tag-row"><div class="tag-label confuse">容易混淆</div><div class="tag-content">fluid 可包含液體與氣體；liquid 只指液體；gas 指氣體。</div></div>
-<ol class="examples"><li>Airplane wings can be designed to reduce drag in fluids.<br>（飛機機翼可以被設計成減少流體中的阻力。）</li><li>Water and air are fluids, so both can create resistance against moving objects.<br>（水和空氣都是流體，因此兩者都會對移動物體產生阻力。）</li></ol>
-</div>
-</div>
-</section>
+      <p><b>內部矛盾：</b>影片一方面同情底層馬來人（被制度耽誤），一方面又用「膚淺」「混日子」「失去競爭力」貶抑他們——同情與輕視並存，框架本身並不一致。</p>
+      <p><b>流量導向：</b>結尾要求「點讚、訂閱、開鈴鐺」，並強調題材「敏感、審核難」。這提醒我們：它的首要目標是<b>傳播與互動</b>，公正性是其次。</p>
+    </div>
+  </details>
 
-<section class="grammar">
-<h2>區塊四：文法解析</h2>
-<div class="card">
-<div class="grammar-point">
-<h3>【文法名稱】Relative Clause 形容詞子句：that / which</h3>
-<p><strong>【引句 Quote】</strong></p>
-<blockquote>These denticles form a special microstructure of ridges, or “riblets,” that guide water to flow in straight lines along the shark’s body, which reduces turbulence and drag.</blockquote>
-<p><strong>【句型】</strong></p>
-<p><strong><em>N + that/which + V ...</em></strong></p>
-<p><strong>【核心說明】</strong></p>
-<p>形容詞子句用來修飾前面的名詞，讓讀者知道這個名詞是哪一個、具有什麼功能，或造成什麼結果。本句中 that guide ... 限定 ridges / riblets 的功能；逗號後的 which reduces ... 則補充前面整個設計造成的效果。</p>
-<p><strong>【使用規則】</strong></p>
-<ul><li>that 常用於限定子句，前面通常沒有逗號。</li><li>which 可用於限定或非限定子句；非限定用法前面要加逗號。</li><li>非限定子句只是補充資訊，拿掉後主句仍完整。</li><li>that 不用在逗號後面的非限定子句。</li></ul>
-<p><strong>【主題例句】</strong></p>
-<p>The fabric has tiny riblets that guide water smoothly across its surface.（這種布料有微小細肋，能引導水順暢流過表面。）</p>
-<p><strong>【學習提醒】</strong></p>
-<p>看到 which 前面有逗號時，通常要判斷它是修飾前面名詞，還是補充前面整件事。本文的 which reduces turbulence and drag 是補充前面整個水流導引設計的結果。</p>
-<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
-<p>✗ The riblets, that reduce drag, are very small.</p>
-<p>✓ The riblets, which reduce drag, are very small.（逗號後的非限定子句不能用 that。）</p>
-<p>選擇題：The suit has a surface ________ imitates shark skin. A. who B. that C. where D. what</p>
-<p>答案：B。說明：先行詞 surface 是物，且此處為限定子句，可用 that。</p>
-</div>
+  <!-- 四、水平分析 -->
+  <details class="l4">
+    <summary><span class="num">4</span>水平分析（橫向比較）<span class="arrow"></span></summary>
+    <div class="body">
+      <p>把馬來西亞放進更大的座標，會發現它<b>並非獨一無二</b>，而是一種跨國共通的模式。</p>
+      <ul>
+        <li><b>南非 BEE（黑人經濟賦權）：</b>同樣是「扶助歷史弱勢多數」的政策，同樣出現「政治關係戶吃下大部分紅利、底層受益有限」的批評。</li>
+        <li><b>印度保留名額（Reservation）：</b>教育與公職的種姓／族群配額，同樣面臨「該不該退場、何時退場」的長期爭論。</li>
+        <li><b>斐濟原住民優先制：</b>同樣是少數族群（印度裔）掌經濟、多數族群掌政治權的張力。</li>
+      </ul>
+      <div class="callout">
+        <h3>🧩 可歸納的模式</h3>
+        「<b>過渡性優惠 → 長期化 → 食利階層成形 → 激勵機制扭曲</b>」——這是許多國家共有的政治經濟陷阱。影片講的故事在這個層面是有普世性的，這也是它「論點大致站得住」的原因。<br>
+        同屬「中等收入陷阱」的還有泰國、巴西、南非：人均所得卡在中段、難以向上突破。
+      </div>
+    </div>
+  </details>
 
-<div class="grammar-point">
-<h3>【文法名稱】Participial Construction 分詞構句：附帶結果</h3>
-<p><strong>【引句 Quote】</strong></p>
-<blockquote>Because of this design, sharks can move faster while using less energy, giving them an advantage when they hunt or escape from danger.</blockquote>
-<p><strong>【句型】</strong></p>
-<p><strong><em>S + V ..., V-ing ...</em></strong></p>
-<p><strong>【核心說明】</strong></p>
-<p>現在分詞片語可以放在主要子句後面，補充說明主要動作帶來的自然結果。本句 giving them an advantage 不是另一個主要動詞，而是說明 sharks can move faster while using less energy 所造成的效果。</p>
-<p><strong>【使用規則】</strong></p>
-<ul><li>V-ing 片語可表示附帶結果、原因、時間或方式。</li><li>若表示結果，通常放在主要子句後面，前面用逗號隔開。</li><li>分詞片語的邏輯主詞要能從主句清楚判斷。</li><li>不要把分詞構句誤當成完整句子，因為它沒有獨立主詞與限定動詞。</li></ul>
-<p><strong>【主題例句】</strong></p>
-<p>The textured surface controls the water flow, lowering resistance around the swimmer.（有紋理的表面控制水流，降低游泳選手周圍的阻力。）</p>
-<p><strong>【學習提醒】</strong></p>
-<p>分詞構句能讓句子更精簡，但前後邏輯要清楚。如果 V-ing 的動作者不明確，讀者會誤解句意。</p>
-<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
-<p>✗ The fabric reduces drag, it helping swimmers move faster.</p>
-<p>✓ The fabric reduces drag, helping swimmers move faster.（分詞片語 helping 補充主要子句的結果，不再加 it。）</p>
-<p>改寫題：The design saves energy. It gives sharks an advantage. 請合併句子。</p>
-<p>答案：The design saves energy, giving sharks an advantage. 說明：用 V-ing 表示前句造成的結果。</p>
-</div>
+  <!-- 五、垂直分析 -->
+  <details class="l5">
+    <summary><span class="num">5</span>垂直分析（縱向因果）<span class="arrow"></span></summary>
+    <div class="body">
+      <p><b>往上追因：</b></p>
+      <ul>
+        <li><b>遠因：</b>殖民時期的族群分工 ＋ 1913／1914 馬來保留地 ＋ 1957 獨立時的「社會契約」（公民身份換特殊地位）。</li>
+        <li><b>近因：</b>1969 年族群衝突後，1971 年起 NEP 把配額／補貼制度化；選票結構長期綁定鄉村馬來選民。</li>
+      </ul>
+      <p><b>往下推果：</b></p>
+      <div class="vs">
+        <div class="col"><h4>短期</h4>實習醫生等專業人力報到率崩跌、公共服務承壓。</div>
+        <div class="col"><h4>中期</h4>腦力外流、產業難升級、女性高教人力閒置。</div>
+      </div>
+      <div class="vs">
+        <div class="col"><h4>長期</h4>階層固化、青年世代（含馬來人）對前途失去信心。</div>
+        <div class="col"><h4>反饋循環</h4>制度不公 → 人才外流 → 升級失敗 → 高薪職缺少 → 更想逃 → 改革更難。</div>
+      </div>
+      <div class="callout">
+        <h3>📈 用權威數據佐證這個循環</h3>
+        世界銀行 2026 年 4 月報告指出：馬來西亞每年進入勞動市場的畢業生，<b>明顯超過</b>高技能職缺的創造速度；學用不符的畢業生，收入比學用相符者<b>少約 49.3%</b>。這正好印證影片講的「學歷氾濫、能打的精英寥寥」——只是用語不同、數據更可靠。
+      </div>
+    </div>
+  </details>
 
-<div class="grammar-point">
-<h3>【文法名稱】Infinitive of Purpose 不定詞表目的</h3>
-<p><strong>【引句 Quote】</strong></p>
-<blockquote>Materials scientists and sports companies use this biological idea to create new fabrics.</blockquote>
-<p><strong>【句型】</strong></p>
-<p><strong><em>S + V + O + to V ...</em></strong></p>
-<p><strong>【核心說明】</strong></p>
-<p>to + 原形動詞常用來表示「為了……」，說明前面動作的目的。本句 use this biological idea 是主要動作，to create new fabrics 說明科學家與公司使用這個概念的目的。</p>
-<p><strong>【使用規則】</strong></p>
-<ul><li>to 表目的時是不定詞符號，後面接原形動詞。</li><li>較正式的寫法可用 in order to + V 或 so as to + V。</li><li>否定目的常用 in order not to + V 或 so as not to + V。</li><li>不要把表目的的 to 和介系詞 to 混淆；介系詞 to 後面若接動詞要用 V-ing。</li></ul>
-<p><strong>【主題例句】</strong></p>
-<p>Engineers study shark skin to design faster swimsuits.（工程師研究鯊魚皮，以設計更快的泳衣。）</p>
-<p><strong>【學習提醒】</strong></p>
-<p>判斷 to 是不定詞還是介系詞，可以看後面接的是原形動詞還是名詞 / V-ing。to create、to imitate、to reduce 都是不定詞表目的。</p>
-<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
-<p>✗ Scientists use this idea to creating new fabrics.</p>
-<p>✓ Scientists use this idea to create new fabrics.（表目的的不定詞後面要接原形動詞。）</p>
-<p>選擇題：The company changed the surface ________ water resistance. A. reduce B. reducing C. to reduce D. reduced</p>
-<p>答案：C。說明：此處表示「為了降低水阻」，所以用 to reduce。</p>
-</div>
-</div>
-</section>
+  <!-- 六、不確定性 -->
+  <details class="l6">
+    <summary><span class="num">6</span>不確定性（還不知道的事）<span class="arrow"></span></summary>
+    <div class="body">
+      <p>誠實的分析要勇於說「這部分還不能下定論」：</p>
+      <ul>
+        <li>多項關鍵數字（每年 8 萬外流、新加坡 40 萬起薪）<b>缺乏可靠來源</b>，無法確認。</li>
+        <li>安華政府究竟是「真不敢動」還是「換了方式在動」，需要看實際預算與政策文件；影片只給結論、未給證據。</li>
+        <li>房市「配額＋折扣」各州規定不一，影片以單一數字概括，細節未必準確。</li>
+        <li>制度與經濟的因果方向，學界仍有爭論（是制度拖累經濟，還是大宗商品依賴等其他因素？兩者交織）。</li>
+      </ul>
+      <div class="callout">
+        <h3>🔭 想持續追蹤，可看這些指標</h3>
+        實習醫生報到率、女性勞動參與率、外資（FDI）流入、製造業升級／高技能職缺數據、來屆大選的族群政策走向。這些才是判斷「馬來西亞會不會改」的真實風向球。
+      </div>
+    </div>
+  </details>
 
-<details>
-<summary>折疊一：常見字首整理（50 個）<span class="arrow">⌄</span></summary>
-<div class="detail-body">
-<div class="prefix-item"><span class="pf">ab-</span>　離開、相反　—　abnormal（異常的）</div>
-<div class="prefix-item"><span class="pf">ad-</span>　向、加　—　advance（前進）</div>
-<div class="prefix-item"><span class="pf">ambi-</span>　雙方、兩面　—　ambiguous（模稜兩可的）</div>
-<div class="prefix-item"><span class="pf">anti-</span>　反對、抗　—　antibiotic（抗生素）</div>
-<div class="prefix-item"><span class="pf">arch-</span>　主要、首要　—　archenemy（死敵）</div>
-<div class="prefix-item"><span class="pf">auto-</span>　自動、自我　—　autograph（親筆簽名）</div>
-<div class="prefix-item"><span class="pf">bene-</span>　好的、善　—　benefit（好處）</div>
-<div class="prefix-item"><span class="pf">bi-</span>　二、雙　—　bilingual（雙語的）</div>
-<div class="prefix-item"><span class="pf">circum-</span>　環繞、周圍　—　circumstance（情況）</div>
-<div class="prefix-item"><span class="pf">co-/con-/com-</span>　一起、共同　—　cooperate（合作）</div>
-<div class="prefix-item"><span class="pf">contra-</span>　相反、對抗　—　contradict（反駁）</div>
-<div class="prefix-item"><span class="pf">de-</span>　去除、下降　—　decode（解碼）</div>
-<div class="prefix-item"><span class="pf">dia-</span>　穿過、透過　—　dialogue（對話）</div>
-<div class="prefix-item"><span class="pf">dis-</span>　否定、分離　—　disagree（不同意）</div>
-<div class="prefix-item"><span class="pf">en-/em-</span>　使成為　—　enable（使能夠）</div>
-<div class="prefix-item"><span class="pf">epi-</span>　在上、在外　—　epidemic（流行病）</div>
-<div class="prefix-item"><span class="pf">ex-</span>　外、前任　—　export（出口）；ex-president（前總統）</div>
-<div class="prefix-item"><span class="pf">extra-</span>　額外、外部　—　extraordinary（非凡的）</div>
-<div class="prefix-item"><span class="pf">hetero-</span>　不同　—　heterogeneous（異質的）</div>
-<div class="prefix-item"><span class="pf">homo-</span>　相同　—　homogeneous（同質的）</div>
-<div class="prefix-item"><span class="pf">hyper-</span>　過度、超　—　hyperactive（過動的）</div>
-<div class="prefix-item"><span class="pf">hypo-</span>　低於、不足　—　hypodermic（皮下的）</div>
-<div class="prefix-item"><span class="pf">in-/im-</span>　否定、進入　—　invisible（看不見的）；import（輸入）</div>
-<div class="prefix-item"><span class="pf">inter-</span>　在…之間　—　international（國際的）</div>
-<div class="prefix-item"><span class="pf">iso-</span>　相等、相同　—　isolate（隔離）</div>
-<div class="prefix-item"><span class="pf">mal-</span>　壞、不良　—　malfunction（故障）</div>
-<div class="prefix-item"><span class="pf">micro-</span>　微小　—　microscope（顯微鏡）</div>
-<div class="prefix-item"><span class="pf">mis-</span>　錯誤　—　misunderstand（誤解）</div>
-<div class="prefix-item"><span class="pf">mono-</span>　單一　—　monologue（獨白）</div>
-<div class="prefix-item"><span class="pf">multi-</span>　多　—　multicultural（多元文化的）</div>
-<div class="prefix-item"><span class="pf">neo-</span>　新的　—　neonatal（新生的）</div>
-<div class="prefix-item"><span class="pf">non-</span>　非、沒有　—　nonsense（無意義）</div>
-<div class="prefix-item"><span class="pf">pan-</span>　全部　—　pandemic（大流行病）</div>
-<div class="prefix-item"><span class="pf">peri-</span>　周圍　—　perimeter（周長）</div>
-<div class="prefix-item"><span class="pf">poly-</span>　多　—　polygon（多邊形）</div>
-<div class="prefix-item"><span class="pf">post-</span>　之後　—　postwar（戰後的）</div>
-<div class="prefix-item"><span class="pf">pre-</span>　之前　—　preview（預覽）</div>
-<div class="prefix-item"><span class="pf">pro-</span>　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div>
-<div class="prefix-item"><span class="pf">pseudo-</span>　假的　—　pseudonym（筆名）</div>
-<div class="prefix-item"><span class="pf">re-</span>　再、回　—　review（複習）</div>
-<div class="prefix-item"><span class="pf">semi-</span>　一半、部分　—　semicircle（半圓）</div>
-<div class="prefix-item"><span class="pf">sub-</span>　在下、次級　—　subway（地鐵）</div>
-<div class="prefix-item"><span class="pf">super-</span>　超越、在上　—　superstar（超級明星）</div>
-<div class="prefix-item"><span class="pf">syn-/sym-</span>　一起、共同　—　synchronize（同步）</div>
-<div class="prefix-item"><span class="pf">tele-</span>　遠距　—　telephone（電話）</div>
-<div class="prefix-item"><span class="pf">trans-</span>　穿越、轉變　—　transport（運輸）</div>
-<div class="prefix-item"><span class="pf">tri-</span>　三　—　triangle（三角形）</div>
-<div class="prefix-item"><span class="pf">un-</span>　否定、不　—　unhappy（不快樂的）</div>
-<div class="prefix-item"><span class="pf">vice-</span>　副、代替　—　vice-president（副總統）</div>
-</div>
-</details>
+  <!-- 七、總結與啟示 -->
+  <details class="l7" open>
+    <summary><span class="num">7</span>總結與啟示<span class="arrow"></span></summary>
+    <div class="body">
+      <p><b>這則影片真正的價值在哪？</b>它把一個複雜的結構性困境，講成了一般人能聽懂的故事——「規則扭曲了激勵，激勵扭曲了人」。這個核心洞見是對的、有跨國根據的，值得帶走。</p>
+      <p><b>它的風險又在哪？</b>它用「全網最不敢講」「一次扒乾淨」的姿態，把<b>論點當事實賣</b>，再混入錯置時間、誇大或無源的數字。對沒空查證的觀眾，這會造成「自信的誤解」。</p>
 
-<details>
-<summary>折疊二：常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
-<div class="detail-body">
-<h3>名詞字尾</h3>
-<div class="suffix-item"><span class="pf">-tion/-sion/-ation</span>　動作、過程或結果　—　education（教育）、decision（決定）</div>
-<div class="suffix-item"><span class="pf">-ment</span>　行為或結果　—　agreement（協議）、development（發展）</div>
-<div class="suffix-item"><span class="pf">-ness</span>　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div>
-<div class="suffix-item"><span class="pf">-ity/-ty</span>　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div>
-<div class="suffix-item"><span class="pf">-er/-or</span>　執行某動作的人或物　—　teacher（老師）、actor（演員）</div>
-<div class="suffix-item"><span class="pf">-ist</span>　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div>
-<div class="suffix-item"><span class="pf">-ship</span>　身分或關係　—　friendship（友誼）、leadership（領導）</div>
-<div class="suffix-item"><span class="pf">-hood</span>　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div>
-<h3>形容詞字尾</h3>
-<div class="suffix-item"><span class="pf">-able/-ible</span>　能夠…的　—　readable（可讀的）、credible（可信的）</div>
-<div class="suffix-item"><span class="pf">-ous</span>　充滿…的　—　dangerous（危險的）、famous（著名的）</div>
-<div class="suffix-item"><span class="pf">-ful</span>　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div>
-<div class="suffix-item"><span class="pf">-less</span>　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div>
-<div class="suffix-item"><span class="pf">-al/-ic</span>　與…相關的　—　natural（自然的）、poetic（詩意的）</div>
-<h3>動詞字尾</h3>
-<div class="suffix-item"><span class="pf">-ize/-ise</span>　使成為…　—　realize（實現）、industrialize（工業化）</div>
-<div class="suffix-item"><span class="pf">-ify</span>　使成為…　—　beautify（美化）、clarify（澄清）</div>
-<div class="suffix-item"><span class="pf">-ate</span>　形成動詞　—　dominate（支配）、activate（啟動）</div>
-<div class="suffix-item"><span class="pf">-en</span>　使變成…　—　strengthen（加強）、soften（使柔軟）</div>
-<h3>副詞字尾</h3>
-<div class="suffix-item"><span class="pf">-ly</span>　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div>
-<div class="suffix-item"><span class="pf">-ward(s)</span>　表示方向　—　upwards（向上）、homeward（回家）</div>
-<div class="suffix-item"><span class="pf">-wise</span>　表示方式或角度　—　clockwise（順時針方向）</div>
-</div>
-</details>
+      <div class="callout">
+        <h3>🎓 給台灣讀者／教學現場的具體啟示</h3>
+        這其實是一份<b>絕佳的「媒體識讀（media literacy）」教材</b>。可以讓學生練習辨認三種最常見的手法：
+        <ul>
+          <li><b>① 真數字、錯時間：</b>用「529／5000」這個案例，示範同一個真實數字被放到錯誤年份就會誤導。</li>
+          <li><b>② 意見偽裝成事實：</b>請學生把影片裡的「金句」逐句分類成「事實／推測／意見」。</li>
+          <li><b>③ 只訪一方：</b>請學生補上「NEP 成效」這缺漏的另一半，再看結論會不會改變。</li>
+        </ul>
+      </div>
 
-<details>
-<summary>折疊三：30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
-<div class="detail-body">
-<div class="mini-word">1. swimwear [ˈswɪmˌwɛr] (n. 泳衣) — swimsuit [ˈswɪmˌsut] (n. 泳裝)</div>
-<div class="mini-word">2. inspired [ɪnˈspaɪrd] (adj. 受啟發的) — inspire [ɪnˈspaɪr] (v. 啟發)</div>
-<div class="mini-word">3. bionics [baɪˈɑnɪks] (n. 仿生學) — bionic [baɪˈɑnɪk] (adj. 仿生的)</div>
-<div class="mini-word">4. material [məˈtɪrɪəl] (n. 材料) — materialize [məˈtɪrɪəˌlaɪz] (v. 實現)</div>
-<div class="mini-word">5. engineer [ˌɛndʒəˈnɪr] (n. 工程師) — engineering [ˌɛndʒəˈnɪrɪŋ] (n. 工程學)</div>
-<div class="mini-word">6. efficiently [ɪˈfɪʃəntlɪ] (adv. 有效率地) — efficiency [ɪˈfɪʃənsɪ] (n. 效率)</div>
-<div class="mini-word">7. high-tech [ˌhaɪˈtɛk] (adj. 高科技的) — technology [tɛkˈnɑlədʒɪ] (n. 科技)</div>
-<div class="mini-word">8. competitive [kəmˈpɛtətɪv] (adj. 競賽的) — competition [ˌkɑmpəˈtɪʃən] (n. 競賽)</div>
-<div class="mini-word">9. smooth [smuð] (adj. 光滑的) — smoothly [ˈsmuðlɪ] (adv. 順暢地)</div>
-<div class="mini-word">10. structure [ˈstrʌktʃɚ] (n. 結構) — structural [ˈstrʌktʃərəl] (adj. 結構的)</div>
-<div class="mini-word">11. dermal [ˈdɝməl] (adj. 真皮的) — dermatology [ˌdɝməˈtɑlədʒɪ] (n. 皮膚科學)</div>
-<div class="mini-word">12. denticle [ˈdɛntɪkəl] (n. 小齒狀構造) — dental [ˈdɛntl] (adj. 牙齒的)</div>
-<div class="mini-word">13. microstructure [ˈmaɪkroˌstrʌktʃɚ] (n. 微結構) — microscopic [ˌmaɪkrəˈskɑpɪk] (adj. 微小的)</div>
-<div class="mini-word">14. ridge [rɪdʒ] (n. 脊狀突起) — ridged [rɪdʒd] (adj. 有脊狀紋的)</div>
-<div class="mini-word">15. riblet [ˈrɪblɪt] (n. 細肋) — ribbed [rɪbd] (adj. 有肋狀紋的)</div>
-<div class="mini-word">16. turbulence [ˈtɝbjələns] (n. 亂流) — turbulent [ˈtɝbjələnt] (adj. 亂流的)</div>
-<div class="mini-word">17. drag [dræg] (n. 阻力) — drag reduction [dræg rɪˈdʌkʃən] (n. 減阻)</div>
-<div class="mini-word">18. advantage [ədˈvæntɪdʒ] (n. 優勢) — advantageous [ˌædvənˈtedʒəs] (adj. 有利的)</div>
-<div class="mini-word">19. escape [ɪˈskep] (v. 逃離) — escape from [ɪˈskep frəm] (phr. 逃離)</div>
-<div class="mini-word">20. biological [ˌbaɪəˈlɑdʒɪkəl] (adj. 生物的) — biology [baɪˈɑlədʒɪ] (n. 生物學)</div>
-<div class="mini-word">21. fabric [ˈfæbrɪk] (n. 布料) — fabricated [ˈfæbrɪˌketɪd] (adj. 製造的)</div>
-<div class="mini-word">22. textured [ˈtɛkstʃɚd] (adj. 有紋理的) — texture [ˈtɛkstʃɚ] (n. 紋理)</div>
-<div class="mini-word">23. synthetic [sɪnˈθɛtɪk] (adj. 合成的) — synthesis [ˈsɪnθəsɪs] (n. 合成)</div>
-<div class="mini-word">24. polyurethane [ˌpɑliˈjʊrəˌθen] (n. 聚氨酯) — polymer [ˈpɑləmɚ] (n. 聚合物)</div>
-<div class="mini-word">25. polyester [ˈpɑliˌɛstɚ] (n. 聚酯) — ester [ˈɛstɚ] (n. 酯)</div>
-<div class="mini-word">26. imitate [ˈɪməˌtet] (v. 模仿) — imitation [ˌɪməˈteʃən] (n. 模仿)</div>
-<div class="mini-word">27. surface [ˈsɝfəs] (n. 表面) — resurface [riˈsɝfəs] (v. 重新浮現)</div>
-<div class="mini-word">28. resistance [rɪˈzɪstəns] (n. 阻力) — resistant [rɪˈzɪstənt] (adj. 有抵抗力的)</div>
-<div class="mini-word">29. translate [trænsˈlet] (v. 轉化；翻譯) — translation [trænsˈleʃən] (n. 翻譯；轉化)</div>
-<div class="mini-word">30. fluid [ˈfluɪd] (n. 流體) — fluidity [fluˈɪdətɪ] (n. 流動性)</div>
-<p><strong>文章相關常用片語 5 個：</strong></p>
-<p>• be covered with（被……覆蓋）</p>
-<p>• flow in straight lines（呈直線流動）</p>
-<p>• reduce turbulence and drag（減少亂流與阻力）</p>
-<p>• imitate denticles and riblets（模仿真皮齒與細肋）</p>
-<p>• translate A into B（將 A 轉化為 B）</p>
-</div>
-</details>
+      <p style="font-weight:bold;color:var(--c7);">一句話收束：先分清「他說了什麼」與「事情是什麼」——這正是批判思考的第一步。</p>
+    </div>
+  </details>
 
-<details>
-<summary>折疊四：練文筆食材<span class="arrow">⌄</span></summary>
-<div class="detail-body">
-<div class="writer-item">① a famous example of ...（……的著名例子）<br>→ 適用：介紹科技、社會或自然現象的代表案例。<br>例：Solar power is a famous example of clean energy technology.</div>
-<div class="writer-item">② how + S + V（……如何……）<br>→ 適用：說明研究、理解或展示某個過程。<br>例：Scientists study how sleep affects memory.</div>
-<div class="writer-item">③ be covered with ...（被……覆蓋）<br>→ 適用：描述表面特徵或外觀。<br>例：The old wall was covered with green plants.</div>
-<div class="writer-item">④ N + called + N（稱為……的……）<br>→ 適用：介紹專有名詞或科學概念。<br>例：The city uses a system called smart lighting.</div>
-<div class="writer-item">⑤ guide + O + to V（引導……去……）<br>→ 適用：描述科技、設計或規則如何引導行為。<br>例：Clear signs guide visitors to find the exit quickly.</div>
-<div class="writer-item">⑥ which reduces ...（這減少了……）<br>→ 適用：補充前面整件事造成的結果。<br>例：The new route is shorter, which reduces travel time.</div>
-<div class="writer-item">⑦ Because of + N, S + V（由於……，……）<br>→ 適用：以名詞片語說明原因。<br>例：Because of heavy rain, the game was delayed.</div>
-<div class="writer-item">⑧ while + V-ing（在……的同時）<br>→ 適用：表示兩個動作同時發生或形成對比。<br>例：Students can review vocabulary while taking the bus.</div>
-<div class="writer-item">⑨ giving + O + N（使……得到……）<br>→ 適用：用分詞構句補充結果。<br>例：The app saves time, giving users more control over their schedule.</div>
-<div class="writer-item">⑩ to create / to reduce / to imitate（為了創造／減少／模仿）<br>→ 適用：清楚表達目的。<br>例：The team changed the design to reduce waste.</div>
-<div class="writer-item">⑪ by + V-ing（藉由……）<br>→ 適用：說明方法或手段。<br>例：We can improve our writing by reading more articles.</div>
-<div class="writer-item">⑫ work together（共同合作）<br>→ 適用：描述跨領域合作或團隊合作。<br>例：Doctors and engineers work together to develop better medical tools.</div>
-<div class="writer-item">⑬ first ..., then ...（先……，然後……）<br>→ 適用：清楚呈現流程或步驟。<br>例：First, collect reliable data; then, compare the results carefully.</div>
-<div class="writer-item">⑭ translate A into B（將 A 轉化為 B）<br>→ 適用：描述把概念轉成產品、行動或成果。<br>例：Good leaders translate ideas into practical plans.</div>
-<div class="writer-item">⑮ or even ...（甚至……）<br>→ 適用：擴大例子範圍，增加語氣。<br>例：This material can be used in phones, cars, or even spacecraft.</div>
+  <!-- 資料來源 -->
+  <div class="src">
+    <h3>📚 本報告查證所用之主要資料來源</h3>
+    <ol>
+      <li>實習醫生 529／5000、2026年1月梯次、歷年人數：CodeBlue（Galen Centre）、The Star（2026/03）。</li>
+      <li>寶騰／吉利 49.9% 入股（2017）、市佔約 12%、轉虧為盈：WardsAuto、Bloomberg、paultan.org、MITI 部長國會答詢（2025）。</li>
+      <li>人才外流：約 186 萬旅居海外、113 萬在新加坡、世界銀行 2026年4月《Raising the Ceiling, Raising the Floor》報告、TalentCorp 數據。</li>
+      <li>土著購房配額（吉隆坡 30%／馬六甲 60%／中位數約 30%）與折扣 7–15%：StarProperty、iProperty、The Edge、HHQ 法律事務所。</li>
+      <li>女性勞動參與率約 56.2%（2023）：馬來西亞統計局（DOSM）。</li>
+      <li>NEP 扶貧成效（全國貧窮率 49.3%→16.5%、土著貧窮率約 65%→0.8%、催生土著中產）：馬國經濟部、ISEAS、Springer、學術專書。</li>
+      <li>土著股權（1970 年 2.4%、2008 年高峰約 22%、2019 年約 17.2%、目標 30:40:30、淪為「數字遊戲」之評）：FMT、The Edge、Malaysiakini、ISEAS Perspective、TPB2030、第十二大馬計畫。</li>
+      <li>中等收入陷阱其他成因（外資依賴、製造業由外資主導、輸給中越、TFP 年均 0.8% vs 韓台 1.8%、私人投資低迷）：IMF Working Paper、亞洲開發銀行（ADB）、Economic History Malaysia、Taylor &amp; Francis 期刊。</li>
+      <li>新加坡對照之不對稱（1965 分家、城市國家、外資占 GDP 20–30%）：Economic History Malaysia、公開歷史與統計事實。</li>
+    </ol>
+    <p style="margin-top:12px;">※ 凡標示 ❓ 者，為影片提出但本報告查無可靠來源、或數值方向對但精確值待商榷之項目，請勿直接引用。</p>
+  </div>
+
+  <div class="footer-note">
+    林威老師｜全方位新聞分析（news-processor）<br>
+    本報告為批判性思考與媒體識讀練習用，非投資或政治立場建議。
+  </div>
+
 </div>
-</details>
-<p class="ad-title bottom-ad">七月課程與聯絡資訊</p>
-<nav class="ad-links" aria-label="底部課程與聯絡連結">
-<a class="ad-card ad-echo" href="https://linwayet.github.io/4ulive/index.html">
-<strong>七月課程：錯中學 ECHO 計劃</strong>
-<span>從錯誤中學英文，建立可修正、可追蹤的學習路線。</span>
-</a>
-<a class="ad-card ad-analysis" href="https://linwayet.github.io/popup/index">
-<strong>學生分析</strong>
-<span>檢視目前程度與弱點，協助規劃七月學習方向。</span>
-</a>
-<a class="ad-card ad-line" href="https://line.me/ti/p/~linwayet">
-<strong>林威老師 LINE</strong>
-<span>LINE ID：linwayet。點擊即可嘗試加入好友。</span>
-</a>
-</nav>
-</main>
 </body>
 </html>
