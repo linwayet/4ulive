@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vera Rubin AI 伺服器完全拆解 × 台灣供應鏈地圖</title>
+<style>
+  :root{
+    --bg:#F8F4ED;
+    --ink:#2D2A26;
+    --ink-soft:#4A453E;
+    --card:#FFFDF8;
+    --line:#E4DBCB;
+    --rust:#C0492E;     /* 運算 / 主角 */
+    --gold:#C18A2B;     /* 記憶體 / 板材 */
+    --sage:#5E7A4F;     /* 網路 / 連接 */
+    --brown:#8A5A3B;    /* 封裝 / 機構 */
+    --plum:#8C3A4A;     /* 電源 / 散熱 */
+    --teal:#3F7068;     /* 組裝 / 系統 */
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    font-size:22px;
+    line-height:1.85;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:24px 18px 80px;}
+
+  /* 標題區 */
+  header.hero{
+    background:
+      radial-gradient(120% 120% at 0% 0%, rgba(192,73,46,.10), transparent 55%),
+      radial-gradient(120% 120% at 100% 0%, rgba(193,138,43,.12), transparent 55%),
+      var(--card);
+    border:2px solid var(--line);
+    border-radius:22px;
+    padding:30px 26px;
+    margin-bottom:26px;
+    box-shadow:0 6px 0 rgba(45,42,38,.06);
+  }
+  .kicker{
+    display:inline-block;
+    background:var(--rust);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    padding:6px 16px;
+    border-radius:999px;
+    letter-spacing:.04em;
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:34px;
+    line-height:1.4;
+    margin:6px 0 10px;
+    letter-spacing:.01em;
+  }
+  h1 .hl{color:var(--rust);}
+  .sub{font-size:20px;color:var(--ink-soft);margin:0;}
+  .byline{
+    margin-top:18px;font-size:17px;color:var(--ink-soft);
+    border-top:1px dashed var(--line);padding-top:14px;
+  }
+
+  /* 課程地圖 */
+  nav.map{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:18px 20px;
+    margin-bottom:30px;
+  }
+  nav.map h2{font-size:22px;margin:0 0 12px;color:var(--brown);}
+  nav.map ol{margin:0;padding-left:1.4em;}
+  nav.map li{margin:6px 0;font-size:19px;}
+  nav.map a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold);}
+
+  /* 區段 */
+  section{margin-bottom:42px;}
+  .sec-head{
+    display:flex;align-items:center;gap:14px;
+    margin:0 0 18px;
+  }
+  .sec-num{
+    flex:0 0 auto;
+    width:48px;height:48px;
+    border-radius:14px;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;font-weight:800;
+  }
+  h2.sec-title{font-size:27px;margin:0;line-height:1.35;}
+  p{margin:0 0 16px;}
+  .lead{font-size:23px;}
+
+  /* 比喻盒 */
+  .analogy{
+    background:#FBF3E4;
+    border-left:8px solid var(--gold);
+    border-radius:0 14px 14px 0;
+    padding:16px 20px;
+    margin:18px 0;
+    font-size:20px;
+  }
+  .analogy b{color:var(--brown);}
+
+  /* 卡片 */
+  .card{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:22px 22px 18px;
+    margin:18px 0;
+  }
+  .chip-card{position:relative;overflow:hidden;}
+  .chip-tag{
+    display:inline-block;color:#fff;font-size:16px;font-weight:700;
+    padding:4px 14px;border-radius:999px;margin-bottom:10px;
+  }
+  .chip-card h3{font-size:24px;margin:4px 0 6px;}
+  .chip-role{font-size:19px;color:var(--ink-soft);margin:0 0 12px;font-weight:700;}
+  .field{margin:10px 0;font-size:19px;}
+  .field .lab{
+    display:inline-block;min-width:88px;font-weight:800;color:var(--ink);
+    background:#F0E8D8;border-radius:8px;padding:1px 10px;margin-right:8px;font-size:17px;
+  }
+  .tw-strip{
+    margin-top:14px;background:#EEF3E9;border:1px dashed var(--sage);
+    border-radius:12px;padding:10px 14px;font-size:18px;
+  }
+  .tw-strip .tw-lab{font-weight:800;color:var(--sage);}
+
+  /* 表格 */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border-radius:14px;border:2px solid var(--line);}
+  table{border-collapse:collapse;width:100%;min-width:560px;background:var(--card);font-size:18px;}
+  caption{caption-side:top;text-align:left;font-size:17px;color:var(--ink-soft);padding:8px 4px;}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;}
+  thead th{background:var(--ink);color:var(--bg);font-size:18px;position:sticky;top:0;}
+  tbody tr:nth-child(even){background:#FBF6EC;}
+  td .code{font-weight:800;color:var(--rust);white-space:nowrap;}
+  .up{color:var(--plum);font-weight:800;}
+
+  /* SVG 圖框 */
+  figure{margin:20px 0;}
+  .figbox{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;}
+  figcaption{font-size:17px;color:var(--ink-soft);margin-top:10px;text-align:center;}
+  svg{width:100%;height:auto;display:block;}
+
+  /* 折疊區（LINE WebView 友善：原生 details/summary） */
+  details{
+    background:var(--card);border:2px solid var(--line);border-radius:14px;
+    margin:14px 0;overflow:hidden;
+  }
+  summary{
+    list-style:none;cursor:pointer;
+    min-height:72px;display:flex;align-items:center;gap:12px;
+    padding:0 20px;font-size:21px;font-weight:800;color:var(--ink);
+  }
+  summary::-webkit-details-marker{display:none;}
+  .arrow{
+    flex:0 0 auto;width:14px;height:14px;border-right:4px solid var(--rust);
+    border-bottom:4px solid var(--rust);transform:rotate(45deg);transition:transform .2s;margin-bottom:4px;
+  }
+  details[open] .arrow{transform:rotate(225deg);}
+  .details-body{padding:4px 20px 18px;font-size:19px;border-top:1px solid var(--line);}
+
+  /* 重點/思考 */
+  .keybox{
+    background:#FBF3E4;border:2px solid var(--gold);border-radius:16px;padding:18px 22px;margin:18px 0;
+  }
+  .keybox h3{margin:0 0 10px;color:var(--brown);font-size:22px;}
+  .keybox ul{margin:0;padding-left:1.3em;}
+  .keybox li{margin:8px 0;}
+
+  .think{
+    background:var(--ink);color:var(--bg);border-radius:16px;padding:20px 24px;margin:18px 0;
+  }
+  .think h3{margin:0 0 10px;color:var(--gold);font-size:22px;}
+  .think ol{margin:0;padding-left:1.3em;}
+  .think li{margin:9px 0;}
+
+  .disc{font-size:16px;color:var(--ink-soft);background:#F0E8D8;border-radius:12px;padding:14px 18px;margin-top:30px;line-height:1.7;}
+  hr.soft{border:0;border-top:2px dashed var(--line);margin:30px 0;}
+  @media(max-width:560px){
+    body{font-size:20px;}
+    h1{font-size:28px;}
+    h2.sec-title{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <span class="kicker">科技拆解課程 · 2026</span>
+  <h1>一台 <span class="hl">Vera Rubin</span> AI 伺服器<br>到底裝了什麼?台灣做了哪些?</h1>
+  <p class="sub">從七顆晶片到水冷快接頭,逐一拆給你看——每個零件做什麼用、台灣哪家廠在供應。</p>
+  <p class="byline">資料來源:NVIDIA CES 2026 / GTC 2026 發表、NVIDIA 技術部落格、摩根士丹利供應鏈報告等公開資料整理。<br>本課程為產業教學用途,文中提及之台廠與股票代號僅供「看懂供應鏈」之用,非投資建議。</p>
+</header>
+
+<!-- ===================== 課程地圖 ===================== -->
+<nav class="map">
+  <h2>📍 課程地圖</h2>
+  <ol>
+    <li><a href="#s0">這是什麼?用「一座智慧工廠」來理解</a></li>
+    <li><a href="#s1">整體規格速覽 + 跟上一代差多少</a></li>
+    <li><a href="#s2">七顆晶片逐一拆解(運算與網路的腦)</a></li>
+    <li><a href="#s3">機櫃級關鍵零件 × 台廠(台灣的主場)</a></li>
+    <li><a href="#s4">台灣供應鏈總地圖(一張表全收)</a></li>
+    <li><a href="#s5">成本結構:為什麼一台漲到 95%?</a></li>
+    <li><a href="#s6">三大設計變革:全液冷 / 800V / 盲插</a></li>
+    <li><a href="#s7">重點回顧 + 思考題</a></li>
+  </ol>
+</nav>
+
+<!-- ===================== S0 ===================== -->
+<section id="s0">
+  <div class="sec-head"><div class="sec-num">0</div><h2 class="sec-title">這是什麼?用「一座智慧工廠」來理解</h2></div>
+  <p class="lead">Vera Rubin 是 NVIDIA 接續 Blackwell 的<strong>新一代 AI 伺服器平台</strong>,2026 年 CES 與 GTC 正式發表、下半年量產出貨。它不是「一張顯示卡」,而是把一整個機櫃當成「一台電腦」來設計。</p>
+
+  <p>旗艦機種叫 <strong>Vera Rubin NVL72</strong>:一個機櫃裡塞了 <strong>72 顆 Rubin GPU + 36 顆 Vera CPU</strong>,重約 <strong>1,800 公斤(4,000 磅)</strong>、含約 130 萬個零件,單一機櫃功耗逼近 <strong>1 百萬瓦(1 MW)</strong>——差不多等於數十戶美國家庭的用電量。</p>
+
+  <div class="analogy">
+    <b>🏭 核心比喻:</b>把一台 NVL72 想成<b>「一座垂直整合的智慧工廠」</b>。裡面有生產線工人(GPU)、廠長(CPU)、快嘴出貨員(LPU)、廠內輸送帶(NVLink)、對外物流窗口(網卡)、後勤總管(DPU)、園區交通樞紐(交換器),外加供電系統與全水冷管路。後面每一顆零件,我們都用這個工廠角色來認識它。
+  </div>
+
+  <figure>
+    <div class="figbox">
+      <svg viewBox="0 0 720 430" role="img" aria-label="智慧工廠比喻圖:七顆晶片對應工廠角色">
+        <defs>
+          <style>
+            .ft{font-family:"BIZ UDPGothic","Noto Sans TC",sans-serif;}
+            .role{font-size:17px;font-weight:700;fill:#2D2A26;}
+            .chip{font-size:14px;fill:#4A453E;}
+            .ttl{font-size:20px;font-weight:800;fill:#2D2A26;}
+          </style>
+        </defs>
+        <rect x="0" y="0" width="720" height="430" rx="16" fill="#FBF6EC"/>
+        <text x="360" y="34" text-anchor="middle" class="ft ttl">🏭 NVL72 智慧工廠 = 七顆晶片各司其職</text>
+
+        <!-- 生產線 GPU -->
+        <rect x="30" y="60" width="200" height="92" rx="12" fill="#C0492E"/>
+        <text x="130" y="92" text-anchor="middle" class="ft role" fill="#fff">生產線工人</text>
+        <text x="130" y="116" text-anchor="middle" class="ft chip" fill="#FCEbe6">Rubin GPU</text>
+        <text x="130" y="138" text-anchor="middle" class="ft chip" fill="#FCEbe6">負責「思考」運算</text>
+
+        <!-- 廠長 CPU -->
+        <rect x="260" y="60" width="200" height="92" rx="12" fill="#8A5A3B"/>
+        <text x="360" y="92" text-anchor="middle" class="ft role" fill="#fff">廠長</text>
+        <text x="360" y="116" text-anchor="middle" class="ft chip" fill="#F4E8DE">Vera CPU</text>
+        <text x="360" y="138" text-anchor="middle" class="ft chip" fill="#F4E8DE">協調與排程</text>
+
+        <!-- 出貨員 LPU -->
+        <rect x="490" y="60" width="200" height="92" rx="12" fill="#C18A2B"/>
+        <text x="590" y="92" text-anchor="middle" class="ft role" fill="#fff">快嘴出貨員</text>
+        <text x="590" y="116" text-anchor="middle" class="ft chip" fill="#FaF1dd">Groq 3 LPU</text>
+        <text x="590" y="138" text-anchor="middle" class="ft chip" fill="#FaF1dd">低延遲吐字</text>
+
+        <!-- 廠內輸送帶 NVLink -->
+        <rect x="30" y="172" width="200" height="92" rx="12" fill="#5E7A4F"/>
+        <text x="130" y="204" text-anchor="middle" class="ft role" fill="#fff">廠內高速輸送帶</text>
+        <text x="130" y="228" text-anchor="middle" class="ft chip" fill="#E9F0E3">NVLink 6 Switch</text>
+        <text x="130" y="250" text-anchor="middle" class="ft chip" fill="#E9F0E3">櫃內互連(Scale-up)</text>
+
+        <!-- 物流窗口 NIC -->
+        <rect x="260" y="172" width="200" height="92" rx="12" fill="#3F7068"/>
+        <text x="360" y="204" text-anchor="middle" class="ft role" fill="#fff">對外物流窗口</text>
+        <text x="360" y="228" text-anchor="middle" class="ft chip" fill="#E2EEEB">ConnectX-9 NIC</text>
+        <text x="360" y="250" text-anchor="middle" class="ft chip" fill="#E2EEEB">跨櫃連接(Scale-out)</text>
+
+        <!-- 後勤總管 DPU -->
+        <rect x="490" y="172" width="200" height="92" rx="12" fill="#8C3A4A"/>
+        <text x="590" y="204" text-anchor="middle" class="ft role" fill="#fff">後勤總管</text>
+        <text x="590" y="228" text-anchor="middle" class="ft chip" fill="#F4E0E5">BlueField-4 DPU</text>
+        <text x="590" y="250" text-anchor="middle" class="ft chip" fill="#F4E0E5">網路/儲存/保全</text>
+
+        <!-- 園區交通樞紐 Spectrum -->
+        <rect x="175" y="284" width="370" height="74" rx="12" fill="#2D2A26"/>
+        <text x="360" y="314" text-anchor="middle" class="ft role" fill="#fff">園區交通總樞紐(光纖)</text>
+        <text x="360" y="338" text-anchor="middle" class="ft chip" fill="#E4DBCB">Spectrum-6 乙太網交換器 · 共封裝光學 CPO</text>
+
+        <!-- 地基 -->
+        <rect x="30" y="378" width="660" height="38" rx="10" fill="#F0E8D8" stroke="#E4DBCB" stroke-width="2"/>
+        <text x="360" y="403" text-anchor="middle" class="ft chip" fill="#6B5C46">廠房地基 = 電源(800V HVDC) + 全液冷管路 + 機構件(台灣供應鏈主場)</text>
+      </svg>
+    </div>
+    <figcaption>圖一:七顆晶片在「智慧工廠」裡各自扮演的角色</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== S1 ===================== -->
+<section id="s1">
+  <div class="sec-head"><div class="sec-num">1</div><h2 class="sec-title">整體規格速覽 + 跟上一代差多少</h2></div>
+  <p>先看一張機櫃剖面圖,認識它「分層」的長相;再用兩張表看規格與世代差異。</p>
+
+  <figure>
+    <div class="figbox">
+      <svg viewBox="0 0 700 470" role="img" aria-label="NVL72 機櫃分層剖面圖">
+        <defs><style>
+          .ft{font-family:"BIZ UDPGothic","Noto Sans TC",sans-serif;}
+          .lbl{font-size:16px;font-weight:700;fill:#fff;}
+          .sub2{font-size:13px;fill:#fff;opacity:.9;}
+          .side{font-size:14px;fill:#4A453E;}
+        </style></defs>
+        <rect x="0" y="0" width="700" height="470" rx="16" fill="#FBF6EC"/>
+        <text x="350" y="32" text-anchor="middle" class="ft" font-size="20" font-weight="800" fill="#2D2A26">Vera Rubin NVL72 機櫃分層(由上而下)</text>
+
+        <!-- 機櫃外框 -->
+        <rect x="180" y="52" width="340" height="388" rx="10" fill="#fff" stroke="#2D2A26" stroke-width="3"/>
+
+        <!-- 網路層 -->
+        <rect x="192" y="62" width="316" height="46" rx="6" fill="#3F7068"/>
+        <text x="350" y="82" text-anchor="middle" class="ft lbl">網路層:ConnectX-9 + Spectrum-6</text>
+        <text x="350" y="100" text-anchor="middle" class="ft sub2">跨櫃連接 · 光纖交換</text>
+
+        <!-- 運算托盤 x 多層 -->
+        <rect x="192" y="116" width="316" height="40" rx="6" fill="#C0492E"/>
+        <text x="350" y="141" text-anchor="middle" class="ft lbl">運算托盤:Rubin GPU × Vera CPU(共 18 個托盤)</text>
+        <rect x="192" y="160" width="316" height="22" rx="5" fill="#C0492E" opacity=".82"/>
+        <rect x="192" y="186" width="316" height="22" rx="5" fill="#C0492E" opacity=".64"/>
+        <rect x="192" y="212" width="316" height="22" rx="5" fill="#C0492E" opacity=".46"/>
+        <text x="350" y="201" text-anchor="middle" class="ft sub2">每個托盤都貼著水冷板(Cold Plate)</text>
+
+        <!-- NVLink switch tray -->
+        <rect x="192" y="240" width="316" height="44" rx="6" fill="#5E7A4F"/>
+        <text x="350" y="260" text-anchor="middle" class="ft lbl">NVLink 6 交換托盤 × 9</text>
+        <text x="350" y="278" text-anchor="middle" class="ft sub2">把 72 顆 GPU 串成「一顆超大 GPU」</text>
+
+        <!-- DPU/儲存 -->
+        <rect x="192" y="292" width="316" height="40" rx="6" fill="#8C3A4A"/>
+        <text x="350" y="317" text-anchor="middle" class="ft lbl">BlueField-4 DPU + AI 原生儲存</text>
+
+        <!-- 電源 shelf -->
+        <rect x="192" y="340" width="316" height="44" rx="6" fill="#8A5A3B"/>
+        <text x="350" y="360" text-anchor="middle" class="ft lbl">電源層:800V HVDC Power Shelf</text>
+        <text x="350" y="378" text-anchor="middle" class="ft sub2">單櫃逼近 1 MW · 110kW Power Shelf</text>
+
+        <!-- 液冷 CDU -->
+        <rect x="192" y="392" width="316" height="40" rx="6" fill="#3F7068" opacity=".85"/>
+        <text x="350" y="417" text-anchor="middle" class="ft lbl">液冷分配單元 CDU + 分歧管 Manifold</text>
+
+        <!-- 側邊註解 -->
+        <text x="170" y="86" text-anchor="end" class="ft side">對外</text>
+        <text x="170" y="140" text-anchor="end" class="ft side">運算核心</text>
+        <text x="170" y="262" text-anchor="end" class="ft side">櫃內互連</text>
+        <text x="170" y="362" text-anchor="end" class="ft side">供電</text>
+        <text x="170" y="414" text-anchor="end" class="ft side">散熱</text>
+
+        <!-- 右側水路箭頭 -->
+        <text x="538" y="240" class="ft side" fill="#3F7068">💧 冷水</text>
+        <text x="538" y="262" class="ft side" fill="#C0492E">🔥 熱水</text>
+      </svg>
+    </div>
+    <figcaption>圖二:NVL72 機櫃的分層結構——運算、互連、供電、散熱層層堆疊</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+  <table>
+    <caption>表 1.1 · Vera Rubin NVL72 關鍵規格速覽</caption>
+    <thead><tr><th>項目</th><th>數字</th><th>白話解讀</th></tr></thead>
+    <tbody>
+      <tr><td>運算晶片</td><td>72 顆 Rubin GPU + 36 顆 Vera CPU</td><td>運算 2 顆 GPU 配 1 顆 CPU</td></tr>
+      <tr><td>推論算力</td><td>3.6 EFLOPS(NVFP4)</td><td>單櫃即一台超級電腦</td></tr>
+      <tr><td>訓練算力</td><td>2.5 EFLOPS(NVFP4)</td><td>訓練大模型用</td></tr>
+      <tr><td>HBM4 記憶體</td><td>20.7 TB · 頻寬 1.6 PB/s</td><td>放得下超大模型與長上下文</td></tr>
+      <tr><td>櫃內互連</td><td>260 TB/s(NVLink 6)</td><td>72 顆 GPU 像一顆在運作</td></tr>
+      <tr><td>散熱</td><td>100% 全液冷,進水 45°C</td><td>多數氣候不必開冷卻機</td></tr>
+      <tr><td>功耗</td><td>約 190–230 kW / 櫃</td><td>整櫃逼近 1 MW 級</td></tr>
+      <tr><td>重量 / 零件</td><td>約 1,800 kg / 約 130 萬個零件</td><td>一面「零件牆」才裝得齊</td></tr>
+      <tr><td>組裝時間</td><td>整櫃約 2 小時 · 換托盤約 5 分鐘</td><td>樂高式模組化(盲插)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <caption>表 1.2 · 跟上一代 Blackwell 比,進步多少</caption>
+    <thead><tr><th>指標(每顆 GPU)</th><th>Blackwell</th><th>Vera Rubin</th><th>倍數</th></tr></thead>
+    <tbody>
+      <tr><td>推論算力(NVFP4)</td><td>10 PFLOPS</td><td>50 PFLOPS</td><td class="up">5×</td></tr>
+      <tr><td>訓練算力(NVFP4)</td><td>10 PFLOPS</td><td>35 PFLOPS</td><td class="up">3.5×</td></tr>
+      <tr><td>NVLink 頻寬</td><td>1.8 TB/s</td><td>3.6 TB/s</td><td class="up">2×</td></tr>
+      <tr><td>訓練 MoE 模型所需 GPU 數</td><td>基準</td><td>1/4</td><td class="up">少 4×</td></tr>
+      <tr><td>每 token 推論成本</td><td>基準</td><td>1/10</td><td class="up">降 10×</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== S2 ===================== -->
+<section id="s2">
+  <div class="sec-head"><div class="sec-num">2</div><h2 class="sec-title">七顆晶片逐一拆解</h2></div>
+  <p>NVIDIA 說 Vera Rubin 是「極致共同設計(extreme co-design)」的七晶片平台。下面每張卡片都給你:<strong>它做什麼 → 工廠比喻 → 重要規格 → 跟台灣的關係</strong>。</p>
+
+  <!-- Rubin GPU -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--rust)">① 運算主力</span>
+    <h3>Rubin GPU</h3>
+    <p class="chip-role">🏭 生產線工人——負責 AI 的「思考」(訓練與推論的數學運算)</p>
+    <div class="field"><span class="lab">功能</span>整台機器的運算核心。把模型的矩陣乘法、注意力計算扛起來,是「算力」的來源。</div>
+    <div class="field"><span class="lab">規格</span>台積電 3 奈米雙晶粒(chiplet);336 億電晶體;搭配 8 顆 HBM4 達 288GB、頻寬 22TB/s;推論 50 PFLOPS;功耗約 1.8–2.3 kW。</div>
+    <div class="field"><span class="lab">比喻</span>工廠裡最忙的生產線工人,一次能做的計算量是上一代的 5 倍;但也最會發熱,所以一定要貼水冷板。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>晶圓由<strong>台積電(2330)</strong>以 N3P 製程製造,並用 <strong>CoWoS-L 先進封裝</strong>把 GPU、I/O Die 與 HBM4 疊在一起;封測由<strong>日月光投控(3711)/矽品、京元電(2449)</strong>承接。這是台灣最核心、最難被取代的一環。</div>
+  </div>
+
+  <!-- Vera CPU -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--brown)">② 指揮</span>
+    <h3>Vera CPU</h3>
+    <p class="chip-role">🏭 廠長——不親自算,但決定「誰做、何時做」</p>
+    <div class="field"><span class="lab">功能</span>NVIDIA 第一顆自家資料中心 CPU。負責排程、工作流協調、KV cache 路由、代理式 AI 的「控制平面」。</div>
+    <div class="field"><span class="lab">規格</span>88 顆自研 Arm「Olympus」核心、176 執行緒;最高 1.5TB LPDDR5X(SOCAMM 模組);記憶體頻寬 1.2TB/s;NVLink-C2C 1.8TB/s 與 GPU 相連。</div>
+    <div class="field"><span class="lab">比喻</span>廠長本人不站生產線,但工廠能不能順暢運轉,全看他怎麼調度。黃仁勳稱它「肯定是個數十億美元的生意」。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>同樣由<strong>台積電 N3P</strong>製造;首批 Vera CPU 已開始向 Anthropic、OpenAI、Oracle 等出貨,直接帶動<strong>鴻海(2317)、廣達(2382)、緯創(3231)</strong>的伺服器組裝拉貨。</div>
+  </div>
+
+  <!-- Groq 3 LPU -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--gold)">③ 推論加速</span>
+    <h3>Groq 3 LPU(第七顆晶片)</h3>
+    <p class="chip-role">🏭 快嘴出貨員——把答案「一個字一個字」快速講出來</p>
+    <div class="field"><span class="lab">功能</span>專做推論「解碼(decode)」階段:GPU 負責讀題與理解(prefill),LPU 負責低延遲、快速地產生 token。</div>
+    <div class="field"><span class="lab">規格</span>第 3 代 LPU(由三星代工);每顆約 500MB 堆疊 SRAM、頻寬約 80TB/s;源自 NVIDIA 2025 年底以 200 億美元收購 Groq。</div>
+    <div class="field"><span class="lab">比喻</span>主廚(GPU)把菜做好,出餐員(LPU)負責又快又穩地一道道端出去;配上專屬機櫃時,單位功耗的推論吞吐可達 35 倍。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>晶片本體由三星代工(非台廠),但其專屬機櫃仍需台灣的<strong>散熱、電源、機構件與系統組裝</strong>供應鏈,間接受惠。</div>
+  </div>
+
+  <!-- NVLink 6 -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--sage)">④ 櫃內互連</span>
+    <h3>NVLink 6 Switch</h3>
+    <p class="chip-role">🏭 廠內高速輸送帶——讓 72 顆 GPU 像「一顆」在運作</p>
+    <div class="field"><span class="lab">功能</span>Scale-up(縱向擴展):機櫃內 GPU 之間的超高速連接,並在交換器內直接做運算(in-network compute)加速 MoE 路由。</div>
+    <div class="field"><span class="lab">規格</span>每 GPU 雙向 3.6TB/s;每櫃 9 個交換托盤;整櫃總頻寬 260TB/s。</div>
+    <div class="field"><span class="lab">比喻</span>工廠內部的超高速輸送帶,讓各生產線即時交換半成品,不必排隊等待。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>交換晶片由 NVIDIA 設計、台積電製造;台廠主要切入它周邊的<strong>高速線材/連接器、Midplane 背板與 PCB</strong>——<strong>鴻騰精密(FIT)、貿聯-KY(3665)</strong>等。</div>
+  </div>
+
+  <!-- ConnectX-9 -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--teal)">⑤ 跨櫃網路</span>
+    <h3>ConnectX-9 SuperNIC</h3>
+    <p class="chip-role">🏭 對外物流窗口——把貨送到別的工廠(別的機櫃)</p>
+    <div class="field"><span class="lab">功能</span>Scale-out(橫向擴展):機櫃對機櫃的網路連接,讓多個機櫃組成更大的 AI 工廠。</div>
+    <div class="field"><span class="lab">規格</span>每 GPU 1.6Tb/s;每個運算托盤配 8 張;支援 Spectrum-X 乙太網與 Quantum-X800 InfiniBand。</div>
+    <div class="field"><span class="lab">比喻</span>工廠的對外物流窗口:廠內做好的東西,要靠它送到園區其他廠房。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>帶動<strong>高頻高速 PCB、CCL 材料與光/銅纜連接</strong>需求;AEC(主動式銅纜)是<strong>貿聯-KY(3665)</strong>的重點。</div>
+  </div>
+
+  <!-- BlueField-4 -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--plum)">⑥ 資料處理</span>
+    <h3>BlueField-4 DPU</h3>
+    <p class="chip-role">🏭 後勤總管——管門禁、倉儲、帳務,讓 GPU 專心算</p>
+    <div class="field"><span class="lab">功能</span>把網路、儲存、加密、資安等雜務從 GPU/CPU 卸載下來;並驅動新的 CMX 儲存平台,把 GPU 記憶體延伸到 NVMe(放 KV cache)。</div>
+    <div class="field"><span class="lab">規格</span>雙晶粒:64 核 Grace CPU + 內建 ConnectX-9 網卡;相較 BF-3,頻寬 2 倍、運算 6 倍;內含 ASTRA 安全架構。</div>
+    <div class="field"><span class="lab">比喻</span>工廠的後勤與保全主管:守門、管倉、記帳全包,生產線工人才不必分心。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>連帶拉動 AI 原生儲存機櫃(BlueField-4 STX Rack)的<strong>伺服器組裝、儲存控制與機構散熱</strong>需求。</div>
+  </div>
+
+  <!-- Spectrum-6 -->
+  <div class="card chip-card">
+    <span class="chip-tag" style="background:var(--ink)">⑦ 園區樞紐</span>
+    <h3>Spectrum-6 乙太網交換器</h3>
+    <p class="chip-role">🏭 園區交通總樞紐——用光纖直接接到晶片旁(CPO)</p>
+    <div class="field"><span class="lab">功能</span>多機櫃間的乙太網路交換,低延遲、高韌性,把整個 AI 工廠串起來。</div>
+    <div class="field"><span class="lab">規格</span>總頻寬 102.4Tb/s;NVIDIA 首款導入<strong>共封裝光學(CPO)</strong>的交換器,與台積電 COUPE 技術共同開發;能效 5 倍、韌性 10 倍。</div>
+    <div class="field"><span class="lab">比喻</span>整個工業園區的交通總樞紐;CPO 等於把「光纖收費站」直接蓋在晶片旁邊,少了長距離塞車。</div>
+    <div class="tw-strip"><span class="tw-lab">🇹🇼 台灣關係:</span>CPO/矽光子最直接受惠的台廠族群:<strong>上詮(3363)、萬潤(6187)、高明鐵(4573)</strong>;封裝端仍是<strong>台積電(2330)</strong>。</div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <caption>表 2 · 七顆晶片一覽(功能 × 規格 × 台廠角色)</caption>
+    <thead><tr><th>晶片</th><th>角色</th><th>關鍵規格</th><th>主要台廠</th></tr></thead>
+    <tbody>
+      <tr><td>Rubin GPU</td><td>AI 運算</td><td>288GB HBM4 · 50 PFLOPS · 3nm 雙晶粒</td><td><span class="code">台積電 2330</span> · 日月光 3711 · 京元電 2449</td></tr>
+      <tr><td>Vera CPU</td><td>協調指揮</td><td>88 核 Arm · 1.5TB LPDDR5X</td><td><span class="code">台積電 2330</span> · 組裝:鴻海/廣達/緯創</td></tr>
+      <tr><td>Groq 3 LPU</td><td>推論解碼</td><td>500MB SRAM · 80TB/s(三星代工)</td><td>機櫃散熱/電源/組裝間接受惠</td></tr>
+      <tr><td>NVLink 6</td><td>櫃內互連</td><td>3.6TB/s/GPU · 260TB/s/櫃</td><td>連接器/背板:鴻騰 FIT · 貿聯 3665</td></tr>
+      <tr><td>ConnectX-9</td><td>跨櫃網路</td><td>1.6Tb/s/GPU</td><td>PCB/CCL/AEC:臻鼎 4958 · 貿聯 3665</td></tr>
+      <tr><td>BlueField-4</td><td>資料處理</td><td>64 核 Grace + 網卡</td><td>儲存機櫃組裝與散熱</td></tr>
+      <tr><td>Spectrum-6</td><td>光纖交換</td><td>102.4Tb/s · CPO</td><td>矽光子:上詮 3363 · 萬潤 6187 · 高明鐵 4573</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== S3 ===================== -->
+<section id="s3">
+  <div class="sec-head"><div class="sec-num">3</div><h2 class="sec-title">機櫃級關鍵零件 × 台廠(台灣的主場)</h2></div>
+  <p class="lead">晶片之外,把一台機器「組起來、餵電、降溫、串接」的所有零件,正是<strong>台灣供應鏈最強的戰場</strong>。以下分九大類,點開看細節。</p>
+
+  <details open>
+    <summary><span class="arrow"></span>① 先進封裝 CoWoS-L</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>把多顆邏輯晶片(GPU、I/O Die)與多顆 HBM4 記憶體,緊密疊在同一塊基板上的「2.5D/3D 黏合術」,讓資料走最短的路。Rubin 是 NVIDIA 首款導入 chiplet 的產品,封裝難度更高。</p>
+      <p><strong>比喻:</strong>把運算大腦和記憶體「焊」在同一張桌子上肩並肩,而不是隔了一條走廊喊話。</p>
+      <p><strong>🇹🇼 台廠:</strong><strong>台積電(2330)</strong>獨家 CoWoS-L;封測外溢給<strong>日月光投控(3711)/矽品、京元電(2449)</strong>。CoWoS 產能是整個平台的關鍵瓶頸。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>② HBM4 高頻寬記憶體</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>緊貼 GPU 的超高速記憶體,讓 AI 放得下更大模型、更長上下文。單櫃 HBM4 容量 20.7TB,是這一代成本暴衝的主因(摩根士丹利估記憶體佔 BOM 比重升到 25–30%)。</p>
+      <p><strong>比喻:</strong>生產線工人手邊的「大型工作檯」,檯面愈大、拿料愈快。</p>
+      <p><strong>🇹🇼 台廠:</strong>HBM 顆粒主要由 SK 海力士、三星、美光等國際大廠供應;台廠透過<strong>封測、材料、儲存控制、模組與伺服器設計</strong>間接受惠。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>③ ABF 載板</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>承載晶片、連接封裝與主機板的高階基板,線路愈密、層數愈多,規格愈嚴。VR200 的 ABF 載板成本較上一代增約 82%。</p>
+      <p><strong>比喻:</strong>晶片的「地基與門牌系統」,決定訊號能不能準確找到路。</p>
+      <p><strong>🇹🇼 台廠:</strong><strong>欣興(3037)、南電(8046)、景碩(3189)</strong>。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>④ PCB 電路板 + CCL 材料</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>運算板、交換板等大型主機板。Rubin 模組更新、板層數與材料等級提升,PCB 成本暴增約 233%(從約 3.5 萬美元 → 約 11.7 萬美元/櫃),並帶動高頻高速 CCL(銅箔基板)需求。</p>
+      <p><strong>比喻:</strong>工廠的「電力與神經網路鋪線」,線材等級不夠,高速訊號就會失真。</p>
+      <p><strong>🇹🇼 台廠:</strong>PCB:<strong>臻鼎-KY(4958)、金像電(2368)、高技(5439)</strong>;CCL 高頻材料:<strong>台光電(2383)、台燿(6274)、聯茂(6213)、金居(8358)</strong>。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>⑤ MLCC 被動元件</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>多層陶瓷電容,負責穩定供電、濾除雜訊。算力暴增、功耗翻倍,需要高容值、高電壓、小尺寸、耐高溫的高階 MLCC,成本增約 182%(約 4,300 美元/櫃)。</p>
+      <p><strong>比喻:</strong>電路裡的無數個「小水庫」,瞬間用電暴衝時負責穩住水位。</p>
+      <p><strong>🇹🇼 台廠:</strong>被動元件龍頭<strong>國巨(2327)</strong>是高階 MLCC 主要受惠者。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>⑥ 電源:800V 高壓直流(HVDC)</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>單櫃功耗逼近 1MW,傳統供電線太粗、損耗太大,因此改走 <strong>800V HVDC</strong> 高壓直流,搭配機架式 Power Shelf(如 110kW)。電源成本增約 32%。</p>
+      <p><strong>比喻:</strong>從「家用電線」升級成「高壓輸電塔」,同樣的電,用更細的線、更少的損耗送進機櫃。</p>
+      <p><strong>🇹🇼 台廠:</strong><strong>台達電(2308)</strong>(800V 系統與百萬瓦級 CDU,AI 伺服器電源市占約 6 成)、<strong>光寶科(2301)</strong>(攜手雲達 QCT 推 110kW Power Shelf)。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>⑦ 液冷散熱(本代最大變革)</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>Vera Rubin <strong>100% 全液冷</strong>(上一代約 80%),VR200 對 GPU 改用<strong>微通道冷板(micro-channel cold plate)</strong>。整套包含:水冷板(貼晶片吸熱)→ 分歧管(Manifold,分流冷卻液)→ 快接頭(Quick Disconnect,免工具插拔)→ CDU(冷卻液分配單元)→ 均熱片 → Sidecar(側櫃式散熱)。摩根士丹利估單櫃散熱價值約 48,060 美元。</p>
+      <p><strong>比喻:</strong>給每位工人配一條「貼身循環水管」,直接把體熱帶走;一旦漏水會毀掉整櫃昂貴設備,所以可靠度要求極高。</p>
+      <p><strong>🇹🇼 台廠:</strong><strong>奇鋐(3017)</strong>(水冷板/分歧管/CDU,GB200/300 水冷板市占約 4–5 成)、<strong>雙鴻(3324)</strong>(水冷板+CDU+快接頭整套方案)、<strong>富世達(6805)</strong>(快接頭)、<strong>健策(3653)</strong>(均熱片)、<strong>晟銘電(3013)</strong>(Sidecar 水冷機櫃)。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>⑧ 連接器 / 線材 / 盲插 Midplane</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>VR200 導入「移除線纜(Cableless)」與「全盲插(Blind-mate)」設計——把雜亂的內部線材改用 Midplane 背板取代,讓托盤可像抽屜一樣插拔。但對外的高電流線材、連接器、AEC 主動式銅纜需求,反而隨功率提升而增加。</p>
+      <p><strong>比喻:</strong>從「一團蜘蛛網般的延長線」改成「樂高式插槽」,5 分鐘換好一個模組。</p>
+      <p><strong>🇹🇼 台廠:</strong><strong>鴻海集團/鴻騰精密(FIT)</strong>(金屬冷水板、連接器、快接頭、電源,號稱約六成零件集團內可供)、<strong>貿聯-KY(3665)</strong>(外部高電流線材、連接器、AEC)。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="arrow"></span>⑨ 矽光子 / CPO 與系統組裝(ODM)</summary>
+    <div class="details-body">
+      <p><strong>做什麼:</strong>CPO(共封裝光學)把光收發器直接做到交換晶片旁,降低延遲與耗電;矽光子相關零件由台廠切入。最後由 ODM 廠把所有零件整合成可交付的 AI 工廠機櫃。</p>
+      <p><strong>比喻:</strong>ODM 就是「總包工頭」,把所有材料與工序整合成一棟能直接營運的廠房。</p>
+      <p><strong>🇹🇼 台廠:</strong>矽光子/CPO:<strong>上詮(3363)、萬潤(6187)、高明鐵(4573)</strong>;ODM/組裝:<strong>緯穎(6669)、緯創(3231)、廣達(2382)、鴻海(2317)、英業達</strong>(摩根士丹利首選緯穎)。</p>
+    </div>
+  </details>
+</section>
+
+<!-- ===================== S4 ===================== -->
+<section id="s4">
+  <div class="sec-head"><div class="sec-num">4</div><h2 class="sec-title">台灣供應鏈總地圖(一張表全收)</h2></div>
+  <p>先看分層圖,再看完整對照表。台灣幾乎覆蓋了「晶片之外」的每一層。</p>
+
+  <figure>
+    <div class="figbox">
+      <svg viewBox="0 0 700 470" role="img" aria-label="台灣供應鏈分層圖">
+        <defs><style>
+          .ft{font-family:"BIZ UDPGothic","Noto Sans TC",sans-serif;}
+          .layer{font-size:17px;font-weight:800;fill:#fff;}
+          .makers{font-size:14px;fill:#fff;opacity:.95;}
+        </style></defs>
+        <rect x="0" y="0" width="700" height="470" rx="16" fill="#FBF6EC"/>
+        <text x="350" y="34" text-anchor="middle" class="ft" font-size="20" font-weight="800" fill="#2D2A26">台灣供應鏈分層(由內而外)</text>
+
+        <!-- 五層橫條 -->
+        <rect x="60" y="58" width="580" height="66" rx="10" fill="#C0492E"/>
+        <text x="80" y="86" class="ft layer">第 1 層 · 晶圓製造 + 先進封裝</text>
+        <text x="80" y="110" class="ft makers">台積電 2330(N3P / CoWoS-L / CPO COUPE) · 日月光 3711 · 京元電 2449</text>
+
+        <rect x="60" y="132" width="580" height="66" rx="10" fill="#C18A2B"/>
+        <text x="80" y="160" class="ft layer">第 2 層 · 板材 / 載板 / 被動元件</text>
+        <text x="80" y="184" class="ft makers">欣興 3037 · 南電 8046 · 臻鼎 4958 · 金像電 2368 · 台光電 2383 · 國巨 2327</text>
+
+        <rect x="60" y="206" width="580" height="66" rx="10" fill="#8C3A4A"/>
+        <text x="80" y="234" class="ft layer">第 3 層 · 電源(800V HVDC)</text>
+        <text x="80" y="258" class="ft makers">台達電 2308 · 光寶科 2301</text>
+
+        <rect x="60" y="280" width="580" height="66" rx="10" fill="#3F7068"/>
+        <text x="80" y="308" class="ft layer">第 4 層 · 液冷散熱 + 連接器</text>
+        <text x="80" y="332" class="ft makers">奇鋐 3017 · 雙鴻 3324 · 富世達 6805 · 健策 3653 · 鴻騰 FIT · 貿聯 3665</text>
+
+        <rect x="60" y="354" width="580" height="66" rx="10" fill="#3F7068" opacity=".7"/>
+        <text x="80" y="382" class="ft layer">第 5 層 · 系統組裝 ODM(總包)</text>
+        <text x="80" y="406" class="ft makers">緯穎 6669 · 緯創 3231 · 廣達 2382 · 鴻海 2317 · 英業達</text>
+
+        <text x="350" y="446" text-anchor="middle" class="ft" font-size="14" fill="#6B5C46">⬆ 愈外層,台灣自製率與整合附加價值愈高</text>
+      </svg>
+    </div>
+    <figcaption>圖三:台灣供應鏈五層分工——從晶圓到整櫃組裝</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+  <table>
+    <caption>表 4 · Vera Rubin 零件 × 功能 × 台廠 總對照(教學用,非投資建議)</caption>
+    <thead><tr><th>零件 / 環節</th><th>功能(白話)</th><th>主要台廠(代號)</th></tr></thead>
+    <tbody>
+      <tr><td>晶圓製造</td><td>把 GPU/CPU 做出來</td><td><span class="code">台積電 2330</span></td></tr>
+      <tr><td>CoWoS-L 先進封裝</td><td>把晶片與 HBM 疊在一起</td><td><span class="code">台積電 2330</span> · 日月光 3711</td></tr>
+      <tr><td>封測 / 測試</td><td>確認晶片良率與功能</td><td>日月光 3711 / 矽品 · 京元電 2449</td></tr>
+      <tr><td>ABF 載板</td><td>晶片的地基與門牌</td><td>欣興 3037 · 南電 8046 · 景碩 3189</td></tr>
+      <tr><td>PCB 主機板</td><td>所有零件的鋪線底板</td><td>臻鼎 4958 · 金像電 2368 · 高技 5439</td></tr>
+      <tr><td>CCL 高頻材料</td><td>高速訊號用的板材</td><td>台光電 2383 · 台燿 6274 · 聯茂 6213</td></tr>
+      <tr><td>MLCC 被動元件</td><td>穩壓、濾雜訊的小水庫</td><td>國巨 2327</td></tr>
+      <tr><td>電源 800V HVDC</td><td>把電高效送進機櫃</td><td>台達電 2308 · 光寶科 2301</td></tr>
+      <tr><td>水冷板 / 分歧管 / CDU</td><td>把晶片的熱帶走</td><td>奇鋐 3017 · 雙鴻 3324</td></tr>
+      <tr><td>快接頭(Quick Disconnect)</td><td>免工具插拔的水路接頭</td><td>富世達 6805 · 雙鴻 3324</td></tr>
+      <tr><td>均熱片</td><td>把熱均勻攤開</td><td>健策 3653</td></tr>
+      <tr><td>Sidecar 水冷機櫃</td><td>側櫃式散熱</td><td>晟銘電 3013</td></tr>
+      <tr><td>連接器 / 線材 / AEC</td><td>串接訊號與電力</td><td>鴻騰精密 FIT · 貿聯-KY 3665</td></tr>
+      <tr><td>矽光子 / CPO</td><td>把光纖接到晶片旁</td><td>上詮 3363 · 萬潤 6187 · 高明鐵 4573</td></tr>
+      <tr><td>系統組裝 ODM</td><td>整合成可交付的機櫃</td><td>緯穎 6669 · 緯創 3231 · 廣達 2382 · 鴻海 2317</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== S5 ===================== -->
+<section id="s5">
+  <div class="sec-head"><div class="sec-num">5</div><h2 class="sec-title">成本結構:為什麼一台漲到 95%?</h2></div>
+  <p>根據摩根士丹利供應鏈報告,雲端業者向 ODM 採購一台 VR200 NVL72 的平均售價(ASP)約 <strong>780 萬美元</strong>,比上一代 GB300(約 399 萬美元)大增近 <strong>95%</strong>。漲價主要來自記憶體與 PCB。</p>
+
+  <figure>
+    <div class="figbox">
+      <svg viewBox="0 0 700 360" role="img" aria-label="各零件成本漲幅長條圖">
+        <defs><style>
+          .ft{font-family:"BIZ UDPGothic","Noto Sans TC",sans-serif;}
+          .bl{font-size:15px;fill:#2D2A26;font-weight:700;}
+          .bv{font-size:15px;fill:#fff;font-weight:800;}
+        </style></defs>
+        <rect x="0" y="0" width="700" height="360" rx="16" fill="#FBF6EC"/>
+        <text x="350" y="32" text-anchor="middle" class="ft" font-size="19" font-weight="800" fill="#2D2A26">VR200 vs GB300：各環節成本漲幅</text>
+
+        <!-- baseline -->
+        <line x1="200" y1="60" x2="200" y2="320" stroke="#E4DBCB" stroke-width="2"/>
+
+        <!-- 記憶體 435% -->
+        <text x="190" y="86" text-anchor="end" class="ft bl">記憶體</text>
+        <rect x="200" y="70" width="460" height="30" rx="6" fill="#C18A2B"/>
+        <text x="650" y="91" text-anchor="end" class="ft bv">+435%</text>
+
+        <!-- PCB 233% -->
+        <text x="190" y="126" text-anchor="end" class="ft bl">PCB</text>
+        <rect x="200" y="110" width="320" height="30" rx="6" fill="#C0492E"/>
+        <text x="510" y="131" text-anchor="end" class="ft bv">+233%</text>
+
+        <!-- MLCC 182% -->
+        <text x="190" y="166" text-anchor="end" class="ft bl">MLCC</text>
+        <rect x="200" y="150" width="255" height="30" rx="6" fill="#8C3A4A"/>
+        <text x="445" y="171" text-anchor="end" class="ft bv">+182%</text>
+
+        <!-- 整櫃 ASP 95% -->
+        <text x="190" y="206" text-anchor="end" class="ft bl">整櫃 ASP</text>
+        <rect x="200" y="190" width="150" height="30" rx="6" fill="#2D2A26"/>
+        <text x="340" y="211" text-anchor="end" class="ft bv">+95%</text>
+
+        <!-- ABF 82% -->
+        <text x="190" y="246" text-anchor="end" class="ft bl">ABF 載板</text>
+        <rect x="200" y="230" width="130" height="30" rx="6" fill="#8A5A3B"/>
+        <text x="320" y="251" text-anchor="end" class="ft bv">+82%</text>
+
+        <!-- 電源 32% -->
+        <text x="190" y="286" text-anchor="end" class="ft bl">電源</text>
+        <rect x="200" y="270" width="60" height="30" rx="6" fill="#5E7A4F"/>
+        <text x="266" y="291" text-anchor="start" class="ft bl">+32%</text>
+
+        <!-- 散熱 12% -->
+        <text x="190" y="320" text-anchor="end" class="ft bl">散熱模組</text>
+        <rect x="200" y="304" width="28" height="26" rx="6" fill="#3F7068"/>
+        <text x="234" y="324" text-anchor="start" class="ft bl">+12%</text>
+      </svg>
+    </div>
+    <figcaption>圖四:VR200 較 GB300 的各環節成本漲幅(摩根士丹利估)</figcaption>
+  </figure>
+
+  <div class="tbl-wrap">
+  <table>
+    <caption>表 5 · BOM 成本變化重點(摩根士丹利)</caption>
+    <thead><tr><th>環節</th><th>變化</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr><td>整櫃 ASP</td><td class="up">399 萬 → 780 萬美元(+95%)</td><td>若 CSP 自採 SOCAMM 約 670 萬</td></tr>
+      <tr><td>記憶體</td><td class="up">+435%</td><td>佔 BOM 比重由 5–10% 升至 25–30%</td></tr>
+      <tr><td>PCB</td><td class="up">3.5 萬 → 11.7 萬美元(+233%)</td><td>板層數與材料等級提升</td></tr>
+      <tr><td>MLCC</td><td class="up">+182%</td><td>約 4,300 美元 / 櫃</td></tr>
+      <tr><td>ABF 載板</td><td class="up">+82%</td><td>—</td></tr>
+      <tr><td>電源</td><td class="up">+32%</td><td>800V HVDC 升級</td></tr>
+      <tr><td>散熱模組</td><td class="up">+12%</td><td>單櫃散熱價值約 48,060 美元</td></tr>
+      <tr><td>GPU 佔比</td><td>65% → 51%</td><td>被記憶體成本擠壓</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===================== S6 ===================== -->
+<section id="s6">
+  <div class="sec-head"><div class="sec-num">6</div><h2 class="sec-title">三大設計變革(看懂這代為什麼不一樣)</h2></div>
+
+  <div class="card">
+    <h3 style="color:var(--teal);margin-top:0">💧 變革一:100% 全液冷</h3>
+    <p>上一代 GB300 是液冷+氣冷併行(液冷約 80%);Vera Rubin <strong>整代全面液冷</strong>,GPU 改用微通道冷板。進水溫度 45°C,在多數氣候下甚至不必開冷卻機(自然冷卻),大幅降低 PUE。代價是漏液風險高,對良率與可靠度要求更嚴——這也提高了台廠散熱供應商的技術門檻與含金量。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--plum);margin-top:0">⚡ 變革二:800V 高壓直流(HVDC)</h3>
+    <p>單櫃功耗逼近 1MW,傳統低壓供電線會太粗、損耗太大。改走 800V HVDC 後,同樣的電可以用更細的線、更低的損耗送進機櫃,效率更高。這催生出機架式 Power Shelf(如 110kW)的新規格,台達電、光寶是主要供應者。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--brown);margin-top:0">🧩 變革三:Cableless 無線纜 + Blind-mate 盲插</h3>
+    <p>過去機櫃內部像蜘蛛網般佈滿電纜;VR200 改用 Midplane 背板取代內部線材,讓運算托盤可以像抽屜一樣「盲插」抽換。整櫃組裝從約 2 天縮短到約 2 小時,換一個托盤只要 5 分鐘。注意:這只影響「托盤內部」線材,對外的高電流線材與連接器需求反而因功率提升而增加(貿聯-KY 不受衝擊)。</p>
+  </div>
+</section>
+
+<!-- ===================== S7 ===================== -->
+<section id="s7">
+  <div class="sec-head"><div class="sec-num">7</div><h2 class="sec-title">重點回顧 + 思考題</h2></div>
+
+  <div class="keybox">
+    <h3>🎯 三句話帶走重點</h3>
+    <ul>
+      <li><strong>它是一整台機器,不是一張卡。</strong>七顆共同設計的晶片 + 全液冷 + 高壓供電,把整個機櫃當一台電腦。</li>
+      <li><strong>晶片是核心,但台灣的主場在「晶片之外」。</strong>封裝、載板、PCB、被動元件、電源、散熱、連接器、組裝——台灣幾乎每一層都有要角。</li>
+      <li><strong>這一代成本暴增近 95%。</strong>記憶體(+435%)與 PCB(+233%)是主因,價值正從單純的 GPU 往整套基礎設施擴散。</li>
+    </ul>
+  </div>
+
+  <div class="think">
+    <h3>🤔 課後思考</h3>
+    <ol>
+      <li>如果「全盲插」讓組裝變簡單,對 ODM 廠是好消息還是壞消息?為什麼摩根士丹利說它可能壓縮 ODM 的附加價值?</li>
+      <li>記憶體佔成本比重從 10% 衝到 30%,而 GPU 佔比反而下降——這對台灣「非記憶體」供應鏈是機會還是風險?</li>
+      <li>CPO(共封裝光學)被視為下一個瓶頸。為什麼把光纖「搬到晶片旁邊」這麼難,卻又這麼重要?</li>
+      <li>單櫃逼近 1MW、要全液冷——你覺得未來 AI 資料中心最大的限制會是「晶片」還是「電與水」?</li>
+    </ol>
+  </div>
+
+  <p class="disc">⚠️ 說明:本課程為產業教育用途,規格與成本數字整理自 NVIDIA 公開發表(CES 2026、GTC 2026)、NVIDIA 技術部落格及摩根士丹利等券商之公開供應鏈報告,部分為法人估算,實際量產規格與分工可能調整。文中所有台廠名稱與股票代號僅用於說明供應鏈分工與零件對應,<strong>不構成任何投資建議</strong>,也不對任何個股表現作保證。投資請自行評估風險。</p>
+</section>
+
+</div>
+</body>
+</html>
