@@ -1,748 +1,419 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teen Takeovers: A Growing Urban Concern</title>
-    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #FFF3E4;
-            --text-color: #1A0F00;
-            --h1-color: #C0392B;
-            --h2-color: #1565C0;
-            --h3-color: #2E7D32;
-            --accent-a: #E65100;
-            --accent-b: #6A1B9A;
-            --deep-blue: #0D47A1;
-            --card-border-1: #90CAF9;
-            --card-bg-1: #F3F8FF;
-            --card-border-2: #FFAB91;
-            --card-bg-2: #FFF3EF;
-            --card-border-3: #81C784;
-            --card-bg-3: #F1F8F2;
-            --card-border-4: #CE93D8;
-            --card-bg-4: #F9F0FF;
-            --footer-border: #C4A06A;
-            --footer-bg: #FAF6F0;
-            --warm-panel: #FFE4C7;
-            --warm-panel-2: #FFF9EF;
-            --link-red: #D84315;
-            --link-gold: #B56B00;
-            --link-green: #2E7D32;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMPUTEX 2025 自學教材｜AI Next 主題與主題演講重點</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --text:#1A0F00;
+    --h1:#C0392B;
+    --h2:#1565C0;
+    --h3:#2E7D32;
+    --accentA:#E65100;
+    --accentB:#6A1B9A;
+    --keyblue:#0D47A1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:linear-gradient(160deg,#FFF6EA 0%,#FFEAD6 45%,#FFE0CC 100%);
+    background-attachment:fixed;
+    color:var(--text);
+    font-family:'BIZ UDPGothic',system-ui,sans-serif;
+    font-size:21px;
+    line-height:1.9;
+    margin:0;
+    padding:0 16px 70px;
+  }
+  .wrap{max-width:860px;margin:0 auto;}
 
-        body {
-            font-family: 'BIZ UDPGothic', sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(255, 183, 77, 0.32), transparent 30%),
-                radial-gradient(circle at bottom right, rgba(255, 112, 67, 0.20), transparent 34%),
-                linear-gradient(180deg, #FFF3E4 0%, #FFEED6 45%, #FFF8EE 100%);
-            color: var(--text-color);
-            font-size: 22px;
-            line-height: 1.85;
-            margin: 0;
-            padding: 28px 18px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  /* ===== 連結列（頂部 / 底部共用）===== */
+  .linkbar{margin:22px 0 6px;}
+  .linkbar .bar-title{
+    text-align:center;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#BF360C;
+    letter-spacing:1px;
+    margin-bottom:14px;
+  }
+  .link-card{
+    display:block;
+    text-decoration:none;
+    border-radius:18px;
+    padding:18px 22px;
+    margin:14px 0;
+    min-height:72px;
+    box-shadow:0 5px 14px rgba(191,54,12,.18);
+    transition:transform .2s, box-shadow .2s;
+    border:3px solid rgba(255,255,255,.6);
+  }
+  .link-card:active{transform:scale(.98);}
+  .link-card .lc-label{
+    font-size:1.3rem;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .link-card .lc-desc{
+    font-size:1rem;
+    line-height:1.6;
+    margin-top:6px;
+    opacity:.95;
+  }
+  .lc-emoji{font-size:1.6rem;}
+  .lc1{background:linear-gradient(135deg,#FF8A65,#FF7043);color:#fff;}
+  .lc1 .lc-desc{color:#FFF3EC;}
+  .lc2{background:linear-gradient(135deg,#FFB74D,#FB8C00);color:#4A2700;}
+  .lc2 .lc-desc{color:#5C3300;}
+  .lc3{background:linear-gradient(135deg,#81C784,#4CAF50);color:#fff;}
+  .lc3 .lc-desc{color:#EAFBEA;}
 
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+  /* 頂部標題 */
+  header{padding:34px 0 10px;text-align:center;}
+  .title-box{
+    display:inline-block;
+    border:5px solid var(--h1);
+    border-radius:20px;
+    padding:18px 30px;
+    background:#FFFFFF;
+    box-shadow:0 7px 0 rgba(192,57,43,.18);
+  }
+  .title-box h1{
+    color:var(--h1);
+    font-size:3rem;
+    margin:0;
+    line-height:1.3;
+    letter-spacing:1px;
+  }
+  .subtitle{color:var(--h2);font-size:2rem;font-weight:700;margin:22px 0 8px;}
+  .credit{
+    color:#1565C0;font-size:1.45rem;font-weight:700;
+    letter-spacing:2px;text-shadow:1px 1px 0 #BBDEFB;
+  }
+  .meta{color:var(--accentA);font-size:1.05rem;margin-top:14px;}
 
-        .resource-panel {
-            width: 100%;
-            max-width: 980px;
-            margin: 0 auto 28px;
-            background: linear-gradient(135deg, rgba(255, 248, 239, 0.98), rgba(255, 224, 189, 0.98));
-            border: 3px solid #F6A65B;
-            border-radius: 22px;
-            box-shadow: 0 14px 32px rgba(141, 77, 23, 0.18);
-            padding: 22px;
-            box-sizing: border-box;
-        }
+  /* 區段 */
+  section{
+    background:#FFFFFF;
+    border:3px solid #FFD7B0;
+    border-radius:18px;
+    padding:28px 24px;
+    margin:28px 0;
+    box-shadow:0 6px 18px rgba(230,81,0,.10);
+  }
+  h2{
+    color:var(--h2);font-size:1.9rem;margin:0 0 18px;
+    padding-bottom:12px;border-bottom:4px solid #BBDEFB;
+  }
+  h3{color:var(--h3);font-size:1.5rem;margin:26px 0 12px;}
+  p{margin:14px 0;}
+  strong{color:var(--keyblue);}
+  .em-orange{color:var(--accentA);font-weight:700;}
+  .em-purple{color:var(--accentB);font-weight:700;}
+  ul{padding-left:1.4em;margin:14px 0;}
+  li{margin:10px 0;}
 
-        .resource-panel.bottom-links {
-            margin: 38px auto 0;
-        }
+  /* 四大支柱卡片 */
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+  .pillar{border-radius:16px;padding:18px;border:3px solid;}
+  .pillar h4{margin:0 0 8px;font-size:1.25rem;}
+  .pillar p{margin:0;font-size:1rem;line-height:1.7;}
+  .p1{background:#F3F8FF;border-color:#90CAF9;}.p1 h4{color:#1565C0;}
+  .p2{background:#FFF3EF;border-color:#FFAB91;}.p2 h4{color:#BF360C;}
+  .p3{background:#F1F8F2;border-color:#81C784;}.p3 h4{color:#1B5E20;}
+  .p4{background:#F9F0FF;border-color:#CE93D8;}.p4 h4{color:#4A148C;}
 
-        .resource-title {
-            margin: 0 0 16px;
-            text-align: center;
-            color: #8A3B12;
-            font-size: 1.35rem;
-            font-weight: 700;
-        }
+  /* 英文摘要框 */
+  .en-summary{
+    background:linear-gradient(135deg,#F3F8FF,#EAF3FF);
+    border-left:8px solid var(--keyblue);
+    border-radius:12px;padding:16px 20px;margin:20px 0 6px;
+    font-size:1.02rem;line-height:1.7;color:#0D2B5E;
+  }
+  .en-summary .tag{
+    display:inline-block;background:var(--keyblue);color:#fff;
+    font-size:.82rem;font-weight:700;padding:3px 12px;
+    border-radius:20px;margin-bottom:8px;letter-spacing:1px;
+  }
+  .en-summary em{color:#C0392B;font-style:normal;font-weight:700;}
 
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
+  /* 講者卡 */
+  .speaker{
+    background:linear-gradient(135deg,#FFFBF5,#FFF1E0);
+    border:3px dashed #FFB74D;border-radius:14px;
+    padding:14px 18px;margin:18px 0;font-size:1.02rem;
+  }
+  .speaker b{color:var(--accentA);}
 
-        .resource-card {
-            display: block;
-            min-height: 150px;
-            padding: 18px;
-            border-radius: 18px;
-            text-decoration: none;
-            color: #2B1609;
-            border: 2px solid rgba(255, 255, 255, 0.75);
-            box-shadow: 0 8px 18px rgba(141, 77, 23, 0.12);
-            box-sizing: border-box;
-        }
+  .stat{
+    display:inline-block;background:#FEEAD8;color:#E65100;
+    font-weight:700;padding:2px 12px;border-radius:18px;
+    font-size:.98rem;margin:2px;
+  }
 
-        .resource-card.course-echo { background: linear-gradient(160deg, #FFF2C6, #FFCC80); }
-        .resource-card.course-analysis { background: linear-gradient(160deg, #FFE0B2, #FFAB91); }
-        .resource-card.line-card { background: linear-gradient(160deg, #DCF8C6, #A5D6A7); }
+  /* glossary 折疊 */
+  details{
+    background:#FFFBF4;border:3px solid #C4A06A;
+    border-radius:16px;margin:18px 0;overflow:hidden;
+  }
+  summary{
+    cursor:pointer;list-style:none;padding:20px 24px;
+    font-size:1.45rem;font-weight:700;color:#4A3728;
+    background:linear-gradient(135deg,#F7E7CE,#F0D9B5);
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:72px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  .arrow{
+    border:solid #4A3728;border-width:0 5px 5px 0;
+    display:inline-block;padding:6px;transform:rotate(45deg);
+    transition:transform .25s;
+  }
+  details[open] .arrow{transform:rotate(225deg);}
+  .gloss-body{padding:10px 24px 26px;}
+  .gloss-item{border-bottom:2px solid #EADBC4;padding:16px 0;}
+  .gloss-item:last-child{border-bottom:none;}
+  .gloss-term{color:#C0392B;font-weight:700;font-size:1.2rem;}
+  .gloss-en{color:var(--keyblue);font-weight:700;}
+  .gloss-def{margin:8px 0 0;font-size:1.02rem;line-height:1.8;}
 
-        .resource-card strong {
-            display: block;
-            color: #7A2800;
-            font-size: 1.05em;
-            line-height: 1.35;
-            margin-bottom: 8px;
-        }
+  /* 自學提問框 */
+  .quiz{
+    background:linear-gradient(135deg,#FEF9E7,#FDF3CE);
+    border:3px solid #F4D03F;border-radius:16px;
+    padding:22px 24px;margin:26px 0;
+  }
+  .quiz h3{color:#D68910;margin-top:0;}
+  .quiz ol{padding-left:1.4em;}
 
-        .resource-card span {
-            display: block;
-            font-size: 0.88em;
-            line-height: 1.55;
-        }
+  hr.div{border:none;border-top:3px dashed #FFB74D;margin:34px 0 10px;}
 
-        .resource-card .resource-action {
-            margin-top: 12px;
-            color: #6D2C00;
-            font-weight: 700;
-        }
-
-        /* Header Styles */
-        .main-title {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--h1-color);
-            border: 5px solid var(--h1-color);
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 18px;
-            box-shadow: 0 10px 24px rgba(141, 77, 23, 0.12);
-        }
-
-        .sub-title {
-            font-size: 2.2rem;
-            color: var(--h2-color);
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .credits {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.8rem;
-            color: var(--h2-color);
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        /* Section Cards */
-        .section-card {
-            border-left: 10px solid;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 0 15px 15px 0;
-            box-shadow: 0 10px 24px rgba(99, 54, 16, 0.12);
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 25px;
-            padding: 10px 20px;
-            color: white;
-            display: inline-block;
-            border-radius: 5px;
-        }
-
-        /* Section 1 */
-        .section-1 { border-color: var(--deep-blue); background-color: var(--card-bg-1); }
-        .title-1 { background-color: var(--deep-blue); }
-        .highlight { color: var(--deep-blue); font-weight: bold; }
-
-        /* Section 2 */
-        .section-2 { border-color: #BF360C; background-color: var(--card-bg-2); }
-        .title-2 { background-color: #BF360C; }
-        .circle-num {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background-color: #BF360C;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            margin-right: 15px;
-        }
-        .quote-box { font-style: italic; margin-bottom: 10px; }
-        .analysis-box { margin-bottom: 15px; }
-        .pill {
-            display: inline-block;
-            background-color: var(--accent-a);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            margin-right: 10px;
-        }
-
-        /* Section 3 */
-        .section-3 { border-color: #1B5E20; background-color: var(--card-bg-3); }
-        .title-3 { background-color: #1B5E20; }
-        .vocab-item { border-bottom: 2px dashed #81C784; padding: 20px 0; }
-        .vocab-head { font-size: 1.4em; font-weight: bold; color: #1B5E20; }
-        .tag-row { display: flex; margin: 10px 0; align-items: flex-start; }
-        .tag-label {
-            min-width: 120px;
-            padding: 5px 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-right: 15px;
-            text-align: center;
-        }
-        .tag-content { flex: 1; }
-        
-        /* Tag Colors */
-        .tag-deriv { background-color: #FDEDEC; color: #C0392B; }
-        .tag-root { background-color: #EBF5FB; color: #1565C0; }
-        .tag-phrase { background-color: #EAFAF1; color: #2E7D32; }
-        .tag-idiom { background-color: #FEF9E7; color: #D68910; }
-        .tag-confuse { background-color: #F5EEF8; color: #6A1B9A; }
-        .tag-prepo { background-color: #FEF0E7; color: #E65100; }
-
-        /* Section 4 */
-        .section-4 { border-color: #4A148C; background-color: var(--card-bg-4); }
-        .title-4 { background-color: #4A148C; }
-        .grammar-point { border-bottom: 3px solid #CE93D8; padding: 25px 0; }
-        .grammar-name { font-size: 1.6em; color: #4A148C; font-weight: bold; margin-bottom: 15px; }
-        .quiz-box { background-color: white; padding: 20px; border: 2px solid #4A148C; border-radius: 10px; margin-top: 15px; }
-
-        /* Bottom Folders */
-        .bottom-section { border-color: #4A3728; background-color: var(--footer-bg); padding: 30px; border-left: 10px solid #4A3728; margin-top: 50px; }
-        details { background: white; margin-bottom: 15px; border: 2px solid #C4A06A; border-radius: 10px; }
-        summary { padding: 20px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s; }
-        details[open] summary::after { transform: rotate(180deg); }
-        .details-content { padding: 20px; border-top: 2px solid #C4A06A; }
-
-        @media (max-width: 600px) {
-            .main-title { font-size: 2rem; }
-            .sub-title { font-size: 1.5rem; }
-            body { font-size: 18px; padding: 16px 12px 28px; }
-            .resource-panel { padding: 16px; border-radius: 18px; }
-            .resource-grid { grid-template-columns: 1fr; }
-            .resource-card { min-height: 0; padding: 16px; }
-            .section-card { padding: 20px 16px; border-left-width: 7px; }
-            .section-title { font-size: 1.45rem; }
-        }
-    </style>
+  @media(max-width:600px){
+    body{font-size:19px;}
+    .title-box h1{font-size:2.1rem;}
+    .subtitle{font-size:1.5rem;}
+    .pillars{grid-template-columns:1fr;}
+    h2{font-size:1.55rem;}
+    .link-card .lc-label{font-size:1.15rem;}
+  }
+</style>
 </head>
 <body>
-    <div class="resource-panel top-links" aria-label="課程與聯絡資訊">
-        <div class="resource-title">七月課程與聯絡資訊</div>
-        <div class="resource-grid">
-            <a class="resource-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                <strong>七月課程介紹，錯中學ECHO 計劃</strong>
-                <span>透過錯誤修正、回饋與練習，幫助學生把英文弱點變成可追蹤的進步路線。</span>
-                <span class="resource-action">查看課程</span>
-            </a>
-            <a class="resource-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                <strong>學生分析</strong>
-                <span>用學習資料與表現觀察，整理學生目前程度、常見問題與後續加強方向。</span>
-                <span class="resource-action">查看分析</span>
-            </a>
-            <a class="resource-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                <strong>我的Line帳號：linwayet</strong>
-                <span>需要課程資訊、學習建議或報名協助，可以加入 Line 與我聯絡。</span>
-                <span class="resource-action">加入 Line</span>
-            </a>
-        </div>
-    </div>
-    <div class="container">
-        <!-- Header -->
-        <div class="main-title">Teen Takeovers: A Growing Urban Concern</div>
-        <div class="sub-title">青少年接管：日益嚴重的城市問題</div>
-        <div class="credits">林威老師與 AI agent 團隊製作</div>
+<div class="wrap">
 
-        <!-- Section 1: Original Text -->
-        <div class="section-card section-1">
-            <h2 class="section-title title-1">區塊一：英文文章原文</h2>
-            <div class="original-text">
-                <p>In recent years, a <strong class="highlight">troubling</strong> trend known as "<strong class="highlight">teen takeovers</strong>" has spread across several major American cities. These events occur when large groups of teenagers gather suddenly at public spaces — such as shopping malls, parks, or beaches — after being <strong class="highlight">organized</strong> through social media platforms. In Milwaukee, Wisconsin, for example, police responded to <strong class="highlight">teen takeovers</strong> at Bayshore Mall, Mayfair Mall, and Moody Park in early 2026, resulting in over a dozen arrests of <strong class="highlight">individuals</strong> between the ages of 12 and 19. Milwaukee <strong class="highlight">authorities</strong> even <strong class="highlight">released</strong> drone <strong class="highlight">footage</strong> of one gathering to warn the public about the dangers these events can cause.</p>
+<!-- ===== 頂部連結列 ===== -->
+<nav class="linkbar">
+  <div class="bar-title">🔗 林威老師　七月課程 &amp; 聯絡方式</div>
+  <a class="link-card lc1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📚</span>七月課程介紹｜錯中學 ECHO 計劃</span>
+    <span class="lc-desc">透過「在錯誤中學習」的方法，帶你打好英文底子。七月新班開課，點我看課程內容。</span>
+  </a>
+  <a class="link-card lc2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📊</span>學生分析</span>
+    <span class="lc-desc">個人化的英文學習與考試分析工具，了解自己的強項與弱點。</span>
+  </a>
+  <a class="link-card lc3" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">💬</span>加我的 LINE：linwayet</span>
+    <span class="lc-desc">課程問題、報名洽詢，歡迎直接用 LINE 聯絡我。</span>
+  </a>
+</nav>
 
-                <p>Chicago has experienced <strong class="highlight">similarly</strong> alarming <strong class="highlight">incidents</strong>. In April 2025, a 14-year-old boy was <strong class="highlight">charged</strong> in <strong class="highlight">connection</strong> with a shooting that injured a 15-year-old during one such gathering in downtown Chicago. More recently, on Memorial Day 2026, a <strong class="highlight">teen takeover</strong> at 57th Street Beach turned <strong class="highlight">chaotic</strong>, forcing dozens of police officers to respond and leading to the temporary <strong class="highlight">closure</strong> of part of DuSable Lake Shore Drive. Chicago Police and school officials have since sent warning letters to parents about social media messages <strong class="highlight">organizing</strong> future events.</p>
+<header>
+  <div class="title-box"><h1>COMPUTEX 2025</h1></div>
+  <div class="subtitle">「AI Next」主題與主題演講重點　完整自學教材</div>
+  <div class="credit">林威老師與 AI agent 團隊製作</div>
+  <div class="meta">2025 年 5 月 20–23 日｜台北南港展覽館一館、二館</div>
+</header>
 
-                <p>These <strong class="highlight">incidents</strong> raise serious questions about teenage <strong class="highlight">behavior</strong>, parental <strong class="highlight">responsibility</strong>, and the power of social media. City leaders in both Milwaukee and Chicago have <strong class="highlight">proposed</strong> stricter <strong class="highlight">curfews</strong> and expanded police patrols to prevent further <strong class="highlight">disruptions</strong>. While most teenagers are not involved in such gatherings, <strong class="highlight">experts</strong> stress that open <strong class="highlight">communication</strong> between parents and teens remains one of the most effective tools to keep young people safe.</p>
-            </div>
-        </div>
+<!-- 區段一 -->
+<section>
+  <h2>一、大會總覽：什麼是 COMPUTEX 2025？</h2>
+  <p>COMPUTEX（台北國際電腦展）是亞洲規模最大、全球最具指標性的科技 B2B 商展之一，由台北市電腦公會（TCA）與外貿協會（TAITRA）共同主辦。2025 年的展期為 <strong>5 月 20 日至 23 日</strong>，共有 <span class="stat">1,400 家參展商</span>、<span class="stat">4,800 個攤位</span>，展覽面積達 8 萬平方公尺。</p>
+  <p>四天展期吸引了來自 <strong>152 個國家、共 86,521 名買主</strong>進場，包括日本、美國、南韓、越南與印度等，創下亮眼的參觀人數，也再次確立台灣在全球科技供應鏈中的樞紐角色。</p>
+  <p>今年的大會主題訂為 <span class="em-orange">「AI Next」</span>，意思是「人工智慧的下一步」。主辦單位用這個主題，把整場展覽收斂到四大技術趨勢之下，讓零散的產品發表能對應到一個共同的方向。</p>
 
-        <!-- Section 2: 8 Key Sentence Analyses -->
-        <div class="section-card section-2">
-            <h2 class="section-title title-2">區塊二：8句精讀</h2>
-            
-            <!-- Sentence 1 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">①</span> In recent years, a troubling trend known as "teen takeovers" has spread across several major American cities.</div>
-                <div class="quote-box">近年來，一項被稱為「青少年接管」的令人不安趨勢已蔓延至多個美國主要城市。</div>
-                <div><strong>文法解析：</strong>本句使用現在完成式 has spread 表示從過去持續至今的影響。known as 為過去分詞作形容詞用法，修飾前面的 trend。</div>
-                <div><span class="pill">troubling (adj.) 令人不安的</span> <span class="pill">spread (v.) 蔓延</span></div>
-            </div>
+  <h3>四大技術支柱（The Four Pillars）</h3>
+  <div class="pillars">
+    <div class="pillar p1"><h4>① AI 運算<br>AI Computing</h4><p>從雲端資料中心到個人裝置的 AI 算力，是本屆絕對核心，貫穿所有主題演講。</p></div>
+    <div class="pillar p2"><h4>② 未來移動<br>Future Mobility</h4><p>自駕車、車用晶片與智慧交通系統，把 AI 帶進交通運輸領域。</p></div>
+    <div class="pillar p3"><h4>③ 次世代通訊<br>Next-Gen Communication</h4><p>5G／6G、高速網路與互連技術，是支撐大規模 AI 部署的「血管」。</p></div>
+    <div class="pillar p4"><h4>④ 綠能永續<br>Green Energy &amp; Sustainability</h4><p>AI 資料中心耗電龐大，散熱與節能成為不可迴避的議題。</p></div>
+  </div>
 
-            <!-- Sentence 2 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">②</span> These events occur when large groups of teenagers gather suddenly at public spaces... after being organized through social media platforms.</div>
-                <div class="quote-box">這些事件發生在大量青少年突然聚集在公共場所時...這是在透過社群媒體平台組織之後。</div>
-                <div><strong>文法解析：</strong>after being organized 為介系詞後接動名詞被動態，強調被組織的過程。when 引導時間副詞子句。</div>
-                <div><span class="pill">occur (v.) 發生</span> <span class="pill">organized (adj.) 有組織的</span></div>
-            </div>
+  <p>值得注意的是，今年 <span class="em-purple">Intel（英特爾）並未舉辦主題演講</span>，因為其產品正處於世代交替的中段；舞台主要由 <strong>NVIDIA、AMD、Qualcomm（高通）</strong> 三家撐起。此外，大會也安排了「COMPUTEX Forum」與「InnoVEX 新創論壇」，邀請 AWS、Google Cloud、Google DeepMind、微軟、Adobe、施耐德電機等廠商深入探討。</p>
 
-            <!-- Sentence 3 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">③</span> ...resulting in over a dozen arrests of individuals between the ages of 12 and 19.</div>
-                <div class="quote-box">...導致十幾名年齡在 12 至 19 歲之間的個人被捕。</div>
-                <div><strong>文法解析：</strong>resulting in 為分詞構句，修飾前面的整個句子，表示「結果」。between...and... 用於表示範圍。</div>
-                <div><span class="pill">result in (phr.) 導致</span> <span class="pill">arrest (n.) 逮捕</span></div>
-            </div>
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>COMPUTEX 2025, Asia's largest tech trade show, ran from <em>May 20–23</em> in Taipei with 1,400 exhibitors and over 86,000 buyers from 152 countries. Its theme, <em>"AI Next,"</em> organized the event around four pillars: AI Computing, Future Mobility, Next-Gen Communication, and Green Energy &amp; Sustainability. With Intel skipping a keynote this year, the spotlight fell on NVIDIA, AMD, and Qualcomm.</p>
+  </div>
+</section>
 
-            <!-- Sentence 4 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">④</span> Milwaukee authorities even released drone footage of one gathering to warn the public about the dangers these events can cause.</div>
-                <div class="quote-box">密爾瓦基當局甚至發布了一段集會的無人機畫面，以向大眾警告這些事件可能造成的危險。</div>
-                <div><strong>文法解析：</strong>to warn 為不定詞表目的。dangers 後省略了關係代名詞 that/which，該形容詞子句修飾 dangers。</div>
-                <div><span class="pill">authority (n.) 當局</span> <span class="pill">footage (n.) 影片片段</span></div>
-            </div>
+<!-- 區段二 -->
+<section>
+  <h2>二、NVIDIA 主題演講：「AI 工廠」與 AI 基礎建設時代</h2>
+  <div class="speaker">🎤 講者：<b>黃仁勳（Jensen Huang）</b>，NVIDIA 創辦人暨執行長｜開幕第一場大型演講，長約 100 分鐘</div>
+  <p>黃仁勳的核心主張是：<span class="em-orange">AI 不再只是一項「工具」，而是未來世界的「基礎建設」</span>。他延續 GTC 大會的策略，把「token（詞元）的生成」當成 AI 運算最基本的單位——就像工廠生產商品一樣，未來的資料中心會「生產智慧」。他把這種新型資料中心稱為 <strong>「AI 工廠」（AI Factory）</strong>。</p>
 
-            <!-- Sentence 5 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">⑤</span> In April 2025, a 14-year-old boy was charged in connection with a shooting that injured a 15-year-old...</div>
-                <div class="quote-box">2025 年 4 月，一名 14 歲男孩被指控與一次導致一名 15 歲青少年受傷的槍擊事件有關...</div>
-                <div><strong>文法解析：</strong>was charged 為被動語態。that injured 為形容詞子句修飾 shooting。in connection with 為固定片語。</div>
-                <div><span class="pill">be charged with (phr.) 被指控</span> <span class="pill">connection (n.) 關聯</span></div>
-            </div>
+  <h3>重點一：NVLink Fusion——打開封閉生態系</h3>
+  <p>本場最受矚目的發表是 <strong>NVLink Fusion</strong>。過去 NVIDIA 的 GPU 只能透過自家的 NVLink 與自家 CPU 互連，是一個高度整合、封閉的系統。NVLink Fusion 則是一塊「<span class="em-purple">小晶片（chiplet）</span>」，可以讓第三方的 CPU 與客製化 AI 加速器（ASIC）直接插進 NVIDIA 的運算架構裡。</p>
+  <ul>
+    <li>合作夥伴包括 <strong>聯發科（MediaTek）、Marvell、富士通（Fujitsu）、高通（Qualcomm）、Alchip（世芯）</strong> 等。</li>
+    <li>單一 GPU 頻寬可達 <span class="stat">1.8 TB/s</span>，是 PCIe Gen5 的 14 倍。</li>
+    <li>意義：NVIDIA 從「賣整套封閉系統」走向「<span class="em-orange">半客製化（semi-custom）</span>」，既開放生態系，又替自己開了新的收入來源。</li>
+  </ul>
 
-            <!-- Sentence 6 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">⑥</span> ...a teen takeover at 57th Street Beach turned chaotic, forcing dozens of police officers to respond...</div>
-                <div class="quote-box">...第 57 街海灘的一次青少年接管演變成混亂，迫使數十名警察出動...</div>
-                <div><strong>文法解析：</strong>forcing 為現在分詞作分詞構句，表示主要動詞 turned chaotic 的結果或伴隨狀況。</div>
-                <div><span class="pill">chaotic (adj.) 混亂的</span> <span class="pill">force (v.) 迫使</span></div>
-            </div>
+  <h3>重點二：個人級 AI 超級電腦 DGX Spark</h3>
+  <p>NVIDIA 推出桌上型的 <strong>DGX Spark</strong>，被黃仁勳形容為「任何人都能擁有的 AI 超級電腦」。它有 <span class="stat">1 PFLOP 算力</span>、<span class="stat">128GB 記憶體</span>，效能等同 2016 年的第一代 DGX 超級電腦，卻縮小到桌邊大小。它解決的問題是：<strong>並非所有工作都該丟到雲端</strong>，開發者需要能在本地快速實驗的機器。</p>
 
-            <!-- Sentence 7 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">⑦</span> Chicago Police and school officials have since sent warning letters to parents about social media messages organizing future events.</div>
-                <div class="quote-box">芝加哥警方和學校官員隨後向家長發出警告信，提醒有關組織未來事件的社群媒體訊息。</div>
-                <div><strong>文法解析：</strong>organizing 為現在分詞短語，修飾前面的名詞 messages，相當於 that organize。</div>
-                <div><span class="pill">warning (adj.) 警告的</span> <span class="pill">organize (v.) 組織</span></div>
-            </div>
+  <h3>重點三：實體 AI 與機器人</h3>
+  <p>黃仁勳強調 <span class="em-purple">「實體 AI」（Physical AI）</span>——讓機器能理解並遵守真實世界的物理法則。NVIDIA 更新了人形機器人基礎模型 <strong>Isaac GR00T N1.5</strong>，並展示台積電、鴻海、和碩如何用 Omniverse 平台打造「數位分身（digital twin）」工廠。他同時推出 <strong>DGX Cloud Lepton</strong> 算力市集，串接全球 GPU 雲端業者與開發者，打造「行星等級的 AI 工廠」。</p>
+  <p>其他發表還包括：液冷的 <strong>Grace Blackwell GB300</strong>（推論效能提升 1.5 倍）、量產中的 <strong>RTX Pro Server</strong>，以及預告下一代架構 <strong>Rubin</strong>，確立「年度平台更新」的節奏。</p>
 
-            <!-- Sentence 8 -->
-            <div class="analysis-box">
-                <div class="vocab-head"><span class="circle-num">⑧</span> While most teenagers are not involved in such gatherings, experts stress that open communication... remains one of the most effective tools...</div>
-                <div class="quote-box">雖然大多數青少年並未參與此類集會，但專家強調，開放溝通...仍然是最有效的工具之一...</div>
-                <div><strong>文法解析：</strong>While 引導讓步副詞子句。that 引導名詞子句作為動詞 stress 的受詞。one of + 最高級 + 複數名詞為常見句型。</div>
-                <div><span class="pill">be involved in (phr.) 參與</span> <span class="pill">stress (v.) 強調</span></div>
-            </div>
-        </div>
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>NVIDIA CEO Jensen Huang opened COMPUTEX with a vision of <em>"AI factories"</em>—data centers that produce intelligence at scale. His headline reveal, <em>NVLink Fusion</em>, lets third-party CPUs and custom chips plug into NVIDIA's fabric, opening its once-closed ecosystem to partners like MediaTek and Qualcomm. He also launched the desktop-sized <em>DGX Spark</em> supercomputer and pushed hard on "physical AI," updating the Isaac GR00T humanoid-robot model and showcasing digital-twin factories built with TSMC and Foxconn.</p>
+  </div>
+</section>
 
-        <!-- Section 3: 18-20 Vocabulary List -->
-        <div class="section-card section-3">
-            <h2 class="section-title title-3">區塊三：18–20個單字整理</h2>
-            
-            <!-- 1. troubling -->
-            <div class="vocab-item">
-                <div class="vocab-head">1. troubling [ˈtrʌblɪŋ] (adj.) 令人不安的</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">trouble (n./v.) 麻煩；煩擾</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">deeply troubling (深感不安的)</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">troubling news (令人憂慮的消息)</div></div>
-                <div class="tag-content">
-                    In recent years, a <i>troubling</i> trend has spread across American cities.<br>（近年來，一項令人不安的趨勢已蔓延至美國城市。）<br>
-                    The sudden increase in crime rates is <i>troubling</i> to local residents.<br>（犯罪率的突然增加令當地居民感到不安。）
-                </div>
-            </div>
+<!-- 區段三 -->
+<section>
+  <h2>三、AMD 主題演講：高效能運算與本地端 AI</h2>
+  <div class="speaker">🎤 講者：<b>Jack Huynh</b>，AMD 運算與繪圖事業群資深副總裁暨總經理（非執行長蘇姿丰博士）</div>
+  <p>由 Jack Huynh 而非執行長蘇姿丰主講，本身就是一個訊號：今年 AMD 的重點放在 <span class="em-orange">消費端與工作站產品</span>，而非資料中心的 EPYC 與 Instinct 加速器。整場演講圍繞遊戲、PC 與工作站三大領域，主軸是把 AI 運算能力帶到「<strong>本地端（local）</strong>」——讓使用者不必完全依賴雲端，兼顧資料隱私、降低延遲與企業級安全。</p>
 
-            <!-- 2. takeover -->
-            <div class="vocab-item">
-                <div class="vocab-head">2. takeover [ˈtekˌovɚ] (n.) 接管；強佔</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">take over (phr v.) 接管</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">hostile takeover (惡意併購)</div></div>
-                <div class="tag-content">
-                    A trend known as "teen <i>takeovers</i>" has spread across major cities.<br>（一項被稱為「青少年接管」的趨勢已蔓延至各大城市。）<br>
-                    The company is preparing for a possible <i>takeover</i> by its rival.<br>（這家公司正準備應對對手可能的收購。）
-                </div>
-            </div>
+  <h3>重點一：主流遊戲顯卡 Radeon RX 9060 XT</h3>
+  <p>採用 <strong>RDNA 4 架構</strong>，提供 1440p 解析度遊戲體驗、光線追蹤，以及 <strong>FSR 4</strong> 機器學習增強的畫面升頻技術（讓畫面變漂亮而不必硬拉高階顯卡）。</p>
+  <ul>
+    <li>8GB 版本：32 組運算單元、150W、定價 <span class="stat">US$299</span></li>
+    <li>16GB 版本：記憶體加倍、160W、定價 <span class="stat">US$349</span></li>
+    <li>2025 年 7 月上市，主打高性價比。</li>
+  </ul>
 
-            <!-- 3. organize -->
-            <div class="vocab-item">
-                <div class="vocab-head">3. organize [ˈɔrɡəˌnaɪz] (v.) 組織</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">organization (n.) 組織；organized (adj.) 有組織的</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">well organized (組織良好的)</div></div>
-                <div class="tag-content">
-                    These events are <i>organized</i> through social media platforms.<br>（這些事件是透過社群媒體平台組織的。）<br>
-                    Volunteers helped <i>organize</i> the local charity event.<br>（志工們協助組織了當地的慈善活動。）
-                </div>
-            </div>
+  <h3>重點二：專業 AI 顯卡 Radeon AI PRO R9700</h3>
+  <p>鎖定工作站與資料中心，支援多 GPU 並聯，處理大型 AI 模型、複雜模擬與即時渲染，強調「<span class="em-purple">本地端 AI 處理</span>」能力。</p>
 
-            <!-- 4. individual -->
-            <div class="vocab-item">
-                <div class="vocab-head">4. individual [ˌɪndəˈvɪdʒuəl] (n.) 個人</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">individuality (n.) 個性；individually (adv.) 個別地</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">unique individual (獨特的個人)</div></div>
-                <div class="tag-content">
-                    The incident resulted in over a dozen arrests of <i>individuals</i>.<br>（該事件導致十幾名個人被捕。）<br>
-                    We must respect the rights of every <i>individual</i> in society.<br>（我們必須尊重社會中每個人的權利。）
-                </div>
-            </div>
+  <h3>重點三：96 核心怪獸 Threadripper 9000 系列</h3>
+  <p>代號 <strong>Shimada Peak</strong>，採 Zen 5 架構，鎖定高階桌機與專業工作站。旗艦 <strong>Threadripper PRO 9995WX</strong> 擁有驚人的 <span class="stat">96 核心、192 執行緒</span>，384MB L3 快取與 128 條 PCIe 5.0 通道。</p>
+  <ul>
+    <li>9980X：64 核心／128 執行緒</li>
+    <li>9970X：32 核心／64 執行緒</li>
+    <li>9960X：24 核心／48 執行緒</li>
+    <li>2025 年 7 月起陸續上市。</li>
+  </ul>
+  <p>此外，Jack Huynh 邀請華碩共同執行長許先越上台，發表 <strong>ASUS Expert P 系列 Copilot+ PC</strong>，把 AI 加速帶進企業商用筆電；AMD 也宣布與 Red Hat 擴大合作，共同推進 AI 基礎建設。</p>
 
-            <!-- 5. authority -->
-            <div class="vocab-item">
-                <div class="vocab-head">5. authority [əˈθɔrətɪ] (n.) 當局；權威</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">authorize (v.) 授權；authoritative (adj.) 權威性的</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">local authorities (地方當局)</div></div>
-                <div class="tag-content">
-                    Milwaukee <i>authorities</i> released drone footage of the gathering.<br>（密爾瓦基當局發布了集會的無人機畫面。）<br>
-                    The teacher has the <i>authority</i> to maintain discipline in class.<br>（老師有權力維持教室紀律。）
-                </div>
-            </div>
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>AMD's keynote, led by Jack Huynh rather than CEO Lisa Su, focused on gaming, PCs, and workstations—bringing AI power to <em>local</em> devices instead of the cloud. Key launches included the affordable <em>Radeon RX 9060 XT</em> gaming GPU (from $299), the workstation-grade <em>Radeon AI PRO R9700</em>, and the <em>Threadripper 9000</em> series, topped by a 96-core, 192-thread flagship. AMD also unveiled ASUS Copilot+ PCs and expanded its AI partnership with Red Hat.</p>
+  </div>
+</section>
 
-            <!-- 6. release -->
-            <div class="vocab-item">
-                <div class="vocab-head">6. release [rɪˈlis] (v.) 發布；釋放</div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">newly released (新發布的)</div></div>
-                <div class="tag-content">
-                    Police <i>released</i> footage to warn the public about the dangers.<br>（警方發布畫面以向公眾警告危險。）<br>
-                    The singer will <i>release</i> her new album next month.<br>（這位歌手下個月將發行她的新專輯。）
-                </div>
-            </div>
+<!-- 區段四 -->
+<section>
+  <h2>四、Qualcomm 主題演講：「你 PC 的心臟」與裝置端 AI</h2>
+  <div class="speaker">🎤 講者：<b>Cristiano Amon</b>，Qualcomm（高通）總裁暨執行長｜演講題目：<i>The Heart of Your PC</i></div>
+  <p>高通的策略核心是 <span class="em-orange">「裝置端 AI」（on-device AI）</span>與 <span class="em-orange">「邊緣 AI」（edge AI）</span>——也就是把 AI 運算放在裝置本身（手機、PC、汽車），而不是送到雲端。這對延遲敏感、需要省電的應用特別重要。Amon 把焦點放在 <strong>Snapdragon X 系列</strong>平台如何重新定義個人電腦。</p>
 
-            <!-- 7. footage -->
-            <div class="vocab-item">
-                <div class="vocab-head">7. footage [ˈfʊtɪdʒ] (n.) 影片片段</div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">raw footage (原始片段)</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">security footage (監視器畫面)</div></div>
-                <div class="tag-content">
-                    Authorities released drone <i>footage</i> of the gathering.<br>（當局發布了集會的無人機畫面。）<br>
-                    The news station broadcast <i>footage</i> from the disaster zone.<br>（新聞台播放了災區的影片片段。）
-                </div>
-            </div>
+  <h3>重點一：Snapdragon X 系列重塑 AI PC</h3>
+  <ul>
+    <li>自一年前 Snapdragon X 裝置問世以來，已在 Windows 生態系站穩腳步。</li>
+    <li>目前已有 <span class="stat">超過 85 款</span> Snapdragon X 裝置上市或開發中，預期未來一年將突破 <span class="stat">100 款</span>。</li>
+    <li>核心是 <span class="em-purple">NPU（神經處理單元）</span>——專為深度學習任務最佳化的晶片，讓筆電能在本地高效執行 AI。</li>
+  </ul>
 
-            <!-- 8. incident -->
-            <div class="vocab-item">
-                <div class="vocab-head">8. incident [ˈɪnsədənt] (n.) 事件</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">incidental (adj.) 伴隨的</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">alarming incident (令人震驚的事件)</div></div>
-                <div class="tag-content">
-                    Chicago has experienced similarly alarming <i>incidents</i>.<br>（芝加哥也經歷了同樣令人震驚的事件。）<br>
-                    There were no reports of any <i>incidents</i> during the protest.<br>（抗議期間沒有任何事件發生的報導。）
-                </div>
-            </div>
+  <h3>重點二：與微軟的 Copilot+ PC 合作</h3>
+  <p>微軟董事長兼執行長 <strong>Satya Nadella（納德拉）</strong>連線參與，指出微軟與高通的合作催生了一個全新類別的 AI Windows 電腦——<strong>Copilot+ PC</strong>。Amon 也展示了宏碁、HP、微軟、三星等品牌搭載 Snapdragon 的新筆電。</p>
 
-            <!-- 9. connection -->
-            <div class="vocab-item">
-                <div class="vocab-head">9. connection [kəˈnɛkʃən] (n.) 關聯</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">connect (v.) 連結；connected (adj.) 有關聯的</div></div>
-                <div class="tag-row"><div class="tag-label tag-root">字根</div><div class="tag-content">nect (bind) — disconnect (斷開)</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">in connection with (與...有關)</div></div>
-                <div class="tag-content">
-                    A boy was charged in <i>connection</i> with a shooting.<br>（一名男孩被指控與槍擊案有關。）<br>
-                    Is there any <i>connection</i> between the two events?<br>（這兩起事件之間有什麼關聯嗎？）
-                </div>
-            </div>
+  <h3>重點三：代理式 AI 與生態系願景</h3>
+  <p>Amon 談到 <span class="em-purple">「代理式 AI」（Agentic AI）</span>——能感知環境、處理資訊、自主採取行動以達成目標的系統。他強調高通的目標是打造一個橫跨手機、PC、汽車、XR（延展實境）的智慧邊緣裝置生態系，並會在雲端與邊緣兩端同時布局。演講最後，他甚至用一台 AI 筆電現場篩選並朗讀線上觀眾的提問，示範 AI 的實際應用。</p>
 
-            <!-- 10. chaotic -->
-            <div class="vocab-item">
-                <div class="vocab-head">10. chaotic [keˈɑtɪk] (adj.) 混亂的</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">chaos (n.) 混亂</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">utterly chaotic (極其混亂的)</div></div>
-                <div class="tag-content">
-                    A teen takeover at the beach turned <i>chaotic</i>.<br>（海灘上的青少年接管演變成了混亂。）<br>
-                    The traffic was <i>chaotic</i> after the heavy rain.<br>（大雨後交通變得非常混亂。）
-                </div>
-            </div>
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>Qualcomm CEO Cristiano Amon's keynote, "The Heart of Your PC," championed <em>on-device and edge AI</em>—running AI locally rather than in the cloud. He highlighted the <em>Snapdragon X series</em>, now powering 85-plus PC designs, and its NPUs that drive a new class of <em>Copilot+ PCs</em> built with Microsoft. Microsoft CEO Satya Nadella joined to underline the partnership, while Amon pointed toward a future of <em>agentic AI</em> spanning phones, PCs, cars, and XR.</p>
+  </div>
+</section>
 
-            <!-- 11. closure -->
-            <div class="vocab-item">
-                <div class="vocab-head">11. closure [ˈkloʒɚ] (n.) 封閉；終止</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">close (v.) 關閉</div></div>
-                <div class="tag-row"><div class="tag-label tag-root">字根</div><div class="tag-content">clude (close) — include (包括), exclude (排除)</div></div>
-                <div class="tag-content">
-                    The event led to the temporary <i>closure</i> of the road.<br>（該事件導致道路暫時封閉。）<br>
-                    The <i>closure</i> of the factory affected many workers.<br>（工廠的倒閉影響了許多工人。）
-                </div>
-            </div>
+<!-- 區段五 -->
+<section>
+  <h2>五、論壇與產業趨勢：AI 走向實體世界</h2>
+  <p>除了三大企業主題演講，COMPUTEX Forum（5 月 21 日，主題「AI in Action」）聚焦三大議題，可視為整場展覽的縮影：</p>
+  <ul>
+    <li><strong>機器人與邊緣 AI（Robotics &amp; Edge AI）</strong>：把 AI 從螢幕裡帶進實體機器，解決全球勞動力短缺。</li>
+    <li><strong>生成式 AI（Generative AI）</strong>：涵蓋大型語言模型（LLM）、小型語言模型（SLM）與代理式 AI。</li>
+    <li><strong>資料中心解決方案與永續</strong>：深入探討 AI 資料中心的散熱與節能方案。</li>
+  </ul>
+  <p>整場展覽可以看到一條清晰的主線：AI 正在從「<span class="em-orange">雲端的、虛擬的</span>」走向「<span class="em-orange">實體的、無所不在的</span>」。NVIDIA 講 AI 工廠與機器人，AMD 講本地端運算，高通講裝置端與邊緣 AI——三者其實都在描述同一件事的不同切面：<strong>智慧運算正在從中央化的雲端，往使用者與真實世界擴散。</strong></p>
+  <p>台灣產業則扮演關鍵角色：<strong>台積電（TSMC）、鴻海（Foxconn）、和碩（Pegatron）</strong>等公司，從晶圓製造、先進封裝到伺服器組裝，構成了支撐這一切的供應鏈骨幹。台灣新創 <strong>DeepRad.AI</strong> 也以 AI 醫療影像早期診斷技術，奪得 InnoVEX 新創競賽冠軍。</p>
 
-            <!-- 12. behavior -->
-            <div class="vocab-item">
-                <div class="vocab-head">12. behavior [bɪˈhevjɚ] (n.) 行為</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">behave (v.) 表現</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">unacceptable behavior (不可接受的行為)</div></div>
-                <div class="tag-content">
-                    These incidents raise questions about teenage <i>behavior</i>.<br>（這些事件引發了關於青少年行為的問題。）<br>
-                    Good <i>behavior</i> is expected from all students.<br>（所有學生都應表現良好。）
-                </div>
-            </div>
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>Beyond the corporate keynotes, the COMPUTEX Forum centered on robotics, generative AI, and sustainable data centers. The common thread across all speakers was clear: AI is moving from the <em>virtual cloud</em> into the <em>physical, everywhere world</em>. Taiwan's supply chain—TSMC, Foxconn, Pegatron—forms the backbone enabling this shift, while local startup DeepRad.AI won the InnoVEX pitch contest for AI-powered early disease detection.</p>
+  </div>
+</section>
 
-            <!-- 13. responsibility -->
-            <div class="vocab-item">
-                <div class="vocab-head">13. responsibility [rɪˌspɑnsəˈbɪlətɪ] (n.) 責任</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">responsible (adj.) 負責任的</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">take responsibility for (為...負責)</div></div>
-                <div class="tag-content">
-                    The incidents raise questions about parental <i>responsibility</i>.<br>（這些事件引發了關於家長責任的問題。）<br>
-                    It is our <i>responsibility</i> to protect the environment.<br>（保護環境是我們的責任。）
-                </div>
-            </div>
+<!-- 自學提問 -->
+<div class="quiz">
+  <h3>📝 自學檢核：讀完想一想</h3>
+  <ol>
+    <li>「AI 工廠（AI Factory）」這個比喻，把資料中心比喻成生產什麼的工廠？這個比喻想傳達什麼概念？</li>
+    <li>NVLink Fusion 為什麼被稱為 NVIDIA 從「封閉」走向「開放」的關鍵一步？它對 NVIDIA 自己有什麼好處？</li>
+    <li>NVIDIA、AMD、Qualcomm 三家對「AI 該放在哪裡運算」的主張有何不同？（提示：雲端 vs. 本地端 vs. 邊緣）</li>
+    <li>為什麼「裝置端 AI（on-device AI）」對手機、筆電這類產品特別重要？想想延遲、省電與隱私三個角度。</li>
+    <li>本屆四大支柱中，「綠能永續」為什麼會和 AI 放在一起談？</li>
+  </ol>
+</div>
 
-            <!-- 14. proposed -->
-            <div class="vocab-item">
-                <div class="vocab-head">14. proposed [prəˈpozd] (v./adj.) 提議的</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">proposal (n.) 提案；propose (v.) 提議</div></div>
-                <div class="tag-content">
-                    City leaders have <i>proposed</i> stricter curfews.<br>（城市領導人已提議實施更嚴格的宵禁。）<br>
-                    The <i>proposed</i> changes will be discussed tomorrow.<br>（提議的變更將於明天討論。）
-                </div>
-            </div>
+<!-- Glossary -->
+<details open>
+  <summary><span>📖 Glossary　關鍵字解釋</span><span class="arrow"></span></summary>
+  <div class="gloss-body">
+    <div class="gloss-item"><span class="gloss-term">AI 工廠　<span class="gloss-en">AI Factory</span></span><p class="gloss-def">黃仁勳提出的概念，把專為 AI 設計的資料中心比喻成「生產智慧的工廠」。傳統工廠生產實體商品，AI 工廠則大規模「生產」AI 運算結果（如 token）。</p></div>
+    <div class="gloss-item"><span class="gloss-term">Token（詞元）</span><p class="gloss-def">AI 語言模型處理文字的最小單位，可以是一個字、一個詞或一部分。NVIDIA 把「token 的生成」當成衡量 AI 運算的基本單位。</p></div>
+    <div class="gloss-item"><span class="gloss-term">NVLink Fusion</span><p class="gloss-def">NVIDIA 推出的互連技術。透過一塊小晶片（chiplet），讓第三方 CPU 與客製化晶片能接入 NVIDIA 的 GPU 運算架構，使 NVIDIA 的生態系從封閉走向半客製化開放。</p></div>
+    <div class="gloss-item"><span class="gloss-term">Chiplet（小晶片）</span><p class="gloss-def">把一顆大晶片拆成數個小模組（小晶片），再組合在一起的設計方法。能提高良率、降低成本，並讓不同功能的晶片靈活搭配。</p></div>
+    <div class="gloss-item"><span class="gloss-term">GPU　<span class="gloss-en">Graphics Processing Unit</span></span><p class="gloss-def">圖形處理器。原本用於繪圖，因擅長大量平行運算，現已成為 AI 訓練與推論的核心硬體。</p></div>
+    <div class="gloss-item"><span class="gloss-term">CPU　<span class="gloss-en">Central Processing Unit</span></span><p class="gloss-def">中央處理器，電腦的「大腦」，擅長處理需要邏輯判斷的循序性任務。</p></div>
+    <div class="gloss-item"><span class="gloss-term">NPU　<span class="gloss-en">Neural Processing Unit</span></span><p class="gloss-def">神經處理單元，專為深度學習與 AI 運算最佳化的晶片，特色是低功耗、高效率，是 AI PC 與手機進行裝置端 AI 的關鍵。</p></div>
+    <div class="gloss-item"><span class="gloss-term">ASIC　<span class="gloss-en">Application-Specific Integrated Circuit</span></span><p class="gloss-def">特殊應用積體電路，為單一特定用途量身打造的晶片。效率極高，但無法像 CPU 那樣做通用運算。</p></div>
+    <div class="gloss-item"><span class="gloss-term">實體 AI　<span class="gloss-en">Physical AI</span></span><p class="gloss-def">讓 AI 結合真實世界的物理互動，使機器能感知、理解並對環境採取行動，是機器人與自駕車的基礎。</p></div>
+    <div class="gloss-item"><span class="gloss-term">代理式 AI　<span class="gloss-en">Agentic AI</span></span><p class="gloss-def">能自主推理、規劃並使用工具的 AI 系統，相當於「數位工作者」，比只會聊天回答的聊天機器人更進一步。</p></div>
+    <div class="gloss-item"><span class="gloss-term">裝置端 AI　<span class="gloss-en">On-Device AI</span></span><p class="gloss-def">直接在裝置本身（手機、筆電）執行 AI 運算，而非傳送到雲端。優點是延遲低、省電、隱私佳。</p></div>
+    <div class="gloss-item"><span class="gloss-term">邊緣 AI　<span class="gloss-en">Edge AI</span></span><p class="gloss-def">在靠近資料來源的「邊緣」裝置上處理 AI，而非集中在遠端雲端資料中心。適合即時、低延遲的應用場景。</p></div>
+    <div class="gloss-item"><span class="gloss-term">數位分身　<span class="gloss-en">Digital Twin</span></span><p class="gloss-def">在虛擬世界中建立實體物件（如工廠、機器）的精確數位複製品，可用於模擬、測試與最佳化。</p></div>
+    <div class="gloss-item"><span class="gloss-term">LLM ／ SLM</span><p class="gloss-def">大型語言模型（Large Language Model）與小型語言模型（Small Language Model）。前者能力強但耗資源；後者輕量，適合在裝置端運行。</p></div>
+    <div class="gloss-item"><span class="gloss-term">Copilot+ PC</span><p class="gloss-def">微軟定義的新一代 AI 個人電腦類別，內建強大 NPU，能在本地執行 AI 功能，由 Qualcomm Snapdragon 等平台驅動。</p></div>
+    <div class="gloss-item"><span class="gloss-term">FSR　<span class="gloss-en">FidelityFX Super Resolution</span></span><p class="gloss-def">AMD 的畫面升頻技術。用機器學習把較低解析度的畫面放大、增強，讓遊戲在不過度增加硬體負擔的情況下更清晰流暢。</p></div>
+    <div class="gloss-item"><span class="gloss-term">PFLOP　<span class="gloss-en">PetaFLOP</span></span><p class="gloss-def">每秒一千兆次（10 的 15 次方）浮點運算，是衡量超級電腦運算速度的單位。DGX Spark 達 1 PFLOP。</p></div>
+    <div class="gloss-item"><span class="gloss-term">核心／執行緒　<span class="gloss-en">Core / Thread</span></span><p class="gloss-def">核心是 CPU 中獨立的運算單元；執行緒是核心能同時處理的任務串流。核心與執行緒越多，越能同時處理大量平行工作。</p></div>
+    <div class="gloss-item"><span class="gloss-term">先進封裝　<span class="gloss-en">Advanced Packaging</span></span><p class="gloss-def">把多顆晶片（如 GPU、記憶體）以高密度方式整合封裝在一起的技術，是台積電的關鍵競爭優勢，對 AI 晶片效能至關重要。</p></div>
+    <div class="gloss-item"><span class="gloss-term">B2B　<span class="gloss-en">Business-to-Business</span></span><p class="gloss-def">企業對企業的商業模式。COMPUTEX 主要是一個 B2B 商展，面向產業買主而非一般消費者。</p></div>
+  </div>
+</details>
 
-            <!-- 15. curfew -->
-            <div class="vocab-item">
-                <div class="vocab-head">15. curfew [ˈkɝfju] (n.) 宵禁</div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">stricter curfew (更嚴格的宵禁)</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">under curfew (在宵禁中)</div></div>
-                <div class="tag-content">
-                    Leaders proposed stricter <i>curfews</i> to prevent disruptions.<br>（領導人提議加強宵禁以防止混亂。）<br>
-                    The city was placed under <i>curfew</i> after the riots.<br>（暴動後該市被實施了宵禁。）
-                </div>
-            </div>
+<hr class="div">
 
-            <!-- 16. disruption -->
-            <div class="vocab-item">
-                <div class="vocab-head">16. disruption [dɪsˈrʌpʃən] (n.) 中斷；混亂</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">disrupt (v.) 擾亂；disruptive (adj.) 擾亂的</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">further disruptions (進一步的干擾)</div></div>
-                <div class="tag-content">
-                    Patrols were expanded to prevent further <i>disruptions</i>.<br>（擴大了巡邏範圍以防止進一步的混亂。）<br>
-                    The storm caused serious <i>disruptions</i> to air travel.<br>（暴風雨造成空中交通嚴重中斷。）
-                </div>
-            </div>
+<!-- ===== 底部連結列 ===== -->
+<nav class="linkbar">
+  <div class="bar-title">🔗 林威老師　七月課程 &amp; 聯絡方式</div>
+  <a class="link-card lc1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📚</span>七月課程介紹｜錯中學 ECHO 計劃</span>
+    <span class="lc-desc">透過「在錯誤中學習」的方法，帶你打好英文底子。七月新班開課，點我看課程內容。</span>
+  </a>
+  <a class="link-card lc2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📊</span>學生分析</span>
+    <span class="lc-desc">個人化的英文學習與考試分析工具，了解自己的強項與弱點。</span>
+  </a>
+  <a class="link-card lc3" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">💬</span>加我的 LINE：linwayet</span>
+    <span class="lc-desc">課程問題、報名洽詢，歡迎直接用 LINE 聯絡我。</span>
+  </a>
+</nav>
 
-            <!-- 17. expert -->
-            <div class="vocab-item">
-                <div class="vocab-head">17. expert [ˈɛkspɝt] (n.) 專家</div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">recognized expert (公認的專家)</div></div>
-                <div class="tag-row"><div class="tag-label tag-phrase">片語</div><div class="tag-content">subject-matter expert (領域專家)</div></div>
-                <div class="tag-content">
-                    <i>Experts</i> stress that open communication is effective.<br>（專家強調開放溝通是有效的。）<br>
-                    She is an <i>expert</i> in international law.<br>（她是國際法方面的專家。）
-                </div>
-            </div>
-
-            <!-- 18. communication -->
-            <div class="vocab-item">
-                <div class="vocab-head">18. communication [kəˌmjuːnɪˈkeɪʃn] (n.) 溝通</div>
-                <div class="tag-row"><div class="tag-label tag-deriv">衍生詞</div><div class="tag-content">communicate (v.) 溝通；communicative (adj.) 愛說話的</div></div>
-                <div class="tag-row"><div class="tag-label tag-idiom">慣用語</div><div class="tag-content">open communication (開放式溝通)</div></div>
-                <div class="tag-content">
-                    Open <i>communication</i> remains one of the most effective tools.<br>（開放溝通仍然是最有效的工具之一。）<br>
-                    Effective <i>communication</i> is key to a successful relationship.<br>（有效的溝通是成功的關係之鑰。）
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 4: Grammar Analysis -->
-        <div class="section-card section-4">
-            <h2 class="section-title title-4">區塊四：文法解析</h2>
-
-            <!-- Point 1 -->
-            <div class="grammar-point">
-                <div class="grammar-name">【文法一】分詞構句（Participial Construction）</div>
-                <div>【引句 Quote】<i>In Milwaukee... police responded to teen takeovers... resulting in over a dozen arrests.</i></div>
-                <div>【句型】<i><b>S + V..., V-ing...</b></i></div>
-                <div>【核心說明】本句中的 resulting in 為「分詞構句」，用來表示主要子句動作所產生的「結果」。這類構句通常省略了連接詞 (如 and it resulted in)，使句子更簡潔有力。</div>
-                <div>【使用規則】
-                    <ul>
-                        <li>主詞需一致：主要子句與分詞片語的主詞必須是同一個。</li>
-                        <li>表結果：放在句尾，通常用現在分詞 (V-ing) 表示主動或必然產生的結果。</li>
-                        <li>逗號分隔：通常在主要子句後加上逗號。</li>
-                    </ul>
-                </div>
-                <div>【主題例句】The beach party turned violent, <i>forcing</i> the police to close the road.（海灘派對演變成暴力，迫使警方封閉道路。）</div>
-                <div>【學習提醒】看到 V-ing 放在句尾且有逗號隔開時，優先判斷它是否在補充說明「結果」或「伴隨動作」。</div>
-                <div class="quiz-box">
-                    <strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong><br>
-                    ✗ The storm hit the city and causing many deaths.<br>
-                    ✓ The storm hit the city, <i>causing</i> many deaths.<br>
-                    說明：已經有連接詞 and 就不用分詞構句；若要用分詞構句則不加 and。<br>
-                    試題：He worked late every night, ________ his health in the end.<br>
-                    (A) ruined (B) ruins (C) ruining (D) to ruin<br>
-                    答案：(C)。
-                </div>
-            </div>
-
-            <!-- Point 2 -->
-            <div class="grammar-point">
-                <div class="grammar-name">【文法二】形容詞子句（Relative Clauses）：who / which / that</div>
-                <div>【引句 Quote】<i>Milwaukee authorities... released footage... to warn the public about the dangers these events can cause.</i></div>
-                <div>【句型】<i><b>N + (that/which) + S + V</b></i></div>
-                <div>【核心說明】形容詞子句（關係子句）用來修飾先行詞（名詞）。在引句中，dangers 後面省略了關係代名詞 that/which，因為它在子句中作受詞。</div>
-                <div>【使用規則】
-                    <ul>
-                        <li>who：指人，which：指物，that：指人或物。</li>
-                        <li>受詞省略：當關係代名詞在子句中擔任動詞或介系詞的受詞時，常可省略。</li>
-                        <li>限定用法：用來限縮名詞的範圍，不可加逗號。</li>
-                    </ul>
-                </div>
-                <div>【主題例句】The social media platforms <i>(that) teens use</i> can be very powerful.（青少年使用的社群媒體平台力量可能非常強大。）</div>
-                <div>【學習提醒】當名詞後面直接跟著另一個主詞和動詞時，中間通常省略了關係代名詞。</div>
-                <div class="quiz-box">
-                    <strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong><br>
-                    ✗ This is the boy who I saw him yesterday.<br>
-                    ✓ This is the boy (who) I saw yesterday.<br>
-                    說明：關係代名詞 who 已代表受詞，後面不可再加 him。<br>
-                    試題：The drone ________ police used was very expensive.<br>
-                    (A) who (B) whose (C) which (D) what<br>
-                    答案：(C)。
-                </div>
-            </div>
-
-            <!-- Point 3 -->
-            <div class="grammar-point">
-                <div class="grammar-name">【文法三】被動語態（Passive Voice）</div>
-                <div>【引句 Quote】<i>In April 2025, a 14-year-old boy was charged in connection with a shooting...</i></div>
-                <div>【句型】<i><b>S + be + p.p. (+ by...)</b></i></div>
-                <div>【核心說明】被動語態用來強調「動作的承受者」。當動作的執行者（如：警方）顯而易見或不需特別強調時，常使用被動語態。</div>
-                <div>【使用規則】
-                    <ul>
-                        <li>結構：be 動詞（隨時態變化）+ 過去分詞 (p.p.)。</li>
-                        <li>及物動詞：只有及物動詞（有受詞的動詞）才能改為被動語態。</li>
-                        <li>時態一致：被動語態的 be 動詞需符合原句時態。</li>
-                    </ul>
-                </div>
-                <div>【主題例句】The beach <i>was closed</i> by the police due to safety concerns.（由於安全考量，海灘被警方封閉了。）</div>
-                <div>【學習提醒】charge 常用於被動語態 be charged with (被指控...)。</div>
-                <div class="quiz-box">
-                    <strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong><br>
-                    ✗ The accident was happened last night.<br>
-                    ✓ The accident <i>happened</i> last night.<br>
-                    說明：happen 是不及物動詞，不可用被動語態。<br>
-                    試題：The new rules ________ by the city council next month.<br>
-                    (A) will propose (B) will be proposed (C) are proposed (D) were proposed<br>
-                    答案：(B)。
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Folders -->
-        <div class="bottom-section">
-            <details>
-                <summary>折疊一：常見字首整理 (50個)</summary>
-                <div class="details-content">
-                    ab- 離開 (abnormal); ad- 向 (advance); ambi- 雙 (ambiguous); anti- 反 (anti-war); arch- 首要 (archenemy); auto- 自動 (autograph); bene- 善 (benefit); bi- 二 (bilingual); circum- 環繞 (circumstance); co- 一起 (cooperate); contra- 相反 (contradict); de- 去除 (decode); dia- 穿過 (dialogue); dis- 否定 (disagree); en- 使 (enable); epi- 在外 (epidemic); ex- 出/前任 (export); extra- 超過 (extraordinary); hetero- 不同 (heterogeneous); homo- 相同 (homogeneous); hyper- 超過 (hyperactive); hypo- 低於 (hypodermic); in- 否定/進入 (invisible/import); inter- 在之間 (international); iso- 相等 (isolate); mal- 壞 (malfunction); micro- 微小 (microscope); mis- 錯誤 (misunderstand); mono- 單一 (monologue); multi- 多 (multicultural); neo- 新 (neonatal); non- 非 (nonsense); pan- 全 (pandemic); peri- 周圍 (perimeter); poly- 多 (polygon); post- 之後 (postwar); pre- 之前 (preview); pro- 向前 (progress); pseudo- 假 (pseudonym); re- 再/回 (review); semi- 一半 (semicircle); sub- 在下 (subway); super- 超越 (superstar); syn- 一起 (synchronize); tele- 遠 (telephone); trans- 穿過 (transport); tri- 三 (triangle); un- 否定 (unhappy); vice- 副 (vice-president).
-                </div>
-            </details>
-            <details>
-                <summary>折疊二：常見英文字尾整理 (30個)</summary>
-                <div class="details-content">
-                    -tion (education); -ment (agreement); -ness (happiness); -ity (ability); -er (teacher); -ist (artist); -ship (friendship); -hood (childhood); -able (readable); -ous (dangerous); -ful (hopeful); -less (hopeless); -al (natural); -ic (poetic); -ize (realize); -ify (beautify); -ate (activate); -en (strengthen); -ly (quickly); -ward (upwards); -wise (clockwise).
-                </div>
-            </details>
-            <details>
-                <summary>折疊三：30個常用單字與衍生詞</summary>
-                <div class="details-content">
-                    1. troubling [ˈtrʌblɪŋ] (adj. 令人不安的) — trouble (n. 麻煩)<br>
-                    2. takeover [ˈtekˌovɚ] (n. 接管) — take over (phr v. 接管)<br>
-                    3. organize [ˈɔrɡəˌnaɪz] (v. 組織) — organization (n. 組織)<br>
-                    4. individual [ˌɪndəˈvɪdʒuəl] (n. 個人) — individuality (n. 個性)<br>
-                    5. authority [əˈθɔrətɪ] (n. 當局) — authorize (v. 授權)<br>
-                    6. release [rɪˈlis] (v. 發布) — release (n. 釋放)<br>
-                    7. footage [ˈfʊtɪdʒ] (n. 畫面) — foot (n. 英呎)<br>
-                    8. incident [ˈɪnsədənt] (n. 事件) — incidental (adj. 伴隨的)<br>
-                    9. connection [kəˈnɛkʃən] (n. 關聯) — connect (v. 連結)<br>
-                    10. chaotic [keˈɑtɪk] (adj. 混亂的) — chaos (n. 混難)<br>
-                    11. closure [ˈkloʒɚ] (n. 封閉) — close (v. 關閉)<br>
-                    12. behavior [bɪˈhevjɚ] (n. 行為) — behave (v. 表現)<br>
-                    13. responsibility [rɪˌspɑnsəˈbɪlətɪ] (n. 責任) — responsible (adj. 負責的)<br>
-                    14. proposed [prəˈpozd] (adj. 提議的) — proposal (n. 提案)<br>
-                    15. curfew [ˈkɝfju] (n. 宵禁) — curfews (pl. 宵禁)<br>
-                    16. disruption [dɪsˈrʌpʃən] (n. 擾亂) — disrupt (v. 擾亂)<br>
-                    17. expert [ˈɛkspɝt] (n. 專家) — expertise (n. 專門知識)<br>
-                    18. communication [kəˌmjuːnɪˈkeɪʃn] (n. 溝通) — communicate (v. 溝通)<br>
-                    19. alarming [əˈlɑrmɪŋ] (adj. 令人擔心的) — alarm (n. 警報)<br>
-                    20. shooting [ˈʃutɪŋ] (n. 槍擊) — shoot (v. 射擊)<br>
-                    21. downtown [ˌdaʊnˈtaʊn] (adv./adj. 市中心) — uptown (adv. 郊區)<br>
-                    22. chaotic [keˈɑtɪk] (adj. 混亂的) — chaos (n. 混亂)<br>
-                    23. temporary [ˈtɛmpəˌrɛrɪ] (adj. 暫時的) — permanent (adj. 永久的)<br>
-                    24. future [ˈfjutʃɚ] (adj./n. 未來) — futuristic (adj. 未來的)<br>
-                    25. serious [ˈsɪrɪəs] (adj. 嚴重的) — seriously (adv. 認真地)<br>
-                    26. expanded [ɪkˈspændɪd] (adj. 擴大的) — expansion (n. 擴展)<br>
-                    27. patrol [pəˈtrol] (n./v. 巡邏) — patrols (pl. 巡邏)<br>
-                    28. prevention [prɪˈvɛnʃən] (n. 預防) — prevent (v. 預防)<br>
-                    29. effective [ɪˈfɛktɪv] (adj. 有效的) — effect (n. 效果)<br>
-                    30. concern [kənˈsɝn] (n./v. 擔憂) — concerned (adj. 擔心的)<br>
-                    <br>
-                    <strong>文章相關常用片語：</strong><br>
-                    • spread across (蔓延至)<br>
-                    • result in (導致)<br>
-                    • be charged in connection with (與...相關而被指控)<br>
-                    • turn chaotic (變得混亂)<br>
-                    • lead to (導致)
-                </div>
-            </details>
-            <details>
-                <summary>折疊四：練文筆食材</summary>
-                <div class="details-content">
-                    ① <b>In recent years, a troubling trend known as [Topic] has spread...</b><br>
-                    → 適用：開頭段落引入社會現象。<br><br>
-                    ② <b>[Something] occur when [Condition] after being [V-ed] through [Medium].</b><br>
-                    → 適用：說明事件發生的背景與機制。<br><br>
-                    ③ <b>The incident resulted in [Number] arrests of individuals between the ages of...</b><br>
-                    → 適用：具體說明事件帶來的社會影響。<br><br>
-                    ④ <b>[Authorities] released [Information] to warn the public about the dangers...</b><br>
-                    → 適用：描述官方的應對措施與教育目的。<br><br>
-                    ⑤ <b>The situation turned chaotic, forcing [People] to respond...</b><br>
-                    → 適用：描述事態擴大及其產生的壓力。<br><br>
-                    ⑥ <b>These incidents raise serious questions about [Problem A], [Problem B], and [Problem C].</b><br>
-                    → 適用：分析問題背後的核心爭議（排比法）。<br><br>
-                    ⑦ <b>[Leaders] have proposed [Solution A] and [Solution B] to prevent further [Negative Outcome].</b><br>
-                    → 適用：提出改善現狀的政策性建議。<br><br>
-                    ⑧ <b>While [Group A] is not involved, experts stress that [Action] remains one of the most effective tools.</b><br>
-                    → 適用：在結論段落平衡觀點，並給出核心建議。
-                </div>
-            </details>
-        </div>
-    </div>
-    <div class="resource-panel bottom-links" aria-label="課程與聯絡資訊">
-        <div class="resource-title">七月課程與聯絡資訊</div>
-        <div class="resource-grid">
-            <a class="resource-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                <strong>七月課程介紹，錯中學ECHO 計劃</strong>
-                <span>透過錯誤修正、回饋與練習，幫助學生把英文弱點變成可追蹤的進步路線。</span>
-                <span class="resource-action">查看課程</span>
-            </a>
-            <a class="resource-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                <strong>學生分析</strong>
-                <span>用學習資料與表現觀察，整理學生目前程度、常見問題與後續加強方向。</span>
-                <span class="resource-action">查看分析</span>
-            </a>
-            <a class="resource-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                <strong>我的Line帳號：linwayet</strong>
-                <span>需要課程資訊、學習建議或報名協助，可以加入 Line 與我聯絡。</span>
-                <span class="resource-action">加入 Line</span>
-            </a>
-        </div>
-    </div>
+</div>
 </body>
 </html>
