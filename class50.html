@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMPUTEX 2026 自學教材｜AI Together 主題與主題演講重點</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --text:#1A0F00;
+    --h1:#C0392B;
+    --h2:#1565C0;
+    --h3:#2E7D32;
+    --accentA:#E65100;
+    --accentB:#6A1B9A;
+    --keyblue:#0D47A1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:linear-gradient(160deg,#FFF6EA 0%,#FFEAD6 45%,#FFE0CC 100%);
+    background-attachment:fixed;
+    color:var(--text);
+    font-family:'BIZ UDPGothic',system-ui,sans-serif;
+    font-size:21px;
+    line-height:1.9;
+    margin:0;
+    padding:0 16px 70px;
+  }
+  .wrap{max-width:860px;margin:0 auto;}
+
+  /* ===== 連結列（頂部 / 底部共用）===== */
+  .linkbar{margin:22px 0 6px;}
+  .linkbar .bar-title{
+    text-align:center;font-size:1.15rem;font-weight:700;
+    color:#BF360C;letter-spacing:1px;margin-bottom:14px;
+  }
+  .link-card{
+    display:block;text-decoration:none;border-radius:18px;
+    padding:18px 22px;margin:14px 0;min-height:72px;
+    box-shadow:0 5px 14px rgba(191,54,12,.18);
+    transition:transform .2s, box-shadow .2s;
+    border:3px solid rgba(255,255,255,.6);
+  }
+  .link-card:active{transform:scale(.98);}
+  .link-card .lc-label{font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .link-card .lc-desc{font-size:1rem;line-height:1.6;margin-top:6px;opacity:.95;}
+  .lc-emoji{font-size:1.6rem;}
+  .lc1{background:linear-gradient(135deg,#FF8A65,#FF7043);color:#fff;}
+  .lc1 .lc-desc{color:#FFF3EC;}
+  .lc2{background:linear-gradient(135deg,#FFB74D,#FB8C00);color:#4A2700;}
+  .lc2 .lc-desc{color:#5C3300;}
+  .lc3{background:linear-gradient(135deg,#81C784,#4CAF50);color:#fff;}
+  .lc3 .lc-desc{color:#EAFBEA;}
+
+  /* 頂部標題 */
+  header{padding:34px 0 10px;text-align:center;}
+  .title-box{
+    display:inline-block;border:5px solid var(--h1);border-radius:20px;
+    padding:18px 30px;background:#FFFFFF;box-shadow:0 7px 0 rgba(192,57,43,.18);
+  }
+  .title-box h1{color:var(--h1);font-size:3rem;margin:0;line-height:1.3;letter-spacing:1px;}
+  .subtitle{color:var(--h2);font-size:2rem;font-weight:700;margin:22px 0 8px;}
+  .credit{color:#1565C0;font-size:1.45rem;font-weight:700;letter-spacing:2px;text-shadow:1px 1px 0 #BBDEFB;}
+  .meta{color:var(--accentA);font-size:1.05rem;margin-top:14px;}
+
+  /* 區段 */
+  section{
+    background:#FFFFFF;border:3px solid #FFD7B0;border-radius:18px;
+    padding:28px 24px;margin:28px 0;box-shadow:0 6px 18px rgba(230,81,0,.10);
+  }
+  h2{color:var(--h2);font-size:1.9rem;margin:0 0 18px;padding-bottom:12px;border-bottom:4px solid #BBDEFB;}
+  h3{color:var(--h3);font-size:1.5rem;margin:26px 0 12px;}
+  p{margin:14px 0;}
+  strong{color:var(--keyblue);}
+  .em-orange{color:var(--accentA);font-weight:700;}
+  .em-purple{color:var(--accentB);font-weight:700;}
+  ul{padding-left:1.4em;margin:14px 0;}
+  li{margin:10px 0;}
+
+  /* 五層蛋糕 / 支柱卡片 */
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+  .pillar{border-radius:16px;padding:18px;border:3px solid;}
+  .pillar h4{margin:0 0 8px;font-size:1.25rem;}
+  .pillar p{margin:0;font-size:1rem;line-height:1.7;}
+  .p1{background:#F3F8FF;border-color:#90CAF9;}.p1 h4{color:#1565C0;}
+  .p2{background:#FFF3EF;border-color:#FFAB91;}.p2 h4{color:#BF360C;}
+  .p3{background:#F1F8F2;border-color:#81C784;}.p3 h4{color:#1B5E20;}
+  .p4{background:#F9F0FF;border-color:#CE93D8;}.p4 h4{color:#4A148C;}
+
+  /* 五層蛋糕堆疊圖 */
+  .cake{margin:22px 0;border-radius:14px;overflow:hidden;border:3px solid #D7B98C;}
+  .cake-layer{padding:14px 18px;font-size:1.05rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px;}
+  .cake-num{background:rgba(255,255,255,.28);border-radius:50%;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .ck5{background:#7C3AED;}
+  .ck4{background:#1565C0;}
+  .ck3{background:#2E7D32;}
+  .ck2{background:#E65100;}
+  .ck1{background:#C0392B;}
+  .cake-layer small{font-weight:400;font-size:.85rem;opacity:.92;}
+
+  /* 英文摘要框 */
+  .en-summary{
+    background:linear-gradient(135deg,#F3F8FF,#EAF3FF);
+    border-left:8px solid var(--keyblue);border-radius:12px;
+    padding:16px 20px;margin:20px 0 6px;font-size:1.02rem;line-height:1.7;color:#0D2B5E;
+  }
+  .en-summary .tag{
+    display:inline-block;background:var(--keyblue);color:#fff;font-size:.82rem;
+    font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:8px;letter-spacing:1px;
+  }
+  .en-summary em{color:#C0392B;font-style:normal;font-weight:700;}
+
+  /* 講者卡 */
+  .speaker{
+    background:linear-gradient(135deg,#FFFBF5,#FFF1E0);border:3px dashed #FFB74D;
+    border-radius:14px;padding:14px 18px;margin:18px 0;font-size:1.02rem;
+  }
+  .speaker b{color:var(--accentA);}
+
+  .stat{
+    display:inline-block;background:#FEEAD8;color:#E65100;font-weight:700;
+    padding:2px 12px;border-radius:18px;font-size:.98rem;margin:2px;
+  }
+
+  /* glossary 折疊 */
+  details{background:#FFFBF4;border:3px solid #C4A06A;border-radius:16px;margin:18px 0;overflow:hidden;}
+  summary{
+    cursor:pointer;list-style:none;padding:20px 24px;font-size:1.45rem;font-weight:700;
+    color:#4A3728;background:linear-gradient(135deg,#F7E7CE,#F0D9B5);
+    display:flex;align-items:center;justify-content:space-between;min-height:72px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  .arrow{border:solid #4A3728;border-width:0 5px 5px 0;display:inline-block;padding:6px;transform:rotate(45deg);transition:transform .25s;}
+  details[open] .arrow{transform:rotate(225deg);}
+  .gloss-body{padding:10px 24px 26px;}
+  .gloss-item{border-bottom:2px solid #EADBC4;padding:16px 0;}
+  .gloss-item:last-child{border-bottom:none;}
+  .gloss-term{color:#C0392B;font-weight:700;font-size:1.2rem;}
+  .gloss-en{color:var(--keyblue);font-weight:700;}
+  .gloss-def{margin:8px 0 0;font-size:1.02rem;line-height:1.8;}
+
+  /* 自學提問框 */
+  .quiz{
+    background:linear-gradient(135deg,#FEF9E7,#FDF3CE);border:3px solid #F4D03F;
+    border-radius:16px;padding:22px 24px;margin:26px 0;
+  }
+  .quiz h3{color:#D68910;margin-top:0;}
+  .quiz ol{padding-left:1.4em;}
+
+  hr.div{border:none;border-top:3px dashed #FFB74D;margin:34px 0 10px;}
+
+  @media(max-width:600px){
+    body{font-size:19px;}
+    .title-box h1{font-size:2.1rem;}
+    .subtitle{font-size:1.5rem;}
+    .pillars{grid-template-columns:1fr;}
+    h2{font-size:1.55rem;}
+    .link-card .lc-label{font-size:1.15rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===== 頂部連結列 ===== -->
+<nav class="linkbar">
+  <div class="bar-title">🔗 林威老師　七月課程 &amp; 聯絡方式</div>
+  <a class="link-card lc1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📚</span>七月課程介紹｜錯中學 ECHO 計劃</span>
+    <span class="lc-desc">透過「在錯誤中學習」的方法，帶你打好英文底子。七月新班開課，點我看課程內容。</span>
+  </a>
+  <a class="link-card lc2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📊</span>學生分析</span>
+    <span class="lc-desc">個人化的英文學習與考試分析工具，了解自己的強項與弱點。</span>
+  </a>
+  <a class="link-card lc3" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">💬</span>加我的 LINE：linwayet</span>
+    <span class="lc-desc">課程問題、報名洽詢，歡迎直接用 LINE 聯絡我。</span>
+  </a>
+</nav>
+
+<header>
+  <div class="title-box"><h1>COMPUTEX 2026</h1></div>
+  <div class="subtitle">「AI Together」主題與主題演講重點　完整自學教材</div>
+  <div class="credit">林威老師與 AI agent 團隊製作</div>
+  <div class="meta">2026 年 6 月 2–5 日｜台北南港展覽館一、二館＋世貿一館＋國際會議中心</div>
+</header>
+
+<!-- 區段一：大會總覽 -->
+<section>
+  <h2>一、大會總覽：什麼是 COMPUTEX 2026？</h2>
+
+  <p>COMPUTEX（台北國際電腦展）創辦於 1981 年，已有 45 年歷史，是亞洲規模最大、全球最具指標性的科技商展之一。2026 年的展期為 <strong>6 月 2 日至 5 日</strong>，地點橫跨南港展覽館一、二館、世貿中心與國際會議中心，共有 <span class="stat">1,500 家參展商</span>、最多 <span class="stat">6,000 個攤位</span>。</p>
+
+  <p>今年的大會主題訂為 <span class="em-orange">「AI Together」（攜手共創 AI）</span>。相較於去年「AI Next」強調「人工智慧的下一步」，今年的關鍵字是 <strong>「Together（一起、協作）」</strong>——重點從「AI 還能做什麼」轉向「整個產業生態系如何協力，把 AI 真正大規模、可靠地部署到現實世界」。</p>
+
+  <h3>三大展覽主軸與四大技術焦點</h3>
+  <p>大會把展覽收斂成三大主軸：<strong>AI 與運算（AI &amp; Computing）、機器人與移動（Robotics &amp; Mobility）、次世代科技（Next-Gen Tech）</strong>。而貫穿各場主題演講的四個技術焦點則是：</p>
+  <div class="pillars">
+    <div class="pillar p1"><h4>① 可擴展 AI 基礎建設<br>Scalable AI Infrastructure</h4><p>重點不再是「訓練更大的模型」，而是「如何把算力擴展、部署到全世界」。</p></div>
+    <div class="pillar p2"><h4>② 異質運算<br>Heterogeneous Computing</h4><p>把 CPU、GPU、NPU、ASIC 等不同晶片混搭協作，發揮各自所長。</p></div>
+    <div class="pillar p3"><h4>③ 實體 AI<br>Physical AI</h4><p>讓 AI 走出螢幕，進入機器人、自駕車等真實世界的裝置。</p></div>
+    <div class="pillar p4"><h4>④ 分散式智慧系統<br>Distributed Intelligence</h4><p>智慧分散在雲端、邊緣與終端裝置之間，協同運作。</p></div>
+  </div>
+
+  <p>今年的講者陣容是歷來最強之一：<strong>NVIDIA、Qualcomm（高通）、Intel（英特爾）、Marvell、NXP（恩智浦）</strong>。值得注意的是，<span class="em-purple">去年缺席的 Intel 今年回歸</span>，由新任執行長陳立武（Lip-Bu Tan）登台；而<span class="em-purple">去年有發表的 AMD 今年則未舉辦主題演講</span>，因其產品正處於世代交替的中段。</p>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>COMPUTEX 2026 runs <em>June 2–5</em> in Taipei with 1,500 exhibitors and up to 6,000 booths. Its theme, <em>"AI Together,"</em> shifts the focus from what AI can do to how the whole industry can collaborate to deploy AI at scale in the real world. Discussions center on four areas: scalable AI infrastructure, heterogeneous computing, physical AI, and distributed intelligence. The keynote lineup features NVIDIA, Qualcomm, Intel, Marvell, and NXP—with Intel returning and AMD sitting out this year.</p>
+  </div>
+</section>
+
+<!-- 區段二：NVIDIA -->
+<section>
+  <h2>二、NVIDIA 主題演講：「五層蛋糕」與 Vera Rubin 時代</h2>
+
+  <div class="speaker">
+    🎤 講者：<b>黃仁勳（Jensen Huang）</b>，NVIDIA 創辦人暨執行長｜6 月 1 日台北流行音樂中心，與 GTC Taipei 同步登場，等於開幕第一場大型演講
+  </div>
+
+  <p>今年 NVIDIA 把自家的 <strong>GTC Taipei 技術大會</strong>直接嵌進 COMPUTEX 週，由黃仁勳在 COMPUTEX 開幕前一天打頭陣。這場演講的關鍵字是「<span class="em-orange">A new era of PC（PC 的新時代）</span>」——NVIDIA、微軟、Arm 三方在開講前同步在社群預告，引爆話題。</p>
+
+  <h3>重點一：N1 / N1X——NVIDIA 十多年來首款消費級 CPU</h3>
+  <p>本場最大焦點是 <strong>N1X 筆電晶片</strong>。這是 NVIDIA 第一顆「為筆電而非伺服器機櫃設計」的系統單晶片（SoC），也是其十多年來首款消費級 CPU。它的意義在於正式進軍 <span class="em-purple">Windows on Arm</span> 市場，直接挑戰高通的地位。</p>
+  <ul>
+    <li>與 <strong>聯發科（MediaTek）</strong>共同設計的 20 核心 Arm CPU，採台積電 3 奈米製程。</li>
+    <li>內建 Blackwell 架構 GPU，擁有 <span class="stat">6,144 個 CUDA 核心</span>（與桌機 RTX 5070 相當）。</li>
+    <li>兩顆晶片以 NVLink 互連，頻寬達 <span class="stat">300 GB/s</span>。</li>
+    <li>合作品牌包括華碩 ProArt、微軟 Surface、Dell XPS、Lenovo 等；預計 2026 年底上市。</li>
+  </ul>
+
+  <h3>重點二：「五層蛋糕」AI 全棧策略</h3>
+  <p>黃仁勳用 <span class="em-orange">「五層蛋糕」（Five-Layer Cake）</span>這個比喻，說明 AI 基礎建設的完整堆疊。它的核心訊息是：<strong>NVIDIA 不只是一家晶片公司，而是涵蓋 AI 產業每一層的「全棧基礎建設供應商」</strong>——從最底層的能源，一路到最上層的應用。</p>
+  <div class="cake">
+    <div class="cake-layer ck5"><span class="cake-num">5</span><span>應用與代理 Applications &amp; Agents<br><small>最上層：AI 代理、各種終端應用服務</small></span></div>
+    <div class="cake-layer ck4"><span class="cake-num">4</span><span>模型與軟體 Models &amp; Software<br><small>CUDA、AI 模型、開發框架（如開源的 NemoClaw）</small></span></div>
+    <div class="cake-layer ck3"><span class="cake-num">3</span><span>運算平台 Compute Platform<br><small>Vera Rubin、Grace Blackwell 等加速運算系統</small></span></div>
+    <div class="cake-layer ck2"><span class="cake-num">2</span><span>基礎建設 Infrastructure<br><small>AI 工廠、機櫃、網路、散熱</small></span></div>
+    <div class="cake-layer ck1"><span class="cake-num">1</span><span>能源 Energy<br><small>最底層：支撐一切運算的電力</small></span></div>
+  </div>
+
+  <h3>重點三：Vera Rubin 平台與推論時代</h3>
+  <p>NVIDIA 展示接替 Blackwell 的次世代平台 <strong>Vera Rubin</strong>，由 Arm 架構的 <strong>Vera CPU</strong> 與 <strong>Rubin GPU</strong> 組成。旗艦的 <strong>Vera Rubin NVL72</strong> 機櫃是專為次世代 AI 設計的機櫃級超級電腦：</p>
+  <ul>
+    <li>推論效能達 Blackwell 的 <span class="stat">5 倍</span>、訓練效能 3.5 倍，並把推論的 token 成本降到 <span class="stat">十分之一</span>。</li>
+    <li>採用 HBM4 記憶體、100% 液冷、無線纜模組化設計，加快安裝速度。</li>
+    <li>黃仁勳強調「<span class="em-purple">推論時代（the inference era）</span>」已正式來臨——AI 價值創造的下一階段在於「部署」，而非「訓練」。</li>
+  </ul>
+
+  <p>此外，他也聚焦三大 AI 領域：<strong>代理式 AI（agentic AI）、實體 AI（physical AI）、AI 工廠（AI factories）</strong>，並用 Jetson Thor 模組展示把多模態推理模型帶到邊緣裝置的策略。NVIDIA 同時宣布將對台灣的年投資額大幅提高至 1,500 億美元，並啟動台北「Constellation」總部專案。</p>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>NVIDIA CEO Jensen Huang opened the COMPUTEX week with a keynote themed <em>"a new era of PC."</em> His headline reveal was the <em>N1X</em>—NVIDIA's first consumer laptop chip in over a decade, a MediaTek-designed 20-core Arm CPU with RTX 5070-class Blackwell graphics, pushing NVIDIA into the Windows-on-Arm market. He framed AI infrastructure as a <em>"Five-Layer Cake"</em> spanning energy to applications, positioning NVIDIA as a full-stack provider. He also detailed the <em>Vera Rubin</em> platform—5x the inference performance of Blackwell—declaring that the <em>inference era</em> has begun.</p>
+  </div>
+</section>
+
+<!-- 區段三：Qualcomm -->
+<section>
+  <h2>三、Qualcomm 主題演講：讓智慧無所不在</h2>
+
+  <div class="speaker">
+    🎤 講者：<b>Cristiano Amon</b>，Qualcomm（高通）總裁暨執行長｜6 月 1 日下午，南港展覽館二館，COMPUTEX 開幕主題演講
+  </div>
+
+  <p>高通今年的核心主張是 <span class="em-orange">「讓智慧無所不在」（intelligence to run everywhere）</span>——從終端裝置、邊緣系統到資料中心，全都能運行 AI。這延續去年「裝置端 AI」的路線，但範圍擴大：高通不再只談 PC 與手機，而是把觸角伸進<strong>工業 AI、機器人、甚至資料中心</strong>。</p>
+
+  <h3>重點一：兩大平台 Snapdragon 與 Dragonwing</h3>
+  <ul>
+    <li><strong>Snapdragon</strong>：面向消費者，涵蓋 AI PC、智慧型手機、個人 AI 裝置。</li>
+    <li><strong>Qualcomm Dragonwing</strong>：面向企業與工業，涵蓋工業 AI、機器人、資料中心。</li>
+    <li>兩者共同目標是實現「即時決策、自主運作、情境感知」的運算環境。</li>
+  </ul>
+
+  <h3>重點二：Snapdragon C——300 美元的 AI 筆電</h3>
+  <p>高通推出 <strong>Snapdragon C 平台</strong>，主打 <span class="stat">300 美元起跳</span>的平價 Windows 筆電，瞄準入門與教育市場，正面挑戰平價筆電與 Chromebook 的地盤。這是高通把 AI PC 從「高階」往「普及」推進的關鍵一步。</p>
+
+  <h3>重點三：代理式 AI 串連雲、邊、端</h3>
+  <p>Amon 強調 <span class="em-purple">代理式 AI（Agentic AI）</span>如何加速「裝置、邊緣、雲端」三者之間的智慧協作，呼應大會「AI Together」的主題。換句話說，未來的 AI 不會只待在某一處，而是會依任務需求，在最合適的地方運算。</p>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>Qualcomm CEO Cristiano Amon delivered the opening COMPUTEX keynote, centered on enabling <em>"intelligence to run everywhere"</em>—from devices to edge to data centers. He highlighted two platforms: <em>Snapdragon</em> for consumers and <em>Dragonwing</em> for industry and robotics. A key reveal was the <em>Snapdragon C</em> platform, targeting affordable Windows laptops from $300. Amon emphasized how <em>agentic AI</em> drives collaboration across device, edge, and cloud—echoing the show's "AI Together" theme.</p>
+  </div>
+</section>
+
+<!-- 區段四：Intel -->
+<section>
+  <h2>四、Intel 主題演講：異質運算是 AI 時代的核心</h2>
+
+  <div class="speaker">
+    🎤 講者：<b>陳立武（Lip-Bu Tan）</b>，Intel（英特爾）執行長｜6 月 2 日，南港展覽館二館七樓
+  </div>
+
+  <p>去年缺席的 Intel 今年強勢回歸，由 2025 年上任的新執行長陳立武主講。他的核心論點是：<span class="em-orange">「異質運算」（Heterogeneous Computing）是 AI 時代的核心</span>。Intel 的策略是透過 <strong>矽（silicon）、系統（systems）、軟體（software）三者的整合創新</strong>，加上與生態系夥伴的深度合作，重新拿回過去兩年被高通與 AMD 搶走的 PC 市占。</p>
+
+  <h3>重點一：開放生態系與異質運算</h3>
+  <p>陳立武強調，AI 時代不會由單一種晶片獨大，而是需要 CPU、GPU、加速器等不同運算單元各司其職、協同合作。Intel 想扮演的角色是「<span class="em-purple">建立支撐未來 AI 應用所需的基礎建設與開放平台</span>」，藉由開放生態系與 NVIDIA 的封閉整合路線形成對比。</p>
+
+  <h3>重點二：效能、能效與可擴展性</h3>
+  <p>他聚焦三個關鍵指標：<strong>效能（performance）、能效（energy efficiency）、可擴展性（scalability）</strong>，並說明 Intel 如何透過與客戶、夥伴的合作來推進。展前 Intel 也已發表首款專為遊戲掌機設計的晶片，以及新一代 Arc G3 顯示晶片，展現重返消費市場的企圖。</p>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>Intel CEO Lip-Bu Tan returned to the COMPUTEX stage (after Intel skipped 2025) arguing that <em>heterogeneous computing</em> is the core of the AI era. His message: breakthroughs across <em>silicon, systems, and software</em>, plus deep ecosystem partnerships, will help Intel reclaim PC market share lost to Qualcomm and AMD. He stressed performance, energy efficiency, and scalability, and positioned Intel's open-platform approach as a contrast to NVIDIA's tightly integrated stack.</p>
+  </div>
+</section>
+
+<!-- 區段五：NXP 與 Marvell -->
+<section>
+  <h2>五、NXP 與 Marvell：實體 AI 與資料中心互連</h2>
+
+  <h3>NXP（恩智浦）：把實體 AI 帶進真實世界</h3>
+  <div class="speaker">🎤 講者：<b>Rafael Sotomayor</b>，NXP 總裁暨執行長</div>
+  <p>NXP 的演講聚焦 <span class="em-orange">「實體 AI」（Physical AI）</span>與<strong>智慧邊緣運算</strong>，探討 AI 如何從數位世界延伸到真實場景——例如汽車、工廠與各種自主系統。這正好對應大會「機器人與移動」的主軸：AI 不再只是雲端裡的程式，而是要能感知並控制實體世界的裝置。</p>
+
+  <h3>Marvell：資料中心的互連骨幹</h3>
+  <div class="speaker">🎤 講者：<b>Matt Murphy</b>，Marvell Technology 董事長暨執行長</div>
+  <p>Marvell 專注於 <strong>客製化晶片與資料中心互連技術</strong>。當 AI 工廠需要把成千上萬顆晶片連在一起時，「互連（interconnect）」就成了決定效能的關鍵瓶頸。Marvell 的角色，是替超大規模資料中心打造高速、客製化的連結方案。</p>
+
+  <p>把這幾場演講放在一起看，可以發現一條清晰的主線：<strong>2026 年的 AI 競賽，重心已從「誰的單顆晶片最強」轉向「誰能把整個系統有效地連結、擴展與部署」。</strong>這也正是「AI Together」想傳達的核心——AI 的下一階段是一場生態系的協作賽，而不是單打獨鬥。</p>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>NXP CEO Rafael Sotomayor focused on <em>physical AI</em> and intelligent edge computing—extending AI from the digital world into cars, factories, and autonomous systems. Marvell CEO Matt Murphy spotlighted custom silicon and <em>data-center interconnects</em>, the critical link when AI factories must connect thousands of chips. Together, these talks reveal a clear shift: the 2026 AI race is less about the most powerful single chip and more about who can connect, scale, and deploy whole systems—the heart of "AI Together."</p>
+  </div>
+</section>
+
+<!-- 區段六：和 2025 的對照 -->
+<section>
+  <h2>六、從 2025 到 2026：趨勢怎麼變了？</h2>
+  <p>把今年和去年放在一起對照，能看出 AI 產業的演進軌跡：</p>
+  <ul>
+    <li><strong>主題轉變</strong>：從「AI Next（下一步是什麼）」走向「AI Together（如何協力部署）」。焦點從「可能性」轉向「落地與協作」。</li>
+    <li><strong>從訓練到推論</strong>：去年談的是訓練更大的模型；今年 NVIDIA 明確宣告「<span class="em-orange">推論時代</span>」來臨，重點變成如何便宜、可靠地「使用」AI。</li>
+    <li><strong>AI 進入筆電核心</strong>：去年是 AI PC 概念萌芽；今年 NVIDIA 直接推出筆電 CPU（N1X），高通推出 300 美元平價 AI 筆電，戰線全面下沉到消費市場。</li>
+    <li><strong>實體 AI 升溫</strong>：去年實體 AI 還是願景；今年成為 NXP、NVIDIA 的演講主軸，機器人與自駕成為實際商品。</li>
+    <li><strong>競爭焦點轉移</strong>：從「比單顆晶片效能」轉向「比系統互連與生態系整合能力」。</li>
+  </ul>
+
+  <div class="en-summary">
+    <span class="tag">ENGLISH SUMMARY</span>
+    <p>Comparing 2025 and 2026 reveals the industry's trajectory: the theme moved from <em>"AI Next"</em> (what's possible) to <em>"AI Together"</em> (how to deploy collaboratively). The conversation shifted from training ever-larger models to the <em>inference era</em>—using AI cheaply and reliably. AI moved into the laptop core (NVIDIA's N1X chip, Qualcomm's $300 AI laptops), physical AI matured from vision to product, and competition shifted from raw single-chip power to system interconnect and ecosystem integration.</p>
+  </div>
+</section>
+
+<!-- 自學提問 -->
+<div class="quiz">
+  <h3>📝 自學檢核：讀完想一想</h3>
+  <ol>
+    <li>大會主題從去年的「AI Next」變成今年的「AI Together」，這個轉變想傳達什麼訊息？</li>
+    <li>NVIDIA 的「五層蛋糕」由哪五層組成？為什麼黃仁勳說 NVIDIA「不只是一家晶片公司」？</li>
+    <li>N1X 晶片為什麼被視為 NVIDIA 的重大轉折？它挑戰了誰的市場？</li>
+    <li>什麼是「推論時代（inference era）」？它和過去強調的「訓練」有什麼不同？</li>
+    <li>Intel 主張的「異質運算」和 NVIDIA 的「全棧整合」路線有何不同？你覺得各有什麼優缺點？</li>
+    <li>為什麼 Marvell 強調的「互連（interconnect）」在 AI 工廠裡這麼重要？</li>
+  </ol>
+</div>
+
+<!-- Glossary -->
+<details open>
+  <summary><span>📖 Glossary　關鍵字解釋</span><span class="arrow"></span></summary>
+  <div class="gloss-body">
+    <div class="gloss-item"><span class="gloss-term">AI Together</span><p class="gloss-def">COMPUTEX 2026 的大會主題，強調整個產業生態系「攜手協作」，把 AI 大規模、可靠地部署到現實世界，而非單一公司或單一技術獨力完成。</p></div>
+    <div class="gloss-item"><span class="gloss-term">五層蛋糕　<span class="gloss-en">Five-Layer Cake</span></span><p class="gloss-def">黃仁勳用來說明 AI 基礎建設的比喻，由下到上分五層：能源、基礎建設、運算平台、模型與軟體、應用與代理。藉此說明 NVIDIA 涵蓋 AI 產業的每一層。</p></div>
+    <div class="gloss-item"><span class="gloss-term">Vera Rubin</span><p class="gloss-def">NVIDIA 接替 Blackwell 的次世代運算平台，由 Arm 架構的 Vera CPU 與 Rubin GPU 組成。推論效能達 Blackwell 的 5 倍。</p></div>
+    <div class="gloss-item"><span class="gloss-term">N1 / N1X</span><p class="gloss-def">NVIDIA 十多年來首款消費級筆電晶片（SoC），與聯發科共同設計，採 Arm 架構＋Blackwell 繪圖，正式進軍 Windows on Arm 筆電市場。</p></div>
+    <div class="gloss-item"><span class="gloss-term">推論時代　<span class="gloss-en">Inference Era</span></span><p class="gloss-def">AI 發展的新階段，重心從「訓練模型」轉向「使用模型」。推論（inference）指模型訓練完成後，實際拿來回答問題、執行任務的過程。</p></div>
+    <div class="gloss-item"><span class="gloss-term">訓練 vs. 推論　<span class="gloss-en">Training vs. Inference</span></span><p class="gloss-def">訓練是「教 AI 學會本領」的過程，耗費龐大算力；推論是 AI「實際運用本領」的過程。降低推論成本，是 AI 普及的關鍵。</p></div>
+    <div class="gloss-item"><span class="gloss-term">異質運算　<span class="gloss-en">Heterogeneous Computing</span></span><p class="gloss-def">把不同類型的運算單元（CPU、GPU、NPU、ASIC）混搭在一起協同工作，讓每種晶片發揮各自最擅長的任務，是 Intel 主打的策略。</p></div>
+    <div class="gloss-item"><span class="gloss-term">實體 AI　<span class="gloss-en">Physical AI</span></span><p class="gloss-def">讓 AI 走出螢幕，結合真實世界的物理互動，使機器（機器人、自駕車）能感知、理解並對環境採取行動。</p></div>
+    <div class="gloss-item"><span class="gloss-term">代理式 AI　<span class="gloss-en">Agentic AI</span></span><p class="gloss-def">能自主推理、規劃並使用工具、代替使用者執行任務的 AI 系統，相當於「數位工作者」，比只會問答的聊天機器人更進一步。</p></div>
+    <div class="gloss-item"><span class="gloss-term">AI 工廠　<span class="gloss-en">AI Factory</span></span><p class="gloss-def">專為訓練與運行大型 AI 模型而打造的資料中心，像工廠生產商品一樣「大規模生產智慧」。</p></div>
+    <div class="gloss-item"><span class="gloss-term">分散式智慧　<span class="gloss-en">Distributed Intelligence</span></span><p class="gloss-def">把 AI 運算分散在雲端、邊緣與終端裝置之間，依任務需求在最合適的位置處理，彼此協同運作。</p></div>
+    <div class="gloss-item"><span class="gloss-term">Windows on Arm</span><p class="gloss-def">在 Arm 架構處理器上運行的 Windows 系統。Arm 晶片省電、續航長，但部分舊有 x86 軟體需要轉譯才能執行。</p></div>
+    <div class="gloss-item"><span class="gloss-term">SoC　<span class="gloss-en">System on a Chip</span></span><p class="gloss-def">系統單晶片，把 CPU、GPU、記憶體控制器等多種元件整合在單一晶片上，常用於手機與輕薄筆電。</p></div>
+    <div class="gloss-item"><span class="gloss-term">CUDA 核心　<span class="gloss-en">CUDA Cores</span></span><p class="gloss-def">NVIDIA GPU 內負責平行運算的單元，也是 NVIDIA 軟體生態系的核心。核心數越多，平行運算能力通常越強。</p></div>
+    <div class="gloss-item"><span class="gloss-term">互連　<span class="gloss-en">Interconnect</span></span><p class="gloss-def">把多顆晶片或多台機器高速連結起來的技術（如 NVLink）。在 AI 工廠裡，互連速度往往是決定整體效能的關鍵瓶頸。</p></div>
+    <div class="gloss-item"><span class="gloss-term">液冷　<span class="gloss-en">Liquid Cooling</span></span><p class="gloss-def">用液體（而非空氣）替高耗能的 AI 晶片散熱。AI 機櫃功耗極高，液冷已成為新一代資料中心的標準配備。</p></div>
+    <div class="gloss-item"><span class="gloss-term">HBM4　<span class="gloss-en">High Bandwidth Memory 4</span></span><p class="gloss-def">第四代高頻寬記憶體，將多層記憶體堆疊在一起，提供極高的資料傳輸速度，是高階 AI 晶片的關鍵零件。</p></div>
+    <div class="gloss-item"><span class="gloss-term">GPU / CPU / NPU</span><p class="gloss-def">GPU 圖形處理器（擅長平行運算，AI 主力）；CPU 中央處理器（電腦大腦，擅長邏輯判斷）；NPU 神經處理單元（專為 AI 最佳化，低功耗）。</p></div>
+    <div class="gloss-item"><span class="gloss-term">ASIC　<span class="gloss-en">Application-Specific Integrated Circuit</span></span><p class="gloss-def">特殊應用積體電路，為單一特定用途量身打造的晶片，效率極高但無法通用。Marvell 專長之一。</p></div>
+    <div class="gloss-item"><span class="gloss-term">邊緣運算　<span class="gloss-en">Edge Computing</span></span><p class="gloss-def">在靠近資料來源的「邊緣」裝置上就近處理資料，而非全部送回遠端雲端，可降低延遲、節省頻寬。</p></div>
+    <div class="gloss-item"><span class="gloss-term">GTC Taipei</span><p class="gloss-def">NVIDIA 自家的 GPU 技術大會（GPU Technology Conference）台北場。2026 年首度與 COMPUTEX 同步舉辦，讓兩個活動互相加乘。</p></div>
+  </div>
+</details>
+
+<hr class="div">
+
+<!-- ===== 底部連結列 ===== -->
+<nav class="linkbar">
+  <div class="bar-title">🔗 林威老師　七月課程 &amp; 聯絡方式</div>
+  <a class="link-card lc1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📚</span>七月課程介紹｜錯中學 ECHO 計劃</span>
+    <span class="lc-desc">透過「在錯誤中學習」的方法，帶你打好英文底子。七月新班開課，點我看課程內容。</span>
+  </a>
+  <a class="link-card lc2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">📊</span>學生分析</span>
+    <span class="lc-desc">個人化的英文學習與考試分析工具，了解自己的強項與弱點。</span>
+  </a>
+  <a class="link-card lc3" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="lc-label"><span class="lc-emoji">💬</span>加我的 LINE：linwayet</span>
+    <span class="lc-desc">課程問題、報名洽詢，歡迎直接用 LINE 聯絡我。</span>
+  </a>
+</nav>
+
+</div>
+</body>
+</html>
