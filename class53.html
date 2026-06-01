@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpamayo 2 Super · NVIDIA 自駕車 AI 全解析 · 林威英文</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════
+   ROOT TOKENS
+═══════════════════════════════ */
+:root {
+  --sand:    #F9F4EB;
+  --sand2:   #F2E9DC;
+  --sand3:   #E8DBCC;
+  --sand4:   #DCCFBC;
+  --ink:     #1C1814;
+  --ink2:    #4A3E30;
+  --ink3:    #8A7A68;
+  --amber:   #C97C10;
+  --amber2:  #A56208;
+  --amber3:  #F5B830;
+  --ember:   #C0421C;
+  --ember2:  #8E2E10;
+  --ember3:  #F07040;
+  --sage:    #3A7060;
+  --sage2:   #255048;
+  --teal:    #1E6880;
+  --teal2:   #124E62;
+  --gold:    #B89020;
+  --gold2:   #8A6C10;
+  --rose:    #A83448;
+  --rose2:   #78203A;
+  --plum:    #6A3A7A;
+  --border:  rgba(28,24,20,.10);
+  --border2: rgba(28,24,20,.18);
+  --shadow:  rgba(28,24,20,.07);
+  --shadow2: rgba(28,24,20,.13);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* ═══════════════════════════════
+   LINK BANNER (top & bottom)
+═══════════════════════════════ */
+.link-banner {
+  background: linear-gradient(135deg, #1C1814 0%, #2E2018 55%, #180E08 100%);
+  padding: 14px 16px;
+  border-bottom: 3px solid var(--amber3);
+}
+.link-banner.bottom-banner {
+  border-bottom: none;
+  border-top: 3px solid var(--amber3);
+}
+.lb-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.lb-card {
+  border-radius: 14px;
+  padding: 13px 14px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  transition: transform .2s, box-shadow .2s;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.lb-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+.lb-echo  { background: linear-gradient(135deg, #B88010, #DCA828); }
+.lb-popup { background: linear-gradient(135deg, #256858, #38906E); }
+.lb-line  { background: linear-gradient(135deg, #1A7A28, #2CAA3A); }
+.lb-icon  { font-size: 24px; line-height: 1; }
+.lb-title { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; }
+.lb-desc  { font-size: 11px; color: rgba(255,255,255,.82); line-height: 1.4; display: none; }
+@media(min-width:480px) { .lb-desc { display: block; } }
+
+/* ═══════════════════════════════
+   STICKY NAV
+═══════════════════════════════ */
+.topnav {
+  background: var(--ink);
+  padding: 11px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--amber);
+}
+.nav-brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--amber3);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.nav-links a {
+  color: #C8B090;
+  text-decoration: none;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,.1);
+  transition: all .2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { background: var(--amber); color: #fff; border-color: var(--amber); }
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  background: linear-gradient(160deg, #1C1814 0%, #2A1E10 45%, #160C04 100%);
+  padding: 62px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 50%, rgba(201,124,16,.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 35%, rgba(192,66,28,.11) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 50% 80%, rgba(58,112,96,.08) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--ember), var(--amber3), var(--sage), var(--amber3), var(--ember));
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--amber3); margin-bottom: 14px; position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 56px);
+  font-weight: 900; color: #F9F4EB; line-height: 1.1;
+  margin-bottom: 8px; position: relative; z-index: 1;
+}
+.hero h1 .hi { color: var(--amber3); }
+.hero h1 .hi2 { color: var(--ember3); }
+.hero-sub {
+  font-size: 15px; color: rgba(249,244,235,.58);
+  position: relative; z-index: 1; margin-bottom: 20px;
+}
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; position: relative; z-index: 1;
+}
+.hero-badge {
+  font-size: 12px; padding: 5px 14px; border-radius: 20px;
+  font-family: 'DM Mono', monospace; letter-spacing: .02em;
+}
+.hb-new  { background: var(--ember); color: #fff; }
+.hb-open { background: var(--sage); color: #fff; }
+.hb-l4   { background: var(--teal); color: #fff; }
+.hb-vla  { background: var(--gold); color: #fff; }
+.hb-date { background: rgba(255,255,255,.1); color: rgba(249,244,235,.75); border: 1px solid rgba(255,255,255,.15); }
+
+/* ═══════════════════════════════
+   WRAP
+═══════════════════════════════ */
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 16px 72px; }
+
+/* ═══════════════════════════════
+   SECTION HEADER
+═══════════════════════════════ */
+.sec-header {
+  display: flex; align-items: center; gap: 14px;
+  margin: 48px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid;
+}
+.sec-header.amber { border-color: var(--amber); }
+.sec-header.ember { border-color: var(--ember); }
+.sec-header.sage  { border-color: var(--sage);  }
+.sec-header.teal  { border-color: var(--teal);  }
+.sec-header.rose  { border-color: var(--rose);  }
+.sec-header.gold  { border-color: var(--gold);  }
+.sec-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500;
+  color: #fff; flex-shrink: 0;
+}
+.amber .sec-num { background: linear-gradient(135deg, var(--amber), var(--amber3)); }
+.ember .sec-num { background: linear-gradient(135deg, var(--ember), var(--ember3)); }
+.sage  .sec-num { background: linear-gradient(135deg, var(--sage),  #4A9080); }
+.teal  .sec-num { background: linear-gradient(135deg, var(--teal),  #2A90AA); }
+.rose  .sec-num { background: linear-gradient(135deg, var(--rose),  #D05068); }
+.gold  .sec-num { background: linear-gradient(135deg, var(--gold),  #DEB830); }
+.sec-title { font-family: 'Noto Serif TC', serif; font-size: 21px; font-weight: 700; color: var(--ink); }
+.sec-sub   { font-size: 13px; color: var(--ink3); margin-top: 2px; }
+
+/* ═══════════════════════════════
+   CARDS
+═══════════════════════════════ */
+.card {
+  background: #FEFCF8; border: 1px solid var(--border);
+  border-radius: 16px; margin-bottom: 14px; overflow: hidden;
+  box-shadow: 0 2px 14px var(--shadow);
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover { box-shadow: 0 5px 28px var(--shadow2); transform: translateY(-1px); }
+
+.card-head {
+  padding: 16px 20px; cursor: pointer; user-select: none;
+  display: flex; align-items: flex-start; gap: 14px;
+  transition: background .15s;
+}
+.card-head:hover { background: var(--sand2); }
+
+.c-bar {
+  width: 4px; border-radius: 4px; align-self: stretch;
+  flex-shrink: 0; min-height: 40px;
+}
+.amber  .c-bar { background: var(--amber); }
+.ember  .c-bar { background: var(--ember); }
+.sage   .c-bar { background: var(--sage);  }
+.teal   .c-bar { background: var(--teal);  }
+.rose   .c-bar { background: var(--rose);  }
+.gold   .c-bar { background: var(--gold);  }
+
+.ch-main { flex: 1; min-width: 0; }
+.c-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  line-height: 1.35; margin-bottom: 3px;
+}
+.c-en {
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink3);
+  margin-bottom: 5px; letter-spacing: .02em;
+}
+.c-oneliner { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+.c-arrow {
+  color: var(--ink3); font-size: 13px; margin-top: 4px;
+  flex-shrink: 0; transition: transform .3s;
+}
+.c-arrow.open { transform: rotate(180deg); }
+
+.card-body {
+  display: none;
+  padding: 0 20px 20px 38px;
+  border-top: 1px solid var(--border);
+}
+.card-body.open { display: block; }
+
+/* body sub-sections */
+.cb { margin-top: 16px; }
+.cb-lbl {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 7px;
+  display: flex; align-items: center; gap: 6px;
+}
+.amber .cb-lbl { color: var(--amber2); }
+.ember .cb-lbl { color: var(--ember2); }
+.sage  .cb-lbl { color: var(--sage2);  }
+.teal  .cb-lbl { color: var(--teal2);  }
+.rose  .cb-lbl { color: var(--rose2);  }
+.gold  .cb-lbl { color: var(--gold2);  }
+
+.cb-text {
+  font-size: 15px; line-height: 1.9; color: var(--ink);
+}
+.cb-text strong { color: var(--ember2); font-weight: 700; }
+.cb-text em { font-style: normal; color: var(--sage2); font-weight: 700; }
+
+.cb-role {
+  background: var(--sand2); border-radius: 10px;
+  padding: 12px 16px; font-size: 14px; color: var(--ink2); line-height: 1.8;
+}
+.cb-role strong { color: var(--ink); }
+
+.analogy {
+  background: linear-gradient(135deg, #FFF7E4, #FFF2D4);
+  border: 1px solid rgba(196,124,16,.18);
+  border-radius: 10px; padding: 13px 16px; margin-top: 12px;
+  font-size: 14px; color: var(--ink2); line-height: 1.75;
+}
+.analogy::before {
+  content: '🏮 比喻　';
+  font-weight: 700; color: var(--amber2);
+  font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+}
+
+.spec-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-top: 10px;
+}
+.spec-item {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; text-align: center;
+  box-shadow: 0 1px 6px var(--shadow);
+}
+.spec-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; line-height: 1; color: var(--ember);
+}
+.spec-unit { font-size: 11px; color: var(--ink3); margin: 2px 0; }
+.spec-lbl  { font-size: 12px; color: var(--ink2); font-weight: 700; }
+
+.partner-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px; margin-top: 10px;
+}
+.partner-chip {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 12px; text-align: center;
+  font-size: 13px; font-weight: 700; color: var(--ink2);
+  box-shadow: 0 1px 5px var(--shadow);
+}
+.partner-chip span { display: block; font-size: 10px; font-weight: 400; color: var(--ink3); margin-top: 2px; }
+
+.timeline {
+  border-left: 3px solid var(--amber3); padding-left: 20px; margin-top: 12px;
+}
+.tl-item { position: relative; margin-bottom: 16px; }
+.tl-item::before {
+  content: '';
+  position: absolute; left: -26px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--amber); background: var(--sand);
+}
+.tl-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber2); margin-bottom: 2px; }
+.tl-text { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+.tl-text strong { color: var(--ink); }
+
+.quote-block {
+  border-left: 4px solid var(--amber3); background: #FEFCF5;
+  padding: 14px 18px; border-radius: 0 10px 10px 0; margin-top: 14px;
+}
+.quote-block p { font-size: 14px; color: var(--ink2); font-style: italic; line-height: 1.8; }
+.quote-block .attr { font-size: 12px; color: var(--ink3); margin-top: 6px; font-style: normal; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.tag {
+  font-size: 12px; padding: 4px 12px; border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+}
+.t-amber { background: #FFF0CC; color: var(--amber2); border: 1px solid rgba(196,124,16,.25); }
+.t-sage  { background: #E0F2EC; color: var(--sage2);  border: 1px solid rgba(58,112,96,.25); }
+.t-ember { background: #FDEEE8; color: var(--ember2); border: 1px solid rgba(192,66,28,.25); }
+.t-teal  { background: #E0EFF5; color: var(--teal2);  border: 1px solid rgba(30,104,128,.25); }
+
+/* ═══════════════════════════════
+   EXPAND ALL BUTTON
+═══════════════════════════════ */
+.btn-expand {
+  background: linear-gradient(135deg, var(--sage), var(--sage2));
+  color: #fff; border: none; padding: 8px 20px; border-radius: 20px;
+  font-size: 13px; cursor: pointer; margin: 8px 0 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  box-shadow: 0 2px 8px rgba(58,112,96,.3);
+  transition: opacity .2s;
+}
+.btn-expand:hover { opacity: .85; }
+
+/* ═══════════════════════════════
+   INFOGRAPHIC OVERVIEW
+═══════════════════════════════ */
+.overview-box {
+  background: linear-gradient(135deg, #1C1814, #2E2018);
+  border-radius: 18px; padding: 28px 24px; margin: 32px 0;
+  position: relative; overflow: hidden;
+}
+.overview-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 20% 40%, rgba(201,124,16,.15) 0%, transparent 70%);
+}
+.ov-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--amber3); margin-bottom: 20px;
+  position: relative; z-index: 1; text-align: center;
+}
+.ov-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px; position: relative; z-index: 1;
+}
+.ov-item {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px; padding: 14px 12px; text-align: center;
+}
+.ov-icon { font-size: 26px; margin-bottom: 6px; }
+.ov-label { font-size: 12px; color: rgba(249,244,235,.85); font-weight: 700; line-height: 1.4; }
+.ov-val { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber3); margin-top: 4px; }
+
+/* ═══════════════════════════════
+   STACK DIAGRAM
+═══════════════════════════════ */
+.stack-diagram { margin: 20px 0; }
+.stack-layer {
+  border-radius: 10px; padding: 12px 18px; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid transparent;
+}
+.sl-cloud  { background: linear-gradient(135deg, #FFF0CC, #FFF8E0); border-color: rgba(196,124,16,.2); }
+.sl-sim    { background: linear-gradient(135deg, #E0EFF5, #EEF8FF); border-color: rgba(30,104,128,.2); }
+.sl-car    { background: linear-gradient(135deg, #E0F2EC, #EEFBF4); border-color: rgba(58,112,96,.2); }
+.sl-model  { background: linear-gradient(135deg, #FDEEE8, #FFF3EE); border-color: rgba(192,66,28,.2); }
+.sl-icon   { font-size: 22px; flex-shrink: 0; }
+.sl-main   { flex: 1; }
+.sl-title  { font-size: 14px; font-weight: 700; color: var(--ink); }
+.sl-desc   { font-size: 12px; color: var(--ink3); line-height: 1.5; }
+.sl-tag    {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  background: rgba(0,0,0,.06); padding: 3px 8px; border-radius: 6px; color: var(--ink2);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+.footer-bar {
+  background: var(--ink); color: #6A5A48;
+  text-align: center; padding: 24px 20px; font-size: 13px; line-height: 1.8;
+}
+.footer-bar strong { color: var(--amber3); }
+
+/* ═══════════════════════════════
+   ANIMATIONS
+═══════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero h1, .hero-eyebrow, .hero-sub, .hero-badges {
+  animation: fadeUp .7s ease both;
+}
+.hero-eyebrow { animation-delay: .05s; }
+.hero h1      { animation-delay: .15s; }
+.hero-sub     { animation-delay: .25s; }
+.hero-badges  { animation-delay: .35s; }
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:480px) {
+  .topnav .nav-links { display: none; }
+  .lb-inner { grid-template-columns: 1fr; }
+  .spec-grid { grid-template-columns: 1fr 1fr; }
+  .ov-grid   { grid-template-columns: 1fr 1fr; }
+  .partner-grid { grid-template-columns: 1fr 1fr; }
+  .card-head { padding: 13px 14px; }
+  .card-body { padding: 0 14px 16px 28px; }
+  .sec-title { font-size: 18px; }
+}
+@media(max-width:360px) {
+  .lb-inner { grid-template-columns: 1fr 1fr; }
+  .lb-line  { grid-column: 1/-1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     TOP LINK BANNER
+══════════════════════════════════ -->
+<div class="link-banner">
+  <div class="lb-inner">
+    <a class="lb-card lb-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <div class="lb-icon">📚</div>
+      <div class="lb-title">錯中學 ECHO 計劃</div>
+      <div class="lb-desc">七月英文課程<br>從錯誤中學習成長</div>
+    </a>
+    <a class="lb-card lb-popup" href="https://linwayet.github.io/popup/index" target="_blank">
+      <div class="lb-icon">📊</div>
+      <div class="lb-title">學生分析系統</div>
+      <div class="lb-desc">七月課程配套工具<br>精準掌握學習進度</div>
+    </a>
+    <a class="lb-card lb-line" href="https://line.me/ti/p/linwayet" target="_blank">
+      <div class="lb-icon">💬</div>
+      <div class="lb-title">LINE 林威老師</div>
+      <div class="lb-desc">ID: linwayet<br>歡迎詢問課程</div>
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     STICKY NAV
+══════════════════════════════════ -->
+<nav class="topnav">
+  <div class="nav-brand">Alpamayo 2 Super · NVIDIA 2026</div>
+  <div class="nav-links">
+    <a href="#what">是什麼</a>
+    <a href="#specs">規格</a>
+    <a href="#stack">全套平台</a>
+    <a href="#tools">新工具</a>
+    <a href="#partners">夥伴</a>
+    <a href="#vs-tesla">vs特斯拉</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">NVIDIA GTC Taipei · Computex 2026 · 6 月 1 日 今日發布</div>
+  <h1><span class="hi">Alpamayo</span> <span class="hi2">2 Super</span></h1>
+  <p class="hero-sub">全球第一個開源推理式自駕 AI 模型 · 320 億參數 · Level 4 等級</p>
+  <div class="hero-badges">
+    <span class="hero-badge hb-new">🔥 今日全球首發</span>
+    <span class="hero-badge hb-open">🌐 完全開源</span>
+    <span class="hero-badge hb-l4">🚗 Level 4 自駕</span>
+    <span class="hero-badge hb-vla">🧠 VLA 推理模型</span>
+    <span class="hero-badge hb-date">發布：2026.06.01</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     OVERVIEW INFOGRAPHIC
+══════════════════════════════════ -->
+<div class="wrap">
+<div class="overview-box">
+  <div class="ov-title">Alpamayo 2 Super 一分鐘快速了解</div>
+  <div class="ov-grid">
+    <div class="ov-item">
+      <div class="ov-icon">🧠</div>
+      <div class="ov-label">模型參數量</div>
+      <div class="ov-val">320 億</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-icon">👁️</div>
+      <div class="ov-label">模型類型</div>
+      <div class="ov-val">VLA 推理模型</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-icon">🎯</div>
+      <div class="ov-label">自駕等級</div>
+      <div class="ov-val">Level 4</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-icon">🔓</div>
+      <div class="ov-label">開源程度</div>
+      <div class="ov-val">完全開源</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-icon">🏆</div>
+      <div class="ov-label">獲獎</div>
+      <div class="ov-val">Computex 最佳選擇獎</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-icon">🚕</div>
+      <div class="ov-label">商業部署</div>
+      <div class="ov-val">2027年LA/SF上路</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SECTION 1：是什麼？
+══════════════════════════════════ -->
+<div class="sec-header amber" id="what">
+  <div class="sec-num">1</div>
+  <div>
+    <div class="sec-title">Alpamayo 2 Super 是什麼？</div>
+    <div class="sec-sub">從 Alpamayo 1 到 2 Super 的演進</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec1')">▾ 全部展開</button>
+<div id="sec1">
+
+<div class="card amber">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Alpamayo 是什麼意思？名字從哪裡來？</div>
+      <div class="c-en">Alpamayo — Name Origin</div>
+      <div class="c-oneliner">祕魯的一座世界公認最美的山峰，象徵「優雅與精準」</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 背景</div>
+      <div class="cb-text">Alpamayo 是位於祕魯安地斯山脈的一座山峰（海拔 5,947 公尺），以其幾何完美的冰雪稜線聞名，曾被票選為「世界最美的山」。NVIDIA 以此命名自駕 AI 模型，象徵<strong>精確、優雅、可信賴</strong>——正好對應自駕車 AI 需要的特質。</div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">📈 從 Alpamayo 1 到 2 Super</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2026 年 1 月 CES</div>
+          <div class="tl-text"><strong>Alpamayo 1</strong> 發布：100 億參數，首個開源推理 VLA 模型，Mercedes-Benz CLA 開始搭載，1,700 小時行車資料集，AlpaSim 模擬框架</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026 年 3 月 GTC</div>
+          <div class="tl-text"><strong>Alpamayo 1.5</strong> 更新：強化推理能力，BYD、Geely、Nissan、Isuzu 宣布採用 DRIVE Hyperion 平台</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026 年 6 月 1 日 今天</div>
+          <div class="tl-text"><strong>Alpamayo 2 Super</strong> 正式發布：<em>320 億參數</em>、全新 AlpaGym 強化學習框架、OmniDreams 場景生成、完整 Agent Skills 工具鏈</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card amber">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">VLA 模型是什麼？為什麼自駕車需要它？</div>
+      <div class="c-en">VLA = Vision Language Action Model</div>
+      <div class="c-oneliner">看得懂環境（Vision）+ 理解語言（Language）+ 直接輸出行動指令（Action）</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">VLA（Vision-Language-Action）模型是一種多模態 AI，能夠同時處理三種輸入：<br><br>
+        <strong>Vision（視覺）</strong>——讀取攝影機、光達、雷達的即時資料，理解眼前的路況<br>
+        <strong>Language（語言）</strong>——用文字推理「為什麼要這樣做」，就像人類開車時內心的獨白<br>
+        <strong>Action（行動）</strong>——直接輸出「方向盤轉幾度、油門踩多少、要不要剎車」的具體指令
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 為什麼這比傳統自駕 AI 更強？</div>
+      <div class="cb-role">傳統自駕 AI 是「黑盒子」——把感測器資料輸入進去，輸出方向盤轉向角，<strong>沒有推理過程</strong>，遇到訓練資料裡沒有的場景就容易出錯。<br><br>VLA 模型在「看」和「動」之間插入了<strong>推理層</strong>——車子先想清楚「前方行人在穿越，我應該禮讓，因為他在我的車道」，再決定行動。這讓它能處理從未見過的複雜場景。</div>
+    </div>
+    <div class="analogy">傳統自駕 AI 像「反射動作」——看到紅燈就煞車，不思考為什麼。VLA 模型像「有思考能力的老司機」——遇到複雜狀況，他先想「這個場景應該怎麼處理」，再採取行動，而且能說出理由。</div>
+  </div>
+</div>
+
+<div class="card amber">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">為什麼叫「推理式」自駕？這有多革命性？</div>
+      <div class="c-en">Reasoning-Based Autonomous Driving</div>
+      <div class="c-oneliner">自駕車第一次真的「會思考」，而不是背規則</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">推理式自駕（Reasoning-Based Autonomy）是指車輛 AI 不依賴預先寫好的規則（「遇到行人→煞車」），而是像人類一樣，對每個場景進行<strong>情境理解、邏輯推理、決策生成</strong>，並能用語言解釋自己的每一個決定。<br><br>Jensen 在演講中展示 AlpaMayo 行駛時不斷說出的話：「前方靜止車輛擋住車道，向左偏移……」「行人在我的車道中央，減速讓行……」這就是推理式自駕的具體表現。</div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 為什麼這件事很重要</div>
+      <div class="cb-role">
+        <strong>解決「長尾場景」難題</strong>：傳統自駕 AI 依賴海量訓練資料，但現實世界有無窮多種奇怪場景（紅綠燈壞掉、路面有洗衣機、節慶遊行）——不可能全部訓練到。推理式 AI 能靠邏輯推理處理從未見過的場景。<br><br>
+        <strong>法規合規</strong>：全球各國監管機構要求 AI 行為可解釋、可稽核。推理式自駕能輸出「決策記錄」，滿足法律需求。<br><br>
+        <strong>乘客信任</strong>：當你坐在自駕車裡，車子能告訴你「我現在在讓這輛插入的車輛，因為……」，你會比黑盒子更有安全感。
+      </div>
+    </div>
+    <div class="quote-block">
+      <p>「Alpamayo 讓自駕車能夠思考罕見的場景、在複雜環境中安全駕駛，並解釋它的駕駛決策。」</p>
+      <div class="attr">— Jensen Huang，CES 2026 發布 Alpamayo 時的說明</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sec1 -->
+
+
+<!-- ══════════════════════════════════
+     SECTION 2：核心規格
+══════════════════════════════════ -->
+<div class="sec-header ember" id="specs">
+  <div class="sec-num">2</div>
+  <div>
+    <div class="sec-title">Alpamayo 2 Super 核心規格</div>
+    <div class="sec-sub">320 億參數、完全開源、今日發布</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec2')">▾ 全部展開</button>
+<div id="sec2">
+
+<div class="card ember">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">技術規格完整解析</div>
+      <div class="c-en">Full Technical Specification</div>
+      <div class="c-oneliner">從參數量到開源程度的每一個數字背後的意義</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-num">320億</div>
+        <div class="spec-unit">參數</div>
+        <div class="spec-lbl">模型大小</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-num">VLA</div>
+        <div class="spec-unit">Vision-Language-Action</div>
+        <div class="spec-lbl">模型架構</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-num">L4</div>
+        <div class="spec-unit">Level 4</div>
+        <div class="spec-lbl">自駕等級</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-num">100%</div>
+        <div class="spec-unit">開源</div>
+        <div class="spec-lbl">模型＋工具</div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:16px;">
+      <div class="cb-lbl">📦 開源內容包含</div>
+      <div class="tag-row">
+        <span class="tag t-amber">模型權重（Weights）</span>
+        <span class="tag t-sage">訓練資料集</span>
+        <span class="tag t-ember">AlpaGym 訓練框架</span>
+        <span class="tag t-teal">AlpaSim 模擬藍圖</span>
+        <span class="tag t-amber">1,700+ 小時行車影片</span>
+        <span class="tag t-sage">Agent Skills 工具包</span>
+        <span class="tag t-ember">OmniDreams 生成器</span>
+        <span class="tag t-teal">強化學習腳本</span>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">🎯 為什麼 320 億參數很重要</div>
+      <div class="cb-role">Alpamayo 1 是 100 億參數，2 Super 是 320 億，成長了 3 倍多。<strong>參數越多代表模型能儲存更多知識和處理更複雜的推理</strong>。相比之下，一般對話用的 AI 助理（如 Claude Haiku）大約是幾十億參數；GPT-4 估計是 1,000 億以上。320 億對於「要在車子裡即時跑」的模型來說已經很大，需要強大的車載電腦（DRIVE AGX Thor）才能即時推論。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card ember">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Level 4 自駕是什麼等級？跟特斯拉的等級比較</div>
+      <div class="c-en">SAE Level 4 Autonomous Driving</div>
+      <div class="c-oneliner">L4 代表在特定區域內完全不需要人類介入</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 SAE 自駕等級說明</div>
+      <div class="cb-text">
+        <strong>L0</strong>——完全人工駕駛，AI 只有警告功能<br>
+        <strong>L1</strong>——單一輔助（如自動跟車或車道維持）<br>
+        <strong>L2</strong>——多功能輔助同時啟動（如 Tesla Autopilot、台灣的 Honda SENSING）<br>
+        <strong>L3</strong>——特定條件下 AI 全控，但人類必須隨時準備接管<br>
+        <strong>L4</strong>——特定區域（如城市道路）內完全自主，<em>不需要人類介入</em><br>
+        <strong>L5</strong>——任何地方、任何條件完全自主（目前無產品達到）
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">🔄 特斯拉 FSD vs. NVIDIA Alpamayo</div>
+      <div class="cb-role">
+        特斯拉 FSD（Full Self-Driving）目前是 <strong>L2+ 等級</strong>——雖然功能很強，但法律上駕駛仍需隨時監控路況並準備接管。<br><br>
+        Alpamayo 2 Super 的目標是 <strong>L4 等級</strong>——在設定的地理範圍（如城市）內，完全不需要人類在旁監控。這就是為什麼 Uber 和 Grab 要用它來做<strong>無人駕駛計程車（Robotaxi）</strong>——座位上根本沒有司機。<br><br>
+        另一個差異：特斯拉的自駕系統是封閉的，只用在自己的車上；NVIDIA 的 Alpamayo 是<strong>開源</strong>的，任何車廠都能拿去用、改進、部署。
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sec2 -->
+
+
+<!-- ══════════════════════════════════
+     SECTION 3：NVIDIA 汽車全套平台
+══════════════════════════════════ -->
+<div class="sec-header sage" id="stack">
+  <div class="sec-num">3</div>
+  <div>
+    <div class="sec-title">NVIDIA 汽車全套平台</div>
+    <div class="sec-sub">從雲端訓練到車內部署，三電腦完整解決方案</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec3')">▾ 全部展開</button>
+<div id="sec3">
+
+<div class="card sage">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">三電腦架構：雲端訓練→模擬驗證→車內部署</div>
+      <div class="c-en">NVIDIA Three-Computer AV Solution</div>
+      <div class="c-oneliner">DGX 訓練、Omniverse 模擬、DRIVE AGX 執行，缺一不可</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">🏗️ 架構全圖</div>
+    </div>
+    <div class="stack-diagram">
+      <div class="stack-layer sl-cloud">
+        <div class="sl-icon">☁️</div>
+        <div class="sl-main">
+          <div class="sl-title">第一電腦：DGX 超級電腦（雲端訓練）</div>
+          <div class="sl-desc">把幾百萬小時的行車影片送進 DGX 叢集訓練 AI 模型，這一步在資料中心完成，不在車子裡</div>
+        </div>
+        <div class="sl-tag">資料中心</div>
+      </div>
+      <div class="stack-layer sl-sim">
+        <div class="sl-icon">🖥️</div>
+        <div class="sl-main">
+          <div class="sl-title">模擬平台：Omniverse + Cosmos + AlpaSim（虛擬驗證）</div>
+          <div class="sl-desc">訓練好的模型先在虛擬世界跑幾千萬公里，驗證沒問題才放到真實車輛上</div>
+        </div>
+        <div class="sl-tag">虛擬環境</div>
+      </div>
+      <div class="stack-layer sl-car">
+        <div class="sl-icon">🚗</div>
+        <div class="sl-main">
+          <div class="sl-title">第二電腦：DRIVE AGX Thor（車內運算）</div>
+          <div class="sl-desc">裝在車子裡的 AI 電腦，即時處理所有感測器資料並執行 Alpamayo 推論</div>
+        </div>
+        <div class="sl-tag">車載電腦</div>
+      </div>
+      <div class="stack-layer sl-model">
+        <div class="sl-icon">🧠</div>
+        <div class="sl-main">
+          <div class="sl-title">AI 大腦：Alpamayo 2 Super + Halos OS（推理與安全）</div>
+          <div class="sl-desc">320 億參數的 VLA 模型負責思考決策，Halos 安全層確保 AI 不做危險動作</div>
+        </div>
+        <div class="sl-tag">軟體層</div>
+      </div>
+    </div>
+    <div class="analogy">想像培育一位外科醫生：先在學校（DGX）學習所有醫學知識，再在模擬器（Omniverse）上操作幾千次，才能進真實手術室（車內部署）。Halos 就是手術室的安全規範，確保每個動作都在安全範圍內。</div>
+  </div>
+</div>
+
+<div class="card sage">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">DRIVE Hyperion 平台：車內的感測器與電腦</div>
+      <div class="c-en">NVIDIA DRIVE Hyperion — In-Vehicle Platform</div>
+      <div class="c-oneliner">14 顆攝影機 + 9 個雷達 + 光達，加上兩顆 AGX Thor 的算力</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">👁️ 感測器套件（眼睛和耳朵）</div>
+      <div class="spec-grid">
+        <div class="spec-item">
+          <div class="spec-num">14</div>
+          <div class="spec-unit">顆</div>
+          <div class="spec-lbl">高畫質攝影機</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-num">9</div>
+          <div class="spec-unit">個</div>
+          <div class="spec-lbl">雷達（Radar）</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-num">1</div>
+          <div class="spec-unit">個</div>
+          <div class="spec-lbl">光達（LiDAR）</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-num">12</div>
+          <div class="spec-unit">個</div>
+          <div class="spec-lbl">超音波感測器</div>
+        </div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">⚙️ 車載電腦算力</div>
+      <div class="cb-role">
+        <strong>兩顆 DRIVE AGX Thor SoC</strong>——每顆提供最高 1,000 INT8 TOPS（兆次整數運算/秒）+ 2,000 FP4 TFLOPS（兆次浮點運算/秒）的算力。兩顆同時運作，一顆負責主要推論，一顆做冗餘安全備份，確保一顆故障時另一顆能立刻接管。<br><br>
+        <strong>安全認證</strong>：符合 ISO 26262 ASIL-D（汽車安全完整性等級最高等級），以及 ISO 21434 網路安全標準。
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">📡 為什麼同時需要攝影機、雷達、光達？</div>
+      <div class="cb-text">
+        <strong>攝影機</strong>：辨識顏色、文字、表情（行人是否在看你）——但雨霧中失效<br>
+        <strong>雷達</strong>：精確測量距離和速度——在雨霧中仍能用，但解析度低<br>
+        <strong>光達（LiDAR）</strong>：3D 點雲掃描，建立精確的空間模型——但成本高<br>
+        <strong>超音波</strong>：近距離偵測（停車時）——便宜但範圍小<br><br>
+        <em>四種感測器互補，才能讓 AI 在任何天氣、任何時間看清楚周圍環境。</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card sage">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Halos OS：讓自駕車 AI 有安全底線的「守門員」</div>
+      <div class="c-en">NVIDIA Halos OS — Full-Stack Safety System</div>
+      <div class="c-oneliner">三層安全架構，確保 AI 就算判斷失誤也不會造成危險</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">Halos OS 是 NVIDIA 為自駕車打造的安全作業系統，建立在 ASIL-D 認證的 DriveOS 之上，採用<strong>三層安全架構</strong>：<br><br>
+        第一層：<strong>安全中介層（Safety Middleware）</strong>——監控所有系統組件的健康狀態<br>
+        第二層：<strong>安全應用層（Safety Applications）</strong>——實作主動安全功能（緊急煞車、碰撞預警）<br>
+        第三層：<strong>NCAP 五星防護欄</strong>——確保即使 AI 模型出現推理錯誤，物理上不會做出危險動作
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 重要性</div>
+      <div class="cb-role">沒有 Halos，自駕車 AI 就算推理能力再強，監管機構也不會批准上路。Halos 讓車廠能說：「我的車就算 AI 出現 bug，也不會讓乘客受傷」——這是 Level 4 自駕獲得法規認可的關鍵。</div>
+    </div>
+    <div class="analogy">飛機有「飛行員自動駕駛」，但同時有「飛行保護邊界」——就算飛行員按了錯誤的指令，飛機的系統也會拒絕執行危險操作。Halos OS 就是汽車版的「飛行保護邊界」。</div>
+  </div>
+</div>
+
+</div><!-- /sec3 -->
+
+
+<!-- ══════════════════════════════════
+     SECTION 4：今日新發布的工具
+══════════════════════════════════ -->
+<div class="sec-header teal" id="tools">
+  <div class="sec-num">4</div>
+  <div>
+    <div class="sec-title">今日同步發布的新工具</div>
+    <div class="sec-sub">AlpaGym、OmniDreams、NuRec、Agent Skills</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec4')">▾ 全部展開</button>
+<div id="sec4">
+
+<div class="card teal">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">AlpaGym：讓自駕 AI 靠「玩遊戲」學開車</div>
+      <div class="c-en">AlpaGym — Closed-Loop Reinforcement Learning Framework</div>
+      <div class="c-oneliner">閉環強化學習平台，讓車輛 AI 在虛擬世界透過嘗試與錯誤自我進化</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">AlpaGym 是為自駕車開發的<strong>閉環強化學習（Closed-Loop Reinforcement Learning）</strong>平台。「閉環」意思是：AI 的每個行動都會影響下一個場景，並即時收到「做得好/做得差」的回饋，然後自動調整策略——就像在玩電動遊戲一樣。</div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 重要性</div>
+      <div class="cb-role">傳統自駕 AI 訓練是「監督學習」——給 AI 看人類怎麼開車，讓它模仿。但遇到從未見過的場景就沒辦法。<br><br>AlpaGym 讓 AI 在虛擬世界裡<strong>自己去試</strong>：切錯車道、差點撞車 → 學到懲罰；順暢超車 → 獲得獎勵。反覆幾百萬次後，AI 自動發展出比人類更好的應對策略。</div>
+    </div>
+    <div class="analogy">一個新手司機，如果只靠「看教學影片」學開車，上路時遇到特殊狀況就措手不及。但如果在賽車模擬器上練幾千小時，各種極端場景都試過了，上路時自然更從容。AlpaGym 就是自駕 AI 的「賽車模擬器 + 自動評分系統」。</div>
+  </div>
+</div>
+
+<div class="card teal">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">OmniDreams：用 AI「想像」出訓練所需的罕見場景</div>
+      <div class="c-en">NVIDIA OmniDreams — Generative World Model</div>
+      <div class="c-oneliner">生成逼真的閉環自駕場景，專門模擬現實中幾乎不可能收集到的罕見情況</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">OmniDreams 是生成式世界模型，能夠依照指令創造出逼真的駕駛場景影片，用於 Alpamayo 的訓練和 AlpaGym 的強化學習環境。它的特點是專注於<strong>「長尾場景」</strong>——那些在現實世界裡很少發生、但發生了卻很危險的情況。</div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 解決什麼問題</div>
+      <div class="cb-role">假設你要訓練 AI 應對「濃霧中道路上有一隻牛」的場景——現實中這個場景幾乎不可能收集到足夠的訓練資料。OmniDreams 能根據描述，生成幾千個這樣的場景影片，讓 AI 充分訓練。<br><br>技術上是把 Cosmos 世界基礎模型的能力，專門優化用於<strong>自駕訓練資料生成</strong>。</div>
+    </div>
+    <div class="analogy">消防員訓練不可能等真的火災發生才學——他們在模擬訓練場重複練習。OmniDreams 讓自駕 AI 也能「事先練習」各種現實中極罕見但極危險的場景，而不需要真的開車去遇到這些情況。</div>
+  </div>
+</div>
+
+<div class="card teal">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Omniverse NuRec：把真實行車影片變成無限訓練資料</div>
+      <div class="c-en">NVIDIA Omniverse NuRec — Neural Reconstruction</div>
+      <div class="c-oneliner">神經重建技術，讓一段行車記錄器影片變成可以反覆修改的 3D 訓練場景</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">NuRec（Neural Reconstruction）是把真實世界的行車影片，用神經網路技術「重建」成可編輯的 3D 場景，然後在這個場景裡產生大量變化版本的合成訓練資料。一段 10 分鐘的行車記錄器影片，可以生成幾百個「天氣不同、時間不同、前車位置不同」的變化版本。</div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 在 AV 開發中的角色</div>
+      <div class="cb-role">車廠每天讓測試車輛上路，收集真實行車影片，但每段影片只代表一種特定情境。NuRec 讓這段影片「無限增殖」——同一條路，現在換成下雨、換成夜晚、換成前車突然切入……全部都能模擬，<strong>大幅降低資料收集的成本和時間</strong>。</div>
+    </div>
+    <div class="analogy">攝影師拍了一張台北101的照片，後製師可以把它改成日出版、夕陽版、下雨版、冬天版。NuRec 對行車影片做的事情一樣——一段真實影片，變成幾百種氣候和時段的版本，全部都能用來訓練 AI。</div>
+  </div>
+</div>
+
+<div class="card teal">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Physical AI Agent Skills：讓開發工具也「會用 AI 幫忙」</div>
+      <div class="c-en">Physical AI Agent Skills for AV Tools</div>
+      <div class="c-oneliner">NVIDIA 為所有 AV 開發工具加上 AI Agent 技能，開發者說需求，AI 自動完成</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">📖 定義</div>
+      <div class="cb-text">NVIDIA 為整個 Alpamayo AV 開發工具鏈加上了 Agent Skills——這代表開發者不需要一步一步手動操作工具，而是可以描述需求，讓 AI Agent 自動完成工作流程。例如「幫我用 NuRec 把昨天收集的所有行車影片生成下雨版本，然後加進訓練資料集」，Agent 自動完成整個流程。</div>
+    </div>
+    <div class="cb">
+      <div class="cb-lbl">🎯 重要性</div>
+      <div class="cb-role">這是 NVIDIA 把「Agent 哲學」貫徹到 AV 開發工具的體現——不只讓車子有 AI，連開發車子 AI 的工程師，也有 AI Agent 在幫他們工作。Jensen 整場演講的核心主題「Agent 讓人的產出乘以三倍」，在這裡具體落地。</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sec4 -->
+
+
+<!-- ══════════════════════════════════
+     SECTION 5：合作夥伴
+══════════════════════════════════ -->
+<div class="sec-header rose" id="partners">
+  <div class="sec-num">5</div>
+  <div>
+    <div class="sec-title">採用 NVIDIA 自駕平台的夥伴</div>
+    <div class="sec-sub">從豪華轎車到計程車車隊，涵蓋全球主要市場</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec5')">▾ 全部展開</button>
+<div id="sec5">
+
+<div class="card rose">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">乘用車廠商：從賓士到比亞迪</div>
+      <div class="c-en">Passenger Car Partners</div>
+      <div class="c-oneliner">全球主要車廠，代表超過 8 成全球汽車銷量</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">🚗 歐美豪華車廠</div>
+      <div class="partner-grid">
+        <div class="partner-chip">Mercedes-Benz<span>首款 CLA 已上路</span></div>
+        <div class="partner-chip">JLR（捷豹路虎）<span>2026年起全面採用</span></div>
+        <div class="partner-chip">Volvo<span>EX90 搭載 AGX Orin</span></div>
+        <div class="partner-chip">Lucid Motors<span>美國電動豪華車</span></div>
+        <div class="partner-chip">Stellantis<span>Jeep/Fiat/Chrysler母集團</span></div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:12px;">
+      <div class="cb-lbl">🚗 日韓車廠</div>
+      <div class="partner-grid">
+        <div class="partner-chip">Hyundai 現代<span>現代汽車集團</span></div>
+        <div class="partner-chip">Nissan 日產<span>2026年採用 L4 平台</span></div>
+        <div class="partner-chip">Isuzu 五十鈴<span>商用車 L4</span></div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:12px;">
+      <div class="cb-lbl">🚗 中國車廠</div>
+      <div class="partner-grid">
+        <div class="partner-chip">BYD 比亞迪<span>全球最大電動車廠</span></div>
+        <div class="partner-chip">Geely 吉利<span>Volvo母集團</span></div>
+        <div class="partner-chip">GWM 長城<span>哈弗/魏牌</span></div>
+        <div class="partner-chip">小米汽車<span>SU7/YU7</span></div>
+        <div class="partner-chip">Zeekr 極氪<span>吉利旗下電動品牌</span></div>
+      </div>
+    </div>
+    <div class="quote-block">
+      <p>「自動駕駛革命已經到來——這是第一個兆美元規模的機器人產業。所有移動的東西，最終都將成為自主的。」</p>
+      <div class="attr">— Jensen Huang，GTC 2026</div>
+    </div>
+  </div>
+</div>
+
+<div class="card rose">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">機器計程車（Robotaxi）與叫車平台</div>
+      <div class="c-en">Robotaxi & Mobility Providers</div>
+      <div class="c-oneliner">2027 年 Uber 機器計程車將在洛杉磯、舊金山率先上路</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">🚕 主要夥伴與時程</div>
+      <div class="partner-grid">
+        <div class="partner-chip">Uber<span>2027 LA/SF，2028年28市場</span></div>
+        <div class="partner-chip">Zoox<span>亞馬遜旗下 AV 公司</span></div>
+        <div class="partner-chip">Pony.ai<span>中美兩地自駕</span></div>
+        <div class="partner-chip">DiDi<span>滴滴出行</span></div>
+        <div class="partner-chip">Grab<span>東南亞叫車龍頭</span></div>
+        <div class="partner-chip">Lyft<span>美國第二大叫車</span></div>
+        <div class="partner-chip">Bolt<span>歐洲叫車平台</span></div>
+        <div class="partner-chip">TIER IV<span>日本自駕新創</span></div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">📅 商業化時程</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2026 年（現在）</div>
+          <div class="tl-text">Mercedes-Benz CLA 搭載 Alpamayo 在美國上路，<strong>全球第一款量產推理式自駕乘用車</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2027 年上半年</div>
+          <div class="tl-text">Uber 機器計程車在<strong>洛杉磯和舊金山</strong>上路，使用 NVIDIA DRIVE Hyperion + Alpamayo 平台</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2028 年</div>
+          <div class="tl-text">Uber 機器計程車擴展至<strong>全球 28 個市場</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card rose">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">學術與研究機構</div>
+      <div class="c-en">Research Partners</div>
+      <div class="c-oneliner">Berkeley DeepDrive、Hugging Face 等頂尖研究機構</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">🎓 學術夥伴</div>
+      <div class="partner-grid">
+        <div class="partner-chip">Berkeley DeepDrive<span>UC Berkeley 自駕研究</span></div>
+        <div class="partner-chip">Hugging Face<span>開源 AI 最大平台</span></div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:12px;">
+      <div class="cb-lbl">💬 Berkeley DeepDrive 評語</div>
+      <div class="quote-block">
+        <p>「Alpamayo 系列的發布，代表研究社群的一大躍進。NVIDIA 決定將其開放的這個決定，具有變革性意義——它的開放性和能力，讓我們能夠以前所未有的規模進行訓練，推動自駕車進入主流。」</p>
+        <div class="attr">— Wei Zhan，Berkeley DeepDrive 共同主任</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sec5 -->
+
+
+<!-- ══════════════════════════════════
+     SECTION 6：vs 特斯拉
+══════════════════════════════════ -->
+<div class="sec-header gold" id="vs-tesla">
+  <div class="sec-num">6</div>
+  <div>
+    <div class="sec-title">NVIDIA Alpamayo vs. 特斯拉 FSD</div>
+    <div class="sec-sub">兩種完全不同的自駕策略，誰會贏？</div>
+  </div>
+</div>
+<button class="btn-expand" onclick="openAll('sec6')">▾ 全部展開</button>
+<div id="sec6">
+
+<div class="card gold">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">策略比較：鏟子廠商 vs. 礦金者</div>
+      <div class="c-en">Platform Provider vs. Vertical Integrator</div>
+      <div class="c-oneliner">特斯拉自己挖金，NVIDIA 賣鏟子給所有想挖金的人</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">⚖️ 關鍵差異對比</div>
+    </div>
+    <div style="overflow-x:auto;margin-top:10px;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr style="background:var(--ink);color:#F9F4EB;">
+            <th style="padding:10px 14px;text-align:left;border-radius:8px 0 0 0;">項目</th>
+            <th style="padding:10px 14px;text-align:left;color:var(--amber3);">Tesla FSD</th>
+            <th style="padding:10px 14px;text-align:left;color:#7EC8E0;border-radius:0 8px 0 0;">NVIDIA Alpamayo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FEFCF8;">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700;">商業模式</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);">只用於自己的車</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--sage2);font-weight:700;">開放給所有車廠使用</td>
+          </tr>
+          <tr style="background:var(--sand2);">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700;">自駕等級</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);">L2+（需人類監控）</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--sage2);font-weight:700;">L4（無需人類介入）</td>
+          </tr>
+          <tr style="background:#FEFCF8;">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700;">開源程度</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);">完全封閉</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--sage2);font-weight:700;">完全開源</td>
+          </tr>
+          <tr style="background:var(--sand2);">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700;">推理能力</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);">規則型 + 神經網路</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--sage2);font-weight:700;">推理式 VLA（能解釋決策）</td>
+          </tr>
+          <tr style="background:#FEFCF8;">
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);font-weight:700;">感測器</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);">純攝影機（無光達）</td>
+            <td style="padding:9px 14px;border-bottom:1px solid var(--border);color:var(--sage2);font-weight:700;">攝影機+雷達+光達+超音波</td>
+          </tr>
+          <tr style="background:var(--sand2);">
+            <td style="padding:9px 14px;font-weight:700;">上路時程</td>
+            <td style="padding:9px 14px;">現在（L2+等級）</td>
+            <td style="padding:9px 14px;color:var(--sage2);font-weight:700;">2026-2027（L4 商業化）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cb" style="margin-top:16px;">
+      <div class="cb-lbl">🎯 誰會贏？</div>
+      <div class="cb-role">這個問題沒有簡單答案，因為兩者<strong>其實在競爭不同的市場</strong>：<br><br>
+        <strong>特斯拉</strong>的策略是靠自己的龐大車隊收集全球最多的行車資料，讓 FSD 越來越聰明，最終用低硬體成本（不裝光達）打贏競爭。<br><br>
+        <strong>NVIDIA</strong>的策略是成為「所有其他車廠的底層」——不自己造車，但讓全球 80% 的車廠都跑在 NVIDIA 的平台上。就算特斯拉最後的 FSD 技術最好，NVIDIA 已經掌握了整個產業的基礎設施。<br><br>
+        更準確的說：NVIDIA 不是在跟特斯拉競爭，它是在讓所有特斯拉的競爭者都依賴 NVIDIA。
+      </div>
+    </div>
+    <div class="analogy">淘金熱時期，最賺錢的不是挖到金子的人，而是賣鏟子、賣牛仔褲給礦工的人（Levi's 就是那個時代發跡的）。特斯拉是在挖金，NVIDIA 是在賣鏟子和牛仔褲給所有想挖金的人。</div>
+  </div>
+</div>
+
+<div class="card gold">
+  <div class="card-head" onclick="tog(this)">
+    <div class="c-bar"></div>
+    <div class="ch-main">
+      <div class="c-zh">Jensen 的汽車野心：「所有移動的東西都將自駕」</div>
+      <div class="c-en">Jensen's Vision for Autonomous Everything</div>
+      <div class="c-oneliner">不只是乘用車——卡車、農機、工廠設備，全都是 NVIDIA 的目標市場</div>
+    </div>
+    <div class="c-arrow">▼</div>
+  </div>
+  <div class="card-body">
+    <div class="cb">
+      <div class="cb-lbl">💬 Jensen 的原話</div>
+      <div class="quote-block">
+        <p>「自動駕駛革命已經到來——這是第一個兆美元規模的機器人產業。所有移動的東西，最終都將是自主的。NVIDIA Hyperion 平台和我們的 Alpamayo 開源推理模型，給予世界所有的汽車製造商、自動駕駛開發者和移動網路一個共同的 Level 4 就緒基礎。」</p>
+        <div class="attr">— Jensen Huang，GTC 2026，三月 San Jose</div>
+      </div>
+    </div>
+    <div class="cb" style="margin-top:14px;">
+      <div class="cb-lbl">🌏 「兆美元機器人產業」是什麼意思</div>
+      <div class="cb-role">
+        全球汽車市場每年約 3 兆美元（銷售額）。如果每輛車的自駕系統需要 NVIDIA 的晶片和軟體授權，NVIDIA 每年能拿多少？Jensen 說這是第一個兆美元規模的機器人產業。<br><br>
+        而且他說的「所有移動的東西」不只是乘用車，還包括：<strong>卡車</strong>（Isuzu 已宣布）、<strong>農業設備</strong>、<strong>工廠 AGV（自動導引車）</strong>、<strong>港口機械</strong>。這些加起來，規模是乘用車的好幾倍。
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sec6 -->
+
+</div><!-- /wrap -->
+
+<!-- ══════════════════════════════════
+     FOOTER LINK BANNER (identical to top)
+══════════════════════════════════ -->
+<div class="link-banner bottom-banner">
+  <div class="lb-inner">
+    <a class="lb-card lb-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+      <div class="lb-icon">📚</div>
+      <div class="lb-title">錯中學 ECHO 計劃</div>
+      <div class="lb-desc">七月英文課程<br>從錯誤中學習成長</div>
+    </a>
+    <a class="lb-card lb-popup" href="https://linwayet.github.io/popup/index" target="_blank">
+      <div class="lb-icon">📊</div>
+      <div class="lb-title">學生分析系統</div>
+      <div class="lb-desc">七月課程配套工具<br>精準掌握學習進度</div>
+    </a>
+    <a class="lb-card lb-line" href="https://line.me/ti/p/linwayet" target="_blank">
+      <div class="lb-icon">💬</div>
+      <div class="lb-title">LINE 林威老師</div>
+      <div class="lb-desc">ID: linwayet<br>歡迎詢問課程</div>
+    </a>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <strong>Alpamayo 2 Super · NVIDIA 自駕 AI 全解析</strong><br>
+  整理製作：林威英文 · 錯中學 ECHO 計劃<br>
+  <small>資料來源：NVIDIA GTC Taipei 2026 · 2026年6月1日發布 · 僅供教育用途</small>
+</div>
+
+<script>
+function tog(head) {
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.c-arrow');
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  arrow.classList.toggle('open', !open);
+}
+function openAll(id) {
+  document.getElementById(id).querySelectorAll('.card-body').forEach(b => b.classList.add('open'));
+  document.getElementById(id).querySelectorAll('.c-arrow').forEach(a => a.classList.add('open'));
+}
+</script>
+</body>
+</html>
