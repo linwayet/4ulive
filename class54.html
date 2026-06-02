@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林威英文｜七日英文小故事單字課程（小高一 A+ 班）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED;--ink:#2D2A26;--card:#FFFDF8;--card2:#FBF6EC;
+    --line:#E6DCC8;--line2:#D8C9A8;
+    --terra:#C0623D;--gold:#C98B2E;--rust:#A0492A;--green:#5F7A4A;--red:#B23A2E;
+    --fs:22px;
+  }
+  *{box-sizing:border-box;}
+  html{font-size:var(--fs);}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:'BIZ UDPGothic','Nunito',system-ui,-apple-system,sans-serif;
+    line-height:1.8;font-size:1rem;-webkit-text-size-adjust:100%;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px 60px;}
+
+  .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:14px;
+    background:var(--card2);border-bottom:3px solid var(--line2);}
+  .nav.bottom{border-bottom:none;border-top:3px solid var(--line2);margin-top:40px;}
+  .nav a{flex:1 1 auto;min-width:200px;min-height:64px;display:flex;align-items:center;
+    justify-content:center;text-align:center;background:var(--terra);color:#fff;
+    text-decoration:none;font-weight:700;border-radius:14px;padding:10px 16px;font-size:1rem;
+    box-shadow:0 3px 0 var(--rust);}
+  .nav a.b{background:var(--gold);box-shadow:0 3px 0 #9a6a1f;}
+  .nav a.c{background:var(--green);box-shadow:0 3px 0 #41562f;}
+  .nav a:active{transform:translateY(2px);box-shadow:none;}
+
+  header.hero{text-align:center;padding:34px 12px 10px;}
+  header.hero h1{font-size:1.7rem;margin:0 0 8px;color:var(--rust);letter-spacing:.5px;}
+  header.hero p{margin:6px auto;max-width:660px;color:#5b524a;font-size:1rem;}
+  .badge{display:inline-block;background:var(--terra);color:#fff;font-weight:700;
+    padding:6px 18px;border-radius:30px;font-size:.95rem;margin-top:6px;}
+
+  .fontctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto;
+    background:var(--card);border:2px solid var(--line2);border-radius:16px;padding:12px 16px;max-width:380px;}
+  .fontctrl span{font-weight:700;}
+  .fontctrl button{min-width:64px;min-height:56px;font-size:1.3rem;font-weight:800;
+    background:var(--gold);color:#fff;border:none;border-radius:12px;cursor:pointer;box-shadow:0 3px 0 #9a6a1f;}
+  .fontctrl button:active{transform:translateY(2px);box-shadow:none;}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0;}
+  .tab{min-width:96px;min-height:64px;border:none;border-radius:14px;cursor:pointer;
+    font-family:inherit;font-weight:800;font-size:1.05rem;color:#fff;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;padding:8px;line-height:1.3;background:#b8a98c;box-shadow:0 3px 0 #8d8068;}
+  .tab small{font-weight:700;font-size:.7rem;opacity:.9;}
+  .tab.active{outline:4px solid var(--ink);transform:translateY(-2px);}
+  .tab:active{transform:translateY(2px);box-shadow:none;}
+
+  .day{display:none;animation:fade .25s ease;}
+  .day.show{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+  .day-head{border-radius:18px;padding:20px 22px;color:#fff;margin-bottom:22px;}
+  .day-head h2{margin:0 0 4px;font-size:1.4rem;}
+  .day-head .zh{font-size:1.05rem;opacity:.95;}
+
+  .section-title{font-size:1.2rem;font-weight:800;margin:30px 0 14px;padding-left:14px;
+    border-left:8px solid var(--terra);}
+
+  .story{background:var(--card);border:2px solid var(--line2);border-radius:16px;padding:22px;
+    font-size:1.12rem;line-height:2;}
+  .story .en{margin:0 0 14px;}
+  .story .en b{color:var(--rust);}
+  .story .zh{color:#6a5f53;font-size:.98rem;border-top:2px dashed var(--line2);padding-top:14px;}
+  .play{min-height:60px;border:none;border-radius:12px;background:var(--green);color:#fff;
+    font-weight:800;font-family:inherit;font-size:1rem;padding:8px 22px;cursor:pointer;margin-top:16px;box-shadow:0 3px 0 #41562f;}
+  .play:active{transform:translateY(2px);box-shadow:none;}
+
+  .vlist{display:grid;gap:14px;}
+  .vcard{background:var(--card);border:2px solid var(--line2);border-radius:16px;padding:16px 18px;}
+  .vtop{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .vnum{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:var(--gold);color:#fff;
+    font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .vword{font-size:1.3rem;font-weight:800;color:var(--rust);}
+  .vpos{background:var(--card2);border:2px solid var(--line2);border-radius:8px;padding:2px 10px;
+    font-size:.85rem;font-weight:700;color:#7a6a4f;}
+  .vphon{color:#8a7d6c;font-size:.95rem;}
+  .vsay{margin-left:auto;min-width:58px;min-height:52px;border:none;border-radius:10px;
+    background:var(--terra);color:#fff;font-size:1.1rem;cursor:pointer;box-shadow:0 3px 0 var(--rust);}
+  .vsay:active{transform:translateY(2px);box-shadow:none;}
+  .vmean{font-weight:700;margin:10px 0 6px;font-size:1.05rem;}
+  .vex{background:var(--card2);border-radius:10px;padding:10px 14px;margin-top:6px;}
+  .vex .e{color:#3a342d;}
+  .vex .c{color:#7a6f60;font-size:.95rem;}
+
+  /* color-coded info blocks */
+  .cat{border-radius:10px;padding:9px 13px;margin-top:8px;border-left:6px solid;
+    font-size:.98rem;line-height:1.7;color:#2D2A26;}
+  .cat .lbl{display:inline-block;color:#fff;font-weight:800;font-size:.78rem;
+    padding:2px 10px;border-radius:6px;margin-right:8px;white-space:nowrap;}
+
+  .practice{background:var(--card);border:2px solid var(--line2);border-radius:16px;padding:20px;margin-bottom:8px;}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+  .bank span{background:var(--card2);border:2px solid var(--line2);border-radius:10px;padding:6px 14px;
+    font-weight:700;color:var(--rust);font-size:.98rem;}
+  .q{margin:0 0 16px;padding-bottom:16px;border-bottom:1px dashed var(--line2);font-size:1.05rem;}
+  .q:last-of-type{border-bottom:none;}
+  .q .num{font-weight:800;color:var(--terra);margin-right:6px;}
+  .q select,.q input{font-family:inherit;font-size:1rem;font-weight:700;min-height:56px;
+    border:2px solid var(--line2);border-radius:10px;padding:4px 10px;margin:0 4px;background:#fff;color:var(--ink);max-width:100%;}
+  .q input{width:180px;max-width:62%;}
+  .q .hint{color:#8a7d6c;font-size:.9rem;}
+  .q.right select,.q.right input{border-color:var(--green);background:#eef3e6;color:var(--green);}
+  .q.wrong select,.q.wrong input{border-color:var(--red);background:#f7e9e7;color:var(--red);}
+  .q .sol{display:none;margin-top:8px;color:var(--green);font-weight:700;font-size:.98rem;}
+  .q.wrong .sol{display:block;}
+  .check{min-height:64px;border:none;border-radius:14px;background:var(--gold);color:#fff;
+    font-family:inherit;font-weight:800;font-size:1.1rem;padding:10px 30px;cursor:pointer;box-shadow:0 3px 0 #9a6a1f;margin-top:6px;}
+  .check:active{transform:translateY(2px);box-shadow:none;}
+  .score{margin-top:16px;font-weight:800;font-size:1.15rem;text-align:center;min-height:30px;}
+
+  footer.tip{text-align:center;color:#8a7d6c;font-size:.9rem;margin-top:30px;}
+</style>
+</head>
+<body>
+
+<nav class="nav top">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">📚 錯中學 ECHO 計劃</a>
+  <a class="b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">📊 學生分析</a>
+  <a class="c" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">💬 LINE 林威老師</a>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>七日英文小故事單字課程</h1>
+    <p>專為「會考剛結束、英文 A+」的準高一生設計。每天一篇 50 字小故事、10 個進階單字（KK 音標＋詞性＋例句＋衍生詞／字根／片語／慣用語／易混淆／重點），再加上「選擇填充」與「衍生字填空」兩種練習，銜接高中 7000 單字。</p>
+    <span class="badge">小高一 A+ 銜接班</span>
+  </header>
+
+  <div class="fontctrl">
+    <span>字級</span>
+    <button id="fminus" aria-label="縮小字體">A－</button>
+    <span id="fsval">22</span>
+    <button id="fplus" aria-label="放大字體">A＋</button>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="days"></div>
+
+  <footer class="tip">練習作答後按「批改」即可看分數與解答<br>林威英文 · 34 年教學經驗</footer>
+</div>
+
+<nav class="nav bottom">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">📚 錯中學 ECHO 計劃</a>
+  <a class="b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">📊 學生分析</a>
+  <a class="c" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">💬 LINE 林威老師</a>
+</nav>
+
+<script>
+/* category meta: key -> [label, bg, accent] */
+const CATS=[
+ ["dv","衍生詞","#FDEDEC","#C0392B"],
+ ["rt","字根","#EBF5FB","#1565C0"],
+ ["ph","片語","#EAFAF1","#2E7D32"],
+ ["id","慣用語","#FEF9E7","#D68910"],
+ ["cf","容易混淆","#F5EEF8","#6A1B9A"],
+ ["ky","強調 / 重點","#FEF0E7","#E65100"]
+];
+
+/* ===================== COURSE DATA ===================== */
+const COURSE=[
+ {
+  day:1,color:"#C0623D",title:"A Brand New Start",zh:"嶄新的開始",
+  story:[{t:"On my first day of high school, I felt "},{w:"nervous"},{t:" walking onto the "},{w:"unfamiliar"},{t:" "},{w:"campus"},{t:". A friendly "},{w:"classmate"},{t:" helped me find my "},{w:"locker"},{t:" and read my "},{w:"schedule"},{t:". She "},{w:"introduced"},{t:" me to others. Soon I felt more "},{w:"confident"},{t:". This new "},{w:"opportunity"},{t:" made me believe I truly "},{w:"belong"},{t:" here."}],
+  storyZh:"高中第一天，我緊張地走進陌生的校園。一位友善的同學幫我找到置物櫃、看懂課表，還把我介紹給其他人。漸漸地我變得更有自信。這個全新的機會讓我相信，我真正屬於這裡。",
+  vocab:[
+   {w:"nervous",p:"/ˈnɝvəs/",pos:"adj.",m:"緊張的、焦慮的",e:"She felt nervous before the interview.",ec:"她面試前感到很緊張。",
+    dv:"nervous (adj.) → nervously (adv.) 緊張地 → nervousness (n.) 緊張",ph:"be nervous about + N 對⋯感到緊張",cf:"nervous（緊張）≠ annoyed（惱怒）；前者擔心，後者生氣"},
+   {w:"unfamiliar",p:"/ˌʌnfəˈmɪljɚ/",pos:"adj.",m:"不熟悉的、陌生的",e:"The streets here are unfamiliar to me.",ec:"這裡的街道對我很陌生。",
+    rt:"un-（否定）＋ familiar（熟悉的）＝ 不熟悉的",dv:"familiar (adj.) 熟悉的 → familiarity (n.) 熟悉",ph:"be unfamiliar with + N 對⋯不熟"},
+   {w:"campus",p:"/ˈkæmpəs/",pos:"n.",m:"校園",e:"Our campus has a big sports field.",ec:"我們校園有一個大運動場。",
+    ph:"on campus 在校園內／off campus 在校外",ky:"複數為 campuses；指「整片校地」"},
+   {w:"classmate",p:"/ˈklæsˌmet/",pos:"n.",m:"同班同學",e:"My classmate lent me her notes.",ec:"我同學把筆記借我。",
+    rt:"class（班級）＋ mate（夥伴）",cf:"classmate 同班／schoolmate 同校／roommate 室友"},
+   {w:"locker",p:"/ˈlɑkɚ/",pos:"n.",m:"置物櫃",e:"I keep my books in my locker.",ec:"我把書放在置物櫃裡。",
+    rt:"lock（鎖）＋ -er（物品）＝ 可上鎖的櫃子",dv:"lock (v.) 鎖上 → lock (n.) 鎖頭"},
+   {w:"schedule",p:"/ˈskɛdʒul/",pos:"n.",m:"時間表、課表",e:"Check the schedule for tomorrow.",ec:"查一下明天的時間表。",
+    ph:"on schedule 準時／ahead of schedule 提前／behind schedule 落後",ky:"美音 /ˈskɛdʒul/、英音 /ˈʃɛdjul/；也可當動詞「安排」"},
+   {w:"introduce",p:"/ˌɪntrəˈdjus/",pos:"v.",m:"介紹",e:"Let me introduce you to my family.",ec:"讓我把你介紹給家人。",
+    rt:"intro-（向內）＋ -duce（引導，duct = lead）＝ 引進、介紹",dv:"introduce (v.) → introduction (n.) 介紹／引言 → introductory (adj.) 入門的",ph:"introduce A to B 把 A 介紹給 B"},
+   {w:"confident",p:"/ˈkɑnfədənt/",pos:"adj.",m:"有自信的",e:"He is confident about passing the exam.",ec:"他對通過考試很有信心。",
+    dv:"confident (adj.) → confidence (n.) 自信 → confidently (adv.) 自信地",cf:"confident（有自信）≠ confidential（機密的）拼字相近易錯！",ph:"be confident about / of + N"},
+   {w:"opportunity",p:"/ˌɑpɚˈtjunətɪ/",pos:"n.",m:"機會",e:"This is a great opportunity to learn.",ec:"這是很好的學習機會。",
+    cf:"opportunity（機會，較正式）≈ chance（機會，較口語）",ph:"take the opportunity to + V 把握機會做⋯"},
+   {w:"belong",p:"/bəˈlɔŋ/",pos:"v.",m:"屬於",e:"This book belongs to the library.",ec:"這本書屬於圖書館。",
+    dv:"belong (v.) → belongings (n. pl.) 個人物品、隨身財物",ph:"belong to + 人／地方 屬於⋯"}
+  ],
+  prac:[
+   ["I was so ___ before my first speech.","nervous"],
+   ["Our school ___ has a big new library.","campus"],
+   ["Please put your books in your ___.","locker"],
+   ["Let me ___ you to my best friend.","introduce"],
+   ["The contest gave me a great ___ to study abroad.","opportunity"],
+   ["After lots of practice, she felt ___ about the test.","confident"],
+   ["A kind ___ lent me a pencil when I forgot mine.","classmate"],
+   ["This club is where I feel I truly ___.","belong"]
+  ],
+  deriv:[
+   ["He waited ___ for his exam result.","nervous","nervously"],
+   ["She answered every question with ___.","confident","confidence"],
+   ["The teacher gave a short ___ before the lesson.","introduce","introduction"],
+   ["Don't forget to take your ___ when you leave.","belong","belongings"]
+  ]
+ },
+ {
+  day:2,color:"#C98B2E",title:"Making New Friends",zh:"結交新朋友",
+  story:[{t:"At lunch, I was too "},{w:"shy"},{t:" to start a "},{w:"conversation"},{t:". Then a boy "},{w:"shared"},{t:" his lunch with me. We found "},{w:"common"},{t:" "},{w:"interests"},{t:" in music. He had a great sense of "},{w:"humor"},{t:" and "},{w:"encouraged"},{t:" me to join the club. A true friend is "},{w:"loyal"},{t:" and offers "},{w:"support"},{t:" and "},{w:"trust"},{t:"."}],
+  storyZh:"午餐時，我太害羞而不敢開口聊天。後來一個男生跟我分享午餐。我們發現對音樂有共同的興趣。他很有幽默感，還鼓勵我加入社團。真正的朋友是忠誠的，會給予支持與信任。",
+  vocab:[
+   {w:"shy",p:"/ʃaɪ/",pos:"adj.",m:"害羞的",e:"The shy girl rarely speaks in class.",ec:"那害羞的女孩很少發言。",
+    dv:"shy (adj.) → shyly (adv.) 害羞地 → shyness (n.) 害羞",cf:"shy（怕生、害羞）≠ quiet（安靜，不一定怕生）"},
+   {w:"conversation",p:"/ˌkɑnvɚˈseʃən/",pos:"n.",m:"對話、交談",e:"We had a nice conversation about books.",ec:"我們愉快地聊書。",
+    rt:"con-（一起）＋ verse（轉、談）＝ 交談",dv:"converse (v.) 交談 → conversational (adj.) 口語的",ph:"have a conversation with sb"},
+   {w:"share",p:"/ʃɛr/",pos:"v.",m:"分享",e:"Children should learn to share toys.",ec:"孩子該學會分享玩具。",
+    ph:"share A with B 與 B 分享 A",id:"share and share alike 有福同享、平均分攤"},
+   {w:"common",p:"/ˈkɑmən/",pos:"adj.",m:"共同的、常見的",e:"We have a lot in common.",ec:"我們有很多共通點。",
+    dv:"common (adj.) → commonly (adv.) 普遍地",ph:"have sth in common 有共同點",cf:"common（常見的）≠ ordinary（普通、無特色的）"},
+   {w:"interest",p:"/ˈɪntrɪst/",pos:"n.",m:"興趣",e:"Reading is one of her main interests.",ec:"閱讀是她主要興趣之一。",
+    dv:"interest (n.) → interested (adj.) 感興趣的 → interesting (adj.) 有趣的",cf:"interested（人感到興趣）≠ interesting（事物有趣）",ph:"be interested in + N/V-ing"},
+   {w:"humor",p:"/ˈhjumɚ/",pos:"n.",m:"幽默",e:"His sense of humor makes everyone laugh.",ec:"他的幽默感讓大家發笑。",
+    dv:"humor (n.) → humorous (adj.) 幽默的",ph:"sense of humor 幽默感",cf:"美式拼 humor／英式拼 humour"},
+   {w:"encourage",p:"/ɪnˈkɝɪdʒ/",pos:"v.",m:"鼓勵",e:"My teacher encouraged me to try again.",ec:"老師鼓勵我再試一次。",
+    rt:"en-（使⋯）＋ courage（勇氣）＝ 給予勇氣",dv:"encourage (v.) → encouragement (n.) 鼓勵 → encouraging (adj.) 鼓舞人心的",cf:"encourage（鼓勵）⇄ discourage（使氣餒）反義"},
+   {w:"loyal",p:"/ˈlɔɪəl/",pos:"adj.",m:"忠誠的",e:"A dog is a loyal animal.",ec:"狗是忠誠的動物。",
+    dv:"loyal (adj.) → loyalty (n.) 忠誠 → loyally (adv.)",cf:"loyal（忠誠的）≠ royal（皇室的）只差一個字母！"},
+   {w:"support",p:"/səˈport/",pos:"n./v.",m:"支持",e:"Thank you for your support.",ec:"謝謝你的支持。",
+    rt:"sup-（=sub 在下）＋ port（搬運）＝ 從下方撐住",dv:"support (v./n.) → supporter (n.) 支持者 → supportive (adj.) 給予支持的"},
+   {w:"trust",p:"/trʌst/",pos:"n./v.",m:"信任",e:"I trust him completely.",ec:"我完全信任他。",
+    dv:"trust (n./v.) → trustworthy (adj.) 值得信賴的",ph:"trust sb with sth 把某物託付給某人",id:"take sth on trust 不查證就相信"}
+  ],
+  prac:[
+   ["He was too ___ to ask the teacher a question.","shy"],
+   ["We had a long ___ about our favorite movies.","conversation"],
+   ["Would you like to ___ your snacks with me?","share"],
+   ["My main ___ is collecting old coins.","interest"],
+   ["A ___ dog always stays by its owner's side.","loyal"],
+   ["My parents always ___ me to follow my dreams.","encourage"],
+   ["Good friends ___ each other during hard times.","support"],
+   ["You can ___ him; he never tells secrets.","trust"]
+  ],
+  deriv:[
+   ["The story is funny because the writer is very ___.","humor","humorous"],
+   ["I am ___ in learning French this summer.","interest","interested"],
+   ["Thank you for your warm ___ and kind words.","encourage","encouragement"],
+   ["A good friend shows great ___ to you.","loyal","loyalty"]
+  ]
+ },
+ {
+  day:3,color:"#7A8B4F",title:"A Summer Adventure",zh:"暑假大冒險",
+  story:[{t:"Last summer, we began a "},{w:"journey"},{t:" to "},{w:"explore"},{t:" a tall mountain. The view at the top was "},{w:"breathtaking"},{t:". Though we felt "},{w:"exhausted"},{t:", our "},{w:"courage"},{t:" helped us "},{w:"achieve"},{t:" our goal. Watching the "},{w:"sunrise"},{t:" was a "},{w:"memorable"},{t:" moment. I felt "},{w:"grateful"},{t:" for this "},{w:"adventure"},{t:"."}],
+  storyZh:"去年夏天，我們展開一段旅程去探索一座高山。山頂的景色令人嘆為觀止。雖然筋疲力盡，但勇氣讓我們達成目標。看著日出是難忘的時刻。我很感激這場冒險。",
+  vocab:[
+   {w:"journey",p:"/ˈdʒɝnɪ/",pos:"n.",m:"旅程",e:"It was a long journey by train.",ec:"那是漫長的火車旅程。",
+    cf:"journey（過程、單程）／trip（短程來回）／travel（旅行，總稱，不可數）",ph:"be on a journey 在旅途中"},
+   {w:"explore",p:"/ɪkˈsplor/",pos:"v.",m:"探索",e:"They explored the ancient cave.",ec:"他們探索古老的洞穴。",
+    rt:"ex-（向外）＋ plore（喊、找）＝ 往外探查",dv:"explore (v.) → explorer (n.) 探險家 → exploration (n.) 探索"},
+   {w:"breathtaking",p:"/ˈbrɛθˌtekɪŋ/",pos:"adj.",m:"令人嘆為觀止的",e:"The sunset was breathtaking.",ec:"那夕陽美得令人屏息。",
+    rt:"breath（呼吸）＋ taking（奪走）＝ 美到忘了呼吸",cf:"breath (n. 呼吸 /brɛθ/) ≠ breathe (v. 呼吸 /brið/) 拼字與發音都不同！"},
+   {w:"exhausted",p:"/ɪɡˈzɔstɪd/",pos:"adj.",m:"筋疲力盡的",e:"I was exhausted after the race.",ec:"比賽後我累壞了。",
+    dv:"exhaust (v.) 使耗盡 → exhausting (adj.) 令人疲憊的 → exhaustion (n.) 疲憊",cf:"exhausted（人累壞了）≠ exhausting（事讓人累）"},
+   {w:"courage",p:"/ˈkɝɪdʒ/",pos:"n.",m:"勇氣",e:"It takes courage to tell the truth.",ec:"說實話需要勇氣。",
+    rt:"cour-（cor = 心 heart）＋ -age ＝ 發自內心的力量",dv:"courage (n.) → courageous (adj.) 勇敢的 → encourage (v.) 鼓勵"},
+   {w:"achieve",p:"/əˈtʃiv/",pos:"v.",m:"達成、實現",e:"She achieved her dream of being a doctor.",ec:"她實現了當醫生的夢想。",
+    dv:"achieve (v.) → achievement (n.) 成就",ph:"achieve a goal 達成目標"},
+   {w:"sunrise",p:"/ˈsʌnˌraɪz/",pos:"n.",m:"日出",e:"We watched the sunrise on the beach.",ec:"我們在海灘看日出。",
+    rt:"sun（太陽）＋ rise（升起）",cf:"sunrise（日出）⇄ sunset（日落）反義"},
+   {w:"memorable",p:"/ˈmɛmərəbl/",pos:"adj.",m:"難忘的",e:"Our wedding was a memorable day.",ec:"我們的婚禮是難忘的一天。",
+    rt:"memor-（記憶 memory）＋ -able（能⋯的）",dv:"memory (n.) 記憶 → memorize (v.) 背誦 → memorable (adj.) 難忘的"},
+   {w:"grateful",p:"/ˈɡretfəl/",pos:"adj.",m:"感激的",e:"I am grateful for your help.",ec:"我很感激你的幫助。",
+    dv:"grateful (adj.) → gratitude (n.) 感激之情",ph:"be grateful for + 事／to + 人"},
+   {w:"adventure",p:"/ədˈvɛntʃɚ/",pos:"n.",m:"冒險",e:"Life is a great adventure.",ec:"人生是場精彩的冒險。",
+    dv:"adventure (n.) → adventurous (adj.) 愛冒險的 → adventurer (n.) 冒險家",id:"the adventure of a lifetime 一生一次的冒險"}
+  ],
+  prac:[
+   ["After climbing all day, we were completely ___.","exhausted"],
+   ["The view from the mountain top was ___.","breathtaking"],
+   ["It took a lot of ___ to jump into the cold water.","courage"],
+   ["We woke up early to watch the beautiful ___.","sunrise"],
+   ["With hard work, you can ___ any goal you set.","achieve"],
+   ["I am ___ to my teachers for all their help.","grateful"],
+   ["Our trip to Japan was a ___ experience.","memorable"],
+   ["They went on an exciting ___ in the forest.","adventure"]
+  ],
+  deriv:[
+   ["We hired an ___ to guide us through the jungle.","explore","explorer"],
+   ["Climbing the mountain was an amazing ___.","achieve","achievement"],
+   ["I have many happy ___ of my childhood.","memory","memories"],
+   ["He is very ___ and loves trying new things.","adventure","adventurous"]
+  ]
+ },
+ {
+  day:4,color:"#B5783C",title:"Technology in My Life",zh:"科技與生活",
+  story:[{t:"Smart "},{w:"devices"},{t:" make life "},{w:"convenient"},{t:". We can "},{w:"communicate"},{t:" "},{w:"instantly"},{t:" with people far away. However, phones often "},{w:"distract"},{t:" us from studying. We must "},{w:"balance"},{t:" "},{w:"screen"},{t:" time. Some teenagers become "},{w:"addicted"},{t:" to games. Used wisely, technology is "},{w:"productive"},{t:" and brings real "},{w:"benefits"},{t:"."}],
+  storyZh:"智慧型裝置讓生活很方便。我們能立即和遠方的人溝通。然而手機常讓我們讀書分心。我們必須平衡使用螢幕的時間。有些青少年沉迷遊戲。只要善加使用，科技可以很有生產力，並帶來真正的益處。",
+  vocab:[
+   {w:"device",p:"/dɪˈvaɪs/",pos:"n.",m:"裝置、設備",e:"A phone is a useful device.",ec:"手機是好用的裝置。",
+    rt:"de-＋ vise（看、設計，vid/vis = see）＝ 設計出的東西",cf:"device (n. 裝置) ≠ devise (v. 設計、想出) 名動拼字不同！"},
+   {w:"convenient",p:"/kənˈvinjənt/",pos:"adj.",m:"方便的",e:"The store is convenient and close.",ec:"那家店很方便又近。",
+    dv:"convenient (adj.) → convenience (n.) 便利 → conveniently (adv.)",ph:"convenience store 便利商店"},
+   {w:"communicate",p:"/kəˈmjunəˌket/",pos:"v.",m:"溝通、聯絡",e:"We communicate by email.",ec:"我們用電子郵件聯絡。",
+    rt:"commun-（共同 common）＋ -ate（動詞）＝ 使共享訊息",dv:"communicate (v.) → communication (n.) 溝通 → communicative (adj.) 健談的",ph:"communicate with sb"},
+   {w:"instantly",p:"/ˈɪnstəntlɪ/",pos:"adv.",m:"立即地",e:"The reply came instantly.",ec:"立刻就回覆了。",
+    dv:"instant (adj./n.) 即時的／瞬間 → instantly (adv.) 立即地",ph:"instant noodles 泡麵；in an instant 一瞬間"},
+   {w:"distract",p:"/dɪˈstrækt/",pos:"v.",m:"使分心",e:"Loud music distracts me.",ec:"大聲的音樂使我分心。",
+    rt:"dis-（分開）＋ tract（拉 draw）＝ 把注意力拉走",dv:"distract (v.) → distraction (n.) 分心的事物 → distracted (adj.) 分心的",ph:"distract sb from + N/V-ing"},
+   {w:"balance",p:"/ˈbæləns/",pos:"v./n.",m:"平衡",e:"Try to balance work and rest.",ec:"試著平衡工作與休息。",
+    ph:"keep / lose one's balance 保持／失去平衡",id:"strike a balance 取得平衡"},
+   {w:"screen",p:"/skrin/",pos:"n.",m:"螢幕",e:"Don't look at the screen too long.",ec:"別盯著螢幕太久。",
+    ph:"screen time 螢幕使用時間",ky:"也可當動詞：screen a movie 放映；screen people 篩選"},
+   {w:"addicted",p:"/əˈdɪktɪd/",pos:"adj.",m:"上癮的、沉迷的",e:"He is addicted to video games.",ec:"他沉迷於電玩。",
+    dv:"addict (n.) 成癮者 → addiction (n.) 癮 → addictive (adj.) 使人上癮的",ph:"be addicted to + N/V-ing"},
+   {w:"productive",p:"/prəˈdʌktɪv/",pos:"adj.",m:"有生產力的、有成效的",e:"I had a productive morning.",ec:"我度過很有成效的早晨。",
+    rt:"pro-（向前）＋ duct（引導 lead）＋ -ive ＝ 能向前產出的",dv:"produce (v.) 生產 → product (n.) 產品 → production (n.) 生產 → productivity (n.) 生產力"},
+   {w:"benefit",p:"/ˈbɛnəfɪt/",pos:"n.",m:"益處、好處",e:"Exercise has many benefits.",ec:"運動有很多好處。",
+    dv:"benefit (n./v.) → beneficial (adj.) 有益的",ph:"benefit from + N 從⋯獲益；for the benefit of 為了⋯的利益"}
+  ],
+  prac:[
+   ["A smartphone is a useful ___ for daily life.","device"],
+   ["Online shopping is very ___ and saves time.","convenient"],
+   ["Loud noises ___ me when I'm studying.","distract"],
+   ["We need to ___ work and rest to stay healthy.","balance"],
+   ["Some people are ___ to social media all day.","addicted"],
+   ["With the internet, we can ___ with the whole world.","communicate"],
+   ["Reading every morning makes my day more ___.","productive"],
+   ["Exercise brings a great ___ to our health.","benefit"]
+  ],
+  deriv:[
+   ["Good ___ is the key to teamwork.","communicate","communication"],
+   ["The 7-Eleven stays open for your ___.","convenient","convenience"],
+   ["Sugar can be ___, so eat less candy.","addicted","addictive"],
+   ["Many ___ are made in this factory each day.","produce","products"]
+  ]
+ },
+ {
+  day:5,color:"#A0492A",title:"Chasing My Dream",zh:"追逐夢想",
+  story:[{t:"My "},{w:"ambition"},{t:" is to become a pianist. I am "},{w:"determined"},{t:" to "},{w:"practice"},{t:" every day. Sometimes I "},{w:"fail"},{t:", but I keep trying to "},{w:"improve"},{t:". "},{w:"Talent"},{t:" is not enough; I must "},{w:"sacrifice"},{t:" free time and stay "},{w:"patient"},{t:". One day I will "},{w:"succeed"},{t:" and make my parents "},{w:"proud"},{t:"."}],
+  storyZh:"我的抱負是成為一名鋼琴家。我下定決心每天練習。有時我會失敗，但我持續努力改進。光有天賦不夠，我必須犧牲空閒時間並保持耐心。總有一天我會成功，讓父母感到驕傲。",
+  vocab:[
+   {w:"ambition",p:"/æmˈbɪʃən/",pos:"n.",m:"抱負、雄心",e:"Her ambition is to win a gold medal.",ec:"她的抱負是奪金。",
+    dv:"ambition (n.) → ambitious (adj.) 有雄心的",ky:"既可指「整體企圖心」，也可指「具體目標、夢想」"},
+   {w:"determined",p:"/dɪˈtɝmɪnd/",pos:"adj.",m:"堅決的、有決心的",e:"He is determined to succeed.",ec:"他下定決心要成功。",
+    dv:"determine (v.) 決定 → determination (n.) 決心 → determined (adj.) 堅決的",ph:"be determined to + V"},
+   {w:"practice",p:"/ˈpræktɪs/",pos:"v./n.",m:"練習",e:"Practice makes perfect.",ec:"熟能生巧。",
+    dv:"practice (n./v.) → practical (adj.) 實用的 → practically (adv.) 幾乎",cf:"英式：名詞 practice、動詞 practise；美式皆寫 practice"},
+   {w:"fail",p:"/fel/",pos:"v.",m:"失敗",e:"Don't be afraid to fail.",ec:"別害怕失敗。",
+    dv:"fail (v.) → failure (n.) 失敗（者）",ph:"fail to + V 未能做到；without fail 必定、一定"},
+   {w:"improve",p:"/ɪmˈpruv/",pos:"v.",m:"改善、進步",e:"My English is improving.",ec:"我的英文在進步。",
+    rt:"im-（=in 向內）＋ prove（=profit 利益）＝ 變得更好",dv:"improve (v.) → improvement (n.) 改善"},
+   {w:"talent",p:"/ˈtælənt/",pos:"n.",m:"天賦、才能",e:"She has a talent for singing.",ec:"她有唱歌的天賦。",
+    dv:"talent (n.) → talented (adj.) 有才華的",cf:"talent（天生才能）≠ skill（後天訓練的技能）"},
+   {w:"sacrifice",p:"/ˈsækrəˌfaɪs/",pos:"v./n.",m:"犧牲",e:"Parents sacrifice a lot for their kids.",ec:"父母為孩子犧牲很多。",
+    ph:"sacrifice A for B 為 B 犧牲 A；make sacrifices 做出犧牲",ky:"動詞、名詞同形，重音皆在第一音節"},
+   {w:"patient",p:"/ˈpeʃənt/",pos:"adj.",m:"有耐心的",e:"Please be patient with beginners.",ec:"請對初學者有耐心。",
+    dv:"patient (adj.) → patience (n.) 耐心 → patiently (adv.)",cf:"patient 另義「病人 (n.)」；patience（耐心）與 patients（病人們）同音不同義！"},
+   {w:"succeed",p:"/səkˈsid/",pos:"v.",m:"成功",e:"If you work hard, you will succeed.",ec:"努力就會成功。",
+    dv:"succeed (v.) → success (n.) 成功 → successful (adj.) → successfully (adv.)",ky:"另一義為「繼任、接替」：succeed to the throne 繼承王位"},
+   {w:"proud",p:"/praʊd/",pos:"adj.",m:"驕傲的、自豪的",e:"I am proud of my team.",ec:"我以我的隊伍為榮。",
+    dv:"proud (adj.) → pride (n.) 驕傲、自尊 → proudly (adv.)",ph:"be proud of + N；take pride in 以⋯為傲"}
+  ],
+  prac:[
+   ["Her ___ is to become a famous scientist.","ambition"],
+   ["He is ___ to win the championship this year.","determined"],
+   ["You must ___ the piano daily to play well.","practice"],
+   ["Reading more helps you ___ your English.","improve"],
+   ["She has a natural ___ for painting.","talent"],
+   ["Please be ___; good things take time.","patient"],
+   ["If you never quit, you will finally ___.","succeed"],
+   ["My mother is ___ of my hard work.","proud"]
+  ],
+  deriv:[
+   ["With hard work and ___, she finally won.","determined","determination"],
+   ["After much practice, I saw a big ___ in my grades.","improve","improvement"],
+   ["Hard work is the key to ___.","succeed","success"],
+   ["She is a very ___ young pianist.","talent","talented"]
+  ]
+ },
+ {
+  day:6,color:"#5F7A4A",title:"Protecting Our Planet",zh:"守護地球",
+  story:[{t:"Our "},{w:"environment"},{t:" is in danger because of "},{w:"pollution"},{t:". We should "},{w:"reduce"},{t:" plastic and "},{w:"recycle"},{t:" "},{w:"waste"},{t:" to "},{w:"protect"},{t:" nature. "},{w:"Climate"},{t:" change threatens our planet. Saving "},{w:"energy"},{t:" is everyone's "},{w:"responsibility"},{t:". Let's build a greener "},{w:"future"},{t:"."}],
+  storyZh:"我們的環境正因污染而陷入危險。我們應該減少塑膠、回收廢棄物來保護大自然。氣候變遷威脅著地球。節約能源是每個人的責任。讓我們一起打造更綠色的未來。",
+  vocab:[
+   {w:"environment",p:"/ɪnˈvaɪrənmənt/",pos:"n.",m:"環境",e:"We must protect the environment.",ec:"我們必須保護環境。",
+    rt:"environ-（圍繞）＋ -ment（名詞字尾）",dv:"environment (n.) → environmental (adj.) 環境的 → environmentally (adv.)"},
+   {w:"pollution",p:"/pəˈluʃən/",pos:"n.",m:"污染",e:"Air pollution is a serious problem.",ec:"空氣污染是嚴重的問題。",
+    dv:"pollute (v.) 污染 → pollutant (n.) 污染物 → polluted (adj.) 被污染的"},
+   {w:"reduce",p:"/rɪˈdjus/",pos:"v.",m:"減少",e:"We should reduce food waste.",ec:"我們應該減少食物浪費。",
+    rt:"re-（向後）＋ -duce（引導 lead）＝ 帶下來、降低",dv:"reduce (v.) → reduction (n.) 減少",cf:"reduce（減少）⇄ increase（增加）反義"},
+   {w:"recycle",p:"/riˈsaɪkl/",pos:"v.",m:"回收再利用",e:"Please recycle paper and bottles.",ec:"請回收紙張和瓶子。",
+    rt:"re-（再）＋ cycle（循環）",dv:"recycle (v.) → recycling (n.) 回收 → recyclable (adj.) 可回收的"},
+   {w:"waste",p:"/west/",pos:"n./v.",m:"廢棄物；浪費",e:"Don't waste water.",ec:"別浪費水。",
+    ph:"a waste of time / money 浪費時間／金錢",dv:"waste (n./v.) → wasteful (adj.) 浪費的"},
+   {w:"protect",p:"/prəˈtɛkt/",pos:"v.",m:"保護",e:"We must protect wild animals.",ec:"我們必須保護野生動物。",
+    rt:"pro-（前面）＋ tect（遮蓋 cover）＝ 在前方遮擋",dv:"protect (v.) → protection (n.) 保護 → protective (adj.) 有保護作用的",ph:"protect A from B 保護 A 免受 B"},
+   {w:"climate",p:"/ˈklaɪmɪt/",pos:"n.",m:"氣候",e:"Climate change affects everyone.",ec:"氣候變遷影響每個人。",
+    cf:"climate（長期氣候）≠ weather（當下天氣）",ph:"climate change 氣候變遷"},
+   {w:"energy",p:"/ˈɛnɚdʒɪ/",pos:"n.",m:"能源、活力",e:"Solar energy is clean and free.",ec:"太陽能乾淨又免費。",
+    dv:"energy (n.) → energetic (adj.) 精力充沛的",ph:"renewable energy 再生能源"},
+   {w:"responsibility",p:"/rɪˌspɑnsəˈbɪlətɪ/",pos:"n.",m:"責任",e:"It's our responsibility to keep it clean.",ec:"保持乾淨是我們的責任。",
+    dv:"responsible (adj.) 負責的 → responsibility (n.) 責任 → responsibly (adv.)",ph:"be responsible for + N 對⋯負責；take responsibility 承擔責任"},
+   {w:"future",p:"/ˈfjutʃɚ/",pos:"n.",m:"未來",e:"We work hard for a better future.",ec:"我們為更好的未來努力。",
+    ph:"in the future 未來；in the near future 不久的將來",cf:"future（未來）⇄ past（過去）／present（現在）"}
+  ],
+  prac:[
+   ["Air ___ in big cities harms our health.","pollution"],
+   ["We should ___ paper and plastic, not throw them away.","recycle"],
+   ["Turning off lights helps us save ___.","energy"],
+   ["It is our ___ to keep the streets clean.","responsibility"],
+   ["We must ___ wild animals from danger.","protect"],
+   ["Using a cloth bag can ___ the plastic we use.","reduce"],
+   ["Global ___ change is causing stronger storms.","climate"],
+   ["The choices we make today shape our ___.","future"]
+  ],
+  deriv:[
+   ["We must solve ___ problems like air pollution.","environment","environmental"],
+   ["Factories must not ___ the rivers.","pollution","pollute"],
+   ["These bottles are ___ and good for the planet.","recycle","recyclable"],
+   ["A ___ student finishes homework on time.","responsibility","responsible"]
+  ]
+ },
+ {
+  day:7,color:"#B2582E",title:"Facing Challenges",zh:"迎接挑戰",
+  story:[{t:"Life is full of "},{w:"challenges"},{t:". When we face "},{w:"difficulties"},{t:", we must learn to "},{w:"overcome"},{t:" them. A "},{w:"positive"},{t:" "},{w:"attitude"},{t:" makes a big difference. Everyone makes a "},{w:"mistake"},{t:" sometimes, but "},{w:"wise"},{t:" people gain "},{w:"strength"},{t:" from it. Never "},{w:"give up"},{t:", because hard work leads to "},{w:"victory"},{t:"."}],
+  storyZh:"人生充滿挑戰。當我們面對困難時，必須學會克服它們。正面的態度會帶來很大的不同。每個人有時都會犯錯，但有智慧的人能從中獲得力量。永不放棄，因為努力終將帶來勝利。",
+  vocab:[
+   {w:"challenge",p:"/ˈtʃælɪndʒ/",pos:"n.",m:"挑戰",e:"Learning English is a fun challenge.",ec:"學英文是有趣的挑戰。",
+    dv:"challenge (n./v.) → challenging (adj.) 有挑戰性的",ph:"face a challenge 面對挑戰"},
+   {w:"difficulty",p:"/ˈdɪfəˌkʌltɪ/",pos:"n.",m:"困難",e:"He had difficulty sleeping.",ec:"他難以入睡。",
+    dv:"difficult (adj.) 困難的 → difficulty (n.) 困難",ph:"have difficulty (in) + V-ing 做⋯有困難",cf:"difficulty（名詞）／difficult（形容詞）"},
+   {w:"overcome",p:"/ˌovɚˈkʌm/",pos:"v.",m:"克服",e:"She overcame her fear of water.",ec:"她克服了對水的恐懼。",
+    rt:"over-（超過）＋ come（來）＝ 越過、戰勝",ky:"三態為 overcome–overcame–overcome（過去分詞同原形，易錯！）"},
+   {w:"positive",p:"/ˈpɑzətɪv/",pos:"adj.",m:"正面的、積極的",e:"Keep a positive attitude.",ec:"保持正面的態度。",
+    dv:"positive (adj.) → positively (adv.) 正面地",cf:"positive（正面的）⇄ negative（負面的）反義"},
+   {w:"attitude",p:"/ˈætəˌtjud/",pos:"n.",m:"態度",e:"Your attitude decides your success.",ec:"你的態度決定你的成功。",
+    ph:"attitude toward / to + N 對⋯的態度",ky:"片語中的 to 是介系詞，後面要接名詞或動名詞"},
+   {w:"mistake",p:"/məˈstek/",pos:"n.",m:"錯誤",e:"Everyone makes mistakes.",ec:"每個人都會犯錯。",
+    ph:"make a mistake 犯錯；by mistake 不小心、錯誤地",cf:"mistake（一般錯誤）／fault（過失、責任）／error（較正式的錯誤）"},
+   {w:"wise",p:"/waɪz/",pos:"adj.",m:"有智慧的、明智的",e:"It was a wise decision.",ec:"那是明智的決定。",
+    dv:"wise (adj.) → wisdom (n.) 智慧 → wisely (adv.) 明智地",cf:"wise（有智慧的，靠經驗）≠ clever（聰明的，靠頭腦）"},
+   {w:"strength",p:"/strɛŋkθ/",pos:"n.",m:"力量、優點",e:"Patience is one of her strengths.",ec:"耐心是她的優點之一。",
+    dv:"strong (adj.) 強壯的 → strength (n.) 力量 → strengthen (v.) 加強",cf:"strength（名詞）／strong（形容詞）拼字差異大，注意！"},
+   {w:"give up",p:"/ɡɪv ʌp/",pos:"phr.",m:"放棄",e:"Don't give up on your dream.",ec:"別放棄你的夢想。",
+    ph:"give up + N/V-ing 放棄；give up on sb/sth 對⋯不抱希望",id:"never say die 永不放棄（同義精神）"},
+   {w:"victory",p:"/ˈvɪktərɪ/",pos:"n.",m:"勝利",e:"The team celebrated their victory.",ec:"球隊慶祝勝利。",
+    dv:"victory (n.) → victorious (adj.) 勝利的",cf:"victory（勝利）⇄ defeat（失敗、擊敗）反義"}
+  ],
+  prac:[
+   ["Learning a new language is a big ___.","challenge"],
+   ["With effort, we can ___ any problem.","overcome"],
+   ["A ___ attitude helps us face hard times.","positive"],
+   ["Everyone makes a ___ sometimes; it's okay.","mistake"],
+   ["A ___ person learns from past errors.","wise"],
+   ["Never ___, even when things get tough.","give up"],
+   ["Teamwork gave us the ___ in the final game.","victory"],
+   ["Your ___ toward life decides your happiness.","attitude"]
+  ],
+  deriv:[
+   ["The math problem is very ___.","challenge","challenging"],
+   ["He thinks ___ even in bad times.","positive","positively"],
+   ["With age and experience comes ___.","wise","wisdom"],
+   ["Regular exercise can ___ your muscles.","strength","strengthen"]
+  ]
+ }
+];
+
+/* ===================== RENDER ===================== */
+const tabsEl=document.getElementById('tabs');
+const daysEl=document.getElementById('days');
+const weekZh=["一","二","三","四","五","六","日"];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+COURSE.forEach((d,i)=>{
+  const tab=document.createElement('button');
+  tab.className='tab'+(i===0?' active':'');
+  tab.style.background=d.color;
+  tab.innerHTML=`Day ${d.day}<small>第${weekZh[i]}天</small>`;
+  tab.onclick=()=>switchDay(i);
+  tabsEl.appendChild(tab);
+
+  const panel=document.createElement('div');
+  panel.className='day'+(i===0?' show':'');
+
+  let storyHtml='';
+  d.story.forEach(s=>{ if(s.w!==undefined&&s.w!=='') storyHtml+=`<b>${s.w}</b>`; if(s.t) storyHtml+=s.t; });
+  const plainStory=d.story.map(s=>(s.w?s.w:'')+(s.t||'')).join('');
+
+  // vocab cards
+  let vocabHtml='';
+  d.vocab.forEach((v,n)=>{
+    let cats='';
+    CATS.forEach(([key,label,bg,acc])=>{
+      if(v[key]){
+        cats+=`<div class="cat" style="background:${bg};border-left-color:${acc}">
+          <span class="lbl" style="background:${acc}">${label}</span>${esc(v[key])}</div>`;
+      }
+    });
+    vocabHtml+=`<div class="vcard">
+      <div class="vtop">
+        <div class="vnum">${n+1}</div>
+        <div class="vword">${v.w}</div>
+        <div class="vpos">${v.pos}</div>
+        <div class="vphon">${v.p}</div>
+      </div>
+      <div class="vmean">${v.m}</div>
+      <div class="vex"><div class="e">${v.e}</div><div class="c">${v.ec}</div></div>
+      ${cats}
+    </div>`;
+  });
+
+  const bank=d.vocab.map(v=>`<span>${v.w}</span>`).join('');
+  const opts=d.vocab.map(v=>v.w);
+
+  // cloze practice (select)
+  let pracHtml='';
+  d.prac.forEach((q,n)=>{
+    const parts=q[0].split('___');
+    let sel=`<select data-ans="${q[1]}"><option value="">— 請選擇 —</option>`;
+    [...opts].sort(()=>Math.random()-0.5).forEach(o=>{sel+=`<option value="${o}">${o}</option>`;});
+    sel+=`</select>`;
+    pracHtml+=`<div class="q"><span class="num">${n+1}.</span>${parts[0]}${sel}${parts[1]||''}
+      <div class="sol">✔ 正解：<b>${q[1]}</b></div></div>`;
+  });
+
+  // derivative practice (typed)
+  let derivHtml='';
+  d.deriv.forEach((q,n)=>{
+    const parts=q[0].split('___');
+    derivHtml+=`<div class="q"><span class="num">${n+1}.</span>${parts[0]}
+      <input type="text" data-ans="${q[2]}" autocomplete="off" autocapitalize="off" spellcheck="false">${parts[1]||''}
+      <span class="hint">（提示：${q[1]}）</span>
+      <div class="sol">✔ 正解：<b>${q[2]}</b></div></div>`;
+  });
+
+  panel.innerHTML=`
+    <div class="day-head" style="background:${d.color}">
+      <h2>Day ${d.day} · ${d.title}</h2><div class="zh">${d.zh}</div>
+    </div>
+
+    <div class="section-title">📖 50 字小故事</div>
+    <div class="story">
+      <p class="en">${storyHtml}</p>
+      <p class="zh">${d.storyZh}</p>
+    </div>
+
+    <div class="section-title">📚 10 個核心單字</div>
+    <div class="vlist">${vocabHtml}</div>
+
+    <div class="section-title">✏️ 練習一：選擇填充</div>
+    <div class="practice">
+      <div class="bank">${bank}</div>
+      ${pracHtml}
+      <button class="check" onclick="checkCloze(this)">批改 ✔</button>
+      <div class="score"></div>
+    </div>
+
+    <div class="section-title">🧩 練習二：衍生字填空</div>
+    <div class="practice">
+      <div class="bank"><span style="background:#FDEDEC;border-color:#C0392B;color:#C0392B">依提示字變化出正確詞性，填入空格</span></div>
+      ${derivHtml}
+      <button class="check" onclick="checkDeriv(this)">批改 ✔</button>
+      <div class="score"></div>
+    </div>
+  `;
+  daysEl.appendChild(panel);
+});
+
+function switchDay(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.day').forEach((p,k)=>p.classList.toggle('show',k===i));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---- check: cloze ---- */
+function checkCloze(btn){
+  const box=btn.closest('.practice');
+  const qs=box.querySelectorAll('.q');
+  let correct=0;
+  qs.forEach(q=>{
+    const sel=q.querySelector('select');
+    q.classList.remove('right','wrong');
+    if(sel.value.toLowerCase()===sel.dataset.ans.toLowerCase()){q.classList.add('right');correct++;}
+    else q.classList.add('wrong');
+  });
+  showScore(box,correct,qs.length);
+}
+
+/* ---- check: derivative ---- */
+function checkDeriv(btn){
+  const box=btn.closest('.practice');
+  const qs=box.querySelectorAll('.q');
+  let correct=0;
+  qs.forEach(q=>{
+    const inp=q.querySelector('input');
+    q.classList.remove('right','wrong');
+    const val=(inp.value||'').trim().toLowerCase();
+    if(val===inp.dataset.ans.toLowerCase()){q.classList.add('right');correct++;}
+    else q.classList.add('wrong');
+  });
+  showScore(box,correct,qs.length);
+}
+
+function showScore(box,correct,total){
+  const el=box.querySelector('.score');
+  let msg=`得分：${correct} / ${total}`;
+  if(correct===total){msg+=' 🎉 全對！太棒了！';party();}
+  else if(correct>=total*0.6) msg+=' 👍 不錯，再加油！';
+  else msg+=' 💪 多複習單字，你做得到！';
+  el.textContent=msg;
+  el.style.color=correct===total?'#5F7A4A':'#A0492A';
+}
+
+/* ---- mini confetti ---- */
+function party(){
+  const colors=['#C0623D','#C98B2E','#7A8B4F','#A0492A','#5F7A4A'];
+  for(let i=0;i<30;i++){
+    const c=document.createElement('div');
+    c.style.cssText=`position:fixed;width:10px;height:10px;border-radius:2px;left:${Math.random()*100}vw;top:-20px;z-index:9999;pointer-events:none;background:${colors[i%colors.length]};opacity:.9;`;
+    document.body.appendChild(c);
+    const dur=1200+Math.random()*1200;
+    c.animate([{transform:'translateY(0) rotate(0)'},{transform:`translateY(100vh) rotate(${720*Math.random()}deg)`}],{duration:dur,easing:'ease-in'});
+    setTimeout(()=>c.remove(),dur);
+  }
+}
+
+/* ---- font size ---- */
+let fs=22;
+const fsval=document.getElementById('fsval');
+document.getElementById('fplus').onclick=()=>{if(fs<32){fs+=2;applyFs();}};
+document.getElementById('fminus').onclick=()=>{if(fs>18){fs-=2;applyFs();}};
+function applyFs(){document.documentElement.style.setProperty('--fs',fs+'px');fsval.textContent=fs;}
+</script>
+</body>
+</html>
