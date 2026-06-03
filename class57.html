@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X86 架構的前世今生 ｜ 林威自學微課程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED;
+    --card:#FFFDF8;
+    --ink:#2D2A26;
+    --ink-soft:#4A443C;
+    --brown:#8B5E3C;
+    --brown-deep:#5D4037;
+    --tan:#D4A574;
+    --tan-soft:#EAD9BE;
+    --line:#E5DBCB;
+    --accent:#A6643C;
+    --green:#5E7A4F;
+    --base:22px;
+  }
+  *{box-sizing:border-box;}
+  html{font-size:var(--base);scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 8%, #FBF7F0 0%, transparent 40%),
+      radial-gradient(circle at 88% 92%, #F4ECDD 0%, transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans TC",sans-serif;
+    line-height:1.85;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 60px;}
+
+  /* ===== Nav bars ===== */
+  .navbar{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    padding:16px 0;
+  }
+  .navbar a{
+    flex:1 1 30%;min-width:140px;min-height:64px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    background:var(--card);border:2px solid var(--tan);border-radius:16px;
+    color:var(--brown-deep);text-decoration:none;font-weight:700;
+    font-size:0.82rem;line-height:1.4;padding:8px 10px;
+    box-shadow:0 3px 0 var(--tan-soft);transition:transform .12s,box-shadow .12s;
+  }
+  .navbar a:active{transform:translateY(2px);box-shadow:0 1px 0 var(--tan-soft);}
+  .navbar a .en{display:block;font-size:0.68rem;color:var(--brown);font-weight:400;margin-top:2px;}
+
+  /* ===== Hero ===== */
+  header.hero{
+    text-align:center;padding:30px 16px 22px;margin-top:6px;
+    background:linear-gradient(160deg,#FFFDF8 0%,#F6ECD9 100%);
+    border:3px solid var(--tan);border-radius:26px;
+    box-shadow:0 6px 0 var(--tan-soft);
+  }
+  .hero .eyebrow{font-family:"Caveat",cursive;font-size:1.5rem;color:var(--brown);}
+  .hero h1{font-size:2.05rem;margin:6px 0 4px;color:var(--brown-deep);letter-spacing:1px;line-height:1.3;}
+  .hero .sub{font-size:0.95rem;color:var(--ink-soft);margin:0;}
+  .hero .chip-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+  .hero .chip{background:var(--tan-soft);color:var(--brown-deep);border-radius:30px;padding:6px 16px;font-size:0.78rem;font-weight:700;}
+
+  /* ===== Controls ===== */
+  .controls{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+    background:var(--card);border:2px solid var(--line);border-radius:18px;
+    padding:12px 16px;margin:18px 0;
+  }
+  .controls .label{font-size:0.82rem;font-weight:700;color:var(--brown-deep);}
+  .fs-btns{display:flex;gap:8px;}
+  .fs-btns button,.reset-btn{
+    min-width:56px;min-height:56px;border:2px solid var(--brown);background:var(--bg);
+    color:var(--brown-deep);font-weight:700;border-radius:14px;font-size:1rem;cursor:pointer;
+    font-family:inherit;
+  }
+  .fs-btns button:active{background:var(--tan-soft);}
+  .reset-btn{min-width:auto;padding:0 16px;font-size:0.8rem;}
+  .progress-wrap{margin:14px 0 4px;}
+  .progress-bar{height:18px;background:var(--tan-soft);border-radius:30px;overflow:hidden;border:2px solid var(--line);}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--tan),var(--brown));transition:width .4s;}
+  .progress-text{text-align:center;font-size:0.8rem;color:var(--brown-deep);font-weight:700;margin-top:6px;}
+
+  /* ===== Stage divider ===== */
+  .stage{
+    margin:34px 0 14px;text-align:center;
+  }
+  .stage span{
+    display:inline-block;background:var(--brown-deep);color:#FFF6E8;
+    font-weight:700;font-size:0.95rem;padding:8px 24px;border-radius:30px;
+    box-shadow:0 3px 0 #3E2A22;
+  }
+
+  /* ===== Episode (details) ===== */
+  details.ep{
+    background:var(--card);border:2px solid var(--line);border-radius:22px;
+    margin:16px 0;overflow:hidden;box-shadow:0 4px 0 #EFE6D4;
+  }
+  details.ep[open]{border-color:var(--tan);}
+  summary.ep-head{
+    list-style:none;cursor:pointer;padding:18px 18px;display:flex;align-items:center;gap:14px;
+    min-height:72px;
+  }
+  summary.ep-head::-webkit-details-marker{display:none;}
+  .ep-num{
+    flex:0 0 auto;width:54px;height:54px;border-radius:50%;
+    background:var(--tan);color:var(--brown-deep);font-weight:700;font-size:1.15rem;
+    display:flex;align-items:center;justify-content:center;border:2px solid var(--brown);
+  }
+  details.ep[open] .ep-num{background:var(--brown);color:#FFF6E8;}
+  .ep-title{flex:1;font-size:1.08rem;font-weight:700;color:var(--brown-deep);line-height:1.4;}
+  .ep-title .min{display:block;font-size:0.72rem;color:var(--brown);font-weight:400;margin-top:2px;}
+  .ep-chev{flex:0 0 auto;font-size:1.3rem;color:var(--tan);transition:transform .2s;}
+  details.ep[open] .ep-chev{transform:rotate(90deg);color:var(--brown);}
+
+  .ep-body{padding:4px 20px 22px;}
+
+  .block{margin:18px 0;}
+  .block-h{
+    display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;font-weight:700;
+    color:#FFF6E8;background:var(--accent);padding:6px 16px;border-radius:12px;margin-bottom:10px;
+  }
+  .block p{margin:8px 0;font-size:1rem;}
+  .block.summary{
+    background:linear-gradient(135deg,#FBF3E4,#F3E6CF);border-left:8px solid var(--tan);
+    border-radius:14px;padding:14px 18px;font-weight:700;color:var(--brown-deep);
+  }
+  .block.summary::before{content:"💡 ";}
+
+  /* SVG figure */
+  .figure{background:#FFFCF5;border:2px dashed var(--tan);border-radius:16px;padding:14px;margin:14px 0;}
+  .figure svg{width:100%;height:auto;display:block;}
+  .figure .cap{font-family:"Caveat",cursive;font-size:1.15rem;color:var(--brown);text-align:center;margin-top:8px;}
+
+  /* term cards */
+  .terms{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px;}
+  .term{
+    background:#FBF6EC;border:2px solid var(--tan-soft);border-radius:14px;padding:12px 16px;
+    border-left:8px solid var(--brown);
+  }
+  .term .en{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1rem;color:var(--brown-deep);}
+  .term .zh{font-size:0.92rem;color:var(--ink);}
+  .term .note{font-size:0.82rem;color:var(--ink-soft);margin-top:4px;}
+
+  .donebox{
+    display:flex;align-items:center;gap:12px;margin-top:18px;padding:12px 16px;
+    background:#F1F4EC;border:2px solid #CBD8BD;border-radius:14px;cursor:pointer;
+    min-height:64px;
+  }
+  .donebox input{width:30px;height:30px;accent-color:var(--green);}
+  .donebox label{font-weight:700;color:var(--green);cursor:pointer;font-size:0.95rem;}
+
+  .keyfact{background:#FFF3DD;border:2px solid var(--tan);border-radius:12px;padding:10px 14px;font-size:0.92rem;margin:12px 0;}
+  .keyfact b{color:var(--accent);}
+
+  footer{text-align:center;margin-top:36px;color:var(--ink-soft);font-size:0.8rem;}
+  footer .ts{font-family:"Caveat",cursive;font-size:1.2rem;color:var(--brown);}
+
+  @media(min-width:560px){
+    .terms{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOP NAV -->
+  <nav class="navbar" aria-label="頂部導覽">
+    <a href="https://linwayet.github.io/4ulive/index.html">錯中學 ECHO 計劃<span class="en">Learn Through Mistakes</span></a>
+    <a href="https://linwayet.github.io/popup/index">學生分析<span class="en">Student Analysis</span></a>
+    <a href="https://line.me/ti/p/~linwayet">LINE 聯絡老師<span class="en">ID: linwayet</span></a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">A 10-minutes-a-round micro course</div>
+    <h1>X86 架構的前世今生</h1>
+    <p class="sub">從 1978 年的 8086，到 2026 年的資料中心戰局 — 12 回合，每回合約 10 分鐘</p>
+    <div class="chip-row">
+      <span class="chip">🪜 12 回合</span>
+      <span class="chip">⏱️ 每回 10 分鐘</span>
+      <span class="chip">🌐 中英對照</span>
+      <span class="chip">⚖️ 平衡版深度</span>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <span class="label">🔠 字體大小</span>
+    <div class="fs-btns">
+      <button onclick="adjustFont(-1)" aria-label="縮小字體">A−</button>
+      <button onclick="adjustFont(0)" aria-label="預設字體">A</button>
+      <button onclick="adjustFont(1)" aria-label="放大字體">A＋</button>
+    </div>
+    <button class="reset-btn" onclick="resetProgress()">↺ 重設進度</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+    <div class="progress-text" id="ptext">學習進度 0 / 12 回合</div>
+  </div>
+
+  <!-- ============ 第一階段 ============ -->
+  <div class="stage"><span>第一階段　入門：這顆晶片到底是什麼</span></div>
+
+  <!-- EP1 -->
+  <details class="ep" id="ep1">
+    <summary class="ep-head"><span class="ep-num">1</span><span class="ep-title">為什麼你該認識 x86？<span class="min">關鍵詞：什麼是「指令集架構 ISA」</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>此刻在你眼前運轉的這台電腦 — 不論是桌機、筆電，還是雲端機房裡那一整櫃伺服器 — 八成都靠著同一套「看不見卻無所不在」的技術在思考，它就是 <b>x86</b>。過去四十多年，它一直是個人運算與企業運算的隱形地基。</p>
+        <p>要看懂這門課，先掌握一個核心觀念：<b>指令集架構（ISA）</b>。你可以把它想成「硬體與軟體之間的一紙合約」。軟體只要照著合約寫指令，硬體就保證聽得懂、做得到 — 程式設計師不必管 CPU 內部用了幾千萬顆電晶體。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ISA 是軟體與硬體之間的合約">
+          <rect x="60" y="20" width="480" height="60" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="300" y="48" text-anchor="middle" font-size="20" font-weight="700" fill="#5D4037">軟體 Software</text>
+          <text x="300" y="70" text-anchor="middle" font-size="13" fill="#5D4037">作業系統 · App · 遊戲</text>
+
+          <rect x="60" y="110" width="480" height="60" rx="14" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+          <text x="300" y="138" text-anchor="middle" font-size="20" font-weight="700" fill="#FFF6E8">指令集架構 ISA（合約）</text>
+          <text x="300" y="160" text-anchor="middle" font-size="13" fill="#FFF6E8">x86 就在這一層</text>
+
+          <rect x="60" y="200" width="480" height="60" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="300" y="228" text-anchor="middle" font-size="20" font-weight="700" fill="#5D4037">硬體 Hardware</text>
+          <text x="300" y="250" text-anchor="middle" font-size="13" fill="#5D4037">電晶體 · 電路 · 矽晶片</text>
+
+          <text x="556" y="100" text-anchor="end" font-size="22" fill="#A6643C">↕</text>
+          <text x="556" y="195" text-anchor="end" font-size="22" fill="#A6643C">↕</text>
+        </svg>
+        <div class="cap">ISA 就像點餐單：你不用會做菜，只要照單點，廚房就出菜</div>
+      </div>
+      <div class="block summary">x86 不是某一顆晶片，而是一套「軟硬體共通語言」。懂它，就懂了現代電腦運作的底層邏輯。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Architecture</div><div class="zh">架構</div><div class="note">系統的整體設計藍圖</div></div>
+          <div class="term"><div class="en">ISA (Instruction Set Architecture)</div><div class="zh">指令集架構</div><div class="note">軟硬體之間的「合約／共通語言」</div></div>
+          <div class="term"><div class="en">Microprocessor</div><div class="zh">微處理器</div><div class="note">把運算核心做進一顆晶片裡</div></div>
+          <div class="term"><div class="en">Backward Compatibility</div><div class="zh">向下相容</div><div class="note">新晶片仍能跑舊軟體 — x86 的招牌</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep1',event)"><input type="checkbox" id="chk-ep1"><label for="chk-ep1">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP2 -->
+  <details class="ep" id="ep2">
+    <summary class="ep-head"><span class="ep-num">2</span><span class="ep-title">1978 的起點：8086 與「x86」這個名字的由來<span class="min">關鍵詞：8086 · 命名邏輯</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>1978 年，迪斯可正紅的年代，Intel 推出了 <b>8086 微處理器</b>，這是一顆 16 位元晶片，只有約 29,000 顆電晶體 — 以今天動輒數百億顆的標準看少得可笑，但在當時是革命性的存在。x86 的故事，就從這一年正式開始。</p>
+        <p>「x86」這名字其實樸素得可愛。Intel 後續推出的 80186、80286、80386、80486，全都以「<b>86</b>」結尾，於是這整個處理器家族與它們共用的指令集，就被人們統稱為 x86。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 命名由來">
+          <g font-family="JetBrains Mono, monospace" font-weight="700">
+            <rect x="20" y="70" width="100" height="60" rx="12" fill="#FFFCF5" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="70" y="100" text-anchor="middle" font-size="17" fill="#5D4037">80<tspan fill="#A6643C">86</tspan></text>
+            <text x="70" y="120" text-anchor="middle" font-size="11" fill="#8B5E3C">1978</text>
+
+            <rect x="138" y="70" width="100" height="60" rx="12" fill="#FFFCF5" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="188" y="100" text-anchor="middle" font-size="17" fill="#5D4037">801<tspan fill="#A6643C">86</tspan></text>
+
+            <rect x="256" y="70" width="100" height="60" rx="12" fill="#FFFCF5" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="306" y="100" text-anchor="middle" font-size="17" fill="#5D4037">802<tspan fill="#A6643C">86</tspan></text>
+
+            <rect x="374" y="70" width="100" height="60" rx="12" fill="#FFFCF5" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="424" y="100" text-anchor="middle" font-size="17" fill="#5D4037">803<tspan fill="#A6643C">86</tspan></text>
+
+            <rect x="492" y="70" width="90" height="60" rx="12" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+            <text x="537" y="100" text-anchor="middle" font-size="17" fill="#FFF6E8">804<tspan fill="#FFD9A0">86</tspan></text>
+          </g>
+          <text x="300" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#A6643C">全都以「86」結尾 → 統稱 x86</text>
+        </svg>
+        <div class="cap">名字沒有玄機，純粹是「86 結尾的一家人」</div>
+      </div>
+      <div class="block summary">x86 = 「以 86 結尾的 Intel 處理器家族」。8086 是它們共同的老祖宗。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">8086</div><div class="zh">8086 處理器</div><div class="note">1978 年問世，x86 的起點</div></div>
+          <div class="term"><div class="en">16-bit</div><div class="zh">十六位元</div><div class="note">一次能處理 16 個位元的資料</div></div>
+          <div class="term"><div class="en">Transistor</div><div class="zh">電晶體</div><div class="note">晶片裡最基本的開關元件</div></div>
+          <div class="term"><div class="en">Processor Family</div><div class="zh">處理器家族</div><div class="note">同源、相容的一系列晶片</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep2',event)"><input type="checkbox" id="chk-ep2"><label for="chk-ep2">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- ============ 第二階段 ============ -->
+  <div class="stage"><span>第二階段　成長：從 16 位元到 64 位元</span></div>
+
+  <!-- EP3 -->
+  <details class="ep" id="ep3">
+    <summary class="ep-head"><span class="ep-num">3</span><span class="ep-title">長大的三級跳：286 保護模式 → 386 三十二位元 → 486<span class="min">關鍵詞：Protected Mode · 32-bit</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>x86 在 1980 年代連跳三級。1982 年的 <b>80286</b> 首度支援「<b>保護模式（Protected Mode）</b>」— 簡單說，就是替每個程式劃出自己的記憶體房間，互不踩線，多工才得以實現。同時它能定址的記憶體大增到 16MB。</p>
+        <p>1985 年的 <b>80386</b> 是家族第一顆 <b>32 位元</b>處理器，運算能力大躍進。最關鍵的是，它用「虛擬 8086 模式」巧妙保住了向下相容 — 老軟體照跑不誤。這份「永遠能跑舊程式」的承諾，成了 x86 最堅固的護城河，也是日後甩不掉的甜蜜負擔。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="286 386 486 三級跳">
+          <line x1="40" y1="200" x2="560" y2="200" stroke="#D4A574" stroke-width="3"/>
+          <g text-anchor="middle">
+            <rect x="70" y="150" width="110" height="50" rx="10" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="125" y="180" font-size="16" font-weight="700" fill="#5D4037">80286</text>
+            <text x="125" y="225" font-size="13" fill="#8B5E3C">1982 · 保護模式</text>
+
+            <rect x="245" y="100" width="110" height="100" rx="10" fill="#D4A574" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="300" y="145" font-size="16" font-weight="700" fill="#5D4037">80386</text>
+            <text x="300" y="168" font-size="13" fill="#5D4037">32-bit</text>
+            <text x="300" y="225" font-size="13" fill="#8B5E3C">1985 · 三十二位元</text>
+
+            <rect x="420" y="70" width="110" height="130" rx="10" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+            <text x="475" y="120" font-size="16" font-weight="700" fill="#FFF6E8">80486</text>
+            <text x="475" y="143" font-size="13" fill="#FFF6E8">更快</text>
+            <text x="475" y="225" font-size="13" fill="#8B5E3C">1989</text>
+          </g>
+          <text x="300" y="30" text-anchor="middle" font-size="18" font-weight="700" fill="#A6643C">能力一階一階往上長 ↗</text>
+        </svg>
+        <div class="cap">保護模式＝幫每個程式蓋自己的房間；32 位元＝桌子變大、能算更多</div>
+      </div>
+      <div class="block summary">286 帶來「多工」、386 帶來「32 位元 ＋ 向下相容」。相容性從此成為 x86 的命脈。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Protected Mode</div><div class="zh">保護模式</div><div class="note">隔離各程式的記憶體，支撐多工</div></div>
+          <div class="term"><div class="en">Multitasking</div><div class="zh">多工</div><div class="note">同時跑多個程式</div></div>
+          <div class="term"><div class="en">32-bit</div><div class="zh">三十二位元</div><div class="note">一次處理更寬的資料、定址更多記憶體</div></div>
+          <div class="term"><div class="en">Memory Addressing</div><div class="zh">記憶體定址</div><div class="note">CPU 能「指名」用到多大的記憶體</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep3',event)"><input type="checkbox" id="chk-ep3"><label for="chk-ep3">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP4 -->
+  <details class="ep" id="ep4">
+    <summary class="ep-head"><span class="ep-num">4</span><span class="ep-title">效能爆發年代：Pentium、超純量與亂序執行<span class="min">關鍵詞：Superscalar · Out-of-Order</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>1993 年的 <b>Pentium</b> 帶來「<b>超純量（Superscalar）</b>」技術 — 讓 CPU 在同一個時脈週期內，能同時發射並執行多條指令，而不是一次只做一件事。</p>
+        <p>1995 年的 <b>Pentium Pro</b> 更引入「<b>亂序執行（Out-of-Order Execution）</b>」。聽起來反直覺：CPU 竟然不照程式寫的順序做事？想像廚房收到 10 張訂單，與其呆呆排隊，不如先把已備料好的菜先炒 — 哪道菜的食材先到就先做，最後再按正確順序「上菜」。這樣硬體就不會空等，效能因此大增。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="循序 vs 亂序執行">
+          <text x="150" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#8B5E3C">循序執行（會空等）</text>
+          <g font-size="13" text-anchor="middle">
+            <rect x="60" y="50" width="50" height="34" rx="8" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="85" y="72" fill="#5D4037">A</text>
+            <rect x="60" y="92" width="50" height="34" rx="8" fill="#F3E2C5" stroke="#C9A06A" stroke-width="2" stroke-dasharray="4"/><text x="85" y="114" fill="#B08A52">等…</text>
+            <rect x="60" y="134" width="50" height="34" rx="8" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="85" y="156" fill="#5D4037">B</text>
+            <rect x="60" y="176" width="50" height="34" rx="8" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="85" y="198" fill="#5D4037">C</text>
+          </g>
+          <line x1="300" y1="40" x2="300" y2="220" stroke="#D4A574" stroke-width="2" stroke-dasharray="5"/>
+          <text x="450" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#A6643C">亂序執行（填滿空檔）</text>
+          <g font-size="13" text-anchor="middle">
+            <rect x="360" y="50" width="50" height="34" rx="8" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="385" y="72" fill="#5D4037">A</text>
+            <rect x="420" y="50" width="50" height="34" rx="8" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="445" y="72" fill="#5D4037">C</text>
+            <rect x="360" y="92" width="50" height="34" rx="8" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="385" y="114" fill="#5D4037">B</text>
+            <rect x="420" y="92" width="50" height="34" rx="8" fill="#8B5E3C" stroke="#5D4037" stroke-width="2"/><text x="445" y="114" fill="#FFF6E8">完成</text>
+          </g>
+          <text x="450" y="160" text-anchor="middle" font-size="13" fill="#8B5E3C">食材先到就先炒，最後再按序上菜</text>
+        </svg>
+        <div class="cap">CPU 像聰明的廚師：不呆排隊，誰備好料就先做誰</div>
+      </div>
+      <div class="block summary">超純量＝一次做多件事；亂序執行＝聰明地填滿空檔。x86 從此進入「拚效能」的年代。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Superscalar</div><div class="zh">超純量</div><div class="note">同一週期發射多條指令</div></div>
+          <div class="term"><div class="en">Out-of-Order Execution</div><div class="zh">亂序執行</div><div class="note">不照順序做、做完再按序交付</div></div>
+          <div class="term"><div class="en">Clock Cycle</div><div class="zh">時脈週期</div><div class="note">CPU 的一個「心跳」節拍</div></div>
+          <div class="term"><div class="en">Pipeline</div><div class="zh">管線</div><div class="note">把指令拆成多階段、像生產線接力</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep4',event)"><input type="checkbox" id="chk-ep4"><label for="chk-ep4">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP5 -->
+  <details class="ep" id="ep5">
+    <summary class="ep-head"><span class="ep-num">5</span><span class="ep-title">32 位元的天花板與 AMD 的逆襲：x86-64 誕生<span class="min">關鍵詞：AMD64 · x86-64</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>32 位元能定址的記憶體上限約 4GB。隨著軟體愈來愈龐大，這個天花板很快就不夠用。誰來突破？答案出乎很多人意料 — 不是龍頭 Intel，而是<b>挑戰者 AMD 率先</b>在 2000 年代初推出 64 位元的 <b>AMD64</b> 架構。</p>
+        <p>它聰明之處在於：在擴展到 64 位元的同時，仍完整相容既有的 32 位元 x86 軟體。市場用腳投票，Intel 最終只能跟進採用同一套規格（稱為 x86-64 或 Intel 64）。這一役，奠定了今日 <b>Intel 與 AMD 平起平坐</b>的雙雄格局。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="32 位元 vs 64 位元記憶體空間">
+          <text x="150" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#8B5E3C">32-bit ≈ 4GB 上限</text>
+          <rect x="100" y="160" width="100" height="40" rx="8" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="150" y="186" text-anchor="middle" font-size="14" fill="#5D4037">小房間</text>
+          <text x="450" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#A6643C">64-bit ≈ 天文數字</text>
+          <rect x="370" y="55" width="160" height="145" rx="8" fill="#D4A574" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="450" y="135" text-anchor="middle" font-size="14" fill="#5D4037">超大空間</text>
+          <path d="M210 175 H360" stroke="#A6643C" stroke-width="3" marker-end="url(#ar5)"/>
+          <defs><marker id="ar5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#A6643C"/></marker></defs>
+          <text x="300" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#5D4037">AMD 先突破，Intel 跟進</text>
+        </svg>
+        <div class="cap">由挑戰者 AMD 定下的規格，反而成了全產業的標準</div>
+      </div>
+      <div class="keyfact">⚖️ <b>歷史轉折</b>：64 位元 x86 規格是 AMD 主導、Intel 採用，這也是為什麼今天它叫「<b>AMD64／x86-64</b>」。</div>
+      <div class="block summary">挑戰者定義了規則。x86-64 讓 Intel、AMD 從此並駕齊驅，雙雄競爭正式成形。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">64-bit</div><div class="zh">六十四位元</div><div class="note">突破 4GB 記憶體天花板</div></div>
+          <div class="term"><div class="en">AMD64 / x86-64</div><div class="zh">64 位元 x86 規格</div><div class="note">AMD 提出、業界共用的標準</div></div>
+          <div class="term"><div class="en">Register</div><div class="zh">暫存器</div><div class="note">CPU 內最快的小型儲存格</div></div>
+          <div class="term"><div class="en">Address Space</div><div class="zh">定址空間</div><div class="note">CPU 能管轄的記憶體範圍</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep5',event)"><input type="checkbox" id="chk-ep5"><label for="chk-ep5">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- ============ 第三階段 ============ -->
+  <div class="stage"><span>第三階段　原理：掀開引擎蓋</span></div>
+
+  <!-- EP6 -->
+  <details class="ep" id="ep6">
+    <summary class="ep-head"><span class="ep-num">6</span><span class="ep-title">世紀論戰：CISC vs RISC<span class="min">關鍵詞：複雜指令集 vs 精簡指令集</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>電腦架構界有一場延燒數十年的哲學之爭。x86 屬於 <b>CISC（複雜指令集）</b>：指令種類多、單一指令能做很複雜的事，像瑞士刀。對手 ARM、RISC-V 屬於 <b>RISC（精簡指令集）</b>：指令少而簡單、長度固定、好解碼，每條多半一個週期就跑完，像一組單功能的專用工具。</p>
+        <p>1980 年代末，RISC 陣營（Sun SPARC、IBM/Apple/Motorola 的 PowerPC、MIPS）大舉砲轟 x86「太臃腫」。這場「複雜 vs 精簡」的辯論，至今仍是理解整個 CPU 世界的關鍵分水嶺。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CISC vs RISC 對比">
+          <rect x="30" y="40" width="250" height="160" rx="16" fill="#FBF3E4" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="155" y="70" text-anchor="middle" font-size="18" font-weight="700" fill="#5D4037">CISC（x86）</text>
+          <text x="155" y="100" text-anchor="middle" font-size="14" fill="#5D4037">🔧 指令多又複雜</text>
+          <text x="155" y="128" text-anchor="middle" font-size="14" fill="#5D4037">📏 長度不固定</text>
+          <text x="155" y="156" text-anchor="middle" font-size="14" fill="#5D4037">🗡️ 像瑞士刀</text>
+          <text x="155" y="184" text-anchor="middle" font-size="13" fill="#8B5E3C">一條指令做很多事</text>
+
+          <rect x="320" y="40" width="250" height="160" rx="16" fill="#EFF3E8" stroke="#5E7A4F" stroke-width="3"/>
+          <text x="445" y="70" text-anchor="middle" font-size="18" font-weight="700" fill="#3E5436">RISC（ARM）</text>
+          <text x="445" y="100" text-anchor="middle" font-size="14" fill="#3E5436">🔩 指令少又簡單</text>
+          <text x="445" y="128" text-anchor="middle" font-size="14" fill="#3E5436">📐 長度固定</text>
+          <text x="445" y="156" text-anchor="middle" font-size="14" fill="#3E5436">🛠️ 像專用工具</text>
+          <text x="445" y="184" text-anchor="middle" font-size="13" fill="#5E7A4F">一條指令做一件事</text>
+        </svg>
+        <div class="cap">瑞士刀 vs 一盒專用工具 — 各有各的好</div>
+      </div>
+      <div class="block summary">CISC 走「強大但複雜」，RISC 走「簡單但好調度」。這是貫穿全課的核心對立。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">CISC</div><div class="zh">複雜指令集</div><div class="note">Complex Instruction Set Computer</div></div>
+          <div class="term"><div class="en">RISC</div><div class="zh">精簡指令集</div><div class="note">Reduced Instruction Set Computer</div></div>
+          <div class="term"><div class="en">Instruction Set</div><div class="zh">指令集</div><div class="note">CPU 看得懂的所有命令清單</div></div>
+          <div class="term"><div class="en">Fixed-length Instruction</div><div class="zh">固定長度指令</div><div class="note">RISC 的特徵，解碼更簡單</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep6',event)"><input type="checkbox" id="chk-ep6"><label for="chk-ep6">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP7 -->
+  <details class="ep" id="ep7">
+    <summary class="ep-head"><span class="ep-num">7</span><span class="ep-title">現代 x86 的祕密：CISC 外殼、micro-ops 內核<span class="min">關鍵詞：Decoder · Micro-ops</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>這回合破解一個流傳很廣的迷思。現代 x86 處理器在前端有個「<b>解碼器（Decoder）</b>」，會把一條複雜的 x86 指令拆解成數個更小的「<b>微指令（micro-ops / μops）</b>」，再丟給後端高效執行。執行完還會把這些微指令暫存在「<b>微指令快取（μop cache）</b>」，下次同樣的指令就不必重新解碼，省時又省電。</p>
+        <p>於是有人說「x86 內部其實是 RISC」。<b>嚴格講並不準確</b>：這些微指令並不是真正的 RISC 指令 — 它們可能長達上百位元、還夾帶特殊的內部資訊，是 Intel/AMD 各自的私房設計。比較精準的說法是：<b>x86 是「CISC 的外殼、內部高度優化」的混血怪獸</b>。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 解碼成微指令的流程">
+          <rect x="20" y="100" width="120" height="50" rx="10" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="80" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#5D4037">x86 指令</text>
+          <text x="80" y="140" text-anchor="middle" font-size="11" fill="#8B5E3C">複雜・變長</text>
+
+          <path d="M145 125 H185" stroke="#A6643C" stroke-width="3" marker-end="url(#a7)"/>
+          <rect x="190" y="95" width="120" height="60" rx="10" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+          <text x="250" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#FFF6E8">解碼器</text>
+          <text x="250" y="140" text-anchor="middle" font-size="11" fill="#FFD9A0">Decoder</text>
+
+          <path d="M315 125 H355" stroke="#A6643C" stroke-width="3" marker-end="url(#a7)"/>
+          <g>
+            <rect x="360" y="80" width="100" height="26" rx="6" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="410" y="98" text-anchor="middle" font-size="12" fill="#5D4037">μop</text>
+            <rect x="360" y="112" width="100" height="26" rx="6" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="410" y="130" text-anchor="middle" font-size="12" fill="#5D4037">μop</text>
+            <rect x="360" y="144" width="100" height="26" rx="6" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="410" y="162" text-anchor="middle" font-size="12" fill="#5D4037">μop</text>
+          </g>
+          <path d="M465 125 H505" stroke="#A6643C" stroke-width="3" marker-end="url(#a7)"/>
+          <rect x="505" y="100" width="80" height="50" rx="10" fill="#5E7A4F" stroke="#3E5436" stroke-width="3"/>
+          <text x="545" y="122" text-anchor="middle" font-size="13" font-weight="700" fill="#FFF6E8">執行</text>
+          <text x="545" y="140" text-anchor="middle" font-size="10" fill="#E8F0DE">後端</text>
+
+          <rect x="190" y="185" width="270" height="40" rx="10" fill="#FFF3DD" stroke="#D4A574" stroke-width="2" stroke-dasharray="5"/>
+          <text x="325" y="210" text-anchor="middle" font-size="12" fill="#8B5E3C">μop cache：解過一次就快取，省時省電</text>
+          <defs><marker id="a7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#A6643C"/></marker></defs>
+        </svg>
+        <div class="cap">外面講 CISC，裡面拆成微指令快跑 — 但微指令 ≠ 純 RISC</div>
+      </div>
+      <div class="keyfact">🧠 <b>破除迷思</b>：micro-ops 不是標準 RISC 指令，可能長達上百位元並含內部專屬資訊。「x86 內部就是 RISC」是個過度簡化的說法。</div>
+      <div class="block summary">現代 x86＝外層相容老指令、內層拆成微指令高速執行的混血設計，兼顧相容與效能。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Decoder</div><div class="zh">解碼器</div><div class="note">把 x86 指令拆成微指令</div></div>
+          <div class="term"><div class="en">Micro-ops (μops)</div><div class="zh">微指令</div><div class="note">CPU 內部真正執行的最小單位</div></div>
+          <div class="term"><div class="en">μop Cache</div><div class="zh">微指令快取</div><div class="note">暫存解碼結果，省時省電</div></div>
+          <div class="term"><div class="en">Front-end / Back-end</div><div class="zh">前端／後端</div><div class="note">前端負責解碼，後端負責執行</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep7',event)"><input type="checkbox" id="chk-ep7"><label for="chk-ep7">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP8 -->
+  <details class="ep" id="ep8">
+    <summary class="ep-head"><span class="ep-num">8</span><span class="ep-title">指令集的不斷加法：MMX → SSE → AVX → AI 新指令<span class="min">關鍵詞：Instruction Extensions</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>x86 四十多年來有個鮮明特色：<b>指令集「只加不減」</b>。為了多媒體，加了 MMX、SSE；為了向量與科學運算，加了 AVX；近年為了 AI 與虛擬化，又新增了一批指令。每一代都往上疊，幾乎不曾移除舊指令。</p>
+        <p>這正是 x86「<b>臃腫卻強大</b>」的根源 — 強大，因為它什麼都能做、什麼舊軟體都相容；臃腫，因為它得永遠背著數十年的歷史包袱。這個「歷史包袱」，正是下一階段 ARM 來踢館時最常被攻擊的弱點。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 指令集層層堆疊">
+          <g text-anchor="middle" font-weight="700">
+            <rect x="120" y="180" width="360" height="34" rx="8" fill="#5D4037" stroke="#3E2A22" stroke-width="2"/><text x="300" y="203" font-size="14" fill="#FFF6E8">基礎 x86（1978～）</text>
+            <rect x="150" y="142" width="300" height="34" rx="8" fill="#8B5E3C" stroke="#5D4037" stroke-width="2"/><text x="300" y="165" font-size="14" fill="#FFF6E8">MMX（多媒體）</text>
+            <rect x="180" y="104" width="240" height="34" rx="8" fill="#A6643C" stroke="#8B5E3C" stroke-width="2"/><text x="300" y="127" font-size="14" fill="#FFF6E8">SSE（串流）</text>
+            <rect x="205" y="66" width="190" height="34" rx="8" fill="#C9924E" stroke="#8B5E3C" stroke-width="2"/><text x="300" y="89" font-size="14" fill="#3E2A22">AVX（向量）</text>
+            <rect x="230" y="28" width="140" height="34" rx="8" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="300" y="51" font-size="14" fill="#3E2A22">AI 新指令</text>
+          </g>
+        </svg>
+        <div class="cap">像疊蛋糕：一層層往上加，底層永遠保留</div>
+      </div>
+      <div class="block summary">x86 靠「不斷加法」維持萬能與相容，代價是愈來愈重的歷史包袱。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Instruction Extension</div><div class="zh">指令集擴充</div><div class="note">在原有指令上新增功能</div></div>
+          <div class="term"><div class="en">SIMD</div><div class="zh">單指令多資料</div><div class="note">一道指令同時算多筆資料</div></div>
+          <div class="term"><div class="en">AVX (Advanced Vector Extensions)</div><div class="zh">進階向量擴充</div><div class="note">大量數學／AI 運算的利器</div></div>
+          <div class="term"><div class="en">Legacy Burden</div><div class="zh">歷史包袱</div><div class="note">為相容而保留的舊設計負擔</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep8',event)"><input type="checkbox" id="chk-ep8"><label for="chk-ep8">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- ============ 第四階段 ============ -->
+  <div class="stage"><span>第四階段　競爭：誰主沉浮</span></div>
+
+  <!-- EP9 -->
+  <details class="ep" id="ep9">
+    <summary class="ep-head"><span class="ep-num">9</span><span class="ep-title">雙雄爭霸史：Intel vs AMD<span class="min">關鍵詞：Intel · AMD · EPYC</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>x86 世界長年由 Intel 與 AMD 兩家主導。早年 AMD 多半是跟隨者（如 Am486），但靠著前面講過的 AMD64 翻身，逐漸與 Intel 平起平坐。</p>
+        <p>近年戰況更激烈：AMD 的 <b>EPYC</b> 伺服器處理器步步進逼，<b>到 2025 年已拿下約 46% 的 x86 伺服器營收</b>，而 Intel 在消費級 PC 市場仍握有約 70% 占有率。這是一場你來我往、never-ending 的拉鋸。理解這場競爭，才看得懂下一回合 ARM 為何有機可乘。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intel vs AMD 競爭天平">
+          <line x1="300" y1="40" x2="300" y2="120" stroke="#5D4037" stroke-width="6"/>
+          <line x1="120" y1="70" x2="480" y2="70" stroke="#5D4037" stroke-width="6" transform="rotate(-4 300 70)"/>
+          <circle cx="130" cy="62" r="42" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+          <text x="130" y="58" text-anchor="middle" font-size="16" font-weight="700" fill="#FFF6E8">Intel</text>
+          <text x="130" y="76" text-anchor="middle" font-size="11" fill="#FFD9A0">PC ~70%</text>
+          <circle cx="470" cy="80" r="42" fill="#A6643C" stroke="#5D4037" stroke-width="3"/>
+          <text x="470" y="76" text-anchor="middle" font-size="16" font-weight="700" fill="#FFF6E8">AMD</text>
+          <text x="470" y="94" text-anchor="middle" font-size="11" fill="#FFD9A0">伺服器營收 ~46%</text>
+          <polygon points="300,120 270,170 330,170" fill="#D4A574" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="300" y="195" text-anchor="middle" font-size="13" fill="#8B5E3C">勢均力敵、你來我往</text>
+        </svg>
+        <div class="cap">從跟隨者到平起平坐：AMD 的逆襲讓 x86 維持競爭活力</div>
+      </div>
+      <div class="block summary">Intel、AMD 的雙雄拉鋸推動了 x86 進步，但也讓「x86 創新仰賴兩家」成為隱憂。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">EPYC / Xeon</div><div class="zh">AMD／Intel 伺服器處理器</div><div class="note">資料中心的兩大 x86 主力</div></div>
+          <div class="term"><div class="en">Market Share</div><div class="zh">市場占有率</div><div class="note">某品牌在市場中的比例</div></div>
+          <div class="term"><div class="en">Data Center</div><div class="zh">資料中心</div><div class="note">大量伺服器集中運算的機房</div></div>
+          <div class="term"><div class="en">Duopoly</div><div class="zh">雙頭壟斷</div><div class="note">市場由兩家主導的局面</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep9',event)"><input type="checkbox" id="chk-ep9"><label for="chk-ep9">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP10 -->
+  <details class="ep" id="ep10">
+    <summary class="ep-head"><span class="ep-num">10</span><span class="ep-title">踢館者 ARM：資料中心的能效戰爭<span class="min">關鍵詞：ARM · Performance per Watt</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>多年來，x86 在桌機與伺服器穩坐王座，ARM 則統治手機。但局勢正在改變。ARM 主打「<b>每瓦效能（performance per watt）</b>」— 同樣的電，能算更多。靠著 AWS Graviton、Nvidia Grace 等自研晶片，ARM 大舉切入雲端資料中心。</p>
+        <p>ARM 曾喊出 <b>2025 年要拿下五成資料中心市占</b>的目標，雖被質疑過於樂觀（實際約 15%），但方向確實在變：AI 伺服器爆量，讓「每瓦效能」變成決勝點，連 Apple、AWS 都已轉向 ARM。一句話總結業界觀察 — <b>過去屬於 x86，當下是混血，未來 ARM 聲勢看漲</b>。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 與 ARM 的優勢對比">
+          <rect x="30" y="40" width="250" height="140" rx="16" fill="#FBF3E4" stroke="#8B5E3C" stroke-width="3"/>
+          <text x="155" y="70" text-anchor="middle" font-size="17" font-weight="700" fill="#5D4037">x86 的強項</text>
+          <text x="155" y="100" text-anchor="middle" font-size="14" fill="#5D4037">💪 原始效能強</text>
+          <text x="155" y="128" text-anchor="middle" font-size="14" fill="#5D4037">🤝 相容性無敵</text>
+          <text x="155" y="156" text-anchor="middle" font-size="14" fill="#5D4037">🏢 企業穩定可靠</text>
+
+          <rect x="320" y="40" width="250" height="140" rx="16" fill="#EFF3E8" stroke="#5E7A4F" stroke-width="3"/>
+          <text x="445" y="70" text-anchor="middle" font-size="17" font-weight="700" fill="#3E5436">ARM 的強項</text>
+          <text x="445" y="100" text-anchor="middle" font-size="14" fill="#3E5436">🔋 每瓦效能高</text>
+          <text x="445" y="128" text-anchor="middle" font-size="14" fill="#3E5436">❄️ 散熱／電費省</text>
+          <text x="445" y="156" text-anchor="middle" font-size="14" fill="#3E5436">🧩 可客製自研</text>
+        </svg>
+        <div class="cap">不是誰取代誰，而是「各擅勝場」的能效之戰</div>
+      </div>
+      <div class="keyfact">📊 <b>數字感</b>：ARM 喊出 2025 年五成市占的豪語，實際約 15%；但 AI 浪潮確實讓能效成為資料中心的第一考量。</div>
+      <div class="block summary">ARM 用「省電」攻城掠地，逼得 x86 必須回應能效課題 — 這正是下一回合聯手的導火線。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Performance per Watt</div><div class="zh">每瓦效能</div><div class="note">同樣耗電下能算多少 — 能效</div></div>
+          <div class="term"><div class="en">Hyperscaler</div><div class="zh">超大規模雲端業者</div><div class="note">如 AWS、Google、Microsoft</div></div>
+          <div class="term"><div class="en">Custom Silicon</div><div class="zh">客製晶片</div><div class="note">雲端業者自研的專用處理器</div></div>
+          <div class="term"><div class="en">Energy Efficiency</div><div class="zh">能源效率</div><div class="note">AI 機房的核心競爭力</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep10',event)"><input type="checkbox" id="chk-ep10"><label for="chk-ep10">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- ============ 第五階段 ============ -->
+  <div class="stage"><span>第五階段　轉折與未來</span></div>
+
+  <!-- EP11 -->
+  <details class="ep" id="ep11">
+    <summary class="ep-head"><span class="ep-num">11</span><span class="ep-title">2024 世紀轉折：x86 生態系聯盟（EAG）<span class="min">關鍵詞：EAG · 死對頭聯手</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>這是全課的重頭戲。面對 ARM 的步步進逼，纏鬥數十年的死對頭 <b>Intel 與 AMD，在 2024 年 10 月罕見聯手</b>，成立「<b>x86 生態系顧問小組（x86 Ecosystem Advisory Group, EAG）</b>」。</p>
+        <p>陣容驚人：除了 Intel、AMD，還拉進了 Linux 之父 <b>Linus Torvalds</b>、虛幻引擎之父 <b>Tim Sweeney</b>，以及 Google、Microsoft、Meta、Dell、HPE、Lenovo、Broadcom、Oracle、Red Hat 等重量級夥伴。</p>
+        <p>目標是讓 x86 的功能更一致、相容性更好、對開發者更友善。到 <b>2025 年週年</b>時，雙方已在 <b>FRED、AVX10、APX</b> 等技術標準上取得共識。這是 x86 數十年來最大的結構性轉變 — 從「兩家各做各的」走向「共同制定標準」。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 生態系聯盟成員">
+          <circle cx="300" cy="140" r="62" fill="#8B5E3C" stroke="#5D4037" stroke-width="4"/>
+          <text x="300" y="132" text-anchor="middle" font-size="17" font-weight="700" fill="#FFF6E8">x86 EAG</text>
+          <text x="300" y="154" text-anchor="middle" font-size="12" fill="#FFD9A0">Intel + AMD</text>
+          <g font-size="12" text-anchor="middle">
+            <g><rect x="232" y="14" width="136" height="34" rx="14" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="300" y="36" fill="#5D4037">Linus Torvalds</text></g>
+            <g><rect x="232" y="232" width="136" height="34" rx="14" fill="#D4A574" stroke="#8B5E3C" stroke-width="2"/><text x="300" y="254" fill="#5D4037">Tim Sweeney</text></g>
+            <g><rect x="20" y="60" width="120" height="34" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="80" y="82" fill="#5D4037">Google</text></g>
+            <g><rect x="20" y="186" width="120" height="34" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="80" y="208" fill="#5D4037">Microsoft</text></g>
+            <g><rect x="460" y="60" width="120" height="34" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="520" y="82" fill="#5D4037">Meta</text></g>
+            <g><rect x="460" y="186" width="120" height="34" rx="14" fill="#EAD9BE" stroke="#8B5E3C" stroke-width="2"/><text x="520" y="208" fill="#5D4037">Dell · HPE…</text></g>
+          </g>
+          <g stroke="#C9A06A" stroke-width="2">
+            <line x1="300" y1="78" x2="300" y2="48"/><line x1="300" y1="202" x2="300" y2="232"/>
+            <line x1="246" y1="110" x2="140" y2="80"/><line x1="246" y1="170" x2="140" y2="200"/>
+            <line x1="354" y1="110" x2="460" y2="80"/><line x1="354" y1="170" x2="460" y2="200"/>
+          </g>
+        </svg>
+        <div class="cap">死對頭與業界巨頭圍坐一桌 — x86 史上罕見的大團結</div>
+      </div>
+      <div class="keyfact">🤝 <b>歷史性</b>：Intel 與 AMD 競爭數十年，首度為了「共同把 x86 標準做好」而成立聯盟，被視為 x86 數十年來最大的結構轉變。</div>
+      <div class="block summary">面對外敵，內鬥多年的雙雄選擇聯手。x86 從「各自為政」走向「協同制定標準」。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">x86 Ecosystem Advisory Group (EAG)</div><div class="zh">x86 生態系顧問小組</div><div class="note">2024/10 由 Intel、AMD 共同成立</div></div>
+          <div class="term"><div class="en">Ecosystem</div><div class="zh">生態系</div><div class="note">軟硬體＋夥伴構成的整體環境</div></div>
+          <div class="term"><div class="en">Interoperability</div><div class="zh">互通性</div><div class="note">不同平台之間能相容協作</div></div>
+          <div class="term"><div class="en">Standardization</div><div class="zh">標準化</div><div class="note">統一規格 (如 FRED · AVX10 · APX)</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep11',event)"><input type="checkbox" id="chk-ep11"><label for="chk-ep11">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- EP12 -->
+  <details class="ep" id="ep12">
+    <summary class="ep-head"><span class="ep-num">12</span><span class="ep-title">x86 的未來：消退還是共存？<span class="min">關鍵詞：Heterogeneous Coexistence</span></span><span class="ep-chev">▸</span></summary>
+    <div class="ep-body">
+      <div class="block"><span class="block-h">📖 故事導讀</span>
+        <p>走到最後一回合，我們回望全局。許多人愛問：「x86 會不會被 ARM 取代？」但 2026 年的主流共識其實是 — <b>異質共存（heterogeneous coexistence）</b>，而非單一架構獨大。</p>
+        <p>未來的版圖更像是分工：<b>x86</b> 守住相容性與企業穩定性，在傳統資料中心與 PC 仍是主力；<b>ARM</b> 攻能效與雲端、AI 伺服器；底層還有開放、免授權費的 <b>RISC-V</b> 在快速崛起。沒有誰能一統江湖，而是各自在最適合的舞台發光。</p>
+        <p>🤔 <b>留給你的開放思考題</b>：如果你是一家公司的 IT 決策者，要為一個「預計用十年」的核心系統選 CPU，你會更看重「相容穩定」還是「省電效率」？沒有標準答案 — 這正是整個產業現在每天都在權衡的真實課題。</p>
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 600 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="x86 ARM RISC-V 三柱共存">
+          <g text-anchor="middle">
+            <rect x="50" y="80" width="140" height="120" rx="14" fill="#8B5E3C" stroke="#5D4037" stroke-width="3"/>
+            <text x="120" y="120" font-size="18" font-weight="700" fill="#FFF6E8">x86</text>
+            <text x="120" y="148" font-size="12" fill="#FFD9A0">相容・穩定</text>
+            <text x="120" y="168" font-size="12" fill="#FFD9A0">PC・企業</text>
+
+            <rect x="230" y="60" width="140" height="140" rx="14" fill="#5E7A4F" stroke="#3E5436" stroke-width="3"/>
+            <text x="300" y="105" font-size="18" font-weight="700" fill="#FFF6E8">ARM</text>
+            <text x="300" y="133" font-size="12" fill="#E8F0DE">能效・雲端</text>
+            <text x="300" y="153" font-size="12" fill="#E8F0DE">AI 伺服器</text>
+
+            <rect x="410" y="100" width="140" height="100" rx="14" fill="#A6643C" stroke="#8B5E3C" stroke-width="3"/>
+            <text x="480" y="140" font-size="18" font-weight="700" fill="#FFF6E8">RISC-V</text>
+            <text x="480" y="166" font-size="12" fill="#FFD9A0">開放・崛起中</text>
+          </g>
+          <text x="300" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#A6643C">未來＝三柱共存，各擅勝場</text>
+        </svg>
+        <div class="cap">不是一場零和的取代戰，而是一張多元分工的新地圖</div>
+      </div>
+      <div class="block summary">x86 不會消失，而是進入「異質共存」時代。理解三方分工，你就讀懂了運算世界的下一頁。</div>
+      <div class="block"><span class="block-h">🗝️ 中英對照關鍵術語卡</span>
+        <div class="terms">
+          <div class="term"><div class="en">Heterogeneous Coexistence</div><div class="zh">異質共存</div><div class="note">多種架構並存、各司其職</div></div>
+          <div class="term"><div class="en">RISC-V</div><div class="zh">RISC-V 架構</div><div class="note">開放、免授權費的新興 ISA</div></div>
+          <div class="term"><div class="en">Open Standard</div><div class="zh">開放標準</div><div class="note">人人可用、不被單一公司掌控</div></div>
+          <div class="term"><div class="en">Trade-off</div><div class="zh">權衡取捨</div><div class="note">在相容性與能效間做選擇</div></div>
+        </div>
+      </div>
+      <div class="donebox" onclick="toggleDone('ep12',event)"><input type="checkbox" id="chk-ep12"><label for="chk-ep12">這回合我讀完了 ✔</label></div>
+    </div>
+  </details>
+
+  <!-- BOTTOM NAV -->
+  <nav class="navbar" aria-label="底部導覽" style="margin-top:30px;">
+    <a href="https://linwayet.github.io/4ulive/index.html">錯中學 ECHO 計劃<span class="en">Learn Through Mistakes</span></a>
+    <a href="https://linwayet.github.io/popup/index">學生分析<span class="en">Student Analysis</span></a>
+    <a href="https://line.me/ti/p/~linwayet">LINE 聯絡老師<span class="en">ID: linwayet</span></a>
+  </nav>
+
+  <footer>
+    <div class="ts">林威英文 · X86 微課程</div>
+    <p>12 回合自學・每回約 10 分鐘・進度自動儲存於本機瀏覽器</p>
+  </footer>
+
+</div>
+
+<script>
+  // ---- Font scaling ----
+  var FS_KEY='x86course_fontsize';
+  function applyFont(px){document.documentElement.style.setProperty('--base',px+'px');}
+  function adjustFont(dir){
+    var cur=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--base'))||22;
+    var next= dir===0 ? 22 : Math.min(30,Math.max(18,cur+dir*2));
+    applyFont(next);
+    try{localStorage.setItem(FS_KEY,next);}catch(e){}
+  }
+
+  // ---- Progress ----
+  var EPS=['ep1','ep2','ep3','ep4','ep5','ep6','ep7','ep8','ep9','ep10','ep11','ep12'];
+  var DONE_KEY='x86course_done';
+  function loadDone(){try{return JSON.parse(localStorage.getItem(DONE_KEY))||{};}catch(e){return {};}}
+  function saveDone(o){try{localStorage.setItem(DONE_KEY,JSON.stringify(o));}catch(e){}}
+  function refresh(){
+    var d=loadDone(),n=0;
+    EPS.forEach(function(id){
+      var c=document.getElementById('chk-'+id);
+      if(c){c.checked=!!d[id]; if(d[id])n++;}
+    });
+    var pct=Math.round(n/EPS.length*100);
+    document.getElementById('pfill').style.width=pct+'%';
+    document.getElementById('ptext').textContent='學習進度 '+n+' / '+EPS.length+' 回合　('+pct+'%)';
+  }
+  function toggleDone(id,e){
+    if(e && e.target && e.target.tagName==='INPUT'){/* let native handle */}
+    var d=loadDone();
+    var c=document.getElementById('chk-'+id);
+    // if click came from the box (not the checkbox itself), flip manually
+    if(!e || e.target.tagName!=='INPUT'){ c.checked=!c.checked; }
+    d[id]=c.checked; saveDone(d); refresh();
+  }
+  function resetProgress(){
+    if(confirm('確定要重設全部學習進度嗎？')){saveDone({});refresh();}
+  }
+
+  // init
+  (function(){
+    try{var f=localStorage.getItem(FS_KEY); if(f)applyFont(f);}catch(e){}
+    // bind checkbox change directly
+    EPS.forEach(function(id){
+      var c=document.getElementById('chk-'+id);
+      if(c){c.addEventListener('change',function(){var d=loadDone();d[id]=c.checked;saveDone(d);refresh();});}
+    });
+    refresh();
+  })();
+</script>
+</body>
+</html>
