@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>印度經濟泡沫化？失業率飆升 vs 中國模式的殘酷真相｜自學微課程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED;
+    --bg-card:#FCFAF5;
+    --ink:#2D2A26;
+    --brown-deep:#5D4037;
+    --brown:#8B5E3C;
+    --gold:#D4A574;
+    --gold-soft:#EBD9BE;
+    --line:#E2D5C0;
+    --bull:#5E7A53;      /* 看多 / 樂觀 — 暖綠 */
+    --bull-bg:#EAF0E4;
+    --bear:#A6552F;      /* 看空 / 警示 — 赤陶 */
+    --bear-bg:#F4E5DB;
+    --think:#7A5A8C;     /* 思辨延伸 — 沉紫 */
+    --think-bg:#EFE7F0;
+    --fs:1; /* font scale, JS 調整 */
+  }
+  *{box-sizing:border-box;}
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:
+      linear-gradient(135deg, rgba(255,244,214,.78) 0%, rgba(255,231,214,.75) 36%, rgba(250,239,220,.9) 68%, rgba(255,248,231,.95) 100%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Noto Serif TC",sans-serif;
+    font-size:calc(22px * var(--fs));
+    line-height:1.85;
+    letter-spacing:.01em;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- Course links ---------- */
+  .promo-band{
+    background:
+      linear-gradient(135deg,#FFF2C6 0%,#FFE2CD 34%,#F6D7B8 68%,#FFF8E7 100%);
+    border-bottom:1px solid rgba(139,94,60,.22);
+    padding:22px 18px;
+  }
+  .promo-band.bottom{
+    border-top:1px solid rgba(139,94,60,.22);
+    border-bottom:none;
+    margin-top:46px;
+  }
+  .promo-inner{
+    max-width:940px;
+    margin:0 auto;
+  }
+  .promo-title{
+    margin:0 0 14px;
+    text-align:center;
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:calc(22px * var(--fs));
+    color:#5D4037;
+  }
+  .promo-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .promo-card{
+    display:flex;
+    flex-direction:column;
+    min-height:164px;
+    padding:18px;
+    border-radius:18px;
+    border:1px solid rgba(93,64,55,.14);
+    text-decoration:none;
+    color:#2D2A26;
+    box-shadow:0 8px 22px rgba(93,64,55,.10);
+  }
+  .promo-card:nth-child(1){
+    background:linear-gradient(160deg,#FFE7A8 0%,#FFD2A6 100%);
+  }
+  .promo-card:nth-child(2){
+    background:linear-gradient(160deg,#FFD7C2 0%,#FFC7A8 100%);
+  }
+  .promo-card:nth-child(3){
+    background:linear-gradient(160deg,#F7CFA8 0%,#FFF0C9 100%);
+  }
+  .promo-label{
+    display:inline-flex;
+    width:max-content;
+    max-width:100%;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(255,255,255,.62);
+    color:#7A3F1D;
+    font-size:calc(13px * var(--fs));
+    font-weight:700;
+    line-height:1.4;
+  }
+  .promo-card strong{
+    margin:12px 0 8px;
+    font-family:"Noto Serif TC",serif;
+    font-size:calc(19px * var(--fs));
+    line-height:1.4;
+    color:#4E342E;
+  }
+  .promo-card span:last-child{
+    font-size:calc(15px * var(--fs));
+    line-height:1.65;
+    color:#4A342B;
+  }
+  .promo-card:focus,
+  .promo-card:hover{
+    outline:3px solid rgba(230,81,0,.25);
+    transform:translateY(-1px);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    text-align:center;
+    padding:54px 20px 30px;
+    border-bottom:3px double var(--gold);
+    background:linear-gradient(180deg,#FBF7EF 0%, transparent 100%);
+  }
+  .kicker{
+    font-family:"Noto Serif TC",serif;
+    letter-spacing:.45em;
+    color:var(--brown);
+    font-size:calc(15px * var(--fs));
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:"Noto Serif TC",serif;
+    font-weight:900;
+    font-size:calc(34px * var(--fs));
+    line-height:1.45;
+    margin:0 0 18px;
+    color:var(--brown-deep);
+  }
+  h1 .vs{color:var(--bear);font-style:italic;}
+  .lede{
+    font-size:calc(20px * var(--fs));
+    color:#4A4540;
+    max-width:680px;margin:0 auto;
+  }
+  .meta{
+    margin-top:22px;font-size:calc(15px * var(--fs));
+    color:var(--brown);letter-spacing:.05em;
+  }
+
+  /* ---------- Font controls ---------- */
+  .fontbar{
+    position:sticky;top:0;z-index:50;
+    display:flex;justify-content:center;align-items:center;gap:14px;
+    background:rgba(248,244,237,.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:10px 12px;
+    font-size:calc(15px * var(--fs));
+  }
+  .fontbar span{color:var(--brown);}
+  .fontbar button{
+    min-width:56px;min-height:48px;
+    border:2px solid var(--brown);
+    background:var(--bg-card);color:var(--brown-deep);
+    border-radius:12px;cursor:pointer;
+    font-family:inherit;font-weight:700;
+    font-size:calc(16px * var(--fs));
+  }
+  .fontbar button:active{background:var(--gold-soft);}
+
+  /* ---------- TOC ---------- */
+  .toc{
+    margin:34px auto;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px 26px;
+    box-shadow:0 6px 22px rgba(93,64,55,.06);
+  }
+  .toc h2{
+    font-family:"Noto Serif TC",serif;
+    font-size:calc(19px * var(--fs));margin:0 0 14px;color:var(--brown-deep);
+    letter-spacing:.08em;
+  }
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:t;}
+  .toc li{counter-increment:t;margin:0;}
+  .toc a{
+    display:flex;align-items:center;gap:14px;
+    min-height:60px;padding:8px 6px;
+    text-decoration:none;color:var(--ink);
+    border-bottom:1px dashed var(--line);
+  }
+  .toc li:last-child a{border-bottom:none;}
+  .toc a::before{
+    content:counter(t,decimal-leading-zero);
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    color:var(--gold);font-size:calc(20px * var(--fs));
+    min-width:38px;
+  }
+  .toc a:active{color:var(--brown);}
+
+  /* ---------- Round ---------- */
+  .round{
+    margin:46px 0;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(93,64,55,.07);
+    scroll-margin-top:74px;
+  }
+  .round-head{
+    background:linear-gradient(135deg,var(--brown-deep),var(--brown));
+    color:#FBF6EC;
+    padding:26px 28px 22px;
+    position:relative;
+  }
+  .round-no{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:calc(15px * var(--fs));letter-spacing:.3em;
+    opacity:.85;margin:0 0 8px;
+  }
+  .round-title{
+    font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:calc(25px * var(--fs));line-height:1.45;margin:0;
+  }
+  .time-badge{
+    display:inline-block;margin-top:14px;
+    background:rgba(251,246,236,.18);
+    border:1px solid rgba(251,246,236,.5);
+    border-radius:999px;padding:4px 16px;
+    font-size:calc(14px * var(--fs));letter-spacing:.06em;
+  }
+  .round-body{padding:26px 28px 30px;}
+
+  .q{
+    font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:calc(21px * var(--fs));color:var(--brown-deep);
+    margin:0 0 18px;padding-left:18px;
+    border-left:6px solid var(--gold);
+  }
+  .round-body p{margin:0 0 16px;}
+  .round-body strong{color:var(--bear);font-weight:700;}
+  .round-body em{color:var(--brown);font-style:normal;font-weight:700;}
+
+  /* ---------- Number cards ---------- */
+  .numgrid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;margin:22px 0;
+  }
+  .numcard{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-top:5px solid var(--gold);
+    border-radius:14px;
+    padding:18px 16px;text-align:center;
+  }
+  .numcard .big{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:calc(40px * var(--fs));line-height:1.1;color:var(--brown-deep);
+    display:block;
+  }
+  .numcard .unit{font-size:calc(18px * var(--fs));color:var(--brown);}
+  .numcard .lbl{
+    display:block;margin-top:8px;
+    font-size:calc(15px * var(--fs));color:#4A4540;line-height:1.5;
+  }
+
+  /* ---------- Bull / Bear table ---------- */
+  .vs-table{
+    margin:24px 0;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .vs-head{display:grid;grid-template-columns:1fr 1fr;}
+  .vs-head div{
+    padding:12px 16px;font-weight:700;text-align:center;
+    font-family:"Noto Serif TC",serif;font-size:calc(17px * var(--fs));
+    color:#FBF6EC;
+  }
+  .vs-head .h-bull{background:var(--bull);}
+  .vs-head .h-bear{background:var(--bear);}
+  .vs-row{display:grid;grid-template-columns:1fr 1fr;}
+  .vs-row > div{
+    padding:15px 16px;font-size:calc(17px * var(--fs));line-height:1.65;
+    border-top:1px solid var(--line);
+  }
+  .vs-row .c-bull{background:var(--bull-bg);}
+  .vs-row .c-bear{background:var(--bear-bg);}
+
+  /* ---------- Think box ---------- */
+  details.think{
+    margin:24px 0 4px;
+    background:var(--think-bg);
+    border:1px solid #DCC9DF;
+    border-radius:14px;
+    overflow:hidden;
+  }
+  details.think summary{
+    list-style:none;cursor:pointer;
+    padding:18px 22px;min-height:64px;
+    display:flex;align-items:center;gap:12px;
+    font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:calc(18px * var(--fs));color:var(--think);
+  }
+  details.think summary::-webkit-details-marker{display:none;}
+  details.think summary::before{content:"🪔";font-size:calc(22px * var(--fs));}
+  details.think summary::after{
+    content:"▸";margin-left:auto;color:var(--think);
+    transition:transform .2s;font-size:calc(20px * var(--fs));
+  }
+  details.think[open] summary::after{transform:rotate(90deg);}
+  details.think .think-body{
+    padding:4px 22px 22px;font-size:calc(18px * var(--fs));line-height:1.8;
+  }
+  details.think .think-body p{margin:0 0 12px;}
+  details.think .think-body p:last-child{margin:0;}
+
+  .takeaway{
+    margin-top:22px;padding:16px 20px;
+    background:var(--gold-soft);
+    border-radius:12px;
+    font-size:calc(17px * var(--fs));
+  }
+  .takeaway b{color:var(--brown-deep);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    max-width:860px;margin:60px auto 0;padding:28px 24px;
+    border-top:3px double var(--gold);
+    font-size:calc(14px * var(--fs));color:#6B645C;line-height:1.7;
+  }
+  footer h3{font-family:"Noto Serif TC",serif;color:var(--brown-deep);font-size:calc(16px * var(--fs));margin:0 0 10px;}
+
+  @media(max-width:520px){
+    body{font-size:calc(20px * var(--fs));}
+    .promo-band{padding:18px 14px;}
+    .promo-title{font-size:calc(20px * var(--fs));}
+    .promo-grid{grid-template-columns:1fr;}
+    .promo-card{min-height:auto;padding:16px;}
+    .promo-card strong{font-size:calc(18px * var(--fs));}
+    .fontbar{gap:8px;}
+    .fontbar button{min-width:48px;}
+    header{padding:42px 16px 26px;}
+    .wrap{padding:0 14px;}
+    h1{font-size:calc(27px * var(--fs));}
+    .vs-row > div,.vs-head div{padding:12px 12px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="promo-band" aria-label="七月課程與聯絡方式">
+  <div class="promo-inner">
+    <h2 class="promo-title">七月開課與聯絡方式</h2>
+    <div class="promo-grid">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="promo-label">七月課程</span>
+        <strong>錯中學 ECHO 計劃</strong>
+        <span>透過錯誤訂正與回音式練習，幫助學生把理解轉成穩定輸出。</span>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="promo-label">七月課程</span>
+        <strong>學生分析</strong>
+        <span>整理學習狀況與弱點線索，協助安排更精準的複習與練習方向。</span>
+      </a>
+      <a class="promo-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="promo-label">Line 聯絡</span>
+        <strong>我的 Line 帳號：linwayet</strong>
+        <span>課程詢問、學生學習討論與報名相關問題，都可以透過 Line 聯絡。</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="fontbar">
+  <span>字級</span>
+  <button onclick="fs(-1)">A−</button>
+  <button onclick="fs(0)">A</button>
+  <button onclick="fs(1)">A＋</button>
+</div>
+
+<header>
+  <p class="kicker">財經思辨 · 自學微課程</p>
+  <h1>印度經濟泡沫化？<br>失業率飆升 <span class="vs">vs</span> 中國模式的殘酷真相</h1>
+  <p class="lede">這不是一堂「印度好或壞、中國好或壞」的課，而是訓練你<em>區分情緒敘事與真實數據</em>的思辨課。<br>「泡沫化」「飆升」「殘酷」——每一個火藥味的詞，我們都用數據拆開來看。</p>
+  <p class="meta">共 8 回合 · 每回合約 10 分鐘 · 資料截至 2026 年</p>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>課程地圖</h2>
+    <ol>
+      <li><a href="#r1">標題的火藥味 vs 數據的冷靜</a></li>
+      <li><a href="#r2">印度股市真的是泡沫嗎？</a></li>
+      <li><a href="#r3">失業率「飆升」的真相：5% 與 40% 的鴻溝</a></li>
+      <li><a href="#r4">無就業成長之謎：印度跳過了製造業</a></li>
+      <li><a href="#r5">人口紅利還是人口炸彈？中印的時間賽跑</a></li>
+      <li><a href="#r6">中國模式為什麼成功？</a></li>
+      <li><a href="#r7">中國模式的「殘酷真相」：成功的代價</a></li>
+      <li><a href="#r8">終局思辨：印度能避開兩個陷阱嗎？</a></li>
+    </ol>
+  </nav>
+
+  <!-- ======== 回合 1 ======== -->
+  <section class="round" id="r1">
+    <div class="round-head">
+      <p class="round-no">回合 01</p>
+      <h2 class="round-title">標題的火藥味 vs 數據的冷靜</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">當標題說「泡沫」「飆升」「殘酷」，數據真的同意嗎？</p>
+      <p>新聞標題靠情緒抓眼球，但情緒不是事實。本課開場先做一件事：把三個火藥味的詞，跟三個冷靜的數字放在一起對照。你會發現——它們常常<strong>不在講同一件事</strong>。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">第4</span><span class="lbl">印度 2025 年躍居<br>全球第四大經濟體</span></div>
+        <div class="numcard"><span class="big">6<span class="unit">季</span></span><span class="lbl">2025–26 第二季 GDP<br>創六季以來新高</span></div>
+        <div class="numcard"><span class="big">2015</span><span class="lbl">分析師預估 2026 股市<br>恐現自此年以來首次年跌</span></div>
+      </div>
+
+      <p>同一個印度，可以同時「經濟強勁成長」又「股市可能下跌」又「青年找不到工作」。三句話都對。關鍵不在哪句是真的，而在它們<em>各自衡量的是什麼</em>。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">樂觀敘事這樣說</div><div class="h-bear">數據現實這樣說</div></div>
+        <div class="vs-row"><div class="c-bull">印度是全球成長最快的大型經濟體</div><div class="c-bear">「快速成長」不保證「股市賺錢」或「人人有工作」</div></div>
+        <div class="vs-row"><div class="c-bull">人口年輕、潛力無窮</div><div class="c-bear">潛力要靠政策兌現，否則只是潛力</div></div>
+        <div class="vs-row"><div class="c-bull">下一個世界工廠</div><div class="c-bear">製造業佔比仍偏低、就業吸納有限</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>「GDP 成長」「股市報酬」「就業機會」是三個不同的指標。請你先憑直覺寫下：你認為這三者之間，哪兩個關係最緊密、哪兩個最容易脫鉤？</p>
+          <p>把答案記下來，課程結束時回來檢查——你的直覺會不會被數據推翻？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>讀財經新聞的第一步，是問「這個數字到底在衡量什麼」，而不是被形容詞牽著走。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 2 ======== -->
+  <section class="round" id="r2">
+    <div class="round-head">
+      <p class="round-no">回合 02</p>
+      <h2 class="round-title">印度股市真的是泡沫嗎？</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">「泡沫」是一個整體判斷，但市場從來不是鐵板一塊。</p>
+      <p>判斷泡沫常用兩把尺：<em>巴菲特指標</em>（股市總市值 ÷ GDP）與 <em>本益比（P/E）</em>。有趣的是，這兩把尺對印度給出了<strong>不一致的答案</strong>。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">215<span class="unit">%</span></span><span class="lbl">巴菲特指標<br>（常態約 75%）→ 顯著偏高</span></div>
+        <div class="numcard"><span class="big">20–22<span class="unit">倍</span></span><span class="lbl">Nifty 50 本益比<br>接近十年均值 → 不算泡沫</span></div>
+        <div class="numcard"><span class="big">133<span class="unit">%</span></span><span class="lbl">中型股高估幅度<br>（Damodaran 估計）</span></div>
+      </div>
+
+      <p>知名估值學者 Damodaran 的診斷很精準：<em>大型股反而偏便宜、中型股高估約 133%、小型股高估約 35%</em>。換句話說，所謂「印度泡沫」，泡沫主要藏在中小型股，而不是整個市場。再加上 2025 年外資大量流出、盧比走弱，2026 年成了壓力測試年。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">「不是泡沫」派</div><div class="h-bear">「就是泡沫」派</div></div>
+        <div class="vs-row"><div class="c-bull">大型股本益比接近均值，甚至偏折價</div><div class="c-bear">巴菲特指標逼近歷史高點，遠超 GDP</div></div>
+        <div class="vs-row"><div class="c-bull">2025 已盤整，估值溢價回到合理區</div><div class="c-bear">中小型股溢價歷史均值 26–50%</div></div>
+        <div class="vs-row"><div class="c-bull">本土資金穩定流入支撐市場</div><div class="c-bear">外資持續流出，散戶接刀風險高</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>同一個市場，巴菲特指標說「貴」、本益比說「還好」。如果是你，會更相信哪一把尺？為什麼？</p>
+          <p>（提示：想想這兩個指標的分母分別是什麼——一個是 GDP、一個是企業盈餘，它們在「成長中經濟體」會如何被扭曲？）</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>「整體市場是不是泡沫」往往是假問題；真問題是「<b>泡沫在哪一塊</b>」。平均數會藏起極端值。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 3 ======== -->
+  <section class="round" id="r3">
+    <div class="round-head">
+      <p class="round-no">回合 03</p>
+      <h2 class="round-title">失業率「飆升」的真相：5% 與 40% 的鴻溝</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">為什麼同一個印度，失業率可以同時是 5% 和 40%，而且兩個都「對」？</p>
+      <p>印度有兩套並行的數據系統：政府的 <em>PLFS</em> 與民間的 <em>CMIE</em>，統計方法不同。官方總失業率看起來溫和，2026 年 3 月約 <strong>5.1%</strong>；但這個「平均」蓋住了底下劇烈的落差。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">5.1<span class="unit">%</span></span><span class="lbl">2026 年 3 月<br>官方總失業率</span></div>
+        <div class="numcard"><span class="big">6.8<span class="unit">%</span></span><span class="lbl">城市失業率<br>（鄉村僅 4.3%）</span></div>
+        <div class="numcard"><span class="big">9.0<span class="unit">%</span></span><span class="lbl">都市女性失業率<br>明顯高於男性</span></div>
+        <div class="numcard"><span class="big">~7<span class="unit">%</span></span><span class="lbl">Moody's 預估 2026<br>亞太地區最高</span></div>
+      </div>
+
+      <p>真正驚人的不是失業率，而是<em>勞動參與率</em>——印度整體僅約 55%，女性更只有 25–30%。意思是：很多人根本沒被算進「勞動力」，自然也不會出現在「失業」統計裡。所以當有人引用「青年失業逼近 40%」時，他算的是另一個分母、另一群人。數字沒造假，是<strong>定義不同</strong>。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">官方數字（樂觀面）</div><div class="h-bear">結構真相（警示面）</div></div>
+        <div class="vs-row"><div class="c-bull">總失業率僅約 5%，不算高</div><div class="c-bear">勞參率僅 55%，女性僅 25–30%</div></div>
+        <div class="vs-row"><div class="c-bull">鄉村失業低（4.3%）</div><div class="c-bear">鄉村低，是因大量人困在低效農業</div></div>
+        <div class="vs-row"><div class="c-bull">數字逐步改善</div><div class="c-bear">2026 出現疫情後首次年增、城市轉觀望</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>如果一個國家有一半的女性「不找工作所以不算失業」，把失業率壓低了——這算是好消息嗎？</p>
+          <p>試著反向思考：什麼情況下，「失業率上升」反而代表經濟在變好？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>失業率是最會騙人的單一數字。看到它，先問「分母是誰」「誰被排除在外」。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 4 ======== -->
+  <section class="round" id="r4">
+    <div class="round-head">
+      <p class="round-no">回合 04</p>
+      <h2 class="round-title">無就業成長之謎：印度跳過了製造業</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">GDP 衝到 7% 以上，為什麼還是創不出足夠的工作？</p>
+      <p>這就是經濟學說的 <em>jobless growth（無就業成長）</em>。多數國家的發展路徑是：農業 → 製造業 → 服務業。製造業能大量吸納低技能勞工，是「就業電梯」。但印度<strong>跳過了製造業這一層</strong>，直接從農業躍進服務業。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">&lt;20<span class="unit">%</span></span><span class="lbl">印度製造業佔 GDP<br>（中國同階段約 28%）</span></div>
+        <div class="numcard"><span class="big">16–17<span class="unit">%</span></span><span class="lbl">推動「Make in India」後<br>製造業佔比仍停滯</span></div>
+        <div class="numcard"><span class="big">7.4<span class="unit">%</span></span><span class="lbl">FY2025–26 GDP 成長<br>但就業反應疲弱</span></div>
+      </div>
+
+      <p>服務業裡賺錢的是高技能 IT，只養得起少數人，吸收不了數百萬低技能勞工。再加上嚴格勞動法、企業轉向「機器取代人力」的資本密集化——結果不是勞動力<em>過剩</em>，而是勞動力<strong>被困住</strong>：想離開農村，卻在城市裡找不到正式工作的落腳處。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">GDP 數字（亮點）</div><div class="h-bear">就業現實（隱憂）</div></div>
+        <div class="vs-row"><div class="c-bull">成長率全球名列前茅</div><div class="c-bear">成長靠資本與高技能，非靠大量就業</div></div>
+        <div class="vs-row"><div class="c-bull">IT、金融、服務業蓬勃</div><div class="c-bear">高技能職缺少，低技能者無處可去</div></div>
+        <div class="vs-row"><div class="c-bull">Make in India 吸引外資設廠</div><div class="c-bear">製造業佔比多年仍卡在 16–17%</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>有人說「印度可以靠服務業與 AI 直接跳級，不必走製造業老路」。也有人說「沒有製造業這層電梯，幾億低技能勞工永遠上不去」。</p>
+          <p>你比較認同哪一邊？如果你是印度的政策制定者，會把錢押在「升級服務業」還是「補建製造業」？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>「成長」與「就業」會脫鉤。發展階段能不能跳級，是印度故事最核心的賭注。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 5 ======== -->
+  <section class="round" id="r5">
+    <div class="round-head">
+      <p class="round-no">回合 05</p>
+      <h2 class="round-title">人口紅利還是人口炸彈？中印的時間賽跑</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">年輕人口是印度最大的本錢——但本錢會過期。</p>
+      <p>這是印度相對中國<em>最被看好</em>的一張牌。印度中位數年齡約 28 歲，中國約 38 歲；印度六成五人口在 35 歲以下，勞動人口還會再成長約 25 年，而中國的勞動人口<strong>已經開始萎縮</strong>。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">28<span class="unit">歲</span></span><span class="lbl">印度中位數年齡<br>（中國約 38 歲）</span></div>
+        <div class="numcard"><span class="big">25<span class="unit">年</span></span><span class="lbl">印度勞動人口<br>仍將持續成長</span></div>
+        <div class="numcard"><span class="big">1000<span class="unit">萬+</span></span><span class="lbl">每年須創造的<br>正式部門工作</span></div>
+        <div class="numcard"><span class="big">2.63<span class="unit">億</span></span><span class="lbl">15–29 歲青年中<br>既不在學也不在受訓</span></div>
+      </div>
+
+      <p>但「人口紅利」從來不會自動實現。它需要教育、技能、與每年逾千萬個正式工作把潛力兌現。一旦兌現不了，年輕人口就從<em>紅利</em>翻轉成<strong>負債</strong>——這個窗口估計在 2030 年達到高峰後開始關閉。這是一場與時間的賽跑。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">人口「紅利」論</div><div class="h-bear">人口「炸彈」論</div></div>
+        <div class="vs-row"><div class="c-bull">年輕勞動力＋龐大消費市場</div><div class="c-bear">創不出工作，青年就成社會壓力</div></div>
+        <div class="vs-row"><div class="c-bull">中國、韓國、台灣都靠它起飛</div><div class="c-bear">他們靠的是「製造業＋就業」，印度缺這環</div></div>
+        <div class="vs-row"><div class="c-bull">窗口長達數十年</div><div class="c-bear">窗口 2030 達峰後關閉，時間有限</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>同樣是「年輕人很多」，為什麼在某些國家是引擎、在某些國家卻是火藥？</p>
+          <p>請列出 2–3 個「決定紅利會不會變炸彈」的關鍵條件。對照回合 4，你覺得印度目前缺的是哪一個？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>人口紅利是「有期限的機會」，不是「保證的優勢」。能不能兌現，看的是就業，不是人數。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 6 ======== -->
+  <section class="round" id="r6">
+    <div class="round-head">
+      <p class="round-no">回合 06</p>
+      <h2 class="round-title">中國模式為什麼成功？</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">在批評中國模式之前，先誠實面對：它為什麼曾經那麼有效？</p>
+      <p>中國走的是<em>國家主導、投資密集、製造業與出口導向</em>的路線，完成了人類史上最快速的工業化。它做對的，恰好就是印度缺的那幾塊。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">68<span class="unit">%</span></span><span class="lbl">中國勞動參與率<br>（印度約 40%）</span></div>
+        <div class="numcard"><span class="big">~28<span class="unit">%</span></span><span class="lbl">製造業佔 GDP 高峰<br>真正成為「世界工廠」</span></div>
+        <div class="numcard"><span class="big">5<span class="unit">倍</span></span><span class="lbl">中國公路網<br>約為印度的規模</span></div>
+      </div>
+
+      <p>關鍵在於：中國把人口紅利<strong>真正抓住並兌現了</strong>。靠大規模基礎建設、高勞動參與率（尤其把女性大量帶進勞動市場）、以及製造業這座「就業電梯」，把幾億農村人口送進工廠與城市。這正是回合 4、回合 5 裡，印度最吃力的部分。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">中國模式的優勢</div><div class="h-bear">同期的印度</div></div>
+        <div class="vs-row"><div class="c-bull">製造業＋出口大量吸納就業</div><div class="c-bear">跳過製造業，就業吸納不足</div></div>
+        <div class="vs-row"><div class="c-bull">勞參率高，女性大量就業</div><div class="c-bear">勞參率低，女性僅 25–30%</div></div>
+        <div class="vs-row"><div class="c-bull">基礎建設超前、規模龐大</div><div class="c-bear">基建落後，城市難承接移工</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>中國模式高度依賴「國家主導、強力動員」。這套打法在民主、聯邦、勞動法嚴格的印度，可能複製嗎？</p>
+          <p>如果不能照抄，印度有沒有可能發明一條「不靠強力動員，也能大量創造就業」的新路？那會長什麼樣子？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>批判一個模式之前，先理解它的成功邏輯。中國的答案，正好對準了印度的問題。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 7 ======== -->
+  <section class="round" id="r7">
+    <div class="round-head">
+      <p class="round-no">回合 07</p>
+      <h2 class="round-title">中國模式的「殘酷真相」：成功的代價</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">如果中國模式那麼成功，為什麼今天它自己也走得很辛苦？</p>
+      <p>「殘酷真相」不在於模式失敗，而在於——<em>每一個模式都有帳單，只是延後付款</em>。當年靠投資與房地產撐起的高速成長，如今正集中結帳。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">−50<span class="unit">%</span></span><span class="lbl">土地出讓金腰斬<br>（2021→2025，逾 50%）</span></div>
+        <div class="numcard"><span class="big">16.5<span class="unit">%</span></span><span class="lbl">青年失業率<br>（2025 年 12 月）</span></div>
+        <div class="numcard"><span class="big">4.5<span class="unit">%</span></span><span class="lbl">2026 GDP 成長預估<br>持續放緩</span></div>
+        <div class="numcard"><span class="big">−300<span class="unit">萬+</span></span><span class="lbl">2025 年人口<br>淨減少</span></div>
+      </div>
+
+      <p>房地產長期修正拖累地方財政與內需，通縮壓力揮之不去；青年失業偏高；人口萎縮、快速老化、投資報酬遞減，又讓中國比印度更早碰到「成長的天花板」。更深一層的「殘酷」是<strong>代價的分配</strong>：高速增長的成本，往往由勞工以高強度工作、戶籍限制與不穩定就業默默承擔。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">中國的成就</div><div class="h-bear">中國的帳單</div></div>
+        <div class="vs-row"><div class="c-bull">房地產與基建推升數十年高成長</div><div class="c-bear">房市修正、地方債務、通縮壓力</div></div>
+        <div class="vs-row"><div class="c-bull">人口紅利造就世界工廠</div><div class="c-bear">紅利耗盡，人口萎縮快速老化</div></div>
+        <div class="vs-row"><div class="c-bull">投資密集驅動快速產出</div><div class="c-bear">投資報酬遞減，青年失業偏高</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題</summary>
+        <div class="think-body">
+          <p>如果你早知道「成功會帶來這些帳單」，你還會選擇走中國這條路嗎？</p>
+          <p>更難的問題：對一個還在起跑的窮國而言，「先用代價換成長、之後再處理後遺症」——是務實，還是不負責任？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>帶走的觀念：</b>沒有「免費的成長」。模式的差別，往往不是要不要付代價，而是<b>什麼時候付、由誰來付</b>。</div>
+    </div>
+  </section>
+
+  <!-- ======== 回合 8 ======== -->
+  <section class="round" id="r8">
+    <div class="round-head">
+      <p class="round-no">回合 08</p>
+      <h2 class="round-title">終局思辨：印度能避開兩個陷阱嗎？</h2>
+      <span class="time-badge">⏱ 約 10 分鐘</span>
+    </div>
+    <div class="round-body">
+      <p class="q">印度面前有兩個陷阱——它能否兩個都繞過？</p>
+      <p>把全課收攏成一張地圖：印度要避開<em>自己的「無就業陷阱」</em>（成長卻沒工作），同時又不想掉進<em>中國的「債務／通縮陷阱」</em>（高成長的延後帳單）。這是一條極窄的鋼索。</p>
+
+      <div class="numgrid">
+        <div class="numcard"><span class="big">2</span><span class="lbl">必須同時繞過的<br>結構性陷阱</span></div>
+        <div class="numcard"><span class="big">2030</span><span class="lbl">人口紅利窗口<br>達峰後開始關閉</span></div>
+        <div class="numcard"><span class="big">+1</span><span class="lbl">供應鏈「中國 +1」<br>給印度的機會窗口</span></div>
+      </div>
+
+      <p>還有一個變數讓賭局更複雜：<strong>AI 與機器人</strong>。當自動化讓「世界工廠」需要的人力大減，印度想靠製造業吸納幾億勞工的老路，可能在抵達前就消失了。對投資人而言，這一課最重要的提醒是——<em>「經濟成長」不等於「股市報酬」</em>：印度成長最快的那幾年，外資仍在流出、指數仍可能下跌。</p>
+
+      <div class="vs-table">
+        <div class="vs-head"><div class="h-bull">看多印度</div><div class="h-bear">看空／審慎</div></div>
+        <div class="vs-row"><div class="c-bull">年輕人口＋內需＋改革紅利</div><div class="c-bear">就業創造不足，紅利恐變負債</div></div>
+        <div class="vs-row"><div class="c-bull">「中國 +1」帶來供應鏈轉移機會</div><div class="c-bear">AI／機器人或讓製造業紅利消失</div></div>
+        <div class="vs-row"><div class="c-bull">大型股估值合理、長線成長</div><div class="c-bear">中小型股偏貴、外資流出、股市可能年跌</div></div>
+      </div>
+
+      <details class="think">
+        <summary>思辨延伸題（總結）</summary>
+        <div class="think-body">
+          <p><b>角色扮演一：</b>如果你是印度財政部長，手上資源有限，你會優先做哪一件事來「兌現人口紅利」？為什麼是它，而不是其他？</p>
+          <p><b>角色扮演二：</b>如果你是長線投資人，看完這八回合，你會「加碼、觀望、還是避開」印度市場？請用本課學到的數據，而不是用情緒，寫下你的理由。</p>
+          <p><b>台灣視角：</b>對台灣的供應鏈與產業而言，印度是「下一個機會」還是「過度期待」？你會怎麼下注？</p>
+        </div>
+      </details>
+
+      <div class="takeaway"><b>全課總結：</b>「印度泡沫」「失業飆升」「中國殘酷」都不是是非題，而是<b>程度與條件的問題</b>。學會問「衡量什麼、分母是誰、代價何時付、由誰承擔」，你就能在任何聳動標題前，保持冷靜。</div>
+    </div>
+  </section>
+
+</div>
+
+<section class="promo-band bottom" aria-label="七月課程與聯絡方式">
+  <div class="promo-inner">
+    <h2 class="promo-title">七月開課與聯絡方式</h2>
+    <div class="promo-grid">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="promo-label">七月課程</span>
+        <strong>錯中學 ECHO 計劃</strong>
+        <span>透過錯誤訂正與回音式練習，幫助學生把理解轉成穩定輸出。</span>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="promo-label">七月課程</span>
+        <strong>學生分析</strong>
+        <span>整理學習狀況與弱點線索，協助安排更精準的複習與練習方向。</span>
+      </a>
+      <a class="promo-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="promo-label">Line 聯絡</span>
+        <strong>我的 Line 帳號：linwayet</strong>
+        <span>課程詢問、學生學習討論與報名相關問題，都可以透過 Line 聯絡。</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h3>關於本課數據</h3>
+  <p>本課整理自 2025–2026 年公開資料與機構報告，主要來源包含：Moody's Analytics、IMF（2025 中國第四條款磋商）、World Bank、印度 MoSPI／PLFS 與 CMIE 勞動統計、Reuters 分析師調查、Aswath Damodaran 估值評論、Asia Society 與 Focus Economics 等。各機構方法與口徑不同，數字會隨時間更新，請以最新官方發布為準。</p>
+  <p>本教材供個人自學思辨之用，不構成任何投資建議。</p>
+</footer>
+
+<script>
+  // 老花友善字級調整：A− / A / A＋
+  var scale = 1;
+  function fs(dir){
+    if(dir === 0){ scale = 1; }
+    else { scale = Math.min(1.6, Math.max(0.85, scale + dir*0.12)); }
+    document.documentElement.style.setProperty('--fs', scale.toFixed(2));
+  }
+</script>
+
+</body>
+</html>
