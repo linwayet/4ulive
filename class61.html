@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Solara：Agent-First 運算新願景｜林威英文</title>
+<style>
+  :root{
+    --bg:#F8F4ED; --ink:#2D2A26; --accent:#8B5E3C; --accent2:#D4A574;
+    --brick:#B0563A; --mustard:#C28A1E; --olive:#6E7B3D; --clay:#A86A4F;
+    --brown:#7A5230; --taupe:#8A7B6A; --green:#4F6B4A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px; line-height:1.8; padding:20px 16px 40px;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#8B5E3C,#A86A4F);
+    color:#FFF8F0; border-radius:20px; padding:34px 26px; margin-bottom:26px;
+    text-align:center;
+  }
+  header h1{font-size:30px; line-height:1.5; margin-bottom:10px;}
+  header p{font-size:19px; opacity:.92;}
+  .badge{display:inline-block; background:rgba(255,248,240,.2); border:1px solid rgba(255,248,240,.45);
+    border-radius:999px; padding:4px 18px; font-size:17px; margin-top:12px;}
+
+  .links{display:flex; flex-wrap:wrap; gap:12px; margin:0 0 28px;}
+  .links a{
+    flex:1 1 220px; min-height:72px; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; color:#FFF8F0; border-radius:16px; padding:14px 18px;
+    font-size:20px; font-weight:700; text-align:center; line-height:1.5;
+    box-shadow:0 3px 8px rgba(45,42,38,.15);
+  }
+  .links a.l1{background:#B0563A;} .links a.l2{background:#6E7B3D;} .links a.l3{background:#C28A1E;}
+
+  section{
+    background:#FFFDF8; border-radius:18px; padding:26px 24px; margin-bottom:24px;
+    border:1px solid #EAE0D2; box-shadow:0 2px 6px rgba(45,42,38,.06);
+  }
+  .sec-head{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+  .num{
+    min-width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    color:#FFF8F0; font-size:26px; font-weight:800; flex-shrink:0;
+  }
+  h2{font-size:25px; line-height:1.5;}
+  .en-sub{font-size:18px; color:#8A7B6A; margin-bottom:14px; padding-left:68px;}
+  ul{padding-left:30px; margin-bottom:18px;}
+  li{margin-bottom:10px;}
+  li b{color:var(--accent);}
+
+  .zh-sum{
+    border-radius:14px; padding:18px 20px; font-size:21px; line-height:1.85;
+    border-left:8px solid var(--accent2);
+    background:#F5EDE0;
+  }
+  .zh-sum .tag{
+    display:inline-block; font-size:17px; font-weight:800; color:#FFF8F0;
+    background:var(--accent); border-radius:8px; padding:2px 12px; margin-bottom:8px;
+  }
+
+  .c1 .num{background:var(--brick);}   .c1 .zh-sum{border-left-color:var(--brick);}
+  .c2 .num{background:var(--mustard);} .c2 .zh-sum{border-left-color:var(--mustard);}
+  .c3 .num{background:var(--olive);}   .c3 .zh-sum{border-left-color:var(--olive);}
+  .c4 .num{background:var(--clay);}    .c4 .zh-sum{border-left-color:var(--clay);}
+  .c5 .num{background:var(--brown);}   .c5 .zh-sum{border-left-color:var(--brown);}
+  .c6 .num{background:var(--green);}   .c6 .zh-sum{border-left-color:var(--green);}
+  .c7 .num{background:var(--brick);}   .c7 .zh-sum{border-left-color:var(--brick);}
+  .c8 .num{background:var(--olive);}   .c8 .zh-sum{border-left-color:var(--olive);}
+
+  /* ── 裝置特寫 Device Spotlight ── */
+  .spotlight{
+    background:linear-gradient(135deg,#FFF6E8,#F8EEDB);
+    border:2px solid var(--accent2); border-radius:20px;
+    padding:28px 24px; margin-bottom:24px;
+    box-shadow:0 4px 12px rgba(139,94,60,.14);
+  }
+  .spotlight > h2{
+    text-align:center; font-size:27px; color:var(--accent); margin-bottom:6px;
+  }
+  .spotlight > .sp-sub{
+    text-align:center; font-size:19px; color:var(--taupe); margin-bottom:22px;
+  }
+  .dev-grid{display:flex; flex-wrap:wrap; gap:18px;}
+  .dev-card{
+    flex:1 1 320px; background:#FFFDF8; border-radius:16px;
+    padding:22px 20px; border-top:10px solid;
+    box-shadow:0 3px 8px rgba(45,42,38,.10);
+  }
+  .dev-card.d1{border-top-color:var(--brown);}
+  .dev-card.d2{border-top-color:var(--mustard);}
+  .dev-icon{font-size:44px; text-align:center; margin-bottom:8px;}
+  .dev-card h3{font-size:23px; text-align:center; line-height:1.5; margin-bottom:4px;}
+  .dev-en{font-size:17px; color:var(--taupe); text-align:center; margin-bottom:14px;}
+  .chip-badge{
+    display:block; width:fit-content; margin:0 auto 16px;
+    background:var(--accent); color:#FFF8F0; border-radius:999px;
+    padding:4px 18px; font-size:17px; font-weight:800;
+  }
+  .dev-card.d2 .chip-badge{background:var(--mustard);}
+  .spec{border-top:1px dashed #D8CCBA; padding:10px 2px; font-size:19px; line-height:1.7;}
+  .spec b{color:var(--brick); display:block; font-size:17px; margin-bottom:2px;}
+  .dev-note{
+    margin-top:18px; background:#F5EDE0; border-radius:12px;
+    padding:14px 18px; font-size:19px; line-height:1.8;
+    border-left:8px solid var(--accent);
+  }
+
+  .glossary h2{margin-bottom:18px; color:var(--accent);}
+  .gitem{border-bottom:1px dashed #D8CCBA; padding:14px 4px;}
+  .gitem:last-child{border-bottom:none;}
+  .gword{font-weight:800; color:var(--brick); font-size:22px;}
+  .gzh{color:var(--olive); font-weight:700; margin-left:10px; font-size:20px;}
+  .gdef{font-size:20px; color:#4A453E; margin-top:4px;}
+
+  footer{text-align:center; font-size:18px; color:#8A7B6A; margin-top:30px; line-height:1.8;}
+  @media (max-width:600px){
+    body{font-size:21px;}
+    header h1{font-size:26px;}
+    .en-sub{padding-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Project Solara<br>Agent-First 運算的新願景</h1>
+  <p>Steven Bathiche @ Microsoft Build 2026 演講重點整理</p>
+  <div class="badge">林威英文 ✦ 科技英文閱讀教材 ✦ 2026.06</div>
+  <div class="badge">🖥️ MediaTek 桌上裝置 ✚ 🪪 Qualcomm 數位識別證 特寫版</div>
+</header>
+
+<div class="links">
+  <a class="l1" href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 七月課程：錯中學 ECHO 計劃</a>
+  <a class="l2" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a class="l3" href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+<!-- 1 -->
+<section class="c1">
+  <div class="sec-head"><div class="num">1</div><h2>緣起：AI 走出「應用程式框架」之後</h2></div>
+  <p class="en-sub">From the "outside AI" application structure (Build 2023) to agent-first devices</p>
+  <ul>
+    <li>At Build 2023, Bathiche described AI moving from operating <b>within the application frame</b> to operating <b>globally</b> — working across multiple apps and services.</li>
+    <li>Such AI can <b>connect, coordinate, and maintain context</b> across entire workflows, devices, and time scales.</li>
+    <li>The question behind Project Solara: what if there were an <b>ecosystem of devices</b> specifically designed for this new application structure and these agents?</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  講者先回顧 2023 年 Build 提出的「outside AI」應用結構：AI 不再被關在單一 App 的框架裡，而是全域運作，跨多個應用與服務串連、協調，並在整個工作流程、裝置與時間尺度上維持上下文。Project Solara 的起點正是這個提問——如果有一整套「專為這種代理人結構而生」的裝置生態系，會長什麼樣子？</div>
+</section>
+
+<!-- 2 -->
+<section class="c2">
+  <div class="sec-head"><div class="num">2</div><h2>核心洞見：下一台電腦不是「一台」裝置</h2></div>
+  <p class="en-sub">Not one form factor — a constellation of devices working as one system</p>
+  <ul>
+    <li>The big "a-ha": it's not about choosing <b>one specific form factor</b>.</li>
+    <li>Instead, build a system that extends your agent across a <b>constellation of devices</b>.</li>
+    <li>"The next computer is not one device. It is all these devices working together as <b>one system</b>, with agents showing up closer to <b>where and when</b> you need them."</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  團隊最大的頓悟是：別再問「下一個爆款硬體長怎樣」。重點不是挑一種外型規格，而是打造一個系統，讓你的代理人延伸到「一整個裝置星座」上。下一台電腦不是單一裝置，而是所有裝置協同運作成一個系統，讓代理人在你最需要的時間與地點現身。</div>
+</section>
+
+<!-- 3 -->
+<section class="c3">
+  <div class="sec-head"><div class="num">3</div><h2>兩大挑戰：破碎的硬體棧 ＋ 被困住的代理人</h2></div>
+  <p class="en-sub">Fragmented custom stacks; agents constrained by where they can exist</p>
+  <ul>
+    <li><b>Challenge 1</b>: specialized form factors already exist, but rely on <b>custom one-off apps and fragmented stacks</b> — difficult and expensive to build, deploy, and maintain.</li>
+    <li><b>Challenge 2</b>: organizations are already building deeply specialized agents, but their impact is <b>constrained by how and where they can exist</b>.</li>
+    <li>Solara's answer: a <b>turnkey solution</b> — extend your agents onto purpose-built, easy-to-manage form factors that reach the <b>"nooks and crannies"</b> where conventional computers don't exist or aren't optimal.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  要實現這個願景，馬上撞上兩個問題：第一，市面上雖有各種特殊規格的裝置，卻多半依賴客製化的一次性 App 與破碎的技術棧，開發、部署、維護都又貴又難；第二，各行各業已經在打造高度專業化的代理人，但這些代理人的影響力被「能存在於哪裡」限制住了。Solara 的解法是一套「交鑰匙」方案：讓組織把自家代理人延伸到專用、易管理的新裝置上，深入傳統電腦到不了或不適合的「畸零角落」。</div>
+</section>
+
+<!-- 4 -->
+<section class="c4">
+  <div class="sec-head"><div class="num">4</div><h2>三大支柱 ＋ Azure 串起雲端與裝置</h2></div>
+  <p class="en-sub">Enterprise-ready (AOSP), just-in-time UI, bring-your-own-agents</p>
+  <ul>
+    <li><b>Pillar 1 — Enterprise-ready</b>: built on the <b>AOSP-based</b> Microsoft device ecosystem platform.</li>
+    <li><b>Pillar 2 — Agent-driven interaction</b>: <b>just-in-time UI</b> that adapts to the form factor.</li>
+    <li><b>Pillar 3 — Extensibility</b>: organizations can <b>bring their own agents</b>.</li>
+    <li>Tying it all together: <b>Azure</b> unifies the system across cloud and device.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  Solara 由三大支柱構成：一、企業就緒——建立在以 AOSP（Android 開源專案）為基礎的微軟裝置生態平台上；二、代理人驅動的互動模式——「即時生成 UI」會依裝置外型自動調整介面；三、可擴充性——企業可以帶入自己的代理人。最後由 Azure 把雲端與裝置統合成同一個系統。</div>
+</section>
+
+<!-- ★ 裝置特寫 -->
+<section class="spotlight">
+  <h2>★ 裝置特寫：演講登場的兩款概念裝置</h2>
+  <p class="sp-sub">Two purpose-built devices unveiled in the talk — side by side</p>
+  <div class="dev-grid">
+
+    <div class="dev-card d1">
+      <div class="dev-icon">🖥️</div>
+      <h3>裝置一：桌上型固定裝置</h3>
+      <p class="dev-en">Stationary desk device — dedicated, secured, ambient</p>
+      <span class="chip-badge">晶片：MediaTek 聯發科</span>
+      <div class="spec"><b>定位 Positioning</b>「專用、安全的環境感知工作裝置」，放在辦公桌上、隨時待命，是 Windows PC 的接力夥伴。</div>
+      <div class="spec"><b>登入 Sign-in</b>Hello for Business：人一走近即完成安全登入，立刻取用自己的代理人。</div>
+      <div class="spec"><b>核心體驗 Experience</b>使用紮根於 Work IQ 的 M365 Copilot——瞄一眼就看到接下來該注意的事，輕點或語音即可委派任務。</div>
+      <div class="spec"><b>延伸能力 Extensions</b>支援跨裝置接力（handoff）；接上螢幕可透過 Windows 365 使用雲端 PC。</div>
+    </div>
+
+    <div class="dev-card d2">
+      <div class="dev-icon">🪪</div>
+      <h3>裝置二：可攜式數位識別證</h3>
+      <p class="dev-en">Portable digital badge — agents on the go</p>
+      <span class="chip-badge">晶片：Qualcomm 高通（穿戴式）</span>
+      <div class="spec"><b>定位 Positioning</b>重新發明上百萬人天天掛在身上的「門禁識別證」，輕巧、專為移動中的代理人互動而生。</div>
+      <div class="spec"><b>登入 Sign-in</b>指紋一碰即解鎖，安全取得所有代理人與待辦任務。</div>
+      <div class="spec"><b>核心體驗 Experience</b>現場示範：用識別證相機錄影，對 Copilot 說「挑出好鏡頭、修一修、寄給我和團隊」，代理人自動跑完多個任務。</div>
+      <div class="spec"><b>延伸能力 Extensions</b>麥克風支援免持語音記錄（含語者分離與註記）；側向鏡頭可核對病人生命徵象、掃描藥品（醫療場景）。</div>
+    </div>
+
+  </div>
+  <div class="dev-note">💡 <b>共同點：</b>兩款都只是「具體表現形式」——底層是同一套彈性的參考硬體與軟體（AOSP 基礎＋Azure 串接）。換代理人、換外型、換感測器，就能適配零售、工業、餐旅、金融、法律等垂直領域。⚠️ 均為早期概念預覽，尚非上市產品。</div>
+</section>
+
+<!-- 5 -->
+<section class="c5">
+  <div class="sec-head"><div class="num">5</div><h2>裝置一：桌上型固定裝置（MediaTek 晶片）</h2></div>
+  <p class="en-sub">A dedicated, secured, ambient device for work</p>
+  <ul>
+    <li>Built on <b>MediaTek silicon</b>, designed for your desk.</li>
+    <li>With <b>Hello for Business</b>, just walking up to the device <b>securely signs you in</b> — direct access to your agents.</li>
+    <li>For information workers: frictionless yet protected access to <b>Microsoft 365 Copilot grounded in Work IQ</b>; a glance surfaces what matters next; delegate tasks with a tap or voice.</li>
+    <li>Supports <b>handoff between devices</b> (companion to your Windows PC) and access to a <b>cloud PC via Windows 365</b> with a connected monitor.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  第一類是桌上型固定裝置，採用聯發科晶片。透過 Hello for Business，人一走近就完成安全登入，直接取用自己的代理人。對知識工作者來說，這是「無摩擦但有保護」地使用紮根於 Work IQ 的 M365 Copilot：瞄一眼就能看到接下來該注意的事，輕點或用語音就能把任務委派給代理人。它定位為「專用、安全的環境感知工作裝置」，可與既有 Windows PC 接力協作，接上螢幕還能透過 Windows 365 使用雲端 PC。對台灣讀者來說，「MediaTek 入列」也是值得注意的供應鏈訊號。</div>
+</section>
+
+<!-- 6 -->
+<section class="c6">
+  <div class="sec-head"><div class="num">6</div><h2>裝置二：可攜式「數位識別證」（Qualcomm 穿戴晶片）</h2></div>
+  <p class="en-sub">Reimagining the access badge millions wear every day</p>
+  <ul>
+    <li>Reimagines the everyday <b>access badge</b>; built on <b>Qualcomm wearable silicon</b> — a lightweight form factor for agent interactions <b>on the go</b>.</li>
+    <li>Live demo: <b>fingerprint tap to unlock</b> → secure access to all agents; a task appears ("gather content for social media posts").</li>
+    <li>He records with the badge's camera, then says: "Copilot, find some good shots, <b>clean them up</b>, and send them to me and my team to review."</li>
+    <li>The agent then runs <b>multiple tasks</b> autonomously — a simple demo, but entirely <b>agent-driven</b>.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  第二類是可攜式裝置：把上百萬人每天掛在身上的「門禁識別證」重新發明。它採用高通穿戴式晶片，輕巧、專為移動中的代理人互動設計。現場示範中，講者用指紋一碰解鎖，安全取得所有代理人；裝置上已出現待辦任務「蒐集今日社群貼文素材」，他直接用識別證的相機錄影掃過全場，再對 Copilot 說「挑出好鏡頭、修一修、寄給我和團隊審閱」，代理人隨即在背景跑完多個任務。示範雖簡單，但全程由代理人驅動。</div>
+</section>
+
+<!-- 7 -->
+<section class="c7">
+  <div class="sec-head"><div class="num">7</div><h2>垂直場景：醫療現場的想像</h2></div>
+  <p class="en-sub">The right agent shapes the experience around role and workflow</p>
+  <ul>
+    <li>From the moment you pick up the device, the right agent adapts to the <b>role and workflow</b> — check-ins, patient records, critical insights, all with enterprise-grade secure access.</li>
+    <li>Built-in microphones enable <b>hands-free, voice-based documentation</b>, including <b>diarization and annotation</b>.</li>
+    <li>The side-facing camera can <b>verify and document patient vitals</b>, scan medications, and help verify workflows.</li>
+    <li>The goal: nurses can access, gather, and act on information <b>while staying present with the patient</b>.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  以醫療為例：護理師一拿起裝置，對應角色與工作流程的代理人就會自動成形——協助報到、病歷查詢與關鍵資訊提示，全程企業級安全控管。內建麥克風支援免持語音記錄，含「語者分離」（自動辨識誰在說話）與註記功能；側向鏡頭可協助核對並記錄病人生命徵象、掃描藥品、驗證流程。核心價值是：讓護理師在取得與處理資訊的同時，仍能「人在病人身邊、心在病人身上」。</div>
+</section>
+
+<!-- 8 -->
+<section class="c8">
+  <div class="sec-head"><div class="num">8</div><h2>平台彈性、合作夥伴與結語</h2></div>
+  <p class="en-sub">One foundation, many verticals — agents taking shape in devices</p>
+  <ul>
+    <li>Both concept devices share flexible <b>reference hardware and software</b>: change the agent, shape, screen size, sensors, or input methods → the same foundation adapts to retail, industrial, hospitality, financial services, legal, and more.</li>
+    <li>Early partners exploring specialized agents and devices: <b>AccuWeather, Best Buy, CVS Health, Levi's, Target</b>, and others.</li>
+    <li>The broader opportunity: agents moving <b>outside the app</b> and taking shape in devices designed for a specific scenario, customer, and place.</li>
+    <li>Closing call: imagine <b>where your agents should live</b>, what form they should take, and what new work they can unlock.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  兩款概念裝置只是「具體表現形式」，底層的參考硬體與軟體高度彈性：換一個代理人、調整外型、螢幕、感測器或輸入方式，同一套基礎就能適配零售、工業、餐旅、金融、法律等各種垂直領域。AccuWeather、Best Buy、CVS Health、Levi's、Target 等企業已開始探索。整場演講的大命題是：代理人正走出 App，化身為「為特定場景、特定客戶、特定地點」設計的裝置——現在正是想像「你的代理人該住在哪裡、長什麼樣子、能解鎖什麼新工作」的時刻。（注：逐字稿中的 "CBS Health" 應為 CVS Health 之誤。）</div>
+</section>
+
+<!-- Glossary -->
+<section class="glossary">
+  <h2>📖 Glossary 重要詞彙表</h2>
+
+  <div class="gitem"><span class="gword">agent-first computing</span><span class="gzh">代理人優先運算</span>
+    <div class="gdef">以 AI 代理人（而非應用程式）為中心設計的運算模式，是 Project Solara 的核心理念。</div></div>
+
+  <div class="gitem"><span class="gword">form factor</span><span class="gzh">外型規格／形態</span>
+    <div class="gdef">裝置的實體形式（大小、形狀、配置）；Solara 的重點是「不挑單一 form factor」。</div></div>
+
+  <div class="gitem"><span class="gword">constellation of devices</span><span class="gzh">裝置星座</span>
+    <div class="gdef">多個裝置如星座般協同運作、合為一個系統的比喻，是本演講的關鍵意象。</div></div>
+
+  <div class="gitem"><span class="gword">maintain context</span><span class="gzh">維持上下文</span>
+    <div class="gdef">AI 在跨應用、跨裝置、跨時間運作時仍記得先前脈絡，不必每次從零開始。</div></div>
+
+  <div class="gitem"><span class="gword">fragmented stack</span><span class="gzh">破碎的技術棧</span>
+    <div class="gdef">由互不相容的客製元件拼湊而成的軟硬體層，導致開發與維護成本高昂。</div></div>
+
+  <div class="gitem"><span class="gword">turnkey solution</span><span class="gzh">交鑰匙方案</span>
+    <div class="gdef">買來即可直接使用、不需自行組裝整合的完整解決方案。</div></div>
+
+  <div class="gitem"><span class="gword">nooks and crannies</span><span class="gzh">畸零角落（慣用語）</span>
+    <div class="gdef">字面是「隱蔽的小角落」；文中指傳統電腦不存在或不適用的工作場域。</div></div>
+
+  <div class="gitem"><span class="gword">AOSP (Android Open Source Project)</span><span class="gzh">Android 開源專案</span>
+    <div class="gdef">Android 的開放原始碼基礎；微軟的裝置生態平台建立其上，而非 Windows。</div></div>
+
+  <div class="gitem"><span class="gword">just-in-time UI</span><span class="gzh">即時生成介面</span>
+    <div class="gdef">由代理人依當下需求與裝置外型即時調整、生成的使用者介面。</div></div>
+
+  <div class="gitem"><span class="gword">extensibility</span><span class="gzh">可擴充性</span>
+    <div class="gdef">系統允許外部加入新功能的能力；此處指企業可「帶自己的代理人」上平台。</div></div>
+
+  <div class="gitem"><span class="gword">Hello for Business</span><span class="gzh">企業版 Windows Hello</span>
+    <div class="gdef">微軟的無密碼身分驗證；人走近裝置即完成安全登入。</div></div>
+
+  <div class="gitem"><span class="gword">ambient device</span><span class="gzh">環境感知裝置</span>
+    <div class="gdef">融入環境、隨時待命、不需主動「打開」的運算裝置。</div></div>
+
+  <div class="gitem"><span class="gword">grounded in Work IQ</span><span class="gzh">紮根於 Work IQ</span>
+    <div class="gdef">Copilot 的回應建立在 Work IQ 掌握的組織工作脈絡（人、信件、文件、會議）之上。</div></div>
+
+  <div class="gitem"><span class="gword">delegate (tasks)</span><span class="gzh">委派（任務）</span>
+    <div class="gdef">把工作交給代理人執行；輕點或語音即可完成委派。</div></div>
+
+  <div class="gitem"><span class="gword">handoff</span><span class="gzh">裝置接力</span>
+    <div class="gdef">工作在不同裝置之間無縫轉移的體驗，例如從桌上裝置接回 Windows PC。</div></div>
+
+  <div class="gitem"><span class="gword">Windows 365 / cloud PC</span><span class="gzh">雲端 PC</span>
+    <div class="gdef">完整 Windows 環境跑在雲端，透過任何裝置串流使用。</div></div>
+
+  <div class="gitem"><span class="gword">wearable</span><span class="gzh">穿戴式裝置</span>
+    <div class="gdef">穿戴在身上的運算裝置；數位識別證採用高通的穿戴式晶片。</div></div>
+
+  <div class="gitem"><span class="gword">vertical</span><span class="gzh">垂直領域／行業別</span>
+    <div class="gdef">特定產業市場（醫療、零售、工業、餐旅、金融、法律等）。</div></div>
+
+  <div class="gitem"><span class="gword">diarization</span><span class="gzh">語者分離</span>
+    <div class="gdef">語音技術，自動辨識錄音中「誰在什麼時候說話」，醫療記錄場景的關鍵功能。</div></div>
+
+  <div class="gitem"><span class="gword">annotation</span><span class="gzh">註記</span>
+    <div class="gdef">在記錄或文件上加上標註說明；文中與語音記錄搭配使用。</div></div>
+
+  <div class="gitem"><span class="gword">patient vitals</span><span class="gzh">病人生命徵象</span>
+    <div class="gdef">體溫、脈搏、血壓、呼吸等基本生理數據；側向鏡頭可協助核對記錄。</div></div>
+
+  <div class="gitem"><span class="gword">reference hardware</span><span class="gzh">參考硬體設計</span>
+    <div class="gdef">提供給合作夥伴改作的基準硬體藍圖，改外型、感測器即可適配不同行業。</div></div>
+
+  <div class="gitem"><span class="gword">enterprise-grade</span><span class="gzh">企業級</span>
+    <div class="gdef">達到企業在安全、管理、合規上要求的等級。</div></div>
+
+  <div class="gitem"><span class="gword">impetus</span><span class="gzh">推動力、動機</span>
+    <div class="gdef">促成某事的驅動力；講者用 "the impetus behind Project Solara" 說明計畫緣起。</div></div>
+</section>
+
+<div class="links">
+  <a class="l1" href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 七月課程：錯中學 ECHO 計劃</a>
+  <a class="l2" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a class="l3" href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+<footer>
+  資料來源：YouTube「A new vision for agent-first computing: Project Solara」Steven Bathiche @ Build 2026 逐字稿整理<br>
+  ⚠️ 兩款裝置均為早期概念預覽（early look / prototype），尚非上市產品<br>
+  林威英文 ✦ 製作日期 2026.06.04
+</footer>
+
+</div>
+</body>
+</html>
