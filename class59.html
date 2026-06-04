@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外資的台股棋局｜前15大權值股微課程｜林威英文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Serif+TC:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4ED; --text:#2D2A26; --brown:#8B5E3C; --gold:#D4A574;
+  --card:#FFFDF8; --soft:#F1E8DA; --accent:#B5713F;
+  --green:#5C7A4E; --red:#A8513E; --line:#E4D8C5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'BIZ UDPGothic','Microsoft JhengHei',sans-serif;
+  background:var(--bg); color:var(--text);
+  font-size:22px; line-height:1.8;
+  background-image:radial-gradient(circle at 15% 10%, rgba(212,165,116,.10) 0, transparent 40%),
+                   radial-gradient(circle at 85% 90%, rgba(139,94,60,.08) 0, transparent 45%);
+}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px 60px}
+/* ===== link bar ===== */
+.linkbar{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:18px 0}
+.linkbar a{
+  flex:1 1 260px;min-height:72px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,var(--brown),var(--accent));color:#FFF8EE;text-decoration:none;
+  border-radius:18px;font-weight:700;font-size:21px;padding:12px 18px;text-align:center;
+  box-shadow:0 4px 12px rgba(139,94,60,.25);transition:transform .15s, box-shadow .15s;
+}
+.linkbar a:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(139,94,60,.32)}
+.linkbar a.lite{background:linear-gradient(135deg,var(--gold),#C99B66);color:#3A2E20}
+/* ===== hero ===== */
+header.hero{
+  text-align:center;padding:48px 24px 36px;margin:6px 0 10px;
+  background:linear-gradient(160deg,#FFF9F0 0%,#F5E9D7 100%);
+  border:2px solid var(--line);border-radius:28px;position:relative;overflow:hidden;
+}
+header.hero::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent 0 26px,rgba(139,94,60,.04) 26px 27px);pointer-events:none}
+.hero .kicker{display:inline-block;background:var(--brown);color:#FFF6EA;border-radius:999px;
+  padding:6px 22px;font-size:19px;font-weight:700;letter-spacing:.12em;margin-bottom:18px}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:44px;font-weight:800;color:#5A3A22;line-height:1.4}
+.hero .sub{margin-top:14px;font-size:23px;color:#6B5742}
+.hero .meta{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .meta span{background:#FFFDF8;border:1.5px solid var(--gold);border-radius:999px;
+  padding:6px 18px;font-size:19px;color:var(--brown);font-weight:700}
+/* ===== TOC ===== */
+nav.toc{margin:26px 0;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:24px 26px}
+nav.toc h2{font-family:'Noto Serif TC',serif;color:var(--brown);font-size:28px;margin-bottom:14px}
+.tocgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.tocgrid a{display:flex;align-items:center;gap:8px;min-height:72px;background:var(--soft);
+  border-radius:14px;padding:10px 14px;text-decoration:none;color:var(--text);font-size:19px;
+  border-left:6px solid var(--gold);transition:background .15s}
+.tocgrid a:hover{background:#EADDC6}
+.tocgrid a b{color:var(--brown)}
+/* ===== part divider ===== */
+.part{margin:54px 0 8px;text-align:center}
+.part h2{display:inline-block;font-family:'Noto Serif TC',serif;font-size:34px;color:#5A3A22;
+  border-bottom:5px double var(--gold);padding:0 30px 8px}
+.part p{color:#7A6650;font-size:20px;margin-top:8px}
+/* ===== round card ===== */
+section.round{background:var(--card);border:2px solid var(--line);border-radius:24px;
+  margin:26px 0;padding:30px 32px;box-shadow:0 3px 10px rgba(90,58,34,.06);scroll-margin-top:20px}
+.round .rtag{display:inline-flex;align-items:center;gap:10px;margin-bottom:10px}
+.round .rtag .num{background:var(--brown);color:#FFF6EA;border-radius:12px;padding:4px 16px;
+  font-weight:700;font-size:20px}
+.round .rtag .time{color:#8A7560;font-size:18px}
+.round h3{font-family:'Noto Serif TC',serif;font-size:31px;color:#5A3A22;margin-bottom:16px;line-height:1.45}
+.block{margin:18px 0;padding:18px 22px;border-radius:16px}
+.block h4{font-size:22px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.core{background:#FBF3E6;border-left:7px solid var(--gold)}
+.core h4{color:var(--accent)}
+.data{background:#F2EEE2;border-left:7px solid var(--green)}
+.data h4{color:var(--green)}
+.block p{margin:8px 0}
+.block ul{margin:8px 0 4px 28px}
+.block li{margin:7px 0}
+/* data table */
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:19.5px;background:#FFFDF8}
+th{background:var(--brown);color:#FFF6EA;padding:10px 12px;text-align:left;font-size:19px}
+td{padding:10px 12px;border-bottom:1.5px solid var(--line)}
+tr:nth-child(even) td{background:#FAF5EC}
+.tip{background:#FFF4E3;border:1.5px dashed var(--gold);border-radius:14px;padding:12px 18px;
+  margin:14px 0;font-size:20px}
+.tip b{color:var(--accent)}
+/* quiz */
+details.quiz{background:#F5EBDB;border:1.5px solid var(--gold);border-radius:16px;
+  margin:14px 0;overflow:hidden}
+details.quiz summary{cursor:pointer;list-style:none;min-height:72px;display:flex;align-items:center;
+  gap:12px;padding:14px 20px;font-weight:700;color:var(--brown);font-size:21px;user-select:none}
+details.quiz summary::before{content:"✏️"}
+details.quiz[open] summary{border-bottom:1.5px solid var(--line)}
+details.quiz .qbody{padding:14px 22px 18px}
+.ans{margin-top:10px;background:#EFE4CF;border-radius:12px;padding:10px 16px;font-size:20px}
+.ans b{color:var(--green)}
+/* english summary */
+.ensum{background:linear-gradient(135deg,#F0E6D4,#EBDCC2);border:2px solid var(--gold);
+  border-radius:18px;padding:18px 24px;margin-top:20px}
+.ensum h4{color:#5A3A22;font-size:21px;margin-bottom:8px;letter-spacing:.05em}
+.ensum p{font-size:20px;line-height:1.7;color:#4A3C2C;font-style:italic}
+/* glossary */
+.glossary dl{display:grid;grid-template-columns:1fr;gap:0}
+.glossary dt{font-weight:700;color:var(--brown);font-size:22px;margin-top:18px}
+.glossary dt .en{color:#9A7B58;font-size:19px;font-weight:400;margin-left:8px}
+.glossary dd{margin-left:0;padding:4px 0 10px;border-bottom:1.5px solid var(--line);font-size:20.5px}
+.disclaimer{background:#F3E7D3;border-radius:16px;padding:18px 22px;margin:30px 0;
+  font-size:19px;color:#6B5742;border:1.5px solid var(--line)}
+/* back to top */
+#topBtn{position:fixed;right:22px;bottom:24px;width:72px;height:72px;border-radius:50%;
+  background:var(--brown);color:#FFF6EA;border:none;font-size:26px;cursor:pointer;
+  box-shadow:0 6px 16px rgba(90,58,34,.3);display:none;z-index:50}
+@media(max-width:640px){
+  body{font-size:21px}
+  .hero h1{font-size:33px}
+  .round h3{font-size:26px}
+  section.round{padding:24px 20px}
+  th,td{font-size:17.5px;padding:8px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===== TOP LINK BAR ===== -->
+<div class="linkbar">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 錯中學 ECHO 計劃｜七月開課</a>
+  <a class="lite" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <span class="kicker">林威英文 × 自學微課程</span>
+  <h1>外資的台股棋局</h1>
+  <p class="sub">外資投資台積電等前 15 大權值股｜詳細分析探討</p>
+  <div class="meta">
+    <span>📚 18 回合</span><span>⏱ 每回合約 10 分鐘</span>
+    <span>🈶 繁中講解＋英文摘要</span><span>📅 資料基準：2026 年 6 月</span>
+  </div>
+</header>
+
+<!-- ===== TOC ===== -->
+<nav class="toc">
+  <h2>📖 課程地圖</h2>
+  <div class="tocgrid">
+    <a href="#r1"><b>R1</b> 外資是誰？</a>
+    <a href="#r2"><b>R2</b> 權值股與加權指數</a>
+    <a href="#r3"><b>R3</b> 前 15 大權值股圖鑑</a>
+    <a href="#r4"><b>R4</b> 外資持股怎麼查</a>
+    <a href="#r5"><b>R5</b> MSCI 權重的魔力</a>
+    <a href="#r6"><b>R6</b> 匯率與外資雙人舞</a>
+    <a href="#r7"><b>R7</b> 拉積盤與結算日</a>
+    <a href="#r8"><b>R8</b> ETF 25% 新制</a>
+    <a href="#r9"><b>R9</b> 台積電（上）</a>
+    <a href="#r10"><b>R10</b> 台積電（下）估值之辯</a>
+    <a href="#r11"><b>R11</b> 半導體三劍客</a>
+    <a href="#r12"><b>R12</b> AI 硬體軍團</a>
+    <a href="#r13"><b>R13</b> 金融股的角色</a>
+    <a href="#r14"><b>R14</b> 防禦型權值股</a>
+    <a href="#r15"><b>R15</b> 2026 外資大矛盾</a>
+    <a href="#r16"><b>R16</b> 集中度風險</a>
+    <a href="#r17"><b>R17</b> 籌碼判讀實戰</a>
+    <a href="#r18"><b>R18</b> 總結與自我檢測</a>
+    <a href="#glossary"><b>G</b> Glossary 詞彙表</a>
+  </div>
+</nav>
+
+<!-- ============ 第一篇 ============ -->
+<div class="part"><h2>第一篇｜基礎篇</h2><p>認識遊戲規則：誰在玩、怎麼計分、棋子有哪些</p></div>
+
+<!-- R1 -->
+<section class="round" id="r1">
+  <div class="rtag"><span class="num">回合 1</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>外資是誰？——三大法人裡的「大象」</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>台股每天收盤後，證交所會公布「三大法人買賣超」：<b>外資及陸資、投信、自營商</b>。其中外資（正式名稱為「外國機構投資人」，FINI）是規模最大的一群，包括全球主權基金、退休基金、共同基金、避險基金與指數型基金。</p>
+    <p>台灣自 1991 年起逐步開放外資投資台股（早期稱 QFII 制度），2003 年取消投資額度限制後，外資成為台股最重要的資金來源。目前外資持有台股市值約四成，在台積電等大型權值股中比重更高達七成上下——也就是說，<b>台股漲跌的話語權，有很大一部分握在外資手上</b>。</p>
+    <ul>
+      <li><b>外資</b>：資金規模最大、偏好大型權值股、進出常與匯率連動</li>
+      <li><b>投信</b>：國內基金公司，偏好中小型股，季底常有「作帳行情」</li>
+      <li><b>自營商</b>：券商自有資金，短線進出、避險操作為主</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>2026 年 6 月 3 日，台股收 46,459 點再創歷史新高，當天外資買超 433.96 億元、三大法人同步買超。觀察單一一天，你會發現外資的「一買」就是數百億等級，而投信、自營商通常只有數億到數十億——量級差距，就是外資被稱為「大象」的原因。大象轉身，水池就會起浪。</p>
+    <div class="tip"><b>老師提醒：</b>「外資買超」不等於「外資看多台灣」。外資內部有上千個不同機構，有人買、有人賣，公布的數字只是「淨額」。讀籌碼永遠要看趨勢、不要看單日。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：三大法人中，哪一類資金規模最大、最常主導大型權值股走勢？</p>
+    <div class="ans"><b>答：</b>外資（外國機構投資人，FINI）。</div>
+    <p style="margin-top:14px">Q2：外資「買超 400 億」的意思是？</p>
+    <div class="ans"><b>答：</b>當日外資買進金額減去賣出金額後，淨買入 400 億元（是淨額，不是總買進金額）。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Taiwan's stock exchange publishes daily net buy/sell figures for three institutional groups: foreign investors (FINI), domestic investment trusts, and dealers. Foreign institutions — global pension funds, mutual funds, and index funds — are by far the largest, holding roughly 40% of Taiwan's total market value and about 70% of TSMC. Their flows are reported as net amounts, so a "net buy" day does not mean every foreign fund is bullish; always read the trend, not a single day.</p>
+  </div>
+</section>
+
+<!-- R2 -->
+<section class="round" id="r2">
+  <div class="rtag"><span class="num">回合 2</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>權值股與加權指數——台積電漲 1 元，大盤跳幾點？</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>台灣加權股價指數（TAIEX）採「<b>市值加權</b>」：每家公司影響指數的程度，取決於它的市值（股價 × 發行股數）占整體市場的比重。市值越大，權重越高，這類股票就叫<b>權值股</b>。</p>
+    <p>2026 年的台股已演變成高度集中的「科技巨頭盤」：前十大權值股合計權重突破 65%，台積電一檔就占大盤市值四成以上。換句話說，<b>看懂前 15 大權值股，就等於看懂大半個台股</b>。</p>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>最震撼的實例發生在 2026 年 5 月 4 日：台股單日大漲 1,778 點（+4.57%）創史上最大漲點，首度收在 4 萬點之上（40,705 點）。當天台積電大漲 6.56% 收 2,275 元——<b>光台積電一檔就貢獻了約 1,110 點</b>，占當日漲點的六成以上。</p>
+    <p>再看 2026 年的半年軌跡：1 月 2 日開紅盤，大盤收 29,349 點、台積電 1,585 元；到 6 月 3 日，大盤 46,459 點、台積電 2,425 元。<b>半年內指數上漲約 58%、台積電上漲約 53%</b>——指數與龍頭股幾乎是同一條呼吸曲線。</p>
+    <div class="tip"><b>速算心法：</b>權值股對指數的點數貢獻 ≈ 該股漲跌幅 × 該股權重 × 大盤指數。台積電權重超過四成，因此它漲 1%，大盤大約就被推升 0.4% 以上。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：加權指數的「加權」是依照什麼計算？</p>
+    <div class="ans"><b>答：</b>市值（股價 × 發行股數）占整體市場的比重。</div>
+    <p style="margin-top:14px">Q2：2026/5/4 大盤漲 1,778 點當天，台積電貢獻約幾點？</p>
+    <div class="ans"><b>答：</b>約 1,110 點，超過當日漲幅的六成。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>The TAIEX is a market-cap-weighted index: the larger a company's market value, the more it moves the index. Taiwan's market has become extremely top-heavy — the ten largest stocks now account for over 65% of total weight, and TSMC alone exceeds 40%. On May 4, 2026, the TAIEX posted a record one-day gain of 1,778 points to close above 40,000 for the first time, with TSMC alone contributing about 1,110 points. Understanding the top 15 heavyweights is essentially understanding the Taiwan market itself.</p>
+  </div>
+</section>
+
+<!-- R3 -->
+<section class="round" id="r3">
+  <div class="rtag"><span class="num">回合 3</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>前 15 大權值股全圖鑑——外資的主戰場</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>以下是 2026 年第二季台股市值前 15 大的代表性名單（排名隨股價每日變動，產業結構是重點）。觀察產業分布你會發現：<b>半導體＋AI 硬體占了大半江山，金融股是第二大族群，傳產與電信只剩點綴</b>——這正是外資資金高度集中科技股的原因，也是後面「集中度風險」回合的伏筆。</p>
+  </div>
+  <div class="block data"><h4>📊 名單總覽（5 分鐘）</h4>
+    <table>
+      <tr><th>#</th><th>股票（代號）</th><th>產業</th><th>外資眼中的定位</th></tr>
+      <tr><td>1</td><td>台積電（2330）</td><td>晶圓代工</td><td>全球 AI 晶片心臟，外資持股約七成</td></tr>
+      <tr><td>2</td><td>鴻海（2317）</td><td>電子代工</td><td>AI 伺服器＋iPhone 雙引擎</td></tr>
+      <tr><td>3</td><td>聯發科（2454）</td><td>IC 設計</td><td>手機晶片王，ASIC 轉型題材</td></tr>
+      <tr><td>4</td><td>台達電（2308）</td><td>電源／散熱</td><td>AI 資料中心電力與散熱要角</td></tr>
+      <tr><td>5</td><td>廣達（2382）</td><td>伺服器代工</td><td>雲端大廠 AI 伺服器主力供應商</td></tr>
+      <tr><td>6</td><td>富邦金（2881）</td><td>金融</td><td>民營金控獲利王</td></tr>
+      <tr><td>7</td><td>國泰金（2882）</td><td>金融</td><td>壽險資產巨人</td></tr>
+      <tr><td>8</td><td>日月光投控（3711）</td><td>封裝測試</td><td>先進封裝（CoWoS 供應鏈）受惠者</td></tr>
+      <tr><td>9</td><td>中華電（2412）</td><td>電信</td><td>低波動、高股息的防禦型資產</td></tr>
+      <tr><td>10</td><td>中信金（2891）</td><td>金融</td><td>銀行獲利穩健的金控代表</td></tr>
+      <tr><td>11</td><td>聯電（2303）</td><td>晶圓代工</td><td>成熟製程代表，外資近期回補標的</td></tr>
+      <tr><td>12</td><td>兆豐金（2886）</td><td>金融</td><td>官股金控、外匯業務利基</td></tr>
+      <tr><td>13</td><td>長榮（2603）</td><td>航運</td><td>景氣循環股，運價題材</td></tr>
+      <tr><td>14</td><td>華碩／國巨等</td><td>電子</td><td>邊緣競爭者，排名常輪替</td></tr>
+      <tr><td>15</td><td>統一（1216）</td><td>食品</td><td>內需消費的防禦代表</td></tr>
+    </table>
+    <div class="tip"><b>觀察重點：</b>15 檔之中，半導體與 AI 硬體就占了 8 檔左右、金融 4 檔。學會把個股「分群」看（半導體群、AI 硬體群、金融群、防禦群），外資的調倉邏輯就會浮現。第三篇我們會逐群深入。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：前 15 大權值股中，哪兩個產業群占比最高？</p>
+    <div class="ans"><b>答：</b>半導體／AI 硬體（約 8 檔）與金融股（約 4 檔）。</div>
+    <p style="margin-top:14px">Q2：為什麼名單要用「分群」的方式記，而不是背排名？</p>
+    <div class="ans"><b>答：</b>排名每天隨市值變動，但產業群的資金邏輯（外資加碼 AI、用金融股平衡、用電信防禦）相對穩定，分群才能看懂外資調倉。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Taiwan's top 15 heavyweights in mid-2026 cluster into four groups: semiconductors (TSMC, MediaTek, ASE, UMC), AI hardware (Hon Hai, Quanta, Delta), financial holdings (Fubon, Cathay, CTBC, Mega), and defensive names (Chunghwa Telecom, Uni-President). Semiconductor and AI-related stocks dominate the list, which explains both the market's spectacular AI-driven rally and its concentration risk. Rankings shift daily with market caps, so analysts track sector groups rather than exact positions.</p>
+  </div>
+</section>
+
+<!-- R4 -->
+<section class="round" id="r4">
+  <div class="rtag"><span class="num">回合 4</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>外資持股怎麼查？——四個免費工具實作</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>外資的一舉一動都是公開資訊，每天收盤後即可查詢。自學者只要會用以下四個免費管道，就能建立自己的「外資儀表板」：</p>
+    <ul>
+      <li><b>證交所（TWSE）官網</b>：「三大法人買賣金額統計」「外資及陸資買賣超彙總表」「外資投資持股統計」——最權威的原始資料。</li>
+      <li><b>Yahoo 股市</b>：個股頁的「大戶籌碼」可看外資籌碼比率（外資持股數 ÷ 總發行股數）。</li>
+      <li><b>Goodinfo 台灣股市資訊網</b>：可看外資買賣超的日／週／月／年統計與長期圖表。</li>
+      <li><b>鉅亨網</b>：「外資買賣超前 30 名」「外資連續買超排行」適合快速掃描。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 三個必看欄位（5 分鐘）</h4>
+    <ul>
+      <li><b>外資持股比例</b>：水位高（如台積電約七成）代表外資態度是「長期核心持有」；水位變化比絕對值更重要。</li>
+      <li><b>連續買超／賣超天數</b>：連續性代表趨勢，比單日金額更有參考價值。</li>
+      <li><b>買賣超金額 vs 張數</b>：高價股要看金額，低價股看張數才不會失真。例如外資買超某 ETF 15 萬張，金額可能還不如買超台積電 5 千張。</li>
+    </ul>
+    <div class="tip"><b>注意陷阱：</b>「外資」欄位中可能混有以外資名義開戶的本土資金（俗稱假外資），中小型股尤其要小心；前 15 大權值股因部位龐大，幾乎都是真正的國際機構資金。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：「外資籌碼比率」的計算公式是？</p>
+    <div class="ans"><b>答：</b>全體外資持有股數 ÷ 總發行股數 × 100%。</div>
+    <p style="margin-top:14px">Q2：判斷外資趨勢時，「連續買超 8 天、每天 50 億」和「單日買超 400 億」哪個訊號較強？</p>
+    <div class="ans"><b>答：</b>通常是前者——連續性代表趨勢性布局；單日巨量常是事件驅動（如 MSCI 調整、期指結算），隔天可能就反向。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>All foreign-investor data in Taiwan is public and free. The TWSE website provides official daily net buy/sell tables and ownership statistics; Yahoo Stock Taiwan shows each stock's foreign ownership ratio; Goodinfo offers long-term charts; and Anue (cnyes) lists top-30 net buys and consecutive-buying rankings. Three key fields to watch: the foreign ownership ratio and its changes, consecutive buying/selling streaks (more meaningful than one-day spikes), and value versus volume of net buys.</p>
+  </div>
+</section>
+
+<!-- ============ 第二篇 ============ -->
+<div class="part"><h2>第二篇｜機制篇</h2><p>外資為什麼這樣動：權重、匯率、結算、制度</p></div>
+
+<!-- R5 -->
+<section class="round" id="r5">
+  <div class="rtag"><span class="num">回合 5</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>MSCI 權重的魔力——14.2% 的歷史紀錄</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>MSCI（明晟）編製全球指數，數兆美元的被動式基金「照表抄股」。當 MSCI 每季調整成分股權重，被動基金<b>必須</b>在生效日依新權重買賣——這不是看法，是機械式的義務。因此 MSCI 季度調整日（每年 2、5、8、11 月）常出現外資巨量單日買賣超，尾盤爆量更是經典畫面。</p>
+    <p>權重上調 → 被動資金被迫買進；權重下調 → 被迫賣出。對台股而言，MSCI 調整是外資「非自願性流動」的最大來源。</p>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>2026 年最受矚目的數字：<b>台積電在 MSCI 新興市場指數的權重達 14.2%，是該指數 30 多年來單一公司的最高紀錄</b>，超越了中國巨頭（如騰訊、阿里巴巴）在高峰期的權重。這代表全球任何一檔追蹤新興市場的基金，每收到 100 元，就有約 14 元必須買台積電。</p>
+    <p>歷史對照：2023 年 11 月 MSCI 將台股在新興市場指數權重從 15.25% 微調至 15.19%——看似只降 0.06 個百分點，仍引發數百億台幣的賣壓。權重的小數點，就是真金白銀的進出。</p>
+    <div class="tip"><b>反向思考：</b>權重越高，光環越大、風險也越大。一旦 AI 行情反轉或 MSCI 調降權重，被動資金的賣壓同樣是機械式的——這是回合 16「集中度風險」的核心。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：為什麼 MSCI 調整權重會「強迫」外資買賣？</p>
+    <div class="ans"><b>答：</b>被動式（指數型）基金必須複製指數成分與權重，調整生效日依規定機械式買賣，與基金經理人的看法無關。</div>
+    <p style="margin-top:14px">Q2：台積電在 MSCI 新興市場指數的權重約多少？有何歷史意義？</p>
+    <div class="ans"><b>答：</b>約 14.2%，是該指數 30 多年來單一公司最高紀錄。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>MSCI index weightings drive mechanical, non-discretionary foreign flows: passive funds must rebalance on effective dates regardless of their views. TSMC's weight in the MSCI Emerging Markets Index has reached 14.2% — the highest any single company has held in over 30 years, surpassing Chinese mega-caps at their peak. Even a tiny weight cut (such as Taiwan's 0.06-point trim in November 2023) can trigger tens of billions of NT dollars in forced selling. High weight is both a halo and a hazard.</p>
+  </div>
+</section>
+
+<!-- R6 -->
+<section class="round" id="r6">
+  <div class="rtag"><span class="num">回合 6</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>匯率與外資的雙人舞——看台幣，猜外資</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>外資買台股的第一步是把美元匯入、換成台幣；賣股離場則反向換回美元匯出。因此：<b>外資大舉匯入 → 台幣需求增加 → 台幣升值；外資撤出 → 台幣貶值</b>。新台幣匯率就像外資動向的「即時心電圖」，而且外匯市場盤中就能觀察，比收盤後才公布的買賣超更即時。</p>
+    <p>對外資來說，報酬率＝股價漲跌＋匯率損益。台幣升值時，外資不但賺股價、還賺匯差，形成「越升值越敢買、越買越升值」的正循環；反之貶值會引發雙重虧損的負循環。</p>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>教科書級案例——2026 年 4 月 14 日：外資單日買超 689.1 億元（接近歷史紀錄），同一天美元兌台幣大貶 0.095 元、收 31.690。資金匯入推升台幣，台幣升值又強化外資信心，當天台積電大漲 3.27% 收 2,055 元天價，大盤狂飆 838 點。</p>
+    <p>再看 1 月 2 日開紅盤：分析師直接點明「<b>從台幣轉強判斷，外資假期結束後把資金帶回台股了</b>」——當天外資回補 120 億，台積電領漲創高。匯率先說話，籌碼數據隔天才證實。</p>
+    <div class="tip"><b>自學練習：</b>每天花 30 秒看台幣收盤價。連續升值＋台股強勢 → 外資大概率在匯入買股；台股漲但台幣貶 → 漲勢可能由內資推動，體質較虛。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：外資大買台股，台幣通常會升值還是貶值？為什麼？</p>
+    <div class="ans"><b>答：</b>升值。外資須先將美元換成台幣才能買股，台幣需求上升推動升值。</div>
+    <p style="margin-top:14px">Q2：對外資而言，台幣升值期間投資台股有什麼「雙重好處」？</p>
+    <div class="ans"><b>答：</b>同時賺取股價上漲與匯兌收益（換回美元時更有利）。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Foreign investors must convert US dollars into NT dollars to buy Taiwanese stocks, so heavy inflows push the currency up, while outflows weaken it. The exchange rate works as a real-time pulse of foreign activity, visible during trading hours before official flow data is released. On April 14, 2026, foreigners net-bought NT$68.9 billion while the NT dollar jumped sharply — a textbook feedback loop: appreciation boosts foreign returns (price gain plus FX gain), which encourages further buying.</p>
+  </div>
+</section>
+
+<!-- R7 -->
+<section class="round" id="r7">
+  <div class="rtag"><span class="num">回合 7</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>「拉積盤」與結算日——每月第三個週三的籌碼戰</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>台指期貨每月<b>第三個週三</b>結算。由於台積電權重超過四成，想影響結算價，「拉抬或摜壓台積電」就是最有效率的手段——市場俗稱「<b>拉積盤</b>」（拉台積電的盤）。外資同時是現貨與期貨市場的最大玩家，常透過現貨買賣台積電來配合期貨、選擇權部位的損益。</p>
+    <p>這提醒我們：外資某些日子的大買大賣，<b>動機可能是衍生性商品的避險與結算，而非對公司基本面的看法改變</b>。</p>
+  </div>
+  <div class="block data"><h4>📊 觀察重點（5 分鐘）</h4>
+    <ul>
+      <li><b>結算週的台積電走勢</b>常與其權重地位「不成比例」地放大——大盤平盤但台積電獨強（或獨弱），就要懷疑是結算盤。</li>
+      <li><b>結算日前一兩天（週一、週二）</b>是拉抬／摜壓最常出現的時點，短線高槓桿部位宜避開。</li>
+      <li><b>外資期貨淨部位</b>（期交所每日公布）搭配現貨買賣超一起看：現貨大買＋期貨淨多單增加 → 真看多；現貨大買＋期貨大舉布空 → 可能是避險或結算操作。</li>
+    </ul>
+    <div class="tip"><b>老師提醒：</b>「拉積盤」是市場慣用語與觀察現象，不是每次結算都會發生，也難以事前證明誰在操作。學習重點在於：看到異常量價時，先檢查日曆——是不是結算週？</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：台指期每月何時結算？</p>
+    <div class="ans"><b>答：</b>每月第三個週三。</div>
+    <p style="margin-top:14px">Q2：為什麼「拉積」是影響結算價最有效率的方式？</p>
+    <div class="ans"><b>答：</b>台積電權重超過四成，拉抬一檔就能撬動整個指數，資金效率遠高於拉抬多檔中小型股。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Taiwan index futures settle on the third Wednesday of each month. Because TSMC carries over 40% of the index weight, moving TSMC is the most capital-efficient way to influence the settlement price — a phenomenon locals call the "TSMC-pull market." Foreign institutions dominate both the cash and derivatives markets, so unusual buying or selling near settlement may reflect hedging and expiry positioning rather than a changed view on fundamentals. Always check the calendar before interpreting abnormal flows.</p>
+  </div>
+</section>
+
+<!-- R8 -->
+<section class="round" id="r8">
+  <div class="rtag"><span class="num">回合 8</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>ETF 25% 新制——一條法規如何推升台積電</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>制度改變也能創造買盤。2026 年 4 月 24 日起，主管機關放寬規定：<b>ETF 對「市值占大盤 10% 以上之個股」的投資上限，從基金淨資產的 10% 放寬至 25%</b>。全台股只有一檔股票符合「市值占 10% 以上」——台積電。</p>
+    <p>過去 ETF 受限 10% 上限，被迫「低配」台積電（台積電權重 40%+，ETF 卻只能買 10%），造成市值型 ETF 長期追不上大盤。新制等於替整個 ETF 產業打開了補買台積電的空間。</p>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>新制生效後第一個交易日（4 月 27 日），台積電大漲 3.66% 收 2,265 元創新高，台股盤中史上首度站上 40,000 點。分析師明確指出，ETF 投資上限放寬是台積電獲得額外買盤的關鍵之一。</p>
+    <p>這個回合的深層啟示：<b>影響外資與大型資金行為的，除了基本面，還有「遊戲規則」本身</b>——MSCI 權重（回合 5）、期貨結算制度（回合 7）、ETF 法規（本回合），都是看不見的手。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：2026 年 4 月的 ETF 新制，把單一個股投資上限從多少放寬到多少？適用條件？</p>
+    <div class="ans"><b>答：</b>從基金淨資產的 10% 放寬至 25%，適用於市值占大盤 10% 以上的個股（目前僅台積電符合）。</div>
+    <p style="margin-top:14px">Q2：新制生效前，市值型 ETF 為何長期落後大盤？</p>
+    <div class="ans"><b>答：</b>台積電占大盤權重 40% 以上，但 ETF 受 10% 上限被迫低配，台積電大漲時 ETF 漲幅追不上指數。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Rule changes create flows. Effective April 24, 2026, Taiwanese ETFs may invest up to 25% of net assets (previously 10%) in any stock that exceeds 10% of total market value — a rule that applies only to TSMC. On the first trading day after the change, TSMC jumped 3.66% to a record NT$2,265 and the TAIEX briefly topped 40,000 for the first time. The lesson: besides fundamentals, the "rules of the game" — index weights, futures settlement, fund regulations — quietly steer institutional money.</p>
+  </div>
+</section>
+
+<!-- ============ 第三篇 ============ -->
+<div class="part"><h2>第三篇｜個股篇</h2><p>前 15 名分群深度解析：半導體、AI 硬體、金融、防禦</p></div>
+
+<!-- R9 -->
+<section class="round" id="r9">
+  <div class="rtag"><span class="num">回合 9</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>台積電（上）——外資持股七成的世界級公司</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>台積電是外資在台股的「核心中的核心」：外資持股約七成、占大盤市值四成以上、占 MSCI 新興市場指數 14.2%。它替 Apple、NVIDIA、AMD 等幾乎所有頂尖科技公司代工最先進的晶片，在 AI 浪潮中是「不管誰贏，它都贏」的軍火商角色。</p>
+    <p>2026 年的成長敘事有三層：(1) AI 晶片需求——執行長魏哲家形容 AI 需求「極為強勁」（extremely robust），並指出產能供不應求將持續到 2027 年；(2) 從生成式 AI 邁向<b>代理式 AI（agentic AI）</b>的下一波需求；(3) 先進製程與先進封裝的壟斷性技術優勢。</p>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <table>
+      <tr><th>指標</th><th>數據（2026 年）</th></tr>
+      <tr><td>股價軌跡</td><td>1/2 收 1,585 元 → 6/3 收 2,425 元（盤中天價 2,440），半年漲逾五成</td></tr>
+      <tr><td>市值</td><td>約 2 兆美元等級，穩居全球前列</td></tr>
+      <tr><td>大盤權重</td><td>超過 40%（部分統計達 45%）</td></tr>
+      <tr><td>2030 營收預估</td><td>若 AI 基建支出維持軌道，市場預估上看 3,110 億美元</td></tr>
+      <tr><td>財務體質</td><td>負債權益比約 0.18，利息保障倍數逾 200 倍，極為穩健</td></tr>
+    </table>
+    <p>外資的操作型態：法說會（1、4、7、10 月中旬）前常見「卡位買盤」，例如 1 月 2 日外資回補時，分析師即指出外資是「賭 1 月 15 日法說會將釋出正面訊息」而重建台積電部位。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：台積電執行長對 AI 需求的形容詞是什麼？產能緊張預計持續到何時？</p>
+    <div class="ans"><b>答：</b>「極為強勁」（extremely robust）；供不應求預計持續至 2027 年。</div>
+    <p style="margin-top:14px">Q2：外資為何常在法說會前買進台積電？</p>
+    <div class="ans"><b>答：</b>預先卡位，押注法說會釋出優於預期的展望（資本支出、訂單能見度），屬事件驅動型布局。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>TSMC is the core holding of foreign investors in Taiwan: roughly 70% foreign-owned, over 40% of the index, and 14.2% of the MSCI EM Index. As the contract manufacturer for Apple, NVIDIA, and AMD, it wins regardless of which AI player prevails. CEO C.C. Wei calls AI demand "extremely robust," with supply constraints confirmed through 2027 and revenue forecast to approach US$311 billion by 2030. Its share price rose from NT$1,585 to NT$2,425 in the first five months of 2026 alone.</p>
+  </div>
+</section>
+
+<!-- R10 -->
+<section class="round" id="r10">
+  <div class="rtag"><span class="num">回合 10</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>台積電（下）——估值之辯：這是泡沫嗎？</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>股價漲多必有估值之辯。<b>正方（泡沫派）</b>：TAIEX 預估本益比 19.6 倍，已高於五年平均；台積電 MSCI 權重創 30 年紀錄，連中國巨頭高峰期都不曾如此；當「人人都說不會跌」時往往最危險。<b>反方（基本面派）</b>：營收與獲利持續上修、訂單能見度到 2027 年，「盈餘跟得上股價」就不算泡沫；19.6 倍相比歷史上的科技泡沫（動輒 50–100 倍）仍屬溫和。</p>
+    <p>關鍵思考框架：<b>泡沫的定義不是「漲很多」，而是「價格脫離盈餘成長的支撐」</b>。目前市場主流看法是「估值偏高但尚有獲利支撐」——但這個結論依賴一個大前提：AI 資本支出不放緩。</p>
+  </div>
+  <div class="block data"><h4>📊 風險檢查清單（5 分鐘）</h4>
+    <ul>
+      <li><b>AI 資本支出循環</b>：若美國雲端大廠（CSP）削減 AI 伺服器投資，整條供應鏈估值將同步修正。</li>
+      <li><b>地緣政治</b>：台海風險溢價、美國關稅與出口管制政策，都是外資模型中的折價因子。</li>
+      <li><b>匯率</b>：台幣大幅升值雖反映資金流入，卻會侵蝕台積電以美元計價的營收換算。</li>
+      <li><b>基期效應</b>：市值 2 兆美元的公司要再翻倍，難度遠高於 2,000 億美元時代——成長率的「地心引力」。</li>
+    </ul>
+    <div class="tip"><b>批判性思考：</b>注意「倖存者偏誤」——我們今天討論台積電的偉大，是因為它活成了贏家。2000 年網路泡沫時，當時的人也認為龍頭股「這次不一樣」。保持敬畏，分散思考。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：判斷「泡沫」的核心標準是什麼？</p>
+    <div class="ans"><b>答：</b>不是漲幅大小，而是價格是否脫離盈餘成長的支撐（估值與基本面的脫鉤程度）。</div>
+    <p style="margin-top:14px">Q2：目前「尚非泡沫」的論點，建立在哪個關鍵前提上？</p>
+    <div class="ans"><b>答：</b>全球 AI 基礎建設的資本支出維持成長軌道；一旦雲端大廠縮手，估值將快速修正。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Is TSMC a bubble? Bears point to the TAIEX trading at 19.6x forward earnings (above its five-year average) and TSMC's record index concentration. Bulls counter that earnings keep beating estimates, demand visibility extends through 2027, and 19.6x is modest compared with historical tech manias. The working definition matters: a bubble is not "a big rally" but "prices detached from earnings support." The bullish case rests on one fragile assumption — that hyperscaler AI capital spending does not slow.</p>
+  </div>
+</section>
+
+<!-- R11 -->
+<section class="round" id="r11">
+  <div class="rtag"><span class="num">回合 11</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>半導體三劍客——聯發科、日月光、聯電</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>外資的半導體布局不只台積電一檔，而是一個「衛星系統」：</p>
+    <ul>
+      <li><b>聯發科（2454）</b>——IC 設計龍頭。原以手機晶片為主，2026 年的新故事是 <b>ASIC（特殊應用晶片）轉型</b>：替雲端大廠設計客製化 AI 晶片，被視為「下一個成長曲線」。</li>
+      <li><b>日月光投控（3711）</b>——全球封測龍頭。AI 晶片需要<b>先進封裝</b>（如 CoWoS 概念）把多顆晶片堆疊整合，日月光是台積電之外的關鍵產能。</li>
+      <li><b>聯電（2303）</b>——成熟製程代工。不做最先進晶片，但車用、工控、電源管理晶片需求穩定，是外資在半導體族群中的「價值型」選擇，2026 年中外資明顯回補。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>聯發科的爆發力：2026 年 5 月 4 日（史上最大漲點日），聯發科直接<b>跳上漲停（+10%）</b>，分析師點名其 ASIC 布局將受惠 AI 裝置需求；6 月 3 日股價已站上 4,545 元。外資對「轉型題材」的反應，往往比對「穩定獲利」更激烈。</p>
+    <p>聯電的對照：同期間外資買超排行中聯電多次居首，但股價波動遠小於聯發科——外資買成熟製程是「補低估值」，買 ASIC 題材是「追成長」，兩種完全不同的資金邏輯在同一個產業並存。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：聯發科 2026 年最受外資關注的轉型題材是什麼？</p>
+    <div class="ans"><b>答：</b>ASIC（特殊應用晶片）——為雲端大廠客製化設計 AI 晶片。</div>
+    <p style="margin-top:14px">Q2：外資買聯電與買聯發科的資金邏輯有何不同？</p>
+    <div class="ans"><b>答：</b>聯電屬「價值回補」（成熟製程、低估值、穩定需求）；聯發科屬「成長追價」（ASIC 轉型故事），波動與想像空間都更大。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Beyond TSMC, foreign money spreads across a semiconductor satellite system. MediaTek, the IC-design leader, is re-rating on its ASIC pivot — designing custom AI chips for cloud giants — and hit limit-up (+10%) on the record rally day of May 4, 2026. ASE Technology dominates advanced packaging, the bottleneck for stacking AI chips. UMC represents the value play: mature-node foundry with steady automotive and industrial demand. Growth-chasing and value-hunting foreign flows coexist within the same sector.</p>
+  </div>
+</section>
+
+<!-- R12 -->
+<section class="round" id="r12">
+  <div class="rtag"><span class="num">回合 12</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>AI 硬體軍團——鴻海、廣達、台達電</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>AI 晶片做出來之後，要組裝成伺服器、要供電、要散熱——這就是台灣 AI 硬體軍團的舞台：</p>
+    <ul>
+      <li><b>鴻海（2317）</b>——全球最大電子代工廠，雙引擎：iPhone 組裝（現金牛）＋ AI 伺服器（成長引擎），是 NVIDIA AI 伺服器的主力組裝夥伴。</li>
+      <li><b>廣達（2382）</b>——雲端伺服器代工先驅，美系四大雲端服務商（CSP）的 AI 伺服器核心供應商。</li>
+      <li><b>台達電（2308）</b>——電源與散熱方案龍頭。AI 資料中心的耗電量是傳統機房的數倍，<b>電源效率與液冷散熱</b>成為瓶頸技術，台達電因此從「零組件廠」升級為「AI 基礎建設概念股」，2026 年市值一度擠進台股前四。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>台達電的重估值（re-rating）是 2026 年的經典案例：6 月 3 日收 2,455 元、單日大漲 4.03%，股價甚至超越台積電的 2,425 元（注意：股價高低不等於市值高低，台積電股本大得多）。外資論述的轉變——從「電源供應器廠」到「AI 電力與散熱的賣鏟人」——完整示範了<b>同一家公司，敘事改變就能改變估值</b>。</p>
+    <p>美國雲端大廠的巨額資本支出（capex）是這整個族群的總開關：CSP 加碼 → 訂單上修 → 外資加碼；反之亦然。追蹤這個族群，先追蹤美股財報季的 capex 指引。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：台達電在 AI 浪潮中的兩大瓶頸技術角色是什麼？</p>
+    <div class="ans"><b>答：</b>電源（高效率供電）與散熱（液冷方案）——AI 資料中心耗電遠高於傳統機房。</div>
+    <p style="margin-top:14px">Q2：整個 AI 硬體族群最上游的「總開關」指標是什麼？</p>
+    <div class="ans"><b>答：</b>美國雲端服務大廠（CSP）的資本支出（capex）指引。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Once AI chips are made, they must be assembled, powered, and cooled — the stage for Taiwan's AI hardware army. Hon Hai pairs its iPhone cash cow with booming AI-server assembly; Quanta is a core server supplier to US hyperscalers; and Delta Electronics has been re-rated from a "power-supply maker" into an AI-infrastructure play, as power efficiency and liquid cooling became bottleneck technologies. Delta closed at NT$2,455 on June 3, 2026, briefly pricing above TSMC per share. The whole group's master switch is hyperscaler capex guidance.</p>
+  </div>
+</section>
+
+<!-- R13 -->
+<section class="round" id="r13">
+  <div class="rtag"><span class="num">回合 13</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>金融股的角色——外資資產配置的「壓艙石」</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>前 15 大權值股中金融股占了 4 檔：富邦金、國泰金、中信金、兆豐金。外資買金融股的邏輯與買科技股完全不同：</p>
+    <ul>
+      <li><b>估值平衡</b>：科技股本益比偏高時，低本益比、高股息的金融股是組合中的「便宜資產」。</li>
+      <li><b>降低波動</b>：金融股 Beta 值較低，能拉低整體組合的波動度——這是「壓艙石」功能。</li>
+      <li><b>台股大多頭的受惠者</b>：成交量暴增 → 券商手續費收入大增；股市上漲 → 壽險投資部位（國泰金、富邦金的龐大資產）評價利益膨脹。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 案例與數據（5 分鐘）</h4>
+    <p>2026 年 6 月 3 日的買超結構是最好的教材：當天外資買超 434 億元，<b>買超前十名中金融股就占了 4 檔</b>。在台股創 46,459 點新高、科技股估值偏高的當口，外資一邊持有科技核心、一邊把新增資金導向金融股——這就是「邊漲邊平衡」的調倉手法。</p>
+    <p>四檔金控的個性：富邦金（民營獲利王、投資操作積極）、國泰金（壽險資產最大、利率敏感度高）、中信金（銀行本業穩、消金強）、兆豐金（官股、外匯利基、政策色彩）。外資依「利率走向」與「股息率」在四者間輪動。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：外資在科技股估值偏高時買金融股，主要基於哪兩個功能？</p>
+    <div class="ans"><b>答：</b>估值平衡（低本益比、高股息）與降低組合波動（低 Beta 的壓艙石功能）。</div>
+    <p style="margin-top:14px">Q2：台股大多頭對壽險型金控（國泰金、富邦金）的直接好處是？</p>
+    <div class="ans"><b>答：</b>龐大的股票投資部位產生評價利益，推升獲利與淨值。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Four financial holdings — Fubon, Cathay, CTBC, and Mega — sit among Taiwan's top 15 heavyweights, and foreign investors use them as portfolio ballast: low P/E, high dividends, and low beta to offset richly valued tech. Financials also benefit directly from the bull market through surging brokerage fees and valuation gains on insurers' massive equity portfolios. On June 3, 2026, four of the ten most-bought stocks by foreign investors were financials — a classic "rebalance while rallying" move.</p>
+  </div>
+</section>
+
+<!-- R14 -->
+<section class="round" id="r14">
+  <div class="rtag"><span class="num">回合 14</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>防禦型與景氣循環權值股——中華電、統一、長榮</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>名單的最後一群，是外資配置中的「特殊用途部位」：</p>
+    <ul>
+      <li><b>中華電（2412）</b>——典型防禦股：電信收入不受景氣影響、股息穩定、波動極低。外資在避險情緒升溫時加碼，行情火熱時減碼，它是「市場恐慌溫度計」的反向指標。</li>
+      <li><b>統一（1216）</b>——內需食品龍頭，邏輯與中華電類似：民生消費的穩定現金流。</li>
+      <li><b>長榮（2603）</b>——完全相反的物種：<b>景氣循環股</b>。獲利隨全球運價暴起暴落，外資操作它靠的是運價指數與景氣週期判斷，而非長期持有。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 配置思維（5 分鐘）</h4>
+    <p>把四群放在一起，外資的台股組合像一支足球隊：<b>台積電與半導體群是前鋒</b>（進攻得分）、<b>AI 硬體群是中場</b>（串聯放大攻勢）、<b>金融股是後衛</b>（穩住防線）、<b>中華電與統一是守門員</b>（最後防線），<b>長榮則是依戰況上場的替補奇兵</b>。</p>
+    <p>判讀應用：當外資「賣中華電、買台積電」→ 風險偏好上升（Risk-on）；「賣科技、買中華電與金融」→ 避險模式（Risk-off）。防禦股的買賣超方向，常是外資情緒的領先訊號。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：為什麼中華電被視為「市場恐慌溫度計」？</p>
+    <div class="ans"><b>答：</b>它收入穩定、波動低，外資恐慌時加碼避險、樂觀時減碼換進攻型股票，其買賣超方向反映風險情緒。</div>
+    <p style="margin-top:14px">Q2：長榮與中華電同為權值股，外資的操作邏輯差在哪？</p>
+    <div class="ans"><b>答：</b>中華電是長期防禦配置；長榮是景氣循環操作，依運價與週期高出低進，不做長抱。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>The final group serves special roles. Chunghwa Telecom and Uni-President are classic defensives — stable cash flows, high dividends, minimal volatility — which foreign funds buy when fear rises and trim when risk appetite returns, making their flows a sentiment thermometer. Evergreen Marine is the opposite: a pure cyclical traded on freight rates. Picture the foreign portfolio as a football team: semiconductors as strikers, AI hardware as midfield, financials as defenders, and telecom as goalkeeper.</p>
+  </div>
+</section>
+
+<!-- ============ 第四篇 ============ -->
+<div class="part"><h2>第四篇｜風險與策略篇</h2><p>讀懂矛盾、看清風險、學會判讀</p></div>
+
+<!-- R15 -->
+<section class="round" id="r15">
+  <div class="rtag"><span class="num">回合 15</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>2026 外資大矛盾——單日狂買 vs 年度賣超？</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>2026 年的外資數據出現耐人尋味的矛盾。一方面是驚人的買超紀錄：2 月底單日買超 27.7 億美元，創 2005 年 12 月以來最大；4 月 14 日單日買超 689 億；5 月 4 日買超 670 億（史上第六大）。另一方面，<b>統計至 4 月 30 日，外資年初以來累計竟是「賣超」5,853 億元</b>；4 月下旬甚至出現單週賣超近 2,000 億的劇烈調節。怎麼回事？</p>
+  </div>
+  <div class="block data"><h4>📊 三種解讀（5 分鐘）</h4>
+    <ul>
+      <li><b>解讀一：事件驅動 vs 趨勢性部位。</b>巨量買超日多與 MSCI 調整、法說會卡位、ETF 新制等「事件」綁定；事件過後再分批調節。買得猛、賣得碎，累計就成了賣超。</li>
+      <li><b>解讀二：高檔獲利了結。</b>外資持有台積電多年、成本極低，在屢創新高的 2026 年逢高分批落袋是再自然不過的紀律——賣超不等於看空，可能只是「賺太多」。</li>
+      <li><b>解讀三：現貨與期貨的配套。</b>外資可能現貨減碼、期貨持有多單維持曝險（或反向避險），單看現貨買賣超會誤判全貌。</li>
+    </ul>
+    <p>同期間的弔詭事實：外資累計賣超數千億，<b>大盤卻從 29,349 漲到 46,459 點</b>——說明這波行情中，內資（散戶、投信、ETF 申購）的力量空前強大。「外資賣＝大盤跌」的舊公式在 2026 年失效了，這本身就是重大的市場結構變化。</p>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：外資年度累計賣超，能直接推論「外資看空台股」嗎？</p>
+    <div class="ans"><b>答：</b>不能。可能是高檔獲利了結、事件後調節，或現貨減碼但期貨維持多方曝險；需搭配持股比例與期貨部位綜合判讀。</div>
+    <p style="margin-top:14px">Q2：2026 年「外資賣超但大盤大漲」反映了什麼結構變化？</p>
+    <div class="ans"><b>答：</b>內資力量（散戶、投信、ETF 資金）大幅崛起，足以承接外資賣壓，外資不再是唯一的行情決定者。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>2026 presents a paradox: record single-day foreign buying (US$2.77 billion in February, the largest since 2005) alongside a year-to-date cumulative net sell of NT$585 billion through April. Three readings reconcile it: event-driven spikes (MSCI rebalancing, earnings positioning) followed by gradual trimming; disciplined profit-taking at record highs; and cash-versus-futures positioning that flow data alone cannot capture. Strikingly, the TAIEX surged from 29,349 to 46,459 despite the net selling — evidence that domestic retail and ETF money now counterbalances foreign flows.</p>
+  </div>
+</section>
+
+<!-- R16 -->
+<section class="round" id="r16">
+  <div class="rtag"><span class="num">回合 16</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>集中度風險——把一半雞蛋放在同一個籃子的市場</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>台股的結構性風險可以用三個數字概括：台積電一檔占大盤 <b>40%+</b>；台積電＋聯發科合計近 <b>40% 權重來自兩家半導體公司</b>；半導體相關企業合計權重<b>超過 50%</b>。這代表整個台股的命運，與單一產業的景氣循環高度綁定。</p>
+    <p>順風時，這是火箭引擎；逆風時（晶片需求放緩、AI 資本支出降溫、破壞式技術出現、地緣衝突），<b>過度集中將使整個市場同步承壓，無處可躲</b>——連大盤型 ETF 都無法分散這個風險，因為 ETF 本身就重押台積電。</p>
+  </div>
+  <div class="block data"><h4>📊 風險的傳導路徑（5 分鐘）</h4>
+    <ul>
+      <li><b>MSCI 路徑</b>：AI 行情若反轉 → 台積電市值縮水 → MSCI 權重下調 → 被動資金機械式賣出 → 進一步下跌（回合 5 的反向版）。</li>
+      <li><b>匯率路徑</b>：外資撤出 → 台幣貶值 → 外資匯損擴大 → 加速撤出（回合 6 的負循環）。</li>
+      <li><b>ETF 路徑</b>：台股 ETF 規模空前龐大，若市場下跌引發贖回潮，ETF 被迫賣出成分股（以台積電為最大部位），形成新型態的賣壓來源。</li>
+    </ul>
+    <div class="tip"><b>給自學者的風險管理啟示：</b>若你同時持有 0050 等市值型 ETF＋台積電＋台達電個股，你的「單一公司暴險」與「單一產業暴險」可能遠超想像。定期檢查投資組合的實際集中度，是這門課最實用的功課。</div>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：台股的半導體相關權重合計約超過多少？</p>
+    <div class="ans"><b>答：</b>超過 50%（台積電一檔即占 40% 以上）。</div>
+    <p style="margin-top:14px">Q2：為什麼「買大盤型 ETF」無法分散台股的集中度風險？</p>
+    <div class="ans"><b>答：</b>市值型 ETF 依權重複製大盤，本身就重押台積電與半導體，與大盤承受相同的單一產業風險。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Taiwan's structural risk in three numbers: TSMC alone exceeds 40% of the index, TSMC plus MediaTek approach 40% from just two chip companies, and semiconductor-related names top 50% of total weight. In an upcycle this is rocket fuel; in a downturn — slowing chip demand, cooling AI capex, or geopolitical shock — the whole market sinks together. Even broad-market ETFs cannot diversify this away, since they replicate the same concentration. Investors holding ETFs plus individual tech names should audit their true single-company and single-industry exposure.</p>
+  </div>
+</section>
+
+<!-- R17 -->
+<section class="round" id="r17">
+  <div class="rtag"><span class="num">回合 17</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>外資籌碼判讀實戰——五步驟檢核法</h3>
+  <div class="block core"><h4>💡 核心概念（3 分鐘）</h4>
+    <p>綜合前面 16 回合，整理成一套可每日操作的「五步驟檢核法」：</p>
+    <ul>
+      <li><b>Step 1 看匯率</b>：台幣升或貶？盤中即時的外資風向球。</li>
+      <li><b>Step 2 看連續性</b>：個股被外資連續買／賣幾天？趨勢比單日重要。</li>
+      <li><b>Step 3 看持股比例變化</b>：水位上升＝結構性加碼；只有買賣超但水位不動＝短線進出。</li>
+      <li><b>Step 4 查日曆</b>：是否接近期指結算（第三個週三）、MSCI 調整（2/5/8/11 月）、台積電法說（1/4/7/10 月）？事件日的巨量另行解讀。</li>
+      <li><b>Step 5 配期貨部位</b>：期交所公布的外資期貨淨部位，與現貨方向一致才是「真態度」。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 進階觀察（5 分鐘）</h4>
+    <ul>
+      <li><b>外資重倉股 vs 重金股</b>：重倉看持股比例（長期信任度），重金看買超金額（當下熱度），兩張榜單對照看。</li>
+      <li><b>潛力觀察名單</b>：市值排名 21–50 且持續上升、營收年增率高、外資持股連續數週增加的股票，可能是下一波被納入主要指數的「準權值股」（如市場關注的南亞科、世芯-KY 等），納入時被動買盤將推升股價。</li>
+      <li><b>反指標警覺</b>：當「外資目標價」滿天飛、媒體天天報導外資狂買時，行情往往已在後段。外資報告是參考資料，不是進出依據。</li>
+    </ul>
+  </div>
+  <details class="quiz"><summary>自我檢測（2 分鐘）</summary><div class="qbody">
+    <p>Q1：五步驟檢核法中，哪一步能在「盤中」就觀察到外資動向？</p>
+    <div class="ans"><b>答：</b>Step 1 看匯率——台幣走勢盤中即時反映資金進出，買賣超數據則要收盤後才公布。</div>
+    <p style="margin-top:14px">Q2：「外資現貨大買、期貨同步布空」最可能代表什麼？</p>
+    <div class="ans"><b>答：</b>避險或結算操作，而非單純看多；現貨與期貨方向一致時，才是較可信的真實態度。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>A five-step daily checklist distills the course into practice: (1) watch the NT dollar for intraday flow signals; (2) track consecutive buying/selling streaks rather than one-day figures; (3) monitor changes in ownership ratios to separate structural accumulation from short-term trading; (4) check the calendar for futures settlement, MSCI rebalancing, and TSMC earnings calls before interpreting unusual volume; (5) cross-check cash flows against foreign futures positions — only when both align is the signal trustworthy.</p>
+  </div>
+</section>
+
+<!-- R18 -->
+<section class="round" id="r18">
+  <div class="rtag"><span class="num">回合 18</span><span class="time">⏱ 約 10 分鐘</span></div>
+  <h3>總結回合——散戶能從外資身上學到什麼？</h3>
+  <div class="block core"><h4>💡 課程十大重點回顧（5 分鐘）</h4>
+    <ul>
+      <li>外資是台股最大的資金力量，持有約四成市值、台積電約七成。</li>
+      <li>台股是市值加權市場：前十大權值股權重逾 65%，看懂前 15 名＝看懂大半個台股。</li>
+      <li>外資流動有兩種：主動判斷（基本面）與被動義務（MSCI 權重、ETF 規則）。</li>
+      <li>台幣匯率是外資動向的即時心電圖。</li>
+      <li>期指結算週（第三個週三）的台積電異動，先想「拉積盤」再想基本面。</li>
+      <li>制度改變（如 ETF 25% 新制）本身就能創造數千億買盤。</li>
+      <li>外資組合像足球隊：半導體前鋒、AI 硬體中場、金融後衛、電信守門員。</li>
+      <li>2026 啟示：外資賣超但大盤創高——內資崛起改變了市場結構。</li>
+      <li>最大風險是集中度：半導體逾五成權重，連 ETF 都無法分散。</li>
+      <li>判讀心法：看趨勢不看單日、看持股不只看買賣超、看匯率與期貨互相印證。</li>
+    </ul>
+  </div>
+  <div class="block data"><h4>📊 給自學者的三個提醒（3 分鐘）</h4>
+    <ul>
+      <li><b>外資不是神：</b>外資也會追高殺低、也會看錯。學習外資的「紀律與配置思維」，而非盲從其單日動作。</li>
+      <li><b>數據會過期：</b>本課程數據以 2026 年 6 月初為基準，持股比例、權重、排名都會變動，請用回合 4 的工具自行更新。</li>
+      <li><b>知識不是建議：</b>本課程為教學用途，不構成任何投資建議。投資決策請自行研究並評估風險。</li>
+    </ul>
+  </div>
+  <details class="quiz"><summary>期末總檢測（2 分鐘・5 題快答）</summary><div class="qbody">
+    <p>Q1：台積電占大盤權重約？　Q2：台指期每月結算日？　Q3：MSCI 調整月份？　Q4：外資匯入時台幣會？　Q5：2026 年外資累計賣超但大盤上漲，主因？</p>
+    <div class="ans"><b>答：</b>Q1 超過 40%｜Q2 第三個週三｜Q3 每年 2、5、8、11 月｜Q4 升值｜Q5 內資（散戶、投信、ETF）買盤強勁承接。</div>
+  </div></details>
+  <div class="ensum"><h4>🇬🇧 English Summary</h4>
+    <p>Ten takeaways close the course: foreign institutions hold ~40% of Taiwan's market and ~70% of TSMC; the index is dominated by its top heavyweights; foreign flows are part judgment, part mechanical obligation; the NT dollar is a real-time flow gauge; settlement weeks distort TSMC moves; rule changes create flows; the portfolio resembles a football team across four roles; 2026 proved domestic money can offset foreign selling; concentration is the market's deepest risk; and trends, ownership levels, and cross-checks beat single-day headlines. Educational content only — not investment advice.</p>
+  </div>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section class="round glossary" id="glossary">
+  <div class="rtag"><span class="num">附錄</span><span class="time">📖 Glossary 中英詞彙表</span></div>
+  <h3>Glossary｜課程核心詞彙 30 選</h3>
+  <dl>
+    <dt>外資<span class="en">Foreign Institutional Investors (FINI)</span></dt><dd>經核准投資台股的外國機構投資人，包括主權基金、退休基金、共同基金、避險基金與指數型基金。</dd>
+    <dt>三大法人<span class="en">Three Major Institutional Investors</span></dt><dd>外資及陸資、投信、自營商；證交所每日收盤後公布其買賣超。</dd>
+    <dt>買超／賣超<span class="en">Net Buy / Net Sell</span></dt><dd>買進金額減賣出金額的淨額；正值為買超、負值為賣超。</dd>
+    <dt>權值股<span class="en">Index Heavyweight / Weighted Stock</span></dt><dd>市值龐大、對加權指數影響顯著的股票，如台積電、鴻海、聯發科。</dd>
+    <dt>加權指數<span class="en">TAIEX (Taiwan Capitalization Weighted Stock Index)</span></dt><dd>台灣證交所編製的大盤指數，依各公司市值比重加權計算。</dd>
+    <dt>市值<span class="en">Market Capitalization</span></dt><dd>股價 × 發行股數，衡量公司規模與指數權重的基礎。</dd>
+    <dt>持股比例<span class="en">Ownership Ratio</span></dt><dd>外資持有股數占總發行股數的百分比，反映長期信任水位。</dd>
+    <dt>籌碼<span class="en">Chips / Shareholding Structure</span></dt><dd>市場用語，指股票在各類投資人之間的分布與流動狀態。</dd>
+    <dt>MSCI（明晟）<span class="en">Morgan Stanley Capital International</span></dt><dd>全球指數編製公司，其權重調整牽動數兆美元被動資金的機械式買賣。</dd>
+    <dt>被動式基金<span class="en">Passive Fund / Index Fund</span></dt><dd>完全複製指數成分與權重的基金，調整日必須依規則買賣，不做主觀判斷。</dd>
+    <dt>ETF<span class="en">Exchange-Traded Fund</span></dt><dd>指數股票型基金，於交易所掛牌買賣；台股市值型 ETF 以 0050、006208 為代表。</dd>
+    <dt>本益比<span class="en">Price-to-Earnings Ratio (P/E)</span></dt><dd>股價除以每股盈餘，衡量估值高低；預估本益比（forward P/E）採未來盈餘估計。</dd>
+    <dt>估值<span class="en">Valuation</span></dt><dd>評估資產合理價格的過程與結果；「重估值」（re-rating）指市場願意給予更高的本益比。</dd>
+    <dt>泡沫<span class="en">Bubble</span></dt><dd>價格脫離盈餘與基本面支撐的狀態；定義重點在「脫鉤」而非「漲幅」。</dd>
+    <dt>結算日<span class="en">Settlement Day</span></dt><dd>期貨契約到期計算損益之日；台指期為每月第三個週三。</dd>
+    <dt>拉積盤<span class="en">"TSMC-pull" Market</span></dt><dd>市場俗語，指藉拉抬（或摜壓）台積電影響指數與期貨結算價的盤勢。</dd>
+    <dt>期貨<span class="en">Futures</span></dt><dd>約定未來特定日期以特定價格買賣標的之衍生性契約；外資用以建立曝險或避險。</dd>
+    <dt>避險<span class="en">Hedging</span></dt><dd>建立反向部位以降低既有投資風險的操作，如持有現貨同時放空期貨。</dd>
+    <dt>匯率<span class="en">Exchange Rate</span></dt><dd>兩種貨幣的兌換比率；台幣升貶與外資資金進出高度連動。</dd>
+    <dt>升值／貶值<span class="en">Appreciation / Depreciation</span></dt><dd>本國貨幣相對外幣變強／變弱；外資匯入推升台幣，匯出則使其走貶。</dd>
+    <dt>法說會<span class="en">Earnings Call / Investor Conference</span></dt><dd>公司向投資人說明財報與展望的會議；台積電每年 1、4、7、10 月舉行，外資常提前卡位。</dd>
+    <dt>資本支出<span class="en">Capital Expenditure (Capex)</span></dt><dd>企業投資於廠房設備的支出；雲端大廠的 AI capex 是台灣供應鏈的需求總開關。</dd>
+    <dt>雲端服務商<span class="en">Cloud Service Provider (CSP)</span></dt><dd>提供雲端運算服務的大型業者（如美系四大），其 AI 投資驅動伺服器供應鏈。</dd>
+    <dt>晶圓代工<span class="en">Foundry</span></dt><dd>受託製造晶片的商業模式；台積電為先進製程龍頭，聯電以成熟製程見長。</dd>
+    <dt>先進封裝<span class="en">Advanced Packaging</span></dt><dd>將多顆晶片堆疊整合的後段技術（如 CoWoS），是 AI 晶片量產瓶頸之一。</dd>
+    <dt>ASIC<span class="en">Application-Specific Integrated Circuit</span></dt><dd>特殊應用晶片；雲端大廠委託聯發科等業者客製化設計 AI 晶片的趨勢。</dd>
+    <dt>防禦型股票<span class="en">Defensive Stock</span></dt><dd>獲利不受景氣波動影響、股息穩定的股票，如電信、民生食品。</dd>
+    <dt>景氣循環股<span class="en">Cyclical Stock</span></dt><dd>獲利隨景氣循環大幅波動的股票，如航運、鋼鐵、面板。</dd>
+    <dt>Beta 值<span class="en">Beta</span></dt><dd>個股相對大盤的波動敏感度；Beta 低於 1 表示波動小於大盤，具防禦性。</dd>
+    <dt>集中度風險<span class="en">Concentration Risk</span></dt><dd>投資組合或市場過度集中於單一公司／產業，導致無法分散的系統性風險。</dd>
+    <dt>系統性風險<span class="en">Systemic Risk</span></dt><dd>影響整體市場、無法藉分散投資消除的風險，如產業景氣反轉、地緣政治衝擊。</dd>
+    <dt>獲利了結<span class="en">Profit-Taking</span></dt><dd>賣出已上漲的持股以實現帳面利益；外資在高檔的賣超常屬此類，不必然代表看空。</dd>
+  </dl>
+</section>
+
+<div class="disclaimer">
+⚠️ <b>免責聲明：</b>本教材由林威英文製作，僅供教學與自學參考。所有市場數據以 2026 年 6 月初公開資訊為基準，實際數字隨市場每日變動，請以臺灣證券交易所等官方來源為準。本內容不構成任何投資建議，投資人應自行研究判斷並承擔風險。
+</div>
+
+<!-- ===== BOTTOM LINK BAR ===== -->
+<div class="linkbar">
+  <a href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 錯中學 ECHO 計劃｜七月開課</a>
+  <a class="lite" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+</div><!-- /wrap -->
+
+<button id="topBtn" title="回到頂端" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('topBtn').style.display = window.scrollY>600 ? 'block':'none';
+});
+</script>
+</body>
+</html>
