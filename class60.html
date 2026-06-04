@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Build 2026：七大自研 AI 模型重點整理｜林威英文</title>
+<style>
+  :root{
+    --bg:#F8F4ED; --ink:#2D2A26; --accent:#8B5E3C; --accent2:#D4A574;
+    --brick:#B0563A; --mustard:#C28A1E; --olive:#6E7B3D; --clay:#A86A4F;
+    --brown:#7A5230; --taupe:#8A7B6A; --green:#4F6B4A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px; line-height:1.8; padding:20px 16px 40px;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#8B5E3C,#A86A4F);
+    color:#FFF8F0; border-radius:20px; padding:34px 26px; margin-bottom:26px;
+    text-align:center;
+  }
+  header h1{font-size:30px; line-height:1.5; margin-bottom:10px;}
+  header p{font-size:19px; opacity:.92;}
+  .badge{display:inline-block; background:rgba(255,248,240,.2); border:1px solid rgba(255,248,240,.45);
+    border-radius:999px; padding:4px 18px; font-size:17px; margin-top:12px;}
+
+  /* 連結卡 */
+  .links{display:flex; flex-wrap:wrap; gap:12px; margin:0 0 28px;}
+  .links a{
+    flex:1 1 220px; min-height:72px; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; color:#FFF8F0; border-radius:16px; padding:14px 18px;
+    font-size:20px; font-weight:700; text-align:center; line-height:1.5;
+    box-shadow:0 3px 8px rgba(45,42,38,.15);
+  }
+  .links a.l1{background:#B0563A;} .links a.l2{background:#6E7B3D;} .links a.l3{background:#C28A1E;}
+
+  section{
+    background:#FFFDF8; border-radius:18px; padding:26px 24px; margin-bottom:24px;
+    border:1px solid #EAE0D2; box-shadow:0 2px 6px rgba(45,42,38,.06);
+  }
+  .sec-head{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+  .num{
+    min-width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    color:#FFF8F0; font-size:26px; font-weight:800; flex-shrink:0;
+  }
+  h2{font-size:25px; line-height:1.5;}
+  .en-sub{font-size:18px; color:#8A7B6A; margin-bottom:14px; padding-left:68px;}
+  ul{padding-left:30px; margin-bottom:18px;}
+  li{margin-bottom:10px;}
+  li b{color:var(--accent);}
+
+  .zh-sum{
+    border-radius:14px; padding:18px 20px; font-size:21px; line-height:1.85;
+    border-left:8px solid var(--accent2);
+    background:#F5EDE0;
+  }
+  .zh-sum .tag{
+    display:inline-block; font-size:17px; font-weight:800; color:#FFF8F0;
+    background:var(--accent); border-radius:8px; padding:2px 12px; margin-bottom:8px;
+  }
+
+  /* 區段配色 */
+  .c1 .num{background:var(--brick);}   .c1 .zh-sum{border-left-color:var(--brick);}
+  .c2 .num{background:var(--mustard);} .c2 .zh-sum{border-left-color:var(--mustard);}
+  .c3 .num{background:var(--olive);}   .c3 .zh-sum{border-left-color:var(--olive);}
+  .c4 .num{background:var(--clay);}    .c4 .zh-sum{border-left-color:var(--clay);}
+  .c5 .num{background:var(--brown);}   .c5 .zh-sum{border-left-color:var(--brown);}
+  .c6 .num{background:var(--green);}   .c6 .zh-sum{border-left-color:var(--green);}
+  .c7 .num{background:var(--brick);}   .c7 .zh-sum{border-left-color:var(--brick);}
+  .c8 .num{background:var(--mustard);} .c8 .zh-sum{border-left-color:var(--mustard);}
+  .c9 .num{background:var(--olive);}   .c9 .zh-sum{border-left-color:var(--olive);}
+  .c10 .num{background:var(--brown);}  .c10 .zh-sum{border-left-color:var(--brown);}
+
+  /* Glossary */
+  .glossary h2{margin-bottom:18px; color:var(--accent);}
+  .gitem{
+    border-bottom:1px dashed #D8CCBA; padding:14px 4px;
+  }
+  .gitem:last-child{border-bottom:none;}
+  .gword{font-weight:800; color:var(--brick); font-size:22px;}
+  .gzh{color:var(--olive); font-weight:700; margin-left:10px; font-size:20px;}
+  .gdef{font-size:20px; color:#4A453E; margin-top:4px;}
+
+  footer{
+    text-align:center; font-size:18px; color:#8A7B6A; margin-top:30px; line-height:1.8;
+  }
+  @media (max-width:600px){
+    body{font-size:21px;}
+    header h1{font-size:26px;}
+    .en-sub{padding-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Microsoft Build 2026<br>七大自研 AI 模型重點整理</h1>
+  <p>微軟宣告：不再只租用智慧，要自己打造智慧</p>
+  <div class="badge">林威英文 ✦ 科技英文閱讀教材 ✦ 2026.06</div>
+</header>
+
+<div class="links">
+  <a class="l1" href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 七月課程：錯中學 ECHO 計劃</a>
+  <a class="l2" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a class="l3" href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+<!-- 1 -->
+<section class="c1">
+  <div class="sec-head"><div class="num">1</div><h2>戰略大轉向：從「投資別人」到「自己上場」</h2></div>
+  <p class="en-sub">Microsoft draws a line: its own models, agents, and intelligence layer</p>
+  <ul>
+    <li>For years, Microsoft's AI empire was built on <b>other people's models</b> — billions into OpenAI, plus backing Anthropic.</li>
+    <li>At <b>Build 2026</b> (San Francisco), Microsoft unveiled <b>seven in-house AI models</b>, a new agent stack, the always-on agent <b>Scout</b>, the <b>Microsoft IQ</b> intelligence layer, an AI security system, and the <b>Majorana 2</b> quantum chip.</li>
+    <li>Satya Nadella: every company should move from merely <b>consuming</b> a frontier model to <b>fully participating</b> at the frontier.</li>
+    <li>Economics matter: with its own models on Azure, Microsoft controls the whole stack → lower costs, better margins.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  多年來微軟的 AI 版圖都建立在別人的模型上（重金投資 OpenAI、也投資 Anthropic）。但在 2026 年 Build 大會上，微軟一口氣發表七個自研模型、Scout 常駐代理人、Microsoft IQ 智慧層與 Majorana 2 量子晶片，正式宣告「畫清界線」。納德拉直言：企業不能只當前沿模型的消費者，要親自參與前沿。背後的盤算很實際——自家模型跑在 Azure 上，整條技術棧自己掌控，成本更低、利潤更高。</div>
+</section>
+
+<!-- 2 -->
+<section class="c2">
+  <div class="sec-head"><div class="num">2</div><h2>旗艦模型 MAI Thinking 1：從零訓練的推理模型</h2></div>
+  <p class="en-sub">First reasoning model trained from scratch on clean, licensed data</p>
+  <ul>
+    <li>Trained on <b>commercially-licensed data</b>, with <b>no distillation</b> from third-party systems — avoiding legal and dependency risks.</li>
+    <li>A mid-sized reasoning model with <b>35 billion active parameters</b>; context window reported as 256K tokens (some coverage says 128K).</li>
+    <li>Mustafa Suleyman (CEO of Microsoft AI): after tuning for McKinsey, it <b>outperformed GPT-5.5 on quality</b> with roughly <b>10× better cost efficiency</b> (based on public pricing, scaled across model sizes).</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  主打模型 MAI Thinking 1 是微軟第一個「從零訓練」的推理模型，強調只用合法商業授權資料、完全不蒸餾第三方模型——這在當前的訓練資料與抄襲爭議下是關鍵賣點。它是 350 億活躍參數的中型推理模型（上下文視窗 25.6 萬或 12.8 萬 token，說法不一）。微軟 AI 執行長蘇萊曼宣稱：替麥肯錫調校後，品質贏過 OpenAI 的 GPT-5.5，成本效率還高出約十倍。這等於是說：我能打贏我投資的公司，而且更便宜。</div>
+</section>
+
+<!-- 3 -->
+<section class="c3">
+  <div class="sec-head"><div class="num">3</div><h2>MAI Code 1 系列：直攻開發者工具</h2></div>
+  <p class="en-sub">Coding models shipped straight into GitHub, Copilot, and VS Code</p>
+  <ul>
+    <li><b>MAI Code 1 Flash</b> converts text descriptions into source code for apps and websites.</li>
+    <li>Rolling out across <b>GitHub, Copilot, and VS Code</b> — not an isolated lab release, but tools millions already use.</li>
+    <li>Microsoft claims MAI Thinking 1 was <b>preferred over Claude Sonnet 4.6</b> in blind evaluations by Surge (independent human raters), and <b>matches Claude Opus 4.6</b> on coding benchmarks like SWE-Bench Pro.</li>
+    <li>Available in private preview on <b>Microsoft AI Foundry</b>; a Flash version targets speed and cost.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  程式碼模型 MAI Code 1 Flash 能把文字描述直接變成 App 或網站程式碼，而且不是關在實驗室裡，而是直接部署到 GitHub、Copilot 和 VS Code——數百萬開發者天天在用的工具。微軟還宣稱在獨立評測機構 Surge 的盲測中，MAI Thinking 1 比 Claude Sonnet 4.6 更受偏好，並在 SWE-Bench Pro 等程式benchmark上追平 Claude Opus 4.6。策略很熟悉：一個強推理模型扛重活，Flash 快速版顧成本與速度。（注意：這些是微軟單方面的宣稱。）</div>
+</section>
+
+<!-- 4 -->
+<section class="c4">
+  <div class="sec-head"><div class="num">4</div><h2>多模態全家桶：影像、語音、轉錄</h2></div>
+  <p class="en-sub">Image, voice, and transcription round out the seven-model family</p>
+  <ul>
+    <li><b>MAI Image 2.5</b> (+ Flash variant): text-to-image and image-to-image; already live in <b>PowerPoint</b>, rolling out on OneDrive.</li>
+    <li><b>MAI Transcribe 1.5</b>: high-accuracy transcription across <b>43 languages</b>; streaming coming soon.</li>
+    <li><b>MAI Voice 2</b> (+ Flash): available in 15+ additional languages; can produce new voice options.</li>
+    <li>Together: a full model layer for office work, coding, voice, images, transcription, reasoning, and agents.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  七模型家族不只文字與程式碼：MAI Image 2.5 支援文生圖與圖生圖，已上線 PowerPoint、即將進駐 OneDrive；MAI Transcribe 1.5 提供 43 種語言的高準確度轉錄（串流版即將推出）；MAI Voice 2 新增 15 種以上語言並能生成新語音。拼起來看，微軟正在打造一個涵蓋辦公、開發、語音、影像、轉錄、推理與代理人的完整 AI 模型層。</div>
+</section>
+
+<!-- 5 -->
+<section class="c5">
+  <div class="sec-head"><div class="num">5</div><h2>Microsoft IQ：讓 AI 真正「懂你的公司」</h2></div>
+  <p class="en-sub">A unified intelligence layer: Work IQ, Fabric IQ, Foundry IQ, Web IQ</p>
+  <ul>
+    <li>Goal: move agents away from generic chatbot behavior toward <b>business context and grounding</b> → fewer hallucinations.</li>
+    <li><b>Work IQ</b>: understands people, emails, documents, meetings, and their relationships in Microsoft 365 (APIs available <b>June 16</b>).</li>
+    <li><b>Fabric IQ</b>: a semantic foundation (like an <b>ontology</b>) for structured business data on Microsoft Fabric.</li>
+    <li><b>Foundry IQ</b>: handles unstructured info — wikis, policies, contracts, the live web.</li>
+    <li><b>Web IQ</b>: model-agnostic, native to <b>MCP</b>; Microsoft claims it returns relevant information blocks ~2.5× faster than the next best alternative.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  Microsoft IQ 是統一的「智慧層」，目的是讓 Copilot 和代理人不再只是泛用聊天機器人，而是真正理解所在組織的脈絡，降低幻覺。它有四個成員：Work IQ 掌握 M365 裡的人、信件、文件、會議及其關聯（API 於 6 月 16 日開放）；Fabric IQ 替結構化商業資料建立語意基礎（類似本體論）；Foundry IQ 處理 wiki、政策、合約等非結構化文件；新成員 Web IQ 提供網路即時資訊，原生支援 MCP 協定，微軟宣稱速度比次佳方案快約 2.5 倍。模型、工作脈絡、商業資料、文件檢索、網路接地——微軟正在從各個角度把這套堆疊蓋起來。</div>
+</section>
+
+<!-- 6 -->
+<section class="c6">
+  <div class="sec-head"><div class="num">6</div><h2>Scout：第一個「Autopilot」常駐代理人</h2></div>
+  <p class="en-sub">An always-on agent with its own governed identity</p>
+  <ul>
+    <li>A new category: <b>autopilots</b> — agents that stay active in the background, work autonomously, and act on your behalf under set permissions.</li>
+    <li>Each agent has its own governed <b>Entra identity</b>: actions are traceable; credentials are task-scoped, end-to-end protected, redacted from logs.</li>
+    <li>Integrated across Teams, Outlook, OneDrive, SharePoint; connects to email, calendar, contacts, documents, browser, desktop, and MCP servers.</li>
+    <li>Use cases: scheduling across time zones, prep materials, blocking calendar time, spotting stalled decisions before they become blockers.</li>
+    <li>Built on <b>OpenClaw</b> (open-source, appeared Nov 2025); Microsoft contributes policy conformance upstream. Sensitive actions can require <b>human sign-off</b>; Purview policies (sensitivity labels, DLP) are enforced.</li>
+    <li>Now in <b>private preview</b> for select customers and Frontier organizations.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  Scout 是微軟首個「Autopilot」級代理人：一直在背景運作、自主工作、代表你行事。關鍵設計是「自有身分」——每個代理人都有受治理的 Entra 身分，做的每件事都可追溯到公司目錄裡的明確行為者，憑證限定任務範圍且不留在日誌中。它整合 Teams、Outlook、OneDrive、SharePoint，能跨時區排會、產生會前資料、自動保留行事曆時段、提前發現卡關的決策。Scout 建立在 2025 年 11 月出現的開源專案 OpenClaw 之上；敏感操作可要求人工簽核，並強制套用 Purview 的敏感標籤與資料外洩防護。目前僅對特定客戶私人預覽。</div>
+</section>
+
+<!-- 7 -->
+<section class="c7">
+  <div class="sec-head"><div class="num">7</div><h2>代號「M-dash」：百名代理人的資安蜂群</h2></div>
+  <p class="en-sub">100+ agents hunting exploitable bugs in code</p>
+  <ul>
+    <li>A multi-model <b>agentic security system</b> deploying 100+ agents to search for exploitable bugs.</li>
+    <li>Agents reason about <b>data flows, business logic, exploit chains</b>, and context-aware fixes inside the developer portal.</li>
+    <li>The point: a swarm of specialized agents can review code from angles a normal static scanner might miss.</li>
+    <li>(The name is a joke — AI-generated text is famously full of em dashes.)</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  開發者端的驚喜是代號 M-dash 的多模型代理式資安系統（名字自嘲 AI 文章充滿破折號）。它會派出超過一百個代理人，從資料流、商業邏輯、漏洞利用鏈等不同角度搜尋程式中可被利用的弱點，並提出符合脈絡的修補建議——目標是抓出傳統靜態掃描器漏掉的問題。這顯示微軟的代理人戰略不限於辦公室工作，也延伸到軟體安全。</div>
+</section>
+
+<!-- 8 -->
+<section class="c8">
+  <div class="sec-head"><div class="num">8</div><h2>Majorana 2 量子晶片：宣稱可靠度提升 1000 倍</h2></div>
+  <p class="en-sub">Topological qubits, 20-second lifetimes — and real scientific controversy</p>
+  <ul>
+    <li>Next-gen <b>topological quantum chip</b>, developed with help from Microsoft Discovery's agentic AI.</li>
+    <li>Claims: <b>1,000× more reliable</b> than the previous generation; mean qubit lifetime <b>20 seconds</b> (up to 1 minute) — vs. microseconds/milliseconds in many approaches.</li>
+    <li>Analogy: like a phone battery going from one day to nearly <b>3 years</b> per charge.</li>
+    <li>Only <b>12 qubits</b> today (millions needed); Microsoft targets a commercially valuable quantum computer by <b>2029</b>.</li>
+    <li>Material change: Majorana 1 used aluminum; Majorana 2 uses <b>lead</b>, which shields fragile qubits from cosmic disturbances.</li>
+    <li><b>Caveats</b>: Microsoft retracted a 2018 Nature paper on Majorana evidence; the new research is <b>not yet peer-reviewed</b>; physicists are asking for more data.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  Majorana 2 是微軟新一代拓撲量子晶片，宣稱可靠度比前代提升一千倍：量子位元平均壽命 20 秒、最長 1 分鐘——多數方案還停在微秒或毫秒等級，微軟比喻像手機電池從撐一天變成撐近三年。目前只有 12 個量子位元（實用機需要數百萬個），但微軟設定 2029 年做出有商業價值的量子電腦。材料上從鋁改用鉛來屏蔽宇宙射線干擾。但要小心：微軟 2018 年那篇宣稱發現馬約拉納粒子證據的 Nature 論文曾被撤稿，這次的新研究也尚未經同儕審查，物理學界仍持保留態度。</div>
+</section>
+
+<!-- 9 -->
+<section class="c9">
+  <div class="sec-head"><div class="num">9</div><h2>Microsoft Discovery：用 AI 代理人做前沿研發</h2></div>
+  <p class="en-sub">Teams of agents for frontier R&amp;D — now generally available</p>
+  <ul>
+    <li>Lets companies use <b>teams of AI agents</b> to search, research, generate hypotheses, optimize experiments, and validate ideas — with humans in control.</li>
+    <li>Microsoft's quantum team uses it to connect <b>~two decades of data</b> across teams, formats, and systems.</li>
+    <li>Creating a topological quantum state means tuning hundreds of parameters; manual measurement took weeks — Discovery's agent cut the cycle by <b>orders of magnitude</b>.</li>
+    <li>One agent even found an <b>uncalibrated temperature sensor</b> hidden in fabrication data.</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  Microsoft Discovery 平台正式開放，讓企業用「AI 代理人團隊」做前沿研發：搜尋、推理、提出假設、優化實驗、驗證構想，人類專家保持掌控。微軟自家量子團隊就是用它串起近二十年散落在不同團隊與格式的資料。打造拓撲量子態需要調整數百個參數，人工量測動輒數週，Discovery 的代理人把週期縮短了好幾個數量級，甚至從製程資料中揪出一個沒校準的溫度感測器。這是「AI 加速科學」的具體案例。</div>
+</section>
+
+<!-- 10 -->
+<section class="c10">
+  <div class="sec-head"><div class="num">10</div><h2>市場大局：投資人、夥伴、通路商，也是對手</h2></div>
+  <p class="en-sub">Microsoft vs. the companies it funded</p>
+  <ul>
+    <li>OpenAI and Anthropic are both moving toward <b>massive IPOs</b> — and Microsoft is tied to both.</li>
+    <li>Microsoft committed <b>$13 billion to OpenAI</b>, invested up to <b>$5 billion in Anthropic</b>, and sells both companies' models on Azure.</li>
+    <li>It is now simultaneously their <b>investor, partner, distributor, infrastructure provider — and direct competitor</b>.</li>
+    <li>The open question: how fast can Microsoft turn this into everyday products, and how much pressure does it put on OpenAI, Anthropic, and Google?</li>
+  </ul>
+  <div class="zh-sum"><span class="tag">繁中摘要</span><br>
+  這一切發生在微妙的時間點：OpenAI 與 Anthropic 都朝大型 IPO 邁進，而微軟對 OpenAI 投入 130 億美元、對 Anthropic 投資最高 50 億美元，並透過 Azure 銷售兩家的模型。如今微軟同時是它們的投資人、夥伴、通路商、基礎設施供應商——也是直接競爭者。Build 2026 因此不只是開發者大會，而是微軟對整個 AI 堆疊（模型、代理人、開發工具、企業資料、研究平台到量子硬體）的控制權宣示。接下來要看的，是這些東西多快變成大家每天用的產品。</div>
+</section>
+
+<!-- Glossary -->
+<section class="glossary">
+  <h2>📖 Glossary 重要詞彙表</h2>
+
+  <div class="gitem"><span class="gword">frontier model</span><span class="gzh">前沿模型</span>
+    <div class="gdef">當前能力最頂尖的 AI 模型；文中納德拉呼籲企業從「消費」前沿模型轉為「參與」前沿。</div></div>
+
+  <div class="gitem"><span class="gword">reasoning model</span><span class="gzh">推理模型</span>
+    <div class="gdef">會先進行多步思考再作答的模型，適合處理複雜問題；MAI Thinking 1 即屬此類。</div></div>
+
+  <div class="gitem"><span class="gword">distillation</span><span class="gzh">（模型）蒸餾</span>
+    <div class="gdef">用大模型的輸出來訓練小模型的技術。微軟強調 MAI Thinking 1「無蒸餾」，以避開法律與依賴風險。</div></div>
+
+  <div class="gitem"><span class="gword">active parameters</span><span class="gzh">活躍參數</span>
+    <div class="gdef">推論時實際被啟用的參數數量（常見於 MoE 架構）；MAI Thinking 1 為 350 億活躍參數。</div></div>
+
+  <div class="gitem"><span class="gword">context window</span><span class="gzh">上下文視窗</span>
+    <div class="gdef">模型一次能處理的文字長度，以 token 計；文中出現 256K 與 128K 兩種說法。</div></div>
+
+  <div class="gitem"><span class="gword">blind evaluation</span><span class="gzh">盲測評估</span>
+    <div class="gdef">評審不知道答案來自哪個模型的比較測試，可減少品牌偏見；由獨立機構 Surge 執行。</div></div>
+
+  <div class="gitem"><span class="gword">SWE-Bench Pro</span><span class="gzh">軟體工程基準測試</span>
+    <div class="gdef">以真實軟體工程任務評估模型寫程式能力的 benchmark。</div></div>
+
+  <div class="gitem"><span class="gword">cost efficiency</span><span class="gzh">成本效率</span>
+    <div class="gdef">同樣品質下花費更少；微軟宣稱比 GPT-5.5 約有十倍優勢（依公開定價推算）。</div></div>
+
+  <div class="gitem"><span class="gword">intelligence layer</span><span class="gzh">智慧層</span>
+    <div class="gdef">介於模型與應用之間、提供組織脈絡與資料連結的中介層，即 Microsoft IQ 的定位。</div></div>
+
+  <div class="gitem"><span class="gword">ontology</span><span class="gzh">本體論／語意架構</span>
+    <div class="gdef">替資料定義概念與關係的「意義層」；Fabric IQ 替結構化商業資料提供類似功能。</div></div>
+
+  <div class="gitem"><span class="gword">grounding</span><span class="gzh">接地／資訊錨定</span>
+    <div class="gdef">讓 AI 的回答建立在真實資料（公司內部資料或即時網路）上，以減少幻覺（hallucination）。</div></div>
+
+  <div class="gitem"><span class="gword">MCP (Model Context Protocol)</span><span class="gzh">模型上下文協定</span>
+    <div class="gdef">代理人連接外部工具與資料來源的開放標準；Web IQ 原生支援 MCP。</div></div>
+
+  <div class="gitem"><span class="gword">autopilot agent</span><span class="gzh">常駐自動代理人</span>
+    <div class="gdef">微軟提出的新類別：在背景持續運作、有自己身分、能在授權範圍內代表使用者行動的代理人（如 Scout）。</div></div>
+
+  <div class="gitem"><span class="gword">Entra identity</span><span class="gzh">Entra 身分</span>
+    <div class="gdef">微軟的身分與存取管理系統；Scout 的每個動作都掛在可追溯的受治理身分之下。</div></div>
+
+  <div class="gitem"><span class="gword">DLP (Data Loss Prevention)</span><span class="gzh">資料外洩防護</span>
+    <div class="gdef">防止敏感資料被不當傳送或寫出的安全政策；Scout 行動前會強制檢查。</div></div>
+
+  <div class="gitem"><span class="gword">exploit chain</span><span class="gzh">漏洞利用鏈</span>
+    <div class="gdef">把多個弱點串接成完整攻擊路徑；M-dash 的代理人會推理這類攻擊鏈。</div></div>
+
+  <div class="gitem"><span class="gword">static scanner</span><span class="gzh">靜態掃描器</span>
+    <div class="gdef">不執行程式、僅分析原始碼找漏洞的傳統工具；代理人蜂群被定位為其升級版。</div></div>
+
+  <div class="gitem"><span class="gword">qubit</span><span class="gzh">量子位元</span>
+    <div class="gdef">量子電腦的基本運算單位，極為脆弱，溫度或震動的微小變化就會破壞其量子態。</div></div>
+
+  <div class="gitem"><span class="gword">topological qubit</span><span class="gzh">拓撲量子位元</span>
+    <div class="gdef">微軟採用的量子位元路線，理論上更抗干擾，但科學上仍有爭議。</div></div>
+
+  <div class="gitem"><span class="gword">Majorana quasiparticle</span><span class="gzh">馬約拉納準粒子</span>
+    <div class="gdef">1930 年代由義大利物理學家 Ettore Majorana 提出的理論粒子，是微軟量子路線的物理基礎；2018 年相關 Nature 論文曾遭撤稿。</div></div>
+
+  <div class="gitem"><span class="gword">peer review</span><span class="gzh">同儕審查</span>
+    <div class="gdef">研究發表前由同領域專家審核的程序；Majorana 2 的研究尚未通過此關卡。</div></div>
+
+  <div class="gitem"><span class="gword">IPO (Initial Public Offering)</span><span class="gzh">首次公開募股</span>
+    <div class="gdef">公司首次在股票市場公開上市；OpenAI 與 Anthropic 均傳出正朝大型 IPO 邁進。</div></div>
+
+  <div class="gitem"><span class="gword">general availability (GA)</span><span class="gzh">正式開放</span>
+    <div class="gdef">產品脫離測試階段、對所有客戶開放使用；Microsoft IQ 與 Discovery 均已 GA。</div></div>
+
+  <div class="gitem"><span class="gword">private preview</span><span class="gzh">私人預覽</span>
+    <div class="gdef">僅限受邀客戶試用的早期階段；MAI 模型與 Scout 目前多處於此階段。</div></div>
+</section>
+
+<div class="links">
+  <a class="l1" href="https://linwayet.github.io/4ulive/index.html" target="_blank">🎯 七月課程：錯中學 ECHO 計劃</a>
+  <a class="l2" href="https://linwayet.github.io/popup/index" target="_blank">📊 學生分析系統</a>
+  <a class="l3" href="https://line.me/ti/p/~linwayet" target="_blank">💬 LINE 聯絡林威老師：linwayet</a>
+</div>
+
+<footer>
+  資料來源：YouTube「Microsoft Just Shocked The Entire AI World」逐字稿整理<br>
+  ⚠️ 文中性能與量子數據多為微軟單方宣稱，部分尚未經同儕審查<br>
+  林威英文 ✦ 製作日期 2026.06.04
+</footer>
+
+</div>
+</body>
+</html>
