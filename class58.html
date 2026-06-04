@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 代理人 100 講｜林威英文 自學微課程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4ED; --bg2:#F1E9DC; --ink:#2D2A26; --ink2:#5A5248;
+  --brown:#8B5E3C; --sand:#D4A574; --sand-soft:#E8D3B5;
+  --card:#FFFDF8; --line:#E3D6C2; --ok:#6B8E5A; --warn:#B5793C;
+  --shadow:0 4px 18px rgba(90,60,30,.10); --shadow-lg:0 10px 34px rgba(90,60,30,.16);
+  --fs:1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"BIZ UDPGothic",-apple-system,sans-serif;
+  background:var(--bg); color:var(--ink);
+  font-size:calc(22px * var(--fs)); line-height:1.85;
+  background-image:
+    radial-gradient(60vw 40vw at 85% -5%, rgba(212,165,116,.22), transparent 60%),
+    radial-gradient(50vw 38vw at -10% 12%, rgba(139,94,60,.10), transparent 55%);
+  background-attachment:fixed;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* link bars */
+.linkbar{background:rgba(248,244,237,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.linkbar.bottom{position:static;border-bottom:none;border-top:1px solid var(--line);margin-top:60px}
+.linkrow{display:flex;gap:10px;padding:10px 0;flex-wrap:wrap;justify-content:center}
+.linkcard{flex:1 1 220px;min-height:60px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--card);border:1.5px solid var(--sand);border-radius:14px;text-decoration:none;color:var(--brown);
+  font-weight:700;font-size:.82em;padding:10px 14px;box-shadow:var(--shadow);transition:.2s;text-align:center}
+.linkcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);background:var(--sand-soft)}
+.linkcard .ico{font-size:1.5em;line-height:1}
+
+/* hero */
+.hero{padding:54px 0 30px;text-align:center}
+.kicker{font-family:"Fraunces",serif;font-style:italic;color:var(--brown);font-size:1.05em;letter-spacing:.02em}
+.hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:2.7em;line-height:1.12;margin:.18em 0 .25em;color:var(--ink)}
+.hero h1 em{font-style:italic;color:var(--brown)}
+.hero .sub{color:var(--ink2);font-size:.94em;max-width:640px;margin:0 auto}
+.meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:.72em;color:var(--brown);font-weight:700}
+
+/* font scale */
+.fscale{display:flex;align-items:center;justify-content:center;gap:8px;margin:22px 0 6px}
+.fscale span{font-size:.7em;color:var(--ink2)}
+.fbtn{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--sand);background:var(--card);color:var(--brown);
+  font-size:1.1em;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+.fbtn:active{transform:scale(.94)}
+
+/* toc */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin:26px 0;box-shadow:var(--shadow)}
+.toc h2{font-family:"Fraunces",serif;font-size:1.15em;color:var(--brown);margin-bottom:14px}
+.toc .grp{font-size:.74em;font-weight:700;color:var(--sand);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 6px}
+.toc a{display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);padding:9px 12px;border-radius:11px;font-size:.86em;transition:.15s}
+.toc a:hover{background:var(--bg2)}
+.toc a b{font-family:"Fraunces",serif;color:var(--brown);min-width:2.4em;font-weight:600}
+
+/* rounds */
+.round{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 30px;margin:26px 0;box-shadow:var(--shadow);scroll-margin-top:90px}
+.rhead{display:flex;align-items:flex-start;gap:18px;margin-bottom:20px;border-bottom:2px dashed var(--sand-soft);padding-bottom:18px}
+.rnum{font-family:"Fraunces",serif;font-weight:900;font-size:2.5em;line-height:.9;color:var(--sand);flex-shrink:0}
+.rhead .t .tag{font-size:.66em;font-weight:700;color:var(--brown);letter-spacing:.06em}
+.rhead .t h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.5em;color:var(--ink);line-height:1.2;margin-top:2px}
+.rhead .t .min{font-size:.7em;color:var(--ink2);margin-top:6px}
+.round p{margin:.85em 0}
+.round h4{font-size:1.02em;color:var(--brown);margin:1.3em 0 .4em;font-weight:700;display:flex;align-items:center;gap:8px}
+.round h4::before{content:"";width:10px;height:10px;background:var(--sand);border-radius:3px;transform:rotate(45deg);flex-shrink:0}
+.round strong{color:var(--brown)}
+.round ul{margin:.6em 0 .6em 0;padding-left:0;list-style:none}
+.round ul li{position:relative;padding-left:1.5em;margin:.5em 0}
+.round ul li::before{content:"▸";position:absolute;left:0;color:var(--sand);font-weight:700}
+.note{background:var(--bg2);border-left:4px solid var(--sand);border-radius:0 12px 12px 0;padding:14px 18px;margin:1.2em 0;font-size:.9em}
+.note b{color:var(--brown)}
+.analogy{background:linear-gradient(180deg,#FBF3E6,#F6EAD6);border:1px dashed var(--sand);border-radius:14px;padding:16px 18px;margin:1.2em 0;font-size:.9em}
+.analogy .lbl{font-family:"Fraunces",serif;font-style:italic;color:var(--brown);font-weight:600;display:block;margin-bottom:4px}
+
+/* case cards */
+.cases{display:grid;gap:14px;margin-top:10px}
+.case{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:.18s}
+.case:hover{border-color:var(--sand);box-shadow:var(--shadow)}
+.case .co{font-weight:700;color:var(--brown);font-size:.96em;display:flex;align-items:center;gap:9px}
+.case .ci{width:30px;height:30px;border-radius:8px;background:var(--sand-soft);display:inline-flex;align-items:center;justify-content:center;
+  font-family:"Fraunces",serif;font-weight:700;color:var(--brown);font-size:.8em;flex-shrink:0}
+.case .desc{font-size:.86em;margin-top:7px;color:var(--ink)}
+.case .roi{display:inline-block;margin-top:8px;background:#EAF1E3;color:var(--ok);border-radius:8px;padding:3px 10px;font-size:.74em;font-weight:700}
+
+/* english summary */
+.ensum{background:linear-gradient(180deg,#2D2A26,#3a342c);color:#F3E9D8;border-radius:16px;padding:22px 24px;margin-top:24px}
+.ensum .lbl{font-family:"Fraunces",serif;font-style:italic;color:var(--sand);font-size:.85em;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ensum .lbl::before{content:"EN";font-style:normal;font-size:.7em;background:var(--sand);color:#2D2A26;border-radius:6px;padding:2px 7px;font-weight:700}
+.ensum p{font-size:.84em;line-height:1.7;color:#EFE3D0;margin:.5em 0;font-family:-apple-system,sans-serif}
+
+/* glossary */
+.gloss{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 30px;margin:26px 0;box-shadow:var(--shadow)}
+.gloss h3{font-family:"Fraunces",serif;font-weight:900;font-size:1.7em;color:var(--brown);margin-bottom:6px}
+.gloss .sub{color:var(--ink2);font-size:.85em;margin-bottom:18px}
+.gitem{border-bottom:1px solid var(--line);padding:14px 0}
+.gitem:last-child{border-bottom:none}
+.gitem .term{font-weight:700;color:var(--ink);font-size:.96em}
+.gitem .en{font-family:"Fraunces",serif;font-style:italic;color:var(--brown);font-weight:500}
+.gitem .def{font-size:.85em;color:var(--ink2);margin-top:4px}
+
+footer{text-align:center;color:var(--ink2);font-size:.74em;padding:30px 0 10px}
+@media(max-width:600px){
+  body{font-size:calc(20px * var(--fs))}
+  .hero h1{font-size:2.1em}
+  .round{padding:26px 20px;border-radius:18px}
+  .rnum{font-size:2em}
+  .linkcard{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP LINK BAR -->
+<div class="linkbar">
+  <div class="wrap linkrow">
+    <a class="linkcard" href="https://linwayet.github.io/4ulive/index.html" target="_blank"><span class="ico">📚</span>錯中學 ECHO 計劃</a>
+    <a class="linkcard" href="https://linwayet.github.io/popup/index" target="_blank"><span class="ico">📈</span>學生分析系統</a>
+    <a class="linkcard" href="https://line.me/ti/p/~linwayet" target="_blank"><span class="ico">💬</span>LINE：linwayet</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="kicker">林威英文 · 自學微課程</div>
+    <h1>AI 代理人<br><em>100 講</em></h1>
+    <p class="sub">從定義、發展、硬體需求，到 100 個真實案例。每回合約 10 分鐘，用原子習慣的節奏，一天一課，把 2026 年最關鍵的科技趨勢一次學透。</p>
+    <div class="meta">
+      <span class="pill">16 回合</span>
+      <span class="pill">商用 70 例 + 開發者 30 例</span>
+      <span class="pill">含 Computex 2026 黃仁勳重點</span>
+      <span class="pill">繁中講解 · 英文摘要 · 詞彙表</span>
+    </div>
+    <div class="fscale">
+      <span>字級</span>
+      <button class="fbtn" onclick="setFs(-1)">A−</button>
+      <button class="fbtn" onclick="setFs(0)" style="font-size:.8em">100%</button>
+      <button class="fbtn" onclick="setFs(1)">A＋</button>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h2>課程地圖</h2>
+    <div class="grp">第一篇 · 觀念地基</div>
+    <a href="#r1"><b>01</b>什麼是 AI 代理人？</a>
+    <a href="#r2"><b>02</b>代理人的四大組成（黃仁勳框架）</a>
+    <a href="#r3"><b>03</b>代理人怎麼長出來的？發展史</a>
+    <a href="#r4"><b>04</b>硬體需求（上）：資料中心</a>
+    <a href="#r5"><b>05</b>硬體需求（下）：走進你的電腦</a>
+    <div class="grp">第二篇 · 商用實戰 70 例</div>
+    <a href="#r6"><b>06</b>客服與零售電商</a>
+    <a href="#r7"><b>07</b>金融、銀行與保險</a>
+    <a href="#r8"><b>08</b>醫療、生技與製藥</a>
+    <a href="#r9"><b>09</b>製造、供應鏈與物流</a>
+    <a href="#r10"><b>10</b>行銷、銷售與法務</a>
+    <a href="#r11"><b>11</b>科技業、軟體與資安</a>
+    <a href="#r12"><b>12</b>政府、教育與其他產業</a>
+    <div class="grp">第三篇 · 開發者與專業用戶 30 例</div>
+    <a href="#r13"><b>13</b>程式開發代理人</a>
+    <a href="#r14"><b>14</b>個人生產力與生活自動化</a>
+    <a href="#r15"><b>15</b>專業工作者應用</a>
+    <div class="grp">第四篇 · 收束</div>
+    <a href="#r16"><b>16</b>界線、治理與你的自學路徑</a>
+    <a href="#glossary"><b>📖</b>Glossary 詞彙表</a>
+  </nav>
+
+<main>
+
+  <!-- ROUND 1 -->
+  <section class="round" id="r1">
+    <div class="rhead">
+      <div class="rnum">01</div>
+      <div class="t"><div class="tag">第一篇 · 觀念地基</div>
+        <h3>什麼是 AI 代理人？</h3>
+        <div class="min">⏱ 約 10 分鐘</div></div>
+    </div>
+    <p>這幾年我們最熟悉的 AI，是「你問一句、它答一句」的聊天機器人。但 2026 年大家掛在嘴邊的「AI 代理人（AI agent）」，已經是完全不同的東西。要分清楚，先看一條從被動到主動的光譜。</p>
+
+    <h4>三層辨析：聊天機器人 → 副駕 → 代理人</h4>
+    <ul>
+      <li><strong>聊天機器人（Chatbot）</strong>：只會「生成文字」。你問問題，它回答，僅此而已。</li>
+      <li><strong>副駕（Copilot）</strong>：在你工作時「從旁輔助」，例如在編輯器裡建議下一行程式，但方向盤還在你手上。</li>
+      <li><strong>代理人（Agent）</strong>：你給它一個「目標」，它會自己規劃步驟、呼叫工具、觀察結果、發現不對就調整，<strong>循環執行直到任務完成</strong>。</li>
+    </ul>
+    <p>用一句話總結業界 2026 年的共識：代理人不只是會把話說得漂亮，而是會<strong>設定目標、呼叫真實工具（API、檔案、瀏覽器、程式碼）、觀察發生了什麼、然後調整</strong>，一圈一圈循環到把事情做完。判斷一個產品是不是「真代理人」，關鍵不在它聽起來多聰明，而在<strong>它會不會在一個迴圈裡採取行動</strong>。</p>
+
+    <h4>代理人、代理式系統、多代理人</h4>
+    <p>還有三個常被混用的詞，這裡一次釐清：</p>
+    <ul>
+      <li><strong>AI 代理人（AI agent）</strong>是「名詞」：一個會自己完成單一明確任務的軟體系統。</li>
+      <li><strong>代理式（agentic）</strong>是「形容詞」：描述一個系統「能多自主地行動」。自主性是程度問題，是一條光譜，不是有或沒有。</li>
+      <li><strong>多代理人系統（multi-agent）</strong>：把很多各司其職的代理人組成一個團隊，由「協調」機制統籌，分頭完成一個大目標——這正是 2026 年成長最快的形態。</li>
+    </ul>
+
+    <div class="note"><b>關鍵心法：</b>分辨是不是代理人，問三句話就好——它有「目標」嗎？它會自己「呼叫工具」採取行動嗎？它會「循環修正」直到完成嗎？三個都是「是」，才是真正的代理人。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    聊天機器人像「問路的路人」——你問，他指個方向。副駕像「副駕駛座的朋友」——幫你看地圖、提醒你轉彎，但你開車。代理人則像「專業司機兼跑腿」——你只說「幫我把這份合約送到對方公司並取回簽名版」，剩下的路線、停車、應對，他全部自己搞定，遇到塞車還會改道。</div>
+
+    <div class="ensum">
+      <div class="lbl">English Summary</div>
+      <p>An AI agent is not a chatbot or a copilot. A chatbot only generates text; a copilot assists while you stay in control; an agent takes a goal, plans the steps, calls real tools (APIs, files, browsers, code), watches the result, and loops until the task is done.</p>
+      <p>"AI agent" is the noun (a software system), while "agentic" is the adjective describing how autonomously it acts — autonomy is a spectrum, not a yes-or-no. A multi-agent system links many specialized agents under one orchestration layer, and it is the fastest-growing form in 2026. The test for a real agent: Does it have a goal, call tools to act, and loop to correct itself until finished?</p>
+    </div>
+  </section>
+
+  <!-- ROUND 2 -->
+  <section class="round" id="r2">
+    <div class="rhead">
+      <div class="rnum">02</div>
+      <div class="t"><div class="tag">第一篇 · 觀念地基</div>
+        <h3>代理人的四大組成（黃仁勳框架）</h3>
+        <div class="min">⏱ 約 10 分鐘</div></div>
+    </div>
+    <p>2026 年 6 月 1 日，黃仁勳在台北 Computex 主題演講上說，整場演講「最重要的一張投影片」就是：未來十年的運算型態，是<strong>代理人 + 協調外殼，協調著大型語言模型</strong>。他斷言，每一家公司都會變成「代理人公司」，內部都會跑代理人，也都需要一套自己的「代理人作業系統」。那麼，要打造一個代理人，到底需要什麼？他給了一個很好記的四件套。</p>
+
+    <h4>打造代理人的四樣東西</h4>
+    <ul>
+      <li><strong>① 模型（Model）</strong>：也就是大型語言模型，是代理人的「大腦」。越聰明、越便宜、越快越好。</li>
+      <li><strong>② 協調外殼（Orchestration Shell）</strong>：負責「協調整件事」的指揮中心——決定先做什麼、呼叫哪個工具、何時交棒。</li>
+      <li><strong>③ 工具與技能（Tools &amp; Skills）</strong>：模型想動手，就需要工具；每個工具會附帶一份「技能說明書」，告訴模型怎麼用。</li>
+      <li><strong>④ 執行環境（Runtime）</strong>：把以上一切凝聚起來、實際安全運行的「作業系統」。</li>
+    </ul>
+
+    <h4>NVIDIA 的答案：NeMo 工具包與 Open Shell</h4>
+    <p>把這四樣東西合起來，就是 NVIDIA 的企業 AI 代理人工具包，名叫 <strong>NeMo</strong>。它附帶可修改的世界級開放模型，也能直接跑別人家的代理人（例如 Claude Code、Codex）。這些代理人跑在一個叫 <strong>Open Shell</strong> 的開源協調外殼裡（對外框架名為 NemoClaw），在企業內部高度安全——它會用安全政策約束代理人、保護隱私、並管好代理人的「身分與權限」。Open Shell 能跑在任何雲端、地端，甚至裝置上。</p>
+
+    <div class="note"><b>為什麼「外殼」這麼重要？</b>因為代理人會真的去動你的檔案、寄你的信、刷你的卡。沒有一層協調外殼幫它「踩煞車、查權限、留紀錄」，放出去亂跑是很危險的。外殼＝代理人的保鑣兼交通警察。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    把代理人想成一間「智慧廚房」：模型是<strong>主廚的大腦</strong>，工具與技能是<strong>鍋鏟與食譜</strong>，執行環境是<strong>整間廚房</strong>，而協調外殼就是那位<strong>外場經理</strong>——決定出菜順序、控管誰能進廚房、確保食安。少了經理，再強的主廚也會手忙腳亂。</div>
+
+    <div class="ensum">
+      <div class="lbl">English Summary</div>
+      <p>At Computex 2026 (June 1), Jensen Huang called it his most important slide: the computing model of the next decade is agents plus an orchestration shell, orchestrating large language models. Every company, he said, will become an "agent company" needing its own agent operating system.</p>
+      <p>Building an agent takes four things: a model (the brain — smarter, cheaper, faster), an orchestration shell (the coordinator), tools and skills (with instruction manuals), and a runtime (the OS that holds it together). NVIDIA packages these as the NeMo toolkit, running agents — including Claude Code or Codex — inside an open, secure orchestration shell called Open Shell (framework name NemoClaw) that enforces security policy, protects privacy, and manages each agent's identity and permissions across cloud, on-premises, or device.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 3 -->
+  <section class="round" id="r3">
+    <div class="rhead">
+      <div class="rnum">03</div>
+      <div class="t"><div class="tag">第一篇 · 觀念地基</div>
+        <h3>代理人怎麼長出來的？發展史</h3>
+        <div class="min">⏱ 約 10 分鐘</div></div>
+    </div>
+    <p>代理人不是 2026 年突然冒出來的，它是好幾項技術慢慢匯流的結果。我們用幾個關鍵節點，把這條路走一遍。</p>
+
+    <h4>關鍵時間軸</h4>
+    <ul>
+      <li><strong>1966 ELIZA</strong>：最早的對話程式，只會做樣板比對，談不上理解。</li>
+      <li><strong>2023 函式呼叫（function calling）</strong>：這一年是分水嶺。LLM 第一次能用結構化、可預測的格式去「呼叫工具」，用 JSON 傳參數、與外部系統互動——代理人有了「手」。</li>
+      <li><strong>2024 年底 MCP</strong>：Anthropic 推出開源的「模型情境協定」，讓代理人與外部工具、資料源的串接有了標準介面，等於替整個生態打造了「萬用插座」。</li>
+      <li><strong>2024–2025 推理模型</strong>：o 系列、Claude Opus 系列、Kimi 等模型學會「先想再答」——把難題拆成小步、測試假設、自我糾錯，這正是代理人需要的規劃能力。</li>
+      <li><strong>2026 代理人時代</strong>：模型能連續執行超過半小時以上的多步驟任務，從佈建雲端基礎設施到修掉複雜的程式錯誤，端到端完成。</li>
+    </ul>
+
+    <h4>讓代理人彼此對話的「協定三兄弟」</h4>
+    <p>代理人要協作，需要共通語言。除了 Anthropic 的 <strong>MCP</strong>（代理人對工具），還有 Google 的 <strong>A2A</strong>（Agent-to-Agent，代理人對代理人）與 IBM 的 <strong>ACP</strong>。後兩者後來在 Linux 基金會下整合，讓代理人生態真正繁榮起來。</p>
+
+    <div class="note"><b>市場有多大？</b>AI 代理人市場 2024–2025 年約 54–78 億美元，多家機構預估到 2030–2034 年將衝上 500 至 2360 億美元，年複合成長率高達約 45–46%。這是少見的「整個十年都在陡升」的曲線。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    這條路就像「機器人學會做事」的三步：先有<strong>嘴巴</strong>（會說話的 LLM）→ 再裝上<strong>手</strong>（函式呼叫，能拿工具）→ 最後接上<strong>標準插座</strong>（MCP，任何工具都能插）。三者齊備，它才從「會聊天的玩具」變成「能幹活的同事」。</div>
+
+    <div class="ensum">
+      <div class="lbl">English Summary</div>
+      <p>Agents emerged from converging technologies. From ELIZA's pattern-matching in 1966, the turning point came in 2023 with function calling, which let LLMs call tools in a structured, predictable way — giving them "hands." In late 2024, Anthropic's open Model Context Protocol (MCP) standardized how agents connect to external tools and data, like a universal adapter.</p>
+      <p>Reasoning models (the o-series, Claude Opus, Kimi) in 2024–2025 added "think-before-answering" planning, and by 2026 agents run multi-step tasks for 30+ minutes end to end. Communication protocols — MCP (agent-to-tool), plus A2A and ACP (agent-to-agent) — let agents collaborate. The market, roughly $5.4–7.8B in 2024–25, is projected to reach $50–236B by 2030–2034 at a 45–46% CAGR.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 4 -->
+  <section class="round" id="r4">
+    <div class="rhead">
+      <div class="rnum">04</div>
+      <div class="t"><div class="tag">第一篇 · 觀念地基</div>
+        <h3>硬體需求（上）：資料中心為何吃電吃晶片</h3>
+        <div class="min">⏱ 約 10 分鐘</div></div>
+    </div>
+    <p>為什麼代理人比聊天機器人「燒」更多算力？因為聊天只回一句話，代理人卻要規劃、呼叫工具、讀大量資料、反覆嘗試——這些動作通通發生在「推論（inference）」階段，也就是模型實際幹活、吐出 token 的時候。</p>
+
+    <h4>訓練 vs 推論，以及「測試時運算」</h4>
+    <ul>
+      <li><strong>訓練（training）</strong>：把模型「教會」，是一次性的大工程。</li>
+      <li><strong>推論（inference）</strong>：模型「上工回答」，每天不斷發生。代理人時代的算力大頭從訓練轉向了推論。</li>
+      <li><strong>測試時運算（test-time scaling）</strong>：讓模型在回答時「多想一下」、多花算力產生更多 token，答案就更好——但這也讓推論成本暴增。</li>
+    </ul>
+    <p>關鍵難點在「長上下文」。代理人推理時，往往要一口氣處理數十萬個輸入 token，才能撐起多步驟的工作流程與長記憶。資料中心因此被重新定義成「AI 工廠」——不再是偶爾回應人類請求，而是<strong>全天候、不停把電力、晶片與資料轉換成智慧</strong>的生產線。</p>
+
+    <h4>Vera Rubin：為代理人而生的平台</h4>
+    <p>這正是 NVIDIA 推出 <strong>Vera Rubin</strong> 平台的原因。它的 NVL72 機櫃整合多款晶片，包含全新的 <strong>Vera CPU</strong>（演講中強調「專為代理人設計」）與 Rubin GPU，宣稱相較前一代，推論吞吐量達 10 倍、每 token 成本降到十分之一。換句話說，代理人要能「便宜地一直想」，背後得有這種專門的硬體撐腰。</p>
+
+    <div class="note"><b>Tokenomics（代幣經濟學的另一義）：</b>在 AI 圈，這個詞指的是「每個 token 要花多少電、多少錢、多少時間」。代理人會狂吐 token，所以誰能把「每 token 成本」壓到最低，誰就握有規模化代理人的鑰匙。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    訓練像「考前苦讀」——辛苦但一次性；推論像「天天上班幹活」。聊天機器人是接電話的櫃台，講完就掛；代理人卻像跑專案的工程師，要查資料、開會、反覆改稿。後者當然更耗腦力（算力），所以需要一座專為「長時間連續動腦」打造的工廠。</div>
+
+    <div class="ensum">
+      <div class="lbl">English Summary</div>
+      <p>Agents burn far more compute than chatbots because planning, tool-calling, and retrying all happen during inference. The compute center of gravity has shifted from training (a one-time effort) to inference (everyday work), amplified by test-time scaling — letting a model "think harder" by spending more compute and tokens for better answers.</p>
+      <p>The hard part is long context: agentic reasoning may process hundreds of thousands of input tokens at once. Data centers are being redefined as always-on "AI factories." NVIDIA's Vera Rubin platform answers this, with a NVL72 rack integrating the new Vera CPU (built for agents) and Rubin GPU, claiming up to 10x inference throughput and one-tenth the cost per token versus the prior generation. Whoever drives "cost per token" lowest holds the key to scaling agents — the heart of "tokenomics."</p>
+    </div>
+  </section>
+
+  <!-- ROUND 5 -->
+  <section class="round" id="r5">
+    <div class="rhead">
+      <div class="rnum">05</div>
+      <div class="t"><div class="tag">第一篇 · 觀念地基</div>
+        <h3>硬體需求（下）：代理人走進你的電腦</h3>
+        <div class="min">⏱ 約 10 分鐘</div></div>
+    </div>
+    <p>代理人不一定要待在遙遠的雲端。2026 年的另一條主線，是讓代理人「跑在你自己的裝置上」——更私密、更即時、不必把資料送上雲。</p>
+
+    <h4>本地端與邊緣代理人</h4>
+    <ul>
+      <li><strong>RTX Spark 超級晶片</strong>：NVIDIA 與微軟合作，要把 PC 從「跑應用程式的機器」變成「能運行私人本地代理人的裝置」。它用 Grace Blackwell 架構配 128GB 統一記憶體，足以在本地跑到約 1050 億參數（4-bit 量化）的模型。今年秋季由 ASUS、Dell、HP、Lenovo、微軟 Surface、MSI 等推出。</li>
+      <li><strong>DGX Station</strong>：桌上型的「個人 AI 超級電腦」，搭 HBM3e 記憶體，連 Windows 都能跑，目標是在本地驅動到兆級參數模型。</li>
+      <li><strong>開放模型 Nemotron 3 Ultra</strong>：5500 億參數、專為長時間運行的代理人設計，宣稱推論快 5 倍、成本低 3 成，而且連模型、訓練腳本與資料全部開放。它是全球第一款結合「狀態空間模型 + 專家混合」的混合架構模型。</li>
+    </ul>
+
+    <h4>壓軸實例：Cadence 晶片設計超級代理人</h4>
+    <p>黃仁勳最愛的案例，是用代理人來「設計晶片」。NVIDIA 與 Cadence 合作打造的設計驗證代理人，由開放模型 Nemotron 驅動、由 Open Shell 保護，再調用一群專家子代理人（負責生成設計語言、建立測試、跑回歸測試、除錯）。它一口氣跑數百次模擬、做形式化驗證，揪出程式瑕疵並修好——讓原本要好幾週的驗證週期，<strong>縮短到幾小時，快了四十倍以上</strong>。NVIDIA 說未來要雇用「數十萬個」這種超級代理人，和數千名人類工程師一起工作。</p>
+
+    <div class="note"><b>本地端為什麼吸引人？</b>三個字：隱私、即時、自主。敏感資料不出門、回應沒有網路延遲、斷網也能用。Vera Rubin 等資料中心硬體甚至內建「機密運算」，在晶片層級加密，連多租戶之間都彼此隔離。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    雲端代理人像「外送大廚房」——火力強但要等運送、要把你的訂單交出去；本地端代理人像「自家廚房」——也許爐子小一點，但食材不出門、想煮就煮、半夜停電還能點蠟燭炒個蛋。2026 年的趨勢，是兩種廚房並存，看任務挑工具。</div>
+
+    <div class="ensum">
+      <div class="lbl">English Summary</div>
+      <p>Agents don't have to live in distant clouds. A second 2026 storyline is running them on your own device — more private, lower latency, no need to ship data out. NVIDIA's RTX Spark superchip (with Microsoft) turns a Windows PC into a host for private local agents, using Grace Blackwell with 128GB unified memory to run models up to ~105B parameters (4-bit) locally; the DGX Station scales this toward trillion-parameter models on the desktop.</p>
+      <p>The open Nemotron 3 Ultra (550B parameters, ~5x faster inference, ~30% lower cost) is fully open — model, scripts, and data — and is the first hybrid of state-space and mixture-of-experts architectures. The flagship example: NVIDIA and Cadence's chip-design verification super agent, powered by Nemotron and protected by Open Shell, runs hundreds of simulations to cut verification cycles from weeks to hours — over 40x faster.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 6 -->
+  <section class="round" id="r6">
+    <div class="rhead"><div class="rnum">06</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>客服與零售電商</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>客服是企業導入代理人最快、成效最容易衡量的起點；零售與電商則把代理人推向「消費者直接互動」的最前線——甚至改變了我們「搜尋→購買」的習慣。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🛒</span>Klarna（瑞典金融科技）</div><div class="desc">客服 AI 代理人處理大量例行詢問，公司宣稱相當於 853 名員工的工作量。<span class="roi">省下約 6,000 萬美元</span></div></div>
+      <div class="case"><div class="co"><span class="ci">⚡</span>Walmart「Sparky」</div><div class="desc">App 內的購物代理人，逐步加入代理式商務功能：自動重新下單、無縫客服、更省力的購物體驗。</div></div>
+      <div class="case"><div class="co"><span class="ci">📦</span>Amazon「Rufus」</div><div class="desc">面向消費者的購物助理代理人，協助比較、推薦與決策。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎯</span>Target × Gemini / Copilot</div><div class="desc">2026 年初把商品上架到 Google Gemini、微軟 Copilot 等外部 AI 代理人平台，搶攻「代理式商務」。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧶</span>Etsy</div><div class="desc">將手作商品接上 ChatGPT 等代理人平台，讓 AI 助理能直接幫消費者選購、下單。</div></div>
+      <div class="case"><div class="co"><span class="ci">🏪</span>Shopify Agentic Storefronts</div><div class="desc">讓任何 Shopify 商家「一次設定」就能被 ChatGPT、Perplexity、Copilot 等代理人發現與成交。</div></div>
+      <div class="case"><div class="co"><span class="ci">💬</span>Decagon</div><div class="desc">專注客服自動化的代理人平台，2026 年估值約 45 億美元，已有具名企業上線部署。</div></div>
+      <div class="case"><div class="co"><span class="ci">🤖</span>Sierra</div><div class="desc">由前 Salesforce 共同執行長創辦的客服代理人平台，估值約 158 億美元，產品成熟度高。</div></div>
+      <div class="case"><div class="co"><span class="ci">🗣️</span>Avaamo / Hyro</div><div class="desc">對話式代理人平台，廣泛用於客服與預約，能跨管道（語音、簡訊、網頁）自動應答。</div></div>
+      <div class="case"><div class="co"><span class="ci">✈️</span>某航空公司（Deloitte 案例）</div><div class="desc">用代理人協助旅客自助完成最常見的交易，如改票、行李改道，讓人力專注於複雜個案。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Customer service is the fastest, easiest-to-measure entry point for enterprise agents, while retail pushes them to the consumer front line — reshaping the "search then buy" habit into agentic commerce.</p>
+      <p>Flagship cases: Klarna's support agent did the work of 853 employees (~$60M saved); Walmart's Sparky and Amazon's Rufus are consumer shopping agents; Target, Etsy, and Shopify make products discoverable and buyable inside ChatGPT, Gemini, and Copilot. Specialist platforms Decagon (~$4.5B) and Sierra (~$15.8B) lead pure customer-service deployments.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 7 -->
+  <section class="round" id="r7">
+    <div class="rhead"><div class="rnum">07</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>金融、銀行與保險</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>金融業流程多、規則明確、交易量大，正是代理人最快「複利」的地方——但也因高度監管，特別重視可稽核與人類把關。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🏦</span>JPMorgan（摩根大通）</div><div class="desc">每天有 450 個以上的 AI 應用上線運行：30 秒生成投行簡報、起草併購備忘錄、自動交易結算、即時偵測詐欺。</div></div>
+      <div class="case"><div class="co"><span class="ci">💳</span>Klarna</div><div class="desc">金融科技客服代理人，是最常被引用的 ROI 標竿之一。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔗</span>Mastercard</div><div class="desc">推動 UCP 代理式商務標準，讓 AI 代理人能安全地代消費者完成結帳與交易。</div></div>
+      <div class="case"><div class="co"><span class="ci">📄</span>Salesforce Agentforce（金融服務）</div><div class="desc">合約自動化代理人，協助企業大幅降低法務成本。<span class="roi">省下約 500 萬美元</span></div></div>
+      <div class="case"><div class="co"><span class="ci">📝</span>某金融服務公司（Deloitte 案例）</div><div class="desc">代理人自動從視訊會議擷取行動項、起草提醒通知、追蹤後續落實。</div></div>
+      <div class="case"><div class="co"><span class="ci">📊</span>對帳與應付帳款代理人</div><div class="desc">金融機構普遍導入代理人處理交易對帳與費用報銷，宣稱可將處理時間減半並提升準確度。</div></div>
+      <div class="case"><div class="co"><span class="ci">🚨</span>詐欺偵測代理人</div><div class="desc">即時監看交易流，主動標記異常並攔截，較傳統規則引擎更能適應新型態詐騙。</div></div>
+      <div class="case"><div class="co"><span class="ci">⚖️</span>法遵監控代理人</div><div class="desc">自動比對法規變動、記錄每一步決策與資料存取，產出可稽核軌跡。</div></div>
+      <div class="case"><div class="co"><span class="ci">📑</span>信貸與風險評估代理人</div><div class="desc">自動彙整文件、抓取資料做初步風險評估，把人力留給需要判斷的複雜案件。</div></div>
+      <div class="case"><div class="co"><span class="ci">🛡️</span>保險理賠代理人</div><div class="desc">自動受理、分類與初步審核理賠，加速結案並降低人為錯誤。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Finance — high volume, rule-driven, transaction-heavy — is where agents compound value fastest, but heavy regulation makes auditability and human oversight essential.</p>
+      <p>JPMorgan runs 450+ AI use cases daily (30-second pitch decks, M&A memos, trade settlement, fraud detection). Mastercard's UCP standard lets agents complete checkouts; Salesforce Agentforce cut ~$5M in legal costs via contract automation. Common patterns — reconciliation, fraud detection, compliance monitoring, credit-risk triage, and claims processing — recur across banks and insurers.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 8 -->
+  <section class="round" id="r8">
+    <div class="rhead"><div class="rnum">08</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>醫療、生技與製藥</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>醫療的行政負擔極重，醫師花在文件上的時間常多於照護。代理人的定位很清楚：<strong>分擔資料密集的雜務、放大臨床照護，而非取代醫師判斷</strong>。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🏥</span>North Kansas City Hospital × Notable</div><div class="desc">自動化報到與掛號流程，報到時間從 4 分鐘降到 10 秒，預先登記率由 40% 升至 80%。<span class="roi">報到時間 −90%+</span></div></div>
+      <div class="case"><div class="co"><span class="ci">🩺</span>Avi Medical × Beam AI</div><div class="desc">部署多語 AI 代理人，自動回答複雜病人詢問，承接約 70% 的例行工單。</div></div>
+      <div class="case"><div class="co"><span class="ci">📋</span>Franciscan Alliance × Innovaccer</div><div class="desc">自動化醫療編碼流程，編碼缺口關閉率改善約 5%。</div></div>
+      <div class="case"><div class="co"><span class="ci">💊</span>Hippocratic AI</div><div class="desc">打造首個專為「非診斷」病人互動設計的醫療 LLM，用於隨訪、保險協調等病人面任務。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧩</span>Sully.ai</div><div class="desc">模組化代理人架構，橫跨掛號、編碼、計費與檢傷分流。</div></div>
+      <div class="case"><div class="co"><span class="ci">☁️</span>Oracle Health / Kore.ai</div><div class="desc">醫療專用代理人平台，串接 EHR（電子病歷），涵蓋臨床文件與病人互動。</div></div>
+      <div class="case"><div class="co"><span class="ci">✍️</span>臨床文件代理人</div><div class="desc">自動把醫病對話轉成結構化病歷，把醫師從鍵盤前解放回到病人身邊。</div></div>
+      <div class="case"><div class="co"><span class="ci">🚑</span>檢傷分流代理人</div><div class="desc">依症狀做初步分流與優先排序，輔助而非取代臨床判斷。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔬</span>製藥研發代理人</div><div class="desc">協助文獻探勘、臨床試驗設計與資料彙整，壓縮新藥開發的前期週期。</div></div>
+      <div class="case"><div class="co"><span class="ci">💵</span>收費循環代理人</div><div class="desc">即時偵測帳單與編碼錯誤，攔截醫院每年因此流失的營收。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Healthcare's administrative burden is acute, so agents are framed to offload data-heavy chores and amplify care — not replace clinical judgment.</p>
+      <p>North Kansas City Hospital with Notable cut check-in time from 4 minutes to 10 seconds (pre-registration 40%→80%); Avi Medical with Beam AI handles ~70% of routine tickets; Franciscan Alliance with Innovaccer improved coding-gap closure ~5%. Hippocratic AI, Sully.ai, and Oracle Health/Kore.ai power patient engagement, coding, billing, triage, and EHR-integrated documentation.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 9 -->
+  <section class="round" id="r9">
+    <div class="rhead"><div class="rnum">09</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>製造、供應鏈與物流</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>供應鏈最怕「溝通斷鏈」造成延誤。代理人在這裡的角色，是從「監看儀表板」升級為「主動採取行動」——預測、改道、重新訂艙，即時搞定。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🚚</span>DHL × HappyRobot</div><div class="desc">部署語音/郵件代理人自動處理約車與排程協調，年處理數十萬封郵件、數百萬分鐘語音。</div></div>
+      <div class="case"><div class="co"><span class="ci">📍</span>UPS「ORION」</div><div class="desc">路徑最佳化系統，每年約減少 10 萬公噸 CO₂ 排放。<span class="roi">減碳顯著</span></div></div>
+      <div class="case"><div class="co"><span class="ci">🚢</span>Maersk（馬士基）</div><div class="desc">用 AI 代理人做全球航線規劃與動態調速省油，並跨服務排程、停留時間、碳排做情境分析。</div></div>
+      <div class="case"><div class="co"><span class="ci">🌦️</span>Unilever（聯合利華）</div><div class="desc">氣候感知需求預測代理人，依天氣造成的消費變化自動調整生產排程。</div></div>
+      <div class="case"><div class="co"><span class="ci">🏬</span>Manhattan Associates Active Agents</div><div class="desc">倉儲、運輸、訂單與平台維運代理人，自動監看工作、解決例外、推薦行動。</div></div>
+      <div class="case"><div class="co"><span class="ci">📈</span>Blue Yonder Luminate</div><div class="desc">以認知模型做需求感知、動態庫存平衡與即時運輸調整，提前預判中斷。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧠</span>C3 AI</div><div class="desc">多代理人協作平台，橫跨規劃、生產與物流的端到端最佳化。</div></div>
+      <div class="case"><div class="co"><span class="ci">🏭</span>生產排程代理人</div><div class="desc">綜合物料可得性、進貨物流與需求訊號，動態調整生產排程。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔍</span>缺陷檢測 + 根因分析代理人</div><div class="desc">視覺系統發現產線缺陷後，代理人自動做根因分析並提出矯正動作。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧪</span>製造商新產品開發（Deloitte 案例）</div><div class="desc">用代理人在「成本」與「上市時間」等競爭目標間找最佳平衡。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Supply chains fear communication breakdowns that cause delays. Agents move from watching dashboards to taking action — predicting, rerouting, and rebooking in real time.</p>
+      <p>DHL with HappyRobot automates carrier scheduling across vast email and voice volumes; UPS ORION cuts ~100,000 tonnes of CO₂ yearly; Maersk optimizes routes and fuel; Unilever runs climate-aware demand forecasting. Platforms like Manhattan Associates, Blue Yonder, and C3 AI orchestrate warehouse, inventory, scheduling, defect root-cause, and product-development workflows.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 10 -->
+  <section class="round" id="r10">
+    <div class="rhead"><div class="rnum">10</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>行銷、銷售與法務</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>這三個領域有個共同點：大量「重複但需要判斷」的文書與溝通工作。代理人能把業務員、行銷人、律師從雜務中釋放出來，專注在關係與策略。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">☁️</span>Salesforce Agentforce</div><div class="desc">橫跨業務、客服、行銷的代理人平台；合約自動化更替企業省下大筆法務成本。</div></div>
+      <div class="case"><div class="co"><span class="ci">📤</span>11x</div><div class="desc">自主式業務開發（outbound）代理人，自動尋找潛在客戶並發起個人化外聯。</div></div>
+      <div class="case"><div class="co"><span class="ci">📥</span>Lindy</div><div class="desc">無程式碼代理人，主動管理收件匣、會議與行事曆，串接數千個工具。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎤</span>Naoma</div><div class="desc">B2B 產品 demo 代理人，能以語音導覽介面、即時為潛在客戶做資格篩選。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎣</span>線索開發代理人</div><div class="desc">自動建立名單、分群、撰寫個人化開發信，餵養完整的銷售漏斗。</div></div>
+      <div class="case"><div class="co"><span class="ci">📣</span>行銷活動代理人</div><div class="desc">自動產生、投放並持續優化廣告與活動素材，依成效即時調整。</div></div>
+      <div class="case"><div class="co"><span class="ci">📜</span>合約審閱代理人</div><div class="desc">自動標出風險條款、與標準範本比對，加速法務初審。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔎</span>法遵研究代理人</div><div class="desc">跨判例與法規檢索、整理摘要，把律師從「翻案例」解放出來。</div></div>
+      <div class="case"><div class="co"><span class="ci">✏️</span>內容生產線代理人</div><div class="desc">關鍵字研究→草稿→發佈的整條 SEO 內容流程自主完成。</div></div>
+      <div class="case"><div class="co"><span class="ci">🗂️</span>CRM 維運代理人</div><div class="desc">自動更新客戶紀錄、整理商機與後續行動，維持資料乾淨。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Marketing, sales, and legal share lots of repetitive-but-judgment-heavy writing and communication. Agents free salespeople, marketers, and lawyers to focus on relationships and strategy.</p>
+      <p>Salesforce Agentforce spans sales, service, and marketing (and cut major legal costs via contract automation); 11x runs autonomous outbound sales; Lindy manages inbox, meetings, and calendar; Naoma gives live voice product demos. Recurring patterns: lead generation, campaign optimization, contract review, legal research, content pipelines, and CRM hygiene.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 11 -->
+  <section class="round" id="r11">
+    <div class="rhead"><div class="rnum">11</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>科技業、軟體與資安</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>科技業是代理人的「實驗田兼主戰場」。尤其資安——當攻擊方也開始用 AI，防守方更需要會自己分流、調查、回應的代理人來撐住戰線。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🛡️</span>Microsoft Security Copilot</div><div class="desc">嵌入微軟資安產品的代理人，當 SOC（資安維運中心）分析師的數位助手；RSAC 2026 一口氣新增 5 個代理人。</div></div>
+      <div class="case"><div class="co"><span class="ci">🦅</span>CrowdStrike Charlotte AI AgentWorks</div><div class="desc">無程式碼打造資安代理人，整合 Anthropic、NVIDIA、OpenAI 模型與 AWS，自動化偵測、調查、回應。</div></div>
+      <div class="case"><div class="co"><span class="ci">🆔</span>Microsoft Agent 365</div><div class="desc">企業級代理人管理平台，能發現並治理「影子 AI 代理人」，包括本地代理人 OpenClaw 與 Claude Code。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎫</span>ServiceNow</div><div class="desc">IT 服務管理代理人，自動分類與處理工單、解決常見 IT 問題。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔧</span>Cadence × NVIDIA 晶片設計超級代理人</div><div class="desc">驗證週期從數週縮到數小時（快 40 倍以上），詳見回合 05。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔄</span>SAP / ServiceNow 企業流程代理人</div><div class="desc">跨多個企業系統自動執行端到端工作流，串起原本各自為政的環節。</div></div>
+      <div class="case"><div class="co"><span class="ci">⚙️</span>SRE / 維運代理人</div><div class="desc">監控系統、偵測事件並自動修復，降低半夜被叫醒的機率。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔐</span>程式碼安全掃描代理人</div><div class="desc">在開發流程中偵測漏洞並提出修補建議（僅限防禦性用途）。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧱</span>資料管線代理人</div><div class="desc">自動清洗、轉換資料並持續監控品質，維持資料倉儲健康。</div></div>
+      <div class="case"><div class="co"><span class="ci">☁️</span>雲端基礎設施佈建代理人</div><div class="desc">依需求端到端佈署雲端環境，把 DevOps 的重複勞動自動化。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Tech is both the testbed and main battleground for agents — especially security: as attackers use AI, defenders need agents that triage, investigate, and respond on their own.</p>
+      <p>Microsoft Security Copilot adds SOC analyst agents (five new at RSAC 2026); CrowdStrike's Charlotte AI AgentWorks builds no-code security agents across Anthropic, NVIDIA, OpenAI, and AWS; Microsoft Agent 365 governs "shadow" agents like OpenClaw and Claude Code. ServiceNow automates IT tickets, and the Cadence × NVIDIA chip-design agent cuts verification from weeks to hours. Common patterns: SRE auto-remediation, security code scanning, data pipelines, and cloud provisioning.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 12 -->
+  <section class="round" id="r12">
+    <div class="rhead"><div class="rnum">12</div>
+      <div class="t"><div class="tag">第二篇 · 商用實戰 70 例</div>
+        <h3>政府、教育與其他產業</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>公部門與教育的導入較晚，但 2026 年明顯加速——共同主題是「在嚴格治理下，把有限人力放大」，讓公務員、老師、輔導員做得更多。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🎓</span>Northeastern University × Anthropic</div><div class="desc">與 Anthropic 合作，在全校園各據點部署 Claude，作為師生的學習與研究助手。</div></div>
+      <div class="case"><div class="co"><span class="ci">🤝</span>Alabama State University × ibl.ai</div><div class="desc">打造「給教育者的 Jarvis」——一層受治理、懂資料的代理人，統合學習、輔導與行政系統，及早介入幫助學生。</div></div>
+      <div class="case"><div class="co"><span class="ci">🏛️</span>Indiana 州務卿辦公室</div><div class="desc">部署 24/7 雙語 AI 代理人服務居民，整合 2,000 萬筆以上紀錄，並管理全州 5 萬多名公證人。</div></div>
+      <div class="case"><div class="co"><span class="ci">🏙️</span>City of Dearborn（密西根）</div><div class="desc">以 Google AI 打造市政「數位前門」，服務語言多元的社區居民。</div></div>
+      <div class="case"><div class="co"><span class="ci">🪖</span>GenAI.mil「Agent Designer」</div><div class="desc">讓數百萬軍方與文職人員無需寫程式，自建代理人來自動化非機密的重複流程。</div></div>
+      <div class="case"><div class="co"><span class="ci">📚</span>McKinsey（麥肯錫）</div><div class="desc">已在內部部署約 2 萬個代理人，並開始以「與 AI 協作的能力」評估求職者。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧑‍🏫</span>蘇格拉底式家教代理人</div><div class="desc">不直接給答案，而是用對話引導、依學生即時表現生成無限練習題。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎒</span>招生與輔導代理人</div><div class="desc">處理學分抵免評估、安排校園導覽、跨簡訊與網頁經營「招生漏斗」。</div></div>
+      <div class="case"><div class="co"><span class="ci">📋</span>民眾洽公代理人</div><div class="desc">協助表單填寫與流程指引，降低民眾與公部門互動的門檻。</div></div>
+      <div class="case"><div class="co"><span class="ci">🌿</span>環境監測代理人</div><div class="desc">如開源的 SpeciesNet，協助辨識物種、了解棲地，推動全球野生動物監測與保育。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Government and education adopted later but accelerated sharply in 2026, with a shared theme: under strict governance, multiply limited staff so public servants, teachers, and advisors can do more.</p>
+      <p>Northeastern University deployed Claude campus-wide with Anthropic; Alabama State University with ibl.ai built a governed "Jarvis for educators"; Indiana's Secretary of State runs 24/7 bilingual agents; the City of Dearborn built a civic "digital front door"; GenAI.mil lets staff build no-code agents; and McKinsey has ~20,000 internal agents. Education patterns include Socratic tutors, admissions/advising funnels, and citizen-service agents.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 13 -->
+  <section class="round" id="r13">
+    <div class="rhead"><div class="rnum">13</div>
+      <div class="t"><div class="tag">第三篇 · 開發者與專業用戶 30 例</div>
+        <h3>程式開發代理人</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>2026 年約九成開發者每天都在用 AI 寫程式工具。但這些工具不能互換——它們對「AI 該如何介入開發」各有哲學。選錯，不是多花錢，就是跟工具打架。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🖥️</span>Claude Code（Anthropic）</div><div class="desc">終端機原生的 agentic CLI，主打深度推理與多檔修改，SWE-bench 分數領先；適合啃硬問題。</div></div>
+      <div class="case"><div class="co"><span class="ci">⌨️</span>Cursor</div><div class="desc">VS Code 衍生的 AI 原生編輯器，行內補全最快、Composer 多檔編輯，付費用戶眾多。</div></div>
+      <div class="case"><div class="co"><span class="ci">⚡</span>OpenAI Codex</div><div class="desc">雲端任務執行型，速度快，適合與 ChatGPT 工作流整合的非同步任務。</div></div>
+      <div class="case"><div class="co"><span class="ci">🤖</span>Devin（Cognition）</div><div class="desc">市面最自主的代理人：在沙盒裡自己規劃、寫、測、交 PR；「派完任務就走人」。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧱</span>Replit Agent</div><div class="desc">全端鷹架代理人，附托管執行環境，能從零把一個應用搭起來。</div></div>
+      <div class="case"><div class="co"><span class="ci">🐙</span>GitHub Copilot</div><div class="desc">把「AI 輔助寫程式」帶進主流的元老，行內建議親民好上手。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔌</span>Cline / Aider</div><div class="desc">BYOM（自帶模型）開源代理人，工具免費、只付 LLM API 費，彈性高。</div></div>
+      <div class="case"><div class="co"><span class="ci">📐</span>Kiro</div><div class="desc">規格驅動（spec-driven）開發，先寫規格再讓代理人實作，採 credit 計費。</div></div>
+      <div class="case"><div class="co"><span class="ci">🪟</span>Devin Desktop（前 Windsurf）</div><div class="desc">2026 年 6 月由 Cognition 改名，IDE 內建 Agent Command Center 統籌多代理人。</div></div>
+      <div class="case"><div class="co"><span class="ci">☁️</span>Twill</div><div class="desc">永遠在線的雲端軟體工程師，可在沙盒裡跑 Claude Code、Codex 或 OpenCode 自動交 PR。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>By 2026 about 90% of developers use AI coding tools daily, but they aren't interchangeable — each embodies a philosophy of how AI should fit development. Picking wrong means overpaying or fighting your tools.</p>
+      <p>Claude Code is terminal-native with deep reasoning (top SWE-bench); Cursor is the fastest IDE experience; Codex is a cloud task-runner; Devin is the most autonomous (plans, writes, tests, ships PRs); Replit Agent scaffolds full-stack apps; GitHub Copilot made AI coding mainstream. BYOM open-source agents (Cline, Aider) plus Kiro, Devin Desktop, and Twill round out the field. Most productive developers combine several.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 14 -->
+  <section class="round" id="r14">
+    <div class="rhead"><div class="rnum">14</div>
+      <div class="t"><div class="tag">第三篇 · 開發者與專業用戶 30 例</div>
+        <h3>個人生產力與生活自動化</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>2026 年初最爆紅的故事，是代理人「走進個人生活」。OpenClaw 這類本地代理人讓一般人也能擁有一個會幫你處理雜事的數位管家——當然，也帶來新的隱私與資安課題。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🐾</span>OpenClaw</div><div class="desc">爆紅的開源本地代理人，跑在你自己的電腦，透過 Telegram/WhatsApp/iMessage 等操作；用來分流郵件、管行事曆、線上報到、整理會議摘要、跨 Notion/Obsidian/Trello 協作。</div></div>
+      <div class="case"><div class="co"><span class="ci">📱</span>Lindy</div><div class="desc">60 秒設定、用 iMessage 就能操作的個人代理人，免技術背景。</div></div>
+      <div class="case"><div class="co"><span class="ci">🌐</span>ChatGPT Agent</div><div class="desc">瀏覽器型個人助理，能在網頁上替你點選、填寫、完成任務。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧭</span>Manus</div><div class="desc">雲端沙盒自主代理人（已被 Meta 收購），單一提示就能跑多步驟任務。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔎</span>Perplexity</div><div class="desc">AI 研究引擎，附即時網路引用，Pro Search 能做多步分析，日常查證利器。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧠</span>Khoj</div><div class="desc">個人「第二大腦」，可搜尋並對話你的筆記、文件與圖片。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎙️</span>Limitless（前 Rewind）</div><div class="desc">依你看過、說過、聽過的內容打造個人化 AI，幫你回想與整理。</div></div>
+      <div class="case"><div class="co"><span class="ci">📟</span>Rabbit R1 / Humane AI Pin</div><div class="desc">專用 AI 硬體裝置，把個人代理人做成可隨身攜帶的穿戴/手持產品。</div></div>
+      <div class="case"><div class="co"><span class="ci">🍎</span>EasyClaw / Majordomo</div><div class="desc">EasyClaw 讓 Mac 用戶一鍵安裝 OpenClaw 並雲端 24 小時待命；Majordomo 是原生 iOS 個人代理人。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔋</span>微型本地代理人</div><div class="desc">NullClaw（678KB、約 1MB RAM）、PicoClaw、MimiClaw 能跑在 $5 的 ESP32 晶片上，把代理人塞進最省電的邊緣硬體。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Early 2026's viral story was agents entering personal life. Local agents like OpenClaw give ordinary people a digital butler for chores — while raising new privacy and security questions.</p>
+      <p>OpenClaw runs on your own machine via Telegram/WhatsApp/iMessage to triage email, manage calendars, check in for flights, summarize meetings, and coordinate across Notion, Obsidian, and Trello. Lindy, ChatGPT Agent, Manus, and Perplexity cover setup-free assistants, browser tasks, cloud automation, and research. Khoj and Limitless build a personal "second brain," while tiny agents (NullClaw, PicoClaw, MimiClaw) run on $5 edge chips.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 15 -->
+  <section class="round" id="r15">
+    <div class="rhead"><div class="rnum">15</div>
+      <div class="t"><div class="tag">第三篇 · 開發者與專業用戶 30 例</div>
+        <h3>專業工作者應用</h3><div class="min">⏱ 約 10 分鐘 · 10 個案例</div></div></div>
+    <p>除了寫程式與生活雜務，代理人也成了知識工作者的「外掛同事」：研究、分析、創作、教學、設計——每個專業都能找到把雜務外包給代理人的方法。</p>
+    <div class="cases">
+      <div class="case"><div class="co"><span class="ci">🧭</span>Manus（知識工作者）</div><div class="desc">擅長深度研究、資料視覺化與多步內容生成，是顧問、分析師的得力助手。</div></div>
+      <div class="case"><div class="co"><span class="ci">📚</span>Perplexity（研究）</div><div class="desc">引用品質與即時網路存取最佳，適合學術查證與市場研究。</div></div>
+      <div class="case"><div class="co"><span class="ci">🗒️</span>Notion AI</div><div class="desc">內建於 Notion 知識工作區，提供問答、寫作與專案自動化。</div></div>
+      <div class="case"><div class="co"><span class="ci">✅</span>ClickUp Super Agents</div><div class="desc">內建 500+ 技能、近乎無限記憶的「AI 隊友」，在專案中環境感知地自動行動。</div></div>
+      <div class="case"><div class="co"><span class="ci">📊</span>資料分析代理人</div><div class="desc">連上資料庫，自動跑分析、產圖表，把資料科學的初步工作自動化。</div></div>
+      <div class="case"><div class="co"><span class="ci">🎨</span>設計代理人</div><div class="desc">在畫布上依對話迭代產出設計稿，設計師專注在方向與品味。</div></div>
+      <div class="case"><div class="co"><span class="ci">✒️</span>內容創作代理人</div><div class="desc">研究→撰稿→配圖的多步生產線，加速部落格、影音腳本與社群內容。</div></div>
+      <div class="case"><div class="co"><span class="ci">🧑‍🏫</span>教學備課代理人</div><div class="desc">老師用代理人自動生成教材、練習題與評量，依學生程度差異化。</div></div>
+      <div class="case"><div class="co"><span class="ci">🔬</span>研究文獻代理人</div><div class="desc">學者用代理人跨數百萬篇論文做文獻回顧與摘要，壓縮前期苦工。</div></div>
+      <div class="case"><div class="co"><span class="ci">📑</span>簡報與文件代理人</div><div class="desc">自動把零散素材整理成投影片與報告，初稿一鍵成形。</div></div>
+    </div>
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>Beyond coding and chores, agents have become knowledge workers' "plug-in colleagues" for research, analysis, creation, teaching, and design — every profession finds chores to delegate.</p>
+      <p>Manus handles deep research and data visualization; Perplexity excels at cited research; Notion AI and ClickUp Super Agents embed automation into knowledge work. Recurring professional patterns include data-analysis agents, design agents iterating on a canvas, content pipelines, lesson-prep agents for teachers, literature-review agents for researchers, and document/slide agents that draft from scattered material.</p>
+    </div>
+  </section>
+
+  <!-- ROUND 16 -->
+  <section class="round" id="r16">
+    <div class="rhead"><div class="rnum">16</div>
+      <div class="t"><div class="tag">第四篇 · 收束</div>
+        <h3>界線、治理與你的自學路徑</h3><div class="min">⏱ 約 10 分鐘</div></div></div>
+    <p>學完 100 個案例，最後要回到清醒的問題：代理人現在做不到什麼？我們該怎麼安全地用它？以及——身為自學者，下一步該往哪走？</p>
+
+    <h4>誠實面：代理人還做不到什麼</h4>
+    <p>「代理人」是 2026 年最被濫用的詞，行銷話術與真正能交付的東西落差很大。一個務實的判準：需要<strong>連續執行超過數小時不被人類審查</strong>、或在<strong>高度監管且有稽核要求</strong>的產業裡運行的代理式工作流程，目前大多還做不到。聽到廠商說「全自動、不用管」，請保持懷疑。</p>
+
+    <h4>治理：放出去之前要繫好安全帶</h4>
+    <ul>
+      <li><strong>權限與身分</strong>：代理人能動你的檔案、寄你的信、刷你的卡，務必最小權限、可隨時收回。</li>
+      <li><strong>隱私</strong>：敏感資料盡量留在本地或機密運算環境，別輕易送上不明雲端。</li>
+      <li><strong>可稽核</strong>：留下「誰、何時、做了什麼」的完整紀錄——這正是回合 2 那層「協調外殼」的價值。</li>
+      <li><strong>人類把關（human-in-the-loop）</strong>：高風險動作（付款、刪除、對外發送）一定要設人類確認關卡。</li>
+    </ul>
+
+    <h4>人機協作，而非取代</h4>
+    <p>黃仁勳在 Computex 直接回應「代理人會不會搶工作」：他說恰恰相反，代理人需求反而<strong>推升了軟體工程師的需求</strong>。代理人將為合作夥伴創造史上最大的機會。務實的看法是：代理人擅長分擔「重複但需要判斷」的雜務，讓人類把時間花在判斷、創意與關係經營上。</p>
+
+    <div class="note"><b>給自學者的下一步：</b>① 先選「一個你每天都做的小任務」交給一個代理人試水溫（例如 Perplexity 做查證、Claude Code 做小腳本）。② 學會一個協調概念（MCP／工具呼叫）。③ 讀懂治理三原則（最小權限、可稽核、人類把關）。④ 用「原子習慣」的節奏，一天一個小實驗，三個月後你會驚訝自己走多遠。</div>
+
+    <div class="analogy"><span class="lbl">生活比喻</span>
+    代理人就像剛到職、很有潛力的實習生：交給它明確、低風險的任務會很驚艷；但你不會第一天就給它公司印章和金庫鑰匙。聰明的主管會「逐步授權、保留複核」——這也是 2026 年用代理人的黃金守則。</div>
+
+    <div class="ensum"><div class="lbl">English Summary</div>
+      <p>"Agent" is 2026's most overused word; marketing outruns delivery. A practical test: workflows that must run unsupervised for many hours, or operate in heavily regulated, audit-bound industries, mostly don't work yet — be skeptical of "fully autonomous, hands-off" claims.</p>
+      <p>Govern before you deploy: least-privilege identity, privacy (keep sensitive data local or in confidential computing), auditability, and human-in-the-loop checkpoints for risky actions. At Computex, Huang argued agents raise demand for software engineers rather than replacing them — they augment humans. For self-learners: hand one small daily task to one agent, learn one orchestration concept (MCP/tool-calling), internalize the three governance rules, and run one small experiment a day, Atomic-Habits style.</p>
+    </div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="gloss" id="glossary">
+    <h3>Glossary 詞彙表</h3>
+    <p class="sub">本課程關鍵術語的中英對照與白話解釋（含黃仁勳演講提到的核心字）。</p>
+
+    <div class="gitem"><div class="term">AI 代理人　<span class="en">AI agent</span></div><div class="def">會設定目標、呼叫工具、循環執行直到完成任務的軟體系統。是「名詞」。</div></div>
+    <div class="gitem"><div class="term">代理式（的）　<span class="en">agentic</span></div><div class="def">形容一個系統能多自主地行動。是「形容詞」，自主性是程度光譜。</div></div>
+    <div class="gitem"><div class="term">多代理人系統　<span class="en">multi-agent system</span></div><div class="def">由多個各司其職的代理人組成、經協調統籌的團隊，2026 年成長最快的形態。</div></div>
+    <div class="gitem"><div class="term">大型語言模型　<span class="en">large language model (LLM)</span></div><div class="def">代理人的「大腦」，理解與生成語言、規劃步驟的核心模型。</div></div>
+    <div class="gitem"><div class="term">協調外殼　<span class="en">orchestration shell</span></div><div class="def">統籌代理人行動的指揮中心，負責踩煞車、查權限、留紀錄。如 NVIDIA 的 Open Shell。</div></div>
+    <div class="gitem"><div class="term">工具呼叫／函式呼叫　<span class="en">tool calling / function calling</span></div><div class="def">LLM 用結構化格式呼叫外部工具的能力，2023 年的關鍵突破，代理人的「手」。</div></div>
+    <div class="gitem"><div class="term">模型情境協定　<span class="en">Model Context Protocol (MCP)</span></div><div class="def">Anthropic 2024 年底推出的開源標準，讓代理人與外部工具/資料源串接，像「萬用插座」。</div></div>
+    <div class="gitem"><div class="term">代理人對代理人協定　<span class="en">A2A / ACP</span></div><div class="def">讓不同代理人彼此溝通協作的協定（Google A2A、IBM ACP），後於 Linux 基金會整合。</div></div>
+    <div class="gitem"><div class="term">檢索增強生成　<span class="en">RAG</span></div><div class="def">讓模型回答前先「查資料」，把外部知識帶進答案，減少憑空亂編。</div></div>
+    <div class="gitem"><div class="term">推理模型　<span class="en">reasoning model</span></div><div class="def">會「先想再答」、把難題拆步驟、自我糾錯的模型，如 o 系列、Claude Opus。</div></div>
+    <div class="gitem"><div class="term">推論　<span class="en">inference</span></div><div class="def">模型「上工回答」的階段（相對於一次性的訓練）。代理人時代算力大頭在此。</div></div>
+    <div class="gitem"><div class="term">訓練　<span class="en">training</span></div><div class="def">把模型「教會」的一次性大工程。</div></div>
+    <div class="gitem"><div class="term">測試時運算　<span class="en">test-time scaling</span></div><div class="def">讓模型在回答時多花算力、多想一下，答案更好但成本更高。</div></div>
+    <div class="gitem"><div class="term">代幣／詞元　<span class="en">token</span></div><div class="def">模型處理文字的最小單位。代理人會大量產生 token。</div></div>
+    <div class="gitem"><div class="term">代幣經濟學　<span class="en">tokenomics</span></div><div class="def">在 AI 語境指「每個 token 要花多少電、錢、時間」，是規模化代理人的成本關鍵。</div></div>
+    <div class="gitem"><div class="term">長上下文　<span class="en">long context</span></div><div class="def">模型一次能處理的資訊量。代理人多步驟推理常需數十萬 token 的長上下文。</div></div>
+    <div class="gitem"><div class="term">企業　<span class="en">enterprise</span></div><div class="def">指大型公司組織。「企業級」代理人強調安全、權限與可稽核。</div></div>
+    <div class="gitem"><div class="term">開放模型　<span class="en">open model</span></div><div class="def">把模型權重公開、可下載修改的模型，如 Nemotron 3 Ultra。</div></div>
+    <div class="gitem"><div class="term">開源　<span class="en">open source</span></div><div class="def">把程式設計圖免費公開，任何人都能看、改、用。像公開的食譜。</div></div>
+    <div class="gitem"><div class="term">隱私　<span class="en">privacy</span></div><div class="def">保護個人與機構的敏感資料不外洩，是本地端代理人的核心賣點。</div></div>
+    <div class="gitem"><div class="term">混合架構　<span class="en">hybrid architecture</span></div><div class="def">把兩種設計的優點結合，如 Nemotron 結合狀態空間模型與專家混合，又快又省。像油電混合車。</div></div>
+    <div class="gitem"><div class="term">專家混合　<span class="en">mixture of experts (MoE)</span></div><div class="def">模型內含多個「專家」子網路，每次只啟動需要的部分，省算力。</div></div>
+    <div class="gitem"><div class="term">狀態空間模型　<span class="en">state space model (SSM)</span></div><div class="def">一種處理長序列更高效的模型架構，常與其他架構混合使用。</div></div>
+    <div class="gitem"><div class="term">形式化驗證　<span class="en">formal verification</span></div><div class="def">用數學方法嚴格證明設計（如晶片）沒有特定錯誤，比抽測更徹底。</div></div>
+    <div class="gitem"><div class="term">除錯　<span class="en">debug</span></div><div class="def">找出並修掉程式裡的錯誤（俗稱臭蟲）。在晶片設計裡一個小臭蟲可能延誤數月。</div></div>
+    <div class="gitem"><div class="term">機密運算　<span class="en">confidential computing</span></div><div class="def">在晶片層級加密資料、隔離多租戶的安全技術，連運算過程都受保護。</div></div>
+    <div class="gitem"><div class="term">執行環境　<span class="en">runtime</span></div><div class="def">代理人實際安全運行的作業系統層，把模型、工具、外殼凝聚起來。</div></div>
+    <div class="gitem"><div class="term">提示注入　<span class="en">prompt injection</span></div><div class="def">攻擊者把惡意指令藏在資料裡，誘騙代理人執行的資安風險。</div></div>
+    <div class="gitem"><div class="term">人類把關　<span class="en">human-in-the-loop</span></div><div class="def">在高風險動作前設置人類確認關卡，是安全使用代理人的黃金守則。</div></div>
+    <div class="gitem"><div class="term">SWE-bench</div><div class="def">評測 AI 解決真實軟體工程問題能力的基準測試，常用來比較程式開發代理人。</div></div>
+    <div class="gitem"><div class="term">資安維運中心　<span class="en">SOC</span></div><div class="def">企業偵測與回應資安威脅的團隊，2026 年大量導入代理人協助分流與調查。</div></div>
+    <div class="gitem"><div class="term">電子病歷　<span class="en">EHR</span></div><div class="def">醫院的數位病歷系統，醫療代理人多需與之串接（常用 FHIR/HL7 標準）。</div></div>
+  </section>
+
+</main>
+</div>
+
+<!-- BOTTOM LINK BAR -->
+<div class="linkbar bottom">
+  <div class="wrap linkrow">
+    <a class="linkcard" href="https://linwayet.github.io/4ulive/index.html" target="_blank"><span class="ico">📚</span>錯中學 ECHO 計劃</a>
+    <a class="linkcard" href="https://linwayet.github.io/popup/index" target="_blank"><span class="ico">📈</span>學生分析系統</a>
+    <a class="linkcard" href="https://line.me/ti/p/~linwayet" target="_blank"><span class="ico">💬</span>LINE：linwayet</a>
+  </div>
+</div>
+
+<footer>林威英文 · AI 代理人 100 講 ｜ 自學微課程 ｜ 內容含 Computex 2026 黃仁勳主題演講重點整理</footer>
+
+<script>
+function setFs(d){
+  let r=document.documentElement, cur=parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||1;
+  let nv = d===0 ? 1 : Math.min(1.4, Math.max(.85, cur + d*0.1));
+  r.style.setProperty('--fs', nv.toFixed(2));
+}
+</script>
+</body>
+</html>
