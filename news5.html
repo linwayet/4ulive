@@ -1,1112 +1,545 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Friendly High-Tech Fabrics in Today’s Swimsuits</title>
-    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #FFF4E8;
-            --main-text-color: #1A0F00;
-            --h1-color: #C0392B;
-            --h2-color: #1565C0;
-            --h3-color: #2E7D32;
-            --accent-a: #E65100;
-            --accent-b: #6A1B9A;
-            --orig-keyword: #0D47A1;
-            
-            --block1-head: #0D47A1;
-            --block1-border: #90CAF9;
-            --block1-bg: #F3F8FF;
-            
-            --block2-head: #BF360C;
-            --block2-border: #FFAB91;
-            --block2-bg: #FFF3EF;
-            
-            --block3-head: #1B5E20;
-            --block3-border: #81C784;
-            --block3-bg: #F1F8F2;
-            
-            --block4-head: #4A148C;
-            --block4-border: #CE93D8;
-            --block4-bg: #F9F0FF;
-            
-            --bottom-head: #4A3728;
-            --bottom-border: #C4A06A;
-            --bottom-bg: #FAF6F0;
-        }
-
-        body {
-            background:
-                radial-gradient(circle at top left, rgba(255, 204, 128, 0.45), transparent 32%),
-                radial-gradient(circle at top right, rgba(255, 138, 101, 0.25), transparent 30%),
-                linear-gradient(180deg, #FFF1DE 0%, #FFF8F0 48%, #FCE6D7 100%);
-            color: var(--main-text-color);
-            font-family: 'BIZ UDPGothic', sans-serif;
-            font-size: 22px;
-            line-height: 1.85;
-            margin: 0;
-            padding: 28px 20px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-        }
-
-        .promo-band {
-            background: linear-gradient(135deg, #FFE0B2 0%, #FFCCBC 52%, #F8BBD0 100%);
-            border: 3px solid rgba(191, 54, 12, 0.18);
-            border-radius: 24px;
-            box-shadow: 0 14px 28px rgba(105, 50, 22, 0.14);
-            margin: 0 0 34px;
-            padding: 22px;
-        }
-
-        .promo-band.bottom {
-            margin: 42px 0 0;
-        }
-
-        .promo-title {
-            color: #7A2E12;
-            font-size: 1.35rem;
-            font-weight: 700;
-            line-height: 1.35;
-            margin: 0 0 16px;
-            text-align: center;
-        }
-
-        .promo-links {
-            display: grid;
-            gap: 16px;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .promo-link {
-            background: rgba(255, 255, 255, 0.88);
-            border: 2px solid rgba(255, 112, 67, 0.34);
-            border-radius: 18px;
-            color: #3D1E10;
-            display: block;
-            min-height: 138px;
-            padding: 18px;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-
-        .promo-link:hover,
-        .promo-link:focus {
-            border-color: #E65100;
-            box-shadow: 0 10px 18px rgba(230, 81, 0, 0.18);
-            outline: none;
-            transform: translateY(-3px);
-        }
-
-        .promo-kicker {
-            border-radius: 999px;
-            color: white;
-            display: inline-block;
-            font-size: 0.82rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 10px;
-            padding: 6px 12px;
-        }
-
-        .promo-link:nth-child(1) .promo-kicker { background: #E65100; }
-        .promo-link:nth-child(2) .promo-kicker { background: #1565C0; }
-        .promo-link:nth-child(3) .promo-kicker { background: #2E7D32; }
-
-        .promo-name {
-            color: #8A2D16;
-            display: block;
-            font-size: 1.18rem;
-            font-weight: 700;
-            line-height: 1.35;
-            margin-bottom: 8px;
-        }
-
-        .promo-copy {
-            color: #5D4037;
-            display: block;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .h1-box {
-            border: 4px solid var(--h1-color);
-            padding: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            color: var(--h1-color);
-            font-size: 3rem;
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: var(--h2-color);
-            font-size: 2.2rem;
-            margin: 10px 0;
-            font-weight: 700;
-        }
-
-        .author-credit {
-            color: #1565C0;
-            font-family: 'Lobster', 'Pacifico', cursive, sans-serif;
-            font-size: 1.8rem;
-            margin-top: 10px;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            margin-top: 60px;
-            margin-bottom: 20px;
-            color: var(--h2-color);
-        }
-
-        h3 {
-            font-size: 1.6rem;
-            margin: 0 0 15px 0;
-            color: var(--h3-color);
-        }
-
-        .section-card {
-            background: white;
-            border-radius: 18px;
-            border: 2px solid #ccc;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-        }
-
-        .section-head {
-            padding: 20px 30px;
-            color: white;
-            font-weight: 700;
-            font-size: 24px;
-        }
-
-        .section-body {
-            padding: 30px;
-        }
-
-        /* Block Specifics */
-        .block1-card { border-color: var(--block1-border); }
-        .block1-head { background-color: var(--block1-head); }
-        .block1-body { background-color: var(--block1-bg); }
-
-        .block2-card { border-color: var(--block2-border); }
-        .block2-head { background-color: var(--block2-head); }
-        .block2-body { background-color: var(--block2-bg); }
-
-        .block3-card { border-color: var(--block3-border); }
-        .block3-head { background-color: var(--block3-head); }
-        .block3-body { background-color: var(--block3-bg); }
-
-        .block4-card { border-color: var(--block4-border); }
-        .block4-head { background-color: var(--block4-head); }
-        .block4-body { background-color: var(--block4-bg); }
-
-        .bottom-card { border-color: var(--bottom-border); }
-        .bottom-head { background-color: var(--bottom-head); }
-        .bottom-body { background-color: var(--bottom-bg); }
-
-        /* Keyword Highlights */
-        .kw {
-            color: var(--orig-keyword);
-            font-weight: 700;
-        }
-
-        /* Analysis Blocks */
-        .analysis-item {
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 25px;
-            margin-bottom: 25px;
-        }
-        .analysis-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .num-circle {
-            background: var(--block2-head);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
-            font-weight: 700;
-        }
-
-        .quote-line {
-            font-style: italic;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .pill {
-            display: inline-block;
-            background: var(--block2-border);
-            color: #1A0F00;
-            padding: 4px 15px;
-            border-radius: 20px;
-            font-size: 18px;
-            margin: 5px 5px 5px 0;
-            font-weight: 700;
-        }
-
-        /* Vocab Items */
-        .vocab-item {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px dashed var(--block3-border);
-        }
-        .vocab-item:last-child { border-bottom: none; }
-
-        .vocab-header {
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .vocab-num {
-            background: var(--h2-color);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: 700;
-        }
-        .vocab-word { font-size: 28px; font-weight: 700; color: var(--h2-color); }
-        .vocab-kk { font-size: 20px; color: #C0392B; }
-        .vocab-pos { font-size: 20px; color: #555; }
-
-        .tag-row { display: flex; margin-bottom: 10px; }
-        .tag {
-            min-width: 100px;
-            text-align: center;
-            padding: 4px 10px;
-            border-radius: 10px 0 0 10px;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            margin-right: 10px;
-        }
-        .tag-content { font-size: 20px; }
-
-        .tag-deriv { background-color: #FDEDEC; color: #C0392B; border: 1px solid #C0392B; }
-        .tag-root { background-color: #EBF5FB; color: #1565C0; border: 1px solid #1565C0; }
-        .tag-phrase { background-color: #EAFAF1; color: #2E7D32; border: 1px solid #2E7D32; }
-        .tag-idiom { background-color: #FEF9E7; color: #D68910; border: 1px solid #D68910; }
-        .tag-confuse { background-color: #F5EEF8; color: #6A1B9A; border: 1px solid #6A1B9A; }
-        .tag-accent { background-color: #FEF0E7; color: #E65100; border: 1px solid #E65100; }
-
-        .example-block { margin-top: 15px; border-left: 4px solid var(--block3-border); padding-left: 15px; }
-
-        /* Grammar Styles */
-        .grammar-point { margin-bottom: 50px; }
-        .grammar-point blockquote {
-            background: rgba(255,255,255,0.5);
-            border-left: 5px solid var(--block4-head);
-            padding: 15px 20px;
-            margin: 15px 0;
-            font-style: italic;
-        }
-        .grammar-point ul { padding-left: 25px; }
-        .grammar-point h3 { color: var(--block4-head); border-bottom: 2px solid var(--block4-head); padding-bottom: 5px; }
-
-        /* Details */
-        details {
-            border: 2px solid var(--bottom-border);
-            border-radius: 14px;
-            margin-bottom: 15px;
-            background: white;
-        }
-        summary {
-            padding: 20px 30px;
-            background: var(--bottom-head);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 72px;
-            list-style: none;
-        }
-        summary::-webkit-details-marker { display: none; }
-        summary::after {
-            content: "▼";
-            transition: transform 0.3s;
-        }
-        details[open] summary::after {
-            transform: rotate(180deg);
-        }
-        .detail-content { padding: 30px; background: var(--bottom-bg); }
-
-        /* Responsive */
-        @media (max-width: 800px) {
-            h1 { font-size: 2.2rem; }
-            .subtitle { font-size: 1.8rem; }
-            body { font-size: 20px; }
-            .promo-links { grid-template-columns: 1fr; }
-            .promo-link { min-height: auto; }
-        }
-
-        @media (max-width: 560px) {
-            body {
-                font-size: 18px;
-                line-height: 1.75;
-                padding: 16px 12px 28px;
-            }
-
-            .promo-band {
-                border-radius: 18px;
-                margin-bottom: 24px;
-                padding: 16px;
-            }
-
-            .promo-title { font-size: 1.12rem; }
-            .promo-name { font-size: 1.05rem; }
-            .promo-copy { font-size: 0.9rem; }
-            .h1-box { padding: 14px; }
-            h1 { font-size: 1.82rem; }
-            h2 { font-size: 1.58rem; margin-top: 38px; }
-            h3 { font-size: 1.28rem; }
-            .section-head { font-size: 20px; padding: 16px 18px; }
-            .section-body, .detail-content { padding: 18px; }
-            .section-card { border-radius: 14px; margin-bottom: 28px; }
-            .vocab-header {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 6px;
-            }
-            .tag-row { display: block; }
-            .tag { border-radius: 10px; display: inline-block; margin-bottom: 8px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 台北電腦展全解析｜NVIDIA RTX Spark vs AMD X86 防守反擊</title>
+<style>
+  :root{
+    --bg:#F8F4ED;
+    --text:#2D2A26;
+    --card:#FFFDF8;
+    --line:#E5DCC9;
+    --nv:#5B8C2A;        /* NVIDIA 暖綠 */
+    --nv-bg:#EEF3E2;
+    --amd:#B5482E;       /* AMD 暖紅 */
+    --amd-bg:#F7E8E0;
+    --gold:#B8860B;
+    --gold-bg:#F5ECD7;
+    --blue:#3E6B8E;
+    --blue-bg:#E6EEF4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"BIZ UDPGothic","Microsoft JhengHei","PingFang TC",sans-serif;
+    font-size:22px;
+    line-height:1.8;
+    padding:24px 16px 60px;
+  }
+  .wrap{max-width:880px;margin:0 auto;}
+  header{
+    background:linear-gradient(135deg,#F3E9D2,#F8F4ED);
+    border:2px solid var(--line);
+    border-radius:20px;
+    padding:36px 28px;
+    text-align:center;
+    margin-bottom:32px;
+  }
+  header h1{font-size:1.5em;line-height:1.5;margin-bottom:12px;}
+  header p{font-size:0.85em;color:#6B6258;}
+  .tag{
+    display:inline-block;background:var(--gold-bg);color:var(--gold);
+    border-radius:999px;padding:4px 18px;font-size:0.75em;margin:4px;
+    border:1px solid #E0CFA0;
+  }
+  section{
+    background:var(--card);
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    padding:28px 24px;
+    margin-bottom:28px;
+  }
+  section.nv{border-left:8px solid var(--nv);}
+  section.amd{border-left:8px solid var(--amd);}
+  section.macro{border-left:8px solid var(--blue);}
+  section.gold{border-left:8px solid var(--gold);}
+  h2{
+    font-size:1.15em;line-height:1.5;margin-bottom:16px;
+    display:flex;align-items:flex-start;gap:12px;
+  }
+  .num{
+    flex:none;width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.85em;color:#fff;
+  }
+  .nv .num{background:var(--nv);}
+  .amd .num{background:var(--amd);}
+  .macro .num{background:var(--blue);}
+  .gold .num{background:var(--gold);}
+  p{margin-bottom:14px;}
+  p:last-child{margin-bottom:0;}
+  .hl-nv{background:var(--nv-bg);border-radius:6px;padding:0 6px;}
+  .hl-amd{background:var(--amd-bg);border-radius:6px;padding:0 6px;}
+  .hl-gold{background:var(--gold-bg);border-radius:6px;padding:0 6px;}
+  .chart{
+    background:#FFFCF4;
+    border:1.5px dashed var(--line);
+    border-radius:14px;
+    padding:16px 10px;
+    margin:18px 0;
+    overflow-x:auto;
+  }
+  .chart svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .chart-cap{
+    text-align:center;font-size:0.75em;color:#8A8071;margin-top:8px;
+  }
+  details{
+    background:#FBF7EE;border:1.5px solid var(--line);
+    border-radius:14px;margin:16px 0;overflow:hidden;
+  }
+  summary{
+    cursor:pointer;padding:18px 20px;min-height:72px;
+    display:flex;align-items:center;font-size:0.95em;
+    list-style:none;
+  }
+  summary::before{content:"▸ ";margin-right:8px;color:var(--gold);}
+  details[open] summary::before{content:"▾ ";}
+  details .inner{padding:0 20px 20px;font-size:0.9em;}
+  footer{
+    text-align:center;font-size:0.75em;color:#8A8071;
+    margin-top:40px;line-height:1.6;
+  }
+  .vs{
+    display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;
+  }
+  .vs .col{
+    flex:1;min-width:240px;border-radius:14px;padding:18px;
+    font-size:0.85em;line-height:1.7;
+  }
+  .vs .col h3{font-size:1.05em;margin-bottom:8px;}
+  .col.cnv{background:var(--nv-bg);border:1.5px solid #C9D8AB;}
+  .col.camd{background:var(--amd-bg);border:1.5px solid #E3C2B2;}
+  /* ===== 連結卡 ===== */
+  .links{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
+  .links.bottom{margin:28px 0 0;}
+  .link-card{
+    flex:1;min-width:240px;min-height:72px;
+    display:block;text-decoration:none;color:var(--text);
+    border-radius:16px;padding:18px 20px;
+    border:2px solid transparent;
+    transition:transform .15s;
+  }
+  .link-card:active{transform:scale(.97);}
+  .link-card .lc-title{font-weight:bold;font-size:1em;display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+  .link-card .lc-desc{font-size:0.78em;color:#6B6258;line-height:1.6;}
+  .lc-echo{background:linear-gradient(135deg,#FCE8D5,#F8D9BC);border-color:#E8B98A;}
+  .lc-popup{background:linear-gradient(135deg,#E6EEF4,#D4E2EC);border-color:#9DBBD2;}
+  .lc-line{background:linear-gradient(135deg,#E4F2DC,#D2E8C6);border-color:#9DC783;}
+  /* ===== Glossary ===== */
+  .glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px;}
+  .g-card{
+    background:#FBF7EE;border:1.5px solid var(--line);
+    border-radius:14px;padding:16px 18px;font-size:0.85em;line-height:1.7;
+  }
+  .g-card .g-term{font-weight:bold;font-size:1.05em;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .g-no{
+    flex:none;width:34px;height:34px;border-radius:10px;background:var(--gold);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8em;
+  }
+  .g-zh{color:var(--amd);font-size:0.85em;}
+</style>
 </head>
 <body>
-    <div class="container">
-        <nav class="promo-band" aria-label="課程與聯絡連結">
-            <p class="promo-title">七月開課與聯絡方式</p>
-            <div class="promo-links">
-                <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                    <span class="promo-kicker">七月課程</span>
-                    <span class="promo-name">錯中學 ECHO 計劃</span>
-                    <span class="promo-copy">用錯題回音式複習，整理常見弱點，讓學生從錯誤中建立英文判斷力。</span>
-                </a>
-                <a class="promo-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                    <span class="promo-kicker">七月課程</span>
-                    <span class="promo-name">學生分析</span>
-                    <span class="promo-copy">透過學習資料與表現整理，協助學生看見問題、安排下一步讀書策略。</span>
-                </a>
-                <a class="promo-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                    <span class="promo-kicker">Line 聯絡</span>
-                    <span class="promo-name">linwayet</span>
-                    <span class="promo-copy">課程詢問、學習規劃與上課資訊，可用 Line 帳號 linwayet 聯絡。</span>
-                </a>
-            </div>
-        </nav>
+<div class="wrap">
 
-        <header>
-            <div class="h1-box">
-                <h1>Eco-Friendly High-Tech Fabrics in Today’s Swimsuits</h1>
-            </div>
-            <div class="subtitle">現代泳裝中的環保高科技面料</div>
-            <div class="author-credit">林威老師與 AI agent 團隊製作</div>
-        </header>
+<!-- ===== 頂部三連結 ===== -->
+<div class="links top">
+  <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    <div class="lc-title">📚 七月課程｜錯中學 ECHO 計劃</div>
+    <div class="lc-desc">從錯誤中學習的英文進步系統，七月開課，名額有限，點此了解課程內容與報名方式。</div>
+  </a>
+  <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index" target="_blank">
+    <div class="lc-title">📊 七月課程｜學生分析</div>
+    <div class="lc-desc">個人化學習診斷工具，精準找出你的英文弱點，量身打造暑期學習計畫。</div>
+  </a>
+  <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet" target="_blank">
+    <div class="lc-title">💬 加我 LINE：linwayet</div>
+    <div class="lc-desc">課程諮詢、學習問題歡迎直接私訊林威老師，搜尋 LINE ID「linwayet」。</div>
+  </a>
+</div>
 
-        <!-- ========== 區塊一：英文文章原文 ========== -->
-        <section>
-            <h2>【區塊一】英文文章原文</h2>
-            <div class="section-card block1-card">
-                <div class="section-head block1-head">英文文章原文 (Original Article)</div>
-                <div class="section-body block1-body">
-                    <p>Currently, the most advanced materials used in swimwear are <span class="kw">innovative</span> forms of polyester, such as Iterative® Polyester, and new <span class="kw">composite</span> <span class="kw">functional</span> fabrics that <span class="kw">blend</span> polyester with fibers like spandex or PBT (polybutylene terephthalate). These fabrics are designed to be lightweight and to <span class="kw">repel</span> water, so they reduce <span class="kw">drag</span> and help swimmers move more smoothly in the pool or ocean. Because they <span class="kw">absorb</span> very little water, they stay lighter than <span class="kw">traditional</span> materials during swimming and feel less heavy on the body.</p>
-                    
-                    <p>These advanced fabrics also include special finishes and <span class="kw">treatments</span> that give them extra functions. Many modern polyester‑based swimwear fabrics are quick‑drying, so the swimsuit does not stay wet for a long time after you leave the water, which helps reduce <span class="kw">bacteria</span> growth and bad smells. They can also be made with antibacterial and <span class="kw">mildew-resistant</span> properties, and some blends are designed to feel cool to the touch or help <span class="kw">regulate</span> skin temperature in hot weather. At the same time, adding <span class="kw">elastic</span> fibers like spandex keeps the swimsuit stretchy, comfortable, and close‑fitting, even after many uses.</p>
+<header>
+  <h1>2026 台北電腦展全解析<br>NVIDIA ARM 革命 vs AMD X86 防守反擊</h1>
+  <p>Computex 2026 重點整理｜RTX Spark・Vera Rubin・7700X3D・AM5 路線圖</p>
+  <div>
+    <span class="tag">RTX Spark</span>
+    <span class="tag">DLSS 4.5</span>
+    <span class="tag">Vera Rubin NVL72</span>
+    <span class="tag">Ryzen 7 7700X3D</span>
+    <span class="tag">AM5 → 2029</span>
+    <span class="tag">5800X3D 十週年版</span>
+  </div>
+</header>
 
-                    <p>In addition, many of these high‑tech fabrics use recycled polyester or other <span class="kw">regenerated</span> fibers, which makes them more environmentally friendly than older materials. Brands now create swimwear from recycled plastic bottles or <span class="kw">discarded</span> fishing nets, helping reduce waste and <span class="kw">pollution</span> in the oceans. Because these new fabrics also resist <span class="kw">chlorine</span>, salt, and sunlight, they last longer without fading or losing their shape, so they are gradually replacing traditional nylon and neoprene in many high‑end swimsuits. As a result, advanced polyester and composite functional fabrics have become the <span class="kw">mainstream</span> choice for modern <span class="kw">performance</span> and fashion swimwear.</p>
-                </div>
-            </div>
-        </section>
+<!-- 1 -->
+<section class="gold">
+  <h2><span class="num">1</span>開場：不再擠牙膏的一屆電腦展</h2>
+  <p>2026 年 6 月的台北電腦展落幕後，資本市場與硬體圈的反應只能用「炸鍋」形容。以往展會各家廠商多半按部就班發表常規迭代的 CPU 與顯示卡，互相擠點牙膏維持熱度；但今年 NVIDIA 與 AMD 端出的產品，<span class="hl-gold">直接重新洗牌現有 PC 生態與資料中心算力格局</span>——不只是技術跨越，更是直接刺向傳統晶片巨頭的大動脈。</p>
+</section>
 
-        <!-- ========== 區塊二：八句精讀 ========== -->
-        <section>
-            <h2>【區塊二】八句精讀</h2>
-            <div class="section-card block2-card">
-                <div class="section-head block2-head">八句精讀 (8 Key Sentence Analyses)</div>
-                <div class="section-body block2-body">
-                    
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">1</span> 核心主題句</h3>
-                        <span class="quote-line">Currently, the most advanced materials used in swimwear are innovative forms of polyester...</span>
-                        <div>目前，泳裝中最先進的材料是各種創新形式的聚酯纖維……</div>
-                        <p><strong>文法解析：</strong>本句主詞為 <em>the most advanced materials</em>，其後接著過去分詞片語 <em>used in swimwear</em> 作為後置修飾語，修飾材料。動詞為 <em>are</em>。</p>
-                        <div><span class="pill">advanced 先進的</span> <span class="pill">swimwear 泳裝</span></div>
-                    </div>
+<!-- 2 -->
+<section class="nv">
+  <h2><span class="num">2</span>最大地震：NVIDIA RTX Spark 進軍消費級 PC</h2>
+  <p>傳了數月的風聲終於落地——NVIDIA 聯合微軟推出全新 Windows PC 平台 <span class="hl-nv">RTX Spark</span>。這不是試水溫的產品，而是想徹底重塑個人電腦的野心之作。</p>
+  <p>硬體規格相當兇悍：CPU 部分塞進 <strong>20 個 ARM 核心</strong>；GPU 部分把最新 <strong>Blackwell 架構</strong>下放，給足 <strong>6,144 個 CUDA 核心</strong>；再搭配 <strong>128GB LPDDR5X 統一記憶體</strong>。這種 CPU＋GPU 高度整合、共享超大容量高速記憶體的做法，是對傳統 X86 架構的降維打擊。高達 <strong>1 PetaFLOP 的 AI 算力</strong>，讓這顆晶片能在本地流暢運行龐大的 AI 智慧體。</p>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">2</span> 目的與結果句</h3>
-                        <span class="quote-line">These fabrics are designed to be lightweight and to repel water, so they reduce drag and help swimmers move more smoothly...</span>
-                        <div>這些面料被設計得非常輕盈且疏水，因此能減少阻力並幫助游泳者更流暢地移動……</div>
-                        <p><strong>文法解析：</strong><em>are designed to be</em> 為被動語態，表示「被設計來……」。<em>so</em> 引導結果對等子句。<em>help + O + V</em> 為使役動詞用法，move 前省略了 to。</p>
-                        <div><span class="pill">repel water 疏水/撥水</span> <span class="pill">reduce drag 減少阻力</span></div>
-                    </div>
+  <div class="chart">
+    <svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" font-family="BIZ UDPGothic, Microsoft JhengHei, sans-serif">
+      <text x="360" y="36" text-anchor="middle" font-size="24" font-weight="bold" fill="#2D2A26">NVIDIA RTX Spark SoC 架構示意圖</text>
+      <!-- outer SoC -->
+      <rect x="40" y="60" width="640" height="260" rx="18" fill="#EEF3E2" stroke="#5B8C2A" stroke-width="3"/>
+      <text x="360" y="92" text-anchor="middle" font-size="18" fill="#5B8C2A" font-weight="bold">單一 SoC（系統單晶片）</text>
+      <!-- CPU block -->
+      <rect x="70" y="110" width="280" height="180" rx="12" fill="#FFFDF8" stroke="#8FAE5C" stroke-width="2.5"/>
+      <text x="210" y="148" text-anchor="middle" font-size="20" font-weight="bold" fill="#2D2A26">CPU</text>
+      <text x="210" y="182" text-anchor="middle" font-size="26" font-weight="bold" fill="#5B8C2A">20 個 ARM 核心</text>
+      <text x="210" y="216" text-anchor="middle" font-size="15" fill="#6B6258">取代傳統 X86 處理器</text>
+      <text x="210" y="244" text-anchor="middle" font-size="15" fill="#6B6258">主打全天候續航</text>
+      <!-- GPU block -->
+      <rect x="370" y="110" width="280" height="180" rx="12" fill="#FFFDF8" stroke="#8FAE5C" stroke-width="2.5"/>
+      <text x="510" y="148" text-anchor="middle" font-size="20" font-weight="bold" fill="#2D2A26">GPU（Blackwell 架構）</text>
+      <text x="510" y="182" text-anchor="middle" font-size="26" font-weight="bold" fill="#5B8C2A">6,144 CUDA 核心</text>
+      <text x="510" y="216" text-anchor="middle" font-size="15" fill="#6B6258">圖形核心直接「焊」在 CPU 旁</text>
+      <text x="510" y="244" text-anchor="middle" font-size="15" fill="#6B6258">支援 DLSS 4.5 光線重建</text>
+      <!-- memory bar -->
+      <rect x="70" y="340" width="580" height="56" rx="12" fill="#F5ECD7" stroke="#B8860B" stroke-width="2.5"/>
+      <text x="360" y="375" text-anchor="middle" font-size="20" font-weight="bold" fill="#8A6508">128GB LPDDR5X 統一記憶體（CPU／GPU 共享）</text>
+      <!-- connectors -->
+      <line x1="210" y1="290" x2="210" y2="340" stroke="#B8860B" stroke-width="3"/>
+      <line x1="510" y1="290" x2="510" y2="340" stroke="#B8860B" stroke-width="3"/>
+      <!-- AI badge -->
+      <rect x="540" y="42" width="160" height="38" rx="19" fill="#5B8C2A"/>
+      <text x="620" y="68" text-anchor="middle" font-size="17" fill="#fff" font-weight="bold">1 PFLOP AI 算力</text>
+    </svg>
+    <div class="chart-cap">圖 1｜RTX Spark：仿效 Apple M 系列的高度整合 SoC 路線</div>
+  </div>
+</section>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">3</span> 原因對比句</h3>
-                        <span class="quote-line">Because they absorb very little water, they stay lighter than traditional materials during swimming...</span>
-                        <div>因為它們吸收的水分極少，在游泳過程中它們比傳統材料更輕……</div>
-                        <p><strong>文法解析：</strong><em>Because</em> 引導原因副詞子句。<em>stay lighter than</em> 使用連綴動詞 stay 搭配比較級形容詞，描述狀態的持續。</p>
-                        <div><span class="pill">absorb 吸收</span> <span class="pill">traditional 傳統的</span></div>
-                    </div>
+<!-- 3 -->
+<section class="nv">
+  <h2><span class="num">3</span>砸碎兩堵牆：轉譯層與反作弊難題</h2>
+  <p>過去 ARM 架構在 Windows 陣營走得磕磕絆絆，兩大痛點是：<strong>效能損耗極大的轉譯層</strong>，以及<strong>遊戲反作弊軟體的底層相容性</strong>。《特戰英豪》《英雄聯盟》《絕地求生》等熱門電競遊戲的反作弊系統需要極高的核心層權限，且不支援任何模擬器運行，導致 ARM Windows 用戶基本告別主流電競圈。</p>
+  <p>這次 NVIDIA 拉著微軟把這堵牆徹底砸碎：Epic 的 <span class="hl-nv">Easy Anti-Cheat</span>、Riot 的 <span class="hl-nv">Vanguard</span> 等主流反作弊軟體，都已完成針對 RTX Spark 的底層重寫與原生支援。RTX Spark 在遊戲領域的阻力被掃清了一大半。</p>
+</section>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">4</span> 結果補語句</h3>
-                        <span class="quote-line">...the swimsuit does not stay wet for a long time after you leave the water, which helps reduce bacteria growth...</span>
-                        <div>……泳衣在你離開水後不會長時間保持潮濕，這有助於減少細菌滋生……</div>
-                        <p><strong>文法解析：</strong><em>which</em> 引導非限定關係子句，修飾前面「泳衣不會長時間潮濕」這整件事，動詞 helps 須用單數。</p>
-                        <div><span class="pill">quick-drying 快速乾燥</span> <span class="pill">bacteria growth 細菌滋生</span></div>
-                    </div>
+<!-- 4 -->
+<section class="nv">
+  <h2><span class="num">4</span>生態總動員：軟體與 OEM 大廠跟進</h2>
+  <p>生產力軟體跟進速度快得驚人：Adobe 明確表示正為 RTX Spark 重寫 <strong>Premiere 與 Photoshop</strong>；Blender、DaVinci Resolve、甚至 CapCut 也宣布提供原生 ARM 支援。</p>
+  <p>硬體端，<strong>戴爾、惠普、聯想、華碩、微星</strong>等老牌 PC 大廠，2026 年秋季就會把搭載 RTX Spark 的輕薄本與桌機推向市場——標榜全天候續航，又能跑原本只有厚重電競本才跑得動的高強度渲染與本地 AI 大模型。傳統 X86 廠商面臨前所未有的防守壓力。</p>
+</section>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">5</span> 並列結構句</h3>
-                        <span class="quote-line">They can also be made with antibacterial and mildew-resistant properties, and some blends are designed to feel cool to the touch...</span>
-                        <div>它們還可以具備抗菌和防霉特性，且某些混紡布料被設計成觸感涼爽……</div>
-                        <p><strong>文法解析：</strong>本句使用對等連接詞 <em>and</em> 連結兩個被動語態的子句。<em>be made with</em> 表示「具備/由……製成」。</p>
-                        <div><span class="pill">antibacterial 抗菌的</span> <span class="pill">mildew-resistant 防霉的</span></div>
-                    </div>
+<!-- 5 -->
+<section class="nv">
+  <h2><span class="num">5</span>DLSS 4.5：第二代 Transformer 光線重建</h2>
+  <p>軟體層面的算力壓榨同樣登場。DLSS 直接跳到 4.5 版，主打<span class="hl-nv">光線重建（Ray Reconstruction）</span>。光線追蹤渲染出的原始畫面噪點極多，傳統降噪演算法常讓畫面發虛、高速運動時產生拖影；DLSS 4.5 改用第二代 Transformer 大模型，官方數據是<strong>計算能力提升 35%、可同時處理多 20% 的參數量</strong>，在相近效能開銷下讓畫面細節更銳利、光影過渡更自然。</p>
+  <p>最關鍵的是：<strong>不搞硬體獨占</strong>。2026 年 8 月將推送給所有 RTX 20／30／40 以及最新 50 系顯卡用戶，直接拉高存量用戶黏性，也讓對手在畫質賽道上更難追趕。</p>
+</section>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">6</span> 動名詞主詞句</h3>
-                        <span class="quote-line">At the same time, adding elastic fibers like spandex keeps the swimsuit stretchy, comfortable, and close-fitting...</span>
-                        <div>同時，加入像氨綸這樣的彈性纖維能讓泳衣保持彈性、舒適且貼身……</div>
-                        <p><strong>文法解析：</strong><em>adding elastic fibers...</em> 為動名詞片語當主詞，動詞須用單數 <em>keeps</em>。<em>keep + O + adj.</em> 為常見句型。</p>
-                        <div><span class="pill">elastic fibers 彈性纖維</span> <span class="pill">close-fitting 貼身的</span></div>
-                    </div>
+<!-- 6 -->
+<section class="nv">
+  <h2><span class="num">6</span>算力核武：Vera Rubin 平台全面量產</h2>
+  <p>消費端攻城掠地之外，NVIDIA 在資料中心端出的 <span class="hl-nv">Vera CPU＋Rubin GPU</span> 平台宣布全面量產。與傳統單一伺服器節點不同，Vera Rubin 打的是<strong>機架級、甚至資料中心級的算力叢集</strong>概念——特別是 <strong>NVL72</strong> 這種「整個機架就是一個超大節點」的形態，可提供比上一代 Grace Blackwell 平台<strong>高出 10 倍的智慧體吞吐量</strong>。OpenAI、Anthropic、SpaceX 都已成為早期核心客戶。</p>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">7</span> 關係代名詞非限定用法</h3>
-                        <span class="quote-line">...many of these high-tech fabrics use recycled polyester or other regenerated fibers, which makes them more environmentally friendly...</span>
-                        <div>……許多這類高科技面料使用回收聚酯或其他再生纖維，這使得它們比舊材料更環保。</div>
-                        <p><strong>文法解析：</strong><em>which</em> 引導的子句修飾前面的主要子句（使用再生纖維這件事），這是一種非限定用法的擴展，用來補充說明結果。</p>
-                        <div><span class="pill">regenerated fibers 再生纖維</span> <span class="pill">environmentally friendly 環保的</span></div>
-                    </div>
+  <div class="chart">
+    <svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" font-family="BIZ UDPGothic, Microsoft JhengHei, sans-serif">
+      <text x="360" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#2D2A26">Vera Rubin NVL72 機架級超級節點</text>
+      <!-- rack -->
+      <rect x="80" y="60" width="220" height="320" rx="14" fill="#EEF3E2" stroke="#5B8C2A" stroke-width="3"/>
+      <text x="190" y="92" text-anchor="middle" font-size="17" font-weight="bold" fill="#5B8C2A">單一機架 = 一個節點</text>
+      <g fill="#FFFDF8" stroke="#8FAE5C" stroke-width="1.5">
+        <rect x="100" y="106" width="180" height="30" rx="6"/>
+        <rect x="100" y="142" width="180" height="30" rx="6"/>
+        <rect x="100" y="178" width="180" height="30" rx="6"/>
+        <rect x="100" y="214" width="180" height="30" rx="6"/>
+        <rect x="100" y="250" width="180" height="30" rx="6"/>
+        <rect x="100" y="286" width="180" height="30" rx="6"/>
+      </g>
+      <text x="190" y="127" text-anchor="middle" font-size="14" fill="#6B6258">Vera CPU ＋ Rubin GPU</text>
+      <text x="190" y="163" text-anchor="middle" font-size="14" fill="#6B6258">Vera CPU ＋ Rubin GPU</text>
+      <text x="190" y="199" text-anchor="middle" font-size="14" fill="#6B6258">Vera CPU ＋ Rubin GPU</text>
+      <text x="190" y="235" text-anchor="middle" font-size="14" fill="#6B6258">Vera CPU ＋ Rubin GPU</text>
+      <text x="190" y="271" text-anchor="middle" font-size="14" fill="#6B6258">Vera CPU ＋ Rubin GPU</text>
+      <text x="190" y="307" text-anchor="middle" font-size="14" fill="#6B6258">⋯（NVL72 形態）</text>
+      <rect x="100" y="328" width="180" height="38" rx="8" fill="#F5ECD7" stroke="#B8860B" stroke-width="2"/>
+      <text x="190" y="353" text-anchor="middle" font-size="15" font-weight="bold" fill="#8A6508">液冷系統（仁寶）</text>
+      <!-- stats -->
+      <g>
+        <rect x="360" y="80" width="300" height="80" rx="14" fill="#FFFDF8" stroke="#5B8C2A" stroke-width="2.5"/>
+        <text x="510" y="113" text-anchor="middle" font-size="30" font-weight="bold" fill="#5B8C2A">10×</text>
+        <text x="510" y="144" text-anchor="middle" font-size="15" fill="#6B6258">智慧體吞吐量（對比 Grace Blackwell）</text>
 
-                    <div class="analysis-item">
-                        <h3><span class="num-circle">8</span> 無法避免的結果句</h3>
-                        <span class="quote-line">Because these new fabrics also resist chlorine, salt, and sunlight, they last longer without fading or losing their shape...</span>
-                        <div>因為這些新面料還能抵抗氯、鹽和陽光，它們的使用壽命更長，且不會褪色或變形……</div>
-                        <p><strong>文法解析：</strong><em>Because</em> 引導原因子句。<em>last longer</em> 表示持續更久。<em>without + V-ing</em> 表示「沒有……的情況下」。</p>
-                        <div><span class="pill">resist chlorine 抗氯</span> <span class="pill">fade 褪色</span></div>
-                    </div>
+        <rect x="360" y="180" width="300" height="80" rx="14" fill="#FFFDF8" stroke="#B5482E" stroke-width="2.5"/>
+        <text x="510" y="213" text-anchor="middle" font-size="30" font-weight="bold" fill="#B5482E">≈ 24 kW</text>
+        <text x="510" y="244" text-anchor="middle" font-size="15" fill="#6B6258">單機櫃功耗（倒逼散熱／電源升級）</text>
 
-                </div>
-            </div>
-        </section>
+        <rect x="360" y="280" width="300" height="100" rx="14" fill="#FFFDF8" stroke="#3E6B8E" stroke-width="2.5"/>
+        <text x="510" y="315" text-anchor="middle" font-size="18" font-weight="bold" fill="#3E6B8E">早期核心客戶</text>
+        <text x="510" y="350" text-anchor="middle" font-size="16" fill="#6B6258">OpenAI・Anthropic・SpaceX</text>
+      </g>
+      <line x1="300" y1="220" x2="360" y2="220" stroke="#B8860B" stroke-width="3" stroke-dasharray="6 4"/>
+    </svg>
+    <div class="chart-cap">圖 2｜Vera Rubin NVL72：機架即節點的資料中心算力核武</div>
+  </div>
+</section>
 
-        <!-- ========== 區塊三：20個單字 ========== -->
-        <section>
-            <h2>【區塊三】18–20 個單字整理</h2>
-            <div class="section-card block3-card">
-                <div class="section-head block3-head">單字整理 (Vocabulary List)</div>
-                <div class="section-body block3-body">
+<!-- 7 -->
+<section class="macro">
+  <h2><span class="num">7</span>供應鏈暗流：台積電、HBM 與 ASML 的枷鎖</h2>
+  <p>NVIDIA 能同時在消費端與企業端掏出巨獸，靠的是對<strong>台積電先進製程與 CoWoS 高階封裝產能的絕對掌控</strong>。市場產能就這麼多，NVIDIA 吃下最大一塊蛋糕，其他競爭對手的生存空間被嚴重壓縮。</p>
+  <p>記憶體端，為滿足 Vera Rubin 的資料吞吐需求，高頻大容量 <span class="hl-gold">HBM 成了最緊缺的戰略物資</span>——三星與 SK 海力士在 HBM3E 與下一代 HBM4 的廝殺已進入白熱化，誰能保證良率與規模，誰就能在 NVIDIA 這艘航空母艦上拿到最豐厚的利潤。而上游設備端，<strong>ASML 的 EUV 光刻機出貨量</strong>依然是卡在所有人脖子上的無形枷鎖——沒有人能在這個高度壟斷的生態圈裡輕易彎道超車，這也是 NVIDIA 敢在 2026 年全線出擊的底氣。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">1</span>
-                            <span class="vocab-word">innovative</span>
-                            <span class="vocab-kk">[ˈɪnəˌvetɪv]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>創新的；革新的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">innovation (n. 創新)；innovate (v. 創新)</div></div>
-                        <div class="tag-row"><div class="tag tag-root">字根</div><div class="tag-content">nov「新」：novel (新奇的/小說)；renovate (裝修)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">highly innovative (高度創新的)；innovative technology (創新科技)</div></div>
-                        <div class="example-block">
-                            Currently, the most advanced materials used in swimwear are innovative forms of polyester.<br>（目前，泳裝中最先進的材料是各種創新形式的聚酯纖維。）<br><br>
-                            The company is known for its innovative approach to solving environmental problems.<br>（這間公司以其解決環境問題的創新方法而聞名。）
-                        </div>
-                    </div>
+<!-- 8 -->
+<section class="amd">
+  <h2><span class="num">8</span>AMD 反擊第一拳：Ryzen 7 7700X3D 精準卡位</h2>
+  <p>面對 NVIDIA 的 ARM 戰略，AMD 沒有硬碰硬另起生態，而是把籌碼全押在<strong>對現有 X86 生態的極致壓榨、對用戶忠誠度的收割、以及傳統產品線的精準卡位</strong>。最具代表性的就是提前遭洩露、如今正式登場的 <span class="hl-amd">Ryzen 7 7700X3D</span>。</p>
+  <p>帳面上它像「降頻版 7800X3D」：8 核 16 緒、基礎頻率 4.0GHz（低 200MHz）、Boost 4.5GHz（低 500MHz）、TDP 維持 120W。但核心底牌是 <strong>104MB 的 3D V-Cache 總快取</strong>——在 X86 遊戲運行邏輯中，超大 L3 快取對幀數穩定性與最低幀有決定性影響，往往能抹平數百 MHz 的頻率差距。</p>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">2</span>
-                            <span class="vocab-word">composite</span>
-                            <span class="vocab-kk">[kəmˈpɑzɪt]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>複合的；混合成的</p>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">composite material (複合材料)；composite structure (複合結構)</div></div>
-                        <div class="tag-row"><div class="tag tag-phrase">片語</div><div class="tag-content">a composite of... (……的混合物)</div></div>
-                        <div class="example-block">
-                            New composite functional fabrics blend polyester with fibers like spandex.<br>（新型複合功能面料將聚酯與氨綸等纖維混紡。）<br><br>
-                            The aircraft is made of composite materials to make it lighter and stronger.<br>（這架飛機由複合材料製成，使其更輕且更堅固。）
-                        </div>
-                    </div>
+  <div class="chart">
+    <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" font-family="BIZ UDPGothic, Microsoft JhengHei, sans-serif">
+      <text x="360" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#2D2A26">Ryzen 7 7700X3D vs 7800X3D 規格對比</text>
+      <!-- legend -->
+      <rect x="200" y="52" width="22" height="22" rx="5" fill="#B5482E"/>
+      <text x="230" y="70" font-size="16" fill="#2D2A26">7700X3D（$329）</text>
+      <rect x="430" y="52" width="22" height="22" rx="5" fill="#E0A487"/>
+      <text x="460" y="70" font-size="16" fill="#2D2A26">7800X3D</text>
+      <!-- rows -->
+      <!-- base clock -->
+      <text x="30" y="125" font-size="17" fill="#2D2A26" font-weight="bold">基礎頻率</text>
+      <rect x="150" y="100" width="436" height="26" rx="6" fill="#B5482E"/>
+      <text x="596" y="120" font-size="15" fill="#2D2A26">4.0 GHz</text>
+      <rect x="150" y="132" width="458" height="26" rx="6" fill="#E0A487"/>
+      <text x="618" y="152" font-size="15" fill="#2D2A26">4.2 GHz</text>
+      <!-- boost -->
+      <text x="30" y="205" font-size="17" fill="#2D2A26" font-weight="bold">Boost 頻率</text>
+      <rect x="150" y="180" width="409" height="26" rx="6" fill="#B5482E"/>
+      <text x="569" y="200" font-size="15" fill="#2D2A26">4.5 GHz</text>
+      <rect x="150" y="212" width="454" height="26" rx="6" fill="#E0A487"/>
+      <text x="614" y="232" font-size="15" fill="#2D2A26">5.0 GHz</text>
+      <!-- cache -->
+      <text x="30" y="285" font-size="17" fill="#2D2A26" font-weight="bold">總快取</text>
+      <rect x="150" y="260" width="470" height="26" rx="6" fill="#B5482E"/>
+      <text x="368" y="280" font-size="15" fill="#fff" font-weight="bold" text-anchor="middle">104 MB（3D V-Cache 堆疊）</text>
+      <rect x="150" y="292" width="470" height="26" rx="6" fill="#E0A487"/>
+      <text x="368" y="312" font-size="15" fill="#2D2A26" font-weight="bold" text-anchor="middle">104 MB（3D V-Cache 堆疊）</text>
+      <!-- TDP -->
+      <text x="30" y="365" font-size="17" fill="#2D2A26" font-weight="bold">TDP</text>
+      <rect x="150" y="340" width="300" height="26" rx="6" fill="#B5482E"/>
+      <text x="460" y="360" font-size="15" fill="#2D2A26">120 W</text>
+      <rect x="150" y="372" width="300" height="26" rx="6" fill="#E0A487"/>
+      <text x="460" y="392" font-size="15" fill="#2D2A26">120 W</text>
+      <!-- note -->
+      <rect x="60" y="416" width="600" height="34" rx="10" fill="#F7E8E0" stroke="#E3C2B2" stroke-width="1.5"/>
+      <text x="360" y="440" text-anchor="middle" font-size="15" fill="#8A4530">核心配置同為 8 核 16 緒｜超大快取抹平頻率差距，建議售價僅 $329</text>
+    </svg>
+    <div class="chart-cap">圖 3｜頻率小砍、快取全保：AMD 用 $329 清理中高端戰場</div>
+  </div>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">3</span>
-                            <span class="vocab-word">functional</span>
-                            <span class="vocab-kk">[ˈfʌŋkʃənəl]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>功能性的；實用的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">function (n. 功能；v. 運作)；functionally (adv.)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">fully functional (功能完備的)；functional design (功能性設計)</div></div>
-                        <div class="example-block">
-                            Composite functional fabrics have become mainstream.<br>（複合功能性面料已成為主流。）<br><br>
-                            The furniture in his office is purely functional and not very decorative.<br>（他辦公室的家具純粹是功能性的，沒什麼裝飾性。）
-                        </div>
-                    </div>
+  <p>商業計算也很精明：2026 年供應鏈緊缺使 7800X3D 零售價長期居高不下，甚至溢價斷貨。7700X3D 打的就是這個時間差——<strong>建議售價 329 美元</strong>，對拿著預算找不到統治級處理器的中高端玩家殺傷力十足，不僅承接 AM4 老用戶的升級真空期，也把 Intel 同價位產品逼入絕境。AMD 賭的是：純遊戲玩家根本不在乎那幾百 MHz 的基準頻率。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">4</span>
-                            <span class="vocab-word">blend</span>
-                            <span class="vocab-kk">[blɛnd]</span>
-                            <span class="vocab-pos">v. / n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>混合；混紡；混合物</p>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">a perfect blend (完美的融合)；blend in (融入)</div></div>
-                        <div class="tag-row"><div class="tag tag-phrase">片語</div><div class="tag-content">blend A with B (將 A 與 B 混合)</div></div>
-                        <div class="example-block">
-                            These fabrics blend polyester with fibers like spandex.<br>（這些面料將聚酯纖維與氨綸等纖維混紡。）<br><br>
-                            The artist used a special brush to blend the colors on the canvas.<br>（藝術家使用特殊的畫筆來融合畫布上的顏色。）
-                        </div>
-                    </div>
+<!-- 9 -->
+<section class="amd">
+  <h2><span class="num">9</span>重如泰山的承諾：AM5 平台支援到 2029</h2>
+  <p>比產品更震撼的是路線圖：AMD 官方承諾<strong>對 AM5 平台的支援至少延續到 2029 年</strong>。從 2022 年 Zen 4 首發算起，這個插槽的生命週期將被拉長到<strong>至少 8 年</strong>。對比競爭對手幾乎每隔一兩代就強制換主機板、變相榨取生態鏈利潤的做法，AMD「一個插槽戰未來」的策略直接在消費者層面建立起道德高地與信任資產。</p>
+  <p>這是一招高明的陽謀：給現有 X670／B650 用戶吃定心丸（主機板三年內不會變電子垃圾），同時大幅降低觀望者的入局門檻——知道現在買的主機板還能相容至少兩代全新 Zen 架構，購買決策自然倒向 AMD。本質上，這是<span class="hl-amd">用主機板的生命週期鎖死用戶未來數年的 CPU 升級預算</span>，把 RTX Spark 分流用戶的可能性降到最低。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">5</span>
-                            <span class="vocab-word">repel</span>
-                            <span class="vocab-kk">[rɪˈpɛl]</span>
-                            <span class="vocab-pos">v.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>排斥；撥開；抗拒</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">repellent (n. 驅除劑；adj. 令人厭惡的)</div></div>
-                        <div class="tag-row"><div class="tag tag-root">字根</div><div class="tag-content">pel「推」：compel (強迫)；expel (驅逐)；propel (推進)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">water-repellent (撥水的)；insect repellent (防蟲劑)</div></div>
-                        <div class="example-block">
-                            These fabrics are designed to repel water.<br>（這些面料被設計用來撥水。）<br><br>
-                            The new surface treatment is designed to repel dirt and oil.<br>（這種新的表面處理旨在排斥汙垢和油脂。）
-                        </div>
-                    </div>
+<!-- 10 -->
+<section class="amd">
+  <h2><span class="num">10</span>魔幻重生：十週年紀念版 5800X3D</h2>
+  <p>在服役近 10 年的 AM4 老平台上，AMD 玩出了只能用「離譜」形容的新花樣——正式推出<span class="hl-amd">十週年紀念版 Ryzen 7 5800X3D</span>。核心參數與當年原版幾乎一模一樣：8 核 16 緒、Zen 3 架構、Boost 4.5GHz、100MB 縱向堆疊大快取、105W TDP。唯一實質升級是包裝盒內附贈名為 <strong>IcePad 的全新硬質導熱墊</strong>，官方宣稱可免去散熱膏乾涸老化的煩惱。</p>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">6</span>
-                            <span class="vocab-word">drag</span>
-                            <span class="vocab-kk">[dræɡ]</span>
-                            <span class="vocab-pos">n. / v.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>（空氣或水的）阻力；拖曳</p>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">air drag (空氣阻力)；reduce drag (減少阻力)</div></div>
-                        <div class="example-block">
-                            They reduce drag and help swimmers move more smoothly.<br>（它們減少阻力並幫助游泳者更流暢地移動。）<br><br>
-                            The car's streamlined shape was designed to minimize drag.<br>（汽車的流線型設計是為了將阻力降到最低。）
-                        </div>
-                    </div>
+  <div class="chart">
+    <svg viewBox="0 0 720 350" xmlns="http://www.w3.org/2000/svg" font-family="BIZ UDPGothic, Microsoft JhengHei, sans-serif">
+      <text x="360" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#2D2A26">十週年紀念版 5800X3D：為什麼 2026 年還賣得動？</text>
+      <!-- CPU card -->
+      <rect x="40" y="60" width="300" height="250" rx="16" fill="#F7E8E0" stroke="#B5482E" stroke-width="3"/>
+      <text x="190" y="98" text-anchor="middle" font-size="19" font-weight="bold" fill="#B5482E">Ryzen 7 5800X3D（2020 原班規格）</text>
+      <g font-size="16" fill="#2D2A26">
+        <text x="70" y="136">・8 核 16 緒｜Zen 3 架構</text>
+        <text x="70" y="170">・Boost 4.5 GHz｜105W TDP</text>
+        <text x="70" y="204">・100MB 3D 堆疊大快取</text>
+        <text x="70" y="238">・🆕 附贈 IcePad 硬質導熱墊</text>
+        <text x="70" y="272">・定價 $349</text>
+      </g>
+      <!-- logic flow -->
+      <g>
+        <rect x="390" y="66" width="290" height="64" rx="12" fill="#FFFDF8" stroke="#B8860B" stroke-width="2"/>
+        <text x="535" y="92" text-anchor="middle" font-size="15" fill="#2D2A26" font-weight="bold">AI 晶片排擠產能 → DDR5 價格狂飆</text>
+        <text x="535" y="116" text-anchor="middle" font-size="14" fill="#6B6258">消費級記憶體顆粒產出遭嚴重擠壓</text>
+        <line x1="535" y1="130" x2="535" y2="150" stroke="#B8860B" stroke-width="3"/>
+        <polygon points="528,148 542,148 535,160" fill="#B8860B"/>
+        <rect x="390" y="160" width="290" height="64" rx="12" fill="#FFFDF8" stroke="#B8860B" stroke-width="2"/>
+        <text x="535" y="186" text-anchor="middle" font-size="15" fill="#2D2A26" font-weight="bold">玩家轉向支援 DDR4 的 AM4 老平台</text>
+        <text x="535" y="210" text-anchor="middle" font-size="14" fill="#6B6258">二手 5800X3D 被黃牛炒到不合理高價</text>
+        <line x1="535" y1="224" x2="535" y2="244" stroke="#B8860B" stroke-width="3"/>
+        <polygon points="528,242 542,242 535,254" fill="#B8860B"/>
+        <rect x="390" y="254" width="290" height="64" rx="12" fill="#F7E8E0" stroke="#B5482E" stroke-width="2.5"/>
+        <text x="535" y="280" text-anchor="middle" font-size="15" fill="#B5482E" font-weight="bold">AMD 重啟產線：免換板、免換記憶體</text>
+        <text x="535" y="304" text-anchor="middle" font-size="14" fill="#8A4530">$349 讓老電腦遊戲表現再戰三年</text>
+      </g>
+    </svg>
+    <div class="chart-cap">圖 4｜供應鏈扭曲催生的「畸形市場」與 AMD 的精準收割</div>
+  </div>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">7</span>
-                            <span class="vocab-word">absorb</span>
-                            <span class="vocab-kk">[əbˈsɔrb]</span>
-                            <span class="vocab-pos">v.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>吸收</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">absorption (n. 吸收)；absorbent (adj. 有吸收力的)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">be absorbed in... (全神貫注於……)；absorb moisture (吸收水分)</div></div>
-                        <div class="example-block">
-                            Because they absorb very little water, they stay lighter.<br>（因為它們吸收的水分極少，所以能保持輕盈。）<br><br>
-                            Plants absorb nutrients and water from the soil through their roots.<br>（植物透過根部從土壤中吸收養分和水分。）
-                        </div>
-                    </div>
+  <p>從純技術價值看 349 美元有些昂貴，但算上<strong>不用換 DDR5 記憶體、不用換 AM4 主機板</strong>的綜合成本，這個看似「智商稅」的產品反而成了極具性價比的怪異解法。AMD 順手清掉老製程晶圓庫存、從黃牛手裡搶回利潤，還刷了一波照顧老用戶的品牌聲譽——對市場情緒與供應鏈週期的精準操弄，展現極高的商業手腕。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">8</span>
-                            <span class="vocab-word">traditional</span>
-                            <span class="vocab-kk">[trəˈdɪʃənəl]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>傳統的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">tradition (n. 傳統)；traditionally (adv. 傳統上)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">traditional culture (傳統文化)；traditional method (傳統方法)</div></div>
-                        <div class="example-block">
-                            They stay lighter than traditional materials during swimming.<br>（在游泳時，它們比傳統材料更輕盈。）<br><br>
-                            The village is famous for its traditional festivals and crafts.<br>（這個村莊以其傳統節日和手工藝而聞名。）
-                        </div>
-                    </div>
+<!-- 11 -->
+<section class="amd">
+  <h2><span class="num">11</span>XPO Ultra Low Latency：一鍵白嫖 4% 幀數</h2>
+  <p>為鞏固 X86 陣營的效能統治力，AMD 還聯合各大記憶體廠推出 <span class="hl-amd">XPO Ultra Low Latency</span> 記憶體技術模式。它不是底層架構顛覆，而是針對新一代高頻記憶體模組，在主機板 BIOS 層提供更激進的時序微調機制——壓榨延遲的最後幾奈秒，宣稱特定遊戲環境下平均帶來 <strong>4% 純幀數提升</strong>。玩家不必手動摸索電壓與時序，一鍵即得，是 AMD 固守 X86 大本營的又一塊防禦磚。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">9</span>
-                            <span class="vocab-word">treatment</span>
-                            <span class="vocab-kk">[ˈtritmənt]</span>
-                            <span class="vocab-pos">n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>處理；治療；對待</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">treat (v. 處理/治療/對待)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">surface treatment (表面處理)；medical treatment (醫療)</div></div>
-                        <div class="example-block">
-                            These fabrics include special finishes and treatments.<br>（這些面料包含特殊的飾面和處理技術。）<br><br>
-                            The water undergoes a series of chemical treatments to make it safe to drink.<br>（水經過一系列化學處理以確保飲用安全。）
-                        </div>
-                    </div>
+<!-- 12 -->
+<section class="amd">
+  <h2><span class="num">12</span>顯卡端的無奈：RX 9070 GRE 縮水不縮價</h2>
+  <p>AMD 這場發布會也並非步步皆美。顯卡端面向全球發售的 <span class="hl-amd">Radeon RX 9070 GRE</span>，完美詮釋了供應鏈壓力下的妥協：原為特定區域市場定制的產品，如今重新包裝推向全球。</p>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">10</span>
-                            <span class="vocab-word">bacteria</span>
-                            <span class="vocab-kk">[bækˈtɪrɪə]</span>
-                            <span class="vocab-pos">n. (pl.)</span>
-                        </div>
-                        <p><strong>中文定義：</strong>細菌</p>
-                        <div class="tag-row"><div class="tag tag-accent">注意</div><div class="tag-content">單數形式為 bacterium。</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">harmful bacteria (有害細菌)；bacteria growth (細菌滋生)</div></div>
-                        <div class="example-block">
-                            This helps reduce bacteria growth and bad smells.<br>（這有助於減少細菌滋生和異味。）<br><br>
-                            It is important to wash your hands to prevent the spread of bacteria.<br>（洗手對於防止細菌傳播非常重要。）
-                        </div>
-                    </div>
+  <div class="chart">
+    <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" font-family="BIZ UDPGothic, Microsoft JhengHei, sans-serif">
+      <text x="360" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#2D2A26">Radeon RX 9070 GRE 規格與定價矛盾</text>
+      <!-- spec card -->
+      <rect x="40" y="60" width="310" height="290" rx="16" fill="#F7E8E0" stroke="#B5482E" stroke-width="3"/>
+      <text x="195" y="98" text-anchor="middle" font-size="19" font-weight="bold" fill="#B5482E">RX 9070 GRE 規格</text>
+      <g font-size="16" fill="#2D2A26">
+        <text x="70" y="138">・48 個計算單元（CU）</text>
+        <text x="70" y="174">・Boost 最高 2.79 GHz</text>
+        <text x="70" y="210">・12GB GDDR6（128-bit）</text>
+        <text x="70" y="246">・整卡功耗 220W</text>
+        <text x="70" y="282">・流處理器、顯存位寬皆遭閹割</text>
+      </g>
+      <rect x="70" y="300" width="250" height="36" rx="10" fill="#FFFDF8" stroke="#B5482E" stroke-width="2"/>
+      <text x="195" y="325" text-anchor="middle" font-size="16" font-weight="bold" fill="#B5482E">定價 $549</text>
+      <!-- comparison -->
+      <rect x="390" y="60" width="290" height="130" rx="16" fill="#FFFDF8" stroke="#E3C2B2" stroke-width="2.5"/>
+      <text x="535" y="96" text-anchor="middle" font-size="17" font-weight="bold" fill="#2D2A26">標準版 RX 9070</text>
+      <text x="535" y="130" text-anchor="middle" font-size="15" fill="#6B6258">規格更完整・更早上市</text>
+      <text x="535" y="162" text-anchor="middle" font-size="16" font-weight="bold" fill="#B5482E">初始起售價同為 $549</text>
+      <rect x="390" y="210" width="290" height="140" rx="16" fill="#F5ECD7" stroke="#B8860B" stroke-width="2.5"/>
+      <text x="535" y="246" text-anchor="middle" font-size="17" font-weight="bold" fill="#8A6508">「縮水不縮價」的成因</text>
+      <text x="535" y="280" text-anchor="middle" font-size="14" fill="#6B6258">台積電高階產能＋顯存成本</text>
+      <text x="535" y="306" text-anchor="middle" font-size="14" fill="#6B6258">被推到歷史新高，毛利率底線</text>
+      <text x="535" y="332" text-anchor="middle" font-size="14" fill="#6B6258">不允許 AMD 打價格戰</text>
+    </svg>
+    <div class="chart-cap">圖 5｜2026 半導體供應鏈寒冬的縮影</div>
+  </div>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">11</span>
-                            <span class="vocab-word">mildew-resistant</span>
-                            <span class="vocab-kk">[ˈmɪlˌdju rɪˈzɪstənt]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>防霉的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">mildew (n. 霉)；resist (v. 抵抗)；resistance (n. 抵抗力)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">corrosion-resistant (耐腐蝕的)；heat-resistant (耐熱的)</div></div>
-                        <div class="example-block">
-                            They can also be made with antibacterial and mildew-resistant properties.<br>（它們也可以具備抗菌和防霉的特性。）<br><br>
-                            This shower curtain is made of mildew-resistant material.<br>（這款浴簾是由防霉材料製成的。）
-                        </div>
-                    </div>
+  <p>官方簡報甚至滑稽地把這張 2026 年新卡拿去跟古董級的 GTX 560 Ti 跨時代對比，宣稱效能提升 22%——在社群媒體賺足眼球，卻側面掩蓋了同代正面戰場上，AMD 的架構效能與光追表現仍無法真正壓制 NVIDIA 的尷尬事實。549 美元不是 AMD 不想便宜，而是在高昂物料成本、緊缺產能配額與毛利率底線之間，最無奈的選擇。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">12</span>
-                            <span class="vocab-word">regulate</span>
-                            <span class="vocab-kk">[ˈrɛɡjəˌlet]</span>
-                            <span class="vocab-pos">v.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>調節；控管</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">regulation (n. 規定/調節)；regulator (n. 調節器)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">regulate temperature (調節溫度)；strictly regulate (嚴格控管)</div></div>
-                        <div class="example-block">
-                            These blends help regulate skin temperature in hot weather.<br>（這些混紡布料在炎熱天氣中有助於調節皮膚溫度。）<br><br>
-                            The government needs to regulate the use of new technologies to protect privacy.<br>（政府需要規範新科技的使用以保護隱私。）
-                        </div>
-                    </div>
+<!-- 13 -->
+<section class="macro">
+  <h2><span class="num">13</span>深層解讀：NVIDIA 為何非做 CPU 不可</h2>
+  <p>把視線拉高到商業週期維度，這是個人電腦產業<strong>過去 30 年來最深刻的一次路線決裂</strong>。NVIDIA 在 AI 伺服器市場賺得盆滿缽滿，但對黃仁勳而言，純 B 端算力供應商不是終極形態——只要 PC 底層控制權還握在 Intel 與 AMD 的 X86 手裡，NVIDIA 顯卡在消費端永遠只是「配件」。</p>
+  <p>隨著大模型本地化、終端智慧化的趨勢明朗，<span class="hl-gold">誰能定義下一代 AI PC 的底層架構，誰就能吃下未來十年的最大紅利</span>。RTX Spark 本質上是在 Windows 生態裡複製 Apple M 系列的成功路徑：高度整合的 SoC、恐怖的統一記憶體頻寬，徹底打破「CPU、記憶體、顯卡各司其職」的硬體藩籬。</p>
+  <p>這對傳統供應鏈是毀滅性衝擊：一旦高度整合方案成為主流，華碩、微星、聯想等 OEM 廠商的角色將退化為純粹的組裝廠與散熱外殼製造者，核心利潤與定價權被 NVIDIA 壟斷。發布會後各大廠表面積極站台，背地裡都在重新評估與 AMD、Intel 的結盟關係——沒人想在這場架構遷徙中徹底淪為附庸。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">13</span>
-                            <span class="vocab-word">elastic</span>
-                            <span class="vocab-kk">[ɪˈlæstɪk]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>有彈性的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">elasticity (n. 彈性)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">elastic band (鬆緊帶)；highly elastic (高度彈性的)</div></div>
-                        <div class="example-block">
-                            Adding elastic fibers like spandex keeps the swimsuit stretchy.<br>（加入氨綸等彈性纖維能保持泳衣的彈性。）<br><br>
-                            The fabric is soft and elastic, making it very comfortable to wear.<br>（這種布料柔軟且有彈性，穿起來非常舒適。）
-                        </div>
-                    </div>
+<!-- 14 -->
+<section class="macro">
+  <h2><span class="num">14</span>微軟的微妙角色：被焦慮驅動的盟友</h2>
+  <p>過去多年 Windows on ARM 一直像扶不起的阿斗：缺殺手級應用，更缺硬體大廠的底層配合。但 2026 年微軟對 AI PC 與 Copilot 生態的焦慮達到頂峰——面對蘋果在端側 AI 的步步進逼，微軟急需一個硬體夠強悍、端側算力夠恐怖的盟友。NVIDIA 有算力、有開發者生態、有遊戲與生產力領域的號召力，雙方一拍即合。</p>
+  <p>微軟這次甚至動用底層資源，強行推動 Epic、Riot 等遊戲巨頭重寫反作弊核心——這種執行力以前不可想像，也說明在軟體巨頭眼中，<strong>X86 在能效比與端側 AI 算力上的擠牙膏式迭代，已經跟不上軟體進化的腳步</strong>。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">14</span>
-                            <span class="vocab-word">regenerated</span>
-                            <span class="vocab-kk">[rɪˈdʒɛnəˌretɪd]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>再生的；重建的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">regenerate (v. 再生)；regeneration (n. 再生)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">regenerated fiber (再生纖維)；regenerated energy (再生能源)</div></div>
-                        <div class="example-block">
-                            Many high-tech fabrics use recycled polyester or other regenerated fibers.<br>（許多高科技面料使用回收聚酯或其他再生纖維。）<br><br>
-                            The local government has launched a plan to create a regenerated urban area.<br>（當地政府啟動了一項建立再生城市區域的計畫。）
-                        </div>
-                    </div>
+<!-- 15 -->
+<section class="macro">
+  <h2><span class="num">15</span>X86 護城河：AMD 抓住的兩個心理痛點</h2>
+  <p>AMD 的頑強生命力，恰恰證明 X86 帝國數十年積累的生態護城河有多寬。它的策略很清晰：你在全新 ARM 生態搞顛覆，我就在最成熟的 X86 遊戲與生產力市場，把<strong>性價比與平台穩定性</strong>打到極致。這招陽謀抓住消費者兩個核心心理：<span class="hl-amd">遷移成本</span>與<span class="hl-amd">資產保值</span>。</p>
+  <p>RTX Spark 再好，買它就得換掉全套整機、適應一個尚未經大規模驗證的原生 ARM 軟體環境；選 AMD，只要 329 美元換一顆 CPU，不換主機板、不重裝系統、不擔心相容性，就能獲得頂級遊戲效能。但 AMD 在顯卡端的妥協也暴露最大軟肋：<strong>在先進製程與高階封裝產能的爭奪上，非壟斷者正承受越來越高的溢價懲罰</strong>。</p>
+</section>
 
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">15</span>
-                            <span class="vocab-word">discarded</span>
-                            <span class="vocab-kk">[dɪˈskɑrdɪd]</span>
-                            <span class="vocab-pos">adj.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>被丟棄的；廢棄的</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">discard (v. 丟棄)</div></div>
-                        <div class="example-block">
-                            Brands now create swimwear from discarded fishing nets.<br>（品牌現在利用廢棄的漁網製造泳裝。）<br><br>
-                            Old clothes should not be discarded; they can be donated to charity.<br>（舊衣服不應被丟棄，可以捐贈給慈善機構。）
-                        </div>
-                    </div>
-
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">16</span>
-                            <span class="vocab-word">pollution</span>
-                            <span class="vocab-kk">[pəˈluʃən]</span>
-                            <span class="vocab-pos">n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>汙染</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">pollute (v. 汙染)；pollutant (n. 汙染物)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">water pollution (水汙染)；reduce pollution (減少汙染)</div></div>
-                        <div class="example-block">
-                            This helps reduce waste and pollution in the oceans.<br>（這有助於減少海洋中的廢棄物和汙染。）<br><br>
-                            Air pollution in big cities is a serious health concern for residents.<br>（大城市的空氣汙染對居民來說是嚴重的健康問題。）
-                        </div>
-                    </div>
-
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">17</span>
-                            <span class="vocab-word">chlorine</span>
-                            <span class="vocab-kk">[ˈklorin]</span>
-                            <span class="vocab-pos">n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>氯（常用於泳池消毒）</p>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">chlorine-resistant (抗氯的)；smell of chlorine (氯味)</div></div>
-                        <div class="example-block">
-                            These new fabrics also resist chlorine, salt, and sunlight.<br>（這些新面料還能抵抗氯、鹽分和陽光。）<br><br>
-                            Too much chlorine in a swimming pool can irritate your eyes and skin.<br>（游泳池中過多的氯會刺激你的眼睛和皮膚。）
-                        </div>
-                    </div>
-
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">18</span>
-                            <span class="vocab-word">mainstream</span>
-                            <span class="vocab-kk">[ˈmenˌstrim]</span>
-                            <span class="vocab-pos">adj. / n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>主流的；主流</p>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">mainstream media (主流媒體)；enter the mainstream (進入主流)</div></div>
-                        <div class="example-block">
-                            They have become the mainstream choice for modern swimwear.<br>（它們已成為現代泳裝的主流選擇。）<br><br>
-                            Electric cars are gradually becoming part of mainstream transportation.<br>（電動車正逐漸成為主流交通工具的一部分。）
-                        </div>
-                    </div>
-
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">19</span>
-                            <span class="vocab-word">performance</span>
-                            <span class="vocab-kk">[pərˈfɔrməns]</span>
-                            <span class="vocab-pos">n.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>性能；表現；演出</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">perform (v. 執行/表現)；performer (n. 演出者)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">high performance (高性能)；performance appraisal (績效評估)</div></div>
-                        <div class="example-block">
-                            Composite fabrics are a choice for modern performance swimwear.<br>（複合面料是現代高性能泳裝的選擇。）<br><br>
-                            The athlete gave a remarkable performance during the championship.<br>（這位運動員在錦標賽中表現出色。）
-                        </div>
-                    </div>
-
-                    <div class="vocab-item">
-                        <div class="vocab-header">
-                            <span class="vocab-num">20</span>
-                            <span class="vocab-word">environmentally</span>
-                            <span class="vocab-kk">[ɪnˌvaɪrənˈmɛntəlɪ]</span>
-                            <span class="vocab-pos">adv.</span>
-                        </div>
-                        <p><strong>中文定義：</strong>環保地；有關環境地</p>
-                        <div class="tag-row"><div class="tag tag-deriv">衍生詞</div><div class="tag-content">environment (n. 環境)；environmental (adj. 環境的)</div></div>
-                        <div class="tag-row"><div class="tag tag-idiom">慣用語</div><div class="tag-content">environmentally friendly (環保的)</div></div>
-                        <div class="example-block">
-                            Regenerated fibers make them more environmentally friendly.<br>（再生纖維使得它們更加環保。）<br><br>
-                            We should choose products that are environmentally sustainable.<br>（我們應該選擇環境永續的產品。）
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== 區塊四：文法解析 ========== -->
-        <section>
-            <h2>【區塊四】文法解析</h2>
-            <div class="section-card block4-card">
-                <div class="section-head block4-head">文法解析 (Grammar Analysis)</div>
-                <div class="section-body block4-body">
-
-                    <div class="grammar-point">
-                        <h3>1. 被動語態 (Passive Voice)：be + p.p.</h3>
-                        <div class="quote">These fabrics are designed to be lightweight and to repel water...</div>
-                        <p><strong>句型：</strong>S + be + p.p. (+ by + O) <em>(斜體粗體)</em></p>
-                        <p><strong>核心說明：</strong>被動語態用於強調「動作的承受者」，當執行者不明確、不重要或為了語氣連貫時使用。</p>
-                        <p><strong>使用規則：</strong></p>
-                        <ul>
-                            <li>現在式被動：am/is/are + p.p.</li>
-                            <li>助動詞被動：can/must/should + be + p.p.</li>
-                            <li>表示「目的」時常接 to V：be designed to + V。</li>
-                        </ul>
-                        <p><strong>主題例句：</strong></p>
-                        <ul>
-                            <li>The swimsuit is made of recycled plastic bottles. (這件泳衣是由回收塑膠瓶製成的。)</li>
-                            <li>These fabrics can be used for professional racing. (這些面料可用於專業競賽。)</li>
-                        </ul>
-                        <p><strong>學習提醒：</strong>不可及物動詞（如 happen, appear）沒有被動語態。</p>
-                        <p><strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong></p>
-                        <p>✗ The new fabric is design to repel water.</p>
-                        <p>✓ The new fabric is <strong>designed</strong> to repel water.</p>
-                        <p>說明：被動語態必須使用過去分詞 (p.p.)。</p>
-                        <p>1. The ocean ________ (pollute) by discarded fishing nets every year.<br>答案：is polluted</p>
-                    </div>
-
-                    <div class="grammar-point">
-                        <h3>2. 關係代名詞非限定用法 (Non-restrictive Which)</h3>
-                        <div class="quote">...which helps reduce bacteria growth and bad smells.</div>
-                        <p><strong>句型：</strong>..., which + V ... <em>(斜體粗體)</em></p>
-                        <p><strong>核心說明：</strong>逗號後的 <em>which</em> 可以用來修飾前面的「整件事」或「整個子句」，而不僅僅是一個單字。</p>
-                        <p><strong>使用規則：</strong></p>
-                        <ul>
-                            <li>先行詞為整個子句時，動詞須用單數。</li>
-                            <li>這種用法具有補充說明的效果，常譯為「這件事使得……」。</li>
-                        </ul>
-                        <p><strong>主題例句：</strong></p>
-                        <ul>
-                            <li>The fabric dries quickly, which is important for swimmers. (布料乾得很快，這對游泳者來說很重要。)</li>
-                            <li>Regenerated fibers are used, which reduces waste. (使用再生纖維，這減少了浪費。)</li>
-                        </ul>
-                        <p><strong>學習提醒：</strong>在這種非限定用法中，不可使用 that 替代 which。</p>
-                        <p><strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong></p>
-                        <p>✗ He always late for practice, that annoys the coach.</p>
-                        <p>✓ He always late for practice, <strong>which</strong> annoys the coach.</p>
-                        <p>說明：修飾前句整件事的關係代名詞必須用 which，前面要加逗號。</p>
-                        <p>1. The new swimsuit resists salt and sun, ________ makes it last longer.<br>答案：which</p>
-                    </div>
-
-                    <div class="grammar-point">
-                        <h3>3. 動名詞片語當主詞 (Gerund as Subject)</h3>
-                        <div class="quote">At the same time, adding elastic fibers like spandex keeps the swimsuit stretchy...</div>
-                        <p><strong>句型：</strong>V-ing (+ O) + 單數V ... <em>(斜體粗體)</em></p>
-                        <p><strong>核心說明：</strong>當我們想把一個「動作」當作整句話的主詞時，會將動詞改為 V-ing 形式（動名詞）。</p>
-                        <p><strong>使用規則：</strong></p>
-                        <ul>
-                            <li>動名詞片語當主詞，視為「單數」。</li>
-                            <li>常用於描述一種習慣、事實或通則。</li>
-                        </ul>
-                        <p><strong>主題例句：</strong></p>
-                        <ul>
-                            <li>Choosing eco-friendly fabrics helps protect the ocean. (選擇環保面料有助於保護海洋。)</li>
-                            <li>Swimming in the ocean requires high-performance gear. (在海中游泳需要高性能裝備。)</li>
-                        </ul>
-                        <p><strong>學習提醒：</strong>注意動詞時態，若是事實則常用現在式並加 -s。</p>
-                        <p><strong>⚠️ 常見錯誤 / 🎯 精選試題：</strong></p>
-                        <p>✗ Using recycled materials help the environment.</p>
-                        <p>✓ Using recycled materials <strong>helps</strong> the environment.</p>
-                        <p>說明：動名詞主詞視為單數，動詞需加 s。</p>
-                        <p>1. ________ (Wear) high-tech swimsuits reduces water resistance.<br>答案：Wearing</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== 底部折疊區塊 ========== -->
-        <section>
-            <details>
-                <summary><span>常見字首整理 (50 個)</span></summary>
-                <div class="detail-content">
-                    <p>ab- 離開、相反 — abnormal（異常的）</p>
-                    <p>ad- 向、加 — advance（前進）</p>
-                    <p>ambi- 雙方、兩面 — ambiguous（模稜兩可的）</p>
-                    <p>anti- 反對、抗 — antibiotic（抗生素）</p>
-                    <p>arch- 主要、首要 — archenemy（死敵）</p>
-                    <p>auto- 自動、自我 — autograph（親筆簽名）</p>
-                    <p>bene- 好的、善 — benefit（好處）</p>
-                    <p>bi- 二、雙 — bilingual（雙語的）</p>
-                    <p>circum- 環繞、周圍 — circumstance（情況）</p>
-                    <p>co-/con-/com- 一起、共同 — cooperate（合作）</p>
-                    <p>contra- 相反、對抗 — contradict（反駁）</p>
-                    <p>de- 去除、下降 — decode（解碼）</p>
-                    <p>dia- 穿過、透過 — dialogue（對話）</p>
-                    <p>dis- 否定、分離 — disagree（不同意）</p>
-                    <p>en-/em- 使成為 — enable（使能夠）</p>
-                    <p>epi- 在上、在外 — epidemic（流行病）</p>
-                    <p>ex- 外、前任 — export（出口）；ex-president（前總統）</p>
-                    <p>extra- 額外、外部 — extraordinary（非凡的）</p>
-                    <p>hetero- 不同 — heterogeneous（異質的）</p>
-                    <p>homo- 相同 — homogeneous（同質的）</p>
-                    <p>hyper- 過度、超 — hyperactive（過動的）</p>
-                    <p>hypo- 低於、不足 — hypodermic（皮下的）</p>
-                    <p>in-/im- 否定、進入 — invisible（看不見的）；import（輸入）</p>
-                    <p>inter- 在…之間 — international（國際的）</p>
-                    <p>iso- 相等、相同 — isolate（隔離）</p>
-                    <p>mal- 壞、不良 — malfunction（故障）</p>
-                    <p>micro- 微小 — microscope（顯微鏡）</p>
-                    <p>mis- 錯誤 — misunderstand（誤解）</p>
-                    <p>mono- 單一 — monologue（獨白）</p>
-                    <p>multi- 多 — multicultural（多元文化的）</p>
-                    <p>neo- 新的 — neonatal（新生的）</p>
-                    <p>non- 非、沒有 — nonsense（無意義）</p>
-                    <p>pan- 全部 — pandemic（大流行病）</p>
-                    <p>peri- 周圍 — perimeter（周長）</p>
-                    <p>poly- 多 — polygon（多邊形）</p>
-                    <p>post- 之後 — postwar（戰後的）</p>
-                    <p>pre- 之前 — preview（預覽）</p>
-                    <p>pro- 向前、支持 — progress（進步）；pro-democracy（支持民主的）</p>
-                    <p>pseudo- 假的 — pseudonym（筆名）</p>
-                    <p>re- 再、回 — review（複習）</p>
-                    <p>semi- 一半、部分 — semicircle（半圓）</p>
-                    <p>sub- 在下、次級 — subway（地鐵）</p>
-                    <p>super- 超越、在上 — superstar（超級明星）</p>
-                    <p>syn-/sym- 一起、共同 — synchronize（同步）</p>
-                    <p>tele- 遠距 — telephone（電話）</p>
-                    <p>trans- 穿越、轉變 — transport（運輸）</p>
-                    <p>tri- 三 — triangle（三角形）</p>
-                    <p>un- 否定、不 — unhappy（不快樂的）</p>
-                    <p>vice- 副、代替 — vice-president（副總統）</p>
-                </div>
-            </details>
-
-            <details>
-                <summary><span>常見英文字尾整理 (約 30 個)</span></summary>
-                <div class="detail-content">
-                    <p><strong>名詞字尾</strong></p>
-                    <p>-tion/-sion/-ation 動作、過程或結果 — education（教育）、decision（決定）</p>
-                    <p>-ment 行為或結果 — agreement（協議）、development（發展）</p>
-                    <p>-ness 狀態或性質 — happiness（快樂）、darkness（黑暗）</p>
-                    <p>-ity/-ty 抽象概念或狀態 — ability（能力）、cruelty（殘酷）</p>
-                    <p>-er/-or 執行某動作的人或物 — teacher（老師）、actor（演員）</p>
-                    <p>-ist 信仰或專業的人 — artist（藝術家）、scientist（科學家）</p>
-                    <p>-ship 身分或關係 — friendship（友誼）、leadership（領導）</p>
-                    <p>-hood 階段或狀態 — childhood（童年）、neighborhood（鄰里）</p>
-                    <p><strong>形容詞字尾</strong></p>
-                    <p>-able/-ible 能夠…的 — readable（可讀的）、credible（可信的）</p>
-                    <p>-ous 充滿…的 — dangerous（危險的）、famous（著名的）</p>
-                    <p>-ful 具有…的 — hopeful（充滿希望的）、beautiful（美麗的）</p>
-                    <p>-less 缺乏…的 — hopeless（絕望的）、powerless（無力的）</p>
-                    <p>-al/-ic 與…相關的 — natural（自然的）、poetic（詩意的）</p>
-                    <p><strong>動詞字尾</strong></p>
-                    <p>-ize/-ise 使成為… — realize（實現）、industrialize（工業化）</p>
-                    <p>-ify 使成為… — beautify（美化）、clarify（澄清）</p>
-                    <p>-ate 形成動詞 — dominate（支配）、activate（啟動）</p>
-                    <p>-en 使變成… — strengthen（加強）、soften（使柔軟）</p>
-                    <p><strong>副詞字尾</strong></p>
-                    <p>-ly 形容詞轉副詞 — quickly（快速地）、carefully（仔細地）</p>
-                    <p>-ward(s) 表示方向 — upwards（向上）、homeward（回家）</p>
-                    <p>-wise 表示方式或角度 — clockwise（順時針方向）</p>
-                </div>
-            </details>
-
-            <details>
-                <summary><span>30 個常用單字與衍生詞</span></summary>
-                <div class="detail-content">
-                    <ol>
-                        <li>innovative [ˈɪnəˌvetɪv] (adj. 創新的) — innovation (n. 創新)</li>
-                        <li>composite [kəmˈpɑzɪt] (adj. 複合的) — composition (n. 組成)</li>
-                        <li>functional [ˈfʌŋkʃənəl] (adj. 功能性的) — function (v. 運作)</li>
-                        <li>blend [blɛnd] (v. 混合) — blender (n. 攪拌機)</li>
-                        <li>repel [rɪˈpɛl] (v. 撥開) — repellent (n. 驅除劑)</li>
-                        <li>drag [dræɡ] (n. 阻力) — drag on (拖延)</li>
-                        <li>absorb [əbˈsɔrb] (v. 吸收) — absorption (n. 吸收)</li>
-                        <li>traditional [trəˈdɪʃənəl] (adj. 傳統的) — tradition (n. 傳統)</li>
-                        <li>treatment [ˈtritmənt] (n. 處理) — treatable (adj. 可處理的)</li>
-                        <li>bacteria [bækˈtɪrɪə] (n. 細菌) — bacterial (adj. 細菌的)</li>
-                        <li>mildew [ˈmɪlˌdju] (n. 霉) — mildewy (adj. 發霉的)</li>
-                        <li>resistant [rɪˈzɪstənt] (adj. 有抵抗力的) — resistance (n. 抵抗)</li>
-                        <li>regulate [ˈrɛɡjəˌlet] (v. 調節) — regulation (n. 規定)</li>
-                        <li>elastic [ɪˈlæstɪk] (adj. 有彈性的) — elasticity (n. 彈性)</li>
-                        <li>regenerated [rɪˈdʒɛnəˌretɪd] (adj. 再生的) — regenerate (v. 重建)</li>
-                        <li>discarded [dɪˈskɑrdɪd] (adj. 被丟棄的) — discard (v. 拋棄)</li>
-                        <li>pollution [pəˈluʃən] (n. 汙染) — pollute (v. 汙染)</li>
-                        <li>chlorine [ˈklorin] (n. 氯) — chlorination (n. 氯化)</li>
-                        <li>mainstream [ˈmenˌstrim] (adj. 主流的) — mainstream media (主流媒體)</li>
-                        <li>performance [pərˈfɔrməns] (n. 性能) — perform (v. 表現)</li>
-                        <li>advanced [ədˈvænst] (adj. 先進的) — advancement (n. 進步)</li>
-                        <li>stretchy [ˈstrɛtʃɪ] (adj. 有彈性的) — stretch (v. 伸展)</li>
-                        <li>sustainable [səˈstenəbəl] (adj. 永續的) — sustainability (n. 永續性)</li>
-                        <li>environmentally [ɪnˌvaɪrənˈmɛntəlɪ] (adv. 環保地) — environmental (adj.)</li>
-                        <li>smoothly [ˈsmuðlɪ] (adv. 流暢地) — smooth (adj. 光滑的)</li>
-                        <li>antibacterial [ˌæntɪbækˈtɪrɪəl] (adj. 抗菌的) — antibiotic (n. 抗生素)</li>
-                        <li>plastic [ˈplæstɪk] (n. 塑膠) — plasticity (n. 可塑性)</li>
-                        <li>pollution [pəˈluʃən] (n. 汙染) — pollutant (n. 汙染物)</li>
-                        <li>mainstream [ˈmenˌstrim] (n. 主流) — downstream (adv. 下游)</li>
-                        <li>smell [smɛl] (n. 異味) — smelly (adj. 臭的)</li>
-                    </ol>
-                    <p><strong>文章相關常用片語：</strong></p>
-                    <ul>
-                        <li>replace ... with ... (用……取代……)</li>
-                        <li>be designed to (被設計用來……)</li>
-                        <li>environmentally friendly (環保的)</li>
-                        <li>quick-drying (快乾的)</li>
-                        <li>mainstream choice (主流選擇)</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary><span>練文筆食材 (Writing Ingredients)</span></summary>
-                <div class="detail-content">
-                    <p>① <strong>be designed to + V</strong>（被設計用來……）<br>→ 適用：說明產品功能或政策目的時<br>例：The new app is designed to help students manage their time.</p>
-                    <p>② <strong>not only ... but also ...</strong>（不僅……而且……）<br>→ 適用：強調多重優點時<br>例：The project not only reduces costs but also improves quality.</p>
-                    <p>③ <strong>..., which + V ...</strong>（非限定修飾，修飾前句整件事）<br>→ 適用：補充說明動作帶來的結果<br>例：He finished the task ahead of schedule, which impressed his boss.</p>
-                    <p>④ <strong>Because of + N, S + V ...</strong>（由於……，……）<br>→ 適用：開門見山點出原因<br>例：Because of the high price, few people can afford this luxury car.</p>
-                    <p>⑤ <strong>In addition, ...</strong>（此外……）<br>→ 適用：增加論點或資訊時<br>例：In addition, the system provides real-time data analysis.</p>
-                    <p>⑥ <strong>At the same time, ...</strong>（同時……）<br>→ 適用：平衡不同觀點或補充並行事實時<br>例：At the same time, we must consider the potential risks.</p>
-                    <p>⑦ <strong>As a result, ...</strong>（因此……）<br>→ 適用：引導出最後的結論或結果<br>例：As a result, the company decided to expand its business abroad.</p>
-                    <p>⑧ <strong>adding ... keeps ...</strong>（動名詞主詞 + 保持……）<br>→ 適用：說明採取某動作能維持某種狀態<br>例：Adding more features keeps the software competitive.</p>
-                    <p>⑨ <strong>help + O + (to) V</strong>（幫助某人做某事）<br>→ 適用：描述解決方案的效果<br>例：The exercise plan helps her maintain a healthy weight.</p>
-                    <p>⑩ <strong>stay + adj. than ...</strong>（比……更保持……狀態）<br>→ 適用：進行性能對比時<br>例：The new battery stays charged longer than the old one.</p>
-                </div>
-            </details>
-        </section>
-        <nav class="promo-band bottom" aria-label="課程與聯絡連結">
-            <p class="promo-title">七月開課與聯絡方式</p>
-            <div class="promo-links">
-                <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                    <span class="promo-kicker">七月課程</span>
-                    <span class="promo-name">錯中學 ECHO 計劃</span>
-                    <span class="promo-copy">用錯題回音式複習，整理常見弱點，讓學生從錯誤中建立英文判斷力。</span>
-                </a>
-                <a class="promo-link" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                    <span class="promo-kicker">七月課程</span>
-                    <span class="promo-name">學生分析</span>
-                    <span class="promo-copy">透過學習資料與表現整理，協助學生看見問題、安排下一步讀書策略。</span>
-                </a>
-                <a class="promo-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                    <span class="promo-kicker">Line 聯絡</span>
-                    <span class="promo-name">linwayet</span>
-                    <span class="promo-copy">課程詢問、學習規劃與上課資訊，可用 Line 帳號 linwayet 聯絡。</span>
-                </a>
-            </div>
-        </nav>
+<!-- 16 -->
+<section class="gold">
+  <h2><span class="num">16</span>未來格局:深度割裂的「雙軌制」時代</h2>
+  <div class="vs">
+    <div class="col cnv">
+      <h3>🟢 軌道一：NVIDIA ARM 智慧終端</h3>
+      ・代表：RTX Spark 高度整合平台<br>
+      ・主打：全天候續航＋本地 AI 智慧體＋輕薄高效能兼得<br>
+      ・未來 2–3 年隨 Adobe 與主流電競原生 ARM 化完成，將蠶食 X86 輕薄本與中高端商務本市場<br>
+      ・首批擁躉：重度續航需求＋本地 AI 創作的內容創作者
     </div>
+    <div class="col camd">
+      <h3>🔴 軌道二：AMD X86 硬核大本營</h3>
+      ・代表：AM5／AM4 開放平台<br>
+      ・主打：個性化定制＋傳統相容性＋極限效能釋放<br>
+      ・3A 大作、重度工業渲染、歷史遺留專業軟體的絕對相容性不可替代<br>
+      ・AM5 延壽至 2029 ＝ 用開放性、可玩性與長線性價比對抗閉環生態
+    </div>
+  </div>
+  <p>未來的 PC 市場將不可避免地走向深度割裂的雙軌制。AMD 延長平台壽命，實際上是在為自己爭取時間，把 X86 的開放性做成對抗 NVIDIA 閉環生態的最強防線。</p>
+</section>
+
+<!-- 17 -->
+<section class="gold">
+  <h2><span class="num">17</span>結語：告別沉悶，迎向未知的黃金十年</h2>
+  <p>這場台北電腦展的交火，表面是兩家晶片巨頭在產品線上的你來我往，實質是「單一架構統治、換代即擠牙膏」沉悶時代的終結。硬體競爭不再只圍繞核心數與主頻打轉，而是演變成<strong>架構效能、生態號召力、供應鏈掌控力、端側智慧化水平</strong>的綜合立體戰爭。</p>
+  <p>在這場兩強對峙的棋局裡——<span class="hl-nv">NVIDIA 賭的是一個由 ARM 與 AI 全面定義的未來</span>，<span class="hl-amd">AMD 則用最務實的戰術固守 X86 陣營的現在</span>。這兩股力量的對撞，正將個人電腦產業推向下一個充滿未知與變數的黃金十年。</p>
+
+  <details>
+    <summary>📌 全文重點速覽（點擊展開）</summary>
+    <div class="inner">
+      <p><strong>NVIDIA：</strong>RTX Spark（20 ARM 核心＋6,144 CUDA＋128GB 統一記憶體＋1 PFLOP）正式進軍消費級 PC；反作弊與 Adobe 等生態障礙掃清；DLSS 4.5 開放給 RTX 20–50 全系；Vera Rubin NVL72 量產，吞吐量 10 倍於上代。</p>
+      <p><strong>AMD：</strong>7700X3D（$329／104MB 快取）卡位中高端；AM5 承諾支援到 2029（插槽壽命至少 8 年）；十週年版 5800X3D（$349＋IcePad）收割 DDR4 存量用戶；XPO ULL 一鍵提升 4% 幀數；RX 9070 GRE（$549）縮水不縮價暴露供應鏈軟肋。</p>
+      <p><strong>大局：</strong>台積電產能、HBM、EUV 光刻機是隱形戰場；PC 產業走向 ARM 智慧終端 vs X86 硬核平台的雙軌制割裂。</p>
+    </div>
+  </details>
+</section>
+
+<!-- ===== 18：科技詞彙表 ===== -->
+<section class="gold">
+  <h2><span class="num">18</span>科技詞彙表 Glossary（20 個關鍵術語）</h2>
+  <div class="glossary">
+    <div class="g-card"><div class="g-term"><span class="g-no">1</span>SoC <span class="g-zh">系統單晶片</span></div>System on a Chip，把 CPU、GPU、記憶體控制器等整合在同一顆晶片上，RTX Spark 即採此設計。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">2</span>ARM 架構 <span class="g-zh">安謀架構</span></div>以精簡指令集（RISC）為基礎的處理器架構，能效比高，手機與 Apple M 系列皆採用。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">3</span>X86 架構 <span class="g-zh">複雜指令集架構</span></div>Intel 與 AMD 主導、統治 PC 三十年的傳統處理器架構，相容性與極限效能是最大優勢。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">4</span>CUDA 核心 <span class="g-zh">統一計算架構核心</span></div>NVIDIA GPU 的平行運算單元，數量越多，圖形與 AI 運算能力越強（RTX Spark 有 6,144 個）。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">5</span>Unified Memory <span class="g-zh">統一記憶體</span></div>CPU 與 GPU 共享同一塊高速記憶體，省去資料搬移、大幅提升 AI 與圖形效能。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">6</span>PetaFLOP <span class="g-zh">千兆次浮點運算</span></div>每秒一千兆（10¹⁵）次浮點運算的算力單位，1 PFLOP 已可在本地運行大型 AI 模型。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">7</span>DLSS <span class="g-zh">深度學習超取樣</span></div>Deep Learning Super Sampling，NVIDIA 用 AI 提升畫質與幀數的技術，最新版本為 4.5。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">8</span>Ray Reconstruction <span class="g-zh">光線重建</span></div>用 AI 模型取代傳統降噪器處理光線追蹤畫面，細節更銳利、運動中不易拖影。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">9</span>Transformer 模型 <span class="g-zh">變換器模型</span></div>當代 AI 的核心神經網路架構，DLSS 4.5 採用第二代 Transformer 進行畫面運算。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">10</span>Anti-Cheat <span class="g-zh">反作弊系統</span></div>電競遊戲偵測外掛的底層軟體（如 Easy Anti-Cheat、Vanguard），需核心層權限，曾是 ARM PC 最大障礙。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">11</span>OEM <span class="g-zh">原廠委託製造商</span></div>Original Equipment Manufacturer，指戴爾、惠普、聯想等實際組裝販售整機的 PC 大廠。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">12</span>3D V-Cache <span class="g-zh">3D 垂直堆疊快取</span></div>AMD 把額外快取垂直堆疊在 CPU 上的技術，大幅提升遊戲幀數穩定性（7700X3D 共 104MB）。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">13</span>L3 Cache <span class="g-zh">第三級快取</span></div>CPU 內部的高速暫存記憶體，容量越大，遊戲最低幀表現越穩，可抹平頻率差距。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">14</span>TDP <span class="g-zh">熱設計功耗</span></div>Thermal Design Power，處理器散熱設計的功耗指標，7700X3D 為 120W。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">15</span>HBM <span class="g-zh">高頻寬記憶體</span></div>High Bandwidth Memory，AI 晶片專用的堆疊式記憶體，三星與 SK 海力士正激戰 HBM4。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">16</span>CoWoS <span class="g-zh">晶圓級高階封裝</span></div>台積電的 2.5D 先進封裝技術，是 AI 晶片量產的關鍵瓶頸，NVIDIA 掌控最大產能配額。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">17</span>EUV 光刻機 <span class="g-zh">極紫外光微影設備</span></div>ASML 獨家壟斷的尖端晶片製造設備，出貨量是卡住整個半導體業的無形枷鎖。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">18</span>NVL72 <span class="g-zh">72 GPU 機架節點</span></div>Vera Rubin 平台「整個機架作為單一超大節點」的形態，吞吐量為上代 10 倍。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">19</span>GDDR6 <span class="g-zh">繪圖用第六代記憶體</span></div>顯示卡專用的高速顯存，RX 9070 GRE 搭載 12GB、128-bit 位寬版本。</div>
+    <div class="g-card"><div class="g-term"><span class="g-no">20</span>Socket / 插槽 <span class="g-zh">處理器腳座</span></div>CPU 與主機板的連接介面（如 AM4、AM5），AMD 承諾 AM5 支援到 2029 年，壽命至少 8 年。</div>
+  </div>
+</section>
+
+<!-- ===== 底部三連結 ===== -->
+<div class="links bottom">
+  <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+    <div class="lc-title">📚 七月課程｜錯中學 ECHO 計劃</div>
+    <div class="lc-desc">從錯誤中學習的英文進步系統，七月開課，名額有限，點此了解課程內容與報名方式。</div>
+  </a>
+  <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index" target="_blank">
+    <div class="lc-title">📊 七月課程｜學生分析</div>
+    <div class="lc-desc">個人化學習診斷工具，精準找出你的英文弱點，量身打造暑期學習計畫。</div>
+  </a>
+  <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet" target="_blank">
+    <div class="lc-title">💬 加我 LINE：linwayet</div>
+    <div class="lc-desc">課程諮詢、學習問題歡迎直接私訊林威老師，搜尋 LINE ID「linwayet」。</div>
+  </a>
+</div>
+
+<footer>
+  資料來源：2026 台北電腦展（Computex 2026）發布會內容整理<br>
+  林威英文・科技教材系列｜暖色系閱讀版
+</footer>
+
+</div>
 </body>
 </html>
