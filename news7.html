@@ -1,779 +1,428 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Secret Geometry of Honeycombs</title>
-    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        @page {
-            size: A4;
-            margin: 15mm 12mm;
-            background-color: #FFF8F0;
-        }
-        :root {
-            --paper: #FFF8F0;
-            --ink: #1A0F00;
-            --h1: #C0392B;
-            --h2: #1565C0;
-            --h3: #2E7D32;
-            --deep-blue: #0D47A1;
-            --highlight-a: #E65100;
-            --highlight-b: #6A1B9A;
-        }
-        body {
-            margin: 0;
-            color: var(--ink);
-            font-family: 'BIZ UDPGothic', sans-serif;
-            font-size: 22px;
-            line-height: 1.85;
-            background:
-                radial-gradient(circle at top left, rgba(255, 183, 77, 0.32), transparent 34rem),
-                radial-gradient(circle at bottom right, rgba(244, 143, 177, 0.24), transparent 30rem),
-                linear-gradient(180deg, #FFF2DF 0%, #FFF8F0 42%, #FFE9D6 100%);
-        }
-        .container {
-            width: min(100% - 28px, 900px);
-            margin: 0 auto;
-            padding: 22px 0 34px;
-        }
-        
-        /* 頁面頂部標題規格 */
-        .header-box {
-            border: 4px solid var(--h1);
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        h1 { font-size: 3rem; color: var(--h1); margin: 0; font-weight: 700; }
-        .subtitle { font-size: 2.2rem; color: var(--h2); text-align: center; margin-bottom: 5px; font-weight: 700; }
-        .author { font-size: 1.5rem; color: #1565C0; text-align: center; margin-bottom: 30px; }
-
-        /* 區塊通用樣式 */
-        section { width: 100%; margin-bottom: 40px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; page-break-inside: auto; }
-        .section-title { padding: 12px 20px; color: white; font-size: 2.2rem; font-weight: 700; }
-        .card-content { padding: 25px; }
-
-        /* 區塊一：原文 */
-        .sec-original { border-color: #90CAF9; background-color: #F3F8FF; }
-        .sec-original .section-title { background-color: var(--deep-blue); }
-        .original-text strong { color: var(--deep-blue); font-weight: 700; }
-
-        /* 區塊二：精讀 */
-        .sec-reading { border-color: #FFAB91; background-color: #FFF3EF; }
-        .sec-reading .section-title { background-color: #BF360C; }
-        .reading-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #FFAB91; page-break-inside: avoid; }
-        .circle-num { display: inline-block; width: 36px; height: 36px; background: #BF360C; color: white; border-radius: 50%; text-align: center; line-height: 36px; margin-right: 8px; font-weight: bold; }
-        .highlight-pill { display: inline-block; padding: 2px 10px; background: #FEF0E7; color: #E65100; border-radius: 15px; font-size: 18px; margin-right: 6px; margin-top: 8px; border: 1px solid #FFAB91; }
-
-        /* 區塊三：單字 */
-        .sec-vocab { border-color: #81C784; background-color: #F1F8F2; }
-        .sec-vocab .section-title { background-color: #1B5E20; }
-        .vocab-card { background: white; padding: 18px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #81C784; page-break-inside: avoid; }
-        .tag-row { display: flex; align-items: flex-start; margin-bottom: 8px; }
-        .tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-weight: 700; margin-right: 10px; font-size: 17px; min-width: 90px; text-align: center; flex-shrink: 0; }
-        .tag-deriv { background: #FDEDEC; color: #C0392B; }
-        .tag-root { background: #EBF5FB; color: #1565C0; }
-        .tag-phrase { background: #EAFAF1; color: #2E7D32; }
-        .tag-idiom { background: #FEF9E7; color: #D68910; }
-        .tag-confuse { background: #F5EEF8; color: #6A1B9A; }
-        .example-box { margin-top: 12px; border-left: 4px solid #1B5E20; padding-left: 12px; font-size: 20px; color: #333; }
-
-        /* 區塊四：文法 */
-        .sec-grammar { border-color: #CE93D8; background-color: #F9F0FF; }
-        .sec-grammar .section-title { background-color: #4A148C; }
-        .grammar-template { background: white; padding: 20px; border-radius: 8px; margin-bottom: 25px; page-break-inside: avoid; }
-        .grammar-quote { font-style: italic; color: var(--highlight-b); margin-bottom: 10px; }
-        .grammar-structure { font-style: italic; font-weight: 700; background: #F3E5F5; padding: 8px; display: block; margin: 8px 0; }
-        .error-x { color: #C0392B; font-weight: 700; }
-        .correct-v { color: #2E7D32; font-weight: 700; }
-
-        /* 底部折疊樣式 (PDF 中細節元素不展開，故模擬展開樣式) */
-        .details-box { background: #FAF6F0; border: 2px solid #C4A06A; border-radius: 8px; margin-bottom: 15px; }
-        .summary-box { padding: 15px; font-size: 1.6rem; font-weight: 700; color: #4A3728; border-bottom: 1px solid #C4A06A; background: #F4EBE2; }
-        .details-content { padding: 15px; background: white; font-size: 18px; }
-
-        .resource-strip {
-            margin: 0 auto 28px;
-            padding: 18px;
-            border: 2px solid rgba(191, 87, 0, 0.24);
-            border-radius: 18px;
-            background: rgba(255, 250, 243, 0.92);
-            box-shadow: 0 14px 34px rgba(171, 89, 22, 0.14);
-        }
-        .resource-strip.bottom {
-            margin-top: 34px;
-            margin-bottom: 0;
-        }
-        .resource-kicker {
-            color: #A84412;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 0;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-        .resource-card {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            min-height: 150px;
-            padding: 16px;
-            border-radius: 14px;
-            color: #3C2207;
-            text-decoration: none;
-            border: 1px solid rgba(120, 64, 10, 0.14);
-            box-shadow: 0 8px 18px rgba(111, 66, 22, 0.11);
-            transition: transform 160ms ease, box-shadow 160ms ease;
-        }
-        .resource-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(111, 66, 22, 0.18);
-        }
-        .resource-card.echo { background: linear-gradient(135deg, #FFE0B2, #FFCC80); }
-        .resource-card.analysis { background: linear-gradient(135deg, #FFCDD2, #FFE0B2); }
-        .resource-card.line { background: linear-gradient(135deg, #C8E6C9, #FFF59D); }
-        .resource-label {
-            width: fit-content;
-            padding: 3px 9px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.72);
-            color: #8A3F05;
-            font-size: 0.78rem;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-        .resource-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            line-height: 1.35;
-        }
-        .resource-desc {
-            font-size: 0.88rem;
-            line-height: 1.55;
-        }
-
-        h2, h3 { page-break-after: avoid; }
-
-        @media (max-width: 760px) {
-            body {
-                font-size: 17px;
-                line-height: 1.75;
-            }
-            .container {
-                width: min(100% - 24px, 900px);
-                padding: 14px 0 26px;
-            }
-            .header-box {
-                padding: 12px;
-                border-width: 3px;
-            }
-            h1 {
-                font-size: 2rem;
-                line-height: 1.22;
-            }
-            .subtitle {
-                font-size: 1.45rem;
-                line-height: 1.35;
-                margin-top: 10px;
-            }
-            .author {
-                font-size: 1rem;
-                margin-bottom: 22px;
-            }
-            section {
-                margin-bottom: 24px;
-                border-radius: 10px;
-            }
-            .section-title {
-                font-size: 1.35rem;
-                padding: 10px 14px;
-            }
-            .card-content {
-                padding: 16px;
-            }
-            .circle-num {
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-            }
-            .highlight-pill {
-                font-size: 0.92rem;
-                line-height: 1.45;
-            }
-            .vocab-card,
-            .grammar-template {
-                padding: 14px;
-            }
-            .tag-row {
-                display: block;
-            }
-            .tag {
-                display: inline-block;
-                margin-bottom: 6px;
-                min-width: auto;
-            }
-            .example-box,
-            .details-content {
-                font-size: 0.95rem;
-            }
-            .summary-box {
-                font-size: 1.15rem;
-            }
-            .resource-strip {
-                padding: 14px;
-                border-radius: 14px;
-            }
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
-            .resource-card {
-                min-height: 0;
-                padding: 14px;
-            }
-            .resource-title {
-                font-size: 1.08rem;
-            }
-            .resource-desc {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微軟 Copilot 策略轉折全紀錄｜客觀新聞報導</title>
+<style>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #F8F4ED;
+    color: #2D2A26;
+    font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    line-height: 1.8;
+    padding: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  header.top {
+    background: linear-gradient(135deg, #7A5230, #A86A4F);
+    color: #FDF9F2;
+    border-radius: 20px;
+    padding: 32px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  header.top h1 { font-size: 30px; line-height: 1.5; margin-bottom: 12px; }
+  header.top p.sub { font-size: 19px; opacity: 0.92; }
+  .lede {
+    background: #FFFDF8;
+    border-left: 8px solid #B0563A;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    font-size: 21px;
+  }
+  /* 單元地圖 */
+  #map {
+    background: #FFFDF8;
+    border: 2px solid #E3D9C8;
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 32px;
+  }
+  #map h2 { font-size: 26px; margin-bottom: 16px; color: #7A5230; text-align: center; }
+  .map-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 600px) { .map-grid { grid-template-columns: 1fr 1fr; } }
+  .map-grid a {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #FDF9F2;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .map-grid a span.num {
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin-right: 12px;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .c1 { background:#B0563A; } .c2 { background:#C28A1E; } .c3 { background:#6E7B3D; }
+  .c4 { background:#A86A4F; } .c5 { background:#7A5230; } .c6 { background:#8A7B6A; }
+  .c7 { background:#4F6B4A; } .c8 { background:#9C5A2E; } .c9 { background:#6B4F3A; }
+  .cG { background:#54683F; }
+  /* 單元區塊 */
+  section.unit {
+    background: #FFFDF8;
+    border-radius: 20px;
+    padding: 26px 22px;
+    margin-bottom: 30px;
+    border: 1px solid #EAE0CF;
+  }
+  section.unit h2 {
+    font-size: 26px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: #FDF9F2;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  section.unit p { margin-bottom: 16px; }
+  section.unit h3 {
+    font-size: 22px;
+    margin: 22px 0 10px;
+    padding-left: 12px;
+    border-left: 6px solid #C28A1E;
+    color: #7A5230;
+  }
+  .fact-tag {
+    display: inline-block;
+    background: #EDE4D3;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-size: 17px;
+    color: #6B4F3A;
+    margin-right: 6px;
+  }
+  .timeline { list-style: none; margin: 12px 0 18px; }
+  .timeline li {
+    padding: 12px 14px 12px 18px;
+    margin-bottom: 10px;
+    background: #FAF5EB;
+    border-left: 6px solid #A86A4F;
+    border-radius: 0 12px 12px 0;
+    font-size: 20px;
+  }
+  .timeline li b { color: #B0563A; }
+  /* 英文摘要 */
+  .en-summary {
+    background: #F2EADB;
+    border: 2px dashed #C2A878;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-top: 22px;
+    font-size: 19px;
+    line-height: 1.7;
+  }
+  .en-summary .label {
+    display: inline-block;
+    background: #7A5230;
+    color: #FDF9F2;
+    border-radius: 8px;
+    padding: 2px 14px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  /* 回到地圖按鈕 */
+  .back-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 72px;
+    margin-top: 20px;
+  }
+  .back-map a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    min-width: 260px;
+    background: #2D2A26;
+    color: #F8F4ED;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 32px;
+  }
+  /* Glossary */
+  #glossary dl { margin-top: 10px; }
+  #glossary dt {
+    font-weight: 700;
+    color: #4F6B4A;
+    font-size: 21px;
+    margin-top: 18px;
+  }
+  #glossary dd { margin-left: 0; font-size: 20px; padding-left: 14px; border-left: 4px solid #D8CBB2; }
+  details.note {
+    background: #FAF5EB;
+    border-radius: 12px;
+    padding: 4px 0;
+    margin: 14px 0;
+  }
+  details.note summary {
+    list-style: none;
+    cursor: pointer;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    font-weight: 700;
+    color: #7A5230;
+    font-size: 20px;
+  }
+  details.note summary::-webkit-details-marker { display: none; }
+  details.note summary .arrow {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border-right: 3px solid #7A5230;
+    border-bottom: 3px solid #7A5230;
+    transform: rotate(45deg);
+    margin-left: auto;
+    transition: transform .2s;
+  }
+  details[open] .arrow { transform: rotate(225deg); }
+  details.note .inner { padding: 0 18px 18px; font-size: 20px; }
+  footer {
+    text-align: center;
+    font-size: 17px;
+    color: #8A7B6A;
+    padding: 24px 0 48px;
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <nav class="resource-strip" aria-label="七月課程與聯絡方式">
-        <div class="resource-kicker">七月開課資訊與聯絡方式</div>
-        <div class="resource-grid">
-            <a class="resource-card echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                <span class="resource-label">七月課程</span>
-                <span class="resource-title">錯中學 ECHO 計劃</span>
-                <span class="resource-desc">用錯誤回饋帶動理解與修正，適合想把英文學得更穩、更會用的學生。</span>
-            </a>
-            <a class="resource-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                <span class="resource-label">七月課程</span>
-                <span class="resource-title">學生分析</span>
-                <span class="resource-desc">協助整理學生學習狀態、弱點與進步方向，讓後續練習更精準。</span>
-            </a>
-            <a class="resource-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                <span class="resource-label">聯絡老師</span>
-                <span class="resource-title">Line：linwayet</span>
-                <span class="resource-desc">想了解課程、教材或學習安排，可以加入 Line 與林威老師聯繫。</span>
-            </a>
-        </div>
-    </nav>
+<header class="top">
+  <h1>微軟 Copilot 三年策略轉折全紀錄</h1>
+  <p class="sub">客觀新聞整理報導｜2026年6月5日｜資料來源：微軟官方公告、CNBC、Engadget、The Register、Fortune、GeekWire 等</p>
+</header>
 
-    <div class="header-box">
-        <h1>The Secret Geometry of Honeycombs</h1>
-    </div>
-    <div class="subtitle">蜂巢背後的幾何祕密</div>
-    <div class="author">林威老師與 AI agent 團隊製作</div>
-
-    <!-- 區塊一：原文 -->
-    <section class="sec-original">
-        <div class="section-title">英文文章原文</div>
-        <div class="card-content original-text">
-            Honeycombs are <strong>hexagonal</strong> because this shape lets bees store the most honey with the least wax, while keeping the <strong>structure</strong> strong and <strong>stable</strong>. In mathematics, this idea is <strong>captured</strong> by the “honeycomb <strong>conjecture</strong>,” which proves that if you divide a flat <strong>surface</strong> into equal areas, a pattern of regular hexagons uses the shortest total wall length, so it saves the most <strong>material</strong>. Only triangles, squares, and hexagons can completely <strong>cover</strong> a surface without gaps, but among these, hexagons <strong>enclose</strong> the largest area for the same <strong>perimeter</strong>, making them the most <strong>efficient</strong> shape for bees.<br><br>
-            From an <strong>evolutionary</strong> biology point of view, bees that built more efficient combs could store more food and raise more young using less wax, which is very <strong>costly</strong> to produce. <strong>Colonies</strong> with slightly better comb designs would survive <strong>tough</strong> times, like cold winters or food <strong>shortages</strong>, more easily, so over millions of years <strong>natural selection</strong> favored bees whose building <strong>behavior</strong> produced hexagonal patterns. Interestingly, studies show that bees often start with soft, roughly circular wax cells, and then <strong>physical</strong> forces such as surface <strong>tension</strong> and the pressure from neighboring cells gradually pull them into neat hexagons.
-        </div>
-    </section>
-
-    <!-- 區塊二：精讀 -->
-    <section class="sec-reading">
-        <div class="section-title">8 句精讀</div>
-        <div class="card-content">
-            <div class="reading-item">
-                <span class="circle-num">①</span> <i>Honeycombs are hexagonal because this shape lets bees store the most honey with the least wax, while keeping the structure strong and stable.</i><br>
-                蜂巢是六角形的，因為這種形狀讓蜜蜂能以最少的蠟儲存最多的蜂蜜，同時保持結構強固且穩定。<br>
-                <strong>文法解析：</strong>本句使用 because 引導原因狀語子句；while 在此引導分詞構句（省略主詞與 be 動詞），表示「與此同時」的伴隨狀態。<br>
-                <span class="highlight-pill">hexagonal 六角形的</span><span class="highlight-pill">structure 結構</span><span class="highlight-pill">stable 穩定的</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">②</span> <i>...which proves that if you divide a flat surface into equal areas, a pattern of regular hexagons uses the shortest total wall length...</i><br>
-                這證明了如果你將平面劃分為等面積，正六邊形的圖案會使用最短的牆壁總長。<br>
-                <strong>文法解析：</strong>which 引導非限定形容詞子句修飾前句概念；that 引導名詞子句作為 prove 的受詞，內含 if 引導的條件句。<br>
-                <span class="highlight-pill">divide...into 分成...</span><span class="highlight-pill">conjecture 猜想</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">③</span> <i>Only triangles, squares, and hexagons can completely cover a surface without gaps...</i><br>
-                只有三角形、正方形和六邊形可以完全覆蓋表面而不留縫隙。<br>
-                <strong>文法解析：</strong>completely 為副詞修飾動詞 cover；without 為介係詞，引導片語表示「沒有...」的情狀。<br>
-                <span class="highlight-pill">completely 完全地</span><span class="highlight-pill">gap 縫隙</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">④</span> <i>...hexagons enclose the largest area for the same perimeter, making them the most efficient shape for bees.</i><br>
-                在周長相同的情況下，六邊形包圍的面積最大，這使得它們成為蜜蜂最高效的形狀。<br>
-                <strong>文法解析：</strong>making 為現在分詞（V-ing）引導的分詞構句，修飾前面的整個句子，表示結果。<br>
-                <span class="highlight-pill">enclose 包圍</span><span class="highlight-pill">perimeter 周長</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">⑤</span> <i>From an evolutionary biology point of view, bees that built more efficient combs could store more food...</i><br>
-                從演化生物學的觀點來看，建造更高效蜂巢的蜜蜂可以儲存更多食物...<br>
-                <strong>文法解析：</strong>point of view 表示觀點；that 引導形容詞子句修飾 bees，限定主詞範圍。<br>
-                <span class="highlight-pill">evolutionary 演化的</span><span class="highlight-pill">point of view 觀點</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">⑥</span> <i>...using less wax, which is very costly to produce.</i><br>
-                ...使用較少的蠟，而蠟的生產成本非常高昂。<br>
-                <strong>文法解析：</strong>using 為分詞片語修飾主詞蜜蜂的手段；which 引導非限定子句補充說明 wax 的性質。<br>
-                <span class="highlight-pill">costly 昂貴的</span><span class="highlight-pill">produce 生產</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">⑦</span> <i>Colonies with slightly better comb designs would survive tough times, like cold winters or food shortages, more easily.</i><br>
-                具有稍好蜂巢設計的群落能更輕易地在艱困時期（如寒冬或食物短缺）生存下來。<br>
-                <strong>文法解析：</strong>with 引導介係詞片語修飾 Colonies；would survive 表過去對未來或習慣性的推測。<br>
-                <span class="highlight-pill">colony 群落</span><span class="highlight-pill">shortage 短缺</span>
-            </div>
-            <div class="reading-item">
-                <span class="circle-num">⑧</span> <i>...natural selection favored bees whose building behavior produced hexagonal patterns.</i><br>
-                天擇偏好那些建築行為產生六角形圖案的蜜蜂。<br>
-                <strong>文法解析：</strong>whose 為關係代名詞所有格，引導形容詞子句修飾 bees，表示「蜜蜂的（建築行為）」。<br>
-                <span class="highlight-pill">natural selection 天擇</span><span class="highlight-pill">behavior 行為</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 區塊三：單字整理 -->
-    <section class="sec-vocab">
-        <div class="section-title">18–20 個單字整理</div>
-        <div class="card-content">
-            <!-- 1 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">1. hexagonal [hɛkˈsæɡənl] (adj.) 六角形的</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>hexagon [ˈhɛksəɡɑn] (n. 六邊形)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>hexagonal pattern (六角形圖案)</div>
-                <div class="example-box">
-                    The honeycombs are <strong>hexagonal</strong> to save material.<br>(蜂巢是六角形的以節省材料。)<br><br>
-                    Snowflakes often display beautiful <strong>hexagonal</strong> structures.<br>(雪花經常展現美麗的六角形結構。)
-                </div>
-            </div>
-            <!-- 2 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">2. stable [ˈstebl] (adj.) 穩定的</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>stability [stəˈbɪləti] (n. 穩定性)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>highly stable (高度穩定的)；remain stable (保持穩定)</div>
-                <div class="example-box">
-                    Bees need a <strong>stable</strong> environment to raise their young.<br>(蜜蜂需要穩定的環境來撫育幼蟲。)<br><br>
-                    The structure of the building is very <strong>stable</strong>.<br>(這棟建築的結構非常穩定。)
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">3. conjecture [kənˈdʒɛktʃɚ] (n.) 猜想、推測</div>
-                <div class="tag-row"><span class="tag tag-phrase">片語</span>honeycomb conjecture (蜂巢猜想)</div>
-                <div class="tag-row"><span class="tag tag-confuse">容易混淆</span>hypothesis (假設 - 科學實驗用)；theory (理論)</div>
-                <div class="example-box">
-                    The honeycomb <strong>conjecture</strong> was finally proven by Thomas Hales.<br>(蜂巢猜想最終由湯瑪斯·海爾斯證明。)<br><br>
-                    There is much <strong>conjecture</strong> about why the project failed.<br>(關於該計畫為何失敗存在許多猜測。)
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">4. efficient [ɪˈfɪʃənt] (adj.) 高效率的</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>efficiency [ɪˈfɪʃənsi] (n. 效率)；efficiently (adv. 高效地)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>energy-efficient (節能的)；highly efficient (極高效的)</div>
-                <div class="example-box">
-                    Hexagons provide the most <strong>efficient</strong> way to store honey.<br>(六角形提供了儲存蜂蜜最高效的方式。)<br><br>
-                    An <strong>efficient</strong> student makes a study plan in advance.<br>(高效的學生會預先制定讀書計畫。)
-                </div>
-            </div>
-            <!-- 5 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">5. enclosure [ɪnˈkloʒɚ] (n.) 圍繞、包圍</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>enclose [ɪnˈkloz] (v. 圍繞、隨信附寄)</div>
-                <div class="tag-row"><span class="tag tag-root">字根</span>close「關閉」(同：include, exclude)</div>
-                <div class="example-box">
-                    The <strong>enclosure</strong> of the area was completed by the bees.<br>(該區域的圍封是由蜜蜂完成的。)<br><br>
-                    Please find the photos in the <strong>enclosure</strong> of this letter.<br>(請在信中的附件裡找到照片。)
-                </div>
-            </div>
-            <!-- 6 -->
-             <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">6. perimeter [pəˈrɪmətɚ] (n.) 周邊、周長</div>
-                <div class="tag-row"><span class="tag tag-root">字根</span>peri「周圍」(同：period, peripheral)；meter「測量」</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>calculate the perimeter (計算周長)</div>
-                <div class="example-box">
-                    Hexagons enclose the largest area for the same <strong>perimeter</strong>.<br>(六角形在相同周長下包圍最大面積。)<br><br>
-                    Guards were stationed around the <strong>perimeter</strong> of the base.<br>(守衛被部署在基地的周邊。)
-                </div>
-            </div>
-            <!-- 7 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">7. shortage [ˈʃɔrtɪdʒ] (n.) 短缺</div>
-                <div class="tag-row"><span class="tag tag-phrase">片語</span>a shortage of (…的短缺)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>severe shortage (嚴重短缺)；food shortage (食物短缺)</div>
-                <div class="example-box">
-                    Bees must prepare for food <strong>shortages</strong> during winter.<br>(蜜蜂必須為冬天的食物短缺做準備。)<br><br>
-                    There is a serious <strong>shortage</strong> of skilled workers in the city.<br>(這個城市嚴重缺乏熟練工。)
-                </div>
-            </div>
-            <!-- 8 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">8. behavior [bɪˈhevjɚ] (n.) 行為、舉止</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>behave [bɪˈhev] (v. 表現)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>human behavior (人類行為)；social behavior (社會行為)</div>
-                <div class="example-box">
-                    Natural selection favored specific building <strong>behavior</strong>.<br>(天擇偏好特定的建築行為。)<br><br>
-                    His aggressive <strong>behavior</strong> surprised everyone.<br>(他挑釁的行為令大家感到驚訝。)
-                </div>
-            </div>
-             <!-- 9 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">9. evolutionary [ˌɛvəˈluʃəˌnɛri] (adj.) 進化的、演化的</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>evolution [ˌɛvəˈluʃən] (n. 進化)；evolve (v. 進化)</div>
-                <div class="tag-row"><span class="tag tag-root">字根</span>volv「旋轉/捲入」(同：involve, revolve)</div>
-                <div class="example-box">
-                    From an <strong>evolutionary</strong> perspective, efficiency is key to survival.<br>(從演化的觀點來看，效率是生存的關鍵。)<br><br>
-                    Human speech is an <strong>evolutionary</strong> mystery.<br>(人類言語是一個演化之謎。)
-                </div>
-            </div>
-             <!-- 10 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">10. tension [ˈtɛnʃən] (n.) 張力、緊張感</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>tense [tɛns] (adj. 緊張的)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>surface tension (表面張力)；reduce tension (減輕緊張)</div>
-                <div class="example-box">
-                    Physical forces such as surface <strong>tension</strong> pull the wax into hexagons.<br>(表面張力等物理力量將蠟拉成六角形。)<br><br>
-                    The <strong>tension</strong> between the two countries is rising.<br>(兩國之間的緊張局勢正在升溫。)
-                </div>
-            </div>
-             <!-- 11 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">11. colony [ˈkɑləni] (n.) 群落、殖民地</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>colonial [kəˈlonɪəl] (adj. 殖民的)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>a colony of bees (一群蜜蜂)；penal colony (流放地)</div>
-                <div class="example-box">
-                    The entire <strong>colony</strong> works together to store honey.<br>(整個群落共同協力儲存蜂蜜。)<br><br>
-                    Ants live in large <strong>colonies</strong> underground.<br>(螞蟻生活在地底的大型群落中。)
-                </div>
-            </div>
-             <!-- 12 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">12. costly [ˈkɔstli] (adj.) 昂貴的、代價高的</div>
-                <div class="tag-row"><span class="tag tag-phrase">片語</span>be costly to produce (生產成本高昂)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>a costly mistake (代價慘重的錯誤)</div>
-                <div class="example-box">
-                    Wax is very <strong>costly</strong> for bees to produce in terms of energy.<br>(就能量而言，蜜蜂生產蠟的代價非常高。)<br><br>
-                    The delay proved to be extremely <strong>costly</strong> for the company.<br>(事實證明，這次延誤對公司來說代價極大。)
-                </div>
-            </div>
-             <!-- 13 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">13. structure [ˈstrʌktʃɚ] (n.) 結構、建築物</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>structural [ˈstrʌktʃərəl] (adj. 結構的)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>social structure (社會結構)；basic structure (基本結構)</div>
-                <div class="example-box">
-                    The honeycomb's <strong>structure</strong> is strong enough to hold honey.<br>(蜂巢的結構強到足以裝載蜂蜜。)<br><br>
-                    They are studying the <strong>structure</strong> of the human brain.<br>(他們正在研究人類大腦的結構。)
-                </div>
-            </div>
-             <!-- 14 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">14. material [məˈtɪrɪəl] (n.) 材料、素材</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>materialize [məˈtɪrɪəˌlaɪz] (v. 實現/成形)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>raw material (原料)；teaching material (教材)</div>
-                <div class="example-box">
-                    The hexagon saves the most <strong>material</strong> for the walls.<br>(六角形為牆壁節省了最多的材料。)<br><br>
-                    Bricks are a common building <strong>material</strong>.<br>(磚塊是常見的建築材料。)
-                </div>
-            </div>
-             <!-- 15 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">15. capture [ˈkæptʃɚ] (v.) 捕捉、吸引、展現</div>
-                <div class="tag-row"><span class="tag tag-phrase">片語</span>capture the imagination (吸引想像力)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>capture the moment (捕捉瞬間)</div>
-                <div class="example-box">
-                    This idea is <strong>captured</strong> by a mathematical conjecture.<br>(這個想法被一個數學猜想所體現。)<br><br>
-                    The photographer tried to <strong>capture</strong> the beauty of the sunset.<br>(攝影師試圖捕捉日落的美麗。)
-                </div>
-            </div>
-             <!-- 16 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">16. favorite [ˈfevərɪt] (v.) 偏愛、有利於 (及物動詞用法)</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>favorable [ˈfevərəbl] (adj. 有利的、贊同的)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>natural selection favored... (天擇偏好...)</div>
-                <div class="example-box">
-                    Natural selection <strong>favored</strong> bees that built hexagons.<br>(天擇偏好那些建造六角形的蜜蜂。)<br><br>
-                    The conditions <strong>favored</strong> a quick victory for the team.<br>(這些條件有利於該隊快速獲勝。)
-                </div>
-            </div>
-             <!-- 17 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">17. physical [ˈfɪzɪkl] (adj.) 物理的、身體的</div>
-                <div class="tag-row"><span class="tag tag-deriv">衍生詞</span>physics [ˈfɪzɪks] (n. 物理學)；physician (n. 內科醫生)</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>physical forces (物理力量)；physical education (體育)</div>
-                <div class="example-box">
-                    <strong>Physical</strong> forces help shape the honeycombs.<br>(物理力量幫助塑造了蜂巢。)<br><br>
-                    Regular <strong>physical</strong> exercise is good for your health.<br>(規律的身體運動對你的健康有益。)
-                </div>
-            </div>
-             <!-- 18 -->
-            <div class="vocab-card">
-                <div style="font-size: 1.5rem; font-weight: 700; color: #1B5E20;">18. surface [ˈsɝfɪs] (n.) 表面</div>
-                <div class="tag-row"><span class="tag tag-idiom">慣用語</span>on the surface (表面上)；surface tension (表面張力)</div>
-                <div class="tag-row"><span class="tag tag-phrase">片語</span>flat surface (平面)</div>
-                <div class="example-box">
-                    The <strong>surface</strong> of the moon is covered with craters.<br>(月球表面布滿了隕石坑。)<br><br>
-                    These bees divide a flat <strong>surface</strong> into equal areas.<br>(這些蜜蜂將平面劃分為相等的區域。)
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 區塊四：文法解析 -->
-    <section class="sec-grammar">
-        <div class="section-title">文法解析</div>
-        <div class="card-content">
-            <!-- 文法 1 -->
-            <div class="grammar-template">
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【引句 Quote】</div>
-                <div class="grammar-quote">Only triangles, squares, and hexagons can completely cover a surface <i>without gaps</i>...</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【句型】</div>
-                <div class="grammar-structure">S + V + ... + without + N. / V-ing</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【核心說明】</div>
-                <div>without 作為介係詞，表示「沒有」或「在不...的情況下」。它能引導出動作發生的伴隨狀態或先決條件。</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【使用規則】</div>
-                <ul>
-                    <li>後接名詞 (N.)：表示缺乏某物或某狀態。</li>
-                    <li>後接動名詞 (V-ing)：表示「未進行某動作而...」。</li>
-                    <li>用於句尾表示修飾，或句首表示強調。</li>
-                </ul>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【主題例句】</div>
-                <div>Bees can survive the winter <i>without</i> much trouble if they have enough honey.<br>(如果蜜蜂有足夠的蜂蜜，就能沒什麼困難地度過冬天。)</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【學習提醒】</div>
-                <div>注意 without 是介係詞，後面絕對不可接原形動詞。若要表示「沒有做某事」，必須使用 V-ing。</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
-                <div><span class="error-x">✗</span> He left the room without say anything.</div>
-                <div><span class="correct-v">✓</span> He left the room <strong>without saying</strong> anything. (介係詞後加 V-ing)</div>
-                <div style="margin-top: 10px;">題：She finished the exam _____ any mistakes. (A) with (B) without (C) not (D) no<br>答：(B)</div>
-            </div>
-
-            <!-- 文法 2 -->
-            <div class="grammar-template">
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【引句 Quote】</div>
-                <div class="grammar-quote">...hexagons enclose the largest area for the same perimeter, <i>making them the most efficient shape</i> for bees.</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【句型】</div>
-                <div class="grammar-structure">S + V + ..., V-ing... (表結果)</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【核心說明】</div>
-                <div>這是一種分詞構句，用來表示「隨之而來的結果」。當後句的主詞就是前句整件事或前句主詞，且兩者為因果關係時，可將後句動詞改為 V-ing。</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【使用規則】</div>
-                <ul>
-                    <li>通常放在主句之後，中間用逗號隔開。</li>
-                    <li>V-ing 引導的片段代表一種必然、自然的結果。</li>
-                    <li>常可用「, which + V...」改寫。</li>
-                </ul>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【主題例句】</div>
-                <div>The bees used less wax, <i>saving</i> a lot of energy for the whole colony.<br>(蜜蜂使用較少的蠟，為整個群落節省了大量能量。)</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【學習提醒】</div>
-                <div>這種 V-ing 結構與前面的句子具有明確的因果或連續關係。如果是「被動」產生的結果，則改用 V-p.p.，但此用法以主動居多。</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
-                <div><span class="error-x">✗</span> The snow melted, made the road slippery.</div>
-                <div><span class="correct-v">✓</span> The snow melted, <strong>making</strong> the road slippery. (分詞構句表結果)</div>
-                <div style="margin-top: 10px;">題：He forgot his umbrella, _____ him get wet in the rain. (A) caused (B) causing (C) to cause (D) and cause<br>答：(B)</div>
-            </div>
-
-            <!-- 文法 3 -->
-            <div class="grammar-template">
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【引句 Quote】</div>
-                <div class="grammar-quote">...natural selection favored bees <i>whose building behavior</i> produced hexagonal patterns.</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【句型】</div>
-                <div class="grammar-structure">N. (先行詞) + whose + N. + V / S + V</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【核心說明】</div>
-                <div>whose 是關係代名詞的所有格，用來表示先行詞與後面名詞之間的「所有關係」（某人的某物/某事）。</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【使用規則】</div>
-                <ul>
-                    <li>先行詞可以是人，也可以是事物。</li>
-                    <li>whose 後面必須緊接一個名詞。</li>
-                    <li>其引導的形容詞子句不可有冠詞 (the/a) 修飾該名詞。</li>
-                </ul>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【主題例句】</div>
-                <div>Mathematics is a subject <i>whose</i> rules apply to everything in nature.<br>(數學是一門其規則適用於自然界萬物的學科。)</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【學習提醒】</div>
-                <div>注意 dont use "of which the..." if possible, "whose" is more modern and efficient for both people and things.</div>
-                <div style="font-size: 1.3rem; font-weight: 700; color: var(--highlight-b);">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
-                <div><span class="error-x">✗</span> I know the girl who's cat is missing. (who's = who is)</div>
-                <div><span class="correct-v">✓</span> I know the girl <strong>whose</strong> cat is missing. (所有格用 whose)</div>
-                <div style="margin-top: 10px;">題：The mountain, _____ peak is covered with snow, is very high. (A) who (B) that (C) whose (D) which<br>答：(C)</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 底部折疊 (PDF 模擬) -->
-    <div class="details-box">
-        <div class="summary-box">常見字首整理（50 個）</div>
-        <div class="details-content">
-            ab-　離開、相反　—　abnormal（異常的）<br>
-            ad-　向、加　—　advance（前進）<br>
-            ambi-　雙方、兩面　—　ambiguous（模稜兩可的）<br>
-            anti-　反對、抗　—　antibiotic（抗生素）<br>
-            arch-　主要、首要　—　archenemy（死敵）<br>
-            auto-　自動、自我　—　autograph（親筆簽名）<br>
-            bene-　好的、善　—　benefit（好處）<br>
-            bi-　二、雙　—　bilingual（雙語的）<br>
-            circum-　環繞、周圍　—　circumstance（情況）<br>
-            co-/con-/com-　一起、共同　—　cooperate（合作）<br>
-            contra-　相反、對抗　—　contradict（反駁）<br>
-            de-　去除、下降　—　decode（解碼）<br>
-            dia-　穿過、透過　—　dialogue（對話）<br>
-            dis-　否定、分離　—　disagree（不同意）<br>
-            en-/em-　使成為　—　enable（使能夠）<br>
-            epi-　在上、在外　—　epidemic（流行病）<br>
-            ex-　外、前任　—　export（出口）<br>
-            extra-　額外、外部　—　extraordinary（非凡的）<br>
-            hetero-　不同　—　heterogeneous（異質的）<br>
-            homo-　相同　—　homogeneous（同質的）<br>
-            hyper-　過度、超　—　hyperactive（過動的）<br>
-            hypo-　低於、不足　—　hypodermic（皮下的）<br>
-            in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）<br>
-            inter-　在…之間　—　international（國際的）<br>
-            iso-　相等、相同　—　isolate（隔離）<br>
-            mal-　壞、不良　—　malfunction（故障）<br>
-            micro-　微小　—　microscope（顯微鏡）<br>
-            mis-　錯誤　—　misunderstand（誤解）<br>
-            mono-　單一　—　monologue（獨白）<br>
-            multi-　多　—　multicultural（多元文化的）<br>
-            neo-　新的　—　neonatal（新生的）<br>
-            non-　非、沒有　—　nonsense（無意義）<br>
-            pan-　全部　—　pandemic（大流行病）<br>
-            peri-　周圍　—　perimeter（周長）<br>
-            poly-　多　—　polygon（多邊形）<br>
-            post-　之後　—　postwar（戰後的）<br>
-            pre-　之前　—　preview（預覽）<br>
-            pro-　向前、支持　—　progress（進步）<br>
-            pseudo-　假的　—　pseudonym（筆名）<br>
-            re-　再、回　—　review（複習）<br>
-            semi-　一半、部分　—　semicircle（半圓）<br>
-            sub-　在下、次級　—　subway（地鐵）<br>
-            super-　超越、在上　—　superstar（超級明星）<br>
-            syn-/sym-　一起、共同　—　synchronize（同步）<br>
-            tele-　遠距　—　telephone（電話）<br>
-            trans-　穿越、轉變　—　transport（運輸）<br>
-            tri-　三　—　triangle（三角形）<br>
-            un-　否定、不　—　unhappy（不快樂的）<br>
-            vice-　副、代替　—　vice-president（副總統）
-        </div>
-    </div>
-
-    <div class="details-box">
-        <div class="summary-box">常見英文字尾整理（約 30 個）</div>
-        <div class="details-content">
-            <strong>名詞字尾</strong><br>
-            -tion/-sion/-ation：過程或結果 — education、decision<br>
-            -ment：行為或結果 — agreement、development<br>
-            -ness：狀態或性質 — happiness、darkness<br>
-            -ity/-ty：抽象概念 — ability、cruelty<br>
-            -er/-or：執行動作的人 — teacher、actor<br>
-            -ist：專業的人 — artist、scientist<br>
-            -ship：身分或關係 — friendship<br>
-            -hood：階段或狀態 — childhood<br><br>
-            <strong>形容詞字尾</strong><br>
-            -able/-ible：能夠…的 — readable、credible<br>
-            -ous：充滿…的 — dangerous、famous<br>
-            -ful：具有…的 — hopeful、beautiful<br>
-            -less：缺乏…的 — hopeless、powerless<br>
-            -al/-ic：相關的 — natural、poetic<br><br>
-            <strong>動詞字尾</strong><br>
-            -ize/-ise：使成為… — realize、industrialize<br>
-            -ify：使成為… — beautify、clarify<br>
-            -ate：形成動詞 — dominate、activate<br>
-            -en：使變成… — strengthen、soften<br><br>
-            <strong>副詞字尾</strong><br>
-            -ly：形容詞轉副詞 — quickly、carefully<br>
-            -ward(s)：表示方向 — upwards、homeward<br>
-            -wise：表示方式 — clockwise
-        </div>
-    </div>
-
-    <div class="details-box">
-        <div class="summary-box">30個常用單字與衍生詞</div>
-        <div class="details-content">
-            1. hexagon [ˈhɛksəɡɑn] (n. 六邊形) — hexagonal [hɛkˈsæɡənl] (adj. 六角形的)<br>
-            2. stable [ˈstebl] (adj. 穩定的) — stability [stəˈbɪləti] (n. 穩定性)<br>
-            3. capture [ˈkæptʃɚ] (v. 捕捉) — captive [ˈkæptɪv] (n. 俘虜)<br>
-            4. surface [ˈsɝfɪs] (n. 表面) — surfacial [sərˈfeɪʃəl] (adj. 表面的)<br>
-            5. efficient [ɪˈfɪʃənt] (adj. 高效的) — efficiency [ɪˈfɪʃ恩si] (n. 效率)<br>
-            6. material [məˈtɪrɪəl] (n. 材料) — materialize [məˈtɪrɪəˌlaɪz] (v. 實現)<br>
-            7. enclosure [ɪnˈkloʒɚ] (n. 圍繞) — enclose [ɪnˈkloz] (v. 圍繞)<br>
-            8. perimeter [pəˈrɪmətɚ] (n. 周長) — peripheral [pəˈrɪfərəl] (adj. 周邊的)<br>
-            9. evolutionary [ˌɛvəˈluʃəˌnɛri] (adj. 演化的) — evolution [ˌɛvəˈluʃən] (n. 演化)<br>
-            10. behavior [bɪˈhevjɚ] (n. 行為) — behave [bɪˈhev] (v. 表現)<br>
-            11. physical [ˈfɪzɪkl] (adj. 物理的) — physics [ˈfɪzɪks] (n. 物理學)<br>
-            12. tension [ˈtɛnʃən] (n. 張力) — tense [tɛns] (adj. 緊張的)<br>
-            13. colony [ˈkɑləni] (n. 群落) — colonial [kəˈlonɪəl] (adj. 殖民的)<br>
-            14. costly [ˈkɔstli] (adj. 昂貴的) — cost [kɔst] (n. 成本)<br>
-            15. shortage [ˈʃɔrtɪdʒ] (n. 短缺) — short [ʃɔrt] (adj. 短的)<br>
-            16. selection [səˈlɛkʃən] (n. 選擇) — selective [səˈlɛktɪv] (adj. 有選擇性的)<br>
-            17. conjecture [kənˈdʒɛktʃɚ] (n. 猜想) — conjectural [kənˈdʒɛktʃərəl] (adj. 推測的)<br>
-            18. regular [ˈrɛɡjəlɚ] (adj. 規則的) — regularity [ˌrɛɡjəˈlærəti] (n. 規律性)<br>
-            19. naturally [ˈnætʃərəli] (adv. 自然地) — natural [ˈnætʃərəl] (adj. 自然的)<br>
-            20. divide [dəˈvaɪd] (v. 劃分) — division [dəˈvɪʒən] (n. 部門/劃分)<br>
-            21. provide [prəˈvaɪd] (v. 提供) — provision [prəˈvɪʒən] (n. 供應)<br>
-            22. strengthen [ˈstrɛŋθən] (v. 加強) — strength [strɛŋθ] (n. 力量)<br>
-            23. produce [prəˈdus] (v. 生產) — productive [prəˈdʌktɪv] (adj. 多產的)<br>
-            24. survive [sərˈvaɪv] (v. 生存) — survival [sərˈvaɪvl] (n. 生存)<br>
-            25. conscious [ˈkɑnʃəs] (adj. 有意識的) — consciousness [ˈkɑnʃəsnəs] (n. 意識)<br>
-            26. optimal [ˈɑptəməl] (adj. 最佳的) — optimize [ˈɑptəˌmaɪz] (v. 優化)<br>
-            27. boundary [ˈbaʊndəri] (n. 邊界) — bound [baʊnd] (adj. 受限於)<br>
-            28. geometry [dʒɪˈɑmətri] (n. 幾何) — geometric [ˌdʒiəˈmɛtrɪk] (adj. 幾何的)<br>
-            29. biology [baɪˈɑlədʒi] (n. 生物學) — biologist [baɪˈɑlədʒɪst] (n. 生物學家)<br>
-            30. pressure [ˈprɛʃɚ] (n. 壓力) — press [prɛs] (v. 壓)<br><br>
-            <strong>文章相關常用片語：</strong><br>
-            • divide A into B (將 A 劃分為 B)<br>
-            • point of view (觀點)<br>
-            • such as (例如)<br>
-            • over millions of years (經過數百萬年)<br>
-            • work together (共同運作)
-        </div>
-    </div>
-
-    <div class="details-box">
-        <div class="summary-box">練文筆食材</div>
-        <div class="details-content">
-            ① <strong>Among these...</strong> (在這些...之中)<br>
-            → 適用：在多個項目中指出特定一個的優點或特質。<br>
-            例：Among these methods, the hexagonal pattern is the most efficient.<br><br>
-            ② <strong>In this way...</strong> (以此方式...)<br>
-            → 適用：總結前述動作帶來的影響。<br>
-            例：In this way, nature achieves optimal design without planning.<br><br>
-            ③ <strong>Not only... but also...</strong> (不只...而且...)<br>
-            → 適用：強調事物的雙重優點。<br>
-            例：The structure is not only material-saving but also incredibly strong.<br><br>
-            ④ <strong>...making them the most...</strong> (...使得它們成為最...)<br>
-            → 適用：說明前述事實導致的最終結果。<br>
-            例：Hexagons enclose the largest area, making them the most efficient shape.<br><br>
-            ⑤ <strong>...would survive..., more easily</strong> (能更輕易地生存)<br>
-            → 適用：描述在特定條件下具有的優勢。<br>
-            例：Colonies with better designs would survive tough times more easily.
-        </div>
-    </div>
-
-    <nav class="resource-strip bottom" aria-label="七月課程與聯絡方式">
-        <div class="resource-kicker">七月開課資訊與聯絡方式</div>
-        <div class="resource-grid">
-            <a class="resource-card echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
-                <span class="resource-label">七月課程</span>
-                <span class="resource-title">錯中學 ECHO 計劃</span>
-                <span class="resource-desc">用錯誤回饋帶動理解與修正，適合想把英文學得更穩、更會用的學生。</span>
-            </a>
-            <a class="resource-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
-                <span class="resource-label">七月課程</span>
-                <span class="resource-title">學生分析</span>
-                <span class="resource-desc">協助整理學生學習狀態、弱點與進步方向，讓後續練習更精準。</span>
-            </a>
-            <a class="resource-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
-                <span class="resource-label">聯絡老師</span>
-                <span class="resource-title">Line：linwayet</span>
-                <span class="resource-desc">想了解課程、教材或學習安排，可以加入 Line 與林威老師聯繫。</span>
-            </a>
-        </div>
-    </nav>
+<div class="lede">
+  <b>導言：</b>2023 年微軟將 OpenAI 技術整合為 Copilot 並全面推向 Windows 與 Microsoft 365；2024–2025 年間，強制預裝、訂閱漲價與資安漏洞引發用戶、企業與監管機構的多重壓力；2026 年 3 月微軟公開承諾減少不必要的 AI 入口，同時推出每月 99 美元的 M365 E7 旗艦套餐，並正式採用 Anthropic 與 Google 的模型。本報導依時間與主題分為九個單元，刪除無法查證的傳聞，補入原始評論影片未涵蓋的關鍵面向。
 </div>
+
+<!-- 單元地圖 -->
+<nav id="map">
+  <h2>📍 單元地圖（點選前往）</h2>
+  <div class="map-grid">
+    <a class="c1" href="#u1"><span class="num">1</span>事件總覽與時間軸</a>
+    <a class="c2" href="#u2"><span class="num">2</span>歷史脈絡：渠道優先策略</a>
+    <a class="c3" href="#u3"><span class="num">3</span>Copilot 強推與用戶反彈</a>
+    <a class="c4" href="#u4"><span class="num">4</span>資安危機：EchoLeak 漏洞</a>
+    <a class="c5" href="#u5"><span class="num">5</span>微軟的回應與政策轉向</a>
+    <a class="c6" href="#u6"><span class="num">6</span>商業化新階段：E7 與收費調整</a>
+    <a class="c7" href="#u7"><span class="num">7</span>補充分析：被忽略的面向</a>
+    <a class="c8" href="#u8"><span class="num">8</span>各方立場與後續觀察</a>
+    <a class="c9" href="#u9"><span class="num">9</span>對台灣讀者的意義</a>
+    <a class="cG" href="#glossary"><span class="num">G</span>Glossary 中英詞彙表</a>
+  </div>
+</nav>
+
+<!-- 單元一 -->
+<section class="unit" id="u1">
+  <h2 style="background:#B0563A;">單元一｜事件總覽與時間軸</h2>
+  <p>2026 年 3 月 9 日，微軟公開發表全新企業訂閱層級 <b>Microsoft 365 E7</b>（Frontier Suite），定價每用戶每月 99 美元，於 5 月 1 日正式上市。E7 將既有的 E5 套餐、Microsoft 365 Copilot、Agent 365 與 Entra 身分安全套件打包為單一合約。同場發表的 <b>Copilot Cowork</b> 是與 Anthropic 共同開發的雲端 AI 代理，底層採用 Claude 技術——這標誌著微軟正式從「OpenAI 獨家」走向「多模型」策略。</p>
+  <h3>關鍵時間軸</h3>
+  <ul class="timeline">
+    <li><b>2023/09</b>：微軟發表 Microsoft 365 Copilot，企業版每用戶每月 30 美元。</li>
+    <li><b>2024/01</b>：要求 PC 廠商在新筆電鍵盤加入 Copilot 專用按鍵。</li>
+    <li><b>2024/03</b>：美國眾議院禁止國會職員裝置使用 Copilot，理由為資料外洩疑慮。</li>
+    <li><b>2024/10 起</b>：澳洲等地將 Copilot 併入個人／家庭版訂閱並調漲價格。</li>
+    <li><b>2025/06</b>：資安公司 Aim Security 揭露「EchoLeak」零點擊漏洞（CVSS 9.3）。</li>
+    <li><b>2025/10</b>：澳洲競爭暨消費者委員會（ACCC）以誤導訂閱定價為由，向聯邦法院控告微軟。</li>
+    <li><b>2026/03/20</b>：Windows 部門主管 Pavan Davuluri 發表〈我們對 Windows 品質的承諾〉，宣布縮減 Copilot 入口。</li>
+    <li><b>2026/03/09–05/01</b>：發表並上市 M365 E7（99 美元）與 Copilot Cowork。</li>
+    <li><b>2026/04/15 起</b>：收回大型企業無授權用戶在 Word／Excel／PowerPoint／OneNote 內的免費 Copilot Chat（部分組織延至 5 月 16 日生效）。</li>
+  </ul>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    On March 9, 2026, Microsoft announced the Microsoft 365 E7 tier at $99 per user per month (available May 1), bundling E5, Copilot, Agent 365, and Entra. It also unveiled Copilot Cowork, an AI agent co-developed with Anthropic and powered by Claude. This unit lays out the full timeline from Copilot's 2023 launch through forced installations, a congressional ban, the EchoLeak vulnerability, an Australian regulator lawsuit, Microsoft's March 2026 quality pledge, and the shift to paid-only Copilot Chat in Office apps.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元二 -->
+<section class="unit" id="u2">
+  <h2 style="background:#C28A1E;">單元二｜歷史脈絡：渠道優先的三十年策略</h2>
+  <p>要理解 Copilot 的推廣方式，必須回顧微軟長期的「渠道優先」傳統。1990 年代，微軟將 Internet Explorer 預裝於 Windows 95，憑藉作業系統的覆蓋率取代了當時市占領先的 Netscape；美國司法部隨後以濫用壟斷地位起訴微軟，此案成為科技反壟斷史的指標判例。</p>
+  <p>此後，微軟在 Windows、Xbox 與 Edge 瀏覽器中將 Bing 設為預設搜尋引擎；雖然多數用戶偏好其他搜尋服務，預設流量仍為 Bing 帶來可觀的廣告收入。2014 年 Satya Nadella 接任執行長後，公司重心由軟體授權轉向雲端與訂閱制；至 2025 會計年度，微軟營收達 2,817 億美元，雲端業務占比約六成，企業客戶成為最重要的收入來源。</p>
+  <p>分析人士普遍認為，微軟錯過行動網路時代（智慧型手機作業系統由 Apple 與 Google 主導）的經驗，深刻影響了其在 AI 時代「寧可過度進取、不可再次缺席」的決策邏輯。微軟自 2019 年起陸續向 OpenAI 投資約 130 億美元，並投入巨額資本支出建設 AI 資料中心。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    Microsoft's playbook of leveraging Windows as a distribution channel dates back to bundling Internet Explorer in the 1990s, which triggered a landmark antitrust case. Default placement later powered Bing's ad revenue despite weak user preference. Under Satya Nadella, Microsoft pivoted to cloud and subscriptions, reaching $281.7 billion in FY2025 revenue with roughly 60% from cloud. Having missed the mobile era, Microsoft invested about $13 billion in OpenAI and massive sums in AI infrastructure, determined not to miss the AI wave.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元三 -->
+<section class="unit" id="u3">
+  <h2 style="background:#6E7B3D;">單元三｜Copilot 強推與用戶反彈</h2>
+  <p>2023 年 9 月，微軟以「Copilot」為名將生成式 AI 整合進 Microsoft 365 與 Windows，並對企業客戶收取每用戶每月 30 美元。微軟委託的研究報告宣稱該產品可帶來高投資報酬率，但早期版本的實際表現與宣傳之間存在落差：用戶回報 Copilot 在執行任務時經常僅列出操作步驟而非直接完成，且微軟自身的說明文件亦提醒用戶，在要求精確性的 Excel 工作中不應過度依賴 Copilot 的輸出。</p>
+  <h3>推廣手段引發的爭議</h3>
+  <p>2024 年 1 月起，微軟要求 PC 製造商在「AI PC」認證機種上配置 Copilot 專用實體按鍵，這是三十年來 Windows 鍵盤布局的首次強制變更。系統層面，Copilot 圖示被固定於 Windows 11 工作列；其後亦發生透過系統更新在背景安裝 Copilot 應用程式的事件，微軟初次將其歸因於程式錯誤，但類似情況其後再度發生。Copilot 入口陸續出現在記事本、截圖工具、相片應用，乃至部分品牌的智慧電視介面。</p>
+  <h3>訂閱漲價與澳洲訴訟</h3>
+  <p>2024 年 10 月起，微軟將 Copilot 併入多個市場的個人與家庭版 Microsoft 365 訂閱並同步調漲價格；澳洲為首批實施地區之一。微軟同時保留了不含 AI 功能的「經典版」較低價方案，但該選項僅在用戶進行取消訂閱流程時才會顯示。2025 年 10 月，澳洲競爭暨消費者委員會（ACCC）以「誤導消費者訂閱價格與選項」為由，向聯邦法院對微軟提起訴訟，指其影響約 270 萬名澳洲訂閱用戶。本案目前仍在審理中。</p>
+  <p>網路輿論方面，2025 年底出現以諷刺微軟為主題的瀏覽器外掛與社群抗議行動，反映部分用戶社群對強制整合 AI 功能的不滿情緒已公開化。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    Microsoft launched Copilot in September 2023 at $30 per user per month, but early versions underdelivered—Microsoft's own documentation warned against relying on it for accuracy-critical Excel tasks. Promotion tactics drew criticism: a mandatory Copilot keyboard key, a pinned taskbar icon, background installations via system updates, and Copilot entry points spreading across apps and even smart TVs. From October 2024, Copilot was bundled into consumer subscriptions with price hikes; Australia's regulator ACCC sued Microsoft in October 2025 for allegedly misleading about 2.7 million subscribers regarding cheaper "Classic" plans. The case is ongoing.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元四 -->
+<section class="unit" id="u4">
+  <h2 style="background:#A86A4F;">單元四｜資安危機：國會禁令與 EchoLeak 漏洞</h2>
+  <p>2024 年 3 月，美國眾議院網路安全辦公室評估 Copilot 可能將內部資料外洩至未經核准的外部服務，下令所有國會職員裝置移除並禁用該軟體。此一禁令發生在重大漏洞被公開揭露之前，屬預防性措施。</p>
+  <p>2025 年 6 月，以色列資安新創公司 <b>Aim Security</b>（獨立業者，非微軟旗下公司）揭露代號「<b>EchoLeak</b>」的漏洞（CVE-2025-32711），CVSS 風險評分達 9.3。該漏洞屬「零點擊」攻擊：攻擊者只需寄送一封含惡意指令的電子郵件，當受害者要求 Copilot 摘要信箱內容時，Copilot 即可能在背景被劫持，將機敏資料傳送至外部伺服器——受害者甚至無需開啟該郵件。微軟其後修補了此漏洞。</p>
+  <p>其後另有研究指出，Copilot 在特定情境下可繞過微軟自身的敏感性標籤（sensitivity label）存取控制，讀取未授權的機密內容。英國國民保健署（NHS）曾公開承認受相關漏洞影響。這些事件使企業客戶對 AI 助手深度存取內部資料的風險治理問題受到高度關注。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    In March 2024, the U.S. House of Representatives banned Copilot on congressional devices over data-leak concerns. In June 2025, independent Israeli security firm Aim Security disclosed "EchoLeak" (CVE-2025-32711, CVSS 9.3), a zero-click vulnerability: a single malicious email could hijack Copilot during inbox summarization and exfiltrate sensitive data without the victim ever opening the message. Later research showed Copilot could bypass Microsoft's own sensitivity labels, and the UK's NHS acknowledged being affected. These incidents intensified enterprise scrutiny of AI assistants' deep data access.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元五 -->
+<section class="unit" id="u5">
+  <h2 style="background:#7A5230;">單元五｜微軟的回應與政策轉向</h2>
+  <p>2026 年 3 月 20 日，微軟 Windows 與裝置部門執行副總裁 <b>Pavan Davuluri</b> 發表題為〈我們對 Windows 品質的承諾〉（Our commitment to Windows quality）的長篇部落格文章，承認公司近月大量檢視用戶意見回饋，並承諾：「你們會看到我們更有意圖地決定 Copilot 在 Windows 中整合的方式與位置，聚焦於真正有用、製作精良的體驗。」</p>
+  <p>具體措施隨後展開：截圖工具、相片、小工具與記事本中的 Copilot 入口被移除；工作列上的 Copilot 圖示開放用戶關閉；透過更新背景安裝 Copilot 的機制暫停。文章同時承諾改善更新品質——包括可暫停更新、關機時不強制安裝修補程式，以及恢復工作列垂直與頂部擺放等長期被要求的功能。2026 年 4 月，微軟向企業 IT 管理員開放在公司裝置上完整移除 Copilot 的權限。</p>
+  <p>值得留意的背景是：媒體指出微軟在 2025 年 9 月與 2026 年 1 月也曾做過類似的品質承諾，因此外界對此次承諾的執行力仍持觀望態度；不過截至 2026 年 5 月，Windows 預覽版已可見部分承諾項目實際落地。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    On March 20, 2026, Windows chief Pavan Davuluri published "Our commitment to Windows quality," pledging more intentional Copilot integration focused on genuinely useful experiences. Microsoft then removed Copilot entry points from Snipping Tool, Photos, Widgets, and Notepad, made the taskbar icon removable, paused background installs, and in April 2026 gave enterprise IT admins the right to fully uninstall Copilot. Skeptics note similar pledges were made in September 2025 and January 2026, but by May 2026 some commitments were visibly shipping in Insider builds.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元六 -->
+<section class="unit" id="u6">
+  <h2 style="background:#8A7B6A;">單元六｜商業化新階段：E7 套餐與免費功能收回</h2>
+  <h3>免費 Copilot Chat 退場</h3>
+  <p>2026 年 4 月 15 日起（部分組織延至 5 月 16 日），未持有付費 Microsoft 365 Copilot 授權（每用戶每月 30 美元）的商業用戶，失去在 Word、Excel、PowerPoint 與 OneNote 應用程式內使用 Copilot Chat 的權限；該功能自 2025 年 9 月起原以免費形式提供給約 4.5 億商業用戶。無授權用戶仍可透過獨立的 Copilot 應用程式與 Outlook 使用基本功能。值得注意的是，此項變更的細節（包括 2,000 席的組織規模門檻與生效日期）主要透過管理中心的受限訊息（Message Center）通知 IT 管理員，未同步刊載於公開的產品文件頁面，引發部分企業客戶對溝通透明度的批評。</p>
+  <h3>M365 E7 與多模型策略</h3>
+  <p>同期推出的 M365 E7 定價每用戶每月 99 美元，內含 E5（單買 60 美元）、Copilot（30 美元）、Entra 套件（12 美元）與新產品 Agent 365（15 美元）；微軟指出分項合計為 117 美元，捆綁價格實際上低於拆買總額。E7 的核心賣點 Copilot Cowork 採用 Anthropic 的 Claude 技術共同開發，Copilot Chat 亦同時提供 Claude 與 OpenAI 模型供選擇。此一安排建立在微軟與 Anthropic 高達 300 億美元的 Azure 算力合約之上——曾被視為競爭對手的兩家公司，如今同時是深度商業夥伴。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    Starting April 15, 2026 (May 16 for some tenants), Microsoft removed free Copilot Chat from Word, Excel, PowerPoint, and OneNote for business users without the $30/month Copilot license—a feature given to ~450 million users only six months earlier. Details appeared mainly in restricted admin Message Center posts, drawing transparency criticism. The new $99 M365 E7 tier bundles E5, Copilot, Entra, and Agent 365 (worth $117 separately). Its flagship Copilot Cowork is co-developed with Anthropic on Claude technology, under a $30 billion Azure compute deal, with Claude and OpenAI models both available in Copilot Chat.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元七 -->
+<section class="unit" id="u7">
+  <h2 style="background:#4F6B4A;">單元七｜補充分析：原始評論未涵蓋的面向</h2>
+  <p>本單元補入網路評論常省略、但對完整理解事件不可或缺的觀點。</p>
+  <h3>1. 價格的另一面：捆綁折扣邏輯</h3>
+  <p>「99 美元天價」的說法忽略了拆項計算：E7 內含組件分開購買需 117 美元，捆綁價反而便宜 18 美元。對原本就需要 E5 加進階安全功能的大型企業而言，E7 屬於整併合約的選項，而非單純漲價。真正的爭議點在於免費功能收回的溝通方式，而非 E7 本身的定價結構。</p>
+  <h3>2. 多模型策略是業界常態，而非「打臉」</h3>
+  <p>採用多家供應商的 AI 模型在 2026 年已是企業軟體的主流做法——降低單一供應商依賴、依任務挑選最適模型，是風險管理上的合理選擇。微軟與 OpenAI 的合約自 2025 年重新議定後，本就允許雙方各自尋求其他合作。將「採用 Claude」單純解讀為失敗，忽略了商業上的避險邏輯。</p>
+  <h3>3. 同業比較：Google 採取了類似做法</h3>
+  <p>2025 年 Google 亦將 Gemini AI 功能併入 Workspace 商用方案並調整定價，做法與微軟的 Copilot 捆綁高度相似。「先整合 AI、再反映於價格」是整個產業的共同走向，並非微軟獨有；評論若只聚焦單一公司，容易產生選擇性敘事。</p>
+  <h3>4. 微軟的正面數據同樣存在</h3>
+  <p>在 Copilot 消費端遇阻的同時，微軟的雲端與 AI 基礎設施業務持續成長，Azure 仍是企業 AI 訓練與部署的主要平台之一；E7 與 Agent 365 鎖定的「AI 代理治理」市場（企業需要統一管控內部 AI 代理的身分、權限與合規）被多數分析師視為實質需求。評價微軟的 AI 策略，需同時考量消費端的挫敗與企業基礎設施端的優勢。</p>
+  <h3>5. 過往承諾的兌現紀錄</h3>
+  <p>對 2026 年 3 月品質承諾最有力的質疑，並非陰謀論式的「演戲」指控，而是可驗證的歷史紀錄：微軟在 2025 年 9 月與 2026 年 1 月皆做過類似承諾，其後仍發生更新品質事故。觀察者應以「承諾項目逐條核對後續版本」的方式追蹤，而非以情緒定論。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    This unit adds context typically missing from viral commentary: (1) E7's $99 price is actually $18 below the $117 sum of its parts, so the real controversy is communication, not pricing; (2) multi-model strategies are standard industry risk management, not an admission of defeat; (3) Google similarly bundled Gemini into Workspace with price changes, making this an industry-wide pattern; (4) Microsoft's enterprise cloud and AI-agent governance businesses show genuine strength alongside consumer-side struggles; (5) the strongest critique of the March 2026 quality pledge is Microsoft's track record of similar unfulfilled promises—best evaluated by tracking each commitment, not by rhetoric.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元八 -->
+<section class="unit" id="u8">
+  <h2 style="background:#9C5A2E;">單元八｜各方立場與後續觀察指標</h2>
+  <h3>利害關係人立場</h3>
+  <p><b>微軟：</b>需在巨額 AI 資本支出（年逾千億美元的資料中心投資）與營收回報之間取得平衡，E7 與 Copilot 商業化是財務上的必然動作。<b>OpenAI 與 Anthropic：</b>前者面臨「最大合作夥伴同時擁抱對手」的關係重整；後者藉微軟通路大幅擴張企業市場。<b>企業 IT 部門：</b>須在 4–5 月功能收回後重新評估授權成本與替代方案。<b>監管機構：</b>ACCC 訴訟結果可能影響全球訂閱制商品的揭露義務標準。<b>一般用戶：</b>獲得了移除 Copilot 的選擇權，是本輪事件最直接的具體成果。</p>
+  <h3>值得持續追蹤的指標</h3>
+  <ul class="timeline">
+    <li><b>E7 採購率</b>：微軟 2027 會計年度財報中的 Copilot 與 E7 相關揭露。</li>
+    <li><b>品質承諾兌現度</b>：後續 Windows 更新是否再出現未經同意的 Copilot 安裝；企業卸載權限是否維持。</li>
+    <li><b>ACCC 訴訟判決</b>：罰款規模與是否要求改變訂閱揭露方式。</li>
+    <li><b>微軟–OpenAI 關係</b>：獨家條款鬆動後，雙方在模型供應上的下一步安排。</li>
+    <li><b>資安後續</b>：是否再出現 EchoLeak 等級的 AI 助手漏洞，以及企業導入 AI 代理治理工具（如 Agent 365）的速度。</li>
+  </ul>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    Stakeholders face divergent outcomes: Microsoft must monetize over $100 billion in annual AI infrastructure spending; OpenAI navigates its partner embracing a rival; Anthropic gains massive enterprise distribution; IT departments must reassess licensing; regulators may reshape subscription disclosure standards; and ordinary users won the concrete right to remove Copilot. Key indicators to watch: E7 adoption in FY2027 earnings, whether quality pledges hold in future Windows updates, the ACCC verdict, the evolving Microsoft–OpenAI relationship, and any future AI-assistant security incidents.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- 單元九 -->
+<section class="unit" id="u9">
+  <h2 style="background:#6B4F3A;">單元九｜對台灣讀者的意義</h2>
+  <p><b>企業與學校的實務影響：</b>台灣使用 Microsoft 365 商業版或教育版的組織，同樣受 2026 年 4–5 月免費 Copilot Chat 收回的影響；IT 部門應確認所屬組織的席次規模與適用的變更通知，評估是否升級付費授權、改用獨立 Copilot 應用程式，或導入其他 AI 工具。</p>
+  <p><b>產業面的觀察：</b>微軟維持的高額 AI 資本支出，對台灣的伺服器代工、AI 晶片封測與 AI PC 供應鏈是持續性的需求來源；但「AI PC 專用按鍵」等由軟體巨頭定義的硬體規格，其市場接受度起伏也提醒台灣硬體業者留意終端需求的真實性。</p>
+  <p><b>媒體識讀的提醒：</b>本事件的原始傳播載體之一是高度情緒化的網路評論影片。事實查核顯示其主要事件骨架可考，但夾雜大量無法驗證的內部數據與貶義修辭。讀者宜養成三分法習慣：可查證的事實、無法驗證的傳聞、與評論者的個人意見，應分開看待——這也是課堂上極佳的批判性思考教材。</p>
+  <div class="en-summary">
+    <span class="label">English Summary</span>
+    Taiwanese organizations on Microsoft 365 face the same April–May 2026 Copilot Chat removal and should review licensing options. Microsoft's sustained AI capital expenditure remains a demand driver for Taiwan's server, chip-packaging, and AI-PC supply chains, though the mixed reception of vendor-defined hardware specs (like the Copilot key) warns against overestimating end-user demand. Finally, this case is a model media-literacy exercise: the viral commentary's core facts check out, but readers should separate verifiable facts, unverifiable insider claims, and the commentator's opinions.
+  </div>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<!-- Glossary -->
+<section class="unit" id="glossary">
+  <h2 style="background:#54683F;">Glossary｜中英詞彙對照表</h2>
+  <dl>
+    <dt>bundle（捆綁銷售）</dt>
+    <dd>將多項產品或服務打包為單一售價出售，如 M365 E7 將 E5、Copilot、Agent 365 捆綁為一。</dd>
+    <dt>subscription tier（訂閱層級）</dt>
+    <dd>同一服務依功能與價格劃分的不同等級，如 E5（60美元）與 E7（99美元）。</dd>
+    <dt>preinstall（預裝）</dt>
+    <dd>軟體在裝置出廠或系統更新時即被安裝，用戶未主動選擇。</dd>
+    <dt>antitrust（反壟斷）</dt>
+    <dd>防止企業濫用市場支配地位的法律規範；1990年代美國政府曾以此起訴微軟。</dd>
+    <dt>zero-click vulnerability（零點擊漏洞）</dt>
+    <dd>受害者無需點擊任何連結或檔案即可被攻擊的資安漏洞，如 EchoLeak。</dd>
+    <dt>CVSS（通用漏洞評分系統）</dt>
+    <dd>Common Vulnerability Scoring System，以 0–10 分量化資安漏洞嚴重度；EchoLeak 評分 9.3 屬「嚴重」等級。</dd>
+    <dt>data exfiltration（資料外洩／滲出）</dt>
+    <dd>機敏資料被未經授權地傳送至外部伺服器的行為。</dd>
+    <dt>sensitivity label（敏感性標籤）</dt>
+    <dd>標記文件機密等級並限制存取的企業資料保護機制。</dd>
+    <dt>prompt injection（提示注入攻擊）</dt>
+    <dd>在 AI 讀取的內容中暗藏惡意指令，劫持 AI 行為的攻擊手法；EchoLeak 即屬此類。</dd>
+    <dt>multi-model strategy（多模型策略）</dt>
+    <dd>同時採用多家供應商的 AI 模型（如 OpenAI＋Anthropic＋Google），以降低單一依賴。</dd>
+    <dt>AI agent（AI 代理）</dt>
+    <dd>能自主執行多步驟任務的 AI 系統，如 Copilot Cowork。</dd>
+    <dt>agent governance（代理治理）</dt>
+    <dd>對企業內所有 AI 代理進行身分、權限與合規管理；Agent 365 即為此類產品。</dd>
+    <dt>capital expenditure / capex（資本支出）</dt>
+    <dd>企業投入長期資產（如資料中心、晶片）的支出；微軟年投入逾千億美元於 AI 基礎設施。</dd>
+    <dt>conversion rate（轉化率）</dt>
+    <dd>潛在用戶轉為付費用戶的比例，是衡量產品商業化成效的核心指標。</dd>
+    <dt>dark pattern（黑暗模式設計）</dt>
+    <dd>刻意誘導或阻礙用戶做出特定選擇的介面設計，如將便宜方案藏在退訂流程末端。</dd>
+    <dt>regulator（監管機構）</dt>
+    <dd>負責市場秩序與消費者保護的政府機關，如澳洲的 ACCC。</dd>
+    <dt>Message Center（管理中心訊息）</dt>
+    <dd>微軟向企業 IT 管理員發布變更通知的受限後台頻道，一般用戶無法看見。</dd>
+    <dt>media literacy（媒體識讀）</dt>
+    <dd>辨別資訊來源可信度、區分事實與意見的能力。</dd>
+  </dl>
+  <div class="back-map"><a href="#map">⬆ 回到單元地圖</a></div>
+</section>
+
+<footer>
+  林威英文｜全方位新聞分析報告｜2026.06.05<br>
+  本報告依公開可查證資料整理，已刪除無法驗證之傳聞數據。
+</footer>
 
 </body>
 </html>
