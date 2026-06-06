@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starlink 星鏈帝國微課程</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'BIZ UDPGothic', 'Inter', sans-serif;
+  background: #F8F4ED;
+  color: #3A2E22;
+  font-size: 22px;
+  line-height: 1.85;
+  margin: 0;
+  padding: 24px 16px 48px;
+}
+main { max-width: 800px; margin: 0 auto; }
+h1 {
+  font-size: 2.7rem; color: #C0392B; text-align: center;
+  border: 4px double #C0392B; border-radius: 18px;
+  padding: 24px 16px; margin: 8px 0 16px; line-height: 1.4;
+}
+.subtitle {
+  font-size: 1.9rem; color: #1565C0; text-align: center;
+  font-weight: 700; margin: 0 0 12px; line-height: 1.5;
+}
+.byline {
+  font-size: 1.35rem; color: #1565C0; text-align: center;
+  font-weight: 700; letter-spacing: 2px; margin: 0 0 28px;
+  text-shadow: 1px 1px 0 #FFFDF8;
+}
+.link-cards { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+.link-cards a {
+  display: flex; align-items: center; min-height: 72px;
+  border-radius: 16px; padding: 16px 22px;
+  color: #FFFDF8; text-decoration: none;
+  font-size: 1.15rem; font-weight: 700; line-height: 1.6;
+  box-shadow: 0 3px 10px rgba(58,46,34,0.18);
+}
+.card-echo { background: #C0392B; }
+.card-popup { background: #1565C0; }
+.card-line { background: #06C755; }
+nav#unit-map {
+  background: #FFFDF8; border: 3px solid #E0A96D; border-radius: 18px;
+  padding: 24px 20px; margin: 28px 0;
+  box-shadow: 0 3px 10px rgba(58,46,34,0.12);
+}
+nav#unit-map h2 { margin: 0 0 18px; font-size: 1.9rem; color: #2E7D32; text-align: center; }
+nav#unit-map a {
+  display: flex; align-items: center; min-height: 72px;
+  border-radius: 999px; padding: 14px 24px; margin-bottom: 16px;
+  color: #FFFDF8; text-decoration: none;
+  font-size: 1.12rem; font-weight: 700; line-height: 1.55;
+}
+.map-1 { background: #C0392B; } .map-2 { background: #E65100; }
+.map-3 { background: #2E7D32; } .map-4 { background: #1565C0; }
+.map-5 { background: #6A1B9A; } .map-6 { background: #B71C1C; }
+.map-7 { background: #00695C; } .map-8 { background: #4527A0; }
+.map-9 { background: #BF360C; } .map-10 { background: #1B5E20; }
+.map-g { background: #5D4037; }
+section {
+  background: #FFFDF8; border-radius: 18px;
+  padding: 28px 26px; margin: 28px 0;
+  box-shadow: 0 3px 12px rgba(58,46,34,0.12);
+  border-top: 10px solid #E0A96D;
+}
+section h2 { font-size: 1.95rem; color: #1565C0; margin: 0 0 20px; line-height: 1.5; }
+section h3 { font-size: 1.5rem; color: #2E7D32; margin: 26px 0 10px; }
+section p { margin: 0 0 18px; }
+.kw { color: #E65100; font-weight: 700; }
+.tag { color: #6A1B9A; font-weight: 700; }
+.summary {
+  background: #FBF3E7; border-left: 10px solid #E0A96D;
+  border-radius: 12px; padding: 20px 22px; margin: 26px 0 20px;
+}
+.summary h3 { margin: 0 0 12px; color: #2E7D32; font-size: 1.4rem; }
+.summary p { font-family: 'Inter', 'BIZ UDPGothic', sans-serif; line-height: 1.75; margin: 0; }
+.back-to-map {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 72px; border-radius: 999px;
+  background: #5D4037; color: #FFFDF8;
+  text-decoration: none; font-size: 1.15rem; font-weight: 700;
+  margin-top: 20px;
+}
+.databox {
+  background: #F3EEE4; border: 2px solid #E0A96D; border-radius: 12px;
+  padding: 18px 20px; margin: 18px 0;
+}
+.databox p { margin: 0 0 10px; }
+.databox p:last-child { margin: 0; }
+#glossary { border-top-color: #5D4037; background: #F3EEE4; }
+#glossary dt { font-weight: 700; color: #E65100; font-family: 'Inter', sans-serif; margin-top: 18px; font-size: 1.15rem; }
+#glossary dd { margin: 4px 0 0; }
+@media (max-width: 540px) {
+  body { font-size: 19px; padding: 16px 10px 40px; }
+  h1 { font-size: 2.05rem; padding: 18px 10px; }
+  .subtitle { font-size: 1.45rem; }
+  section { padding: 22px 16px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>🛰️ Starlink 星鏈帝國</h1>
+<p class="subtitle">十回合微課程：從一萬顆衛星看懂低軌衛星的上下游供應鏈與全球競局</p>
+<p class="byline">✦ 林威老師與 AI agent 團隊製作 ✦</p>
+
+<div class="link-cards">
+  <a class="card-echo" href="https://linwayet.github.io/4ulive/index.html">📚 七月開課・錯中學 ECHO 計劃：從錯誤中學習的英文進步方法</a>
+  <a class="card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析：個人化學習診斷與規劃</a>
+  <a class="card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet，直接聯絡林威老師</a>
+</div>
+
+<nav id="unit-map">
+  <h2>🗺️ 單元地圖（每回合約 10 分鐘）</h2>
+  <a class="map-1" href="#unit1">第一回合　什麼是低軌衛星？LEO・MEO・GEO</a>
+  <a class="map-2" href="#unit2">第二回合　Starlink 2026 全景：一萬顆衛星的帝國</a>
+  <a class="map-3" href="#unit3">第三回合　商業模式與 IPO：火箭公司還是電信公司？</a>
+  <a class="map-4" href="#unit4">第四回合　上游之一：發射能力就是護城河</a>
+  <a class="map-5" href="#unit5">第五回合　上游之二：衛星本體供應鏈解剖</a>
+  <a class="map-6" href="#unit6">第六回合　下游：地面段與終端設備</a>
+  <a class="map-7" href="#unit7">第七回合　水平競爭之一：Amazon Leo 的後發挑戰</a>
+  <a class="map-8" href="#unit8">第八回合　水平競爭之二：中國星座與其他玩家</a>
+  <a class="map-9" href="#unit9">第九回合　台灣供應鏈：誰吃到星鏈訂單？</a>
+  <a class="map-10" href="#unit10">第十回合　台灣的選擇與未來風險</a>
+  <a class="map-g" href="#glossary">📖 術語表 Glossary</a>
+</nav>
+
+<section id="unit1">
+<h2>第一回合　什麼是低軌衛星？LEO・MEO・GEO</h2>
+<p>人造衛星依軌道高度可分為三大類：<span class="kw">低軌衛星（LEO, Low Earth Orbit）</span>距地表約 500 至 2,000 公里、<span class="kw">中軌衛星（MEO, Medium Earth Orbit）</span>約 2,000 至 20,000 公里、<span class="kw">同步軌道衛星（GEO, Geostationary Orbit）</span>固定在約 35,786 公里高空。GEO 衛星與地球自轉同步，一顆就能覆蓋廣大區域，傳統衛星電視多採用此方式；但訊號往返超過七萬公里，<span class="kw">延遲（latency）</span>動輒 600 毫秒以上，難以支援視訊會議與線上遊戲。</p>
+<p>Starlink 的主力衛星運行在約 550 公里高度，距離只有 GEO 的六十分之一左右，延遲可壓到數十毫秒，接近地面光纖的體驗。這就是低軌衛星近年爆紅的核心原因：<span class="tag">低延遲、低單顆成本、可大量部署</span>。代價是單顆衛星覆蓋範圍小、相對地面高速移動，必須用成百上千顆衛星組成「<span class="kw">巨型星座（mega-constellation）</span>」接力服務，並由地面終端不斷切換追蹤衛星。</p>
+<p>低軌衛星的戰略價值在俄烏戰爭中被全世界看見：當地面通訊設施遭破壞時，衛星網路成為維持通訊的關鍵備援。此後，低軌衛星從商業題材升級為各國的<span class="kw">通訊韌性（communication resilience）</span>與國家安全議題，也帶動了軌道位置與<span class="kw">頻譜（spectrum）</span>資源的全球搶位賽。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Satellites are classified by orbital altitude: LEO (about 500–2,000 km), MEO, and GEO (about 35,786 km). Starlink operates mainly at around 550 km, which reduces latency to tens of milliseconds, far better than traditional GEO satellite internet. The trade-off is that each LEO satellite covers a small area, so thousands of satellites must work together as a mega-constellation. The war in Ukraine demonstrated the strategic value of LEO networks for communication resilience.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit2">
+<h2>第二回合　Starlink 2026 全景：一萬顆衛星的帝國</h2>
+<p>2026 年 3 月 17 日，Starlink 的<span class="kw">現役衛星（active satellites）</span>數量正式突破一萬顆；根據追蹤星座的天文學家 Jonathan McDowell 統計，截至 2026 年 6 月 1 日在軌衛星約 10,413 顆。這個數字約占全球所有現役衛星的三分之二以上，意味著「天上大多數會動的衛星都屬於同一家公司」——這在航太史上前所未見。</p>
+<p>服務面同樣驚人：Starlink 目前覆蓋約 150 個國家與地區，2026 年 2 月<span class="kw">活躍用戶（active customers）</span>突破 1,000 萬。2025 年一年內就新增 42 個服務國家、約 270 萬名用戶，整體網路容量在 2025 年達到約 450 Tbps。新一代衛星全面配備<span class="kw">雷射星間鏈路（inter-satellite laser links）</span>，衛星之間可直接以雷射互傳資料，減少對地面站的依賴。</p>
+<h3>2026 年的大工程：星座重組</h3>
+<p>SpaceX 在 2026 年啟動一項「重大星座重組（significant reconfiguration）」：約 4,400 顆衛星將從 550 公里降到約 480 公里的軌道。官方說法是為了提升<span class="kw">太空安全（space safety）</span>——更低的軌道讓失效衛星更快墜入大氣層燒毀，降低碰撞與太空垃圾風險。這也是商業航太史上規模最大的一次軌道調度作業。SpaceX 持有的監管許可最多可擴張到約 42,000 顆衛星，並已另外申請近 30,000 顆第二代衛星的部署授權。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Starlink crossed 10,000 active satellites on March 17, 2026, and now operates more than two-thirds of all active satellites in orbit. The service covers about 150 countries and passed 10 million active customers in February 2026. Newer satellites carry laser links that let them exchange data directly in space. In 2026, SpaceX is also lowering about 4,400 satellites from 550 km to 480 km to improve space safety, the largest orbital reconfiguration ever attempted.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit3">
+<h2>第三回合　商業模式與 IPO：火箭公司還是電信公司？</h2>
+<p>2026 年，SpaceX 向美國證券交易委員會提交 <span class="kw">S-1 招股書（IPO prospectus）</span>，市場預期最快 2026 年 6 月掛牌，這份文件首次揭露了 Starlink 的完整財務輪廓。根據招股書與媒體報導：Starlink 在 2025 年創造約 106 億美元營收，占 SpaceX 總營收（約 187 億美元）的三分之二左右，調整後 <span class="kw">EBITDA（稅息折舊攤銷前獲利）</span>約 66 億美元。2026 年第一季，以 Starlink 為主的 Connectivity 部門單季營收已達 32.57 億美元。換句話說，SpaceX 表面上是火箭公司，<span class="tag">獲利引擎其實是衛星電信業務</span>。</p>
+<p>估值是市場最大的爭論點。2026 年 2 月的私募交易已把 SpaceX 估到約 1.25 兆美元，部分分析甚至喊到 1.75 兆美元。支持者看的是 60% 以上的 EBITDA 利潤率與用戶高速成長；質疑者則指出，2025 年公司整體出現近 50 億美元虧損——主因是 2026 年 2 月併入馬斯克的 AI 公司 <span class="kw">xAI</span> 後認列的鉅額投入，AI 部門單季營運虧損超過 24 億美元。</p>
+<h3>下一個故事：手機直連衛星</h3>
+<p>招股書把 <span class="kw">Direct-to-Cell（衛星直連手機）</span>描繪成下一個成長引擎：目前約 650 顆 V1 Mobile 衛星已在 30 個國家服務約 740 萬部月活躍裝置，讓一般智慧型手機不需任何特殊硬體即可連上衛星。SpaceX 估計這塊行動通訊市場的<span class="kw">潛在市場規模（TAM, Total Addressable Market）</span>高達 7,400 億美元，並計畫 2027 年起部署更大的 V2 Mobile 衛星，目標是讓衛星行動服務「與地面行動網路同等水準」。這個願景能否兌現，是 IPO 估值能否站穩的關鍵。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>SpaceX filed its S-1 prospectus in 2026, revealing that Starlink generated about $10.6 billion in revenue in 2025, roughly two-thirds of total company revenue. The Connectivity segment earned $3.26 billion in the first quarter of 2026 alone. Private trades valued SpaceX at about $1.25 trillion, though the company posted a large 2025 loss after absorbing xAI. The Direct-to-Cell service, already serving 7.4 million monthly devices in 30 countries, is presented as the next major growth story with a claimed $740 billion addressable market.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit4">
+<h2>第四回合　上游之一：發射能力就是護城河</h2>
+<p>從供應鏈角度看，Starlink 最特別之處是「上游就是自己」。一般衛星公司必須向外購買發射服務，每次發射都是巨額成本與排隊等待；SpaceX 則用自家可回收的 <span class="kw">Falcon 9 獵鷹九號火箭</span>發射自家衛星。截至 2026 年 5 月底，SpaceX 當年已執行超過 50 次 Starlink 專屬發射任務，平均每週發射約 70 顆衛星——這種節奏更像工業化生產線，而非傳統航太作業。<span class="kw">垂直整合（vertical integration）</span>讓 SpaceX 的單顆衛星部署成本遠低於任何競爭者，這就是最深的<span class="kw">護城河（moat）</span>。</p>
+<h3>Starship：下一級火力</h3>
+<p>真正的跳躍式升級是<span class="kw">星艦（Starship）</span>。招股書指出，SpaceX 預計 2026 年下半年讓 Starship 開始執行酬載入軌任務，並用它部署新一代 <span class="kw">V3 衛星</span>：單顆下行容量達 1 Tbps（約為現役 V2 Mini 的 20 倍），單次 Starship 發射可載運最多 60 顆 V3。也就是說，一次 Starship 發射所增加的網路容量，可能相當於 Falcon 9 時代的二十倍。V3 與 V2 Mobile 衛星因體積過大，只有 Starship 裝得下——<span class="tag">火箭進度直接決定衛星網路的升級速度</span>，這也是投資人緊盯每一次星艦試飛的原因。</p>
+<p>反過來看，這也是風險集中點：若 Starship 開發延遲，V3 部署、Direct-to-Cell 擴張與 IPO 故事都會連帶受阻。上游的優勢與風險，在 SpaceX 身上是同一件事。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Starlink's biggest advantage is that SpaceX owns its own launch capability. Reusable Falcon 9 rockets completed more than 50 dedicated Starlink missions in 2026 by late May, deploying roughly 70 satellites per week. This vertical integration keeps deployment costs far below any competitor. The next leap depends on Starship, which is expected to start carrying next-generation V3 satellites in late 2026; each V3 offers 1 Tbps of capacity, and one Starship can carry up to 60 of them. However, any Starship delay would slow the entire upgrade roadmap.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit5">
+<h2>第五回合　上游之二：衛星本體供應鏈解剖</h2>
+<p>一顆 Starlink 衛星可以拆解成幾個關鍵子系統。第一是<span class="kw">相位陣列天線（phased array antenna）</span>：用大量微小天線單元組成的「電子掃描」天線，不需機械轉動就能瞬間改變波束方向，同時服務地面上移動中的大量用戶，這是低軌通訊衛星的心臟。第二是<span class="kw">雷射星間鏈路（ISL, Inter-Satellite Links）</span>，讓衛星彼此組成太空中的骨幹網路。第三是<span class="kw">霍爾推進器（Hall thruster）</span>——以電力推動離子的電推進系統，負責升軌、避碰與壽命終結時的<span class="kw">離軌（deorbit）</span>。再加上太陽能板、星上電腦與高頻<span class="kw">射頻（RF, radio frequency）</span>元件，構成完整衛星。</p>
+<p>SpaceX 在華盛頓州 Redmond 的工廠以高度自製方式量產衛星，規格也持續演進：早期 V1 衛星約 260 公斤，現役 V2 Mini 約 800 公斤，未來的 V3 更大更重。值得注意的是，衛星雖以自製為主，仍需要外部供應鏈提供印刷電路板、高頻材料、功率元件等零組件——這正是第九回合台灣廠商切入的位置。</p>
+<h3>汰換經濟學：壽命五年的耗材</h3>
+<p>低軌衛星設計壽命僅約五年，之後便受控墜入大氣層燒毀。這代表一萬顆衛星的星座，每年光是「維持現狀」就需要補發約兩千顆衛星。對 SpaceX 是持續的資本支出，對零組件供應商卻是<span class="tag">永不斷炊的重複性訂單</span>——衛星不是一次性工程，而是像耗材一樣持續更換的硬體生意。2025 年起，早期發射的大批衛星陸續進入汰換期，供應鏈訂單能見度因此大幅拉長。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Each Starlink satellite combines several key subsystems: phased array antennas for electronic beam steering, laser inter-satellite links, Hall-effect electric thrusters, solar arrays, and radio-frequency components. SpaceX mass-produces satellites at its Redmond factory, but still relies on external suppliers for circuit boards, high-frequency materials, and power components. Because each LEO satellite lasts only about five years, a 10,000-satellite constellation needs roughly 2,000 replacements every year, creating recurring orders for the supply chain.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit6">
+<h2>第六回合　下游：地面段與終端設備</h2>
+<p>衛星只是系統的一半，另一半在地面。<span class="kw">地面段（ground segment）</span>包含兩層：第一層是<span class="kw">地閘站（gateway）</span>——把衛星網路接回地面網際網路骨幹的大型站點。Starlink 光在美國就有超過 100 個地閘站，每站配備大量天線，全部在 Redmond 自製。第二層是<span class="kw">用戶終端（user terminal）</span>，也就是用戶家中的平板狀碟形天線，內含相位陣列天線與專用晶片，能自動追蹤高速掠過天空的衛星。</p>
+<p>商業模式上，Starlink 採取類似「刮鬍刀模式」的策略：終端硬體以接近成本甚至低於成本的價格出售，靠每月訂閱費賺取長期收入。標準方案月費約 66 美元起，另有航空、海事、企業專線等高價方案。<span class="tag">航空機上 Wi-Fi、遠洋船舶、能源礦業據點與軍政府客戶</span>，是單價最高、成長最快的下游市場。</p>
+<h3>與電信業者的合作：補網而非踢館</h3>
+<p>Direct-to-Cell 服務採取與既有行動業者「合作」而非「取代」的路線：例如與美國 T-Mobile 合作，讓用戶手機在地面基地台收不到訊號的偏遠地區自動切換到衛星。對電信業者而言，這等於用衛星補滿覆蓋死角（dead zones）；對 Starlink 而言，每一位行動用戶都成為潛在客戶。目前服務以簡訊為主，並逐步擴展到語音、數據與<span class="kw">物聯網（IoT, Internet of Things）</span>連線。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>The ground segment has two layers: more than 100 gateway stations in the U.S. that connect satellites to the internet backbone, and user terminals — flat dish antennas with phased arrays that track satellites automatically. Starlink sells hardware near cost and earns recurring subscription revenue, with aviation, maritime, and enterprise plans commanding the highest prices. For Direct-to-Cell, Starlink partners with mobile carriers such as T-Mobile to fill coverage dead zones rather than competing with them directly.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit7">
+<h2>第七回合　水平競爭之一：Amazon Leo 的後發挑戰</h2>
+<p>水平競爭中最受矚目的對手是亞馬遜。2025 年 11 月，亞馬遜把衛星網路計畫 Project Kuiper 正式更名為 <span class="kw">Amazon Leo</span>，執行長 Andy Jassy 在年度股東信中宣布服務將於 2026 年中正式推出。Leo 的賣點有三：宣稱最高 1 Gbps 的下載速度、比對手更具競爭力的價格，以及與 <span class="kw">AWS 雲端服務</span>的深度整合——企業資料可以從衛星直接進入亞馬遜雲端做儲存與 AI 分析。已公布的企業客戶包括達美航空、捷藍航空、AT&T、Vodafone 與 NASA。</p>
+<h3>差距有多大？</h3>
+<div class="databox">
+<p>📡 在軌衛星數（2026 年上半）：Starlink 超過 10,000 顆 vs Amazon Leo 約 241 顆（年中已增至 300 顆以上）</p>
+<p>👥 用戶數：Starlink 超過 1,000 萬 vs Leo 尚在企業 Beta 測試階段（2026 年 4 月啟動）</p>
+<p>🚀 發射能力：SpaceX 自有火箭、每週發射 vs Leo 依賴 ULA、Blue Origin、Arianespace，甚至租用對手的 Falcon 9</p>
+</div>
+<p>Leo 最大的瓶頸不是技術或資金，而是<span class="tag">火箭運力</span>。亞馬遜位於華盛頓州 Kirkland 的工廠每週可生產約 30 顆衛星，產能不是問題；問題是全球發射市場塞車。美國 FCC 原本要求 Leo 在 2026 年 7 月前部署 1,618 顆衛星，但亞馬遜估計屆時僅能達到約 700 顆，已申請延期兩年至 2028 年 7 月，理由正是「火箭供應短缺」。亞馬遜在申請文件中強調，Leo 是美國市場上唯一有潛力與 Starlink 競爭的替代方案。分析機構估計，亞馬遜到 2028 年為止對第一代星座的總投資約 250 億美元，這將是亞馬遜史上最大的基礎設施投資之一。</p>
+<p>對供應鏈而言，Leo 的存在是好消息：<span class="tag">兩大星座同時擴張，零組件需求是相加而非取代</span>，而且亞馬遜大量對外採購，外部供應商的參與空間比高度自製的 SpaceX 更大。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Amazon renamed Project Kuiper to Amazon Leo in November 2025 and plans commercial launch in mid-2026, promising up to 1 Gbps speeds, lower prices, and deep AWS integration. Early enterprise customers include Delta, JetBlue, AT&T, Vodafone, and NASA. However, Leo had only about 241 satellites in orbit in early 2026 versus Starlink's 10,000+, and Amazon asked the FCC to extend its 1,618-satellite deadline from July 2026 to 2028, citing rocket shortages. For component suppliers, two expanding constellations mean additional demand rather than substitution.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit8">
+<h2>第八回合　水平競爭之二：中國星座與其他玩家</h2>
+<p>低軌衛星競賽的另一條主軸是<span class="tag">地緣政治</span>。中國同時推進兩大國家級星座：「<span class="kw">國網（Guowang）</span>」與上海主導的「<span class="kw">千帆（Qianfan / Thousand Sails）</span>」，各規劃上萬顆衛星。更具象徵意義的是，據中國媒體報導，中國在 2025 年底向<span class="kw">國際電信聯盟（ITU）</span>一口氣提交了超過 20 萬顆衛星的頻譜申請。由於軌道與頻譜資源採「先申請、先協調」原則，這被外界解讀為中國正式向 SpaceX 宣戰，搶占未來數十年的太空通訊資源。</p>
+<h3>其他重要玩家</h3>
+<p><span class="kw">Eutelsat OneWeb</span>：歐洲路線的代表。OneWeb 於 2022 年與歐洲衛星巨頭 Eutelsat 合併，已部署約 650 顆衛星，運行在 1,200 公里高度的 12 個軌道平面。它不走消費市場，專注企業、政府與電信批發業務——這也是台灣中華電信選擇的合作對象。</p>
+<p><span class="kw">AST SpaceMobile</span>：美國的衛星直連手機新創，獲 AT&T 與 Verizon 投資支持，計畫 2026 年部署 45 至 60 顆衛星啟動商用直連服務，是 Direct-to-Cell 領域對 Starlink 最直接的挑戰者。</p>
+<p><span class="kw">Telesat Lightspeed</span>：加拿大老牌衛星業者的低軌計畫，主攻企業與政府市場。</p>
+<p>整體格局可以這樣理解：Starlink 一家獨大、Amazon Leo 是資金最雄厚的追趕者、中國星座是國家力量的競爭者、OneWeb 與 Telesat 走利基市場、AST 專攻手機直連。各國政府也意識到<span class="kw">軌道資源（orbital slots）</span>有限，搶頻譜、搶軌道已成為新的太空競賽（space race）。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>China is building two state-backed mega-constellations, Guowang and Qianfan, and reportedly filed for more than 200,000 satellites with the ITU at the end of 2025, since orbital and spectrum resources follow a first-come, first-served principle. Eutelsat OneWeb operates about 650 satellites at 1,200 km and focuses on enterprise and government customers. AST SpaceMobile, backed by AT&T and Verizon, plans to deploy 45–60 satellites in 2026 for direct-to-device services. Orbital slots and spectrum have become the core resources of a new space race.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit9">
+<h2>第九回合　台灣供應鏈：誰吃到星鏈訂單？</h2>
+<p>台灣雖然沒有自己的巨型星座，卻憑高頻通訊、PCB 與地面設備技術深入全球低軌衛星供應鏈。根據經濟部統計，截至 2025 年底已有 55 家台灣零組件廠商打入國際太空供應鏈，太空產業產值達新台幣 2,771 億元，2026 年目標 60 家、產值 2,846 億元。2026 年 1 月，SpaceX 更組團低調訪台，重點拜訪衛星通訊元件與衛星板廠商，洽談擴大下單——這次「密訪事件」讓台股低軌衛星概念股全面點火。</p>
+<h3>關鍵廠商地圖</h3>
+<p><span class="kw">昇達科（3491）</span>：被稱為「血統最純」的受惠者，專精高頻微波與毫米波（mmWave）元件，產品涵蓋濾波器、天線模組、功率放大器，已同時打入 SpaceX、Amazon、Eutelsat OneWeb、Telesat 四大星座供應鏈，2025 年低軌衛星營收占比已過半，並開發出衛星控制（TT&C）與星間鏈路（ISL）新產品。</p>
+<p><span class="kw">華通（2313）</span>：衛星板 PCB 龍頭，天上衛星與地面設備的電路板主要供應商，是 SpaceX 訪台的重點對象之一。</p>
+<p><span class="kw">啟碁（6285）</span>：具備相位陣列天線製造能力，是低軌衛星地面設備（用戶終端）的關鍵供應商，並已轉型為「低軌衛星＋AI 資料中心＋車用電子」的綜合通訊方案廠。</p>
+<p><span class="kw">台光電（2383）</span>與台燿：高頻<span class="kw">銅箔基板（CCL）</span>材料供應商——天上衛星板 CCL 以台光電最具優勢，地面設備則由台光電與台燿共同供應。燿華則是地面衛星板 PCB 要角。</p>
+<p><span class="kw">穩懋（3105）、宏捷科（8086）</span>：砷化鎵（GaAs）射頻晶片代工，供應衛星通訊所需的高頻功率元件。其他如同欣電（6271）的 RF 模組、中磊（5388）的網通設備，也都名列概念股名單。</p>
+<p>對台廠最重要的結構性利多，是第五回合提到的<span class="tag">汰換經濟學</span>：SpaceX 早期衛星自 2025 年起進入五年汰換期，加上 Amazon Leo 加速部署、各國星座陸續啟動，零組件需求從「一次性建置」變成「長期重複訂單」。法人因此將低軌衛星與 AI、軍工航太並列為 2026 年台股的主要成長題材。投資人仍須留意：題材熱度高、本益比已大幅反映預期，且存在同業競爭、毛利率持續性與地緣政治等變數。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>By the end of 2025, 55 Taiwanese component makers had entered the global space supply chain, with industry output reaching NT$277.1 billion. SpaceX even sent a team to Taiwan in January 2026 to expand orders. Key players include Universal Microwave Technology (3491) for microwave and mmWave components, Compeq (2313) for satellite PCBs, Wistron NeWeb (6285) for phased-array ground terminals, EMC (2383) for high-frequency CCL materials, and WIN Semiconductors (3105) for GaAs RF chips. The five-year satellite replacement cycle turns these orders into recurring, long-term demand.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit10">
+<h2>第十回合　台灣的選擇與未來風險</h2>
+<p>耐人尋味的是：台灣廠商深度參與 Starlink 供應鏈，但台灣本地並未引進 Starlink 服務。台灣的低軌衛星布局走了一條「分散合作」的路線，電信三雄各自結盟不同星座：</p>
+<div class="databox">
+<p>🔵 <span class="kw">中華電信 × Eutelsat OneWeb</span>：2023 年簽下台灣獨家代理，2025 年 6 月 3 日取得國內第一張低軌衛星固定通信商用許可，已投入海巡、救災、離岸能源等場域。另與美國 Astranis 合作引進 MicroGEO「主權衛星」，整顆頻段保留供台灣使用。</p>
+<p>🟣 <span class="kw">台灣大哥大 × AST SpaceMobile</span>：在 MWC 2026 宣布合作，瞄準衛星直連手機服務。</p>
+<p>🟠 <span class="kw">遠傳 × Amazon Leo</span>：2026 年 5 月 19 日成為 Amazon Leo 台灣授權代理商，因遠傳持有的 28GHz 頻段與 Leo 終端設備頻段重疊而勝出；亞馬遜並規劃在台設置地面中繼站。</p>
+</div>
+<p>政府端，數位發展部推動「非同步軌道衛星」通訊韌性計畫，在全台建置 700 多個地面接收站點，目標是在海纜、固網或行動網路受損時，仍能透過衛星維持對外通訊。這套思維直接源自俄烏戰爭的教訓：<span class="tag">通訊韌性就是國防韌性</span>。</p>
+<h3>整個產業的風險清單</h3>
+<p>最後用風險面為十回合收尾。第一，<span class="kw">太空垃圾（space debris）</span>與碰撞風險：低軌道容納量有限，上萬顆衛星讓避碰作業成為日常。第二，天文觀測干擾：衛星反光與無線電訊號持續引發天文學界關切。第三，監管與地緣政治：Starlink 的營運橫跨約 150 個司法管轄區，任何國家的政策轉向都是變數；服務開關掌握在單一企業（與其關鍵人物）手中的<span class="kw">關鍵人物風險（key-person risk）</span>，在俄烏戰爭期間已實際引發討論。第四，財務面：兆元級估值建立在 Starship、V3 與 Direct-to-Cell 如期兌現的假設上，任何一環延遲都會衝擊整個故事。對學習者而言，Starlink 是觀察「技術、資本、地緣政治三股力量交織」的最佳教材。</p>
+<div class="summary">
+<h3>📝 English Summary</h3>
+<p>Taiwan participates deeply in the Starlink supply chain but did not adopt the service domestically. Instead, its three telecom carriers partnered with different constellations: Chunghwa Telecom with Eutelsat OneWeb, Taiwan Mobile with AST SpaceMobile, and Far EasTone with Amazon Leo. The government also built more than 700 ground stations to keep Taiwan connected if undersea cables or terrestrial networks fail. Key industry risks include space debris, astronomical interference, regulatory and geopolitical uncertainty, key-person risk, and a trillion-dollar valuation that depends on Starship and V3 arriving on schedule.</p>
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="glossary">
+<h2>📖 術語表 Glossary</h2>
+<dl>
+<dt>LEO (Low Earth Orbit)</dt><dd>低軌道：距地表約 500–2,000 公里的軌道，延遲低、適合大量部署通訊衛星。</dd>
+<dt>GEO (Geostationary Orbit)</dt><dd>地球同步軌道：約 35,786 公里高，衛星與地球自轉同步，一顆可覆蓋大範圍，但延遲高。</dd>
+<dt>mega-constellation</dt><dd>巨型星座：由數百至數萬顆衛星組成的衛星網路，靠大量衛星接力提供連續服務。</dd>
+<dt>latency</dt><dd>延遲：訊號往返所需的時間，是衡量網路即時性的關鍵指標。</dd>
+<dt>phased array antenna</dt><dd>相位陣列天線：以電子方式控制波束方向的天線，不需機械轉動即可追蹤移動目標。</dd>
+<dt>inter-satellite links (ISL)</dt><dd>星間鏈路：衛星之間以雷射直接互傳資料的技術，形成太空骨幹網路。</dd>
+<dt>Hall thruster</dt><dd>霍爾推進器：電推進系統，用於衛星升軌、避碰與壽命終結時的離軌。</dd>
+<dt>deorbit</dt><dd>離軌：讓衛星受控墜入大氣層燒毀，避免成為太空垃圾。</dd>
+<dt>vertical integration</dt><dd>垂直整合：企業自行掌握上下游環節；SpaceX 自製火箭與衛星即為典型案例。</dd>
+<dt>moat</dt><dd>護城河：企業難以被競爭者複製的長期優勢，源自巴菲特的投資用語。</dd>
+<dt>IPO prospectus (S-1)</dt><dd>招股書：公司股票上市前向監管機關提交的公開說明文件，揭露財務與風險。</dd>
+<dt>EBITDA</dt><dd>稅息折舊攤銷前獲利：衡量企業核心營運獲利能力的常用指標。</dd>
+<dt>TAM (Total Addressable Market)</dt><dd>潛在市場總規模：一項產品理論上能觸及的最大市場金額。</dd>
+<dt>Direct-to-Cell</dt><dd>衛星直連手機：一般智慧型手機不需特殊硬體即可直接連上衛星的服務。</dd>
+<dt>ground segment</dt><dd>地面段：衛星系統中位於地面的部分，包含地閘站與用戶終端。</dd>
+<dt>gateway</dt><dd>地閘站：把衛星網路接回地面網際網路骨幹的大型地面站。</dd>
+<dt>user terminal</dt><dd>用戶終端：用戶端的衛星天線設備，如 Starlink 的平板碟形天線。</dd>
+<dt>spectrum</dt><dd>頻譜：無線通訊使用的電磁波頻率資源，由各國與 ITU 分配管理。</dd>
+<dt>ITU (International Telecommunication Union)</dt><dd>國際電信聯盟：聯合國轄下機構，協調全球頻譜與衛星軌道資源。</dd>
+<dt>CCL (Copper Clad Laminate)</dt><dd>銅箔基板：製造印刷電路板的核心材料，高頻規格是衛星通訊的關鍵。</dd>
+<dt>GaAs (Gallium Arsenide)</dt><dd>砷化鎵：適合高頻、高功率射頻晶片的半導體材料。</dd>
+<dt>mmWave (millimeter wave)</dt><dd>毫米波：30–300 GHz 的高頻段，頻寬大，廣用於衛星與 5G 通訊。</dd>
+<dt>communication resilience</dt><dd>通訊韌性：在災害或戰爭導致基礎設施受損時，維持通訊能力的程度。</dd>
+<dt>space debris</dt><dd>太空垃圾：失效衛星與碎片，對在軌衛星構成碰撞風險。</dd>
+<dt>key-person risk</dt><dd>關鍵人物風險：企業營運高度依賴單一人物所帶來的不確定性。</dd>
+</dl>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<div class="link-cards">
+  <a class="card-echo" href="https://linwayet.github.io/4ulive/index.html">📚 七月開課・錯中學 ECHO 計劃：從錯誤中學習的英文進步方法</a>
+  <a class="card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析：個人化學習診斷與規劃</a>
+  <a class="card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet，直接聯絡林威老師</a>
+</div>
+
+</main>
+</body>
+</html>
