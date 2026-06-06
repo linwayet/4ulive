@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI PC 大戰 — COMPUTEX 2026 全解析微課程</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #F8F4ED;
+  color: #3A2E22;
+  font-family: 'BIZ UDPGothic', 'Inter', sans-serif;
+  font-size: 22px;
+  line-height: 1.85;
+}
+main { max-width: 800px; margin: 0 auto; padding: 24px 18px 60px; }
+header { text-align: center; padding: 36px 14px 10px; }
+h1 {
+  color: #C0392B;
+  font-size: 2.7rem;
+  line-height: 1.4;
+  margin: 0 auto 14px;
+  border: 4px double #C0392B;
+  border-radius: 18px;
+  padding: 18px 22px;
+  max-width: 760px;
+  background: #FFFDF8;
+  box-shadow: 0 4px 14px rgba(192,57,43,0.12);
+}
+.subtitle { color: #1565C0; font-size: 1.95rem; font-weight: 700; margin: 10px 0 6px; line-height: 1.5; }
+.byline {
+  color: #1565C0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 8px 0 20px;
+  text-shadow: 1px 1px 0 #FFFDF8, 2px 2px 0 rgba(21,101,192,0.18);
+}
+.course-meta {
+  background: #FFFDF8;
+  border: 2px solid #E0A96D;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 0 auto 26px;
+  font-size: 20px;
+  max-width: 740px;
+}
+.link-cards { display: flex; flex-direction: column; gap: 16px; margin: 26px 0; }
+.link-card {
+  display: block;
+  min-height: 72px;
+  border-radius: 16px;
+  padding: 18px 22px;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.6;
+  box-shadow: 0 3px 10px rgba(58,46,34,0.18);
+}
+.card-echo { background: #C0392B; }
+.card-popup { background: #1565C0; }
+.card-line { background: #06C755; }
+.link-card small { display: block; font-weight: 400; font-size: 18px; opacity: 0.95; }
+nav#unit-map {
+  background: #FFFDF8;
+  border: 2px solid #E0A96D;
+  border-radius: 18px;
+  padding: 22px 18px;
+  margin: 10px 0 34px;
+}
+nav#unit-map h2 { color: #C0392B; font-size: 1.9rem; margin: 0 0 14px; text-align: center; border: none; }
+.map-round { font-size: 1.35rem; font-weight: 700; margin: 18px 0 10px; color: #6A1B9A; }
+.map-links { display: flex; flex-direction: column; gap: 14px; }
+.map-links a {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  border-radius: 999px;
+  padding: 14px 24px;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(58,46,34,0.15);
+}
+.m1 { background: #E65100; }
+.m2 { background: #1565C0; }
+.m3 { background: #2E7D32; }
+.m4 { background: #6A1B9A; }
+.mg { background: #8D6E63; }
+section {
+  background: #FFFDF8;
+  border-radius: 16px;
+  padding: 26px 24px 22px;
+  margin: 0 0 30px;
+  box-shadow: 0 3px 12px rgba(58,46,34,0.10);
+  border-top: 10px solid #E0A96D;
+}
+section.round1 { border-top-color: #E65100; }
+section.round2 { border-top-color: #1565C0; }
+section.round3 { border-top-color: #2E7D32; }
+section.round4 { border-top-color: #6A1B9A; }
+h2 { color: #1565C0; font-size: 1.95rem; line-height: 1.5; margin: 0 0 6px; }
+h3 { color: #2E7D32; font-size: 1.55rem; margin: 22px 0 8px; }
+.unit-time { color: #6A1B9A; font-weight: 700; font-size: 19px; margin: 0 0 14px; }
+strong.hl { color: #E65100; }
+.tag { color: #6A1B9A; font-weight: 700; }
+.en-summary {
+  background: #FBF3E7;
+  border-left: 10px solid #E0A96D;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 22px 0 18px;
+  font-family: 'Inter', 'BIZ UDPGothic', sans-serif;
+  font-size: 20px;
+}
+.en-summary .es-title { font-weight: 700; color: #C0392B; font-size: 21px; margin-bottom: 8px; }
+.back-to-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  border-radius: 999px;
+  background: #8D6E63;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+#glossary { background: #F3EEE4; border-top-color: #8D6E63; }
+#glossary dt { color: #E65100; font-weight: 700; font-size: 21px; margin-top: 16px; font-family: 'Inter', 'BIZ UDPGothic', sans-serif; }
+#glossary dd { margin: 4px 0 0 0; font-size: 21px; }
+ul, ol { padding-left: 1.3em; }
+li { margin-bottom: 10px; }
+@media (max-width: 600px) {
+  body { font-size: 20px; }
+  h1 { font-size: 2.6rem; padding: 14px 14px; }
+  .subtitle { font-size: 1.9rem; }
+  main { padding: 18px 12px 50px; }
+  section { padding: 20px 16px 18px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+<h1>🖥️ AI PC 大戰<br>COMPUTEX 2026 全解析</h1>
+<div class="subtitle">四強晶片競逐、供應鏈總動員：一場重新發明個人電腦的產業變局</div>
+<div class="byline">✦ 林威老師與 AI agent 團隊製作 ✦</div>
+</header>
+
+<div class="course-meta">
+📚 <strong>微課程使用說明</strong>：全課程共 <strong>4 回合 × 4 單元 = 16 單元</strong>，每單元約 <strong>10 分鐘</strong>。建議每次學習一個單元，利用「單元地圖」隨時跳轉與複習。每單元結尾附英文摘要（English Summary），最後附術語表（Glossary）。
+</div>
+
+<div class="link-cards">
+<a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">🎯 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+<a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+<a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+</div>
+
+<nav id="unit-map">
+<h2>🗺️ 單元地圖</h2>
+<div class="map-round">🟠 第一回合｜看懂 AI PC 是什麼</div>
+<div class="map-links">
+<a class="m1" href="#unit1">單元 1　什麼是 AI PC？從 NPU 到 Copilot+ 門檻</a>
+<a class="m1" href="#unit2">單元 2　兩股換機浪潮：Win10 終止支援 × AI PC 滲透</a>
+<a class="m1" href="#unit3">單元 3　COMPUTEX 2026 鳥瞰：AI Together</a>
+<a class="m1" href="#unit4">單元 4　從生成式到代理式：AI 的典範轉移</a>
+</div>
+<div class="map-round">🔵 第二回合｜水平競爭：四強晶片大戰</div>
+<div class="map-links">
+<a class="m2" href="#unit5">單元 5　NVIDIA RTX Spark：闖入者的豪賭</a>
+<a class="m2" href="#unit6">單元 6　Qualcomm：由下而上的包抄</a>
+<a class="m2" href="#unit7">單元 7　Intel：守擂者的 18A 反擊</a>
+<a class="m2" href="#unit8">單元 8　AMD 與聯發科：兩個關鍵變數</a>
+</div>
+<div class="map-round">🟢 第三回合｜垂直供應鏈：上中下游解剖</div>
+<div class="map-links">
+<a class="m3" href="#unit9">單元 9　上游：晶圓代工、先進製程與 Arm 架構</a>
+<a class="m3" href="#unit10">單元 10　中游 I：記憶體風暴與統一記憶體</a>
+<a class="m3" href="#unit11">單元 11　中游 II：CPU 缺貨與 BOM 成本質變</a>
+<a class="m3" href="#unit12">單元 12　下游：品牌、代工五哥與台灣生態系</a>
+</div>
+<div class="map-round">🟣 第四回合｜軟體生態與未來判讀</div>
+<div class="map-links">
+<a class="m4" href="#unit13">單元 13　微軟：把 Windows 變成代理平台</a>
+<a class="m4" href="#unit14">單元 14　Token 經濟學：邊緣與雲端的分工</a>
+<a class="m4" href="#unit15">單元 15　風險面：市場飽和論與不確定性</a>
+<a class="m4" href="#unit16">單元 16　總結：產業判讀框架與自我檢核</a>
+</div>
+<div class="map-round">📖 附錄</div>
+<div class="map-links">
+<a class="mg" href="#glossary">術語表 Glossary</a>
+</div>
+</nav>
+
+<!-- 第一回合 -->
+<section id="unit1" class="round1">
+<h2>單元 1　什麼是 AI PC？從 NPU 到 Copilot+ 門檻</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第一回合・基礎概念</div>
+<p>AI PC 指的是<strong class="hl">能在裝置本機執行 AI 運算</strong>的個人電腦，不必把每一件事都送到雲端（cloud）處理。它與傳統 PC 最大的硬體差異，是在中央處理器（CPU）與圖形處理器（GPU）之外，多了一顆<strong class="hl">神經處理單元（NPU, Neural Processing Unit）</strong>——專門用來加速 AI 模型推論（inference）的晶片區塊，特色是用很低的耗電完成大量的矩陣運算。</p>
+<h3>衡量 AI 算力的單位：TOPS</h3>
+<p>業界用 <span class="tag">TOPS（Tera Operations Per Second，每秒兆次運算）</span>來衡量 NPU 的算力。微軟為其「Copilot+ PC」認證訂下明確門檻：<strong class="hl">NPU 算力需達 40 TOPS 以上</strong>，這個規格目前已涵蓋高通（Qualcomm）、AMD 與 Intel 的平台。換句話說，40 TOPS 是一條「及格線」，把市場上的新機種分成「AI PC」與「一般 PC」兩類。</p>
+<h3>規格之後，重點轉向體驗</h3>
+<p>不過到了 2026 年，市場的討論重點已經從「NPU 有幾 TOPS」轉向<strong class="hl">實際使用體驗</strong>：本地端 AI 運算（on-device AI）能不能保護隱私、能不能提升生產力、能不能順暢執行自主運作的代理式 AI（Agentic AI）應用。也就是說，AI PC 的定義正在從「硬體規格」演化為「能做什麼事」。</p>
+<h3>三個必懂的基礎名詞</h3>
+<ul>
+<li><strong class="hl">邊緣 AI（Edge AI）</strong>：在靠近使用者的裝置端（手機、PC、車輛）執行 AI，而不是在遠端資料中心。優點是低延遲、保護隱私、不需網路也能運作。</li>
+<li><strong class="hl">本地推論（local inference）</strong>：AI 模型直接在你的電腦上「思考」並產生答案，個人資料不必離開裝置。</li>
+<li><strong class="hl">統一記憶體（unified memory）</strong>：CPU 與 GPU 共用同一塊記憶體，資料不必來回搬運，是新一代 AI PC 晶片的關鍵設計（單元 5、10 會深入說明）。</li>
+</ul>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+An AI PC is a personal computer that can run AI workloads locally, using a dedicated NPU alongside the CPU and GPU. Microsoft's Copilot+ PC certification requires an NPU with at least 40 TOPS of performance. By 2026, the industry focus has shifted from raw specifications to real user experience, including privacy, productivity, and agentic AI applications. Key concepts include edge AI, local inference, and unified memory.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit2" class="round1">
+<h2>單元 2　兩股換機浪潮：Win10 終止支援 × AI PC 滲透</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第一回合・基礎概念</div>
+<p>為什麼 AI PC 在 2026 年成為產業最熱的戰場？因為兩股需求浪潮正好疊在一起。</p>
+<h3>第一股浪潮：Windows 10 終止支援</h3>
+<p>微軟已於 2025 年 10 月 14 日正式終止 Windows 10 的支援（end of support）。在終止支援前後，全球仍有約<strong class="hl">四成的 PC 裝置在使用 Windows 10</strong>，這代表龐大的換機需求尚未完全釋放。研調機構 Counterpoint Research 指出，2025 年第三季全球 PC 出貨量年增 8.1%，主要動力正是這波作業系統換機；業界預期這股需求將持續推動 PC 市場成長數年，2026 年出貨量可望續呈年成長。</p>
+<h3>第二股浪潮：AI PC 滲透率快速拉升</h3>
+<p>研調機構對 AI PC 的滲透率（penetration rate）預估大致如下：</p>
+<ul>
+<li><strong class="hl">Gartner</strong>：AI PC 占整體 PC 出貨比重，2025 年約 31%（約 7,780 萬台），<strong class="hl">2026 年升至 55%</strong>，2029 年成為市場常態。</li>
+<li><strong class="hl">Canalys</strong>：2027 年約 60% 的出貨將是具 AI 能力（AI-capable）的機種，其中商用市場（commercial segment）的占比上升更快。</li>
+<li><strong class="hl">IDC</strong>：預期 2028 年整體市場約三分之二為 AI PC。</li>
+</ul>
+<h3>商用先行、消費跟進</h3>
+<p>企業（enterprise）因為資安、法規與員工生產力的考量，換機速度通常快於一般消費者；加上 Windows 10 終止支援對企業的資安壓力更直接，「商用先行、消費跟進」成為這一輪換機潮的基本節奏。對供應鏈而言，這代表需求的能見度（visibility）比過去單純的消費性換機更長、更穩。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Two demand waves are converging in 2026. First, Microsoft ended Windows 10 support in October 2025, while roughly 40 percent of PCs were still running it, creating a multi-year replacement cycle. Second, AI PC penetration is rising quickly: Gartner expects AI PCs to reach about 55 percent of shipments in 2026. Commercial buyers are upgrading faster than consumers, giving the supply chain longer demand visibility.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit3" class="round1">
+<h2>單元 3　COMPUTEX 2026 鳥瞰：AI Together</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第一回合・基礎概念</div>
+<p>COMPUTEX（台北國際電腦展）2026 於 6 月初在台北登場，展場涵蓋南港展覽館 1、2 館，並重返世貿一館。本屆以「<strong class="hl">AI Together</strong>」為主題，規模創下歷史新高：來自 <strong class="hl">33 個國家及地區、1,500 家廠商、6,000 個展位</strong>，並首度設立「AI 機器人展區」。</p>
+<h3>三巨頭齊聚台北</h3>
+<p>NVIDIA（輝達）執行長黃仁勳、AMD（超微）執行長蘇姿丰、Intel（英特爾）執行長陳立武三位晶片巨頭領袖同時現身台北，高通執行長 Cristiano Amon 則發表大會開幕主題演講（keynote）。AMD 並宣布對台灣投資逾百億美元；Intel 則與「電子五哥」（廣達、緯創、和碩、仁寶、英業達）及華碩、研華等高層閉門交流。這些動作共同釋出一個訊號：<strong class="hl">台灣不只是代工重鎮，而是從晶片設計、製造、封裝到系統整合的完整 AI 生態系核心</strong>。</p>
+<h3>本屆三大信號</h3>
+<ol>
+<li><strong class="hl">代理式 AI 崛起</strong>：AI 發展重心從「生成式 AI（Generative AI）」快速轉向「代理式 AI（Agentic AI）」，業界普遍認為 PC 將成為執行 AI 代理（AI agent）的核心平台（單元 4 詳述）。</li>
+<li><strong class="hl">AI PC 晶片大戰開打</strong>：NVIDIA 攜手聯發科正式發表 RTX Spark 晶片，直接挑戰 Intel、AMD 與高通（第二回合詳述）。</li>
+<li><strong class="hl">供需仍偏緊</strong>：從先進製程、記憶體到 CPU，多個環節供給吃緊、價格上漲（第三回合詳述）。</li>
+</ol>
+<h3>展會焦點的轉變</h3>
+<p>相較前幾年聚焦大型語言模型（LLM）與算力競賽，本屆更被視為 AI<strong class="hl">「從模型能力走向應用價值」</strong>的轉折點：智慧製造、機器人、自動駕駛、智慧醫療等實體應用全面登場，AI 正從雲端走向實體世界。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+COMPUTEX 2026, themed "AI Together," set a record with 1,500 exhibitors and 6,000 booths from 33 countries, including a first-ever AI robotics zone. The CEOs of NVIDIA, AMD, and Intel all came to Taipei, while Qualcomm's CEO delivered the opening keynote. The show sent three signals: the rise of agentic AI, a new AI PC chip war, and continued supply tightness. The industry focus is shifting from model capability to real-world applications.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit4" class="round1">
+<h2>單元 4　從生成式到代理式：AI 的典範轉移</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第一回合・基礎概念</div>
+<p>要看懂這一屆 COMPUTEX，必須先弄清楚「<strong class="hl">代理式 AI（Agentic AI）</strong>」這個關鍵詞。</p>
+<h3>什麼是 AI 代理？</h3>
+<p>生成式 AI（Generative AI）的典型互動是「你問、它答」：使用者下指令，模型生成文字或圖片。代理式 AI 則更進一步——AI 從「回應指令的工具」進化為<strong class="hl">「能自主採取行動的系統」</strong>：它可以理解目標、拆解任務、自己呼叫工具與應用程式、分配運算資源，替使用者完成一連串工作。高通執行長 Amon 在開幕演講中直接把 2026 年稱為「<strong class="hl">AI 代理元年（the year of agents）</strong>」。</p>
+<h3>為什麼 PC 是代理的核心平台？</h3>
+<ul>
+<li><strong class="hl">隱私與安全</strong>：代理需要存取你的檔案、行事曆、郵件，本地處理（on-device processing）比上傳雲端更能保護個人與企業資料。</li>
+<li><strong class="hl">個人化</strong>：代理愈了解你的工作脈絡，就愈有用；這些脈絡天然存在於個人電腦中。</li>
+<li><strong class="hl">成本與延遲</strong>：在裝置端執行部分推論，可以省下雲端運算費用並縮短反應時間（單元 14 詳述）。</li>
+</ul>
+<h3>生態系已經開始落地</h3>
+<p>代理式 AI 並非停留在概念階段。高通在演講中列舉的商業部署包括：Anthropic 的 Claude Desktop 已原生支援 Snapdragon PC；Google 將 Gemini 代理功能整合進 Android；多款 AI 協作器（orchestrator，負責調度多個代理協同工作的軟體）已在 Snapdragon 裝置上商業部署。NVIDIA 與微軟也宣布把 Windows 改造為代理平台（單元 13 詳述）。</p>
+<h3>對硬體的意義</h3>
+<p>代理以<strong class="hl">機器速度</strong>而非人類速度產生與消耗運算，這從根本上改變了 PC 的硬體需求：更大的記憶體（容納本地模型）、更強的 NPU/GPU（推論算力）、更高的記憶體頻寬（bandwidth）。這正是第二回合四強晶片大戰的技術背景。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Agentic AI marks a paradigm shift from generative AI. Instead of simply responding to prompts, AI agents can understand goals, break down tasks, call tools, and act autonomously. Qualcomm's CEO called 2026 "the year of agents." PCs are seen as the core platform for agents because of privacy, personalization, and cost advantages. Commercial deployments, such as Claude Desktop running natively on Snapdragon PCs, show that agentic AI is already real, and it is reshaping PC hardware requirements.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+<!-- 第二回合 -->
+<section id="unit5" class="round2">
+<h2>單元 5　NVIDIA RTX Spark：闖入者的豪賭</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第二回合・水平競爭</div>
+<p>本屆 COMPUTEX 最重磅的發表，是 NVIDIA 執行長黃仁勳在台北音樂中心的 GTC Taipei 主題演講中，正式發表 <strong class="hl">RTX Spark 超級晶片（Superchip）</strong>——開發代號 N1X。這是 NVIDIA 睽違十餘年再度進軍消費性 Windows PC 市場，黃仁勳形容此舉是與微軟一起「<strong class="hl">重新發明 PC（reinvent the PC）</strong>」。消息公布後，AMD、Intel 與高通的股價同步下跌，華爾街明確把 NVIDIA 視為 PC 市場的新威脅。</p>
+<h3>RTX Spark 的技術規格</h3>
+<ul>
+<li><strong class="hl">架構</strong>：基於 Arm 架構的系統單晶片（SoC, System on Chip），由 NVIDIA 與台灣<strong class="hl">聯發科（MediaTek）</strong>合作研發，採用台積電（TSMC）3 奈米製程，整合約 700 億個電晶體（transistor）。</li>
+<li><strong class="hl">GPU</strong>：Blackwell 架構，6,144 個 CUDA 核心，搭載第五代 Tensor Core，FP4 精度下 AI 算力達 <strong class="hl">1 PFLOP（每秒千兆次浮點運算）</strong>。</li>
+<li><strong class="hl">CPU</strong>：20 核心 Grace CPU，與 GPU 之間以 NVLink-C2C 高速互連（600GB/s）。</li>
+<li><strong class="hl">記憶體</strong>：最高 128GB 統一記憶體（unified memory），頻寬 300GB/s，可在本地執行最高約 <strong class="hl">1,200 億參數</strong>的大型語言模型。</li>
+<li><strong class="hl">功耗</strong>：針對薄型筆電優化，最低可降至個位數瓦特，最高約 80 瓦。</li>
+</ul>
+<h3>產品策略：整個產品家族一次到位</h3>
+<p>RTX Spark 筆電預計今年秋季上市，首波合作品牌涵蓋 <strong class="hl">Microsoft Surface、Dell、HP、ASUS、Lenovo、MSI</strong>，首發機種如 Dell XPS、ASUS ProArt、Lenovo Legion，定位高階市場，售價約 1,500 至 2,000 美元起。NVIDIA 並公布三個世代的產品路線圖（roadmap），後續世代將採用 Rubin 架構與 LPDDR6 記憶體。</p>
+<h3>NVIDIA 的差異化武器</h3>
+<p>與其他三強相比，NVIDIA 最大的差異在於<strong class="hl">完整的 AI 軟體堆疊</strong>：CUDA 生態系、DLSS 遊戲技術、以及把自家開源大型語言模型直接整合進平台。許多專業創作工作流程（如 Adobe 系列的生成式功能）長期依賴 CUDA，這是 NVIDIA 切入高階創作者與 AI 開發者市場的天然優勢。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+NVIDIA's biggest COMPUTEX 2026 announcement was the RTX Spark superchip, codenamed N1X, marking its return to the consumer Windows PC market. Co-developed with MediaTek on TSMC's 3nm process, it combines a Blackwell GPU delivering 1 petaflop of FP4 AI performance with a 20-core Grace CPU and up to 128GB of unified memory. Laptops from Microsoft, Dell, HP, ASUS, Lenovo, and MSI arrive this fall at premium prices. NVIDIA's key advantage is its mature CUDA software ecosystem.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit6" class="round2">
+<h2>單元 6　Qualcomm：由下而上的包抄</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第二回合・水平競爭</div>
+<p>行動通訊晶片龍頭高通（Qualcomm）是 Windows on Arm（WoA，在 Arm 架構上執行 Windows）陣營的先行者。面對 NVIDIA 從高階切入，高通選擇了一條截然不同的路：<strong class="hl">由下而上（bottom-up），用價格優勢擴大地盤</strong>。</p>
+<h3>三層產品線布局</h3>
+<ul>
+<li><strong class="hl">旗艦：Snapdragon X2 Elite</strong>——採第三代 Oryon 架構、3 奈米製程，內建 <strong class="hl">80 TOPS NPU</strong>（遠超 Copilot+ 的 40 TOPS 門檻）。高通宣稱其 CPU 在同等功耗下比競爭對手快 75%，GPU 每瓦效能較前代提升 2.3 倍。搭載 X2 Elite 的首批筆電已在 COMPUTEX 開幕前開始出貨。</li>
+<li><strong class="hl">中階：Snapdragon X2 Plus</strong>——於 CES 2026 發表，單核效能較前代提升 35%、功耗降低 43%，鎖定專業人士與創作者。</li>
+<li><strong class="hl">入門：Snapdragon C 系列</strong>——COMPUTEX 前夕發表的全新產品線，目標 <strong class="hl">300 至 500 美元的平價筆電</strong>，合作品牌包括 Acer、HP 與 Lenovo，直接搶攻原本屬於 Chromebook 的學生與家庭市場。</li>
+</ul>
+<h3>策略邏輯：終端數量就是話語權</h3>
+<p>高通執行長 Amon 在開幕演講中描繪的市場版圖是：全球約 60 億支手機、20 億台 PC、20 億台個人 AI 裝置、5 億輛聯網汽車——這些都是等待升級為「代理終端節點」的潛在換機市場。高通的優勢是<strong class="hl">在低功耗運算上累積數十年的功力</strong>（來自手機晶片），弱點則是 Windows on Arm 的應用相容性歷史包袱，以及在高階 GPU 效能上不如 NVIDIA。</p>
+<h3>同場加映：進軍資料中心</h3>
+<p>高通也在本屆發表全新資料中心業務品牌「<strong class="hl">Dragonfly</strong>」，把版圖從終端裝置延伸到雲端推論運算，構築「端—邊—雲」完整的運算連續體（computing continuum）。這顯示四強的競爭不只在 PC 一個戰場。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Qualcomm is attacking the AI PC market from the bottom up. Its lineup spans the flagship Snapdragon X2 Elite with an 80 TOPS NPU, the mid-range X2 Plus, and the new budget Snapdragon C series targeting 300 to 500 dollar laptops with Acer, HP, and Lenovo. CEO Cristiano Amon framed billions of phones, PCs, and cars as future agent endpoints. Qualcomm also unveiled Dragonfly, a new data center brand extending its reach from edge devices to the cloud.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit7" class="round2">
+<h2>單元 7　Intel：守擂者的 18A 反擊</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第二回合・水平競爭</div>
+<p>面對新進者圍攻，PC 處理器市場長年的霸主 Intel（英特爾）在 COMPUTEX 2026 的主題演講中，把未來策略聚焦於四大運算生態系：<strong class="hl">PC、邊緣與實體 AI、基礎資料中心、新興智慧中心</strong>。執行長陳立武（Lip-Bu Tan）回顧了 Intel 與台灣半導體產業的歷史連結，並強調台灣從 OEM、ODM、晶片設計到製造的完整實力。</p>
+<h3>核心武器：18A 製程</h3>
+<p><strong class="hl">Intel 18A</strong> 是 Intel 最先進的自有製程節點（相當於 1.8 奈米級），承載著「重建製造領導地位」的使命。在 PC 端，18A 驅動新一代 Core Ultra 處理器；在資料中心端，<strong class="hl">Xeon 6+ 是首款採用 18A 製程的資料中心 CPU</strong>，鎖定代理式 AI 所需的任務協調、並行處理與資料搬移需求，單一液冷機櫃可提供超過 3.6 萬個運算核心。</p>
+<h3>策略主張：CPU 是代理時代的「指揮官」</h3>
+<p>Intel 的論述是：在代理式 AI 時代，<strong class="hl">CPU 扮演協調（orchestration）AI 任務的核心角色</strong>——GPU 與 NPU 負責大量平行運算，但任務的調度、安全控管與系統整合仍由 CPU 主導。Intel 試圖以此重新定義自己在 AI 浪潮中的位置：不與 NVIDIA 硬拚 GPU 算力，而是強調從邊緣到雲端的混合運算架構與合作生態系（包括與鴻海、西門子、日立等的垂直產業合作）。</p>
+<h3>守擂者的現實處境</h3>
+<p>市占數據顯示 Intel 仍是 PC 市場的主導者：2026 年第一季 x86 桌機市場 Intel 以 66.8% 領先 AMD 的 33.2%。但壓力來自多方：筆電市場份額被 AMD 侵蝕、Arm 陣營（高通、NVIDIA、蘋果）持續擴大、自家先進製程的良率與量產時程備受檢驗。陳立武在演講結尾坦言，他正挑戰團隊打造「全新的 Intel」——18A 與代理式 AI，正是檢驗這場轉型能否成功的關鍵戰場。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Intel, the long-time PC incumbent, centered its COMPUTEX keynote on four computing ecosystems and its advanced 18A process node. The new Xeon 6+ is the first data center CPU built on 18A, designed for agentic AI orchestration. Intel argues the CPU remains the conductor of AI tasks while GPUs and NPUs handle parallel computing. Intel still leads the x86 desktop market with about two-thirds share, but faces pressure from AMD, the Arm camp, and its own manufacturing transition.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit8" class="round2">
+<h2>單元 8　AMD 與聯發科：兩個關鍵變數</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第二回合・水平競爭</div>
+<p>四強大戰中，AMD 與聯發科（MediaTek）的角色經常被低估，但兩者都是改變戰局的關鍵變數。</p>
+<h3>AMD：x86 陣營的進攻方</h3>
+<p>AMD 執行長蘇姿丰在本屆宣布<strong class="hl">對台灣投資逾百億美元</strong>，並展示了從 PC 到資料中心的完整布局：</p>
+<ul>
+<li><strong class="hl">筆電市占持續攀升</strong>：2026 年第一季 AMD 在行動（筆電）市場的市占率從一年前的 22.5% 躍升至 <strong class="hl">28.3%</strong>。部分原因是 Intel 將產能優先配置給伺服器晶片，筆電 CPU 供應受限，讓 AMD 趁勢擴張。</li>
+<li><strong class="hl">製程領先卡位</strong>：AMD 的伺服器處理器 Venice 是全球半導體業<strong class="hl">首款採用 2 奈米製程量產的 HPC 晶片</strong>，完全在台積電產線爬坡。</li>
+<li><strong class="hl">機架級平台 Helios</strong>：與緯穎、緯創、英業達等 ODM 夥伴合作，下半年部署。</li>
+</ul>
+<h3>聯發科：從手機晶片王到 PC 戰場的「軍火商」</h3>
+<p>台灣的聯發科在這場大戰中扮演獨特角色——它不是以自有品牌參戰，而是<strong class="hl">NVIDIA 的共同設計夥伴</strong>：N1X（RTX Spark）由雙方共同打造，聯發科貢獻其在低功耗 SoC 設計的深厚經驗。聯發科總經理陳冠州透露，未來產品定價將多元化布局：從 2,000 美元以下的 PC、5,000 至 6,000 美元的新型運算設備，到更高階的家用伺服器都會涵蓋。對聯發科而言，這是繼手機 Dimensity 晶片之後，切入 PC 與邊緣 AI 運算的歷史性機會。</p>
+<h3>競局小結：四極格局成形</h3>
+<p>PC 處理器市場正式從過去 30 年的「Intel × AMD 雙極格局」，轉變為「<strong class="hl">Intel × AMD × Qualcomm × NVIDIA 四極競爭</strong>」，背後還有聯發科與 Arm 兩股力量。x86 與 Arm 兩大架構的版圖消長（Arm 在 PC 端市占已達 14.4%，含蘋果 M 系列），將是未來三年最值得追蹤的產業指標。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+AMD and MediaTek are two underrated variables in the AI PC war. AMD's notebook CPU share jumped from 22.5 to 28.3 percent in a year, helped by Intel's capacity constraints, and its Venice server chip is the industry's first 2nm HPC processor in production at TSMC. MediaTek co-designed NVIDIA's N1X chip, leveraging decades of low-power SoC expertise. The PC processor market has shifted from a 30-year Intel-AMD duopoly to a four-way race, with Arm's share steadily growing.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+<!-- 第三回合 -->
+<section id="unit9" class="round3">
+<h2>單元 9　上游：晶圓代工、先進製程與 Arm 架構</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第三回合・垂直供應鏈</div>
+<p>從這個單元開始，我們沿著供應鏈由上而下解剖 AI PC 產業。最上游有兩個關鍵環節：<strong class="hl">晶圓代工（foundry）</strong>與<strong class="hl">架構授權（IP licensing）</strong>。</p>
+<h3>台積電：所有人的共同上游</h3>
+<p>觀察四強的晶片，會發現一個驚人的共同點——<strong class="hl">幾乎都在台積電（TSMC）生產</strong>：</p>
+<ul>
+<li>NVIDIA RTX Spark（N1X）：台積電 <strong class="hl">3 奈米</strong>製程。</li>
+<li>高通 Snapdragon X2 Elite：<strong class="hl">3 奈米</strong>製程。</li>
+<li>AMD Venice：全球首款 <strong class="hl">2 奈米</strong>量產 HPC 晶片，完全在台積電爬坡。</li>
+<li>Intel 是例外——力推自有 18A 製程，這正是它「設計＋製造一體」的差異化賭注。</li>
+</ul>
+<p>這代表 AI PC 大戰打得再激烈，<strong class="hl">先進製程產能的分配權都握在台積電手上</strong>。誰能搶到產能、搶到先進封裝（advanced packaging）配額，誰的產品就能準時上市。</p>
+<h3>Arm：架構授權的隱形贏家</h3>
+<p>NVIDIA、高通的 PC 晶片都基於 <strong class="hl">Arm 架構</strong>（Arm 公司以授權方式提供 CPU 設計架構，收取權利金）。本屆 COMPUTEX 上，Arm 架構被視為支撐代理式 AI 的核心基礎——不只 PC，NVIDIA 的 Vera 伺服器 CPU 同樣基於 Arm。對 Arm 而言，無論四強誰贏，只要 Arm 陣營擴大，它都是贏家——這是典型的「<strong class="hl">賣鏟子（selling shovels）</strong>」生意模式。</p>
+<h3>先進封裝：被忽略的瓶頸</h3>
+<p>AI 晶片體積大、晶片間訊號傳輸需求極高，把多顆晶片（chiplet）組合成一顆 SoC 需要先進封裝技術。RTX Spark 就是把兩顆晶粒（GPU 晶片與 CPU 晶片）融合為一的設計。台積電的 CoWoS 封裝、日月光的後段封測、欣興與南電的 ABF 載板（substrate），都是這個環節的台灣要角；AMD 也正與台灣封測廠共同建構 EFB（高架扇出橋）2.5D 封裝生態系。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+At the top of the AI PC supply chain sit foundries and architecture licensing. TSMC manufactures chips for nearly every player: NVIDIA's N1X and Qualcomm's X2 Elite on 3nm, and AMD's Venice as the first 2nm HPC chip. Intel is the exception, betting on its own 18A process. Arm wins regardless of which chipmaker prevails, since NVIDIA and Qualcomm both license its architecture. Advanced packaging, including chiplet integration and ABF substrates, is an often-overlooked bottleneck dominated by Taiwanese firms.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit10" class="round3">
+<h2>單元 10　中游 I：記憶體風暴與統一記憶體</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第三回合・垂直供應鏈</div>
+<p>AI PC 對記憶體（memory）的需求是「質與量的雙重升級」，而這正好撞上一場全球記憶體超級循環（super cycle）。</p>
+<h3>為什麼 AI PC 需要更多記憶體？</h3>
+<p>要在本地執行大型語言模型，模型參數必須先載入記憶體。RTX Spark 最高配置 <strong class="hl">128GB LPDDR5X 統一記憶體</strong>，可容納約 1,200 億參數的模型——對照傳統筆電常見的 16GB，差距接近十倍。統一記憶體架構讓 CPU 與 GPU 共享同一塊記憶體，省去資料搬運，但也代表<strong class="hl">單機記憶體用量大幅膨脹</strong>。</p>
+<h3>供給端：AI 伺服器排擠效應</h3>
+<p>偏偏在需求升級的同時，供給端被 AI 資料中心強力排擠：</p>
+<ul>
+<li>三星（Samsung）、SK 海力士（SK hynix）、美光（Micron）三大記憶體廠把先進產能優先投入 <strong class="hl">HBM（高頻寬記憶體）</strong>——AI 伺服器 GPU 的標配，毛利遠高於 PC 用的一般 DRAM。美光甚至退出消費級記憶體市場、全力轉向 AI 與資料中心。</li>
+<li>結果是 PC 與手機用的傳統記憶體供給縮減、報價大漲，業界估計<strong class="hl">缺貨能見度看到 2027 年</strong>。</li>
+</ul>
+<h3>對台灣供應鏈的影響</h3>
+<p>台灣記憶體相關廠商受惠程度依產業鏈位置而異：<strong class="hl">握有自有晶圓產能的製造商</strong>（如南亞科、華邦電、旺宏）受惠較直接持久；<strong class="hl">模組與通路廠</strong>（威剛、十銓、創見、宜鼎）在漲價初期靠低價庫存增值、短線爆發力強，但沒有自有產能，一旦循環反轉，承受的庫存跌價風險也最高。控制晶片廠群聯則受惠於 AI 帶動的高效能儲存（SSD）需求。中國長鑫存儲正在開發 HBM，但量產時程落後，短期難撼動三巨頭。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+AI PCs demand far more memory: running large language models locally requires configurations like RTX Spark's 128GB of unified LPDDR5X, nearly ten times a typical laptop. Meanwhile, supply is squeezed because Samsung, SK hynix, and Micron prioritize high-margin HBM for AI servers, with Micron exiting consumer memory entirely. Shortages are expected to last into 2027. Taiwanese makers with their own wafer capacity benefit most, while module vendors enjoy short-term gains but carry higher inventory risk.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit11" class="round3">
+<h2>單元 11　中游 II：CPU 缺貨與 BOM 成本質變</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第三回合・垂直供應鏈</div>
+<p>除了記憶體，另一場供應風暴發生在處理器本身。</p>
+<h3>CPU 交期從 2 週拉長到 3 個月</h3>
+<p>根據研調機構 TrendForce 的調查，Intel 與 AMD 把先進製程與封裝產能優先配置給<strong class="hl">高毛利的 AI 伺服器晶片</strong>，導致 PC 級 CPU 供貨缺口顯著擴大，部分處理器交期（lead time）從過往的 2 週拉長至 <strong class="hl">3 個月以上</strong>。這波缺貨迫使品牌廠下修出貨目標，2026 年第一季全球筆電出貨量預估季減近 15%。</p>
+<h3>BOM 成本的結構質變</h3>
+<p><span class="tag">BOM（Bill of Materials，物料清單）</span>是一台筆電所有零組件的成本總和。目前的狀況是：Intel 調漲入門級及舊世代處理器報價逾 15%，加上記憶體價格同步走高，<strong class="hl">主流筆電的成本結構正發生質變</strong>，終端售價面臨大幅調漲壓力。</p>
+<h3>市場兩極化：高階化與平價化並行</h3>
+<p>成本壓力正在重塑產品策略。品牌廠為保住毛利，被迫<strong class="hl">縮減低利潤的入門機種，轉向單價更高的 AI PC 或電競市場</strong>；同時，高通的 Snapdragon C 系列又從 300 美元的平價端切入。市場因此呈現「高階化與平價化兩極發展」：中間地帶的傳統主流機種被上下夾擊。</p>
+<h3>長期結構性影響</h3>
+<ul>
+<li><strong class="hl">議價權向晶片原廠傾斜</strong>：供給吃緊讓上游話語權變大，二線品牌的生存空間受擠壓。</li>
+<li><strong class="hl">加速 Arm 化與自研晶片</strong>：過高的 x86 成本，促使品牌廠考慮導入 Arm 架構或自研晶片，尋求與 x86 供應鏈的成本脫鉤（decoupling）——這恰好為 NVIDIA、高通的 Arm 方案開了大門。</li>
+</ul>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+A second supply storm is hitting CPUs. With Intel and AMD prioritizing high-margin AI server chips, PC processor lead times have stretched from two weeks to over three months, and first-quarter 2026 notebook shipments were expected to fall nearly 15 percent quarter-on-quarter. Rising CPU and memory prices are reshaping laptop bill-of-materials costs, pushing the market toward both premium AI PCs and budget Arm-based machines, while strengthening chipmakers' bargaining power and accelerating the shift away from x86.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit12" class="round3">
+<h2>單元 12　下游：品牌、代工五哥與台灣生態系</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第三回合・垂直供應鏈</div>
+<p>供應鏈的最下游，是把晶片變成產品、送到消費者手上的<strong class="hl">品牌廠（brand）與代工廠（ODM/OEM）</strong>——這正是台灣數十年來的主場。</p>
+<h3>品牌端：誰在第一波陣容裡？</h3>
+<p>全球 PC 出貨排名前五為聯想（Lenovo）、惠普（HP）、戴爾（Dell）、蘋果（Apple）、華碩（ASUS）。RTX Spark 首波筆電陣容涵蓋 Microsoft Surface、Dell、HP、ASUS、Lenovo、MSI；高通入門級 C 系列則由 Acer、HP、Lenovo 打頭陣。台灣品牌<strong class="hl">華碩、宏碁、微星、技嘉</strong>全數卡位，例如微星與華碩的 RTX Sparks 機種預計第三季出貨，搭配微軟新一代 AI Windows 上市。</p>
+<h3>代工端：電子五哥的訂單能見度</h3>
+<p>全球多數筆電由台灣 ODM 代工：<strong class="hl">廣達、仁寶、緯創、英業達、和碩</strong>（俗稱電子五哥），加上鴻海。Win10 換機潮加上 AI PC 出貨成長，業界預期將帶動這些代工廠 2026 年的營運動能。值得注意的是，Intel 在 COMPUTEX 期間特別與五哥及華碩、研華高層閉門交流——在四強搶客的時代，<strong class="hl">晶片廠反過來經營代工廠關係</strong>，凸顯台灣系統組裝能力的戰略地位。</p>
+<h3>周邊零組件：跟著規格升級吃紅利</h3>
+<p>AI PC 的高功耗晶片與大容量記憶體，帶動周邊零組件同步升級：散熱模組（更高瓦數的均熱片與風扇設計）、電池與電源管理（長效續航是賣點）、高階 PCB 與載板、機殼輕量化等。一個值得記住的對照：NVIDIA 資料中心的 Vera Rubin 平台單一系統包含近 200 萬個零件、涉及約 150 家台灣生態系夥伴——AI PC 雖然規模較小，但同樣是「<strong class="hl">整條供應鏈雨露均霑</strong>」的結構。</p>
+<h3>判讀要點</h3>
+<p>觀察下游的關鍵指標：各品牌 AI PC 機種的<strong class="hl">實際售價與銷量</strong>（而非發表數量）、ODM 的接單能見度、以及高階（1,500 美元以上）與平價（500 美元以下）兩個價格帶的成長速度差異。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Downstream, Taiwan dominates both branding and manufacturing. ASUS, Acer, MSI, and Gigabyte have all secured positions in the first AI PC wave, while ODMs Quanta, Compal, Wistron, Inventec, Pegatron, and Foxconn assemble most of the world's notebooks. Intel even held closed-door meetings with these ODM leaders during COMPUTEX, underscoring Taiwan's strategic role. Component makers in thermal, power, and PCB sectors also benefit as AI PC specifications rise. Watch actual prices and sales volumes, not just product announcements.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+<!-- 第四回合 -->
+<section id="unit13" class="round4">
+<h2>單元 13　微軟：把 Windows 變成代理平台</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第四回合・軟體生態與判讀</div>
+<p>硬體大戰的另一半劇本，由微軟（Microsoft）執筆。沒有作業系統與軟體生態系的配合，再強的晶片也只是規格表上的數字。</p>
+<h3>Windows 11 的基本盤</h3>
+<p>微軟 Windows 與裝置業務副總裁 Mark Linton 在 COMPUTEX 論壇演講中公布一個里程碑：<strong class="hl">Windows 11 每日活躍使用者已突破 10 億</strong>，遍及全球逾 100 個市場；2025 年 Windows 生態系出貨量突破 2.4 億台。這個龐大基本盤，是所有 AI PC 晶片廠都必須爭取的舞台。</p>
+<h3>OpenShell：Windows 的代理化改造</h3>
+<p>微軟與 NVIDIA 合作，以 <strong class="hl">OpenShell 框架</strong>把 Windows 改造為代理平台（agentic platform）——讓 AI 代理能在作業系統層級協同工作。配套的是一組全新的<strong class="hl">安全防護機制（security primitives）</strong>：確保本地代理與模型<strong class="hl">只能存取使用者明確授權的工具與資料</strong>。這一點極為關鍵——代理要替你操作電腦，前提是不能變成資安破口。微軟預告將在 Build 開發者大會公布更多細節。</p>
+<h3>選購標準的典範轉移</h3>
+<p>微軟在演講中傳達的核心訊息是：隨著 AI 推論需求從雲端往邊緣移動，<strong class="hl">「一台筆電能否在本機跑模型、執行代理工作流程」正在成為新的選購標準</strong>——就像當年「能不能上網」「電池撐多久」一樣，將成為消費者的基本判斷項目。</p>
+<h3>軟體生態的連鎖反應</h3>
+<p>應用軟體商也在跟進：Adobe 為 Premiere 進行核心改造以支援更快的 AI 工作流程，並將開放 MCP（Model Context Protocol，模型脈絡協定）控制介面，讓 AI 代理能直接操作其產品。當主流生產力軟體都為代理開放介面，AI PC 的價值才能真正落地。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+Microsoft provides the software half of the AI PC story. Windows 11 has surpassed one billion daily active users, giving every chipmaker a massive platform to compete for. With NVIDIA, Microsoft is transforming Windows into an agentic platform through the OpenShell framework, paired with new security primitives that limit agents to user-approved tools and data. The company argues that the ability to run models and agent workflows locally is becoming a new purchasing standard, while software vendors like Adobe open their products to AI agents.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit14" class="round4">
+<h2>單元 14　Token 經濟學：邊緣與雲端的分工</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第四回合・軟體生態與判讀</div>
+<p>AI PC 為什麼有存在的必要？最有力的論證來自<strong class="hl">經濟學</strong>，而不是技術本身。</p>
+<h3>Token：AI 時代的「度量衡」</h3>
+<p><span class="tag">Token（詞元）</span>是大型語言模型處理文字的基本單位，也是 AI 運算量與成本的計價單位。高通在開幕演講中提出一組估算：<strong class="hl">2026 年全球 AI 每 10 秒消耗約 317 億個 token；到 2030 年，同樣 10 秒內將暴增至 1.27 兆個——成長 40 倍</strong>。關鍵在於：代理式 AI 以機器速度（而非人類打字速度）產生與消耗 token，這將從根本上改變軟體設計邏輯與基礎設施需求。</p>
+<h3>全部丟雲端？算不過來也付不起</h3>
+<p>如果這些運算全部由雲端資料中心承擔，電力、晶片與成本都將難以負荷。高通的現場示範顯示：透過<strong class="hl">裝置端與雲端的智慧任務調度（intelligent task scheduling）</strong>——簡單任務在本機跑、複雜任務才上雲——可節省約 30% 的 token 消耗，<strong class="hl">成本降低至四分之一</strong>。</p>
+<h3>「邊緣＋雲端互補」是四強共識</h3>
+<p>值得注意的是，這個「混合運算（hybrid computing）」主張是本屆 COMPUTEX 罕見的共識：高通講「端—邊—雲運算連續體」、Intel 講「從邊緣到雲端的混合架構」、NVIDIA 與微軟講「推論從雲端往邊緣移動」。立場各異的四強，都在為同一個結論背書：<strong class="hl">AI 算力將分層部署，而 PC 是離使用者最近的那一層</strong>。</p>
+<h3>判讀視角</h3>
+<p>對學習者而言，token 經濟學提供了一個檢驗 AI PC 題材的試金石：一項裝置端 AI 功能若<strong class="hl">能省下可觀的雲端成本、或創造雲端做不到的隱私價值</strong>，它就有真實需求；反之，若只是把雲端能做的事搬到本機重做一遍，就只是行銷話術。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+The strongest case for AI PCs is economic. Tokens are the basic unit of AI computation and cost. Qualcomm estimates global AI token consumption will grow forty-fold between 2026 and 2030, driven by agents operating at machine speed. Processing everything in the cloud would be unaffordable, while intelligent scheduling between device and cloud can cut token usage by about 30 percent and reduce costs to a quarter. All four chip giants now endorse hybrid computing, with the PC as the layer closest to the user.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit15" class="round4">
+<h2>單元 15　風險面：市場飽和論與不確定性</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第四回合・軟體生態與判讀</div>
+<p>客觀的產業分析必須同時看多空兩面。AI PC 題材火熱，但至少有五個風險點值得冷靜檢視。</p>
+<h3>風險一：PC 市場飽和論</h3>
+<p>一個尖銳的事實：PC 市場低迷已久，今年以來筆電出貨量依然疲弱，期待中的全面換機潮尚未完全兌現——但 COMPUTEX 期間，NVIDIA、聯發科、高通卻接連宣布殺入 PC 處理器市場，賽道空前擁擠。巨頭的判斷是「AI 將重新定義 PC 的價值」，但<strong class="hl">需求是否真的跟上供給的熱情，仍待驗證</strong>。</p>
+<h3>風險二：高價是否壓抑需求</h3>
+<p>市場預估 RTX Spark 筆電售價可能高達 3,000 美元（近新台幣 10 萬元）；同時 CPU 與記憶體漲價推升整體售價。<strong class="hl">過高的換機成本可能反過來抑制升級意願</strong>，延長消費者持有舊機的時間。</p>
+<h3>風險三：殺手級應用尚未出現</h3>
+<p>NPU 已普及兩年，但多數消費者仍說不出「非 AI PC 不可」的日常場景。代理式 AI 被寄予厚望，但其成熟度、可靠性與安全性（代理誤操作、提示注入攻擊等）都還在早期階段。</p>
+<h3>風險四：Windows on Arm 的相容性包袱</h3>
+<p>Arm 陣營（高通、NVIDIA）必須面對 x86 應用相容性的歷史考驗：模擬執行（emulation）的效能損耗、部分專業軟體與周邊驅動程式的支援缺口。高通前一代 Snapdragon X 的市場表現未達預期，殷鑑不遠。</p>
+<h3>風險五：供應鏈的循環風險</h3>
+<p>記憶體與 CPU 的漲價是雙面刃：上游廠商短期受惠，但若終端需求不如預期，漲價循環反轉時，<strong class="hl">高庫存的模組廠與通路商將首當其衝</strong>。此外，地緣政治與關稅政策的變化，也持續影響庫存策略與供應鏈布局。</p>
+<h3>平衡視角</h3>
+<p>支撐多方論點的事實同樣存在：Win10 換機需求有明確時間表、商用市場升級動能強、四強的真金白銀投入（如 AMD 對台百億美元投資）顯示產業界的長期信心。<strong class="hl">把風險與機會放在同一張表上比較，才是健康的產業判讀</strong>。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+A balanced analysis must weigh the risks. PC shipments remain weak even as chip giants crowd into the market. High prices, with some RTX Spark laptops expected near 3,000 dollars, may suppress upgrades. A killer application for NPUs has yet to emerge, and agentic AI is still immature. Windows on Arm faces compatibility challenges, and rising component prices create cyclical inventory risks. Still, the Windows 10 replacement cycle, strong commercial demand, and massive corporate investments support the bullish case.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="unit16" class="round4">
+<h2>單元 16　總結：產業判讀框架與自我檢核</h2>
+<div class="unit-time">⏱ 約 10 分鐘｜第四回合・軟體生態與判讀</div>
+<p>恭喜完成 15 個單元！最後一個單元，把全課程濃縮成一個可重複使用的<strong class="hl">判讀框架</strong>，並做自我檢核。</p>
+<h3>一張圖記住 AI PC 產業</h3>
+<ul>
+<li><strong class="hl">需求引擎（雙浪潮）</strong>：Win10 終止支援的換機需求 × AI PC 滲透率拉升（2026 年估 55%）。</li>
+<li><strong class="hl">水平競爭（四極＋二）</strong>：Intel（x86 守擂、18A）、AMD（x86 進攻、2nm）、Qualcomm（Arm、由下而上）、NVIDIA（Arm、由上而下、CUDA 生態）＋聯發科（共同設計）＋Arm（架構授權）。</li>
+<li><strong class="hl">垂直供應鏈</strong>：上游台積電製程與先進封裝 → 中游記憶體與 CPU（雙缺貨）→ 下游品牌與電子五哥。</li>
+<li><strong class="hl">軟體催化劑</strong>：微軟 Agentic Windows（OpenShell）＋ token 經濟學（混合運算共識）。</li>
+<li><strong class="hl">風險清單</strong>：飽和論、高價、殺手應用缺位、Arm 相容性、循環反轉。</li>
+</ul>
+<h3>追蹤五個關鍵指標</h3>
+<ol>
+<li>RTX Spark 筆電秋季上市後的<strong class="hl">實際銷量與評價</strong>（NVIDIA 模式是否成立）。</li>
+<li>Arm 架構在 PC 的市占變化（目前約 14.4%，含蘋果）。</li>
+<li>記憶體與 CPU 報價走勢（缺貨能見度目前看到 2027 年）。</li>
+<li>微軟 Build 大會公布的代理平台細節與開發者採用度。</li>
+<li>電子五哥與台灣品牌廠的逐季出貨與接單能見度。</li>
+</ol>
+<h3>✅ 自我檢核 10 題（試著不看內容回答）</h3>
+<ol>
+<li>Copilot+ PC 的 NPU 算力門檻是多少 TOPS？（單元 1）</li>
+<li>Windows 10 何時終止支援？當時約多少比例的 PC 仍在使用它？（單元 2）</li>
+<li>COMPUTEX 2026 的主題是什麼？三大信號為何？（單元 3）</li>
+<li>生成式 AI 與代理式 AI 的核心差別是什麼？（單元 4）</li>
+<li>RTX Spark 由哪兩家公司合作開發？採用哪家代工廠的幾奈米製程？（單元 5）</li>
+<li>高通三層產品線（Elite / Plus / C 系列）各自鎖定什麼市場？（單元 6）</li>
+<li>Intel 18A 製程的首款資料中心 CPU 是什麼？Intel 主張 CPU 在代理時代扮演什麼角色？（單元 7）</li>
+<li>記憶體缺貨的主因是什麼？哪一類台廠受惠最直接？（單元 10）</li>
+<li>「電子五哥」是哪五家公司？（單元 12）</li>
+<li>高通估算 2026 到 2030 年全球 token 消耗成長幾倍？混合運算為何能省成本？（單元 14）</li>
+</ol>
+<p>能完整回答 8 題以上，代表您已掌握 AI PC 產業的全貌；答不出的題目，請用單元地圖跳回該單元複習。</p>
+<div class="en-summary">
+<div class="es-title">📝 English Summary</div>
+This final unit condenses the course into a reusable framework: two demand waves, a four-way horizontal chip war plus MediaTek and Arm, a vertical supply chain from TSMC down to Taiwan's ODMs, Microsoft's agentic Windows as the software catalyst, and a clear risk checklist. Five indicators are worth tracking, including RTX Spark's actual sales, Arm's PC market share, and component prices. A ten-question self-check helps learners verify their understanding before revisiting any unit.
+</div>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<section id="glossary">
+<h2>📖 術語表 Glossary</h2>
+<dl>
+<dt>AI PC</dt><dd>具備本機 AI 運算能力的個人電腦，核心特徵是搭載 NPU；2026 年市場焦點已從規格轉向實際體驗。</dd>
+<dt>Agentic AI（代理式 AI）</dt><dd>能自主理解目標、拆解任務並採取行動的 AI 系統；相對於「你問我答」的生成式 AI，是本屆 COMPUTEX 的核心關鍵詞。</dd>
+<dt>Arm architecture（Arm 架構）</dt><dd>以授權模式提供的 CPU 設計架構，以低功耗見長；NVIDIA 與高通的 PC 晶片皆採用，正在侵蝕 x86 的版圖。</dd>
+<dt>BOM（Bill of Materials，物料清單）</dt><dd>一項產品所有零組件的成本清單；CPU 與記憶體漲價正使筆電 BOM 成本結構發生質變。</dd>
+<dt>Copilot+ PC</dt><dd>微軟的 AI PC 認證標準，要求 NPU 算力達 40 TOPS 以上，現已涵蓋高通、AMD、Intel 平台。</dd>
+<dt>CUDA</dt><dd>NVIDIA 的平行運算軟體平台與生態系，眾多 AI 與創作工作流程依賴它，是 NVIDIA 進軍 PC 的最大差異化武器。</dd>
+<dt>Edge AI（邊緣 AI）</dt><dd>在靠近使用者的裝置端執行 AI 運算，優點是低延遲、保護隱私、可離線運作。</dd>
+<dt>Foundry（晶圓代工）</dt><dd>專門替晶片設計公司生產晶片的製造廠；台積電是 AI PC 四強中三強的共同上游。</dd>
+<dt>HBM（High Bandwidth Memory，高頻寬記憶體）</dt><dd>AI 伺服器 GPU 標配的先進記憶體；三大記憶體廠將產能優先投入 HBM，造成 PC 用記憶體缺貨漲價。</dd>
+<dt>Inference（推論）</dt><dd>AI 模型根據輸入產生答案的運算過程；「本地推論」指這個過程在使用者的裝置上完成。</dd>
+<dt>Lead time（交期）</dt><dd>從下單到交貨的時間；PC 級 CPU 交期已從 2 週拉長至 3 個月以上，反映供給吃緊。</dd>
+<dt>LLM（Large Language Model，大型語言模型）</dt><dd>以海量文字訓練的 AI 模型；RTX Spark 可在本機執行最高約 1,200 億參數的 LLM。</dd>
+<dt>NPU（Neural Processing Unit，神經處理單元）</dt><dd>專門加速 AI 推論的處理器，特色是低功耗高效率，是 AI PC 的標誌性硬體。</dd>
+<dt>ODM（Original Design Manufacturer，原始設計製造商）</dt><dd>替品牌客戶設計並代工產品的廠商；台灣電子五哥（廣達、仁寶、緯創、英業達、和碩）代工全球多數筆電。</dd>
+<dt>Orchestration（協調／調度）</dt><dd>統籌分配多項 AI 任務與運算資源的工作；Intel 主張 CPU 在代理時代扮演協調者角色。</dd>
+<dt>Penetration rate（滲透率）</dt><dd>某類產品占整體市場的比例；Gartner 估 AI PC 滲透率 2026 年達 55%。</dd>
+<dt>PFLOP（PetaFLOP）</dt><dd>每秒一千兆次浮點運算；RTX Spark 在 FP4 精度下 AI 算力達 1 PFLOP。</dd>
+<dt>SoC（System on Chip，系統單晶片）</dt><dd>把 CPU、GPU、NPU、記憶體控制器等整合在單一晶片上的設計，是行動裝置與新世代 AI PC 的主流形態。</dd>
+<dt>Token（詞元）</dt><dd>大型語言模型處理文字的基本單位，也是 AI 運算成本的計價單位；高通估算全球 token 消耗 2026–2030 年將成長 40 倍。</dd>
+<dt>TOPS（Tera Operations Per Second）</dt><dd>每秒兆次運算，衡量 NPU 算力的單位；40 TOPS 是 Copilot+ PC 的門檻。</dd>
+<dt>Unified memory（統一記憶體）</dt><dd>CPU 與 GPU 共用同一塊記憶體的架構，省去資料搬運；RTX Spark 最高配置 128GB。</dd>
+<dt>Windows on Arm（WoA）</dt><dd>在 Arm 架構處理器上執行 Windows 的方案；優勢是省電續航，挑戰是 x86 應用相容性。</dd>
+<dt>x86</dt><dd>Intel 與 AMD 採用的傳統 PC 處理器架構，主導市場 30 餘年，正面臨 Arm 陣營的挑戰。</dd>
+</dl>
+<a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<div class="link-cards">
+<a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">🎯 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+<a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+<a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+</div>
+
+</main>
+</body>
+</html>

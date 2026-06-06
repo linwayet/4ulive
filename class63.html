@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI PC War — COMPUTEX 2026 Explained (Micro-Course)</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #F8F4ED;
+  color: #3A2E22;
+  font-family: 'BIZ UDPGothic', 'Inter', sans-serif;
+  font-size: 22px;
+  line-height: 1.85;
+}
+main { max-width: 800px; margin: 0 auto; padding: 24px 18px 60px; }
+header { text-align: center; padding: 36px 14px 10px; }
+h1 {
+  color: #C0392B;
+  font-size: 2.7rem;
+  line-height: 1.4;
+  margin: 0 auto 14px;
+  border: 4px double #C0392B;
+  border-radius: 18px;
+  padding: 18px 22px;
+  max-width: 760px;
+  background: #FFFDF8;
+  box-shadow: 0 4px 14px rgba(192,57,43,0.12);
+}
+.subtitle { color: #1565C0; font-size: 1.95rem; font-weight: 700; margin: 10px 0 6px; line-height: 1.5; }
+.byline {
+  color: #1565C0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 8px 0 20px;
+  text-shadow: 1px 1px 0 #FFFDF8, 2px 2px 0 rgba(21,101,192,0.18);
+}
+.course-meta {
+  background: #FFFDF8;
+  border: 2px solid #E0A96D;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 0 auto 26px;
+  font-size: 20px;
+  max-width: 740px;
+}
+.link-cards { display: flex; flex-direction: column; gap: 16px; margin: 26px 0; }
+.link-card {
+  display: block;
+  min-height: 72px;
+  border-radius: 16px;
+  padding: 18px 22px;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.6;
+  box-shadow: 0 3px 10px rgba(58,46,34,0.18);
+}
+.card-echo { background: #C0392B; }
+.card-popup { background: #1565C0; }
+.card-line { background: #06C755; }
+.link-card small { display: block; font-weight: 400; font-size: 18px; opacity: 0.95; }
+nav#unit-map {
+  background: #FFFDF8;
+  border: 2px solid #E0A96D;
+  border-radius: 18px;
+  padding: 22px 18px;
+  margin: 10px 0 34px;
+}
+nav#unit-map h2 { color: #C0392B; font-size: 1.9rem; margin: 0 0 14px; text-align: center; border: none; }
+.map-round { font-size: 1.35rem; font-weight: 700; margin: 18px 0 10px; color: #6A1B9A; }
+.map-links { display: flex; flex-direction: column; gap: 14px; }
+.map-links a {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  border-radius: 999px;
+  padding: 14px 24px;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(58,46,34,0.15);
+}
+.m1 { background: #E65100; }
+.m2 { background: #1565C0; }
+.m3 { background: #2E7D32; }
+.m4 { background: #6A1B9A; }
+.mg { background: #8D6E63; }
+section {
+  background: #FFFDF8;
+  border-radius: 16px;
+  padding: 26px 24px 22px;
+  margin: 0 0 30px;
+  box-shadow: 0 3px 12px rgba(58,46,34,0.10);
+  border-top: 10px solid #E0A96D;
+}
+section.round1 { border-top-color: #E65100; }
+section.round2 { border-top-color: #1565C0; }
+section.round3 { border-top-color: #2E7D32; }
+section.round4 { border-top-color: #6A1B9A; }
+h2 { color: #1565C0; font-size: 1.95rem; line-height: 1.5; margin: 0 0 6px; }
+h3 { color: #2E7D32; font-size: 1.55rem; margin: 22px 0 8px; }
+.unit-time { color: #6A1B9A; font-weight: 700; font-size: 19px; margin: 0 0 14px; }
+strong.hl { color: #E65100; }
+.tag { color: #6A1B9A; font-weight: 700; }
+.en-summary {
+  background: #FBF3E7;
+  border-left: 10px solid #E0A96D;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 22px 0 18px;
+  font-family: 'Inter', 'BIZ UDPGothic', sans-serif;
+  font-size: 20px;
+}
+.en-summary .es-title { font-weight: 700; color: #C0392B; font-size: 21px; margin-bottom: 8px; }
+.back-to-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  border-radius: 999px;
+  background: #8D6E63;
+  color: #FFFDF8;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+#glossary { background: #F3EEE4; border-top-color: #8D6E63; }
+#glossary dt { color: #E65100; font-weight: 700; font-size: 21px; margin-top: 16px; font-family: 'Inter', 'BIZ UDPGothic', sans-serif; }
+#glossary dd { margin: 4px 0 0 0; font-size: 21px; }
+ul, ol { padding-left: 1.3em; }
+li { margin-bottom: 10px; }
+@media (max-width: 600px) {
+  body { font-size: 20px; }
+  h1 { font-size: 2.6rem; padding: 14px 14px; }
+  .subtitle { font-size: 1.9rem; }
+  main { padding: 18px 12px 50px; }
+  section { padding: 20px 16px 18px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+<h1>🖥️ The AI PC War<br>COMPUTEX 2026 Explained</h1>
+<div class="subtitle">A four-way chip battle and a full supply-chain mobilization: the campaign to reinvent the personal computer</div>
+<div class="byline">✦ Produced by 林威老師 (Teacher Lin Wei) &amp; the AI agent team ✦</div>
+</header>
+
+<div class="course-meta">
+📚 <strong>How to use this micro-course</strong>: The course contains <strong>4 rounds × 4 units = 16 units</strong>, each taking about <strong>10 minutes</strong>. Study one unit at a time and use the Unit Map to jump and review. Every unit ends with a 中文摘要 (Chinese Summary), and a Glossary closes the course.
+</div>
+
+<div class="link-cards">
+<a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">🎯 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+<a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+<a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+</div>
+
+<nav id="unit-map">
+<h2>🗺️ Unit Map</h2>
+<div class="map-round">🟠 Round 1｜Understanding the AI PC</div>
+<div class="map-links">
+<a class="m1" href="#unit1">Unit 1　What Is an AI PC? From the NPU to the Copilot+ Bar</a>
+<a class="m1" href="#unit2">Unit 2　Two Replacement Waves: Win10 End-of-Support × AI PC Adoption</a>
+<a class="m1" href="#unit3">Unit 3　COMPUTEX 2026 at a Glance: AI Together</a>
+<a class="m1" href="#unit4">Unit 4　From Generative to Agentic: AI's Paradigm Shift</a>
+</div>
+<div class="map-round">🔵 Round 2｜Horizontal Competition: The Four-Way Chip War</div>
+<div class="map-links">
+<a class="m2" href="#unit5">Unit 5　NVIDIA RTX Spark: The Challenger's Big Bet</a>
+<a class="m2" href="#unit6">Unit 6　Qualcomm: The Bottom-Up Flanking Move</a>
+<a class="m2" href="#unit7">Unit 7　Intel: The Incumbent's 18A Counterattack</a>
+<a class="m2" href="#unit8">Unit 8　AMD and MediaTek: Two Key Variables</a>
+</div>
+<div class="map-round">🟢 Round 3｜The Vertical Supply Chain: Upstream to Downstream</div>
+<div class="map-links">
+<a class="m3" href="#unit9">Unit 9　Upstream: Foundries, Advanced Nodes, and Arm</a>
+<a class="m3" href="#unit10">Unit 10　Midstream I: The Memory Storm and Unified Memory</a>
+<a class="m3" href="#unit11">Unit 11　Midstream II: CPU Shortages and the BOM Cost Shift</a>
+<a class="m3" href="#unit12">Unit 12　Downstream: Brands, the ODM Big Five, and Taiwan</a>
+</div>
+<div class="map-round">🟣 Round 4｜Software Ecosystem and Outlook</div>
+<div class="map-links">
+<a class="m4" href="#unit13">Unit 13　Microsoft: Turning Windows into an Agent Platform</a>
+<a class="m4" href="#unit14">Unit 14　Token Economics: Dividing Work between Edge and Cloud</a>
+<a class="m4" href="#unit15">Unit 15　The Risk Side: Saturation Talk and Uncertainties</a>
+<a class="m4" href="#unit16">Unit 16　Wrap-Up: An Analysis Framework and Self-Check</a>
+</div>
+<div class="map-round">📖 Appendix</div>
+<div class="map-links">
+<a class="mg" href="#glossary">Glossary 術語表</a>
+</div>
+</nav>
+
+<!-- Round 1 -->
+<section id="unit1" class="round1">
+<h2>Unit 1　What Is an AI PC? From the NPU to the Copilot+ Bar</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 1・Fundamentals</div>
+<p>An AI PC is a personal computer that can <strong class="hl">run AI workloads locally on the device</strong>, instead of sending everything to the cloud. Its biggest hardware difference from a traditional PC is a <strong class="hl">Neural Processing Unit（NPU，神經處理單元）</strong> that sits alongside the CPU and GPU — a chip block dedicated to accelerating AI model inference（推論）, capable of massive matrix operations at very low power.</p>
+<h3>Measuring AI horsepower: TOPS</h3>
+<p>The industry measures NPU performance in <span class="tag">TOPS（Tera Operations Per Second，每秒兆次運算）</span>. Microsoft set a clear bar for its "Copilot+ PC" certification: <strong class="hl">an NPU delivering at least 40 TOPS</strong>, a spec now covered by Qualcomm, AMD, and Intel platforms. In other words, 40 TOPS is the passing line that splits new machines into "AI PCs" and "regular PCs."</p>
+<h3>Beyond specs, the focus shifts to experience</h3>
+<p>By 2026, however, the market conversation has moved from "how many TOPS does the NPU have" to <strong class="hl">the actual user experience</strong>: whether on-device AI（本地端 AI）protects privacy, boosts productivity, and runs autonomous agentic AI applications smoothly. The definition of the AI PC is evolving from "a hardware spec" into "what the machine can actually do."</p>
+<h3>Three foundational terms</h3>
+<ul>
+<li><strong class="hl">Edge AI（邊緣 AI）</strong>: running AI on devices close to the user — phones, PCs, cars — rather than in distant data centers. Benefits include low latency, privacy protection, and offline operation.</li>
+<li><strong class="hl">Local inference（本地推論）</strong>: the AI model "thinks" and produces answers directly on your computer, so personal data never leaves the device.</li>
+<li><strong class="hl">Unified memory（統一記憶體）</strong>: the CPU and GPU share one pool of memory, eliminating data shuffling — a key design in the new generation of AI PC chips (explored in Units 5 and 10).</li>
+</ul>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+AI PC 是能在裝置本機執行 AI 運算的個人電腦，核心硬體是與 CPU、GPU 並列的神經處理單元（NPU）。微軟的 Copilot+ PC 認證要求 NPU 算力達 40 TOPS 以上。到了 2026 年，產業焦點已從硬體規格轉向實際體驗：隱私保護、生產力與代理式 AI 應用。本單元的三個基礎概念是邊緣 AI、本地推論與統一記憶體。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit2" class="round1">
+<h2>Unit 2　Two Replacement Waves: Win10 End-of-Support × AI PC Adoption</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 1・Fundamentals</div>
+<p>Why did the AI PC become the industry's hottest battleground in 2026? Because two demand waves happen to be stacking on top of each other.</p>
+<h3>Wave one: Windows 10 reaches end of support</h3>
+<p>Microsoft officially ended support for Windows 10（終止支援）on October 14, 2025. Around that time, roughly <strong class="hl">40 percent of the world's PCs were still running Windows 10</strong>, which means an enormous replacement demand has yet to be fully released. Research firm Counterpoint reported that global PC shipments grew 8.1 percent year-over-year in Q3 2025, driven mainly by this operating-system upgrade cycle; the industry expects the wave to keep lifting the PC market for several years, with 2026 shipments growing again.</p>
+<h3>Wave two: AI PC penetration climbs fast</h3>
+<p>Research firms estimate the AI PC penetration rate（滲透率）roughly as follows:</p>
+<ul>
+<li><strong class="hl">Gartner</strong>: AI PCs took about 31 percent of total PC shipments in 2025 (around 77.8 million units), rising to <strong class="hl">55 percent in 2026</strong> and becoming the norm by 2029.</li>
+<li><strong class="hl">Canalys</strong>: about 60 percent of shipments will be AI-capable by 2027, with the commercial segment（商用市場）climbing faster.</li>
+<li><strong class="hl">IDC</strong>: roughly two-thirds of the overall market will be AI PCs by 2028.</li>
+</ul>
+<h3>Business first, consumers follow</h3>
+<p>Enterprises（企業）usually upgrade faster than consumers because of security, compliance, and productivity concerns — and the end of Windows 10 support hits corporate security most directly. "Business first, consumers follow" is the basic rhythm of this cycle. For the supply chain, that means demand visibility（能見度）is longer and steadier than in a purely consumer-driven upgrade.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+2026 年有兩股需求浪潮疊加。第一，微軟於 2025 年 10 月終止 Windows 10 支援，當時約四成 PC 仍在使用，形成多年期換機循環。第二，AI PC 滲透率快速拉升：Gartner 預估 2026 年 AI PC 占出貨比重達 55%。商用市場升級速度快於消費端，使供應鏈獲得更長、更穩定的需求能見度。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit3" class="round1">
+<h2>Unit 3　COMPUTEX 2026 at a Glance: AI Together</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 1・Fundamentals</div>
+<p>COMPUTEX (the Taipei International Information Technology Show) 2026 opened in early June, spanning Nangang Exhibition Halls 1 and 2 and returning to the TWTC Hall 1. Themed "<strong class="hl">AI Together</strong>," the show set a historical record: <strong class="hl">1,500 exhibitors and 6,000 booths from 33 countries and regions</strong>, plus a first-ever AI Robotics zone.</p>
+<h3>Three titans converge on Taipei</h3>
+<p>NVIDIA CEO Jensen Huang（黃仁勳）, AMD CEO Lisa Su（蘇姿丰）, and Intel CEO Lip-Bu Tan（陳立武）all appeared in Taipei, while Qualcomm CEO Cristiano Amon delivered the opening keynote（開幕主題演講）. AMD announced an investment of over ten billion US dollars in Taiwan; Intel held closed-door meetings with the "ODM Big Five"（電子五哥：廣達、緯創、和碩、仁寶、英業達）plus ASUS and Advantech. Together these moves send one signal: <strong class="hl">Taiwan is not merely a manufacturing hub but the core of a complete AI ecosystem</strong> — from chip design and fabrication to packaging and system integration.</p>
+<h3>Three signals from this year's show</h3>
+<ol>
+<li><strong class="hl">The rise of agentic AI</strong>: the center of gravity is shifting rapidly from generative AI（生成式 AI）to agentic AI（代理式 AI）, and the industry widely sees the PC as the core platform for running AI agents (detailed in Unit 4).</li>
+<li><strong class="hl">The AI PC chip war begins</strong>: NVIDIA, partnering with MediaTek, officially launched the RTX Spark chip, directly challenging Intel, AMD, and Qualcomm (covered in Round 2).</li>
+<li><strong class="hl">Supply remains tight</strong>: from advanced nodes to memory to CPUs, multiple links of the chain face shortages and rising prices (covered in Round 3).</li>
+</ol>
+<h3>A shift in what the show is about</h3>
+<p>Compared with recent years' focus on large language models（大型語言模型，LLM）and raw computing power, this edition is viewed as the turning point where AI moves <strong class="hl">"from model capability to application value"</strong>: smart manufacturing, robotics, autonomous driving, and smart healthcare all took the stage as AI steps out of the cloud and into the physical world.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+COMPUTEX 2026 以「AI Together」為主題，規模創新高：33 個國家地區、1,500 家廠商、6,000 個展位，並首設 AI 機器人專區。黃仁勳、蘇姿丰、陳立武齊聚台北，高通執行長發表開幕演講。本屆釋出三大信號：代理式 AI 崛起、AI PC 晶片大戰開打、供需持續吃緊；產業焦點正從模型能力轉向應用價值。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit4" class="round1">
+<h2>Unit 4　From Generative to Agentic: AI's Paradigm Shift</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 1・Fundamentals</div>
+<p>To understand this year's COMPUTEX, you must first grasp the keyword "<strong class="hl">agentic AI（代理式 AI）</strong>."</p>
+<h3>What is an AI agent?</h3>
+<p>The typical interaction with generative AI（生成式 AI）is "you ask, it answers": the user gives a prompt, the model generates text or images. Agentic AI goes a step further — AI evolves from "a tool that responds to commands" into <strong class="hl">"a system that takes action autonomously"</strong>: it can understand a goal, break it into tasks, call tools and applications on its own, allocate computing resources, and complete a chain of work for the user. Qualcomm CEO Amon flatly called 2026 "<strong class="hl">the year of agents（AI 代理元年）</strong>" in his opening keynote.</p>
+<h3>Why is the PC the core platform for agents?</h3>
+<ul>
+<li><strong class="hl">Privacy and security</strong>: agents need access to your files, calendar, and email; on-device processing（本地處理）protects personal and corporate data better than uploading to the cloud.</li>
+<li><strong class="hl">Personalization</strong>: the more an agent understands your working context, the more useful it becomes — and that context naturally lives on your PC.</li>
+<li><strong class="hl">Cost and latency</strong>: running part of the inference on the device saves cloud computing fees and shortens response time (detailed in Unit 14).</li>
+</ul>
+<h3>The ecosystem is already landing</h3>
+<p>Agentic AI is not stuck at the concept stage. Commercial deployments cited by Qualcomm include: Anthropic's Claude Desktop now runs natively on Snapdragon PCs; Google has integrated Gemini's agent features into Android; and several AI orchestrators（協作器，software that coordinates multiple agents）have been commercially deployed on Snapdragon devices. NVIDIA and Microsoft also announced the transformation of Windows into an agent platform (detailed in Unit 13).</p>
+<h3>What it means for hardware</h3>
+<p>Agents generate and consume computation at <strong class="hl">machine speed</strong>, not human speed, which fundamentally changes PC hardware requirements: larger memory (to hold local models), stronger NPUs/GPUs (inference horsepower), and higher memory bandwidth（頻寬）. This is the technical backdrop of the four-way chip war in Round 2.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+代理式 AI 是相對於生成式 AI 的典範轉移：AI 不再只是「你問我答」，而是能理解目標、拆解任務、自行呼叫工具並採取行動的系統。高通執行長稱 2026 年為「AI 代理元年」。PC 因隱私、個人化與成本優勢，被視為代理的核心平台；Claude Desktop 原生支援 Snapdragon PC 等商業部署顯示落地已經開始，並從根本改變 PC 的硬體需求。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+<!-- Round 2 -->
+<section id="unit5" class="round2">
+<h2>Unit 5　NVIDIA RTX Spark: The Challenger's Big Bet</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 2・Horizontal Competition</div>
+<p>The biggest announcement of this COMPUTEX came from NVIDIA CEO Jensen Huang's GTC Taipei keynote at the Taipei Music Center: the official launch of the <strong class="hl">RTX Spark superchip（超級晶片）</strong>, codenamed N1X. It marks NVIDIA's return to the consumer Windows PC market after more than a decade, with Huang framing the move as "<strong class="hl">reinventing the PC（重新發明 PC）</strong>" together with Microsoft. After the news, shares of AMD, Intel, and Qualcomm all fell — Wall Street clearly recognized NVIDIA as a new threat in the PC market.</p>
+<h3>RTX Spark's technical specifications</h3>
+<ul>
+<li><strong class="hl">Architecture</strong>: an Arm-based system on chip（SoC，系統單晶片）co-developed by NVIDIA and Taiwan's <strong class="hl">MediaTek（聯發科）</strong>, built on TSMC's 3-nanometer process and integrating about 70 billion transistors（電晶體）.</li>
+<li><strong class="hl">GPU</strong>: Blackwell architecture with 6,144 CUDA cores and fifth-generation Tensor Cores, delivering <strong class="hl">1 PFLOP（每秒千兆次浮點運算）</strong> of AI performance at FP4 precision.</li>
+<li><strong class="hl">CPU</strong>: a 20-core Grace CPU, connected to the GPU via the NVLink-C2C high-speed interconnect at 600GB/s.</li>
+<li><strong class="hl">Memory</strong>: up to 128GB of unified memory（統一記憶體）with 300GB/s of bandwidth, enough to run large language models of up to roughly <strong class="hl">120 billion parameters（1,200 億參數）</strong> locally.</li>
+<li><strong class="hl">Power</strong>: optimized for thin laptops, scaling from single-digit watts up to about 80 watts.</li>
+</ul>
+<h3>Product strategy: a whole family at once</h3>
+<p>RTX Spark laptops arrive this fall, with the first wave covering <strong class="hl">Microsoft Surface, Dell, HP, ASUS, Lenovo, and MSI</strong>. Launch models such as the Dell XPS, ASUS ProArt, and Lenovo Legion target the premium segment, starting around 1,500 to 2,000 US dollars. NVIDIA also laid out a three-generation roadmap（路線圖）, with future generations adopting the Rubin architecture and LPDDR6 memory.</p>
+<h3>NVIDIA's differentiating weapon</h3>
+<p>Compared with the other three giants, NVIDIA's biggest edge is its <strong class="hl">complete AI software stack</strong>: the CUDA ecosystem, DLSS gaming technology, and its own open large language models integrated directly into the platform. Many professional creative workflows — such as Adobe's generative features — have long depended on CUDA, giving NVIDIA a natural beachhead among high-end creators and AI developers.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+本屆最重磅發表是黃仁勳揭曉的 RTX Spark 超級晶片（代號 N1X）：NVIDIA 與聯發科共同設計、台積電 3 奈米製程，整合 Blackwell GPU（FP4 精度 1 PFLOP）、20 核 Grace CPU 與最高 128GB 統一記憶體，可本地執行約 1,200 億參數的大型語言模型。今年秋季由微軟、戴爾、惠普、華碩、聯想、微星推出筆電，定位高階市場；CUDA 軟體生態是 NVIDIA 最大差異化武器。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit6" class="round2">
+<h2>Unit 6　Qualcomm: The Bottom-Up Flanking Move</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 2・Horizontal Competition</div>
+<p>Mobile chip leader Qualcomm（高通）pioneered the Windows on Arm（WoA，在 Arm 架構上執行 Windows）camp. Facing NVIDIA's attack from the top, Qualcomm chose a very different route: <strong class="hl">bottom-up（由下而上）, expanding territory through price advantage</strong>.</p>
+<h3>A three-tier product lineup</h3>
+<ul>
+<li><strong class="hl">Flagship: Snapdragon X2 Elite</strong> — third-generation Oryon architecture on a 3nm process with an <strong class="hl">80 TOPS NPU</strong> (double the Copilot+ bar of 40 TOPS). Qualcomm claims its CPU is 75 percent faster than competitors at the same power, and GPU performance per watt improved 2.3 times over the previous generation. The first X2 Elite laptops began shipping just before COMPUTEX opened.</li>
+<li><strong class="hl">Mid-range: Snapdragon X2 Plus</strong> — unveiled at CES 2026, with single-core performance up 35 percent and power consumption down 43 percent versus the prior generation, aimed at professionals and creators.</li>
+<li><strong class="hl">Entry: the Snapdragon C series</strong> — a brand-new line announced on the eve of COMPUTEX, targeting <strong class="hl">budget laptops priced at 300 to 500 US dollars</strong> with partners Acer, HP, and Lenovo, attacking the student and family segment traditionally held by Chromebooks.</li>
+</ul>
+<h3>The strategic logic: device count equals leverage</h3>
+<p>In his opening keynote, CEO Amon sketched the market map: roughly 6 billion phones, 2 billion PCs, 2 billion personal AI devices, and 500 million connected cars worldwide — all potential upgrade markets waiting to become "agent endpoints（代理終端節點）." Qualcomm's strength is <strong class="hl">decades of expertise in low-power computing</strong> earned in smartphones; its weaknesses are the historical baggage of Windows on Arm application compatibility and a GPU that trails NVIDIA at the high end.</p>
+<h3>Bonus move: entering the data center</h3>
+<p>Qualcomm also unveiled a new data center brand, "<strong class="hl">Dragonfly</strong>," extending its footprint from edge devices into cloud inference and building a complete "device–edge–cloud" computing continuum（運算連續體）. The four-way war, in other words, is not confined to the PC battlefield.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+高通採取「由下而上」策略攻打 AI PC 市場：旗艦 Snapdragon X2 Elite（80 TOPS NPU）已出貨、中階 X2 Plus 鎖定專業人士、全新入門 C 系列瞄準 300–500 美元平價筆電（合作 Acer、HP、Lenovo），直攻 Chromebook 地盤。執行長 Amon 把全球數十億台手機、PC、汽車視為未來的代理終端；高通並發表資料中心新品牌 Dragonfly，把版圖從終端延伸到雲端。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit7" class="round2">
+<h2>Unit 7　Intel: The Incumbent's 18A Counterattack</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 2・Horizontal Competition</div>
+<p>Facing a siege of newcomers, longtime PC processor champion Intel（英特爾）used its COMPUTEX 2026 keynote to focus its future strategy on four computing ecosystems: <strong class="hl">the PC, edge and physical AI, foundational data centers, and emerging intelligence hubs</strong>. CEO Lip-Bu Tan（陳立武）reviewed Intel's historical ties with Taiwan's semiconductor industry and praised Taiwan's complete strength across OEM, ODM, chip design, and manufacturing.</p>
+<h3>The core weapon: the 18A process</h3>
+<p><strong class="hl">Intel 18A</strong> is Intel's most advanced in-house process node (roughly 1.8-nanometer class), carrying the mission of rebuilding manufacturing leadership. On the PC side, 18A powers the next generation of Core Ultra processors; on the data center side, <strong class="hl">Xeon 6+ is the first data center CPU built on 18A</strong>, designed for the orchestration, parallel processing, and data movement that agentic AI demands — a single liquid-cooled rack can deliver more than 36,000 computing cores.</p>
+<h3>The strategic claim: the CPU is the "commander" of the agent era</h3>
+<p>Intel's argument: in the agentic AI era, <strong class="hl">the CPU plays the central role of orchestrating（協調）AI tasks</strong> — GPUs and NPUs handle massive parallel computation, but task scheduling, security control, and system integration remain CPU-led. Intel is trying to redefine its place in the AI wave: not by fighting NVIDIA head-on in GPU horsepower, but by emphasizing a hybrid edge-to-cloud computing architecture and a partner ecosystem (including vertical industry collaborations with Foxconn, Siemens, and Hitachi).</p>
+<h3>The incumbent's reality</h3>
+<p>Market data still shows Intel as the dominant PC player: in Q1 2026 it led the x86 desktop market with 66.8 percent against AMD's 33.2 percent. But pressure comes from all sides: notebook share eroded by AMD, an expanding Arm camp (Qualcomm, NVIDIA, Apple), and intense scrutiny of its own advanced-node yields and ramp schedule. Tan admitted at the close of his keynote that he is challenging his team to build "a brand-new Intel" — and 18A plus agentic AI are the battlegrounds where that transformation will be judged.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+守擂者 Intel 把策略聚焦四大運算生態系，核心武器是最先進的 18A 自有製程：PC 端驅動新一代 Core Ultra，資料中心端的 Xeon 6+ 是首款 18A 資料中心 CPU。Intel 主張在代理時代 CPU 扮演任務協調的指揮官角色，強調邊緣到雲端的混合架構與生態系合作。市占上 Intel 仍以 66.8% 主導 x86 桌機，但面臨 AMD、Arm 陣營與自家製程轉型的多重壓力。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit8" class="round2">
+<h2>Unit 8　AMD and MediaTek: Two Key Variables</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 2・Horizontal Competition</div>
+<p>In the four-way war, AMD and MediaTek（聯發科）are often underrated — yet both are variables that can change the outcome.</p>
+<h3>AMD: the attacker within the x86 camp</h3>
+<p>AMD CEO Lisa Su announced an <strong class="hl">investment of more than ten billion US dollars in Taiwan</strong> and showcased a complete lineup from PCs to data centers:</p>
+<ul>
+<li><strong class="hl">Notebook share keeps climbing</strong>: AMD's mobile (laptop) CPU share jumped from 22.5 percent a year earlier to <strong class="hl">28.3 percent</strong> in Q1 2026 — partly because Intel prioritized server chip capacity, constraining laptop CPU supply and handing AMD room to expand.</li>
+<li><strong class="hl">Process leadership</strong>: AMD's Venice server processor is the semiconductor industry's <strong class="hl">first HPC chip in production on a 2-nanometer process</strong>, ramping entirely at TSMC.</li>
+<li><strong class="hl">The Helios rack-scale platform</strong>: deployed in the second half of the year with ODM partners including Wiwynn, Wistron, and Inventec.</li>
+</ul>
+<h3>MediaTek: from phone-chip king to the PC war's "arms dealer"</h3>
+<p>Taiwan's MediaTek plays a unique role — it does not fight under its own brand but as <strong class="hl">NVIDIA's co-design partner</strong>: the N1X (RTX Spark) was built jointly, with MediaTek contributing deep experience in low-power SoC design. President Joe Chen（陳冠州）revealed a diversified pricing roadmap: from PCs under 2,000 dollars and new computing devices at 5,000–6,000 dollars to higher-end home servers. For MediaTek, this is a historic chance to enter PC and edge AI computing after its Dimensity smartphone chips.</p>
+<h3>The state of play: a four-pole structure takes shape</h3>
+<p>The PC processor market has officially shifted from 30 years of an "Intel × AMD duopoly（雙極格局）" to an "<strong class="hl">Intel × AMD × Qualcomm × NVIDIA four-pole competition（四極競爭）</strong>," with MediaTek and Arm as two additional forces behind the scenes. The shifting balance between the x86 and Arm architectures — Arm already holds 14.4 percent of the PC market, including Apple's M series — will be the industry indicator most worth tracking over the next three years.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+AMD 與聯發科是常被低估的兩個變數。AMD 筆電 CPU 市占一年內從 22.5% 升至 28.3%（部分受惠 Intel 產能排擠），其 Venice 是全球首款 2 奈米量產 HPC 晶片，並宣布對台投資逾百億美元。聯發科以 NVIDIA 共同設計夥伴身分參戰，貢獻低功耗 SoC 設計經驗，未來定價將多元布局。PC 處理器市場正式從雙極走向四極競爭，Arm 在 PC 端市占已達 14.4%。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+<!-- Round 3 -->
+<section id="unit9" class="round3">
+<h2>Unit 9　Upstream: Foundries, Advanced Nodes, and Arm</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 3・Vertical Supply Chain</div>
+<p>From this unit onward, we dissect the AI PC industry along the supply chain from top to bottom. At the very top sit two critical links: <strong class="hl">the foundry（晶圓代工）</strong> and <strong class="hl">architecture licensing（IP 授權）</strong>.</p>
+<h3>TSMC: everyone's shared upstream</h3>
+<p>Look at the four giants' chips and a striking pattern emerges — <strong class="hl">almost all of them are manufactured at TSMC（台積電）</strong>:</p>
+<ul>
+<li>NVIDIA RTX Spark (N1X): TSMC <strong class="hl">3nm</strong> process.</li>
+<li>Qualcomm Snapdragon X2 Elite: <strong class="hl">3nm</strong> process.</li>
+<li>AMD Venice: the world's first <strong class="hl">2nm</strong> HPC chip in production, ramping entirely at TSMC.</li>
+<li>Intel is the exception — pushing its own 18A process, which is precisely its "design plus manufacturing" differentiation bet.</li>
+</ul>
+<p>However fierce the AI PC war becomes, <strong class="hl">the power to allocate advanced-node capacity rests in TSMC's hands</strong>. Whoever secures wafer capacity and advanced packaging（先進封裝）quotas gets products to market on time.</p>
+<h3>Arm: the invisible winner of architecture licensing</h3>
+<p>Both NVIDIA's and Qualcomm's PC chips are based on the <strong class="hl">Arm architecture</strong> (Arm licenses CPU design architectures and collects royalties). At this COMPUTEX, Arm was framed as the core foundation supporting agentic AI — not only in PCs but also in NVIDIA's Arm-based Vera server CPU. For Arm, it does not matter which giant wins; as long as the Arm camp grows, Arm wins — a classic "<strong class="hl">selling shovels（賣鏟子）</strong>" business model.</p>
+<h3>Advanced packaging: the overlooked bottleneck</h3>
+<p>AI chips are large, and chip-to-chip signaling demands are extreme. Combining multiple chiplets（小晶片）into one SoC requires advanced packaging — RTX Spark itself fuses two dies (a GPU die and a CPU die) into one part. TSMC's CoWoS packaging, ASE's back-end assembly and test, and the ABF substrates（載板）of Unimicron and Nan Ya PCB are Taiwan's key players in this link; AMD is also building an EFB (Elevated Fanout Bridge) 2.5D packaging ecosystem with Taiwanese OSAT partners.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+供應鏈最上游是晶圓代工與架構授權。台積電幾乎是所有玩家的共同上游：NVIDIA N1X 與高通 X2 Elite 用 3 奈米、AMD Venice 是首款 2 奈米量產 HPC 晶片；Intel 則押注自有 18A 製程作為差異化。Arm 以授權模式坐收權利金，無論誰贏都是贏家。先進封裝（chiplet 整合、ABF 載板）是常被忽略的瓶頸，由台積電、日月光、欣興、南電等台廠主導。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit10" class="round3">
+<h2>Unit 10　Midstream I: The Memory Storm and Unified Memory</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 3・Vertical Supply Chain</div>
+<p>AI PCs demand a memory upgrade in both quality and quantity — and that demand has collided head-on with a global memory super cycle（超級循環）.</p>
+<h3>Why do AI PCs need so much more memory?</h3>
+<p>To run a large language model locally, its parameters must first be loaded into memory. RTX Spark offers up to <strong class="hl">128GB of unified LPDDR5X memory</strong>, enough for models of roughly 120 billion parameters — nearly ten times the 16GB common in traditional laptops. Unified memory（統一記憶體）lets the CPU and GPU share one pool, eliminating data shuffling, but it also means <strong class="hl">per-machine memory content balloons</strong>.</p>
+<h3>The supply side: crowded out by AI servers</h3>
+<p>Just as demand upgrades, supply is being squeezed hard by AI data centers:</p>
+<ul>
+<li>The big three memory makers — Samsung（三星）, SK hynix（SK 海力士）, and Micron（美光）— are prioritizing advanced capacity for <strong class="hl">HBM（高頻寬記憶體）</strong>, the standard memory for AI server GPUs, which carries far higher margins than commodity DRAM for PCs. Micron has even exited the consumer memory market to focus entirely on AI and data centers.</li>
+<li>The result: conventional memory supply for PCs and phones is shrinking, prices are surging, and the industry estimates the <strong class="hl">shortage will remain visible into 2027</strong>.</li>
+</ul>
+<h3>Impact on Taiwan's supply chain</h3>
+<p>How much Taiwanese memory companies benefit depends on their position in the chain. <strong class="hl">Manufacturers with their own wafer capacity</strong> (such as Nanya Tech, Winbond, and Macronix) benefit most directly and durably. <strong class="hl">Module and channel players</strong> (ADATA, Team Group, Transcend, Innodisk) gain explosively in the early phase of price hikes thanks to low-cost inventory — but without their own fabs, they face the highest inventory write-down risk when the cycle turns. Controller-chip maker Phison benefits from AI-driven demand for high-performance SSD storage. China's CXMT is developing HBM but its mass-production schedule lags, leaving the big three unchallenged in the near term.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+AI PC 需要的記憶體量級大增：本地執行大模型需要如 RTX Spark 的 128GB 統一 LPDDR5X，約為傳統筆電的十倍。同時供給端被 AI 伺服器排擠——三星、SK 海力士、美光把產能優先投入高毛利的 HBM，美光甚至退出消費級市場，缺貨能見度看到 2027 年。台廠中握有自有晶圓產能者（南亞科、華邦電、旺宏）受惠最直接；模組廠短線爆發但庫存風險最高。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit11" class="round3">
+<h2>Unit 11　Midstream II: CPU Shortages and the BOM Cost Shift</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 3・Vertical Supply Chain</div>
+<p>Beyond memory, a second supply storm is brewing in the processor itself.</p>
+<h3>CPU lead times stretch from 2 weeks to 3 months</h3>
+<p>According to research firm TrendForce, Intel and AMD have prioritized their advanced-node and packaging capacity for <strong class="hl">high-margin AI server chips</strong>, widening the supply gap for PC-class CPUs. Some processor lead times（交期）have stretched from the usual two weeks to <strong class="hl">more than three months</strong>. The shortage has forced brands to cut shipment targets, with global notebook shipments expected to fall nearly 15 percent quarter-over-quarter in Q1 2026.</p>
+<h3>A structural shift in BOM costs</h3>
+<p>The <span class="tag">BOM（Bill of Materials，物料清單）</span> is the total cost of all components in a laptop. The current situation: Intel raised prices on entry-level and older-generation processors by more than 15 percent, and memory prices are climbing in parallel — <strong class="hl">the cost structure of mainstream laptops is fundamentally changing</strong>, putting heavy upward pressure on retail prices.</p>
+<h3>Market polarization: premium and budget pull apart</h3>
+<p>Cost pressure is reshaping product strategy. To protect margins, brands are <strong class="hl">cutting low-margin entry models and pivoting to higher-priced AI PCs and gaming machines</strong> — while Qualcomm's Snapdragon C series attacks from the 300-dollar budget end. The market is polarizing into "premium and budget extremes," with traditional mid-range models squeezed from both sides.</p>
+<h3>Long-term structural effects</h3>
+<ul>
+<li><strong class="hl">Bargaining power tilts toward chipmakers</strong>: tight supply amplifies upstream leverage, squeezing second-tier brands' room to survive.</li>
+<li><strong class="hl">Acceleration of Arm adoption and in-house silicon</strong>: soaring x86 costs push brands to consider Arm-based or self-designed chips to decouple（脫鉤）from the x86 cost structure — which conveniently opens the door for NVIDIA's and Qualcomm's Arm solutions.</li>
+</ul>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+第二場供應風暴在 CPU：Intel 與 AMD 把產能優先給高毛利 AI 伺服器晶片，PC 級 CPU 交期從 2 週拉長到 3 個月以上，2026 年第一季筆電出貨估季減近 15%。Intel 調漲入門處理器報價逾 15%，加上記憶體漲價，筆電 BOM 成本結構質變，市場朝「高階化＋平價化」兩極發展。長期影響：議價權向晶片原廠傾斜，並加速品牌廠導入 Arm 架構與自研晶片。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit12" class="round3">
+<h2>Unit 12　Downstream: Brands, the ODM Big Five, and Taiwan</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 3・Vertical Supply Chain</div>
+<p>At the bottom of the supply chain are the players who turn chips into products and deliver them to consumers — <strong class="hl">brands and contract manufacturers（ODM/OEM）</strong>. This has been Taiwan's home court for decades.</p>
+<h3>The brand side: who made the first wave?</h3>
+<p>The global top five in PC shipments are Lenovo（聯想）, HP（惠普）, Dell（戴爾）, Apple（蘋果）, and ASUS（華碩）. The first RTX Spark laptop lineup covers Microsoft Surface, Dell, HP, ASUS, Lenovo, and MSI; Qualcomm's entry-level C series launches first with Acer, HP, and Lenovo. Taiwanese brands <strong class="hl">ASUS, Acer, MSI, and Gigabyte</strong> have all secured positions — MSI and ASUS RTX Spark models, for example, are slated to ship in the third quarter alongside Microsoft's next-generation AI Windows.</p>
+<h3>The manufacturing side: order visibility for the ODM Big Five</h3>
+<p>Most of the world's notebooks are built by Taiwanese ODMs: <strong class="hl">Quanta（廣達）, Compal（仁寶）, Wistron（緯創）, Inventec（英業達）, and Pegatron（和碩）</strong> — known as the "ODM Big Five（電子五哥）" — plus Foxconn（鴻海）. The Win10 replacement wave plus AI PC growth is expected to lift these manufacturers' 2026 momentum. Notably, Intel held closed-door meetings with the Big Five plus ASUS and Advantech during COMPUTEX — in an era when four chip giants compete for customers, <strong class="hl">chipmakers now court the manufacturers</strong>, underscoring the strategic weight of Taiwan's system-assembly capability.</p>
+<h3>Components: riding the specification upgrade</h3>
+<p>High-power AI chips and large memory configurations drive upgrades across surrounding components: thermal modules (higher-wattage vapor chambers and fan designs), batteries and power management (all-day battery life is a selling point), high-end PCBs and substrates, and lightweight chassis. A comparison worth remembering: a single NVIDIA Vera Rubin data center system contains nearly 2 million parts and involves about 150 Taiwanese ecosystem partners — the AI PC is smaller in scale, but shares the same "<strong class="hl">the whole chain benefits</strong>" structure.</p>
+<h3>What to watch</h3>
+<p>Key downstream indicators: each brand's <strong class="hl">actual prices and sales volumes</strong> (not just launch announcements), ODM order visibility, and the growth-rate gap between the premium band (above 1,500 dollars) and the budget band (below 500 dollars).</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+下游是台灣的主場：華碩、宏碁、微星、技嘉全數卡位第一波 AI PC 陣容；全球多數筆電由電子五哥（廣達、仁寶、緯創、英業達、和碩）加鴻海代工。Intel 在展會期間與五哥閉門交流，顯示晶片廠反過來經營代工關係、凸顯台灣系統組裝的戰略地位。散熱、電源、PCB 等零組件同步受惠規格升級。判讀重點：實際售價與銷量、ODM 接單能見度、高階與平價兩價格帶的成長差異。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+<!-- Round 4 -->
+<section id="unit13" class="round4">
+<h2>Unit 13　Microsoft: Turning Windows into an Agent Platform</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 4・Software Ecosystem &amp; Outlook</div>
+<p>The other half of the hardware war's script is written by Microsoft（微軟）. Without the operating system and software ecosystem playing along, even the strongest chip is just a number on a spec sheet.</p>
+<h3>Windows 11's installed base</h3>
+<p>Mark Linton, Microsoft's Vice President of Windows and Devices, announced a milestone at a COMPUTEX forum session: <strong class="hl">Windows 11 has surpassed one billion daily active users</strong> across more than 100 markets, while the Windows ecosystem shipped over 240 million devices in 2025. This enormous base is the stage every AI PC chipmaker must fight for.</p>
+<h3>OpenShell: Windows' agentic makeover</h3>
+<p>Working with NVIDIA, Microsoft is transforming Windows into an agentic platform（代理平台）through the <strong class="hl">OpenShell framework</strong> — enabling AI agents to cooperate at the operating-system level. It comes paired with a new set of <strong class="hl">security primitives（安全防護機制）</strong>: guardrails ensuring local agents and models <strong class="hl">can only access the tools and data the user explicitly grants</strong>. This point is critical — if agents are to operate your computer, they must not become a security hole. Microsoft says more details will come at its Build developer conference.</p>
+<h3>A paradigm shift in purchasing criteria</h3>
+<p>Microsoft's core message: as AI inference moves from cloud to edge, <strong class="hl">"whether a laptop can run models and execute agent workflows locally" is becoming a new purchasing standard</strong> — just as "can it get online" and "how long does the battery last" once did, it will become a basic checklist item for buyers.</p>
+<h3>The software chain reaction</h3>
+<p>Application vendors are following. Adobe is overhauling Premiere's core to enable faster AI workflows in editing, color, and effects, and will expose MCP（Model Context Protocol，模型脈絡協定）controls so AI agents can operate its products directly. Only when mainstream productivity software opens its interfaces to agents does the AI PC's value truly land.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+微軟負責硬體大戰的另一半劇本。Windows 11 每日活躍用戶突破 10 億，是所有晶片廠必爭的舞台。微軟與 NVIDIA 以 OpenShell 框架把 Windows 改造為代理平台，並配套全新安全防護機制：本地代理只能存取使用者明確授權的工具與資料。微軟主張「能否在本機跑模型與代理工作流程」正成為新的選購標準；Adobe 等軟體商也開放 MCP 介面讓 AI 代理直接操作產品。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit14" class="round4">
+<h2>Unit 14　Token Economics: Dividing Work between Edge and Cloud</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 4・Software Ecosystem &amp; Outlook</div>
+<p>Why does the AI PC need to exist at all? The most powerful argument comes from <strong class="hl">economics</strong>, not technology itself.</p>
+<h3>Tokens: the measuring unit of the AI era</h3>
+<p>A <span class="tag">token（詞元）</span> is the basic unit a large language model uses to process text — and also the billing unit of AI computation and cost. Qualcomm offered an estimate in its opening keynote: <strong class="hl">in 2026, global AI consumes about 31.7 billion tokens every 10 seconds; by 2030, the same 10 seconds will consume 1.27 trillion — a forty-fold increase</strong>. The key insight: agentic AI generates and consumes tokens at machine speed, not human typing speed, which fundamentally changes both software design logic and infrastructure requirements.</p>
+<h3>Send everything to the cloud? Unaffordable and uncomputable</h3>
+<p>If all that computation fell on cloud data centers, the power, silicon, and cost burden would be unbearable. Qualcomm's live demo showed that <strong class="hl">intelligent task scheduling（智慧任務調度）between device and cloud</strong> — running simple tasks locally and escalating only complex ones — can cut token consumption by about 30 percent and <strong class="hl">reduce costs to one quarter</strong>.</p>
+<h3>"Edge plus cloud" is the four giants' rare consensus</h3>
+<p>Remarkably, this hybrid computing（混合運算）thesis was the rare consensus of COMPUTEX 2026: Qualcomm speaks of a "device–edge–cloud computing continuum," Intel of a "hybrid edge-to-cloud architecture," and NVIDIA and Microsoft of "inference moving from cloud to edge." Four rivals with very different positions all endorse the same conclusion: <strong class="hl">AI computing will be deployed in layers, and the PC is the layer closest to the user</strong>.</p>
+<h3>An analytical lens</h3>
+<p>For learners, token economics offers a litmus test for any AI PC story: if an on-device AI feature <strong class="hl">saves meaningful cloud costs or creates privacy value the cloud cannot</strong>, the demand is real; if it merely re-does locally what the cloud already does well, it is marketing talk.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+AI PC 最有力的存在理由是經濟學。Token 是 AI 運算與成本的基本計價單位；高通估算全球 token 消耗量 2026 至 2030 年將成長 40 倍，因為代理以機器速度運作。若全部由雲端承擔將難以負荷；裝置端與雲端的智慧任務調度可省約 30% token、成本降至四分之一。「邊緣＋雲端互補」是四強罕見的共識：AI 算力將分層部署，PC 是離使用者最近的一層。檢驗題材的試金石：能否省下雲端成本或創造雲端做不到的隱私價值。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit15" class="round4">
+<h2>Unit 15　The Risk Side: Saturation Talk and Uncertainties</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 4・Software Ecosystem &amp; Outlook</div>
+<p>Objective industry analysis must weigh both bull and bear cases. The AI PC story is hot, but at least five risks deserve a cool-headed look.</p>
+<h3>Risk 1: PC market saturation</h3>
+<p>A sharp fact: the PC market has been sluggish for years, and notebook shipments this year remain weak — the long-awaited full replacement wave has not fully materialized. Yet during COMPUTEX, NVIDIA, MediaTek, and Qualcomm all announced their entry into PC processors, making the track unprecedentedly crowded. The giants' judgment is that "AI will redefine the PC's value" — but <strong class="hl">whether demand truly keeps pace with supply-side enthusiasm remains to be proven</strong>.</p>
+<h3>Risk 2: do high prices suppress demand?</h3>
+<p>Market estimates put some RTX Spark laptops as high as 3,000 US dollars (nearly NT$100,000), while CPU and memory price hikes push overall retail prices up. <strong class="hl">Excessive upgrade costs may suppress the willingness to upgrade</strong>, extending how long consumers hold on to old machines.</p>
+<h3>Risk 3: the killer app has not arrived</h3>
+<p>NPUs have been mainstream for two years, yet most consumers still cannot name a daily scenario where "only an AI PC will do." Agentic AI carries high hopes, but its maturity, reliability, and security — agent misoperations, prompt injection attacks（提示注入攻擊）, and so on — are all still early.</p>
+<h3>Risk 4: Windows on Arm's compatibility baggage</h3>
+<p>The Arm camp (Qualcomm, NVIDIA) must pass the historical test of x86 application compatibility: performance losses under emulation（模擬執行）and support gaps in professional software and peripheral drivers. The underwhelming market performance of Qualcomm's previous-generation Snapdragon X is a recent cautionary tale.</p>
+<h3>Risk 5: cyclical risk in the supply chain</h3>
+<p>Rising memory and CPU prices cut both ways: upstream firms benefit near-term, but if end demand disappoints and the price cycle reverses, <strong class="hl">module makers and channel players holding high inventories get hit first</strong>. Geopolitics and tariff policy shifts also keep influencing inventory strategy and supply chain layout.</p>
+<h3>The balancing view</h3>
+<p>Facts supporting the bull case exist in parallel: the Win10 replacement cycle has a clear timetable, commercial upgrade momentum is strong, and the giants' real-money commitments — such as AMD's ten-billion-dollar-plus investment in Taiwan — signal long-term industry confidence. <strong class="hl">Putting risks and opportunities on the same table is what healthy industry analysis looks like</strong>.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+客觀分析必須看風險面：一、PC 市場飽和論——出貨疲弱但賽道空前擁擠；二、高價可能抑制換機（RTX Spark 筆電估達 3,000 美元）；三、殺手級應用尚未出現，代理式 AI 仍在早期；四、Windows on Arm 的相容性包袱，前代 Snapdragon X 殷鑑不遠；五、漲價循環反轉時高庫存模組廠首當其衝。但多方論據同樣存在：Win10 換機時間表明確、商用動能強、巨頭真金白銀投入。多空並陳才是健康的產業判讀。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="unit16" class="round4">
+<h2>Unit 16　Wrap-Up: An Analysis Framework and Self-Check</h2>
+<div class="unit-time">⏱ About 10 minutes｜Round 4・Software Ecosystem &amp; Outlook</div>
+<p>Congratulations on completing 15 units! This final unit condenses the whole course into a reusable <strong class="hl">analysis framework</strong>, followed by a self-check.</p>
+<h3>The AI PC industry on one mental map</h3>
+<ul>
+<li><strong class="hl">Demand engine (two waves)</strong>: Win10 end-of-support replacements × rising AI PC penetration (estimated 55 percent in 2026).</li>
+<li><strong class="hl">Horizontal competition (four poles plus two)</strong>: Intel (x86 incumbent, 18A), AMD (x86 attacker, 2nm), Qualcomm (Arm, bottom-up), NVIDIA (Arm, top-down, CUDA ecosystem) — plus MediaTek (co-design) and Arm (architecture licensing).</li>
+<li><strong class="hl">Vertical supply chain</strong>: upstream TSMC nodes and advanced packaging → midstream memory and CPUs (dual shortages) → downstream brands and the ODM Big Five.</li>
+<li><strong class="hl">Software catalyst</strong>: Microsoft's agentic Windows (OpenShell) + token economics (the hybrid-computing consensus).</li>
+<li><strong class="hl">Risk checklist</strong>: saturation talk, high prices, missing killer apps, Arm compatibility, cycle reversal.</li>
+</ul>
+<h3>Five indicators to track</h3>
+<ol>
+<li><strong class="hl">Actual sales and reviews</strong> of RTX Spark laptops after the fall launch (does the NVIDIA model work?).</li>
+<li>Arm's share of the PC market (currently about 14.4 percent, including Apple).</li>
+<li>Memory and CPU price trends (shortage visibility currently extends into 2027).</li>
+<li>Details of the agent platform revealed at Microsoft Build and developer adoption.</li>
+<li>Quarterly shipments and order visibility of the ODM Big Five and Taiwanese brands.</li>
+</ol>
+<h3>✅ Self-check: 10 questions (try answering without looking back)</h3>
+<ol>
+<li>What is the NPU performance bar for a Copilot+ PC, in TOPS? (Unit 1)</li>
+<li>When did Windows 10 reach end of support, and roughly what share of PCs were still running it? (Unit 2)</li>
+<li>What was COMPUTEX 2026's theme, and what were its three signals? (Unit 3)</li>
+<li>What is the core difference between generative AI and agentic AI? (Unit 4)</li>
+<li>Which two companies co-developed RTX Spark, and on which foundry's node is it built? (Unit 5)</li>
+<li>Which market does each tier of Qualcomm's lineup (Elite / Plus / C series) target? (Unit 6)</li>
+<li>What is the first data center CPU on Intel's 18A process, and what role does Intel claim the CPU plays in the agent era? (Unit 7)</li>
+<li>What is the main cause of the memory shortage, and which type of Taiwanese firm benefits most directly? (Unit 10)</li>
+<li>Which five companies make up the "ODM Big Five"? (Unit 12)</li>
+<li>By what multiple does Qualcomm estimate global token consumption will grow from 2026 to 2030, and why does hybrid computing save costs? (Unit 14)</li>
+</ol>
+<p>If you can answer eight or more, you have mastered the full picture of the AI PC industry; for any you missed, use the Unit Map to jump back and review.</p>
+<div class="en-summary">
+<div class="es-title">📝 中文摘要</div>
+本單元把全課程濃縮成可重複使用的判讀框架：雙需求浪潮、四極水平競爭（加聯發科與 Arm）、從台積電到電子五哥的垂直供應鏈、微軟代理化 Windows 的軟體催化劑，以及五項風險清單。追蹤五個關鍵指標：RTX Spark 實際銷量、Arm 在 PC 的市占、記憶體與 CPU 報價、微軟 Build 大會細節、五哥接單能見度。最後以 10 題自我檢核驗收學習成果。
+</div>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<section id="glossary">
+<h2>📖 Glossary 術語表</h2>
+<dl>
+<dt>AI PC</dt><dd>A personal computer capable of on-device AI computation, marked by a built-in NPU; by 2026 the market focus has shifted from specs to real experience.（AI 個人電腦）</dd>
+<dt>Agentic AI</dt><dd>AI systems that can understand goals, break down tasks, and act autonomously — as opposed to prompt-and-respond generative AI; the keyword of this COMPUTEX.（代理式 AI）</dd>
+<dt>Arm architecture</dt><dd>A CPU design architecture offered under license, known for low power; used by both NVIDIA's and Qualcomm's PC chips, steadily eroding x86 territory.（Arm 架構）</dd>
+<dt>BOM (Bill of Materials)</dt><dd>The cost list of all components in a product; rising CPU and memory prices are restructuring laptop BOM costs.（物料清單）</dd>
+<dt>Copilot+ PC</dt><dd>Microsoft's AI PC certification requiring an NPU of at least 40 TOPS, now covering Qualcomm, AMD, and Intel platforms.（微軟 AI PC 認證）</dd>
+<dt>CUDA</dt><dd>NVIDIA's parallel computing platform and ecosystem; many AI and creative workflows depend on it, making it NVIDIA's biggest differentiator in PCs.（NVIDIA 平行運算平台）</dd>
+<dt>Edge AI</dt><dd>Running AI on devices near the user, offering low latency, privacy, and offline capability.（邊緣 AI）</dd>
+<dt>Foundry</dt><dd>A factory that manufactures chips for design companies; TSMC is the shared upstream of three of the four AI PC giants.（晶圓代工）</dd>
+<dt>HBM (High Bandwidth Memory)</dt><dd>Advanced memory standard in AI server GPUs; the big three memory makers' pivot to HBM caused PC memory shortages and price hikes.（高頻寬記憶體）</dd>
+<dt>Inference</dt><dd>The computation by which an AI model produces answers from input; "local inference" means it happens on the user's device.（推論）</dd>
+<dt>Lead time</dt><dd>The time from order to delivery; PC CPU lead times have stretched from 2 weeks to over 3 months, reflecting tight supply.（交期）</dd>
+<dt>LLM (Large Language Model)</dt><dd>An AI model trained on massive text corpora; RTX Spark can run LLMs of up to roughly 120 billion parameters locally.（大型語言模型）</dd>
+<dt>NPU (Neural Processing Unit)</dt><dd>A processor dedicated to accelerating AI inference with high efficiency at low power — the signature hardware of the AI PC.（神經處理單元）</dd>
+<dt>ODM (Original Design Manufacturer)</dt><dd>A company that designs and builds products for brand customers; Taiwan's Big Five — Quanta, Compal, Wistron, Inventec, Pegatron — build most of the world's notebooks.（原始設計製造商）</dd>
+<dt>Orchestration</dt><dd>Coordinating and allocating multiple AI tasks and computing resources; Intel claims the CPU plays this conductor role in the agent era.（協調／調度）</dd>
+<dt>Penetration rate</dt><dd>The share of a product category within the total market; Gartner estimates AI PC penetration reaches 55 percent in 2026.（滲透率）</dd>
+<dt>PFLOP (PetaFLOP)</dt><dd>One quadrillion floating-point operations per second; RTX Spark delivers 1 PFLOP of AI performance at FP4 precision.（每秒千兆次浮點運算）</dd>
+<dt>SoC (System on Chip)</dt><dd>A design integrating CPU, GPU, NPU, and memory controllers on one chip — the mainstream form of mobile devices and new-generation AI PCs.（系統單晶片）</dd>
+<dt>Token</dt><dd>The basic unit by which LLMs process text and the billing unit of AI cost; Qualcomm estimates global token consumption will grow 40-fold from 2026 to 2030.（詞元）</dd>
+<dt>TOPS (Tera Operations Per Second)</dt><dd>Trillions of operations per second, the unit for NPU performance; 40 TOPS is the Copilot+ PC bar.（每秒兆次運算）</dd>
+<dt>Unified memory</dt><dd>An architecture where CPU and GPU share one memory pool, eliminating data shuffling; RTX Spark offers up to 128GB.（統一記憶體）</dd>
+<dt>Windows on Arm (WoA)</dt><dd>Running Windows on Arm-based processors; strong on battery life, challenged by x86 application compatibility.（Arm 架構上的 Windows）</dd>
+<dt>x86</dt><dd>The traditional PC processor architecture of Intel and AMD, dominant for over 30 years and now challenged by the Arm camp.（x86 架構）</dd>
+</dl>
+<a href="#unit-map" class="back-to-map">⬆ Back to Unit Map</a>
+</section>
+
+<div class="link-cards">
+<a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">🎯 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+<a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+<a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+</div>
+
+</main>
+</body>
+</html>
