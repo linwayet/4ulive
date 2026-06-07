@@ -1,612 +1,312 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Robotic Bees - A New Helper for Future Farming</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #FFF8F0;
-      --text: #1A0F00;
-      --red: #C0392B;
-      --blue: #1565C0;
-      --green: #2E7D32;
-      --orange: #E65100;
-      --purple: #6A1B9A;
-      --deep-blue: #0D47A1;
-      --section-orange: #BF360C;
-      --section-green: #1B5E20;
-      --section-purple: #4A148C;
-      --brown: #4A3728;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "BIZ UDPGothic", system-ui, sans-serif;
-      font-size: 23px;
-      line-height: 1.85;
-      font-weight: 400;
-    }
-    .page {
-      width: min(900px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 32px 0 56px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 34px;
-    }
-    h1 {
-      display: inline-block;
-      margin: 0 0 18px;
-      padding: 18px 24px;
-      border: 5px solid var(--red);
-      border-radius: 8px;
-      color: var(--red);
-      background: #FFFDF8;
-      font-size: clamp(3rem, 7vw, 4rem);
-      line-height: 1.2;
-      font-weight: 700;
-      box-shadow: 8px 8px 0 #F4B6AA;
-    }
-    .subtitle {
-      margin: 0 0 12px;
-      color: var(--blue);
-      font-size: clamp(2.2rem, 5vw, 3rem);
-      line-height: 1.25;
-      font-weight: 700;
-    }
-    .credit {
-      margin: 0;
-      color: #0D47A1;
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-shadow: 2px 2px 0 #BBDEFB;
-    }
-    section { margin: 34px 0; }
-    .section-title {
-      color: #FFFDF8;
-      padding: 14px 18px;
-      border-radius: 8px 8px 0 0;
-      font-size: 1.65rem;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-    .original .section-title { background: var(--deep-blue); }
-    .close-reading .section-title { background: var(--section-orange); }
-    .vocabulary .section-title { background: var(--section-green); }
-    .grammar .section-title { background: var(--section-purple); }
-    .folds .section-title { background: var(--brown); }
-    .card {
-      padding: 20px;
-      border: 4px solid;
-      border-top: 0;
-      border-radius: 0 0 8px 8px;
-    }
-    .original .card { border-color: #90CAF9; background: #F3F8FF; }
-    .close-reading .card { border-color: #FFAB91; background: #FFF3EF; }
-    .vocabulary .card { border-color: #81C784; background: #F1F8F2; }
-    .grammar .card { border-color: #CE93D8; background: #F9F0FF; }
-    .folds .card { border-color: #C4A06A; background: #FAF6F0; }
-    h3 {
-      margin: 26px 0 12px;
-      color: var(--green);
-      font-size: 1.6rem;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-    p { margin: 0 0 18px; }
-    strong.keyword {
-      color: var(--deep-blue);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .sentence-item, .word-item, .grammar-item {
-      margin: 0 0 24px;
-      padding: 18px;
-      border-radius: 8px;
-      background: #FFFDF8;
-      border: 3px solid rgba(26, 15, 0, 0.18);
-    }
-    .num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      margin-right: 8px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: #FFFDF8;
-      font-weight: 700;
-    }
-    .quote {
-      font-style: italic;
-      color: #3A1E08;
-      font-weight: 700;
-    }
-    .label-row {
-      display: grid;
-      grid-template-columns: minmax(112px, 150px) 1fr;
-      gap: 10px;
-      align-items: start;
-      margin: 10px 0;
-    }
-    .tag {
-      display: inline-block;
-      min-height: 44px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .tag.derivative { background: #FDEDEC; color: #C0392B; }
-    .tag.root { background: #EBF5FB; color: #1565C0; }
-    .tag.phrase { background: #EAFAF1; color: #2E7D32; }
-    .tag.idiom { background: #FEF9E7; color: #D68910; }
-    .tag.confuse { background: #F5EEF8; color: #6A1B9A; }
-    .tag.focus { background: #FEF0E7; color: #E65100; }
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 52px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: #FEF0E7;
-      color: var(--orange);
-      font-weight: 700;
-    }
-    ul, ol { padding-left: 1.35em; }
-    li { margin: 8px 0; }
-    details {
-      margin: 18px 0;
-      border: 3px solid #C4A06A;
-      border-radius: 8px;
-      background: #FFFDF8;
-      overflow: hidden;
-    }
-    summary {
-      min-height: 72px;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      cursor: pointer;
-      background: #4A3728;
-      color: #FFFDF8;
-      font-weight: 700;
-      list-style: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    .arrow {
-      display: inline-block;
-      transition: transform 250ms ease;
-      color: #FFE0B2;
-      font-size: 1.4rem;
-    }
-    details[open] .arrow { transform: rotate(180deg); }
-    .detail-body { padding: 18px 20px; }
-    .wrong { color: #C0392B; font-weight: 700; }
-    .right { color: #2E7D32; font-weight: 700; }
-    @media (max-width: 680px) {
-      body { font-size: 22px; }
-      .page { width: min(100% - 20px, 900px); padding-top: 18px; }
-      h1 { padding: 14px 16px; box-shadow: 5px 5px 0 #F4B6AA; }
-      .card { padding: 14px; }
-      .label-row { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日圓160攻防與日本經濟全解析</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #F8F4ED;
+    color: #3A2E22;
+    font-family: 'BIZ UDPGothic', 'Noto Sans TC', 'Inter', sans-serif;
+    font-size: 22px;
+    line-height: 1.85;
+    padding: 24px 16px 60px;
+  }
+  main { max-width: 800px; margin: 0 auto; }
+  .page-title {
+    text-align: center;
+    margin: 8px auto 28px;
+  }
+  .page-title h1 {
+    display: inline-block;
+    font-size: 2.6rem;
+    color: #C0392B;
+    border: 4px double #C0392B;
+    border-radius: 16px;
+    padding: 16px 28px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .page-title .subtitle {
+    font-size: 1.9rem;
+    color: #1565C0;
+    margin-top: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  .page-title .credit {
+    font-size: 1.25rem;
+    color: #1565C0;
+    margin-top: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-style: normal;
+  }
+  /* 連結卡 */
+  .link-cards { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .link-card {
+    display: block;
+    min-height: 72px;
+    border-radius: 16px;
+    padding: 18px 22px;
+    color: #FFFDF8;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(58,46,34,0.18);
+    line-height: 1.6;
+  }
+  .link-card small { display: block; font-weight: 400; font-size: 0.85em; margin-top: 4px; }
+  .card-echo { background: #C0392B; }
+  .card-popup { background: #1565C0; }
+  .card-line { background: #06C755; }
+  /* 單元地圖 */
+  nav#unit-map {
+    background: #FFFDF8;
+    border: 2px solid #E0A96D;
+    border-radius: 16px;
+    padding: 22px;
+    margin: 28px 0 36px;
+  }
+  nav#unit-map h2 { color: #2E7D32; font-size: 1.9rem; margin-bottom: 16px; }
+  nav#unit-map a {
+    display: block;
+    min-height: 72px;
+    border-radius: 999px;
+    color: #FFFDF8;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 20px 26px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(58,46,34,0.15);
+  }
+  nav#unit-map a:last-child { margin-bottom: 0; }
+  .map-u1 { background: #B0563A; }
+  .map-u2 { background: #C28A1E; }
+  .map-u3 { background: #6E7B3D; }
+  .map-u4 { background: #A86A4F; }
+  .map-u5 { background: #7A5230; }
+  .map-u6 { background: #4F6B4A; }
+  .map-gl { background: #6A1B9A; }
+  /* 單元卡片 */
+  section {
+    background: #FFFDF8;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(58,46,34,0.12);
+    padding: 28px 26px;
+    margin-bottom: 36px;
+    border-top: 10px solid #E0A96D;
+  }
+  #unit1 { border-top-color: #B0563A; }
+  #unit2 { border-top-color: #C28A1E; }
+  #unit3 { border-top-color: #6E7B3D; }
+  #unit4 { border-top-color: #A86A4F; }
+  #unit5 { border-top-color: #7A5230; }
+  #unit6 { border-top-color: #4F6B4A; }
+  #glossary { border-top-color: #6A1B9A; background: #F3EEE4; }
+  section h2 { color: #1565C0; font-size: 1.9rem; margin-bottom: 18px; line-height: 1.5; }
+  section h3 { color: #2E7D32; font-size: 1.5rem; margin: 22px 0 10px; }
+  section p { margin-bottom: 16px; }
+  .kw { color: #E65100; font-weight: 700; }
+  .tag { color: #6A1B9A; font-weight: 700; }
+  ul { padding-left: 1.4em; margin-bottom: 16px; }
+  li { margin-bottom: 10px; }
+  /* 英文摘要 */
+  .en-summary {
+    background: #FBF3E7;
+    border-left: 10px solid #E0A96D;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 22px 0;
+    font-family: 'Inter', 'BIZ UDPGothic', sans-serif;
+  }
+  .en-summary h3 { color: #C0392B; margin-top: 0; }
+  /* 回到單元地圖 */
+  .back-to-map {
+    display: block;
+    min-height: 72px;
+    border-radius: 999px;
+    background: #E65100;
+    color: #FFFDF8;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(58,46,34,0.18);
+  }
+  /* Glossary */
+  #glossary dt {
+    color: #6A1B9A;
+    font-weight: 700;
+    font-family: 'Inter', 'BIZ UDPGothic', sans-serif;
+    margin-top: 18px;
+  }
+  #glossary dd { margin-left: 0; margin-bottom: 8px; }
+  @media (max-width: 480px) {
+    body { font-size: 20px; padding: 16px 10px 48px; }
+    .page-title h1 { font-size: 2.0rem; padding: 12px 16px; }
+    .page-title .subtitle { font-size: 1.5rem; }
+    section { padding: 22px 18px; }
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header>
-      <h1>Robotic Bees</h1>
-      <p class="subtitle">A New Helper for Future Farming</p>
-      <p class="credit">林威老師與 AI agent 團隊製作</p>
-    </header>
+<main>
 
-    <section class="original">
-      <div class="section-title">一、英文文章原文</div>
-      <div class="card">
-        <p>As bee populations around the world continue to <strong class="keyword">decline</strong> at an <strong class="keyword">alarming</strong> rate, scientists are developing an <strong class="keyword">innovative</strong> solution: robotic bees. Recent advances at research <strong class="keyword">institutions</strong> like Massachusetts Institute of Technology (MIT) and other U.S. <strong class="keyword">institutions</strong> have produced tiny flying robots <strong class="keyword">capable</strong> of performing <strong class="keyword">pollination</strong> tasks similar to those of real bees. These tiny machines represent an impressive <strong class="keyword">technological</strong> <strong class="keyword">achievement</strong>. MIT's latest models can hover in the air for over 1,000 seconds and perform complex movements demonstrating the <strong class="keyword">agility</strong> needed for successful <strong class="keyword">pollination</strong>. The robots are designed to <strong class="keyword">mimic</strong> the flight patterns of natural bees, offering potential support to agriculture that is increasingly <strong class="keyword">threatened</strong> by <strong class="keyword">pollinator</strong> shortages. At present, robotic bees show the most promise in controlled settings such as greenhouses and vertical farms, where natural <strong class="keyword">pollinators</strong> often cannot survive or function effectively. These have <strong class="keyword">yielded</strong> encouraging <strong class="keyword">outcomes</strong> with robotic <strong class="keyword">pollination</strong> leading to larger fruits and better crop quality in test environments.</p>
-        <p>These early successes suggest that the technology could be particularly valuable for indoor farming operations. Nevertheless, significant challenges must be overcome before these robots can be widely used in agriculture. Things like flight stability outdoors, limited battery life, and high production costs remain major <strong class="keyword">obstacles</strong>. Scientists are currently working to improve <strong class="keyword">autonomous</strong> navigation systems and make the robots more <strong class="keyword">durable</strong> for practical farming applications. The transition from laboratory settings to real-world farms will require continued research and development. While robotic bees will probably not completely replace natural <strong class="keyword">pollinators</strong>, they could become valuable <strong class="keyword">supplementary</strong> tools for maintaining food production as environmental conditions continue to change. This emerging technology represents humanity's creative response to <strong class="keyword">ecological</strong> challenges and demonstrates how innovation can address complex problems in sustainable agriculture.</p>
-        <p>The impact of robotic bees extends beyond immediate agricultural concerns. The development of these robots advances our understanding of artificial intelligence, biomimicry, and robotics technology. Engineers studying bee behavior gain insights that inform broader applications in robotics and automation. As climate change and habitat loss threaten natural bee populations, <strong class="keyword">technological</strong> solutions like robotic <strong class="keyword">pollinators</strong> become increasingly important. Future improvements may include better power systems, enhanced <strong class="keyword">autonomous</strong> navigation, and expanded capabilities beyond <strong class="keyword">pollination</strong>. The integration of robotic and biological systems might create hybrid <strong class="keyword">pollination</strong> strategies that combine the strengths of both approaches. Investment in this technology signals humanity's commitment to developing sustainable solutions for food security and environmental protection. Robotic bees exemplify how scientific innovation can transform challenges into opportunities for a more <strong class="keyword">resilient</strong> future.</p>
-      </div>
-    </section>
+  <div class="page-title">
+    <h1>📰 日圓 160 攻防與日本經濟全解析</h1>
+    <div class="subtitle">匯率干預、積極財政、春鬥加薪與輸入性通膨的完整圖像</div>
+    <div class="credit">✦ 林威老師與 AI agent 團隊製作 ✦</div>
+  </div>
 
-    <section class="close-reading">
-      <div class="section-title">二、8 句精讀</div>
-      <div class="card">
-        <div class="sentence-item">
-          <p><span class="num">①</span><span class="quote">As bee populations around the world continue to decline at an alarming rate, scientists are developing an innovative solution: robotic bees.</span></p>
-          <p>隨著世界各地的蜜蜂族群持續以驚人的速度下降，科學家正在發展一項創新的解決方案：機器蜜蜂。</p>
-          <p><strong>文法解析：</strong>這是以 As 引導的副詞子句，表示「隨著」。主要子句是 scientists are developing an innovative solution。冒號後的 robotic bees 用來補充說明 solution 的具體內容。</p>
-          <div class="pills"><span class="pill">decline（下降）</span><span class="pill">at an alarming rate（以驚人速度）</span><span class="pill">innovative（創新的）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">②</span><span class="quote">Recent advances at research institutions like Massachusetts Institute of Technology (MIT) and other U.S. institutions have produced tiny flying robots capable of performing pollination tasks similar to those of real bees.</span></p>
-          <p>麻省理工學院等研究機構及其他美國機構的近期進展，已經製造出能執行類似真蜜蜂授粉任務的小型飛行機器人。</p>
-          <p><strong>文法解析：</strong>主詞是 Recent advances，動詞是 have produced，使用現在完成式表示近期成果與現在有關。capable of performing... 是形容詞片語，修飾 tiny flying robots。similar to those of real bees 中 those 代替 pollination tasks，避免重複。</p>
-          <div class="pills"><span class="pill">institutions（機構）</span><span class="pill">capable of V-ing（有能力做）</span><span class="pill">pollination tasks（授粉任務）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">③</span><span class="quote">MIT's latest models can hover in the air for over 1,000 seconds and perform complex movements demonstrating the agility needed for successful pollination.</span></p>
-          <p>麻省理工學院最新的模型可以在空中盤旋超過一千秒，並做出複雜動作，展現成功授粉所需的靈活度。</p>
-          <p><strong>文法解析：</strong>can hover 和 perform 是並列動詞，共用主詞 MIT's latest models。demonstrating... 是現在分詞片語，補充說明前面的 complex movements。needed for successful pollination 是過去分詞片語，修飾 agility。</p>
-          <div class="pills"><span class="pill">hover（盤旋）</span><span class="pill">agility（靈活度）</span><span class="pill">successful pollination（成功授粉）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">④</span><span class="quote">The robots are designed to mimic the flight patterns of natural bees, offering potential support to agriculture that is increasingly threatened by pollinator shortages.</span></p>
-          <p>這些機器人被設計來模仿天然蜜蜂的飛行模式，為日益受到授粉者短缺威脅的農業提供潛在支援。</p>
-          <p><strong>文法解析：</strong>are designed to mimic 是被動語態加不定詞，表示設計目的；to 是不定詞，不是介係詞。offering... 是分詞構句，表示伴隨結果。that is increasingly threatened... 是形容詞子句，修飾 agriculture。</p>
-          <div class="pills"><span class="pill">mimic（模仿）</span><span class="pill">flight patterns（飛行模式）</span><span class="pill">pollinator shortages（授粉者短缺）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">⑤</span><span class="quote">Nevertheless, significant challenges must be overcome before these robots can be widely used in agriculture.</span></p>
-          <p>然而，在這些機器人能被廣泛用於農業之前，仍必須克服重大挑戰。</p>
-          <p><strong>文法解析：</strong>Nevertheless 是轉折副詞，表示「然而」。must be overcome 是情態助動詞加被動語態，強調挑戰必須「被克服」。before 引導時間副詞子句，說明條件完成前的限制。</p>
-          <div class="pills"><span class="pill">nevertheless（然而）</span><span class="pill">be overcome（被克服）</span><span class="pill">widely used（廣泛使用）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">⑥</span><span class="quote">While robotic bees will probably not completely replace natural pollinators, they could become valuable supplementary tools for maintaining food production as environmental conditions continue to change.</span></p>
-          <p>雖然機器蜜蜂可能不會完全取代天然授粉者，但隨著環境條件持續改變，它們可能成為維持糧食生產的寶貴輔助工具。</p>
-          <p><strong>文法解析：</strong>While 引導讓步副詞子句，意思是「雖然」。主要子句使用 could become，表示合理但不絕對的可能性。for maintaining food production 中 for 是介係詞，所以後面接 V-ing。</p>
-          <div class="pills"><span class="pill">supplementary tools（輔助工具）</span><span class="pill">maintaining food production（維持糧食生產）</span><span class="pill">environmental conditions（環境條件）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">⑦</span><span class="quote">As climate change and habitat loss threaten natural bee populations, technological solutions like robotic pollinators become increasingly important.</span></p>
-          <p>隨著氣候變遷與棲地喪失威脅天然蜜蜂族群，像機器授粉者這樣的科技解方變得越來越重要。</p>
-          <p><strong>文法解析：</strong>As 在此表示「隨著」，引導背景變化。主句主詞是 technological solutions，like robotic pollinators 是介係詞片語，用來舉例。become increasingly important 表示程度逐漸增加。</p>
-          <div class="pills"><span class="pill">habitat loss（棲地喪失）</span><span class="pill">technological solutions（科技解方）</span><span class="pill">increasingly（越來越）</span></div>
-        </div>
-        <div class="sentence-item">
-          <p><span class="num">⑧</span><span class="quote">The integration of robotic and biological systems might create hybrid pollination strategies that combine the strengths of both approaches.</span></p>
-          <p>機器與生物系統的整合，可能創造出混合式授粉策略，結合兩種方法的優勢。</p>
-          <p><strong>文法解析：</strong>The integration of... 是名詞片語作主詞。might create 表示推測或未來可能性。that combine... 是形容詞子句，修飾 hybrid pollination strategies，說明策略的特色。</p>
-          <div class="pills"><span class="pill">integration（整合）</span><span class="pill">hybrid strategies（混合式策略）</span><span class="pill">approaches（方法）</span></div>
-        </div>
-      </div>
-    </section>
+  <div class="link-cards">
+    <a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">📚 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+    <a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+    <a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+  </div>
 
-    <section class="vocabulary">
-      <div class="section-title">三、20 個單字整理</div>
-      <div class="card">
-        <div class="word-item">
-          <h3>1. decline [dɪˈklaɪn] v./n. 下降；衰退；婉拒</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>declining（adj. 下降中的）；decline（n. 衰退）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>decline at an alarming rate（以驚人速度下降）；decline in population（族群下降）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a steady decline（穩定下滑）；a serious decline（嚴重衰退）</span></div>
-          <div class="label-row"><span class="tag confuse">容易混淆</span><span>decline 強調數量或程度下降；decrease 較中性，可當動詞或名詞。</span></div>
-          <div class="label-row"><span class="tag focus">句型</span><span>continue to V：to 是不定詞，表示「繼續做某事」。</span></div>
-          <p>Bee populations continue to decline in many parts of the world.<br>（世界許多地區的蜜蜂族群持續下降。）</p>
-          <p>The number of visitors began to decline after the storm.<br>（暴風雨過後，訪客人數開始下降。）</p>
-        </div>
-        <div class="word-item">
-          <h3>2. alarming [əˈlɑrmɪŋ] adj. 令人擔憂的；驚人的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>alarm（n./v. 警報；使驚慌）；alarmed（adj. 感到擔心的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>at an alarming rate（以令人擔憂的速度）；an alarming increase（驚人的增加）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>an alarming trend（令人擔憂的趨勢）；deeply alarming news（非常令人不安的消息）</span></div>
-          <div class="label-row"><span class="tag confuse">容易混淆</span><span>alarming 描述事情令人擔心；alarmed 描述人感到擔心。</span></div>
-          <p>Bee populations are declining at an alarming rate.<br>（蜜蜂族群正以驚人的速度下降。）</p>
-          <p>The alarming report made many people rethink their habits.<br>（那份令人擔憂的報告讓許多人重新思考自己的習慣。）</p>
-        </div>
-        <div class="word-item">
-          <h3>3. innovative [ˈɪnəˌvetɪv] adj. 創新的；革新的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>innovate（v. 創新）；innovation（n. 創新）；innovator（n. 創新者）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>nov = new（新的）：novel（新奇的；小說）、renovate（翻新）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>an innovative solution（創新解方）；innovative technology（創新科技）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a highly innovative design（高度創新的設計）；an innovative approach（創新方法）</span></div>
-          <p>Scientists are developing an innovative solution: robotic bees.<br>（科學家正在發展一項創新解方：機器蜜蜂。）</p>
-          <p>The team proposed an innovative way to save water.<br>（這個團隊提出了一種節水的創新方法。）</p>
-        </div>
-        <div class="word-item">
-          <h3>4. institution [ˌɪnstəˈtuʃən] n. 機構；制度；慣例</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>institute（n. 學院；v. 建立）；institutional（adj. 機構的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>research institution（研究機構）；educational institution（教育機構）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a leading institution（頂尖機構）；a respected institution（受尊敬的機構）</span></div>
-          <div class="label-row"><span class="tag confuse">容易混淆</span><span>institution 多指組織或制度；institute 常指學院或研究所。</span></div>
-          <p>Research institutions have produced tiny flying robots.<br>（研究機構已經製造出小型飛行機器人。）</p>
-          <p>This institution offers special programs for young scientists.<br>（這個機構為年輕科學家提供特別課程。）</p>
-        </div>
-        <div class="word-item">
-          <h3>5. capable [ˈkepəbəl] adj. 有能力的；能幹的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>capability（n. 能力）；capacity（n. 容量；能力）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>cap = take, hold（拿取；掌握）：capture（捕捉）、capacity（容量）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>be capable of V-ing（有能力做）；technically capable（技術上可行的）</span></div>
-          <div class="label-row"><span class="tag focus">句型</span><span>capable of 後接名詞或 V-ing，of 是介係詞。</span></div>
-          <p>The robots are capable of performing pollination tasks.<br>（這些機器人能夠執行授粉任務。）</p>
-          <p>She is capable of solving the problem by herself.<br>（她有能力獨自解決這個問題。）</p>
-        </div>
-        <div class="word-item">
-          <h3>6. pollination [ˌpɑləˈneʃən] n. 授粉</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>pollinate（v. 授粉）；pollinator（n. 授粉者）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>pollination tasks（授粉任務）；hybrid pollination strategies（混合式授粉策略）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>successful pollination（成功授粉）；robotic pollination（機器授粉）</span></div>
-          <p>Robotic bees may help perform pollination tasks.<br>（機器蜜蜂或許能協助執行授粉任務。）</p>
-          <p>Pollination is necessary for many fruits to grow.<br>（授粉對許多水果的生長是必要的。）</p>
-        </div>
-        <div class="word-item">
-          <h3>7. technological [ˌtɛknəˈlɑdʒɪkəl] adj. 科技的；技術的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>technology（n. 科技）；technologically（adv. 科技上）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>technological achievement（科技成就）；technological solution（科技解方）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>rapid technological change（快速科技變化）；advanced technological tools（先進科技工具）</span></div>
-          <p>These tiny machines represent a technological achievement.<br>（這些小型機器代表一項科技成就。）</p>
-          <p>Technological progress can improve daily life.<br>（科技進步能改善日常生活。）</p>
-        </div>
-        <div class="word-item">
-          <h3>8. achievement [əˈtʃivmənt] n. 成就；達成</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>achieve（v. 達成）；achievable（adj. 可達成的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>an impressive achievement（令人印象深刻的成就）；academic achievement（學業成就）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a remarkable achievement（非凡成就）；a major achievement（重大成就）</span></div>
-          <p>Robotic bees are an impressive technological achievement.<br>（機器蜜蜂是一項令人印象深刻的科技成就。）</p>
-          <p>Finishing the project was a major achievement for the class.<br>（完成這項專題是全班的一大成就。）</p>
-        </div>
-        <div class="word-item">
-          <h3>9. agility [əˈdʒɪlətɪ] n. 靈活；敏捷</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>agile（adj. 敏捷的）；agilely（adv. 敏捷地）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>physical agility（身體敏捷度）；mental agility（思考靈活度）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>remarkable agility（驚人的靈活度）；great agility（高度敏捷）</span></div>
-          <p>The robots demonstrate the agility needed for pollination.<br>（這些機器人展現授粉所需的靈活度。）</p>
-          <p>The dancer moved with great agility on the stage.<br>（舞者在舞台上以高度敏捷移動。）</p>
-        </div>
-        <div class="word-item">
-          <h3>10. mimic [ˈmɪmɪk] v. 模仿；n. 善於模仿者</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>mimicry（n. 模仿）；mimicking（n./adj. 模仿）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>mimic flight patterns（模仿飛行模式）；mimic natural behavior（模仿自然行為）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>closely mimic（緊密模仿）；effectively mimic（有效模仿）</span></div>
-          <p>The robots are designed to mimic natural bees.<br>（這些機器人被設計來模仿天然蜜蜂。）</p>
-          <p>Some apps mimic real classroom conversations.<br>（有些應用程式模仿真實的課堂對話。）</p>
-        </div>
-        <div class="word-item">
-          <h3>11. threatened [ˈθrɛtənd] adj. 受威脅的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>threaten（v. 威脅）；threat（n. 威脅）；threatening（adj. 具威脅性的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>be threatened by（受到威脅）；threaten natural populations（威脅天然族群）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a threatened species（受威脅物種）；seriously threatened habitats（嚴重受威脅的棲地）</span></div>
-          <p>Agriculture is increasingly threatened by pollinator shortages.<br>（農業日益受到授粉者短缺的威脅。）</p>
-          <p>Many coastal towns are threatened by rising sea levels.<br>（許多沿海城鎮受到海平面上升的威脅。）</p>
-        </div>
-        <div class="word-item">
-          <h3>12. pollinator [ˈpɑləˌnetɚ] n. 授粉者</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>pollinate（v. 授粉）；pollination（n. 授粉）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>natural pollinators（天然授粉者）；robotic pollinators（機器授粉者）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>essential pollinators（必要的授粉者）；declining pollinator populations（下降中的授粉者族群）</span></div>
-          <p>Robotic pollinators could support farming in the future.<br>（機器授粉者未來可能支援農業。）</p>
-          <p>Butterflies can also act as pollinators for some plants.<br>（蝴蝶也能作為某些植物的授粉者。）</p>
-        </div>
-        <div class="word-item">
-          <h3>13. yield [jild] v. 產生；帶來；n. 產量</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>yielding（adj. 有產量的；柔順的）；yield（n. 收成）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>yield encouraging outcomes（產生令人鼓舞的結果）；crop yield（作物產量）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a high yield（高產量）；positive yields（正面成果）</span></div>
-          <div class="label-row"><span class="tag confuse">容易混淆</span><span>yield 作動詞可指「產生結果」；produce 較常指實際製造或生產。</span></div>
-          <p>Tests have yielded encouraging outcomes in greenhouses.<br>（測試已在溫室中產生令人鼓舞的結果。）</p>
-          <p>Careful planning can yield better results.<br>（謹慎規劃能帶來更好的結果。）</p>
-        </div>
-        <div class="word-item">
-          <h3>14. outcome [ˈaʊtˌkʌm] n. 結果；成果</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>come out（phr. 出現；結果是）；outcome-based（adj. 以成果為本的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>encouraging outcomes（令人鼓舞的成果）；learning outcomes（學習成果）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a positive outcome（正面結果）；the final outcome（最終結果）</span></div>
-          <div class="label-row"><span class="tag confuse">容易混淆</span><span>outcome 常指事件發展後的結果；result 可指更一般的結果或分數。</span></div>
-          <p>Robotic pollination has yielded encouraging outcomes.<br>（機器授粉已產生令人鼓舞的成果。）</p>
-          <p>The outcome of the debate surprised the students.<br>（辯論的結果讓學生感到驚訝。）</p>
-        </div>
-        <div class="word-item">
-          <h3>15. obstacle [ˈɑbstəkəl] n. 障礙；阻礙</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>obstruct（v. 阻擋）；obstruction（n. 阻礙）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>ob = against（相對；阻擋）：object（反對）、obvious（明顯的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>major obstacles（主要障礙）；overcome obstacles（克服障礙）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a serious obstacle（嚴重障礙）；a practical obstacle（實際障礙）</span></div>
-          <p>High production costs remain major obstacles.<br>（高生產成本仍是主要障礙。）</p>
-          <p>Lack of time was the biggest obstacle to her plan.<br>（時間不足是她計畫最大的障礙。）</p>
-        </div>
-        <div class="word-item">
-          <h3>16. autonomous [ɔˈtɑnəməs] adj. 自主的；自治的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>autonomy（n. 自主；自治）；autonomously（adv. 自主地）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>auto = self（自己）：automatic（自動的）、autograph（親筆簽名）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>autonomous navigation（自主導航）；autonomous vehicle（自駕車）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a fully autonomous system（完全自主的系統）；highly autonomous robots（高度自主的機器人）</span></div>
-          <p>Scientists are improving autonomous navigation systems.<br>（科學家正在改進自主導航系統。）</p>
-          <p>Autonomous cars must react quickly to danger.<br>（自駕車必須快速回應危險。）</p>
-        </div>
-        <div class="word-item">
-          <h3>17. durable [ˈdʊrəbəl] adj. 耐用的；持久的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>durability（n. 耐用性）；duration（n. 持續時間）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>dur = hard, lasting（堅硬；持久）：endure（忍受）、duration（期間）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>durable materials（耐用材料）；make something durable（使某物耐用）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a highly durable product（非常耐用的產品）；durable farming tools（耐用農具）</span></div>
-          <p>Researchers want to make the robots more durable.<br>（研究人員想讓這些機器人更耐用。）</p>
-          <p>This backpack is durable enough for daily use.<br>（這個背包足夠耐用，適合日常使用。）</p>
-        </div>
-        <div class="word-item">
-          <h3>18. supplementary [ˌsʌpləˈmɛntərɪ] adj. 補充的；輔助的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>supplement（n./v. 補充；補充物）；supplemental（adj. 補充的）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>supplementary tools（輔助工具）；supplementary materials（補充教材）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>valuable supplementary support（有價值的輔助支援）；useful supplementary information（有用的補充資訊）</span></div>
-          <p>Robotic bees could become supplementary tools for farming.<br>（機器蜜蜂可能成為農業的輔助工具。）</p>
-          <p>The teacher gave us supplementary reading materials.<br>（老師給了我們補充閱讀材料。）</p>
-        </div>
-        <div class="word-item">
-          <h3>19. ecological [ˌikəˈlɑdʒɪkəl] adj. 生態的；環境的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>ecology（n. 生態學）；ecologist（n. 生態學家）</span></div>
-          <div class="label-row"><span class="tag root">字根</span><span>eco = house, environment（家；環境）：ecosystem（生態系）、economy（經濟）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>ecological challenges（生態挑戰）；ecological balance（生態平衡）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>a serious ecological crisis（嚴重生態危機）；ecological protection（生態保護）</span></div>
-          <p>The technology responds to ecological challenges.<br>（這項科技回應生態挑戰。）</p>
-          <p>Wetlands play an important ecological role.<br>（濕地扮演重要的生態角色。）</p>
-        </div>
-        <div class="word-item">
-          <h3>20. resilient [rɪˈzɪljənt] adj. 有韌性的；能復原的</h3>
-          <div class="label-row"><span class="tag derivative">衍生詞</span><span>resilience（n. 韌性；復原力）；resiliently（adv. 有韌性地）</span></div>
-          <div class="label-row"><span class="tag phrase">片語</span><span>a resilient future（有韌性的未來）；resilient communities（有復原力的社群）</span></div>
-          <div class="label-row"><span class="tag idiom">慣用語</span><span>highly resilient systems（高度有韌性的系統）；emotionally resilient students（情緒上有韌性的學生）</span></div>
-          <p>Scientific innovation can create a more resilient future.<br>（科學創新能創造更有韌性的未來。）</p>
-          <p>People become more resilient when they learn from failure.<br>（人們從失敗中學習時會變得更有韌性。）</p>
-        </div>
-      </div>
-    </section>
+  <nav id="unit-map">
+    <h2>🗺️ 單元地圖</h2>
+    <a class="map-u1" href="#unit1">單元一　事件概述：日圓 160 攻防與匯率干預</a>
+    <a class="map-u2" href="#unit2">單元二　日圓弱勢的結構性原因</a>
+    <a class="map-u3" href="#unit3">單元三　高市政權的「責任ある積極財政」</a>
+    <a class="map-u4" href="#unit4">單元四　春鬥加薪與輸入性通膨的拉鋸</a>
+    <a class="map-u5" href="#unit5">單元五　日本銀行的兩難與後續觀察指標</a>
+    <a class="map-u6" href="#unit6">單元六　補充與澄清：原始影片的修正事項</a>
+    <a class="map-gl" href="#glossary">📖 術語表 Glossary</a>
+  </nav>
 
-    <section class="grammar">
-      <div class="section-title">四、文法解析</div>
-      <div class="card">
-        <div class="grammar-item">
-          <h3>1. As 引導的副詞子句：隨著</h3>
-          <p><strong>【引句 Quote】</strong><br><span class="quote">As bee populations around the world continue to decline at an alarming rate, scientists are developing an innovative solution.</span></p>
-          <p><strong>【句型】</strong><br><strong><em>As + S + V, S + V...</em></strong></p>
-          <p><strong>【核心說明】</strong><br>As 可表示「隨著」，用來描述兩件事同時發展或互相影響。這種句型常用於環境、科技、社會趨勢等文章，讓讀者看出背景變化與主要行動之間的關係。</p>
-          <p><strong>【使用規則】</strong></p>
-          <ul>
-            <li>As 子句通常放句首，後面用逗號接主要子句。</li>
-            <li>As 表示「隨著」時，不等於 because 的「因為」。</li>
-            <li>主句常搭配 become、increase、develop、change 等動詞。</li>
-            <li>若主詞相同且語意清楚，可改成 With + N + V-ing。</li>
-          </ul>
-          <p><strong>【主題例句】</strong><br>As pollinator shortages become worse, robotic bees may play a larger role.<br>（隨著授粉者短缺惡化，機器蜜蜂可能扮演更大的角色。）</p>
-          <p><strong>【學習提醒】</strong><br>看到 As 不要只翻成「因為」。請先判斷前後句是否呈現同步變化；若是，就更適合翻成「隨著」。</p>
-          <p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br><span class="wrong">✗ As bee populations decline, so scientists develop solutions.</span><br><span class="right">✓ As bee populations decline, scientists develop solutions.</span>（As 子句後直接接主要子句，不需加 so。）</p>
-          <ol>
-            <li>As climate change gets worse, farmers ______ new tools. (A) needing (B) need (C) to need</li>
-            <li>改錯：As technology improves, so robots become safer.</li>
-          </ol>
-        </div>
-        <div class="grammar-item">
-          <h3>2. 分詞片語修飾名詞</h3>
-          <p><strong>【引句 Quote】</strong><br><span class="quote">MIT's latest models can hover in the air and perform complex movements demonstrating the agility needed for successful pollination.</span></p>
-          <p><strong>【句型】</strong><br><strong><em>N + V-ing phrase / N + V-ed phrase</em></strong></p>
-          <p><strong>【核心說明】</strong><br>現在分詞 V-ing 常表示主動或正在進行，過去分詞 V-ed 常表示被動或完成。句中 demonstrating 修飾 movements，needed 修飾 agility，讓一句話能濃縮更多資訊。</p>
-          <p><strong>【使用規則】</strong></p>
-          <ul>
-            <li>V-ing 表示被修飾名詞主動做該動作。</li>
-            <li>V-ed 表示被修飾名詞承受該動作或已完成。</li>
-            <li>分詞片語通常緊接在被修飾名詞後面。</li>
-            <li>若修飾關係不清楚，應改用完整形容詞子句。</li>
-          </ul>
-          <p><strong>【主題例句】</strong><br>Robots carrying tiny sensors can collect useful farming data.<br>（帶有微型感測器的機器人能收集有用的農業資料。）</p>
-          <p><strong>【學習提醒】</strong><br>分詞片語不是獨立句子，不能單獨當完整句。考試中要特別注意它修飾的是哪個名詞。</p>
-          <p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br><span class="wrong">✗ The robot designed to pollinate crops it flies smoothly.</span><br><span class="right">✓ The robot designed to pollinate crops flies smoothly.</span>（主詞已是 The robot，後面直接接主要動詞 flies。）</p>
-          <ol>
-            <li>The machines ______ in the lab are very small. (A) testing (B) tested (C) test</li>
-            <li>改錯：The bees helping farmers they improve crop quality.</li>
-          </ol>
-        </div>
-        <div class="grammar-item">
-          <h3>3. 情態助動詞 + 被動語態</h3>
-          <p><strong>【引句 Quote】</strong><br><span class="quote">Significant challenges must be overcome before these robots can be widely used in agriculture.</span></p>
-          <p><strong>【句型】</strong><br><strong><em>S + modal + be + past participle...</em></strong></p>
-          <p><strong>【核心說明】</strong><br>情態助動詞如 must、can、could、may 後面接原形動詞。若要表達「被做」，就使用 be + p.p.，例如 must be overcome 表示「必須被克服」。</p>
-          <p><strong>【使用規則】</strong></p>
-          <ul>
-            <li>情態助動詞後的 be 必須用原形。</li>
-            <li>過去分詞表示被動動作，如 used、designed、overcome。</li>
-            <li>must be p.p. 表示必要性；can be p.p. 表示可能性或能力。</li>
-            <li>若要說明動作者，可加 by + N。</li>
-          </ul>
-          <p><strong>【主題例句】</strong><br>Better batteries must be developed before robotic bees can work outdoors.<br>（在機器蜜蜂能於戶外工作前，必須開發出更好的電池。）</p>
-          <p><strong>【學習提醒】</strong><br>中文常省略「被」，但英文被動語態不能省略 be。看到 must、can、could 後要確認是否需要接 be + p.p.。</p>
-          <p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong><br><span class="wrong">✗ The problem must overcome soon.</span><br><span class="right">✓ The problem must be overcome soon.</span>（problem 是被克服，所以要用被動語態。）</p>
-          <ol>
-            <li>These robots can ______ in greenhouses. (A) use (B) be used (C) using</li>
-            <li>改錯：More tests should done before the machines are sold.</li>
-          </ol>
-        </div>
-      </div>
-    </section>
+  <section id="unit1">
+    <h2>單元一　事件概述：日圓 160 攻防與匯率干預</h2>
+    <p>2026 年 4 月 30 日，日圓兌美元匯率（exchange rate）一度跌至 <span class="kw">1 美元 = 160 圓</span>關口，創下 2024 年 7 月以來的低點。日本政府隨即實施<span class="kw">匯率干預（foreign exchange intervention）</span>，在外匯市場賣出美元、買入日圓，匯價一度回升至 155 圓區間。</p>
+    <p>根據日本經濟新聞報導，4 月底以來政府投入的買圓干預資金累計約 <span class="kw">11.7 兆日圓</span>。財務省 6 月 5 日公布的 5 月底<span class="kw">外匯存底（foreign exchange reserves）</span>為 1 兆 3,058 億美元，較前月減少 5.6%，單月減幅為 2000 年統計基準改定以來最大，反映干預動用了存底資產。</p>
+    <p>然而 6 月初，受<span class="kw">中東情勢（Middle East tensions）</span>推升的避險美元買盤影響，日圓再度逼近 160 圓，市場普遍認為干預效果有限。有研究機構估計，年內日圓最弱可能觸及 162 圓左右。</p>
+    <p>需要澄清的是：依日本《外國為替及外國貿易法》，匯率干預的決定權在<span class="tag">財務大臣（Minister of Finance）</span>；日本銀行（Bank of Japan, BOJ）只是受財務省指示、以「外國為替資金特別會計」資金執行操作的<span class="kw">代理人（agent）</span>。坊間常說「日銀干預」，嚴格來說主導者是財務省。</p>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>On April 30, 2026, the yen fell to 160 per US dollar, prompting Japan's government to intervene in the currency market. About 11.7 trillion yen has been spent buying yen since late April, and foreign exchange reserves dropped at a record monthly pace. Renewed dollar demand driven by Middle East tensions pushed the yen back toward 160 in early June. Legally, intervention is decided by the Ministry of Finance, with the Bank of Japan acting only as its agent.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
 
-    <section class="folds">
-      <div class="section-title">五、底部折疊區塊</div>
-      <div class="card">
-        <details>
-          <summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
-          <div class="detail-body">
-            <p>ab-　離開、相反　—　abnormal（異常的）<br>ad-　向、加　—　advance（前進）<br>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）<br>anti-　反對、抗　—　antibiotic（抗生素）<br>arch-　主要、首要　—　archenemy（死敵）<br>auto-　自動、自我　—　autograph（親筆簽名）<br>bene-　好的、善　—　benefit（好處）<br>bi-　二、雙　—　bilingual（雙語的）<br>circum-　環繞、周圍　—　circumstance（情況）<br>co-/con-/com-　一起、共同　—　cooperate（合作）<br>contra-　相反、對抗　—　contradict（反駁）<br>de-　去除、下降　—　decode（解碼）<br>dia-　穿過、透過　—　dialogue（對話）<br>dis-　否定、分離　—　disagree（不同意）<br>en-/em-　使成為　—　enable（使能夠）<br>epi-　在上、在外　—　epidemic（流行病）<br>ex-　外、前任　—　export（出口）；ex-president（前總統）<br>extra-　額外、外部　—　extraordinary（非凡的）<br>hetero-　不同　—　heterogeneous（異質的）<br>homo-　相同　—　homogeneous（同質的）<br>hyper-　過度、超　—　hyperactive（過動的）<br>hypo-　低於、不足　—　hypodermic（皮下的）<br>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）<br>inter-　在…之間　—　international（國際的）<br>iso-　相等、相同　—　isolate（隔離）<br>mal-　壞、不良　—　malfunction（故障）<br>micro-　微小　—　microscope（顯微鏡）<br>mis-　錯誤　—　misunderstand（誤解）<br>mono-　單一　—　monologue（獨白）<br>multi-　多　—　multicultural（多元文化的）<br>neo-　新的　—　neonatal（新生的）<br>non-　非、沒有　—　nonsense（無意義）<br>pan-　全部　—　pandemic（大流行病）<br>peri-　周圍　—　perimeter（周長）<br>poly-　多　—　polygon（多邊形）<br>post-　之後　—　postwar（戰後的）<br>pre-　之前　—　preview（預覽）<br>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）<br>pseudo-　假的　—　pseudonym（筆名）<br>re-　再、回　—　review（複習）<br>semi-　一半、部分　—　semicircle（半圓）<br>sub-　在下、次級　—　subway（地鐵）<br>super-　超越、在上　—　superstar（超級明星）<br>syn-/sym-　一起、共同　—　synchronize（同步）<br>tele-　遠距　—　telephone（電話）<br>trans-　穿越、轉變　—　transport（運輸）<br>tri-　三　—　triangle（三角形）<br>un-　否定、不　—　unhappy（不快樂的）<br>vice-　副、代替　—　vice-president（副總統）</p>
-          </div>
-        </details>
-        <details>
-          <summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
-          <div class="detail-body">
-            <h3>名詞字尾</h3>
-            <p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）<br>-ment　行為或結果　—　agreement（協議）、development（發展）<br>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）<br>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）<br>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）<br>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）<br>-ship　身分或關係　—　friendship（友誼）、leadership（領導）<br>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
-            <h3>形容詞字尾</h3>
-            <p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）<br>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）<br>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）<br>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）<br>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
-            <h3>動詞字尾</h3>
-            <p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）<br>-ify　使成為…　—　beautify（美化）、clarify（澄清）<br>-ate　形成動詞　—　dominate（支配）、activate（啟動）<br>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
-            <h3>副詞字尾</h3>
-            <p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）<br>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）<br>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
-          </div>
-        </details>
-        <details>
-          <summary>30 個常用單字與衍生詞<span class="arrow">⌄</span></summary>
-          <div class="detail-body">
-            <ol>
-              <li>robotic [roˈbɑtɪk] (adj. 機器人的) — robot [ˈrobət] (n. 機器人)</li>
-              <li>population [ˌpɑpjəˈleʃən] (n. 族群；人口) — populate [ˈpɑpjəˌlet] (v. 居住於)</li>
-              <li>decline [dɪˈklaɪn] (v. 下降) — in decline（在衰退中）</li>
-              <li>alarming [əˈlɑrmɪŋ] (adj. 令人擔憂的) — alarm [əˈlɑrm] (n. 警報)</li>
-              <li>innovative [ˈɪnəˌvetɪv] (adj. 創新的) — innovation [ˌɪnəˈveʃən] (n. 創新)</li>
-              <li>institution [ˌɪnstəˈtuʃən] (n. 機構) — institute [ˈɪnstəˌtut] (n. 學院)</li>
-              <li>capable [ˈkepəbəl] (adj. 有能力的) — capability [ˌkepəˈbɪlətɪ] (n. 能力)</li>
-              <li>pollination [ˌpɑləˈneʃən] (n. 授粉) — pollinate [ˈpɑləˌnet] (v. 授粉)</li>
-              <li>achievement [əˈtʃivmənt] (n. 成就) — achieve [əˈtʃiv] (v. 達成)</li>
-              <li>hover [ˈhʌvɚ] (v. 盤旋) — hover over（在上方盤旋）</li>
-              <li>complex [kəmˈplɛks] (adj. 複雜的) — complexity [kəmˈplɛksətɪ] (n. 複雜性)</li>
-              <li>agility [əˈdʒɪlətɪ] (n. 靈活) — agile [ˈædʒəl] (adj. 敏捷的)</li>
-              <li>mimic [ˈmɪmɪk] (v. 模仿) — mimicry [ˈmɪmɪkrɪ] (n. 模仿)</li>
-              <li>agriculture [ˈæɡrɪˌkʌltʃɚ] (n. 農業) — agricultural [ˌæɡrɪˈkʌltʃərəl] (adj. 農業的)</li>
-              <li>shortage [ˈʃɔrtɪdʒ] (n. 短缺) — water shortage（缺水）</li>
-              <li>greenhouse [ˈɡrinˌhaʊs] (n. 溫室) — greenhouse effect（溫室效應）</li>
-              <li>outcome [ˈaʊtˌkʌm] (n. 結果) — positive outcome（正面結果）</li>
-              <li>stability [stəˈbɪlətɪ] (n. 穩定性) — stable [ˈstebəl] (adj. 穩定的)</li>
-              <li>obstacle [ˈɑbstəkəl] (n. 障礙) — overcome obstacles（克服障礙）</li>
-              <li>autonomous [ɔˈtɑnəməs] (adj. 自主的) — autonomy [ɔˈtɑnəmɪ] (n. 自主)</li>
-              <li>durable [ˈdʊrəbəl] (adj. 耐用的) — durability [ˌdʊrəˈbɪlətɪ] (n. 耐用性)</li>
-              <li>transition [trænˈzɪʃən] (n. 轉變) — transitional [trænˈzɪʃənəl] (adj. 過渡的)</li>
-              <li>supplementary [ˌsʌpləˈmɛntərɪ] (adj. 輔助的) — supplement [ˈsʌpləmənt] (n. 補充物)</li>
-              <li>ecological [ˌikəˈlɑdʒɪkəl] (adj. 生態的) — ecology [iˈkɑlədʒɪ] (n. 生態學)</li>
-              <li>sustainable [səˈstenəbəl] (adj. 永續的) — sustainability [səˌstenəˈbɪlətɪ] (n. 永續性)</li>
-              <li>artificial [ˌɑrtəˈfɪʃəl] (adj. 人工的) — artificial intelligence（人工智慧）</li>
-              <li>biomimicry [ˌbaɪoˈmɪmɪkrɪ] (n. 仿生學) — biological [ˌbaɪəˈlɑdʒɪkəl] (adj. 生物的)</li>
-              <li>automation [ˌɔtəˈmeʃən] (n. 自動化) — automatic [ˌɔtəˈmætɪk] (adj. 自動的)</li>
-              <li>integration [ˌɪntəˈɡreʃən] (n. 整合) — integrate [ˈɪntəˌɡret] (v. 整合)</li>
-              <li>resilient [rɪˈzɪljənt] (adj. 有韌性的) — resilience [rɪˈzɪljəns] (n. 韌性)</li>
-            </ol>
-            <p>文章相關常用片語 5 個（附中文）：<br>• at an alarming rate（以驚人速度）<br>• be capable of V-ing（有能力做）<br>• be threatened by（受到威脅）<br>• make something more durable（使某物更耐用）<br>• transform challenges into opportunities（把挑戰轉化為機會）</p>
-          </div>
-        </details>
-        <details>
-          <summary>練文筆食材<span class="arrow">⌄</span></summary>
-          <div class="detail-body">
-            <p>① As + S + V, S + V（隨著…，…）<br>→ 適用：描述趨勢變化與結果<br>例：As technology improves, farming becomes more efficient.</p>
-            <p>② be capable of V-ing（有能力做…）<br>→ 適用：說明人、機器或制度的功能<br>例：Small robots are capable of collecting useful data.</p>
-            <p>③ similar to those of...（類似於…的那些）<br>→ 適用：避免重複前面的名詞<br>例：The problems in this city are similar to those of other large cities.</p>
-            <p>④ be designed to V（被設計來…）<br>→ 適用：介紹工具、系統或政策目的<br>例：The app is designed to help students review vocabulary.</p>
-            <p>⑤ offering potential support to...（為…提供潛在支援）<br>→ 適用：說明附帶效果或可能貢獻<br>例：Online lessons offer potential support to students in remote areas.</p>
-            <p>⑥ where + S + V（在那裡…）<br>→ 適用：補充說明地點特色<br>例：Greenhouses provide a controlled space where crops can grow safely.</p>
-            <p>⑦ Nevertheless, S + V（然而，…）<br>→ 適用：從優點轉向限制<br>例：Nevertheless, the plan still requires more money and time.</p>
-            <p>⑧ must be + p.p.（必須被…）<br>→ 適用：指出必要問題或待解任務<br>例：Several safety issues must be solved before the product is sold.</p>
-            <p>⑨ While + S + V, S + V（雖然…，…）<br>→ 適用：讓步與平衡觀點<br>例：While AI cannot replace teachers, it can support learning.</p>
-            <p>⑩ as conditions continue to change（隨著情況持續改變）<br>→ 適用：連結未來趨勢<br>例：Students need new skills as society continues to change.</p>
-            <p>⑪ beyond immediate concerns（超越眼前的關切）<br>→ 適用：延伸論點層次<br>例：The policy matters beyond immediate economic concerns.</p>
-            <p>⑫ gain insights that V（獲得能…的洞見）<br>→ 適用：描述研究或觀察的價值<br>例：Scientists gained insights that improved medical treatment.</p>
-            <p>⑬ may include...（可能包括…）<br>→ 適用：列舉未來改善方向<br>例：Future changes may include cleaner energy and safer transport.</p>
-            <p>⑭ combine the strengths of both approaches（結合兩種方法的優勢）<br>→ 適用：提出折衷或整合方案<br>例：The school can combine the strengths of online and face-to-face learning.</p>
-            <p>⑮ transform challenges into opportunities（把挑戰轉化為機會）<br>→ 適用：結論句、正向收束<br>例：Good leaders transform challenges into opportunities for growth.</p>
-          </div>
-        </details>
-      </div>
-    </section>
-  </main>
+  <section id="unit2">
+    <h2>單元二　日圓弱勢的結構性原因</h2>
+    <p>日圓走弱並非單一事件造成，而是多重<span class="kw">結構性因素（structural factors）</span>疊加的結果：</p>
+    <ul>
+      <li><strong>日美利率差（interest rate differential）</strong>：日本的政策利率仍遠低於美國，資金傾向流向利率較高的美元資產。多數分析認為這是日圓長期承壓的最核心因素。</li>
+      <li><strong>能源進口依賴（energy import dependence）</strong>：日本能源自給率低，原油、天然氣高度仰賴進口。中東伊朗情勢緊張、荷莫茲海峽（Strait of Hormuz）航運受擾使油價居高不下，日本企業必須買入更多美元支付能源帳單，形成持續的日圓賣壓。</li>
+      <li><strong>貿易逆差（trade deficit）</strong>：能源與原物料進口成本上升，使日本貿易收支再度轉為逆差，進一步削弱日圓需求。</li>
+      <li><strong>數位赤字（digital deficit）</strong>：日本企業與家庭支付給海外雲端服務、軟體與串流平台的費用逐年擴大，成為新型態的經常性日圓流出。</li>
+      <li><strong>投機性賣壓（speculative selling）</strong>：日經報導指出，投機部位的日圓淨賣壓已達約 1 年 10 個月以來最大，甚至超過干預前的水準，放大了匯率的下行波動。</li>
+    </ul>
+    <p>匯率常被視為一國經濟基本面（economic fundamentals）的「櫥窗」：日圓弱勢反映的不只是利率政策，更是貿易結構與產業競爭力的長期課題。</p>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>The yen's weakness comes from several structural factors working together. The wide interest rate gap between Japan and the United States is widely seen as the core driver. Japan's heavy reliance on imported energy, a renewed trade deficit, and a growing "digital deficit" all create constant selling pressure on the yen. Speculative short positions against the yen have also reached their largest level in nearly two years.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit3">
+    <h2>單元三　高市政權的「責任ある積極財政」</h2>
+    <p>日本首相<span class="kw">高市早苗（Takaichi Sanae）</span>領導的政府，將經濟財政路線定調為「<span class="kw">責任ある積極財政（responsible proactive fiscal policy）</span>」。在 2026 年 2 月的施政方針演說中，高市表示要「斷絕長年的過度緊縮志向與對未來投資不足的趨勢」，主張日本最缺的是<span class="kw">資本投入（capital investment）</span>，政府應帶頭促進國內投資。</p>
+    <p>具體做法包括兩大投資軸線：降低各類風險的「<span class="kw">危機管理投資（crisis-management investment）</span>」（涵蓋經濟安全保障、能源、糧食、網路安全等），以及培育先端技術的「<span class="kw">成長投資（growth investment）</span>」。政府選定 <span class="kw">AI、半導體（semiconductors）</span>、量子、造船等 <span class="kw">17 個戰略領域</span>，提供投資促進、研發補助、人才培育、官公廳採購等多面向支援，並自 2026 年度起擴大對國產 AI 的投資。</p>
+    <p>這條路線與日本過去「量入為出」的保守財政傳統明顯不同，財源相當程度需仰賴<span class="kw">舉債（debt issuance / government borrowing）</span>。支持者認為，30 年的通縮證明單靠節流無法重振經濟，必須先把經濟規模做大、讓稅收自然成長；批評者則擔心，若日本銀行未來推動<span class="kw">利率正常化（interest rate normalization）</span>，政府的<span class="kw">利息支出（interest payments）</span>將大幅增加，形成財政壓力——這也是美國目前面臨的同類問題。財政擴張與升息壓力因此成為一體兩面的政策難題。</p>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>Prime Minister Takaichi Sanae has shifted Japan's fiscal stance to "responsible proactive fiscal policy." Her government targets 17 strategic fields, including AI and semiconductors, with large-scale public investment and support programs. This marks a clear break from Japan's traditionally conservative, tax-revenue-based budgeting. Supporters say bold investment is needed to escape decades of stagnation, while critics warn that rising interest rates could sharply increase the government's debt-servicing burden.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit4">
+    <h2>單元四　春鬥加薪與輸入性通膨的拉鋸</h2>
+    <p>日本每年春季由工會與企業協商加薪，稱為「<span class="kw">春鬥（Shunto, spring wage negotiations）</span>」。根據日本最大工會組織「連合（Rengo）」的統計，2026 年春鬥第一次回答集計（3 月 23 日）的加權平均加薪率為 <span class="kw">5.26%</span>，連續第三年站上 5% 大關；其後的集計值略為回落，6 月初的第六次集計約為 <span class="kw">5.02%</span>，中小企業約 4.7%。整體而言，「企業加薪 → 員工消費增加 → 企業獲利改善 → 來年再加薪」的<span class="kw">良性循環（virtuous cycle）</span>正在嘗試啟動。</p>
+    <p>但這個循環面臨<span class="kw">輸入性通膨（imported inflation）</span>的挑戰。日圓貶值加上油價高漲，使進口商品與能源成本同步上升，日本國內物價持續走高，多項民生商品自 6 月起調漲；連溫泉旅館也因加熱用能源成本上升而調高價格。若物價漲幅吃掉名目加薪，<span class="kw">實質薪資（real wages）</span>未必改善，民眾的生活壓力依然沉重。</p>
+    <p>弱日圓的影響也呈現分配差異：以出口為主的大型企業、以及受惠於外國觀光客消費的部分服務業，可從匯率與政策投資中獲益；而依賴進口原料的內需產業與一般家庭，則承受較高的成本與物價壓力。受惠與受害並非整齊地以「企業 vs 人民」劃分，而是依產業結構與收入來源而異。</p>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>Japan's 2026 spring wage talks delivered an average raise of around 5%, the third straight year above that level. This supports a hoped-for virtuous cycle of higher wages, stronger consumption, and better corporate profits. However, imported inflation driven by the weak yen and high oil prices keeps pushing up consumer prices. Whether real wages actually improve depends on the race between pay raises and inflation, and the gains are unevenly distributed across industries and households.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit5">
+    <h2>單元五　日本銀行的兩難與後續觀察指標</h2>
+    <p>日本銀行目前處於明顯的<span class="kw">政策兩難（policy dilemma）</span>：若<span class="kw">升息（rate hike）</span>，可縮小日美利差、支撐日圓並抑制輸入性通膨，但會增加企業融資成本與政府利息負擔，可能傷及景氣與積極財政路線；若按兵不動，日圓貶值與物價上漲恐持續。日經報導指出，市場上「<span class="kw">日銀 6 月升息論</span>」正在增強，物價高漲與圓安風險下，政權方面也保持靜觀態度。歷史經驗顯示，2024 年 7 月那次匯率干預之所以有效，是因為與日銀升息「併用」；單靠干預通常只能「買時間」。</p>
+    <p>另一個外部變數是<span class="kw">美國的態度</span>。美國財政部定期發布匯率報告，關注主要貿易夥伴是否過度管理匯率（currency manipulation 疑慮），日本的持續性干預在國際上存在政策邊界，難以無限制進行。</p>
+    <h3>📌 值得追蹤的指標與時間點</h3>
+    <ul>
+      <li>美元兌日圓是否守住 160 關口；機構預估年內低點約 162 圓</li>
+      <li>日本銀行 6 月金融政策決定會合的利率決議</li>
+      <li>財務省每月底公布的匯率干預實績與外匯存底變化</li>
+      <li>連合 7 月初公布的春鬥最終集計（能否確定連續三年 5% 以上）</li>
+      <li>國際油價（Brent）走勢與伊朗、荷莫茲海峽情勢進展</li>
+    </ul>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>The Bank of Japan faces a dilemma: raising rates would support the yen but burden the economy and government finances, while standing still allows the weak yen and inflation to persist. Market talk of a June rate hike is growing. Past experience shows intervention works best when combined with rate hikes. Key things to watch include the 160 level, the BOJ's June meeting, monthly intervention data, final wage-talk results, and oil prices linked to the Iran situation.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit6">
+    <h2>單元六　補充與澄清：原始影片的修正事項</h2>
+    <p>本頁內容改寫自一支財經評論影片。經<span class="kw">事實查核（fact-checking）</span>後，以下幾點需要修正或澄清：</p>
+    <ul>
+      <li><strong>「日圓是全球最弱貨幣、比土耳其里拉更慘」</strong>：影片引述的「美國研究員報告」未具名、無法追溯，目前無公開資料佐證此一比較。日圓與里拉的弱勢成因也不同：里拉主要受高通膨與央行獨立性問題影響，日圓則源於低利率與貿易結構，直接比較「實質購買力」容易產生誤導。</li>
+      <li><strong>「日本央行出手干預」</strong>：正確機制是財務大臣決定、日本銀行代為執行；干預資金來自財務省的外匯特別會計，而非日銀自身的判斷。</li>
+      <li><strong>「口袋很深，還能撐 30 輪」</strong>：以外匯存底約 1 兆 3,058 億美元（約 209 兆日圓）、每輪約 11 兆日圓粗略計算，約為 18～19 輪；且外匯存底中包含不易立即變現的資產，實際可動用規模更小。「30 輪」屬於高估的推算，且未說明計算依據。</li>
+      <li><strong>「企業天堂、人民地獄」</strong>：這是評論性修辭。實際的受惠與受害結構依產業與收入來源而異（見單元四），並非整齊的二分。</li>
+      <li><strong>標題「瀕臨崩潰危機」</strong>：影片結尾自承「沒那麼誇張、純粹是標題黨」。日本面臨的是政策兩難與結構調整壓力，主流機構並未使用「經濟崩潰」描述當前情勢。</li>
+      <li><strong>被忽略的關鍵因素</strong>：影片未提及日美利差（多數分析視為日圓弱勢的最核心驅動因素）、日銀 6 月升息的具體市場討論，以及數位赤字等新型結構性賣壓；本頁已於單元二、五補上。</li>
+    </ul>
+    <div class="en-summary">
+      <h3>📝 English Summary</h3>
+      <p>Several claims in the original video required correction. The "weakest currency" report comparing the yen to the Turkish lira could not be verified. Currency intervention is decided by the Ministry of Finance, not the Bank of Japan itself. The claim that Japan could fund "30 more rounds" of intervention overstates its usable reserves. The video also omitted the US-Japan interest rate gap, the single most cited driver of yen weakness, which this page adds for a fuller picture.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+    <dl>
+      <dt>exchange rate</dt><dd>匯率——兩種貨幣之間的兌換比率，例如 1 美元兌 160 日圓。</dd>
+      <dt>foreign exchange intervention</dt><dd>匯率干預——政府或央行在外匯市場買賣貨幣以影響匯率；日本由財務大臣決定、日銀執行。</dd>
+      <dt>foreign exchange reserves</dt><dd>外匯存底——一國持有的外幣資產，是匯率干預的「彈藥庫」。</dd>
+      <dt>interest rate differential</dt><dd>利率差——兩國利率水準的差距；日美利差大時，資金流向美元，日圓承壓。</dd>
+      <dt>trade deficit</dt><dd>貿易逆差——進口金額大於出口金額，會增加對外幣的需求、削弱本國貨幣。</dd>
+      <dt>imported inflation</dt><dd>輸入性通膨——因進口商品（尤其能源）價格上漲而引發的國內物價上升。</dd>
+      <dt>digital deficit</dt><dd>數位赤字——支付給海外雲端、軟體、串流服務的費用持續流出，形成新的貨幣賣壓。</dd>
+      <dt>speculative selling</dt><dd>投機性賣壓——投機資金預期貨幣續貶而大量放空，放大匯率波動。</dd>
+      <dt>Strait of Hormuz</dt><dd>荷莫茲海峽——波斯灣油輪必經的咽喉水道，情勢緊張時推升全球油價。</dd>
+      <dt>fiscal policy</dt><dd>財政政策——政府透過支出、稅收與舉債影響經濟的政策工具。</dd>
+      <dt>proactive fiscal policy</dt><dd>積極財政——以擴大政府投資與舉債帶動成長的財政路線；高市政權稱之為「責任ある積極財政」。</dd>
+      <dt>government borrowing</dt><dd>政府舉債——發行公債籌措財源；利率上升時利息負擔隨之加重。</dd>
+      <dt>interest payments</dt><dd>利息支出——政府為其債務支付的利息，升息環境下會壓縮其他預算空間。</dd>
+      <dt>interest rate normalization</dt><dd>利率正常化——把長期超低利率逐步調回正常水準的過程。</dd>
+      <dt>rate hike</dt><dd>升息——央行調高政策利率，可支撐貨幣但增加借貸成本。</dd>
+      <dt>Shunto（spring wage negotiations）</dt><dd>春鬥——日本每年春季的勞資加薪談判；2026 年首次集計平均加薪 5.26%。</dd>
+      <dt>real wages</dt><dd>實質薪資——扣除物價上漲後的薪資購買力；名目加薪若輸給通膨，實質薪資仍下降。</dd>
+      <dt>virtuous cycle</dt><dd>良性循環——加薪、消費、企業獲利互相強化的正向經濟循環。</dd>
+      <dt>policy dilemma</dt><dd>政策兩難——任一選項都有明顯代價的決策困境，如日銀的「升息護匯 vs 護景氣」。</dd>
+      <dt>currency manipulation</dt><dd>匯率操縱——人為長期壓低或控制匯率以取得貿易優勢；美國財政部定期審查主要貿易夥伴。</dd>
+      <dt>economic fundamentals</dt><dd>經濟基本面——成長率、貿易結構、產業競爭力等決定一國經濟體質的根本因素。</dd>
+      <dt>fact-checking</dt><dd>事實查核——驗證資訊來源與數據真偽的過程，是媒體識讀的核心能力。</dd>
+    </dl>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <div class="link-cards">
+    <a class="link-card card-echo" href="https://linwayet.github.io/4ulive/index.html">📚 七月開課・錯中學 ECHO 計劃<small>從錯誤中學習的英文進步方法</small></a>
+    <a class="link-card card-popup" href="https://linwayet.github.io/popup/index">📊 七月開課・學生分析<small>個人化學習診斷與規劃</small></a>
+    <a class="link-card card-line" href="https://line.me/ti/p/~linwayet">💬 加我的 LINE：linwayet<small>直接聯絡林威老師</small></a>
+  </div>
+
+</main>
 </body>
 </html>
