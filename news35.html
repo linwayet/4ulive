@@ -1,757 +1,360 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>仙台シーサイド 4～5天自助完全攻略</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QNAP 威聯通 Computex 2026 AI NAS 全解析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --cream:#FDF6EC; --warm:#FFF9F0;
-  --amber:#E8A83E; --damber:#C47F17;
-  --rust:#C4622D;  --drust:#8B3A1A;
-  --terra:#D4714A;
-  --sage:#5A8A5A;  --dsage:#3A6A3A;
-  --ocean:#4A7A9A; --docean:#2A5A7A;
-  --gold:#D4AF37;
-  --ink:#2C1810;   --muted:#8C6E5A;
-  --blush:#F0D0B0; --sand:#EAD8B8;
-  --peach:#F5B88A;
-  --z1:#E8A83E; --z2:#C4622D; --z3:#5A8A5A;
-  --z4:#4A7A9A; --z5:#8B5A2A;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--cream);font-family:'Noto Sans TC',sans-serif;color:var(--ink);overflow-x:hidden;font-size:14px;}
-
-/* HERO */
-.hero{
-  background:linear-gradient(155deg,#4A2A08 0%,#8A3A10 22%,#C4622D 48%,#E8A83E 78%,#F5D080 100%);
-  padding:52px 18px 68px;text-align:center;position:relative;overflow:hidden;
-}
-.float{position:absolute;opacity:.1;animation:flt ease-in-out infinite;}
-.float:nth-child(1){font-size:36px;top:12%;left:4%;animation-duration:8s;}
-.float:nth-child(2){font-size:24px;top:25%;right:7%;animation-duration:11s;animation-delay:2s;}
-.float:nth-child(3){font-size:28px;bottom:20%;left:10%;animation-duration:9s;animation-delay:1s;}
-.float:nth-child(4){font-size:20px;bottom:30%;right:15%;animation-duration:13s;animation-delay:3s;}
-@keyframes flt{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-15px) rotate(10deg);}}
-.h-badge{display:inline-block;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.38);color:#fff;font-size:11px;letter-spacing:3px;padding:5px 18px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-family:'Noto Serif TC',serif;font-size:clamp(21px,5vw,44px);color:#fff;font-weight:900;line-height:1.25;text-shadow:0 4px 24px rgba(0,0,0,.3);margin-bottom:8px;}
-.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.82);margin-bottom:20px;}
-.pills{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;}
-.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;padding:5px 11px;border-radius:14px;}
-
-/* PREMISE BOX */
-.premise{margin:14px 15px;padding:14px 15px;border-radius:16px;
-  background:linear-gradient(135deg,#FFF3E0,#FFE5C8);
-  border-left:5px solid var(--amber);
-  font-size:12px;line-height:1.9;}
-.premise strong{font-size:13px;color:var(--drust);display:block;margin-bottom:5px;}
-.premise .tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px;}
-.ptag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:10px;color:#fff;font-weight:700;}
-.ptag.w{background:var(--sage);}
-.ptag.tx{background:var(--terra);}
-.ptag.tr{background:var(--ocean);}
-
-/* NAV */
-.nav{display:flex;background:#fff;border-bottom:2px solid var(--blush);position:sticky;top:0;z-index:200;box-shadow:0 3px 14px rgba(0,0,0,.09);overflow-x:auto;}
-.nav::-webkit-scrollbar{display:none;}
-.nb{flex-shrink:0;padding:12px 12px;font-size:10.5px;font-weight:500;cursor:pointer;border:none;background:none;color:var(--muted);transition:all .25s;border-bottom:3px solid transparent;font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
-.nb.on{color:var(--rust);border-bottom-color:var(--rust);font-weight:700;}
-.nb:hover{background:var(--cream);}
-
-/* TABS */
-.tab{display:none;animation:fu .38s ease both;}
-.tab.on{display:block;}
-@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-
-/* SECTION TITLE */
-.stitle{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;color:var(--rust);
-  padding:20px 15px 6px;display:flex;align-items:center;gap:9px;}
-.stitle::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--amber),transparent);}
-
-/* ALERT */
-.al{margin:10px 15px;padding:12px 14px;border-radius:13px;font-size:11.5px;line-height:1.85;}
-.al strong{display:block;font-size:13px;margin-bottom:4px;}
-.al.warn{background:#FFF3CD;border-left:4px solid var(--amber);color:#856404;}
-.al.info{background:#E3EEF5;border-left:4px solid var(--ocean);color:#1a4a60;}
-.al.good{background:#E5F0E5;border-left:4px solid var(--sage);color:#1a4a1a;}
-.al.hot{background:#FDE8DF;border-left:4px solid var(--rust);color:var(--drust);}
-
-/* ZONE LEGEND */
-.zone-wrap{padding:0 15px 10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.zone-box{background:#fff;border-radius:14px;padding:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);}
-.zone-box .zh{font-size:12px;font-weight:700;color:#fff;padding:4px 10px;border-radius:8px;display:inline-block;margin-bottom:6px;}
-.zone-box p{font-size:10.5px;color:var(--muted);line-height:1.7;}
-
-/* SPOT CARD */
-.sc-wrap{padding:0 15px 6px;}
-.sc{background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);margin-bottom:13px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
-.sc:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(0,0,0,.13);}
-.sc-hd{padding:14px 15px;display:flex;align-items:flex-start;gap:11px;}
-.sc-hd.walk{background:linear-gradient(135deg,#3A6A3A,#6B9B6B);}
-.sc-hd.taxi{background:linear-gradient(135deg,#8B5A1A,#D4884A);}
-.sc-hd.train{background:linear-gradient(135deg,#2A5A7A,#4A9ACA);}
-.sc-hd.bus{background:linear-gradient(135deg,#5A4A8A,#8A7ABA);}
-.sc-ic{font-size:34px;flex-shrink:0;}
-.sc-hi h3{font-family:'Noto Serif TC',serif;font-size:15px;font-weight:900;color:#fff;margin-bottom:1px;}
-.sc-hi .jn{font-size:10px;color:rgba(255,255,255,.78);margin-bottom:4px;}
-.sc-hi .badges{display:flex;gap:5px;flex-wrap:wrap;}
-.badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:9.5px;color:#fff;font-weight:700;}
-.bd-walk{background:rgba(255,255,255,.25);}
-.bd-taxi{background:rgba(255,255,255,.25);}
-.bd-train{background:rgba(255,255,255,.25);}
-.bd-time{background:rgba(0,0,0,.25);}
-.bd-price{background:rgba(0,0,0,.2);}
-.bd-free{background:#E8A83E;}
-.sc-bd{padding:13px 15px;}
-.sc-bd p{font-size:11.5px;line-height:1.85;color:#555;margin-bottom:8px;}
-.sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
-.st{display:inline-block;font-size:10px;padding:2px 9px;border-radius:9px;color:#fff;}
-.st-w{background:var(--sage);}
-.st-tx{background:var(--terra);}
-.st-tr{background:var(--ocean);}
-.st-bu{background:#7A6ABB;}
-.st-fr{background:var(--amber);}
-.st-pay{background:var(--rust);}
-.how{background:var(--cream);border-radius:10px;padding:9px 11px;font-size:11px;display:flex;gap:8px;align-items:flex-start;}
-.how .hi{font-size:17px;flex-shrink:0;}
-.how .hb{line-height:1.8;color:var(--ink);}
-.how .hb .jn{color:var(--muted);font-size:10px;display:block;}
-
-/* MASTER TABLE */
-.tbl-wrap{padding:0 15px 16px;overflow-x:auto;}
-table.mt{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);}
-table.mt th{background:var(--sand);padding:9px 10px;font-size:10.5px;font-weight:700;color:var(--ink);text-align:left;white-space:nowrap;}
-table.mt td{padding:9px 10px;font-size:10.5px;border-bottom:1px solid #f0e8d8;vertical-align:middle;line-height:1.6;}
-table.mt tr:last-child td{border-bottom:none;}
-table.mt tr:nth-child(even) td{background:#FFF9F2;}
-.zone-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:middle;}
-
-/* DAY PLAN */
-.dp-wrap{padding:0 15px 14px;}
-.dp{background:#fff;border-radius:18px;box-shadow:0 4px 18px rgba(0,0,0,.08);overflow:hidden;margin-bottom:13px;}
-.dp-hd{padding:15px;font-family:'Noto Serif TC',serif;font-size:14px;font-weight:900;color:#fff;}
-.dp-hd span{display:block;font-size:10px;opacity:.8;font-weight:300;margin-bottom:2px;}
-.dp-hd.c1{background:linear-gradient(135deg,#3A6A9A,#5AAACA);}
-.dp-hd.c2{background:linear-gradient(135deg,#3A6A3A,#6B9B6B);}
-.dp-hd.c3{background:linear-gradient(135deg,#8B5A1A,#D4884A);}
-.dp-hd.c4{background:linear-gradient(135deg,#5A3A8A,#8A6ABA);}
-.tl{padding:13px 15px;position:relative;}
-.tl::before{content:'';position:absolute;left:25px;top:13px;bottom:13px;width:2px;background:linear-gradient(180deg,var(--amber),var(--ocean));}
-.ti{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
-.tdot{width:16px;height:16px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);flex-shrink:0;margin-top:2px;z-index:1;}
-.tdot.a{background:var(--amber);}
-.tdot.r{background:var(--rust);}
-.tdot.g{background:var(--sage);}
-.tdot.b{background:var(--ocean);}
-.ttime{font-size:10px;font-weight:700;color:#fff;padding:2px 6px;border-radius:6px;flex-shrink:0;min-width:40px;text-align:center;margin-top:2px;}
-.ttime.a{background:var(--amber);}
-.ttime.r{background:var(--rust);}
-.ttime.g{background:var(--sage);}
-.ttime.b{background:var(--ocean);}
-.tc{flex:1;}
-.tc h4{font-family:'Noto Serif TC',serif;font-size:13px;font-weight:700;color:var(--ink);}
-.tc .jn{font-size:10px;color:var(--muted);margin-bottom:2px;}
-.tc p{font-size:11px;color:#666;line-height:1.7;}
-
-/* TIPS */
-.tips-wrap{padding:0 15px 14px;}
-.tip{display:flex;gap:11px;align-items:flex-start;background:#fff;border-radius:14px;padding:13px;margin-bottom:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
-.tip.a{border-left:4px solid var(--amber);}
-.tip.b{border-left:4px solid var(--ocean);}
-.tip.g{border-left:4px solid var(--sage);}
-.tip.r{border-left:4px solid var(--rust);}
-.tip-ic{font-size:24px;flex-shrink:0;}
-.tip-bd h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;font-family:'Noto Serif TC',serif;}
-.tip-bd p{font-size:11px;color:#666;line-height:1.75;}
-
-/* FOOTER */
-.footer{text-align:center;padding:22px 18px 30px;background:linear-gradient(135deg,#2C1810,#5A3010);color:rgba(255,255,255,.7);font-size:11px;}
-.footer p{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--amber);margin-bottom:6px;}
+  :root{
+    --bg:#F8F4ED; --card:#FFFDF8; --ink:#3A2E22;
+    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+    --accentA:#E65100; --accentB:#6A1B9A;
+    --sumBg:#FBF3E7; --sumBorder:#E0A96D; --glossBg:#F3EEE4;
+    --line:#E8DECB; --green:#06C755;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px; line-height:1.85; font-weight:400;
+  }
+  main{max-width:820px; margin:0 auto; padding:24px 18px 64px;}
+  /* 標題區 */
+  .masthead{text-align:center; padding:18px 6px 8px;}
+  .masthead h1{
+    font-size:2.7rem; font-weight:700; color:var(--h1); margin:.2em auto;
+    display:inline-block; padding:14px 26px; line-height:1.3;
+    border:4px solid var(--h1); border-radius:18px; background:var(--card);
+    box-shadow:0 6px 16px rgba(192,57,43,.14);
+  }
+  .masthead .sub{font-size:1.95rem; color:var(--h2); font-weight:700; margin:.5em auto .2em;}
+  .masthead .maker{
+    font-family:'Inter',sans-serif; font-size:1.25rem; color:var(--h2);
+    font-weight:700; letter-spacing:.5px; margin:.4em auto;
+  }
+  /* 連結卡 */
+  .linkcards{display:flex; flex-wrap:wrap; gap:16px; margin:22px 0;}
+  .linkcards a{
+    flex:1 1 220px; min-height:84px; display:flex; flex-direction:column;
+    justify-content:center; text-decoration:none; color:#fff; border-radius:16px;
+    padding:16px 18px; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,.12);
+  }
+  .linkcards a .t{font-size:1.18rem; margin-bottom:4px;}
+  .linkcards a .d{font-size:.95rem; font-weight:400; line-height:1.5; opacity:.97;}
+  .lc-echo{background:var(--h1);}
+  .lc-pop{background:var(--h2);}
+  .lc-line{background:var(--green);}
+  /* 單元地圖 */
+  nav#unit-map{
+    background:var(--card); border:2px solid var(--line); border-radius:18px;
+    padding:20px 18px; margin:26px 0;
+  }
+  nav#unit-map .nav-title{font-size:1.5rem; font-weight:700; color:var(--h3); margin:0 0 14px;}
+  nav#unit-map .maplist{display:flex; flex-direction:column; gap:14px;}
+  nav#unit-map a{
+    display:flex; align-items:center; min-height:72px; text-decoration:none;
+    color:#fff; font-weight:700; font-size:1.12rem; border-radius:14px; padding:12px 18px;
+  }
+  .m1{background:var(--h1);} .m2{background:var(--accentA);}
+  .m3{background:var(--h3);} .m4{background:var(--accentB);}
+  .m5{background:#7A5230;} .m6{background:var(--h2);}
+  .m7{background:#A86A4F;} .m8{background:#6E7B3D;}
+  .m9{background:#B0563A;} .mg{background:#8A7B6A;}
+  /* 單元卡 */
+  section{
+    background:var(--card); border-radius:16px; padding:24px 22px 16px;
+    margin:24px 0; box-shadow:0 4px 14px rgba(58,46,34,.07); border-top:8px solid var(--h2);
+  }
+  section h2{font-size:1.95rem; color:var(--h2); font-weight:700; margin:.1em 0 .5em; line-height:1.4;}
+  section h3{font-size:1.5rem; color:var(--h3); font-weight:700; margin:1em 0 .3em;}
+  section p{margin:.7em 0;}
+  .kw{color:var(--accentA); font-weight:700;}
+  .kw2{color:var(--accentB); font-weight:700;}
+  .tag{display:inline-block; font-size:.95rem; font-weight:700; padding:2px 12px; border-radius:999px; margin-right:6px;}
+  .fact{background:#E3F0DD; color:#2E7D32;}
+  .guess{background:#FBEBCB; color:#9A6B12;}
+  .opin{background:#EDE2F3; color:#6A1B9A;}
+  ul{margin:.6em 0; padding-left:1.3em;} li{margin:.45em 0;}
+  /* 英文摘要 */
+  .ensum{
+    background:var(--sumBg); border-left:8px solid var(--sumBorder);
+    border-radius:0 12px 12px 0; padding:16px 20px; margin:18px 0 6px;
+    font-family:'Inter',sans-serif; font-size:1.05rem; line-height:1.7; color:#5A4632;
+  }
+  .ensum .h{font-weight:700; color:var(--accentA); display:block; margin-bottom:6px; font-size:1.1rem;}
+  /* 回到地圖 */
+  .back-to-map{
+    display:inline-flex; align-items:center; justify-content:center; min-height:56px;
+    margin:16px 0 4px; padding:10px 22px; background:#EFE7D7; color:var(--ink);
+    text-decoration:none; font-weight:700; border-radius:12px; font-size:1.05rem;
+  }
+  /* glossary */
+  #glossary{border-top-color:#8A7B6A; background:var(--glossBg);}
+  #glossary h2{color:#6B5B43;}
+  .gitem{margin:.7em 0; padding-bottom:.7em; border-bottom:1px dashed var(--line);}
+  .gterm{font-family:'Inter',sans-serif; font-weight:700; color:var(--accentA);}
+  /* section accent overrides matching map */
+  #unit1{border-top-color:var(--h1);}
+  #unit2{border-top-color:var(--accentA);}
+  #unit3{border-top-color:var(--h3);}
+  #unit4{border-top-color:var(--accentB);}
+  #unit5{border-top-color:#7A5230;}
+  #unit6{border-top-color:var(--h2);}
+  #unit7{border-top-color:#A86A4F;}
+  #unit8{border-top-color:#6E7B3D;}
+  #unit9{border-top-color:#B0563A;}
+  @media (max-width:560px){
+    body{font-size:20px;}
+    .masthead h1{font-size:2.05rem; padding:12px 16px;}
+    .masthead .sub{font-size:1.5rem;}
+    main{padding:16px 12px 48px;}
+    section{padding:20px 16px 14px;}
+  }
 </style>
 </head>
 <body>
+<main>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="float">🌊</div><div class="float">⚓</div>
-  <div class="float">🌸</div><div class="float">🐟</div>
-  <div class="h-badge">4～5天自助旅行 · 無大行李版 · 完全攻略</div>
-  <h1>仙台シーサイド<br>自助旅行景點指南</h1>
-  <p class="hero-sub">天然溫泉 海神の湯 · 仙台港エリア · 步行・計程車・電車全攻略</p>
-  <div class="pills">
-    <span class="pill">🚶 步行30分以內</span>
-    <span class="pill">🚕 計程車20分以內</span>
-    <span class="pill">🚃 電車1小時以內</span>
-    <span class="pill">🎒 無大行李出遊</span>
-  </div>
-</div>
+  <!-- 標題 -->
+  <header class="masthead">
+    <h1>QNAP 威聯通　Computex 2026<br>AI NAS 全解析</h1>
+    <div class="sub">當儲存裝置長出 AI 大腦：語意搜尋、地端模型、智慧監控的客觀盤點</div>
+    <div class="maker">林威老師與 AI agent 團隊製作</div>
+  </header>
 
-<!-- PREMISE -->
-<div class="premise">
-  <strong>📋 本指南前提說明</strong>
-  住宿 4～5 天，<strong>第一天落地</strong>和<strong>最後一天離開</strong>由導遊或計程車接送，大行李交由旅館保管，平日出遊只帶隨身小包，完全不受行李拖累！以下景點依三個交通範圍分類，讓您每天輕鬆規劃。
-  <div class="tag-row">
-    <span class="ptag w">🚶 步行30分以內 ＝ 超方便</span>
-    <span class="ptag tx">🚕 計程車20分以內 ＝ 輕鬆到達</span>
-    <span class="ptag tr">🚃 電車1小時以內 ＝ 一日小旅行</span>
-  </div>
-</div>
-
-<!-- NAV -->
-<div class="nav">
-  <button class="nb on" onclick="sw('spots',this)">🗺️ 全景點列表</button>
-  <button class="nb" onclick="sw('zone',this)">🟡 依距離分區</button>
-  <button class="nb" onclick="sw('days',this)">📅 每日行程</button>
-  <button class="nb" onclick="sw('transport',this)">🚃 交通說明</button>
-  <button class="nb" onclick="sw('tips',this)">💡 實用技巧</button>
-</div>
-
-<!-- ═══ TAB：全景點列表 ═══ -->
-<div id="tab-spots" class="tab on">
-
-  <div class="al hot"><strong>🌊 Zone A：步行30分以內（飯店直接出發！）</strong>完全不需要電車或計程車，穿上舒服的鞋子就能去，隨身小包輕裝出行最爽！</div>
-
-  <div class="stitle">🟢 步行可達景點</div>
-  <div class="sc-wrap">
-
-    <!-- 仙台港海邊 -->
-    <div class="sc">
-      <div class="sc-hd walk">
-        <div class="sc-ic">🌊</div>
-        <div class="sc-hi">
-          <h3>仙台港・海邊散步道</h3>
-          <div class="jn">せんだいこう · みなとオアシス</div>
-          <div class="badges">
-            <span class="badge bd-walk">🚶 步行即達</span>
-            <span class="badge bd-free">完全免費</span>
-          </div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-fr">🆓 免費</span><span class="st st-w">🚶 步行0分</span></div>
-        <p>飯店就緊鄰仙台港！走出去就是太平洋，港口有大型貨船停靠，傍晚夕陽染紅整個海面非常美。附近有「みなとオアシス仙台港」設施群，年訪客 450 萬人，東北最大海港觀光區。</p>
-        <div class="how"><div class="hi">🚶</div><div class="hb">飯店正門走出去即達，<strong>0分鐘</strong>。<span class="jn">仙台港・宮城野区中野エリア</span></div></div>
-      </div>
-    </div>
-
-    <!-- 三井アウトレット -->
-    <div class="sc">
-      <div class="sc-hd walk">
-        <div class="sc-ic">🛍️</div>
-        <div class="sc-hi">
-          <h3>三井アウトレットパーク 仙台港</h3>
-          <div class="jn">みついアウトレットパーク せんだいこう</div>
-          <div class="badges"><span class="badge bd-walk">🚶 步行20分</span><span class="badge bd-free">入場免費</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-w">🚶 步行20分</span><span class="st st-fr">入場免費</span><span class="st st-pay">💴 退稅¥5,500↑</span></div>
-        <p>東北最大 Outlet！120 間品牌精品，Nike・Coach・Adidas・無印良品等齊全，可憑護照申請退稅。廣場中央的 50 公尺摩天輪（ポートフラワー）是仙台港地標，夜晚亮燈超美！</p>
-        <div class="how"><div class="hi">🚶</div><div class="hb">飯店步行約 <strong>20 分鐘</strong>，沿著港口大道直走即達。<span class="jn">三井アウトレットパーク仙台港 / 中野4丁目</span></div></div>
-      </div>
-    </div>
-
-    <!-- キリン工廠 -->
-    <div class="sc">
-      <div class="sc-hd walk">
-        <div class="sc-ic">🍺</div>
-        <div class="sc-hi">
-          <h3>キリンビアポート仙台</h3>
-          <div class="jn">キリンビール仙台工場・レストラン</div>
-          <div class="badges"><span class="badge bd-walk">🚶 步行15分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-w">🚶 步行15分</span><span class="st st-pay">💴 餐廳消費</span></div>
-        <p>工廠直送最新鮮的キリン生啤酒！附設觀光餐廳提供仙台牛舌・東北料理，晚餐首選。<br>平日15:00～20:00・週末13:00～20:00。口碑評論一致強烈推薦！</p>
-        <div class="how"><div class="hi">🚶</div><div class="hb">飯店步行約 <strong>15 分鐘</strong>。<span class="jn">キリンビアポート仙台 / 宮城野区中野3丁目</span></div></div>
-      </div>
-    </div>
-
-    <!-- 仙台うみの杜水族館（巴士也可） -->
-    <div class="sc">
-      <div class="sc-hd walk">
-        <div class="sc-ic">🐬</div>
-        <div class="sc-hi">
-          <h3>仙台うみの杜水族館</h3>
-          <div class="jn">せんだいうみのもりすいぞくかん</div>
-          <div class="badges"><span class="badge bd-walk">🚶 步行25分</span><span class="badge bd-walk">🚌 巴士7分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-w">🚶 步行25分</span><span class="st st-bu">🚌 巴士¥200・7分</span><span class="st st-pay">💴 大人¥2,400</span></div>
-        <p>東北最大水族館！三陸海洋大水槽重現仙台灣生態，海豚・企鵝表演不設隔板玻璃，距離感超近！還有深海ラボ特展。建議在這裡消磨半天，9:00～17:30開放。</p>
-        <div class="how"><div class="hi">🚌</div><div class="hb">中野栄駅バス乗り場1番から「仙台うみの杜水族館線」約 <strong>7分・¥200</strong>（每30分一班）；或飯店步行25分。<span class="jn">ミヤコーバス・仙台うみの杜水族館線</span></div></div>
-      </div>
-    </div>
-
-    <!-- ミニストップ・スーパー -->
-    <div class="sc">
-      <div class="sc-hd walk">
-        <div class="sc-ic">🏪</div>
-        <div class="sc-hi">
-          <h3>ミニストップ・激安スーパー</h3>
-          <div class="jn">周辺コンビニ・スーパーマーケット</div>
-          <div class="badges"><span class="badge bd-walk">🚶 步行4分～15分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-w">🚶 步行4分</span><span class="st st-fr">生活便利</span></div>
-        <p>ミニストップ便利商店步行4分可達，24小時全年無休。激安スーパー步行約15分，生鮮食品・日用品・宮城名產伴手禮齊全，晚上回飯店前可以採購宵夜！</p>
-        <div class="how"><div class="hi">🚶</div><div class="hb">ミニストップ：步行 <strong>4 分</strong>。激安スーパー：步行約 <strong>15 分</strong>。<span class="jn">宮城野区中野エリア</span></div></div>
-      </div>
-    </div>
-
+  <!-- 頂部連結卡 -->
+  <div class="linkcards">
+    <a class="lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">🟥 七月課程・錯中學 ECHO 計劃</span>
+      <span class="d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lc-pop" href="https://linwayet.github.io/popup/index">
+      <span class="t">🟦 七月課程・學生分析</span>
+      <span class="d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">🟩 加我的 LINE：linwayet</span>
+      <span class="d">直接聯絡林威老師</span>
+    </a>
   </div>
 
-  <div class="al hot" style="margin-top:6px;"><strong>🚕 Zone B：計程車20分以內（輕鬆小旅行）</strong>從中野栄駅叫計程車或搭計程車直達，費用約¥1,000～2,500，快速又舒適。</div>
-
-  <div class="stitle">🟠 計程車20分以內景點</div>
-  <div class="sc-wrap">
-
-    <!-- 荒浜 -->
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">🏖️</div>
-        <div class="sc-hi">
-          <h3>仙台荒浜・海岸散策</h3>
-          <div class="jn">あらはまかいがん・東日本大震災遺構</div>
-          <div class="badges"><span class="badge bd-taxi">🚕 計程車15分</span><span class="badge bd-free">海邊散步</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tx">🚕 計程車15分</span><span class="st st-fr">🆓 海岸免費</span><span class="st st-pay">💴 震災遺構¥600</span></div>
-        <p>仙台最著名的海灘，白沙松林綿延美麗。同時也保存了 2011 年東日本大震災的遺構「荒浜小学校」，可以深刻感受那段歷史。是兼具自然美景與歷史省思的景點。</p>
-        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>15 分・¥1,500 前後</strong>（或巴士：中野栄駅から路線バスで荒浜方面）。<span class="jn">仙台市若林区荒浜・震災遺構荒浜小学校</span></div></div>
-      </div>
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <p class="nav-title">📍 單元地圖 Unit Map</p>
+    <div class="maplist">
+      <a class="m1" href="#unit1">單元一　展會主軸與 AI NAS 硬體</a>
+      <a class="m2" href="#unit2">單元二　Qsirch 7.1.0 語意搜尋與自動逐字稿</a>
+      <a class="m3" href="#unit3">單元三　QuAgent 與整合 App：自然語言操控</a>
+      <a class="m4" href="#unit4">單元四　地端大型語言模型（Edge AI）</a>
+      <a class="m5" href="#unit5">單元五　Mega Scale-Out NAS 與資料保護</a>
+      <a class="m6" href="#unit6">單元六　HDP for Business：備份與還原驗證</a>
+      <a class="m7" href="#unit7">單元七　連接與網路硬體：Thunderbolt、交換器、JBOD</a>
+      <a class="m8" href="#unit8">單元八　資安與智慧監控：ADRA NDR 與 QVR</a>
+      <a class="m9" href="#unit9">單元九　補充與澄清（缺漏分析）</a>
+      <a class="mg" href="#glossary">術語表 Glossary</a>
     </div>
+  </nav>
 
-    <!-- 多賀城跡 -->
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">🏛️</div>
-        <div class="sc-hi">
-          <h3>多賀城跡・東北歴史博物館</h3>
-          <div class="jn">たがじょうあと・とうほくれきしはくぶつかん</div>
-          <div class="badges"><span class="badge bd-taxi">🚕 計程車15分</span><span class="badge bd-train">🚃 電車10分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tx">🚕 計程車15分</span><span class="st st-tr">🚃 仙石線10分</span><span class="st st-pay">💴 博物館¥600</span></div>
-        <p>1,300年前奈良時代東北地方的政治中心「多賀城」遺跡，是日本的特別史跡！旁邊的「東北歴史博物館」有免費シャトルバス從多賀城駅發車，展示東北各時代文物。</p>
-        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>15 分・¥1,500</strong>，或仙石線「多賀城駅」下車（中野栄から10分・¥200）。<span class="jn">多賀城駅からシャトルバスで博物館まで約15分（無料）</span></div></div>
-      </div>
+  <!-- 單元一 -->
+  <section id="unit1">
+    <h2>單元一　展會主軸與 AI NAS 硬體</h2>
+    <p>威聯通（QNAP）在 <span class="kw">Computex 2026</span> 的攤位（位於台北南港展覽館一館 J1209a），以「<span class="kw">Ready and Recovery</span>（就緒與復原）」為主題，展示一套圍繞「資料主權（data sovereignty）、AI 整合、與資安韌性（cyber-resilience）」的產品生態。董事長張益生（Meiji Chang）將方向定調為「資料完整性與在地化智慧的結合」。</p>
+    <p>硬體上，QNAP 推出採用 <span class="kw">Intel Core Ultra Series 3 處理器</span>（開發代號 Panther Lake，2026 年初上市、採 Intel 18A 製程，內含可分擔 AI 推論的整合式繪圖核心 iGPU 與神經處理單元 NPU）的精巧型 8 槽與 6 槽 AI NAS。展場現場的旗艦機型為 <span class="kw">TVS-AIh1688ATX</span>，提供 12 個 SATA 硬碟槽加 4 個 U.2 NVMe／SATA SSD 槽，整合 CPU＋GPU＋NPU 後對外宣稱可達約 36 TOPS 的 AI 運算力，主打人臉與物件辨識等影像應用。另有一台全快閃（all-flash，全部使用 SSD）機型，主打更快的資料存取速度。</p>
+    <p class="small"><span class="tag fact">✅ 事實</span>逐字稿中的「Payson Lakes」為口誤，正確為 Intel「Panther Lake」處理器。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      At Computex 2026, QNAP presented an enterprise ecosystem under the theme "Ready and Recovery," focusing on data sovereignty, AI integration, and cyber-resilience. It introduced compact 6-bay and 8-bay AI NAS units built on Intel Core Ultra Series 3 (Panther Lake) processors. These chips combine CPU, integrated GPU, and an NPU to handle AI inference locally. The flagship TVS-AIh1688ATX claims up to 36 TOPS for image-recognition workloads.
     </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
 
-    <!-- 七ヶ浜 -->
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">🌅</div>
-        <div class="sc-hi">
-          <h3>七ヶ浜・海景公園</h3>
-          <div class="jn">しちがはま・宮城の小さな海辺の町</div>
-          <div class="badges"><span class="badge bd-taxi">🚕 計程車20分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tx">🚕 計程車20分</span><span class="st st-fr">🆓 海景免費</span></div>
-        <p>宮城縣松島灣入口的小漁村，海岸線輪廓獨特，有礁石・白沙灘・松林，景色非常原始自然，比大眾景點更清靜。適合想靜靜欣賞海景、走走海邊步道的旅人。</p>
-        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>20 分・¥2,000 前後</strong>。<span class="jn">宮城郡七ヶ浜町・松島湾沿い</span></div></div>
-      </div>
+  <!-- 單元二 -->
+  <section id="unit2">
+    <h2>單元二　Qsirch 7.1.0 語意搜尋與自動逐字稿</h2>
+    <p><span class="kw">Qsirch</span> 是 QNAP NAS 的全文搜尋引擎。新版 <span class="kw">Qsirch 7.1.0</span> 加入了 <span class="kw">語意搜尋（semantic search）</span>：使用者不再只能用關鍵字（keyword）查找，而是可用一句自然語言描述檔案內容，系統就能跨圖片、影片、文件等格式找出相關資料。</p>
+    <p>展場示範以「足球射門」為例：輸入後系統列出相關圖片，並把影片中與「射門」相關的<span class="kw2">片段（clips）</span>裁切出來，點選即可直接跳到該段落，省去逐一瀏覽整支影片的時間。系統在資料匯入時即讀取內容並建立索引，並能依影片語言自動生成<span class="kw2">逐字稿（automatic transcription）</span>，讓影音內容也能被搜尋。</p>
+    <p>就「文章說了什麼」而言，這是把「以關鍵字找檔案」升級為「以意義找內容」的功能展示；至於搜尋準確率、索引速度與適用語言範圍，展場並未提供數據（見單元九）。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      Qsirch is QNAP's NAS search engine, and version 7.1.0 adds AI-driven semantic search. Instead of typing exact keywords, users can describe what a file contains in plain language and retrieve images, videos, and documents that match. In a demo, a query for a "soccer shot" returned relevant images and trimmed video clips that jump straight to the moment. The system indexes content on import and can auto-generate transcripts so audio and video become searchable too. No accuracy or speed figures were disclosed at the booth.
     </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
 
-    <!-- 岩沼・竹駒神社 -->
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">⛩️</div>
-        <div class="sc-hi">
-          <h3>岩沼・竹駒神社</h3>
-          <div class="jn">いわぬま・たけこまじんじゃ</div>
-          <div class="badges"><span class="badge bd-taxi">🚕 計程車20分</span><span class="badge bd-train">🚃 電車+バス</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tx">🚕 計程車20分</span><span class="st st-fr">參拜免費</span></div>
-        <p>仙台近郊著名的稻荷神社，求商業繁盛・招財・開運的能量景點。朱紅鳥居排列整齊壯觀，尤其春天梅花盛開時期美不勝收。可與金蛇水神社一起列為「仙台南部神社巡禮」。</p>
-        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>20 分・¥2,000</strong>，或JR常磐線「岩沼駅」下車徒歩15分。<span class="jn">宮城県岩沼市稲荷町1-1</span></div></div>
-      </div>
+  <!-- 單元三 -->
+  <section id="unit3">
+    <h2>單元三　QuAgent 與整合 App：自然語言操控</h2>
+    <p><span class="kw">QuAgent</span> 是 QNAP 定位為 NAS「AI 大腦」的<span class="kw2">AI 對話代理（AI chat agent）</span>。管理者可用自然語言下達指令，例如詢問「我的 NAS 目前安全嗎？」系統會回報高階風險（high-level risks）；或詢問「哪些 App 需要更新？」「昨天的備份是否成功？」等，省去手動翻查各項設定。</p>
+    <p>行動端方面，QNAP 將原先約四到五個分散的管理 App 整合為一款<span class="kw2">整合式行動 App</span>，提供單一儀表板，集中呈現檔案整理、相片（Photos）、檔案（Files）、備份，以及 CPU、記憶體、儲存空間等系統監控資訊。該 App 也內嵌了 QuAgent，使用者可在手機上以對話方式操控 NAS。</p>
+    <p>這類功能的價值在於「降低操作門檻」；但自然語言指令的判讀正確性、誤操作風險與權限控管細節，展場示範並未深入說明。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      QuAgent is QNAP's AI chat agent, described as the "brain" of the NAS. Administrators can manage the system with natural-language requests, such as checking security status, asking which apps need updates, or confirming whether last night's backup succeeded. On mobile, QNAP merged four to five separate management apps into one unified app with a single dashboard for files, photos, backup, and system monitoring. QuAgent is embedded in that app so the NAS can be controlled conversationally from a phone.
     </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
 
-    <!-- 金蛇水神社 (已去過) -->
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">🐍</div>
-        <div class="sc-hi">
-          <h3>金蛇水神社（此次已參觀）</h3>
-          <div class="jn">かなへびすいじんじゃ・宮城県岩沼市</div>
-          <div class="badges"><span class="badge bd-taxi">🚕 計程車約18分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tx">🚕 計程車18分</span><span class="st st-fr">東北最強財運</span></div>
-        <p>東北最強能量景點！已在此次旅行參觀過。若未來再訪，5月九龍藤・4月牡丹也各有不同季節美景可期待。後厄年（民國54年）特別推薦再次參拜祈求平安！</p>
-        <div class="how"><div class="hi">🚕</div><div class="hb">計程車約 <strong>18 分・¥1,800</strong>。<span class="jn">宮城県岩沼市三色吉水神7</span></div></div>
-      </div>
+  <!-- 單元四 -->
+  <section id="unit4">
+    <h2>單元四　地端大型語言模型（Edge AI）</h2>
+    <p>QNAP 展示一台插入 <span class="kw">NVIDIA RTX Pro 6000</span> 高階顯示卡的 AI NAS，透過 <span class="kw">Container Station</span>（QNAP 的容器平台）執行 <span class="kw">Google Gemma 4</span> 開源大型語言模型（LLM），搭配 <span class="kw2">AnythingLLM</span> 前端介面。Gemma 4 為 Google 於 2026 年 4 月發表的開源模型，可在自有硬體上執行。</p>
+    <p>現場示範包含：以本機 AI 依主題生成 PowerPoint 簡報、串接公司資料庫撈出各國營收，以及設定<span class="kw2">AI Agent 自動化排程</span>（例如每週日自動產出業績簡報、週一上班前送達）。QNAP 強調的訴求是<span class="kw">「資料留在地端、不上雲」</span>，適合不願將敏感資料送上雲端的企業。</p>
+    <p>需要留意的是，「地端」並不等於「免成本」或「自動安全」。這類配置的硬體門檻與耗電、以及地端部署本身的安全管理，是被展示淡化的面向（見單元九）。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      QNAP showed an AI NAS fitted with an NVIDIA RTX Pro 6000 GPU, running Google's open-source Gemma 4 model inside Container Station with an AnythingLLM front end. Demos included generating a PowerPoint locally, querying a company database for revenue by country, and scheduling AI agents to produce weekly reports automatically. The selling point is keeping data on-premises rather than in the cloud. However, "local" does not automatically mean cheaper or more secure, a nuance the demo downplayed.
     </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
 
+  <!-- 單元五 -->
+  <section id="unit5">
+    <h2>單元五　Mega Scale-Out NAS 與資料保護</h2>
+    <p>QNAP 推出新產品線 <span class="kw">Mega Scale-Out NAS</span>。傳統 NAS 多採<span class="kw2">縱向擴充（scale-up）</span>，加裝硬體時效能不一定隨之提升；<span class="kw">橫向擴充（scale-out）</span>則是當容量或效能不足時，可持續疊加節點（node），資料與服務隨之擴展，不必維護兩套系統。</p>
+    <p>資料保護提供兩種方式：</p>
+    <ul>
+      <li><span class="kw">複本（Replication）</span>：把一份資料複製成兩到三份，分存於不同節點；單一節點故障時可從其他節點取得資料，服務不中斷。概念簡單但占用較多空間。</li>
+      <li><span class="kw">抹除編碼（Erasure Coding）</span>：將資料重新計算後切成許多小塊，分散到不同節點。儲存效率較高，但運算較複雜。</li>
+    </ul>
+    <p>這兩種技術原屬資料中心等級，現被下放至中小企業情境，並非 QNAP 獨有（見單元九的競品脈絡）。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      QNAP introduced the Mega Scale-Out NAS line. Unlike traditional scale-up systems, a scale-out design lets users keep adding nodes as capacity or performance needs grow, without running two separate systems. Two data-protection methods were shown: Replication, which copies data two or three times across nodes for simple redundancy, and Erasure Coding, which recomputes and splits data into small fragments spread across nodes for better storage efficiency. These are established data-center techniques now being offered to smaller businesses.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元六 -->
+  <section id="unit6">
+    <h2>單元六　HDP for Business：備份與還原驗證</h2>
+    <p><span class="kw">HDP for Business</span> 是 QNAP 的全新備份解決方案。其訴求是用單一系統備份企業多種工作負載，涵蓋虛擬機（VM）、實體 PC，以及 SaaS 服務如 Microsoft 365、Google 服務等。</p>
+    <p>此方案強調的重點不只是「能備份」，更是「能完整還原」。其<span class="kw">備份驗證（Backup Verification）</span>機制會對每一次備份的還原過程進行錄影：示範中下載一支 Windows PC 的還原錄影，畫面完整記錄 Windows 開機過程，用以證明備份確實可被成功還原。這樣的影像紀錄，可作為日後內部或外部稽核（audit）時的實證，而非僅憑口頭聲明。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      HDP for Business is QNAP's new backup solution that uses a single system to protect virtual machines, physical PCs, and SaaS services such as Microsoft 365 and Google Workspace. Its emphasis is not only on backing up data but on proving it can be fully restored. A Backup Verification feature records each restore as a video; the demo showed a recording of a Windows PC booting after recovery. Such footage can serve as evidence during internal or external audits rather than relying on verbal assurances.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元七 -->
+  <section id="unit7">
+    <h2>單元七　連接與網路硬體：Thunderbolt、交換器、JBOD</h2>
+    <h3>Thunderbolt NAS</h3>
+    <p>多媒體展區聚焦 <span class="kw">Thunderbolt NAS</span>。旗艦機 TVS-AIh1688ATX 內建兩個 Thunderbolt 4 連接埠，並可透過擴充卡 <span class="kw2">QXP-T52P</span> 升級至 <span class="kw">Thunderbolt 5</span>（雙向頻寬可達 80 Gbps，較前代倍增）。另有內建 Thunderbolt 4 的系列機型，適合中小型影音工作室；預算有限者則有 TBS-h465X，定位個人工作室與 SOHO。</p>
+    <h3>交換器（Switch）與 JBOD</h3>
+    <p>QNAP 的網路<span class="kw2">交換器</span>產品線從 2.5G、10G、25G 到 100G 皆有，也包含適用嚴苛環境的無風扇<span class="kw">工業規格（industrial-grade）</span>機型。此外亦有 <span class="kw2">JBOD</span>（純擴充儲存）系列如 TR-005、TL-D810TC4，具備硬體 RAID 與 USB Type-C 介面。對於本身沒有網路孔的 PC，也可透過 USB 連接，享有 10G 或 25G 網路速度。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      In the multimedia zone, QNAP highlighted Thunderbolt NAS units. The flagship has two built-in Thunderbolt 4 ports and can reach Thunderbolt 5 speeds (up to 80 Gbps bidirectional) via the QXP-T52P expansion card. Other models include built-in Thunderbolt 4 units for small studios and a budget TBS-h465X for SOHO users. QNAP also showed a full switch lineup from 2.5G to 100G, including fanless industrial models, plus JBOD expansion units such as the TR-005 and TL-D810TC4 with hardware RAID and USB Type-C.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元八 -->
+  <section id="unit8">
+    <h2>單元八　資安與智慧監控：ADRA NDR 與 QVR</h2>
+    <h3>ADRA NDR：把資安放進 NAS</h3>
+    <p>QNAP 宣稱率先將 <span class="kw">NDR（網路偵測與回應，Network Detection and Response）</span>能力直接整合進 NAS，產品為 <span class="kw">ADRA NDR X</span>。針對缺乏資安背景的中小企業，可用較小的架構做到弱點分析與防護：NAS 與交換器串接後，若偵測到某台交換器下的裝置（client）異常，即可直接封鎖其存取權限，避免污染整個網路環境。</p>
+    <h3>QVR Surveillance：即時偵測與自然語言搜尋</h3>
+    <p>監控方面，QNAP 與英國影像分析廠商 <span class="kw2">VCA Technology</span> 合作，提供即時偵測，例如落水偵測、區域人數計算、機房煙火偵測、工地跌倒偵測等；事件發生時可用聲音、簡訊等方式通知，不需人員時刻盯著畫面。</p>
+    <p>另提供本機<span class="kw">深度搜尋（deep search）</span>，可用中英文自然語言查找，例如「拿著便當的人」「穿黑色衣服拿著電腦的人」，並支援多重條件圈選與<span class="kw2">軌跡追蹤（trajectory tracking）</span>。系統可串接雲端或地端大型語言模型（安裝 Edge AI 服務），由 AI 依指令自動操作並產出報告。</p>
+    <p>這些影像辨識能力同時帶來隱私與監控倫理議題——尤其「找出特定人」「追蹤其出現的所有鏡頭」——而這正是展場完全未觸及的面向（見單元九）。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      QNAP says it is the first to build Network Detection and Response (NDR) into a NAS, via ADRA NDR X, letting small businesses block a compromised device on a connected switch before it spreads. For surveillance, QNAP partnered with UK analytics firm VCA Technology to offer real-time detection such as drowning, people counting, smoke and fire, and falls, with audio or SMS alerts. A local "deep search" lets users query footage in natural language, for example finding "a person carrying a lunchbox," and supports multi-condition queries and trajectory tracking. These capabilities raise privacy and surveillance-ethics questions the demo did not address.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元九 補充與澄清 -->
+  <section id="unit9">
+    <h2>單元九　補充與澄清（缺漏分析）</h2>
+    <p>原始素材為廠商展場導覽，屬單一口徑的產品行銷。以下針對六個被忽略的面向，補上可查證的脈絡資料；查無公開資料者已標明。</p>
+
+    <h3>① 價格與授權</h3>
+    <p>展場未公布售價。旗艦 TVS-AIh1688ATX 於官方商店目前列為<span class="kw">預購、交期較長</span>，提供 3 年保固（可加購延長至 5 年）。進階功能可能需透過 QNAP <span class="kw2">Software Store</span> 另行取得授權。若採用單元四的地端 LLM 配置，光是 NVIDIA RTX Pro 6000 顯示卡零售價約落在 <span class="kw">8,000～9,000 美元</span>區間，尚未計入主機、硬碟與電力成本。</p>
+
+    <h3>② 準確率與誤判（攸關人命的偵測）</h3>
+    <p>落水、跌倒、煙火等偵測攸關安全，但展場未公布準確率與<span class="kw2">誤報率（false-alarm rate）</span>。就產業常態而言：學術研究在「受控環境」可達 97～98% 的跌倒偵測準確率，但在真實場域，靈敏度常大幅下降（某真實世界研究的平均靈敏度約僅 57%）。實務工程社群也普遍反映，影像分析的誤報是長期痛點，需反覆調校。換言之，<span class="kw">展示效果不等於量產環境的可靠度</span>。</p>
+
+    <h3>③ 地端 AI 的硬體門檻與耗電</h3>
+    <p>「地端跑 AI」需要相稱的硬體。一般而言，7B 參數模型（4-bit 量化）約需 <span class="kw">16GB 記憶體</span>才堪用，13B 以上常需 32GB 以上。GPU 方面，RTX Pro 6000（Workstation 版）滿載功耗達 <span class="kw">600W</span>，需要高階電源與散熱。因此「地端、不上雲」雖能保有資料主權，卻把雲端的訂閱成本，轉換成「前期硬體投資＋持續電費與維運」。</p>
+
+    <h3>④ 競品比較（不是只有 QNAP）</h3>
+    <p>2026 年三大 NAS 品牌的 AI 策略明顯不同：</p>
+    <ul>
+      <li><span class="kw">Synology（群暉）</span>：DSM 的相片 AI（人臉、場景辨識）成熟好用，但截至 2026 年並無官方支援的地端 LLM 路徑，僅能透過容器做 CPU 推論，速度受限。</li>
+      <li><span class="kw">QNAP（威聯通）</span>：具 PCIe 擴充槽與 GPU 支援，是目前較能實際跑地端 LLM 的平台。</li>
+      <li><span class="kw">UGREEN（綠聯）</span>：新進品牌，硬體性價比佳，但生態系成熟度仍在追趕。</li>
+    </ul>
+    <p>Scale-out 與 Erasure Coding 亦屬業界常見技術，並非 QNAP 獨家。</p>
+
+    <h3>⑤ 隱私與監控倫理</h3>
+    <p>單元八的「找出特定人」「追蹤其所有出現鏡頭」涉及個人生物特徵與行蹤資料。依台灣《<span class="kw">個人資料保護法</span>》，蒐集、處理、利用個資原則上需當事人同意，或具備公益、必要性等正當依據；大法官釋字第 535 號亦限制不分時間、地點、對象的任意盤查。人權團體並提醒<span class="kw2">功能蠕變（function creep）</span>風險——系統用途日後可能悄悄擴張，超出最初宣稱範圍。企業導入影像辨識前，宜先釐清告知、同意、保存期限與權限控管。</p>
+
+    <h3>⑥ 實務限制（替代失敗案例）</h3>
+    <p>公開資料中暫無 QNAP 此次新品的失敗案例，但可從共通限制推估：CPU 推論速度慢，要達到互動式體驗通常需外接 GPU（例如 Llama 3.1 8B 在 RTX 3060 約 60～80 tokens／秒）；高階 QNAP 機型在加裝 GPU 前已是中高價位；影像偵測在繁忙場景的穩定度仍待實測。建議以「實機評測、第三方 benchmark、實際採用案例」作為後續觀察指標。</p>
+
+    <div class="ensum">
+      <span class="h">📝 English Summary</span>
+      This unit fills gaps the vendor demo skipped. Pricing was not disclosed; the flagship is listed as pre-order with a 3-year warranty, and a local-LLM setup adds an RTX Pro 6000 GPU costing roughly US$8,000–9,000. No detection-accuracy or false-alarm figures were given, while research shows lab accuracy (97–98% for falls) drops sharply in the real world. Running local AI demands real hardware: a 7B model needs about 16GB RAM, and the GPU draws up to 600W. Among rivals, Synology lacks an official local-LLM path in 2026, while QNAP leads via PCIe and GPU support. Finally, person-search and trajectory tracking raise privacy duties under Taiwan's personal-data law and the risk of function creep.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- Glossary -->
+  <section id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+    <div class="gitem"><span class="gterm">NAS (Network-Attached Storage)</span> — 網路附接儲存裝置：連上網路、供多人或多裝置共用存取的儲存設備。</div>
+    <div class="gitem"><span class="gterm">Edge AI</span> — 邊緣／地端 AI：在本地裝置上執行 AI 運算，而非送到雲端，利於資料隱私與低延遲。</div>
+    <div class="gitem"><span class="gterm">LLM (Large Language Model)</span> — 大型語言模型：以海量文本訓練、能生成與理解語言的 AI 模型，如 Gemma 4。</div>
+    <div class="gitem"><span class="gterm">Semantic Search</span> — 語意搜尋：依「意義」而非僅「關鍵字」比對來尋找內容。</div>
+    <div class="gitem"><span class="gterm">QuAgent</span> — QNAP 的 AI 對話代理，可用自然語言操控 NAS。</div>
+    <div class="gitem"><span class="gterm">Qsirch</span> — QNAP NAS 的全文搜尋引擎，7.1.0 版加入語意搜尋。</div>
+    <div class="gitem"><span class="gterm">Container Station</span> — QNAP 的容器平台，可在 NAS 上執行 Docker 容器與 AI 應用。</div>
+    <div class="gitem"><span class="gterm">Scale-out / Scale-up</span> — 橫向擴充（加節點，效能與容量同步成長）／縱向擴充（換更強硬體）。</div>
+    <div class="gitem"><span class="gterm">Replication</span> — 複本備援：把資料複製多份分存不同節點，以防單點故障。</div>
+    <div class="gitem"><span class="gterm">Erasure Coding</span> — 抹除編碼：將資料重算後切塊分散儲存，儲存效率高於單純複本。</div>
+    <div class="gitem"><span class="gterm">Backup Verification</span> — 備份驗證：以錄影等方式證明備份確實可成功還原。</div>
+    <div class="gitem"><span class="gterm">NDR (Network Detection and Response)</span> — 網路偵測與回應：偵測網內異常並自動採取阻斷等回應。</div>
+    <div class="gitem"><span class="gterm">Thunderbolt 5</span> — 高速連接介面，雙向頻寬可達 80 Gbps，常用於影音工作流。</div>
+    <div class="gitem"><span class="gterm">JBOD (Just a Bunch Of Disks)</span> — 純擴充式磁碟陣列，提供額外儲存空間。</div>
+    <div class="gitem"><span class="gterm">NPU (Neural Processing Unit)</span> — 神經處理單元：專責 AI 推論的處理器，提升效率、降低耗電。</div>
+    <div class="gitem"><span class="gterm">TOPS (Tera Operations Per Second)</span> — 每秒兆次運算，衡量 AI 算力的單位。</div>
+    <div class="gitem"><span class="gterm">False-Alarm Rate</span> — 誤報率：系統錯誤觸發警報的比率，是監控偵測的關鍵指標。</div>
+    <div class="gitem"><span class="gterm">Function Creep</span> — 功能蠕變：科技用途日後悄悄擴張、超出最初宣稱範圍的隱私風險。</div>
+    <div class="gitem"><span class="gterm">Data Sovereignty</span> — 資料主權：對自身資料的所在地與控制權的掌握。</div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 底部連結卡（與頂部完全一致） -->
+  <div class="linkcards">
+    <a class="lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">🟥 七月課程・錯中學 ECHO 計劃</span>
+      <span class="d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lc-pop" href="https://linwayet.github.io/popup/index">
+      <span class="t">🟦 七月課程・學生分析</span>
+      <span class="d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">🟩 加我的 LINE：linwayet</span>
+      <span class="d">直接聯絡林威老師</span>
+    </a>
   </div>
 
-  <div class="al info" style="margin-top:6px;"><strong>🚃 Zone C：電車1小時以內（一日小旅行）</strong>從中野栄駅出發，搭 JR 仙石線可到達以下所有景點，每個都值得花一整天探索！</div>
-
-  <div class="stitle">🔵 電車1小時以內景點</div>
-  <div class="sc-wrap">
-
-    <!-- 松島 -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">🏝️</div>
-        <div class="sc-hi">
-          <h3>松島（日本三景）</h3>
-          <div class="jn">まつしま・にほんさんけい</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線19分</span><span class="badge bd-free">散步免費</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 電車19分・¥330</span><span class="st st-pay">遊覽船¥1,500</span><span class="st st-pay">瑞巌寺¥700</span></div>
-        <p>距飯店最近的大景點！260 座松島灣小島、国宝瑞巌寺、円通院苔庭、五大堂，全部步行可達。可選搭遊覽船繞島，牡蠣・海膽・穴子丼等海鮮午餐豐盛多樣。強烈推薦安排一整天！</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → JR仙石線「松島海岸駅」下車，約 <strong>19 分・¥330</strong>。<span class="jn">JR仙石線 松島海岸駅 下車・徒歩すぐ</span></div></div>
-      </div>
-    </div>
-
-    <!-- 塩竈神社 -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">⛩️</div>
-        <div class="sc-hi">
-          <h3>鹽竈神社（東北一宮）</h3>
-          <div class="jn">しおがまじんじゃ・おうしゅういちのみや</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線12分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 電車12分・¥200</span><span class="st st-fr">參拜免費</span><span class="st st-pay">博物館¥200</span></div>
-        <p>東北最大・奧州一宮！起源奈良時代，格式崇高。202 階男坂石階壯觀，從山頂能眺望松島灣。境內的鹽竈桜（國家天然紀念物）3～4月盛開絕美。旁邊的御釜神社保存傳說中製鹽的「神釜」，松尾芭蕉奧之細道也曾駐足此地。</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → JR仙石線「本塩釜駅」下車，約 <strong>12 分・¥200</strong>，徒歩 15 分（東参道なら7分）。<span class="jn">JR仙石線 本塩釜駅 下車</span></div></div>
-      </div>
-    </div>
-
-    <!-- 仙台市区 -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">🏯</div>
-        <div class="sc-hi">
-          <h3>仙台市區觀光（仙台駅）</h3>
-          <div class="jn">せんだいしちゅうかんこう・いちばんちょう</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線18分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 電車18分・¥200</span><span class="st st-bu">🚌 るーぷる¥670/日</span></div>
-        <p>仙台駅到了就搭「るーぷる仙台」觀光巴士一日券，可到：仙台城跡（青葉城）・瑞鳳殿・定禅寺通欅樹大道・AER展望台（免費！高145m俯瞰全市）・仙台朝市・一番街牛舌。一整天根本玩不完！</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 仙台駅（JR仙石線 <strong>18 分・¥200</strong>）→ るーぷる仙台乗り場。<span class="jn">るーぷる仙台 1日乗車券¥670・仙台駅前西口バスプール</span></div></div>
-      </div>
-    </div>
-
-    <!-- 塩竈港→松島島めぐり船 -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">⛵</div>
-        <div class="sc-hi">
-          <h3>塩竈港発 松島島めぐり遊覧船</h3>
-          <div class="jn">しおがまこうはつ まつしまゆうらんせん</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線12分</span><span class="badge bd-time">遊覧50分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 電車12分</span><span class="st st-pay">💴 遊覧¥1,500</span></div>
-        <p>從塩竈港搭船遊覽松島灣是最正統的路線，也是松尾芭蕉《奥の細道》描述的航路！船上可以近距離欣賞260個小島，穿越岩礁，氣氛與在松島海岸坐船完全不同，建議與鹽竈神社合併成一天行程。</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 本塩釜駅（12分・¥200）→ 塩竈マリンゲート（徒歩10分）→ 松島島めぐり乗船。<span class="jn">塩竈マリンゲート・遊覧時間約50分</span></div></div>
-      </div>
-    </div>
-
-    <!-- 仙台駅AER展望台 -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">🔭</div>
-        <div class="sc-hi">
-          <h3>AER展望テラス（仙台駅隣）</h3>
-          <div class="jn">エアー てんぼうてらす・高さ145m・無料</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線18分</span><span class="badge bd-free">完全免費</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 電車18分</span><span class="st st-fr">🆓 完全免費</span></div>
-        <p>仙台駅旁 31 樓高、145 公尺高的免費展望台！西側可看到藏王山脈，東側可眺望整個仙台平野直到太平洋。夜景也非常美，而且無需購票，任何時間都可以上去，是仙台市區遊的必訪附加景點。</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">中野栄駅 → 仙台駅（18分・¥200）→ AERビル直結。<span class="jn">AERビル31F展望テラス・JR仙台駅2F出口から徒歩2分・無料</span></div></div>
-      </div>
-    </div>
-
-    <!-- せんだいメディアテーク -->
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">🏗️</div>
-        <div class="sc-hi">
-          <h3>せんだいメディアテーク</h3>
-          <div class="jn">せんだいメディアテーク・国際的建築</div>
-          <div class="badges"><span class="badge bd-train">🚃 仙石線+地下鉄</span><span class="badge bd-free">入館免費</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <div class="sc-tags"><span class="st st-tr">🚃 約35分</span><span class="st st-fr">🆓 入館免費</span></div>
-        <p>建築師伊東豊雄代表作，全玻璃帷幕外牆＋透明管柱結構，榮獲多項國際設計大獎。內有圖書館・美術展・工藝品店・比利時啤酒咖啡廳。定禅寺通欅樹大道旁，建築愛好者必看！</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">仙台駅 → 地下鉄南北線「勾当台公園駅」下車徒歩7分。<span class="jn">仙台市青葉区春日町2-1・入館無料</span></div></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══ TAB：依距離分區 ═══ -->
-<div id="tab-zone" class="tab">
-  <div class="stitle">🗺️ 三大交通圈景點總表</div>
-  <div class="zone-wrap">
-    <div class="zone-box"><div class="zh" style="background:var(--sage);">🚶 步行圈</div><p>・仙台港海邊<br>・三井アウトレット<br>・キリン工廠餐廳<br>・うみの杜水族館<br>・ミニストップ/スーパー</p></div>
-    <div class="zone-box"><div class="zh" style="background:var(--terra);">🚕 計程車圈</div><p>・荒浜海岸<br>・多賀城跡・博物館<br>・七ヶ浜海景<br>・岩沼竹駒神社<br>・金蛇水神社</p></div>
-    <div class="zone-box" style="grid-column:1/-1;"><div class="zh" style="background:var(--ocean);">🚃 電車圈（仙石線）</div><p>・松島（日本三景）19分 ・鹽竈神社 12分 ・仙台市區 18分 ・AER展望台 18分 ・多賀城跡 10分 ・塩竈港遊覧船 12分 ・せんだいメディアテーク 35分</p></div>
-  </div>
-
-  <div class="stitle">📋 景點交通速查表</div>
-  <div class="tbl-wrap">
-    <table class="mt">
-      <tr><th>景點名稱</th><th>交通</th><th>時間</th><th>費用</th><th>推薦度</th></tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--sage)"></span>仙台港海邊散步</td>
-        <td>🚶</td><td>0分</td><td>免費</td><td>★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--sage)"></span>三井アウトレット</td>
-        <td>🚶</td><td>20分</td><td>入場無料</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--sage)"></span>キリンビアポート</td>
-        <td>🚶</td><td>15分</td><td>餐費</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--sage)"></span>うみの杜水族館</td>
-        <td>🚶/🚌</td><td>25分/7分</td><td>¥2,400</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--terra)"></span>荒浜海岸・震災遺構</td>
-        <td>🚕</td><td>15分</td><td>¥600(遺構)</td><td>★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--terra)"></span>多賀城跡・博物館</td>
-        <td>🚕/🚃</td><td>15分/10分</td><td>¥600</td><td>★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--terra)"></span>七ヶ浜海景</td>
-        <td>🚕</td><td>20分</td><td>免費</td><td>★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--terra)"></span>竹駒神社</td>
-        <td>🚕</td><td>20分</td><td>免費</td><td>★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>鹽竈神社（一宮）</td>
-        <td>🚃</td><td>12分・¥200</td><td>参拝無料</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>塩竈港遊覧船</td>
-        <td>🚃</td><td>12分・¥200</td><td>¥1,500</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>松島（日本三景）</td>
-        <td>🚃</td><td>19分・¥330</td><td>遊覧¥1,500</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>仙台市區+るーぷる</td>
-        <td>🚃</td><td>18分・¥200</td><td>¥670/日</td><td>★★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>AER展望台（免費）</td>
-        <td>🚃</td><td>18分・¥200</td><td>無料</td><td>★★★★</td>
-      </tr>
-      <tr>
-        <td><span class="zone-dot" style="background:var(--ocean)"></span>せんだいメディアテーク</td>
-        <td>🚃+地下鉄</td><td>約35分</td><td>無料</td><td>★★★</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<!-- ═══ TAB：每日行程 ═══ -->
-<div id="tab-days" class="tab">
-  <div class="al info"><strong>📋 4～5天住宿的行程建議</strong>第一天・最後一天由遊覽車/計程車接送，其餘每天輕裝隨身包出遊。</div>
-
-  <div class="stitle">📅 五天行程建議安排</div>
-  <div class="dp-wrap">
-
-    <!-- Day 1 -->
-    <div class="dp">
-      <div class="dp-hd c1"><span>Day 1 · 抵達日</span>輕裝安頓・飯店周邊探索</div>
-      <div class="tl">
-        <div class="ti"><div class="tdot a"></div><div class="ttime a">抵達後</div><div class="tc"><h4>♨️ 飯店入住・天然溫泉</h4><div class="jn">天然温泉 海神の湯</div><p>Check-in 後先泡大浴場放鬆！露天風呂眺望星空。</p></div></div>
-        <div class="ti"><div class="tdot g"></div><div class="ttime g">晚餐</div><div class="tc"><h4>🍺 キリンビアポート仙台</h4><div class="jn">徒歩15分・工場直送生ビール</div><p>第一晚步行到キリン工廠餐廳，享受工廠直送生啤酒配東北料理！</p></div></div>
-      </div>
-    </div>
-
-    <!-- Day 2 -->
-    <div class="dp">
-      <div class="dp-hd c2"><span>Day 2 · 仙台港エリア日</span>水族館＋アウトレット＋海邊漫步</div>
-      <div class="tl">
-        <div class="ti"><div class="tdot a"></div><div class="ttime a">09:00</div><div class="tc"><h4>🍳 Hatago 早餐</h4><p>海鮮丼吃到飽・牛タンシチュー・三陸カキフライ・ずんだもち，充分享用！</p></div></div>
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">10:00</div><div class="tc"><h4>🐬 仙台うみの杜水族館</h4><div class="jn">バス7分 or 步行25分</div><p>東北最大水族館，海豚・企鵝表演，深海ラボ，預計遊覽約3小時。</p></div></div>
-        <div class="ti"><div class="tdot g"></div><div class="ttime g">14:00</div><div class="tc"><h4>🛍️ 三井アウトレット逛街</h4><div class="jn">步行20分 or バス</div><p>120間品牌購物，退稅優惠，摩天輪打卡，逛到傍晚。</p></div></div>
-        <div class="ti"><div class="tdot r"></div><div class="ttime r">17:30</div><div class="tc"><h4>🌅 仙台港夕陽散步</h4><p>步行回飯店途中欣賞太平洋夕陽，傍晚海風超舒適。</p></div></div>
-      </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div class="dp">
-      <div class="dp-hd c3"><span>Day 3 · 松島一日遊</span>日本三景・電車19分・最輕鬆的一天</div>
-      <div class="tl">
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到松島海岸駅</h4><div class="jn">中野栄駅→松島海岸駅 19分・¥330</div><p>叫計程車到中野栄駅，搭仙石線到松島！靠海側坐位欣賞沿途海景。</p></div></div>
-        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>⛵ 松島灣遊覧船</h4><div class="jn">まつしまわんゆうらんせん・¥1,500・50分</div><p>繞行260個小島，日本三景全景盡收眼底！</p></div></div>
-        <div class="ti"><div class="tdot a"></div><div class="ttime a">11:00</div><div class="tc"><h4>🏛️ 瑞巌寺・円通院</h4><div class="jn">ずいがんじ・えんつういん・¥700</div><p>伊達政宗建立的国宝寺院，苔庭幽靜迷人。</p></div></div>
-        <div class="ti"><div class="tdot g"></div><div class="ttime g">12:30</div><div class="tc"><h4>🦪 海鮮ランチ</h4><p>牡蠣・海膽蓋飯・穴子料理，松島港邊海鮮餐廳選擇豐富。</p></div></div>
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">15:30</div><div class="tc"><h4>🚃 搭電車回飯店</h4><p>回飯店泡溫泉，休息一下再享用晚餐！</p></div></div>
-      </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="dp">
-      <div class="dp-hd c4"><span>Day 4 · 仙台市區深度遊</span>牛舌・伊達政宗・免費展望台</div>
-      <div class="tl">
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到仙台駅</h4><div class="jn">中野栄駅→仙台駅 18分・¥200</div></div></div>
-        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>🔭 AER展望テラス（免費！）</h4><div class="jn">エアー31階・145m・無料</div><p>先到仙台駅旁AER展望台俯瞰全市，晴天可看到藏王山脈！</p></div></div>
-        <div class="ti"><div class="tdot a"></div><div class="ttime a">10:30</div><div class="tc"><h4>🚌 搭るーぷる仙台（一日券¥670）</h4><p>仙台城跡・瑞鳳殿・定禅寺通欅樹大道一次全搞定。</p></div></div>
-        <div class="ti"><div class="tdot g"></div><div class="ttime g">13:00</div><div class="tc"><h4>🥩 一番街 牛たんランチ</h4><div class="jn">せんだいいちばんちょう</div><p>利休・善次郎・旨み助，選一家品嚐道地仙台牛舌！</p></div></div>
-        <div class="ti"><div class="tdot r"></div><div class="ttime r">15:00</div><div class="tc"><h4>🏗️ せんだいメディアテーク・藥妝</h4><p>建築名作參觀後逛定禅寺通藥妝，採購伴手禮回飯店。</p></div></div>
-      </div>
-    </div>
-
-    <!-- Day 5 最後一天 -->
-    <div class="dp">
-      <div class="dp-hd c1"><span>Day 5 · 最後一天</span>鹽竈神社・塩竈寿司・輕鬆返程</div>
-      <div class="tl">
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">09:00</div><div class="tc"><h4>🚃 搭電車到本塩釜駅</h4><div class="jn">中野栄駅→本塩釜駅 12分・¥200</div></div></div>
-        <div class="ti"><div class="tdot r"></div><div class="ttime r">09:30</div><div class="tc"><h4>⛩️ 鹽竈神社 參拜</h4><div class="jn">しおがまじんじゃ・東北一宮</div><p>202階石階壯觀，鹽竈桜・神釜・博物館，感受東北最古老的歷史神社。</p></div></div>
-        <div class="ti"><div class="tdot g"></div><div class="ttime g">12:00</div><div class="tc"><h4>🍣 塩竈の本鮪寿司ランチ</h4><p>東北最高品質壽司激戰區，新鮮本鮪魚！</p></div></div>
-        <div class="ti"><div class="tdot b"></div><div class="ttime b">14:00</div><div class="tc"><h4>🚃 搭電車回飯店・退房準備</h4><p>回飯店整理行李，辦理退房，計程車或接送前往機場！</p></div></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ═══ TAB：交通說明 ═══ -->
-<div id="tab-transport" class="tab">
-  <div class="stitle">🗺️ 基地：中野栄駅（なかのさかええき）</div>
-  <div class="al info"><strong>✅ 無大行李的關鍵優勢</strong>只帶隨身小包出門，中野栄駅步行20分變得完全可以接受！不像第一天拖行李那麼辛苦，輕裝出行完全不同感受。</div>
-
-  <div class="sc-wrap">
-    <div class="sc">
-      <div class="sc-hd train">
-        <div class="sc-ic">🚉</div>
-        <div class="sc-hi">
-          <h3>中野栄駅（仙石線）出發攻略</h3>
-          <div class="jn">なかのさかええき・JR仙石線</div>
-          <div class="badges"><span class="badge bd-train">飯店步行20分</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <p>飯店到中野栄駅步行約20分，輕裝出遊時步行完全沒問題！或叫計程車¥900，5分鐘到站。駅前有バスプール和計程車乘車處，非常方便。</p>
-        <div class="how"><div class="hi">🚃</div><div class="hb">仙石線的主要方向：<br>
-        ← 往石巻・高城町（松島・塩竈方向）<br>
-        → 往仙台（市區方向）<br>
-        <strong>中野栄駅は快速停まらない！</strong>要搭各停（普通）列車。<span class="jn">各停のみ・快速は通過</span></div></div>
-        <div style="margin-top:8px;">
-          <table class="mt" style="margin:0;">
-            <tr><th>目的地</th><th>電車時間</th><th>費用</th></tr>
-            <tr><td>多賀城駅</td><td>約10分</td><td>¥200</td></tr>
-            <tr><td>本塩釜駅（鹽竈）</td><td>約12分</td><td>¥200</td></tr>
-            <tr><td>松島海岸駅</td><td>約19分</td><td>¥330</td></tr>
-            <tr><td>仙台駅（市區）</td><td>約18分</td><td>¥200</td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="sc">
-      <div class="sc-hd taxi">
-        <div class="sc-ic">🚕</div>
-        <div class="sc-hi">
-          <h3>計程車利用指南</h3>
-          <div class="jn">タクシー・中野栄駅乗り場あり</div>
-          <div class="badges"><span class="badge bd-taxi">中野栄駅前乗り場</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <p>中野栄駅前有計程車乘車處，可直接排隊搭乘，或用日本的計程車App「GO」叫車。日本計程車安全乾淨，司機非常可靠！</p>
-        <div class="how"><div class="hi">💬</div><div class="hb" style="font-size:11px;line-height:2;">
-          「<strong>ドーミーインEXPRESS仙台シーサイドまでお願いします</strong>」（回飯店）<br>
-          「<strong>荒浜小学校まで（あらはましょうがっこうまで）</strong>」<br>
-          「<strong>金蛇水神社まで（かなへびすいじんじゃまで）</strong>」<br>
-          「<strong>多賀城跡まで（たがじょうあとまで）</strong>」
-        </div></div>
-      </div>
-    </div>
-
-    <div class="sc">
-      <div class="sc-hd bus">
-        <div class="sc-ic">🚌</div>
-        <div class="sc-hi">
-          <h3>バス利用ガイド</h3>
-          <div class="jn">宮城交通バス・中野栄駅バスプール</div>
-          <div class="badges"><span class="badge bd-train">中野栄駅バスプール</span></div>
-        </div>
-      </div>
-      <div class="sc-bd">
-        <p>中野栄駅前有バスプール，以下路線特別實用：</p>
-        <div style="font-size:11px;line-height:2;background:var(--cream);border-radius:10px;padding:10px 12px;">
-          🚌 <strong>仙台うみの杜水族館線</strong>：7分・¥200（每30分一班）<br>
-          🚌 <strong>仙台港フェリー行き</strong>：アウトレット方面・3分・¥200<br>
-          🚌 <strong>仙台駅前行き（50番）</strong>：約40分・¥630<br>
-          <span style="color:var(--muted);font-size:10px;">※班次が少ない路線もあるので事前に時刻表確認推奨</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="al good"><strong>💡 IC卡必備：Suica（スイカ）</strong>電車・巴士・計程車・コンビニ支付全都可以感應付款！仙台空港下機後第一件事就是在自動售票機辦理或加值 Suica，省去每次買票的麻煩。</div>
-</div>
-
-<!-- ═══ TAB：實用技巧 ═══ -->
-<div id="tab-tips" class="tab">
-  <div class="stitle">💡 自助旅行實用技巧</div>
-  <div class="tips-wrap">
-    <div class="tip a"><div class="tip-ic">🎒</div><div class="tip-bd"><h4>無大行李的最大優勢</h4><p>平日出遊只背隨身小包，步行20分到中野栄駅完全不辛苦！比拖行李輕鬆十倍，可以隨意步行探索飯店周邊，下班後順路逛アウトレット・便利商店，不受行李束縛自由度大增。</p></div></div>
-    <div class="tip b"><div class="tip-ic">♨️</div><div class="tip-bd"><h4>溫泉時間策略：早晚各一次</h4><p>大浴場 05:00 開放！建議：每天早上 05:30～06:30 泡一次清醒晨湯，晚上回來 21:00～22:00 再泡一次消除疲勞。清潔時間 11:00～13:30 暫停。這是住這裡最大的享受！露天風呂夜晚可以看星星⭐。</p></div></div>
-    <div class="tip g"><div class="tip-ic">🚃</div><div class="tip-bd"><h4>仙石線快速 vs 各停注意</h4><p>中野栄駅只停各停（普通列車），快速列車不停！在仙台駅或多賀城駅等轉車時記得確認車種。仙石線班次約每 20～25 分一班，出門前用 Google Maps 查好時刻，避免等太久。</p></div></div>
-    <div class="tip r"><div class="tip-ic">🗺️</div><div class="tip-bd"><h4>5天最佳行程組合建議</h4><p>Day1 抵達放鬆 → Day2 港口水族館アウトレット → Day3 松島一日遊 → Day4 仙台市區牛舌 → Day5 鹽竈神社壽司返程。若4天則合併 Day4+5 精華，計程車遊荒浜・多賀城也可插入其中。</p></div></div>
-    <div class="tip a"><div class="tip-ic">🍜</div><div class="tip-bd"><h4>仙台必吃清單（不可錯過）</h4><p>🥩 牛たん（一番街・利休・善次郎）<br>🦪 三陸牡蠣・海膽蓋飯（松島・塩竈）<br>🍣 塩竈の本鮪寿司（本塩釜駅周辺）<br>🟢 ずんだもち（仙台駅・飯店早餐）<br>🐟 笹かまぼこ（仙台駅土産コーナー）</p></div></div>
-    <div class="tip b"><div class="tip-ic">🛍️</div><div class="tip-bd"><h4>退稅攻略：最大化省錢</h4><p>三井アウトレット・仙台市區各百貨，同一店鋪累計未稅 ¥5,500 以上可憑護照退稅（10%）。食品・藥妝・衣服全適用！退稅後記得把購入品放在密封袋保管至出境。</p></div></div>
-    <div class="tip g"><div class="tip-ic">🌸</div><div class="tip-bd"><h4>季節別景點重點</h4><p>🌸 春（4～5月）：鹽竈桜・金蛇水神社九龍藤・みちのく公園鬱金香<br>☀️ 夏（6～8月）：松島灣遊覽・荒浜海水浴・仙台七夕祭り（8/6～8）<br>🍂 秋（9～11月）：松島紅葉・塩竈神社境内紅葉<br>❄️ 冬（12～2月）：SENDAI光のページェント定禅寺通（12月）</p></div></div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <p>"輕裝上陣、隨身小包、電車隨走——仙台シーサイドから東北全探索"</p>
-  <div>ドーミーインEXPRESS仙台シーサイド · 022-388-5489</div>
-  <div style="margin-top:3px;">宮城県仙台市宮城野区中野3-4-9 · JR仙石線 中野栄駅 徒歩20分</div>
-</div>
-
-<script>
-function sw(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
-  document.getElementById('tab-'+id).classList.add('on');
-  btn.classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-</script>
+</main>
 </body>
 </html>
