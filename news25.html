@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 代理時代的 Token 經濟學：電信業者的算力新商機</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED;
+    --card:#FFFDF8;
+    --ink:#3A2E22;
+    --h1:#C0392B;
+    --h2:#1565C0;
+    --h3:#2E7D32;
+    --accA:#E65100;
+    --accB:#6A1B9A;
+    --sum-bg:#FBF3E7;
+    --sum-bd:#E0A96D;
+    --glo-bg:#F3EEE4;
+    --brick:#C0392B;
+    --blue:#1565C0;
+    --line:#06C755;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px;
+    line-height:1.85;
+    -webkit-text-size-adjust:100%;
+  }
+  main{
+    max-width:820px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+  .eng{font-family:'Inter','BIZ UDPGothic',sans-serif;}
+
+  /* ===== 頂部標題 ===== */
+  header.title{
+    text-align:center;
+    margin:14px 0 28px;
+  }
+  header.title .t1{
+    display:inline-block;
+    font-size:2.7rem;
+    font-weight:700;
+    color:var(--h1);
+    line-height:1.35;
+    padding:14px 22px;
+    border:4px solid var(--h1);
+    border-radius:18px;
+    background:var(--card);
+    box-shadow:0 4px 14px rgba(192,57,43,.14);
+  }
+  header.title .t2{
+    font-size:1.95rem;
+    font-weight:700;
+    color:var(--h2);
+    margin-top:20px;
+    line-height:1.5;
+  }
+  header.title .t3{
+    font-size:1.25rem;
+    font-weight:700;
+    color:var(--blue);
+    margin-top:14px;
+    letter-spacing:1px;
+  }
+
+  /* ===== 三連結卡 ===== */
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin:24px 0;
+  }
+  .links a{
+    flex:1 1 240px;
+    min-height:80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    border-radius:16px;
+    padding:16px 18px;
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+    line-height:1.5;
+  }
+  .links a .ttl{font-size:1.15rem;}
+  .links a .desc{font-size:.92rem;font-weight:400;margin-top:6px;opacity:.96;}
+  .links a.echo{background:var(--brick);}
+  .links a.popup{background:var(--blue);}
+  .links a.line{background:var(--line);}
+
+  /* ===== 單元地圖 ===== */
+  nav#unit-map{
+    background:var(--card);
+    border:2px solid var(--sum-bd);
+    border-radius:18px;
+    padding:20px 18px;
+    margin:24px 0;
+  }
+  nav#unit-map h2{
+    font-size:1.5rem;
+    color:var(--h3);
+    margin:0 0 14px;
+  }
+  .map-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .map-list a{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:#fff;
+    border-radius:14px;
+    padding:12px 18px;
+    font-size:1.1rem;
+    font-weight:700;
+    line-height:1.4;
+  }
+  .m1{background:#B0563A;}
+  .m2{background:#C28A1E;}
+  .m3{background:#A86A4F;}
+  .m4{background:#6E7B3D;}
+  .m5{background:#1565C0;}
+  .m6{background:#7A5230;}
+  .m7{background:#4F6B4A;}
+  .mg{background:#8A7B6A;}
+
+  /* ===== 內容單元 ===== */
+  section.unit{
+    background:var(--card);
+    border-radius:16px;
+    padding:24px 22px 18px;
+    margin:22px 0;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+  }
+  section.unit h2.uh{
+    font-size:1.95rem;
+    color:var(--h2);
+    margin:0 0 6px;
+    padding-bottom:10px;
+    border-bottom:3px solid var(--sum-bd);
+    line-height:1.4;
+  }
+  section.unit h3{
+    font-size:1.5rem;
+    color:var(--h3);
+    margin:22px 0 6px;
+  }
+  section.unit p{margin:12px 0;}
+  section.unit ul{margin:12px 0;padding-left:1.25em;}
+  section.unit li{margin:10px 0;}
+  .kw{color:var(--accA);font-weight:700;}
+  .tag{color:var(--accB);font-weight:700;}
+  .note{
+    background:#F4ECDD;
+    border-left:6px solid var(--accA);
+    border-radius:0 12px 12px 0;
+    padding:12px 16px;
+    margin:14px 0;
+    font-size:.98em;
+  }
+
+  /* ===== 英文摘要 ===== */
+  .summary{
+    background:var(--sum-bg);
+    border-left:8px solid var(--sum-bd);
+    border-radius:0 14px 14px 0;
+    padding:16px 18px;
+    margin:20px 0 8px;
+  }
+  .summary .lab{
+    font-weight:700;
+    color:var(--accA);
+    font-size:1.05rem;
+    margin-bottom:6px;
+  }
+  .summary p{
+    font-family:'Inter','BIZ UDPGothic',sans-serif;
+    font-size:1.02rem;
+    line-height:1.7;
+    margin:0;
+    color:#4a3a2c;
+  }
+
+  /* ===== 回到地圖 ===== */
+  .back-to-map{
+    display:inline-flex;
+    align-items:center;
+    min-height:56px;
+    margin-top:16px;
+    padding:10px 20px;
+    background:#8A7B6A;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
+    font-size:1rem;
+  }
+
+  /* ===== Glossary ===== */
+  section#glossary{
+    background:var(--glo-bg);
+    border-radius:16px;
+    padding:24px 22px 18px;
+    margin:22px 0;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+  }
+  section#glossary h2{
+    font-size:1.95rem;
+    color:var(--h3);
+    margin:0 0 14px;
+  }
+  .glo-item{
+    margin:14px 0;
+    padding-bottom:12px;
+    border-bottom:1px dashed #cdbfa9;
+  }
+  .glo-item .term{
+    font-family:'Inter','BIZ UDPGothic',sans-serif;
+    font-weight:700;
+    color:var(--accB);
+    font-size:1.08rem;
+  }
+
+  @media (max-width:560px){
+    body{font-size:20px;}
+    header.title .t1{font-size:2.05rem;}
+    header.title .t2{font-size:1.5rem;}
+    section.unit h2.uh{font-size:1.6rem;}
+    .links a{flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- ===== 頂部標題 ===== -->
+  <header class="title">
+    <div class="t1">AI 代理時代的「Token 經濟學」</div>
+    <div class="t2">電信業者如何從「賣流量」切入 AI 推論市場</div>
+    <div class="t3">林威老師與 AI agent 團隊製作</div>
+  </header>
+
+  <!-- ===== 頂部三連結卡 ===== -->
+  <div class="links">
+    <a class="echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="ttl">七月課程・錯中學 ECHO 計劃</span>
+      <span class="desc">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="popup" href="https://linwayet.github.io/popup/index">
+      <span class="ttl">七月課程・學生分析</span>
+      <span class="desc">個人化學習診斷與規劃</span>
+    </a>
+    <a class="line" href="https://line.me/ti/p/~linwayet">
+      <span class="ttl">加我的 LINE：linwayet</span>
+      <span class="desc">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+  <!-- ===== 單元地圖 ===== -->
+  <nav id="unit-map">
+    <h2>🗺️ 單元地圖 Unit Map</h2>
+    <div class="map-list">
+      <a class="m1" href="#unit1">單元一　AI 代理興起與 Token 成為計費單位</a>
+      <a class="m2" href="#unit2">單元二　Token as a Service：電信商為何能參一腳</a>
+      <a class="m3" href="#unit3">單元三　輝達「8 倍」試算的原始數字與前提</a>
+      <a class="m4" href="#unit4">單元四　電信商的兩大優勢：邊緣運算與主權 AI</a>
+      <a class="m5" href="#unit5">單元五　美、中、台三地現況</a>
+      <a class="m6" href="#unit6">單元六　企業與消費者的成本控管策略</a>
+      <a class="m7" href="#unit7">單元七　補充與澄清（原素材未充分呈現的面向）</a>
+      <a class="mg" href="#glossary">📖 術語表 Glossary</a>
+    </div>
+  </nav>
+
+  <!-- ===== 單元一 ===== -->
+  <section class="unit" id="unit1">
+    <h2 class="uh">單元一　AI 代理興起與 Token 成為計費單位</h2>
+    <p>2026 年起，全球企業加速導入<span class="kw">AI 代理（AI agents / agentic AI）</span>——能在少量人為監督下，自動完成多步驟任務的軟體程式。根據研究機構 Gartner 的預測，到 2026 年底，約有 <span class="kw">40% 的「企業應用程式（enterprise applications）」</span>將整合任務型 AI 代理，較 2025 年的不到 5% 大幅成長。</p>
+    <div class="note">⚠️ 釐清：這項「40%」指的是<strong>企業應用程式</strong>的整合比例，並非「40% 的企業」都導入 AI 代理。兩者意義不同，原影片把主詞講成「企業」，屬於常見的數字誤讀。</div>
+    <p>與領固定薪資的真人員工不同，AI 代理是依 <span class="kw">Token（詞元）</span> 的使用量計費。Token 是<span class="kw">大型語言模型（LLM, large language model）</span>處理文字時的最小單位。一項複雜任務（例如自動安排出差、訂機票與飯店）背後需要多次推理、呼叫工具與自我對話，因此 Token 消耗量會明顯放大。</p>
+    <p>輝達（NVIDIA）執行長黃仁勳（Jensen Huang）以<span class="tag">「Token 經濟學（tokenomics）」</span>描述這個趨勢：未來的 AI 資料中心會像工廠一樣持續產出 Token；Token 也逐漸被視為類似水電的計量單位，按量計費。</p>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">From 2026, enterprises are rapidly adopting agentic AI. Gartner forecasts that about 40% of enterprise applications—not 40% of companies—will integrate task-specific AI agents by the end of 2026, up from less than 5% in 2025. Unlike salaried human employees, AI agents are billed by token usage, where a token is the basic unit a large language model uses to process text. NVIDIA CEO Jensen Huang describes this trend as "tokenomics," comparing AI data centers to factories that continuously produce tokens.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元二 ===== -->
+  <section class="unit" id="unit2">
+    <h2 class="uh">單元二　Token as a Service：電信商為何能參一腳</h2>
+    <p>企業使用 AI 時，付費對象不只科技巨頭。若直接串接現成模型，費用付給 OpenAI、Google、Anthropic 等<span class="kw">模型商（model providers）</span>。但基於<span class="kw">資料安全（data security）</span>與法規要求，部分企業不願把敏感資料送往海外雲端，轉而尋求國內電信業者，常見兩種模式：</p>
+    <ul>
+      <li><strong>全地端私有雲（on-premises private cloud）</strong>：企業以<span class="kw">開源模型（open-source model）</span>自建 AI，把機密資料鎖在國內電信商機房，支付機房代管與算力租賃費。</li>
+      <li><strong>混合雲（hybrid cloud）</strong>：企業仍想用微軟或 Google 的模型，但要求資料留在境內，因此付兩筆費用——一筆給國內電信商（光纖、資料庫代管），一筆給海外雲端業者（API 呼叫與授權費）。</li>
+    </ul>
+    <p>這種以 Token 計費、把推論能力包裝成雲端服務的商業模式，稱為 <span class="tag">「Token as a Service（TaaS，Token 即服務）」</span>。輝達在技術部落格中指出，電信商在「賣 GPU 時數」之上再加入「賣 Token（AI 產出）」後，營收便不再受 GPU 出租時數的上限約束。</p>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">When enterprises use AI, they may pay big tech firms directly, but data-security rules often push them toward domestic telecom operators. Two common arrangements exist: a fully on-premises private cloud using open-source models, and a hybrid cloud where firms pay both a local operator and an overseas model provider. Packaging inference as a token-billed cloud service is called Token-as-a-Service (TaaS). NVIDIA argues that once telcos sell tokens on top of GPU hours, their revenue is no longer capped by rental time.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元三 ===== -->
+  <section class="unit" id="unit3">
+    <h2 class="uh">單元三　輝達「8 倍」試算的原始數字與前提</h2>
+    <p>影片提到「單張 GPU 營收暴增 8 倍」，這個數字源自輝達技術部落格〈Building Token-Metered AI Services on Telco AI Factories〉的官方估算。輝達的試算如下：</p>
+    <ul>
+      <li>一張 GPU 上的中型模型，每小時約可產出 <span class="kw">3,000 萬個 Token</span>。</li>
+      <li>若<span class="kw">每百萬 Token 收費 1 美元</span>，每小時收入約 30 美元。</li>
+      <li>以約 <span class="kw">60% 使用率（utilization）</span> 計，年營收約 15.77 萬美元；相較傳統「每小時 3 美元出租 GPU」模式下的年營收約 1.84 萬美元，高出 <span class="kw">8 倍以上</span>。</li>
+    </ul>
+    <div class="note">⚠️ 三個必須留意的前提：<br>
+      ① 這是<strong>輝達的官方估算（廠商行銷數字）</strong>，並非實際毛利。<br>
+      ② 已假設特定使用率（約 60%）與「每百萬 Token 1 美元」的售價，而推論單價近年持續下滑。<br>
+      ③ 此估算未計入<strong>模型授權、電費，以及建置 Token 計費／多租戶／帳務系統的工程成本</strong>。</div>
+    <p>換言之，「8 倍」是<span class="tag">理論上限</span>，而非保證獲利。同一筆硬體在 Token 計費下「可能」帶來更高營收，但要實際兌現，仍取決於使用率、售價與營運能力。</p>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">The widely quoted "8x revenue" figure comes from NVIDIA's own technical blog. NVIDIA estimates a single GPU can output about 30 million tokens per hour, earning roughly $30 per hour at $1 per million tokens, or about $157,700 a year at 60% utilization—more than eight times the roughly $18,400 from renting the GPU at $3 per hour. However, this is a vendor estimate, not realized profit: it assumes a fixed utilization and price, ignores model licensing, electricity and billing-system costs, and per-token prices keep falling. The "8x" is a theoretical ceiling, not a guarantee.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元四 ===== -->
+  <section class="unit" id="unit4">
+    <h2 class="uh">單元四　電信商的兩大優勢：邊緣運算與主權 AI</h2>
+    <p>電信商被認為有兩項較難取代的優勢：</p>
+    <h3>① 密集基地台與邊緣運算</h3>
+    <p>當自駕車、智慧工廠需要毫秒級即時反應時，電信商可在最接近用戶的網路<span class="kw">邊緣（edge computing）</span>直接產生 Token，降低<span class="kw">延遲（latency）</span>。</p>
+    <h3>② 主權 AI 與資料落地</h3>
+    <p>金融、醫療、政府等領域受法規限制，敏感資料不得上傳海外，本地電信商的在地資料中心便成為<span class="kw">主權 AI（sovereign AI）</span>的合規選項，企業也因此可能支付較高的 Token 溢價。</p>
+    <p>這也說明輝達為何在 <span class="kw">2025 年 10 月 28 日</span>宣布以 <span class="kw">10 億美元入股芬蘭電信設備商 Nokia（取得約 2.9% 股權）</span>，並推動 <span class="tag">AI-RAN（AI 無線接取網路）</span> 布局，把 AI 整合進行動通訊網路，讓基地台同時處理通訊訊號與 AI 運算。美國 T-Mobile 也與輝達、Nokia 合作測試 AI-RAN。輝達並強調，每一代新晶片「每瓦電力」能產出的 Token 數可大幅提升，意味升級硬體後，理論上可在電費與空間不變下提高 Token 產出。</p>
+    <div class="note">📌 用語校正：原影片稱輝達「大力入股」Nokia。實際上 10 億美元換得的是約 2.9% 的<strong>少數股權</strong>，屬策略合作性質的投資，而非取得控制權。</div>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">Telcos are seen as holding two hard-to-replace advantages. First, dense base stations enable edge computing that generates tokens close to users and cuts latency for uses like self-driving cars. Second, in-country data centers support sovereign AI for finance, healthcare and government, where sensitive data cannot leave the country. This helps explain why NVIDIA invested about $1 billion for a roughly 2.9% stake in Nokia on October 28, 2025, and is promoting AI-RAN, with T-Mobile among its test partners.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元五 ===== -->
+  <section class="unit" id="unit5">
+    <h2 class="uh">單元五　美、中、台三地現況</h2>
+    <h3>🇺🇸 美國：主攻企業（to B）</h3>
+    <p>電信巨頭聚焦企業服務與基礎設施。例如 T-Mobile 與輝達合作設立 AI-RAN 創新中心，測試同一基地台伺服器同時處理通訊與 AI 運算；目前尚未推出面向一般消費者的 Token 收費方案。</p>
+    <h3>🇨🇳 中國：率先進入消費級（to C）</h3>
+    <p>根據中國國家數據局資料，中國日均 Token 調用量從 2024 年初的約 1,000 億，增至 <span class="kw">2026 年 3 月的逾 140 兆（140 萬億）</span>。<span class="kw">2026 年 5 月</span>，中國移動、中國聯通、中國電信陸續推出 Token 套餐，支援多模型通用調用，價格自人民幣數元至數十元不等。對提供模型的科技大廠而言，電信商更像通路商而非對手，雙方多採分潤合作。</p>
+    <h3>🇹🇼 台灣：聚焦算力代管與 IDC</h3>
+    <p>電信三雄（中華電信、台灣大哥大、遠傳電信）目前聚焦企業級算力租賃與 <span class="kw">IDC（資料中心，Internet Data Center）</span> 服務，尚未推出消費級 Token 吃到飽方案。實際財報顯示：</p>
+    <ul>
+      <li><strong>中華電信</strong>：2026 年第 1 季合併營收 599.9 億元、年增 7.5%，EPS 1.3 元；成長部分來自資通訊業務與 IDC 機房建置案完工交付。</li>
+      <li><strong>遠傳電信</strong>：同季 EPS 1.03 元。</li>
+      <li><strong>台灣大哥大</strong>：2025 年 IDC 與雲端營收呈雙位數成長，AIDC（AI 資料中心）已開始挹注收入。</li>
+    </ul>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">In the United States, telecom giants focus on enterprise (B2B) services; T-Mobile runs an AI-RAN center with NVIDIA but has no consumer token plan yet. China moved first into the consumer market: daily token calls rose from about 100 billion in early 2024 to over 140 trillion by March 2026, and its three carriers launched token plans in May 2026. In Taiwan, the three major carriers concentrate on enterprise compute leasing and data centers; Chunghwa Telecom posted Q1 2026 revenue of NT$59.99 billion, up 7.5%, partly driven by IDC build-outs.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元六 ===== -->
+  <section class="unit" id="unit6">
+    <h2 class="uh">單元六　企業與消費者的成本控管策略</h2>
+    <p>面對 Token 計費，企業與消費者也發展出控管成本的方法。常見做法包括：</p>
+    <ul>
+      <li><span class="kw">智慧路由（intelligent routing）</span>：把簡單任務交給平價的小模型，僅在高難度推理時才動用昂貴的大模型，避免「用大模型做簡單算術」。</li>
+      <li><span class="kw">Token 壓縮（token compression）</span>：減少輸入與輸出的 Token 量，精準控制 AI 成本。</li>
+    </ul>
+    <p>對使用端而言，先釐清「真正需要 AI 代理做什麼、如何與它協作、如何介入與偵錯（debug）」，是讓每一筆 Token 花在刀口上的關鍵。</p>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">As token billing spreads, enterprises and consumers are finding ways to control costs. Common methods include intelligent routing—sending simple tasks to cheaper small models and reserving expensive large models for hard reasoning—and token-compression techniques that cut input and output volume. The key for users is to clarify what they actually need an AI agent to do, and how to supervise and debug it, so that every token is spent where it matters.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 單元七 ===== -->
+  <section class="unit" id="unit7">
+    <h2 class="uh">單元七　補充與澄清（原素材未充分呈現的面向）</h2>
+    <p>原影片以樂觀的投資視角呈現，為提供更完整的圖像，補上幾個較少著墨的角度：</p>
+    <ul>
+      <li><strong>樂觀與風險並存</strong>：Gartner 在預測 AI 代理快速普及的同時，另有一項預測指出——到 2027 年底，逾 40% 的 agentic AI 專案可能因成本失控、商業價值不明或風險控管不足而被取消。普及與淘汰兩股力量同時存在。</li>
+      <li><strong>「8 倍」是廠商估算</strong>：如單元三所述，此為輝達官方行銷數字，含特定使用率與售價假設，且推論單價正逐年下滑，實際毛利未必如此。</li>
+      <li><strong>中國套餐規模仍小</strong>：目前中國電信商的 Token 套餐多為入門價位（人民幣 9.9 元起）。部分業界分析指出，推出套餐的動機之一，是國產中低階算力存在結構性閒置、需要變現盤活存量，並非單純需求暢旺。</li>
+      <li><strong>雲端巨頭的競爭</strong>：AWS、Microsoft Azure、Google Cloud 等也在各國設置主權雲與在地資料區，電信商「資料落地」的優勢並非獨佔。</li>
+      <li><strong>「二房東」風險</strong>：電信商若僅轉售算力與 Token，可能淪為毛利較薄的「算力二房東」。最終是成為獲利者，還是中介者，目前仍是開放問題——這也是原影片結尾自己保留的提問。</li>
+    </ul>
+
+    <div class="summary">
+      <div class="lab">📝 English Summary</div>
+      <p class="eng">To give a fuller picture, several points the original video underplays are worth adding. Gartner also predicts that over 40% of agentic AI projects may be cancelled by the end of 2027 due to cost and unclear value. The "8x" figure is a vendor estimate with built-in assumptions. China's token plans are still small and partly aim to monetize idle domestic compute. Cloud giants also offer sovereign regions, so the data-residency moat is not exclusive. Telcos may end up as thin-margin "compute landlords" rather than clear winners—an open question the video itself leaves unanswered.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== Glossary ===== -->
+  <section id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+
+    <div class="glo-item"><span class="term">AI agent / agentic AI（AI 代理）</span> — 能在少量人為監督下，自動規劃並完成多步驟任務的軟體程式。</div>
+    <div class="glo-item"><span class="term">token（詞元）</span> — 大型語言模型處理文字的最小單位；現逐漸成為 AI 服務的計費單位。</div>
+    <div class="glo-item"><span class="term">Token as a Service（TaaS）</span> — 把模型推論能力包裝成雲端服務、以 Token 消耗量計價的商業模式。</div>
+    <div class="glo-item"><span class="term">LLM（large language model，大型語言模型）</span> — 以大量文字訓練、能理解與生成語言的 AI 模型。</div>
+    <div class="glo-item"><span class="term">tokenomics（Token 經濟學）</span> — 黃仁勳用語，指以 Token 產出與消耗為核心的 AI 經濟模式。</div>
+    <div class="glo-item"><span class="term">inference（推論）</span> — 模型「使用」階段，依輸入即時產生輸出；Token 多在此階段被消耗。</div>
+    <div class="glo-item"><span class="term">model provider（模型商）</span> — 提供基礎模型與 API 的業者，如 OpenAI、Google、Anthropic。</div>
+    <div class="glo-item"><span class="term">on-premises private cloud（全地端私有雲）</span> — 把資料與運算完全留在企業或本地機房的部署方式。</div>
+    <div class="glo-item"><span class="term">hybrid cloud（混合雲）</span> — 同時使用本地與外部雲端、依需求分配工作負載的架構。</div>
+    <div class="glo-item"><span class="term">open-source model（開源模型）</span> — 權重公開、可自行部署與調整的 AI 模型。</div>
+    <div class="glo-item"><span class="term">data security / data residency（資料安全／資料落地）</span> — 確保資料受保護，並留存於特定法域內。</div>
+    <div class="glo-item"><span class="term">sovereign AI（主權 AI）</span> — 由國家或在地機構掌控、資料與算力留在境內的 AI 基礎設施。</div>
+    <div class="glo-item"><span class="term">edge computing（邊緣運算）</span> — 在靠近資料來源（如基地台）就近處理運算，以降低延遲。</div>
+    <div class="glo-item"><span class="term">latency（延遲）</span> — 從送出請求到取得回應的時間差；即時應用要求毫秒級延遲。</div>
+    <div class="glo-item"><span class="term">AI-RAN（AI 無線接取網路）</span> — 讓基地台的 GPU 同時處理通訊與 AI 運算的網路架構。</div>
+    <div class="glo-item"><span class="term">GPU（圖形處理器）</span> — AI 訓練與推論的核心硬體；輝達為主要供應商。</div>
+    <div class="glo-item"><span class="term">utilization（使用率）</span> — 硬體實際被使用的比例；直接影響每張 GPU 的營收試算。</div>
+    <div class="glo-item"><span class="term">intelligent routing（智慧路由）</span> — 依任務難度分派給不同大小的模型，以控制成本。</div>
+    <div class="glo-item"><span class="term">token compression（Token 壓縮）</span> — 減少輸入與輸出 Token 量的技術，用以降低 AI 費用。</div>
+    <div class="glo-item"><span class="term">IDC（Internet Data Center，資料中心）</span> — 提供機房代管與運算的基礎設施，台灣電信三雄的成長重點之一。</div>
+
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- ===== 底部三連結卡（與頂部一致）===== -->
+  <div class="links">
+    <a class="echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="ttl">七月課程・錯中學 ECHO 計劃</span>
+      <span class="desc">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="popup" href="https://linwayet.github.io/popup/index">
+      <span class="ttl">七月課程・學生分析</span>
+      <span class="desc">個人化學習診斷與規劃</span>
+    </a>
+    <a class="line" href="https://line.me/ti/p/~linwayet">
+      <span class="ttl">加我的 LINE：linwayet</span>
+      <span class="desc">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>
