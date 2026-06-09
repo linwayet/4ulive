@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>倫敦自駕計程車：Uber × Wayve 全方位新聞分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #F8F4ED;
+    color: #3A2E22;
+    font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    line-height: 1.85;
+  }
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 28px 18px 60px;
+  }
+  .eng { font-family: 'Inter', 'BIZ UDPGothic', sans-serif; }
+
+  /* 標題區 */
+  header { text-align: center; margin: 18px 0 28px; }
+  h1 {
+    display: inline-block;
+    font-size: 2.7rem;
+    color: #C0392B;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 auto 14px;
+    padding: 14px 26px;
+    border: 4px solid #C0392B;
+    border-radius: 18px;
+    background: #FFFDF8;
+  }
+  .subtitle {
+    font-size: 1.95rem;
+    color: #1565C0;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  .byline {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    color: #1565C0;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+  }
+
+  /* 三連結卡 */
+  .link-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 26px 0;
+  }
+  .link-card {
+    flex: 1 1 220px;
+    min-height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 16px;
+    padding: 16px 18px;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(60,40,20,0.18);
+    line-height: 1.5;
+  }
+  .link-card .lc-title { font-size: 1.18rem; display: block; margin-bottom: 4px; }
+  .link-card .lc-desc { font-size: 0.92rem; font-weight: 400; opacity: 0.96; }
+  .lc-echo { background: #C0392B; }
+  .lc-popup { background: #1565C0; }
+  .lc-line { background: #06C755; }
+
+  /* 單元地圖 */
+  nav#unit-map {
+    background: #FFFDF8;
+    border: 2px solid #E0A96D;
+    border-radius: 16px;
+    padding: 20px 18px;
+    margin: 28px 0;
+  }
+  nav#unit-map h2 {
+    color: #C0392B;
+    font-size: 1.6rem;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+  .map-links { display: flex; flex-direction: column; gap: 16px; }
+  .map-links a {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-size: 1.18rem;
+    font-weight: 700;
+  }
+  .m1 { background: #B0563A; }
+  .m2 { background: #C28A1E; }
+  .m3 { background: #6E7B3D; }
+  .m4 { background: #A86A4F; }
+  .m5 { background: #7A5230; }
+  .m6 { background: #8A7B6A; }
+  .m7 { background: #4F6B4A; }
+  .mg { background: #5A4A38; }
+
+  /* 單元卡片 */
+  section.unit {
+    background: #FFFDF8;
+    border-radius: 16px;
+    padding: 8px 24px 26px;
+    margin: 26px 0;
+    box-shadow: 0 3px 10px rgba(60,40,20,0.10);
+    border-top: 10px solid #C0392B;
+  }
+  section.unit h2 {
+    color: #1565C0;
+    font-size: 1.95rem;
+    line-height: 1.4;
+    margin: 22px 0 14px;
+  }
+  section.unit h3 {
+    color: #2E7D32;
+    font-size: 1.5rem;
+    margin: 22px 0 10px;
+  }
+  section.unit p { margin: 14px 0; }
+  .em-a { color: #E65100; font-weight: 700; }
+  .em-b { color: #6A1B9A; font-weight: 700; }
+
+  ul.facts { list-style: none; padding-left: 0; }
+  ul.facts li {
+    margin: 12px 0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: #F3EEE4;
+  }
+  .tag {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 2px 10px;
+    border-radius: 8px;
+    margin-right: 8px;
+    color: #FFFDF8;
+  }
+  .tag-fact { background: #2E7D32; }
+  .tag-spec { background: #C28A1E; }
+  .tag-opin { background: #6A1B9A; }
+
+  table.cmp {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 1.02rem;
+  }
+  table.cmp th, table.cmp td {
+    border: 1px solid #E0A96D;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.cmp th { background: #F3E2CC; color: #7A5230; font-weight: 700; }
+  table.cmp caption { caption-side: top; font-weight: 700; color: #B0563A; margin-bottom: 8px; text-align: left; }
+
+  /* 英文摘要 */
+  .eng-summary {
+    background: #FBF3E7;
+    border-left: 8px solid #E0A96D;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 22px 0 8px;
+  }
+  .eng-summary .es-title {
+    font-weight: 700;
+    color: #B0563A;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .eng-summary p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 6px 0;
+  }
+
+  /* 回到單元地圖 */
+  .back-to-map {
+    display: inline-flex;
+    align-items: center;
+    min-height: 56px;
+    margin-top: 18px;
+    padding: 10px 22px;
+    background: #6E7B3D;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  /* Glossary */
+  section#glossary {
+    background: #F3EEE4;
+    border-radius: 16px;
+    padding: 8px 24px 26px;
+    margin: 26px 0;
+    border-top: 10px solid #5A4A38;
+  }
+  section#glossary h2 { color: #5A4A38; font-size: 1.95rem; margin: 22px 0 14px; }
+  dl.glo { margin: 0; }
+  dl.glo dt {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #B0563A;
+    font-size: 1.15rem;
+    margin-top: 16px;
+  }
+  dl.glo dd { margin: 4px 0 0; padding-left: 0; }
+
+  @media (max-width: 560px) {
+    body { font-size: 20px; }
+    h1 { font-size: 2.1rem; }
+    .subtitle { font-size: 1.55rem; }
+    .link-cards { flex-direction: column; }
+    section.unit, section#glossary { padding-left: 16px; padding-right: 16px; }
+    table.cmp { font-size: 0.92rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- 標題 -->
+  <header>
+    <h1>倫敦自駕計程車登場</h1>
+    <div class="subtitle">Uber × Wayve 合作案的七層全方位新聞分析</div>
+    <div class="byline">林威老師與 AI agent 團隊製作</div>
+  </header>
+
+  <!-- 頂部三連結卡 -->
+  <div class="link-cards">
+    <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="lc-title">七月課程・錯中學 ECHO 計劃</span>
+      <span class="lc-desc">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index">
+      <span class="lc-title">七月課程・學生分析</span>
+      <span class="lc-desc">個人化學習診斷與規劃</span>
+    </a>
+    <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="lc-title">加我的 LINE：linwayet</span>
+      <span class="lc-desc">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <h2>🗺️ 單元地圖</h2>
+    <div class="map-links">
+      <a class="m1" href="#unit1">單元一　事件概述：倫敦要上路了</a>
+      <a class="m2" href="#unit2">單元二　事實查核：哪些是事實、哪些是推測</a>
+      <a class="m3" href="#unit3">單元三　缺漏與框架：報導沒說的事</a>
+      <a class="m4" href="#unit4">單元四　美國自駕車版圖：各州與各品牌營運現況</a>
+      <a class="m5" href="#unit5">單元五　因果與衝擊：誰受益、誰受壓</a>
+      <a class="m6" href="#unit6">單元六　不確定性：還不知道的事</a>
+      <a class="m7" href="#unit7">單元七　總結與啟示</a>
+      <a class="mg" href="#glossary">術語表 Glossary</a>
+    </div>
+  </nav>
+
+  <!-- 單元一 -->
+  <section class="unit" id="unit1" style="border-top-color:#B0563A;">
+    <h2>單元一　事件概述：倫敦要上路了</h2>
+    <p>叫車平台優步（Uber）與英國自駕新創公司 Wayve 宣布，計畫在今年夏天於倫敦推出可供一般民眾搭乘的自駕計程車（robotaxi）。這在英國首都屬於首次，也被視為歐洲第一個商業化自駕叫車服務的嘗試。</p>
+    <p>根據雙方說法，這是 Wayve 全球布局的起點，未來會擴及十多個城市，年內也規畫進入東京。初期投入的車輛規模屬於<span class="em-a">「數十輛、而非數百輛」</span>的層級。Wayve 自 2018 年起便在倫敦街道上測試其技術，並把倫敦複雜的交通環境當作技術能力的驗證場。</p>
+    <p>關鍵細節是：初期車內仍會配置受過專門訓練、持有執照的 Uber 駕駛在旁監督（supervised），等累積足夠安全紀錄後，才會進入完全無人（fully driverless）階段。Wayve 營運主管表示，目前對「何時撤掉安全員」並無嚴格時間表。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">Uber and the British startup Wayve plan to offer self-driving taxi rides to the public in London this summer. It would be a first for the UK capital and, reportedly, for Europe.</p>
+      <p class="eng">The initial fleet will be small — "dozens, not hundreds" of cars. At first, trained Uber drivers will supervise each vehicle before fully driverless service begins, and the company says there is no strict timeline for removing them.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元二 -->
+  <section class="unit" id="unit2" style="border-top-color:#C28A1E;">
+    <h2>單元二　事實查核：哪些是事實、哪些是推測</h2>
+    <p>一篇以單一受訪者（Wayve 高層）為主要消息來源的報導，須先區分「可被獨立查證的事實」「公司目標時程的推測」與「受訪者立場的意見」。以下逐項標示。</p>
+    <ul class="facts">
+      <li><span class="tag tag-fact">事實</span>Uber 與 Wayve 的倫敦試營運計畫，雙方早在 2025 年 6 月即正式公告，背後是英國政府提前的自駕商業試點許可框架；Uber 也已開放英國民眾候補名單（waitlist）。多家媒體與官方公告一致。</li>
+      <li><span class="tag tag-fact">事實</span>Wayve 自 2018 年於倫敦測試；初期為「有人監督」的試營運，並非一開始就完全無人。</li>
+      <li><span class="tag tag-spec">推測</span>「今夏推出」「擴及十多城、東京年內」是公司公布的目標時程，且仍待「最後幾項核准（approvals）」，屬計畫而非既成事實。</li>
+      <li><span class="tag tag-spec">推測</span>初期規模「數十輛」為受訪者口述，未見正式車隊數字與上線確切日期。</li>
+      <li><span class="tag tag-opin">意見</span>「自駕讓街道更安全」「數據會說話」是受訪者的立場陳述（claim）；該段落並未同時附上 Wayve 自家或第三方的安全統計佐證。</li>
+    </ul>
+    <p>方法論提醒：原文同時引用了 CNN 對另一家業者 Waymo 的負面調查（紅燈、逆向行駛等事件），卻緊接以受訪者一句「街道更安全」帶過。正反兩種證據的份量並不對等——這是讀者要自行補齊的地方。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">The article leans on one main source: a Wayve executive, who is an interested party. Verified facts include the 2025 announcement, the UK's fast-tracked permit framework, and Uber's waitlist.</p>
+      <p class="eng">Claims such as "this summer," "more than ten cities," and "safer streets" are company targets or opinions, not confirmed facts. Notably, no safety statistics are shown next to the safety claim.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元三 -->
+  <section class="unit" id="unit3" style="border-top-color:#6E7B3D;">
+    <h2>單元三　缺漏與框架：報導沒說的事</h2>
+    <h3>被略過的關鍵資訊</h3>
+    <p>報導引用了 Waymo 的負面事件，卻未並陳 Waymo 公開的安全數據（後述單元四）；也未提及同樣鎖定倫敦 2026 窗口的競爭者，例如 Waymo 與百度（Baidu）＋ Lyft。此外，英國《自動駕駛車法》（Automated Vehicles Act）要到 2027 下半年才全面生效，目前仍屬「試營運」階段——這個監理脈絡（regulatory context）在原文中並不清楚。</p>
+    <h3>缺席的聲音</h3>
+    <p>幾組重要的利害關係人（stakeholders）在報導中沒有發言空間：現有計程車與網約車司機（潛在失業者）、行人與用路人安全團體、保險業，以及肇責歸屬（liability）的法律問題。誰擁有車隊、票價、事故賠償機制，原文也都未交代（依公開資料，模式為 Uber 持有並營運車隊、Wayve 提供 AI 駕駛系統）。</p>
+    <h3>用字框架（framing）</h3>
+    <p>報導以「攜手（team up）」「興奮（excited）」「即將（imminently）」等推進式、正向的詞語鋪陳，負面爭議僅以「But Fischer argued…（但費雪辯稱……）」一句帶過。整體框架偏向「科技進步＋安全敘事」，對勞動衝擊與風險著墨較少。文末另附與本主題無關的「脫歐影響徵稿」，屬版面置入。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">The report omits Waymo's own safety data, rival launches in London (Waymo, Baidu with Lyft), and the fact that the UK's Automated Vehicles Act only takes full effect in late 2027.</p>
+      <p class="eng">Missing voices include taxi and rideshare drivers, pedestrian-safety groups, insurers, and the question of liability. The wording — "team up," "excited," "imminently" — frames the story mainly as positive tech progress.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元四（使用者要求新增） -->
+  <section class="unit" id="unit4" style="border-top-color:#A86A4F;">
+    <h2>單元四　美國自駕車版圖：各州與各品牌營運現況</h2>
+    <p>要判斷倫敦這步是領先還是追趕，得先看美國的實況。美國是目前自駕計程車商業化最成熟的市場，但各品牌的進度與路線差異很大。以下為截至 2026 年上半年的公開資訊整理。</p>
+
+    <h3>Waymo（Alphabet 旗下）：目前的領先者</h3>
+    <p>Waymo 是業界規模最大、紀錄最長的營運者。已在<span class="em-a">鳳凰城（Phoenix）、舊金山灣區（SF Bay Area）、洛杉磯（Los Angeles）、邁阿密（Miami）、亞特蘭大（Atlanta）、奧斯汀（Austin）</span>等地載客，並宣布擴入德州的達拉斯、休士頓、聖安東尼奧與佛州奧蘭多，使商業版圖達到約十個美國大都會區。每週付費載客量達數十萬趟（不同月份公布介於約 25 萬至逾 40 萬趟），目標是 2026 年底突破每週百萬趟。截至 2025 年 12 月，其全無人（rider-only）累積里程約 1.707 億英里。後續鎖定拉斯維加斯、華府、底特律、波士頓、納許維爾（與 Lyft 合作）等城，海外首站指向倫敦。</p>
+    <p>值得注意的是其「合夥營運」模式：在奧斯汀、亞特蘭大透過 Uber 叫車；納許維爾與 Lyft 合作；達拉斯由租車公司 Avis Budget 管理車隊維運。這與倫敦「Uber 持有車隊、Wayve 供 AI」的分工邏輯相近。</p>
+
+    <h3>Tesla Robotaxi：後進但擴張最快、爭議也多</h3>
+    <p>特斯拉（Tesla）於 2025 年 6 月底在奧斯汀以約十多輛 Model Y 加前座安全監督員（safety monitor）啟動有限試營運，採純鏡頭視覺（camera-only vision）路線，與 Waymo 的光達＋高精地圖（LiDAR + HD maps）形成對比。2026 年上半年宣布擴張至達拉斯、休士頓、鳳凰城、邁阿密、奧蘭多、坦帕、拉斯維加斯等七城；達拉斯、休士頓據報已出現無監督（unsupervised）的公開載客。累積付費里程約 70 萬英里。但美國國家公路交通安全管理局（NHTSA）紀錄顯示，即使有安全員，特斯拉 Robotaxi 仍發生多起擦撞事件。</p>
+
+    <h3>其他品牌與路線</h3>
+    <p>亞馬遜（Amazon）旗下的 Zoox 在拉斯維加斯推出無方向盤的專用車（purpose-built），仍處於測試／初步商業化階段。May Mobility 以改裝的 Toyota Sienna 油電車，在亞特蘭大（與 Lyft）、德州阿靈頓（與 Uber）營運。通用汽車（GM）旗下的 Cruise 則在歷經多起事故、召回與聯邦調查後已收掉自駕計程車業務——這提供了「並非每家都成功」的重要反例。</p>
+
+    <table class="cmp">
+      <caption>美國主要自駕計程車業者快照（2026 上半年公開資訊）</caption>
+      <thead>
+        <tr><th>業者</th><th>主要城市</th><th>技術／模式特色</th><th>狀態</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Waymo</td><td>鳳凰城、舊金山灣區、洛杉磯、邁阿密、亞特蘭大、奧斯汀（擴至達拉斯等）</td><td>光達＋高精地圖；多採與 Uber／Lyft／租車商合夥</td><td>規模最大，全無人商業營運</td></tr>
+        <tr><td>Tesla</td><td>奧斯汀，2026 擴至達拉斯、休士頓等七城</td><td>純鏡頭視覺；自有 FSD</td><td>擴張最快，部分城市已無監督，事件較多</td></tr>
+        <tr><td>Zoox（Amazon）</td><td>拉斯維加斯</td><td>無方向盤專用車</td><td>測試／初步商業化</td></tr>
+        <tr><td>May Mobility</td><td>亞特蘭大、阿靈頓</td><td>改裝 Sienna，與 Lyft／Uber 合作</td><td>試點營運</td></tr>
+        <tr><td>Cruise（GM）</td><td>—</td><td>—</td><td>已收掉（事故、召回、調查後）</td></tr>
+      </tbody>
+    </table>
+
+    <h3>安全數據的兩面</h3>
+    <p>Waymo 公布的安全衝擊（safety impact）資料指出，相較於同路段人類駕駛基準，其全無人里程的「重傷以上事故」少約九成、氣囊啟動事故少約八成、任何受傷事故少約八成。但同一時期，NHTSA 也累計收到逾一千件涉及（不必然肇因於）Waymo 車輛的事件通報，且 2025 年 5 月曾召回 1,212 輛修正軟體問題。一位律師的提醒很貼切：<span class="em-b">「平均更安全，不等於每一刻都安全。」</span>讀者應同時看見「整體統計改善」與「特定情境仍會出錯」兩面。</p>
+
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">The US is the most advanced robotaxi market. Waymo leads, operating in cities like Phoenix, San Francisco, Los Angeles, Miami, Atlanta, and Austin, and expanding toward about ten metros with hundreds of thousands of weekly trips.</p>
+      <p class="eng">Tesla started later in Austin with safety monitors but is expanding fastest to seven more cities, using a camera-only approach; regulators have logged several crashes. Zoox, May Mobility, and others run smaller programs, while GM's Cruise shut down after crashes and probes.</p>
+      <p class="eng">Waymo's data shows large reductions in injury crashes versus human drivers, yet thousands of incident reports and a 2025 recall remain. "Safer on average is not the same as safe in every moment."</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元五 -->
+  <section class="unit" id="unit5" style="border-top-color:#7A5230;">
+    <h2>單元五　因果與衝擊：誰受益、誰受壓</h2>
+    <h3>為什麼是現在（遠因與近因）</h3>
+    <p>遠因是自駕 AI 技術成熟——Wayve 主打不依賴高精地圖、強調端對端（end-to-end）學習的 AV2.0 模型；以及英國想搶占 AI 與自駕產業的領導地位。近因則是英國政府於 2025 年提前推出自駕商業試點框架，加上 Uber 開放候補名單造勢。</p>
+    <h3>短中長期後果</h3>
+    <p>短期：少量車隊上路、媒體高度關注、招募與投資話題升溫。中期：在倫敦與 Waymo、百度等正面競爭，保險、肇責與勞動爭議逐漸浮現。長期：若《自動駕駛車法》於 2027 下半年全面生效，可能重塑網約車與計程車的就業結構，衝擊最大的是現有司機與傳統運輸業；同時也可能帶來投資與新職缺（英國官方曾估計相關產業可創造數萬個工作機會）。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">The deeper cause is maturing self-driving AI plus the UK's drive to lead in the sector; the immediate trigger is the government's fast-tracked permit framework and Uber's waitlist.</p>
+      <p class="eng">Short term brings small fleets and big headlines; medium term brings competition and disputes over insurance, liability, and jobs; long term, full legislation in 2027 could reshape driving work, hitting current drivers hardest while possibly creating new jobs and investment.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元六 -->
+  <section class="unit" id="unit6" style="border-top-color:#8A7B6A;">
+    <h2>單元六　不確定性：還不知道的事</h2>
+    <p>誠實標出知識的邊界很重要。目前仍未公布的，包括「今夏」的確切上線日、首批實際車數、定價、營運範圍，以及最關鍵的——撤除安全員、進入完全無人的時程（受訪者自承無嚴格時間表）。倫敦真實路況下的安全表現，也還缺乏獨立第三方數據，目前能參照的主要是美國 Waymo 的統計，未必能直接套用到倫敦。</p>
+    <p>建議持續追蹤的指標：英國運輸部（DfT）的核准進度、首批事故與通報、計程車與司機工會的反應，以及 Waymo、百度等競爭者在倫敦的進展。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">Many specifics are still unknown: the exact launch date, fleet size, pricing, service area, and above all when safety drivers will be removed.</p>
+      <p class="eng">There is no independent third-party safety data for London yet. Useful signals to watch include DfT approvals, the first incident reports, driver-union reactions, and rivals' London progress.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元七 -->
+  <section class="unit" id="unit7" style="border-top-color:#4F6B4A;">
+    <h2>單元七　總結與啟示</h2>
+    <p><span class="em-a">一句話總結：</span>這是一則「業者主導、政府背書」的產業推進新聞，正向框架明顯、第三方查證偏少。</p>
+    <h3>三個帶得走的要點</h3>
+    <p>一、現階段是「有人監督的試營運」，並非全無人，別被「無人駕駛上路」的標題誤導。<br>
+    二、安全敘事來自利益相關方，正反數據都該並看——Waymo 的整體統計改善與個別事故、召回，是同一枚硬幣的兩面。<br>
+    三、真正的變數在監理（2027 年《自動駕駛車法》）與勞動衝擊，而不只是技術本身。</p>
+    <h3>對台灣讀者與教學現場的啟示</h3>
+    <p>這則新聞是很好的批判性閱讀素材：可用來練習辨識「公關稿包裝的新聞」、理解「單一消息來源的風險」，以及討論「科技進步 vs 勞動衝擊」的兩難。對台灣而言，也預示了未來自駕法規與本地計程車產業可能面對的相同課題。</p>
+    <div class="eng-summary">
+      <div class="es-title">📝 English Summary</div>
+      <p class="eng">Bottom line: this is an industry-led, government-backed progress story with a positive frame and limited independent checking.</p>
+      <p class="eng">Three takeaways: it is still supervised, not fully driverless; safety claims come from interested parties, so read both the gains and the incidents; the real variables are regulation and jobs, not just technology. For Taiwan, it is a useful case for critical reading and for thinking about future local rules.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- Glossary -->
+  <section id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+    <dl class="glo">
+      <dt>robotaxi</dt>
+      <dd>自駕計程車。由 AI 系統駕駛、可供民眾叫車搭乘的車輛服務。</dd>
+      <dt>autonomous vehicle (AV)</dt>
+      <dd>自駕車／自動駕駛車。能在不同程度上自行完成駕駛任務的車輛。</dd>
+      <dt>supervised / safety monitor</dt>
+      <dd>有人監督／安全監督員。試營運初期坐在車內、可隨時接手的受訓人員。</dd>
+      <dt>fully driverless</dt>
+      <dd>完全無人駕駛。車內不再配置可接手的人員。</dd>
+      <dt>Level 4 (L4)</dt>
+      <dd>自駕分級的第四級。在特定條件範圍內可完全自行駕駛，無需人為介入。</dd>
+      <dt>end-to-end AI / AV2.0</dt>
+      <dd>端對端 AI。Wayve 主打的做法，靠單一 AI 模型直接學習駕駛，不依賴預先建好的高精地圖與大量手寫規則。</dd>
+      <dt>LiDAR + HD maps</dt>
+      <dd>光達＋高精地圖。Waymo 採用的感測與定位方案，與特斯拉純鏡頭路線形成對比。</dd>
+      <dt>camera-only vision</dt>
+      <dd>純鏡頭視覺。僅靠攝影機影像判讀環境的自駕路線（特斯拉採用）。</dd>
+      <dt>waitlist</dt>
+      <dd>候補名單。Uber 開放給想優先體驗的民眾登記。</dd>
+      <dt>stakeholders</dt>
+      <dd>利害關係人。與某事件利益相關的各方，如業者、政府、司機、用路人。</dd>
+      <dt>framing</dt>
+      <dd>框架。報導透過選字與選材，引導讀者用某種角度理解事件。</dd>
+      <dt>liability</dt>
+      <dd>肇責歸屬。事故發生時，由誰負法律責任（駕駛、車主、技術開發商等）。</dd>
+      <dt>regulatory context</dt>
+      <dd>監理脈絡。一件事所處的法規環境與許可條件。</dd>
+      <dt>Automated Vehicles Act</dt>
+      <dd>（英國）自動駕駛車法。規範自駕車商業營運的法律，預計 2027 下半年全面生效。</dd>
+      <dt>NHTSA</dt>
+      <dd>美國國家公路交通安全管理局。負責汽車安全規範與事故通報的聯邦機構。</dd>
+      <dt>safety impact</dt>
+      <dd>安全衝擊（評估）。比較自駕車與人類駕駛事故率的研究方法與數據。</dd>
+      <dt>recall</dt>
+      <dd>召回。因瑕疵而回收或修正一批車輛或軟體。</dd>
+      <dt>rider-only miles</dt>
+      <dd>純載客（全無人）里程。完全沒有人類駕駛在車內時累積的行駛里程。</dd>
+    </dl>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 底部三連結卡（與頂部完全一致） -->
+  <div class="link-cards">
+    <a class="link-card lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="lc-title">七月課程・錯中學 ECHO 計劃</span>
+      <span class="lc-desc">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="link-card lc-popup" href="https://linwayet.github.io/popup/index">
+      <span class="lc-title">七月課程・學生分析</span>
+      <span class="lc-desc">個人化學習診斷與規劃</span>
+    </a>
+    <a class="link-card lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="lc-title">加我的 LINE：linwayet</span>
+      <span class="lc-desc">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>
