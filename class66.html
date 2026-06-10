@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>實體 AI 與人形機器人｜NVIDIA Spencer 訪談整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED; --card:#FFFDF8; --ink:#3A2E22;
+    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+    --accA:#E65100; --accB:#6A1B9A;
+    --sumBg:#FBF3E7; --sumBorder:#E0A96D; --glossBg:#F3EEE4;
+    --line:#06C755;
+  }
+  html{scroll-behavior:smooth;}
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"BIZ UDPGothic","Inter",system-ui,sans-serif;
+    font-size:22px; line-height:1.9; font-weight:400;
+    -webkit-text-size-adjust:100%;
+  }
+  main{max-width:820px; margin:0 auto; padding:24px 18px 60px;}
+  /* 標題 */
+  .masthead{text-align:center; margin:18px 0 28px;}
+  .masthead h1{
+    display:inline-block; font-size:2.7rem; font-weight:700; color:var(--h1);
+    margin:0 0 14px; padding:14px 22px; line-height:1.35;
+    border:4px solid var(--h1); border-radius:18px; background:var(--card);
+    box-shadow:0 4px 14px rgba(192,57,43,.16);
+  }
+  .masthead .sub{font-size:1.95rem; font-weight:700; color:var(--h2); margin:8px 0;}
+  .masthead .maker{
+    font-size:1.25rem; font-weight:700; color:var(--h2);
+    letter-spacing:1px; font-style:italic;
+  }
+  /* 連結卡 */
+  .linkcards{display:flex; flex-direction:column; gap:16px; margin:26px 0;}
+  .linkcard{
+    display:block; text-decoration:none; color:#fff; border-radius:16px;
+    padding:18px 20px; min-height:72px; box-shadow:0 4px 12px rgba(0,0,0,.12);
+  }
+  .linkcard .t{font-size:1.25rem; font-weight:700; display:block; margin-bottom:4px;}
+  .linkcard .d{font-size:1rem; font-weight:400; opacity:.96; line-height:1.6;}
+  .lc-echo{background:#C0392B;}
+  .lc-pop{background:#1565C0;}
+  .lc-line{background:var(--line); color:#08321b;}
+  .lc-line .d{color:#0b3d22;}
+  /* 單元地圖 */
+  #unit-map{
+    background:var(--card); border:2px dashed var(--sumBorder);
+    border-radius:16px; padding:20px; margin:28px 0;
+  }
+  #unit-map h2{font-size:1.6rem; color:var(--accA); margin:0 0 14px; border:none; padding:0;}
+  .maplist{display:flex; flex-direction:column; gap:14px;}
+  .maplink{
+    display:block; text-decoration:none; color:#fff; border-radius:999px;
+    padding:14px 20px; min-height:56px; font-size:1.1rem; font-weight:700;
+  }
+  .m1{background:#C0392B;} .m2{background:#1565C0;} .m3{background:#2E7D32;}
+  .m4{background:#E65100;} .m5{background:#6A1B9A;} .m6{background:#00695C;}
+  .m7{background:#AD1457;} .m8{background:#5D4037;} .mg{background:#455A64;}
+  /* 單元卡 */
+  section.unit{
+    background:var(--card); border-radius:16px; padding:24px 22px 18px;
+    margin:24px 0; box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border-top:8px solid var(--h2);
+  }
+  section.unit h2{
+    font-size:1.95rem; font-weight:700; color:var(--h2); margin:0 0 16px; line-height:1.4;
+  }
+  section.unit h3{font-size:1.5rem; font-weight:700; color:var(--h3); margin:22px 0 8px;}
+  section.unit p{margin:14px 0;}
+  .kw{color:var(--accA); font-weight:700;}
+  .kwb{color:var(--accB); font-weight:700;}
+  .qa{
+    background:var(--bg); border-left:6px solid var(--h3);
+    border-radius:10px; padding:12px 16px; margin:16px 0; font-size:1.05rem;
+  }
+  .qa .q{font-weight:700; color:var(--h3);}
+  /* 英文摘要 */
+  .ensum{
+    background:var(--sumBg); border-left:8px solid var(--sumBorder);
+    border-radius:12px; padding:16px 18px; margin:22px 0 8px;
+    font-family:"Inter",sans-serif;
+  }
+  .ensum .lab{font-weight:700; color:var(--accA); font-size:1.15rem; display:block; margin-bottom:8px;}
+  .ensum p{font-size:1.05rem; line-height:1.75; margin:8px 0; color:#4a3a2c;}
+  /* 回到地圖 */
+  .back-to-map{
+    display:inline-block; margin:14px 0 2px; text-decoration:none;
+    background:#5D4037; color:#fff; border-radius:999px;
+    padding:12px 22px; min-height:48px; font-size:1.05rem; font-weight:700;
+  }
+  /* glossary */
+  #glossary{border-top:8px solid #455A64;}
+  #glossary h2{color:#37474F;}
+  .gloss{background:var(--glossBg); border-radius:12px; padding:8px 16px; margin:14px 0;}
+  .gloss dt{font-weight:700; color:var(--accB); font-size:1.12rem; margin-top:14px; font-family:"Inter",sans-serif;}
+  .gloss dd{margin:4px 0 8px; padding:0; font-size:1.05rem;}
+  @media (max-width:600px){
+    body{font-size:20px;}
+    .masthead h1{font-size:2.05rem;}
+    .masthead .sub{font-size:1.45rem;}
+    section.unit h2{font-size:1.6rem;}
+    main{padding:16px 12px 48px;}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="masthead">
+    <h1>實體 AI 與人形機器人</h1>
+    <div class="sub">NVIDIA 機器人專家 Spencer 訪談整理（Computex / GTC Taipei 2026）</div>
+    <div class="maker">林威老師與 AI agent 團隊製作</div>
+  </header>
+
+  <!-- 頂部三連結卡 -->
+  <nav class="linkcards" aria-label="課程與聯絡連結">
+    <a class="linkcard lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">七月課程：錯中學 ECHO 計劃</span>
+      <span class="d">七月開課・從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="linkcard lc-pop" href="https://linwayet.github.io/popup/index">
+      <span class="t">七月課程：學生分析</span>
+      <span class="d">七月開課・個人化學習診斷與規劃</span>
+    </a>
+    <a class="linkcard lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">我的 LINE：linwayet</span>
+      <span class="d">加我的 LINE：linwayet，直接聯絡林威老師</span>
+    </a>
+  </nav>
+
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <h2>📍 單元地圖</h2>
+    <div class="maplist">
+      <a class="maplink m1" href="#unit1">單元一　什麼是實體 AI（Physical AI）</a>
+      <a class="maplink m2" href="#unit2">單元二　自主代理 AI 如何加速實體 AI</a>
+      <a class="maplink m3" href="#unit3">單元三　軟體堆疊：Isaac GR00T 與 Cosmos 3</a>
+      <a class="maplink m4" href="#unit4">單元四　安全標準：自駕車與通用機器人</a>
+      <a class="maplink m5" href="#unit5">單元五　人形機器人的時程與階段</a>
+      <a class="maplink m6" href="#unit6">單元六　兆元級產業與終極形態</a>
+      <a class="maplink m7" href="#unit7">單元七　手與腳，為何操作比移動更難</a>
+      <a class="maplink m8" href="#unit8">單元八　補充與澄清（查證後補充）</a>
+      <a class="maplink mg" href="#glossary">術語表 Glossary</a>
+    </div>
+  </nav>
+
+  <!-- 單元一 -->
+  <section class="unit" id="unit1">
+    <h2>單元一　什麼是實體 AI（Physical AI）</h2>
+    <p>實體 AI（<span class="kw">Physical AI</span>）與聊天機器人（<span class="kw">chatbot</span>）最大的差別在於：聊天機器人是停留在電腦內部的「數位伴侶」，它是 AI 在數位系統中的呈現；而實體 AI 是必須走進真實世界、並與世界互動的 AI。</p>
+    <p>實體 AI 需要三項能力依序運作：先看見與感知周遭（<span class="kw">perceive</span>），接著理解並推理自己在這個環境中該做什麼（<span class="kw">reason</span>），最後採取行動（<span class="kw">act</span>）。為了做到這些，它必須理解物理規律、不同物體之間的語意關係（<span class="kw">semantic relationship</span>），以及不同環境與不同任務之間的差異。</p>
+    <p>換句話說，實體 AI 是現有 AI 的延伸，差別在於它真正進入了現實世界，必須處理現實中的各種物理現象。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>A chatbot is an AI that exists only inside a computer as a digital companion. Physical AI, by contrast, must perceive the real world, reason about what to do, and then act. It needs to understand physics, semantics, environments, and tasks. In short, Physical AI is an extension of today's AI that steps into the physical world.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元二 -->
+  <section class="unit" id="unit2">
+    <h2>單元二　自主代理 AI 如何加速實體 AI</h2>
+    <p>自主代理 AI（<span class="kw">Agentic AI</span>）本身也是 AI 的一種形式，而且它並不排斥同時是實體 AI。它的本質是一種「帶有控制架構（harness）」的 AI：開發者賦予代理（<span class="kw">agent</span>）工具、上下文（<span class="kw">context</span>）與技能（<span class="kw">skills</span>），並教它有哪些工具、如何使用、用什麼方式完成任務。</p>
+    <p>在今天，代理主要在電腦上協助建立文件、提取資訊與分析；在實體 AI 領域也能做同樣的事。代理 AI 的價值在於提供「自我啟動」的系統——工作可以持續進行，因為不需要人親自操作電腦，而是由代理去與電腦互動。</p>
+    <p>目前機器人開發中有大量步驟仰賴人工：手動調整物理參數（<span class="kw">physics parameters</span>）、從真實世界提取資訊轉成資料、把資料訓練成控制策略（<span class="kw">policy</span>），以及在環境中評估策略。代理 AI 等於提供一批「工作夥伴」，一路協助完成這些繁瑣流程，因此能加速實體 AI 的發展。兩種技術預期是協同合作，共同為人類提供服務。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>Agentic AI is a form of AI equipped with a harness: tools, context, and skills. It enables self-activated systems where agents keep the work going without constant human input. Much of today's robotics work, such as tuning physics parameters and training policies, is still manual. Agentic AI acts as a set of workers that accelerate these steps, so the two technologies are expected to cooperate.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元三 -->
+  <section class="unit" id="unit3">
+    <h2>單元三　機器人軟體堆疊：Isaac GR00T 與 Cosmos 3</h2>
+    <p>Isaac GR00T 是 NVIDIA 為人形機器人開發者打造的平台，協助開發者從模擬一路走到實體部署，涵蓋資料捕捉、資料合成與增強、模擬評估到最後部署。GR00T 的核心是視覺語言行動模型（<span class="kw">VLA, Vision Language Action model</span>），最早是從視覺語言模型（<span class="kw">VLM</span>）出發，再加上一個「行動端（<span class="kw">action head</span>）」。從 VLM 起步的原因是它能在語意上理解世界，但只透過像素（pixels）理解。</p>
+    <p>Cosmos 3 則是一個世界模型（<span class="kw">world model</span>），現在更是一個「世界行動模型（<span class="kw">world action model</span>）」。它能同時透過視覺與行動來理解世界，因此被定位為下一代 GR00T 的底層基石——兩者的關係不是並列，而是上下堆疊：Cosmos 在底層，GR00T 在上層。</p>
+
+    <h3>兩種模擬器：Omniverse 與 Cosmos 互補</h3>
+    <p>模擬器分兩種。<span class="kwb">Omniverse</span> 是傳統模擬器，物理保真度（fidelity）極高、有扎實根據，但要建立大量環境必須靠人工，很費時。<span class="kwb">Cosmos</span> 則能自動生成各種新穎環境、新場景、新任務；缺點是因為它是「學習」得來的，物理精確度不如傳統模擬器。因此兩者需要搭配使用：用 Omniverse 產生大量真實基準（<span class="kw">ground truth</span>）資料，帶入 Cosmos 做預訓練，讓 Cosmos 的物理越來越精確。這也解決了真實資料難以捕捉、必須仰賴合成資料（<span class="kw">synthetic data</span>）的問題。</p>
+
+    <h3>Cosmos 的三大用途</h3>
+    <p>一、<span class="kw">合成資料生成</span>：用語言或行動提示出新場景、新資料集，也就是所謂的「新動詞（new verbs）」。二、<span class="kw">策略評估</span>：訓練好機器人策略後，理想上要在數百萬個場景中評估，手動做不到，世界行動模型提供了足夠彈性。三、<span class="kw">策略本身</span>：因為 RGB 視覺與行動在模型裡都是「一等公民（first-class citizens）」，這些世界行動模型本身就能直接輸出行動，等於可以擔任策略。</p>
+
+    <h3>研究仍在分歧階段</h3>
+    <p>受訪者強調這領域研究仍很新。一派正把 VLA 擴展到包含觸覺，稱為 <span class="kwb">VLTA</span>（視覺、語言、觸覺、行動）；另一派朝端到端 RGB 加行動的世界行動模型發展。短期內難以斷定誰會勝出，因此 NVIDIA 的做法是同時提供平台與技術，讓兩個方向都能各自前進。受訪者也說，新技術（尤其是代理）讓「不必擁有博士學位也能開始投入機器人領域」，但要解決最艱深的問題仍需要博士。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>Isaac GR00T is a platform that takes humanoid developers from simulation to deployment, built on a VLA model that began as a VLM. Cosmos 3 is a world action model that sits beneath GR00T as its foundation. Omniverse offers high-fidelity physics but is hard to scale, while Cosmos generates many environments with less precise physics, so the two are combined. Cosmos serves three roles: synthetic data generation, policy evaluation, and acting as a policy itself.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元四 -->
+  <section class="unit" id="unit4">
+    <h2>單元四　安全標準：自駕車與通用機器人的對比</h2>
+    <p>對大型語言模型（<span class="kw">LLM</span>）來說，答錯通常不嚴重；但機器人若做出錯誤決定，可能造成嚴重後果。受訪者的觀點是：自動駕駛汽車（<span class="kw">autonomous vehicles</span>）已發展超過十年，它們在人群周圍高速行駛，必須極度安全、具備優雅的降級容錯（<span class="kw">graceful failover</span>）與功能安全（<span class="kw">functional safety</span>）。一個對比是：自駕車一輩子都在努力「不去碰到任何東西」，而通用機器人一輩子都在努力「以剛好的力道去觸碰東西」，因此安全要求只會更高。</p>
+    <p>機器人必須能對環境推理。受訪者以 <span class="kwb">Alpamayo</span>（NVIDIA 的自駕推理模型）為例：它是首個能對環境中「意圖（intent）」進行推理的模型——若有一顆球滾過馬路，後面可能會衝出一個追球的小孩。機器人同樣不只要理解因果（causality），還要理解意圖，預判對方想做什麼，才能分解任務、不擋路、確保雙方安全。</p>
+    <p>因此實體 AI 在功能安全與物理安全上都必須更嚴格。LLM 有自己的安全機制，稱為「護欄（<span class="kw">guardrails</span>）」，護欄也會成為實體 AI 模型的一部分；此外還需要內建於車載／本體系統、環繞所有模型與物理系統的實體安全措施。</p>
+    <p>受訪者也承認：就「今天」而言，自駕車的安全確實比機器人更重要，因為自駕車已經上路。但未來機器人會走入家庭，而家庭是非結構化（unstructured）環境，機器人必須以對人與對自身都安全的速度運作，因此需要從現在就開始思考如何打造功能安全的機器人系統。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>An LLM giving a wrong answer is rarely dangerous, but a robot's wrong decision can be. Autonomous vehicles spend their lives trying not to touch anything, while general robots must touch things just right, so robots need even stricter safety. Alpamayo is cited as the first model to reason about intent in the environment. Physical AI needs guardrails plus built-in physical safety, and the conversation about safe robots should begin now.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元五 -->
+  <section class="unit" id="unit5">
+    <h2>單元五　人形機器人的時程與階段</h2>
+    <p>受訪者認為人形機器人可分兩類。關鍵觀察是：人類是用「雙手」建造世界，而不是雙腳，所以最核心的是那雙手；但要在艱困環境導航，雙腳仍必要，因為輪子到不了所有地方。</p>
+    <p>據此做出區分：基於輪子的人形架構——也就是移動式操作機器人（<span class="kw">mobile manipulators</span>）——未來幾年內就會出現，事實上今年底就能看到它們執行「有限但有用」的任務。雙足人形機器人（<span class="kw">biped humanoids</span>）則稍晚，因為它們要進入的環境更多樣、更非結構化。</p>
+    <p>受訪者舉例：替便利商店補貨不需要兩條腿，用輪子反而更穩、更能搬重物；但進入住家，地板上散落玩具，輪子就行不通，必須用腿繞行。真正「通用」的人形機器人，受訪者估計距離看到第一代「只剩幾年」。</p>
+    <p>發展會從工廠開始，因為工廠是半結構化（<span class="kw">semi-structured</span>）環境。機器人技術很難、幾乎沒有東西能開箱即用，所以需要先找「能為成功創造條件」的場域。製造業、倉儲業在不同公司與地區之間相對一致，任務也相似，因此會先在倉儲、製造、資料中心，甚至醫院看到它們——醫院搬運物資、取物的工作其實和倉儲很像。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>Humans built the world with their hands, so hands matter most, but legs are needed for hard terrain. Wheel-based mobile manipulators will appear within a few years and even by year-end for limited tasks, while biped humanoids are further away. Truly general humanoids may be only a few years from a first version. Deployment starts in semi-structured places: warehouses, manufacturing, data centers, and hospitals.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元六 -->
+  <section class="unit" id="unit6">
+    <h2>單元六　兆元級產業與終極形態</h2>
+    <p>受訪者對「人形機器人會是下一個兆元級（trillion-dollar）產業」的看法是「毫無疑問」。理由是：人類按自己的形象建造了世界——為雙腿、雙手與人類身高設計，而不是為四輪或四足機器人設計。</p>
+    <p>雖然下一代環境會逐漸為機器人量身設計，但人類不可能重建多年來建立的一切。因此需要能走進家中、進入既有工廠與環境、並使用所有為人類製造之工具的機器人，這讓人形的形體架構（<span class="kw">form factor</span>）變得合理。</p>
+    <p>在解決自主性（也就是「大腦」）的同時，產業也會先處理一些不一定需要人類的任務——太重、太危險、太髒的工作，這些過程能累積技能。受訪者的結論是：人形形體架構最終絕對會是機器人的終極形態。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>The speaker has no doubt humanoid robots will be a trillion-dollar industry, because humans built the world for two hands, two legs, and human height. We cannot rebuild everything for robots, so robots must fit our homes, factories, and human tools. While autonomy (the brain) is solved, dull, dirty, or dangerous tasks help build skills. The humanoid form factor is seen as the ultimate one.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元七 -->
+  <section class="unit" id="unit7">
+    <h2>單元七　手與腳：為何操作比移動更難</h2>
+    <p>控制機器人的手與腳，哪個比較難？受訪者的答案是「手」，而且有可驗證的證據：今天已能看到機器人跳舞，卻還看不到機器人拿筷子。握持（holding）已經難，精細操作（<span class="kw">manipulation</span>）更難，重點在於靈巧度（<span class="kw">dexterity</span>）。</p>
+    <p>最難的其實是「雙手同時操作同一個物體」。插入任務（<span class="kw">insertion tasks</span>）、組裝任務（<span class="kw">assembly tasks</span>）都需要人類等級的靈巧度，極難達成。</p>
+    <p>相較之下，雙足移動（<span class="kw">locomotion</span>）雖未完全解決，但已走得遠得多，因為這個領域研究多年；而操作需要的技術門檻更高。這就是為什麼全身控制（whole-body control）進步明顯，而精細操作看似較慢——但其實仍在大步前進，只是根本問題極具挑戰。</p>
+    <p>要解決操作，必須在模擬中處理軟體與剛體動力學（<span class="kw">soft-body & rigid-body dynamics</span>）、為觸覺（<span class="kw">tactile</span>）建立技術，並打造「小到能用人類工具、又強到能做超人類動作」的雙手。受訪者總結：操作的動力學與要求，遠大於移動性。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>Hands are harder to control than legs: robots can dance but cannot yet hold chopsticks. Manipulation and dexterity are the hard problems, and two hands handling one object is the hardest, as in insertion and assembly tasks. Locomotion is not fully solved but is much further along after years of study. Manipulation requires modeling soft and rigid bodies, tactile sensing, and hands both small and strong.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元八 補充與澄清 -->
+  <section class="unit" id="unit8" style="border-top-color:#5D4037;">
+    <h2>單元八　補充與澄清（查證後補充）</h2>
+    <p>本單元針對逐字稿中的轉錄誤差與背景脈絡做查證補充，協助讀者看見完整事實。</p>
+
+    <h3>1. 模型名稱更正：Alpamayo（非「Alphamo / Apollo / Alpamo」）</h3>
+    <p>逐字稿中被音譯成「Alphamo」「Apollo」「Alpamo」的模型，正確名稱是 <span class="kwb">Alpamayo</span>。它是 NVIDIA 為自動駕駛打造的開放式推理 VLA 模型家族。<span class="kw">Alpamayo 1 是一個約 100 億參數（10B）的思維鏈（chain-of-thought）推理 VLA 模型，建立在 Cosmos-Reason 的 VLM 骨幹之上</span>，能輸出行駛軌跡並附上「推理軌跡（reasoning traces）」，解釋每個決策背後的邏輯，符合逐字稿所述「第一個能推理環境意圖的模型」。</p>
+
+    <h3>2. 產品脈絡與時間點</h3>
+    <p>查證顯示，NVIDIA 於 <span class="kw">2026 年 5 月 31 日發表 Cosmos 3，並於 6 月 1 日 GTC Taipei 公布 Isaac GR00T 參考人形機器人</span>。Cosmos 3 被定位為 NVIDIA 首個完全開放的「全模態（omnimodel）」實體 AI 模型，當時推出 16B 的 Nano 版與 64B 的 Super 版，並在 Hugging Face 上以可商用授權釋出。本訪談即在此一發表時點前後（Computex / GTC Taipei 2026 期間）進行。</p>
+
+    <h3>3. Isaac GR00T 參考機器人規格</h3>
+    <p>關於同期公布的 Isaac GR00T 參考人形機器人，公開報導指出它身高約六英尺、重約 150 磅，全身約有 <span class="kw">31 個關節活動點，每隻手另有 25 個</span>。此規格可作為理解「人形形體架構」討論的具體對照。</p>
+
+    <h3>4. 前瞻性說法請保留判斷</h3>
+    <p>受訪者對「今年底就能看到輪式機器人執行任務」「幾年內看到第一代通用人形機器人」「人形機器人會是兆元級產業」等說法，屬於業界當事方的<span class="kwb">前瞻性預期（forward-looking statements）</span>，並非已實現的事實。NVIDIA 官方新聞稿亦對此類陳述附有免責聲明。讀者宜將其視為產業願景，而非確定的時間承諾。</p>
+    <div class="ensum">
+      <span class="lab">📝 English Summary</span>
+      <p>The model transcribed as "Alphamo/Apollo" is actually Alpamayo, NVIDIA's open reasoning VLA model for autonomous vehicles, with Alpamayo 1 a 10B-parameter chain-of-thought model built on a Cosmos-Reason VLM backbone. Cosmos 3 launched on May 31, 2026, and the Isaac GR00T reference humanoid was shown on June 1 at GTC Taipei. That robot is about six feet tall with 31 body joints plus 25 per hand. Claims about timelines and a trillion-dollar market are forward-looking statements, not confirmed facts.</p>
+    </div>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- Glossary -->
+  <section class="unit" id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+    <dl class="gloss">
+      <dt>Physical AI（實體 AI）</dt>
+      <dd>必須感知、推理並在真實世界中行動的 AI；與只存在電腦內的聊天機器人相對。</dd>
+
+      <dt>Agentic AI（自主代理 AI）</dt>
+      <dd>具備工具、上下文與技能、能自我啟動持續工作的 AI 形式。</dd>
+
+      <dt>policy（策略）</dt>
+      <dd>機器人學習到的行為決策規則：在某情境下該採取什麼動作。</dd>
+
+      <dt>VLM（Vision Language Model，視覺語言模型）</dt>
+      <dd>能以語意理解影像的模型，透過像素理解世界。</dd>
+
+      <dt>VLA（Vision Language Action model，視覺語言行動模型）</dt>
+      <dd>在 VLM 上加「行動端」，能把理解轉成實際動作的模型。</dd>
+
+      <dt>VLTA（Vision Language Tactile Action）</dt>
+      <dd>在 VLA 基礎上再加入觸覺的研究方向。</dd>
+
+      <dt>world model / world action model（世界模型／世界行動模型）</dt>
+      <dd>能模擬、生成並理解環境的模型；世界行動模型可同時以視覺與行動理解世界。</dd>
+
+      <dt>Isaac GR00T</dt>
+      <dd>NVIDIA 為人形機器人打造的開發平台與基礎模型，涵蓋模擬到部署。</dd>
+
+      <dt>Cosmos 3</dt>
+      <dd>NVIDIA 的世界行動模型，作為新一代 GR00T 的底層基石；2026 年 5 月 31 日發表。</dd>
+
+      <dt>Omniverse</dt>
+      <dd>NVIDIA 的傳統高保真物理模擬器，環境多需人工建立。</dd>
+
+      <dt>synthetic data（合成資料）</dt>
+      <dd>由模擬器或模型生成、用以補足真實資料不足的訓練資料。</dd>
+
+      <dt>ground truth（真實基準）</dt>
+      <dd>準確可靠、可作為比對標準的真實資料。</dd>
+
+      <dt>guardrails（護欄）</dt>
+      <dd>限制 AI 行為以維持安全的機制；在實體 AI 中與物理安全措施並用。</dd>
+
+      <dt>functional safety（功能安全）</dt>
+      <dd>系統即使發生故障也能維持安全狀態的設計要求。</dd>
+
+      <dt>graceful failover（優雅降級容錯）</dt>
+      <dd>系統故障時能平順切換到安全備援、避免突然失控。</dd>
+
+      <dt>Alpamayo</dt>
+      <dd>NVIDIA 的開放式自駕推理 VLA 模型家族；能解釋行車決策、推理環境意圖。</dd>
+
+      <dt>mobile manipulators（移動式操作機器人）</dt>
+      <dd>以輪子移動、上半身能操作物體的機器人；比雙足更早商用。</dd>
+
+      <dt>biped humanoids（雙足人形機器人）</dt>
+      <dd>以雙腿行走的人形機器人，適合非結構化環境，發展時程較晚。</dd>
+
+      <dt>manipulation（操作）</dt>
+      <dd>用手抓取、組裝、插入等精細動作；目前比移動更難解決。</dd>
+
+      <dt>locomotion（移動／步行）</dt>
+      <dd>機器人的整體移動與步行控制；進展較操作更成熟。</dd>
+
+      <dt>dexterity（靈巧度）</dt>
+      <dd>手部精細操控能力，尤其雙手協調操作同一物體最難。</dd>
+
+      <dt>form factor（形體架構）</dt>
+      <dd>機器人的整體外形設計；人形被視為能契合人類世界的終極形態。</dd>
+
+      <dt>semi-structured environment（半結構化環境）</dt>
+      <dd>如工廠、倉儲，規則相對一致、適合早期部署的場域。</dd>
+    </dl>
+    <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 底部三連結卡（與頂部完全一致） -->
+  <nav class="linkcards" aria-label="課程與聯絡連結">
+    <a class="linkcard lc-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">七月課程：錯中學 ECHO 計劃</span>
+      <span class="d">七月開課・從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="linkcard lc-pop" href="https://linwayet.github.io/popup/index">
+      <span class="t">七月課程：學生分析</span>
+      <span class="d">七月開課・個人化學習診斷與規劃</span>
+    </a>
+    <a class="linkcard lc-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">我的 LINE：linwayet</span>
+      <span class="d">加我的 LINE：linwayet，直接聯絡林威老師</span>
+    </a>
+  </nav>
+
+</main>
+</body>
+</html>
