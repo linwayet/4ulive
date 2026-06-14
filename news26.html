@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人形機器人的未來 ── 全方位分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED; --card:#FFFDF8; --text:#3A2E22;
+    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+    --accentA:#E65100; --accentB:#6A1B9A;
+    --sumBg:#FBF3E7; --sumBorder:#E0A96D; --glossBg:#F3EEE4;
+    --line:#06C755;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'BIZ UDPGothic','Noto Sans TC',sans-serif;
+    font-size:22px; line-height:1.85; padding:24px 14px 60px;
+  }
+  main{max-width:820px; margin:0 auto;}
+  .header{text-align:center; margin:8px 0 26px;}
+  .header h1{
+    font-size:2.7rem; font-weight:700; color:var(--h1);
+    display:inline-block; border:4px solid var(--h1); border-radius:18px;
+    padding:14px 26px; margin:0 0 16px; line-height:1.4;
+  }
+  .header .sub{font-size:1.95rem; color:var(--h2); font-weight:700; margin:6px 0;}
+  .header .made{font-size:1.3rem; color:var(--h2); font-weight:700; letter-spacing:1px; margin-top:6px;}
+  .premise{
+    background:var(--sumBg); border-left:10px solid var(--accentA);
+    border-radius:14px; padding:18px 22px; margin:22px 0; font-size:1.05rem;
+  }
+  .premise strong{color:var(--accentA);}
+
+  /* 三連結卡 */
+  .links{display:flex; flex-wrap:wrap; gap:16px; margin:22px 0;}
+  .links a{
+    flex:1 1 240px; min-height:78px; display:flex; flex-direction:column;
+    justify-content:center; text-decoration:none; color:#fff;
+    border-radius:16px; padding:14px 18px; font-weight:700; line-height:1.5;
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+  }
+  .links a .t{font-size:1.15rem; margin-bottom:4px;}
+  .links a .d{font-size:.92rem; font-weight:400; opacity:.96;}
+  .lk-echo{background:var(--h1);}
+  .lk-stud{background:var(--h2);}
+  .lk-line{background:var(--line);}
+
+  /* 單元地圖 */
+  #unit-map{
+    background:var(--card); border-radius:16px; padding:20px 18px;
+    margin:26px 0; box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+  #unit-map h2{font-size:1.6rem; color:var(--h3); margin:0 0 14px; text-align:center;}
+  .map-grid{display:flex; flex-direction:column; gap:14px;}
+  .map-grid a{
+    min-height:72px; display:flex; align-items:center; text-decoration:none;
+    color:#fff; border-radius:14px; padding:12px 20px; font-weight:700; font-size:1.1rem;
+  }
+  .m1{background:#B0563A;} .m2{background:#C28A1E;} .m3{background:#6E7B3D;}
+  .m4{background:#A86A4F;} .m5{background:#7A5230;} .m6{background:#8A7B6A;}
+  .m7{background:#4F6B4A;} .mg{background:#6A1B9A;}
+
+  section{
+    background:var(--card); border-radius:16px; padding:24px 22px 18px;
+    margin:24px 0; box-shadow:0 2px 10px rgba(0,0,0,.07);
+  }
+  section h2{font-size:1.95rem; color:var(--h2); margin:0 0 14px; line-height:1.4;
+    border-bottom:3px solid var(--sumBorder); padding-bottom:10px;}
+  section h3{font-size:1.5rem; color:var(--h3); margin:22px 0 8px;}
+  section p{margin:12px 0;}
+  .en{color:var(--accentA); font-weight:700; font-family:'Inter',sans-serif;}
+  ul{margin:10px 0; padding-left:1.3em;}
+  li{margin:9px 0;}
+  .tag{display:inline-block; font-size:.82em; font-weight:700; color:#fff;
+    border-radius:8px; padding:2px 9px; margin-right:6px; vertical-align:middle;}
+  .t-fact{background:#2E7D32;} .t-guess{background:#C28A1E;} .t-op{background:#8A7B6A;}
+  .data{background:var(--glossBg); border-radius:12px; padding:10px 16px; margin:12px 0;}
+
+  .summary{
+    background:var(--sumBg); border-left:10px solid var(--sumBorder);
+    border-radius:12px; padding:16px 20px; margin:20px 0 14px;
+    font-family:'Inter','BIZ UDPGothic',sans-serif; font-size:1.02rem; line-height:1.7;
+  }
+  .summary .lbl{font-weight:700; color:var(--accentA); display:block; margin-bottom:6px;}
+
+  .back-to-map{
+    display:inline-block; min-height:48px; line-height:34px; text-decoration:none;
+    background:#7A5230; color:#fff; border-radius:12px; padding:7px 18px;
+    font-size:1rem; font-weight:700; margin-top:6px;
+  }
+
+  #glossary{background:var(--glossBg);}
+  #glossary h2{color:var(--accentB); border-bottom-color:var(--accentB);}
+  .gloss dt{font-weight:700; color:var(--accentA); font-family:'Inter',sans-serif; margin-top:14px;}
+  .gloss dd{margin:2px 0 0; padding-left:0;}
+
+  @media(max-width:560px){
+    body{font-size:20px; padding:18px 10px 50px;}
+    .header h1{font-size:2.05rem; padding:12px 16px;}
+    .header .sub{font-size:1.5rem;}
+    section h2{font-size:1.55rem;}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="header">
+    <h1>人形機器人的未來</h1>
+    <div class="sub">一場創辦人視角的產業願景 ── 哪些可信、哪些須打折、哪些沒說</div>
+    <div class="made">林威老師與 AI agent 團隊製作</div>
+  </div>
+
+  <div class="premise">
+    <strong>閱讀前的關鍵前提：</strong>本影片講者 Jonathan Hurst 並非中立分析者，而是
+    Agility Robotics 的共同創辦人暨技術長（Chief Robot Officer），也就是影片中主角機器人
+    Digit 的製造方。本頁以「客觀查核」角度，把演講中可驗證的事實、僅屬樂觀預測的數字、
+    以及完全沒被提到的面向逐一分開呈現。
+  </div>
+
+  <!-- 頂部三連結卡 -->
+  <nav class="links" aria-label="課程與聯絡">
+    <a class="lk-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">七月課程・錯中學 ECHO 計劃</span>
+      <span class="d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lk-stud" href="https://linwayet.github.io/popup/index">
+      <span class="t">七月課程・學生分析</span>
+      <span class="d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lk-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">加我的 LINE：linwayet</span>
+      <span class="d">直接聯絡林威老師</span>
+    </a>
+  </nav>
+
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <h2>📍 單元地圖</h2>
+    <div class="map-grid">
+      <a class="m1" href="#unit1">一、事實查核：哪些可被驗證</a>
+      <a class="m2" href="#unit2">二、缺漏分析：影片沒談、但有資料佐證的事</a>
+      <a class="m3" href="#unit3">三、多角度檢視：誰的立場與框架</a>
+      <a class="m4" href="#unit4">四、水平比較：放進更大的座標</a>
+      <a class="m5" href="#unit5">五、垂直因果：遠因、近因與後果</a>
+      <a class="m6" href="#unit6">六、不確定性：還不知道的事</a>
+      <a class="m7" href="#unit7">七、總結與啟示</a>
+      <a class="mg" href="#glossary">術語表 Glossary</a>
+    </div>
+  </nav>
+
+  <!-- 單元一 -->
+  <section id="unit1">
+    <h2>一、事實查核：哪些可被驗證</h2>
+    <ul>
+      <li><span class="tag t-fact">事實</span>講者身分屬實。Jonathan Hurst 是
+        人形機器人公司（humanoid robot company）Agility Robotics 的共同創辦人暨技術長／
+        Chief Robot Officer；公司於 2015 年自奧勒岡州立大學（Oregon State University）
+        衍生（spun out）成立，影片中的主角機器人 Digit 即為其產品。這代表這是一場
+        「產品方的願景演講」，而非中立報導。</li>
+      <li><span class="tag t-guess">推測</span>「2050 年人形機器人市場將是今日汽車市場兩倍」。
+        此數字源自摩根士丹利（Morgan Stanley）的預測，估值約 4.7～5 兆美元；其精確說法是
+        「約為 2024 年前 20 大車廠營收的兩倍」，並非整個汽車產業。各機構估值落差極大，例如
+        Roland Berger 估 2050 年基準情境約 2 兆、樂觀情境約 4 兆美元。影片以「分析師預測」
+        一語帶過，淡化了這只是單一樂觀情境。</li>
+      <li><span class="tag t-fact">大致屬實</span>「Digit 是第一台商業部署（commercially
+        deployed）的人形機器人」。多數業界來源支持此說（2024 年於亞特蘭大 GXO 倉庫；之後
+        進入 Amazon、Toyota 等場域）。但「第一」屬定義問題，取決於如何界定「商業部署」。</li>
+      <li><span class="tag t-fact">事實</span>「農業就業曾達約 90%、今日僅約 2%」。
+        這是美國經濟史上大致正確的長期趨勢。</li>
+      <li><span class="tag t-op">意見</span>「會很棒」「滿足全人類基本需求」「殖民太陽系」。
+        這些屬願景與個人期望，非可驗證的事實主張。</li>
+    </ul>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      The speaker, Jonathan Hurst, is the co-founder and chief technology officer of Agility Robotics, the maker of the Digit robot shown in the talk. His claim that the 2050 humanoid market will be twice the size of today's auto industry traces to a single bullish Morgan Stanley forecast, while other firms project far smaller numbers. Digit is widely cited as the first commercially deployed humanoid, though "first" depends on definition. The farming-employment statistic is broadly accurate, but lines like "it's going to be great" are opinion, not verifiable fact.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元二（補上公開資料） -->
+  <section id="unit2">
+    <h2>二、缺漏分析：影片沒談、但有資料佐證的事</h2>
+    <p>影片屬單一立場的願景演講，以下四個重要面向幾乎未被提及，但都有公開資料可佐證。</p>
+
+    <h3>(1) 勞動衝擊被「88% 美國人沒失業」一語淡化</h3>
+    <p>講者用農業類比強調長期淨增益，卻略過過渡期的受害者。實證研究與分析則指出明確的
+      取代效應（displacement effect）：</p>
+    <div class="data">
+      <ul>
+        <li>麻省理工 Acemoglu 與 Restrepo 的研究估計：一地每多增加一台工業機器人，
+          當地就業約減少 6 名工人，且被取代者多轉往較低薪的工作。</li>
+        <li>花旗（Citi）估計：每台人形機器人約可取代 3.3 名人類工人。</li>
+        <li>麥肯錫（McKinsey）估計：廣義自動化（含 AI 與機器人）到 2030 年前，
+          全球恐影響 4 億至 8 億個工作。</li>
+        <li>高盛（Goldman Sachs）估計：人形機器人到 2030 年或可補足美國製造業約 4% 的缺工。</li>
+        <li>牛津經濟研究院（Oxford Economics）警告：若無政策介入，機器人普及十年內
+          恐使前 10% 與後 50% 所得族群的差距再擴大約 5～12%。</li>
+        <li>平衡面：美國全國製造商協會（NAM）指出 2025 年仍有逾 60 萬個製造業職缺未補，
+          因此初期人形機器人可能先「補缺」而非直接「取代」。</li>
+      </ul>
+    </div>
+
+    <h3>(2) 「資料從何而來」背後的隱藏人力與隱私</h3>
+    <p>講者說機器人沒有現成的動作資料、必須「自己生成」，卻沒說這個生成過程其實高度依賴
+      人力。根據《麻省理工科技評論》（MIT Technology Review）2026 年 2 月的調查，許多
+      看似自主的機器人，實際仰賴遠端操作（teleoperation）與低薪資料工人：</p>
+    <div class="data">
+      <ul>
+        <li>上海一名工人連日戴著 VR 頭盔與外骨骼（exoskeleton），反覆開關微波爐門
+          數百次，以產生訓練資料。</li>
+        <li>Tesla 的操作員穿戴動作捕捉裝、輪七小時班遠端操控機器人，時薪約 25～48 美元，
+          並回報頸背疼痛與暈眩。</li>
+        <li>1X 公司的家用機器人 Neo（售價約 2 萬美元）仍仰賴位於加州帕羅奧圖（Palo Alto）
+          的遠端操作員，在使用者家中代為操作複雜任務。</li>
+        <li>Figure 與 Brookfield 合作，計畫橫跨約 10 萬戶住宅收集資料；中國則出現以時薪
+          約 3 美元拍攝自家做家事影片的工作。這同時牽涉家庭隱私與新型態的低薪零工問題。</li>
+      </ul>
+    </div>
+
+    <h3>(3) 競爭格局與地緣現實完全沒提</h3>
+    <p>影片只談自家的 Digit，但 2026 年其實群雄並起：Tesla Optimus、Figure、
+      Apptronik Apollo、Boston Dynamics Atlas、1X Neo，以及中國的 Unitree、AgiBot 等。
+      2025 年全球人形機器人出貨量約 1.3 萬台，其中中國廠商佔約八成以上，是市場的關鍵變數。</p>
+
+    <h3>(4) 「誰買得起、誰先受益」</h3>
+    <p>Digit 採企業租賃（RaaS，Robot as a Service）模式，估計每台約 25 萬美元級；
+      摩根士丹利估未來在富裕國家或可降至約 5 萬美元、在中國供應鏈主導地區或約 1.5 萬美元。
+      換言之，早期紅利集中於大型企業，與影片「滿足全人類基本需求」的願景之間，
+      存在明顯落差。</p>
+
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      The talk leaves out four well-documented angles. First, studies by MIT economists, Citi, McKinsey, Goldman Sachs and Oxford Economics point to real displacement and widening inequality, even if labor shortages may soften the early impact. Second, an MIT Technology Review investigation shows "autonomous" robots often depend on teleoperators and low-paid data workers, raising labor and privacy concerns the talk never mentions. Third, the speaker ignores fierce competition and China's roughly 80%-plus share of 2025 shipments. Fourth, Digit's enterprise price of around 250,000 US dollars sits uneasily beside the promise of meeting everyone's basic needs.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元三 -->
+  <section id="unit3">
+    <h2>三、多角度檢視：誰的立場與框架</h2>
+    <ul>
+      <li><strong>利害關係人（stakeholders）：</strong>機器人廠商（講者）、倉儲物流業主
+        （Amazon、GXO、Toyota）、第一線勞工、投資人、監理機關、一般家庭。</li>
+      <li><strong>支持方框架：</strong>強調缺工、把「3D 工作」（dull, dirty, dangerous，
+        枯燥、骯髒、危險）自動化、提升產能與生活品質。</li>
+      <li><strong>謹慎方關切：</strong>就業流失、安全責任歸屬、資料與家庭隱私、
+        權力集中於少數大型企業。</li>
+      <li><strong>用字框架舉證：</strong>「tireless partner（不知疲倦的夥伴）」、
+        「amplify human ambitions（放大人類雄心）」、「it's going to be great」皆為正向
+        行銷語彙；把機器人定位為「夥伴（partner）」而非「替代品（replacement）」，
+        在語言上淡化了勞動衝突。</li>
+      <li><strong>對誰最有利：</strong>對 Agility 公司及整個人形機器人的投資敘事最有利。</li>
+    </ul>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      The story involves many stakeholders, from robot makers and warehouse operators to frontline workers, investors and families. The speaker frames robots as tireless partners that amplify human ambition, emphasizing labor shortages and the "dull, dirty, dangerous" jobs. The word "partner" rather than "replacement" softens the conflict over jobs. Overall the framing benefits Agility and the broader humanoid investment narrative.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元四 -->
+  <section id="unit4">
+    <h2>四、水平比較：放進更大的座標</h2>
+    <ul>
+      <li><strong>講者自身的類比：</strong>農業機械化、電力（從燈泡到資料中心）。
+        這是樂觀派的典型敘事，強調長期淨增益、淡化過渡期的受害者。</li>
+      <li><strong>可補充的真實前例：</strong>工業機器手臂（自 1960 年代起）、Amazon 倉儲的
+        自主移動機器人（AMR，autonomous mobile robot）、自駕車（autonomous vehicles）。
+        講者以自駕車「只有兩個自由度（degrees of freedom）」對比，凸顯人形機器人操作的
+        複雜度更高。</li>
+      <li><strong>常見模式：</strong>技術願景演講常見「市場規模＋歷史類比＋現場產品展示」
+        的三件套結構。</li>
+      <li><strong>定位：</strong>這並非孤立事件，而是 2025～2026 年「從展示走向部署
+        （demo to deployment）」這波產業趨勢的一環。</li>
+    </ul>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      The speaker compares humanoids to farm mechanization and electricity, a classic optimist's analogy that highlights long-term gains and downplays the transition. Useful real precedents include industrial robot arms, warehouse mobile robots and self-driving cars; his own contrast with the car's "two degrees of freedom" shows how much harder humanoid control is. The talk follows a familiar pattern of market size, historical analogy and a live demo, and fits the 2025–2026 shift from demo to deployment.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元五 -->
+  <section id="unit5">
+    <h2>五、垂直因果：遠因、近因與後果</h2>
+    <ul>
+      <li><strong>遠因：</strong>AI 與大型語言模型（LLM）突破、全球缺工、致動器
+        （actuator，驅動關節的馬達）與感測器成本下降。</li>
+      <li><strong>近因：</strong>Digit 已進入 Amazon、GXO、Toyota 等場域，產業進入
+        規模化前夜，需要對外溝通與募資。</li>
+      <li><strong>講者明示的安全三階段：</strong>① 用物理圍欄把機器人與人隔離 →
+        ② 可被第三方認證的感測（宣稱能在 99.99% 的情況下偵測到接近的人並立即停機、坐下）→
+        ③ 可被信任的智慧判斷，最終才能與人並肩工作、握手、交遞物品。</li>
+      <li><strong>後果：</strong>短期由工廠／倉儲的結構化任務先落地；中期退場到後場、
+        零售補貨；長期家用仍受「混亂、成本、安全」三關阻礙——講者自承短期內不會把
+        嬰兒交給機器人。</li>
+      <li><strong>衝擊最大者：</strong>低技能、重複性勞動職位，以及供應鏈與製造國。</li>
+    </ul>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      The deeper causes are AI breakthroughs, global labor shortages and falling actuator and sensor costs; the immediate trigger is Digit's real deployments and the industry's push to scale and raise funds. The speaker lays out a three-stage safety path: physical barriers, certifiable sensing that stops the robot when a person approaches, and finally trusted judgment. Adoption should start in structured factory and warehouse tasks, move to back rooms and retail, and reach homes only much later, blocked by chaos, cost and safety. Low-skill repetitive jobs and manufacturing supply chains face the biggest impact.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元六 -->
+  <section id="unit6">
+    <h2>六、不確定性：還不知道的事</h2>
+    <ul>
+      <li><strong>時程：</strong>影片只說「very very soon（很快很快）」，安全認證
+        何時真正到位並不明確。</li>
+      <li><strong>市場規模：</strong>2050 年兆元級的數字跨度極大，高度依賴單價與滲透率
+        等假設，不宜當作定論。</li>
+      <li><strong>家用落地：</strong>「混亂、成本、安全」三關的時間表，目前無人能準確預估。</li>
+      <li><strong>可持續追蹤的指標：</strong>第三方安全認證進度（如 OSHA 相關）、單價下降
+        曲線、各廠實際出貨量、是否出現重大安全事故、以及 teleoperation 走向真正自主的程度。</li>
+    </ul>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      Several things remain unknown. The timeline is vague ("very very soon"), and it is unclear when third-party safety certification will arrive. The trillion-dollar 2050 forecasts rest on shaky assumptions about price and adoption. No one can reliably date when home use will clear the hurdles of chaos, cost and safety. Useful indicators to watch include safety certification progress, falling unit prices, actual shipment numbers, any major safety incidents, and how far teleoperation gives way to real autonomy.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元七 -->
+  <section id="unit7">
+    <h2>七、總結與啟示</h2>
+    <p><strong>一句話總結：</strong>這是一場「人形機器人創辦人」描繪的樂觀產業願景；
+      其技術判斷相當紮實（為何需要腿、軀幹與雙臂，以及安全三階段的設計邏輯），
+      但必須與其商業立場分開看待。</p>
+    <p><strong>三個帶走的要點：</strong></p>
+    <ul>
+      <li>技術論述可信，但市場數字要打折——那是單一機構的樂觀情境，不是共識。</li>
+      <li>安全是真正的瓶頸，這點講者誠實承認，也坦言家用還早。</li>
+      <li>全篇缺少勞工與獨立第三方的聲音，也沒提機器人背後的資料人力與隱私成本。</li>
+    </ul>
+    <p><strong>對台灣讀者與教學現場的啟示：</strong>這是一份絕佳的「如何辨識利害關係人
+      框架（stakeholder framing）」教材——同一段話，誰在說、為何這樣說，比說了什麼更重要。
+      台灣身為半導體與精密製造重鎮，人形機器人的供應鏈（致動器、減速機、感測器）與缺工
+      議題都與本地高度相關，值得持續關注。</p>
+    <div class="summary">
+      <span class="lbl">📝 English Summary</span>
+      This is an optimistic industry vision from a robot company's founder: the engineering reasoning is solid, but it should be read separately from his commercial interest. Three takeaways: trust the technical case but discount the market numbers, treat safety as the real bottleneck the speaker honestly admits, and notice the missing voices of workers and independent experts, plus the hidden data labor and privacy costs. For Taiwan, a hub of semiconductors and precision manufacturing, both the humanoid supply chain and the labor-shortage debate are highly relevant.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 術語表 -->
+  <section id="glossary">
+    <h2>📖 術語表 Glossary</h2>
+    <dl class="gloss">
+      <dt>embodied AI</dt><dd>具身智慧。把 AI 放進可在實體世界行動的身體（如機器人），而非只在螢幕上對話。</dd>
+      <dt>humanoid robot</dt><dd>人形機器人。外型與人接近、能在為人設計的空間中工作的機器人。</dd>
+      <dt>human-centric</dt><dd>以人為中心。指機器人設計目標是進入人類環境、與人協作，而非單純模仿人的外觀。</dd>
+      <dt>teleoperation</dt><dd>遠端操作。由人類在遠處即時操控機器人，常用於收集訓練資料或處理機器人尚無法自主完成的任務。</dd>
+      <dt>reinforcement learning</dt><dd>強化學習。讓機器在模擬中反覆嘗試、依結果獲得回饋，自行摸索如何協調各關節達成目標。</dd>
+      <dt>degrees of freedom</dt><dd>自由度。系統可獨立活動的方向數；自駕車自由度低，人形機器人自由度高、控制更難。</dd>
+      <dt>dynamically stable</dt><dd>動態平衡。靠持續調整（如擺動手臂、移動重心）維持站立，而非靜止時就穩。</dd>
+      <dt>actuator</dt><dd>致動器。驅動機器人關節運動的馬達或裝置，是硬體成本的關鍵之一。</dd>
+      <dt>exoskeleton</dt><dd>外骨骼。穿戴於身上的機械支架，此處指資料工人穿戴它來記錄人類動作。</dd>
+      <dt>displacement effect</dt><dd>取代效應。自動化使原本由人完成的工作被機器接手，導致就業或薪資下降的效果。</dd>
+      <dt>RaaS（Robot as a Service）</dt><dd>機器人即服務。企業以租賃／訂閱方式使用機器人，而非一次買斷。</dd>
+      <dt>AMR（autonomous mobile robot）</dt><dd>自主移動機器人。能在倉庫自行移動搬運的輪式機器人，如 Amazon 倉儲所用。</dd>
+      <dt>three laws of robotics</dt><dd>機器人三大法則。科幻作家 Asimov 提出的設定；講者指出真正關鍵是「設計者的意圖」而非機器人自身的判斷。</dd>
+      <dt>autonomous vehicles</dt><dd>自駕車。講者用以對比——其決策環境較結構化、自由度較低，難度低於人形機器人。</dd>
+      <dt>stakeholders</dt><dd>利害關係人。對某議題有利益或受其影響的各方，立場與動機往往不同。</dd>
+    </dl>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 底部三連結卡（與頂部一致） -->
+  <nav class="links" aria-label="課程與聯絡">
+    <a class="lk-echo" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="t">七月課程・錯中學 ECHO 計劃</span>
+      <span class="d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lk-stud" href="https://linwayet.github.io/popup/index">
+      <span class="t">七月課程・學生分析</span>
+      <span class="d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lk-line" href="https://line.me/ti/p/~linwayet">
+      <span class="t">加我的 LINE：linwayet</span>
+      <span class="d">直接聯絡林威老師</span>
+    </a>
+  </nav>
+
+</main>
+</body>
+</html>
