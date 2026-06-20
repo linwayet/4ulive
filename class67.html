@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>巧克力產業全解析｜從可可供應鏈看懂一條變貴變薄的巧克力</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED; --card:#FFFDF8; --ink:#3A2E22;
+    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+    --accentA:#E65100; --accentB:#6A1B9A;
+    --sum-bg:#FBF3E7; --sum-border:#E0A96D; --gloss-bg:#F3EEE4;
+    --line:#06C755;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"BIZ UDPGothic","Inter",system-ui,sans-serif;
+    font-size:22px; line-height:1.9; font-weight:400;
+  }
+  main{max-width:820px; margin:0 auto; padding:24px 18px 64px;}
+  header.top{max-width:820px; margin:0 auto; padding:32px 18px 8px; text-align:center;}
+  h1{
+    font-size:2.7rem; font-weight:700; color:var(--h1); line-height:1.35;
+    margin:.2em 0; padding:.5em .6em; border:4px solid var(--h1);
+    border-radius:18px; background:#FFF7F2; display:inline-block;
+  }
+  .subtitle{font-size:1.95rem; font-weight:700; color:var(--h2); margin:.6em auto; max-width:760px;}
+  .byline{font-size:1.35rem; font-weight:700; color:var(--h2); letter-spacing:.04em; margin:.4em 0 0;}
+  .lede{
+    max-width:760px; margin:18px auto 0; background:var(--card); border-radius:14px;
+    padding:18px 22px; box-shadow:0 2px 10px rgba(120,80,40,.10); text-align:left; font-size:1.05rem;
+  }
+  /* 連結卡 */
+  .cards{display:flex; gap:16px; max-width:820px; margin:24px auto; padding:0 18px; flex-wrap:wrap;}
+  .cards a{
+    flex:1 1 230px; min-height:72px; display:flex; flex-direction:column; justify-content:center;
+    text-decoration:none; color:#fff; border-radius:16px; padding:16px 18px; font-weight:700;
+    box-shadow:0 3px 10px rgba(120,80,40,.18); line-height:1.5;
+  }
+  .cards a .t{font-size:1.12rem;}
+  .cards a .d{font-size:.92rem; font-weight:400; opacity:.96; margin-top:4px;}
+  .card-echo{background:var(--h1);}
+  .card-anal{background:var(--h2);}
+  .card-line{background:var(--line);}
+  /* 單元地圖 */
+  nav#unit-map{
+    max-width:820px; margin:8px auto 28px; background:var(--card); border-radius:16px;
+    padding:20px 18px; box-shadow:0 2px 10px rgba(120,80,40,.10);
+  }
+  nav#unit-map h2{font-size:1.5rem; color:var(--accentB); margin:.1em 0 .6em; border:none; padding:0;}
+  .map-grid{display:flex; flex-wrap:wrap; gap:12px;}
+  .map-grid a{
+    flex:1 1 240px; min-height:60px; display:flex; align-items:center; text-decoration:none;
+    color:#fff; border-radius:14px; padding:12px 16px; font-weight:700; font-size:1.02rem; line-height:1.45;
+    box-shadow:0 2px 6px rgba(120,80,40,.16);
+  }
+  .c1{background:#C0392B;} .c2{background:#AD1457;} .c3{background:#1565C0;} .c4{background:#0277BD;}
+  .c5{background:#00838F;} .c6{background:#2E7D32;} .c7{background:#558B2F;} .c8{background:#9E6500;}
+  .c9{background:#E65100;} .c10{background:#6A1B9A;} .c11{background:#4527A0;} .c12{background:#283593;}
+  .cg{background:#5D4037;}
+  /* 單元卡 */
+  section{
+    background:var(--card); border-radius:16px; padding:26px 24px 18px; margin:0 0 26px;
+    box-shadow:0 3px 12px rgba(120,80,40,.10); border-top:8px solid var(--h2);
+  }
+  section h2{font-size:1.95rem; font-weight:700; color:var(--h2); margin:.1em 0 .5em; line-height:1.4;}
+  section.u1 h2,section.u1{border-color:#C0392B;} section.u1 h2{color:#C0392B;}
+  section.u2 h2,section.u2{border-color:#AD1457;} section.u2 h2{color:#AD1457;}
+  section.u3 h2,section.u3{border-color:#1565C0;} section.u3 h2{color:#1565C0;}
+  section.u4 h2,section.u4{border-color:#0277BD;} section.u4 h2{color:#0277BD;}
+  section.u5 h2,section.u5{border-color:#00838F;} section.u5 h2{color:#00838F;}
+  section.u6 h2,section.u6{border-color:#2E7D32;} section.u6 h2{color:#2E7D32;}
+  section.u7 h2,section.u7{border-color:#558B2F;} section.u7 h2{color:#558B2F;}
+  section.u8 h2,section.u8{border-color:#9E6500;} section.u8 h2{color:#9E6500;}
+  section.u9 h2,section.u9{border-color:#E65100;} section.u9 h2{color:#E65100;}
+  section.u10 h2,section.u10{border-color:#6A1B9A;} section.u10 h2{color:#6A1B9A;}
+  section.u11 h2,section.u11{border-color:#4527A0;} section.u11 h2{color:#4527A0;}
+  section.u12 h2,section.u12{border-color:#283593;} section.u12 h2{color:#283593;}
+  section h3{font-size:1.5rem; color:var(--h3); margin:1em 0 .3em;}
+  section p{margin:.7em 0;}
+  .term{color:var(--accentA); font-weight:700;}
+  .termb{color:var(--accentB); font-weight:700;}
+  .eng{font-family:"Inter",sans-serif; font-style:normal;}
+  .read-time{display:inline-block; background:#F3EEE4; color:#7a5a3a; font-size:.92rem; font-weight:700;
+    border-radius:999px; padding:4px 14px; margin-bottom:6px;}
+  ul.clean{padding-left:1.2em;} ul.clean li{margin:.35em 0;}
+  .fact{background:#FFF7F2; border-left:6px solid var(--accentA); border-radius:10px; padding:12px 16px; margin:1em 0;}
+  /* 英文摘要 */
+  .summary{
+    background:var(--sum-bg); border-left:8px solid var(--sum-border); border-radius:12px;
+    padding:16px 20px; margin:1.4em 0 1em; font-family:"Inter",sans-serif; font-size:1.02rem; line-height:1.7;
+  }
+  .summary .lbl{font-weight:700; color:#9E6500; display:block; margin-bottom:.3em; font-size:1.05rem;}
+  /* 回到地圖 */
+  .back-to-map{
+    display:inline-flex; align-items:center; min-height:56px; text-decoration:none;
+    background:#5D4037; color:#fff; border-radius:12px; padding:10px 20px; font-weight:700; font-size:1rem;
+    margin-top:8px;
+  }
+  /* glossary */
+  section#glossary{background:var(--gloss-bg); border-color:#5D4037;}
+  section#glossary h2{color:#5D4037;}
+  .gloss dt{font-weight:700; color:var(--accentB); font-family:"Inter",sans-serif; margin-top:.8em; font-size:1.05rem;}
+  .gloss dd{margin:.1em 0 .2em; padding-left:0;}
+  @media (max-width:560px){
+    body{font-size:20px;}
+    h1{font-size:2.05rem;}
+    .subtitle{font-size:1.5rem;}
+    section h2{font-size:1.6rem;}
+    .cards a,.map-grid a{flex:1 1 100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>巧克力產業全解析</h1>
+  <div class="subtitle">從一條變貴又變薄的巧克力，看懂整條可可供應鏈</div>
+  <div class="byline">林威老師與 AI agent 團隊製作</div>
+  <div class="lede">
+    這是一門自學用的微課程，共 12 個單元，每單元約 10 分鐘。我們用一條主線把整個產業串起來：
+    2024 年起的<span class="term">可可危機（cocoa crisis）</span>。可可價格從每噸約 2,000 至 3,000 美元，
+    在 2024 年 6 月倫敦盤一度衝上約 11,530 美元、12 月紐約 ICE 盤更達約 12,931 美元的歷史天價；
+    2026 年初回落到約 5,400 至 6,300 美元，卻仍是過去正常區間的兩倍。順著這條價格曲線，
+    我們從<span class="term">上游（upstream）</span>的可可農，一路走到<span class="term">下游（downstream）</span>的品牌，
+    再看挑戰整條鏈的替代品與遊戲規則。
+  </div>
+</header>
+
+<!-- 頂部三連結卡 -->
+<div class="cards">
+  <a class="card-echo" href="https://linwayet.github.io/4ulive/index.html">
+    <span class="t">🔗 七月課程：錯中學 ECHO 計劃</span>
+    <span class="d">從錯誤中學習的英文進步方法</span>
+  </a>
+  <a class="card-anal" href="https://linwayet.github.io/popup/index">
+    <span class="t">🔗 七月課程：學生分析</span>
+    <span class="d">個人化學習診斷與規劃</span>
+  </a>
+  <a class="card-line" href="https://line.me/ti/p/~linwayet">
+    <span class="t">💬 加我的 LINE：linwayet</span>
+    <span class="d">直接聯絡林威老師</span>
+  </a>
+</div>
+
+<!-- 單元地圖 -->
+<nav id="unit-map">
+  <h2>🗺️ 單元地圖</h2>
+  <div class="map-grid">
+    <a class="c1" href="#unit1">單元一　又貴又薄：危機開場</a>
+    <a class="c2" href="#unit2">單元二　巧克力簡史與製程</a>
+    <a class="c3" href="#unit3">單元三　上游①：可可從哪裡來</a>
+    <a class="c4" href="#unit4">單元四　上游②：可可危機的真相</a>
+    <a class="c5" href="#unit5">單元五　可可農的窮：誰拿走了錢</a>
+    <a class="c6" href="#unit6">單元六　中游：看不見的加工巨人</a>
+    <a class="c7" href="#unit7">單元七　下游①：六大巧克力帝國</a>
+    <a class="c8" href="#unit8">單元八　下游②：廠商的求生術</a>
+    <a class="c9" href="#unit9">單元九　消費風潮：杜拜巧克力</a>
+    <a class="c10" href="#unit10">單元十　水平競爭：沒有可可的巧克力</a>
+    <a class="c11" href="#unit11">單元十一　規則與政治：EUDR、關稅、產地反擊</a>
+    <a class="c12" href="#unit12">單元十二　在地與未來：屏東可可與三種劇本</a>
+    <a class="cg" href="#glossary">📖 術語表 Glossary</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- 單元一 -->
+<section class="u1" id="unit1">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元一　又貴又薄：一條巧克力的危機開場</h2>
+  <p>走進超市，你可能會發現兩件事：巧克力變貴了，包裝裡的份量卻變少了。這種「價格不變、份量縮水」的現象，
+  英文叫做<span class="term">縮水式通膨（shrinkflation）</span>。同時，許多品牌悄悄調整配方，用較便宜的油脂取代部分可可成分，
+  這叫做<span class="term">重組配方（reformulation）</span>。為什麼會這樣？答案要從一顆可可豆的旅程說起。</p>
+
+  <p>整個巧克力產業可以想成一條<span class="term">供應鏈（supply chain）</span>，也就是「產品從原料到你手上的完整路線」：
+  上游是種可可的農民，中游是把可可豆研磨加工的工廠，下游是做成巧克力品牌賣給你的大公司。
+  這條鏈的最源頭——可可——在 2024 年發生了劇烈的價格波動，像一塊石頭丟進水裡，
+  漣漪一路傳到貨架上的每一條巧克力。</p>
+
+  <div class="fact">2024 年 6 月，倫敦可可期貨一度衝上每噸約 11,530 美元；同年 12 月，紐約 ICE 盤更達約 12,931 美元，
+  是歷史最高紀錄。對照危機前正常的每噸約 2,000 至 3,000 美元，等於在很短時間內漲了三到四倍。</p>
+
+  <p>這門課的任務，就是順著這條供應鏈，一站一站拆解：可可從哪裡來、為什麼突然短缺、農民有沒有因此變有錢、
+  加工與品牌大廠如何應對、新創公司如何用「沒有可可的巧克力」挑戰整個產業、各國政府又訂了哪些新規則，
+  最後再把視角拉回台灣屏東的可可園。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Chocolate has become more expensive and smaller at the same time, a pattern known as shrinkflation, while many brands quietly change recipes to use cheaper fats. The whole industry works as a supply chain that runs from cocoa farmers (upstream) to global brands (downstream). A sharp price shock in cocoa during 2024 sent ripples all the way to store shelves. This course follows that chain step by step to explain why it happened and who is affected.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元二 -->
+<section class="u2" id="unit2">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元二　從馬雅神飲到 bean-to-bar：巧克力簡史與製程</h2>
+  <p>巧克力的歷史超過三千年。最早在中美洲（Mesoamerica），奧爾梅克（Olmec）、馬雅（Maya）與阿茲特克（Aztec）
+  文明就懂得把可可發酵、烘焙、研磨，做成一種又苦又起泡的飲料。對他們來說，可可帶有神聖意味；阿茲特克人甚至把可可豆當<span class="term">貨幣（currency）</span>使用，
+  據記載約一百顆可可豆可以換一隻火雞。十六世紀西班牙人把可可帶回歐洲，加入糖與牛奶，才逐漸變成我們熟悉的甜食。</p>
+
+  <p>有趣的是，可可原產於美洲，今天全球約七成的供應卻來自西非。一條巧克力背後，是一段跨越數百年、橫越大洋的旅程。</p>
+
+  <h3>從可可豆到巧克力的製程</h3>
+  <p>把苦澀的種子變成滑順的巧克力，要經過一連串步驟，每一步都決定最後的風味：</p>
+  <ul class="clean">
+    <li><span class="term">採收與取豆（harvest）</span>：可可果（pod）直接長在樹幹上，人工砍下後剖開，取出包著白色果肉的種子。</li>
+    <li><span class="term">發酵（fermentation）</span>：種子連同果肉堆置約 5 到 7 天。沒有發酵，就沒有巧克力風味——這是關鍵的一步。</li>
+    <li><span class="term">乾燥（drying）</span>：日曬約 1 到 2 週，豆子轉為深褐色。</li>
+    <li><span class="term">烘焙（roasting）</span>：高溫烘焙帶出香氣。</li>
+    <li><span class="termb">去殼取碎仁（winnowing）</span>：去掉外殼，留下可可碎仁（nibs）。</li>
+    <li><span class="term">研磨（grinding）</span>：磨成濃稠的可可膏，稱為<span class="term">巧克力漿（chocolate liquor）</span>，雖名為 liquor 卻不含酒精。</li>
+    <li><span class="termb">壓榨分離</span>：可可膏可壓榨成<span class="term">可可脂（cocoa butter，脂肪）</span>與<span class="term">可可固形物（cocoa solids，做成可可粉）</span>。</li>
+    <li><span class="term">精煉（conching）</span>：長時間攪拌讓口感變細滑。1879 年瑞士人魯道夫·林特（Rodolphe Lindt）發明此法，是巧克力變滑順的關鍵。</li>
+    <li><span class="term">調溫（tempering）</span>：精準升降溫讓油脂結晶穩定，巧克力才會亮、會「啪」一聲脆斷。</li>
+  </ul>
+
+  <p>十九世紀的兩項發明讓巧克力走向大眾：荷蘭人范豪登（Van Houten）的可可壓榨機（1828）能分離可可脂與可可粉，
+  以及牛奶巧克力的問世。近年則興起<span class="term">從豆到磚（bean-to-bar）</span>風潮：同一個製作者從生豆一路掌控到成品，
+  強調產地風味與透明交易。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Chocolate began over 3,000 years ago in Mesoamerica, where the Olmec, Maya and Aztec turned cacao into a bitter, frothy drink and even used the beans as currency. Spanish colonizers brought cacao to Europe, where sugar and milk made it sweet. Turning beans into chocolate requires fermentation, drying, roasting, grinding, conching and tempering, each shaping the final flavor. Nineteenth-century inventions like the cocoa press and conching machine made chocolate a mass-market food, while today's bean-to-bar movement values origin and transparency.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元三 -->
+<section class="u3" id="unit3">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元三　上游①：可可到底從哪裡來？</h2>
+  <p>整個產業的最源頭，是一棵嬌貴的樹：<span class="term">可可樹（Theobroma cacao）</span>。它只能種在赤道附近的熱帶氣候，
+  從種下到結果要等大約 5 年。果實直接長在樹幹上，每個果莢裡有 25 到 40 顆種子，也就是可可豆。</p>
+
+  <h3>權力高度集中的產地</h3>
+  <p>全球可可的供應極度集中在西非。<span class="term">象牙海岸（Côte d'Ivoire）</span>約占全球四成產量，
+  加上<span class="term">迦納（Ghana）</span>等鄰國，西非合計供應全球逾六成的可可。換句話說，全世界的巧克力，
+  命脈幾乎握在少數幾個西非國家的手裡——這種地理上的集中，本身就是一種<span class="termb">結構性脆弱（structural vulnerability）</span>。
+  只要這幾個國家天氣不好或作物生病，全球供應就會立刻吃緊。</p>
+
+  <h3>小農撐起的全球甜點</h3>
+  <p>更值得注意的是，這些可可大多不是大型農場種的，而是由數百萬名<span class="term">小農（smallholder farmers）</span>
+  在自家的小塊土地上耕作，許多人透過<span class="termb">合作社（cooperative）</span>把豆子賣給收購商。
+  一條在便利商店賣幾十元的巧克力，源頭是地球另一端、資源有限的小農，用手工採收、靠天吃飯種出來的。
+  這個落差，是後面好幾個單元的核心。</p>
+
+  <div class="fact">關鍵概念：<span class="term">產地收購價（farmgate price）</span>——指農民在「農場門口」把可可豆賣出時拿到的價格。
+  它和你在期貨市場看到的國際價格，往往是兩回事。記住這個詞，單元五會用到。</div>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Cocoa comes from the Theobroma cacao tree, which grows only in tropical climates near the equator and takes about five years to bear fruit. Supply is highly concentrated: Côte d'Ivoire alone grows around 40% of the world's cocoa, and West Africa together supplies more than 60%. Most cocoa is grown not on large estates but by millions of smallholder farmers, often selling through cooperatives. This geographic concentration makes the whole global chocolate system structurally fragile.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元四 -->
+<section class="u4" id="unit4">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元四　上游②：可可危機的真相</h2>
+  <p>2024 年的價格暴漲不是單一原因造成的，而是好幾股力量同時爆發。</p>
+
+  <h3>天災與病害</h3>
+  <ul class="clean">
+    <li><span class="term">氣候變遷（climate change）</span>：西非接連幾季出現異常降雨、乾旱與高溫，重創可可收成。</li>
+    <li><span class="term">可可腫枝病毒（Cocoa Swollen Shoot Virus, CSSV）</span>：一種會在約四年內殺死可可樹的病毒，唯一辦法是砍掉病樹。據 2025 年初的估計，西非部分地區高達約 67% 的農園受到感染。</li>
+    <li><span class="termb">樹齡老化（aging trees）</span>：象牙海岸約七成的可可樹已經老化，產量與抗病力都下降。</li>
+  </ul>
+  <p>因為可可樹要 5 年才結果，今天的短缺等於「鎖定」了未來好幾年——就算現在馬上補種，也要等好幾年才有收成。</p>
+
+  <h3>市場與投機的放大效應</h3>
+  <p>供需失衡之外，金融市場把波動放得更大。2023/24 產季全球出現約 47.8 萬噸的<span class="term">供給缺口（supply deficit）</span>，
+  也就是「產量少於需求量」。價格一旦上漲，<span class="term">期貨（futures）</span>市場的<span class="termb">投機（speculation）</span>買盤湧入；
+  而當價格劇烈波動，部分避險基金為了避險反而退場，市場交易量變薄，價格就更容易暴漲暴跌，
+  造成極高的<span class="term">波動性（volatility）</span>。</p>
+
+  <div class="fact">轉折：2025/26 產季，市場預期出現三年來第一次<span class="term">供給過剩（surplus）</span>，
+  約 32.5 萬噸。高價也刺激厄瓜多、秘魯、奈及利亞、巴西等地新種可可，加上高價壓抑了需求，市場開始重新平衡。
+  2026 年初價格回落，但分析機構普遍認為會「<span class="termb">高得更久（structurally higher for longer）</span>」，
+  難以回到危機前的低價。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    The 2024 price spike came from several forces at once: climate change, the tree-killing Cocoa Swollen Shoot Virus, and aging trees in West Africa. Because cocoa trees take five years to mature, current shortages are locked in for years. Financial speculation in futures markets and thinner trading amplified the swings, producing extreme volatility. By the 2025/26 season the market is expected to swing to its first surplus in three years, easing prices, though analysts still expect them to stay structurally higher for longer.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元五 -->
+<section class="u5" id="unit5">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元五　可可農的窮：誰拿走了這條鏈的錢？</h2>
+  <p>直覺上，可可價格漲三、四倍，種可可的農民應該變有錢了吧？現實複雜得多。多年來，可可的價值大多集中在中下游的加工與品牌端，
+  上游的小農長期只分到一條巧克力售價中很小的一塊。國際價格上漲，也不一定等比例傳到農民手上的<span class="term">產地收購價（farmgate price）</span>。</p>
+
+  <h3>從「生活收入差價」到「生活收入參考價」</h3>
+  <p>為了讓農民收入接近能維持基本生活的水準，也就是<span class="term">生活收入（living income）</span>，業界推出了幾項機制：</p>
+  <ul class="clean">
+    <li><span class="term">生活收入差價（Living Income Differential, LID）</span>：2019 年由象牙海岸與迦納共同推出，自 2020/21 產季起，在出口價上額外加收每噸 400 美元，直接挹注農民。</li>
+    <li><span class="termb">公平貿易生活收入參考價（Fairtrade Living Income Reference Price）</span>：以象牙海岸為例，2025 年 10 月起參考價約為每公斤 2.80 美元。當政府訂的收購價低於參考價時，買方需補上差額。</li>
+  </ul>
+
+  <h3>高價之下，農民變好了嗎？</h3>
+  <p>2025 年的數據呈現「兩面性」。一方面，迦納把收購價從一個產季的每公斤 20.9 迦納幣，調高到 49.6 迦納幣，
+  漲超過一倍；一份 2025 年 9 月的研究指出，象牙海岸達到生活收入水準的農民比例，從兩年前的約 7% 提高到約 24%，
+  另有約一半接近生活收入。另一方面，2025 年的<span class="term">可可氣壓計（Cocoa Barometer）</span>報告提醒，
+  在創紀錄的高價下，許多農民仍困在貧窮中，產業透明度與議價力仍不足；其中<span class="termb">分成農（sharecroppers，租地耕作、與地主分收成的農民）</span>
+  多數仍處於赤貧。</p>
+
+  <p>這個單元的重點，是看見一條巧克力背後的<span class="term">價值分配（value distribution）</span>：價格上漲是一回事，
+  錢有沒有公平流到最辛苦的源頭，是另一回事。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Even though cocoa prices tripled, the gains have not flowed evenly to farmers, who have long received only a small share of a chocolate bar's value. Mechanisms like the Living Income Differential (introduced in 2019 by Côte d'Ivoire and Ghana) and Fairtrade reference prices aim to lift farmers toward a living income. By 2025 the share of Ivorian farmers reaching a living income rose from about 7% to 24%, yet the 2025 Cocoa Barometer warns many remain trapped in poverty, with sharecroppers especially vulnerable. The key lesson is how value is distributed along the chain.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元六 -->
+<section class="u6" id="unit6">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元六　中游：看不見的加工巨人</h2>
+  <p>在農民與品牌之間，有一群你幾乎沒聽過、卻撐起整個產業的公司，負責把可可豆研磨加工成半成品。
+  研磨（grinding）的量，也是業界用來推估需求強弱的指標。</p>
+
+  <h3>產業裡的隱形冠軍</h3>
+  <p>最具代表性的是瑞士的<span class="term">百樂嘉利寶（Barry Callebaut）</span>，全球最大的 B2B（企業對企業）工業巧克力與可可供應商。
+  你吃到的許多知名品牌巧克力，原料其實來自它。另一個巨頭是美國的<span class="term">嘉吉（Cargill）</span>。
+  這些公司把可可豆做成可可膏、<span class="term">可可脂（cocoa butter）</span>與可可粉，再賣給下游品牌。</p>
+
+  <div class="fact">產業大事：Barry Callebaut 傳出考慮把「可可事業（原物料交易）」與「巧克力事業（製造）」分拆，
+  外界視為產業在「製造」與「大宗商品交易」之間的一次結構性切割，目的是更好地管理供應鏈風險。</div>
+
+  <h3>連巨人也撐不住</h3>
+  <p>高價與供應緊張，連加工巨人都受影響。2025 年 9 月，Cargill 罕見地暫停了在象牙海岸的可可研磨作業——
+  這是它在例行維修之外的首次停工，被視為產業壓力的警訊。同時，亞洲第三季的可可研磨量年減約 17%，
+  反映高價正在<span class="termb">壓抑需求（demand destruction）</span>。中游這一段，是觀察整個產業冷熱的好窗口。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Between farmers and brands sits a group of little-known companies that grind cocoa beans into semi-finished products; grinding volume is a key gauge of demand. The biggest is Switzerland's Barry Callebaut, the world's largest B2B chocolate and cocoa supplier, alongside Cargill. Barry Callebaut has reportedly considered splitting its cocoa-trading arm from its chocolate-making business to manage supply-chain risk. In September 2025 Cargill made a rare halt to its grinding in Côte d'Ivoire, and Asian grindings fell about 17% year on year, signs of demand destruction from high prices.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元七 -->
+<section class="u7" id="unit7">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元七　下游①：六大巧克力帝國</h2>
+  <p>來到供應鏈的下游，是你最熟悉的部分：把可可變成品牌、賣到你手上的大公司。這塊市場由少數幾家跨國巨頭主導。</p>
+
+  <h3>誰是龍頭？</h3>
+  <ul class="clean">
+    <li><span class="term">瑪氏（Mars）</span>：2025 年以約 12% 市占居首，旗下有 M&amp;M's、Snickers。</li>
+    <li><span class="term">億滋（Mondelez）</span>：旗下有 Cadbury（吉百利）、Milka、Toblerone（三角巧克力）。</li>
+    <li><span class="term">費列羅（Ferrero）</span>：旗下有 Nutella（能多益）、Kinder、Ferrero Rocher（金莎）。</li>
+    <li><span class="term">雀巢（Nestlé）</span>：旗下有 KitKat、Smarties。</li>
+    <li><span class="term">好時（Hershey）</span>：旗下有 Reese's、Kisses。</li>
+    <li><span class="term">瑞士蓮（Lindt &amp; Sprüngli）</span>：以 Lindor、Excellence 等高端產品聞名。</li>
+  </ul>
+  <p>前五大公司合計約掌握全球 38% 的<span class="term">市占率（market share）</span>，是高度集中的市場。</p>
+
+  <h3>市場版圖與高端化</h3>
+  <p>就消費地理而言，<span class="termb">歐洲（Europe）</span>是最大的巧克力市場，2025 年約占全球 39%，
+  深受其悠久的糖果文化影響；<span class="termb">亞太（Asia-Pacific）</span>則是成長最快的區域，受所得提高與零食習慣西化帶動。
+  面對成本壓力，大廠的一個共同策略是<span class="term">高端化（premiumization）</span>：推出更高可可含量、單一產地、訴求永續的精品巧克力，
+  用較高的價格與品牌價值來維持利潤。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    The downstream end of the chain is dominated by a few multinational giants: Mars (the leader at about 12% share), Mondelez, Ferrero, Nestlé, Hershey and Lindt. Together the top five hold roughly 38% of the global market. Europe is the largest chocolate market at about 39% in 2025, while Asia-Pacific grows fastest. To manage rising costs, big makers lean on premiumization, selling higher-cocoa, single-origin and sustainability-branded products at higher prices to protect margins.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元八 -->
+<section class="u8" id="unit8">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元八　下游②：廠商的求生術</h2>
+  <p>當原料成本翻倍，下游品牌要保護利潤，常用三招——而這三招，消費者多少都感覺得到。</p>
+
+  <h3>三種應對策略</h3>
+  <ul class="clean">
+    <li><span class="term">漲價轉嫁（cost pass-through）</span>：直接提高售價。例如義大利的復活節彩蛋在 2025 年漲約 40%，2026 年又漲約 10%。</li>
+    <li><span class="term">縮水式通膨（shrinkflation）</span>：價格不變，但份量變小，等於變相漲價。</li>
+    <li><span class="term">重組配方（reformulation）</span>：降低可可含量，或用<span class="termb">棕櫚油（palm oil）</span>、乳油木油脂取代部分<span class="term">可可脂（cocoa butter）</span>，以壓低成本。這也引發「這還算不算巧克力？」的爭議。</li>
+  </ul>
+
+  <h3>財報上的壓力</h3>
+  <p>這些壓力直接反映在大廠的財報。好時（Hershey）某一季的銷售年減約 14%，並預估關稅成本一年達 1 億到 1.8 億美元；
+  億滋（Mondelez）也表示，在經濟不確定與高價之下，消費者開始減少零食採購。
+  值得注意的是，即使 2026 年初可可原料價格已明顯回落，貨架上的巧克力售價卻仍居高不下——
+  這種「原料跌、零售價不跌」的<span class="termb">時間落差（price lag）</span>，是供應鏈傳導的常態。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    When raw-material costs double, brands defend profits with three moves: raising prices (cost pass-through), shrinking package sizes (shrinkflation), and reformulating recipes by cutting cocoa content or replacing cocoa butter with palm and shea oils. These pressures show up in earnings: Hershey reported a roughly 14% sales drop in one quarter and tariff costs of US$100–180 million a year, while Mondelez noted shoppers buying fewer snacks. Even as cocoa prices fell in early 2026, retail chocolate prices stayed high, reflecting a normal lag in the supply chain.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元九 -->
+<section class="u9" id="unit9">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元九　消費風潮：杜拜巧克力與這一代的嘴</h2>
+  <p>供應鏈的另一端是消費者，而消費者的喜好，有時會反過來震動整條鏈。最好的例子，是<span class="term">杜拜巧克力（Dubai chocolate）</span>。</p>
+
+  <h3>一條在 TikTok 爆紅的巧克力</h3>
+  <p>2021 年，阿聯一家名為 FIX Dessert Chocolatier 的甜點店，由創辦人 Sarah Hamouda 推出一款巧克力：
+  裡面包著開心果醬（pistachio）、芝麻醬（tahini），以及中東甜點常用的酥脆<span class="term">卡塔伊夫酥絲（kataifi，又稱 kunafa 麵絲）</span>。
+  2024 年起，它在 TikTok 上爆紅，相關影片累積超過 1.2 億次觀看，引爆全球模仿潮，Lindt、星巴克（Starbucks）、Häagen-Dazs 等大牌紛紛跟進推出開心果系列。</p>
+
+  <div class="fact">連鎖效應：杜拜巧克力的爆紅，把全球<span class="termb">開心果（pistachio）</span>需求一口氣推高，價格上漲約 34%，
+  從每磅約 7.65 美元漲到約 10.30 美元，連帶造成開心果短缺。有趣的是，部分業者改用開心果，
+  某種程度上也是為了<span class="term">避開高昂的可可成本</span>。一個爆紅商品，竟同時牽動可可與開心果兩條供應鏈。</p>
+
+  <h3>新世代的偏好</h3>
+  <p>除了話題性，這一代消費者還在意兩件事：<span class="term">健康（health）</span>與<span class="term">倫理（ethics）</span>。
+  黑巧克力（dark chocolate）因含有<span class="termb">類黃酮（flavanols）</span>等抗氧化物質，被視為相對健康的選擇；
+  同時，調查顯示超過半數的 Z 世代與千禧世代，希望看到植物性、純素或具備永續認證的巧克力。
+  消費者的價值觀，正在從產品末端，反向推動整條供應鏈改變。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Consumer tastes can shake the whole chain, as shown by "Dubai chocolate." Launched in 2021 by FIX Dessert Chocolatier, this pistachio-tahini-kataifi bar went viral on TikTok in 2024 with over 120 million views, prompting copycats from Lindt to Starbucks. The craze pushed global pistachio prices up about 34%, and some makers used pistachio partly to avoid high cocoa costs. Today's shoppers also care about health (dark chocolate's flavanols) and ethics, with most Gen Z and Millennials wanting plant-based or certified sustainable options.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元十 -->
+<section class="u10" id="unit10">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元十　水平競爭：沒有可可的巧克力</h2>
+  <p>前面談的都是傳統供應鏈內部的上下游關係。這個單元談的是<span class="term">水平競爭（horizontal competition）</span>——
+  來自產業外、想用全新做法取代傳統可可的挑戰者。當可可又貴又不穩，一群新創公司問了一個大膽的問題：
+  能不能做出「沒有可可的巧克力」？</p>
+
+  <h3>無可可巧克力新創</h3>
+  <ul class="clean">
+    <li><span class="term">Voyage Foods</span>（2021 年創立，美國）：用葵花籽蛋白、葡萄籽，加上經認證的棕櫚與乳油木油脂，做出不含可可的巧克力替代品。累計募資約 9,400 萬美元，與嘉吉（Cargill）合作做為全球獨家 B2B 通路，產品已進入沃爾瑪（Walmart），並獲美國農業部約 2,500 萬美元貸款在俄亥俄州建廠。</li>
+    <li><span class="term">Planet A Foods（產品名 ChoViva）</span>（德國慕尼黑，原名 QOA）：由 Marquart 兄妹創立，用<span class="termb">發酵（fermentation）</span>技術把葵花籽、燕麥等做成可可替代品。累計募資逾 5,000 萬美元，B 輪募得 3,000 萬美元，計畫把年產能從 2,000 噸擴大到 15,000 噸；已與 Lindt、漢莎航空、德國鐵路等合作，進駐逾 4 萬個通路。</li>
+    <li><span class="termb">細胞培養可可（cell-based / cultured cocoa）</span>：另有新創嘗試在實驗室直接培養可可細胞，從根本繞過種植。</li>
+  </ul>
+
+  <h3>機會與門檻</h3>
+  <p>這些替代品最大的賣點是<span class="term">價格穩定</span>與大幅減少碳足跡（部分產品宣稱可減碳約八成）。
+  但它們也面臨真實的門檻：要說服習慣傳統風味、對巧克力有文化情感的消費者改用，並不容易。
+  因此許多公司從直接面對消費者（B2C），轉向先供應給食品製造商（<span class="term">B2B</span>），用穩定的訂單先站穩腳步。
+  大廠願意合作與投資，本身就是對這個新賽道的一種背書。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Beyond the traditional chain lies horizontal competition: startups trying to replace cocoa entirely. Voyage Foods makes cocoa-free chocolate from sunflower protein and grape seeds, has raised about US$94 million, partners with Cargill, and sells in Walmart. Germany's Planet A Foods uses fermentation to make ChoViva, raised over US$50 million, and supplies partners including Lindt across 42,000 outlets. Others pursue cell-based cocoa. Their appeal is price stability and far lower emissions, but shifting consumers' deep-rooted tastes is hard, so many focus on B2B supply.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元十一 -->
+<section class="u11" id="unit11">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元十一　規則與政治：EUDR、關稅與產地國反擊</h2>
+  <p>供應鏈不是只受市場左右，還受政府規則與國際政治牽動。這個單元看三股力量。</p>
+
+  <h3>一、歐盟反毀林法規（EUDR）</h3>
+  <p><span class="term">歐盟反毀林法規（EU Deforestation Regulation, EUDR）</span>於 2023 年通過，要求進入歐盟市場的可可、咖啡、棕櫚油、牛、大豆、橡膠、木材及其製品（包含巧克力），
+  必須證明並非來自 2020 年底之後被砍伐的森林。業者要提交<span class="term">盡職調查聲明（due diligence statement）</span>，
+  並附上可<span class="term">溯源（traceability）</span>到「地塊座標」的資料。法規上路時程一再延後，目前大型與中型業者須在 2026 年底前、
+  中小企業在 2027 年中前符合規定。對複雜的可可供應鏈而言，溯源到每一塊小農田地非常困難，估計會讓大廠採購成本增加約 2 到 3%。</p>
+
+  <h3>二、美國關稅的來回拉扯</h3>
+  <p>美國是全球最大的巧克力與可可進口國（2023 年進口近 40 億美元），而美國本土除夏威夷外幾乎無法種可可。
+  2025 年，川普政府的<span class="term">關稅（tariffs）</span>政策一度對象牙海岸（約 15 至 21%）、迦納（約 10 至 15%）、印尼等課稅，
+  讓美國巧克力業者成本上升；但在 2025 年 9 月與 11 月，政府又把可可、咖啡等「美國種不出來的原物料」豁免，
+  巴西則仍被課約 40% 的關稅。這段反覆，替市場添了不少不確定性。</p>
+
+  <h3>三、產地國想拿回主導權</h3>
+  <p>長期被壓在價值鏈底層的產地國，也開始反擊。象牙海岸與迦納成立<span class="termb">象牙海岸—迦納可可倡議（CIGCI）</span>，
+  試圖在訂價機制上爭取更多農民收益；兩國也推動在地研磨加工，想把更多附加價值留在國內。
+  不過產地國本身也很脆弱：迦納近年一度在可可契約與主權債務上違約，2023/24 產季還有約 16 萬噸可可因價差被走私出境。
+  童工與毀林等老問題，則持續推動著各種溯源與永續要求。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Rules and politics shape the chain as much as markets. The EU Deforestation Regulation (EUDR) requires cocoa and chocolate sold in the EU to be traceable to plots of land and free of deforestation after 2020, with deadlines of end-2026 for large firms and mid-2027 for small ones, adding an estimated 2–3% to procurement costs. In 2025 US tariffs first hit major cocoa producers, then exempted cocoa and coffee, while Brazil still faced about 40%. Producing nations like Côte d'Ivoire and Ghana are pushing back through the CIGCI initiative and local processing, even as Ghana struggled with debt and smuggling.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- 單元十二 -->
+<section class="u12" id="unit12">
+  <span class="read-time">⏱ 約 10 分鐘</span>
+  <h2>單元十二　在地與未來：屏東可可與三種劇本</h2>
+  <p>把視角從全球拉回台灣。你可能想不到，台灣也是世界級的可可產地。</p>
+
+  <h3>台灣之光：屏東可可</h3>
+  <p>屏東位於可可適合生長的緯度，過去田裡常見的檳榔樹，近年逐漸被結實纍纍的可可樹取代。
+  以 2015 年創立的<span class="term">福灣巧克力（Fu Wan Chocolate）</span>為代表，採<span class="term">從豆到磚（bean-to-bar）</span>模式，
+  從在地契作的可可果，一手包辦發酵、烘焙、研磨到成品。它在 2019 年的 ICA 世界巧克力大賽（International Chocolate Awards）中，
+  以「台灣一號屏東黑巧克力 62%」奪下「世界最佳黑巧克力」，是台灣可可的國際里程碑；2025 年亞太賽段又再奪多面金牌。</p>
+
+  <p>屏東的故事，正好示範了一個關鍵概念：<span class="term">風土（terroir）</span>——同樣是可可，因為土壤、氣候、品種與製程不同，
+  會長出獨一無二的風味。當全球大廠在拚規模與成本，台灣走的是另一條「精品、產地、風味」的路。</p>
+
+  <h3>整條供應鏈回顧</h3>
+  <p>我們從上游一路走到下游：可可農（小農、產地價、貧窮）→ 中游加工（研磨、可可脂與可可粉、隱形冠軍）→
+  下游品牌（六大帝國、市占、高端化）→ 消費端（杜拜巧克力、健康與倫理）→ 水平挑戰者（無可可巧克力）→
+  遊戲規則（EUDR、關稅、產地反擊）。這整條路線，就是一條<span class="term">價值鏈（value chain）</span>。</p>
+
+  <h3>三種未來劇本</h3>
+  <ul class="clean">
+    <li><span class="term">劇本一：高價成為新常態</span>。氣候、病害與 5 年樹齡的結構性限制難解，巧克力可能就是會比以前貴。</li>
+    <li><span class="termb">劇本二：替代品搶下市場</span>。若無可可巧克力在風味與價格上持續突破，傳統可可的市占可能被一點一點侵蝕。</li>
+    <li><span class="term">劇本三：永續轉型</span>。透過溯源、生活收入與農林混作（agroforestry），整條鏈走向更公平、更能抵禦氣候風險的模式。</li>
+  </ul>
+  <p>這三種劇本不必然互斥，未來很可能是它們的混合。下次你拿起一條巧克力，不妨想想：它走過了多長的一條路，
+  又站在哪一種未來的路口。</p>
+
+  <div class="summary">
+    <span class="lbl">📝 English Summary</span>
+    Bringing the view back to Taiwan, Pingtung has become a world-class cocoa region, led by bean-to-bar maker Fu Wan Chocolate, which won "world's best dark chocolate" at the 2019 International Chocolate Awards and more golds in 2025. Its story shows the idea of terroir, where soil, climate and craft create unique flavor. Reviewing the whole value chain from farmer to brand, the industry faces three possible futures: high prices as the new normal, alternatives taking market share, or a sustainable transformation, most likely a blend of all three.
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- Glossary -->
+<section id="glossary">
+  <h2>📖 術語表 Glossary</h2>
+  <dl class="gloss">
+    <dt>supply chain</dt><dd>供應鏈——產品從原料到消費者手上的完整路線，含上游、中游、下游。</dd>
+    <dt>value chain</dt><dd>價值鏈——強調每一段環節各自「加上多少價值、分到多少利潤」的供應鏈視角。</dd>
+    <dt>upstream / downstream</dt><dd>上游／下游——上游指最接近原料端（可可農），下游指最接近消費者端（品牌）。</dd>
+    <dt>cocoa bean</dt><dd>可可豆——可可果裡的種子，是巧克力的原料。</dd>
+    <dt>fermentation</dt><dd>發酵——把可可豆連同果肉堆置數天的步驟，是產生巧克力風味的關鍵。</dd>
+    <dt>conching</dt><dd>精煉——長時間攪拌可可膏使口感細滑，1879 年由瑞士人 Lindt 發明。</dd>
+    <dt>tempering</dt><dd>調溫——精準升降溫使可可脂結晶穩定，讓巧克力光亮、脆斷。</dd>
+    <dt>cocoa butter</dt><dd>可可脂——從可可膏壓榨出的天然脂肪，決定巧克力的入口即化口感。</dd>
+    <dt>chocolate liquor</dt><dd>巧克力漿／可可膏——研磨可可仁得到的濃稠膏體，雖名 liquor 但不含酒精。</dd>
+    <dt>grinding</dt><dd>研磨——把可可仁磨成膏的加工，其產量也用來推估市場需求。</dd>
+    <dt>smallholder farmer</dt><dd>小農——在小塊土地耕作的農民，撐起全球大半可可供應。</dd>
+    <dt>farmgate price</dt><dd>產地收購價——農民在農場門口賣出可可時拿到的價格，常和國際價格脫節。</dd>
+    <dt>living income</dt><dd>生活收入——足以維持農民家庭基本體面生活所需的收入水準。</dd>
+    <dt>Living Income Differential (LID)</dt><dd>生活收入差價——象牙海岸與迦納 2019 年推出、每噸加收 400 美元挹注農民的機制。</dd>
+    <dt>supply deficit / surplus</dt><dd>供給缺口／過剩——產量少於需求（缺口）或多於需求（過剩）。</dd>
+    <dt>futures</dt><dd>期貨——約定未來買賣價格的金融合約，是可可定價與投機的場域。</dd>
+    <dt>volatility</dt><dd>波動性——價格上下劇烈變動的程度。</dd>
+    <dt>shrinkflation</dt><dd>縮水式通膨——價格不變但份量變小，等於變相漲價。</dd>
+    <dt>reformulation</dt><dd>重組配方——調整產品配方，例如降低可可含量或以棕櫚油替代可可脂。</dd>
+    <dt>premiumization</dt><dd>高端化——推出更高價、更高品質或單一產地的精品產品以維持利潤。</dd>
+    <dt>cocoa-free chocolate</dt><dd>無可可巧克力——不使用可可、改以葵花籽等原料製成的巧克力替代品。</dd>
+    <dt>EUDR</dt><dd>歐盟反毀林法規——要求進口可可等產品須溯源並證明非來自毀林地。</dd>
+    <dt>traceability</dt><dd>溯源——能追查產品從源頭到成品每一段來源的能力。</dd>
+    <dt>due diligence statement</dt><dd>盡職調查聲明——業者依 EUDR 提交、證明已查核產品來源合規的文件。</dd>
+    <dt>tariff</dt><dd>關稅——對進口商品課徵的稅，會墊高進口國的成本。</dd>
+    <dt>bean-to-bar</dt><dd>從豆到磚——同一製作者從生豆一路掌控到成品的製作模式。</dd>
+    <dt>terroir</dt><dd>風土——土壤、氣候、品種與製程共同造就的獨特產地風味。</dd>
+  </dl>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+</main>
+
+<!-- 底部三連結卡（與頂部完全一致） -->
+<div class="cards">
+  <a class="card-echo" href="https://linwayet.github.io/4ulive/index.html">
+    <span class="t">🔗 七月課程：錯中學 ECHO 計劃</span>
+    <span class="d">從錯誤中學習的英文進步方法</span>
+  </a>
+  <a class="card-anal" href="https://linwayet.github.io/popup/index">
+    <span class="t">🔗 七月課程：學生分析</span>
+    <span class="d">個人化學習診斷與規劃</span>
+  </a>
+  <a class="card-line" href="https://line.me/ti/p/~linwayet">
+    <span class="t">💬 加我的 LINE：linwayet</span>
+    <span class="d">直接聯絡林威老師</span>
+  </a>
+</div>
+
+</body>
+</html>
