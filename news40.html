@@ -1,794 +1,740 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vocabulary Units 4–6</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #FDF6EC;
-  --card: #FFFAF3;
-  --amber: #E07B2A;
-  --amber-light: #F5A04A;
-  --rust: #C0472B;
-  --gold: #D4A017;
-  --sage: #7A8C6E;
-  --cream: #F9EDD8;
-  --border: #E8D5B0;
-  --text: #2E1F0A;
-  --muted: #7A6045;
-  --tag-bg: #FDE8C8;
-  --tag-text: #8B3A0F;
-  --phrase-bg: #FFF0E0;
-  --phrase-border: #F5C88A;
-  --ex-bg: #FFF8EE;
-  --shadow: 0 2px 12px rgba(180,100,20,0.10);
-  --u4: #E07B2A;
-  --u5: #C0472B;
-  --u6: #7A5C2A;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  font-family: 'Nunito', sans-serif;
-  color: var(--text);
-  min-height: 100vh;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Economist｜July 18th 2026｜文章目錄中英對照</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #FFF8F0;
+      --ink: #28160F;
+      --muted: #72584D;
+      --paper: rgba(255,255,255,.86);
+      --shadow: 0 12px 34px rgba(91, 53, 33, .11);
+    }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, #C0472B 0%, #E07B2A 50%, #D4A017 100%);
-  padding: 28px 20px 20px;
-  text-align: center;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 4px 20px rgba(180,60,20,0.25);
-}
-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  color: #fff;
-  letter-spacing: 0.03em;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
-}
-header p { color: rgba(255,255,255,0.85); font-size: 0.82rem; margin-top: 4px; }
+    * { box-sizing: border-box; }
 
-/* TABS */
-.tabs {
-  display: flex;
-  gap: 8px;
-  padding: 14px 16px 0;
-  background: var(--cream);
-  border-bottom: 2px solid var(--border);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.tabs::-webkit-scrollbar { display: none; }
-.tab-btn {
-  flex-shrink: 0;
-  padding: 9px 20px;
-  border-radius: 10px 10px 0 0;
-  border: none;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  background: rgba(255,255,255,0.5);
-  color: var(--muted);
-  transition: all 0.2s;
-  border-bottom: 3px solid transparent;
-}
-.tab-btn.active {
-  background: var(--card);
-  color: var(--amber);
-  border-color: var(--amber);
-  box-shadow: 0 -2px 8px rgba(224,123,42,0.10);
-}
-.tab-btn:hover { background: #fff; }
+    html { scroll-behavior: smooth; }
 
-/* SEARCH */
-.search-wrap {
-  padding: 14px 16px 0;
-  background: var(--bg);
-}
-.search-wrap input {
-  width: 100%;
-  padding: 10px 16px;
-  border-radius: 24px;
-  border: 1.5px solid var(--border);
-  background: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text);
-  outline: none;
-  transition: border 0.2s;
-}
-.search-wrap input:focus { border-color: var(--amber); }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(244,183,167,.35), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(201,182,228,.28), transparent 28%),
+        linear-gradient(180deg, #FFF8F0 0%, #FFFDF9 45%, #FFF4E8 100%);
+      color: var(--ink);
+      font-family: "BIZ UDPGothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.7;
+    }
 
-/* MAIN */
-main { padding: 14px 12px 40px; }
-.unit-panel { display: none; }
-.unit-panel.active { display: block; }
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 52px 0 80px;
+    }
 
-.unit-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  color: var(--amber);
-  margin: 12px 0 10px;
-  padding-left: 4px;
-  border-left: 4px solid var(--amber);
-  padding-left: 10px;
-}
+    .masthead {
+      position: relative;
+      overflow: hidden;
+      padding: 46px 44px;
+      margin-bottom: 34px;
+      border: 2px solid #D78768;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(255,245,235,.96), rgba(255,231,219,.92)),
+        #FFF2E8;
+      box-shadow: var(--shadow);
+    }
 
-/* CARD */
-.card {
-  background: var(--card);
-  border-radius: 16px;
-  border: 1.5px solid var(--border);
-  margin-bottom: 14px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.card:hover { box-shadow: 0 4px 20px rgba(180,100,20,0.16); }
+    .masthead::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      right: -64px;
+      top: -88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(166,61,64,.22), rgba(192,100,59,.08));
+    }
 
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 14px 16px 10px;
-  cursor: pointer;
-  user-select: none;
-}
-.word-num {
-  min-width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: var(--amber);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-.word-main { flex: 1; }
-.word-en {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-}
-.word-pos {
-  display: inline-block;
-  font-size: 0.7rem;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  border-radius: 6px;
-  padding: 1px 7px;
-  margin-left: 6px;
-  font-weight: 700;
-  vertical-align: middle;
-}
-.word-zh {
-  font-size: 0.88rem;
-  color: var(--muted);
-  margin-top: 3px;
-  font-weight: 600;
-}
-.toggle-icon {
-  font-size: 1.1rem;
-  color: var(--amber);
-  margin-top: 4px;
-  transition: transform 0.25s;
-  flex-shrink: 0;
-}
-.card.open .toggle-icon { transform: rotate(180deg); }
+    .date {
+      margin: 0 0 8px;
+      color: #8D4A38;
+      font-size: clamp(1rem, 2.1vw, 1.28rem);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-.card-body {
-  display: none;
-  padding: 0 16px 14px;
-  border-top: 1px dashed var(--border);
-  margin-top: 2px;
-  padding-top: 12px;
-}
-.card.open .card-body { display: block; }
+    .masthead h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #8E2E32;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+    }
 
-/* DERIVATIVE / PHRASE */
-.deriv-block {
-  background: var(--phrase-bg);
-  border-left: 3px solid var(--phrase-border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
-}
-.deriv-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--rust);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.deriv-word {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--rust);
-}
-.deriv-zh {
-  font-size: 0.83rem;
-  color: var(--muted);
-  margin-left: 6px;
-}
+    .masthead .zh-title {
+      position: relative;
+      z-index: 1;
+      margin: 14px 0 0;
+      color: #4E2C23;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
 
-/* EXAMPLES */
-.examples-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: var(--sage);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-.example {
-  background: var(--ex-bg);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin-bottom: 7px;
-  font-size: 0.88rem;
-  line-height: 1.55;
-  border: 1px solid var(--border);
-}
-.example .en { color: var(--text); font-weight: 600; }
-.example .zh { color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
-.example .en em { color: var(--rust); font-style: normal; font-weight: 800; }
+    .section-block {
+      margin: 30px 0;
+      padding: 26px;
+      border: 2px solid var(--border);
+      border-radius: 28px;
+      background: color-mix(in srgb, var(--card-bg) 76%, white);
+      box-shadow: var(--shadow);
+    }
 
-/* PHRASE CARD */
-.phrase-word {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.08rem;
-  color: var(--text);
-}
-.phrase-badge {
-  display: inline-block;
-  font-size: 0.68rem;
-  background: #FFE4CC;
-  color: #8B3A0F;
-  border-radius: 6px;
-  padding: 1px 7px;
-  font-weight: 800;
-  margin-left: 6px;
-  vertical-align: middle;
-}
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 0 4px 18px;
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 22px;
+    }
 
-/* UNIT COLOR VARIANTS */
-.unit-4 .word-num { background: var(--u4); }
-.unit-4 .toggle-icon { color: var(--u4); }
-.unit-4 .deriv-label { color: var(--u4); }
-.unit-5 .word-num { background: var(--u5); }
-.unit-5 .toggle-icon { color: var(--u5); }
-.unit-5 .deriv-label { color: var(--u5); }
-.unit-6 .word-num { background: var(--u6); }
-.unit-6 .toggle-icon { color: var(--u6); }
-.unit-6 .deriv-label { color: var(--u6); }
+    .section-en {
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      font-weight: 800;
+      line-height: 1.1;
+    }
 
-/* STATS BAR */
-.stats-bar {
-  display: flex; gap: 10px; flex-wrap: wrap;
-  padding: 10px 16px;
-  background: var(--cream);
-  border-radius: 12px;
-  margin-bottom: 12px;
-  border: 1px solid var(--border);
-}
-.stat { font-size: 0.78rem; color: var(--muted); font-weight: 700; }
-.stat span { color: var(--amber); }
+    .section-zh {
+      color: #50362D;
+      font-size: clamp(1.12rem, 2.4vw, 1.45rem);
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
 
-/* ALL PANEL */
-#all .unit-section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  margin: 16px 0 8px;
-  color: #fff;
-  background: linear-gradient(90deg, var(--amber), var(--gold));
-  border-radius: 8px;
-  padding: 6px 14px;
-  display: inline-block;
-}
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-footer {
-  text-align: center;
-  padding: 16px;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-</style>
+    .title-card {
+      min-height: 150px;
+      padding: 23px 24px;
+      border: 1.5px solid var(--border);
+      border-left: 8px solid var(--accent);
+      border-radius: 20px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 7px 18px rgba(70, 40, 25, .07);
+    }
+
+    .title-card h3 {
+      margin: 0;
+      color: #2F1A14;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.28rem, 2.4vw, 1.67rem);
+      line-height: 1.35;
+      letter-spacing: -.012em;
+    }
+
+    .title-card p {
+      margin: 13px 0 0;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      color: var(--accent);
+      font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 20px, 1120px);
+        padding-top: 20px;
+      }
+      .masthead {
+        padding: 34px 24px;
+        border-radius: 24px;
+      }
+      .section-block {
+        padding: 20px 15px;
+        border-radius: 22px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .title-card {
+        min-height: 0;
+      }
+    }
+
+    @media print {
+      body { background: #FFF8F0; }
+      .page { width: 100%; padding: 0; }
+      .masthead, .section-block, .title-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main class="page">
+    <header class="masthead">
+      <p class="date">July 18th 2026</p>
+      <h1 lang="en">It’s too darn hot</h1>
+      <p class="zh-title" lang="zh-Hant">天氣熱得太不像話</p>
+    </header>
 
-<header>
-  <h1>📖 Vocabulary Units 4–6</h1>
-  <p>衍生詞・慣用語・例句 完整版</p>
-</header>
+    
+        <section class="section-block" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">The world this week</span>
+            <span class="section-zh" lang="zh-Hant">本週世界大事</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">The world this week — Politics</h3>
+          <p lang="zh-Hant">本週世界大事：政治</p>
+        </article>
+        
 
-<div class="tabs" id="tabs">
-  <button class="tab-btn active" onclick="switchTab('all',this)">全部</button>
-  <button class="tab-btn" onclick="switchTab('u4',this)">Unit 4</button>
-  <button class="tab-btn" onclick="switchTab('u5',this)">Unit 5</button>
-  <button class="tab-btn" onclick="switchTab('u6',this)">Unit 6</button>
-</div>
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">The world this week — Business</h3>
+          <p lang="zh-Hant">本週世界大事：商業</p>
+        </article>
+        
 
-<div class="search-wrap">
-  <input type="text" id="searchBox" placeholder="🔍 搜尋單詞…" oninput="filterCards()">
-</div>
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">Cartoon: Continuing uncertainty over the Strait of Hormuz</h3>
+          <p lang="zh-Hant">漫畫：荷莫茲海峽的不確定局勢仍在延續</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Leaders</span>
+            <span class="section-zh" lang="zh-Hant">社論</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">It’s too darn hot. Blame global dimming</h3>
+          <p lang="zh-Hant">天氣熱得太不像話，全球昏暗效應難辭其咎</p>
+        </article>
+        
 
-<main id="mainContent">
-  <!-- ALL PANEL -->
-  <div class="unit-panel active" id="all"></div>
-  <!-- UNIT PANELS -->
-  <div class="unit-panel" id="u4"></div>
-  <div class="unit-panel" id="u5"></div>
-  <div class="unit-panel" id="u6"></div>
-</main>
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">Donald Trump’s gutting of the Department of Justice</h3>
+          <p lang="zh-Hant">川普正在掏空美國司法部</p>
+        </article>
+        
 
-<footer>Units 4–6 · 共 <span id="totalCount"></span> 個詞條</footer>
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">Donald Trump’s blind alley</h3>
+          <p lang="zh-Hant">川普走進了死胡同</p>
+        </article>
+        
 
-<script>
-const data = [
-  // ===== UNIT 4 =====
-  { unit:4, word:"female", pos:"adj/n", zh:"女性的；女性", deriv:{type:"衍生詞", word:"feminine", pos:"adj", zh:"女性化的，溫柔的"},
-    ex:[{en:"The school encourages <em>female</em> students to pursue science.", zh:"學校鼓勵女學生追求科學。"},
-        {en:"Several <em>female</em> athletes broke world records this year.", zh:"今年有幾位女運動員打破了世界紀錄。"}] },
-  { unit:4, word:"region", pos:"n", zh:"地區；區域", deriv:{type:"衍生詞", word:"regional", pos:"adj", zh:"地區性的"},
-    ex:[{en:"This <em>region</em> is famous for its mild climate.", zh:"這個地區以溫和的氣候聞名。"},
-        {en:"People from every <em>region</em> gathered for the festival.", zh:"來自各地區的人聚集在一起參加節日。"}] },
-  { unit:4, word:"regional", pos:"adj", zh:"地區的；區域性的", deriv:{type:"衍生詞", word:"region", pos:"n", zh:"地區"},
-    ex:[{en:"The <em>regional</em> government passed a new education law.", zh:"地方政府通過了一項新的教育法。"},
-        {en:"There are significant <em>regional</em> differences in food culture.", zh:"飲食文化存在顯著的地區差異。"}] },
-  { unit:4, word:"forbid", pos:"v", zh:"禁止；不允許", deriv:{type:"衍生詞", word:"forbidden", pos:"adj", zh:"被禁止的"},
-    ex:[{en:"The rules <em>forbid</em> students from using phones in class.", zh:"規定禁止學生在課堂上使用手機。"},
-        {en:"Smoking is <em>forbidden</em> inside the building.", zh:"建築物內禁止吸菸。"}] },
-  { unit:4, word:"continue", pos:"v", zh:"繼續；持續", deriv:{type:"衍生詞", word:"continuation", pos:"n", zh:"繼續；延續"},
-    ex:[{en:"Please <em>continue</em> reading from where you stopped.", zh:"請從你停下來的地方繼續閱讀。"},
-        {en:"The rain <em>continued</em> throughout the night.", zh:"雨整夜持續下著。"}] },
-  { unit:4, word:"education", pos:"n", zh:"教育；培育", deriv:{type:"衍生詞", word:"educational", pos:"adj", zh:"教育性的"},
-    ex:[{en:"Access to quality <em>education</em> is a basic right.", zh:"獲得優質教育是一項基本權利。"},
-        {en:"Her <em>education</em> helped her land a great job.", zh:"她的教育背景幫助她找到了一份好工作。"}] },
-  { unit:4, word:"educational", pos:"adj", zh:"教育性的；有啟發的", deriv:{type:"衍生詞", word:"educate", pos:"v", zh:"教育"},
-    ex:[{en:"The museum offers many <em>educational</em> programs for children.", zh:"博物館為兒童提供許多教育性的課程。"},
-        {en:"Watching documentaries can be a highly <em>educational</em> experience.", zh:"看紀錄片可以是非常有教育意義的體驗。"}] },
-  { unit:4, word:"educate", pos:"v", zh:"教育；教導", deriv:{type:"衍生詞", word:"educator", pos:"n", zh:"教育工作者"},
-    ex:[{en:"Parents play a key role in how they <em>educate</em> their children.", zh:"父母在教育孩子方面扮演著關鍵角色。"},
-        {en:"The campaign aims to <em>educate</em> the public about recycling.", zh:"該活動旨在教育大眾有關回收的知識。"}] },
-  { unit:4, word:"principle", pos:"n", zh:"原則；道德準則", deriv:{type:"衍生詞", word:"principled", pos:"adj", zh:"有原則的"},
-    ex:[{en:"She never broke her <em>principle</em> of always being honest.", zh:"她從不違背自己誠實的原則。"},
-        {en:"The judge made his decision based on legal <em>principles</em>.", zh:"法官根據法律原則作出判決。"}] },
-  { unit:4, word:"equal", pos:"adj/v", zh:"平等的；等於", deriv:{type:"衍生詞", word:"equality", pos:"n", zh:"平等；相等"},
-    ex:[{en:"Everyone deserves <em>equal</em> treatment under the law.", zh:"每個人都應在法律下受到平等對待。"},
-        {en:"Two plus two <em>equals</em> four.", zh:"二加二等於四。"}] },
-  { unit:4, word:"equality", pos:"n", zh:"平等；均等", deriv:{type:"衍生詞", word:"equal", pos:"adj", zh:"平等的"},
-    ex:[{en:"The movement fights for gender <em>equality</em> in the workplace.", zh:"這個運動為職場的性別平等而戰。"},
-        {en:"Racial <em>equality</em> is still an important issue today.", zh:"種族平等至今仍是一個重要議題。"}] },
-  { unit:4, word:"control", pos:"v/n", zh:"控制；管制", deriv:{type:"慣用語", word:"out of control", zh:"失控"},
-    ex:[{en:"She tried to <em>control</em> her emotions during the argument.", zh:"她試圖在爭論中控制自己的情緒。"},
-        {en:"The fire quickly got <em>out of control</em>.", zh:"火勢很快失控。"}] },
-  { unit:4, word:"annoy", pos:"v", zh:"使煩惱；使惱怒", deriv:{type:"衍生詞", word:"annoying", pos:"adj", zh:"令人煩惱的"},
-    ex:[{en:"It really <em>annoys</em> me when people talk loudly on the phone.", zh:"人們大聲講電話真的讓我很煩惱。"},
-        {en:"The constant noise was <em>annoying</em> everyone in the office.", zh:"持續的噪音讓辦公室裡的每個人都很煩躁。"}] },
-  { unit:4, word:"threaten", pos:"v", zh:"威脅；恐嚇", deriv:{type:"衍生詞", word:"threat", pos:"n", zh:"威脅；恐嚇"},
-    ex:[{en:"The bully <em>threatened</em> to take away his lunch money.", zh:"那個惡霸威脅要拿走他的午餐錢。"},
-        {en:"Pollution <em>threatens</em> the survival of many species.", zh:"污染威脅著許多物種的生存。"}] },
-  { unit:4, word:"threat", pos:"n", zh:"威脅；恐嚇", deriv:{type:"衍生詞", word:"threaten", pos:"v", zh:"威脅"},
-    ex:[{en:"Climate change is a serious <em>threat</em> to our planet.", zh:"氣候變遷是對我們星球的嚴重威脅。"},
-        {en:"The country received a <em>threat</em> from its neighbor.", zh:"這個國家受到鄰國的威脅。"}] },
-  { unit:4, word:"surgery", pos:"n", zh:"手術；外科", deriv:{type:"衍生詞", word:"surgeon", pos:"n", zh:"外科醫生"},
-    ex:[{en:"The patient needed <em>surgery</em> to remove the tumor.", zh:"病人需要手術切除腫瘤。"},
-        {en:"She recovered quickly after the heart <em>surgery</em>.", zh:"她在心臟手術後恢復得很快。"}] },
-  { unit:4, word:"recover", pos:"v", zh:"恢復；復原", deriv:{type:"衍生詞", word:"recovery", pos:"n", zh:"恢復；復原"},
-    ex:[{en:"It took him three months to <em>recover</em> from the accident.", zh:"他花了三個月從事故中恢復過來。"},
-        {en:"She slowly began to <em>recover</em> her strength after the illness.", zh:"她在生病後慢慢開始恢復體力。"}] },
-  { unit:4, word:"recovery", pos:"n", zh:"恢復；復原", deriv:{type:"衍生詞", word:"recover", pos:"v", zh:"恢復"},
-    ex:[{en:"The doctor said his <em>recovery</em> would take several weeks.", zh:"醫生說他的恢復需要幾週時間。"},
-        {en:"The country's economic <em>recovery</em> was faster than expected.", zh:"該國的經濟復甦比預期快。"}] },
-  { unit:4, word:"sign", pos:"v/n", zh:"簽署；標誌", deriv:{type:"慣用語", word:"sign up for", zh:"報名參加"},
-    ex:[{en:"Please <em>sign</em> your name at the bottom of the form.", zh:"請在表格底部簽上你的名字。"},
-        {en:"She decided to <em>sign up for</em> a cooking class.", zh:"她決定報名參加烹飪課。"}] },
-  { unit:4, word:"persuade", pos:"v", zh:"說服；勸說", deriv:{type:"衍生詞", word:"persuasion", pos:"n", zh:"說服；勸說"},
-    ex:[{en:"He managed to <em>persuade</em> his parents to let him go.", zh:"他設法說服父母讓他去。"},
-        {en:"She tried hard to <em>persuade</em> her friend to quit smoking.", zh:"她努力說服朋友戒菸。"}] },
-  { unit:4, word:"persuasion", pos:"n", zh:"說服；勸說", deriv:{type:"衍生詞", word:"persuasive", pos:"adj", zh:"有說服力的"},
-    ex:[{en:"It took a lot of <em>persuasion</em> to change his mind.", zh:"要改變他的想法需要很多說服工作。"},
-        {en:"With gentle <em>persuasion</em>, she finally agreed.", zh:"在溫和的說服下，她終於同意了。"}] },
-  { unit:4, word:"persuasive", pos:"adj", zh:"有說服力的", deriv:{type:"衍生詞", word:"persuade", pos:"v", zh:"說服"},
-    ex:[{en:"Her <em>persuasive</em> speech won over the entire audience.", zh:"她有說服力的演講贏得了整個聽眾的認同。"},
-        {en:"The advertisement used very <em>persuasive</em> language.", zh:"這個廣告使用了非常有說服力的語言。"}] },
-  { unit:4, word:"adopt", pos:"v", zh:"採用；收養", deriv:{type:"衍生詞", word:"adoption", pos:"n", zh:"採用；收養"},
-    ex:[{en:"The school decided to <em>adopt</em> a new teaching method.", zh:"學校決定採用新的教學方法。"},
-        {en:"They chose to <em>adopt</em> a child from the orphanage.", zh:"他們選擇從孤兒院收養一個孩子。"}] },
-  { unit:4, word:"policy", pos:"n", zh:"政策；方針", deriv:{type:"衍生詞", word:"policymaker", pos:"n", zh:"政策制定者"},
-    ex:[{en:"The government introduced a new education <em>policy</em>.", zh:"政府推出了新的教育政策。"},
-        {en:"The company's <em>policy</em> forbids discrimination of any kind.", zh:"公司的政策禁止任何形式的歧視。"}] },
-  { unit:4, word:"ensure", pos:"v", zh:"確保；保證", deriv:{type:"慣用語", word:"ensure that", zh:"確保……"},
-    ex:[{en:"We must <em>ensure</em> that all students have equal opportunities.", zh:"我們必須確保所有學生都有平等的機會。"},
-        {en:"Please double-check to <em>ensure</em> the door is locked.", zh:"請再確認一下確保門已鎖好。"}] },
-  { unit:4, word:"establish", pos:"v", zh:"建立；創立", deriv:{type:"衍生詞", word:"establishment", pos:"n", zh:"建立；機構"},
-    ex:[{en:"They worked together to <em>establish</em> a new school.", zh:"他們合作建立了一所新學校。"},
-        {en:"It is important to <em>establish</em> good habits from a young age.", zh:"從小養成良好習慣很重要。"}] },
-  { unit:4, word:"establishment", pos:"n", zh:"建立；機構", deriv:{type:"衍生詞", word:"establish", pos:"v", zh:"建立"},
-    ex:[{en:"The <em>establishment</em> of the new hospital helped many patients.", zh:"新醫院的建立幫助了許多病患。"},
-        {en:"She challenged the rules of the medical <em>establishment</em>.", zh:"她挑戰了醫療機構的規定。"}] },
-  { unit:4, word:"receive", pos:"v", zh:"接收；收到", deriv:{type:"衍生詞", word:"reception", pos:"n", zh:"接待；接收"},
-    ex:[{en:"She was happy to <em>receive</em> a letter from her friend.", zh:"她很高興收到朋友的來信。"},
-        {en:"The students will <em>receive</em> their awards at the ceremony.", zh:"學生們將在典禮上接受獎項。"}] },
-  { unit:4, word:"honor", pos:"n/v", zh:"榮譽；尊重", deriv:{type:"衍生詞", word:"honorable", pos:"adj", zh:"光榮的；值得尊敬的"},
-    ex:[{en:"It was a great <em>honor</em> to meet the president.", zh:"見到總統是一種極大的榮耀。"},
-        {en:"We <em>honor</em> those who gave their lives for the country.", zh:"我們向那些為國捐軀的人致敬。"}] },
-  { unit:4, word:"honorable", pos:"adj", zh:"光榮的；值得尊敬的", deriv:{type:"衍生詞", word:"honor", pos:"n", zh:"榮譽"},
-    ex:[{en:"Serving the community is an <em>honorable</em> act.", zh:"服務社區是一種光榮的行為。"},
-        {en:"He is known as an <em>honorable</em> and fair judge.", zh:"他以公正而光榮的法官聞名。"}] },
-  { unit:4, word:"weapon", pos:"n", zh:"武器；兵器", deriv:{type:"慣用語", word:"weapon of mass destruction", zh:"大規模殺傷性武器"},
-    ex:[{en:"Education can be a powerful <em>weapon</em> against poverty.", zh:"教育可以是對抗貧窮的有力武器。"},
-        {en:"The police found a hidden <em>weapon</em> at the scene.", zh:"警方在現場發現了一件藏匿的武器。"}] },
-  // Phrases Unit 4
-  { unit:4, word:"take notice", pos:"phrase", zh:"注意；關注", deriv:{type:"片語延伸", word:"take notice of", zh:"注意到……"},
-    ex:[{en:"People finally began to <em>take notice</em> of the pollution problem.", zh:"人們終於開始注意到污染問題。"},
-        {en:"Please <em>take notice</em> of the new classroom rules.", zh:"請注意新的課堂規則。"}] },
-  { unit:4, word:"blow up", pos:"phrase", zh:"爆炸；發脾氣", deriv:{type:"片語延伸", word:"blow one's top", zh:"勃然大怒"},
-    ex:[{en:"The old building was scheduled to <em>blow up</em> at noon.", zh:"那棟舊建築預定在中午爆破。"},
-        {en:"He <em>blew up</em> when he heard the bad news.", zh:"聽到壞消息後他大發雷霆。"}] },
-  { unit:4, word:"take away", pos:"phrase", zh:"帶走；剝奪", deriv:{type:"片語延伸", word:"takeaway", zh:"外帶；重點"},
-    ex:[{en:"The teacher <em>took away</em> his phone during the test.", zh:"老師在考試期間沒收了他的手機。"},
-        {en:"Nothing can <em>take away</em> the memories we've made together.", zh:"沒有什麼能帶走我們共同創造的回憶。"}] },
-  { unit:4, word:"speak out", pos:"phrase", zh:"大聲說出；勇敢表達", deriv:{type:"片語延伸", word:"speak up", zh:"大聲說；為……發聲"},
-    ex:[{en:"She decided to <em>speak out</em> against the unfair treatment.", zh:"她決定勇敢說出對不公平待遇的反對。"},
-        {en:"It's important to <em>speak out</em> when you see injustice.", zh:"當你看到不公正時，勇敢表達意見很重要。"}] },
-  { unit:4, word:"call for", pos:"phrase", zh:"要求；呼籲", deriv:{type:"片語延伸", word:"call on", zh:"呼籲；拜訪"},
-    ex:[{en:"The protesters <em>called for</em> equal rights for all citizens.", zh:"抗議者呼籲所有公民享有平等權利。"},
-        {en:"The situation <em>calls for</em> immediate action.", zh:"這種情況需要立即採取行動。"}] },
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">China’s rulers have a woman problem</h3>
+          <p lang="zh-Hant">中國統治者面臨女性問題</p>
+        </article>
+        
 
-  // ===== UNIT 5 =====
-  { unit:5, word:"dare", pos:"v/n", zh:"敢於；膽量", deriv:{type:"慣用語", word:"dare to dream", zh:"敢於做夢"},
-    ex:[{en:"Not many people would <em>dare</em> to speak in front of a crowd.", zh:"不是很多人敢在人群前發言。"},
-        {en:"She <em>dared</em> to challenge the old system and won.", zh:"她勇於挑戰舊制度並且成功了。"}] },
-  { unit:5, word:"entertain", pos:"v", zh:"娛樂；招待", deriv:{type:"衍生詞", word:"entertainment", pos:"n", zh:"娛樂；消遣"},
-    ex:[{en:"The clown tried to <em>entertain</em> the children at the party.", zh:"小丑試著在派對上逗孩子們開心。"},
-        {en:"Music has always been used to <em>entertain</em> people.", zh:"音樂一直被用來娛樂人們。"}] },
-  { unit:5, word:"entertainment", pos:"n", zh:"娛樂；消遣", deriv:{type:"衍生詞", word:"entertain", pos:"v", zh:"娛樂"},
-    ex:[{en:"The city offers a wide range of <em>entertainment</em> options.", zh:"這座城市提供廣泛的娛樂選擇。"},
-        {en:"Streaming platforms have changed the <em>entertainment</em> industry.", zh:"串流平台改變了娛樂產業。"}] },
-  { unit:5, word:"imaginative", pos:"adj", zh:"富有想像力的；創意的", deriv:{type:"衍生詞", word:"imagination", pos:"n", zh:"想像力"},
-    ex:[{en:"She is an <em>imaginative</em> writer who creates wonderful stories.", zh:"她是一位富有想像力的作家，創作了精彩的故事。"},
-        {en:"The <em>imaginative</em> child built a castle out of cardboard.", zh:"這個富有想像力的孩子用紙板建了一座城堡。"}] },
-  { unit:5, word:"imagine", pos:"v", zh:"想像；設想", deriv:{type:"衍生詞", word:"imagination", pos:"n", zh:"想像力"},
-    ex:[{en:"Try to <em>imagine</em> a world without wars.", zh:"試著想像一個沒有戰爭的世界。"},
-        {en:"I could never <em>imagine</em> living without books.", zh:"我無法想像沒有書的生活。"}] },
-  { unit:5, word:"imagination", pos:"n", zh:"想像力；創造力", deriv:{type:"衍生詞", word:"imaginative", pos:"adj", zh:"富有想像力的"},
-    ex:[{en:"Children have a very rich <em>imagination</em>.", zh:"孩子們有非常豐富的想像力。"},
-        {en:"Her novel is full of <em>imagination</em> and creativity.", zh:"她的小說充滿想像力和創意。"}] },
-  { unit:5, word:"imaginary", pos:"adj", zh:"虛構的；想像中的", deriv:{type:"衍生詞", word:"imagine", pos:"v", zh:"想像"},
-    ex:[{en:"The child had an <em>imaginary</em> friend named Tom.", zh:"這個孩子有一個名叫湯姆的想像中的朋友。"},
-        {en:"The story is set in an <em>imaginary</em> world.", zh:"這個故事設定在一個虛構的世界。"}] },
-  { unit:5, word:"consistently", pos:"adv", zh:"一致地；始終如一地", deriv:{type:"衍生詞", word:"consistent", pos:"adj", zh:"一致的"},
-    ex:[{en:"She has <em>consistently</em> performed well in her exams.", zh:"她在考試中一直表現良好。"},
-        {en:"He <em>consistently</em> shows up on time for every practice.", zh:"他每次練習都按時到場。"}] },
-  { unit:5, word:"consistent", pos:"adj", zh:"一致的；始終如一的", deriv:{type:"衍生詞", word:"consistently", pos:"adv", zh:"一致地"},
-    ex:[{en:"Being <em>consistent</em> in your habits leads to success.", zh:"在習慣上保持一致會帶來成功。"},
-        {en:"The team's <em>consistent</em> effort led them to the championship.", zh:"團隊的持續努力使他們奪得了冠軍。"}] },
-  { unit:5, word:"pursue", pos:"v", zh:"追求；追趕", deriv:{type:"衍生詞", word:"pursuit", pos:"n", zh:"追求；追趕"},
-    ex:[{en:"She decided to <em>pursue</em> a career in medicine.", zh:"她決定追求醫學事業。"},
-        {en:"It is important to <em>pursue</em> your dreams with determination.", zh:"以決心追求你的夢想是重要的。"}] },
-  { unit:5, word:"pursuit", pos:"n", zh:"追求；追逐", deriv:{type:"衍生詞", word:"pursue", pos:"v", zh:"追求"},
-    ex:[{en:"The <em>pursuit</em> of happiness is a universal goal.", zh:"追求幸福是一個普世的目標。"},
-        {en:"He dedicated his life to the <em>pursuit</em> of knowledge.", zh:"他將一生獻給對知識的追求。"}] },
-  { unit:5, word:"convey", pos:"v", zh:"傳達；運輸", deriv:{type:"慣用語", word:"convey a message", zh:"傳達訊息"},
-    ex:[{en:"The painting <em>conveys</em> a strong sense of sadness.", zh:"這幅畫傳達出強烈的悲傷感。"},
-        {en:"It's hard to <em>convey</em> your feelings through text alone.", zh:"僅靠文字很難傳達你的感受。"}] },
-  { unit:5, word:"parade", pos:"n/v", zh:"遊行；遊行隊伍", deriv:{type:"慣用語", word:"rain on someone's parade", zh:"掃人興致"},
-    ex:[{en:"The marching band led the <em>parade</em> through the city.", zh:"管弦樂隊帶領著遊行隊伍穿越城市。"},
-        {en:"Thousands of people lined the streets to watch the <em>parade</em>.", zh:"數千人站在街道兩旁觀看遊行。"}] },
-  { unit:5, word:"request", pos:"v/n", zh:"請求；要求", deriv:{type:"衍生詞", word:"requestor", pos:"n", zh:"請求者"},
-    ex:[{en:"She made a <em>request</em> to speak with the manager.", zh:"她提出了要求見經理的請求。"},
-        {en:"Please <em>request</em> permission before taking photos.", zh:"拍照前請先取得許可。"}] },
-  { unit:5, word:"extreme", pos:"adj/n", zh:"極端的；極端", deriv:{type:"衍生詞", word:"extremely", pos:"adv", zh:"非常地；極度地"},
-    ex:[{en:"The hikers faced <em>extreme</em> weather conditions on the mountain.", zh:"登山者在山上面對極端的天氣條件。"},
-        {en:"She has an <em>extreme</em> fear of spiders.", zh:"她對蜘蛛有極度的恐懼。"}] },
-  { unit:5, word:"achieve", pos:"v", zh:"達成；實現", deriv:{type:"衍生詞", word:"achievement", pos:"n", zh:"成就；成就"},
-    ex:[{en:"Hard work is the key to <em>achieving</em> your goals.", zh:"努力工作是實現目標的關鍵。"},
-        {en:"She finally <em>achieved</em> her dream of becoming a pilot.", zh:"她終於實現了成為飛行員的夢想。"}] },
-  { unit:5, word:"achievement", pos:"n", zh:"成就；成績", deriv:{type:"衍生詞", word:"achieve", pos:"v", zh:"達成"},
-    ex:[{en:"Winning the competition was her greatest <em>achievement</em>.", zh:"贏得比賽是她最大的成就。"},
-        {en:"The team celebrated their <em>achievement</em> with a party.", zh:"團隊舉辦派對慶祝他們的成就。"}] },
-  { unit:5, word:"passion", pos:"n", zh:"熱情；激情", deriv:{type:"衍生詞", word:"passionate", pos:"adj", zh:"熱情的"},
-    ex:[{en:"He has a deep <em>passion</em> for music.", zh:"他對音樂有深厚的熱情。"},
-        {en:"She put all her <em>passion</em> into her artwork.", zh:"她將所有的熱情投入到她的藝術作品中。"}] },
-  { unit:5, word:"passionate", pos:"adj", zh:"充滿熱情的；熱切的", deriv:{type:"衍生詞", word:"passion", pos:"n", zh:"熱情"},
-    ex:[{en:"She is <em>passionate</em> about helping animals in need.", zh:"她對幫助有需要的動物充滿熱情。"},
-        {en:"The <em>passionate</em> teacher inspired her students every day.", zh:"這位充滿熱情的老師每天激勵她的學生。"}] },
-  { unit:5, word:"failure", pos:"n", zh:"失敗；失誤", deriv:{type:"衍生詞", word:"fail", pos:"v", zh:"失敗"},
-    ex:[{en:"Every <em>failure</em> teaches us something valuable.", zh:"每一次失敗都教會我們一些寶貴的東西。"},
-        {en:"The project ended in <em>failure</em> due to poor planning.", zh:"由於計劃不善，該項目以失敗告終。"}] },
-  { unit:5, word:"fail", pos:"v", zh:"失敗；不及格", deriv:{type:"衍生詞", word:"failure", pos:"n", zh:"失敗"},
-    ex:[{en:"He worked hard so as not to <em>fail</em> the exam.", zh:"他努力學習以免考試不及格。"},
-        {en:"Even if you <em>fail</em>, you should never give up.", zh:"即使失敗了，也不應放棄。"}] },
-  { unit:5, word:"hardship", pos:"n", zh:"艱辛；困苦", deriv:{type:"慣用語", word:"endure hardship", zh:"忍受艱辛"},
-    ex:[{en:"She faced many <em>hardships</em> growing up in a poor family.", zh:"她在貧困家庭長大，面臨了許多艱辛。"},
-        {en:"The soldiers <em>endured</em> great <em>hardship</em> during the war.", zh:"士兵們在戰爭中忍受了巨大的艱辛。"}] },
-  { unit:5, word:"poverty", pos:"n", zh:"貧窮；貧困", deriv:{type:"慣用語", word:"live in poverty", zh:"生活在貧窮中"},
-    ex:[{en:"Many children around the world live in <em>poverty</em>.", zh:"世界上許多孩子生活在貧窮之中。"},
-        {en:"Education is one way to escape <em>poverty</em>.", zh:"教育是擺脫貧窮的一種方式。"}] },
-  { unit:5, word:"faith", pos:"n", zh:"信念；信仰", deriv:{type:"衍生詞", word:"faithful", pos:"adj", zh:"忠誠的；忠實的"},
-    ex:[{en:"She kept her <em>faith</em> even in the hardest times.", zh:"她即使在最艱難的時候也保持了信念。"},
-        {en:"He has great <em>faith</em> in his team's abilities.", zh:"他對團隊的能力有極大的信心。"}] },
-  { unit:5, word:"faithful", pos:"adj", zh:"忠實的；忠誠的", deriv:{type:"衍生詞", word:"faith", pos:"n", zh:"信念"},
-    ex:[{en:"A <em>faithful</em> friend supports you through good and bad times.", zh:"一個忠實的朋友在順境和逆境中都支持你。"},
-        {en:"He remained <em>faithful</em> to his values all his life.", zh:"他一生都忠於自己的價值觀。"}] },
-  { unit:5, word:"rescue", pos:"v/n", zh:"救援；拯救", deriv:{type:"慣用語", word:"come to the rescue", zh:"前來救援"},
-    ex:[{en:"The firefighters managed to <em>rescue</em> all the trapped miners.", zh:"消防員設法救出了所有被困礦工。"},
-        {en:"She came to the <em>rescue</em> when no one else would help.", zh:"當沒有其他人願意幫助時，她前來救援。"}] },
-  { unit:5, word:"career", pos:"n", zh:"職業；生涯", deriv:{type:"慣用語", word:"career path", zh:"職業道路"},
-    ex:[{en:"She chose a <em>career</em> in education because she loves teaching.", zh:"她選擇了教育事業，因為她喜歡教學。"},
-        {en:"A good internship can launch your <em>career</em>.", zh:"一次好的實習可以啟動你的職業生涯。"}] },
-  { unit:5, word:"weave", pos:"v", zh:"編織；穿插", deriv:{type:"慣用語", word:"weave through", zh:"穿梭於……之間"},
-    ex:[{en:"She learned how to <em>weave</em> baskets from her grandmother.", zh:"她從祖母那裡學會了如何編籃子。"},
-        {en:"The writer skillfully <em>wove</em> several themes into the novel.", zh:"作家巧妙地將幾個主題融入小說中。"}] },
-  { unit:5, word:"disadvantage", pos:"n", zh:"不利；缺點", deriv:{type:"慣用語", word:"at a disadvantage", zh:"處於不利地位"},
-    ex:[{en:"Not having a car can be a <em>disadvantage</em> in a rural area.", zh:"在農村地區，沒有車可能是一個不利因素。"},
-        {en:"She refused to let her <em>disadvantages</em> define her.", zh:"她拒絕讓她的不利條件來定義她。"}] },
-  { unit:5, word:"attitude", pos:"n", zh:"態度；看法", deriv:{type:"慣用語", word:"positive attitude", zh:"積極的態度"},
-    ex:[{en:"A positive <em>attitude</em> can make a big difference in life.", zh:"積極的態度在生活中可以產生很大的差異。"},
-        {en:"Her <em>attitude</em> toward learning impressed all her teachers.", zh:"她對學習的態度讓所有老師都印象深刻。"}] },
-  { unit:5, word:"overcome", pos:"v", zh:"克服；戰勝", deriv:{type:"慣用語", word:"overcome obstacles", zh:"克服障礙"},
-    ex:[{en:"She managed to <em>overcome</em> her fear of public speaking.", zh:"她設法克服了她對公開演講的恐懼。"},
-        {en:"With determination, you can <em>overcome</em> any challenge.", zh:"有了決心，你可以克服任何挑戰。"}] },
-  { unit:5, word:"obstacle", pos:"n", zh:"障礙；阻礙", deriv:{type:"慣用語", word:"remove obstacles", zh:"消除障礙"},
-    ex:[{en:"Language was the biggest <em>obstacle</em> for the immigrant family.", zh:"語言是這個移民家庭最大的障礙。"},
-        {en:"She saw every <em>obstacle</em> as a chance to grow.", zh:"她把每一個障礙都視為成長的機會。"}] },
-  { unit:5, word:"fulfill", pos:"v", zh:"實現；履行", deriv:{type:"衍生詞", word:"fulfillment", pos:"n", zh:"成就感；實現"},
-    ex:[{en:"She worked hard to <em>fulfill</em> her dream of studying abroad.", zh:"她努力實現出國留學的夢想。"},
-        {en:"It is important to <em>fulfill</em> your promises.", zh:"履行承諾是很重要的。"}] },
-  // Phrases Unit 5
-  { unit:5, word:"in addition to", pos:"phrase", zh:"除了……之外（還有）", deriv:{type:"片語延伸", word:"apart from", zh:"除了……之外"},
-    ex:[{en:"<em>In addition to</em> English, she also speaks French and German.", zh:"除了英語，她還會說法語和德語。"},
-        {en:"The job requires teamwork, <em>in addition to</em> strong communication skills.", zh:"這份工作除了需要溝通技巧之外，還需要團隊合作。"}] },
-  { unit:5, word:"in other words", pos:"phrase", zh:"換句話說", deriv:{type:"片語延伸", word:"that is to say", zh:"也就是說"},
-    ex:[{en:"He was let go from his job; <em>in other words</em>, he was fired.", zh:"他被解雇了；換句話說，他丟了工作。"},
-        {en:"<em>In other words</em>, you need to try harder.", zh:"換句話說，你需要更努力。"}] },
-  { unit:5, word:"meet with", pos:"phrase", zh:"遭遇；會面", deriv:{type:"片語延伸", word:"meet up with", zh:"與……碰面"},
-    ex:[{en:"The plan <em>met with</em> strong opposition from the community.", zh:"這個計劃遭到了社區的強烈反對。"},
-        {en:"She arranged to <em>meet with</em> her advisor next Monday.", zh:"她安排下週一和她的指導老師會面。"}] },
-  { unit:5, word:"take seriously", pos:"phrase", zh:"認真對待", deriv:{type:"片語延伸", word:"take lightly", zh:"不當回事"},
-    ex:[{en:"You should <em>take</em> your health <em>seriously</em>.", zh:"你應該認真對待你的健康。"},
-        {en:"The teacher <em>took</em> the student's complaint <em>seriously</em>.", zh:"老師認真對待了學生的投訴。"}] },
-  { unit:5, word:"spring into action", pos:"phrase", zh:"迅速行動；立刻行動", deriv:{type:"片語延伸", word:"leap into action", zh:"立即行動"},
-    ex:[{en:"When the fire alarm rang, everyone <em>sprang into action</em>.", zh:"火警響起時，所有人立刻行動起來。"},
-        {en:"The rescue team <em>sprang into action</em> the moment they got the call.", zh:"救援隊一接到電話就立刻行動。"}] },
-  { unit:5, word:"in turn", pos:"phrase", zh:"依次地；因此", deriv:{type:"片語延伸", word:"one by one", zh:"一個接一個地"},
-    ex:[{en:"Each student answered the question <em>in turn</em>.", zh:"每個學生依次回答了問題。"},
-        {en:"Regular exercise improves health, which <em>in turn</em> boosts your mood.", zh:"定期運動改善健康，進而提振心情。"}] },
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">How to make AI safe—and lessen dependence on America and China</h3>
+          <p lang="zh-Hant">如何讓人工智慧更安全，並降低對美國與中國的依賴</p>
+        </article>
+        
 
-  // ===== UNIT 6 =====
-  { unit:6, word:"awful", pos:"adj", zh:"糟糕的；可怕的", deriv:{type:"衍生詞", word:"awfully", pos:"adv", zh:"非常地；可怕地"},
-    ex:[{en:"The weather was <em>awful</em> — it rained all weekend.", zh:"天氣糟透了，整個週末都在下雨。"},
-        {en:"She felt <em>awful</em> after forgetting her friend's birthday.", zh:"她忘了朋友的生日後感到非常難受。"}] },
-  { unit:6, word:"stare", pos:"v/n", zh:"盯著看；凝視", deriv:{type:"慣用語", word:"stare into space", zh:"發呆；茫然地盯著"},
-    ex:[{en:"It's rude to <em>stare</em> at strangers on the street.", zh:"在街上盯著陌生人看是不禮貌的。"},
-        {en:"He <em>stared</em> blankly at the wall after hearing the news.", zh:"聽到消息後，他茫然地盯著牆壁。"}] },
-  { unit:6, word:"whisper", pos:"v/n", zh:"低語；耳語", deriv:{type:"慣用語", word:"whisper in someone's ear", zh:"在某人耳邊低聲說"},
-    ex:[{en:"She <em>whispered</em> the answer to her classmate during the test.", zh:"她在測驗中低聲把答案告訴同學。"},
-        {en:"He spoke in a <em>whisper</em> so as not to wake the baby.", zh:"他用低語說話，以免吵醒嬰兒。"}] },
-  { unit:6, word:"rude", pos:"adj", zh:"無禮的；粗魯的", deriv:{type:"衍生詞", word:"rudeness", pos:"n", zh:"粗魯；無禮"},
-    ex:[{en:"It was <em>rude</em> of him to interrupt while she was speaking.", zh:"他在她說話時打斷，這是很無禮的。"},
-        {en:"The customer was so <em>rude</em> to the waitress.", zh:"那位顧客對服務生非常粗魯。"}] },
-  { unit:6, word:"tease", pos:"v/n", zh:"嘲弄；取笑", deriv:{type:"慣用語", word:"tease out", zh:"慢慢引出；梳理"},
-    ex:[{en:"The older kids used to <em>tease</em> him about his glasses.", zh:"年紀大的孩子以前常因他戴眼鏡而嘲笑他。"},
-        {en:"She laughed when her friends <em>teased</em> her about her crush.", zh:"朋友們取笑她喜歡某人時，她笑了。"}] },
-  { unit:6, word:"purposefully", pos:"adv", zh:"故意地；有目的地", deriv:{type:"衍生詞", word:"purposeful", pos:"adj", zh:"有目的的；有意圖的"},
-    ex:[{en:"He <em>purposefully</em> walked to the front of the room and began to speak.", zh:"他有目的地走到房間前面，開始發言。"},
-        {en:"She <em>purposefully</em> ignored him during the meeting.", zh:"她在會議期間故意無視他。"}] },
-  { unit:6, word:"purposeful", pos:"adj", zh:"有目的的；刻意的", deriv:{type:"衍生詞", word:"purposefully", pos:"adv", zh:"故意地"},
-    ex:[{en:"Her <em>purposeful</em> actions made it clear she had a plan.", zh:"她有目的的行動清楚表明她有計劃。"},
-        {en:"The teacher gave <em>purposeful</em> feedback to help students improve.", zh:"老師給予有目的的回饋以幫助學生進步。"}] },
-  { unit:6, word:"scary", pos:"adj", zh:"可怕的；嚇人的", deriv:{type:"衍生詞", word:"scare", pos:"v", zh:"使害怕"},
-    ex:[{en:"The haunted house was too <em>scary</em> for the young children.", zh:"那棟鬼屋對年幼的孩子來說太可怕了。"},
-        {en:"It can be <em>scary</em> to start a new school.", zh:"進入一所新學校可能讓人感到害怕。"}] },
-  { unit:6, word:"scare", pos:"v/n", zh:"使害怕；驚嚇", deriv:{type:"衍生詞", word:"scary", pos:"adj", zh:"可怕的"},
-    ex:[{en:"The loud thunder really <em>scared</em> the dog.", zh:"巨大的雷聲嚇到了狗。"},
-        {en:"The ghost story gave everyone a good <em>scare</em>.", zh:"那個鬼故事嚇了大家一跳。"}] },
-  { unit:6, word:"over here", pos:"phrase", zh:"在這裡；到這裡來", deriv:{type:"片語延伸", word:"over there", zh:"在那裡"},
-    ex:[{en:"\"Come <em>over here</em> and look at this!\" she called excitedly.", zh:"「過來這裡看看這個！」她興奮地喊道。"},
-        {en:"The entrance is <em>over here</em>, on the left side.", zh:"入口在這裡，左邊那側。"}] },
-  { unit:6, word:"incident", pos:"n", zh:"事件；事故", deriv:{type:"衍生詞", word:"incidental", pos:"adj", zh:"附帶的；偶發的"},
-    ex:[{en:"The bullying <em>incident</em> was reported to the school principal.", zh:"霸凌事件被報告給校長。"},
-        {en:"The police are investigating the <em>incident</em> that happened downtown.", zh:"警方正在調查市中心發生的事件。"}] },
-  { unit:6, word:"cruel", pos:"adj", zh:"殘忍的；無情的", deriv:{type:"衍生詞", word:"cruelty", pos:"n", zh:"殘忍；殘酷"},
-    ex:[{en:"It is <em>cruel</em> to make fun of someone's appearance.", zh:"嘲笑別人的外貌是很殘忍的。"},
-        {en:"The <em>cruel</em> treatment of animals is against the law.", zh:"虐待動物是違法的。"}] },
-  { unit:6, word:"cruelty", pos:"n", zh:"殘忍；殘酷", deriv:{type:"衍生詞", word:"cruel", pos:"adj", zh:"殘忍的"},
-    ex:[{en:"The <em>cruelty</em> of the bully shocked everyone in school.", zh:"那個惡霸的殘忍行為震驚了學校的每個人。"},
-        {en:"Animal <em>cruelty</em> should be reported to the authorities.", zh:"動物虐待應向有關當局舉報。"}] },
-  { unit:6, word:"pretend", pos:"v", zh:"假裝；偽裝", deriv:{type:"慣用語", word:"pretend not to notice", zh:"假裝沒注意到"},
-    ex:[{en:"He <em>pretended</em> to be sick to avoid going to school.", zh:"他假裝生病以避免去上學。"},
-        {en:"She <em>pretended</em> not to notice when he walked in.", zh:"當他走進來時，她假裝沒注意到。"}] },
-  { unit:6, word:"genuinely", pos:"adv", zh:"真誠地；真實地", deriv:{type:"衍生詞", word:"genuine", pos:"adj", zh:"真誠的；真實的"},
-    ex:[{en:"She <em>genuinely</em> cares about the well-being of her students.", zh:"她真誠地關心學生的福祉。"},
-        {en:"He was <em>genuinely</em> surprised by the gift.", zh:"他對那份禮物感到真心驚喜。"}] },
-  { unit:6, word:"genuine", pos:"adj", zh:"真誠的；真實的", deriv:{type:"衍生詞", word:"genuinely", pos:"adv", zh:"真誠地"},
-    ex:[{en:"A <em>genuine</em> smile is hard to fake.", zh:"真誠的微笑是難以假裝的。"},
-        {en:"We could tell her apology was <em>genuine</em>.", zh:"我們可以感受到她的道歉是真誠的。"}] },
-  { unit:6, word:"apologize", pos:"v", zh:"道歉；致歉", deriv:{type:"衍生詞", word:"apology", pos:"n", zh:"道歉"},
-    ex:[{en:"She <em>apologized</em> sincerely for hurting her friend's feelings.", zh:"她真誠地為傷害朋友的感情而道歉。"},
-        {en:"You should <em>apologize</em> when you make a mistake.", zh:"犯錯時應該道歉。"}] },
-  { unit:6, word:"apology", pos:"n", zh:"道歉；致歉", deriv:{type:"衍生詞", word:"apologize", pos:"v", zh:"道歉"},
-    ex:[{en:"He wrote a heartfelt <em>apology</em> to his classmate.", zh:"他給同學寫了一封誠摯的道歉信。"},
-        {en:"She accepted the <em>apology</em> and forgave him right away.", zh:"她接受了道歉並立刻原諒了他。"}] },
-  { unit:6, word:"gradually", pos:"adv", zh:"逐漸地；慢慢地", deriv:{type:"衍生詞", word:"gradual", pos:"adj", zh:"逐漸的；緩慢的"},
-    ex:[{en:"Her English has <em>gradually</em> improved over the year.", zh:"她的英語在這一年裡逐漸進步了。"},
-        {en:"The temperature <em>gradually</em> rose as the day went on.", zh:"隨著一天過去，氣溫慢慢升高。"}] },
-  { unit:6, word:"gradual", pos:"adj", zh:"逐漸的；循序漸進的", deriv:{type:"衍生詞", word:"gradually", pos:"adv", zh:"逐漸地"},
-    ex:[{en:"There has been a <em>gradual</em> improvement in his attitude.", zh:"他的態度有了逐漸的改善。"},
-        {en:"The <em>gradual</em> change in weather signaled autumn's arrival.", zh:"天氣的逐漸變化預告了秋天的到來。"}] },
-  { unit:6, word:"approach", pos:"v/n", zh:"接近；方法", deriv:{type:"慣用語", word:"approach with caution", zh:"謹慎接近"},
-    ex:[{en:"As winter <em>approaches</em>, the days get shorter.", zh:"隨著冬天臨近，白天變得越來越短。"},
-        {en:"She took a creative <em>approach</em> to solving the problem.", zh:"她採取了創造性的方法來解決問題。"}] },
-  { unit:6, word:"absolutely", pos:"adv", zh:"絕對地；完全地", deriv:{type:"衍生詞", word:"absolute", pos:"adj", zh:"絕對的；完全的"},
-    ex:[{en:"I <em>absolutely</em> agree with your point of view.", zh:"我完全同意你的觀點。"},
-        {en:"It is <em>absolutely</em> necessary to wear a seatbelt.", zh:"繫安全帶是絕對必要的。"}] },
-  { unit:6, word:"absolute", pos:"adj", zh:"絕對的；完全的", deriv:{type:"衍生詞", word:"absolutely", pos:"adv", zh:"絕對地"},
-    ex:[{en:"The coach demanded <em>absolute</em> obedience from the team.", zh:"教練要求團隊絕對服從。"},
-        {en:"It was an <em>absolute</em> disaster from start to finish.", zh:"從頭到尾都是一場徹底的災難。"}] },
-  { unit:6, word:"defend", pos:"v", zh:"防守；捍衛", deriv:{type:"衍生詞", word:"defense", pos:"n", zh:"防守；辯護"},
-    ex:[{en:"She stood up to <em>defend</em> her friend against the bully.", zh:"她挺身而出，保護她的朋友不受惡霸欺負。"},
-        {en:"It is natural to <em>defend</em> yourself when attacked.", zh:"被攻擊時為自己辯護是自然的。"}] },
-  { unit:6, word:"defense", pos:"n", zh:"防守；辯護", deriv:{type:"衍生詞", word:"defend", pos:"v", zh:"防守"},
-    ex:[{en:"The lawyer argued the case in <em>defense</em> of her client.", zh:"律師為她的當事人進行辯護。"},
-        {en:"The team's strong <em>defense</em> kept the opponents from scoring.", zh:"球隊強力的防守阻止了對手得分。"}] },
-  { unit:6, word:"bully", pos:"v/n", zh:"霸凌；惡霸", deriv:{type:"衍生詞", word:"bullying", pos:"n", zh:"霸凌行為"},
-    ex:[{en:"No one should be <em>bullied</em> because of how they look.", zh:"沒有人應該因為外貌而遭受霸凌。"},
-        {en:"The school has a strict no-<em>bullying</em> policy.", zh:"學校有嚴格的反霸凌政策。"}] },
-  { unit:6, word:"ceremony", pos:"n", zh:"典禮；儀式", deriv:{type:"慣用語", word:"without ceremony", zh:"毫不客氣；不拘禮節"},
-    ex:[{en:"The graduation <em>ceremony</em> was held in the school hall.", zh:"畢業典禮在學校禮堂舉行。"},
-        {en:"The award <em>ceremony</em> was watched by millions on TV.", zh:"頒獎典禮有數百萬人通過電視觀看。"}] },
-  // Phrases Unit 6
-  { unit:6, word:"fit in", pos:"phrase", zh:"融入；適應", deriv:{type:"片語延伸", word:"blend in", zh:"融入；不引人注意"},
-    ex:[{en:"It took her a few weeks to <em>fit in</em> at the new school.", zh:"她花了幾週時間才融入新學校。"},
-        {en:"He tried hard to <em>fit in</em> with the new group of friends.", zh:"他努力融入新的朋友圈。"}] },
-  { unit:6, word:"around the corner", pos:"phrase", zh:"即將到來；在附近", deriv:{type:"片語延伸", word:"just around the bend", zh:"就在不遠處"},
-    ex:[{en:"Summer vacation is just <em>around the corner</em>!", zh:"暑假就快到了！"},
-        {en:"The supermarket is <em>around the corner</em> from my house.", zh:"超市就在我家附近轉個彎。"}] },
-  { unit:6, word:"stick to one's stomach", pos:"phrase", zh:"令人心情不好；讓人反胃", deriv:{type:"片語延伸", word:"turn one's stomach", zh:"使人作嘔"},
-    ex:[{en:"Seeing the bully hurt the younger child <em>stuck to her stomach</em>.", zh:"看到惡霸欺負小孩子讓她心裡很不是滋味。"},
-        {en:"The unfair treatment <em>stuck to his stomach</em> for days.", zh:"這種不公平的對待讓他好幾天心裡都不舒服。"}] },
-  { unit:6, word:"make peace", pos:"phrase", zh:"和解；講和", deriv:{type:"片語延伸", word:"bury the hatchet", zh:"捐棄前嫌；和解"},
-    ex:[{en:"After the argument, they decided to <em>make peace</em> and shake hands.", zh:"爭吵後，他們決定和解並握手言和。"},
-        {en:"She finally <em>made peace</em> with her past mistakes.", zh:"她終於與自己過去的錯誤和解了。"}] },
-  { unit:6, word:"make fun of", pos:"phrase", zh:"嘲笑；取笑", deriv:{type:"片語延伸", word:"laugh at", zh:"嘲笑"},
-    ex:[{en:"It's wrong to <em>make fun of</em> someone's accent.", zh:"嘲笑別人的口音是不對的。"},
-        {en:"The class bully always <em>made fun of</em> the new student.", zh:"班上的惡霸總是嘲笑新同學。"}] },
-  { unit:6, word:"at least", pos:"phrase", zh:"至少；起碼", deriv:{type:"片語延伸", word:"at most", zh:"最多；至多"},
-    ex:[{en:"You should drink <em>at least</em> eight glasses of water a day.", zh:"你每天至少應該喝八杯水。"},
-        {en:"<em>At least</em> she apologized after the misunderstanding.", zh:"誤會之後，她至少道歉了。"}] },
-  { unit:6, word:"apart from", pos:"phrase", zh:"除了……之外；除……以外", deriv:{type:"片語延伸", word:"other than", zh:"除了……之外"},
-    ex:[{en:"<em>Apart from</em> a few mistakes, the essay was excellent.", zh:"除了幾個錯誤之外，這篇文章非常出色。"},
-        {en:"<em>Apart from</em> her, no one knew the answer.", zh:"除了她之外，沒有人知道答案。"}] },
-];
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">America should stop making it so hard to have fun</h3>
+          <p lang="zh-Hant">美國不該再讓享受夜生活變得如此困難</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Letters</span>
+            <span class="section-zh" lang="zh-Hant">讀者來函</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">The United States is once again in a state of rebellion</h3>
+          <p lang="zh-Hant">美國再次陷入反叛狀態</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">By Invitation</span>
+            <span class="section-zh" lang="zh-Hant">特邀評論</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Would Europeans fight, if it came to that?</h3>
+          <p lang="zh-Hant">真到了那一步，歐洲人會願意作戰嗎？</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#7D5A50; --card-bg:#FFF7F2; --border:#D9B7A8;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Briefing</span>
+            <span class="section-zh" lang="zh-Hant">專題簡報</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#7D5A50; --card-bg:#FFF7F2; --border:#D9B7A8;">
+          <h3 lang="en">Israel’s future hangs in the balance</h3>
+          <p lang="zh-Hant">以色列的未來正懸於一線</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Asia</span>
+            <span class="section-zh" lang="zh-Hant">亞洲</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">Is Aung San Suu Kyi dead?</h3>
+          <p lang="zh-Hant">翁山蘇姬已經去世了嗎？</p>
+        </article>
+        
 
-let currentTab = 'all';
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">An unreliable America is drawing Asia’s middle powers closer</h3>
+          <p lang="zh-Hant">不可靠的美國正促使亞洲中等強國彼此靠攏</p>
+        </article>
+        
 
-function buildCards(list, unitClass) {
-  return list.map((item, i) => {
-    const isPhrase = item.pos === 'phrase';
-    const numLabel = String(i + 1).padStart(2, '0');
-    const derivLabel = item.deriv.type;
-    const posTag = isPhrase ? `<span class="phrase-badge">片語</span>` : `<span class="word-pos">${item.pos}</span>`;
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">Haunted houses are in demand in Japan</h3>
+          <p lang="zh-Hant">日本的凶宅正變得搶手</p>
+        </article>
+        
 
-    return `
-    <div class="card ${unitClass}" data-word="${item.word.toLowerCase()}">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="word-num">${numLabel}</div>
-        <div class="word-main">
-          ${isPhrase
-            ? `<div class="phrase-word"><em>${item.word}</em>${posTag}</div>`
-            : `<div class="word-en">${item.word}${posTag}</div>`}
-          <div class="word-zh">${item.zh}</div>
-        </div>
-        <div class="toggle-icon">▼</div>
-      </div>
-      <div class="card-body">
-        <div class="deriv-block">
-          <div class="deriv-label">${derivLabel}</div>
-          <span class="deriv-word">${item.deriv.word}</span>
-          ${item.deriv.pos ? `<span class="word-pos">${item.deriv.pos}</span>` : ''}
-          <span class="deriv-zh">${item.deriv.zh}</span>
-        </div>
-        <div class="examples-label">例句</div>
-        ${item.ex.map(e => `
-          <div class="example">
-            <div class="en">${e.en}</div>
-            <div class="zh">${e.zh}</div>
-          </div>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
-}
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">A real but selective crackdown on Cambodia’s scam industry</h3>
+          <p lang="zh-Hant">柬埔寨對詐騙產業展開真實但選擇性的打擊</p>
+        </article>
+        
 
-function init() {
-  const u4 = data.filter(d => d.unit === 4);
-  const u5 = data.filter(d => d.unit === 5);
-  const u6 = data.filter(d => d.unit === 6);
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">An incomplete list of falling objects in India</h3>
+          <p lang="zh-Hant">印度各種墜落物的不完全清單</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">China</span>
+            <span class="section-zh" lang="zh-Hant">中國</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">China is dealing with its own manosphere</h3>
+          <p lang="zh-Hant">中國正在面對自己的男性圈網路文化</p>
+        </article>
+        
 
-  document.getElementById('totalCount').textContent = data.length;
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">Xi Jinping expels another leader from his top team</h3>
+          <p lang="zh-Hant">習近平又將一名高層逐出核心團隊</p>
+        </article>
+        
 
-  const allPanel = document.getElementById('all');
-  allPanel.innerHTML = `
-    <div class="stats-bar">
-      <div class="stat">Unit 4: <span>${u4.length}</span></div>
-      <div class="stat">Unit 5: <span>${u5.length}</span></div>
-      <div class="stat">Unit 6: <span>${u6.length}</span></div>
-      <div class="stat">共: <span>${data.length}</span></div>
-    </div>
-    <div class="unit-section-title">Unit 4</div>
-    ${buildCards(u4, 'unit-4')}
-    <div class="unit-section-title">Unit 5</div>
-    ${buildCards(u5, 'unit-5')}
-    <div class="unit-section-title">Unit 6</div>
-    ${buildCards(u6, 'unit-6')}
-  `;
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">China wants to end AI romances</h3>
+          <p lang="zh-Hant">中國想終結人工智慧戀情</p>
+        </article>
+        
 
-  document.getElementById('u4').innerHTML = `<div class="unit-label">Unit 4 — ${u4.length} 個詞條</div>${buildCards(u4, 'unit-4')}`;
-  document.getElementById('u5').innerHTML = `<div class="unit-label">Unit 5 — ${u5.length} 個詞條</div>${buildCards(u5, 'unit-5')}`;
-  document.getElementById('u6').innerHTML = `<div class="unit-label">Unit 6 — ${u6.length} 個詞條</div>${buildCards(u6, 'unit-6')}`;
-}
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">A squeezed China is trying to wring more from its state assets</h3>
+          <p lang="zh-Hant">承受壓力的中國正設法從國有資產榨出更多價值</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">United States</span>
+            <span class="section-zh" lang="zh-Hant">美國</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">Donald Trump’s transformation of the Department of Justice will be hard to undo</h3>
+          <p lang="zh-Hant">川普對司法部的改造將很難逆轉</p>
+        </article>
+        
 
-function toggleCard(header) {
-  const card = header.parentElement;
-  card.classList.toggle('open');
-}
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">Democrats challenge a big Hollywood tie-up</h3>
+          <p lang="zh-Hant">民主黨人挑戰好萊塢大型合併案</p>
+        </article>
+        
 
-function switchTab(id, btn) {
-  currentTab = id;
-  document.querySelectorAll('.unit-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-  document.getElementById('searchBox').value = '';
-  showAllCards();
-}
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">Cities are rethinking what happens after dark</h3>
+          <p lang="zh-Hant">美國城市正在重新思考入夜後的生活</p>
+        </article>
+        
 
-function filterCards() {
-  const q = document.getElementById('searchBox').value.toLowerCase().trim();
-  const panels = q ? ['all', 'u4', 'u5', 'u6'] : [currentTab];
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">America’s other elections problem</h3>
+          <p lang="zh-Hant">美國另一個選舉難題</p>
+        </article>
+        
 
-  if (q) {
-    document.querySelectorAll('.unit-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('all').classList.add('active');
-    currentTab = 'all';
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.tab-btn').classList.add('active');
-  }
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">Lindsey Graham tried to save the wrong countries from Donald Trump</h3>
+          <p lang="zh-Hant">林賽・葛蘭姆試圖從川普手中拯救錯誤的國家</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">The Americas</span>
+            <span class="section-zh" lang="zh-Hant">美洲</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">The Panama Canal is growing more important</h3>
+          <p lang="zh-Hant">巴拿馬運河正變得愈來愈重要</p>
+        </article>
+        
 
-  document.querySelectorAll('.card').forEach(card => {
-    const wordEl = card.querySelector('.word-en, .phrase-word');
-    const zhEl = card.querySelector('.word-zh');
-    const word = card.dataset.word || '';
-    const zh = zhEl ? zhEl.textContent.toLowerCase() : '';
-    const body = card.querySelector('.card-body') ? card.querySelector('.card-body').textContent.toLowerCase() : '';
-    if (!q || word.includes(q) || zh.includes(q) || body.includes(q)) {
-      card.style.display = '';
-      if (q) card.classList.add('open');
-    } else {
-      card.style.display = 'none';
-      card.classList.remove('open');
-    }
-  });
-}
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">The biggest schools training America’s doctors are in the Caribbean</h3>
+          <p lang="zh-Hant">培訓美國醫師規模最大的學校位於加勒比海地區</p>
+        </article>
+        
 
-function showAllCards() {
-  document.querySelectorAll('.card').forEach(c => { c.style.display = ''; c.classList.remove('open'); });
-}
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">Argentina v England is one of the most intense rivalries in sport</h3>
+          <p lang="zh-Hant">阿根廷對英格蘭是體壇最激烈的宿敵對決之一</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Middle East &amp; Africa</span>
+            <span class="section-zh" lang="zh-Hant">中東與非洲</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">Donald Trump has no good options for reopening the Strait of Hormuz</h3>
+          <p lang="zh-Hant">川普沒有重新開放荷莫茲海峽的好辦法</p>
+        </article>
+        
 
-init();
-</script>
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">America’s other battle with Iran</h3>
+          <p lang="zh-Hant">美國與伊朗之間的另一場戰爭</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">The Ebola epidemic is getting out of control</h3>
+          <p lang="zh-Hant">伊波拉疫情正逐漸失控</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">A hit new show takes on polygamy in modern South Africa</h3>
+          <p lang="zh-Hant">一齣熱門新劇直面現代南非的一夫多妻現象</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#C0643B; --card-bg:#FFF5EA; --border:#F6C48F;">
+          <h3 lang="en">How to preserve Africa’s architectural gems</h3>
+          <p lang="zh-Hant">如何保存非洲的建築瑰寶</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Europe</span>
+            <span class="section-zh" lang="zh-Hant">歐洲</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">Ukraine’s reformist defence minister is ousted</h3>
+          <p lang="zh-Hant">烏克蘭改革派國防部長遭到撤換</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">Europe seems set to ease its carbon pricing</h3>
+          <p lang="zh-Hant">歐洲似乎準備放寬碳定價制度</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">Sweden squashed migration. The populist right wants to go further</h3>
+          <p lang="zh-Hant">瑞典大幅壓低移民人數，民粹右派還想走得更遠</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">Opening the border between Spain and Gibraltar</h3>
+          <p lang="zh-Hant">西班牙與直布羅陀之間的邊界正式開放</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">Why Berlin’s airport is still completely hopeless</h3>
+          <p lang="zh-Hant">柏林機場為何至今仍然一團糟</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#8C5E3C; --card-bg:#FFF8EF; --border:#E6C49E;">
+          <h3 lang="en">In praise of Scandinavia’s risky and dirty playgrounds</h3>
+          <p lang="zh-Hant">讚頌斯堪地那維亞既冒險又髒亂的遊樂場</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Britain</span>
+            <span class="section-zh" lang="zh-Hant">英國</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Can Andy Burnham keep his own MPs under control?</h3>
+          <p lang="zh-Hant">安迪・伯納姆能管得住自己陣營的國會議員嗎？</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Lessons from a cat about to outlast yet another prime minister</h3>
+          <p lang="zh-Hant">一隻即將再次熬過首相任期的貓帶來的啟示</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Glasgow, rescuer of the Commonwealth Games, needs saving too</h3>
+          <p lang="zh-Hant">拯救大英國協運動會的格拉斯哥，如今也需要被拯救</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Violence is reshaping British political life</h3>
+          <p lang="zh-Hant">暴力正在重塑英國政治生活</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Britain’s bookies have weathered a tricky World Cup</h3>
+          <p lang="zh-Hant">英國博彩公司挺過了一屆棘手的世界盃</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">London’s private members’ clubs are proliferating</h3>
+          <p lang="zh-Hant">倫敦的私人會員俱樂部正大量增加</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#A44767; --card-bg:#FFF0F5; --border:#E6A9BE;">
+          <h3 lang="en">Sir Keir’s bucket list</h3>
+          <p lang="zh-Hant">施紀賢爵士的人生願望清單</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#7D5A50; --card-bg:#FFF7F2; --border:#D9B7A8;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">International</span>
+            <span class="section-zh" lang="zh-Hant">國際</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#7D5A50; --card-bg:#FFF7F2; --border:#D9B7A8;">
+          <h3 lang="en">Sovereign AI, independent of America and China, is a pipe dream</h3>
+          <p lang="zh-Hant">不依賴美國與中國的主權人工智慧只是一場幻想</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#7D5A50; --card-bg:#FFF7F2; --border:#D9B7A8;">
+          <h3 lang="en">When China’s open-source AI is a trap</h3>
+          <p lang="zh-Hant">當中國的開源人工智慧成為陷阱</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Business</span>
+            <span class="section-zh" lang="zh-Hant">商業</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">Eli Lilly is reinventing the pharma business</h3>
+          <p lang="zh-Hant">禮來正在重新定義製藥產業</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">Demis Hassabis has a plan to harness AI safely</h3>
+          <p lang="zh-Hant">戴米斯・哈薩比斯提出安全駕馭人工智慧的計畫</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">How high can Red Bull fly?</h3>
+          <p lang="zh-Hant">紅牛還能飛多高？</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">How to sell a kettle</h3>
+          <p lang="zh-Hant">如何賣出一只熱水壺</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">How SK Hynix became the king of advanced memory chips</h3>
+          <p lang="zh-Hant">SK海力士如何成為先進記憶體晶片之王</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#6E5A8A; --card-bg:#F8F2FF; --border:#C9B6E4;">
+          <h3 lang="en">Meet the committee to buy Europe</h3>
+          <p lang="zh-Hant">認識這個準備收購歐洲的委員會</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Finance &amp; economics</span>
+            <span class="section-zh" lang="zh-Hant">金融與經濟</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">Storm clouds gather over America’s financial supremacy</h3>
+          <p lang="zh-Hant">美國金融霸權上空正聚集烏雲</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">America’s Hormuz brinkmanship is worsening a global fuel crunch</h3>
+          <p lang="zh-Hant">美國在荷莫茲海峽的邊緣政策正加劇全球燃料危機</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">China’s trade gap is narrowing. And other surprises</h3>
+          <p lang="zh-Hant">中國的貿易差距正在縮小，以及其他意外發展</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">Can Kevin Warsh’s Fed force 5 reimagine monetary policymaking?</h3>
+          <p lang="zh-Hant">凱文・沃許領導的聯準會能否讓「五人團隊」重新想像貨幣政策？</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">What investment gurus get wrong</h3>
+          <p lang="zh-Hant">投資大師們究竟錯在哪裡</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#377D71; --card-bg:#EFFAF7; --border:#9ED1C5;">
+          <h3 lang="en">How to shrink the Fed’s $7trn balance-sheet</h3>
+          <p lang="zh-Hant">如何縮減聯準會七兆美元的資產負債表</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Science &amp; technology</span>
+            <span class="section-zh" lang="zh-Hant">科學與科技</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">The rate at which Earth is absorbing energy is alarming scientists</h3>
+          <p lang="zh-Hant">地球吸收能量的速度令科學家深感憂慮</p>
+        </article>
+        
+
+        <article class="title-card" style="--accent:#3F6F8A; --card-bg:#F1F8FC; --border:#A9CEE2;">
+          <h3 lang="en">How to train for a heatwave</h3>
+          <p lang="zh-Hant">如何為熱浪做好訓練與準備</p>
+        </article>
+        
+          </div>
+        </section>
+        
+        <section class="section-block" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <header class="section-heading">
+            <span class="section-en" lang="en">Culture</span>
+            <span class="section-zh" lang="zh-Hant">文化</span>
+          </header>
+          <div class="card-grid">
+            
+        <article class="title-card" style="--accent:#A63D40; --card-bg:#FFF1EE; --border:#F4B7A7;">
+          <h3 lang="en">A very silly adaptation of “The Odyssey”</h3>
+          <p lang="zh-Hant">一部非常愚蠢的《奧德賽》改編作品</p>
+        </article>
+        
+          </div>
+        </section>
+        
+  </main>
 </body>
 </html>
